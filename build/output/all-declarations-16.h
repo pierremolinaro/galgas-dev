@@ -1996,19 +1996,22 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS_bool readProperty_mHasInsertOrReplaceModifier (void) const ;
 
+  public: class GALGAS_unifiedTypeMapEntry readProperty_mOptionalElementTypeEntry (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_mapTypeForGeneration init_21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                                   const class GALGAS_lstring & inOperand2,
-                                                                                   const class GALGAS_typedPropertyList & inOperand3,
-                                                                                   const class GALGAS_insertMethodListAST & inOperand4,
-                                                                                   const class GALGAS_mapSearchMethodListAST & inOperand5,
-                                                                                   const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                                                   const class GALGAS_bool & inOperand7,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_mapTypeForGeneration init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                                       const class GALGAS_lstring & inOperand2,
+                                                                                       const class GALGAS_typedPropertyList & inOperand3,
+                                                                                       const class GALGAS_insertMethodListAST & inOperand4,
+                                                                                       const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                                                       const class GALGAS_mapRemoveMethodListAST & inOperand6,
+                                                                                       const class GALGAS_bool & inOperand7,
+                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand8,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2026,7 +2029,8 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                    const class GALGAS_insertMethodListAST & inOperand4,
                                                                    const class GALGAS_mapSearchMethodListAST & inOperand5,
                                                                    const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                                   const class GALGAS_bool & inOperand7
+                                                                   const class GALGAS_bool & inOperand7,
+                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand8
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2066,15 +2070,16 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void mapTypeForGeneration_init_21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                          const class GALGAS_lstring & inOperand2,
-                                                                          const class GALGAS_typedPropertyList & inOperand3,
-                                                                          const class GALGAS_insertMethodListAST & inOperand4,
-                                                                          const class GALGAS_mapSearchMethodListAST & inOperand5,
-                                                                          const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                                          const class GALGAS_bool & inOperand7,
-                                                                          Compiler * inCompiler) ;
+  public: void mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                              const class GALGAS_unifiedTypeMapEntry & inOperand1,
+                                                                              const class GALGAS_lstring & inOperand2,
+                                                                              const class GALGAS_typedPropertyList & inOperand3,
+                                                                              const class GALGAS_insertMethodListAST & inOperand4,
+                                                                              const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                                              const class GALGAS_mapRemoveMethodListAST & inOperand6,
+                                                                              const class GALGAS_bool & inOperand7,
+                                                                              const class GALGAS_unifiedTypeMapEntry & inOperand8,
+                                                                              Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -2102,6 +2107,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
   public: GALGAS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
   public: GALGAS_bool mProperty_mHasInsertOrReplaceModifier ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_mOptionalElementTypeEntry ;
 
 
 //--- Default constructor
@@ -2115,7 +2121,8 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                      const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                      const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                     const GALGAS_bool & in_mHasInsertOrReplaceModifier
+                                     const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                     const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -1966,6 +1966,10 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_headerCompositionMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -2147,6 +2151,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMa
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: headerCompositionMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_headerCompositionMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_headerCompositionMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_headerCompositionMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_headerCompositionMap_2D_element_3F_ (const GALGAS_headerCompositionMap_2D_element & inValue) ;
+  public: static GALGAS_headerCompositionMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_headerCompositionMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_headerCompositionMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_headerCompositionMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap_2D_element_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @headerRepartitionMap map
 //
 //--------------------------------------------------------------------------------------------------
@@ -2228,6 +2297,10 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_headerRepartitionMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -2393,6 +2466,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMa
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: headerRepartitionMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_headerRepartitionMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_headerRepartitionMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_headerRepartitionMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_headerRepartitionMap_2D_element_3F_ (const GALGAS_headerRepartitionMap_2D_element & inValue) ;
+  public: static GALGAS_headerRepartitionMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_headerRepartitionMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_headerRepartitionMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_headerRepartitionMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap_2D_element_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @projectQualifiedFeatureMap map
 //
 //--------------------------------------------------------------------------------------------------
@@ -2474,6 +2612,10 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_projectQualifiedFeatureMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -2636,6 +2778,71 @@ class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: projectQualifiedFeatureMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_projectQualifiedFeatureMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_projectQualifiedFeatureMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_projectQualifiedFeatureMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_projectQualifiedFeatureMap_2D_element_3F_ (const GALGAS_projectQualifiedFeatureMap_2D_element & inValue) ;
+  public: static GALGAS_projectQualifiedFeatureMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_projectQualifiedFeatureMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_projectQualifiedFeatureMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_projectQualifiedFeatureMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap_2D_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //

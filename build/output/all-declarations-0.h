@@ -10399,6 +10399,10 @@ class GALGAS_classFunctionMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_classFunctionMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -10545,6 +10549,10 @@ class GALGAS_classMethodMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_classMethodMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -10754,6 +10762,10 @@ class GALGAS_getterMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_getterMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -10891,6 +10903,10 @@ class GALGAS_initializerMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_initializerMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -11090,6 +11106,10 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_instanceMethodMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -11225,6 +11245,10 @@ class GALGAS_optionalMethodMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -11374,6 +11398,10 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_propertyMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -11559,6 +11587,10 @@ class GALGAS_setterMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_setterMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
@@ -11704,6 +11736,10 @@ class GALGAS_subscriptMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_subscriptMap_2D_element_3F_ readSubscript__3F_string (const class GALGAS_string & in0,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Optional Methods
   public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,

@@ -257,7 +257,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (99 types)
+--- Type list (101 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -272,6 +272,7 @@ LOGGING r: <@uint:5>
   @TestExtensionSetter-weak
   @aMap
   @aMap-element
+  @aMap-element?
   @abstractOverridingTestExtensionSetter
   @abstractOverridingTestExtensionSetter-weak
   @abstractTestExtensionSetter
@@ -332,6 +333,7 @@ LOGGING r: <@uint:5>
   @myList-element
   @myMap
   @myMap-element
+  @myMap-element?
   @mySortedList
   @mySortedList-element
   @object

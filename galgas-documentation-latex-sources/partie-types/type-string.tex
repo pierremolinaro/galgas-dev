@@ -380,6 +380,21 @@ Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decode
 
 
 
+\subsectionGetter{bigint}{string}
+
+\begin{galgas4box}
+func @string.bigint () -> @bigint?
+\end{galgas4box}
+
+Si la chaîne de caractères est une représentation décimale d'un entier, cette fonction retourne sa valeur. Sinon, la valeur \ggst!nil! est retournée.
+
+
+
+
+
+
+
+
 \subsectionGetter{capacity}{string}
 
 \begin{galgas3box}

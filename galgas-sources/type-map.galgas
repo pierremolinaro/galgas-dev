@@ -292,13 +292,16 @@ override method @mapDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
+  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
   ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !@lstring {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
+    !elementTypeName
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
   }
+//--- Add optional element
+  [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -605,9 +608,24 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
+  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
   [!?ioTypeMap makeEntry
-    !@lstring {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName.location}
+    !elementTypeName
     ?let @unifiedTypeMapEntry elementTypeEntry
+  ]
+#--- Optional Element type index
+  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  [!?ioTypeMap makeEntry
+    !optionalElementTypeName
+    ?let @unifiedTypeMapEntry optionalElementTypeEntry
+  ]
+#--- Read subscripts
+  var @subscriptMap readSubscriptMap = ()
+  let @functionSignature argumentTypeList = §[.init (["string" nowhere], stringTypeIndex, "inKey", true)]
+  [!?readSubscriptMap insertKey
+    !.init ([argumentTypeList subcriptSignature], .nowhere)
+    !argumentTypeList
+    !optionalElementTypeEntry
   ]
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
@@ -628,7 +646,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !classMethodMap: ()
     !unwrappedType: .null
     !optionalMethodMap: optionalMethodMap
-    !readSubscriptMap: ()
+    !readSubscriptMap: readSubscriptMap
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
@@ -725,18 +743,24 @@ override method @mapDeclarationAST semanticAnalysis
     error insertOrReplaceDeclarationLocation
       : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end
+#--- Optional Element type index
+  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  let elementTypeEntry = [ioTypeMap typeMapEntryForLKey !elementTypeName]
+  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "map " + self.mMapTypeName
     !@mapTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName]
-      ![ioTypeMap typeMapEntryForLKey !.init {!self.mMapTypeName.string + elementTypeNameSuffix () !self.mMapTypeName}]
+      !elementTypeEntry
       !self.mMapTypeName
       !typedAttributeList
       !self.mInsertMethodList
       !self.mSearchMethodList
       !self.mRemoveMethodList
       !hasInsertOrReplaceModifier
+      !optionalElementTypeEntry
     }
 }
 
@@ -752,16 +776,16 @@ refclass @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @mapSearchMethodListAST mSearchMethodList
   private let @mapRemoveMethodListAST mRemoveMethodList
   private let @bool mHasInsertOrReplaceModifier
+  private let @unifiedTypeMapEntry mOptionalElementTypeEntry
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-{
+                                      ?!@stringset unused ioInclusionSet
+                                      !@string outHeader {
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader1
+  outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader1
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
@@ -797,7 +821,7 @@ override method @mapTypeForGeneration appendDeclaration2
     [t addHeaderFileName1 !?ioInclusionSet]
   end
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader2
+  outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader2
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
@@ -808,21 +832,55 @@ override method @mapTypeForGeneration appendDeclaration2
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
+                                          ?let @unifiedTypeMap unused inTypeMap
+                                          ?!@stringset ioInclusionSet
+                                          !@string outImplementation {
   [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
   [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
-  outImplementation = [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
+  outImplementation = [filewrapper mapGenerationTemplate.mapTypeSpecificImplementation
     ![selfTypeDefinition.typeName.string identifierRepresentation]
     !self.mTypedAttributeList
+    ![self.mElementTypeEntry identifierRepresentation]
     !self.mInsertMethodList
+    ![self.mOptionalElementTypeEntry identifierRepresentation]
     !self.mSearchMethodList
     !self.mRemoveMethodList
     !self.mHasInsertOrReplaceModifier
     ![selfTypeDefinition.features generateCppObjectComparison]
   ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! Generation Filewrappers
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+private filewrapper mapGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template mapTypeHeader1 "GALGAS_map.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+
+  template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@bool GENERATE_COMPARISON
+
+  template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@insertMethodListAST INSERT_METHOD_LIST
+    ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+    ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
+    ?@bool HAS_INSERT_OR_REPLACE
+    ?@bool GENERATE_COMPARISON
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

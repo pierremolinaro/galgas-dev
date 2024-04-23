@@ -11108,7 +11108,8 @@ mProperty_mTypedAttributeList (),
 mProperty_mInsertMethodList (),
 mProperty_mSearchMethodList (),
 mProperty_mRemoveMethodList (),
-mProperty_mHasInsertOrReplaceModifier () {
+mProperty_mHasInsertOrReplaceModifier (),
+mProperty_mOptionalElementTypeEntry () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11123,6 +11124,7 @@ mProperty_mHasInsertOrReplaceModifier () {
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
     mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
     mProperty_mHasInsertOrReplaceModifier.printNonNullClassInstanceProperties ("mHasInsertOrReplaceModifier") ;
+    mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;
   }
 #endif
 
@@ -11153,19 +11155,20 @@ GALGAS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::
-init_21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                      const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                      const GALGAS_lstring & in_mMapTypeName,
-                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                      const GALGAS_insertMethodListAST & in_mInsertMethodList,
-                                      const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
-                                      const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                          const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                          const GALGAS_lstring & in_mMapTypeName,
+                                          const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                          const GALGAS_insertMethodListAST & in_mInsertMethodList,
+                                          const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
+                                          const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                          const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                          const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   cPtr_mapTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_mapTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->mapTypeForGeneration_init_21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mHasInsertOrReplaceModifier, inCompiler) ;
+  object->mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry, inCompiler) ;
   const GALGAS_mapTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -11174,15 +11177,16 @@ init_21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSel
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_mapTypeForGeneration::
-mapTypeForGeneration_init_21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                           const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                                           const GALGAS_lstring & in_mMapTypeName,
-                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                                           const GALGAS_insertMethodListAST & in_mInsertMethodList,
-                                                           const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
-                                                           const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                           const GALGAS_bool & in_mHasInsertOrReplaceModifier,
-                                                           Compiler * /* inCompiler */) {
+mapTypeForGeneration_init_21__21__21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                               const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                               const GALGAS_lstring & in_mMapTypeName,
+                                                               const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                               const GALGAS_insertMethodListAST & in_mInsertMethodList,
+                                                               const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
+                                                               const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
+                                                               const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                                               const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                               Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mElementTypeEntry = in_mElementTypeEntry ;
   mProperty_mMapTypeName = in_mMapTypeName ;
@@ -11191,6 +11195,7 @@ mapTypeForGeneration_init_21__21__21__21__21__21__21__21_ (const GALGAS_unifiedT
   mProperty_mSearchMethodList = in_mSearchMethodList ;
   mProperty_mRemoveMethodList = in_mRemoveMethodList ;
   mProperty_mHasInsertOrReplaceModifier = in_mHasInsertOrReplaceModifier ;
+  mProperty_mOptionalElementTypeEntry = in_mOptionalElementTypeEntry ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11208,10 +11213,11 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::class_func_new (const G
                                                                          const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                                          const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                                          const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                                         const GALGAS_bool & in_mHasInsertOrReplaceModifier
+                                                                         const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                                                         const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_mapTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mHasInsertOrReplaceModifier COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry COMMA_THERE)) ;
   return result ;
 }
 
@@ -11300,6 +11306,18 @@ GALGAS_bool GALGAS_mapTypeForGeneration::readProperty_mHasInsertOrReplaceModifie
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_mapTypeForGeneration::readProperty_mOptionalElementTypeEntry (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
+    return p->mProperty_mOptionalElementTypeEntry ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @mapTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
@@ -11310,7 +11328,8 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMa
                                                       const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                       const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                       const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier
+                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                                      const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mElementTypeEntry (),
@@ -11319,7 +11338,8 @@ mProperty_mTypedAttributeList (),
 mProperty_mInsertMethodList (),
 mProperty_mSearchMethodList (),
 mProperty_mRemoveMethodList (),
-mProperty_mHasInsertOrReplaceModifier () {
+mProperty_mHasInsertOrReplaceModifier (),
+mProperty_mOptionalElementTypeEntry () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mElementTypeEntry = in_mElementTypeEntry ;
   mProperty_mMapTypeName = in_mMapTypeName ;
@@ -11328,6 +11348,7 @@ mProperty_mHasInsertOrReplaceModifier () {
   mProperty_mSearchMethodList = in_mSearchMethodList ;
   mProperty_mRemoveMethodList = in_mRemoveMethodList ;
   mProperty_mHasInsertOrReplaceModifier = in_mHasInsertOrReplaceModifier ;
+  mProperty_mOptionalElementTypeEntry = in_mOptionalElementTypeEntry ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11354,6 +11375,8 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
   mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mHasInsertOrReplaceModifier.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOptionalElementTypeEntry.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -11361,7 +11384,7 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry COMMA_THERE)) ;
   return ptr ;
 }
 

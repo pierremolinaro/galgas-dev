@@ -108,6 +108,29 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
+    }else{
+      GALGAS_%!ELEMENT_TYPE_IDENTIFIER% element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+%  for (* mPropertyName * * *) in ATTRIBUTE_LIST do
+     %      element.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+   end
+%      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
                                                    %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;

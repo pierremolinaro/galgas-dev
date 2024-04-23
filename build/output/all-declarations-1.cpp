@@ -1908,6 +1908,28 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::class_func_emptyMap (LOCA
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_templateVariableMap_2D_element_3F_ GALGAS_templateVariableMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateVariableMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_templateVariableMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_templateVariableMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mType = p->mProperty_mType ;
+      element.mProperty_mCppName = p->mProperty_mCppName ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_templateVariableMap GALGAS_templateVariableMap::class_func_mapWithMapToOverride (const GALGAS_templateVariableMap & inMapToOverride
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateVariableMap result ;

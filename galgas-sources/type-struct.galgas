@@ -374,10 +374,7 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
 
   #·······························································································
 
-  override method appendDeclaration1
-    ?!@stringset ioInclusionSet
-    !@string outHeader
-  {
+  override method appendDeclaration1 ?!@stringset ioInclusionSet !@string outHeader {
     for (t 4*) in self.mTypedPropertyList do
       [t addHeaderFileName1 !?ioInclusionSet]
     end

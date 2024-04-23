@@ -92,6 +92,8 @@
 		CF27F1E21279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */; };
 		CF2A85F214E5BDB100C52116 /* FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A85F114E5BDB100C52116 /* FileManager.cpp */; };
 		CF2A85F314E5BDB100C52116 /* FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A85F114E5BDB100C52116 /* FileManager.cpp */; };
+		CF2BA6C62BD7DBB100673094 /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2BA6C52BD7DBB100673094 /* all-declarations-32.cpp */; };
+		CF2BA6C72BD7DBB100673094 /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2BA6C52BD7DBB100673094 /* all-declarations-32.cpp */; };
 		CF2D3B9D129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */; };
 		CF2D3B9E129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */; };
 		CF301BCF1ECE4101006796F6 /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF301BCA1ECE40F4006796F6 /* PMCancelButtonForPanel.m */; };
@@ -520,6 +522,8 @@
 		CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF27F1DE1279FE7A0068C230 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
 		CF2A85F114E5BDB100C52116 /* FileManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = FileManager.cpp; sourceTree = "<group>"; };
+		CF2BA6C42BD7DBB100673094 /* all-declarations-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
+		CF2BA6C52BD7DBB100673094 /* all-declarations-32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
 		CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_graph.cpp; sourceTree = "<group>"; };
 		CF2D3B9A129725F800E93E98 /* AC_GALGAS_graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_graph.h; sourceTree = "<group>"; };
 		CF301BC91ECE40F4006796F6 /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
@@ -965,6 +969,8 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
+				CF2BA6C52BD7DBB100673094 /* all-declarations-32.cpp */,
+				CF2BA6C42BD7DBB100673094 /* all-declarations-32.h */,
 				CF052E2F2BD666D200B079FB /* all-declarations-31.cpp */,
 				CF052E302BD666D200B079FB /* all-declarations-31.h */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
@@ -1694,6 +1700,7 @@
 				CFCB7A412B2DAECF008DD653 /* BigSigned-add.cpp in Sources */,
 				CFD396F9110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
 				CF2382A7124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,
+				CF2BA6C62BD7DBB100673094 /* all-declarations-32.cpp in Sources */,
 				CF23746819967C4F0061D2D8 /* all-declarations-14.cpp in Sources */,
 				CF387D4D2B39C577007B2D12 /* all-declarations-29.cpp in Sources */,
 				CF23746A19967C4F0061D2D8 /* all-declarations-15.cpp in Sources */,
@@ -1875,6 +1882,7 @@
 				CFD396F0110E1EAF001549E6 /* cpp-allocation.cpp in Sources */,
 				CFBA37792B12982A00DBD02B /* md5.cpp in Sources */,
 				CFD396F8110E1EEC001549E6 /* basic-allocation.cpp in Sources */,
+				CF2BA6C72BD7DBB100673094 /* all-declarations-32.cpp in Sources */,
 				CFCB7A322B2DAECF008DD653 /* BigSigned-bit.cpp in Sources */,
 				CF387D4E2B39C577007B2D12 /* all-declarations-29.cpp in Sources */,
 				CF2382A8124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */,

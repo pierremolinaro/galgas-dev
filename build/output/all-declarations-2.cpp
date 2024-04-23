@@ -3876,6 +3876,27 @@ GALGAS_terminalMap GALGAS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_terminalMap_2D_element_3F_ GALGAS_terminalMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_terminalMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_terminalMap * p = (cMapElement_terminalMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_terminalMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_terminalMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mSentAttributeList = p->mProperty_mSentAttributeList ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_terminalMap GALGAS_terminalMap::class_func_mapWithMapToOverride (const GALGAS_terminalMap & inMapToOverride
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_terminalMap result ;
@@ -4180,6 +4201,27 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalTypeMap_2D_element_3F_ GALGAS_lexicalTypeMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalTypeMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalTypeMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalTypeMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mLexicalType = p->mProperty_mLexicalType ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_mapWithMapToOverride (const GALGAS_lexicalTypeMap & inMapToOverride
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result ;
@@ -4479,6 +4521,27 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::init (Compiler * COMMA_LO
 GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalAttributeMap result ;
   result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalAttributeMap_2D_element_3F_ GALGAS_lexicalAttributeMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalAttributeMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalAttributeMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalAttributeMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mLexicalType = p->mProperty_mLexicalType ;
+      result = element ;
+    }
+  }
   return result ;
 }
 
@@ -5550,6 +5613,29 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_fun
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ GALGAS_lexicalExplicitTokenListMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalExplicitTokenListMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalExplicitTokenListMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mTerminal = p->mProperty_mTerminal ;
+      element.mProperty_atomicSelection = p->mProperty_atomicSelection ;
+      element.mProperty_isEndOfTemplateMark = p->mProperty_isEndOfTemplateMark ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_func_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMap & inMapToOverride
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap result ;
@@ -6322,6 +6408,29 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::cla
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ GALGAS_lexicalExplicitTokenListMapMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalExplicitTokenListMapMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mExplicitTokenListMap = p->mProperty_mExplicitTokenListMap ;
+      element.mProperty_mTokenSortedList = p->mProperty_mTokenSortedList ;
+      element.mProperty_mShouldBeGenerated = p->mProperty_mShouldBeGenerated ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::class_func_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMapMap & inMapToOverride
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMapMap result ;
@@ -6718,6 +6827,28 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::init (Compiler * COMMA_LOCATI
 GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalMessageMap result ;
   result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalMessageMap_2D_element_3F_ GALGAS_lexicalMessageMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalMessageMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalMessageMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalMessageMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mLexicalMessage = p->mProperty_mLexicalMessage ;
+      element.mProperty_mMessageIsUsed = p->mProperty_mMessageIsUsed ;
+      result = element ;
+    }
+  }
   return result ;
 }
 
@@ -7636,6 +7767,29 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_emptyMap (LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_lexicalRoutineMap_2D_element_3F_ GALGAS_lexicalRoutineMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalRoutineMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalRoutineMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalRoutineMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mLexicalRoutineFormalArgumentList = p->mProperty_mLexicalRoutineFormalArgumentList ;
+      element.mProperty_mErrorMessageList = p->mProperty_mErrorMessageList ;
+      element.mProperty_mIsExtern = p->mProperty_mIsExtern ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_mapWithMapToOverride (const GALGAS_lexicalRoutineMap & inMapToOverride
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap result ;
@@ -8530,6 +8684,30 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::init (Compiler * COMMA_LOCA
 GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap result ;
   result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalFunctionMap_2D_element_3F_ GALGAS_lexicalFunctionMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalFunctionMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalFunctionMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalFunctionMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mLexicalTypeList = p->mProperty_mLexicalTypeList ;
+      element.mProperty_mReturnedLexicalType = p->mProperty_mReturnedLexicalType ;
+      element.mProperty_mReplacementFunctionName = p->mProperty_mReplacementFunctionName ;
+      element.mProperty_mIsExtern = p->mProperty_mIsExtern ;
+      result = element ;
+    }
+  }
   return result ;
 }
 
@@ -9531,6 +9709,28 @@ GALGAS_styleMap GALGAS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_styleMap_2D_element_3F_ GALGAS_styleMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_styleMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_styleMap * p = (cMapElement_styleMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_styleMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_styleMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mComment = p->mProperty_mComment ;
+      element.mProperty_mStyleIndex = p->mProperty_mStyleIndex ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_styleMap GALGAS_styleMap::class_func_mapWithMapToOverride (const GALGAS_styleMap & inMapToOverride
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_styleMap result ;
@@ -9868,6 +10068,26 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::init (Compiler * COMMA_LOCATION_ARGS)
 GALGAS_lexicalTagMap GALGAS_lexicalTagMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalTagMap result ;
   result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalTagMap_2D_element_3F_ GALGAS_lexicalTagMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalTagMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_lexicalTagMap * p = (cMapElement_lexicalTagMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_lexicalTagMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_lexicalTagMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      result = element ;
+    }
+  }
   return result ;
 }
 

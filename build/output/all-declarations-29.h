@@ -10,6 +10,59 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'afterNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_afterNameForUsefulEntitiesGraph (const class GALGAS_location & constinArgument0,
+                                                               class Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'beforeNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_beforeNameForUsefulEntitiesGraph (const class GALGAS_location & constinArgument0,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'rootRuleNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_rootRuleNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeConstructorInvocation?&??&&????!!!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F__21__21__21__21_ (const class GALGAS_lstring constinArgument0,
+                                                                                                   class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                                   const class GALGAS_unifiedTypeMapEntry constinArgument2,
+                                                                                                   const class GALGAS_analysisContext constinArgument3,
+                                                                                                   class GALGAS_unifiedTypeMap & ioArgument4,
+                                                                                                   class GALGAS_localVarManager & ioArgument5,
+                                                                                                   const class GALGAS_lstring constinArgument6,
+                                                                                                   const class GALGAS_lstring constinArgument7,
+                                                                                                   const class GALGAS_actualOutputArgumentList constinArgument8,
+                                                                                                   const class GALGAS_location constinArgument9,
+                                                                                                   class GALGAS_unifiedTypeMapEntry & outArgument10,
+                                                                                                   class GALGAS_unifiedTypeMapEntry & outArgument11,
+                                                                                                   class GALGAS_semanticExpressionListForGeneration & outArgument12,
+                                                                                                   class GALGAS_bool & outArgument13,
+                                                                                                   class Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeInitializerInvocation?&??&&???!!!'
 //
 //--------------------------------------------------------------------------------------------------
@@ -62,22 +115,4 @@ void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F
                                                                                                    class GALGAS_fixitListForGeneration & outArgument12,
                                                                                                    class Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeOptionalMethodCall?&?&&?receiverExp?optionalMethodName?parameters&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeOptionalMethodCall_3F__26__3F__26__26__3F_receiverExp_3F_optionalMethodName_3F_parameters_26_ (const class GALGAS_lstring constinArgument0,
-                                                                                                                   class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                                                   const class GALGAS_analysisContext constinArgument2,
-                                                                                                                   class GALGAS_unifiedTypeMap & ioArgument3,
-                                                                                                                   class GALGAS_localVarManager & ioArgument4,
-                                                                                                                   const class GALGAS_semanticExpressionAST constinArgument5,
-                                                                                                                   const class GALGAS_lstring constinArgument6,
-                                                                                                                   const class GALGAS_optionalMethodActualArgumentList constinArgument7,
-                                                                                                                   class GALGAS_ifTestListForGeneration & ioArgument8,
-                                                                                                                   class Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
 

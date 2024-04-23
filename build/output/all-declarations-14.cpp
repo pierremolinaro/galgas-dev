@@ -9349,6 +9349,28 @@ GALGAS_headerCompositionMap GALGAS_headerCompositionMap::class_func_emptyMap (LO
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_headerCompositionMap_2D_element_3F_ GALGAS_headerCompositionMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_headerCompositionMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_headerCompositionMap * p = (cMapElement_headerCompositionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_headerCompositionMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_headerCompositionMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mInclusion = p->mProperty_mInclusion ;
+      element.mProperty_mHeaderString = p->mProperty_mHeaderString ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_headerCompositionMap GALGAS_headerCompositionMap::class_func_mapWithMapToOverride (const GALGAS_headerCompositionMap & inMapToOverride
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_headerCompositionMap result ;
@@ -9698,6 +9720,27 @@ GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::class_func_emptyMap (LO
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_headerRepartitionMap_2D_element_3F_ GALGAS_headerRepartitionMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_headerRepartitionMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_headerRepartitionMap * p = (cMapElement_headerRepartitionMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_headerRepartitionMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_headerRepartitionMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mHeaderFileName = p->mProperty_mHeaderFileName ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::class_func_mapWithMapToOverride (const GALGAS_headerRepartitionMap & inMapToOverride
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_headerRepartitionMap result ;
@@ -9997,6 +10040,27 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::init (Compi
 GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_projectQualifiedFeatureMap result ;
   result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_projectQualifiedFeatureMap_2D_element_3F_ GALGAS_projectQualifiedFeatureMap
+::readSubscript__3F_string (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_projectQualifiedFeatureMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_projectQualifiedFeatureMap * p = (cMapElement_projectQualifiedFeatureMap *) searchEntryInMap (inKey.stringValue ()) ;
+    if (nullptr == p) {
+      result = GALGAS_projectQualifiedFeatureMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_projectQualifiedFeatureMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mFeatureValue = p->mProperty_mFeatureValue ;
+      result = element ;
+    }
+  }
   return result ;
 }
 
