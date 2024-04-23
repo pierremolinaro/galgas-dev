@@ -26,6 +26,13 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
 
   #-----------------------------------------------------------------------------------------------
 
+  override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+  //--- Add optional element
+    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: .init ("bigint", .nowhere)]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = ()
@@ -651,7 +658,15 @@ refclass @stringPredefinedTypeAST : @predefinedTypeAST {
       !getterName: "decimalSignedBigInt"
       !obsoleteName: ""
       !returnedTypeName: "bigint"
-      !hasCompilerArgument:true
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName: "bigint"
+      !obsoleteName: ""
+      !returnedTypeName: "bigint?"
+      !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
       !?outMap

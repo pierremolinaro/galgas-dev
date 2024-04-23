@@ -257,7 +257,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (98 types)
+--- Type list (99 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -279,6 +279,7 @@ LOGGING r: <@uint:5>
   @baseClassForTypeCastInSetterCall
   @baseClassForTypeCastInSetterCall-weak
   @bigint
+  @bigint?
   @bigintlist
   @bigintlist-element
   @binaryset

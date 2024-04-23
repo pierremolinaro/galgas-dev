@@ -404,6 +404,8 @@ class GALGAS_string : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_assemblerRepresentation (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bigint_3F_ getter_bigint (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_cStringRepresentation (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_capacity (LOCATION_ARGS) const ;

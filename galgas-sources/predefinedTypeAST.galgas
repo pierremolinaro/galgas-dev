@@ -60,7 +60,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
        ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring {!"@" + self.mPredefinedTypeName !@location.here}
+    let key = @lstring {!"@" + self.mPredefinedTypeName !.nowhere}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
 
@@ -113,7 +113,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !inExtensionSetterMapForBuildingContext
       !?ioSemanticContext
       !?ioTypeMap
-      !@lstring {!self.mPredefinedTypeName !@location.here}
+      !@lstring {!self.mPredefinedTypeName !.nowhere}
       !isClass: false
       !?initializerMap
       !?getterMap

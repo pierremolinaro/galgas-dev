@@ -635,6 +635,10 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Extension getter getSupportedOperatorFlags
   public: virtual class GALGAS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
+//--- Extension method addAssociatedElement
+  public: virtual void method_addAssociatedElement (class GALGAS_galgasDeclarationAST & arg_ioDeclarations,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
 //--- Extension method getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GALGAS_unifiedTypeMap & arg_ioUnifiedTypeMap,
            class GALGAS_classFunctionMap & arg_outClassFunctionMap,
