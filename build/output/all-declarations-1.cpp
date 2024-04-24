@@ -2186,38 +2186,8 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_unifiedTypeMapEntry_element::cEnumAssociatedValues_unifiedTypeMapEntry_element (const GALGAS_unifiedTypeMapElementClass_2D_weak inAssociatedValue0
-                                                                                                      COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_unifiedTypeMapEntry_element::description (String & ioString,
-                                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_unifiedTypeMapEntry_element::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_unifiedTypeMapEntry_element * ptr = dynamic_cast<const cEnumAssociatedValues_unifiedTypeMapEntry_element *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_unifiedTypeMapEntry::GALGAS_unifiedTypeMapEntry (void) :
 mAssociatedValues (),
-mAssociatedValuesEX (),
 mEnum (Enumeration::invalid) {
 }
 
@@ -2232,7 +2202,7 @@ GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_null (UNUSED_L
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_element (const GALGAS_unifiedTypeMapElementClass_2D_weak & inAssociatedValue0
-                                                                           COMMA_LOCATION_ARGS) {
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapEntry result ;
   result.mEnum = Enumeration::enum_element ;
   AC_GALGAS_root * p = nullptr ;
@@ -2241,28 +2211,22 @@ GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_element (const
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_unifiedTypeMapEntry_element (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue0,
+void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue_weakElement,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_element) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_weakElement.drop () ;
     String s ;
-    s.appendCString ("method @unifiedTypeMapEntry element invoked with an invalid enum value") ;
+    s.appendCString ("method @unifiedTypeMapEntry.element invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_unifiedTypeMapEntry_element * ptr = (const cEnumAssociatedValues_unifiedTypeMapEntry_element *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_unifiedTypeMapEntry_2D_element *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_weakElement = ptr->mProperty_weakElement ;
   }
 }
 
@@ -2878,49 +2842,8 @@ void callExtensionMethod_templateCodeGeneration (cPtr_templateInstructionForGene
 }
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit::cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (const GALGAS_string inAssociatedValue0,
-                                                                                                                                          const GALGAS_location inAssociatedValue1
-                                                                                                                                          COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit::description (String & ioString,
-                                                                                       const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  mAssociatedValue1.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit::cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (const GALGAS_lstringlist inAssociatedValue0,
-                                                                                                                                          const GALGAS_location inAssociatedValue1
-                                                                                                                                          COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit::description (String & ioString,
-                                                                                       const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  mAssociatedValue1.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_templateInstructionForEnumerationAST::GALGAS_templateInstructionForEnumerationAST (void) :
 mAssociatedValues (),
-mAssociatedValuesEX (),
 mEnum (Enumeration::invalid) {
 }
 
@@ -2928,7 +2851,7 @@ mEnum (Enumeration::invalid) {
 
 GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumerationAST::class_func_implicit (const GALGAS_string & inAssociatedValue0,
                                                                                                               const GALGAS_location & inAssociatedValue1
-                                                                                                              COMMA_LOCATION_ARGS) {
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionForEnumerationAST result ;
   result.mEnum = Enumeration::enum_implicit ;
   AC_GALGAS_root * p = nullptr ;
@@ -2937,12 +2860,6 @@ GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumera
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
@@ -2950,7 +2867,7 @@ GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumera
 
 GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumerationAST::class_func_explicit (const GALGAS_lstringlist & inAssociatedValue0,
                                                                                                               const GALGAS_location & inAssociatedValue1
-                                                                                                              COMMA_LOCATION_ARGS) {
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionForEnumerationAST result ;
   result.mEnum = Enumeration::enum_explicit ;
   AC_GALGAS_root * p = nullptr ;
@@ -2959,50 +2876,44 @@ GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumera
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionForEnumerationAST::method_implicit (GALGAS_string & outAssociatedValue0,
-                                                                   GALGAS_location & outAssociatedValue1,
+void GALGAS_templateInstructionForEnumerationAST::method_implicit (GALGAS_string & outAssociatedValue_prefix,
+                                                                   GALGAS_location & outAssociatedValue_remplacementRange,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_implicit) {
-    outAssociatedValue0.drop () ;
-    outAssociatedValue1.drop () ;
+    outAssociatedValue_prefix.drop () ;
+    outAssociatedValue_remplacementRange.drop () ;
     String s ;
-    s.appendCString ("method @templateInstructionForEnumerationAST implicit invoked with an invalid enum value") ;
+    s.appendCString ("method @templateInstructionForEnumerationAST.implicit invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_implicit *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
+    const auto ptr = (GALGAS_templateInstructionForEnumerationAST_2D_implicit *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_prefix = ptr->mProperty_prefix ;
+    outAssociatedValue_remplacementRange = ptr->mProperty_remplacementRange ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionForEnumerationAST::method_explicit (GALGAS_lstringlist & outAssociatedValue0,
-                                                                   GALGAS_location & outAssociatedValue1,
+void GALGAS_templateInstructionForEnumerationAST::method_explicit (GALGAS_lstringlist & outAssociatedValue_enumeration,
+                                                                   GALGAS_location & outAssociatedValue_endOfProperties,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_explicit) {
-    outAssociatedValue0.drop () ;
-    outAssociatedValue1.drop () ;
+    outAssociatedValue_enumeration.drop () ;
+    outAssociatedValue_endOfProperties.drop () ;
     String s ;
-    s.appendCString ("method @templateInstructionForEnumerationAST explicit invoked with an invalid enum value") ;
+    s.appendCString ("method @templateInstructionForEnumerationAST.explicit invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit * ptr = (const cEnumAssociatedValues_templateInstructionForEnumerationAST_explicit *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
+    const auto ptr = (GALGAS_templateInstructionForEnumerationAST_2D_explicit *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_enumeration = ptr->mProperty_enumeration ;
+    outAssociatedValue_endOfProperties = ptr->mProperty_endOfProperties ;
   }
 }
 
@@ -15005,6 +14916,116 @@ GALGAS_lexicalCharacterIntervalMatchAST_2D_weak GALGAS_lexicalCharacterIntervalM
       result = *p ;
     }else{
       inCompiler->castError ("lexicalCharacterIntervalMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_lexicalStringMatchAST_2D_weak::objectCompare (const GALGAS_lexicalStringMatchAST_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStringMatchAST_2D_weak::GALGAS_lexicalStringMatchAST_2D_weak (void) :
+GALGAS_lexicalExpressionAST_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStringMatchAST_2D_weak & GALGAS_lexicalStringMatchAST_2D_weak::operator = (const GALGAS_lexicalStringMatchAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStringMatchAST_2D_weak::GALGAS_lexicalStringMatchAST_2D_weak (const GALGAS_lexicalStringMatchAST & inSource) :
+GALGAS_lexicalExpressionAST_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStringMatchAST_2D_weak GALGAS_lexicalStringMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalStringMatchAST_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStringMatchAST GALGAS_lexicalStringMatchAST_2D_weak::bang_lexicalStringMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalStringMatchAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_lexicalStringMatchAST) ;
+      result = GALGAS_lexicalStringMatchAST ((cPtr_lexicalStringMatchAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalStringMatchAST-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST_2D_weak ("lexicalStringMatchAST-weak",
+                                                                                     & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_lexicalStringMatchAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStringMatchAST_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_lexicalStringMatchAST_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalStringMatchAST_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lexicalStringMatchAST_2D_weak GALGAS_lexicalStringMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalStringMatchAST_2D_weak result ;
+  const GALGAS_lexicalStringMatchAST_2D_weak * p = (const GALGAS_lexicalStringMatchAST_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalStringMatchAST_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalStringMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -10,49 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'sortedListGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                                     const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST,
-                                                                                                     const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GALGAS_bool & in_GENERATE_5F_COMPARISON
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'forbiddenKeysForStruct'
 //
 //--------------------------------------------------------------------------------------------------
@@ -791,4 +748,71 @@ void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (co
                                                                               class GALGAS_uint & ioArgument7,
                                                                               class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateInstructionList&?&&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateInstructionList_26__3F__26__26__3F__26_ (class GALGAS_stringset & ioArgument0,
+                                                              const class GALGAS_semanticInstructionListForGeneration constinArgument1,
+                                                              class GALGAS_uint & ioArgument2,
+                                                              class GALGAS_stringset & ioArgument3,
+                                                              const class GALGAS_bool constinArgument4,
+                                                              class GALGAS_string & ioArgument5,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeSemanticInstructionList?&?&?localConstantList?localInitializedVariableListWarnsIfNotMutated?localInitializedVariableListNoWarnsIfNotMutated??&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeSemanticInstructionList_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__3F__26__21_ (const class GALGAS_lstring constinArgument0,
+                                                                                                                                                                                                      class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                                                                                                                                      const class GALGAS_analysisContext constinArgument2,
+                                                                                                                                                                                                      class GALGAS_unifiedTypeMap & ioArgument3,
+                                                                                                                                                                                                      const class GALGAS_localConstantList constinArgument4,
+                                                                                                                                                                                                      const class GALGAS_localInitializedVariableList constinArgument5,
+                                                                                                                                                                                                      const class GALGAS_localInitializedVariableList constinArgument6,
+                                                                                                                                                                                                      const class GALGAS_semanticInstructionListAST constinArgument7,
+                                                                                                                                                                                                      const class GALGAS_location constinArgument8,
+                                                                                                                                                                                                      class GALGAS_localVarManager & ioArgument9,
+                                                                                                                                                                                                      class GALGAS_semanticInstructionListForGeneration & outArgument10,
+                                                                                                                                                                                                      class Compiler * inCompiler
+                                                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeSemanticInstructionListWithoutBranch?&?&?localConstantList?localInitializedVariableListWarnsIfNotMutated?localInitializedVariableListNoWarnsIfNotMutated?&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__26__21_ (const class GALGAS_lstring constinArgument0,
+                                                                                                                                                                                                               class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                                                                                                                                               const class GALGAS_analysisContext constinArgument2,
+                                                                                                                                                                                                               class GALGAS_unifiedTypeMap & ioArgument3,
+                                                                                                                                                                                                               const class GALGAS_localConstantList constinArgument4,
+                                                                                                                                                                                                               const class GALGAS_localInitializedVariableList constinArgument5,
+                                                                                                                                                                                                               const class GALGAS_localInitializedVariableList constinArgument6,
+                                                                                                                                                                                                               const class GALGAS_semanticInstructionListAST constinArgument7,
+                                                                                                                                                                                                               class GALGAS_localVarManager & ioArgument8,
+                                                                                                                                                                                                               class GALGAS_semanticInstructionListForGeneration & outArgument9,
+                                                                                                                                                                                                               class Compiler * inCompiler
+                                                                                                                                                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkExpressionIsBoolean???!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkExpressionIsBoolean_3F__3F__3F__21_ (const class GALGAS_analysisContext constinArgument0,
+                                                       const class GALGAS_location constinArgument1,
+                                                       const class GALGAS_semanticExpressionForGeneration constinArgument2,
+                                                       class GALGAS_semanticExpressionForGeneration & outArgument3,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 

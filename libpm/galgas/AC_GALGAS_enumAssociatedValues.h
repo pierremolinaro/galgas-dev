@@ -61,7 +61,6 @@ class AC_GALGAS_enumerationAssociatedValues final {
 //--- Destructor
   public: virtual ~ AC_GALGAS_enumerationAssociatedValues (void) ;
 
-//---
   public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const ;
 
   public: VIRTUAL_IN_DEBUG void drop (void) ;
@@ -70,52 +69,6 @@ class AC_GALGAS_enumerationAssociatedValues final {
     const AC_GALGAS_root * p = (mSharedPtr == nullptr) ? nullptr : mSharedPtr->mValuePtr ;
     macroValidPointer (p) ;
     return p ;
-  }
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// OLD
-//--------------------------------------------------------------------------------------------------
-
-class cEnumAssociatedValues : public SharedObject {
-  public: cEnumAssociatedValues (LOCATION_ARGS) ;
-
-  public: virtual void description (class String & ioString,
-                                    const int32_t inIndentation) const = 0 ;
-
-  public: virtual ComparisonResult compare (const cEnumAssociatedValues * /* inOperand */) const {
-    return ComparisonResult::invalid ;
-  }
-
-  public: virtual ~ cEnumAssociatedValues (void) {}
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class AC_GALGAS_enumAssociatedValues final {
-  private: const cEnumAssociatedValues * mSharedPtr ;
-
-//--- Default constructor
-  public: AC_GALGAS_enumAssociatedValues (void) ;
-
-//---
-  public: void setPointer (const cEnumAssociatedValues * inUniquePtr) ;
-
-//--- Handle copy
-  public: AC_GALGAS_enumAssociatedValues (const AC_GALGAS_enumAssociatedValues & inSource) ;
-  public: AC_GALGAS_enumAssociatedValues & operator = (const AC_GALGAS_enumAssociatedValues & inSource) ;
-
-//--- Destructor
-  public: virtual ~ AC_GALGAS_enumAssociatedValues (void) ;
-
-//---
-  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const ;
-
-
-  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const ;
-
-  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
-    return mSharedPtr ;
   }
 } ;
 

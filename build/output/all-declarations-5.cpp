@@ -2847,103 +2847,15 @@ GALGAS_overridingExtensionSetterAST_2D_weak GALGAS_overridingExtensionSetterAST_
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_typeKindEnum_classType::cEnumAssociatedValues_typeKindEnum_classType (const GALGAS_bool inAssociatedValue0
-                                                                                            COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_typeKindEnum_classType::description (String & ioString,
-                                                                const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_typeKindEnum_classType::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_typeKindEnum_classType * ptr = dynamic_cast<const cEnumAssociatedValues_typeKindEnum_classType *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_typeKindEnum_weakReferenceType::cEnumAssociatedValues_typeKindEnum_weakReferenceType (const GALGAS_unifiedTypeMapEntry inAssociatedValue0
-                                                                                                            COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_typeKindEnum_weakReferenceType::description (String & ioString,
-                                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_typeKindEnum_weakReferenceType::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_typeKindEnum_weakReferenceType * ptr = dynamic_cast<const cEnumAssociatedValues_typeKindEnum_weakReferenceType *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_typeKindEnum_enumType::cEnumAssociatedValues_typeKindEnum_enumType (const GALGAS_constantIndexMap inAssociatedValue0
-                                                                                          COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_typeKindEnum_enumType::description (String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_typeKindEnum_enumType::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_typeKindEnum_enumType * ptr = dynamic_cast<const cEnumAssociatedValues_typeKindEnum_enumType *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_typeKindEnum::GALGAS_typeKindEnum (void) :
 mAssociatedValues (),
-mAssociatedValuesEX (),
 mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_classType (const GALGAS_bool & inAssociatedValue0
-                                                               COMMA_LOCATION_ARGS) {
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeKindEnum result ;
   result.mEnum = Enumeration::enum_classType ;
   AC_GALGAS_root * p = nullptr ;
@@ -2952,19 +2864,13 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_classType (const GALGAS_bool
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_typeKindEnum_classType (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_weakReferenceType (const GALGAS_unifiedTypeMapEntry & inAssociatedValue0
-                                                                       COMMA_LOCATION_ARGS) {
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeKindEnum result ;
   result.mEnum = Enumeration::enum_weakReferenceType ;
   AC_GALGAS_root * p = nullptr ;
@@ -2973,19 +2879,13 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_weakReferenceType (const GAL
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_typeKindEnum_weakReferenceType (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_enumType (const GALGAS_constantIndexMap & inAssociatedValue0
-                                                              COMMA_LOCATION_ARGS) {
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeKindEnum result ;
   result.mEnum = Enumeration::enum_enumType ;
   AC_GALGAS_root * p = nullptr ;
@@ -2994,12 +2894,6 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_enumType (const GALGAS_const
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_typeKindEnum_enumType (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
@@ -3101,49 +2995,49 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_packageType (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue0,
+void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue_isReference,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_classType) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_isReference.drop () ;
     String s ;
-    s.appendCString ("method @typeKindEnum classType invoked with an invalid enum value") ;
+    s.appendCString ("method @typeKindEnum.classType invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_typeKindEnum_2D_classType *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_isReference = ptr->mProperty_isReference ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::method_weakReferenceType (GALGAS_unifiedTypeMapEntry & outAssociatedValue0,
+void GALGAS_typeKindEnum::method_weakReferenceType (GALGAS_unifiedTypeMapEntry & outAssociatedValue_referenceType,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_weakReferenceType) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_referenceType.drop () ;
     String s ;
-    s.appendCString ("method @typeKindEnum weakReferenceType invoked with an invalid enum value") ;
+    s.appendCString ("method @typeKindEnum.weakReferenceType invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_typeKindEnum_weakReferenceType * ptr = (const cEnumAssociatedValues_typeKindEnum_weakReferenceType *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_typeKindEnum_2D_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_referenceType = ptr->mProperty_referenceType ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::method_enumType (GALGAS_constantIndexMap & outAssociatedValue0,
+void GALGAS_typeKindEnum::method_enumType (GALGAS_constantIndexMap & outAssociatedValue_constantMap,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_enumType) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_constantMap.drop () ;
     String s ;
-    s.appendCString ("method @typeKindEnum enumType invoked with an invalid enum value") ;
+    s.appendCString ("method @typeKindEnum.enumType invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_typeKindEnum_enumType * ptr = (const cEnumAssociatedValues_typeKindEnum_enumType *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_typeKindEnum_2D_enumType *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_constantMap = ptr->mProperty_constantMap ;
   }
 }
 
@@ -9239,38 +9133,8 @@ GALGAS_localVariableAttributes GALGAS_localVariableAttributes::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_localVarValuation_declared::cEnumAssociatedValues_localVarValuation_declared (const GALGAS_bool inAssociatedValue0
-                                                                                                    COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_localVarValuation_declared::description (String & ioString,
-                                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cEnumAssociatedValues_localVarValuation_declared::compare (const cEnumAssociatedValues * inOperand) const {
-  const cEnumAssociatedValues_localVarValuation_declared * ptr = dynamic_cast<const cEnumAssociatedValues_localVarValuation_declared *> (inOperand) ;
-  macroValidPointer (ptr) ;
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mAssociatedValue0.objectCompare (ptr->mAssociatedValue0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_localVarValuation::GALGAS_localVarValuation (void) :
 mAssociatedValues (),
-mAssociatedValuesEX (),
 mEnum (Enumeration::invalid) {
 }
 
@@ -9285,7 +9149,7 @@ GALGAS_localVarValuation GALGAS_localVarValuation::class_func_invalid (UNUSED_LO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_localVarValuation GALGAS_localVarValuation::class_func_declared (const GALGAS_bool & inAssociatedValue0
-                                                                        COMMA_LOCATION_ARGS) {
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_localVarValuation result ;
   result.mEnum = Enumeration::enum_declared ;
   AC_GALGAS_root * p = nullptr ;
@@ -9294,12 +9158,6 @@ GALGAS_localVarValuation GALGAS_localVarValuation::class_func_declared (const GA
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_localVarValuation_declared (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
@@ -9329,17 +9187,17 @@ GALGAS_localVarValuation GALGAS_localVarValuation::class_func_mutated (UNUSED_LO
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue0,
+void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue_usedInSubscope,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_declared) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_usedInSubscope.drop () ;
     String s ;
-    s.appendCString ("method @localVarValuation declared invoked with an invalid enum value") ;
+    s.appendCString ("method @localVarValuation.declared invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_localVarValuation_declared * ptr = (const cEnumAssociatedValues_localVarValuation_declared *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_localVarValuation_2D_declared *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_usedInSubscope = ptr->mProperty_usedInSubscope ;
   }
 }
 
@@ -10439,53 +10297,15 @@ GALGAS_localVarMapListForLLVM GALGAS_localVarMapListForLLVM::extractObject (cons
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch (const GALGAS_currentVarManager inAssociatedValue0
-                                                                                                                            COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch::description (String & ioString,
-                                                                                const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::cEnumAssociatedValues_overrideKind_selectOverrideNextBranches (const GALGAS_currentVarManager inAssociatedValue0,
-                                                                                                                              const GALGAS_currentVarManager inAssociatedValue1
-                                                                                                                              COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_overrideKind_selectOverrideNextBranches::description (String & ioString,
-                                                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  mAssociatedValue1.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_overrideKind::GALGAS_overrideKind (void) :
 mAssociatedValues (),
-mAssociatedValuesEX (),
 mEnum (Enumeration::invalid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideFirstBranch (const GALGAS_currentVarManager & inAssociatedValue0
-                                                                               COMMA_LOCATION_ARGS) {
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_overrideKind result ;
   result.mEnum = Enumeration::enum_selectOverrideFirstBranch ;
   AC_GALGAS_root * p = nullptr ;
@@ -10494,12 +10314,6 @@ GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideFirstBranch (c
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
@@ -10507,7 +10321,7 @@ GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideFirstBranch (c
 
 GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideNextBranches (const GALGAS_currentVarManager & inAssociatedValue0,
                                                                                 const GALGAS_currentVarManager & inAssociatedValue1
-                                                                                COMMA_LOCATION_ARGS) {
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_overrideKind result ;
   result.mEnum = Enumeration::enum_selectOverrideNextBranches ;
   AC_GALGAS_root * p = nullptr ;
@@ -10516,12 +10330,6 @@ GALGAS_overrideKind GALGAS_overrideKind::class_func_selectOverrideNextBranches (
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_overrideKind_selectOverrideNextBranches (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
@@ -10535,36 +10343,36 @@ GALGAS_overrideKind GALGAS_overrideKind::class_func_repeatOverride (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideKind::method_selectOverrideFirstBranch (GALGAS_currentVarManager & outAssociatedValue0,
+void GALGAS_overrideKind::method_selectOverrideFirstBranch (GALGAS_currentVarManager & outAssociatedValue_savedManager,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_selectOverrideFirstBranch) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_savedManager.drop () ;
     String s ;
-    s.appendCString ("method @overrideKind selectOverrideFirstBranch invoked with an invalid enum value") ;
+    s.appendCString ("method @overrideKind.selectOverrideFirstBranch invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideFirstBranch *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_overrideKind_2D_selectOverrideFirstBranch *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_savedManager = ptr->mProperty_savedManager ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarManager & outAssociatedValue0,
-                                                             GALGAS_currentVarManager & outAssociatedValue1,
+void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarManager & outAssociatedValue_savedManager,
+                                                             GALGAS_currentVarManager & outAssociatedValue_referenceManager,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_selectOverrideNextBranches) {
-    outAssociatedValue0.drop () ;
-    outAssociatedValue1.drop () ;
+    outAssociatedValue_savedManager.drop () ;
+    outAssociatedValue_referenceManager.drop () ;
     String s ;
-    s.appendCString ("method @overrideKind selectOverrideNextBranches invoked with an invalid enum value") ;
+    s.appendCString ("method @overrideKind.selectOverrideNextBranches invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches * ptr = (const cEnumAssociatedValues_overrideKind_selectOverrideNextBranches *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
-    outAssociatedValue1 = ptr->mAssociatedValue1 ;
+    const auto ptr = (GALGAS_overrideKind_2D_selectOverrideNextBranches *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_savedManager = ptr->mProperty_savedManager ;
+    outAssociatedValue_referenceManager = ptr->mProperty_referenceManager ;
   }
 }
 
@@ -12907,26 +12715,8 @@ GALGAS_unifiedTypeDefinition extensionGetter_typeDefinition (const GALGAS_unifie
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumAssociatedValues_typeDefinition_solved::cEnumAssociatedValues_typeDefinition_solved (const GALGAS_unifiedTypeDefinition inAssociatedValue0
-                                                                                          COMMA_LOCATION_ARGS) :
-cEnumAssociatedValues (THERE),
-mAssociatedValue0 (inAssociatedValue0) {
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-void cEnumAssociatedValues_typeDefinition_solved::description (String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString.appendCString ("(\n") ;
-  mAssociatedValue0.description (ioString, inIndentation) ;
-  ioString.appendCString (")") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_typeDefinition::GALGAS_typeDefinition (void) :
 mAssociatedValues (),
-mAssociatedValuesEX (),
 mEnum (Enumeration::invalid) {
 }
 
@@ -12941,7 +12731,7 @@ GALGAS_typeDefinition GALGAS_typeDefinition::class_func_unsolved (UNUSED_LOCATIO
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_typeDefinition GALGAS_typeDefinition::class_func_solved (const GALGAS_unifiedTypeDefinition & inAssociatedValue0
-                                                                COMMA_LOCATION_ARGS) {
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_typeDefinition result ;
   result.mEnum = Enumeration::enum_solved ;
   AC_GALGAS_root * p = nullptr ;
@@ -12950,28 +12740,22 @@ GALGAS_typeDefinition GALGAS_typeDefinition::class_func_solved (const GALGAS_uni
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
   macroDetachSharedObject (eav) ;
-  if (inAssociatedValue0.isValid ()) {
-    cEnumAssociatedValues * ptr = nullptr ;
-    macroMyNew (ptr, cEnumAssociatedValues_typeDefinition_solved (inAssociatedValue0 COMMA_THERE)) ;
-    result.mAssociatedValuesEX.setPointer (ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue0,
+void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue_definition,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_solved) {
-    outAssociatedValue0.drop () ;
+    outAssociatedValue_definition.drop () ;
     String s ;
-    s.appendCString ("method @typeDefinition solved invoked with an invalid enum value") ;
+    s.appendCString ("method @typeDefinition.solved invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
-    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+    const auto ptr = (GALGAS_typeDefinition_2D_solved *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_definition = ptr->mProperty_definition ;
   }
 }
 

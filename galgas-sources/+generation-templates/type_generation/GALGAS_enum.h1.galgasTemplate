@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
-//%![" Phase 1: @" + TYPE_IDENTIFIER + " enum" stringByLeftAndRightPadding !117 !' ']%*
-//
+//   enum %!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
@@ -21,10 +19,6 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 %
 if HAS_ASSOCIATED_VALUES then
   %  private: AC_GALGAS_enumerationAssociatedValues mAssociatedValues ;\n%
-  %  private: AC_GALGAS_enumAssociatedValues mAssociatedValuesEX ;\n%
-  %  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n%
-  %    return mAssociatedValuesEX.unsafePointer () ;\n%
-  %  }\n%
 end
 %  private: Enumeration mEnum ;
 

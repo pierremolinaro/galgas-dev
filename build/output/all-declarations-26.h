@@ -246,20 +246,6 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (cla
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'enumGenerationTemplate enumTypeHeader2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (class Compiler * inCompiler,
-                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                             const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
-                                                                             const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES,
-                                                                             const class GALGAS_bool & in_GENERATE_5F_COMPARISON
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'enumGenerationTemplate enumTypeSpecificImplementation'
 //
 //--------------------------------------------------------------------------------------------------
@@ -546,6 +532,49 @@ GALGAS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpe
                                                                                                      const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                      const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                      const class GALGAS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                                     const class GALGAS_bool & in_GENERATE_5F_COMPARISON
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'sortedListGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                     const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                                     const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST,
+                                                                                                     const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                                      const class GALGAS_bool & in_GENERATE_5F_COMPARISON
                                                                                                      COMMA_LOCATION_ARGS) ;
 
