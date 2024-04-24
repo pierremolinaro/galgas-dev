@@ -4353,7 +4353,7 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Property access
   public: class GALGAS_lstring readProperty_enumTypeName (void) const ;
 
-  public: class GALGAS_enumConstantList readProperty_constantList (void) const ;
+  public: class GALGAS_enumConstantList readProperty_mConstantList (void) const ;
 
   public: class GALGAS_structComparison readProperty_comparison (void) const ;
 
@@ -4461,7 +4461,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Properties
   public: GALGAS_lstring mProperty_enumTypeName ;
-  public: GALGAS_enumConstantList mProperty_constantList ;
+  public: GALGAS_enumConstantList mProperty_mConstantList ;
   public: GALGAS_structComparison mProperty_comparison ;
 
 
@@ -4471,7 +4471,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public: cPtr_enumDeclarationAST (const GALGAS_bool & in_isPredefined,
                                    const GALGAS_lstring & in_enumTypeName,
-                                   const GALGAS_enumConstantList & in_constantList,
+                                   const GALGAS_enumConstantList & in_mConstantList,
                                    const GALGAS_structComparison & in_comparison
                                    COMMA_LOCATION_ARGS) ;
 

@@ -3291,71 +3291,71 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInGraph (GALGAS_semanticTyp
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_enumDeclarationAST temp_0 = this ;
   const GALGAS_enumDeclarationAST temp_1 = this ;
-  GALGAS_lstring var_key_5669 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (temp_0.readProperty_enumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 163)), temp_1.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  GALGAS_lstring var_key_5670 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (temp_0.readProperty_enumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 163)), temp_1.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
   const GALGAS_enumDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_5669, temp_2, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 164)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_5670, temp_2, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 164)) ;
   }
-  GALGAS_bool var_circularReference_5897 = GALGAS_bool (true) ;
+  GALGAS_bool var_circularReference_5898 = GALGAS_bool (true) ;
   const GALGAS_enumDeclarationAST temp_3 = this ;
-  cEnumerator_enumConstantList enumerator_5947 (temp_3.readProperty_constantList (), EnumerationOrder::up) ;
-  bool bool_4 = var_circularReference_5897.isValidAndTrue () ;
-  if (enumerator_5947.hasCurrentObject () && bool_4) {
-    while (enumerator_5947.hasCurrentObject () && bool_4) {
-      GALGAS_bool var_namesCurrentType_5997 = GALGAS_bool (false) ;
-      cEnumerator__32_lstringlist enumerator_6041 (enumerator_5947.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
-      bool bool_5 = var_namesCurrentType_5997.operator_not (SOURCE_FILE ("type-enum.galgas", 169)).isValidAndTrue () ;
-      if (enumerator_6041.hasCurrentObject () && bool_5) {
-        while (enumerator_6041.hasCurrentObject () && bool_5) {
-          GALGAS_lstring var_propertyKey_6122 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (enumerator_6041.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 170)), enumerator_6041.current_mValue_30_ (HERE).readProperty_location (), inCompiler COMMA_HERE) ;
+  cEnumerator_enumConstantList enumerator_5948 (temp_3.readProperty_mConstantList (), EnumerationOrder::up) ;
+  bool bool_4 = var_circularReference_5898.isValidAndTrue () ;
+  if (enumerator_5948.hasCurrentObject () && bool_4) {
+    while (enumerator_5948.hasCurrentObject () && bool_4) {
+      GALGAS_bool var_namesCurrentType_5999 = GALGAS_bool (false) ;
+      cEnumerator__32_lstringlist enumerator_6043 (enumerator_5948.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
+      bool bool_5 = var_namesCurrentType_5999.operator_not (SOURCE_FILE ("type-enum.galgas", 169)).isValidAndTrue () ;
+      if (enumerator_6043.hasCurrentObject () && bool_5) {
+        while (enumerator_6043.hasCurrentObject () && bool_5) {
+          GALGAS_lstring var_propertyKey_6124 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (enumerator_6043.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 170)), enumerator_6043.current_mValue_30_ (HERE).readProperty_location (), inCompiler COMMA_HERE) ;
           enumGalgasBool test_6 = kBoolTrue ;
           if (kBoolTrue == test_6) {
-            test_6 = GALGAS_bool (ComparisonKind::equal, var_propertyKey_6122.readProperty_string ().objectCompare (var_key_5669.readProperty_string ())).boolEnum () ;
+            test_6 = GALGAS_bool (ComparisonKind::equal, var_propertyKey_6124.readProperty_string ().objectCompare (var_key_5670.readProperty_string ())).boolEnum () ;
             if (kBoolTrue == test_6) {
-              var_namesCurrentType_5997 = GALGAS_bool (true) ;
+              var_namesCurrentType_5999 = GALGAS_bool (true) ;
             }
           }
-          enumerator_6041.gotoNextObject () ;
-          if (enumerator_6041.hasCurrentObject ()) {
-            bool_5 = var_namesCurrentType_5997.operator_not (SOURCE_FILE ("type-enum.galgas", 169)).isValidAndTrue () ;
+          enumerator_6043.gotoNextObject () ;
+          if (enumerator_6043.hasCurrentObject ()) {
+            bool_5 = var_namesCurrentType_5999.operator_not (SOURCE_FILE ("type-enum.galgas", 169)).isValidAndTrue () ;
           }
         }
       }
       enumGalgasBool test_7 = kBoolTrue ;
       if (kBoolTrue == test_7) {
-        test_7 = var_namesCurrentType_5997.operator_not (SOURCE_FILE ("type-enum.galgas", 175)).boolEnum () ;
+        test_7 = var_namesCurrentType_5999.operator_not (SOURCE_FILE ("type-enum.galgas", 175)).boolEnum () ;
         if (kBoolTrue == test_7) {
-          var_circularReference_5897 = GALGAS_bool (false) ;
+          var_circularReference_5898 = GALGAS_bool (false) ;
         }
       }
-      enumerator_5947.gotoNextObject () ;
-      if (enumerator_5947.hasCurrentObject ()) {
-        bool_4 = var_circularReference_5897.isValidAndTrue () ;
+      enumerator_5948.gotoNextObject () ;
+      if (enumerator_5948.hasCurrentObject ()) {
+        bool_4 = var_circularReference_5898.isValidAndTrue () ;
       }
     }
   }
   enumGalgasBool test_8 = kBoolTrue ;
   if (kBoolTrue == test_8) {
-    test_8 = var_circularReference_5897.boolEnum () ;
+    test_8 = var_circularReference_5898.boolEnum () ;
     if (kBoolTrue == test_8) {
       const GALGAS_enumDeclarationAST temp_9 = this ;
-      cEnumerator_enumConstantList enumerator_6497 (temp_9.readProperty_constantList (), EnumerationOrder::up) ;
-      while (enumerator_6497.hasCurrentObject ()) {
-        cEnumerator__32_lstringlist enumerator_6534 (enumerator_6497.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
-        while (enumerator_6534.hasCurrentObject ()) {
-          GALGAS_lstring var_propertyKey_6590 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (enumerator_6534.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 183)), enumerator_6534.current_mValue_30_ (HERE).readProperty_location (), inCompiler COMMA_HERE) ;
+      cEnumerator_enumConstantList enumerator_6499 (temp_9.readProperty_mConstantList (), EnumerationOrder::up) ;
+      while (enumerator_6499.hasCurrentObject ()) {
+        cEnumerator__32_lstringlist enumerator_6537 (enumerator_6499.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
+        while (enumerator_6537.hasCurrentObject ()) {
+          GALGAS_lstring var_propertyKey_6593 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (enumerator_6537.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 183)), enumerator_6537.current_mValue_30_ (HERE).readProperty_location (), inCompiler COMMA_HERE) ;
           enumGalgasBool test_10 = kBoolTrue ;
           if (kBoolTrue == test_10) {
-            test_10 = GALGAS_bool (ComparisonKind::notEqual, var_propertyKey_6590.readProperty_string ().objectCompare (var_key_5669.readProperty_string ())).boolEnum () ;
+            test_10 = GALGAS_bool (ComparisonKind::notEqual, var_propertyKey_6593.readProperty_string ().objectCompare (var_key_5670.readProperty_string ())).boolEnum () ;
             if (kBoolTrue == test_10) {
               {
-              ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_5669, var_propertyKey_6590 COMMA_SOURCE_FILE ("type-enum.galgas", 185)) ;
+              ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_5670, var_propertyKey_6593 COMMA_SOURCE_FILE ("type-enum.galgas", 185)) ;
               }
             }
           }
-          enumerator_6534.gotoNextObject () ;
+          enumerator_6537.gotoNextObject () ;
         }
-        enumerator_6497.gotoNextObject () ;
+        enumerator_6499.gotoNextObject () ;
       }
     }
   }
@@ -3370,31 +3370,31 @@ void cPtr_enumDeclarationAST::method_addAssociatedElement (GALGAS_galgasDeclarat
                                                            Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_enumDeclarationAST temp_0 = this ;
-  cEnumerator_enumConstantList enumerator_7055 (temp_0.readProperty_constantList (), EnumerationOrder::up) ;
-  while (enumerator_7055.hasCurrentObject ()) {
+  cEnumerator_enumConstantList enumerator_7058 (temp_0.readProperty_mConstantList (), EnumerationOrder::up) ;
+  while (enumerator_7058.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_7055.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 196)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_1 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_7058.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 196)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         const GALGAS_enumDeclarationAST temp_2 = this ;
         const GALGAS_enumDeclarationAST temp_3 = this ;
-        GALGAS_lstring var_associatedTypeName_7142 = GALGAS_lstring::init_21__21_ (temp_2.readProperty_enumTypeName ().readProperty_string ().add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 197)).add_operation (enumerator_7055.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 197)), temp_3.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
-        GALGAS_propertyInCollectionListAST var_propertyListAST_7281 = GALGAS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
-        cEnumerator__32_lstringlist enumerator_7324 (enumerator_7055.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
-        while (enumerator_7324.hasCurrentObject ()) {
-          var_propertyListAST_7281.addAssign_operation (GALGAS_bool (true), enumerator_7324.current_mValue_30_ (HERE), enumerator_7324.current_mValue_31_ (HERE), GALGAS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("type-enum.galgas", 204)), GALGAS_bool (false), GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("type-enum.galgas", 206))  COMMA_SOURCE_FILE ("type-enum.galgas", 200)) ;
-          enumerator_7324.gotoNextObject () ;
+        GALGAS_lstring var_associatedTypeName_7146 = GALGAS_lstring::init_21__21_ (temp_2.readProperty_enumTypeName ().readProperty_string ().add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 197)).add_operation (enumerator_7058.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 197)), temp_3.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+        GALGAS_propertyInCollectionListAST var_propertyListAST_7285 = GALGAS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+        cEnumerator__32_lstringlist enumerator_7328 (enumerator_7058.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
+        while (enumerator_7328.hasCurrentObject ()) {
+          var_propertyListAST_7285.addAssign_operation (GALGAS_bool (true), enumerator_7328.current_mValue_30_ (HERE), enumerator_7328.current_mValue_31_ (HERE), GALGAS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("type-enum.galgas", 204)), GALGAS_bool (false), GALGAS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("type-enum.galgas", 206))  COMMA_SOURCE_FILE ("type-enum.galgas", 200)) ;
+          enumerator_7328.gotoNextObject () ;
         }
         const GALGAS_enumDeclarationAST temp_4 = this ;
-        GALGAS_structDeclarationAST var_s_7602 = GALGAS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (GALGAS_bool (false), var_associatedTypeName_7142, var_propertyListAST_7281, GALGAS_string::makeEmptyString (), temp_4.readProperty_comparison (), GALGAS_bool (true), inCompiler COMMA_HERE) ;
-        ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (var_s_7602  COMMA_SOURCE_FILE ("type-enum.galgas", 216)) ;
+        GALGAS_structDeclarationAST var_s_7606 = GALGAS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (GALGAS_bool (false), var_associatedTypeName_7146, var_propertyListAST_7285, GALGAS_string::makeEmptyString (), temp_4.readProperty_comparison (), GALGAS_bool (true), inCompiler COMMA_HERE) ;
+        ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (var_s_7606  COMMA_SOURCE_FILE ("type-enum.galgas", 216)) ;
         {
-        GALGAS_lstring joker_7930 ; // Joker input parameter
-        extensionSetter_getOptionalTypeName (ioArgument_ioDeclarations, joker_7930, var_associatedTypeName_7142, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 217)) ;
+        GALGAS_lstring joker_7934 ; // Joker input parameter
+        extensionSetter_getOptionalTypeName (ioArgument_ioDeclarations, joker_7934, var_associatedTypeName_7146, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 217)) ;
         }
       }
     }
-    enumerator_7055.gotoNextObject () ;
+    enumerator_7058.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -3411,98 +3411,98 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInSemanticContext (const GA
                                                                         GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_classFunctionMap var_classFunctionMap_8647 = GALGAS_classFunctionMap::init (inCompiler COMMA_HERE) ;
-  GALGAS_setterMap var_setterMap_8688 = GALGAS_setterMap::init (inCompiler COMMA_HERE) ;
-  GALGAS_instanceMethodMap var_instanceMethodMap_8730 = GALGAS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
-  GALGAS_unifiedTypeMapEntry var_enumTypeEntry_8834 ;
+  GALGAS_classFunctionMap var_classFunctionMap_8651 = GALGAS_classFunctionMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_setterMap var_setterMap_8692 = GALGAS_setterMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_instanceMethodMap var_instanceMethodMap_8734 = GALGAS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_unifiedTypeMapEntry var_enumTypeEntry_8838 ;
   {
   const GALGAS_enumDeclarationAST temp_0 = this ;
-  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_enumTypeName (), var_enumTypeEntry_8834, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 236)) ;
+  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_enumTypeName (), var_enumTypeEntry_8838, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 236)) ;
   }
-  GALGAS_constantIndexMap var_constantMap_8898 = GALGAS_constantIndexMap::init (inCompiler COMMA_HERE) ;
-  GALGAS_bool var_hasAssociatedValues_8929 = GALGAS_bool (false) ;
+  GALGAS_constantIndexMap var_constantMap_8902 = GALGAS_constantIndexMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_bool var_hasAssociatedValues_8933 = GALGAS_bool (false) ;
   const GALGAS_enumDeclarationAST temp_1 = this ;
-  cEnumerator_enumConstantList enumerator_8982 (temp_1.readProperty_constantList (), EnumerationOrder::up) ;
-  while (enumerator_8982.hasCurrentObject ()) {
-    GALGAS_associatedValueDescriptorList var_associatedTypeList_9039 = GALGAS_associatedValueDescriptorList::init (inCompiler COMMA_HERE) ;
-    GALGAS_functionSignature var_argumentTypeList_9092 = GALGAS_functionSignature::init (inCompiler COMMA_HERE) ;
-    cEnumerator__32_lstringlist enumerator_9134 (enumerator_8982.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
-    while (enumerator_9134.hasCurrentObject ()) {
-      GALGAS_unifiedTypeMapEntry var_associatedTypeEntry_9233 ;
+  cEnumerator_enumConstantList enumerator_8986 (temp_1.readProperty_mConstantList (), EnumerationOrder::up) ;
+  while (enumerator_8986.hasCurrentObject ()) {
+    GALGAS_associatedValueDescriptorList var_associatedTypeList_9044 = GALGAS_associatedValueDescriptorList::init (inCompiler COMMA_HERE) ;
+    GALGAS_functionSignature var_argumentTypeList_9097 = GALGAS_functionSignature::init (inCompiler COMMA_HERE) ;
+    cEnumerator__32_lstringlist enumerator_9139 (enumerator_8986.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
+    while (enumerator_9139.hasCurrentObject ()) {
+      GALGAS_unifiedTypeMapEntry var_associatedTypeEntry_9238 ;
       {
-      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_9134.current_mValue_30_ (HERE), var_associatedTypeEntry_9233, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 244)) ;
+      extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_9139.current_mValue_30_ (HERE), var_associatedTypeEntry_9238, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 244)) ;
       }
-      var_argumentTypeList_9092.addAssign_operation (enumerator_9134.current_mValue_31_ (HERE), var_associatedTypeEntry_9233, enumerator_9134.current_mValue_30_ (HERE).readProperty_string (), GALGAS_bool (true)  COMMA_SOURCE_FILE ("type-enum.galgas", 245)) ;
-      var_associatedTypeList_9039.addAssign_operation (var_associatedTypeEntry_9233, enumerator_9134.current_mValue_31_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 246)) ;
-      var_hasAssociatedValues_8929 = GALGAS_bool (true) ;
-      enumerator_9134.gotoNextObject () ;
+      var_argumentTypeList_9097.addAssign_operation (enumerator_9139.current_mValue_31_ (HERE), var_associatedTypeEntry_9238, enumerator_9139.current_mValue_30_ (HERE).readProperty_string (), GALGAS_bool (true)  COMMA_SOURCE_FILE ("type-enum.galgas", 245)) ;
+      var_associatedTypeList_9044.addAssign_operation (var_associatedTypeEntry_9238, enumerator_9139.current_mValue_31_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 246)) ;
+      var_hasAssociatedValues_8933 = GALGAS_bool (true) ;
+      enumerator_9139.gotoNextObject () ;
     }
     {
-    var_constantMap_8898.setter_insertKey (enumerator_8982.current (HERE).readProperty_name (), var_constantMap_8898.getter_count (SOURCE_FILE ("type-enum.galgas", 249)), var_associatedTypeList_9039, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 249)) ;
+    var_constantMap_8902.setter_insertKey (enumerator_8986.current (HERE).readProperty_name (), var_constantMap_8902.getter_count (SOURCE_FILE ("type-enum.galgas", 249)), var_associatedTypeList_9044, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 249)) ;
     }
     {
-    var_classFunctionMap_8647.setter_insertOrReplace (enumerator_8982.current (HERE).readProperty_name (), var_argumentTypeList_9092, GALGAS_bool (false), var_enumTypeEntry_8834 COMMA_SOURCE_FILE ("type-enum.galgas", 250)) ;
+    var_classFunctionMap_8651.setter_insertOrReplace (enumerator_8986.current (HERE).readProperty_name (), var_argumentTypeList_9097, GALGAS_bool (false), var_enumTypeEntry_8838 COMMA_SOURCE_FILE ("type-enum.galgas", 250)) ;
     }
-    enumerator_8982.gotoNextObject () ;
+    enumerator_8986.gotoNextObject () ;
   }
   const GALGAS_enumDeclarationAST temp_2 = this ;
-  cEnumerator_enumConstantList enumerator_9723 (temp_2.readProperty_constantList (), EnumerationOrder::up) ;
-  while (enumerator_9723.hasCurrentObject ()) {
+  cEnumerator_enumConstantList enumerator_9728 (temp_2.readProperty_mConstantList (), EnumerationOrder::up) ;
+  while (enumerator_9728.hasCurrentObject ()) {
     enumGalgasBool test_3 = kBoolTrue ;
     if (kBoolTrue == test_3) {
-      test_3 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_9723.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 259)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_3 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_9728.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 259)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_3) {
-        GALGAS_unifiedTypeMapEntryList var_associatedTypeList_9835 = GALGAS_unifiedTypeMapEntryList::init (inCompiler COMMA_HERE) ;
-        GALGAS_formalParameterSignature var_argumentTypeList_9897 = GALGAS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-        cEnumerator__32_lstringlist enumerator_9941 (enumerator_9723.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
-        while (enumerator_9941.hasCurrentObject ()) {
-          GALGAS_unifiedTypeMapEntry var_associatedTypeEntry_10043 ;
+        GALGAS_unifiedTypeMapEntryList var_associatedTypeList_9841 = GALGAS_unifiedTypeMapEntryList::init (inCompiler COMMA_HERE) ;
+        GALGAS_formalParameterSignature var_argumentTypeList_9903 = GALGAS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+        cEnumerator__32_lstringlist enumerator_9947 (enumerator_9728.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
+        while (enumerator_9947.hasCurrentObject ()) {
+          GALGAS_unifiedTypeMapEntry var_associatedTypeEntry_10049 ;
           {
-          extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_9941.current_mValue_30_ (HERE), var_associatedTypeEntry_10043, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 263)) ;
+          extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_9947.current_mValue_30_ (HERE), var_associatedTypeEntry_10049, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 263)) ;
           }
-          var_argumentTypeList_9897.addAssign_operation (enumerator_9941.current_mValue_31_ (HERE), var_associatedTypeEntry_10043, GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("type-enum.galgas", 264)), enumerator_9941.current_mValue_30_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 264)) ;
-          var_associatedTypeList_9835.addAssign_operation (var_associatedTypeEntry_10043  COMMA_SOURCE_FILE ("type-enum.galgas", 265)) ;
-          var_hasAssociatedValues_8929 = GALGAS_bool (true) ;
-          enumerator_9941.gotoNextObject () ;
+          var_argumentTypeList_9903.addAssign_operation (enumerator_9947.current_mValue_31_ (HERE), var_associatedTypeEntry_10049, GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("type-enum.galgas", 264)), enumerator_9947.current_mValue_30_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 264)) ;
+          var_associatedTypeList_9841.addAssign_operation (var_associatedTypeEntry_10049  COMMA_SOURCE_FILE ("type-enum.galgas", 265)) ;
+          var_hasAssociatedValues_8933 = GALGAS_bool (true) ;
+          enumerator_9947.gotoNextObject () ;
         }
         {
-        var_instanceMethodMap_8730.setter_insertKey (enumerator_9723.current (HERE).readProperty_name (), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("type-enum.galgas", 270)), var_argumentTypeList_9897, enumerator_9723.current (HERE).readProperty_name ().readProperty_location (), GALGAS_bool (true), GALGAS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("type-enum.galgas", 274)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 268)) ;
+        var_instanceMethodMap_8734.setter_insertKey (enumerator_9728.current (HERE).readProperty_name (), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("type-enum.galgas", 270)), var_argumentTypeList_9903, enumerator_9728.current (HERE).readProperty_name ().readProperty_location (), GALGAS_bool (true), GALGAS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("type-enum.galgas", 274)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 268)) ;
         }
       }
     }
-    enumerator_9723.gotoNextObject () ;
+    enumerator_9728.gotoNextObject () ;
   }
-  GALGAS_getterMap var_getterMap_10574 ;
+  GALGAS_getterMap var_getterMap_10580 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_10574, inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 280)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_10580, inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 280)) ;
   }
   const GALGAS_enumDeclarationAST temp_4 = this ;
-  cEnumerator_enumConstantList enumerator_10610 (temp_4.readProperty_constantList (), EnumerationOrder::up) ;
-  while (enumerator_10610.hasCurrentObject ()) {
+  cEnumerator_enumConstantList enumerator_10616 (temp_4.readProperty_mConstantList (), EnumerationOrder::up) ;
+  while (enumerator_10616.hasCurrentObject ()) {
     {
-    routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_10574, ioArgument_ioTypeMap, GALGAS_string ("is").add_operation (enumerator_10610.current (HERE).readProperty_name ().readProperty_string ().getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("type-enum.galgas", 285)), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 285)), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 282)) ;
+    routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_10580, ioArgument_ioTypeMap, GALGAS_string ("is").add_operation (enumerator_10616.current (HERE).readProperty_name ().readProperty_string ().getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("type-enum.galgas", 285)), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 285)), GALGAS_string::makeEmptyString (), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 282)) ;
     }
     enumGalgasBool test_5 = kBoolTrue ;
     if (kBoolTrue == test_5) {
-      test_5 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_10610.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 290)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_5 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_10616.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 290)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_5) {
         const GALGAS_enumDeclarationAST temp_6 = this ;
         const GALGAS_enumDeclarationAST temp_7 = this ;
-        GALGAS_lstring var_associatedTypeName_10957 = GALGAS_lstring::init_21__21_ (temp_6.readProperty_enumTypeName ().readProperty_string ().add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 291)).add_operation (enumerator_10610.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 291)), temp_7.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
-        GALGAS_lstring var_optionalTypeName_11067 = function_optionalTypeName (var_associatedTypeName_10957, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 292)) ;
+        GALGAS_lstring var_associatedTypeName_10964 = GALGAS_lstring::init_21__21_ (temp_6.readProperty_enumTypeName ().readProperty_string ().add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 291)).add_operation (enumerator_10616.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 291)), temp_7.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+        GALGAS_lstring var_optionalTypeName_11074 = function_optionalTypeName (var_associatedTypeName_10964, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 292)) ;
         {
-        routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_10574, ioArgument_ioTypeMap, enumerator_10610.current (HERE).readProperty_name ().readProperty_string (), GALGAS_string::makeEmptyString (), var_optionalTypeName_11067.readProperty_string (), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 293)) ;
+        routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_10580, ioArgument_ioTypeMap, enumerator_10616.current (HERE).readProperty_name ().readProperty_string (), GALGAS_string::makeEmptyString (), var_optionalTypeName_11074.readProperty_string (), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 293)) ;
         }
       }
     }
-    enumerator_10610.gotoNextObject () ;
+    enumerator_10616.gotoNextObject () ;
   }
-  GALGAS_initializerMap var_initializerMap_11447 = GALGAS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_initializerMap var_initializerMap_11454 = GALGAS_initializerMap::init (inCompiler COMMA_HERE) ;
   {
   const GALGAS_enumDeclarationAST temp_8 = this ;
-  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_enumTypeName (), GALGAS_bool (false), var_initializerMap_11447, var_getterMap_10574, var_setterMap_8688, var_instanceMethodMap_8730, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 305)) ;
+  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_enumTypeName (), GALGAS_bool (false), var_initializerMap_11454, var_getterMap_10580, var_setterMap_8692, var_instanceMethodMap_8734, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 305)) ;
   }
-  GALGAS_typeFeatures var_features_11909 = GALGAS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("type-enum.galgas", 321)) ;
+  GALGAS_typeFeatures var_features_11916 = GALGAS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("type-enum.galgas", 321)) ;
   const GALGAS_enumDeclarationAST temp_9 = this ;
   switch (temp_9.readProperty_comparison ().enumValue ()) {
   case GALGAS_structComparison::Enumeration::invalid:
@@ -3511,21 +3511,21 @@ void cPtr_enumDeclarationAST::method_enterDeclarationInSemanticContext (const GA
     break ;
   case GALGAS_structComparison::Enumeration::enum_equatable:
     {
-      var_features_11909 = var_features_11909.operator_or (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("type-enum.galgas", 326)) COMMA_SOURCE_FILE ("type-enum.galgas", 326)) ;
+      var_features_11916 = var_features_11916.operator_or (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("type-enum.galgas", 326)) COMMA_SOURCE_FILE ("type-enum.galgas", 326)) ;
     }
     break ;
   case GALGAS_structComparison::Enumeration::enum_comparable:
     {
-      var_features_11909 = var_features_11909.operator_or (GALGAS_typeFeatures::class_func_comparable (SOURCE_FILE ("type-enum.galgas", 328)) COMMA_SOURCE_FILE ("type-enum.galgas", 328)).operator_or (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("type-enum.galgas", 328)) COMMA_SOURCE_FILE ("type-enum.galgas", 328)) ;
+      var_features_11916 = var_features_11916.operator_or (GALGAS_typeFeatures::class_func_comparable (SOURCE_FILE ("type-enum.galgas", 328)) COMMA_SOURCE_FILE ("type-enum.galgas", 328)).operator_or (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("type-enum.galgas", 328)) COMMA_SOURCE_FILE ("type-enum.galgas", 328)) ;
     }
     break ;
   }
   const GALGAS_enumDeclarationAST temp_10 = this ;
   const GALGAS_enumDeclarationAST temp_11 = this ;
   const GALGAS_enumDeclarationAST temp_12 = this ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_12217 = GALGAS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_10.readProperty_enumTypeName (), temp_11.readProperty_isPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-enum.galgas", 335)), GALGAS_typeKindEnum::class_func_enumType (var_constantMap_8898  COMMA_SOURCE_FILE ("type-enum.galgas", 336)), GALGAS_bool (false), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), GALGAS_propertyMap::init (inCompiler COMMA_HERE), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_11447, var_classFunctionMap_8647, var_getterMap_10574, var_setterMap_8688, var_instanceMethodMap_8730, GALGAS_classMethodMap::init (inCompiler COMMA_HERE), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-enum.galgas", 347)), GALGAS_subscriptMap::init (inCompiler COMMA_HERE), GALGAS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_11909, GALGAS_functionSignature::init (inCompiler COMMA_HERE), GALGAS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-enum.galgas", 354)), GALGAS_string ("enum-").add_operation (temp_12.readProperty_enumTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-enum.galgas", 355)), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 355)), GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("type-enum.galgas", 356)), inCompiler COMMA_HERE) ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_12224 = GALGAS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_10.readProperty_enumTypeName (), temp_11.readProperty_isPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-enum.galgas", 335)), GALGAS_typeKindEnum::class_func_enumType (var_constantMap_8902  COMMA_SOURCE_FILE ("type-enum.galgas", 336)), GALGAS_bool (false), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), GALGAS_propertyMap::init (inCompiler COMMA_HERE), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_11454, var_classFunctionMap_8651, var_getterMap_10580, var_setterMap_8692, var_instanceMethodMap_8734, GALGAS_classMethodMap::init (inCompiler COMMA_HERE), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-enum.galgas", 347)), GALGAS_subscriptMap::init (inCompiler COMMA_HERE), GALGAS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_11916, GALGAS_functionSignature::init (inCompiler COMMA_HERE), GALGAS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-enum.galgas", 354)), GALGAS_string ("enum-").add_operation (temp_12.readProperty_enumTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-enum.galgas", 355)), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 355)), GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("type-enum.galgas", 356)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_12217.readProperty_typeName (), var_typeDefinition_12217, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 358)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_12224.readProperty_typeName (), var_typeDefinition_12224, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 358)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -3544,51 +3544,51 @@ void cPtr_enumDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* i
                                                        Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_enumDeclarationAST temp_0 = this ;
-  GALGAS_lstring var_nameForUsefulness_13951 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_enumTypeName (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 372)) ;
+  GALGAS_lstring var_nameForUsefulness_13958 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_enumTypeName (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 372)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_13951, var_nameForUsefulness_13951, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 373)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_13958, var_nameForUsefulness_13958, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 373)) ;
   }
-  GALGAS__5B_unifiedTypeMapEntry_5D_ var_associatedValuesTypes_14151 = GALGAS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE) ;
-  GALGAS_stringlist var_constantList_14186 = GALGAS_stringlist::init (inCompiler COMMA_HERE) ;
-  GALGAS_enumConstantListForGeneration var_enumConstantListForGeneration_14255 = GALGAS_enumConstantListForGeneration::init (inCompiler COMMA_HERE) ;
-  GALGAS_constantIndexMap var_constantMap_14298 = GALGAS_constantIndexMap::init (inCompiler COMMA_HERE) ;
+  GALGAS__5B_unifiedTypeMapEntry_5D_ var_associatedValuesTypes_14158 = GALGAS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE) ;
+  GALGAS_stringlist var_constantList_14193 = GALGAS_stringlist::init (inCompiler COMMA_HERE) ;
+  GALGAS_enumConstantListForGeneration var_enumConstantListForGeneration_14262 = GALGAS_enumConstantListForGeneration::init (inCompiler COMMA_HERE) ;
+  GALGAS_constantIndexMap var_constantMap_14305 = GALGAS_constantIndexMap::init (inCompiler COMMA_HERE) ;
   const GALGAS_enumDeclarationAST temp_1 = this ;
-  cEnumerator_enumConstantList enumerator_14358 (temp_1.readProperty_constantList (), EnumerationOrder::up) ;
-  while (enumerator_14358.hasCurrentObject ()) {
+  cEnumerator_enumConstantList enumerator_14365 (temp_1.readProperty_mConstantList (), EnumerationOrder::up) ;
+  while (enumerator_14365.hasCurrentObject ()) {
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_14358.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 380)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+      test_2 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_14365.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 380)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_2) {
         const GALGAS_enumDeclarationAST temp_3 = this ;
         const GALGAS_enumDeclarationAST temp_4 = this ;
-        GALGAS_lstring var_associatedTypeName_14445 = GALGAS_lstring::init_21__21_ (temp_3.readProperty_enumTypeName ().readProperty_string ().add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 381)).add_operation (enumerator_14358.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 381)), temp_4.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
-        GALGAS_lstring var_optionalTypeName_14555 = function_optionalTypeName (var_associatedTypeName_14445, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 382)) ;
-        GALGAS_unifiedTypeMapEntry var_associatedType_14639 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, var_optionalTypeName_14555, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 383)) ;
+        GALGAS_lstring var_associatedTypeName_14453 = GALGAS_lstring::init_21__21_ (temp_3.readProperty_enumTypeName ().readProperty_string ().add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 381)).add_operation (enumerator_14365.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 381)), temp_4.readProperty_enumTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+        GALGAS_lstring var_optionalTypeName_14563 = function_optionalTypeName (var_associatedTypeName_14453, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 382)) ;
+        GALGAS_unifiedTypeMapEntry var_associatedType_14647 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, var_optionalTypeName_14563, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 383)) ;
         {
-        var_associatedValuesTypes_14151.setter_append (var_associatedType_14639, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 384)) ;
+        var_associatedValuesTypes_14158.setter_append (var_associatedType_14647, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 384)) ;
         }
       }
     }
-    var_constantList_14186.addAssign_operation (enumerator_14358.current (HERE).readProperty_name ().readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 386)) ;
-    GALGAS_associatedValueDescriptorList var_associatedTypeList_14862 = GALGAS_associatedValueDescriptorList::init (inCompiler COMMA_HERE) ;
-    GALGAS_stringset var_associatedValueNameSet_14907 = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
-    cEnumerator__32_lstringlist enumerator_14954 (enumerator_14358.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
-    while (enumerator_14954.hasCurrentObject ()) {
-      GALGAS_lstring var_propertyTypeNameForUsefulness_15014 = function_typeNameForUsefulEntitiesGraph (enumerator_14954.current_mValue_30_ (HERE), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 390)) ;
+    var_constantList_14193.addAssign_operation (enumerator_14365.current (HERE).readProperty_name ().readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 386)) ;
+    GALGAS_associatedValueDescriptorList var_associatedTypeList_14870 = GALGAS_associatedValueDescriptorList::init (inCompiler COMMA_HERE) ;
+    GALGAS_stringset var_associatedValueNameSet_14915 = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
+    cEnumerator__32_lstringlist enumerator_14962 (enumerator_14365.current (HERE).readProperty_associatedValueTypeList (), EnumerationOrder::up) ;
+    while (enumerator_14962.hasCurrentObject ()) {
+      GALGAS_lstring var_propertyTypeNameForUsefulness_15022 = function_typeNameForUsefulEntitiesGraph (enumerator_14962.current_mValue_30_ (HERE), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 390)) ;
       {
-      ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_13951, var_propertyTypeNameForUsefulness_15014 COMMA_SOURCE_FILE ("type-enum.galgas", 391)) ;
+      ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_13958, var_propertyTypeNameForUsefulness_15022 COMMA_SOURCE_FILE ("type-enum.galgas", 391)) ;
       }
-      GALGAS_unifiedTypeMapEntry var_associatedTypeEntry_15192 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_14954.current_mValue_30_ (HERE), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 392)) ;
-      var_associatedTypeList_14862.addAssign_operation (var_associatedTypeEntry_15192, enumerator_14954.current_mValue_31_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 393)) ;
+      GALGAS_unifiedTypeMapEntry var_associatedTypeEntry_15200 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_14962.current_mValue_30_ (HERE), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 392)) ;
+      var_associatedTypeList_14870.addAssign_operation (var_associatedTypeEntry_15200, enumerator_14962.current_mValue_31_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 393)) ;
       enumGalgasBool test_5 = kBoolTrue ;
       if (kBoolTrue == test_5) {
-        test_5 = var_associatedValueNameSet_14907.getter_hasKey (enumerator_14954.current_mValue_31_ (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-enum.galgas", 394)).boolEnum () ;
+        test_5 = var_associatedValueNameSet_14915.getter_hasKey (enumerator_14962.current_mValue_31_ (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-enum.galgas", 394)).boolEnum () ;
         if (kBoolTrue == test_5) {
           TC_Array <FixItDescription> fixItArray6 ;
-          inCompiler->emitSemanticError (enumerator_14954.current_mValue_31_ (HERE).readProperty_location (), GALGAS_string ("duplicated name"), fixItArray6  COMMA_SOURCE_FILE ("type-enum.galgas", 395)) ;
+          inCompiler->emitSemanticError (enumerator_14962.current_mValue_31_ (HERE).readProperty_location (), GALGAS_string ("duplicated name"), fixItArray6  COMMA_SOURCE_FILE ("type-enum.galgas", 395)) ;
         }
       }
-      var_associatedValueNameSet_14907.addAssign_operation (enumerator_14954.current_mValue_31_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 397)) ;
+      var_associatedValueNameSet_14915.addAssign_operation (enumerator_14962.current_mValue_31_ (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-enum.galgas", 397)) ;
       const GALGAS_enumDeclarationAST temp_7 = this ;
       switch (temp_7.readProperty_comparison ().enumValue ()) {
       case GALGAS_structComparison::Enumeration::invalid:
@@ -3597,43 +3597,43 @@ void cPtr_enumDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /* i
         break ;
       case GALGAS_structComparison::Enumeration::enum_equatable:
         {
-          GALGAS_unifiedTypeDefinition var_associatedType_15597 = extensionGetter_definition (var_associatedTypeEntry_15192, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 402)) ;
+          GALGAS_unifiedTypeDefinition var_associatedType_15605 = extensionGetter_definition (var_associatedTypeEntry_15200, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 402)) ;
           enumGalgasBool test_8 = kBoolTrue ;
           if (kBoolTrue == test_8) {
-            test_8 = var_associatedType_15597.readProperty_features ().getter_comparable (SOURCE_FILE ("type-enum.galgas", 403)).operator_not (SOURCE_FILE ("type-enum.galgas", 403)).operator_and (var_associatedType_15597.readProperty_features ().getter_equatable (SOURCE_FILE ("type-enum.galgas", 404)).operator_not (SOURCE_FILE ("type-enum.galgas", 404)) COMMA_SOURCE_FILE ("type-enum.galgas", 403)).operator_and (var_associatedType_15597.readProperty_features ().getter_referenceEquatable (SOURCE_FILE ("type-enum.galgas", 405)).operator_not (SOURCE_FILE ("type-enum.galgas", 405)) COMMA_SOURCE_FILE ("type-enum.galgas", 404)).boolEnum () ;
+            test_8 = var_associatedType_15605.readProperty_features ().getter_comparable (SOURCE_FILE ("type-enum.galgas", 403)).operator_not (SOURCE_FILE ("type-enum.galgas", 403)).operator_and (var_associatedType_15605.readProperty_features ().getter_equatable (SOURCE_FILE ("type-enum.galgas", 404)).operator_not (SOURCE_FILE ("type-enum.galgas", 404)) COMMA_SOURCE_FILE ("type-enum.galgas", 403)).operator_and (var_associatedType_15605.readProperty_features ().getter_referenceEquatable (SOURCE_FILE ("type-enum.galgas", 405)).operator_not (SOURCE_FILE ("type-enum.galgas", 405)) COMMA_SOURCE_FILE ("type-enum.galgas", 404)).boolEnum () ;
             if (kBoolTrue == test_8) {
               TC_Array <FixItDescription> fixItArray9 ;
-              inCompiler->emitSemanticError (enumerator_14954.current_mValue_30_ (HERE).readProperty_location (), GALGAS_string ("the @").add_operation (enumerator_14954.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 406)).add_operation (GALGAS_string (" should be equatable"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 406)), fixItArray9  COMMA_SOURCE_FILE ("type-enum.galgas", 406)) ;
+              inCompiler->emitSemanticError (enumerator_14962.current_mValue_30_ (HERE).readProperty_location (), GALGAS_string ("the @").add_operation (enumerator_14962.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 406)).add_operation (GALGAS_string (" should be equatable"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 406)), fixItArray9  COMMA_SOURCE_FILE ("type-enum.galgas", 406)) ;
             }
           }
         }
         break ;
       case GALGAS_structComparison::Enumeration::enum_comparable:
         {
-          GALGAS_unifiedTypeDefinition var_associatedType_15950 = extensionGetter_definition (var_associatedTypeEntry_15192, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 409)) ;
+          GALGAS_unifiedTypeDefinition var_associatedType_15958 = extensionGetter_definition (var_associatedTypeEntry_15200, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 409)) ;
           enumGalgasBool test_10 = kBoolTrue ;
           if (kBoolTrue == test_10) {
-            test_10 = var_associatedType_15950.readProperty_features ().getter_comparable (SOURCE_FILE ("type-enum.galgas", 410)).operator_not (SOURCE_FILE ("type-enum.galgas", 410)).boolEnum () ;
+            test_10 = var_associatedType_15958.readProperty_features ().getter_comparable (SOURCE_FILE ("type-enum.galgas", 410)).operator_not (SOURCE_FILE ("type-enum.galgas", 410)).boolEnum () ;
             if (kBoolTrue == test_10) {
               TC_Array <FixItDescription> fixItArray11 ;
-              inCompiler->emitSemanticError (enumerator_14954.current_mValue_30_ (HERE).readProperty_location (), GALGAS_string ("the @").add_operation (enumerator_14954.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 411)).add_operation (GALGAS_string (" should be comparable"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 411)), fixItArray11  COMMA_SOURCE_FILE ("type-enum.galgas", 411)) ;
+              inCompiler->emitSemanticError (enumerator_14962.current_mValue_30_ (HERE).readProperty_location (), GALGAS_string ("the @").add_operation (enumerator_14962.current_mValue_30_ (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 411)).add_operation (GALGAS_string (" should be comparable"), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 411)), fixItArray11  COMMA_SOURCE_FILE ("type-enum.galgas", 411)) ;
             }
           }
         }
         break ;
       }
-      enumerator_14954.gotoNextObject () ;
+      enumerator_14962.gotoNextObject () ;
     }
     {
-    var_constantMap_14298.setter_insertKey (enumerator_14358.current (HERE).readProperty_name (), var_constantMap_14298.getter_count (SOURCE_FILE ("type-enum.galgas", 415)), var_associatedTypeList_14862, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 415)) ;
+    var_constantMap_14305.setter_insertKey (enumerator_14365.current (HERE).readProperty_name (), var_constantMap_14305.getter_count (SOURCE_FILE ("type-enum.galgas", 415)), var_associatedTypeList_14870, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 415)) ;
     }
-    var_enumConstantListForGeneration_14255.addAssign_operation (enumerator_14358.current (HERE).readProperty_name ().readProperty_string (), var_associatedTypeList_14862  COMMA_SOURCE_FILE ("type-enum.galgas", 416)) ;
-    enumerator_14358.gotoNextObject () ;
+    var_enumConstantListForGeneration_14262.addAssign_operation (enumerator_14365.current (HERE).readProperty_name ().readProperty_string (), var_associatedTypeList_14870  COMMA_SOURCE_FILE ("type-enum.galgas", 416)) ;
+    enumerator_14365.gotoNextObject () ;
   }
   const GALGAS_enumDeclarationAST temp_12 = this ;
-  GALGAS_unifiedTypeMapEntry var_selfType_16361 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_12.readProperty_enumTypeName (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 419)) ;
+  GALGAS_unifiedTypeMapEntry var_selfType_16369 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_12.readProperty_enumTypeName (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 419)) ;
   const GALGAS_enumDeclarationAST temp_13 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("enum ").add_operation (temp_13.readProperty_enumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 421)), GALGAS_enumTypeForGeneration::init_21__21__21_ (var_selfType_16361, var_enumConstantListForGeneration_14255, var_associatedValuesTypes_14151, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-enum.galgas", 420)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("enum ").add_operation (temp_13.readProperty_enumTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 421)), GALGAS_enumTypeForGeneration::init_21__21__21_ (var_selfType_16369, var_enumConstantListForGeneration_14262, var_associatedValuesTypes_14158, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-enum.galgas", 420)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3645,24 +3645,24 @@ void cPtr_enumTypeForGeneration::method_appendDeclaration_31_ (GALGAS_stringset 
                                                                GALGAS_string & outArgument_outHeader,
                                                                Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool var_hasAssociatedValues_17632 = GALGAS_bool (false) ;
+  GALGAS_bool var_hasAssociatedValues_17640 = GALGAS_bool (false) ;
   const GALGAS_enumTypeForGeneration temp_0 = this ;
-  cEnumerator_enumConstantListForGeneration enumerator_17685 (temp_0.readProperty_constantList (), EnumerationOrder::up) ;
-  bool bool_1 = var_hasAssociatedValues_17632.operator_not (SOURCE_FILE ("type-enum.galgas", 453)).isValidAndTrue () ;
-  if (enumerator_17685.hasCurrentObject () && bool_1) {
-    while (enumerator_17685.hasCurrentObject () && bool_1) {
-      var_hasAssociatedValues_17632 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_17685.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 454)).objectCompare (GALGAS_uint (uint32_t (0U)))) ;
-      enumerator_17685.gotoNextObject () ;
-      if (enumerator_17685.hasCurrentObject ()) {
-        bool_1 = var_hasAssociatedValues_17632.operator_not (SOURCE_FILE ("type-enum.galgas", 453)).isValidAndTrue () ;
+  cEnumerator_enumConstantListForGeneration enumerator_17693 (temp_0.readProperty_constantList (), EnumerationOrder::up) ;
+  bool bool_1 = var_hasAssociatedValues_17640.operator_not (SOURCE_FILE ("type-enum.galgas", 453)).isValidAndTrue () ;
+  if (enumerator_17693.hasCurrentObject () && bool_1) {
+    while (enumerator_17693.hasCurrentObject () && bool_1) {
+      var_hasAssociatedValues_17640 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_17693.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 454)).objectCompare (GALGAS_uint (uint32_t (0U)))) ;
+      enumerator_17693.gotoNextObject () ;
+      if (enumerator_17693.hasCurrentObject ()) {
+        bool_1 = var_hasAssociatedValues_17640.operator_not (SOURCE_FILE ("type-enum.galgas", 453)).isValidAndTrue () ;
       }
     }
   }
   const GALGAS_enumTypeForGeneration temp_2 = this ;
-  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_17820 = extensionGetter_definition (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 456)) ;
+  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_17828 = extensionGetter_definition (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 456)) ;
   const GALGAS_enumTypeForGeneration temp_3 = this ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (inCompiler, var_selfTypeDefinition_17820.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_17820.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-enum.galgas", 459)), temp_3.readProperty_constantList (), var_hasAssociatedValues_17632 COMMA_SOURCE_FILE ("type-enum.galgas", 457))) ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_17820.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_17820.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-enum.galgas", 465)), var_selfTypeDefinition_17820.readProperty_isConcrete (), var_selfTypeDefinition_17820.readProperty_initializerMap (), var_selfTypeDefinition_17820.readProperty_classFunctionMap (), var_selfTypeDefinition_17820.readProperty_getterMap (), var_selfTypeDefinition_17820.readProperty_setterMap (), var_selfTypeDefinition_17820.readProperty_instanceMethodMap (), var_selfTypeDefinition_17820.readProperty_classMethodMap (), var_selfTypeDefinition_17820.readProperty_readSubscriptMap (), var_selfTypeDefinition_17820.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_17820.readProperty_features (), var_selfTypeDefinition_17820.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_17820.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_17820.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("type-enum.galgas", 463))), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 463)) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (inCompiler, var_selfTypeDefinition_17828.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_17828.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-enum.galgas", 459)), temp_3.readProperty_constantList (), var_hasAssociatedValues_17640 COMMA_SOURCE_FILE ("type-enum.galgas", 457))) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_17828.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_17828.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-enum.galgas", 465)), var_selfTypeDefinition_17828.readProperty_isConcrete (), var_selfTypeDefinition_17828.readProperty_initializerMap (), var_selfTypeDefinition_17828.readProperty_classFunctionMap (), var_selfTypeDefinition_17828.readProperty_getterMap (), var_selfTypeDefinition_17828.readProperty_setterMap (), var_selfTypeDefinition_17828.readProperty_instanceMethodMap (), var_selfTypeDefinition_17828.readProperty_classMethodMap (), var_selfTypeDefinition_17828.readProperty_readSubscriptMap (), var_selfTypeDefinition_17828.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_17828.readProperty_features (), var_selfTypeDefinition_17828.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_17828.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_17828.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("type-enum.galgas", 463))), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 463)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3676,30 +3676,30 @@ void cPtr_enumTypeForGeneration::method_appendSpecificImplementation (const GALG
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_enumTypeForGeneration temp_0 = this ;
-  cEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_19230 (temp_0.readProperty_associatedValuesTypes (), EnumerationOrder::up) ;
-  while (enumerator_19230.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName (enumerator_19230.current (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 488)) ;
-    enumerator_19230.gotoNextObject () ;
+  cEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_19238 (temp_0.readProperty_associatedValuesTypes (), EnumerationOrder::up) ;
+  while (enumerator_19238.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName (enumerator_19238.current (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 488)) ;
+    enumerator_19238.gotoNextObject () ;
   }
-  GALGAS_bool var_hasAssociatedValues_19325 = GALGAS_bool (false) ;
+  GALGAS_bool var_hasAssociatedValues_19333 = GALGAS_bool (false) ;
   const GALGAS_enumTypeForGeneration temp_1 = this ;
-  cEnumerator_enumConstantListForGeneration enumerator_19378 (temp_1.readProperty_constantList (), EnumerationOrder::up) ;
-  bool bool_2 = var_hasAssociatedValues_19325.operator_not (SOURCE_FILE ("type-enum.galgas", 491)).isValidAndTrue () ;
-  if (enumerator_19378.hasCurrentObject () && bool_2) {
-    while (enumerator_19378.hasCurrentObject () && bool_2) {
-      var_hasAssociatedValues_19325 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_19378.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 492)).objectCompare (GALGAS_uint (uint32_t (0U)))) ;
-      enumerator_19378.gotoNextObject () ;
-      if (enumerator_19378.hasCurrentObject ()) {
-        bool_2 = var_hasAssociatedValues_19325.operator_not (SOURCE_FILE ("type-enum.galgas", 491)).isValidAndTrue () ;
+  cEnumerator_enumConstantListForGeneration enumerator_19386 (temp_1.readProperty_constantList (), EnumerationOrder::up) ;
+  bool bool_2 = var_hasAssociatedValues_19333.operator_not (SOURCE_FILE ("type-enum.galgas", 491)).isValidAndTrue () ;
+  if (enumerator_19386.hasCurrentObject () && bool_2) {
+    while (enumerator_19386.hasCurrentObject () && bool_2) {
+      var_hasAssociatedValues_19333 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_19386.current (HERE).readProperty_associatedValueTypeList ().getter_count (SOURCE_FILE ("type-enum.galgas", 492)).objectCompare (GALGAS_uint (uint32_t (0U)))) ;
+      enumerator_19386.gotoNextObject () ;
+      if (enumerator_19386.hasCurrentObject ()) {
+        bool_2 = var_hasAssociatedValues_19333.operator_not (SOURCE_FILE ("type-enum.galgas", 491)).isValidAndTrue () ;
       }
     }
   }
   const GALGAS_enumTypeForGeneration temp_3 = this ;
   extensionMethod_addHeaderFileName (temp_3.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 494)) ;
   const GALGAS_enumTypeForGeneration temp_4 = this ;
-  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_19574 = extensionGetter_definition (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 495)) ;
+  GALGAS_unifiedTypeDefinition var_selfTypeDefinition_19582 = extensionGetter_definition (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 495)) ;
   const GALGAS_enumTypeForGeneration temp_5 = this ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_19574.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_19574.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-enum.galgas", 498)), temp_5.readProperty_constantList (), var_hasAssociatedValues_19325, extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_19574.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 501)) COMMA_SOURCE_FILE ("type-enum.galgas", 496))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_19582.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_19582.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("type-enum.galgas", 498)), temp_5.readProperty_constantList (), var_hasAssociatedValues_19333, extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_19582.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 501)) COMMA_SOURCE_FILE ("type-enum.galgas", 496))) ;
 }
 //--------------------------------------------------------------------------------------------------
 //

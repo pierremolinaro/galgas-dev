@@ -5712,7 +5712,7 @@ class GALGAS_templateInstructionSwitchAST : public GALGAS_templateInstructionAST
   public: GALGAS_templateInstructionSwitchAST (const class cPtr_templateInstructionSwitchAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_templateExpressionAST readProperty_switchExpression (void) const ;
+  public: class GALGAS_templateExpressionAST readProperty_mSwitchExpression (void) const ;
 
   public: class GALGAS_location readProperty_switchExpressionEndLocation (void) const ;
 
@@ -5791,7 +5791,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_templateExpressionAST mProperty_switchExpression ;
+  public: GALGAS_templateExpressionAST mProperty_mSwitchExpression ;
   public: GALGAS_location mProperty_switchExpressionEndLocation ;
   public: GALGAS_templateInstructionSwitchBranchListAST mProperty_templateInstructionSwitchBranchList ;
 
@@ -5800,7 +5800,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
   public: cPtr_templateInstructionSwitchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_switchExpression,
+  public: cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_mSwitchExpression,
                                              const GALGAS_location & in_switchExpressionEndLocation,
                                              const GALGAS_templateInstructionSwitchBranchListAST & in_templateInstructionSwitchBranchList
                                              COMMA_LOCATION_ARGS) ;

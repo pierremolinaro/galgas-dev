@@ -29,7 +29,7 @@ list @templateInstructionSwitchBranchListAST {
 #·······················································································································
 
 refclass @templateInstructionSwitchAST : @templateInstructionAST {
-  private let @templateExpressionAST switchExpression
+  private let @templateExpressionAST mSwitchExpression
   private let @location switchExpressionEndLocation
   private let @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList
 }
@@ -136,7 +136,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?!@unifiedTypeMap ioTypeMap
                                 ?!@templateInstructionListForGeneration ioInstructionList {
 #---
-  [self.switchExpression templateExpressionAnalysis
+  [self.mSwitchExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext

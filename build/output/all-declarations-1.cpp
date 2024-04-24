@@ -4706,7 +4706,7 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::extract
 
 cPtr_templateInstructionSwitchAST::cPtr_templateInstructionSwitchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_switchExpression (),
+mProperty_mSwitchExpression (),
 mProperty_switchExpressionEndLocation (),
 mProperty_templateInstructionSwitchBranchList () {
 }
@@ -4716,7 +4716,7 @@ mProperty_templateInstructionSwitchBranchList () {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionSwitchAST::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_switchExpression.printNonNullClassInstanceProperties ("switchExpression") ;
+    mProperty_mSwitchExpression.printNonNullClassInstanceProperties ("mSwitchExpression") ;
     mProperty_switchExpressionEndLocation.printNonNullClassInstanceProperties ("switchExpressionEndLocation") ;
     mProperty_templateInstructionSwitchBranchList.printNonNullClassInstanceProperties ("templateInstructionSwitchBranchList") ;
   }
@@ -4749,14 +4749,14 @@ GALGAS_templateInstructionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionSwitchAST GALGAS_templateInstructionSwitchAST::
-init_21__21__21_ (const GALGAS_templateExpressionAST & in_switchExpression,
+init_21__21__21_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
                   const GALGAS_location & in_switchExpressionEndLocation,
                   const GALGAS_templateInstructionSwitchBranchListAST & in_templateInstructionSwitchBranchList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionSwitchAST * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionSwitchAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionSwitchAST_init_21__21__21_ (in_switchExpression, in_switchExpressionEndLocation, in_templateInstructionSwitchBranchList, inCompiler) ;
+  object->templateInstructionSwitchAST_init_21__21__21_ (in_mSwitchExpression, in_switchExpressionEndLocation, in_templateInstructionSwitchBranchList, inCompiler) ;
   const GALGAS_templateInstructionSwitchAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4765,11 +4765,11 @@ init_21__21__21_ (const GALGAS_templateExpressionAST & in_switchExpression,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionSwitchAST::
-templateInstructionSwitchAST_init_21__21__21_ (const GALGAS_templateExpressionAST & in_switchExpression,
+templateInstructionSwitchAST_init_21__21__21_ (const GALGAS_templateExpressionAST & in_mSwitchExpression,
                                                const GALGAS_location & in_switchExpressionEndLocation,
                                                const GALGAS_templateInstructionSwitchBranchListAST & in_templateInstructionSwitchBranchList,
                                                Compiler * /* inCompiler */) {
-  mProperty_switchExpression = in_switchExpression ;
+  mProperty_mSwitchExpression = in_mSwitchExpression ;
   mProperty_switchExpressionEndLocation = in_switchExpressionEndLocation ;
   mProperty_templateInstructionSwitchBranchList = in_templateInstructionSwitchBranchList ;
 }
@@ -4782,24 +4782,24 @@ GALGAS_templateInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchAST GALGAS_templateInstructionSwitchAST::class_func_new (const GALGAS_templateExpressionAST & in_switchExpression,
+GALGAS_templateInstructionSwitchAST GALGAS_templateInstructionSwitchAST::class_func_new (const GALGAS_templateExpressionAST & in_mSwitchExpression,
                                                                                          const GALGAS_location & in_switchExpressionEndLocation,
                                                                                          const GALGAS_templateInstructionSwitchBranchListAST & in_templateInstructionSwitchBranchList
                                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionSwitchAST (in_switchExpression, in_switchExpressionEndLocation, in_templateInstructionSwitchBranchList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_templateInstructionSwitchAST (in_mSwitchExpression, in_switchExpressionEndLocation, in_templateInstructionSwitchBranchList COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::readProperty_switchExpression (void) const {
+GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::readProperty_mSwitchExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_templateExpressionAST () ;
   }else{
     cPtr_templateInstructionSwitchAST * p = (cPtr_templateInstructionSwitchAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchAST) ;
-    return p->mProperty_switchExpression ;
+    return p->mProperty_mSwitchExpression ;
   }
 }
 
@@ -4831,15 +4831,15 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchAS
 //Pointer class for @templateInstructionSwitchAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_templateInstructionSwitchAST::cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_switchExpression,
+cPtr_templateInstructionSwitchAST::cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_mSwitchExpression,
                                                                       const GALGAS_location & in_switchExpressionEndLocation,
                                                                       const GALGAS_templateInstructionSwitchBranchListAST & in_templateInstructionSwitchBranchList
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mProperty_switchExpression (),
+mProperty_mSwitchExpression (),
 mProperty_switchExpressionEndLocation (),
 mProperty_templateInstructionSwitchBranchList () {
-  mProperty_switchExpression = in_switchExpression ;
+  mProperty_mSwitchExpression = in_mSwitchExpression ;
   mProperty_switchExpressionEndLocation = in_switchExpressionEndLocation ;
   mProperty_templateInstructionSwitchBranchList = in_templateInstructionSwitchBranchList ;
 }
@@ -4853,7 +4853,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionSwitchAST::classDescrip
 void cPtr_templateInstructionSwitchAST::description (String & ioString,
                                                      const int32_t inIndentation) const {
   ioString.appendCString ("[@templateInstructionSwitchAST:") ;
-  mProperty_switchExpression.description (ioString, inIndentation+1) ;
+  mProperty_mSwitchExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_switchExpressionEndLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -4865,7 +4865,7 @@ void cPtr_templateInstructionSwitchAST::description (String & ioString,
 
 acPtr_class * cPtr_templateInstructionSwitchAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionSwitchAST (mProperty_switchExpression, mProperty_switchExpressionEndLocation, mProperty_templateInstructionSwitchBranchList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionSwitchAST (mProperty_mSwitchExpression, mProperty_switchExpressionEndLocation, mProperty_templateInstructionSwitchBranchList COMMA_THERE)) ;
   return ptr ;
 }
 
