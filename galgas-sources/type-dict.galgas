@@ -148,6 +148,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
+    !isUsefull: false
   }
 //--- Add optional element
   [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]

@@ -49,6 +49,7 @@ syntax extension galgas3DeclarationsSyntax {
       !propertyList
       !enumeratedElementTypeName: ""
       !comparison: comparison
+      !isUsefull: false
     }
   }
 
@@ -90,6 +91,7 @@ syntax extension galgas4DeclarationsSyntax {
       !propertyList
       !enumeratedElementTypeName: ""
       !comparison: comparison
+      !isUsefull: false
     }
   }
 
@@ -121,6 +123,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   private let @propertyInCollectionListAST mStructurePropertyListAST
   private let @string enumeratedElementTypeName %initArgLabel # Empty string if not enumerable
   private let @structComparison comparison %initArgLabel
+  private let @bool isUsefull %initArgLabel
 
   #·······························································································
 
@@ -270,7 +273,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method semanticAnalysis
-              ?!@lstringlist unused ioUsefulnessRootEntities
+              ?!@lstringlist ioUsefulnessRootEntities
               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
               ?let @string unused inProductDirectory
               ?let @semanticContext inSemanticContext
@@ -280,6 +283,9 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   #--- Useful entities graph
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
     [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
+    if self.isUsefull then
+      ioUsefulnessRootEntities += !structNameForUsefulness
+    end
   #---
     if [self.mStructurePropertyListAST count] == 0 then
       error self.structTypeName: "a structure cannot be empty: it must have at least one property"

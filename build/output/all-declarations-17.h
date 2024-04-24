@@ -2549,3 +2549,14 @@ class GALGAS_lstring function_routineMangledName (const class GALGAS_lstring & c
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Extension getter '@routineMap locationForKey' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_location extensionGetter_locationForKey (const class GALGAS_routineMap & inObject,
+                                                      const class GALGAS_string & constinArgument0,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+

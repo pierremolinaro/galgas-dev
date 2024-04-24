@@ -321,6 +321,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
     !attributeList
     !enumeratedElementTypeName: ""
     !comparison: .equatable
+    !isUsefull: false
   }
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"l" + inElementTypeName)
 }
@@ -328,7 +329,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclarationListASTs
-                                         ?!@lstringlist ioUsefulnessRootEntities {
+                                         ?!@lstringlist unused ioUsefulnessRootEntities {
   var @propertyInCollectionListAST attributeList = ()
   attributeList +=
     !isConstant: false
@@ -350,8 +351,9 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
     !attributeList
     !enumeratedElementTypeName: "uint"
     !comparison: .equatable
+    !isUsefull: true
   }
-  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"range")
+#  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"range")
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

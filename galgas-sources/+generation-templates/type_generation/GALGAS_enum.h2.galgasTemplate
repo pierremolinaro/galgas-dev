@@ -8,13 +8,13 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
     %//--------------------------------------------------------------------------------------------------\n\n%
     %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% : public cEnumAssociatedValues {\n%
-    for (mType) in mAssociatedValueTypeList do (idx)
+    for (mType *) in mAssociatedValueTypeList do (idx)
       %  public: const GALGAS_%![mType identifierRepresentation]% mAssociatedValue%![idx string]% ;\n%
     end
     %\n%
     %//--- Constructor\n%
     %  public: cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
-    for (mType) in mAssociatedValueTypeList
+    for (mType *) in mAssociatedValueTypeList
     do (idx) %const GALGAS_%![mType identifierRepresentation]% inAssociatedValue%![idx string]
     between %,\n%!^
     end

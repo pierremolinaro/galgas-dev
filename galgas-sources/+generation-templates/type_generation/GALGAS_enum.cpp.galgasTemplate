@@ -3,13 +3,13 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
     %//--------------------------------------------------------------------------------------------------\n\n%
     %cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
-    for (mType) in mAssociatedValueTypeList
+    for (mType *) in mAssociatedValueTypeList
     do (idx) %const GALGAS_%![mType identifierRepresentation]% inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^%COMMA_LOCATION_ARGS) :\n%
     %cEnumAssociatedValues (THERE)%
-    for (mType) in mAssociatedValueTypeList do (idx)
+    for (mType *) in mAssociatedValueTypeList do (idx)
     %,\nmAssociatedValue%![idx string]% (inAssociatedValue%![idx string]%)%
     end
     % {\n%   
@@ -18,7 +18,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName%::description (%?^%String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
     %  ioString.appendCString ("(\\n") ;\n%
-    for (mType) in mAssociatedValueTypeList do (idx)
+    for (mType *) in mAssociatedValueTypeList do (idx)
       %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
     end
     %  ioString.appendCString (")") ;\n%
@@ -29,7 +29,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *> (inOperand) ;\n%
       %  macroValidPointer (ptr) ;\n%
       %  ComparisonResult result = ComparisonResult::operandEqual ;\n%
-      for (mType) in mAssociatedValueTypeList do (idx)
+      for (mType *) in mAssociatedValueTypeList do (idx)
         %  if (result == ComparisonResult::operandEqual) {\n%
         %    result = mAssociatedValue%![idx string]%.objectCompare (ptr->mAssociatedValue%![idx string]%) ;\n%
         %  }\n%
@@ -46,6 +46,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %
 if HAS_ASSOCIATED_VALUES then
   %mAssociatedValues (),\n%
+  %mAssociatedValuesEX (),\n%
 end
 %mEnum (Enumeration::invalid) {
 }
@@ -57,7 +58,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] == 0 then
     %UNUSED_LOCATION_ARGS%
   else
-    for (mType) in mAssociatedValueTypeList
+    for (mType *) in mAssociatedValueTypeList
     do (idx) %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
     between %,\n%!^
     end
@@ -65,24 +66,33 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   end
   %) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
-  if [mAssociatedValueTypeList count] == 0 then
-    %  result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
-  else
+  %  result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
+  if [mAssociatedValueTypeList count] > 0 then
+    %  AC_GALGAS_root * p = nullptr ;\n%
+    %  macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% (%
+    for (mType *) in mAssociatedValueTypeList
+    do (idx) %inAssociatedValue%![idx string]
+    between %, %
+    end
+    %)) ;\n%
+    %  EnumerationAssociatedValues * eav = nullptr ;\n%
+    %  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;\n%
+    %  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues\n%
+    %  macroDetachSharedObject (eav) ;\n%
     %  if (%
-    for (mType) in mAssociatedValueTypeList
+    for (mType *) in mAssociatedValueTypeList
     do (idx) %inAssociatedValue%![idx string]%.isValid ()%
     between % && %
     end
     %) {\n%
-    %    result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
     %    cEnumAssociatedValues * ptr = nullptr ;\n%
     %    macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%
-    for (mType) in mAssociatedValueTypeList
+    for (mType *) in mAssociatedValueTypeList
     do (idx) %inAssociatedValue%![idx string]
     between %, %
     end
     % COMMA_THERE)) ;\n%
-    %    result.mAssociatedValues.setPointer (ptr) ;\n%
+    %    result.mAssociatedValuesEX.setPointer (ptr) ;\n%
     %    macroDetachSharedObject (ptr) ;\n%
     %  }\n%
   end
@@ -94,13 +104,13 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
     %//--------------------------------------------------------------------------------------------------\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mConstantName identifierRepresentation]% (%?^
-    for (mType) in mAssociatedValueTypeList do (idx)
+    for (mType *) in mAssociatedValueTypeList do (idx)
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]%,\n%!^
     end
     !^%Compiler * inCompiler\n%
     !^%COMMA_LOCATION_ARGS) const {\n%
     %  if (mEnum != Enumeration::enum_%![mConstantName identifierRepresentation]%) {\n%
-    for (mType) in mAssociatedValueTypeList do (idx)
+    for (mType *) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
     %    String s ;\n%
@@ -108,7 +118,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
-    for (mType) in mAssociatedValueTypeList do (idx)
+    for (mType *) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
     end
     %  }\n%
@@ -116,11 +126,27 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   end
 end
 
+for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
+  if [mAssociatedValueTypeList count] > 0 then
+    %//--------------------------------------------------------------------------------------------------\n\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
+    for (mType valueName) in mAssociatedValueTypeList
+    do (idx) %GALGAS_%![mType identifierRepresentation]% & out_%!valueName
+    between %,\n%!^
+    end
+    %) const {\n%
+    %  const auto ptr = (const GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+    for (* value) in mAssociatedValueTypeList do
+       %  out_%!value% = ptr->mProperty_%![value identifierRepresentation]% ;\n%
+    end
+    %}\n\n%
+  end
+end
 
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %//--------------------------------------------------------------------------------------------------\n\n%
     %bool GALGAS_%!TYPE_IDENTIFIER%::optional_%![mConstantName identifierRepresentation]% (%?^
-    for (mType) in mAssociatedValueTypeList
+    for (mType name) in mAssociatedValueTypeList
     do (idx)
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]
     between
@@ -131,7 +157,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     if [mAssociatedValueTypeList count] > 0 then
       %  if (ok) {\n%
       %    const auto * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
-      for (mType) in mAssociatedValueTypeList do (idx)
+      for (mType *) in mAssociatedValueTypeList do (idx)
          %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
        end
        %  }\n%
@@ -171,7 +197,7 @@ end
   ioString.appendCString (gEnumNameArrayFor_%!TYPE_IDENTIFIER% [size_t (mEnum)]) ;
 %
 if HAS_ASSOCIATED_VALUES then
-  %  mAssociatedValues.description (ioString, inIndentation) ;\n%
+  %  mAssociatedValuesEX.description (ioString, inIndentation) ;\n%
 end
 %  ioString.appendCString (">") ;
 }
@@ -189,7 +215,7 @@ ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_I
     }else{
 %
 if HAS_ASSOCIATED_VALUES then
-%      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;\n%
+%      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n%
 else
 %      result = ComparisonResult::operandEqual ;\n%
 end

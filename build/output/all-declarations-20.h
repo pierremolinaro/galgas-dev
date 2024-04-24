@@ -1140,7 +1140,7 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_switch_5F_case_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                           GALGAS_lstringlist & outArgument1,
+                                           GALGAS__5B_lstring_5D_ & outArgument1,
                                            GALGAS_switchExtractedValuesListAST & outArgument2,
                                            Lexique_galgasScanner_33_ * inCompiler) ;
 

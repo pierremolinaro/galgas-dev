@@ -36262,7 +36262,7 @@ void cGrammar_galgas_34_Grammar::nt_switch_5F_case_indexing (Lexique_galgasScann
 }
 
 void cGrammar_galgas_34_Grammar::nt_switch_5F_case_ (GALGAS_galgasDeclarationAST &  parameter_1,
-                                GALGAS_lstringlist &  parameter_2,
+                                GALGAS__5B_lstring_5D_ &  parameter_2,
                                 GALGAS_switchExtractedValuesListAST &  parameter_3,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 94) {

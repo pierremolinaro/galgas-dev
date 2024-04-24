@@ -20,7 +20,7 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListAST {
-  public let @lstringlist mConstantList
+  public let [@lstring] mConstantList
   public let @switchExtractedValuesListAST mAssociatedValuesExtraction
   public let @templateInstructionListAST mInstructionList
   public let @location mEndOfBranch
@@ -53,7 +53,7 @@ syntax extension templateSyntax {
     while
       $case$
       <switch_case>
-        ?let @lstringlist constantNameList
+        ?let [@lstring] constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
       var @templateInstructionListAST instructionList = ()
@@ -75,12 +75,12 @@ syntax extension templateSyntax {
 
   #·······························································································
 
-  rule <switch_case> !@lstringlist outConstantNameList
+  rule <switch_case> ![@lstring] outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
     outConstantNameList = ()
     repeat
       $identifier$ ?let @lstring constantName
-      outConstantNameList += !constantName
+      [!?outConstantNameList append !constantName]
     while
       $,$
     end
@@ -93,17 +93,17 @@ syntax extension templateSyntax {
           $literalInt$ ?let n
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+            outAssociatedValuesExtraction += !["" here] !["" here] !false
           end
          or
           $*$
-          outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+          outAssociatedValuesExtraction += !["" here] !["" here] !false
          or
           let @lstring typeName
           select
             $@type$ ?typeName
           or
-            typeName = ["" nowhere]
+            typeName = ["" here]
           end
           let @bool constantMarkedAsUnused
           select
@@ -150,47 +150,55 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = ()
     for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
       var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = ()
-      var @bool firstConstant = true
       var analysisContext = inAnalysisContext
-      for (mValue) in mConstantList do
-        if [enumConstantMap hasKey !mValue.string] then
-          if [constantsNamedInSwitchInstruction hasKey !mValue.string] then
-            error mValue
-            :"the '" + mValue + "' constant is already named in this switch instruction"
+      for constantName in mConstantList do
+        if [enumConstantMap hasKey !constantName.string] then
+          if [constantsNamedInSwitchInstruction hasKey !constantName.string] then
+            error constantName
+            :"the '" + constantName + "' constant is already named in this switch instruction"
           end
-          constantsNamedInSwitchInstruction += !mValue.string
-          [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapEntryList associatedTypeList]
+          constantsNamedInSwitchInstruction += !constantName.string
+          [enumConstantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
           if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
-            error mValue
-              :"the associated values of '" + mValue + "' constant should be extracted"
+            error constantName
+              :"the associated values of '" + constantName + "' constant should be extracted"
           elsif ([associatedTypeList count] == 0) & ([mAssociatedValuesExtraction count] > 0) then
-            error mValue
-              :"the '" + mValue + "' constant has no associated value"
+            error constantName
+              :"the '" + constantName + "' constant has no associated value"
           elsif [associatedTypeList count]  != [mAssociatedValuesExtraction count] then
-            error mValue
-              :"the '" + mValue + "' constant requires " + [associatedTypeList count] + "  associated value"
+            error constantName
+              :"the '" + constantName + "' constant requires " + [associatedTypeList count] + "  associated value"
               + if [associatedTypeList count] > 1 then "s" else "" end
           else
             var associatedValueIndex = 0
-            for (mType) in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do
+            for descriptor in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do (IDX)
               if mExtractedValueTypeName.string != "" then # Explicit type ?
-                if [mType definition].typeName.string != mExtractedValueTypeName.string then
-                  error mExtractedValueTypeName : "the required type is '@" + [mType definition].typeName.string + "'"
+                if [descriptor.type definition].typeName.string != mExtractedValueTypeName.string then
+                  error mExtractedValueTypeName : "the required type is '@" + [descriptor.type definition].typeName.string + "'"
                 end
               end
-              if firstConstant & (mExtractedValueName.string != "") then
-                let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex] + "_" + mExtractedValueName
-                extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
-                [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
+              let cppName = "extractedValue_" + [mExtractedValueName.location startLocationIndex]
+                + "_" + mExtractedValueName + "_" + IDX
+              extractedAssociatedValuesForGeneration +=
+                !descriptor.type
+                !cppName
+                !associatedValueIndex
+                !descriptor.name
+              if mExtractedValueName.string != "" then
+                [!?analysisContext.mTemplateVariableMap insertKey
+                  !mExtractedValueName
+                  !descriptor.type
+                  !cppName
+                ]
               end
               associatedValueIndex += 1
             end
           end
         else
-          error mValue
-          :"'" + mValue + "' is not a constant of '@" + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
+          error constantName
+          :"'" + constantName + "' is not a constant of '@"
+          + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
         end
-        firstConstant = false
       end
       var @templateInstructionListForGeneration instructionList = ()
       templateInstructionListAnalysis (
@@ -234,7 +242,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListForGeneration {
-  public let @lstringlist mConstantList
+  public let [@lstring] mConstantList
   public let @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
   public let @uint mEndOfBranchLocationIndex
   public let @templateInstructionListForGeneration mInstructionList
@@ -270,27 +278,42 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::Enumeration::invalid :\n"
   ioGeneratedCode += "  break ;\n"
 #---
-  for (mConstantList mExtractedAssociatedValuesForGeneration mEndOfBranchLocationIndex mInstructionList) in self.mTemplateInstructionSwitchBranchList do
-    for (mValue) in mConstantList do
+  for branch in self.mTemplateInstructionSwitchBranchList do
+    for constantName in branch.mConstantList do
       ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation]
-                      + "::Enumeration::enum_" + [mValue.string identifierRepresentation] + " :\n"
+                      + "::Enumeration::enum_" + [constantName.string identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
-    if [mExtractedAssociatedValuesForGeneration count] > 0 then
-      let type = "const cEnumAssociatedValues_" + [self.mEnumType identifierRepresentation]
-        + "_" + [mConstantList mValueAtIndex!0].string + " *"
-      let varPtr = "extractPtr_" + mEndOfBranchLocationIndex
-      ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVarCppName + ".unsafePointer ()) ;\n"
-      for (mType mCppName mIndex) in mExtractedAssociatedValuesForGeneration do
-        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName
-          + " = " + varPtr + "->mAssociatedValue" + mIndex + " ;\n"
+    if [branch.mExtractedAssociatedValuesForGeneration count] > 0 then
+      for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
+        ioGeneratedCode += "  GALGAS_" + [associatedValue.mType identifierRepresentation]
+        ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
       end
+      ioGeneratedCode += "  " + switchVarCppName + ".getAssociatedValuesFor_"
+      ioGeneratedCode += [branch.mConstantList §[0] identifierRepresentation] + " ("
+      for associatedValue in branch.mExtractedAssociatedValuesForGeneration
+        do ioGeneratedCode += associatedValue.mCppName
+        between ioGeneratedCode += ", "
+      end
+      ioGeneratedCode += ") ;\n"
+#      let type = "const GALGAS_"
+#        + [[self.mEnumType definition].typeName.string + "-" + branch.mConstantList §[0] identifierRepresentation]
+#        + " *"
+#      let varPtr = "associatedValuePtr_" + branch.mEndOfBranchLocationIndex
+#      ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") ("
+#      ioGeneratedCode += switchVarCppName + ".associatedValuesPointer ()) ;\n"
+#      for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
+#        ioGeneratedCode += "  const GALGAS_" + [associatedValue.mType identifierRepresentation]
+#        ioGeneratedCode += " " + associatedValue.mCppName
+#        ioGeneratedCode += " = " + varPtr
+#        ioGeneratedCode += "->mProperty_" + [associatedValue.name identifierRepresentation] + " ;\n"
+#      end
     end
-    if [mInstructionList count] > 0 then
+    if [branch.mInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       templateCodeGenerationForListInstruction (
-        !mInstructionList
+        !branch.mInstructionList
         !?ioGeneratedCode
         !?ioInclusionSet
         !?ioTemporaryVariableIndex

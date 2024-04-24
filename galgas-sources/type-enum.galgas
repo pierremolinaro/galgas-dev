@@ -194,7 +194,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     for constant in self.constantList do
       if [constant.associatedValueTypeList count] > 0 then
-        let associatedTypeName = @lstring (self.enumTypeName.string + "." + constant.name, self.enumTypeName)
+        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
         var @propertyInCollectionListAST propertyListAST = ()
         for (typeName propertyName) in constant.associatedValueTypeList do
           propertyListAST +=
@@ -210,26 +210,14 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           associatedTypeName,
           propertyListAST,
           !enumeratedElementTypeName: "",
-          !comparison: self.comparison
+          !comparison: self.comparison,
+          !isUsefull: true
         )
         ioDeclarations.mDeclarationList += !s
       end
     end
 #    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
   }
-
-#refclass @structDeclarationAST : @semanticDeclarationAST {
-#  private let @lstring structTypeName
-#  private let @propertyInCollectionListAST mStructurePropertyListAST
-#  private let @string enumeratedElementTypeName %initArgLabel # Empty string if not enumerable
-#  private let @structComparison comparison %initArgLabel
-
-#  public let @bool isConstant %initArgLabel
-#  public let @lstring typeName
-#  public let @lstring name
-#  public let @AccessControlAST accessControl
-#  public let @bool hasSelector %initArgLabel
-#  public let @propertyInCollectionInitializationAST initialization %initArgLabel
 
   #·······························································································
 
@@ -251,12 +239,12 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     var @constantIndexMap constantMap = ()
     var @bool hasAssociatedValues = false
     for constant in self.constantList do
-      var @unifiedTypeMapEntryList associatedTypeList = ()
+      var @associatedValueDescriptorList associatedTypeList = ()
       var @functionSignature argumentTypeList = ()
       for (typeName selectorName) in constant.associatedValueTypeList do
         [!?ioTypeMap makeEntry !typeName ?let associatedTypeEntry]
         argumentTypeList += !selectorName !associatedTypeEntry !typeName.string !true
-        associatedTypeList += !associatedTypeEntry
+        associatedTypeList += !associatedTypeEntry !selectorName
         hasAssociatedValues = true
       end
       [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
@@ -381,24 +369,29 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     ?let @semanticContext unused inSemanticContext
                                   ?!@unifiedTypeMap ioTypeMap
     ?let @predefinedTypes unused inPredefinedTypes
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  {
+    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.enumTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   #--- Constant list
+    var [@unifiedTypeMapEntry] associatedValuesTypes = ()
     var constantList = @stringlist ()
     var @enumConstantListForGeneration enumConstantListForGeneration = ()
     var constantMap = @constantIndexMap ()
     for constant in self.constantList do
+      if [constant.associatedValueTypeList count] > 0 then
+        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+        let associatedType = [ioTypeMap typeMapEntryForLKey !associatedTypeName]
+        [!?associatedValuesTypes append !associatedType]    
+      end
       constantList += !constant.name.string
-      var @unifiedTypeMapEntryList associatedTypeList = ()
+      var @associatedValueDescriptorList associatedTypeList = ()
       var @stringset associatedValueNameSet = ()
       for (mValue0 mValue1) in constant.associatedValueTypeList do
         let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
         [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
         let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !mValue0]
-        associatedTypeList += !associatedTypeEntry
+        associatedTypeList += !associatedTypeEntry !mValue1
         if [associatedValueNameSet hasKey !mValue1.string] then
           error mValue1 : "duplicated name"
         end
@@ -430,6 +423,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
       !@enumTypeForGeneration {
         !selfType
         !enumConstantListForGeneration
+        !associatedValuesTypes
       }
   }
 
@@ -443,19 +437,19 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
 
 list @enumConstantListForGeneration {
   public let @string name
-  public let @unifiedTypeMapEntryList associatedValueTypeList
+  public let @associatedValueDescriptorList associatedValueTypeList
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @enumTypeForGeneration : @semanticTypeForGeneration {
   private let @enumConstantListForGeneration constantList
+  private let [@unifiedTypeMapEntry] associatedValuesTypes
 
   #·······························································································
 
-  override method appendDeclaration1
-    ?!@stringset unused ioInclusionSet
-    !@string outHeader {
+  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+                                     !@string outHeader {
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = [constant.associatedValueTypeList count] > 0
@@ -489,17 +483,16 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
 
   #·······························································································
 
-  override method appendDeclaration2
-    ?let @string unused inOutputDirectory
-    ?!@stringset ioInclusionSet
-    !@string outHeader {
+  override method appendDeclaration2 ?let @string unused inOutputDirectory
+                                      ?!@stringset ioInclusionSet
+                                      !@string outHeader {
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = [constant.associatedValueTypeList count] > 0
     end
     for constant in self.constantList do
-      for (mType) in constant.associatedValueTypeList do
-        [mType addHeaderFileName1 !?ioInclusionSet]
+      for associatedValue in constant.associatedValueTypeList do
+        [associatedValue.type addHeaderFileName1 !?ioInclusionSet]
       end
     end
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
@@ -514,11 +507,12 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
 
   #·······························································································
 
-  override method appendSpecificImplementation
-    ?let @unifiedTypeMap unused inTypeMap
-    ?!@stringset ioInclusionSet
-    !@string outImplementation
-  {
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                                ?!@stringset ioInclusionSet
+                                                !@string outImplementation {
+    for type in self.associatedValuesTypes do
+      [type addHeaderFileName !?ioInclusionSet]
+    end
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = [constant.associatedValueTypeList count] > 0

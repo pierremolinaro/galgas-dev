@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2014, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -20,6 +20,89 @@
 
 #include "AC_GALGAS_enumAssociatedValues.h"
 
+//--------------------------------------------------------------------------------------------------
+
+EnumerationAssociatedValues::EnumerationAssociatedValues (const AC_GALGAS_root * inValuePtr
+                                                          COMMA_LOCATION_ARGS) :
+SharedObject (THERE),
+mValuePtr (inValuePtr) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+EnumerationAssociatedValues::~ EnumerationAssociatedValues (void) {
+  macroMyDelete (mValuePtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void EnumerationAssociatedValues::description (class String & /* ioString */,
+                                               const int32_t /* inIndentation */) const {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult EnumerationAssociatedValues::compare (const EnumerationAssociatedValues * /* inOperand */) const {
+  return ComparisonResult::invalid ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_enumerationAssociatedValues::AC_GALGAS_enumerationAssociatedValues (void) :
+mSharedPtr (nullptr) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AC_GALGAS_enumerationAssociatedValues::assignPointer (const EnumerationAssociatedValues * inPtr)  {
+  macroAssignSharedObject (mSharedPtr, inPtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_enumerationAssociatedValues::AC_GALGAS_enumerationAssociatedValues (const AC_GALGAS_enumerationAssociatedValues & inSource) :
+mSharedPtr (nullptr) {
+  macroAssignSharedObject (mSharedPtr, inSource.mSharedPtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_enumerationAssociatedValues & AC_GALGAS_enumerationAssociatedValues::operator = (const AC_GALGAS_enumerationAssociatedValues & inSource) {
+  if (mSharedPtr != inSource.mSharedPtr) {
+    macroAssignSharedObject (mSharedPtr, inSource.mSharedPtr) ;
+  }
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_enumerationAssociatedValues::~ AC_GALGAS_enumerationAssociatedValues (void) {
+  macroDetachSharedObject (mSharedPtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void AC_GALGAS_enumerationAssociatedValues::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  if (nullptr != mSharedPtr) {
+    macroValidSharedObject (mSharedPtr, EnumerationAssociatedValues) ;
+    mSharedPtr->description (ioString, inIndentation) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult AC_GALGAS_enumerationAssociatedValues::objectCompare (const AC_GALGAS_enumerationAssociatedValues & inOperand) const {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+  if (mSharedPtr != inOperand.mSharedPtr) {
+    macroValidPointer (mSharedPtr) ;
+    result = mSharedPtr->compare (inOperand.mSharedPtr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// OLD
 //--------------------------------------------------------------------------------------------------
 
 cEnumAssociatedValues::cEnumAssociatedValues (LOCATION_ARGS) :
@@ -82,3 +165,4 @@ ComparisonResult AC_GALGAS_enumAssociatedValues::objectCompare (const AC_GALGAS_
 }
 
 //--------------------------------------------------------------------------------------------------
+

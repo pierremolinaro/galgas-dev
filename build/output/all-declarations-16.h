@@ -1216,13 +1216,16 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Property access
   public: class GALGAS_enumConstantListForGeneration readProperty_constantList (void) const ;
 
+  public: class GALGAS__5B_unifiedTypeMapEntry_5D_ readProperty_associatedValuesTypes (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_enumTypeForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                            const class GALGAS_enumConstantListForGeneration & inOperand1,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_enumTypeForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                const class GALGAS_enumConstantListForGeneration & inOperand1,
+                                                                const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1234,7 +1237,8 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_enumTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                    const class GALGAS_enumConstantListForGeneration & inOperand1
+                                                                    const class GALGAS_enumConstantListForGeneration & inOperand1,
+                                                                    const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1274,9 +1278,10 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void enumTypeForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                   const class GALGAS_enumConstantListForGeneration & inOperand1,
-                                                   Compiler * inCompiler) ;
+  public: void enumTypeForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                       const class GALGAS_enumConstantListForGeneration & inOperand1,
+                                                       const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
+                                                       Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -1298,6 +1303,7 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GALGAS_enumConstantListForGeneration mProperty_constantList ;
+  public: GALGAS__5B_unifiedTypeMapEntry_5D_ mProperty_associatedValuesTypes ;
 
 
 //--- Default constructor
@@ -1305,7 +1311,8 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Constructor
   public: cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                      const GALGAS_enumConstantListForGeneration & in_constantList
+                                      const GALGAS_enumConstantListForGeneration & in_constantList,
+                                      const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

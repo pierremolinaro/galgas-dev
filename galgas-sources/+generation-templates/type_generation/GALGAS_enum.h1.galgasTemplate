@@ -20,15 +20,37 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private properties
 %
 if HAS_ASSOCIATED_VALUES then
-  %  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n%
+  %  private: AC_GALGAS_enumerationAssociatedValues mAssociatedValues ;\n%
+  %  private: AC_GALGAS_enumAssociatedValues mAssociatedValuesEX ;\n%
   %  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n%
-  %    return mAssociatedValues.unsafePointer () ;\n%
+  %    return mAssociatedValuesEX.unsafePointer () ;\n%
   %  }\n\n%
 end
 %  private: Enumeration mEnum ;
 
+//--------------------------------- Associated value getters
+%
+for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
+  if [mAssociatedValueTypeList count] > 0 then
+    %public: void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
+    for (mType valueName) in mAssociatedValueTypeList
+    do (idx) %class GALGAS_%![mType identifierRepresentation]% & out_%!valueName
+    between %,\n%!^
+    end
+    %) const ;\n%
+  end
+end
+%
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return Enumeration::invalid != mEnum ; }
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mEnum = Enumeration::invalid ; }
-  public: inline Enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
 

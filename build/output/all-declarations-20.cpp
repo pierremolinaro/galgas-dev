@@ -8,6 +8,249 @@
 #include "all-declarations-20.h"
 
 //--------------------------------------------------------------------------------------------------
+// @nonterminalCallInstruction reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_nonterminalCallInstruction::cPtr_nonterminalCallInstruction (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (inCompiler COMMA_THERE),
+mProperty_mNonterminalName (),
+mProperty_mLabelName (),
+mProperty_mActualParameterList (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationResult () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_nonterminalCallInstruction::printNonNullClassInstanceProperties (void) const {
+    cPtr_syntaxInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mNonterminalName.printNonNullClassInstanceProperties ("mNonterminalName") ;
+    mProperty_mLabelName.printNonNullClassInstanceProperties ("mLabelName") ;
+    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
+    mProperty_mGrammarInstructionSyntaxDirectedTranslationResult.printNonNullClassInstanceProperties ("mGrammarInstructionSyntaxDirectedTranslationResult") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_nonterminalCallInstruction::objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nonterminalCallInstruction::GALGAS_nonterminalCallInstruction (void) :
+GALGAS_syntaxInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_nonterminalCallInstruction GALGAS_nonterminalCallInstruction::
+init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                          const GALGAS_lstring & in_mNonterminalName,
+                          const GALGAS_lstring & in_mLabelName,
+                          const GALGAS_actualParameterListAST & in_mActualParameterList,
+                          const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_nonterminalCallInstruction * object = nullptr ;
+  macroMyNew (object, cPtr_nonterminalCallInstruction (inCompiler COMMA_THERE)) ;
+  object->nonterminalCallInstruction_init_21__21__21__21__21_ (in_mInstructionLocation, in_mNonterminalName, in_mLabelName, in_mActualParameterList, in_mGrammarInstructionSyntaxDirectedTranslationResult, inCompiler) ;
+  const GALGAS_nonterminalCallInstruction result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_nonterminalCallInstruction::
+nonterminalCallInstruction_init_21__21__21__21__21_ (const GALGAS_location & in_mInstructionLocation,
+                                                     const GALGAS_lstring & in_mNonterminalName,
+                                                     const GALGAS_lstring & in_mLabelName,
+                                                     const GALGAS_actualParameterListAST & in_mActualParameterList,
+                                                     const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult,
+                                                     Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mNonterminalName = in_mNonterminalName ;
+  mProperty_mLabelName = in_mLabelName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationResult = in_mGrammarInstructionSyntaxDirectedTranslationResult ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nonterminalCallInstruction::GALGAS_nonterminalCallInstruction (const cPtr_nonterminalCallInstruction * inSourcePtr) :
+GALGAS_syntaxInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_nonterminalCallInstruction) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nonterminalCallInstruction GALGAS_nonterminalCallInstruction::class_func_new (const GALGAS_location & in_mInstructionLocation,
+                                                                                     const GALGAS_lstring & in_mNonterminalName,
+                                                                                     const GALGAS_lstring & in_mLabelName,
+                                                                                     const GALGAS_actualParameterListAST & in_mActualParameterList,
+                                                                                     const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult
+                                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_nonterminalCallInstruction result ;
+  macroMyNew (result.mObjectPtr, cPtr_nonterminalCallInstruction (in_mInstructionLocation, in_mNonterminalName, in_mLabelName, in_mActualParameterList, in_mGrammarInstructionSyntaxDirectedTranslationResult COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_nonterminalCallInstruction::readProperty_mNonterminalName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_nonterminalCallInstruction * p = (cPtr_nonterminalCallInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_nonterminalCallInstruction) ;
+    return p->mProperty_mNonterminalName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_nonterminalCallInstruction::readProperty_mLabelName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_nonterminalCallInstruction * p = (cPtr_nonterminalCallInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_nonterminalCallInstruction) ;
+    return p->mProperty_mLabelName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_actualParameterListAST GALGAS_nonterminalCallInstruction::readProperty_mActualParameterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_actualParameterListAST () ;
+  }else{
+    cPtr_nonterminalCallInstruction * p = (cPtr_nonterminalCallInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_nonterminalCallInstruction) ;
+    return p->mProperty_mActualParameterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult GALGAS_nonterminalCallInstruction::readProperty_mGrammarInstructionSyntaxDirectedTranslationResult (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult () ;
+  }else{
+    cPtr_nonterminalCallInstruction * p = (cPtr_nonterminalCallInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_nonterminalCallInstruction) ;
+    return p->mProperty_mGrammarInstructionSyntaxDirectedTranslationResult ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @nonterminalCallInstruction class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_nonterminalCallInstruction::cPtr_nonterminalCallInstruction (const GALGAS_location & in_mInstructionLocation,
+                                                                  const GALGAS_lstring & in_mNonterminalName,
+                                                                  const GALGAS_lstring & in_mLabelName,
+                                                                  const GALGAS_actualParameterListAST & in_mActualParameterList,
+                                                                  const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationResult
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
+mProperty_mNonterminalName (),
+mProperty_mLabelName (),
+mProperty_mActualParameterList (),
+mProperty_mGrammarInstructionSyntaxDirectedTranslationResult () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mNonterminalName = in_mNonterminalName ;
+  mProperty_mLabelName = in_mLabelName ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationResult = in_mGrammarInstructionSyntaxDirectedTranslationResult ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_nonterminalCallInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalCallInstruction ;
+}
+
+void cPtr_nonterminalCallInstruction::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@nonterminalCallInstruction:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLabelName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGrammarInstructionSyntaxDirectedTranslationResult.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_nonterminalCallInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_nonterminalCallInstruction (mProperty_mInstructionLocation, mProperty_mNonterminalName, mProperty_mLabelName, mProperty_mActualParameterList, mProperty_mGrammarInstructionSyntaxDirectedTranslationResult COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @nonterminalCallInstruction generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalCallInstruction ("nonterminalCallInstruction",
+                                                                                  & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_nonterminalCallInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalCallInstruction ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_nonterminalCallInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_nonterminalCallInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nonterminalCallInstruction GALGAS_nonterminalCallInstruction::extractObject (const GALGAS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_nonterminalCallInstruction result ;
+  const GALGAS_nonterminalCallInstruction * p = (const GALGAS_nonterminalCallInstruction *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nonterminalCallInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("nonterminalCallInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @terminalCheckInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1939,21 +2182,21 @@ void extensionSetter_insertKey (GALGAS_descendantClassListMap & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_descendantClassListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 119)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 115)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_unifiedTypeMapEntryList var_aList_5189 ;
+      GALGAS_unifiedTypeMapEntryList var_aList_5026 ;
       const GALGAS_descendantClassListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5189, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5026, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 116)) ;
       {
-      var_aList_5189.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 121)) ;
+      var_aList_5026.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 117)) ;
       }
-      ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, var_aList_5189, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 122)) ;
+      ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, var_aList_5026, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 118)) ;
     }
   }
   if (kBoolFalse == test_0) {
-    GALGAS_unifiedTypeMapEntryList temp_3 = GALGAS_unifiedTypeMapEntryList::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 124)) ;
-    temp_3.enterElement (GALGAS_unifiedTypeMapEntryList_2D_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 124)) ;
-    ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 124)) ;
+    GALGAS_unifiedTypeMapEntryList temp_3 = GALGAS_unifiedTypeMapEntryList::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
+    temp_3.enterElement (GALGAS_unifiedTypeMapEntryList_2D_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
+    ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
   }
 }
 
@@ -45567,7 +45810,7 @@ void cGrammar_galgas_33_Grammar::nt_switch_5F_case_indexing (Lexique_galgasScann
 }
 
 void cGrammar_galgas_33_Grammar::nt_switch_5F_case_ (GALGAS_galgasDeclarationAST &  parameter_1,
-                                GALGAS_lstringlist &  parameter_2,
+                                GALGAS__5B_lstring_5D_ &  parameter_2,
                                 GALGAS_switchExtractedValuesListAST &  parameter_3,
                                 Lexique_galgasScanner_33_ * inLexique) {
   if (inLexique->nextProductionIndex () == 106) {

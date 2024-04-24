@@ -28,11 +28,64 @@
 
 //--------------------------------------------------------------------------------------------------
 
+class EnumerationAssociatedValues : public SharedObject {
+  public: const AC_GALGAS_root * mValuePtr ;
+
+  public: EnumerationAssociatedValues (const AC_GALGAS_root * inValuePtr COMMA_LOCATION_ARGS) ;
+
+  public: virtual void description (class String & ioString,
+                                    const int32_t inIndentation) const ;
+
+  public: virtual ComparisonResult compare (const EnumerationAssociatedValues * inOperand) const ;
+
+  public: virtual ~ EnumerationAssociatedValues (void) ;
+
+//--- No copy
+  private: EnumerationAssociatedValues (const EnumerationAssociatedValues &) = delete ;
+  private: EnumerationAssociatedValues operator = (const EnumerationAssociatedValues &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class AC_GALGAS_enumerationAssociatedValues final {
+  private: const EnumerationAssociatedValues * mSharedPtr ;
+
+//--- Default constructor
+  public: AC_GALGAS_enumerationAssociatedValues (void) ;
+
+//---
+  public: void assignPointer (const EnumerationAssociatedValues * inUniquePtr) ;
+
+//--- Handle copy
+  public: AC_GALGAS_enumerationAssociatedValues (const AC_GALGAS_enumerationAssociatedValues & inSource) ;
+  public: AC_GALGAS_enumerationAssociatedValues & operator = (const AC_GALGAS_enumerationAssociatedValues & inSource) ;
+
+//--- Destructor
+  public: virtual ~ AC_GALGAS_enumerationAssociatedValues (void) ;
+
+//---
+  public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const ;
+
+
+  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const AC_GALGAS_enumerationAssociatedValues & inOperand) const ;
+
+  public: VIRTUAL_IN_DEBUG const AC_GALGAS_root * associatedValuesPointer (void) const {
+    const AC_GALGAS_root * p = (mSharedPtr == nullptr) ? nullptr : mSharedPtr->mValuePtr ;
+    macroValidPointer (p) ;
+    return p ;
+  }
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// OLD
+//--------------------------------------------------------------------------------------------------
+
 class cEnumAssociatedValues : public SharedObject {
   public: cEnumAssociatedValues (LOCATION_ARGS) ;
 
   public: virtual void description (class String & ioString,
-                                     const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const = 0 ;
+
   public: virtual ComparisonResult compare (const cEnumAssociatedValues * /* inOperand */) const {
     return ComparisonResult::invalid ;
   }
@@ -42,7 +95,7 @@ class cEnumAssociatedValues : public SharedObject {
 
 //--------------------------------------------------------------------------------------------------
 
-class AC_GALGAS_enumAssociatedValues {
+class AC_GALGAS_enumAssociatedValues final {
   private: const cEnumAssociatedValues * mSharedPtr ;
 
 //--- Default constructor

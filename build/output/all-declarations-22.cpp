@@ -10221,21 +10221,21 @@ GALGAS_unifiedTypeMap_2D_element_3F_ GALGAS_unifiedTypeMap_2D_element_3F_::extra
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeDefinition_2E_solved::GALGAS_typeDefinition_2E_solved (void) :
+GALGAS_typeDefinition_2D_solved::GALGAS_typeDefinition_2D_solved (void) :
 mProperty_definition () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeDefinition_2E_solved::~ GALGAS_typeDefinition_2E_solved (void) {
+GALGAS_typeDefinition_2D_solved::~ GALGAS_typeDefinition_2D_solved (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::init_21_ (const GALGAS_unifiedTypeDefinition & in_definition,
+GALGAS_typeDefinition_2D_solved GALGAS_typeDefinition_2D_solved::init_21_ (const GALGAS_unifiedTypeDefinition & in_definition,
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_typeDefinition_2E_solved result ;
+  GALGAS_typeDefinition_2D_solved result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_definition = in_definition ;
   return result ;
@@ -10243,21 +10243,21 @@ GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::init_21_ (const
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeDefinition_2E_solved::setInitializedProperties (Compiler * /* inCompiler */) {
+void GALGAS_typeDefinition_2D_solved::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeDefinition_2E_solved::GALGAS_typeDefinition_2E_solved (const GALGAS_unifiedTypeDefinition & inOperand0) :
+GALGAS_typeDefinition_2D_solved::GALGAS_typeDefinition_2D_solved (const GALGAS_unifiedTypeDefinition & inOperand0) :
 mProperty_definition (inOperand0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::class_func_new (const GALGAS_unifiedTypeDefinition & in_definition,
+GALGAS_typeDefinition_2D_solved GALGAS_typeDefinition_2D_solved::class_func_new (const GALGAS_unifiedTypeDefinition & in_definition,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_typeDefinition_2E_solved result ;
+  GALGAS_typeDefinition_2D_solved result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_definition = in_definition ;
   return result ;
@@ -10265,21 +10265,21 @@ GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::class_func_new 
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_typeDefinition_2E_solved::isValid (void) const {
+bool GALGAS_typeDefinition_2D_solved::isValid (void) const {
   return mProperty_definition.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeDefinition_2E_solved::drop (void) {
+void GALGAS_typeDefinition_2D_solved::drop (void) {
   mProperty_definition.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeDefinition_2E_solved::description (String & ioString,
+void GALGAS_typeDefinition_2D_solved::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @typeDefinition.solved:") ;
+  ioString.appendCString ("<struct @typeDefinition-solved:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
@@ -10290,41 +10290,41 @@ void GALGAS_typeDefinition_2E_solved::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @typeDefinition.solved generic code implementation
+//     @typeDefinition-solved generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved ("typeDefinition.solved",
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2D_solved ("typeDefinition-solved",
                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_typeDefinition_2E_solved::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeDefinition_2E_solved ;
+const C_galgas_type_descriptor * GALGAS_typeDefinition_2D_solved::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typeDefinition_2D_solved ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_typeDefinition_2E_solved::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_typeDefinition_2D_solved::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_typeDefinition_2E_solved (*this)) ;
+    macroMyNew (result, GALGAS_typeDefinition_2D_solved (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeDefinition_2E_solved GALGAS_typeDefinition_2E_solved::extractObject (const GALGAS_object & inObject,
+GALGAS_typeDefinition_2D_solved GALGAS_typeDefinition_2D_solved::extractObject (const GALGAS_object & inObject,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_typeDefinition_2E_solved result ;
-  const GALGAS_typeDefinition_2E_solved * p = (const GALGAS_typeDefinition_2E_solved *) inObject.embeddedObject () ;
+  GALGAS_typeDefinition_2D_solved result ;
+  const GALGAS_typeDefinition_2D_solved * p = (const GALGAS_typeDefinition_2D_solved *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_typeDefinition_2E_solved *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_typeDefinition_2D_solved *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("typeDefinition.solved", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("typeDefinition-solved", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14890,7 +14890,7 @@ GALGAS_constantIndexMap_2D_element::~ GALGAS_constantIndexMap_2D_element (void) 
 
 GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::init_21__21__21_ (const GALGAS_lstring & in_lkey,
                                                                                          const GALGAS_uint & in_mIndex,
-                                                                                         const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList,
+                                                                                         const GALGAS_associatedValueDescriptorList & in_mAssociatedTypeList,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constantIndexMap_2D_element result ;
@@ -14910,7 +14910,7 @@ void GALGAS_constantIndexMap_2D_element::setInitializedProperties (Compiler * /*
 
 GALGAS_constantIndexMap_2D_element::GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & inOperand0,
                                                                         const GALGAS_uint & inOperand1,
-                                                                        const GALGAS_unifiedTypeMapEntryList & inOperand2) :
+                                                                        const GALGAS_associatedValueDescriptorList & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1),
 mProperty_mAssociatedTypeList (inOperand2) {
@@ -14920,7 +14920,7 @@ mProperty_mAssociatedTypeList (inOperand2) {
 
 GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
                                                                                        const GALGAS_uint & in_mIndex,
-                                                                                       const GALGAS_unifiedTypeMapEntryList & in_mAssociatedTypeList,
+                                                                                       const GALGAS_associatedValueDescriptorList & in_mAssociatedTypeList,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constantIndexMap_2D_element result ;

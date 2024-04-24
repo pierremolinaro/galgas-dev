@@ -2257,7 +2257,7 @@ class cParser_galgas_34_InstructionsSyntax {
   protected: virtual void nt_semantic_5F_instruction_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_switch_5F_case_ (class GALGAS_galgasDeclarationAST & ioArgument0,
-                                              class GALGAS_lstringlist & outArgument1,
+                                              class GALGAS__5B_lstring_5D_ & outArgument1,
                                               class GALGAS_switchExtractedValuesListAST & outArgument2,
                                               class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
@@ -2635,7 +2635,7 @@ class cParser_galgas_34_InstructionsSyntax {
   protected: void rule_galgas_34_InstructionsSyntax_semantic_5F_instruction_i41_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_InstructionsSyntax_switch_5F_case_i42_ (GALGAS_galgasDeclarationAST & ioArgument0,
-                                                                         GALGAS_lstringlist & outArgument1,
+                                                                         GALGAS__5B_lstring_5D_ & outArgument1,
                                                                          GALGAS_switchExtractedValuesListAST & outArgument2,
                                                                          Lexique_galgasScanner_34_ * inLexique) ;
 

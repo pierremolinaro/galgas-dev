@@ -97,10 +97,6 @@ list @unifiedTypeMapEntryList %equatable {
   public var @unifiedTypeMapEntry mEntry
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-// listmap @descendantClassListMap (@unifiedTypeMapEntryList)
-
 //——————————————————————————————————————————————————————————————————————————————————————————————
 
 dict @descendantClassListMapDictionary : @string {

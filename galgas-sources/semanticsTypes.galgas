@@ -249,9 +249,16 @@ enum @headerKind %equatable {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+list @associatedValueDescriptorList %equatable {
+  private let @unifiedTypeMapEntry type
+  private let @string name
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 map @constantIndexMap %equatable {
   public let @uint mIndex
-  public let @unifiedTypeMapEntryList mAssociatedTypeList
+  public let @associatedValueDescriptorList mAssociatedTypeList
   insert insertKey error message "the '%K' constant is already declared"
   search searchKey error message "the '%K' constant is not declared"
 }
