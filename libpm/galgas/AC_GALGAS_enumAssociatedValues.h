@@ -36,8 +36,6 @@ class EnumerationAssociatedValues : public SharedObject {
   public: virtual void description (class String & ioString,
                                     const int32_t inIndentation) const ;
 
-  public: virtual ComparisonResult compare (const EnumerationAssociatedValues * inOperand) const ;
-
   public: virtual ~ EnumerationAssociatedValues (void) ;
 
 //--- No copy
@@ -67,8 +65,6 @@ class AC_GALGAS_enumerationAssociatedValues final {
   public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const ;
 
   public: VIRTUAL_IN_DEBUG void drop (void) ;
-  
-  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const AC_GALGAS_enumerationAssociatedValues & inOperand) const ;
 
   public: VIRTUAL_IN_DEBUG const AC_GALGAS_root * associatedValuesPointer (void) const {
     const AC_GALGAS_root * p = (mSharedPtr == nullptr) ? nullptr : mSharedPtr->mValuePtr ;

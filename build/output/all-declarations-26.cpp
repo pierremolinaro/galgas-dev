@@ -4506,7 +4506,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           enumerator_9452.gotoNextObject () ;
         }
       }
-      result.appendString ("      default:\n        result = ComparisonResult::operandEqual ;\n        break ;\n      }\n      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n      if (result != r) {\n        printf (\"ERROR***************\\n\") ;\n        exit (1) ;\n      }\n      result = r ;\n") ;
+      result.appendString ("      default:\n        result = ComparisonResult::operandEqual ;\n        break ;\n      }\n") ;
       } break ;
     case kBoolFalse : {
       result.appendString ("      result = ComparisonResult::operandEqual ;\n") ;

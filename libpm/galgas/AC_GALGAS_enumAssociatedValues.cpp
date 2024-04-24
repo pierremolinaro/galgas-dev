@@ -45,24 +45,6 @@ void EnumerationAssociatedValues::description (class String & /* ioString */,
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult EnumerationAssociatedValues::compare (const EnumerationAssociatedValues * inOperand) const {
-  const AC_GALGAS_root * leftObjectPtr = mValuePtr ;
-  const AC_GALGAS_root * rightObjectPtr = (inOperand == nullptr) ? nullptr : inOperand->mValuePtr ;
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (leftObjectPtr == rightObjectPtr) {
-    result = ComparisonResult::operandEqual ;
-  }else{
-    macroValidPointer (leftObjectPtr) ;
-    macroValidPointer (rightObjectPtr) ;
-    const std::type_info & leftType = typeid (*leftObjectPtr) ;
-    const std::type_info & rightType = typeid (*rightObjectPtr) ;
-    std::cout << "LEFT '" << leftType.name () << "', RIGHT'" << rightType.name () << "'\n" ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 AC_GALGAS_enumerationAssociatedValues::AC_GALGAS_enumerationAssociatedValues (void) :
 mSharedPtr (nullptr) {
 }
@@ -109,17 +91,6 @@ void AC_GALGAS_enumerationAssociatedValues::description (String & ioString,
     macroValidSharedObject (mSharedPtr, EnumerationAssociatedValues) ;
     mSharedPtr->description (ioString, inIndentation) ;
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult AC_GALGAS_enumerationAssociatedValues::objectCompare (const AC_GALGAS_enumerationAssociatedValues & inOperand) const {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (mSharedPtr != inOperand.mSharedPtr) {
-    macroValidPointer (mSharedPtr) ;
-    result = mSharedPtr->compare (inOperand.mSharedPtr) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -2334,12 +2334,6 @@ ComparisonResult GALGAS_unifiedTypeMapEntry::objectCompare (const GALGAS_unified
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
-      if (result != r) {
-        printf ("ERROR***************\n") ;
-        exit (1) ;
-      }
-      result = r ;
     }
   }
   return result ;

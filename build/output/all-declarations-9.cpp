@@ -7416,12 +7416,6 @@ ComparisonResult GALGAS_selfAvailability::objectCompare (const GALGAS_selfAvaila
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
-      if (result != r) {
-        printf ("ERROR***************\n") ;
-        exit (1) ;
-      }
-      result = r ;
     }
   }
   return result ;

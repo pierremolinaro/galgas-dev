@@ -114,7 +114,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
       %    outAssociatedValue%![idx string]%.drop () ;\n%
     end
     %    String s ;\n%
-    %    s.appendCString ("method @%!TYPE_IDENTIFIER% %!mConstantName% invoked with an invalid enum value") ;\n%
+    %    s.appendCString ("method @%!TYPE_IDENTIFIER%.%!mConstantName% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
@@ -215,12 +215,6 @@ end
 %        result = ComparisonResult::operandEqual ;\n%
 %        break ;\n%
 %      }\n%
-%      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n%
-%      if (result != r) {\n%
-%        printf ("ERROR***************\\n") ;\n%
-%        exit (1) ;\n%
-%      }\n%
-%      result = r ;\n%
 else
 %      result = ComparisonResult::operandEqual ;\n%
 end
