@@ -214,9 +214,9 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           !isUsefull: true
         )
         ioDeclarations.mDeclarationList += !s
+        [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: associatedTypeName !isPredefined: false]
       end
     end
-#    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
   }
 
   #·······························································································
@@ -363,13 +363,13 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method semanticAnalysis
-    ?!@lstringlist unused ioUsefulnessRootEntities
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @string unused inProductDirectory
-    ?let @semanticContext unused inSemanticContext
-                                  ?!@unifiedTypeMap ioTypeMap
-    ?let @predefinedTypes unused inPredefinedTypes
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+                    ?!@lstringlist unused ioUsefulnessRootEntities
+                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                    ?let @string unused inProductDirectory
+                    ?let @semanticContext unused inSemanticContext
+                    ?!@unifiedTypeMap ioTypeMap
+                    ?let @predefinedTypes unused inPredefinedTypes
+                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
   #--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.enumTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -381,7 +381,8 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     for constant in self.constantList do
       if [constant.associatedValueTypeList count] > 0 then
         let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
-        let associatedType = [ioTypeMap typeMapEntryForLKey !associatedTypeName]
+        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
+        let associatedType = [ioTypeMap typeMapEntryForLKey !optionalTypeName]
         [!?associatedValuesTypes append !associatedType]    
       end
       constantList += !constant.name.string

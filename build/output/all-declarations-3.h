@@ -5918,7 +5918,7 @@ class GALGAS_methodKind : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
+//--------------------------------- Associated value getter and extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6010,7 +6010,7 @@ class GALGAS_methodQualifier : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
+//--------------------------------- Associated value getter and extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {

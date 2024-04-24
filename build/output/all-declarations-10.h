@@ -2904,7 +2904,7 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
+//--------------------------------- Associated value getter and extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -4120,16 +4120,19 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_regularExp (class GALGAS_semanticExpressionAST & out_exp,
-                                                class GALGAS_location & out_endOfExp) const ;
-public: void getAssociatedValuesFor_letExp (class GALGAS_lstring & out_constantName,
-                                            class GALGAS_semanticExpressionAST & out_exp,
-                                            class GALGAS_location & out_endOfExp,
-                                            class GALGAS_lstring & out_typeName) const ;
-public: void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionAST & out_receiver,
-                                                        class GALGAS_lstring & out_optionalMethodName,
-                                                        class GALGAS_optionalMethodActualArgumentList & out_parameters) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_ifExpressionKind_2D_regularExp_3F_ getter_regularExp (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_regularExp (class GALGAS_semanticExpressionAST & out_exp,
+                                                  class GALGAS_location & out_endOfExp) const ;
+  public: class GALGAS_ifExpressionKind_2D_letExp_3F_ getter_letExp (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_letExp (class GALGAS_lstring & out_constantName,
+                                              class GALGAS_semanticExpressionAST & out_exp,
+                                              class GALGAS_location & out_endOfExp,
+                                              class GALGAS_lstring & out_typeName) const ;
+  public: class GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ getter_optionalMethodCall (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionAST & out_receiver,
+                                                          class GALGAS_lstring & out_optionalMethodName,
+                                                          class GALGAS_optionalMethodActualArgumentList & out_parameters) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -4573,6 +4576,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: ifExpressionKind-letExp? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifExpressionKind_2D_letExp_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifExpressionKind_2D_letExp mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifExpressionKind_2D_letExp_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifExpressionKind_2D_letExp_3F_ (const GALGAS_ifExpressionKind_2D_letExp & inValue) ;
+  public: static GALGAS_ifExpressionKind_2D_letExp_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifExpressionKind_2D_letExp unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifExpressionKind_2D_letExp_3F_ extractObject (const GALGAS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifExpressionKind_2D_letExp_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D_letExp_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @ifExpressionKind_2D_optionalMethodCall struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -4676,6 +4744,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: ifExpressionKind-optionalMethodCall? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifExpressionKind_2D_optionalMethodCall mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ (const GALGAS_ifExpressionKind_2D_optionalMethodCall & inValue) ;
+  public: static GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifExpressionKind_2D_optionalMethodCall unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @ifExpressionKind_2D_regularExp struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -4767,6 +4900,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: ifExpressionKind-regularExp? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifExpressionKind_2D_regularExp_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifExpressionKind_2D_regularExp mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifExpressionKind_2D_regularExp_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifExpressionKind_2D_regularExp_3F_ (const GALGAS_ifExpressionKind_2D_regularExp & inValue) ;
+  public: static GALGAS_ifExpressionKind_2D_regularExp_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifExpressionKind_2D_regularExp unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifExpressionKind_2D_regularExp_3F_ extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifExpressionKind_2D_regularExp_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D_regularExp_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //                                     Phase 1: @optionalMethodActualArgument enum                                     *
 //
 //--------------------------------------------------------------------------------------------------
@@ -4793,16 +4991,20 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionAST & out_expression,
-                                                  class GALGAS_location & out_location) const ;
-public: void getAssociatedValuesFor_actualLetInput (class GALGAS_lstring & out_typeName,
-                                                    class GALGAS_lstring & out_constantName) const ;
-public: void getAssociatedValuesFor_actualVarInput (class GALGAS_lstring & out_typeName,
-                                                    class GALGAS_lstring & out_variableName) const ;
-public: void getAssociatedValuesFor_actualInputJoker (class GALGAS_bool & out_checkSelector,
-                                                      class GALGAS_location & out_location,
-                                                      class GALGAS_uint & out_idx) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ getter_actualOutput (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionAST & out_expression,
+                                                    class GALGAS_location & out_location) const ;
+  public: class GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ getter_actualLetInput (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualLetInput (class GALGAS_lstring & out_typeName,
+                                                      class GALGAS_lstring & out_constantName) const ;
+  public: class GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ getter_actualVarInput (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualVarInput (class GALGAS_lstring & out_typeName,
+                                                      class GALGAS_lstring & out_variableName) const ;
+  public: class GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ getter_actualInputJoker (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualInputJoker (class GALGAS_bool & out_checkSelector,
+                                                        class GALGAS_location & out_location,
+                                                        class GALGAS_uint & out_idx) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -5089,6 +5291,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActua
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: optionalMethodActualArgument-actualInputJoker? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgument_2D_actualInputJoker mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualInputJoker & inValue) ;
+  public: static GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgument_2D_actualInputJoker unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @optionalMethodActualArgument_2D_actualLetInput struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -5177,6 +5444,71 @@ class GALGAS_optionalMethodActualArgument_2D_actualLetInput : public AC_GALGAS_r
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualLetInput ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: optionalMethodActualArgument-actualLetInput? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgument_2D_actualLetInput mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualLetInput & inValue) ;
+  public: static GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgument_2D_actualLetInput unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5271,6 +5603,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActua
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: optionalMethodActualArgument-actualOutput? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgument_2D_actualOutput mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualOutput & inValue) ;
+  public: static GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgument_2D_actualOutput unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @optionalMethodActualArgument_2D_actualVarInput struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -5359,6 +5756,71 @@ class GALGAS_optionalMethodActualArgument_2D_actualVarInput : public AC_GALGAS_r
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualVarInput ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: optionalMethodActualArgument-actualVarInput? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgument_2D_actualVarInput mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualVarInput & inValue) ;
+  public: static GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgument_2D_actualVarInput unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5905,18 +6367,22 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_regular (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
-public: void getAssociatedValuesFor_letExp (class GALGAS_string & out_targetVarCppName,
-                                            class GALGAS_semanticExpressionForGeneration & out_exp,
-                                            class GALGAS_unifiedTypeMapEntry & out_targetType,
-                                            class GALGAS_unifiedTypeMapEntry & out_testType) const ;
-public: void getAssociatedValuesFor_optionalExp (class GALGAS_string & out_targetVarCppName,
-                                                 class GALGAS_semanticExpressionForGeneration & out_exp,
-                                                 class GALGAS_unifiedTypeMapEntry & out_targetType) const ;
-public: void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionForGeneration & out_receiverExpression,
-                                                        class GALGAS_lstring & out_optionalMethodName,
-                                                        class GALGAS_optionalMethodActualArgumentListForGeneration & out_parameters) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_ifTestForGeneration_2D_regular_3F_ getter_regular (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_regular (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+  public: class GALGAS_ifTestForGeneration_2D_letExp_3F_ getter_letExp (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_letExp (class GALGAS_string & out_targetVarCppName,
+                                              class GALGAS_semanticExpressionForGeneration & out_exp,
+                                              class GALGAS_unifiedTypeMapEntry & out_targetType,
+                                              class GALGAS_unifiedTypeMapEntry & out_testType) const ;
+  public: class GALGAS_ifTestForGeneration_2D_optionalExp_3F_ getter_optionalExp (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_optionalExp (class GALGAS_string & out_targetVarCppName,
+                                                   class GALGAS_semanticExpressionForGeneration & out_exp,
+                                                   class GALGAS_unifiedTypeMapEntry & out_targetType) const ;
+  public: class GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ getter_optionalMethodCall (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionForGeneration & out_receiverExpression,
+                                                          class GALGAS_lstring & out_optionalMethodName,
+                                                          class GALGAS_optionalMethodActualArgumentListForGeneration & out_parameters) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6370,6 +6836,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: ifTestForGeneration-letExp? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifTestForGeneration_2D_letExp_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifTestForGeneration_2D_letExp mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifTestForGeneration_2D_letExp_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifTestForGeneration_2D_letExp_3F_ (const GALGAS_ifTestForGeneration_2D_letExp & inValue) ;
+  public: static GALGAS_ifTestForGeneration_2D_letExp_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifTestForGeneration_2D_letExp unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifTestForGeneration_2D_letExp_3F_ extractObject (const GALGAS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifTestForGeneration_2D_letExp_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_letExp_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @ifTestForGeneration_2D_optionalExp struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -6470,6 +7001,71 @@ class GALGAS_ifTestForGeneration_2D_optionalExp : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalExp ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: ifTestForGeneration-optionalExp? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifTestForGeneration_2D_optionalExp_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifTestForGeneration_2D_optionalExp mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifTestForGeneration_2D_optionalExp_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifTestForGeneration_2D_optionalExp_3F_ (const GALGAS_ifTestForGeneration_2D_optionalExp & inValue) ;
+  public: static GALGAS_ifTestForGeneration_2D_optionalExp_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifTestForGeneration_2D_optionalExp unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifTestForGeneration_2D_optionalExp_3F_ extractObject (const GALGAS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifTestForGeneration_2D_optionalExp_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalExp_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6576,6 +7172,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: ifTestForGeneration-optionalMethodCall? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifTestForGeneration_2D_optionalMethodCall mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ (const GALGAS_ifTestForGeneration_2D_optionalMethodCall & inValue) ;
+  public: static GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifTestForGeneration_2D_optionalMethodCall unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @ifTestForGeneration_2D_regular struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -6655,6 +7316,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: ifTestForGeneration-regular? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_ifTestForGeneration_2D_regular_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_ifTestForGeneration_2D_regular mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_ifTestForGeneration_2D_regular_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_ifTestForGeneration_2D_regular_3F_ (const GALGAS_ifTestForGeneration_2D_regular & inValue) ;
+  public: static GALGAS_ifTestForGeneration_2D_regular_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_ifTestForGeneration_2D_regular unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_ifTestForGeneration_2D_regular_3F_ extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_ifTestForGeneration_2D_regular_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_regular_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //                               Phase 1: @optionalMethodActualArgumentForGeneration enum                              *
 //
 //--------------------------------------------------------------------------------------------------
@@ -6680,12 +7406,15 @@ class GALGAS_optionalMethodActualArgumentForGeneration : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionForGeneration & out_expression) const ;
-public: void getAssociatedValuesFor_actualLetInput (class GALGAS_string & out_typeName,
-                                                    class GALGAS_string & out_constantName) const ;
-public: void getAssociatedValuesFor_actualVarInput (class GALGAS_string & out_typeName,
-                                                    class GALGAS_string & out_variableName) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ getter_actualOutput (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionForGeneration & out_expression) const ;
+  public: class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ getter_actualLetInput (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualLetInput (class GALGAS_string & out_typeName,
+                                                      class GALGAS_string & out_constantName) const ;
+  public: class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ getter_actualVarInput (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_actualVarInput (class GALGAS_string & out_typeName,
+                                                      class GALGAS_string & out_variableName) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6920,6 +7649,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActua
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: optionalMethodActualArgumentForGeneration-actualLetInput? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput & inValue) ;
+  public: static GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @optionalMethodActualArgumentForGeneration_2D_actualOutput struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -6996,6 +7790,71 @@ class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput : public 
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: optionalMethodActualArgumentForGeneration-actualOutput? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput & inValue) ;
+  public: static GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7087,6 +7946,71 @@ class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput : publi
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: optionalMethodActualArgumentForGeneration-actualVarInput? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput & inValue) ;
+  public: static GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //

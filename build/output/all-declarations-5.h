@@ -4237,6 +4237,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2D_cla
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: typeKindEnum-classType? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeKindEnum_2D_classType_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_typeKindEnum_2D_classType mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_typeKindEnum_2D_classType_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_typeKindEnum_2D_classType_3F_ (const GALGAS_typeKindEnum_2D_classType & inValue) ;
+  public: static GALGAS_typeKindEnum_2D_classType_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_typeKindEnum_2D_classType unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_typeKindEnum_2D_classType_3F_ extractObject (const GALGAS_object & inObject,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_typeKindEnum_2D_classType_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2D_classType_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @typeKindEnum_2D_enumType struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -4315,6 +4380,71 @@ class GALGAS_typeKindEnum_2D_enumType : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2D_enumType ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: typeKindEnum-enumType? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeKindEnum_2D_enumType_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_typeKindEnum_2D_enumType mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_typeKindEnum_2D_enumType_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_typeKindEnum_2D_enumType_3F_ (const GALGAS_typeKindEnum_2D_enumType & inValue) ;
+  public: static GALGAS_typeKindEnum_2D_enumType_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_typeKindEnum_2D_enumType unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_typeKindEnum_2D_enumType_3F_ extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_typeKindEnum_2D_enumType_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2D_enumType_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4399,6 +4529,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: typeKindEnum-weakReferenceType? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeKindEnum_2D_weakReferenceType_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_typeKindEnum_2D_weakReferenceType mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_typeKindEnum_2D_weakReferenceType_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_typeKindEnum_2D_weakReferenceType_3F_ (const GALGAS_typeKindEnum_2D_weakReferenceType & inValue) ;
+  public: static GALGAS_typeKindEnum_2D_weakReferenceType_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_typeKindEnum_2D_weakReferenceType unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_typeKindEnum_2D_weakReferenceType_3F_ extractObject (const GALGAS_object & inObject,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_typeKindEnum_2D_weakReferenceType_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2D_weakReferenceType_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //                                             Phase 1: @AccessControl enum                                            *
 //
 //--------------------------------------------------------------------------------------------------
@@ -4428,13 +4623,19 @@ class GALGAS_AccessControl : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_protectedAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
-public: void getAssociatedValuesFor_protectedSetAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
-public: void getAssociatedValuesFor_privateAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
-public: void getAssociatedValuesFor_privateSetAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
-public: void getAssociatedValuesFor_fileprivateAccess (class GALGAS_location & out_declarationLocation) const ;
-public: void getAssociatedValuesFor_fileprivateSetAccess (class GALGAS_location & out_declarationLocation) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_AccessControl_2D_protectedAccess_3F_ getter_protectedAccess (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_protectedAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
+  public: class GALGAS_AccessControl_2D_protectedSetAccess_3F_ getter_protectedSetAccess (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_protectedSetAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
+  public: class GALGAS_AccessControl_2D_privateAccess_3F_ getter_privateAccess (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_privateAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
+  public: class GALGAS_AccessControl_2D_privateSetAccess_3F_ getter_privateSetAccess (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_privateSetAccess (class GALGAS_unifiedTypeMapEntry & out_declaringType) const ;
+  public: class GALGAS_AccessControl_2D_fileprivateAccess_3F_ getter_fileprivateAccess (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fileprivateAccess (class GALGAS_location & out_declarationLocation) const ;
+  public: class GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ getter_fileprivateSetAccess (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fileprivateSetAccess (class GALGAS_location & out_declarationLocation) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6730,8 +6931,9 @@ class GALGAS_localVarValuation : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_declared (class GALGAS_bool & out_usedInSubscope) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_localVarValuation_2D_declared_3F_ getter_declared (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_declared (class GALGAS_bool & out_usedInSubscope) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6921,6 +7123,71 @@ class GALGAS_localVarValuation_2D_declared : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation_2D_declared ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: localVarValuation-declared? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_localVarValuation_2D_declared_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_localVarValuation_2D_declared mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_localVarValuation_2D_declared_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_localVarValuation_2D_declared_3F_ (const GALGAS_localVarValuation_2D_declared & inValue) ;
+  public: static GALGAS_localVarValuation_2D_declared_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_localVarValuation_2D_declared unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_localVarValuation_2D_declared_3F_ extractObject (const GALGAS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_localVarValuation_2D_declared_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation_2D_declared_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7609,10 +7876,12 @@ class GALGAS_overrideKind : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_selectOverrideFirstBranch (class GALGAS_currentVarManager & out_savedManager) const ;
-public: void getAssociatedValuesFor_selectOverrideNextBranches (class GALGAS_currentVarManager & out_savedManager,
-                                                                class GALGAS_currentVarManager & out_referenceManager) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ getter_selectOverrideFirstBranch (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_selectOverrideFirstBranch (class GALGAS_currentVarManager & out_savedManager) const ;
+  public: class GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ getter_selectOverrideNextBranches (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_selectOverrideNextBranches (class GALGAS_currentVarManager & out_savedManager,
+                                                                  class GALGAS_currentVarManager & out_referenceManager) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -7898,6 +8167,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2D_sel
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: overrideKind-selectOverrideFirstBranch? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_overrideKind_2D_selectOverrideFirstBranch mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ (const GALGAS_overrideKind_2D_selectOverrideFirstBranch & inValue) ;
+  public: static GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_overrideKind_2D_selectOverrideFirstBranch unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @overrideKind_2D_selectOverrideNextBranches struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -7986,6 +8320,71 @@ class GALGAS_overrideKind_2D_selectOverrideNextBranches : public AC_GALGAS_root 
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2D_selectOverrideNextBranches ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: overrideKind-selectOverrideNextBranches? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_overrideKind_2D_selectOverrideNextBranches mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ (const GALGAS_overrideKind_2D_selectOverrideNextBranches & inValue) ;
+  public: static GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_overrideKind_2D_selectOverrideNextBranches unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8787,6 +9186,71 @@ class GALGAS_typeDefinition_2D_solved : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2D_solved ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: typeDefinition-solved? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeDefinition_2D_solved_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_typeDefinition_2D_solved mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_typeDefinition_2D_solved_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_typeDefinition_2D_solved_3F_ (const GALGAS_typeDefinition_2D_solved & inValue) ;
+  public: static GALGAS_typeDefinition_2D_solved_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_typeDefinition_2D_solved unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_typeDefinition_2D_solved_3F_ extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_typeDefinition_2D_solved_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition_2D_solved_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9599,9 +10063,10 @@ class GALGAS_selfAvailability : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_available (class GALGAS_unifiedTypeMapEntry & out_type,
-                                               class GALGAS_selfMutability & out_selfMutability) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_selfAvailability_2D_available_3F_ getter_available (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_available (class GALGAS_unifiedTypeMapEntry & out_type,
+                                                 class GALGAS_selfMutability & out_selfMutability) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {

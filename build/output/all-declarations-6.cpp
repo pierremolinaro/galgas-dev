@@ -4964,9 +4964,31 @@ void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & out
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ GALGAS_AccessControlAST::getter_fileprivateAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_fileprivateAccess) {
+    const auto ptr = (const GALGAS_AccessControlAST_2D_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControlAST_2D_fileprivateAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControlAST::getAssociatedValuesFor_fileprivateAccess (GALGAS_location & out_declarationLocation) const {
   const auto ptr = (const GALGAS_AccessControlAST_2D_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
   out_declarationLocation = ptr->mProperty_declarationLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ GALGAS_AccessControlAST::getter_fileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_fileprivateSetAccess) {
+    const auto ptr = (const GALGAS_AccessControlAST_2D_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControlAST_2D_fileprivateSetAccess (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5221,6 +5243,17 @@ void GALGAS_propertyInCollectionInitializationAST::method_some (GALGAS_semanticE
     const cEnumAssociatedValues_propertyInCollectionInitializationAST_some * ptr = (const cEnumAssociatedValues_propertyInCollectionInitializationAST_some *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ GALGAS_propertyInCollectionInitializationAST::getter_some (UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ result ;
+  if (mEnum == Enumeration::enum_some) {
+    const auto ptr = (const GALGAS_propertyInCollectionInitializationAST_2D_some *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_propertyInCollectionInitializationAST_2D_some (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14086,9 +14119,31 @@ void GALGAS_AccessControl::method_fileprivateSetAccess (GALGAS_location & outAss
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_AccessControl_2D_protectedAccess_3F_ GALGAS_AccessControl::getter_protectedAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControl_2D_protectedAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_protectedAccess) {
+    const auto ptr = (const GALGAS_AccessControl_2D_protectedAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControl_2D_protectedAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControl::getAssociatedValuesFor_protectedAccess (GALGAS_unifiedTypeMapEntry & out_declaringType) const {
   const auto ptr = (const GALGAS_AccessControl_2D_protectedAccess *) mAssociatedValues.associatedValuesPointer () ;
   out_declaringType = ptr->mProperty_declaringType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_AccessControl_2D_protectedSetAccess_3F_ GALGAS_AccessControl::getter_protectedSetAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControl_2D_protectedSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_protectedSetAccess) {
+    const auto ptr = (const GALGAS_AccessControl_2D_protectedSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControl_2D_protectedSetAccess (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14100,9 +14155,31 @@ void GALGAS_AccessControl::getAssociatedValuesFor_protectedSetAccess (GALGAS_uni
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_AccessControl_2D_privateAccess_3F_ GALGAS_AccessControl::getter_privateAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControl_2D_privateAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_privateAccess) {
+    const auto ptr = (const GALGAS_AccessControl_2D_privateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControl_2D_privateAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControl::getAssociatedValuesFor_privateAccess (GALGAS_unifiedTypeMapEntry & out_declaringType) const {
   const auto ptr = (const GALGAS_AccessControl_2D_privateAccess *) mAssociatedValues.associatedValuesPointer () ;
   out_declaringType = ptr->mProperty_declaringType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_AccessControl_2D_privateSetAccess_3F_ GALGAS_AccessControl::getter_privateSetAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControl_2D_privateSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_privateSetAccess) {
+    const auto ptr = (const GALGAS_AccessControl_2D_privateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControl_2D_privateSetAccess (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14114,9 +14191,31 @@ void GALGAS_AccessControl::getAssociatedValuesFor_privateSetAccess (GALGAS_unifi
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_AccessControl_2D_fileprivateAccess_3F_ GALGAS_AccessControl::getter_fileprivateAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControl_2D_fileprivateAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_fileprivateAccess) {
+    const auto ptr = (const GALGAS_AccessControl_2D_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControl_2D_fileprivateAccess (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControl::getAssociatedValuesFor_fileprivateAccess (GALGAS_location & out_declarationLocation) const {
   const auto ptr = (const GALGAS_AccessControl_2D_fileprivateAccess *) mAssociatedValues.associatedValuesPointer () ;
   out_declarationLocation = ptr->mProperty_declarationLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ GALGAS_AccessControl::getter_fileprivateSetAccess (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ result ;
+  if (mEnum == Enumeration::enum_fileprivateSetAccess) {
+    const auto ptr = (const GALGAS_AccessControl_2D_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_AccessControl_2D_fileprivateSetAccess (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

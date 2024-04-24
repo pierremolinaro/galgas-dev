@@ -8994,6 +8994,17 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_selfAvailability_2D_available_3F_ GALGAS_selfAvailability::getter_available (UNUSED_LOCATION_ARGS) const {
+  GALGAS_selfAvailability_2D_available_3F_ result ;
+  if (mEnum == Enumeration::enum_available) {
+    const auto ptr = (const GALGAS_selfAvailability_2D_available *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_selfAvailability_2D_available (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_selfAvailability::getAssociatedValuesFor_available (GALGAS_unifiedTypeMapEntry & out_type,
                                                                 GALGAS_selfMutability & out_selfMutability) const {
   const auto ptr = (const GALGAS_selfAvailability_2D_available *) mAssociatedValues.associatedValuesPointer () ;
@@ -12760,6 +12771,17 @@ void GALGAS_fixitElementAST::method_fixItInsertBefore (GALGAS_semanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_fixitElementAST_2D_fixItReplace_3F_ GALGAS_fixitElementAST::getter_fixItReplace (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitElementAST_2D_fixItReplace_3F_ result ;
+  if (mEnum == Enumeration::enum_fixItReplace) {
+    const auto ptr = (const GALGAS_fixitElementAST_2D_fixItReplace *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_fixitElementAST_2D_fixItReplace (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_fixitElementAST::getAssociatedValuesFor_fixItReplace (GALGAS_semanticExpressionAST & out_exp,
                                                                   GALGAS_location & out_errorLocation) const {
   const auto ptr = (const GALGAS_fixitElementAST_2D_fixItReplace *) mAssociatedValues.associatedValuesPointer () ;
@@ -12769,11 +12791,33 @@ void GALGAS_fixitElementAST::getAssociatedValuesFor_fixItReplace (GALGAS_semanti
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ GALGAS_fixitElementAST::getter_fixItInsertAfter (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ result ;
+  if (mEnum == Enumeration::enum_fixItInsertAfter) {
+    const auto ptr = (const GALGAS_fixitElementAST_2D_fixItInsertAfter *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_fixitElementAST_2D_fixItInsertAfter (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_fixitElementAST::getAssociatedValuesFor_fixItInsertAfter (GALGAS_semanticExpressionAST & out_exp,
                                                                       GALGAS_location & out_errorLocation) const {
   const auto ptr = (const GALGAS_fixitElementAST_2D_fixItInsertAfter *) mAssociatedValues.associatedValuesPointer () ;
   out_exp = ptr->mProperty_exp ;
   out_errorLocation = ptr->mProperty_errorLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ GALGAS_fixitElementAST::getter_fixItInsertBefore (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ result ;
+  if (mEnum == Enumeration::enum_fixItInsertBefore) {
+    const auto ptr = (const GALGAS_fixitElementAST_2D_fixItInsertBefore *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_fixitElementAST_2D_fixItInsertBefore (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13917,6 +13961,17 @@ void GALGAS_fixitElementForGeneration::method_fixItInsertAfter (GALGAS_semanticE
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ GALGAS_fixitElementForGeneration::getter_fixItReplace (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ result ;
+  if (mEnum == Enumeration::enum_fixItReplace) {
+    const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItReplace *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_fixitElementForGeneration_2D_fixItReplace (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_fixitElementForGeneration::getAssociatedValuesFor_fixItReplace (GALGAS_semanticExpressionForGeneration & out_exp) const {
   const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItReplace *) mAssociatedValues.associatedValuesPointer () ;
   out_exp = ptr->mProperty_exp ;
@@ -13924,9 +13979,31 @@ void GALGAS_fixitElementForGeneration::getAssociatedValuesFor_fixItReplace (GALG
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ GALGAS_fixitElementForGeneration::getter_fixItInsertBefore (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ result ;
+  if (mEnum == Enumeration::enum_fixItInsertBefore) {
+    const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_fixitElementForGeneration_2D_fixItInsertBefore (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_fixitElementForGeneration::getAssociatedValuesFor_fixItInsertBefore (GALGAS_semanticExpressionForGeneration & out_exp) const {
   const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore *) mAssociatedValues.associatedValuesPointer () ;
   out_exp = ptr->mProperty_exp ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ GALGAS_fixitElementForGeneration::getter_fixItInsertAfter (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ result ;
+  if (mEnum == Enumeration::enum_fixItInsertAfter) {
+    const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_fixitElementForGeneration_2D_fixItInsertAfter (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

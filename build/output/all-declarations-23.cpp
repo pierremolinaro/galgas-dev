@@ -8,6 +8,127 @@
 #include "all-declarations-23.h"
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarLabelMap_2D_element::GALGAS_grammarLabelMap_2D_element (void) :
+mProperty_lkey (),
+mProperty_mLabelSignature () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarLabelMap_2D_element::~ GALGAS_grammarLabelMap_2D_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::init_21__21_ (const GALGAS_lstring & in_lkey,
+                                                                                   const GALGAS_formalParameterSignature & in_mLabelSignature,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_grammarLabelMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mLabelSignature = in_mLabelSignature ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_grammarLabelMap_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarLabelMap_2D_element::GALGAS_grammarLabelMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                      const GALGAS_formalParameterSignature & inOperand1) :
+mProperty_lkey (inOperand0),
+mProperty_mLabelSignature (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::class_func_new (const GALGAS_lstring & in_lkey,
+                                                                                     const GALGAS_formalParameterSignature & in_mLabelSignature,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_grammarLabelMap_2D_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mLabelSignature = in_mLabelSignature ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_grammarLabelMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mLabelSignature.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_grammarLabelMap_2D_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mLabelSignature.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_grammarLabelMap_2D_element::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @grammarLabelMap-element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLabelSignature.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @grammarLabelMap-element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2D_element ("grammarLabelMap-element",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_grammarLabelMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarLabelMap_2D_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_grammarLabelMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_grammarLabelMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_grammarLabelMap_2D_element result ;
+  const GALGAS_grammarLabelMap_2D_element * p = (const GALGAS_grammarLabelMap_2D_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_grammarLabelMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("grammarLabelMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //Optional @grammarLabelMap_2D_element_3F_
 //
@@ -7738,6 +7859,127 @@ GALGAS_fixitElementForGeneration_2D_fixItReplace GALGAS_fixitElementForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @fixitElementForGeneration_2D_fixItReplace_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ (const GALGAS_fixitElementForGeneration_2D_fixItReplace & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::init_nil (void) {
+  GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_fixitElementForGeneration_2D_fixItReplace () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::description (String & ioString,
+                                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @fixitElementForGeneration-fixItReplace? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ ("fixitElementForGeneration-fixItReplace?",
+                                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                          Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ result ;
+  const GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ * p = (const GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration-fixItReplace?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_fixitElementForGeneration_2D_fixItInsertBefore::GALGAS_fixitElementForGeneration_2D_fixItInsertBefore (void) :
 mProperty_exp () {
@@ -7849,6 +8091,127 @@ GALGAS_fixitElementForGeneration_2D_fixItInsertBefore GALGAS_fixitElementForGene
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @fixitElementForGeneration_2D_fixItInsertBefore_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ (const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::init_nil (void) {
+  GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_fixitElementForGeneration_2D_fixItInsertBefore () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::description (String & ioString,
+                                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @fixitElementForGeneration-fixItInsertBefore? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ ("fixitElementForGeneration-fixItInsertBefore?",
+                                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                                    Compiler * inCompiler
+                                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ result ;
+  const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ * p = (const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration-fixItInsertBefore?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_fixitElementForGeneration_2D_fixItInsertAfter::GALGAS_fixitElementForGeneration_2D_fixItInsertAfter (void) :
 mProperty_exp () {
@@ -7954,6 +8317,127 @@ GALGAS_fixitElementForGeneration_2D_fixItInsertAfter GALGAS_fixitElementForGener
       result = *p ;
     }else{
       inCompiler->castError ("fixitElementForGeneration-fixItInsertAfter", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Optional @fixitElementForGeneration_2D_fixItInsertAfter_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ (const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::init_nil (void) {
+  GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_fixitElementForGeneration_2D_fixItInsertAfter () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::description (String & ioString,
+                                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @fixitElementForGeneration-fixItInsertAfter? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ ("fixitElementForGeneration-fixItInsertAfter?",
+                                                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                                  Compiler * inCompiler
+                                                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ result ;
+  const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ * p = (const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("fixitElementForGeneration-fixItInsertAfter?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -8363,6 +8847,127 @@ GALGAS_ifExpressionKind_2D_letExp GALGAS_ifExpressionKind_2D_letExp::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @ifExpressionKind_2D_letExp_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_letExp_3F_::GALGAS_ifExpressionKind_2D_letExp_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_letExp_3F_::GALGAS_ifExpressionKind_2D_letExp_3F_ (const GALGAS_ifExpressionKind_2D_letExp & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_letExp_3F_ GALGAS_ifExpressionKind_2D_letExp_3F_::init_nil (void) {
+  GALGAS_ifExpressionKind_2D_letExp_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifExpressionKind_2D_letExp_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifExpressionKind_2D_letExp_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifExpressionKind_2D_letExp_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_ifExpressionKind_2D_letExp () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifExpressionKind_2D_letExp_3F_::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @ifExpressionKind-letExp? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D_letExp_3F_ ("ifExpressionKind-letExp?",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifExpressionKind_2D_letExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionKind_2D_letExp_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifExpressionKind_2D_letExp_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifExpressionKind_2D_letExp_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_letExp_3F_ GALGAS_ifExpressionKind_2D_letExp_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_ifExpressionKind_2D_letExp_3F_ result ;
+  const GALGAS_ifExpressionKind_2D_letExp_3F_ * p = (const GALGAS_ifExpressionKind_2D_letExp_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_ifExpressionKind_2D_letExp_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifExpressionKind-letExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_ifExpressionKind_2D_optionalMethodCall::GALGAS_ifExpressionKind_2D_optionalMethodCall (void) :
 mProperty_receiver (),
@@ -8494,6 +9099,127 @@ GALGAS_ifExpressionKind_2D_optionalMethodCall GALGAS_ifExpressionKind_2D_optiona
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @ifExpressionKind_2D_optionalMethodCall_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ (const GALGAS_ifExpressionKind_2D_optionalMethodCall & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::init_nil (void) {
+  GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_ifExpressionKind_2D_optionalMethodCall () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::description (String & ioString,
+                                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @ifExpressionKind-optionalMethodCall? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ ("ifExpressionKind-optionalMethodCall?",
+                                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                    Compiler * inCompiler
+                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ result ;
+  const GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ * p = (const GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifExpressionKind-optionalMethodCall?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_optionalMethodActualArgument_2D_actualLetInput::GALGAS_optionalMethodActualArgument_2D_actualLetInput (void) :
 mProperty_typeName (),
@@ -8615,6 +9341,127 @@ GALGAS_optionalMethodActualArgument_2D_actualLetInput GALGAS_optionalMethodActua
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @optionalMethodActualArgument_2D_actualLetInput_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualLetInput & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::init_nil (void) {
+  GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_optionalMethodActualArgument_2D_actualLetInput () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::description (String & ioString,
+                                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @optionalMethodActualArgument-actualLetInput? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ ("optionalMethodActualArgument-actualLetInput?",
+                                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                                    Compiler * inCompiler
+                                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ result ;
+  const GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ * p = (const GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("optionalMethodActualArgument-actualLetInput?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_optionalMethodActualArgument_2D_actualVarInput::GALGAS_optionalMethodActualArgument_2D_actualVarInput (void) :
 mProperty_typeName (),
@@ -8730,6 +9577,127 @@ GALGAS_optionalMethodActualArgument_2D_actualVarInput GALGAS_optionalMethodActua
       result = *p ;
     }else{
       inCompiler->castError ("optionalMethodActualArgument-actualVarInput", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Optional @optionalMethodActualArgument_2D_actualVarInput_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualVarInput & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::init_nil (void) {
+  GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_optionalMethodActualArgument_2D_actualVarInput () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::description (String & ioString,
+                                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @optionalMethodActualArgument-actualVarInput? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ ("optionalMethodActualArgument-actualVarInput?",
+                                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                                    Compiler * inCompiler
+                                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ result ;
+  const GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ * p = (const GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("optionalMethodActualArgument-actualVarInput?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -8968,6 +9936,127 @@ GALGAS_ifTestForGeneration_2D_regular GALGAS_ifTestForGeneration_2D_regular::ext
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @ifTestForGeneration_2D_regular_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_regular_3F_::GALGAS_ifTestForGeneration_2D_regular_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_regular_3F_::GALGAS_ifTestForGeneration_2D_regular_3F_ (const GALGAS_ifTestForGeneration_2D_regular & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_regular_3F_ GALGAS_ifTestForGeneration_2D_regular_3F_::init_nil (void) {
+  GALGAS_ifTestForGeneration_2D_regular_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_regular_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_regular_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_regular_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_ifTestForGeneration_2D_regular () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_regular_3F_::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @ifTestForGeneration-regular? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_regular_3F_ ("ifTestForGeneration-regular?",
+                                                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifTestForGeneration_2D_regular_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2D_regular_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifTestForGeneration_2D_regular_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifTestForGeneration_2D_regular_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_regular_3F_ GALGAS_ifTestForGeneration_2D_regular_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_ifTestForGeneration_2D_regular_3F_ result ;
+  const GALGAS_ifTestForGeneration_2D_regular_3F_ * p = (const GALGAS_ifTestForGeneration_2D_regular_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_ifTestForGeneration_2D_regular_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration-regular?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_ifTestForGeneration_2D_letExp::GALGAS_ifTestForGeneration_2D_letExp (void) :
 mProperty_targetVarCppName (),
@@ -9109,6 +10198,127 @@ GALGAS_ifTestForGeneration_2D_letExp GALGAS_ifTestForGeneration_2D_letExp::extra
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @ifTestForGeneration_2D_letExp_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_letExp_3F_::GALGAS_ifTestForGeneration_2D_letExp_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_letExp_3F_::GALGAS_ifTestForGeneration_2D_letExp_3F_ (const GALGAS_ifTestForGeneration_2D_letExp & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_letExp_3F_ GALGAS_ifTestForGeneration_2D_letExp_3F_::init_nil (void) {
+  GALGAS_ifTestForGeneration_2D_letExp_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_letExp_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_letExp_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_letExp_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_ifTestForGeneration_2D_letExp () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_letExp_3F_::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @ifTestForGeneration-letExp? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_letExp_3F_ ("ifTestForGeneration-letExp?",
+                                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifTestForGeneration_2D_letExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2D_letExp_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifTestForGeneration_2D_letExp_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifTestForGeneration_2D_letExp_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_letExp_3F_ GALGAS_ifTestForGeneration_2D_letExp_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_ifTestForGeneration_2D_letExp_3F_ result ;
+  const GALGAS_ifTestForGeneration_2D_letExp_3F_ * p = (const GALGAS_ifTestForGeneration_2D_letExp_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_ifTestForGeneration_2D_letExp_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration-letExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_ifTestForGeneration_2D_optionalExp::GALGAS_ifTestForGeneration_2D_optionalExp (void) :
 mProperty_targetVarCppName (),
@@ -9234,6 +10444,127 @@ GALGAS_ifTestForGeneration_2D_optionalExp GALGAS_ifTestForGeneration_2D_optional
       result = *p ;
     }else{
       inCompiler->castError ("ifTestForGeneration-optionalExp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Optional @ifTestForGeneration_2D_optionalExp_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalExp_3F_::GALGAS_ifTestForGeneration_2D_optionalExp_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalExp_3F_::GALGAS_ifTestForGeneration_2D_optionalExp_3F_ (const GALGAS_ifTestForGeneration_2D_optionalExp & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalExp_3F_ GALGAS_ifTestForGeneration_2D_optionalExp_3F_::init_nil (void) {
+  GALGAS_ifTestForGeneration_2D_optionalExp_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_optionalExp_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_optionalExp_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_optionalExp_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_ifTestForGeneration_2D_optionalExp () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_optionalExp_3F_::description (String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @ifTestForGeneration-optionalExp? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalExp_3F_ ("ifTestForGeneration-optionalExp?",
+                                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifTestForGeneration_2D_optionalExp_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalExp_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifTestForGeneration_2D_optionalExp_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifTestForGeneration_2D_optionalExp_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalExp_3F_ GALGAS_ifTestForGeneration_2D_optionalExp_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_ifTestForGeneration_2D_optionalExp_3F_ result ;
+  const GALGAS_ifTestForGeneration_2D_optionalExp_3F_ * p = (const GALGAS_ifTestForGeneration_2D_optionalExp_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_ifTestForGeneration_2D_optionalExp_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration-optionalExp?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9371,6 +10702,127 @@ GALGAS_ifTestForGeneration_2D_optionalMethodCall GALGAS_ifTestForGeneration_2D_o
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Optional @ifTestForGeneration_2D_optionalMethodCall_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ (const GALGAS_ifTestForGeneration_2D_optionalMethodCall & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::init_nil (void) {
+  GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_ifTestForGeneration_2D_optionalMethodCall () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::description (String & ioString,
+                                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @ifTestForGeneration-optionalMethodCall? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ ("ifTestForGeneration-optionalMethodCall?",
+                                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                          Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ result ;
+  const GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ * p = (const GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifTestForGeneration-optionalMethodCall?", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput (void) :
 mProperty_expression () {
@@ -9476,6 +10928,127 @@ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput GALGAS_optional
       result = *p ;
     }else{
       inCompiler->castError ("optionalMethodActualArgumentForGeneration-actualOutput", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Optional @optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::init_nil (void) {
+  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::description (String & ioString,
+                                                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @optionalMethodActualArgumentForGeneration-actualOutput? generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ ("optionalMethodActualArgumentForGeneration-actualOutput?",
+                                                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_::extractObject (const GALGAS_object & inObject,
+                                                                                                                                                          Compiler * inCompiler
+                                                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ result ;
+  const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ * p = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("optionalMethodActualArgumentForGeneration-actualOutput?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

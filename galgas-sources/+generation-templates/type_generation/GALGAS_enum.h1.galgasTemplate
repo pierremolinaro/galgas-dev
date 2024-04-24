@@ -28,11 +28,12 @@ if HAS_ASSOCIATED_VALUES then
 end
 %  private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
+//--------------------------------- Associated value getter and extraction
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
-    %public: void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
+    %  public: class GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ getter_%![mConstantName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+    %  public: void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
     for (mType valueName) in mAssociatedValueTypeList
     do (idx) %class GALGAS_%![mType identifierRepresentation]% & out_%!valueName
     between %,\n%!^

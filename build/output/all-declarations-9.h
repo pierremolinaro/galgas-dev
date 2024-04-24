@@ -7461,6 +7461,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability_2D
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: selfAvailability-available? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_selfAvailability_2D_available_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_selfAvailability_2D_available mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_selfAvailability_2D_available_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_selfAvailability_2D_available_3F_ (const GALGAS_selfAvailability_2D_available & inValue) ;
+  public: static GALGAS_selfAvailability_2D_available_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_selfAvailability_2D_available unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_selfAvailability_2D_available_3F_ extractObject (const GALGAS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_selfAvailability_2D_available_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability_2D_available_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @assignmentInstructionAST reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -10672,13 +10737,16 @@ class GALGAS_fixitElementAST : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionAST & out_exp,
-                                                  class GALGAS_location & out_errorLocation) const ;
-public: void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionAST & out_exp,
-                                                      class GALGAS_location & out_errorLocation) const ;
-public: void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionAST & out_exp,
-                                                       class GALGAS_location & out_errorLocation) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_fixitElementAST_2D_fixItReplace_3F_ getter_fixItReplace (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionAST & out_exp,
+                                                    class GALGAS_location & out_errorLocation) const ;
+  public: class GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ getter_fixItInsertAfter (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionAST & out_exp,
+                                                        class GALGAS_location & out_errorLocation) const ;
+  public: class GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ getter_fixItInsertBefore (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionAST & out_exp,
+                                                         class GALGAS_location & out_errorLocation) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -10924,6 +10992,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2D_
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: fixitElementAST-fixItInsertAfter? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_fixitElementAST_2D_fixItInsertAfter mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ (const GALGAS_fixitElementAST_2D_fixItInsertAfter & inValue) ;
+  public: static GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_fixitElementAST_2D_fixItInsertAfter unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ extractObject (const GALGAS_object & inObject,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @fixitElementAST_2D_fixItInsertBefore struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -11015,6 +11148,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2D_
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: fixitElementAST-fixItInsertBefore? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_fixitElementAST_2D_fixItInsertBefore mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ (const GALGAS_fixitElementAST_2D_fixItInsertBefore & inValue) ;
+  public: static GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_fixitElementAST_2D_fixItInsertBefore unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @fixitElementAST_2D_fixItReplace struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -11103,6 +11301,71 @@ class GALGAS_fixitElementAST_2D_fixItReplace : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2D_fixItReplace ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: fixitElementAST-fixItReplace? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_fixitElementAST_2D_fixItReplace_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_fixitElementAST_2D_fixItReplace mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_fixitElementAST_2D_fixItReplace_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_fixitElementAST_2D_fixItReplace_3F_ (const GALGAS_fixitElementAST_2D_fixItReplace & inValue) ;
+  public: static GALGAS_fixitElementAST_2D_fixItReplace_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_fixitElementAST_2D_fixItReplace unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_fixitElementAST_2D_fixItReplace_3F_ extractObject (const GALGAS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_fixitElementAST_2D_fixItReplace_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST_2D_fixItReplace_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11562,10 +11825,13 @@ class GALGAS_fixitElementForGeneration : public AC_GALGAS_root {
 
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
-public: void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
-public: void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
-public: void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+//--------------------------------- Associated value getter and extraction
+  public: class GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ getter_fixItReplace (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+  public: class GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ getter_fixItInsertBefore (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+  public: class GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ getter_fixItInsertAfter (LOCATION_ARGS) const ;
+  public: void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -11784,6 +12050,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGene
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: fixitElementForGeneration-fixItInsertAfter? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_fixitElementForGeneration_2D_fixItInsertAfter mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ (const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter & inValue) ;
+  public: static GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_fixitElementForGeneration_2D_fixItInsertAfter unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @fixitElementForGeneration_2D_fixItInsertBefore struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -11863,6 +12194,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGene
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: fixitElementForGeneration-fixItInsertBefore? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_fixitElementForGeneration_2D_fixItInsertBefore mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ (const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore & inValue) ;
+  public: static GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_fixitElementForGeneration_2D_fixItInsertBefore unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @fixitElementForGeneration_2D_fixItReplace struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -11939,6 +12335,71 @@ class GALGAS_fixitElementForGeneration_2D_fixItReplace : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItReplace ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: fixitElementForGeneration-fixItReplace? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_fixitElementForGeneration_2D_fixItReplace mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ (const GALGAS_fixitElementForGeneration_2D_fixItReplace & inValue) ;
+  public: static GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_fixitElementForGeneration_2D_fixItReplace unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //

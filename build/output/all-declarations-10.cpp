@@ -4559,11 +4559,33 @@ void GALGAS_ifExpressionKind::method_optionalMethodCall (GALGAS_semanticExpressi
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_ifExpressionKind_2D_regularExp_3F_ GALGAS_ifExpressionKind::getter_regularExp (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifExpressionKind_2D_regularExp_3F_ result ;
+  if (mEnum == Enumeration::enum_regularExp) {
+    const auto ptr = (const GALGAS_ifExpressionKind_2D_regularExp *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifExpressionKind_2D_regularExp (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_ifExpressionKind::getAssociatedValuesFor_regularExp (GALGAS_semanticExpressionAST & out_exp,
                                                                  GALGAS_location & out_endOfExp) const {
   const auto ptr = (const GALGAS_ifExpressionKind_2D_regularExp *) mAssociatedValues.associatedValuesPointer () ;
   out_exp = ptr->mProperty_exp ;
   out_endOfExp = ptr->mProperty_endOfExp ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_letExp_3F_ GALGAS_ifExpressionKind::getter_letExp (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifExpressionKind_2D_letExp_3F_ result ;
+  if (mEnum == Enumeration::enum_letExp) {
+    const auto ptr = (const GALGAS_ifExpressionKind_2D_letExp *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifExpressionKind_2D_letExp (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4577,6 +4599,17 @@ void GALGAS_ifExpressionKind::getAssociatedValuesFor_letExp (GALGAS_lstring & ou
   out_exp = ptr->mProperty_exp ;
   out_endOfExp = ptr->mProperty_endOfExp ;
   out_typeName = ptr->mProperty_typeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ GALGAS_ifExpressionKind::getter_optionalMethodCall (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ result ;
+  if (mEnum == Enumeration::enum_optionalMethodCall) {
+    const auto ptr = (const GALGAS_ifExpressionKind_2D_optionalMethodCall *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifExpressionKind_2D_optionalMethodCall (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4976,11 +5009,33 @@ void GALGAS_optionalMethodActualArgument::method_actualInputJoker (GALGAS_bool &
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ GALGAS_optionalMethodActualArgument::getter_actualOutput (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ result ;
+  if (mEnum == Enumeration::enum_actualOutput) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgument_2D_actualOutput *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgument_2D_actualOutput (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_optionalMethodActualArgument::getAssociatedValuesFor_actualOutput (GALGAS_semanticExpressionAST & out_expression,
                                                                                GALGAS_location & out_location) const {
   const auto ptr = (const GALGAS_optionalMethodActualArgument_2D_actualOutput *) mAssociatedValues.associatedValuesPointer () ;
   out_expression = ptr->mProperty_expression ;
   out_location = ptr->mProperty_location ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ GALGAS_optionalMethodActualArgument::getter_actualLetInput (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ result ;
+  if (mEnum == Enumeration::enum_actualLetInput) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgument_2D_actualLetInput *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgument_2D_actualLetInput (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4994,11 +5049,33 @@ void GALGAS_optionalMethodActualArgument::getAssociatedValuesFor_actualLetInput 
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ GALGAS_optionalMethodActualArgument::getter_actualVarInput (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ result ;
+  if (mEnum == Enumeration::enum_actualVarInput) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgument_2D_actualVarInput *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgument_2D_actualVarInput (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_optionalMethodActualArgument::getAssociatedValuesFor_actualVarInput (GALGAS_lstring & out_typeName,
                                                                                  GALGAS_lstring & out_variableName) const {
   const auto ptr = (const GALGAS_optionalMethodActualArgument_2D_actualVarInput *) mAssociatedValues.associatedValuesPointer () ;
   out_typeName = ptr->mProperty_typeName ;
   out_variableName = ptr->mProperty_variableName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ GALGAS_optionalMethodActualArgument::getter_actualInputJoker (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ result ;
+  if (mEnum == Enumeration::enum_actualInputJoker) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgument_2D_actualInputJoker *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgument_2D_actualInputJoker (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6706,9 +6783,31 @@ void GALGAS_ifTestForGeneration::method_optionalMethodCall (GALGAS_semanticExpre
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_ifTestForGeneration_2D_regular_3F_ GALGAS_ifTestForGeneration::getter_regular (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifTestForGeneration_2D_regular_3F_ result ;
+  if (mEnum == Enumeration::enum_regular) {
+    const auto ptr = (const GALGAS_ifTestForGeneration_2D_regular *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifTestForGeneration_2D_regular (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_ifTestForGeneration::getAssociatedValuesFor_regular (GALGAS_semanticExpressionForGeneration & out_exp) const {
   const auto ptr = (const GALGAS_ifTestForGeneration_2D_regular *) mAssociatedValues.associatedValuesPointer () ;
   out_exp = ptr->mProperty_exp ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_letExp_3F_ GALGAS_ifTestForGeneration::getter_letExp (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifTestForGeneration_2D_letExp_3F_ result ;
+  if (mEnum == Enumeration::enum_letExp) {
+    const auto ptr = (const GALGAS_ifTestForGeneration_2D_letExp *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifTestForGeneration_2D_letExp (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6726,6 +6825,17 @@ void GALGAS_ifTestForGeneration::getAssociatedValuesFor_letExp (GALGAS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_ifTestForGeneration_2D_optionalExp_3F_ GALGAS_ifTestForGeneration::getter_optionalExp (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifTestForGeneration_2D_optionalExp_3F_ result ;
+  if (mEnum == Enumeration::enum_optionalExp) {
+    const auto ptr = (const GALGAS_ifTestForGeneration_2D_optionalExp *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifTestForGeneration_2D_optionalExp (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_ifTestForGeneration::getAssociatedValuesFor_optionalExp (GALGAS_string & out_targetVarCppName,
                                                                      GALGAS_semanticExpressionForGeneration & out_exp,
                                                                      GALGAS_unifiedTypeMapEntry & out_targetType) const {
@@ -6733,6 +6843,17 @@ void GALGAS_ifTestForGeneration::getAssociatedValuesFor_optionalExp (GALGAS_stri
   out_targetVarCppName = ptr->mProperty_targetVarCppName ;
   out_exp = ptr->mProperty_exp ;
   out_targetType = ptr->mProperty_targetType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ GALGAS_ifTestForGeneration::getter_optionalMethodCall (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ result ;
+  if (mEnum == Enumeration::enum_optionalMethodCall) {
+    const auto ptr = (const GALGAS_ifTestForGeneration_2D_optionalMethodCall *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_ifTestForGeneration_2D_optionalMethodCall (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7077,9 +7198,31 @@ void GALGAS_optionalMethodActualArgumentForGeneration::method_actualVarInput (GA
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ GALGAS_optionalMethodActualArgumentForGeneration::getter_actualOutput (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ result ;
+  if (mEnum == Enumeration::enum_actualOutput) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_optionalMethodActualArgumentForGeneration::getAssociatedValuesFor_actualOutput (GALGAS_semanticExpressionForGeneration & out_expression) const {
   const auto ptr = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput *) mAssociatedValues.associatedValuesPointer () ;
   out_expression = ptr->mProperty_expression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ GALGAS_optionalMethodActualArgumentForGeneration::getter_actualLetInput (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ result ;
+  if (mEnum == Enumeration::enum_actualLetInput) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7089,6 +7232,17 @@ void GALGAS_optionalMethodActualArgumentForGeneration::getAssociatedValuesFor_ac
   const auto ptr = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput *) mAssociatedValues.associatedValuesPointer () ;
   out_typeName = ptr->mProperty_typeName ;
   out_constantName = ptr->mProperty_constantName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ GALGAS_optionalMethodActualArgumentForGeneration::getter_actualVarInput (UNUSED_LOCATION_ARGS) const {
+  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ result ;
+  if (mEnum == Enumeration::enum_actualVarInput) {
+    const auto ptr = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -3697,7 +3697,7 @@ class GALGAS_selfMutability : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getters
+//--------------------------------- Associated value getter and extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -3933,6 +3933,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: AccessControlAST-fileprivateAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControlAST_2D_fileprivateAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ (const GALGAS_AccessControlAST_2D_fileprivateAccess & inValue) ;
+  public: static GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControlAST_2D_fileprivateAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @AccessControlAST_2D_fileprivateSetAccess struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -4009,6 +4074,71 @@ class GALGAS_AccessControlAST_2D_fileprivateSetAccess : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2D_fileprivateSetAccess ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: AccessControlAST-fileprivateSetAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControlAST_2D_fileprivateSetAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ (const GALGAS_AccessControlAST_2D_fileprivateSetAccess & inValue) ;
+  public: static GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControlAST_2D_fileprivateSetAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4090,6 +4220,71 @@ class GALGAS_propertyInCollectionInitializationAST_2D_some : public AC_GALGAS_ro
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST_2D_some ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: propertyInCollectionInitializationAST-some? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_propertyInCollectionInitializationAST_2D_some mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ (const GALGAS_propertyInCollectionInitializationAST_2D_some & inValue) ;
+  public: static GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_propertyInCollectionInitializationAST_2D_some unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8296,6 +8491,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_fi
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: AccessControl-fileprivateAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControl_2D_fileprivateAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControl_2D_fileprivateAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControl_2D_fileprivateAccess_3F_ (const GALGAS_AccessControl_2D_fileprivateAccess & inValue) ;
+  public: static GALGAS_AccessControl_2D_fileprivateAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControl_2D_fileprivateAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControl_2D_fileprivateAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControl_2D_fileprivateAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_fileprivateAccess_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @AccessControl_2D_fileprivateSetAccess struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -8372,6 +8632,71 @@ class GALGAS_AccessControl_2D_fileprivateSetAccess : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_fileprivateSetAccess ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: AccessControl-fileprivateSetAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControl_2D_fileprivateSetAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ (const GALGAS_AccessControl_2D_fileprivateSetAccess & inValue) ;
+  public: static GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControl_2D_fileprivateSetAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8454,6 +8779,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_pr
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: AccessControl-privateAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl_2D_privateAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControl_2D_privateAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControl_2D_privateAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControl_2D_privateAccess_3F_ (const GALGAS_AccessControl_2D_privateAccess & inValue) ;
+  public: static GALGAS_AccessControl_2D_privateAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControl_2D_privateAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControl_2D_privateAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControl_2D_privateAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_privateAccess_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @AccessControl_2D_privateSetAccess struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -8530,6 +8920,71 @@ class GALGAS_AccessControl_2D_privateSetAccess : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_privateSetAccess ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: AccessControl-privateSetAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl_2D_privateSetAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControl_2D_privateSetAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControl_2D_privateSetAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControl_2D_privateSetAccess_3F_ (const GALGAS_AccessControl_2D_privateSetAccess & inValue) ;
+  public: static GALGAS_AccessControl_2D_privateSetAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControl_2D_privateSetAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControl_2D_privateSetAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControl_2D_privateSetAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_privateSetAccess_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8612,6 +9067,71 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_pr
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: AccessControl-protectedAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl_2D_protectedAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControl_2D_protectedAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControl_2D_protectedAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControl_2D_protectedAccess_3F_ (const GALGAS_AccessControl_2D_protectedAccess & inValue) ;
+  public: static GALGAS_AccessControl_2D_protectedAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControl_2D_protectedAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControl_2D_protectedAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControl_2D_protectedAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_protectedAccess_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @AccessControl_2D_protectedSetAccess struct
 //
 //--------------------------------------------------------------------------------------------------
@@ -8688,6 +9208,71 @@ class GALGAS_AccessControl_2D_protectedSetAccess : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_protectedSetAccess ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: AccessControl-protectedSetAccess? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_AccessControl_2D_protectedSetAccess_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_AccessControl_2D_protectedSetAccess mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_AccessControl_2D_protectedSetAccess_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_AccessControl_2D_protectedSetAccess_3F_ (const GALGAS_AccessControl_2D_protectedSetAccess & inValue) ;
+  public: static GALGAS_AccessControl_2D_protectedSetAccess_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_AccessControl_2D_protectedSetAccess unwrappedValue (void) const {
+    return mValue ;
+  }
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_AccessControl_2D_protectedSetAccess_3F_ extractObject (const GALGAS_object & inObject,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_AccessControl_2D_protectedSetAccess_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_protectedSetAccess_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //

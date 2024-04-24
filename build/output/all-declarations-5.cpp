@@ -3149,6 +3149,17 @@ void GALGAS_typeKindEnum::method_enumType (GALGAS_constantIndexMap & outAssociat
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typeKindEnum_2D_classType_3F_ GALGAS_typeKindEnum::getter_classType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typeKindEnum_2D_classType_3F_ result ;
+  if (mEnum == Enumeration::enum_classType) {
+    const auto ptr = (const GALGAS_typeKindEnum_2D_classType *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_typeKindEnum_2D_classType (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_typeKindEnum::getAssociatedValuesFor_classType (GALGAS_bool & out_isReference) const {
   const auto ptr = (const GALGAS_typeKindEnum_2D_classType *) mAssociatedValues.associatedValuesPointer () ;
   out_isReference = ptr->mProperty_isReference ;
@@ -3156,9 +3167,31 @@ void GALGAS_typeKindEnum::getAssociatedValuesFor_classType (GALGAS_bool & out_is
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_typeKindEnum_2D_weakReferenceType_3F_ GALGAS_typeKindEnum::getter_weakReferenceType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typeKindEnum_2D_weakReferenceType_3F_ result ;
+  if (mEnum == Enumeration::enum_weakReferenceType) {
+    const auto ptr = (const GALGAS_typeKindEnum_2D_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_typeKindEnum_2D_weakReferenceType (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_typeKindEnum::getAssociatedValuesFor_weakReferenceType (GALGAS_unifiedTypeMapEntry & out_referenceType) const {
   const auto ptr = (const GALGAS_typeKindEnum_2D_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
   out_referenceType = ptr->mProperty_referenceType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeKindEnum_2D_enumType_3F_ GALGAS_typeKindEnum::getter_enumType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typeKindEnum_2D_enumType_3F_ result ;
+  if (mEnum == Enumeration::enum_enumType) {
+    const auto ptr = (const GALGAS_typeKindEnum_2D_enumType *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_typeKindEnum_2D_enumType (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9924,6 +9957,17 @@ void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_localVarValuation_2D_declared_3F_ GALGAS_localVarValuation::getter_declared (UNUSED_LOCATION_ARGS) const {
+  GALGAS_localVarValuation_2D_declared_3F_ result ;
+  if (mEnum == Enumeration::enum_declared) {
+    const auto ptr = (const GALGAS_localVarValuation_2D_declared *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_localVarValuation_2D_declared (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_localVarValuation::getAssociatedValuesFor_declared (GALGAS_bool & out_usedInSubscope) const {
   const auto ptr = (const GALGAS_localVarValuation_2D_declared *) mAssociatedValues.associatedValuesPointer () ;
   out_usedInSubscope = ptr->mProperty_usedInSubscope ;
@@ -11195,9 +11239,31 @@ void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarMa
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ GALGAS_overrideKind::getter_selectOverrideFirstBranch (UNUSED_LOCATION_ARGS) const {
+  GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ result ;
+  if (mEnum == Enumeration::enum_selectOverrideFirstBranch) {
+    const auto ptr = (const GALGAS_overrideKind_2D_selectOverrideFirstBranch *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_overrideKind_2D_selectOverrideFirstBranch (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_overrideKind::getAssociatedValuesFor_selectOverrideFirstBranch (GALGAS_currentVarManager & out_savedManager) const {
   const auto ptr = (const GALGAS_overrideKind_2D_selectOverrideFirstBranch *) mAssociatedValues.associatedValuesPointer () ;
   out_savedManager = ptr->mProperty_savedManager ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ GALGAS_overrideKind::getter_selectOverrideNextBranches (UNUSED_LOCATION_ARGS) const {
+  GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ result ;
+  if (mEnum == Enumeration::enum_selectOverrideNextBranches) {
+    const auto ptr = (const GALGAS_overrideKind_2D_selectOverrideNextBranches *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_overrideKind_2D_selectOverrideNextBranches (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13677,6 +13743,17 @@ void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAss
     const cEnumAssociatedValues_typeDefinition_solved * ptr = (const cEnumAssociatedValues_typeDefinition_solved *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeDefinition_2D_solved_3F_ GALGAS_typeDefinition::getter_solved (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typeDefinition_2D_solved_3F_ result ;
+  if (mEnum == Enumeration::enum_solved) {
+    const auto ptr = (const GALGAS_typeDefinition_2D_solved *) mAssociatedValues.associatedValuesPointer () ;
+    result = GALGAS_typeDefinition_2D_solved (*ptr) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
