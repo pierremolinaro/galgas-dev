@@ -158,7 +158,7 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
   #--- Check field access availability
     let @unifiedTypeMapEntry expressionType = expression.mResultType
     let propertyMap = [expressionType definition].propertyMap
-    if let [propertyMap searchKey !self.propertyName ?let accessControl ?* ?let type] then
+    if let prop = propertyMap §[self.propertyName] then
       let typeKind = [expressionType definition].typeKind
       if (not [typeKind isStructType]) & (not [typeKind isClassType]) then
         error self.propertyName: "the '.' operator requires the receiver to be a struct or a class"
@@ -169,41 +169,32 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
           ?3*
         ]
       end
-      [accessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
+      [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
     #--- Generate expression
       outExpression = @propertyAccessExpressionForGeneration {
-        !type
+        !prop.mPropertyType
         !self.operatorLocation
         !expression
         !self.propertyName.string
       }
     else
       let getterMap = [expressionType definition].getterMap
-      if let [getterMap searchKey
-          !self.propertyName
-          ?let kind
-          ?let getterFormalArgumentTypeList
-          ?*
-          ?let hasCompilerArgument
-          ?let returnedType
-          ?*
-          ?let actualGetterNameString
-        ] then
-        if [getterFormalArgumentTypeList count] != 0 then
+      if let theGetter = getterMap §[self.propertyName] then
+        if [theGetter.mArgumentTypeList count] != 0 then
           error self.propertyName
           : "for being called as a property read, the getter should have no formal argument (has "
-          + [getterFormalArgumentTypeList count] + ")"
+          + [theGetter.mArgumentTypeList count] + ")"
           : outExpression
         else
           outExpression = @getterCallExpressionForGeneration {
-            !returnedType
+            !theGetter.mReturnedType
             !self.propertyName.location
-            !kind
+            !theGetter.mKind
             !expression
             !()
-            !if actualGetterNameString == "" then self.propertyName.string else actualGetterNameString end
+            !if theGetter.mGetterNameThatObsoletesInvokationName == "" then self.propertyName.string else theGetter.mGetterNameThatObsoletesInvokationName end
             !()
-            !hasCompilerArgument
+            !theGetter.mHasCompilerArgument
           }
         end
       else
@@ -297,10 +288,10 @@ refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     let invocationSignature = [self.actualArgumentList subscriptSignature]
   #--- Check subscript availability
     let subscriptMap = [expressionType definition].readSubscriptMap
-    if let [subscriptMap searchKey !invocationSignature ?let formalArgumentList ?let resultType] then
+    if let aSubscript = subscriptMap §[invocationSignature] then
     #--- Check effective argument list
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
-      for formalArg in formalArgumentList, actualArg in self.actualArgumentList do
+      for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do
         [actualArg.mExpression analyzeSemanticExpression
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
@@ -328,7 +319,7 @@ refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
       end 
     #--- Generate expression
       outExpression = @subscriptReadAccessExpressionForGeneration (
-        resultType,
+        aSubscript.valueType,
         self.endOfArgsLocation,
         expression,
         invocationSignature,

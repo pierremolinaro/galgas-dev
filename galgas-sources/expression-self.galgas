@@ -77,9 +77,9 @@ override method @selfInExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  if let [inAnalysisContext.selfAvailability available ?type: let selfType ?1*] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
     let @string selfCppName = inAnalysisContext.selfObjectCppName
-    outExpression = @selfInExpressionForGeneration {!selfType !self.mSelfLocation !selfCppName}
+    outExpression = @selfInExpressionForGeneration {!selfAvailable.type !self.mSelfLocation !selfCppName}
   else
     error self.mSelfLocation : "'self' not available in this context" : outExpression
   end

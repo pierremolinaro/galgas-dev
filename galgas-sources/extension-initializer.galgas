@@ -205,8 +205,8 @@ refclass @initializerAST : @semanticDeclarationAST {
     let @string selfObjectAccessorString
   #--- Check self type is a class
     var isReferenceClass = false
-    if let [[selfType definition].typeKind classType ?isReference: let isReference] then
-      isReferenceClass = isReference
+    if let classType = [[selfType definition].typeKind classType] then
+      isReferenceClass = classType.isReference
       selfObjectNameString = "<< this >>"
       selfObjectAccessorString = ""
     else
@@ -265,9 +265,9 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
                         !@formalInputParameterListForGeneration outSignatureForGeneration {
   var variableMap = @localVarManager {}
 #--- Enter properties that should be explicitly initialized
-  if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: let selfMutability] then
-    for property in [type definition].allTypedPropertyList do
-      let initialized = if selfMutability == .initializer
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    for property in [selfAvailable.type definition].allTypedPropertyList do
+      let initialized = if selfAvailable.selfMutability == .initializer
         then property.initialization != .none
         else true
       end

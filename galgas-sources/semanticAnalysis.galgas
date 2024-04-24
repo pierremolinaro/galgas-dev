@@ -252,9 +252,9 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
     end
   end
 #--- Enter properties that should be explicitly initialized
-  if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: let selfMutability] then
-    for property in [type definition].allTypedPropertyList do
-      let initialized = if selfMutability == .initializer
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    for property in [selfAvailable.type definition].allTypedPropertyList do
+      let initialized = if selfAvailable.selfMutability == .initializer
         then property.initialization != .none
         else true
       end
@@ -398,8 +398,8 @@ proc analyzeFunctionBody
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #--- Enter properties that should be explicitly initialized
-  if let [inAnalysisContext.selfAvailability available ?type: let type ?selfMutability: *] then
-    for property in [type definition].allTypedPropertyList do
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    for property in [selfAvailable.type definition].allTypedPropertyList do
       [!?variableMap insertInitializerSelfProperty
         !property.name.string
         !inEndOfFunctionLocation
@@ -1637,9 +1637,9 @@ private proc emitClassGraphFile ?let @string inDotDocumentFilePath
         case null :
           document += "  \"@" + definition.typeName + "\" ;\n"
         case element (@unifiedTypeMapElementClass.@weak superType) :
-          if let t = superType, let [t.mDefinition solved ?definition: let superTypeDefinition] then
+          if let t = superType, let solvedType = [t.mDefinition solved] then
             document += "  \"@" + definition.typeName + "\" ;\n"
-            document += "  \"@" + definition.typeName + "\" -> \"@" + superTypeDefinition.typeName + "\" ;\n"
+            document += "  \"@" + definition.typeName + "\" -> \"@" + solvedType.definition.typeName + "\" ;\n"
           end
         end
       end

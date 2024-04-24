@@ -347,11 +347,11 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      if not [selfMutability propertiesAreMutable] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mInstructionLocation : "property not mutable in this context"
       end
-      let propertyMap = [selfType definition].propertyMap
+      let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -426,11 +426,11 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      if not [selfMutability selfIsMutable] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].propertyMap
+      let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -438,7 +438,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not [selfMutability propertiesAreMutable] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property is not mutable in this context"
       end
     else
@@ -508,11 +508,11 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      if not [selfMutability selfIsMutable] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].propertyMap
+      let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -520,7 +520,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not [selfMutability propertiesAreMutable] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property is not mutable in this context"
       end
     else
@@ -591,11 +591,11 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      if not [selfMutability selfIsMutable] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].propertyMap
+      let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -603,7 +603,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not [selfMutability propertiesAreMutable] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property is not mutable in this context"
       end
     else
@@ -674,8 +674,8 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      let propertyMap = [selfType definition].propertyMap
+    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -683,7 +683,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not [selfMutability propertiesAreMutable] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property cannot be mutated in this context"
       end
     else

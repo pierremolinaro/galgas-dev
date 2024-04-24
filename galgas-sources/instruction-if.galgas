@@ -102,7 +102,7 @@ syntax extension galgas3InstructionsSyntax {
         end
       or
         $let$
-#        warning .here : "deprecated"
+        warning .here : "deprecated"
         $[$
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
         $identifier$ ?let @lstring optionalMethodName
@@ -275,88 +275,6 @@ syntax extension galgas4InstructionsSyntax {
             !typeName: typeName
           }
         end
-#      or
-#        $let$
-#        $[$
-#        <expression> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
-#        $identifier$ ?let @lstring optionalMethodName
-#        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = ()
-#        repeat
-#          select
-#            $!selector:$ ?let selector
-#            <expression> !?ioDeclarations ?let expression
-#            optionalMethodActualArgumentList +=
-#              !selector
-#              !.actualOutput {!expression: expression !location: .here}
-#          or
-#            $!$
-#            let selector = ["" here]
-#            <expression> !?ioDeclarations ?let expression
-#            optionalMethodActualArgumentList +=
-#              !selector
-#              !.actualOutput {!expression: expression !location: .here}
-#          or
-#            let selector = ["" here]
-#            <expression> !?ioDeclarations ?let expression
-#            optionalMethodActualArgumentList +=
-#              !selector
-#              !.actualOutput {!expression: expression !location: .here}
-#          or
-#            let @lstring selector
-#            select
-#              $?selector:$ ?selector
-#            or
-#              $?$
-#              selector = ["" here]
-#            end
-#            select
-#              $let$
-#              let @lstring typeName
-#              select
-#                typeName = ["" nowhere]
-#              or
-#                <type_definition> !?ioDeclarations ?typeName
-#              end
-#              $identifier$ ?let constantName
-#              optionalMethodActualArgumentList +=
-#                !selector
-#                !.actualLetInput {!typeName: typeName !constantName: constantName}
-#            or
-#              $var$
-#              let @lstring typeName
-#              select
-#                typeName = ["" nowhere]
-#              or
-#                <type_definition> !?ioDeclarations ?typeName
-#              end
-#              $identifier$ ?let variableName
-#              optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
-#            or
-#              $*$
-#              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
-#            or
-#              $literalInt$ ?let repetitionCount
-#              $*$
-#              if selector.string != "" then
-#                error selector : "the selector should be '?'"  fixit { replace "?" }
-#              end
-#              if repetitionCount.bigint == 0 then
-#                error repetitionCount : "the repetition count should be > 0"
-#              end
-#              for i in 0 ..< repetitionCount.bigint do
-#                optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
-#              end
-#            end
-#          end
-#        while
-#          $,$
-#        end
-#        $]$
-#        outExpressionList += !.optionalMethodCall {
-#          !receiver: receiverExpression
-#          !optionalMethodName: optionalMethodName
-#          !parameters: optionalMethodActualArgumentList
-#        }
       or
         <expression> !?ioDeclarations ?let expression
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
@@ -572,9 +490,9 @@ refclass @ifInstructionAST : @semanticInstructionAST {
             !targetType: castType
             !testType: testType
           }
-        elsif let [[analyzedExpression.mResultType definition].typeKind weakReferenceType ?referenceType: let classType] then
+        elsif let weakRefType = [[analyzedExpression.mResultType definition].typeKind weakReferenceType] then
           if typeName.string == "" then
-            castType = classType
+            castType = weakRefType.referenceType
           else
             castType = [ioTypeMap typeMapEntryForLKey !typeName]
           end
@@ -583,7 +501,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
           var @bool found = t == analyzedExpression.mResultType
           if found then
             [[castType definition].typeKind weakReferenceType ?referenceType: castType]
-          elsif t == classType then
+          elsif t == weakRefType.referenceType then
             found = true
           end
           loop ([ioTypeMap count] + 1)
@@ -592,7 +510,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
             if t == analyzedExpression.mResultType then
               found = true
               [[castType definition].typeKind weakReferenceType ?referenceType: castType]
-            elsif t == classType then
+            elsif t == weakRefType.referenceType then
               found = true
             end
           end

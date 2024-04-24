@@ -266,15 +266,15 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
   var isRefClass = false
-  if let [[selfType definition].typeKind classType ?isReference: let reference] then
-    isRefClass = reference
+  if let classType = [[selfType definition].typeKind classType] then
+    isRefClass = classType.isReference
   end
   var mutableProperties = @typedPropertyList ()
   var nonMutableProperties = @typedPropertyList ()
   if [selfType definition].typeKind == .structType then
     nonMutableProperties = [selfType definition].allTypedPropertyList
-  elsif let [[selfType definition].typeKind classType ?isReference: let isReference] then
-    if isReference then
+  elsif let classType = [[selfType definition].typeKind classType] then
+    if classType.isReference then
       mutableProperties = [selfType definition].allTypedPropertyList
     else
       nonMutableProperties = [selfType definition].allTypedPropertyList

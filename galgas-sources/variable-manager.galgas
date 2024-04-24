@@ -453,10 +453,11 @@ setter @currentVarManager neutralAccess ?let @lstring inVarName
                                         !@unifiedTypeMapEntry outType
                                         !@string outCppName
                                         !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+#  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
+    outType = varDescriptor.mType
+    outCppName = varDescriptor.mCppName
+    outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
   else
     [!?self.mSubMaps neutralAccess
       !inVarName
@@ -480,10 +481,11 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     let localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
-      outType = type
-      outCppName = cppName
-      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+    if let varDescriptor = localMap §[inVarName] then
+#    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
+      outType = varDescriptor.mType
+      outCppName = varDescriptor.mCppName
+      outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
       [!?self neutralAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
     end
@@ -501,12 +503,13 @@ setter @localVarManager searchForDropAccess ?let @lstring inVarName {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
-  if let [self.mLocalVarMap searchKey
-                !inVarName
-                ?3*
-                ?let attributes
-                ?let valuation] then
-    [valuation checkFinalState !inVarName !attributes]
+  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+#  if let [self.mLocalVarMap searchKey
+#                !inVarName
+#                ?3*
+#                ?let attributes
+#                ?let valuation] then
+    [varDescriptor.mState checkFinalState !inVarName !varDescriptor.mAttributes]
     [!?self.mLocalVarMap removeKey !inVarName ?5*]
   else
     var found = false
@@ -543,21 +546,22 @@ setter @currentVarManager searchForWriteAccess ?let @lstring inVarName
                                                !@unifiedTypeMapEntry outType
                                                !@string outCppName
                                                !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey
-            !inVarName
-            ?let type
-            ?let cppName
-            ?let nameForCheckingFormalParameterUsing
-            ?let attributes
-            ?let valuation] then
-    var newValuation = valuation
-    [!?newValuation writeTransition !inVarName !inOverridenMap: false !attributes]
-    if newValuation != valuation then
+  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+#  if let [self.mLocalVarMap searchKey
+#            !inVarName
+#            ?let type
+#            ?let cppName
+#            ?let nameForCheckingFormalParameterUsing
+#            ?let attributes
+#            ?let valuation] then
+    var newValuation = varDescriptor.mState
+    [!?newValuation writeTransition !inVarName !inOverridenMap: false !varDescriptor.mAttributes]
+    if newValuation != varDescriptor.mState then
       [!?self.mLocalVarMap setMStateForKey !newValuation !inVarName]
     end
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+    outType = varDescriptor.mType
+    outCppName = varDescriptor.mCppName
+    outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
   else
     [!?self.mSubMaps writeAccessInSubMap !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
@@ -575,26 +579,24 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey
-             !inVarName
-             ?let type
-             ?let cppName
-             ?let nameForCheckingFormalParameterUsing
-             ?let attributes
-             ?let valuation
-           ] then
-      var newValuation = valuation
-      [!?newValuation writeTransition !inVarName !inOverridenMap: true !attributes]
-      if newValuation != valuation then
+    if let varDescriptor = localMap §[inVarName] then
+#    if let [localMap searchKey
+#             !inVarName
+#             ?let type
+#             ?let cppName
+#             ?let nameForCheckingFormalParameterUsing
+#             ?let attributes
+#             ?let valuation
+#           ] then
+      var newValuation = varDescriptor.mState
+      [!?newValuation writeTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
+      if newValuation != varDescriptor.mState then
         [!?localMap setMStateForKey !newValuation !inVarName]
         [!?self setMMapAtIndex !localMap !inIndex]
       end
-#      if [attributes warnsOnAnyAcces] then
-#        warning inVarName : "formal parameter has been declared as unused"
-#      end
-      outType = type
-      outCppName = cppName
-      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+      outType = varDescriptor.mType
+      outCppName = varDescriptor.mCppName
+      outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
       [!?self writeAccessInSubMap !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
     end
@@ -651,24 +653,15 @@ setter @currentVarManager searchForReadAccess ?let @lstring inVarName
                                               !@unifiedTypeMapEntry outType
                                               !@string outCppName
                                               !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey
-                   !inVarName
-                   ?let type
-                   ?let cppName
-                   ?let nameForCheckingFormalParameterUsing
-                   ?let attributes
-                   ?let valuation] then
-    var newValuation = valuation
-    [!?newValuation readTransition !inVarName !attributes]
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-    if newValuation != valuation then
+  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+    var newValuation = varDescriptor.mState
+    [!?newValuation readTransition !inVarName !varDescriptor.mAttributes]
+    outType = varDescriptor.mType
+    outCppName = varDescriptor.mCppName
+    outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
+    if newValuation != varDescriptor.mState then
       [!?self.mLocalVarMap setMStateForKey !newValuation !inVarName]
     end
-#    if [attributes warnsOnAnyAcces] then
-#      warning inVarName : "formal parameter has been declared as unused"
-#    end
   else
     [!?self.mSubMaps readAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
@@ -686,19 +679,13 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey
-                        !inVarName
-                        ?let type
-                        ?let cppName
-                        ?let nameForCheckingFormalParameterUsing
-                        ?let attributes
-                        ?let valuation] then
-      var newValuation = valuation
-      [!?newValuation readTransition !inVarName !attributes]
-      outType = type
-      outCppName = cppName
-      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
-      if newValuation != valuation then
+    if let varDescriptor = localMap §[inVarName] then
+      var newValuation = varDescriptor.mState
+      [!?newValuation readTransition !inVarName !varDescriptor.mAttributes]
+      outType = varDescriptor.mType
+      outCppName = varDescriptor.mCppName
+      outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
+      if newValuation != varDescriptor.mState then
         [!?localMap setMStateForKey !newValuation !inVarName]
         [!?self setMMapAtIndex !localMap !inIndex]
       end
@@ -750,21 +737,22 @@ setter @currentVarManager searchForReadWriteAccess ?let @lstring inVarName
                                                    !@unifiedTypeMapEntry outType
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
-  if let [self.mLocalVarMap searchKey
-           !inVarName
-           ?let type
-           ?let cppName
-           ?let nameForCheckingFormalParameterUsing
-           ?let inAttributes
-           ?let valuation] then
-    var newValuation = valuation
-    [!?newValuation readWriteTransition !inVarName !inOverridenMap: false !inAttributes]
-    if newValuation != valuation then
+  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+#  if let [self.mLocalVarMap searchKey
+#           !inVarName
+#           ?let type
+#           ?let cppName
+#           ?let nameForCheckingFormalParameterUsing
+#           ?let inAttributes
+#           ?let valuation] then
+    var newValuation = varDescriptor.mState
+    [!?newValuation readWriteTransition !inVarName !inOverridenMap: false !varDescriptor.mAttributes]
+    if newValuation != varDescriptor.mState then
       [!?self.mLocalVarMap setMStateForKey !newValuation !inVarName]
     end
-    outType = type
-    outCppName = cppName
-    outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+    outType = varDescriptor.mType
+    outCppName = varDescriptor.mCppName
+    outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
   else
     [!?self.mSubMaps readWriteAccess !inVarName !0 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
   end
@@ -782,22 +770,23 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let [localMap searchKey
-              !inVarName
-              ?let type
-              ?let cppName
-              ?let nameForCheckingFormalParameterUsing
-              ?let inAttributes
-              ?let valuation] then
-      var newValuation = valuation
-      [!?newValuation readWriteTransition !inVarName !inOverridenMap: true !inAttributes]
-      if newValuation != valuation then
+    if let varDescriptor = localMap §[inVarName] then
+#    if let [localMap searchKey
+#              !inVarName
+#              ?let type
+#              ?let cppName
+#              ?let nameForCheckingFormalParameterUsing
+#              ?let inAttributes
+#              ?let valuation] then
+      var newValuation = varDescriptor.mState
+      [!?newValuation readWriteTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
+      if newValuation != varDescriptor.mState then
         [!?localMap setMStateForKey !newValuation !inVarName]
         [!?self setMMapAtIndex !localMap !inIndex]
       end
-      outType = type
-      outCppName = cppName
-      outNameForCheckingFormalParameterUsing = nameForCheckingFormalParameterUsing
+      outType = varDescriptor.mType
+      outCppName = varDescriptor.mCppName
+      outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
     else
       [!?self readWriteAccess !inVarName !inIndex + 1 ?outType ?outCppName ?outNameForCheckingFormalParameterUsing]
     end
@@ -960,11 +949,11 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
 setter @scopeLocalVarMap combineMapWith ?otherMap: let @scopeLocalVarMap inOtherMap
                                         ?!@string ioErrorMessage {
   for (varName * cppName * * valuation) in self do
-    if let [inOtherMap searchKey !varName ?* ?let otherCppName ?2* ?let otherValuation] then
-      if cppName != otherCppName then
+    if let otherVar = inOtherMap §[varName] then
+      if cppName != otherVar.mCppName then
         ioErrorMessage += "\n  - 'internal error type 1 for '" + varName + "' local variable"
       else
-        [valuation combineValuationWith !otherValuation ?let newValuation !?ioErrorMessage]
+        [valuation combineValuationWith !otherVar.mState ?let newValuation !?ioErrorMessage]
         if newValuation != valuation then
           [!?self setMStateForKey !newValuation !varName]
         end

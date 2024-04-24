@@ -144,7 +144,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     !?ioTypeMap
     ?let switchExpression
   ]
-  if let [[switchExpression.mResultType definition].typeKind enumType ?constantMap: let enumConstantMap] then
+  if let enumType = [[switchExpression.mResultType definition].typeKind enumType] then
     var @stringset constantsNamedInSwitchInstruction = ()
   #--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = ()
@@ -152,13 +152,13 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = ()
       var analysisContext = inAnalysisContext
       for constantName in mConstantList do
-        if [enumConstantMap hasKey !constantName.string] then
+        if [enumType.constantMap hasKey !constantName.string] then
           if [constantsNamedInSwitchInstruction hasKey !constantName.string] then
             error constantName
             :"the '" + constantName + "' constant is already named in this switch instruction"
           end
           constantsNamedInSwitchInstruction += !constantName.string
-          [enumConstantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
+          [enumType.constantMap searchKey !constantName ?* ?let @associatedValueDescriptorList associatedTypeList]
           if ([associatedTypeList count] > 0) & ([mAssociatedValuesExtraction count] == 0) then
             error constantName
               :"the associated values of '" + constantName + "' constant should be extracted"
@@ -216,7 +216,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         !instructionList
     end
   #--- Check all constants have been named
-    let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
+    let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
     if [forgottenConstants count] > 0 then
       var @string s = ""
       for (key) in forgottenConstants do

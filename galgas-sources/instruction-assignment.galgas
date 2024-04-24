@@ -263,13 +263,13 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
                         ?!@unifiedTypeMap ioTypeMap
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                         ?!@localVarManager ioVariableMap {
-  if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-    if not [selfMutability propertiesAreMutable] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if not [selfAvailable.selfMutability propertiesAreMutable] then
       error self.mInstructionLocation : "'self' property not mutable in this context"
     end
-    let propertyMap = [selfType definition].propertyMap
+    let propertyMap = [selfAvailable.type definition].propertyMap
     [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?let isConstant ?var targetType]
-    if isConstant & not [selfMutability isInitializer] then
+    if isConstant & not [selfAvailable.selfMutability isInitializer] then
       error self.mTargetSelfPropertyName : "a constant property cannot be modified"
     end
     let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -301,7 +301,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
     ioInstructionListForGeneration += !@assignmentInstructionForGeneration {
-      !selfType
+      !selfAvailable.type
       !targetType
       !targetVariableCppName
       !inAnalysisContext.selfObjectCppName

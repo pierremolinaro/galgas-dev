@@ -103,11 +103,10 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                           ?!@localVarManager ioVariableMap {
   #--- Check the call occurs in an class initializer
-   if let [inAnalysisContext.selfAvailability available ?type: let selfType
-                                                        ?selfMutability: let selfMutability],
-        selfMutability == .initializer,
-        [[selfType definition].typeKind isClassType] then
-      switch [selfType definition].superType
+   if let selfAvailable = [inAnalysisContext.selfAvailability available],
+        selfAvailable.selfMutability == .initializer,
+        [[selfAvailable.type definition].typeKind isClassType] then
+      switch [selfAvailable.type definition].superType
       case element (superType) :
         let superTypeDefinition = [superType.bang definition]
       #--- Check super initializer is defined

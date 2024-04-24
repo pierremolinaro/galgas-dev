@@ -239,18 +239,13 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available
-                    ?type: let selfType
-                    ?selfMutability: let selfMutability] then
+    if let selfAvailability = [inAnalysisContext.selfAvailability available] then
     #--- Check self is not inkoed before full initialization
-#      if self.mReceiverExpression is @selfInExpressionAST then
-#        [ioVariableMap checkSelfObjectIsFullyInitialized !mSetterName.location]
-#      end
-      if let [[selfType definition].typeKind classType ?isReference: let isReference], isReference then
-      elsif not [selfMutability selfIsMutable] then
+      if let classTypeKind = [[selfAvailability.type definition].typeKind classType], classTypeKind.isReference then
+      elsif not [selfAvailability.selfMutability selfIsMutable] then
         error self.mSetterName : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].propertyMap
+      let propertyMap = [selfAvailability.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?receiverType]
       if isConstant then
         error self.mReceiverName: "a constant property cannot be modified"
@@ -363,16 +358,14 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let [inAnalysisContext.selfAvailability available
-      ?type: let selfType
-      ?selfMutability: let selfMutability] then
-    if not [selfMutability selfIsMutable] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mSetterName : "'self' not mutable in this context"
     end
   #--- Check self is not invoked before full initialization
     [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
   #--- Get setter signature
-    [[selfType definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
+    [[selfAvailable.type definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
   #--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
@@ -389,7 +382,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   #--- Generate instructions
     ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration {
       !inAnalysisContext.selfObjectCppName
-      !selfType
+      !selfAvailable.type
       !self.mSetterName
       !kind
       !actualParameterListForGeneration

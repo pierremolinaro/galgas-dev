@@ -83,12 +83,12 @@ proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
     sourceType = [sourceType definition].superType
     ok = inTargetType == sourceType
   end
-  if not ok, let [[inTargetType definition].typeKind weakReferenceType ?referenceType: let targetType] then
+  if not ok, let weakRefType = [[inTargetType definition].typeKind weakReferenceType] then
     sourceType = inSourceType
-    ok = targetType == sourceType
+    ok = weakRefType.referenceType == sourceType
     loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
       sourceType = [sourceType definition].superType
-      ok = targetType == sourceType
+      ok = weakRefType.referenceType == sourceType
     end
   end
   if not ok then
@@ -172,25 +172,25 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       sourceType = [sourceType definition].superType
       ok = inTargetType == sourceType
     end
-    if not ok, let [targetTypeDef.typeKind weakReferenceType ?referenceType: let targetType] then
+    if not ok, let targetWeakRef = [targetTypeDef.typeKind weakReferenceType] then
       sourceType = inSourceType
-      ok = [targetType typeName] == [sourceType typeName]
+      ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
       loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
         sourceType = [sourceType definition].superType
-        ok = [targetType typeName] == [sourceType typeName]
+        ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[inSourceType definition].propertyMap searchKey !targetTypeDef.typeName.string ?let accessControl ?* ?let propertyType] then
-      [accessControl checkSetAccess !.none !inErrorLocation]
+    if not ok, let prop = [inSourceType definition].propertyMap §[targetTypeDef.typeName.string] then
+      [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
-        !propertyType
+        !prop.mPropertyType
         !inErrorLocation
         !ioExpression
         !targetTypeDef.typeName.string
       }
       ioExpression = conversionExpression
-      ok = propertyType == inTargetType
+      ok = prop.mPropertyType == inTargetType
     elsif (not ok) && [[inSourceType definition].getterMap hasKey !targetTypeDef.typeName.string] then
       [[inSourceType definition].getterMap searchKey
         !targetTypeDef.typeName
@@ -313,16 +313,16 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
       end
     end
   #--- Check for a direct property access or for a conversion getter
-    if not ok, let [[rightType definition].propertyMap searchKey ![leftResultType definition].typeName.string ?let accessControl ?* ?let propertyType] then
-      [accessControl checkSetAccess !.none !inErrorLocation]
+    if not ok, let prop = [rightType definition].propertyMap §[[leftResultType definition].typeName] then
+      [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
-        !propertyType
+        !prop.mPropertyType
         !inErrorLocation
         !ioRightExpression
         ![leftResultType definition].typeName.string
       }
       ioRightExpression = conversionExpression
-      ok = propertyType == leftResultType
+      ok = prop.mPropertyType == leftResultType
     elsif (not ok) && [[rightType definition].getterMap hasKey ![leftResultType definition].typeName.string] then
       [[rightType definition].getterMap searchKey
         ![leftResultType definition].typeName

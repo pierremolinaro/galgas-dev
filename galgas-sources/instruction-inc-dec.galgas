@@ -205,11 +205,11 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
 #  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-      if not [selfMutability selfIsMutable] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
-      let propertyMap = [selfType definition].propertyMap
+      let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
 #      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
@@ -217,7 +217,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
-      if not [selfMutability propertiesAreMutable] then
+      if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mReceiverName : "the property cannot be mutated in this constant"
       end
     else
@@ -308,20 +308,20 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-    if not [selfMutability selfIsMutable] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
-    if not [[selfType definition].features incDecOperator] then
+    if not [[selfAvailable.type definition].features incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfType definition].typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
+      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration {
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
-      !selfType
+      !selfAvailable.type
       !()
       !self.mKind
     }
@@ -340,20 +340,20 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager unused ioVariableMap
 {
-  if let [inAnalysisContext.selfAvailability available ?type: let selfType ?selfMutability: let selfMutability] then
-    if not [selfMutability selfIsMutable] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
-    if not [[selfType definition].features incDecOperator] then
+    if not [[selfAvailable.type definition].features incDecOperator] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [selfType definition].typeName.string + "' type, but this type does not support the '++' and  '--' operators"
+      :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@incDecInstructionForGeneration {
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
-      !selfType
+      !selfAvailable.type
       !()
       !self.mKind
      }

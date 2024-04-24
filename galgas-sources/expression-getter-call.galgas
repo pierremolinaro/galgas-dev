@@ -90,17 +90,11 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
     ]
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   #--------------------------------------- Search getter
-    if let [[receiverType definition].getterMap searchKey
-        !self.mGetterName.string
-        ?let kind
-        ?let getterFormalArgumentTypeList
-        ?*
-        ?let @bool hasCompilerArgument
-        ?let @unifiedTypeMapEntry returnedType
-        ?*
-        ?let replacementGetter] then
-      if (replacementGetter != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
-        error self.mGetterName : "obsolete getter" fixit { replace replacementGetter }
+    if let aGetter = [receiverType definition].getterMap §[self.mGetterName] then
+      if (aGetter.mGetterNameThatObsoletesInvokationName != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
+        error self.mGetterName : "obsolete getter" fixit {
+          replace aGetter.mGetterNameThatObsoletesInvokationName
+        }
       end
       if self.errorOnGetterCallInsteadOfPropertyRead
         && [[receiverType definition].propertyMap hasKey !self.mGetterName.string]
@@ -108,14 +102,14 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
       end
     #--- Analysis arguments
-      if [self.mActualArgumentList count] != [getterFormalArgumentTypeList count] then
+      if [self.mActualArgumentList count] != [aGetter.mArgumentTypeList count] then
         error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
-        + [getterFormalArgumentTypeList count] + " parameter(s), while this call has "
+        + [aGetter.mArgumentTypeList count] + " parameter(s), while this call has "
         + [self.mActualArgumentList count] + " parameter(s)" : outExpression
       else
         var @semanticExpressionListForGeneration constructorEffectiveParameterList = ()
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
-            (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
+            (mFormalSelector mFormalArgumentType 2*) in aGetter.mArgumentTypeList do
           [mExpression analyzeSemanticExpression
             !usefulnessCallerEntityName: inUsefulnessCallerEntityName
             !?ioUsefulEntitiesGraph
@@ -133,14 +127,14 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
           constructorEffectiveParameterList += !exp
         end
         outExpression = @getterCallExpressionForGeneration {
-          !returnedType
+          !aGetter.mReturnedType
           !self.mGetterName.location
-          !kind
+          !aGetter.mKind
           !receiverExpression
           !()
-          !if replacementGetter == "" then self.mGetterName.string else replacementGetter end
+          !if aGetter.mGetterNameThatObsoletesInvokationName == "" then self.mGetterName.string else aGetter.mGetterNameThatObsoletesInvokationName end
           !constructorEffectiveParameterList
-          !hasCompilerArgument
+          !aGetter.mHasCompilerArgument
         }
         if inAnalysisContext.semanticContext.galgas4
          && ([self.mActualArgumentList count] == 0)
@@ -149,10 +143,10 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
         end
       end
   #--------------------------------------- The getter does not exist, it is a property ?
-    elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].propertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
-      [accessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
+    elsif [self.mActualArgumentList count] == 0, let prop = [receiverType definition].propertyMap §[self.mGetterName] then
+      [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
       outExpression = @propertyAccessExpressionForGeneration {
-        !propertyType
+        !prop.mPropertyType
         !self.mGetterName.location
         !receiverExpression
         !self.mGetterName.string

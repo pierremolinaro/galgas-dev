@@ -94,15 +94,15 @@ struct @routineMap {
                    !@formalParameterSignature outRoutineSignature
                    !isFilePrivate: @bool outIsFilePrivate
                    !routineMangledName: @lstring outRoutineMangledName {
-    if let [self.mInternalRoutineMap searchKey !inRoutineName ?let routineArgumentMap] then
+    if let routine = self.mInternalRoutineMap §[inRoutineName] then
       outIsFilePrivate = false
       outRoutineSignature = ()
-      for entry in routineArgumentMap do
+      for entry in routine.mArgumentMap do
         outIsFilePrivate = entry.mIsFilePrivate
         outRoutineSignature = entry.mRoutineSignature
       end
       var @acceptableParameterList acceptableParameterList = ()
-      for entry in routineArgumentMap do
+      for entry in routine.mArgumentMap do
         var accept = [inActualParameterList count] == [entry.mRoutineSignature count]
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
           accept = [actualParameter isCompatibleWith

@@ -44,8 +44,8 @@ map @unifiedTypeMap {
   setter makeEntry ?let @lstring inLKey !@unifiedTypeMapEntry outEntry {
     if inLKey.string == "" then
       outEntry = .null
-    elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-      outEntry = .element {!weakElement: element}
+    elsif let node = self §[inLKey] then
+      outEntry = .element {!weakElement: node.mElement}
     else
       let newElement = @unifiedTypeMapElementClass {!.unsolved}
       [!?self internalInsertKey !inLKey !newElement]
@@ -58,8 +58,8 @@ map @unifiedTypeMap {
   setter makeEntryFromString ?let @string inKey !@unifiedTypeMapEntry outEntry {
     if inKey == "" then
       outEntry = .null
-    elsif let [self searchKey !inKey ?let @unifiedTypeMapElementClass element] then
-      outEntry = .element {!weakElement: element}
+    elsif let node = self §[inKey] then
+      outEntry = .element {!weakElement: node.mElement}
     else
       let newElement = @unifiedTypeMapElementClass {!.unsolved}
       [!?self internalInsertKey !.init {!inKey !.nowhere} !newElement]
@@ -72,8 +72,8 @@ map @unifiedTypeMap {
   getter typeMapEntryForLKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
     if inLKey.string == "" then
       result = .null
-    elsif let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-      result = .element {!weakElement: element}
+    elsif let node = self §[inLKey] then
+      result = .element {!weakElement: node.mElement}
     else
       error inLKey : "there is no '@" + inLKey + "' type" : result
     end
@@ -82,12 +82,12 @@ map @unifiedTypeMap {
   #-----------------------------------------------------------------------------------------------
 
   setter insertType ?let @lstring inTypeName ?let @unifiedTypeDefinition inTypeDefinition {
-    if let [self searchKey !inTypeName ?let @unifiedTypeMapElementClass element] then
-      switch element.mDefinition
+    if let node = self §[inTypeName] then
+      switch node.mElement.mDefinition
       case solved (*) :
         error inTypeName : "type already defined"
       case unsolved :
-        var e = element
+        var e = node.mElement
         e.mDefinition = .solved {!definition: inTypeDefinition}
       end
     else
@@ -99,14 +99,9 @@ map @unifiedTypeMap {
   #-----------------------------------------------------------------------------------------------
 
   getter typeDefinition ?let @lstring inLKey -> @unifiedTypeDefinition {
-    if let [self searchKey !inLKey ?let @unifiedTypeMapElementClass element] then
-      switch element.mDefinition
+    if let node = self §[inLKey] then
+      switch node.mElement.mDefinition
       case solved (definition) :
-#        if definition.mTypeKindEnum == .packageType then
-#          error inLKey : "the '@" + inLKey + "' type is a package and cannot be used here" : result
-#        else
-#          result = definition
-#        end
         result = definition
       case unsolved :
         error inLKey : "unsolved type" : result
