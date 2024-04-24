@@ -207,7 +207,16 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
           }
         end
       else
-        error self.propertyName : "undefined property, undefined getter" : outExpression
+        var s = "undefined property, undefined getter"
+        for property in propertyMap do
+          s += "\n  -- property: " + property.lkey
+        end
+        for aGetter in getterMap do
+         if [aGetter.mArgumentTypeList count] == 0 then
+           s += "\n  -- getter: " + aGetter.lkey
+         end
+        end
+        error self.propertyName : s : outExpression
       end
     end
   }
