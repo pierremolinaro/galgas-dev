@@ -1784,7 +1784,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program 
   result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
   result.appendString ("\"\nmessage \"a source text file with the .") ;
   result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString (" extension\"\n%useGrammar ") ;
+  result.appendString (" extension\"\ngrammar ") ;
   result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
   result.appendString ("_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar ") ;
   result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
