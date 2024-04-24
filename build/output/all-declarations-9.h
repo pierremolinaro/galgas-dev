@@ -10734,19 +10734,15 @@ class GALGAS_fixitElementAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_fixitElementAST_2D_fixItReplace_3F_ getter_fixItReplace (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionAST & out_exp,
-                                                    class GALGAS_location & out_errorLocation) const ;
-  public: class GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ getter_fixItInsertAfter (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionAST & out_exp,
-                                                        class GALGAS_location & out_errorLocation) const ;
-  public: class GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ getter_fixItInsertBefore (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionAST & out_exp,
-                                                         class GALGAS_location & out_errorLocation) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionAST & out_exp,
+                                                                     class GALGAS_location & out_errorLocation) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionAST & out_exp,
+                                                                         class GALGAS_location & out_errorLocation) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionAST & out_exp,
+                                                                          class GALGAS_location & out_errorLocation) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -10755,6 +10751,7 @@ class GALGAS_fixitElementAST : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -10813,6 +10810,12 @@ class GALGAS_fixitElementAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ getter_fixItInsertAfter (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ getter_fixItInsertBefore (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_fixitElementAST_2D_fixItReplace_3F_ getter_fixItReplace (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFixItInsertAfter (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFixItInsertBefore (LOCATION_ARGS) const ;
@@ -11822,16 +11825,12 @@ class GALGAS_fixitElementForGeneration : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ getter_fixItReplace (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
-  public: class GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ getter_fixItInsertBefore (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
-  public: class GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ getter_fixItInsertAfter (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItReplace (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertBefore (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertAfter (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -11840,6 +11839,7 @@ class GALGAS_fixitElementForGeneration : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -11892,6 +11892,12 @@ class GALGAS_fixitElementForGeneration : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ getter_fixItInsertAfter (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ getter_fixItInsertBefore (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ getter_fixItReplace (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFixItInsertAfter (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFixItInsertBefore (LOCATION_ARGS) const ;

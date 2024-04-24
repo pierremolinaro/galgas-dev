@@ -4238,7 +4238,7 @@ class GALGAS_dynamicTypeComparisonKind : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -8824,12 +8824,10 @@ class GALGAS_unifiedTypeMapEntry : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_unifiedTypeMapEntry_2D_element_3F_ getter_element (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_element (class GALGAS_unifiedTypeMapElementClass_2D_weak & out_weakElement) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_element (class GALGAS_unifiedTypeMapElementClass_2D_weak & out_weakElement) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -8838,6 +8836,7 @@ class GALGAS_unifiedTypeMapEntry : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -8878,6 +8877,8 @@ class GALGAS_unifiedTypeMapEntry : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntry_2D_element_3F_ getter_element (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isElement (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNull (LOCATION_ARGS) const ;
@@ -8984,12 +8985,10 @@ class GALGAS_typeDefinition : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_typeDefinition_2D_solved_3F_ getter_solved (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_solved (class GALGAS_unifiedTypeDefinition & out_definition) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_solved (class GALGAS_unifiedTypeDefinition & out_definition) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -8998,6 +8997,7 @@ class GALGAS_typeDefinition : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -9039,6 +9039,8 @@ class GALGAS_typeDefinition : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSolved (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isUnsolved (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_typeDefinition_2D_solved_3F_ getter_solved (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -9311,7 +9313,7 @@ class GALGAS_headerKind : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -9420,16 +9422,12 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_typeKindEnum_2D_classType_3F_ getter_classType (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_classType (class GALGAS_bool & out_isReference) const ;
-  public: class GALGAS_typeKindEnum_2D_weakReferenceType_3F_ getter_weakReferenceType (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_weakReferenceType (class GALGAS_unifiedTypeMapEntry & out_referenceType) const ;
-  public: class GALGAS_typeKindEnum_2D_enumType_3F_ getter_enumType (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_enumType (class GALGAS_constantIndexMap & out_constantMap) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_classType (class GALGAS_bool & out_isReference) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_weakReferenceType (class GALGAS_unifiedTypeMapEntry & out_referenceType) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_enumType (class GALGAS_constantIndexMap & out_constantMap) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -9438,6 +9436,7 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -9514,6 +9513,10 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_typeKindEnum_2D_classType_3F_ getter_classType (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_typeKindEnum_2D_enumType_3F_ getter_enumType (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isBoolsetType (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isClassType (LOCATION_ARGS) const ;
@@ -9543,6 +9546,8 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isStructType (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isWeakReferenceType (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_typeKindEnum_2D_weakReferenceType_3F_ getter_weakReferenceType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

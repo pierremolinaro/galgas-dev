@@ -82,6 +82,12 @@ AC_GALGAS_enumerationAssociatedValues::~ AC_GALGAS_enumerationAssociatedValues (
 
 //--------------------------------------------------------------------------------------------------
 
+void AC_GALGAS_enumerationAssociatedValues::drop (void) {
+  macroDetachSharedObject (mSharedPtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void AC_GALGAS_enumerationAssociatedValues::description (String & ioString,
                                                          const int32_t inIndentation) const {
   if (nullptr != mSharedPtr) {

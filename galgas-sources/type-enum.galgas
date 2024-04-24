@@ -300,6 +300,18 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         !returnedTypeName:"bool"
         !hasCompilerArgument:false
       )
+      if [constant.associatedValueTypeList count] > 0 then
+        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
+        enterBaseGetterWithoutArgument (
+          !?getterMap
+          !?ioTypeMap
+          !getterName: constant.name
+          !obsoleteName: ""
+          !returnedTypeName: optionalTypeName
+          !hasCompilerArgument: false
+        )
+      end
     end
   #--- Add Extensions
     var @initializerMap initializerMap = ()

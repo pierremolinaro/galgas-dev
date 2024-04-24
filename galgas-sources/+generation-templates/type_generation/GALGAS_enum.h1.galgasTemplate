@@ -24,16 +24,15 @@ if HAS_ASSOCIATED_VALUES then
   %  private: AC_GALGAS_enumAssociatedValues mAssociatedValuesEX ;\n%
   %  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n%
   %    return mAssociatedValuesEX.unsafePointer () ;\n%
-  %  }\n\n%
+  %  }\n%
 end
 %  private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
-    %  public: class GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ getter_%![mConstantName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
-    %  public: void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
+    %  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
     for (mType valueName) in mAssociatedValueTypeList
     do (idx) %class GALGAS_%![mType identifierRepresentation]% & out_%!valueName
     between %,\n%!^
@@ -49,7 +48,11 @@ end
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
-  }
+%
+if HAS_ASSOCIATED_VALUES then
+%    mAssociatedValues.drop () ;\n%
+end
+%  }
 
   public: inline Enumeration enumValue (void) const {
     return mEnum ;

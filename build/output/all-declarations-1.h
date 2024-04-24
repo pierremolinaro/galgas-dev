@@ -4017,16 +4017,13 @@ class GALGAS_templateInstructionForEnumerationAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_ getter_implicit (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_implicit (class GALGAS_string & out_prefix,
-                                                class GALGAS_location & out_remplacementRange) const ;
-  public: class GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ getter_explicit (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_explicit (class GALGAS_lstringlist & out_enumeration,
-                                                class GALGAS_location & out_endOfProperties) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_implicit (class GALGAS_string & out_prefix,
+                                                                 class GALGAS_location & out_remplacementRange) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_explicit (class GALGAS_lstringlist & out_enumeration,
+                                                                 class GALGAS_location & out_endOfProperties) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -4035,6 +4032,7 @@ class GALGAS_templateInstructionForEnumerationAST : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -4082,6 +4080,10 @@ class GALGAS_templateInstructionForEnumerationAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ getter_explicit (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_ getter_implicit (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isExplicit (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isImplicit (LOCATION_ARGS) const ;

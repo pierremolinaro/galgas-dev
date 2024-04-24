@@ -2904,7 +2904,7 @@ class GALGAS_incDecKind : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -4117,22 +4117,18 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_ifExpressionKind_2D_regularExp_3F_ getter_regularExp (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_regularExp (class GALGAS_semanticExpressionAST & out_exp,
-                                                  class GALGAS_location & out_endOfExp) const ;
-  public: class GALGAS_ifExpressionKind_2D_letExp_3F_ getter_letExp (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_letExp (class GALGAS_lstring & out_constantName,
-                                              class GALGAS_semanticExpressionAST & out_exp,
-                                              class GALGAS_location & out_endOfExp,
-                                              class GALGAS_lstring & out_typeName) const ;
-  public: class GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ getter_optionalMethodCall (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionAST & out_receiver,
-                                                          class GALGAS_lstring & out_optionalMethodName,
-                                                          class GALGAS_optionalMethodActualArgumentList & out_parameters) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_regularExp (class GALGAS_semanticExpressionAST & out_exp,
+                                                                   class GALGAS_location & out_endOfExp) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letExp (class GALGAS_lstring & out_constantName,
+                                                               class GALGAS_semanticExpressionAST & out_exp,
+                                                               class GALGAS_location & out_endOfExp,
+                                                               class GALGAS_lstring & out_typeName) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionAST & out_receiver,
+                                                                           class GALGAS_lstring & out_optionalMethodName,
+                                                                           class GALGAS_optionalMethodActualArgumentList & out_parameters) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -4141,6 +4137,7 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -4208,6 +4205,12 @@ class GALGAS_ifExpressionKind : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isOptionalMethodCall (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isRegularExp (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifExpressionKind_2D_letExp_3F_ getter_letExp (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifExpressionKind_2D_optionalMethodCall_3F_ getter_optionalMethodCall (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifExpressionKind_2D_regularExp_3F_ getter_regularExp (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -4988,23 +4991,18 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ getter_actualOutput (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionAST & out_expression,
-                                                    class GALGAS_location & out_location) const ;
-  public: class GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ getter_actualLetInput (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualLetInput (class GALGAS_lstring & out_typeName,
-                                                      class GALGAS_lstring & out_constantName) const ;
-  public: class GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ getter_actualVarInput (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualVarInput (class GALGAS_lstring & out_typeName,
-                                                      class GALGAS_lstring & out_variableName) const ;
-  public: class GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ getter_actualInputJoker (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualInputJoker (class GALGAS_bool & out_checkSelector,
-                                                        class GALGAS_location & out_location,
-                                                        class GALGAS_uint & out_idx) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionAST & out_expression,
+                                                                     class GALGAS_location & out_location) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualLetInput (class GALGAS_lstring & out_typeName,
+                                                                       class GALGAS_lstring & out_constantName) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualVarInput (class GALGAS_lstring & out_typeName,
+                                                                       class GALGAS_lstring & out_variableName) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualInputJoker (class GALGAS_bool & out_checkSelector,
+                                                                         class GALGAS_location & out_location,
+                                                                         class GALGAS_uint & out_idx) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -5013,6 +5011,7 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -5080,6 +5079,14 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ getter_actualInputJoker (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgument_2D_actualLetInput_3F_ getter_actualLetInput (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ getter_actualOutput (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgument_2D_actualVarInput_3F_ getter_actualVarInput (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isActualInputJoker (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isActualLetInput (LOCATION_ARGS) const ;
@@ -6364,25 +6371,20 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_ifTestForGeneration_2D_regular_3F_ getter_regular (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_regular (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
-  public: class GALGAS_ifTestForGeneration_2D_letExp_3F_ getter_letExp (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_letExp (class GALGAS_string & out_targetVarCppName,
-                                              class GALGAS_semanticExpressionForGeneration & out_exp,
-                                              class GALGAS_unifiedTypeMapEntry & out_targetType,
-                                              class GALGAS_unifiedTypeMapEntry & out_testType) const ;
-  public: class GALGAS_ifTestForGeneration_2D_optionalExp_3F_ getter_optionalExp (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_optionalExp (class GALGAS_string & out_targetVarCppName,
-                                                   class GALGAS_semanticExpressionForGeneration & out_exp,
-                                                   class GALGAS_unifiedTypeMapEntry & out_targetType) const ;
-  public: class GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ getter_optionalMethodCall (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionForGeneration & out_receiverExpression,
-                                                          class GALGAS_lstring & out_optionalMethodName,
-                                                          class GALGAS_optionalMethodActualArgumentListForGeneration & out_parameters) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_regular (class GALGAS_semanticExpressionForGeneration & out_exp) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letExp (class GALGAS_string & out_targetVarCppName,
+                                                               class GALGAS_semanticExpressionForGeneration & out_exp,
+                                                               class GALGAS_unifiedTypeMapEntry & out_targetType,
+                                                               class GALGAS_unifiedTypeMapEntry & out_testType) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_optionalExp (class GALGAS_string & out_targetVarCppName,
+                                                                    class GALGAS_semanticExpressionForGeneration & out_exp,
+                                                                    class GALGAS_unifiedTypeMapEntry & out_targetType) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_optionalMethodCall (class GALGAS_semanticExpressionForGeneration & out_receiverExpression,
+                                                                           class GALGAS_lstring & out_optionalMethodName,
+                                                                           class GALGAS_optionalMethodActualArgumentListForGeneration & out_parameters) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6391,6 +6393,7 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -6469,6 +6472,14 @@ class GALGAS_ifTestForGeneration : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isOptionalMethodCall (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isRegular (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifTestForGeneration_2D_letExp_3F_ getter_letExp (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifTestForGeneration_2D_optionalExp_3F_ getter_optionalExp (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifTestForGeneration_2D_optionalMethodCall_3F_ getter_optionalMethodCall (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_ifTestForGeneration_2D_regular_3F_ getter_regular (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -7403,18 +7414,14 @@ class GALGAS_optionalMethodActualArgumentForGeneration : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ getter_actualOutput (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionForGeneration & out_expression) const ;
-  public: class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ getter_actualLetInput (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualLetInput (class GALGAS_string & out_typeName,
-                                                      class GALGAS_string & out_constantName) const ;
-  public: class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ getter_actualVarInput (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_actualVarInput (class GALGAS_string & out_typeName,
-                                                      class GALGAS_string & out_variableName) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualOutput (class GALGAS_semanticExpressionForGeneration & out_expression) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualLetInput (class GALGAS_string & out_typeName,
+                                                                       class GALGAS_string & out_constantName) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_actualVarInput (class GALGAS_string & out_typeName,
+                                                                       class GALGAS_string & out_variableName) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -7423,6 +7430,7 @@ class GALGAS_optionalMethodActualArgumentForGeneration : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -7477,6 +7485,12 @@ class GALGAS_optionalMethodActualArgumentForGeneration : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ getter_actualLetInput (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualOutput_3F_ getter_actualOutput (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ getter_actualVarInput (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isActualLetInput (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isActualOutput (LOCATION_ARGS) const ;

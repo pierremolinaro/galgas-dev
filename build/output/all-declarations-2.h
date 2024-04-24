@@ -3109,7 +3109,7 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -3242,7 +3242,7 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -11912,7 +11912,7 @@ class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {

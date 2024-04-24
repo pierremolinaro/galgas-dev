@@ -2543,14 +2543,11 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ getter_fileprivateAccess (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fileprivateAccess (class GALGAS_location & out_declarationLocation) const ;
-  public: class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ getter_fileprivateSetAccess (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_fileprivateSetAccess (class GALGAS_location & out_declarationLocation) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fileprivateAccess (class GALGAS_location & out_declarationLocation) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fileprivateSetAccess (class GALGAS_location & out_declarationLocation) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -2559,6 +2556,7 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -2612,6 +2610,10 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ getter_fileprivateAccess (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ getter_fileprivateSetAccess (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFileprivateAccess (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFileprivateSetAccess (LOCATION_ARGS) const ;
@@ -2762,12 +2764,10 @@ class GALGAS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
     return mAssociatedValuesEX.unsafePointer () ;
   }
-
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
-  public: class GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ getter_some (LOCATION_ARGS) const ;
-  public: void getAssociatedValuesFor_some (class GALGAS_semanticExpressionAST & out_expression) const ;
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_some (class GALGAS_semanticExpressionAST & out_expression) const ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -2776,6 +2776,7 @@ class GALGAS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG inline void drop (void) override {
     mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
   }
 
   public: inline Enumeration enumValue (void) const {
@@ -2819,6 +2820,8 @@ class GALGAS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSome (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ getter_some (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -4193,7 +4196,7 @@ class GALGAS_structComparison : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -6291,7 +6294,7 @@ class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: Enumeration mEnum ;
 
-//--------------------------------- Associated value getter and extraction
+//--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
