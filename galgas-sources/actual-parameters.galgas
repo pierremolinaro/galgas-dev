@@ -437,7 +437,7 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
     end
       ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration {
         !inFormalArgumentType
-        !"selfAvailable.type"
+        !"ioObject"
         !()
         !@unifiedTypeMapEntryList.listWithValue {!inFormalArgumentType}
       }
