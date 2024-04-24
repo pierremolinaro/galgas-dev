@@ -12890,7 +12890,7 @@ GALGAS_closedSliceExpressionForGeneration GALGAS_closedSliceExpressionForGenerat
 cPtr_structPropertyAccessExpressionAST::cPtr_structPropertyAccessExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
 mProperty_operatorLocation (),
-mProperty_expression (),
+mProperty_mExpression (),
 mProperty_propertyName () {
 }
 
@@ -12900,7 +12900,7 @@ mProperty_propertyName () {
   void cPtr_structPropertyAccessExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
     mProperty_operatorLocation.printNonNullClassInstanceProperties ("operatorLocation") ;
-    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
     mProperty_propertyName.printNonNullClassInstanceProperties ("propertyName") ;
   }
 #endif
@@ -12933,13 +12933,13 @@ GALGAS_semanticExpressionAST () {
 
 GALGAS_structPropertyAccessExpressionAST GALGAS_structPropertyAccessExpressionAST::
 init_21__21__21_ (const GALGAS_location & in_operatorLocation,
-                  const GALGAS_semanticExpressionAST & in_expression,
+                  const GALGAS_semanticExpressionAST & in_mExpression,
                   const GALGAS_lstring & in_propertyName,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_structPropertyAccessExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_structPropertyAccessExpressionAST (inCompiler COMMA_THERE)) ;
-  object->structPropertyAccessExpressionAST_init_21__21__21_ (in_operatorLocation, in_expression, in_propertyName, inCompiler) ;
+  object->structPropertyAccessExpressionAST_init_21__21__21_ (in_operatorLocation, in_mExpression, in_propertyName, inCompiler) ;
   const GALGAS_structPropertyAccessExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -12949,11 +12949,11 @@ init_21__21__21_ (const GALGAS_location & in_operatorLocation,
 
 void cPtr_structPropertyAccessExpressionAST::
 structPropertyAccessExpressionAST_init_21__21__21_ (const GALGAS_location & in_operatorLocation,
-                                                    const GALGAS_semanticExpressionAST & in_expression,
+                                                    const GALGAS_semanticExpressionAST & in_mExpression,
                                                     const GALGAS_lstring & in_propertyName,
                                                     Compiler * /* inCompiler */) {
   mProperty_operatorLocation = in_operatorLocation ;
-  mProperty_expression = in_expression ;
+  mProperty_mExpression = in_mExpression ;
   mProperty_propertyName = in_propertyName ;
 }
 
@@ -12966,11 +12966,11 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structPropertyAccessExpressionAST GALGAS_structPropertyAccessExpressionAST::class_func_new (const GALGAS_location & in_operatorLocation,
-                                                                                                   const GALGAS_semanticExpressionAST & in_expression,
+                                                                                                   const GALGAS_semanticExpressionAST & in_mExpression,
                                                                                                    const GALGAS_lstring & in_propertyName
                                                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_structPropertyAccessExpressionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_structPropertyAccessExpressionAST (in_operatorLocation, in_expression, in_propertyName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_structPropertyAccessExpressionAST (in_operatorLocation, in_mExpression, in_propertyName COMMA_THERE)) ;
   return result ;
 }
 
@@ -12988,13 +12988,13 @@ GALGAS_location GALGAS_structPropertyAccessExpressionAST::readProperty_operatorL
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_structPropertyAccessExpressionAST::readProperty_expression (void) const {
+GALGAS_semanticExpressionAST GALGAS_structPropertyAccessExpressionAST::readProperty_mExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
     cPtr_structPropertyAccessExpressionAST * p = (cPtr_structPropertyAccessExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structPropertyAccessExpressionAST) ;
-    return p->mProperty_expression ;
+    return p->mProperty_mExpression ;
   }
 }
 
@@ -13015,15 +13015,15 @@ GALGAS_lstring GALGAS_structPropertyAccessExpressionAST::readProperty_propertyNa
 //--------------------------------------------------------------------------------------------------
 
 cPtr_structPropertyAccessExpressionAST::cPtr_structPropertyAccessExpressionAST (const GALGAS_location & in_operatorLocation,
-                                                                                const GALGAS_semanticExpressionAST & in_expression,
+                                                                                const GALGAS_semanticExpressionAST & in_mExpression,
                                                                                 const GALGAS_lstring & in_propertyName
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
 mProperty_operatorLocation (),
-mProperty_expression (),
+mProperty_mExpression (),
 mProperty_propertyName () {
   mProperty_operatorLocation = in_operatorLocation ;
-  mProperty_expression = in_expression ;
+  mProperty_mExpression = in_mExpression ;
   mProperty_propertyName = in_propertyName ;
 }
 
@@ -13038,7 +13038,7 @@ void cPtr_structPropertyAccessExpressionAST::description (String & ioString,
   ioString.appendCString ("[@structPropertyAccessExpressionAST:") ;
   mProperty_operatorLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_expression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_propertyName.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
@@ -13048,7 +13048,7 @@ void cPtr_structPropertyAccessExpressionAST::description (String & ioString,
 
 acPtr_class * cPtr_structPropertyAccessExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_structPropertyAccessExpressionAST (mProperty_operatorLocation, mProperty_expression, mProperty_propertyName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structPropertyAccessExpressionAST (mProperty_operatorLocation, mProperty_mExpression, mProperty_propertyName COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -2869,7 +2869,7 @@ GALGAS_propertyAccessExpressionForGeneration_2D_weak GALGAS_propertyAccessExpres
 
 cPtr_subscriptReadAccessExpressionAST::cPtr_subscriptReadAccessExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
-mProperty_expression (),
+mProperty_mExpression (),
 mProperty_actualArgumentList (),
 mProperty_endOfArgsLocation () {
 }
@@ -2879,7 +2879,7 @@ mProperty_endOfArgsLocation () {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_subscriptReadAccessExpressionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
     mProperty_actualArgumentList.printNonNullClassInstanceProperties ("actualArgumentList") ;
     mProperty_endOfArgsLocation.printNonNullClassInstanceProperties ("endOfArgsLocation") ;
   }
@@ -2912,14 +2912,14 @@ GALGAS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_subscriptReadAccessExpressionAST GALGAS_subscriptReadAccessExpressionAST::
-init_21__21__21_ (const GALGAS_semanticExpressionAST & in_expression,
+init_21__21__21_ (const GALGAS_semanticExpressionAST & in_mExpression,
                   const GALGAS_actualOutputArgumentList & in_actualArgumentList,
                   const GALGAS_location & in_endOfArgsLocation,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_subscriptReadAccessExpressionAST * object = nullptr ;
   macroMyNew (object, cPtr_subscriptReadAccessExpressionAST (inCompiler COMMA_THERE)) ;
-  object->subscriptReadAccessExpressionAST_init_21__21__21_ (in_expression, in_actualArgumentList, in_endOfArgsLocation, inCompiler) ;
+  object->subscriptReadAccessExpressionAST_init_21__21__21_ (in_mExpression, in_actualArgumentList, in_endOfArgsLocation, inCompiler) ;
   const GALGAS_subscriptReadAccessExpressionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -2928,11 +2928,11 @@ init_21__21__21_ (const GALGAS_semanticExpressionAST & in_expression,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_subscriptReadAccessExpressionAST::
-subscriptReadAccessExpressionAST_init_21__21__21_ (const GALGAS_semanticExpressionAST & in_expression,
+subscriptReadAccessExpressionAST_init_21__21__21_ (const GALGAS_semanticExpressionAST & in_mExpression,
                                                    const GALGAS_actualOutputArgumentList & in_actualArgumentList,
                                                    const GALGAS_location & in_endOfArgsLocation,
                                                    Compiler * /* inCompiler */) {
-  mProperty_expression = in_expression ;
+  mProperty_mExpression = in_mExpression ;
   mProperty_actualArgumentList = in_actualArgumentList ;
   mProperty_endOfArgsLocation = in_endOfArgsLocation ;
 }
@@ -2945,24 +2945,24 @@ GALGAS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subscriptReadAccessExpressionAST GALGAS_subscriptReadAccessExpressionAST::class_func_new (const GALGAS_semanticExpressionAST & in_expression,
+GALGAS_subscriptReadAccessExpressionAST GALGAS_subscriptReadAccessExpressionAST::class_func_new (const GALGAS_semanticExpressionAST & in_mExpression,
                                                                                                  const GALGAS_actualOutputArgumentList & in_actualArgumentList,
                                                                                                  const GALGAS_location & in_endOfArgsLocation
                                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_subscriptReadAccessExpressionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_subscriptReadAccessExpressionAST (in_expression, in_actualArgumentList, in_endOfArgsLocation COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_subscriptReadAccessExpressionAST (in_mExpression, in_actualArgumentList, in_endOfArgsLocation COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionAST GALGAS_subscriptReadAccessExpressionAST::readProperty_expression (void) const {
+GALGAS_semanticExpressionAST GALGAS_subscriptReadAccessExpressionAST::readProperty_mExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_semanticExpressionAST () ;
   }else{
     cPtr_subscriptReadAccessExpressionAST * p = (cPtr_subscriptReadAccessExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_subscriptReadAccessExpressionAST) ;
-    return p->mProperty_expression ;
+    return p->mProperty_mExpression ;
   }
 }
 
@@ -2994,15 +2994,15 @@ GALGAS_location GALGAS_subscriptReadAccessExpressionAST::readProperty_endOfArgsL
 //Pointer class for @subscriptReadAccessExpressionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_subscriptReadAccessExpressionAST::cPtr_subscriptReadAccessExpressionAST (const GALGAS_semanticExpressionAST & in_expression,
+cPtr_subscriptReadAccessExpressionAST::cPtr_subscriptReadAccessExpressionAST (const GALGAS_semanticExpressionAST & in_mExpression,
                                                                               const GALGAS_actualOutputArgumentList & in_actualArgumentList,
                                                                               const GALGAS_location & in_endOfArgsLocation
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (THERE),
-mProperty_expression (),
+mProperty_mExpression (),
 mProperty_actualArgumentList (),
 mProperty_endOfArgsLocation () {
-  mProperty_expression = in_expression ;
+  mProperty_mExpression = in_mExpression ;
   mProperty_actualArgumentList = in_actualArgumentList ;
   mProperty_endOfArgsLocation = in_endOfArgsLocation ;
 }
@@ -3016,7 +3016,7 @@ const C_galgas_type_descriptor * cPtr_subscriptReadAccessExpressionAST::classDes
 void cPtr_subscriptReadAccessExpressionAST::description (String & ioString,
                                                          const int32_t inIndentation) const {
   ioString.appendCString ("[@subscriptReadAccessExpressionAST:") ;
-  mProperty_expression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_actualArgumentList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -3028,7 +3028,7 @@ void cPtr_subscriptReadAccessExpressionAST::description (String & ioString,
 
 acPtr_class * cPtr_subscriptReadAccessExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_subscriptReadAccessExpressionAST (mProperty_expression, mProperty_actualArgumentList, mProperty_endOfArgsLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_subscriptReadAccessExpressionAST (mProperty_mExpression, mProperty_actualArgumentList, mProperty_endOfArgsLocation COMMA_THERE)) ;
   return ptr ;
 }
 

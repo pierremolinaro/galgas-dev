@@ -2048,7 +2048,7 @@ class GALGAS_structPropertyAccessExpressionAST : public GALGAS_semanticExpressio
 //--------------------------------- Property access
   public: class GALGAS_location readProperty_operatorLocation (void) const ;
 
-  public: class GALGAS_semanticExpressionAST readProperty_expression (void) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
   public: class GALGAS_lstring readProperty_propertyName (void) const ;
 
@@ -2132,7 +2132,7 @@ class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST
 
 //--- Properties
   public: GALGAS_location mProperty_operatorLocation ;
-  public: GALGAS_semanticExpressionAST mProperty_expression ;
+  public: GALGAS_semanticExpressionAST mProperty_mExpression ;
   public: GALGAS_lstring mProperty_propertyName ;
 
 
@@ -2141,7 +2141,7 @@ class cPtr_structPropertyAccessExpressionAST : public cPtr_semanticExpressionAST
 
 //--- Constructor
   public: cPtr_structPropertyAccessExpressionAST (const GALGAS_location & in_operatorLocation,
-                                                  const GALGAS_semanticExpressionAST & in_expression,
+                                                  const GALGAS_semanticExpressionAST & in_mExpression,
                                                   const GALGAS_lstring & in_propertyName
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -2403,7 +2403,7 @@ class GALGAS_subscriptReadAccessExpressionAST : public GALGAS_semanticExpression
   public: GALGAS_subscriptReadAccessExpressionAST (const class cPtr_subscriptReadAccessExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_semanticExpressionAST readProperty_expression (void) const ;
+  public: class GALGAS_semanticExpressionAST readProperty_mExpression (void) const ;
 
   public: class GALGAS_actualOutputArgumentList readProperty_actualArgumentList (void) const ;
 
@@ -2488,7 +2488,7 @@ class cPtr_subscriptReadAccessExpressionAST : public cPtr_semanticExpressionAST 
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_semanticExpressionAST mProperty_expression ;
+  public: GALGAS_semanticExpressionAST mProperty_mExpression ;
   public: GALGAS_actualOutputArgumentList mProperty_actualArgumentList ;
   public: GALGAS_location mProperty_endOfArgsLocation ;
 
@@ -2497,7 +2497,7 @@ class cPtr_subscriptReadAccessExpressionAST : public cPtr_semanticExpressionAST 
   public: cPtr_subscriptReadAccessExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_subscriptReadAccessExpressionAST (const GALGAS_semanticExpressionAST & in_expression,
+  public: cPtr_subscriptReadAccessExpressionAST (const GALGAS_semanticExpressionAST & in_mExpression,
                                                  const GALGAS_actualOutputArgumentList & in_actualArgumentList,
                                                  const GALGAS_location & in_endOfArgsLocation
                                                  COMMA_LOCATION_ARGS) ;

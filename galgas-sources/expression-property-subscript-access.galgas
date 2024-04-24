@@ -127,7 +127,7 @@ syntax extension galgas4ExpressionSyntax {
 
 refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
   private let @location operatorLocation
-  private let @semanticExpressionAST expression
+  private let @semanticExpressionAST mExpression
   private let @lstring propertyName
 
   #·······························································································
@@ -146,7 +146,7 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
                                   ?!@localVarManager ioVariableMap
                                   !@semanticExpressionForGeneration outExpression {
   #--- Expression analysis
-    [self.expression analyzeSemanticExpression
+    [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: .null
@@ -251,7 +251,7 @@ refclass @propertyAccessExpressionForGeneration : @semanticExpressionForGenerati
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
-  private let @semanticExpressionAST expression
+  private let @semanticExpressionAST mExpression
   private let @actualOutputArgumentList actualArgumentList
   private let @location endOfArgsLocation
 
@@ -274,7 +274,7 @@ refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
                                   ?!@localVarManager ioVariableMap
                                   !@semanticExpressionForGeneration outExpression {
   #--- Receiver analysis
-    [self.expression analyzeSemanticExpression
+    [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inferenceType: .null
