@@ -279,7 +279,6 @@ refclass @switchInstructionAST : @semanticInstructionAST {
                 + "  associated value"
                 + if [associatedTypeList count] > 1 then "s" else "" end
             else
-              var associatedValueIndex = 0
               for descriptor in associatedTypeList, associatedValue in branch.mAssociatedValuesExtraction do (IDX)
                 if associatedValue.mExtractedValueTypeName.string != "" then # Explicit type ?
                   if [descriptor.type definition].typeName.string
@@ -294,7 +293,6 @@ refclass @switchInstructionAST : @semanticInstructionAST {
                 extractedAssociatedValuesForGeneration +=
                   !descriptor.type
                   !cppName
-                  !associatedValueIndex
                   !descriptor.name
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
@@ -313,7 +311,6 @@ refclass @switchInstructionAST : @semanticInstructionAST {
                     ]
                   end
                 end
-                associatedValueIndex += 1
               end
             end
           else
@@ -377,7 +374,7 @@ refclass @switchInstructionAST : @semanticInstructionAST {
 list @extractedAssociatedValuesForGeneration {
   public let @unifiedTypeMapEntry mType
   public let @string mCppName
-  public let @uint mIndex
+#  public let @uint mIndex
   public let @string name
 }
 

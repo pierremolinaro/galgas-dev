@@ -340,9 +340,9 @@ GALGAS_templateInstructionForeachForGeneration GALGAS_templateInstructionForeach
 
 cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mEnumType (),
-mProperty_mSwitchExpression (),
-mProperty_mTemplateInstructionSwitchBranchList () {
+mProperty_enumType (),
+mProperty_switchExpression (),
+mProperty_templateInstructionSwitchBranchList () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -350,9 +350,9 @@ mProperty_mTemplateInstructionSwitchBranchList () {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_templateInstructionSwitchForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_templateInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mEnumType.printNonNullClassInstanceProperties ("mEnumType") ;
-    mProperty_mSwitchExpression.printNonNullClassInstanceProperties ("mSwitchExpression") ;
-    mProperty_mTemplateInstructionSwitchBranchList.printNonNullClassInstanceProperties ("mTemplateInstructionSwitchBranchList") ;
+    mProperty_enumType.printNonNullClassInstanceProperties ("enumType") ;
+    mProperty_switchExpression.printNonNullClassInstanceProperties ("switchExpression") ;
+    mProperty_templateInstructionSwitchBranchList.printNonNullClassInstanceProperties ("templateInstructionSwitchBranchList") ;
   }
 #endif
 
@@ -383,14 +383,14 @@ GALGAS_templateInstructionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchForGeneration::
-init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                  const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                  const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList,
+init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_enumType,
+                  const GALGAS_semanticExpressionForGeneration & in_switchExpression,
+                  const GALGAS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionSwitchForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_templateInstructionSwitchForGeneration (inCompiler COMMA_THERE)) ;
-  object->templateInstructionSwitchForGeneration_init_21__21__21_ (in_mEnumType, in_mSwitchExpression, in_mTemplateInstructionSwitchBranchList, inCompiler) ;
+  object->templateInstructionSwitchForGeneration_init_21__21__21_ (in_enumType, in_switchExpression, in_templateInstructionSwitchBranchList, inCompiler) ;
   const GALGAS_templateInstructionSwitchForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -399,13 +399,13 @@ init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateInstructionSwitchForGeneration::
-templateInstructionSwitchForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                                                         const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                                                         const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList,
+templateInstructionSwitchForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_enumType,
+                                                         const GALGAS_semanticExpressionForGeneration & in_switchExpression,
+                                                         const GALGAS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList,
                                                          Compiler * /* inCompiler */) {
-  mProperty_mEnumType = in_mEnumType ;
-  mProperty_mSwitchExpression = in_mSwitchExpression ;
-  mProperty_mTemplateInstructionSwitchBranchList = in_mTemplateInstructionSwitchBranchList ;
+  mProperty_enumType = in_enumType ;
+  mProperty_switchExpression = in_switchExpression ;
+  mProperty_templateInstructionSwitchBranchList = in_templateInstructionSwitchBranchList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -416,48 +416,48 @@ GALGAS_templateInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                                                                                                             const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                                                                                                             const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList
+GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_enumType,
+                                                                                                             const GALGAS_semanticExpressionForGeneration & in_switchExpression,
+                                                                                                             const GALGAS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList
                                                                                                              COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionSwitchForGeneration (in_mEnumType, in_mSwitchExpression, in_mTemplateInstructionSwitchBranchList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_templateInstructionSwitchForGeneration (in_enumType, in_switchExpression, in_templateInstructionSwitchBranchList COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntry GALGAS_templateInstructionSwitchForGeneration::readProperty_mEnumType (void) const {
+GALGAS_unifiedTypeMapEntry GALGAS_templateInstructionSwitchForGeneration::readProperty_enumType (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_unifiedTypeMapEntry () ;
   }else{
     cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
-    return p->mProperty_mEnumType ;
+    return p->mProperty_enumType ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_mSwitchExpression (void) const {
+GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_switchExpression (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_semanticExpressionForGeneration () ;
   }else{
     cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
-    return p->mProperty_mSwitchExpression ;
+    return p->mProperty_switchExpression ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_mTemplateInstructionSwitchBranchList (void) const {
+GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchForGeneration::readProperty_templateInstructionSwitchBranchList (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_templateInstructionSwitchBranchListForGeneration () ;
   }else{
     cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchForGeneration) ;
-    return p->mProperty_mTemplateInstructionSwitchBranchList ;
+    return p->mProperty_templateInstructionSwitchBranchList ;
   }
 }
 
@@ -465,17 +465,17 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 //Pointer class for @templateInstructionSwitchForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                                                                                          const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                                                                                          const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList
+cPtr_templateInstructionSwitchForGeneration::cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMapEntry & in_enumType,
+                                                                                          const GALGAS_semanticExpressionForGeneration & in_switchExpression,
+                                                                                          const GALGAS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList
                                                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionForGeneration (THERE),
-mProperty_mEnumType (),
-mProperty_mSwitchExpression (),
-mProperty_mTemplateInstructionSwitchBranchList () {
-  mProperty_mEnumType = in_mEnumType ;
-  mProperty_mSwitchExpression = in_mSwitchExpression ;
-  mProperty_mTemplateInstructionSwitchBranchList = in_mTemplateInstructionSwitchBranchList ;
+mProperty_enumType (),
+mProperty_switchExpression (),
+mProperty_templateInstructionSwitchBranchList () {
+  mProperty_enumType = in_enumType ;
+  mProperty_switchExpression = in_switchExpression ;
+  mProperty_templateInstructionSwitchBranchList = in_templateInstructionSwitchBranchList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -487,11 +487,11 @@ const C_galgas_type_descriptor * cPtr_templateInstructionSwitchForGeneration::cl
 void cPtr_templateInstructionSwitchForGeneration::description (String & ioString,
                                                                const int32_t inIndentation) const {
   ioString.appendCString ("[@templateInstructionSwitchForGeneration:") ;
-  mProperty_mEnumType.description (ioString, inIndentation+1) ;
+  mProperty_enumType.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mSwitchExpression.description (ioString, inIndentation+1) ;
+  mProperty_switchExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mTemplateInstructionSwitchBranchList.description (ioString, inIndentation+1) ;
+  mProperty_templateInstructionSwitchBranchList.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -499,7 +499,7 @@ void cPtr_templateInstructionSwitchForGeneration::description (String & ioString
 
 acPtr_class * cPtr_templateInstructionSwitchForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionSwitchForGeneration (mProperty_mEnumType, mProperty_mSwitchExpression, mProperty_mTemplateInstructionSwitchBranchList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionSwitchForGeneration (mProperty_enumType, mProperty_switchExpression, mProperty_templateInstructionSwitchBranchList COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -222,12 +222,12 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method enterDeclarationInSemanticContext
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-    ?!@unifiedTypeMap ioTypeMap
-    ?!@semanticContext ioSemanticContext {
+        ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+        ?!@unifiedTypeMap ioTypeMap
+        ?!@semanticContext ioSemanticContext {
   #---
     var @classFunctionMap classFunctionMap = ()
     var @setterMap setterMap = ()

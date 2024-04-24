@@ -10105,10 +10105,10 @@ GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ GALGAS_templateInstr
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_templateInstructionSwitchBranchListAST_2D_element::GALGAS_templateInstructionSwitchBranchListAST_2D_element (void) :
-mProperty_mConstantList (),
-mProperty_mAssociatedValuesExtraction (),
-mProperty_mInstructionList (),
-mProperty_mEndOfBranch () {
+mProperty_constantList (),
+mProperty_associatedValuesExtraction (),
+mProperty_instructionList (),
+mProperty_endOfBranch () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10118,18 +10118,18 @@ GALGAS_templateInstructionSwitchBranchListAST_2D_element::~ GALGAS_templateInstr
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::init_21__21__21__21_ (const GALGAS__5B_lstring_5D_ & in_mConstantList,
-                                                                                                                                         const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                                                                                                         const GALGAS_templateInstructionListAST & in_mInstructionList,
-                                                                                                                                         const GALGAS_location & in_mEndOfBranch,
+GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::init_21__21__21__21_ (const GALGAS__5B_lstring_5D_ & in_constantList,
+                                                                                                                                         const GALGAS_switchExtractedValuesListAST & in_associatedValuesExtraction,
+                                                                                                                                         const GALGAS_templateInstructionListAST & in_instructionList,
+                                                                                                                                         const GALGAS_location & in_endOfBranch,
                                                                                                                                          Compiler * inCompiler
                                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mConstantList = in_mConstantList ;
-  result.mProperty_mAssociatedValuesExtraction = in_mAssociatedValuesExtraction ;
-  result.mProperty_mInstructionList = in_mInstructionList ;
-  result.mProperty_mEndOfBranch = in_mEndOfBranch ;
+  result.mProperty_constantList = in_constantList ;
+  result.mProperty_associatedValuesExtraction = in_associatedValuesExtraction ;
+  result.mProperty_instructionList = in_instructionList ;
+  result.mProperty_endOfBranch = in_endOfBranch ;
   return result ;
 }
 
@@ -10144,42 +10144,42 @@ GALGAS_templateInstructionSwitchBranchListAST_2D_element::GALGAS_templateInstruc
                                                                                                                     const GALGAS_switchExtractedValuesListAST & inOperand1,
                                                                                                                     const GALGAS_templateInstructionListAST & inOperand2,
                                                                                                                     const GALGAS_location & inOperand3) :
-mProperty_mConstantList (inOperand0),
-mProperty_mAssociatedValuesExtraction (inOperand1),
-mProperty_mInstructionList (inOperand2),
-mProperty_mEndOfBranch (inOperand3) {
+mProperty_constantList (inOperand0),
+mProperty_associatedValuesExtraction (inOperand1),
+mProperty_instructionList (inOperand2),
+mProperty_endOfBranch (inOperand3) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::class_func_new (const GALGAS__5B_lstring_5D_ & in_mConstantList,
-                                                                                                                                   const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                                                                                                   const GALGAS_templateInstructionListAST & in_mInstructionList,
-                                                                                                                                   const GALGAS_location & in_mEndOfBranch,
+GALGAS_templateInstructionSwitchBranchListAST_2D_element GALGAS_templateInstructionSwitchBranchListAST_2D_element::class_func_new (const GALGAS__5B_lstring_5D_ & in_constantList,
+                                                                                                                                   const GALGAS_switchExtractedValuesListAST & in_associatedValuesExtraction,
+                                                                                                                                   const GALGAS_templateInstructionListAST & in_instructionList,
+                                                                                                                                   const GALGAS_location & in_endOfBranch,
                                                                                                                                    Compiler * inCompiler
                                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListAST_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mConstantList = in_mConstantList ;
-  result.mProperty_mAssociatedValuesExtraction = in_mAssociatedValuesExtraction ;
-  result.mProperty_mInstructionList = in_mInstructionList ;
-  result.mProperty_mEndOfBranch = in_mEndOfBranch ;
+  result.mProperty_constantList = in_constantList ;
+  result.mProperty_associatedValuesExtraction = in_associatedValuesExtraction ;
+  result.mProperty_instructionList = in_instructionList ;
+  result.mProperty_endOfBranch = in_endOfBranch ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_templateInstructionSwitchBranchListAST_2D_element::isValid (void) const {
-  return mProperty_mConstantList.isValid () && mProperty_mAssociatedValuesExtraction.isValid () && mProperty_mInstructionList.isValid () && mProperty_mEndOfBranch.isValid () ;
+  return mProperty_constantList.isValid () && mProperty_associatedValuesExtraction.isValid () && mProperty_instructionList.isValid () && mProperty_endOfBranch.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GALGAS_templateInstructionSwitchBranchListAST_2D_element::drop (void) {
-  mProperty_mConstantList.drop () ;
-  mProperty_mAssociatedValuesExtraction.drop () ;
-  mProperty_mInstructionList.drop () ;
-  mProperty_mEndOfBranch.drop () ;
+  mProperty_constantList.drop () ;
+  mProperty_associatedValuesExtraction.drop () ;
+  mProperty_instructionList.drop () ;
+  mProperty_endOfBranch.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10190,13 +10190,13 @@ void GALGAS_templateInstructionSwitchBranchListAST_2D_element::description (Stri
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_mConstantList.description (ioString, inIndentation+1) ;
+    mProperty_constantList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mAssociatedValuesExtraction.description (ioString, inIndentation+1) ;
+    mProperty_associatedValuesExtraction.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
+    mProperty_instructionList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mEndOfBranch.description (ioString, inIndentation+1) ;
+    mProperty_endOfBranch.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }

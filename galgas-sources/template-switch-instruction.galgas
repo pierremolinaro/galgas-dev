@@ -20,18 +20,18 @@
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListAST {
-  public let [@lstring] mConstantList
-  public let @switchExtractedValuesListAST mAssociatedValuesExtraction
-  public let @templateInstructionListAST mInstructionList
-  public let @location mEndOfBranch
+  public let [@lstring] constantList
+  public let @switchExtractedValuesListAST associatedValuesExtraction
+  public let @templateInstructionListAST instructionList
+  public let @location endOfBranch
 }
 
 #·······················································································································
 
 refclass @templateInstructionSwitchAST : @templateInstructionAST {
-  private let @templateExpressionAST mSwitchExpression
-  private let @location mSwitchExpressionEndLocation
-  private let @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
+  private let @templateExpressionAST switchExpression
+  private let @location switchExpressionEndLocation
+  private let @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -130,14 +130,13 @@ syntax extension templateSyntax {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionSwitchAST templateInstructionAnalysis
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @templateAnalysisContext inAnalysisContext
+                                ?let @lstring inUsefulnessCallerEntityName
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                                ?let @templateAnalysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
-  ?!@templateInstructionListForGeneration ioInstructionList
-{
+                                ?!@templateInstructionListForGeneration ioInstructionList {
 #---
-  [self.mSwitchExpression templateExpressionAnalysis
+  [self.switchExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -148,7 +147,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     var @stringset constantsNamedInSwitchInstruction = ()
   #--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = ()
-    for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.mTemplateInstructionSwitchBranchList do
+    for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.templateInstructionSwitchBranchList do
       var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = ()
       var analysisContext = inAnalysisContext
       for constantName in mConstantList do
@@ -170,7 +169,6 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
               :"the '" + constantName + "' constant requires " + [associatedTypeList count] + "  associated value"
               + if [associatedTypeList count] > 1 then "s" else "" end
           else
-            var associatedValueIndex = 0
             for descriptor in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do (IDX)
               if mExtractedValueTypeName.string != "" then # Explicit type ?
                 if [descriptor.type definition].typeName.string != mExtractedValueTypeName.string then
@@ -182,7 +180,6 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
               extractedAssociatedValuesForGeneration +=
                 !descriptor.type
                 !cppName
-                !associatedValueIndex
                 !descriptor.name
               if mExtractedValueName.string != "" then
                 [!?analysisContext.mTemplateVariableMap insertKey
@@ -191,7 +188,6 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
                   !cppName
                 ]
               end
-              associatedValueIndex += 1
             end
           end
         else
@@ -222,7 +218,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       for (key) in forgottenConstants do
         s += "\n  - " + key
       end
-      error self.mSwitchExpressionEndLocation
+      error self.switchExpressionEndLocation
       : "the switch instruction should name all enumeration constants; missing constants are:" + s
     end
   #---
@@ -251,9 +247,9 @@ list @templateInstructionSwitchBranchListForGeneration {
 #·······················································································································
 
 refclass @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
-  private let @unifiedTypeMapEntry mEnumType
-  private let @semanticExpressionForGeneration mSwitchExpression
-  private let @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
+  private let @unifiedTypeMapEntry enumType
+  private let @semanticExpressionForGeneration switchExpression
+  private let @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList
 }
 
 #·······················································································································
@@ -266,7 +262,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ?!@bool ioUseColumnMarker
 {
 #--- Expression
-  [self.mSwitchExpression generateExpression
+  [self.switchExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -275,13 +271,17 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ]
 #---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation] + "::Enumeration::invalid :\n"
+  ioGeneratedCode += "case GALGAS_"
+  ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
+  ioGeneratedCode += "::Enumeration::invalid :\n"
   ioGeneratedCode += "  break ;\n"
 #---
-  for branch in self.mTemplateInstructionSwitchBranchList do
+  for branch in self.templateInstructionSwitchBranchList do
     for constantName in branch.mConstantList do
-      ioGeneratedCode += "case GALGAS_" + [self.mSwitchExpression.mResultType identifierRepresentation]
-                      + "::Enumeration::enum_" + [constantName.string identifierRepresentation] + " :\n"
+      ioGeneratedCode += "case GALGAS_"
+      ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
+      ioGeneratedCode += "::Enumeration::enum_"
+      ioGeneratedCode += [constantName.string identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
@@ -297,18 +297,6 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
         between ioGeneratedCode += ", "
       end
       ioGeneratedCode += ") ;\n"
-#      let type = "const GALGAS_"
-#        + [[self.mEnumType definition].typeName.string + "-" + branch.mConstantList §[0] identifierRepresentation]
-#        + " *"
-#      let varPtr = "associatedValuePtr_" + branch.mEndOfBranchLocationIndex
-#      ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") ("
-#      ioGeneratedCode += switchVarCppName + ".associatedValuesPointer ()) ;\n"
-#      for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
-#        ioGeneratedCode += "  const GALGAS_" + [associatedValue.mType identifierRepresentation]
-#        ioGeneratedCode += " " + associatedValue.mCppName
-#        ioGeneratedCode += " = " + varPtr
-#        ioGeneratedCode += "->mProperty_" + [associatedValue.name identifierRepresentation] + " ;\n"
-#      end
     end
     if [branch.mInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]

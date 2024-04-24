@@ -5776,7 +5776,6 @@ GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::extract
 GALGAS_extractedAssociatedValuesForGeneration_2D_element::GALGAS_extractedAssociatedValuesForGeneration_2D_element (void) :
 mProperty_mType (),
 mProperty_mCppName (),
-mProperty_mIndex (),
 mProperty_name () {
 }
 
@@ -5787,17 +5786,15 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element::~ GALGAS_extractedAsso
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mType,
-                                                                                                                                         const GALGAS_string & in_mCppName,
-                                                                                                                                         const GALGAS_uint & in_mIndex,
-                                                                                                                                         const GALGAS_string & in_name,
-                                                                                                                                         Compiler * inCompiler
-                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mType,
+                                                                                                                                     const GALGAS_string & in_mCppName,
+                                                                                                                                     const GALGAS_string & in_name,
+                                                                                                                                     Compiler * inCompiler
+                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_extractedAssociatedValuesForGeneration_2D_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mType = in_mType ;
   result.mProperty_mCppName = in_mCppName ;
-  result.mProperty_mIndex = in_mIndex ;
   result.mProperty_name = in_name ;
   return result ;
 }
@@ -5811,19 +5808,16 @@ void GALGAS_extractedAssociatedValuesForGeneration_2D_element::setInitializedPro
 
 GALGAS_extractedAssociatedValuesForGeneration_2D_element::GALGAS_extractedAssociatedValuesForGeneration_2D_element (const GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                                     const GALGAS_string & inOperand1,
-                                                                                                                    const GALGAS_uint & inOperand2,
-                                                                                                                    const GALGAS_string & inOperand3) :
+                                                                                                                    const GALGAS_string & inOperand2) :
 mProperty_mType (inOperand0),
 mProperty_mCppName (inOperand1),
-mProperty_mIndex (inOperand2),
-mProperty_name (inOperand3) {
+mProperty_name (inOperand2) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssociatedValuesForGeneration_2D_element::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                                                                                    const GALGAS_string & in_mCppName,
-                                                                                                                                   const GALGAS_uint & in_mIndex,
                                                                                                                                    const GALGAS_string & in_name,
                                                                                                                                    Compiler * inCompiler
                                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
@@ -5831,7 +5825,6 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssocia
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mType = in_mType ;
   result.mProperty_mCppName = in_mCppName ;
-  result.mProperty_mIndex = in_mIndex ;
   result.mProperty_name = in_name ;
   return result ;
 }
@@ -5839,7 +5832,7 @@ GALGAS_extractedAssociatedValuesForGeneration_2D_element GALGAS_extractedAssocia
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_extractedAssociatedValuesForGeneration_2D_element::isValid (void) const {
-  return mProperty_mType.isValid () && mProperty_mCppName.isValid () && mProperty_mIndex.isValid () && mProperty_name.isValid () ;
+  return mProperty_mType.isValid () && mProperty_mCppName.isValid () && mProperty_name.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5847,7 +5840,6 @@ bool GALGAS_extractedAssociatedValuesForGeneration_2D_element::isValid (void) co
 void GALGAS_extractedAssociatedValuesForGeneration_2D_element::drop (void) {
   mProperty_mType.drop () ;
   mProperty_mCppName.drop () ;
-  mProperty_mIndex.drop () ;
   mProperty_name.drop () ;
 }
 
@@ -5862,8 +5854,6 @@ void GALGAS_extractedAssociatedValuesForGeneration_2D_element::description (Stri
     mProperty_mType.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mCppName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIndex.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_name.description (ioString, inIndentation+1) ;
   }
@@ -14300,37 +14290,37 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ind
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i33_ (GALGAS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_switch COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 46)) ;
-  GALGAS_templateExpressionAST var_switchExpression_2415 ;
-  nt_expression_5F_tpl_ (var_switchExpression_2415, inCompiler) ;
-  GALGAS_location var_endOfSwitchExpression_2450 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 49)) ;
-  GALGAS_templateInstructionSwitchBranchListAST var_templateInstructionSwitchBranchList_2558 = GALGAS_templateInstructionSwitchBranchListAST::init (inCompiler COMMA_HERE) ;
+  GALGAS_templateExpressionAST var_switchExpression_2408 ;
+  nt_expression_5F_tpl_ (var_switchExpression_2408, inCompiler) ;
+  GALGAS_location var_endOfSwitchExpression_2443 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 49)) ;
+  GALGAS_templateInstructionSwitchBranchListAST var_templateInstructionSwitchBranchList_2551 = GALGAS_templateInstructionSwitchBranchListAST::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_case COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 54)) ;
-      GALGAS__5B_lstring_5D_ var_constantNameList_2677 ;
-      GALGAS_switchExtractedValuesListAST var_associatedValuesExtraction_2737 ;
-      nt_switch_5F_case_ (var_constantNameList_2677, var_associatedValuesExtraction_2737, inCompiler) ;
+      GALGAS__5B_lstring_5D_ var_constantNameList_2670 ;
+      GALGAS_switchExtractedValuesListAST var_associatedValuesExtraction_2730 ;
+      nt_switch_5F_case_ (var_constantNameList_2670, var_associatedValuesExtraction_2730, inCompiler) ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 58)) ;
-      GALGAS_templateInstructionListAST var_instructionList_2812 = GALGAS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+      GALGAS_templateInstructionListAST var_instructionList_2805 = GALGAS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
         {
-        routine_enterTemplateString_26_ (var_instructionList_2812, inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 61)) ;
+        routine_enterTemplateString_26_ (var_instructionList_2805, inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 61)) ;
         }
         if (select_templateSyntax_30 (inCompiler) == 2) {
-          nt_template_5F_instruction_ (var_instructionList_2812, inCompiler) ;
+          nt_template_5F_instruction_ (var_instructionList_2805, inCompiler) ;
         }else{
           repeatFlag_1 = false ;
         }
       }
-      var_templateInstructionSwitchBranchList_2558.addAssign_operation (var_constantNameList_2677, var_associatedValuesExtraction_2737, var_instructionList_2812, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 65))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 65)) ;
+      var_templateInstructionSwitchBranchList_2551.addAssign_operation (var_constantNameList_2670, var_associatedValuesExtraction_2730, var_instructionList_2805, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 65))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 65)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 67)) ;
-  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionSwitchAST::init_21__21__21_ (var_switchExpression_2415, var_endOfSwitchExpression_2450, var_templateInstructionSwitchBranchList_2558, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 69)) ;
+  ioArgument_ioResultingInstructionList.addAssign_operation (GALGAS_templateInstructionSwitchAST::init_21__21__21_ (var_switchExpression_2408, var_endOfSwitchExpression_2443, var_templateInstructionSwitchBranchList_2551, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 69)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -14396,10 +14386,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS__5B
   outArgument_outConstantNameList = GALGAS__5B_lstring_5D_::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GALGAS_lstring var_constantName_3589 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_constantName_3582 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 82)) ;
     {
-    outArgument_outConstantNameList.setter_append (var_constantName_3589, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 83)) ;
+    outArgument_outConstantNameList.setter_append (var_constantName_3582, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 83)) ;
     }
     if (select_templateSyntax_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 85)) ;
@@ -14417,13 +14407,13 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS__5B
     while (repeatFlag_1) {
       switch (select_templateSyntax_34 (inCompiler)) {
       case 1: {
-        GALGAS_lbigint var_n_3804 = inCompiler->synthetizedAttribute_bigintValue () ;
+        GALGAS_lbigint var_n_3797 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_literalInt COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 93)) ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 94)) ;
-        cEnumerator_range enumerator_3847 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_3804.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95))), EnumerationOrder::up) ;
-        while (enumerator_3847.hasCurrentObject ()) {
+        cEnumerator_range enumerator_3840 (GALGAS_range (GALGAS_uint (uint32_t (0U)), var_n_3797.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GALGAS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95))), EnumerationOrder::up) ;
+        while (enumerator_3840.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)), GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)) ;
-          enumerator_3847.gotoNextObject () ;
+          enumerator_3840.gotoNextObject () ;
         }
       } break ;
       case 2: {
@@ -14431,33 +14421,33 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GALGAS__5B
         outArgument_outAssociatedValuesExtraction.addAssign_operation (GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 100)), GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 100)), GALGAS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 100)) ;
       } break ;
       case 3: {
-        GALGAS_lstring var_typeName_4078 ;
+        GALGAS_lstring var_typeName_4071 ;
         switch (select_templateSyntax_35 (inCompiler)) {
         case 1: {
-          var_typeName_4078 = inCompiler->synthetizedAttribute_tokenString () ;
+          var_typeName_4071 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 104)) ;
         } break ;
         case 2: {
-          var_typeName_4078 = GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 106)) ;
+          var_typeName_4071 = GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 106)) ;
         } break ;
         default:
           break ;
         }
-        GALGAS_bool var_constantMarkedAsUnused_4214 ;
+        GALGAS_bool var_constantMarkedAsUnused_4207 ;
         switch (select_templateSyntax_36 (inCompiler)) {
         case 1: {
-          var_constantMarkedAsUnused_4214 = GALGAS_bool (false) ;
+          var_constantMarkedAsUnused_4207 = GALGAS_bool (false) ;
         } break ;
         case 2: {
           inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_unused COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 112)) ;
-          var_constantMarkedAsUnused_4214 = GALGAS_bool (true) ;
+          var_constantMarkedAsUnused_4207 = GALGAS_bool (true) ;
         } break ;
         default:
           break ;
         }
-        GALGAS_lstring var_constantName_4424 = inCompiler->synthetizedAttribute_tokenString () ;
+        GALGAS_lstring var_constantName_4417 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 115)) ;
-        outArgument_outAssociatedValuesExtraction.addAssign_operation (var_typeName_4078, var_constantName_4424, var_constantMarkedAsUnused_4214  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 116)) ;
+        outArgument_outAssociatedValuesExtraction.addAssign_operation (var_typeName_4071, var_constantName_4417, var_constantMarkedAsUnused_4207  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 116)) ;
       } break ;
       default:
         break ;

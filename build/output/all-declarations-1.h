@@ -5113,10 +5113,10 @@ class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS__5B_lstring_5D_ & in_mConstantList,
-                                                 const class GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                 const class GALGAS_templateInstructionListAST & in_mInstructionList,
-                                                 const class GALGAS_location & in_mEndOfBranch
+                                                 const class GALGAS__5B_lstring_5D_ & in_constantList,
+                                                 const class GALGAS_switchExtractedValuesListAST & in_associatedValuesExtraction,
+                                                 const class GALGAS_templateInstructionListAST & in_instructionList,
+                                                 const class GALGAS_location & in_endOfBranch
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
@@ -5197,25 +5197,25 @@ class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMAssociatedValuesExtractionAtIndex (class GALGAS_switchExtractedValuesListAST constinArgument0,
-                                                                              class GALGAS_uint constinArgument1,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setAssociatedValuesExtractionAtIndex (class GALGAS_switchExtractedValuesListAST constinArgument0,
+                                                                             class GALGAS_uint constinArgument1,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMConstantListAtIndex (class GALGAS__5B_lstring_5D_ constinArgument0,
-                                                                class GALGAS_uint constinArgument1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMEndOfBranchAtIndex (class GALGAS_location constinArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_setConstantListAtIndex (class GALGAS__5B_lstring_5D_ constinArgument0,
                                                                class GALGAS_uint constinArgument1,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setMInstructionListAtIndex (class GALGAS_templateInstructionListAST constinArgument0,
-                                                                   class GALGAS_uint constinArgument1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG void setter_setEndOfBranchAtIndex (class GALGAS_location constinArgument0,
+                                                              class GALGAS_uint constinArgument1,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setInstructionListAtIndex (class GALGAS_templateInstructionListAST constinArgument0,
+                                                                  class GALGAS_uint constinArgument1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -5236,21 +5236,21 @@ class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_switchExtractedValuesListAST getter_mAssociatedValuesExtractionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_switchExtractedValuesListAST getter_associatedValuesExtractionAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS__5B_lstring_5D_ getter_mConstantListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS__5B_lstring_5D_ getter_constantListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfBranchAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_location getter_endOfBranchAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionListAST getter_mInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionListAST getter_instructionListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionSwitchBranchListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                                         Compiler * inCompiler
@@ -5289,10 +5289,10 @@ class cEnumerator_templateInstructionSwitchBranchListAST : public cGenericAbstra
                                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
-  public: class GALGAS__5B_lstring_5D_ current_mConstantList (LOCATION_ARGS) const ;
-  public: class GALGAS_switchExtractedValuesListAST current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
-  public: class GALGAS_templateInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
-  public: class GALGAS_location current_mEndOfBranch (LOCATION_ARGS) const ;
+  public: class GALGAS__5B_lstring_5D_ current_constantList (LOCATION_ARGS) const ;
+  public: class GALGAS_switchExtractedValuesListAST current_associatedValuesExtraction (LOCATION_ARGS) const ;
+  public: class GALGAS_templateInstructionListAST current_instructionList (LOCATION_ARGS) const ;
+  public: class GALGAS_location current_endOfBranch (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_templateInstructionSwitchBranchListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -5492,24 +5492,24 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValu
 
 class GALGAS_templateInstructionSwitchBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GALGAS__5B_lstring_5D_ mProperty_mConstantList ;
-  public: inline GALGAS__5B_lstring_5D_ readProperty_mConstantList (void) const {
-    return mProperty_mConstantList ;
+  public: GALGAS__5B_lstring_5D_ mProperty_constantList ;
+  public: inline GALGAS__5B_lstring_5D_ readProperty_constantList (void) const {
+    return mProperty_constantList ;
   }
 
-  public: GALGAS_switchExtractedValuesListAST mProperty_mAssociatedValuesExtraction ;
-  public: inline GALGAS_switchExtractedValuesListAST readProperty_mAssociatedValuesExtraction (void) const {
-    return mProperty_mAssociatedValuesExtraction ;
+  public: GALGAS_switchExtractedValuesListAST mProperty_associatedValuesExtraction ;
+  public: inline GALGAS_switchExtractedValuesListAST readProperty_associatedValuesExtraction (void) const {
+    return mProperty_associatedValuesExtraction ;
   }
 
-  public: GALGAS_templateInstructionListAST mProperty_mInstructionList ;
-  public: inline GALGAS_templateInstructionListAST readProperty_mInstructionList (void) const {
-    return mProperty_mInstructionList ;
+  public: GALGAS_templateInstructionListAST mProperty_instructionList ;
+  public: inline GALGAS_templateInstructionListAST readProperty_instructionList (void) const {
+    return mProperty_instructionList ;
   }
 
-  public: GALGAS_location mProperty_mEndOfBranch ;
-  public: inline GALGAS_location readProperty_mEndOfBranch (void) const {
-    return mProperty_mEndOfBranch ;
+  public: GALGAS_location mProperty_endOfBranch ;
+  public: inline GALGAS_location readProperty_endOfBranch (void) const {
+    return mProperty_endOfBranch ;
   }
 
 //--------------------------------- Accessors
@@ -5520,20 +5520,20 @@ class GALGAS_templateInstructionSwitchBranchListAST_2D_element : public AC_GALGA
   public: GALGAS_templateInstructionSwitchBranchListAST_2D_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMConstantList (const GALGAS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mConstantList = inValue ;
+  public: inline void setter_setConstantList (const GALGAS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_constantList = inValue ;
   }
 
-  public: inline void setter_setMAssociatedValuesExtraction (const GALGAS_switchExtractedValuesListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAssociatedValuesExtraction = inValue ;
+  public: inline void setter_setAssociatedValuesExtraction (const GALGAS_switchExtractedValuesListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_associatedValuesExtraction = inValue ;
   }
 
-  public: inline void setter_setMInstructionList (const GALGAS_templateInstructionListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstructionList = inValue ;
+  public: inline void setter_setInstructionList (const GALGAS_templateInstructionListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_instructionList = inValue ;
   }
 
-  public: inline void setter_setMEndOfBranch (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEndOfBranch = inValue ;
+  public: inline void setter_setEndOfBranch (const GALGAS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_endOfBranch = inValue ;
   }
 
 //--------------------------------- Virtual destructor
@@ -5543,10 +5543,10 @@ class GALGAS_templateInstructionSwitchBranchListAST_2D_element : public AC_GALGA
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_templateInstructionSwitchBranchListAST_2D_element (const GALGAS__5B_lstring_5D_ & in_mConstantList,
-                                                                    const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                                    const GALGAS_templateInstructionListAST & in_mInstructionList,
-                                                                    const GALGAS_location & in_mEndOfBranch) ;
+  public: GALGAS_templateInstructionSwitchBranchListAST_2D_element (const GALGAS__5B_lstring_5D_ & in_constantList,
+                                                                    const GALGAS_switchExtractedValuesListAST & in_associatedValuesExtraction,
+                                                                    const GALGAS_templateInstructionListAST & in_instructionList,
+                                                                    const GALGAS_location & in_endOfBranch) ;
 
 //-- Start of type generic part
 
@@ -5712,11 +5712,11 @@ class GALGAS_templateInstructionSwitchAST : public GALGAS_templateInstructionAST
   public: GALGAS_templateInstructionSwitchAST (const class cPtr_templateInstructionSwitchAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_templateExpressionAST readProperty_mSwitchExpression (void) const ;
+  public: class GALGAS_templateExpressionAST readProperty_switchExpression (void) const ;
 
-  public: class GALGAS_location readProperty_mSwitchExpressionEndLocation (void) const ;
+  public: class GALGAS_location readProperty_switchExpressionEndLocation (void) const ;
 
-  public: class GALGAS_templateInstructionSwitchBranchListAST readProperty_mTemplateInstructionSwitchBranchList (void) const ;
+  public: class GALGAS_templateInstructionSwitchBranchListAST readProperty_templateInstructionSwitchBranchList (void) const ;
 
 //-- Start of type generic part
 
@@ -5791,18 +5791,18 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_templateExpressionAST mProperty_mSwitchExpression ;
-  public: GALGAS_location mProperty_mSwitchExpressionEndLocation ;
-  public: GALGAS_templateInstructionSwitchBranchListAST mProperty_mTemplateInstructionSwitchBranchList ;
+  public: GALGAS_templateExpressionAST mProperty_switchExpression ;
+  public: GALGAS_location mProperty_switchExpressionEndLocation ;
+  public: GALGAS_templateInstructionSwitchBranchListAST mProperty_templateInstructionSwitchBranchList ;
 
 
 //--- Default constructor
   public: cPtr_templateInstructionSwitchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_mSwitchExpression,
-                                             const GALGAS_location & in_mSwitchExpressionEndLocation,
-                                             const GALGAS_templateInstructionSwitchBranchListAST & in_mTemplateInstructionSwitchBranchList
+  public: cPtr_templateInstructionSwitchAST (const GALGAS_templateExpressionAST & in_switchExpression,
+                                             const GALGAS_location & in_switchExpressionEndLocation,
+                                             const GALGAS_templateInstructionSwitchBranchListAST & in_templateInstructionSwitchBranchList
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -6093,7 +6093,6 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                  const class GALGAS_unifiedTypeMapEntry & in_mType,
                                                  const class GALGAS_string & in_mCppName,
-                                                 const class GALGAS_uint & in_mIndex,
                                                  const class GALGAS_string & in_name
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -6116,8 +6115,7 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 
   public: static class GALGAS_extractedAssociatedValuesForGeneration class_func_listWithValue (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                const class GALGAS_string & inOperand1,
-                                                                                               const class GALGAS_uint & inOperand2,
-                                                                                               const class GALGAS_string & inOperand3
+                                                                                               const class GALGAS_string & inOperand2
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -6128,8 +6126,7 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                      const class GALGAS_string & inOperand1,
-                                                     const class GALGAS_uint & inOperand2,
-                                                     const class GALGAS_string & inOperand3
+                                                     const class GALGAS_string & inOperand2
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public: VIRTUAL_IN_DEBUG GALGAS_extractedAssociatedValuesForGeneration add_operation (const GALGAS_extractedAssociatedValuesForGeneration & inOperand,
@@ -6140,38 +6137,33 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                class GALGAS_string constinArgument1,
-                                               class GALGAS_uint constinArgument2,
-                                               class GALGAS_string constinArgument3,
+                                               class GALGAS_string constinArgument2,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                       class GALGAS_string constinArgument1,
-                                                      class GALGAS_uint constinArgument2,
-                                                      class GALGAS_string constinArgument3,
-                                                      class GALGAS_uint constinArgument4,
+                                                      class GALGAS_string constinArgument2,
+                                                      class GALGAS_uint constinArgument3,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                                  class GALGAS_string & outArgument1,
-                                                 class GALGAS_uint & outArgument2,
-                                                 class GALGAS_string & outArgument3,
+                                                 class GALGAS_string & outArgument2,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                                 class GALGAS_string & outArgument1,
-                                                class GALGAS_uint & outArgument2,
-                                                class GALGAS_string & outArgument3,
+                                                class GALGAS_string & outArgument2,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                                       class GALGAS_string & outArgument1,
-                                                      class GALGAS_uint & outArgument2,
-                                                      class GALGAS_string & outArgument3,
-                                                      class GALGAS_uint constinArgument4,
+                                                      class GALGAS_string & outArgument2,
+                                                      class GALGAS_uint constinArgument3,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -6179,11 +6171,6 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
                                                            class GALGAS_uint constinArgument1,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMIndexAtIndex (class GALGAS_uint constinArgument0,
-                                                         class GALGAS_uint constinArgument1,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
 
   public: VIRTUAL_IN_DEBUG void setter_setMTypeAtIndex (class GALGAS_unifiedTypeMapEntry constinArgument0,
                                                         class GALGAS_uint constinArgument1,
@@ -6199,15 +6186,13 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 //--------------------------------- Instance Methods
   public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                               class GALGAS_string & outArgument1,
-                                              class GALGAS_uint & outArgument2,
-                                              class GALGAS_string & outArgument3,
+                                              class GALGAS_string & outArgument2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_unifiedTypeMapEntry & outArgument0,
                                              class GALGAS_string & outArgument1,
-                                             class GALGAS_uint & outArgument2,
-                                             class GALGAS_string & outArgument3,
+                                             class GALGAS_string & outArgument2,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
@@ -6217,10 +6202,6 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
   public: VIRTUAL_IN_DEBUG class GALGAS_string getter_mCppNameAtIndex (const class GALGAS_uint & constinOperand0,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mIndexAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapEntry getter_mTypeAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                  Compiler * inCompiler
@@ -6269,7 +6250,6 @@ class cEnumerator_extractedAssociatedValuesForGeneration : public cGenericAbstra
 //--- Current element access
   public: class GALGAS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
   public: class GALGAS_string current_mCppName (LOCATION_ARGS) const ;
-  public: class GALGAS_uint current_mIndex (LOCATION_ARGS) const ;
   public: class GALGAS_string current_name (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GALGAS_extractedAssociatedValuesForGeneration_2D_element current (LOCATION_ARGS) const ;
@@ -6410,11 +6390,6 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
     return mProperty_mCppName ;
   }
 
-  public: GALGAS_uint mProperty_mIndex ;
-  public: inline GALGAS_uint readProperty_mIndex (void) const {
-    return mProperty_mIndex ;
-  }
-
   public: GALGAS_string mProperty_name ;
   public: inline GALGAS_string readProperty_name (void) const {
     return mProperty_name ;
@@ -6436,10 +6411,6 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
     mProperty_mCppName = inValue ;
   }
 
-  public: inline void setter_setMIndex (const GALGAS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIndex = inValue ;
-  }
-
   public: inline void setter_setName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_name = inValue ;
   }
@@ -6453,18 +6424,16 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
 //--------------------------------- Native constructor
   public: GALGAS_extractedAssociatedValuesForGeneration_2D_element (const GALGAS_unifiedTypeMapEntry & in_mType,
                                                                     const GALGAS_string & in_mCppName,
-                                                                    const GALGAS_uint & in_mIndex,
                                                                     const GALGAS_string & in_name) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_extractedAssociatedValuesForGeneration_2D_element init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                                const class GALGAS_string & inOperand1,
-                                                                                                const class GALGAS_uint & inOperand2,
-                                                                                                const class GALGAS_string & inOperand3,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_extractedAssociatedValuesForGeneration_2D_element init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                            const class GALGAS_string & inOperand1,
+                                                                                            const class GALGAS_string & inOperand2,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6477,8 +6446,7 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_extractedAssociatedValuesForGeneration_2D_element class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                                                 const class GALGAS_string & inOperand1,
-                                                                                                const class GALGAS_uint & inOperand2,
-                                                                                                const class GALGAS_string & inOperand3,
+                                                                                                const class GALGAS_string & inOperand2,
                                                                                                 class Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) ;
 
@@ -6519,11 +6487,11 @@ class GALGAS_templateInstructionSwitchForGeneration : public GALGAS_templateInst
   public: GALGAS_templateInstructionSwitchForGeneration (const class cPtr_templateInstructionSwitchForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mEnumType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_enumType (void) const ;
 
-  public: class GALGAS_semanticExpressionForGeneration readProperty_mSwitchExpression (void) const ;
+  public: class GALGAS_semanticExpressionForGeneration readProperty_switchExpression (void) const ;
 
-  public: class GALGAS_templateInstructionSwitchBranchListForGeneration readProperty_mTemplateInstructionSwitchBranchList (void) const ;
+  public: class GALGAS_templateInstructionSwitchBranchListForGeneration readProperty_templateInstructionSwitchBranchList (void) const ;
 
 //-- Start of type generic part
 
@@ -6598,18 +6566,18 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mEnumType ;
-  public: GALGAS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
-  public: GALGAS_templateInstructionSwitchBranchListForGeneration mProperty_mTemplateInstructionSwitchBranchList ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_enumType ;
+  public: GALGAS_semanticExpressionForGeneration mProperty_switchExpression ;
+  public: GALGAS_templateInstructionSwitchBranchListForGeneration mProperty_templateInstructionSwitchBranchList ;
 
 
 //--- Default constructor
   public: cPtr_templateInstructionSwitchForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMapEntry & in_mEnumType,
-                                                       const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
-                                                       const GALGAS_templateInstructionSwitchBranchListForGeneration & in_mTemplateInstructionSwitchBranchList
+  public: cPtr_templateInstructionSwitchForGeneration (const GALGAS_unifiedTypeMapEntry & in_enumType,
+                                                       const GALGAS_semanticExpressionForGeneration & in_switchExpression,
+                                                       const GALGAS_templateInstructionSwitchBranchListForGeneration & in_templateInstructionSwitchBranchList
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
