@@ -353,7 +353,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !typeForEnumeratedElement: .null
       !headerFileName: "enum-" + [self.enumTypeName fileNameRepresentation]
-      !headerKind: if hasAssociatedValues then .twoHeaders else .oneHeader end
+      !headerKind: .oneHeader
     }
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
@@ -481,30 +481,6 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
 
   #·······························································································
 
-#  override method appendDeclaration2 ?let @string unused inOutputDirectory
-#                                      ?!@stringset ioInclusionSet
-#                                      !@string outHeader {
-#    var @bool hasAssociatedValues = false
-#    for constant in self.constantList while not hasAssociatedValues do
-#      hasAssociatedValues = [constant.associatedValueTypeList count] > 0
-#    end
-#    for constant in self.constantList do
-#      for associatedValue in constant.associatedValueTypeList do
-#        [associatedValue.type addHeaderFileName1 !?ioInclusionSet]
-#      end
-#    end
-#    let selfTypeDefinition = [self.mSelfTypeEntry definition]
-#    outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader2
-#      !selfTypeDefinition.typeName.string
-#      ![selfTypeDefinition.typeName.string identifierRepresentation]
-#      !self.constantList
-#      !hasAssociatedValues
-#      ![selfTypeDefinition.features generateCppObjectComparison]
-#    ]
-#  }
-
-  #·······························································································
-
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
                                                 !@string outImplementation {
@@ -540,13 +516,6 @@ filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
-
-#  template enumTypeHeader2 "GALGAS_enum.h2.galgasTemplate"
-#    ?@string TYPE_NAME
-#    ?@string TYPE_IDENTIFIER
-#    ?@enumConstantListForGeneration CONSTANT_LIST
-#    ?@bool HAS_ASSOCIATED_VALUES
-#    ?@bool GENERATE_COMPARISON
 
   template enumTypeSpecificImplementation "GALGAS_enum.cpp.galgasTemplate"
     ?@string TYPE_NAME
