@@ -20,6 +20,9 @@
 
 #include "AC_GALGAS_enumAssociatedValues.h"
 
+#include <typeinfo>
+#include <iostream>
+
 //--------------------------------------------------------------------------------------------------
 
 EnumerationAssociatedValues::EnumerationAssociatedValues (const AC_GALGAS_root * inValuePtr
@@ -42,8 +45,20 @@ void EnumerationAssociatedValues::description (class String & /* ioString */,
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult EnumerationAssociatedValues::compare (const EnumerationAssociatedValues * /* inOperand */) const {
-  return ComparisonResult::invalid ;
+ComparisonResult EnumerationAssociatedValues::compare (const EnumerationAssociatedValues * inOperand) const {
+  const AC_GALGAS_root * leftObjectPtr = mValuePtr ;
+  const AC_GALGAS_root * rightObjectPtr = (inOperand == nullptr) ? nullptr : inOperand->mValuePtr ;
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (leftObjectPtr == rightObjectPtr) {
+    result = ComparisonResult::operandEqual ;
+  }else{
+    macroValidPointer (leftObjectPtr) ;
+    macroValidPointer (rightObjectPtr) ;
+    const std::type_info & leftType = typeid (*leftObjectPtr) ;
+    const std::type_info & rightType = typeid (*rightObjectPtr) ;
+    std::cout << "LEFT '" << leftType.name () << "', RIGHT'" << rightType.name () << "'\n" ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -3318,7 +3318,7 @@ void GALGAS_typeKindEnum::description (String & ioString,
                                        const int32_t inIndentation) const {
   ioString.appendCString ("<enum @typeKindEnum: ") ;
   ioString.appendCString (gEnumNameArrayFor_typeKindEnum [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -3332,6 +3332,26 @@ ComparisonResult GALGAS_typeKindEnum::objectCompare (const GALGAS_typeKindEnum &
     }else if (mEnum > inOperand.mEnum) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
+      switch (mEnum) {
+      case Enumeration::enum_classType:{
+        const auto left = (GALGAS_typeKindEnum_2D_classType *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_typeKindEnum_2D_classType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      case Enumeration::enum_weakReferenceType:{
+        const auto left = (GALGAS_typeKindEnum_2D_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_typeKindEnum_2D_weakReferenceType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      case Enumeration::enum_enumType:{
+        const auto left = (GALGAS_typeKindEnum_2D_enumType *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_typeKindEnum_2D_enumType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      default:
+        result = ComparisonResult::operandEqual ;
+        break ;
+      }
       result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
     }
   }
@@ -9389,7 +9409,7 @@ void GALGAS_localVarValuation::description (String & ioString,
                                             const int32_t inIndentation) const {
   ioString.appendCString ("<enum @localVarValuation: ") ;
   ioString.appendCString (gEnumNameArrayFor_localVarValuation [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -9403,6 +9423,16 @@ ComparisonResult GALGAS_localVarValuation::objectCompare (const GALGAS_localVarV
     }else if (mEnum > inOperand.mEnum) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
+      switch (mEnum) {
+      case Enumeration::enum_declared:{
+        const auto left = (GALGAS_localVarValuation_2D_declared *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_localVarValuation_2D_declared *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      default:
+        result = ComparisonResult::operandEqual ;
+        break ;
+      }
       result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
     }
   }
@@ -10611,7 +10641,7 @@ void GALGAS_overrideKind::description (String & ioString,
                                        const int32_t inIndentation) const {
   ioString.appendCString ("<enum @overrideKind: ") ;
   ioString.appendCString (gEnumNameArrayFor_overrideKind [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -12991,7 +13021,7 @@ void GALGAS_typeDefinition::description (String & ioString,
                                          const int32_t inIndentation) const {
   ioString.appendCString ("<enum @typeDefinition: ") ;
   ioString.appendCString (gEnumNameArrayFor_typeDefinition [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 

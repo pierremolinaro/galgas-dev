@@ -2310,7 +2310,7 @@ void GALGAS_unifiedTypeMapEntry::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString.appendCString ("<enum @unifiedTypeMapEntry: ") ;
   ioString.appendCString (gEnumNameArrayFor_unifiedTypeMapEntry [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -2324,6 +2324,16 @@ ComparisonResult GALGAS_unifiedTypeMapEntry::objectCompare (const GALGAS_unified
     }else if (mEnum > inOperand.mEnum) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
+      switch (mEnum) {
+      case Enumeration::enum_element:{
+        const auto left = (GALGAS_unifiedTypeMapEntry_2D_element *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_unifiedTypeMapEntry_2D_element *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      default:
+        result = ComparisonResult::operandEqual ;
+        break ;
+      }
       result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
     }
   }
@@ -3063,7 +3073,7 @@ void GALGAS_templateInstructionForEnumerationAST::description (String & ioString
                                                                const int32_t inIndentation) const {
   ioString.appendCString ("<enum @templateInstructionForEnumerationAST: ") ;
   ioString.appendCString (gEnumNameArrayFor_templateInstructionForEnumerationAST [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 

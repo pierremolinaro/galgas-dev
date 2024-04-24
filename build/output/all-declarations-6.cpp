@@ -3864,7 +3864,7 @@ void GALGAS_AccessControlAST::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString.appendCString ("<enum @AccessControlAST: ") ;
   ioString.appendCString (gEnumNameArrayFor_AccessControlAST [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -4037,7 +4037,7 @@ void GALGAS_propertyInCollectionInitializationAST::description (String & ioStrin
                                                                 const int32_t inIndentation) const {
   ioString.appendCString ("<enum @propertyInCollectionInitializationAST: ") ;
   ioString.appendCString (gEnumNameArrayFor_propertyInCollectionInitializationAST [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -4051,6 +4051,16 @@ ComparisonResult GALGAS_propertyInCollectionInitializationAST::objectCompare (co
     }else if (mEnum > inOperand.mEnum) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
+      switch (mEnum) {
+      case Enumeration::enum_some:{
+        const auto left = (GALGAS_propertyInCollectionInitializationAST_2D_some *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_propertyInCollectionInitializationAST_2D_some *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      default:
+        result = ComparisonResult::operandEqual ;
+        break ;
+      }
       result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
     }
   }
@@ -12953,7 +12963,7 @@ void GALGAS_AccessControl::description (String & ioString,
                                         const int32_t inIndentation) const {
   ioString.appendCString ("<enum @AccessControl: ") ;
   ioString.appendCString (gEnumNameArrayFor_AccessControl [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 

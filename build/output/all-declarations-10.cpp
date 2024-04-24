@@ -2995,7 +2995,7 @@ void GALGAS_ifExpressionKind::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString.appendCString ("<enum @ifExpressionKind: ") ;
   ioString.appendCString (gEnumNameArrayFor_ifExpressionKind [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -4138,7 +4138,7 @@ void GALGAS_ifTestForGeneration::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString.appendCString ("<enum @ifTestForGeneration: ") ;
   ioString.appendCString (gEnumNameArrayFor_ifTestForGeneration [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 

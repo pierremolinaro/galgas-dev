@@ -7392,7 +7392,7 @@ void GALGAS_selfAvailability::description (String & ioString,
                                            const int32_t inIndentation) const {
   ioString.appendCString ("<enum @selfAvailability: ") ;
   ioString.appendCString (gEnumNameArrayFor_selfAvailability [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -7406,6 +7406,16 @@ ComparisonResult GALGAS_selfAvailability::objectCompare (const GALGAS_selfAvaila
     }else if (mEnum > inOperand.mEnum) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
+      switch (mEnum) {
+      case Enumeration::enum_available:{
+        const auto left = (GALGAS_selfAvailability_2D_available *) mAssociatedValues.associatedValuesPointer () ;
+        const auto right = (GALGAS_selfAvailability_2D_available *) inOperand.mAssociatedValues.associatedValuesPointer () ;
+        result = left->objectCompare (*right) ;
+        }break ;
+      default:
+        result = ComparisonResult::operandEqual ;
+        break ;
+      }
       result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
     }
   }
@@ -11203,7 +11213,7 @@ void GALGAS_fixitElementAST::description (String & ioString,
                                           const int32_t inIndentation) const {
   ioString.appendCString ("<enum @fixitElementAST: ") ;
   ioString.appendCString (gEnumNameArrayFor_fixitElementAST [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
@@ -12341,7 +12351,7 @@ void GALGAS_fixitElementForGeneration::description (String & ioString,
                                                     const int32_t inIndentation) const {
   ioString.appendCString ("<enum @fixitElementForGeneration: ") ;
   ioString.appendCString (gEnumNameArrayFor_fixitElementForGeneration [size_t (mEnum)]) ;
-  mAssociatedValuesEX.description (ioString, inIndentation) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 

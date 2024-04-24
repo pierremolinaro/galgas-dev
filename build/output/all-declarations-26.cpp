@@ -4458,7 +4458,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
   const enumGalgasBool test_8 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
   switch (test_8) {
   case kBoolTrue : {
-    result.appendString ("  mAssociatedValuesEX.description (ioString, inIndentation) ;\n") ;
+    result.appendString ("  mAssociatedValues.description (ioString, inIndentation) ;\n") ;
     } break ;
   case kBoolFalse : {
     } break ;
@@ -4477,7 +4477,36 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
     const enumGalgasBool test_10 = in_HAS_5F_ASSOCIATED_5F_VALUES.boolEnum () ;
     switch (test_10) {
     case kBoolTrue : {
-      result.appendString ("      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n") ;
+      result.appendString ("      switch (mEnum) {\n") ;
+      GALGAS_uint index_9452_ (0) ;
+      if (in_CONSTANT_5F_LIST.isValid ()) {
+        cEnumerator_enumConstantListForGeneration enumerator_9452 (in_CONSTANT_5F_LIST, EnumerationOrder::up) ;
+        while (enumerator_9452.hasCurrentObject ()) {
+          const enumGalgasBool test_11 = GALGAS_bool (ComparisonKind::greaterThan, enumerator_9452.current_associatedValueTypeList (HERE).getter_count (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 206)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+          switch (test_11) {
+          case kBoolTrue : {
+            result.appendString ("      case Enumeration::enum_") ;
+            result.appendString (enumerator_9452.current_name (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 207)).stringValue ()) ;
+            result.appendString (":{\n        const auto left = (GALGAS_") ;
+            result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+            result.appendString ("_2D_") ;
+            result.appendString (enumerator_9452.current_name (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 208)).stringValue ()) ;
+            result.appendString (" *) mAssociatedValues.associatedValuesPointer () ;\n        const auto right = (GALGAS_") ;
+            result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+            result.appendString ("_2D_") ;
+            result.appendString (enumerator_9452.current_name (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 209)).stringValue ()) ;
+            result.appendString (" *) inOperand.mAssociatedValues.associatedValuesPointer () ;\n        result = left->objectCompare (*right) ;\n        }break ;\n") ;
+            } break ;
+          case kBoolFalse : {
+            } break ;
+          default :
+            break ;
+          }
+          index_9452_.increment () ;
+          enumerator_9452.gotoNextObject () ;
+        }
+      }
+      result.appendString ("      default:\n        result = ComparisonResult::operandEqual ;\n        break ;\n      }\n      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n") ;
       } break ;
     case kBoolFalse : {
       result.appendString ("      result = ComparisonResult::operandEqual ;\n") ;

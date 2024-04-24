@@ -74,11 +74,12 @@ class AC_GALGAS_root {
 
   public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
 
-//--- Log instruction
+ // public: virtual class ComparisonResult objectCompare (const AC_GALGAS_root & inOperand) const = 0 ;
+
   public: VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;
 
   public: virtual void description (String & ioString,
-                                     const int32_t inIndentation) const = 0 ;
+                                    const int32_t inIndentation) const = 0 ;
 
 //--- Readers implemented in this class
   public: VIRTUAL_IN_DEBUG GALGAS_string getter_description (LOCATION_ARGS) const ;
