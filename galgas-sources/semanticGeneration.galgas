@@ -733,7 +733,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@setterMap MODIFIER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
     ?@classMethodMap CLASS_METHOD_MAP
-    ?@optionalMethodMap OPTIONAL_METHOD_MAP
     ?@subscriptMap READ_SUBSCRIPT_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@typeFeatures SUPPORTED_OPERATORS
@@ -1442,7 +1441,6 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
         !selfTypeDefinition.setterMap
         !selfTypeDefinition.instanceMethodMap
         !selfTypeDefinition.classMethodMap
-        !selfTypeDefinition.optionalMethodMap
         !selfTypeDefinition.readSubscriptMap
         !selfTypeDefinition.enumerationDescriptorList
         !selfTypeDefinition.features

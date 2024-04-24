@@ -10,24 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeOptionalMethodCall?&?&&?receiverExp?optionalMethodName?parameters&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeOptionalMethodCall_3F__26__3F__26__26__3F_receiverExp_3F_optionalMethodName_3F_parameters_26_ (const class GALGAS_lstring constinArgument0,
-                                                                                                                   class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                                                   const class GALGAS_analysisContext constinArgument2,
-                                                                                                                   class GALGAS_unifiedTypeMap & ioArgument3,
-                                                                                                                   class GALGAS_localVarManager & ioArgument4,
-                                                                                                                   const class GALGAS_semanticExpressionAST constinArgument5,
-                                                                                                                   const class GALGAS_lstring constinArgument6,
-                                                                                                                   const class GALGAS_optionalMethodActualArgumentList constinArgument7,
-                                                                                                                   class GALGAS_ifTestListForGeneration & ioArgument8,
-                                                                                                                   class Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'transformInstructionList?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'
 //
 //--------------------------------------------------------------------------------------------------
@@ -73,4 +55,32 @@ void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GALGAS_gal
 class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GALGAS_nonTerminalLabelListAST & constinArgument0,
                                                                                      class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'grammarRulesInTexDocumentTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'grammarRulesInTexDocumentTemplate document'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class Compiler * inCompiler,
+                                                                              const class GALGAS_string & in_DOCUMENT_5F_NAME,
+                                                                              const class GALGAS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
+                                                                              COMMA_LOCATION_ARGS) ;
 

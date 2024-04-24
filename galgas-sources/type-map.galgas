@@ -576,9 +576,6 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !"" # No error message
     ]
   end
-#--- Add Optional method
-  var optionalMethodMap = @optionalMethodMap ()
-  [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Add initializer without argument
   var @initializerMap initializerMap = ()
   let @functionSignature emptyArgumentList = ()
@@ -646,7 +643,6 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !unwrappedType: .null
-    !optionalMethodMap: optionalMethodMap
     !readSubscriptMap: readSubscriptMap
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
@@ -802,7 +798,6 @@ override method @mapTypeForGeneration appendDeclaration1
     !selfTypeDefinition.setterMap
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
-    !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features

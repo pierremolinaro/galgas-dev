@@ -376,23 +376,6 @@ for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
   end
   %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
-%
-//--------------------------------- Optional Methods
-%
-for (lkey mArgumentTypeList) in OPTIONAL_METHOD_MAP do
-   %  public: VIRTUAL_IN_DEBUG bool optional_% ![lkey.string identifierRepresentation] % (%?^
-  for (mInputArgument mFormalSelector mFormalArgumentType mFormalArgumentName) in mArgumentTypeList
-    do (IDX)
-      if mInputArgument then
-        %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
-      else
-        %class GALGAS_%![mFormalArgumentType identifierRepresentation]% & outOperand% ![IDX string]
-      end
-    between
-      %,\n% !^
-  end
-  %) const ;\n\n%
-end
 
 %
 //--------------------------------- Introspection

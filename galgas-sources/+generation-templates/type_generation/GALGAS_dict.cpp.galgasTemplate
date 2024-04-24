@@ -828,26 +828,3 @@ GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCAT
   %  return p->mElement.mProperty_%![propertyName identifierRepresentation]% ;\n%
   %}\n\n%
 end 
-%//--------------------------------------------------------------------------------------------------\n\n%
-%bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
-for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
-end
-%) const {\n%
-%  const cNode_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
-%  if ((mSharedDict != nullptr) && inKey.isValid ()) {\n%
-%    p = (const cNode_%!TYPE_IDENTIFIER% *) mSharedDict->findEntryInDict (inKey) ;\n%
-%  }\n%
-%  const bool result = nullptr != p ;\n%
-%  if (result) {\n%
-%    macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;\n%
-for (propertyTypeEntry propertyName * hasSetter hasSelector) in CURRENT_PROPERTY_LIST do (IDX)
-  %    outArgument%![IDX string]% = p->mProperty_%![propertyName identifierRepresentation]% ;\n%
-end
-%  }else{\n%
-for (propertyTypeEntry propertyName * hasSetter hasSelector) in CURRENT_PROPERTY_LIST do (IDX)
-  %    outArgument%![IDX string]%.drop () ;\n%
-end
-%  }\n%
-%  return result ;\n%
-%}\n\n%

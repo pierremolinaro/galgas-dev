@@ -10,20 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generatePredefinedTypeFiles??&&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GALGAS_string constinArgument0,
-                                                              const class GALGAS_semanticDeclarationListForGeneration constinArgument1,
-                                                              class GALGAS_stringlist & ioArgument2,
-                                                              class GALGAS_stringlist & ioArgument3,
-                                                              class GALGAS_stringset & ioArgument4,
-                                                              class Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'semanticFileGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------

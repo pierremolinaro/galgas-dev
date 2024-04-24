@@ -10,328 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @listTypeForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_listTypeForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_listTypeForGeneration (const class cPtr_listTypeForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
-
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_listTypeForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                const class GALGAS_typedPropertyList & inOperand2,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_listTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_listTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                    const class GALGAS_typedPropertyList & inOperand2
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_listTypeForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_listTypeForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @listTypeForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void listTypeForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                       const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                       const class GALGAS_typedPropertyList & inOperand2,
-                                                       Compiler * inCompiler) ;
-
-
-//--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
-           class GALGAS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap arg_inUnifiedTypeMap,
-           class GALGAS_stringset & arg_ioInclusionSet,
-           class GALGAS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
-  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
-
-
-//--- Default constructor
-  public: cPtr_listTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_listTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                      const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                      const GALGAS_typedPropertyList & in_mTypedAttributeList
-                                      COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @listTypeForGeneration_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_listTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGeneration_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_listTypeForGeneration_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_listTypeForGeneration_2D_weak (const class GALGAS_listTypeForGeneration & inSource) ;
-
-  public: GALGAS_listTypeForGeneration_2D_weak & operator = (const class GALGAS_listTypeForGeneration & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_listTypeForGeneration bang_listTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_listTypeForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_listTypeForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_listTypeForGeneration_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_listTypeForGeneration_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @dictTypeForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_dictTypeForGeneration : public GALGAS_semanticTypeForGeneration {
-//--------------------------------- Default constructor
-  public: GALGAS_dictTypeForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_dictTypeForGeneration (const class cPtr_dictTypeForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mElementTypeEntry (void) const ;
-
-  public: class GALGAS_lstring readProperty_mDictTypeName (void) const ;
-
-  public: class GALGAS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
-  public: class GALGAS_lstring readProperty_mKeyTypeName (void) const ;
-
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mOptionalElementTypeEntry (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_dictTypeForGeneration init_21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                            const class GALGAS_lstring & inOperand2,
-                                                                            const class GALGAS_typedPropertyList & inOperand3,
-                                                                            const class GALGAS_lstring & inOperand4,
-                                                                            const class GALGAS_unifiedTypeMapEntry & inOperand5,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_dictTypeForGeneration extractObject (const GALGAS_object & inObject,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_dictTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                    const class GALGAS_lstring & inOperand2,
-                                                                    const class GALGAS_typedPropertyList & inOperand3,
-                                                                    const class GALGAS_lstring & inOperand4,
-                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand5
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_dictTypeForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_dictTypeForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @dictTypeForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void dictTypeForGeneration_init_21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand1,
-                                                                   const class GALGAS_lstring & inOperand2,
-                                                                   const class GALGAS_typedPropertyList & inOperand3,
-                                                                   const class GALGAS_lstring & inOperand4,
-                                                                   const class GALGAS_unifiedTypeMapEntry & inOperand5,
-                                                                   Compiler * inCompiler) ;
-
-
-//--- Extension method appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GALGAS_stringset & arg_ioInclusionSet,
-           class GALGAS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GALGAS_unifiedTypeMap arg_inUnifiedTypeMap,
-           class GALGAS_stringset & arg_ioInclusionSet,
-           class GALGAS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
-  public: GALGAS_lstring mProperty_mDictTypeName ;
-  public: GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GALGAS_lstring mProperty_mKeyTypeName ;
-  public: GALGAS_unifiedTypeMapEntry mProperty_mOptionalElementTypeEntry ;
-
-
-//--- Default constructor
-  public: cPtr_dictTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_dictTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                      const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
-                                      const GALGAS_lstring & in_mDictTypeName,
-                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
-                                      const GALGAS_lstring & in_mKeyTypeName,
-                                      const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
-                                      COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @dictTypeForGeneration_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -374,8 +52,6 @@ class GALGAS_dictTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGenera
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -463,8 +139,6 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -602,8 +276,6 @@ class GALGAS_mapTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGenerat
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -662,8 +334,6 @@ class GALGAS_optionalTypeForGeneration : public GALGAS_semanticTypeForGeneration
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -774,8 +444,6 @@ class GALGAS_optionalTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGe
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -842,8 +510,6 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -960,8 +626,6 @@ class GALGAS_sortedListTypeForGeneration_2D_weak : public GALGAS_semanticTypeFor
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1036,8 +700,6 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1160,8 +822,6 @@ class GALGAS_structTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGene
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1234,8 +894,6 @@ class GALGAS_abstractExtensionGetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1360,8 +1018,6 @@ class GALGAS_abstractExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1430,8 +1086,6 @@ class GALGAS_abstractExtensionMethodForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1553,8 +1207,6 @@ class GALGAS_abstractExtensionMethodForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1623,8 +1275,6 @@ class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1746,8 +1396,6 @@ class GALGAS_abstractExtensionSetterForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1836,8 +1484,6 @@ class GALGAS_extensionGetterForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1974,8 +1620,6 @@ class GALGAS_extensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2056,8 +1700,6 @@ class GALGAS_extensionMethodForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2188,8 +1830,6 @@ class GALGAS_extensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2270,8 +1910,6 @@ class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2402,8 +2040,6 @@ class GALGAS_extensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2480,8 +2116,6 @@ class GALGAS_extensionInitializerForGeneration : public GALGAS_semanticDeclarati
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2604,8 +2238,6 @@ class GALGAS_extensionInitializerForGeneration_2D_weak : public GALGAS_semanticD
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2694,8 +2326,6 @@ class GALGAS_overrideExtensionGetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2827,8 +2457,6 @@ class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2909,8 +2537,6 @@ class GALGAS_overridingExtensionMethodForGeneration : public GALGAS_semanticDecl
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3036,8 +2662,6 @@ class GALGAS_overridingExtensionMethodForGeneration_2D_weak : public GALGAS_sema
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3118,8 +2742,6 @@ class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDecl
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3244,8 +2866,6 @@ class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_sema
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

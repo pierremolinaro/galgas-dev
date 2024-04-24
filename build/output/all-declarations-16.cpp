@@ -8,831 +8,6 @@
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
-// @templateClassFunctionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mClassFunctionName (),
-mProperty_mExpressionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateClassFunctionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mClassFunctionName.printNonNullClassInstanceProperties ("mClassFunctionName") ;
-    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_templateClassFunctionAST::objectCompare (const GALGAS_templateClassFunctionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateClassFunctionAST::GALGAS_templateClassFunctionAST (void) :
-GALGAS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::
-init_21__21__21_ (const GALGAS_lstring & in_mTypeName,
-                  const GALGAS_lstring & in_mClassFunctionName,
-                  const GALGAS_templateExpressionListAST & in_mExpressionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateClassFunctionAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateClassFunctionAST (inCompiler COMMA_THERE)) ;
-  object->templateClassFunctionAST_init_21__21__21_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
-  const GALGAS_templateClassFunctionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateClassFunctionAST::
-templateClassFunctionAST_init_21__21__21_ (const GALGAS_lstring & in_mTypeName,
-                                           const GALGAS_lstring & in_mClassFunctionName,
-                                           const GALGAS_templateExpressionListAST & in_mExpressionList,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mClassFunctionName = in_mClassFunctionName ;
-  mProperty_mExpressionList = in_mExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateClassFunctionAST::GALGAS_templateClassFunctionAST (const cPtr_templateClassFunctionAST * inSourcePtr) :
-GALGAS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateClassFunctionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::class_func_new (const GALGAS_lstring & in_mTypeName,
-                                                                                 const GALGAS_lstring & in_mClassFunctionName,
-                                                                                 const GALGAS_templateExpressionListAST & in_mExpressionList
-                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_templateClassFunctionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateClassFunctionAST (in_mTypeName, in_mClassFunctionName, in_mExpressionList COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_templateClassFunctionAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_templateClassFunctionAST::readProperty_mClassFunctionName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
-    return p->mProperty_mClassFunctionName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExpressionListAST GALGAS_templateClassFunctionAST::readProperty_mExpressionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateExpressionListAST () ;
-  }else{
-    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
-    return p->mProperty_mExpressionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateClassFunctionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (const GALGAS_lstring & in_mTypeName,
-                                                              const GALGAS_lstring & in_mClassFunctionName,
-                                                              const GALGAS_templateExpressionListAST & in_mExpressionList
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (THERE),
-mProperty_mTypeName (),
-mProperty_mClassFunctionName (),
-mProperty_mExpressionList () {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mClassFunctionName = in_mClassFunctionName ;
-  mProperty_mExpressionList = in_mExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateClassFunctionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
-}
-
-void cPtr_templateClassFunctionAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateClassFunctionAST:") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mClassFunctionName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateClassFunctionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateClassFunctionAST (mProperty_mTypeName, mProperty_mClassFunctionName, mProperty_mExpressionList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateClassFunctionAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ("templateClassFunctionAST",
-                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateClassFunctionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateClassFunctionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateClassFunctionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::extractObject (const GALGAS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_templateClassFunctionAST result ;
-  const GALGAS_templateClassFunctionAST * p = (const GALGAS_templateClassFunctionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateClassFunctionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateClassFunctionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateFileWrapperTemplateCallAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFileWrapperName (),
-mProperty_mTemplateName (),
-mProperty_mOutExpressionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateFileWrapperTemplateCallAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFileWrapperName.printNonNullClassInstanceProperties ("mFileWrapperName") ;
-    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
-    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_templateFileWrapperTemplateCallAST::objectCompare (const GALGAS_templateFileWrapperTemplateCallAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateFileWrapperTemplateCallAST::GALGAS_templateFileWrapperTemplateCallAST (void) :
-GALGAS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::
-init_21__21__21_ (const GALGAS_lstring & in_mFileWrapperName,
-                  const GALGAS_lstring & in_mTemplateName,
-                  const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateFileWrapperTemplateCallAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateFileWrapperTemplateCallAST (inCompiler COMMA_THERE)) ;
-  object->templateFileWrapperTemplateCallAST_init_21__21__21_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
-  const GALGAS_templateFileWrapperTemplateCallAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateFileWrapperTemplateCallAST::
-templateFileWrapperTemplateCallAST_init_21__21__21_ (const GALGAS_lstring & in_mFileWrapperName,
-                                                     const GALGAS_lstring & in_mTemplateName,
-                                                     const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                                                     Compiler * /* inCompiler */) {
-  mProperty_mFileWrapperName = in_mFileWrapperName ;
-  mProperty_mTemplateName = in_mTemplateName ;
-  mProperty_mOutExpressionList = in_mOutExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateFileWrapperTemplateCallAST::GALGAS_templateFileWrapperTemplateCallAST (const cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) :
-GALGAS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFileWrapperTemplateCallAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::class_func_new (const GALGAS_lstring & in_mFileWrapperName,
-                                                                                                     const GALGAS_lstring & in_mTemplateName,
-                                                                                                     const GALGAS_templateExpressionListAST & in_mOutExpressionList
-                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_templateFileWrapperTemplateCallAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateFileWrapperTemplateCallAST (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
-    return p->mProperty_mFileWrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
-    return p->mProperty_mTemplateName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExpressionListAST GALGAS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateExpressionListAST () ;
-  }else{
-    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
-    return p->mProperty_mOutExpressionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateFileWrapperTemplateCallAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (const GALGAS_lstring & in_mFileWrapperName,
-                                                                                  const GALGAS_lstring & in_mTemplateName,
-                                                                                  const GALGAS_templateExpressionListAST & in_mOutExpressionList
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (THERE),
-mProperty_mFileWrapperName (),
-mProperty_mTemplateName (),
-mProperty_mOutExpressionList () {
-  mProperty_mFileWrapperName = in_mFileWrapperName ;
-  mProperty_mTemplateName = in_mTemplateName ;
-  mProperty_mOutExpressionList = in_mOutExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateFileWrapperTemplateCallAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
-}
-
-void cPtr_templateFileWrapperTemplateCallAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateFileWrapperTemplateCallAST:") ;
-  mProperty_mFileWrapperName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateFileWrapperTemplateCallAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateFileWrapperTemplateCallAST (mProperty_mFileWrapperName, mProperty_mTemplateName, mProperty_mOutExpressionList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateFileWrapperTemplateCallAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
-                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateFileWrapperTemplateCallAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateFileWrapperTemplateCallAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateFileWrapperTemplateCallAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_templateFileWrapperTemplateCallAST result ;
-  const GALGAS_templateFileWrapperTemplateCallAST * p = (const GALGAS_templateFileWrapperTemplateCallAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateFileWrapperTemplateCallAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateFileWrapperTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateExtensionTemplateCallAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mExpressionValue (),
-mProperty_mTemplateName (),
-mProperty_mOutExpressionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateExtensionTemplateCallAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mExpressionValue.printNonNullClassInstanceProperties ("mExpressionValue") ;
-    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
-    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_templateExtensionTemplateCallAST::objectCompare (const GALGAS_templateExtensionTemplateCallAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExtensionTemplateCallAST::GALGAS_templateExtensionTemplateCallAST (void) :
-GALGAS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::
-init_21__21__21_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
-                  const GALGAS_lstring & in_mTemplateName,
-                  const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateExtensionTemplateCallAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateExtensionTemplateCallAST (inCompiler COMMA_THERE)) ;
-  object->templateExtensionTemplateCallAST_init_21__21__21_ (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
-  const GALGAS_templateExtensionTemplateCallAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateExtensionTemplateCallAST::
-templateExtensionTemplateCallAST_init_21__21__21_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
-                                                   const GALGAS_lstring & in_mTemplateName,
-                                                   const GALGAS_templateExpressionListAST & in_mOutExpressionList,
-                                                   Compiler * /* inCompiler */) {
-  mProperty_mExpressionValue = in_mExpressionValue ;
-  mProperty_mTemplateName = in_mTemplateName ;
-  mProperty_mOutExpressionList = in_mOutExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExtensionTemplateCallAST::GALGAS_templateExtensionTemplateCallAST (const cPtr_templateExtensionTemplateCallAST * inSourcePtr) :
-GALGAS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateExtensionTemplateCallAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::class_func_new (const GALGAS_templateExpressionAST & in_mExpressionValue,
-                                                                                                 const GALGAS_lstring & in_mTemplateName,
-                                                                                                 const GALGAS_templateExpressionListAST & in_mOutExpressionList
-                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_templateExtensionTemplateCallAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateExtensionTemplateCallAST (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExpressionAST GALGAS_templateExtensionTemplateCallAST::readProperty_mExpressionValue (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateExpressionAST () ;
-  }else{
-    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
-    return p->mProperty_mExpressionValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_templateExtensionTemplateCallAST::readProperty_mTemplateName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
-    return p->mProperty_mTemplateName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExpressionListAST GALGAS_templateExtensionTemplateCallAST::readProperty_mOutExpressionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateExpressionListAST () ;
-  }else{
-    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
-    return p->mProperty_mOutExpressionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateExtensionTemplateCallAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (const GALGAS_templateExpressionAST & in_mExpressionValue,
-                                                                              const GALGAS_lstring & in_mTemplateName,
-                                                                              const GALGAS_templateExpressionListAST & in_mOutExpressionList
-                                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (THERE),
-mProperty_mExpressionValue (),
-mProperty_mTemplateName (),
-mProperty_mOutExpressionList () {
-  mProperty_mExpressionValue = in_mExpressionValue ;
-  mProperty_mTemplateName = in_mTemplateName ;
-  mProperty_mOutExpressionList = in_mOutExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateExtensionTemplateCallAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
-}
-
-void cPtr_templateExtensionTemplateCallAST::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateExtensionTemplateCallAST:") ;
-  mProperty_mExpressionValue.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateExtensionTemplateCallAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateExtensionTemplateCallAST (mProperty_mExpressionValue, mProperty_mTemplateName, mProperty_mOutExpressionList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateExtensionTemplateCallAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ("templateExtensionTemplateCallAST",
-                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateExtensionTemplateCallAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateExtensionTemplateCallAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateExtensionTemplateCallAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::extractObject (const GALGAS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_templateExtensionTemplateCallAST result ;
-  const GALGAS_templateExtensionTemplateCallAST * p = (const GALGAS_templateExtensionTemplateCallAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateExtensionTemplateCallAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateExtensionTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateLiteralStringExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mLiteralStringList (),
-mProperty_mLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateLiteralStringExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLiteralStringList.printNonNullClassInstanceProperties ("mLiteralStringList") ;
-    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_templateLiteralStringExpressionAST::objectCompare (const GALGAS_templateLiteralStringExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateLiteralStringExpressionAST::GALGAS_templateLiteralStringExpressionAST (void) :
-GALGAS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::
-init_21__21_ (const GALGAS_stringlist & in_mLiteralStringList,
-              const GALGAS_location & in_mLocation,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_templateLiteralStringExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateLiteralStringExpressionAST (inCompiler COMMA_THERE)) ;
-  object->templateLiteralStringExpressionAST_init_21__21_ (in_mLiteralStringList, in_mLocation, inCompiler) ;
-  const GALGAS_templateLiteralStringExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateLiteralStringExpressionAST::
-templateLiteralStringExpressionAST_init_21__21_ (const GALGAS_stringlist & in_mLiteralStringList,
-                                                 const GALGAS_location & in_mLocation,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mLiteralStringList = in_mLiteralStringList ;
-  mProperty_mLocation = in_mLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateLiteralStringExpressionAST::GALGAS_templateLiteralStringExpressionAST (const cPtr_templateLiteralStringExpressionAST * inSourcePtr) :
-GALGAS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLiteralStringExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::class_func_new (const GALGAS_stringlist & in_mLiteralStringList,
-                                                                                                     const GALGAS_location & in_mLocation
-                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_templateLiteralStringExpressionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateLiteralStringExpressionAST (in_mLiteralStringList, in_mLocation COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_stringlist GALGAS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_stringlist () ;
-  }else{
-    cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
-    return p->mProperty_mLiteralStringList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_templateLiteralStringExpressionAST::readProperty_mLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_location () ;
-  }else{
-    cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
-    return p->mProperty_mLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateLiteralStringExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (const GALGAS_stringlist & in_mLiteralStringList,
-                                                                                  const GALGAS_location & in_mLocation
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (THERE),
-mProperty_mLiteralStringList (),
-mProperty_mLocation () {
-  mProperty_mLiteralStringList = in_mLiteralStringList ;
-  mProperty_mLocation = in_mLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateLiteralStringExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
-}
-
-void cPtr_templateLiteralStringExpressionAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateLiteralStringExpressionAST:") ;
-  mProperty_mLiteralStringList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateLiteralStringExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateLiteralStringExpressionAST (mProperty_mLiteralStringList, mProperty_mLocation COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateLiteralStringExpressionAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ("templateLiteralStringExpressionAST",
-                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateLiteralStringExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateLiteralStringExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateLiteralStringExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_templateLiteralStringExpressionAST result ;
-  const GALGAS_templateLiteralStringExpressionAST * p = (const GALGAS_templateLiteralStringExpressionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateLiteralStringExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateLiteralStringExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @structFieldAccessTemplateExpressionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -15180,6 +14355,1065 @@ GALGAS_graphDeclarationForGeneration_2D_weak GALGAS_graphDeclarationForGeneratio
       result = *p ;
     }else{
       inCompiler->castError ("graphDeclarationForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @listDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_listDeclarationAST::cPtr_listDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mListTypeName (),
+mProperty_mPropertyList (),
+mProperty_usefullList (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_listDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mListTypeName.printNonNullClassInstanceProperties ("mListTypeName") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_usefullList.printNonNullClassInstanceProperties ("usefullList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_listDeclarationAST::objectCompare (const GALGAS_listDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listDeclarationAST::GALGAS_listDeclarationAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_listDeclarationAST GALGAS_listDeclarationAST::
+init_21_isPredefined_21__21__21_usefullList_21_equatable (const GALGAS_bool & in_isPredefined,
+                                                          const GALGAS_lstring & in_mListTypeName,
+                                                          const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                          const GALGAS_bool & in_usefullList,
+                                                          const GALGAS_bool & in_equatable,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  cPtr_listDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_listDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->listDeclarationAST_init_21_isPredefined_21__21__21_usefullList_21_equatable (in_isPredefined, in_mListTypeName, in_mPropertyList, in_usefullList, in_equatable, inCompiler) ;
+  const GALGAS_listDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_listDeclarationAST::
+listDeclarationAST_init_21_isPredefined_21__21__21_usefullList_21_equatable (const GALGAS_bool & in_isPredefined,
+                                                                             const GALGAS_lstring & in_mListTypeName,
+                                                                             const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                             const GALGAS_bool & in_usefullList,
+                                                                             const GALGAS_bool & in_equatable,
+                                                                             Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mListTypeName = in_mListTypeName ;
+  mProperty_mPropertyList = in_mPropertyList ;
+  mProperty_usefullList = in_usefullList ;
+  mProperty_equatable = in_equatable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listDeclarationAST::GALGAS_listDeclarationAST (const cPtr_listDeclarationAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_listDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listDeclarationAST GALGAS_listDeclarationAST::class_func_new (const GALGAS_bool & in_isPredefined,
+                                                                     const GALGAS_lstring & in_mListTypeName,
+                                                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                     const GALGAS_bool & in_usefullList,
+                                                                     const GALGAS_bool & in_equatable
+                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_listDeclarationAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_listDeclarationAST (in_isPredefined, in_mListTypeName, in_mPropertyList, in_usefullList, in_equatable COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_listDeclarationAST::readProperty_mListTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
+    return p->mProperty_mListTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_propertyInCollectionListAST GALGAS_listDeclarationAST::readProperty_mPropertyList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_propertyInCollectionListAST () ;
+  }else{
+    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
+    return p->mProperty_mPropertyList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_listDeclarationAST::readProperty_usefullList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
+    return p->mProperty_usefullList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_listDeclarationAST::readProperty_equatable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
+    return p->mProperty_equatable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @listDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_listDeclarationAST::cPtr_listDeclarationAST (const GALGAS_bool & in_isPredefined,
+                                                  const GALGAS_lstring & in_mListTypeName,
+                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                  const GALGAS_bool & in_usefullList,
+                                                  const GALGAS_bool & in_equatable
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+mProperty_mListTypeName (),
+mProperty_mPropertyList (),
+mProperty_usefullList (),
+mProperty_equatable () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mListTypeName = in_mListTypeName ;
+  mProperty_mPropertyList = in_mPropertyList ;
+  mProperty_usefullList = in_usefullList ;
+  mProperty_equatable = in_equatable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_listDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_listDeclarationAST ;
+}
+
+void cPtr_listDeclarationAST::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@listDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mListTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_usefullList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_equatable.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_isPredefined, mProperty_mListTypeName, mProperty_mPropertyList, mProperty_usefullList, mProperty_equatable COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @listDeclarationAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_listDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_listDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_listDeclarationAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_listDeclarationAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listDeclarationAST GALGAS_listDeclarationAST::extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_listDeclarationAST result ;
+  const GALGAS_listDeclarationAST * p = (const GALGAS_listDeclarationAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_listDeclarationAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("listDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @listTypeForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mListElementTypeIndex (),
+mProperty_mTypedAttributeList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_listTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mListElementTypeIndex.printNonNullClassInstanceProperties ("mListElementTypeIndex") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_listTypeForGeneration::objectCompare (const GALGAS_listTypeForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration::GALGAS_listTypeForGeneration (void) :
+GALGAS_semanticTypeForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::
+init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                  const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
+                  const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_listTypeForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_listTypeForGeneration (inCompiler COMMA_THERE)) ;
+  object->listTypeForGeneration_init_21__21__21_ (in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList, inCompiler) ;
+  const GALGAS_listTypeForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_listTypeForGeneration::
+listTypeForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                        const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
+                                        const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                        Compiler * /* inCompiler */) {
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
+  mProperty_mListElementTypeIndex = in_mListElementTypeIndex ;
+  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration::GALGAS_listTypeForGeneration (const cPtr_listTypeForGeneration * inSourcePtr) :
+GALGAS_semanticTypeForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_listTypeForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                           const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
+                                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList
+                                                                           COMMA_LOCATION_ARGS) {
+  GALGAS_listTypeForGeneration result ;
+  macroMyNew (result.mObjectPtr, cPtr_listTypeForGeneration (in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_listTypeForGeneration::readProperty_mListElementTypeIndex (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
+    return p->mProperty_mListElementTypeIndex ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_listTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
+    return p->mProperty_mTypedAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @listTypeForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                        const GALGAS_unifiedTypeMapEntry & in_mListElementTypeIndex,
+                                                        const GALGAS_typedPropertyList & in_mTypedAttributeList
+                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+mProperty_mListElementTypeIndex (),
+mProperty_mTypedAttributeList () {
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
+  mProperty_mListElementTypeIndex = in_mListElementTypeIndex ;
+  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_listTypeForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
+}
+
+void cPtr_listTypeForGeneration::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("[@listTypeForGeneration:") ;
+  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mListElementTypeIndex.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_listTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_listTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @listTypeForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration ("listTypeForGeneration",
+                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_listTypeForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_listTypeForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_listTypeForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_listTypeForGeneration result ;
+  const GALGAS_listTypeForGeneration * p = (const GALGAS_listTypeForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_listTypeForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("listTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_listTypeForGeneration_2D_weak::objectCompare (const GALGAS_listTypeForGeneration_2D_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration_2D_weak::GALGAS_listTypeForGeneration_2D_weak (void) :
+GALGAS_semanticTypeForGeneration_2D_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration_2D_weak & GALGAS_listTypeForGeneration_2D_weak::operator = (const GALGAS_listTypeForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration_2D_weak::GALGAS_listTypeForGeneration_2D_weak (const GALGAS_listTypeForGeneration & inSource) :
+GALGAS_semanticTypeForGeneration_2D_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration_2D_weak GALGAS_listTypeForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_listTypeForGeneration_2D_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration_2D_weak::bang_listTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_listTypeForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_listTypeForGeneration) ;
+      result = GALGAS_listTypeForGeneration ((cPtr_listTypeForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @listTypeForGeneration-weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGeneration_2D_weak ("listTypeForGeneration-weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_listTypeForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_listTypeForGeneration_2D_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_listTypeForGeneration_2D_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_listTypeForGeneration_2D_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_listTypeForGeneration_2D_weak GALGAS_listTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_listTypeForGeneration_2D_weak result ;
+  const GALGAS_listTypeForGeneration_2D_weak * p = (const GALGAS_listTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_listTypeForGeneration_2D_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("listTypeForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @dictDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_dictDeclarationAST::cPtr_dictDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mDictTypeName (),
+mProperty_mKeyTypeName (),
+mProperty_mPropertyList (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_dictDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
+    mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_dictDeclarationAST::objectCompare (const GALGAS_dictDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictDeclarationAST::GALGAS_dictDeclarationAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::
+init_21_isPredefined_21__21__21__21_equatable (const GALGAS_bool & in_isPredefined,
+                                               const GALGAS_lstring & in_mDictTypeName,
+                                               const GALGAS_lstring & in_mKeyTypeName,
+                                               const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                               const GALGAS_bool & in_equatable,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  cPtr_dictDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_dictDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->dictDeclarationAST_init_21_isPredefined_21__21__21__21_equatable (in_isPredefined, in_mDictTypeName, in_mKeyTypeName, in_mPropertyList, in_equatable, inCompiler) ;
+  const GALGAS_dictDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_dictDeclarationAST::
+dictDeclarationAST_init_21_isPredefined_21__21__21__21_equatable (const GALGAS_bool & in_isPredefined,
+                                                                  const GALGAS_lstring & in_mDictTypeName,
+                                                                  const GALGAS_lstring & in_mKeyTypeName,
+                                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                  const GALGAS_bool & in_equatable,
+                                                                  Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mDictTypeName = in_mDictTypeName ;
+  mProperty_mKeyTypeName = in_mKeyTypeName ;
+  mProperty_mPropertyList = in_mPropertyList ;
+  mProperty_equatable = in_equatable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictDeclarationAST::GALGAS_dictDeclarationAST (const cPtr_dictDeclarationAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_dictDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::class_func_new (const GALGAS_bool & in_isPredefined,
+                                                                     const GALGAS_lstring & in_mDictTypeName,
+                                                                     const GALGAS_lstring & in_mKeyTypeName,
+                                                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                                     const GALGAS_bool & in_equatable
+                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_dictDeclarationAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_dictDeclarationAST (in_isPredefined, in_mDictTypeName, in_mKeyTypeName, in_mPropertyList, in_equatable COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_dictDeclarationAST::readProperty_mDictTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_dictDeclarationAST * p = (cPtr_dictDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictDeclarationAST) ;
+    return p->mProperty_mDictTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_dictDeclarationAST::readProperty_mKeyTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_dictDeclarationAST * p = (cPtr_dictDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictDeclarationAST) ;
+    return p->mProperty_mKeyTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_propertyInCollectionListAST GALGAS_dictDeclarationAST::readProperty_mPropertyList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_propertyInCollectionListAST () ;
+  }else{
+    cPtr_dictDeclarationAST * p = (cPtr_dictDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictDeclarationAST) ;
+    return p->mProperty_mPropertyList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_dictDeclarationAST::readProperty_equatable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_dictDeclarationAST * p = (cPtr_dictDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictDeclarationAST) ;
+    return p->mProperty_equatable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @dictDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_dictDeclarationAST::cPtr_dictDeclarationAST (const GALGAS_bool & in_isPredefined,
+                                                  const GALGAS_lstring & in_mDictTypeName,
+                                                  const GALGAS_lstring & in_mKeyTypeName,
+                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList,
+                                                  const GALGAS_bool & in_equatable
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+mProperty_mDictTypeName (),
+mProperty_mKeyTypeName (),
+mProperty_mPropertyList (),
+mProperty_equatable () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mDictTypeName = in_mDictTypeName ;
+  mProperty_mKeyTypeName = in_mKeyTypeName ;
+  mProperty_mPropertyList = in_mPropertyList ;
+  mProperty_equatable = in_equatable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_dictDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dictDeclarationAST ;
+}
+
+void cPtr_dictDeclarationAST::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@dictDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mDictTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mKeyTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_equatable.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_dictDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_dictDeclarationAST (mProperty_isPredefined, mProperty_mDictTypeName, mProperty_mKeyTypeName, mProperty_mPropertyList, mProperty_equatable COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @dictDeclarationAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST ("dictDeclarationAST",
+                                                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_dictDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dictDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_dictDeclarationAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_dictDeclarationAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictDeclarationAST GALGAS_dictDeclarationAST::extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_dictDeclarationAST result ;
+  const GALGAS_dictDeclarationAST * p = (const GALGAS_dictDeclarationAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_dictDeclarationAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("dictDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @dictTypeForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_dictTypeForGeneration::cPtr_dictTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mElementTypeEntry (),
+mProperty_mDictTypeName (),
+mProperty_mTypedAttributeList (),
+mProperty_mKeyTypeName (),
+mProperty_mOptionalElementTypeEntry () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_dictTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
+    mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
+    mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_dictTypeForGeneration::objectCompare (const GALGAS_dictTypeForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictTypeForGeneration::GALGAS_dictTypeForGeneration (void) :
+GALGAS_semanticTypeForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration::
+init_21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                              const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                              const GALGAS_lstring & in_mDictTypeName,
+                              const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                              const GALGAS_lstring & in_mKeyTypeName,
+                              const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) {
+  cPtr_dictTypeForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_dictTypeForGeneration (inCompiler COMMA_THERE)) ;
+  object->dictTypeForGeneration_init_21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mElementTypeEntry, in_mDictTypeName, in_mTypedAttributeList, in_mKeyTypeName, in_mOptionalElementTypeEntry, inCompiler) ;
+  const GALGAS_dictTypeForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_dictTypeForGeneration::
+dictTypeForGeneration_init_21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                    const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                    const GALGAS_lstring & in_mDictTypeName,
+                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                    const GALGAS_lstring & in_mKeyTypeName,
+                                                    const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                    Compiler * /* inCompiler */) {
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
+  mProperty_mElementTypeEntry = in_mElementTypeEntry ;
+  mProperty_mDictTypeName = in_mDictTypeName ;
+  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
+  mProperty_mKeyTypeName = in_mKeyTypeName ;
+  mProperty_mOptionalElementTypeEntry = in_mOptionalElementTypeEntry ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictTypeForGeneration::GALGAS_dictTypeForGeneration (const cPtr_dictTypeForGeneration * inSourcePtr) :
+GALGAS_semanticTypeForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_dictTypeForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                           const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                                           const GALGAS_lstring & in_mDictTypeName,
+                                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                                           const GALGAS_lstring & in_mKeyTypeName,
+                                                                           const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                                                           COMMA_LOCATION_ARGS) {
+  GALGAS_dictTypeForGeneration result ;
+  macroMyNew (result.mObjectPtr, cPtr_dictTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mDictTypeName, in_mTypedAttributeList, in_mKeyTypeName, in_mOptionalElementTypeEntry COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_dictTypeForGeneration::readProperty_mElementTypeEntry (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictTypeForGeneration) ;
+    return p->mProperty_mElementTypeEntry ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_dictTypeForGeneration::readProperty_mDictTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictTypeForGeneration) ;
+    return p->mProperty_mDictTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typedPropertyList GALGAS_dictTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_typedPropertyList () ;
+  }else{
+    cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictTypeForGeneration) ;
+    return p->mProperty_mTypedAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_dictTypeForGeneration::readProperty_mKeyTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictTypeForGeneration) ;
+    return p->mProperty_mKeyTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_unifiedTypeMapEntry GALGAS_dictTypeForGeneration::readProperty_mOptionalElementTypeEntry (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_dictTypeForGeneration) ;
+    return p->mProperty_mOptionalElementTypeEntry ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @dictTypeForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_dictTypeForGeneration::cPtr_dictTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                        const GALGAS_unifiedTypeMapEntry & in_mElementTypeEntry,
+                                                        const GALGAS_lstring & in_mDictTypeName,
+                                                        const GALGAS_typedPropertyList & in_mTypedAttributeList,
+                                                        const GALGAS_lstring & in_mKeyTypeName,
+                                                        const GALGAS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+mProperty_mElementTypeEntry (),
+mProperty_mDictTypeName (),
+mProperty_mTypedAttributeList (),
+mProperty_mKeyTypeName (),
+mProperty_mOptionalElementTypeEntry () {
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
+  mProperty_mElementTypeEntry = in_mElementTypeEntry ;
+  mProperty_mDictTypeName = in_mDictTypeName ;
+  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
+  mProperty_mKeyTypeName = in_mKeyTypeName ;
+  mProperty_mOptionalElementTypeEntry = in_mOptionalElementTypeEntry ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_dictTypeForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dictTypeForGeneration ;
+}
+
+void cPtr_dictTypeForGeneration::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("[@dictTypeForGeneration:") ;
+  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mElementTypeEntry.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mDictTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mKeyTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOptionalElementTypeEntry.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_dictTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_dictTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mDictTypeName, mProperty_mTypedAttributeList, mProperty_mKeyTypeName, mProperty_mOptionalElementTypeEntry COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @dictTypeForGeneration generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictTypeForGeneration ("dictTypeForGeneration",
+                                                                             & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_dictTypeForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_dictTypeForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_dictTypeForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_dictTypeForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_dictTypeForGeneration GALGAS_dictTypeForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_dictTypeForGeneration result ;
+  const GALGAS_dictTypeForGeneration * p = (const GALGAS_dictTypeForGeneration *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_dictTypeForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("dictTypeForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

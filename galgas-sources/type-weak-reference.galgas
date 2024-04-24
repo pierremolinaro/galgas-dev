@@ -160,7 +160,6 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: ()
     !classMethodMap: ()
     !unwrappedType: .null
-    !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()
     !features: .referenceEquatable
@@ -297,7 +296,6 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
     !typeDefinition.setterMap
     !typeDefinition.instanceMethodMap
     !typeDefinition.classMethodMap
-    !typeDefinition.optionalMethodMap
     !typeDefinition.readSubscriptMap
     !typeDefinition.enumerationDescriptorList
     !typeDefinition.features

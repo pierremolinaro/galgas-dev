@@ -206,7 +206,6 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
-  let optionalMethodMap = @optionalMethodMap ()
 #--- Type index
   [!?ioTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
@@ -346,7 +345,6 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !unwrappedType: .null
-    !optionalMethodMap: optionalMethodMap
     !readSubscriptMap: ()
     !enumerationDescriptorList: enumerationDescriptor
     !features: features 
@@ -476,7 +474,6 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypeDefinition.setterMap
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
-    !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features

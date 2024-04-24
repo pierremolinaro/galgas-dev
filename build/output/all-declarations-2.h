@@ -10,186 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @lexicalCharacterIntervalMatchAST reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionAST {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalCharacterIntervalMatchAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_lexicalCharacterIntervalMatchAST (const class cPtr_lexicalCharacterIntervalMatchAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GALGAS_lchar readProperty_mLowerBound (void) const ;
-
-  public: class GALGAS_lchar readProperty_mUpperBound (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_lexicalCharacterIntervalMatchAST init_21__21_ (const class GALGAS_lchar & inOperand0,
-                                                                       const class GALGAS_lchar & inOperand1,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalCharacterIntervalMatchAST extractObject (const GALGAS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalCharacterIntervalMatchAST class_func_new (const class GALGAS_lchar & inOperand0,
-                                                                               const class GALGAS_lchar & inOperand1
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalCharacterIntervalMatchAST class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @lexicalCharacterIntervalMatchAST class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void lexicalCharacterIntervalMatchAST_init_21__21_ (const class GALGAS_lchar & inOperand0,
-                                                              const class GALGAS_lchar & inOperand1,
-                                                              Compiler * inCompiler) ;
-
-
-//--- Extension getter generateConditionCode
-  public: virtual class GALGAS_string getter_generateConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateObjcCocoaConditionCode
-  public: virtual class GALGAS_string getter_generateObjcCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension getter generateSwiftCocoaConditionCode
-  public: virtual class GALGAS_string getter_generateSwiftCocoaConditionCode (const class GALGAS_lexiqueAnalysisContext inLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method checkLexicalExpression
-  public: virtual void method_checkLexicalExpression (class GALGAS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GALGAS_lchar mProperty_mLowerBound ;
-  public: GALGAS_lchar mProperty_mUpperBound ;
-
-
-//--- Default constructor
-  public: cPtr_lexicalCharacterIntervalMatchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_lexicalCharacterIntervalMatchAST (const GALGAS_lchar & in_mLowerBound,
-                                                 const GALGAS_lchar & in_mUpperBound
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @lexicalCharacterIntervalMatchAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_lexicalCharacterIntervalMatchAST_2D_weak : public GALGAS_lexicalExpressionAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (const class GALGAS_lexicalCharacterIntervalMatchAST & inSource) ;
-
-  public: GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & operator = (const class GALGAS_lexicalCharacterIntervalMatchAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_lexicalCharacterIntervalMatchAST bang_lexicalCharacterIntervalMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_lexicalCharacterIntervalMatchAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_lexicalCharacterIntervalMatchAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_lexicalCharacterIntervalMatchAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST_2D_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @lexicalStringMatchAST reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -234,8 +54,6 @@ class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -349,8 +167,6 @@ class GALGAS_lexicalStringMatchAST_2D_weak : public GALGAS_lexicalExpressionAST_
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -411,8 +227,6 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -528,8 +342,6 @@ class GALGAS_lexicalStringNotMatchAST_2D_weak : public GALGAS_lexicalExpressionA
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -672,8 +484,6 @@ class GALGAS_lexicalSendSearchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -785,8 +595,6 @@ class GALGAS_lexicalSendSearchListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -836,8 +644,6 @@ class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -945,8 +751,6 @@ class GALGAS_lexicalSendDefaultActionAST_2D_weak : public AC_GALGAS_weak_referen
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1003,8 +807,6 @@ class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultA
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1118,8 +920,6 @@ class GALGAS_lexicalSendTerminalByDefaultAST_2D_weak : public GALGAS_lexicalSend
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1176,8 +976,6 @@ class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAS
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1290,8 +1088,6 @@ class GALGAS_lexicalErrorByDefaultAST_2D_weak : public GALGAS_lexicalSendDefault
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1434,8 +1230,6 @@ class GALGAS_lexicalWhileBranchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -1546,8 +1340,6 @@ class GALGAS_lexicalWhileBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1690,8 +1482,6 @@ class GALGAS_lexicalSelectBranchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -1803,8 +1593,6 @@ class GALGAS_lexicalSelectBranchListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1854,8 +1642,6 @@ class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_r
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1965,8 +1751,6 @@ class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak : public AC_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2090,8 +1874,6 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -2190,8 +1972,6 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element : public AC_GAL
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2248,8 +2028,6 @@ class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFu
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2366,8 +2144,6 @@ class GALGAS_lexicalAttributeInputArgumentAST_2D_weak : public GALGAS_lexicalRou
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2424,8 +2200,6 @@ class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFu
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2542,8 +2316,6 @@ class GALGAS_lexicalCharacterInputArgumentAST_2D_weak : public GALGAS_lexicalRou
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2600,8 +2372,6 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2718,8 +2488,6 @@ class GALGAS_lexicalUnsignedInputArgumentAST_2D_weak : public GALGAS_lexicalRout
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2776,8 +2544,6 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRout
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2894,8 +2660,6 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak : public GALGAS_lex
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2956,8 +2720,6 @@ class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFun
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3077,8 +2839,6 @@ class GALGAS_lexicalFunctionInputArgumentAST_2D_weak : public GALGAS_lexicalRout
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3159,12 +2919,6 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalInputMode () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalInputOutputMode () const ;
-
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3316,24 +3070,6 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_bigint () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_char () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_double () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_sint () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_sint_36__34_ () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_string () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_uint () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_uint_36__34_ () const ;
-
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3495,8 +3231,6 @@ class GALGAS_lexicalSentValueList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -3621,8 +3355,6 @@ class GALGAS_lexicalSentValueList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3719,11 +3451,6 @@ class GALGAS_terminalMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_terminalMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lexicalSentValueList & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -3871,8 +3598,6 @@ class GALGAS_terminalMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3935,8 +3660,6 @@ class GALGAS_terminalMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4034,11 +3757,6 @@ class GALGAS_lexicalTypeMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalTypeMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lexicalTypeEnum & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -4186,8 +3904,6 @@ class GALGAS_lexicalTypeMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4250,8 +3966,6 @@ class GALGAS_lexicalTypeMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4349,11 +4063,6 @@ class GALGAS_lexicalAttributeMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalAttributeMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                                Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lexicalTypeEnum & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -4501,8 +4210,6 @@ class GALGAS_lexicalAttributeMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4565,8 +4272,6 @@ class GALGAS_lexicalAttributeMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4785,8 +4490,6 @@ class GALGAS_terminalList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -4950,8 +4653,6 @@ class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5072,13 +4773,6 @@ class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                                        Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lstring & outOperand1,
-                                                    class GALGAS_bool & outOperand2,
-                                                    class GALGAS_bool & outOperand3) const ;
 
 
 //--------------------------------- Introspection
@@ -5256,8 +4950,6 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5320,8 +5012,6 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ : public AC_GALGAS_root 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5414,8 +5104,6 @@ class GALGAS_tokenSortedlist : public AC_GALGAS_sortedlist {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5541,8 +5229,6 @@ class GALGAS_tokenSortedlist_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5663,13 +5349,6 @@ class GALGAS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lexicalExplicitTokenListMap & outOperand1,
-                                                    class GALGAS_tokenSortedlist & outOperand2,
-                                                    class GALGAS_bool & outOperand3) const ;
 
 
 //--------------------------------- Introspection
@@ -5847,8 +5526,6 @@ class GALGAS_lexicalExplicitTokenListMapMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5911,8 +5588,6 @@ class GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ : public AC_GALGAS_ro
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6022,12 +5697,6 @@ class GALGAS_lexicalMessageMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalMessageMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lstring & outOperand1,
-                                                    class GALGAS_bool & outOperand2) const ;
 
 
 //--------------------------------- Introspection
@@ -6190,8 +5859,6 @@ class GALGAS_lexicalMessageMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6254,8 +5921,6 @@ class GALGAS_lexicalMessageMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6417,8 +6082,6 @@ class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -6543,8 +6206,6 @@ class GALGAS_lexicalRoutineFormalArgumentList_2D_element : public AC_GALGAS_root
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6665,13 +6326,6 @@ class GALGAS_lexicalRoutineMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalRoutineMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lexicalRoutineFormalArgumentList & outOperand1,
-                                                    class GALGAS_stringlist & outOperand2,
-                                                    class GALGAS_bool & outOperand3) const ;
 
 
 //--------------------------------- Introspection
@@ -6849,8 +6503,6 @@ class GALGAS_lexicalRoutineMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6913,8 +6565,6 @@ class GALGAS_lexicalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7057,8 +6707,6 @@ class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -7169,8 +6817,6 @@ class GALGAS_lexicalFunctionFormalArgumentList_2D_element : public AC_GALGAS_roo
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7304,14 +6950,6 @@ class GALGAS_lexicalFunctionMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalFunctionMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lexicalFunctionFormalArgumentList & outOperand1,
-                                                    class GALGAS_lexicalTypeEnum & outOperand2,
-                                                    class GALGAS_string & outOperand3,
-                                                    class GALGAS_bool & outOperand4) const ;
 
 
 //--------------------------------- Introspection
@@ -7504,8 +7142,6 @@ class GALGAS_lexicalFunctionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7568,8 +7204,6 @@ class GALGAS_lexicalFunctionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7731,8 +7365,6 @@ class GALGAS_templateDelimitorList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -7857,8 +7489,6 @@ class GALGAS_templateDelimitorList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7967,12 +7597,6 @@ class GALGAS_styleMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_styleMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lstring & outOperand1,
-                                                    class GALGAS_uint & outOperand2) const ;
 
 
 //--------------------------------- Introspection
@@ -8135,8 +7759,6 @@ class GALGAS_styleMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8199,8 +7821,6 @@ class GALGAS_styleMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8286,10 +7906,6 @@ class GALGAS_lexicalTagMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_lexicalTagMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0) const ;
 
 
 //--------------------------------- Introspection
@@ -8422,8 +8038,6 @@ class GALGAS_lexicalTagMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8486,8 +8100,6 @@ class GALGAS_lexicalTagMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8718,8 +8330,6 @@ class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9128,8 +8738,6 @@ class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstruct
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9252,8 +8860,6 @@ class GALGAS_lexicalStructuredSendInstructionAST_2D_weak : public GALGAS_lexical
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9310,8 +8916,6 @@ class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9432,8 +9036,6 @@ class GALGAS_lexicalDropInstructionAST_2D_weak : public GALGAS_lexicalInstructio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9490,8 +9092,6 @@ class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9612,8 +9212,6 @@ class GALGAS_lexicalErrorInstructionAST_2D_weak : public GALGAS_lexicalInstructi
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9666,8 +9264,6 @@ class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9785,8 +9381,6 @@ class GALGAS_lexicalLogInstructionAST_2D_weak : public GALGAS_lexicalInstruction
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9851,8 +9445,6 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9979,8 +9571,6 @@ class GALGAS_lexicalRepeatInstructionAST_2D_weak : public GALGAS_lexicalInstruct
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10041,8 +9631,6 @@ class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10166,8 +9754,6 @@ class GALGAS_lexicalRewindInstructionAST_2D_weak : public GALGAS_lexicalInstruct
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10220,8 +9806,6 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_referenc
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10333,8 +9917,6 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak : public AC_GALGAS_
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10393,8 +9975,6 @@ class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexi
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10511,8 +10091,6 @@ class GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak : public GALGAS_abst
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10571,8 +10149,6 @@ class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutin
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10688,8 +10264,6 @@ class GALGAS_lexicalFormalInputArgumentAST_2D_weak : public GALGAS_abstractLexic
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10813,8 +10387,6 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -10913,8 +10485,6 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element : public AC_GALG
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -10979,8 +10549,6 @@ class GALGAS_lexicalRoutineCallInstructionAST : public GALGAS_lexicalInstruction
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11107,8 +10675,6 @@ class GALGAS_lexicalRoutineCallInstructionAST_2D_weak : public GALGAS_lexicalIns
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11214,8 +10780,6 @@ class GALGAS_lexicalSelectInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11339,8 +10903,6 @@ class GALGAS_lexicalSelectInstructionAST_2D_weak : public GALGAS_lexicalInstruct
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11397,8 +10959,6 @@ class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionA
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11519,8 +11079,6 @@ class GALGAS_lexicalSimpleSendInstructionAST_2D_weak : public GALGAS_lexicalInst
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11577,8 +11135,6 @@ class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11699,8 +11255,6 @@ class GALGAS_lexicalTagInstructionAST_2D_weak : public GALGAS_lexicalInstruction
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11757,8 +11311,6 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -11879,8 +11431,6 @@ class GALGAS_lexicalWarningInstructionAST_2D_weak : public GALGAS_lexicalInstruc
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -11966,14 +11516,6 @@ class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_noDefaultValue () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_stringDefaultValue () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_unsignedDefaultValue () const ;
-
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -12211,8 +11753,6 @@ class GALGAS_commandLineOptionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -12388,8 +11928,6 @@ class GALGAS_commandLineOptionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

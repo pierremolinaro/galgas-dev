@@ -1971,12 +1971,6 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
                                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_stringset & outOperand1,
-                                                    class GALGAS_string & outOperand2) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_headerCompositionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -2137,8 +2131,6 @@ class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2201,8 +2193,6 @@ class GALGAS_headerCompositionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2300,11 +2290,6 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_headerRepartitionMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_string & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -2452,8 +2437,6 @@ class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2516,8 +2499,6 @@ class GALGAS_headerRepartitionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2615,11 +2596,6 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_projectQualifiedFeatureMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_lstring & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -2767,8 +2743,6 @@ class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2831,8 +2805,6 @@ class GALGAS_projectQualifiedFeatureMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3013,8 +2985,6 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -3151,8 +3121,6 @@ class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3466,8 +3434,6 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -3695,8 +3661,6 @@ class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4067,8 +4031,6 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -4335,8 +4297,6 @@ class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

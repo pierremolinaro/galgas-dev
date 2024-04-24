@@ -489,7 +489,6 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !unwrappedType: .null
-      !optionalMethodMap: ()
       !readSubscriptMap: ()
       !enumerationDescriptorList: ()
       !features: .equatable // .none
@@ -566,7 +565,6 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     !selfTypeDefinition.setterMap
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
-    !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features

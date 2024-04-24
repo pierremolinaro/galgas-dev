@@ -61,8 +61,6 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -119,8 +117,6 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

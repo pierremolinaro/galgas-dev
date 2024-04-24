@@ -9760,27 +9760,6 @@ GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_st
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_dynamicTypeComparisonKind::optional_equal () const {
-  const bool ok = mEnum == Enumeration::enum_equal ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_dynamicTypeComparisonKind::optional_inherited () const {
-  const bool ok = mEnum == Enumeration::enum_inherited ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_dynamicTypeComparisonKind::optional_strictlyInherited () const {
-  const bool ok = mEnum == Enumeration::enum_strictlyInherited ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 static const char * gEnumNameArrayFor_dynamicTypeComparisonKind [4] = {
   "(not built)",
   "equal",

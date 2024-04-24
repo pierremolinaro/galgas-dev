@@ -399,7 +399,6 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !unwrappedType: .null
-    !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
@@ -537,7 +536,6 @@ override method @listTypeForGeneration appendDeclaration1
     !selfTypeDefinition.setterMap
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
-    !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features

@@ -138,7 +138,6 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: classMethodMap
       !unwrappedType: .null
-      !optionalMethodMap: ()
       !readSubscriptMap: ()
       !enumerationDescriptorList: enumerationList
       !features: [self getSupportedOperatorFlags]

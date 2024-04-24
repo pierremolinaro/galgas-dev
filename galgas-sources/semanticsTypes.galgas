@@ -105,15 +105,6 @@ list @optionalMethodSignature {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-map @optionalMethodMap {
-  public let @optionalMethodSignature mArgumentTypeList
-
-  insert insertKey error message "the '%K' optional method is already declared"
-  search searchKey error message "the '%K' optional method is not declared"
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  R E A D E R    M A P
 #

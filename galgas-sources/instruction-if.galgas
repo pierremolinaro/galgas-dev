@@ -100,85 +100,6 @@ syntax extension galgas3InstructionsSyntax {
             !typeName: typeName
           }
         end
-#      or
-#        $let$
-#        warning .here : "deprecated"
-#        $[$
-#        <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
-#        $identifier$ ?let @lstring optionalMethodName
-#        var @optionalMethodActualArgumentList optionalMethodActualArgumentList = ()
-#        repeat
-#        while
-#          let @lstring selector
-#          select
-#            $!selector:$ ?selector
-#          or
-#            $!$
-#            selector = ["" here]
-#          end
-#          <expression_ggs3> !?ioDeclarations ?let expression
-#          optionalMethodActualArgumentList +=
-#            !selector
-#            !.actualOutput {!expression: expression !location: .here}
-#        while
-#          let @lstring selector
-#          select
-#            $?selector:$ ?selector
-#          or
-#            $?$
-#            selector = ["" here]
-#          end
-#          select
-#            $let$
-#            let @lstring typeName
-#            select
-#              typeName = ["" nowhere]
-#            or
-#              <type_definition_ggs3> !?ioDeclarations ?typeName
-#            end
-#            $identifier$ ?let constantName
-#            optionalMethodActualArgumentList +=
-#              !selector
-#              !.actualLetInput {!typeName: typeName !constantName: constantName}
-#          or
-#            $var$
-#            let @lstring typeName
-#            select
-#              typeName = ["" nowhere]
-#            or
-#              <type_definition_ggs3> !?ioDeclarations ?typeName
-#            end
-#            $identifier$ ?let variableName
-#            optionalMethodActualArgumentList += 
-#              !selector
-#              !.actualVarInput {!typeName: typeName !variableName: variableName}
-#          or
-#            $*$
-#            optionalMethodActualArgumentList +=
-#              !selector
-#              !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
-#          or
-#            $literalInt$ ?let repetitionCount
-#            $*$
-#            if selector.string != "" then
-#              error selector : "the selector should be '?'"  fixit { replace "?" }
-#            end
-#            if repetitionCount.bigint == 0 then
-#              error repetitionCount : "the repetition count should be > 0"
-#            end
-#            for i in 0 ..< repetitionCount.bigint do
-#              optionalMethodActualArgumentList +=
-#                !selector
-#                !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
-#            end
-#          end
-#        end
-#        $]$
-#        outExpressionList += !.optionalMethodCall {
-#          !receiver: receiverExpression
-#          !optionalMethodName: optionalMethodName
-#          !parameters: optionalMethodActualArgumentList
-#        }
       or
         <expression_ggs3> !?ioDeclarations ?let expression
         outExpressionList += !.regularExp {!exp: expression !endOfExp: .here}
@@ -295,27 +216,6 @@ syntax extension galgas4InstructionsSyntax {
 enum @ifExpressionKind {
   case regularExp (@semanticExpressionAST exp @location endOfExp)
   case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
-  case optionalMethodCall (
-    @semanticExpressionAST receiver
-    @lstring optionalMethodName
-    @optionalMethodActualArgumentList parameters
-  )
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @optionalMethodActualArgument {
-  case actualOutput (@semanticExpressionAST expression @location location)
-  case actualLetInput (@lstring typeName @lstring constantName)
-  case actualVarInput (@lstring typeName @lstring variableName)
-  case actualInputJoker (@bool checkSelector @location location @uint idx)
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @optionalMethodActualArgumentList {
-  public let @lstring mSelector
-  public let @optionalMethodActualArgument mActualArgument
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -343,17 +243,6 @@ refclass @ifInstructionAST : @semanticInstructionAST {
       case letExp (* exp * @lstring typeName) :
         [exp enterExpressionInSemanticContext !?ioTypeMap]
         [!?ioTypeMap makeEntry !typeName ?*]
-      case optionalMethodCall (receiverExpression * parameters) :
-        [receiverExpression enterExpressionInSemanticContext !?ioTypeMap]
-        for (* parameter) in parameters do
-          switch parameter
-          case actualOutput (expression *) :
-            [expression enterExpressionInSemanticContext !?ioTypeMap]
-          case actualLetInput (2*) :
-          case actualVarInput (2*) :
-          case actualInputJoker (3*) :
-          end
-        end
       end
     end
     [self.m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
@@ -543,18 +432,6 @@ refclass @ifInstructionAST : @semanticInstructionAST {
            : "expression should be a class instance, or a weak reference: it is an @"
            +  [analyzedExpression.mResultType definition].typeName.string + " instance"
         end
-      case optionalMethodCall (receiverExpression optionalMethodName parameters) :
-        analyzeOptionalMethodCall (
-          !inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
-          !receiverExp: receiverExpression
-          !optionalMethodName: optionalMethodName
-          !parameters: parameters
-          !?testListForGeneration
-        )
       end
     end
   #--- Then branch
@@ -606,128 +483,6 @@ refclass @ifInstructionAST : @semanticInstructionAST {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! ANALYZE OPTIONAL METHOD CALL
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-private proc analyzeOptionalMethodCall ?let @lstring inUsefulnessCallerEntityName
-                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                       ?let @analysisContext inAnalysisContext
-                                       ?!@unifiedTypeMap ioTypeMap
-                                       ?!@localVarManager ioVariableMap
-                                       ?receiverExp: let @semanticExpressionAST inReceiverExpression
-                                       ?optionalMethodName: let @lstring inOptionalMethodName
-                                       ?parameters: let @optionalMethodActualArgumentList inActualParameters
-                                       ?!@ifTestListForGeneration ioTestListForGeneration {
-#--- Expression analysis
-  [inReceiverExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration receiverExpression
-  ]
-  [!?ioVariableMap openOverrideForSelectBlock]
-  [!?ioVariableMap openBranch]
-#--- Get optional method map
-  let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
-  let @optionalMethodMap optionalMethodMap = [receiverType definition].optionalMethodMap
-#--- Search optional method
-  let @optionalMethodSignature optionalMethodSignature
-  with inOptionalMethodName.string in optionalMethodMap do
-    optionalMethodSignature = mArgumentTypeList
-  else
-    var s = "this optional method is not defined; available optional methods:"
-    for (lkey *) in optionalMethodMap do
-      s += "\n  - " + lkey
-    end
-    error inOptionalMethodName : s : optionalMethodSignature
-  end
-#--- Analysis actual parameters, test for matching formam arguments
-  if [inActualParameters count] != [optionalMethodSignature count] then
-    error inOptionalMethodName
-    : "calling the '" + inOptionalMethodName + "' optional method of '@" + [receiverType definition].typeName.string + "' requires "
-    + [optionalMethodSignature count] + " parameter(s), while this call has "
-    + [inActualParameters count] + " parameter(s)"
-  else
-    var @optionalMethodActualArgumentListForGeneration actualParameterList = ()
-    for (actualSelector actualParameter) in inActualParameters,
-        (* formalSelector formalType *) in optionalMethodSignature do
-      switch actualParameter
-      case actualOutput (expression location) :
-        [expression analyzeSemanticExpression
-          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-          !?ioUsefulEntitiesGraph
-          !inferenceType: formalType
-          !inAnalysisContext
-          !?ioTypeMap
-          !?ioVariableMap
-          ?@semanticExpressionForGeneration exp
-        ]
-        if formalSelector.string != actualSelector.string then
-          let @string s = "!" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
-        end
-        checkAssignmentTypeWithImplicitGetterCall (!formalType !exp.mResultType !location !?exp)
-        actualParameterList += !.actualOutput {!expression: exp}
-      case actualLetInput (@lstring actualTypeName @lstring constantName) :
-        if (actualTypeName.string != "") && ([formalType definition].typeName.string != actualTypeName.string) then
-          error actualTypeName
-           : "the '@" + [formalType definition].typeName.string + "' type name is required here"
-           fixit { replace "@" + [formalType definition].typeName.string }
-        end
-        let targetVariableCppName = "var_" + [constantName identifierRepresentation]
-         + "_" + [constantName.location startLocationIndex]
-        [!?ioVariableMap insertInitializedLocalConstant
-          !constantName
-          !formalType
-          !targetVariableCppName
-          !targetVariableCppName
-        ]
-        actualParameterList += !.actualLetInput {!typeName: [formalType definition].typeName.string !constantName: targetVariableCppName}
-        if formalSelector.string != actualSelector.string then
-          let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
-        end
-      case actualVarInput (@lstring actualTypeName @lstring variableName) :
-         if (actualTypeName.string != "") && ([formalType definition].typeName.string != actualTypeName.string) then
-          error actualTypeName
-           : "the '@" + [formalType definition].typeName.string + "' type name is required here"
-           fixit { replace "@" + [formalType definition].typeName.string }
-        end
-        let targetVariableCppName = "var_" + [variableName identifierRepresentation]
-         + "_" + [variableName.location startLocationIndex]
-        [!?ioVariableMap insertInitializedLocalVariable
-          !variableName
-          !warnsIfNotMutated: true
-          !formalType
-          !targetVariableCppName
-          !targetVariableCppName
-        ]
-        actualParameterList += !.actualVarInput {!typeName: [formalType definition].typeName.string !variableName: targetVariableCppName}
-        if formalSelector.string != actualSelector.string then
-          let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
-        end
-      case actualInputJoker (checkSelector location idx) :
-        let targetVariableCppName = "var_unused_" + idx + "_" + [location startLocationIndex]
-        actualParameterList += !.actualVarInput {!typeName: [formalType definition].typeName.string !variableName: targetVariableCppName}
-        if checkSelector && (formalSelector.string != actualSelector.string) then
-          let @string s = "?" + if formalSelector.string != "" then formalSelector.string + ":" else "" end
-          error actualSelector : "the selector should be '" + s + "'" fixit { replace s }
-        end
-      end
-    end
-    ioTestListForGeneration += !.optionalMethodCall {
-      !receiverExpression: receiverExpression
-      !optionalMethodName: inOptionalMethodName
-      !parameters: actualParameterList
-    }
-  end
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 # L'instruction : IF a, b THEN X ELSE Y END est traduite en :
@@ -757,25 +512,6 @@ enum @ifTestForGeneration {
   case optionalExp (@string targetVarCppName
                     @semanticExpressionForGeneration exp
                     @unifiedTypeMapEntry targetType)
-  case optionalMethodCall (
-    @semanticExpressionForGeneration receiverExpression
-    @lstring optionalMethodName
-    @optionalMethodActualArgumentListForGeneration parameters
-  )
-}
-
-#·······················································································································
-
-enum @optionalMethodActualArgumentForGeneration {
-  case actualOutput (@semanticExpressionForGeneration expression)
-  case actualLetInput (@string typeName @string constantName)
-  case actualVarInput (@string typeName @string variableName)
-}
-
-#·······················································································································
-
-list @optionalMethodActualArgumentListForGeneration {
-  public let @optionalMethodActualArgumentForGeneration mParameter
 }
 
 #·······················································································································
@@ -845,47 +581,6 @@ override method @ifInstructionForGeneration generateInstruction
       ioGeneratedCode += "const GALGAS_" + targetTypeName + " " + targetVarCppName
       ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
       ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
-      ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
-      ioGeneratedCode += "}\n"
-    case optionalMethodCall (receiverExpression optionalMethodName parameters) :
-      [receiverExpression generateExpression
-        !?ioGeneratedCode
-        !?ioInclusionSet
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
-        ?let cppVarName
-      ]
-      var @stringlist actualParameterNameList = ()
-      for (parameter) in parameters do
-        switch parameter
-        case actualOutput (expression) :
-          [expression generateExpression
-            !?ioGeneratedCode
-            !?ioInclusionSet
-            !?ioTemporaryVariableIndex
-            !?ioUnusedVariableCppNameSet
-            ?let argumentCppName
-          ]
-          actualParameterNameList += !argumentCppName
-        case actualLetInput (typeName constantName) :
-          actualParameterNameList += !constantName
-          ioGeneratedCode += "GALGAS_" + [typeName identifierRepresentation] + " " + constantName + " ;\n"
-        case actualVarInput (typeName variableName) :
-          actualParameterNameList += !variableName
-          ioGeneratedCode += "GALGAS_" + [typeName identifierRepresentation] + " " + variableName + " ;\n"
-        end
-      end
-      let boolResultName = "optionalResult" + [optionalMethodName startLocationIndex]
-      ioGeneratedCode += "const bool " + boolResultName + " = " + cppVarName
-      ioGeneratedCode += ".optional_" + optionalMethodName + " ("
-      for (parameterName) in actualParameterNameList
-      do
-        ioGeneratedCode += parameterName
-      between
-        ioGeneratedCode += ", "
-      end
-      ioGeneratedCode += ") ;\n"
-      ioGeneratedCode += "if (!" + boolResultName + ") {\n"
       ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
       ioGeneratedCode += "}\n"
     end

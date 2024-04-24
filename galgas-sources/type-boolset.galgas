@@ -229,7 +229,6 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !unwrappedType: .null
-    !optionalMethodMap: ()
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()
     !features: operators
@@ -320,7 +319,6 @@ override method @boolsetTypeForGeneration appendDeclaration1
     !typeDefinition.setterMap
     !typeDefinition.instanceMethodMap
     !typeDefinition.classMethodMap
-    !typeDefinition.optionalMethodMap
     !typeDefinition.readSubscriptMap
     !typeDefinition.enumerationDescriptorList
     !typeDefinition.features

@@ -39,7 +39,6 @@ struct @unifiedTypeDefinition {
   public let @instanceMethodMap instanceMethodMap %initArgLabel
   public let @classMethodMap classMethodMap %initArgLabel
   public let @unifiedTypeMapEntry unwrappedType %initArgLabel # null if not optional
-  public let @optionalMethodMap optionalMethodMap %initArgLabel
   public let @subscriptMap readSubscriptMap %initArgLabel # Read access
   public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel # Empty List if cannot be enumerated
   public let @typeFeatures features %initArgLabel

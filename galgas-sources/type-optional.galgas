@@ -106,7 +106,6 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !unwrappedType: unwrappedType
-      !optionalMethodMap: ()
       !readSubscriptMap: ()
       !enumerationDescriptorList: ()
       !features: features
@@ -184,7 +183,6 @@ refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.setterMap
       !selfTypeDefinition.instanceMethodMap
       !selfTypeDefinition.classMethodMap
-      !selfTypeDefinition.optionalMethodMap
       !selfTypeDefinition.readSubscriptMap
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features

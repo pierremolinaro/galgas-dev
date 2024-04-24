@@ -383,24 +383,3 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   %}\n\n%
 end
 
-%//--------------------------------------------------------------------------------------------------\n\n%
-%bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_string & inKey%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
-end
-%) const {\n%
-%  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) searchForKey (%?^%inKey) ;\n%
-%  const bool result = nullptr != p ;\n%
-%  if (result) {\n%
-%    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-end
-%  }else{\n%
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-  %    outArgument%![IDX string]%.drop () ;\n%
-end
-%  }\n%
-%  return result ;\n%
-%}\n\n%
-

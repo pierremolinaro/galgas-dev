@@ -564,8 +564,6 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  

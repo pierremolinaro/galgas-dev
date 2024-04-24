@@ -10305,500 +10305,6 @@ GALGAS_ifExpressionKind_2D_regularExp_3F_ GALGAS_ifExpressionKind_2D_regularExp_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionalMethodActualArgument_2D_actualOutput::GALGAS_optionalMethodActualArgument_2D_actualOutput (void) :
-mProperty_expression (),
-mProperty_location () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput::~ GALGAS_optionalMethodActualArgument_2D_actualOutput (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput GALGAS_optionalMethodActualArgument_2D_actualOutput::init_21__21_ (const GALGAS_semanticExpressionAST & in_expression,
-                                                                                                                       const GALGAS_location & in_location,
-                                                                                                                       Compiler * inCompiler
-                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualOutput result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_expression = in_expression ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualOutput::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput::GALGAS_optionalMethodActualArgument_2D_actualOutput (const GALGAS_semanticExpressionAST & inOperand0,
-                                                                                                          const GALGAS_location & inOperand1) :
-mProperty_expression (inOperand0),
-mProperty_location (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput GALGAS_optionalMethodActualArgument_2D_actualOutput::class_func_new (const GALGAS_semanticExpressionAST & in_expression,
-                                                                                                                         const GALGAS_location & in_location,
-                                                                                                                         Compiler * inCompiler
-                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualOutput result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_expression = in_expression ;
-  result.mProperty_location = in_location ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgument_2D_actualOutput::isValid (void) const {
-  return mProperty_expression.isValid () && mProperty_location.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualOutput::drop (void) {
-  mProperty_expression.drop () ;
-  mProperty_location.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualOutput::description (String & ioString,
-                                                                       const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @optionalMethodActualArgument-actualOutput:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_expression.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_location.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgument-actualOutput generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualOutput ("optionalMethodActualArgument-actualOutput",
-                                                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgument_2D_actualOutput::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualOutput ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgument_2D_actualOutput::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgument_2D_actualOutput (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput GALGAS_optionalMethodActualArgument_2D_actualOutput::extractObject (const GALGAS_object & inObject,
-                                                                                                                        Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualOutput result ;
-  const GALGAS_optionalMethodActualArgument_2D_actualOutput * p = (const GALGAS_optionalMethodActualArgument_2D_actualOutput *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgument_2D_actualOutput *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgument-actualOutput", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Optional @optionalMethodActualArgument_2D_actualOutput_3F_
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualOutput & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::init_nil (void) {
-  GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GALGAS_optionalMethodActualArgument_2D_actualOutput () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::description (String & ioString,
-                                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgument-actualOutput? generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ ("optionalMethodActualArgument-actualOutput?",
-                                                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_::extractObject (const GALGAS_object & inObject,
-                                                                                                                                Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ result ;
-  const GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ * p = (const GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgument_2D_actualOutput_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgument-actualOutput?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker::GALGAS_optionalMethodActualArgument_2D_actualInputJoker (void) :
-mProperty_checkSelector (),
-mProperty_location (),
-mProperty_idx () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker::~ GALGAS_optionalMethodActualArgument_2D_actualInputJoker (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker GALGAS_optionalMethodActualArgument_2D_actualInputJoker::init_21__21__21_ (const GALGAS_bool & in_checkSelector,
-                                                                                                                                   const GALGAS_location & in_location,
-                                                                                                                                   const GALGAS_uint & in_idx,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualInputJoker result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_checkSelector = in_checkSelector ;
-  result.mProperty_location = in_location ;
-  result.mProperty_idx = in_idx ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualInputJoker::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker::GALGAS_optionalMethodActualArgument_2D_actualInputJoker (const GALGAS_bool & inOperand0,
-                                                                                                                  const GALGAS_location & inOperand1,
-                                                                                                                  const GALGAS_uint & inOperand2) :
-mProperty_checkSelector (inOperand0),
-mProperty_location (inOperand1),
-mProperty_idx (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker GALGAS_optionalMethodActualArgument_2D_actualInputJoker::class_func_new (const GALGAS_bool & in_checkSelector,
-                                                                                                                                 const GALGAS_location & in_location,
-                                                                                                                                 const GALGAS_uint & in_idx,
-                                                                                                                                 Compiler * inCompiler
-                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualInputJoker result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_checkSelector = in_checkSelector ;
-  result.mProperty_location = in_location ;
-  result.mProperty_idx = in_idx ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgument_2D_actualInputJoker::isValid (void) const {
-  return mProperty_checkSelector.isValid () && mProperty_location.isValid () && mProperty_idx.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualInputJoker::drop (void) {
-  mProperty_checkSelector.drop () ;
-  mProperty_location.drop () ;
-  mProperty_idx.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualInputJoker::description (String & ioString,
-                                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @optionalMethodActualArgument-actualInputJoker:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_checkSelector.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_location.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_idx.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgument-actualInputJoker generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualInputJoker ("optionalMethodActualArgument-actualInputJoker",
-                                                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgument_2D_actualInputJoker::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualInputJoker ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgument_2D_actualInputJoker::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgument_2D_actualInputJoker (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker GALGAS_optionalMethodActualArgument_2D_actualInputJoker::extractObject (const GALGAS_object & inObject,
-                                                                                                                                Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualInputJoker result ;
-  const GALGAS_optionalMethodActualArgument_2D_actualInputJoker * p = (const GALGAS_optionalMethodActualArgument_2D_actualInputJoker *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgument_2D_actualInputJoker *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgument-actualInputJoker", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Optional @optionalMethodActualArgument_2D_actualInputJoker_3F_
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ (const GALGAS_optionalMethodActualArgument_2D_actualInputJoker & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::init_nil (void) {
-  GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GALGAS_optionalMethodActualArgument_2D_actualInputJoker () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::description (String & ioString,
-                                                                               const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgument-actualInputJoker? generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ ("optionalMethodActualArgument-actualInputJoker?",
-                                                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_::extractObject (const GALGAS_object & inObject,
-                                                                                                                                        Compiler * inCompiler
-                                                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ result ;
-  const GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ * p = (const GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgument_2D_actualInputJoker_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgument-actualInputJoker?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GALGAS_ifExpressionList_2D_element::GALGAS_ifExpressionList_2D_element (void) :
 mProperty_mExpression () {
 }
@@ -10903,601 +10409,6 @@ GALGAS_ifExpressionList_2D_element GALGAS_ifExpressionList_2D_element::extractOb
       result = *p ;
     }else{
       inCompiler->castError ("ifExpressionList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput (void) :
-mProperty_typeName (),
-mProperty_constantName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::~ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::init_21__21_ (const GALGAS_string & in_typeName,
-                                                                                                                                                     const GALGAS_string & in_constantName,
-                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeName = in_typeName ;
-  result.mProperty_constantName = in_constantName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput (const GALGAS_string & inOperand0,
-                                                                                                                                        const GALGAS_string & inOperand1) :
-mProperty_typeName (inOperand0),
-mProperty_constantName (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::class_func_new (const GALGAS_string & in_typeName,
-                                                                                                                                                       const GALGAS_string & in_constantName,
-                                                                                                                                                       Compiler * inCompiler
-                                                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeName = in_typeName ;
-  result.mProperty_constantName = in_constantName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::isValid (void) const {
-  return mProperty_typeName.isValid () && mProperty_constantName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::drop (void) {
-  mProperty_typeName.drop () ;
-  mProperty_constantName.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::description (String & ioString,
-                                                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @optionalMethodActualArgumentForGeneration-actualLetInput:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_typeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_constantName.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgumentForGeneration-actualLetInput generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput ("optionalMethodActualArgumentForGeneration-actualLetInput",
-                                                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                      Compiler * inCompiler
-                                                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput result ;
-  const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput * p = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgumentForGeneration-actualLetInput", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Optional @optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::init_nil (void) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::description (String & ioString,
-                                                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgumentForGeneration-actualLetInput? generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ ("optionalMethodActualArgumentForGeneration-actualLetInput?",
-                                                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ result ;
-  const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ * p = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualLetInput_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgumentForGeneration-actualLetInput?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput (void) :
-mProperty_typeName (),
-mProperty_variableName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::~ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::init_21__21_ (const GALGAS_string & in_typeName,
-                                                                                                                                                     const GALGAS_string & in_variableName,
-                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeName = in_typeName ;
-  result.mProperty_variableName = in_variableName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput (const GALGAS_string & inOperand0,
-                                                                                                                                        const GALGAS_string & inOperand1) :
-mProperty_typeName (inOperand0),
-mProperty_variableName (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::class_func_new (const GALGAS_string & in_typeName,
-                                                                                                                                                       const GALGAS_string & in_variableName,
-                                                                                                                                                       Compiler * inCompiler
-                                                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeName = in_typeName ;
-  result.mProperty_variableName = in_variableName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::isValid (void) const {
-  return mProperty_typeName.isValid () && mProperty_variableName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::drop (void) {
-  mProperty_typeName.drop () ;
-  mProperty_variableName.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::description (String & ioString,
-                                                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @optionalMethodActualArgumentForGeneration-actualVarInput:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_typeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_variableName.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgumentForGeneration-actualVarInput generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput ("optionalMethodActualArgumentForGeneration-actualVarInput",
-                                                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                      Compiler * inCompiler
-                                                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput result ;
-  const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput * p = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgumentForGeneration-actualVarInput", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Optional @optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::init_nil (void) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::description (String & ioString,
-                                                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgumentForGeneration-actualVarInput? generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ ("optionalMethodActualArgumentForGeneration-actualVarInput?",
-                                                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ result ;
-  const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ * p = (const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgumentForGeneration_2D_actualVarInput_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgumentForGeneration-actualVarInput?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::GALGAS_optionalMethodActualArgumentListForGeneration_2D_element (void) :
-mProperty_mParameter () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::~ GALGAS_optionalMethodActualArgumentListForGeneration_2D_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::init_21_ (const GALGAS_optionalMethodActualArgumentForGeneration & in_mParameter,
-                                                                                                                                           Compiler * inCompiler
-                                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentListForGeneration_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameter = in_mParameter ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::GALGAS_optionalMethodActualArgumentListForGeneration_2D_element (const GALGAS_optionalMethodActualArgumentForGeneration & inOperand0) :
-mProperty_mParameter (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::class_func_new (const GALGAS_optionalMethodActualArgumentForGeneration & in_mParameter,
-                                                                                                                                                 Compiler * inCompiler
-                                                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentListForGeneration_2D_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mParameter = in_mParameter ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::isValid (void) const {
-  return mProperty_mParameter.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::drop (void) {
-  mProperty_mParameter.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::description (String & ioString,
-                                                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @optionalMethodActualArgumentListForGeneration-element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mParameter.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @optionalMethodActualArgumentListForGeneration-element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodActualArgumentListForGeneration_2D_element ("optionalMethodActualArgumentListForGeneration-element",
-                                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionalMethodActualArgumentListForGeneration_2D_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_optionalMethodActualArgumentListForGeneration_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_optionalMethodActualArgumentListForGeneration_2D_element GALGAS_optionalMethodActualArgumentListForGeneration_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                Compiler * inCompiler
-                                                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_optionalMethodActualArgumentListForGeneration_2D_element result ;
-  const GALGAS_optionalMethodActualArgumentListForGeneration_2D_element * p = (const GALGAS_optionalMethodActualArgumentListForGeneration_2D_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionalMethodActualArgumentListForGeneration_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("optionalMethodActualArgumentListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -16218,4 +15129,829 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const String & /* in
 static cLexiqueIntrospection lexiqueIntrospection_galgasTemplateScanner
 __attribute__ ((used))
 __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForIdentifier_galgasTemplateScanner) ;
+
+//--------------------------------------------------------------------------------------------------
+// @templateClassFunctionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mClassFunctionName (),
+mProperty_mExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateClassFunctionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mClassFunctionName.printNonNullClassInstanceProperties ("mClassFunctionName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_templateClassFunctionAST::objectCompare (const GALGAS_templateClassFunctionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateClassFunctionAST::GALGAS_templateClassFunctionAST (void) :
+GALGAS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::
+init_21__21__21_ (const GALGAS_lstring & in_mTypeName,
+                  const GALGAS_lstring & in_mClassFunctionName,
+                  const GALGAS_templateExpressionListAST & in_mExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateClassFunctionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateClassFunctionAST (inCompiler COMMA_THERE)) ;
+  object->templateClassFunctionAST_init_21__21__21_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
+  const GALGAS_templateClassFunctionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateClassFunctionAST::
+templateClassFunctionAST_init_21__21__21_ (const GALGAS_lstring & in_mTypeName,
+                                           const GALGAS_lstring & in_mClassFunctionName,
+                                           const GALGAS_templateExpressionListAST & in_mExpressionList,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mClassFunctionName = in_mClassFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateClassFunctionAST::GALGAS_templateClassFunctionAST (const cPtr_templateClassFunctionAST * inSourcePtr) :
+GALGAS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateClassFunctionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::class_func_new (const GALGAS_lstring & in_mTypeName,
+                                                                                 const GALGAS_lstring & in_mClassFunctionName,
+                                                                                 const GALGAS_templateExpressionListAST & in_mExpressionList
+                                                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_templateClassFunctionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_templateClassFunctionAST (in_mTypeName, in_mClassFunctionName, in_mExpressionList COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_templateClassFunctionAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_templateClassFunctionAST::readProperty_mClassFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mClassFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExpressionListAST GALGAS_templateClassFunctionAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateClassFunctionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (const GALGAS_lstring & in_mTypeName,
+                                                              const GALGAS_lstring & in_mClassFunctionName,
+                                                              const GALGAS_templateExpressionListAST & in_mExpressionList
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (THERE),
+mProperty_mTypeName (),
+mProperty_mClassFunctionName (),
+mProperty_mExpressionList () {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mClassFunctionName = in_mClassFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateClassFunctionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+}
+
+void cPtr_templateClassFunctionAST::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateClassFunctionAST:") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mClassFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateClassFunctionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateClassFunctionAST (mProperty_mTypeName, mProperty_mClassFunctionName, mProperty_mExpressionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateClassFunctionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ("templateClassFunctionAST",
+                                                                                & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateClassFunctionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateClassFunctionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateClassFunctionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateClassFunctionAST GALGAS_templateClassFunctionAST::extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_templateClassFunctionAST result ;
+  const GALGAS_templateClassFunctionAST * p = (const GALGAS_templateClassFunctionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateClassFunctionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateClassFunctionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateFileWrapperTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFileWrapperName (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateFileWrapperTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFileWrapperName.printNonNullClassInstanceProperties ("mFileWrapperName") ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_templateFileWrapperTemplateCallAST::objectCompare (const GALGAS_templateFileWrapperTemplateCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateFileWrapperTemplateCallAST::GALGAS_templateFileWrapperTemplateCallAST (void) :
+GALGAS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::
+init_21__21__21_ (const GALGAS_lstring & in_mFileWrapperName,
+                  const GALGAS_lstring & in_mTemplateName,
+                  const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateFileWrapperTemplateCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateFileWrapperTemplateCallAST (inCompiler COMMA_THERE)) ;
+  object->templateFileWrapperTemplateCallAST_init_21__21__21_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  const GALGAS_templateFileWrapperTemplateCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateFileWrapperTemplateCallAST::
+templateFileWrapperTemplateCallAST_init_21__21__21_ (const GALGAS_lstring & in_mFileWrapperName,
+                                                     const GALGAS_lstring & in_mTemplateName,
+                                                     const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                                                     Compiler * /* inCompiler */) {
+  mProperty_mFileWrapperName = in_mFileWrapperName ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateFileWrapperTemplateCallAST::GALGAS_templateFileWrapperTemplateCallAST (const cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) :
+GALGAS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFileWrapperTemplateCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::class_func_new (const GALGAS_lstring & in_mFileWrapperName,
+                                                                                                     const GALGAS_lstring & in_mTemplateName,
+                                                                                                     const GALGAS_templateExpressionListAST & in_mOutExpressionList
+                                                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_templateFileWrapperTemplateCallAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_templateFileWrapperTemplateCallAST (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mFileWrapperName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExpressionListAST GALGAS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
+    return p->mProperty_mOutExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateFileWrapperTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (const GALGAS_lstring & in_mFileWrapperName,
+                                                                                  const GALGAS_lstring & in_mTemplateName,
+                                                                                  const GALGAS_templateExpressionListAST & in_mOutExpressionList
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (THERE),
+mProperty_mFileWrapperName (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+  mProperty_mFileWrapperName = in_mFileWrapperName ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateFileWrapperTemplateCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+}
+
+void cPtr_templateFileWrapperTemplateCallAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateFileWrapperTemplateCallAST:") ;
+  mProperty_mFileWrapperName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateFileWrapperTemplateCallAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateFileWrapperTemplateCallAST (mProperty_mFileWrapperName, mProperty_mTemplateName, mProperty_mOutExpressionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateFileWrapperTemplateCallAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateFileWrapperTemplateCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateFileWrapperTemplateCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateFileWrapperTemplateCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCallAST::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_templateFileWrapperTemplateCallAST result ;
+  const GALGAS_templateFileWrapperTemplateCallAST * p = (const GALGAS_templateFileWrapperTemplateCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateFileWrapperTemplateCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateFileWrapperTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateExtensionTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mExpressionValue (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateExtensionTemplateCallAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mExpressionValue.printNonNullClassInstanceProperties ("mExpressionValue") ;
+    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
+    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_templateExtensionTemplateCallAST::objectCompare (const GALGAS_templateExtensionTemplateCallAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExtensionTemplateCallAST::GALGAS_templateExtensionTemplateCallAST (void) :
+GALGAS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::
+init_21__21__21_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
+                  const GALGAS_lstring & in_mTemplateName,
+                  const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_templateExtensionTemplateCallAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateExtensionTemplateCallAST (inCompiler COMMA_THERE)) ;
+  object->templateExtensionTemplateCallAST_init_21__21__21_ (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
+  const GALGAS_templateExtensionTemplateCallAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateExtensionTemplateCallAST::
+templateExtensionTemplateCallAST_init_21__21__21_ (const GALGAS_templateExpressionAST & in_mExpressionValue,
+                                                   const GALGAS_lstring & in_mTemplateName,
+                                                   const GALGAS_templateExpressionListAST & in_mOutExpressionList,
+                                                   Compiler * /* inCompiler */) {
+  mProperty_mExpressionValue = in_mExpressionValue ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExtensionTemplateCallAST::GALGAS_templateExtensionTemplateCallAST (const cPtr_templateExtensionTemplateCallAST * inSourcePtr) :
+GALGAS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateExtensionTemplateCallAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::class_func_new (const GALGAS_templateExpressionAST & in_mExpressionValue,
+                                                                                                 const GALGAS_lstring & in_mTemplateName,
+                                                                                                 const GALGAS_templateExpressionListAST & in_mOutExpressionList
+                                                                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_templateExtensionTemplateCallAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_templateExtensionTemplateCallAST (in_mExpressionValue, in_mTemplateName, in_mOutExpressionList COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExpressionAST GALGAS_templateExtensionTemplateCallAST::readProperty_mExpressionValue (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_templateExpressionAST () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mExpressionValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_templateExtensionTemplateCallAST::readProperty_mTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExpressionListAST GALGAS_templateExtensionTemplateCallAST::readProperty_mOutExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_templateExpressionListAST () ;
+  }else{
+    cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateExtensionTemplateCallAST) ;
+    return p->mProperty_mOutExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateExtensionTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateExtensionTemplateCallAST::cPtr_templateExtensionTemplateCallAST (const GALGAS_templateExpressionAST & in_mExpressionValue,
+                                                                              const GALGAS_lstring & in_mTemplateName,
+                                                                              const GALGAS_templateExpressionListAST & in_mOutExpressionList
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (THERE),
+mProperty_mExpressionValue (),
+mProperty_mTemplateName (),
+mProperty_mOutExpressionList () {
+  mProperty_mExpressionValue = in_mExpressionValue ;
+  mProperty_mTemplateName = in_mTemplateName ;
+  mProperty_mOutExpressionList = in_mOutExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateExtensionTemplateCallAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
+}
+
+void cPtr_templateExtensionTemplateCallAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateExtensionTemplateCallAST:") ;
+  mProperty_mExpressionValue.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateExtensionTemplateCallAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateExtensionTemplateCallAST (mProperty_mExpressionValue, mProperty_mTemplateName, mProperty_mOutExpressionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateExtensionTemplateCallAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ("templateExtensionTemplateCallAST",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateExtensionTemplateCallAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateExtensionTemplateCallAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateExtensionTemplateCallAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateExtensionTemplateCallAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateExtensionTemplateCallAST GALGAS_templateExtensionTemplateCallAST::extractObject (const GALGAS_object & inObject,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_templateExtensionTemplateCallAST result ;
+  const GALGAS_templateExtensionTemplateCallAST * p = (const GALGAS_templateExtensionTemplateCallAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateExtensionTemplateCallAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateExtensionTemplateCallAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @templateLiteralStringExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (inCompiler COMMA_THERE),
+mProperty_mLiteralStringList (),
+mProperty_mLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_templateLiteralStringExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLiteralStringList.printNonNullClassInstanceProperties ("mLiteralStringList") ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_templateLiteralStringExpressionAST::objectCompare (const GALGAS_templateLiteralStringExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateLiteralStringExpressionAST::GALGAS_templateLiteralStringExpressionAST (void) :
+GALGAS_templateExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::
+init_21__21_ (const GALGAS_stringlist & in_mLiteralStringList,
+              const GALGAS_location & in_mLocation,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_templateLiteralStringExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_templateLiteralStringExpressionAST (inCompiler COMMA_THERE)) ;
+  object->templateLiteralStringExpressionAST_init_21__21_ (in_mLiteralStringList, in_mLocation, inCompiler) ;
+  const GALGAS_templateLiteralStringExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_templateLiteralStringExpressionAST::
+templateLiteralStringExpressionAST_init_21__21_ (const GALGAS_stringlist & in_mLiteralStringList,
+                                                 const GALGAS_location & in_mLocation,
+                                                 Compiler * /* inCompiler */) {
+  mProperty_mLiteralStringList = in_mLiteralStringList ;
+  mProperty_mLocation = in_mLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateLiteralStringExpressionAST::GALGAS_templateLiteralStringExpressionAST (const cPtr_templateLiteralStringExpressionAST * inSourcePtr) :
+GALGAS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLiteralStringExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::class_func_new (const GALGAS_stringlist & in_mLiteralStringList,
+                                                                                                     const GALGAS_location & in_mLocation
+                                                                                                     COMMA_LOCATION_ARGS) {
+  GALGAS_templateLiteralStringExpressionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_templateLiteralStringExpressionAST (in_mLiteralStringList, in_mLocation COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_stringlist GALGAS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_stringlist () ;
+  }else{
+    cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
+    return p->mProperty_mLiteralStringList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_templateLiteralStringExpressionAST::readProperty_mLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
+    return p->mProperty_mLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @templateLiteralStringExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (const GALGAS_stringlist & in_mLiteralStringList,
+                                                                                  const GALGAS_location & in_mLocation
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (THERE),
+mProperty_mLiteralStringList (),
+mProperty_mLocation () {
+  mProperty_mLiteralStringList = in_mLiteralStringList ;
+  mProperty_mLocation = in_mLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_templateLiteralStringExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
+}
+
+void cPtr_templateLiteralStringExpressionAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@templateLiteralStringExpressionAST:") ;
+  mProperty_mLiteralStringList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_templateLiteralStringExpressionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_templateLiteralStringExpressionAST (mProperty_mLiteralStringList, mProperty_mLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @templateLiteralStringExpressionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ("templateLiteralStringExpressionAST",
+                                                                                          & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_templateLiteralStringExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateLiteralStringExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_templateLiteralStringExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateLiteralStringExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpressionAST::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_templateLiteralStringExpressionAST result ;
+  const GALGAS_templateLiteralStringExpressionAST * p = (const GALGAS_templateLiteralStringExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_templateLiteralStringExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateLiteralStringExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
 

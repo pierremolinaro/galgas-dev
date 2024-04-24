@@ -360,9 +360,6 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !elementTypeName
     ?let @unifiedTypeMapEntry elementTypeEntry
   ]
-#--- Add Optional method
-  var optionalMethodMap = @optionalMethodMap ()
-  [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Features
   var features = @typeFeatures.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
   if self.equatable then
@@ -400,7 +397,6 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !instanceMethodMap: instanceMethodMap
     !classMethodMap: ()
     !unwrappedType: .null
-    !optionalMethodMap: optionalMethodMap
     !readSubscriptMap: readSubscriptMap
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
@@ -553,7 +549,6 @@ override method @dictTypeForGeneration appendDeclaration1 ?!@stringset unused io
     !selfTypeDefinition.setterMap
     !selfTypeDefinition.instanceMethodMap
     !selfTypeDefinition.classMethodMap
-    !selfTypeDefinition.optionalMethodMap
     !selfTypeDefinition.readSubscriptMap
     !selfTypeDefinition.enumerationDescriptorList
     !selfTypeDefinition.features

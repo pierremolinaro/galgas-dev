@@ -63,8 +63,6 @@ class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDe
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -176,8 +174,6 @@ class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_se
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -246,8 +242,6 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -361,8 +355,6 @@ class GALGAS_routineImplementationForGeneration_2D_weak : public GALGAS_routineP
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -506,8 +498,6 @@ class GALGAS_lexiqueDeclarationForGeneration : public GALGAS_semanticDeclaration
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -646,8 +636,6 @@ class GALGAS_lexiqueDeclarationForGeneration_2D_weak : public GALGAS_semanticDec
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -716,8 +704,6 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -833,8 +819,6 @@ class GALGAS_functionPrototypeDeclarationForGeneration_2D_weak : public GALGAS_s
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -905,8 +889,6 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1023,8 +1005,6 @@ class GALGAS_functionImplementationForGeneration_2D_weak : public GALGAS_functio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1097,8 +1077,6 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1223,8 +1201,6 @@ class GALGAS_onceFunctionDeclarationForGeneration_2D_weak : public GALGAS_semant
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1301,8 +1277,6 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1430,8 +1404,6 @@ class GALGAS_filewrapperDeclarationForGeneration_2D_weak : public GALGAS_semanti
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1496,8 +1468,6 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1611,8 +1581,6 @@ class GALGAS_programComponentForGeneration_2D_weak : public GALGAS_semanticDecla
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1717,8 +1685,6 @@ class GALGAS_grammarForGeneration : public GALGAS_semanticDeclarationWithHeaderF
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1864,8 +1830,6 @@ class GALGAS_grammarForGeneration_2D_weak : public GALGAS_semanticDeclarationWit
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1932,8 +1896,6 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2045,8 +2007,6 @@ class GALGAS_primitiveTypeForGeneration_2D_weak : public GALGAS_semanticTypeForG
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

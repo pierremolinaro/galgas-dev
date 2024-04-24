@@ -9584,24 +9584,6 @@ GALGAS_string cEnumerator_headerCompositionMap::current_mHeaderString (LOCATION_
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_headerCompositionMap::optional_searchKey (const GALGAS_string & inKey,
-                                                      GALGAS_stringset & outArgument0,
-                                                      GALGAS_string & outArgument1) const {
-  const cMapElement_headerCompositionMap * p = (const cMapElement_headerCompositionMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_headerCompositionMap) ;
-    outArgument0 = p->mProperty_mInclusion ;
-    outArgument1 = p->mProperty_mHeaderString ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @headerCompositionMap generic code implementation
 //
@@ -9912,21 +9894,6 @@ GALGAS_string cEnumerator_headerRepartitionMap::current_mHeaderFileName (LOCATIO
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_headerRepartitionMap::optional_searchKey (const GALGAS_string & inKey,
-                                                      GALGAS_string & outArgument0) const {
-  const cMapElement_headerRepartitionMap * p = (const cMapElement_headerRepartitionMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_headerRepartitionMap) ;
-    outArgument0 = p->mProperty_mHeaderFileName ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @headerRepartitionMap generic code implementation
 //
@@ -10234,21 +10201,6 @@ GALGAS_lstring cEnumerator_projectQualifiedFeatureMap::current_mFeatureValue (LO
   const cMapElement_projectQualifiedFeatureMap * p = (const cMapElement_projectQualifiedFeatureMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_projectQualifiedFeatureMap) ;
   return p->mProperty_mFeatureValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_projectQualifiedFeatureMap::optional_searchKey (const GALGAS_string & inKey,
-                                                            GALGAS_lstring & outArgument0) const {
-  const cMapElement_projectQualifiedFeatureMap * p = (const cMapElement_projectQualifiedFeatureMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_projectQualifiedFeatureMap) ;
-    outArgument0 = p->mProperty_mFeatureValue ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

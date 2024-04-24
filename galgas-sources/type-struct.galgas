@@ -158,7 +158,6 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext {
-    let optionalMethodMap = @optionalMethodMap ()
   #--- Struct type index
     [!?ioTypeMap makeEntry !self.structTypeName ?let structTypeIndex]
   #--- Class functions and property map
@@ -256,7 +255,6 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !unwrappedType: .null
-      !optionalMethodMap: optionalMethodMap
       !readSubscriptMap: ()
       !enumerationDescriptorList: ()
       !features: features
@@ -400,7 +398,6 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.setterMap
       !selfTypeDefinition.instanceMethodMap
       !selfTypeDefinition.classMethodMap
-      !selfTypeDefinition.optionalMethodMap
       !selfTypeDefinition.readSubscriptMap
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features

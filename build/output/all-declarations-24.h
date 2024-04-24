@@ -79,8 +79,6 @@ class GALGAS_optionComponentForGeneration : public GALGAS_semanticDeclarationWit
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -219,8 +217,6 @@ class GALGAS_optionComponentForGeneration_2D_weak : public GALGAS_semanticDeclar
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -279,8 +275,6 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -390,8 +384,6 @@ class GALGAS_arrayTypeForGeneration_2D_weak : public GALGAS_semanticTypeForGener
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

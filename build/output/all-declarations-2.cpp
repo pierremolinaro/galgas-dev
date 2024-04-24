@@ -9,116 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (void) :
-GALGAS_lexicalExpressionAST_2D_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::operator = (const GALGAS_lexicalCharacterIntervalMatchAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (const GALGAS_lexicalCharacterIntervalMatchAST & inSource) :
-GALGAS_lexicalExpressionAST_2D_weak (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalCharacterIntervalMatchAST_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::bang_lexicalCharacterIntervalMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalCharacterIntervalMatchAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_lexicalCharacterIntervalMatchAST) ;
-      result = GALGAS_lexicalCharacterIntervalMatchAST ((cPtr_lexicalCharacterIntervalMatchAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @lexicalCharacterIntervalMatchAST-weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST_2D_weak ("lexicalCharacterIntervalMatchAST-weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST_2D_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalCharacterIntervalMatchAST_2D_weak result ;
-  const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak * p = (const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalCharacterIntervalMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GALGAS_lexicalStringMatchAST_2D_weak::objectCompare (const GALGAS_lexicalStringMatchAST_2D_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3581,20 +3471,6 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalI
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_lexicalArgumentModeAST::optional_lexicalInputMode () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalInputMode ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalArgumentModeAST::optional_lexicalInputOutputMode () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalInputOutputMode ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
   "(not built)",
   "lexicalInputMode",
@@ -3876,62 +3752,6 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint 
   GALGAS_lexicalTypeEnum result ;
   result.mEnum = Enumeration::enum_lexicalType_5F_bigint ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_string () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_string ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_char () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_char ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_uint () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_uint ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_uint_36__34_ () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_uint_36__34_ ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_sint () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_sint ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_sint_36__34_ () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_sint_36__34_ ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_double () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_double ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_bigint () const {
-  const bool ok = mEnum == Enumeration::enum_lexicalType_5F_bigint ;
-  return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4882,21 +4702,6 @@ GALGAS_lexicalSentValueList cEnumerator_terminalMap::current_mSentAttributeList 
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_terminalMap::optional_searchKey (const GALGAS_string & inKey,
-                                             GALGAS_lexicalSentValueList & outArgument0) const {
-  const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_terminalMap) ;
-    outArgument0 = p->mProperty_mSentAttributeList ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @terminalMap generic code implementation
 //
@@ -5207,21 +5012,6 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalTypeMap::current_mLexicalType (LOCATIO
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTypeMap::optional_searchKey (const GALGAS_string & inKey,
-                                                GALGAS_lexicalTypeEnum & outArgument0) const {
-  const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-    outArgument0 = p->mProperty_mLexicalType ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @lexicalTypeMap generic code implementation
 //
@@ -5529,21 +5319,6 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalAttributeMap::current_mLexicalType (LO
   const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
   return p->mProperty_mLexicalType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalAttributeMap::optional_searchKey (const GALGAS_string & inKey,
-                                                     GALGAS_lexicalTypeEnum & outArgument0) const {
-  const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-    outArgument0 = p->mProperty_mLexicalType ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6705,27 +6480,6 @@ GALGAS_bool cEnumerator_lexicalExplicitTokenListMap::current_isEndOfTemplateMark
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalExplicitTokenListMap::optional_searchKey (const GALGAS_string & inKey,
-                                                             GALGAS_lstring & outArgument0,
-                                                             GALGAS_bool & outArgument1,
-                                                             GALGAS_bool & outArgument2) const {
-  const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    outArgument0 = p->mProperty_mTerminal ;
-    outArgument1 = p->mProperty_atomicSelection ;
-    outArgument2 = p->mProperty_isEndOfTemplateMark ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @lexicalExplicitTokenListMap generic code implementation
 //
@@ -7500,27 +7254,6 @@ GALGAS_bool cEnumerator_lexicalExplicitTokenListMapMap::current_mShouldBeGenerat
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalExplicitTokenListMapMap::optional_searchKey (const GALGAS_string & inKey,
-                                                                GALGAS_lexicalExplicitTokenListMap & outArgument0,
-                                                                GALGAS_tokenSortedlist & outArgument1,
-                                                                GALGAS_bool & outArgument2) const {
-  const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-    outArgument0 = p->mProperty_mExplicitTokenListMap ;
-    outArgument1 = p->mProperty_mTokenSortedList ;
-    outArgument2 = p->mProperty_mShouldBeGenerated ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @lexicalExplicitTokenListMapMap generic code implementation
 //
@@ -7878,24 +7611,6 @@ GALGAS_bool cEnumerator_lexicalMessageMap::current_mMessageIsUsed (LOCATION_ARGS
   const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
   return p->mProperty_mMessageIsUsed ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalMessageMap::optional_searchKey (const GALGAS_string & inKey,
-                                                   GALGAS_lstring & outArgument0,
-                                                   GALGAS_bool & outArgument1) const {
-  const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-    outArgument0 = p->mProperty_mLexicalMessage ;
-    outArgument1 = p->mProperty_mMessageIsUsed ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8859,27 +8574,6 @@ GALGAS_bool cEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) con
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalRoutineMap::optional_searchKey (const GALGAS_string & inKey,
-                                                   GALGAS_lexicalRoutineFormalArgumentList & outArgument0,
-                                                   GALGAS_stringlist & outArgument1,
-                                                   GALGAS_bool & outArgument2) const {
-  const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-    outArgument0 = p->mProperty_mLexicalRoutineFormalArgumentList ;
-    outArgument1 = p->mProperty_mErrorMessageList ;
-    outArgument2 = p->mProperty_mIsExtern ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @lexicalRoutineMap generic code implementation
 //
@@ -9824,30 +9518,6 @@ GALGAS_bool cEnumerator_lexicalFunctionMap::current_mIsExtern (LOCATION_ARGS) co
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalFunctionMap::optional_searchKey (const GALGAS_string & inKey,
-                                                    GALGAS_lexicalFunctionFormalArgumentList & outArgument0,
-                                                    GALGAS_lexicalTypeEnum & outArgument1,
-                                                    GALGAS_string & outArgument2,
-                                                    GALGAS_bool & outArgument3) const {
-  const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-    outArgument0 = p->mProperty_mLexicalTypeList ;
-    outArgument1 = p->mProperty_mReturnedLexicalType ;
-    outArgument2 = p->mProperty_mReplacementFunctionName ;
-    outArgument3 = p->mProperty_mIsExtern ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-    outArgument3.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @lexicalFunctionMap generic code implementation
 //
@@ -10758,24 +10428,6 @@ GALGAS_uint cEnumerator_styleMap::current_mStyleIndex (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_styleMap::optional_searchKey (const GALGAS_string & inKey,
-                                          GALGAS_lstring & outArgument0,
-                                          GALGAS_uint & outArgument1) const {
-  const cMapElement_styleMap * p = (const cMapElement_styleMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_styleMap) ;
-    outArgument0 = p->mProperty_mComment ;
-    outArgument1 = p->mProperty_mStyleIndex ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @styleMap generic code implementation
 //
@@ -11033,18 +10685,6 @@ GALGAS_lstring cEnumerator_lexicalTagMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_lexicalTagMap::optional_searchKey (const GALGAS_string & inKey) const {
-  const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
-  }else{
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15304,27 +14944,6 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_st
   GALGAS_optionDefaultValueEnumAST result ;
   result.mEnum = Enumeration::enum_stringDefaultValue ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionDefaultValueEnumAST::optional_noDefaultValue () const {
-  const bool ok = mEnum == Enumeration::enum_noDefaultValue ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionDefaultValueEnumAST::optional_unsignedDefaultValue () const {
-  const bool ok = mEnum == Enumeration::enum_unsignedDefaultValue ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_optionDefaultValueEnumAST::optional_stringDefaultValue () const {
-  const bool ok = mEnum == Enumeration::enum_stringDefaultValue ;
-  return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -138,8 +138,6 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -250,8 +248,6 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -668,8 +664,6 @@ class GALGAS_templateInstructionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -767,8 +761,6 @@ class GALGAS_templateInstructionAST_2D_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -892,8 +884,6 @@ class GALGAS_templateInstructionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -992,8 +982,6 @@ class GALGAS_templateInstructionListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1043,8 +1031,6 @@ class GALGAS_templateExpressionAST : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1143,8 +1129,6 @@ class GALGAS_templateExpressionAST_2D_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1306,8 +1290,6 @@ class GALGAS_templateExpressionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -1432,8 +1414,6 @@ class GALGAS_templateExpressionListAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1498,8 +1478,6 @@ class GALGAS_templateClassFunctionAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1611,8 +1589,6 @@ class GALGAS_templateClassFunctionAST_2D_weak : public GALGAS_templateExpression
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1677,8 +1653,6 @@ class GALGAS_templateFileWrapperTemplateCallAST : public GALGAS_templateExpressi
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1790,8 +1764,6 @@ class GALGAS_templateFileWrapperTemplateCallAST_2D_weak : public GALGAS_template
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1856,8 +1828,6 @@ class GALGAS_templateExtensionTemplateCallAST : public GALGAS_templateExpression
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1969,8 +1939,6 @@ class GALGAS_templateExtensionTemplateCallAST_2D_weak : public GALGAS_templateEx
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2035,8 +2003,6 @@ class GALGAS_templateAndOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2148,8 +2114,6 @@ class GALGAS_templateAndOperationAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2214,8 +2178,6 @@ class GALGAS_templateOrOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2327,8 +2289,6 @@ class GALGAS_templateOrOperationAST_2D_weak : public GALGAS_templateExpressionAS
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2393,8 +2353,6 @@ class GALGAS_templateXorOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2506,8 +2464,6 @@ class GALGAS_templateXorOperationAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2564,8 +2520,6 @@ class GALGAS_templateTrueBoolAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2671,8 +2625,6 @@ class GALGAS_templateTrueBoolAST_2D_weak : public GALGAS_templateExpressionAST_2
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2729,8 +2681,6 @@ class GALGAS_templateFalseBoolAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2836,8 +2786,6 @@ class GALGAS_templateFalseBoolAST_2D_weak : public GALGAS_templateExpressionAST_
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2898,8 +2846,6 @@ class GALGAS_templateLiteralStringExpressionAST : public GALGAS_templateExpressi
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3008,8 +2954,6 @@ class GALGAS_templateLiteralStringExpressionAST_2D_weak : public GALGAS_template
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3066,8 +3010,6 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3173,8 +3115,6 @@ class GALGAS_templateLiteralUIntExpressionAST_2D_weak : public GALGAS_templateEx
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3231,8 +3171,6 @@ class GALGAS_templateLiteralCharExpressionAST : public GALGAS_templateExpression
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3338,8 +3276,6 @@ class GALGAS_templateLiteralCharExpressionAST_2D_weak : public GALGAS_templateEx
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3396,8 +3332,6 @@ class GALGAS_templateLiteralDoubleExpressionAST : public GALGAS_templateExpressi
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3503,8 +3437,6 @@ class GALGAS_templateLiteralDoubleExpressionAST_2D_weak : public GALGAS_template
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3569,8 +3501,6 @@ class GALGAS_structFieldAccessTemplateExpressionAST : public GALGAS_templateExpr
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3682,8 +3612,6 @@ class GALGAS_structFieldAccessTemplateExpressionAST_2D_weak : public GALGAS_temp
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3744,8 +3672,6 @@ class GALGAS_templateNotOperatorAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3854,8 +3780,6 @@ class GALGAS_templateNotOperatorAST_2D_weak : public GALGAS_templateExpressionAS
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3916,8 +3840,6 @@ class GALGAS_templateLogicalNegateAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4026,8 +3948,6 @@ class GALGAS_templateLogicalNegateAST_2D_weak : public GALGAS_templateExpression
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4092,8 +4012,6 @@ class GALGAS_templateOptionAccessAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4205,8 +4123,6 @@ class GALGAS_templateOptionAccessAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4291,14 +4207,6 @@ class GALGAS_dynamicTypeComparisonKind : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_equal () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_inherited () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_strictlyInherited () const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4367,8 +4275,6 @@ class GALGAS_templateTestDynamicClassAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4483,8 +4389,6 @@ class GALGAS_templateTestDynamicClassAST_2D_weak : public GALGAS_templateExpress
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4545,8 +4449,6 @@ class GALGAS_templateFunctionCallAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4655,8 +4557,6 @@ class GALGAS_templateFunctionCallAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4713,8 +4613,6 @@ class GALGAS_templateVarInExpressionAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4820,8 +4718,6 @@ class GALGAS_templateVarInExpressionAST_2D_weak : public GALGAS_templateExpressi
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4886,8 +4782,6 @@ class GALGAS_templateAddOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4999,8 +4893,6 @@ class GALGAS_templateAddOperationAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5065,8 +4957,6 @@ class GALGAS_templateSubOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5178,8 +5068,6 @@ class GALGAS_templateSubOperationAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5244,8 +5132,6 @@ class GALGAS_templateMultiplyOperationAST : public GALGAS_templateExpressionAST 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5357,8 +5243,6 @@ class GALGAS_templateMultiplyOperationAST_2D_weak : public GALGAS_templateExpres
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5423,8 +5307,6 @@ class GALGAS_templateDivideOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5536,8 +5418,6 @@ class GALGAS_templateDivideOperationAST_2D_weak : public GALGAS_templateExpressi
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5602,8 +5482,6 @@ class GALGAS_templateModuloOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5715,8 +5593,6 @@ class GALGAS_templateModuloOperationAST_2D_weak : public GALGAS_templateExpressi
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5777,8 +5653,6 @@ class GALGAS_templateUnaryMinusOperationAST : public GALGAS_templateExpressionAS
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5887,8 +5761,6 @@ class GALGAS_templateUnaryMinusOperationAST_2D_weak : public GALGAS_templateExpr
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5953,8 +5825,6 @@ class GALGAS_templateEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6066,8 +5936,6 @@ class GALGAS_templateEqualTestAST_2D_weak : public GALGAS_templateExpressionAST_
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6132,8 +6000,6 @@ class GALGAS_templateNonEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6245,8 +6111,6 @@ class GALGAS_templateNonEqualTestAST_2D_weak : public GALGAS_templateExpressionA
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6311,8 +6175,6 @@ class GALGAS_templateStrictInfTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6424,8 +6286,6 @@ class GALGAS_templateStrictInfTestAST_2D_weak : public GALGAS_templateExpression
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6490,8 +6350,6 @@ class GALGAS_templateInfOrEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6603,8 +6461,6 @@ class GALGAS_templateInfOrEqualTestAST_2D_weak : public GALGAS_templateExpressio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6669,8 +6525,6 @@ class GALGAS_templateStrictSupTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6782,8 +6636,6 @@ class GALGAS_templateStrictSupTestAST_2D_weak : public GALGAS_templateExpression
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6848,8 +6700,6 @@ class GALGAS_templateSupOrEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6961,8 +6811,6 @@ class GALGAS_templateSupOrEqualTestAST_2D_weak : public GALGAS_templateExpressio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7027,8 +6875,6 @@ class GALGAS_templateLeftShiftOperationAST : public GALGAS_templateExpressionAST
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7140,8 +6986,6 @@ class GALGAS_templateLeftShiftOperationAST_2D_weak : public GALGAS_templateExpre
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7206,8 +7050,6 @@ class GALGAS_templateRightShiftOperationAST : public GALGAS_templateExpressionAS
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7319,8 +7161,6 @@ class GALGAS_templateRightShiftOperationAST_2D_weak : public GALGAS_templateExpr
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7377,8 +7217,6 @@ class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7484,8 +7322,6 @@ class GALGAS_templateInstructionStringAST_2D_weak : public GALGAS_templateInstru
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7546,8 +7382,6 @@ class GALGAS_templateInstructionExpressionAST : public GALGAS_templateInstructio
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7656,8 +7490,6 @@ class GALGAS_templateInstructionExpressionAST_2D_weak : public GALGAS_templateIn
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7722,8 +7554,6 @@ class GALGAS_templateBlockInstructionAST : public GALGAS_templateInstructionAST 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7835,8 +7665,6 @@ class GALGAS_templateBlockInstructionAST_2D_weak : public GALGAS_templateInstruc
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7889,8 +7717,6 @@ class GALGAS_templateInstructionGetColumnLocationAST : public GALGAS_templateIns
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7993,8 +7819,6 @@ class GALGAS_templateInstructionGetColumnLocationAST_2D_weak : public GALGAS_tem
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8047,8 +7871,6 @@ class GALGAS_templateInstructionGotoColumnLocationAST : public GALGAS_templateIn
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8150,8 +7972,6 @@ class GALGAS_templateInstructionGotoColumnLocationAST_2D_weak : public GALGAS_te
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8294,8 +8114,6 @@ class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -8407,8 +8225,6 @@ class GALGAS_templateInstructionIfBranchListAST_2D_element : public AC_GALGAS_ro
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8469,8 +8285,6 @@ class GALGAS_templateInstructionIfAST : public GALGAS_templateInstructionAST {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8579,8 +8393,6 @@ class GALGAS_templateInstructionIfAST_2D_weak : public GALGAS_templateInstructio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8630,8 +8442,6 @@ class GALGAS_templateInstructionForGeneration : public AC_GALGAS_reference_class
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8731,8 +8541,6 @@ class GALGAS_templateInstructionForGeneration_2D_weak : public AC_GALGAS_weak_re
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8788,8 +8596,6 @@ class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_reference_class 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -8886,12 +8692,6 @@ class GALGAS_unifiedTypeMapEntry : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_element (class GALGAS_unifiedTypeMapElementClass_2D_weak & outOperand0) const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_null () const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -8949,8 +8749,6 @@ class GALGAS_unifiedTypeMapElementClass : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9044,12 +8842,6 @@ class GALGAS_typeDefinition : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_solved (class GALGAS_unifiedTypeDefinition & outOperand0) const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_unsolved () const ;
-
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9280,8 +9072,6 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9367,14 +9157,6 @@ class GALGAS_headerKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_noHeader () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_oneHeader () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_twoHeaders () const ;
-
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9552,38 +9334,6 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_boolsetType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_classType (class GALGAS_bool & outOperand0) const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_enumType (class GALGAS_constantIndexMap & outOperand0) const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_externType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_graphType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_listMapType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_listType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_mapType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_otherType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_packageType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_sharedMapEntryType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_sharedMapType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_sortedListType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_structType () const ;
-
-  public: VIRTUAL_IN_DEBUG bool optional_weakReferenceType (class GALGAS_unifiedTypeMapEntry & outOperand0) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -9724,8 +9474,6 @@ class GALGAS_enumerationDescriptorList : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -9928,8 +9676,6 @@ class GALGAS_functionSignature : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -10094,8 +9840,6 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -10317,8 +10061,6 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -10472,13 +10214,6 @@ class GALGAS_classFunctionMap : public AC_GALGAS_map {
                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_functionSignature & outOperand1,
-                                                    class GALGAS_bool & outOperand2,
-                                                    class GALGAS_unifiedTypeMapEntry & outOperand3) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_classFunctionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -10620,12 +10355,6 @@ class GALGAS_classMethodMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_classMethodMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_formalParameterSignature & outOperand1,
-                                                    class GALGAS_bool & outOperand2) const ;
 
 
 //--------------------------------- Introspection
@@ -10835,17 +10564,6 @@ class GALGAS_getterMap : public AC_GALGAS_map {
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_methodKind & outOperand1,
-                                                    class GALGAS_functionSignature & outOperand2,
-                                                    class GALGAS_location & outOperand3,
-                                                    class GALGAS_bool & outOperand4,
-                                                    class GALGAS_unifiedTypeMapEntry & outOperand5,
-                                                    class GALGAS_methodQualifier & outOperand6,
-                                                    class GALGAS_string & outOperand7) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_getterMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -10974,11 +10692,6 @@ class GALGAS_initializerMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_initializerMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_functionSignature & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -11179,16 +10892,6 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_methodKind & outOperand1,
-                                                    class GALGAS_formalParameterSignature & outOperand2,
-                                                    class GALGAS_location & outOperand3,
-                                                    class GALGAS_bool & outOperand4,
-                                                    class GALGAS_methodQualifier & outOperand5,
-                                                    class GALGAS_string & outOperand6) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_instanceMethodMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -11229,135 +10932,6 @@ class cEnumerator_instanceMethodMap : public cGenericAbstractEnumerator {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @optionalMethodMap map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_optionalMethodMap ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_optionalMethodMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_optionalMethodMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public: GALGAS_optionalMethodMap (void) ;
-
-//--------------------------------- Handle copy
-  public: GALGAS_optionalMethodMap (const GALGAS_optionalMethodMap & inSource) ;
-  public: GALGAS_optionalMethodMap & operator = (const GALGAS_optionalMethodMap & inSource) ;
-  
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_optionalMethodMap init (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_optionalMethodMap extractObject (const GALGAS_object & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_optionalMethodMap class_func_emptyMap (LOCATION_ARGS) ;
-
-  public: static class GALGAS_optionalMethodMap class_func_mapWithMapToOverride (const class GALGAS_optionalMethodMap & inOperand0
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_optionalMethodSignature & inOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_optionalMethodMap add_operation (const GALGAS_optionalMethodMap & inOperand,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_optionalMethodSignature constinArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMArgumentTypeListForKey (class GALGAS_optionalMethodSignature constinArgument0,
-                                                                   class GALGAS_string constinArgument1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                  class GALGAS_optionalMethodSignature & outArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodSignature getter_mArgumentTypeListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodMap getter_overriddenMap (Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GALGAS_optionalMethodMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_optionalMethodSignature & outOperand1) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_optionalMethodMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                              const GALGAS_string & inKey
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_optionalMethodMap_2D_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class cEnumerator_optionalMethodMap ;
- 
-} ; // End of GALGAS_optionalMethodMap class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_optionalMethodMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_optionalMethodMap (const GALGAS_optionalMethodMap & inEnumeratedObject,
-                                         const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GALGAS_optionalMethodSignature current_mArgumentTypeList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_optionalMethodMap_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalMethodMap ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11469,13 +11043,6 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GALGAS_propertyMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_AccessControl & outOperand1,
-                                                    class GALGAS_bool & outOperand2,
-                                                    class GALGAS_unifiedTypeMapEntry & outOperand3) const ;
 
 
 //--------------------------------- Introspection
@@ -11660,15 +11227,6 @@ class GALGAS_setterMap : public AC_GALGAS_map {
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_methodKind & outOperand1,
-                                                    class GALGAS_formalParameterSignature & outOperand2,
-                                                    class GALGAS_bool & outOperand3,
-                                                    class GALGAS_methodQualifier & outOperand4,
-                                                    class GALGAS_string & outOperand5) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_setterMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -11809,12 +11367,6 @@ class GALGAS_subscriptMap : public AC_GALGAS_map {
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_functionSignature & outOperand1,
-                                                    class GALGAS_unifiedTypeMapEntry & outOperand2) const ;
-
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
   public: VIRTUAL_IN_DEBUG cMapElement_subscriptMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
@@ -11940,11 +11492,6 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_unwrappedType ;
   }
 
-  public: GALGAS_optionalMethodMap mProperty_optionalMethodMap ;
-  public: inline GALGAS_optionalMethodMap readProperty_optionalMethodMap (void) const {
-    return mProperty_optionalMethodMap ;
-  }
-
   public: GALGAS_subscriptMap mProperty_readSubscriptMap ;
   public: inline GALGAS_subscriptMap readProperty_readSubscriptMap (void) const {
     return mProperty_readSubscriptMap ;
@@ -12062,10 +11609,6 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_unwrappedType = inValue ;
   }
 
-  public: inline void setter_setOptionalMethodMap (const GALGAS_optionalMethodMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_optionalMethodMap = inValue ;
-  }
-
   public: inline void setter_setReadSubscriptMap (const GALGAS_subscriptMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_readSubscriptMap = inValue ;
   }
@@ -12125,7 +11668,6 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                         const GALGAS_instanceMethodMap & in_instanceMethodMap,
                                         const GALGAS_classMethodMap & in_classMethodMap,
                                         const GALGAS_unifiedTypeMapEntry & in_unwrappedType,
-                                        const GALGAS_optionalMethodMap & in_optionalMethodMap,
                                         const GALGAS_subscriptMap & in_readSubscriptMap,
                                         const GALGAS_enumerationDescriptorList & in_enumerationDescriptorList,
                                         const GALGAS_typeFeatures & in_features,
@@ -12139,34 +11681,33 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_optionalMethodMap_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GALGAS_lstring & inOperand0,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_bool & inOperand1,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_bool & inOperand2,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_typeKindEnum & inOperand4,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_bool & inOperand5,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_typedPropertyList & inOperand6,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_propertyMap & inOperand7,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_typedPropertyList & inOperand8,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_initializerMap & inOperand9,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_classFunctionMap & inOperand10,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_getterMap & inOperand11,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_setterMap & inOperand12,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_instanceMethodMap & inOperand13,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_classMethodMap & inOperand14,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_unifiedTypeMapEntry & inOperand15,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_optionalMethodMap & inOperand16,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_subscriptMap & inOperand17,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_enumerationDescriptorList & inOperand18,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_typeFeatures & inOperand19,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_functionSignature & inOperand20,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_bool & inOperand22,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_unifiedTypeMapEntry & inOperand23,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_string & inOperand24,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GALGAS_headerKind & inOperand25,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Compiler * inCompiler
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GALGAS_lstring & inOperand0,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand1,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand2,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typeKindEnum & inOperand4,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand5,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typedPropertyList & inOperand6,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_propertyMap & inOperand7,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typedPropertyList & inOperand8,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_initializerMap & inOperand9,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_classFunctionMap & inOperand10,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_getterMap & inOperand11,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_setterMap & inOperand12,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_instanceMethodMap & inOperand13,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_classMethodMap & inOperand14,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand15,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_subscriptMap & inOperand16,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_enumerationDescriptorList & inOperand17,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_typeFeatures & inOperand18,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_functionSignature & inOperand19,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_mapSearchMethodListAST & inOperand20,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_bool & inOperand21,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_unifiedTypeMapEntry & inOperand22,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_string & inOperand23,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          const class GALGAS_headerKind & inOperand24,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Compiler * inCompiler
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -12193,16 +11734,15 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
                                                                     const class GALGAS_instanceMethodMap & inOperand13,
                                                                     const class GALGAS_classMethodMap & inOperand14,
                                                                     const class GALGAS_unifiedTypeMapEntry & inOperand15,
-                                                                    const class GALGAS_optionalMethodMap & inOperand16,
-                                                                    const class GALGAS_subscriptMap & inOperand17,
-                                                                    const class GALGAS_enumerationDescriptorList & inOperand18,
-                                                                    const class GALGAS_typeFeatures & inOperand19,
-                                                                    const class GALGAS_functionSignature & inOperand20,
-                                                                    const class GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                    const class GALGAS_bool & inOperand22,
-                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand23,
-                                                                    const class GALGAS_string & inOperand24,
-                                                                    const class GALGAS_headerKind & inOperand25,
+                                                                    const class GALGAS_subscriptMap & inOperand16,
+                                                                    const class GALGAS_enumerationDescriptorList & inOperand17,
+                                                                    const class GALGAS_typeFeatures & inOperand18,
+                                                                    const class GALGAS_functionSignature & inOperand19,
+                                                                    const class GALGAS_mapSearchMethodListAST & inOperand20,
+                                                                    const class GALGAS_bool & inOperand21,
+                                                                    const class GALGAS_unifiedTypeMapEntry & inOperand22,
+                                                                    const class GALGAS_string & inOperand23,
+                                                                    const class GALGAS_headerKind & inOperand24,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -12218,8 +11758,6 @@ class GALGAS_unifiedTypeDefinition : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -12337,8 +11875,6 @@ class GALGAS_unifiedTypeMapElementClass_2D_weak : public AC_GALGAS_weak_referenc
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -12469,8 +12005,6 @@ class GALGAS_templateInstructionExpressionForGeneration : public GALGAS_template
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -12574,8 +12108,6 @@ class GALGAS_templateInstructionExpressionForGeneration_2D_weak : public GALGAS_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

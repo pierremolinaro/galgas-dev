@@ -8,116 +8,6 @@
 #include "all-declarations-4.h"
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_functionPredefinedTypeAST_2D_weak::objectCompare (const GALGAS_functionPredefinedTypeAST_2D_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_functionPredefinedTypeAST_2D_weak::GALGAS_functionPredefinedTypeAST_2D_weak (void) :
-GALGAS_predefinedTypeAST_2D_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_functionPredefinedTypeAST_2D_weak & GALGAS_functionPredefinedTypeAST_2D_weak::operator = (const GALGAS_functionPredefinedTypeAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_functionPredefinedTypeAST_2D_weak::GALGAS_functionPredefinedTypeAST_2D_weak (const GALGAS_functionPredefinedTypeAST & inSource) :
-GALGAS_predefinedTypeAST_2D_weak (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_functionPredefinedTypeAST_2D_weak GALGAS_functionPredefinedTypeAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_functionPredefinedTypeAST_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_functionPredefinedTypeAST GALGAS_functionPredefinedTypeAST_2D_weak::bang_functionPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_functionPredefinedTypeAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_functionPredefinedTypeAST) ;
-      result = GALGAS_functionPredefinedTypeAST ((cPtr_functionPredefinedTypeAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @functionPredefinedTypeAST-weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2D_weak ("functionPredefinedTypeAST-weak",
-                                                                                         & kTypeDescriptor_GALGAS_predefinedTypeAST_2D_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_functionPredefinedTypeAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2D_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_functionPredefinedTypeAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_functionPredefinedTypeAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_functionPredefinedTypeAST_2D_weak GALGAS_functionPredefinedTypeAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_functionPredefinedTypeAST_2D_weak result ;
-  const GALGAS_functionPredefinedTypeAST_2D_weak * p = (const GALGAS_functionPredefinedTypeAST_2D_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_functionPredefinedTypeAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("functionPredefinedTypeAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @locationPredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -4836,21 +4726,6 @@ GALGAS_functionSignature cEnumerator_initializerMap::current_mArgumentTypeList (
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_initializerMap::optional_searchKey (const GALGAS_string & inKey,
-                                                GALGAS_functionSignature & outArgument0) const {
-  const cMapElement_initializerMap * p = (const cMapElement_initializerMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_initializerMap) ;
-    outArgument0 = p->mProperty_mArgumentTypeList ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @initializerMap generic code implementation
 //
@@ -5798,27 +5673,6 @@ GALGAS_structComparison GALGAS_structComparison::class_func_comparable (UNUSED_L
   GALGAS_structComparison result ;
   result.mEnum = Enumeration::enum_comparable ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_structComparison::optional_none () const {
-  const bool ok = mEnum == Enumeration::enum_none ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_structComparison::optional_equatable () const {
-  const bool ok = mEnum == Enumeration::enum_equatable ;
-  return ok ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_structComparison::optional_comparable () const {
-  const bool ok = mEnum == Enumeration::enum_comparable ;
-  return ok ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13391,18 +13245,6 @@ GALGAS_lstring cEnumerator_insertMethodMap::current_lkey (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_insertMethodMap::optional_searchKey (const GALGAS_string & inKey) const {
-  const cMapElement_insertMethodMap * p = (const cMapElement_insertMethodMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_insertMethodMap) ;
-  }else{
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @insertMethodMap generic code implementation
 //
@@ -13641,18 +13483,6 @@ GALGAS_lstring cEnumerator_searchMethodMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_searchMethodMap::optional_searchKey (const GALGAS_string & inKey) const {
-  const cMapElement_searchMethodMap * p = (const cMapElement_searchMethodMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_searchMethodMap) ;
-  }else{
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

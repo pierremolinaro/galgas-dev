@@ -232,7 +232,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     var @classFunctionMap classFunctionMap = ()
     var @setterMap setterMap = ()
     var @instanceMethodMap instanceMethodMap = ()
-    var @optionalMethodMap optionalMethodMap = ()
   #--- currentType type index
     [!?ioTypeMap makeEntry !self.enumTypeName ?let enumTypeEntry]
   #--- Class functions
@@ -253,18 +252,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         !argumentTypeList
         !false
         !enumTypeEntry
-      ]
-    end
-  #--- Optional methods
-    for constant in self.constantList do
-      var @optionalMethodSignature argumentTypeList = ()
-      for (typeName selectorName) in constant.associatedValueTypeList do
-        [!?ioTypeMap makeEntry !typeName ?let associatedTypeEntry]
-        argumentTypeList += !false !selectorName !associatedTypeEntry !typeName.string
-      end
-      [!?optionalMethodMap insertKey
-        !constant.name
-        !argumentTypeList
       ]
     end
   #--- Methods
@@ -358,7 +345,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: ()
       !unwrappedType: .null
-      !optionalMethodMap: optionalMethodMap
       !readSubscriptMap: ()
       !enumerationDescriptorList: ()
       !features: features
@@ -484,7 +470,6 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.setterMap
       !selfTypeDefinition.instanceMethodMap
       !selfTypeDefinition.classMethodMap
-      !selfTypeDefinition.optionalMethodMap
       !selfTypeDefinition.readSubscriptMap
       !selfTypeDefinition.enumerationDescriptorList
       !selfTypeDefinition.features
