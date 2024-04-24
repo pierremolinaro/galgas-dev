@@ -7407,7 +7407,7 @@ ComparisonResult GALGAS_selfAvailability::objectCompare (const GALGAS_selfAvaila
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       switch (mEnum) {
-      case Enumeration::enum_available:{
+      case Enumeration::enum_available: {
         const auto left = (GALGAS_selfAvailability_2D_available *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_selfAvailability_2D_available *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
@@ -7416,7 +7416,12 @@ ComparisonResult GALGAS_selfAvailability::objectCompare (const GALGAS_selfAvaila
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      if (result != r) {
+        printf ("ERROR***************\n") ;
+        exit (1) ;
+      }
+      result = r ;
     }
   }
   return result ;

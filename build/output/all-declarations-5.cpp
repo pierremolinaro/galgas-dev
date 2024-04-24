@@ -3333,17 +3333,17 @@ ComparisonResult GALGAS_typeKindEnum::objectCompare (const GALGAS_typeKindEnum &
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       switch (mEnum) {
-      case Enumeration::enum_classType:{
+      case Enumeration::enum_classType: {
         const auto left = (GALGAS_typeKindEnum_2D_classType *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_typeKindEnum_2D_classType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
         }break ;
-      case Enumeration::enum_weakReferenceType:{
+      case Enumeration::enum_weakReferenceType: {
         const auto left = (GALGAS_typeKindEnum_2D_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_typeKindEnum_2D_weakReferenceType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
         }break ;
-      case Enumeration::enum_enumType:{
+      case Enumeration::enum_enumType: {
         const auto left = (GALGAS_typeKindEnum_2D_enumType *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_typeKindEnum_2D_enumType *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
@@ -3352,7 +3352,12 @@ ComparisonResult GALGAS_typeKindEnum::objectCompare (const GALGAS_typeKindEnum &
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      if (result != r) {
+        printf ("ERROR***************\n") ;
+        exit (1) ;
+      }
+      result = r ;
     }
   }
   return result ;
@@ -9424,7 +9429,7 @@ ComparisonResult GALGAS_localVarValuation::objectCompare (const GALGAS_localVarV
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       switch (mEnum) {
-      case Enumeration::enum_declared:{
+      case Enumeration::enum_declared: {
         const auto left = (GALGAS_localVarValuation_2D_declared *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_localVarValuation_2D_declared *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
@@ -9433,7 +9438,12 @@ ComparisonResult GALGAS_localVarValuation::objectCompare (const GALGAS_localVarV
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      if (result != r) {
+        printf ("ERROR***************\n") ;
+        exit (1) ;
+      }
+      result = r ;
     }
   }
   return result ;

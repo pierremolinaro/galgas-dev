@@ -4487,7 +4487,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           case kBoolTrue : {
             result.appendString ("      case Enumeration::enum_") ;
             result.appendString (enumerator_9452.current_name (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 207)).stringValue ()) ;
-            result.appendString (":{\n        const auto left = (GALGAS_") ;
+            result.appendString (": {\n        const auto left = (GALGAS_") ;
             result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
             result.appendString ("_2D_") ;
             result.appendString (enumerator_9452.current_name (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 208)).stringValue ()) ;
@@ -4506,7 +4506,7 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
           enumerator_9452.gotoNextObject () ;
         }
       }
-      result.appendString ("      default:\n        result = ComparisonResult::operandEqual ;\n        break ;\n      }\n      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n") ;
+      result.appendString ("      default:\n        result = ComparisonResult::operandEqual ;\n        break ;\n      }\n      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n      if (result != r) {\n        printf (\"ERROR***************\\n\") ;\n        exit (1) ;\n      }\n      result = r ;\n") ;
       } break ;
     case kBoolFalse : {
       result.appendString ("      result = ComparisonResult::operandEqual ;\n") ;

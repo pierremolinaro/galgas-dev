@@ -2325,7 +2325,7 @@ ComparisonResult GALGAS_unifiedTypeMapEntry::objectCompare (const GALGAS_unified
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       switch (mEnum) {
-      case Enumeration::enum_element:{
+      case Enumeration::enum_element: {
         const auto left = (GALGAS_unifiedTypeMapEntry_2D_element *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_unifiedTypeMapEntry_2D_element *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
@@ -2334,7 +2334,12 @@ ComparisonResult GALGAS_unifiedTypeMapEntry::objectCompare (const GALGAS_unified
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      if (result != r) {
+        printf ("ERROR***************\n") ;
+        exit (1) ;
+      }
+      result = r ;
     }
   }
   return result ;

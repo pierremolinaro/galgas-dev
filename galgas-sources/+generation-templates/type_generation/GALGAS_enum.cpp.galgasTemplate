@@ -204,7 +204,7 @@ if HAS_ASSOCIATED_VALUES then
 %      switch (mEnum) {\n%
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
-%      case Enumeration::enum_%![mConstantName identifierRepresentation]%:{\n%
+%      case Enumeration::enum_%![mConstantName identifierRepresentation]%: {\n%
 %        const auto left = (GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
 %        const auto right = (GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) inOperand.mAssociatedValues.associatedValuesPointer () ;\n%
 %        result = left->objectCompare (*right) ;\n%
@@ -215,7 +215,12 @@ end
 %        result = ComparisonResult::operandEqual ;\n%
 %        break ;\n%
 %      }\n%
-%      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n%
+%      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;\n%
+%      if (result != r) {\n%
+%        printf ("ERROR***************\\n") ;\n%
+%        exit (1) ;\n%
+%      }\n%
+%      result = r ;\n%
 else
 %      result = ComparisonResult::operandEqual ;\n%
 end

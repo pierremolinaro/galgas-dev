@@ -4052,7 +4052,7 @@ ComparisonResult GALGAS_propertyInCollectionInitializationAST::objectCompare (co
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       switch (mEnum) {
-      case Enumeration::enum_some:{
+      case Enumeration::enum_some: {
         const auto left = (GALGAS_propertyInCollectionInitializationAST_2D_some *) mAssociatedValues.associatedValuesPointer () ;
         const auto right = (GALGAS_propertyInCollectionInitializationAST_2D_some *) inOperand.mAssociatedValues.associatedValuesPointer () ;
         result = left->objectCompare (*right) ;
@@ -4061,7 +4061,12 @@ ComparisonResult GALGAS_propertyInCollectionInitializationAST::objectCompare (co
         result = ComparisonResult::operandEqual ;
         break ;
       }
-      result = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      const ComparisonResult r = mAssociatedValuesEX.objectCompare (inOperand.mAssociatedValuesEX) ;
+      if (result != r) {
+        printf ("ERROR***************\n") ;
+        exit (1) ;
+      }
+      result = r ;
     }
   }
   return result ;
