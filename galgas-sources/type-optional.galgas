@@ -166,7 +166,7 @@ refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
-    [self.unwrappedType addHeaderFileName !?ioInclusionSet]
+    [self.unwrappedType addHeaderFileName1 !?ioInclusionSet]
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outHeader = [filewrapper optionalTypeGenerationTemplate.optionalTypeHeader1
       !selfTypeDefinition.typeName.string

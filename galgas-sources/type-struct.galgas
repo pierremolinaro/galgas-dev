@@ -379,8 +379,8 @@ refclass @structTypeForGeneration : @semanticTypeForGeneration {
   #·······························································································
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet !@string outHeader {
-    for (t 4*) in self.mTypedPropertyList do
-      [t addHeaderFileName1 !?ioInclusionSet]
+    for property in self.mTypedPropertyList do
+      [property.typeEntry addHeaderFileName1 !?ioInclusionSet]
     end
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outHeader = [filewrapper structureGenerationTemplate.structTypeHeader1

@@ -153,44 +153,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
 
   #·······························································································
 
-  override method enterDeclarationInGraph
-        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-        ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
-        ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-        ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-    let key = @lstring {!"@" + self.enumTypeName !self.enumTypeName.location}
-    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  #--- There is a circular reference if all constant names current type in associated values
-    var circularReference = true
-    for constant in self.mConstantList while circularReference do
-      var namesCurrentType = false
-      for (mValue0 *) in constant.associatedValueTypeList while not namesCurrentType do
-        let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
-        if propertyKey.string == key.string then
-          namesCurrentType = true
-        end
-      end
-      if not namesCurrentType then
-        circularReference = false
-      end
-    end
-  #--- Enter dependances, and only when there is circular reference
-    if circularReference then
-      for constant in self.mConstantList do
-        for (mValue0 *) in constant.associatedValueTypeList do
-          let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
-          if (propertyKey.string != key.string) then # || circularReference then
-            [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
-          end
-        end
-      end
-    end
-  }
-
-  #·······························································································
-
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
@@ -215,6 +177,55 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         )
         ioDeclarations.mDeclarationList += !s
         [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: associatedTypeName !isPredefined: false]
+      end
+    end
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInGraph
+        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+        ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+        ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+        ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring {!"@" + self.enumTypeName !self.enumTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  #---
+#    for constant in self.mConstantList do
+#      if [constant.associatedValueTypeList count] > 0 then
+#        let associatedTypeName = @lstring ("@" + self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+#        [!?ioSemanticTypePrecedenceGraph noteNode !associatedTypeName]
+#        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
+#        [!?ioSemanticTypePrecedenceGraph noteNode !optionalTypeName]
+#        [!?ioSemanticTypePrecedenceGraph addEdge !key !optionalTypeName]
+#      end
+#    end
+
+  #--- There is a circular reference if all constants names current type in associated values
+    var circularReference = true
+    for constant in self.mConstantList while circularReference do
+      var namesCurrentType = false
+      for (mValue0 *) in constant.associatedValueTypeList while not namesCurrentType do
+        let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
+        if propertyKey.string == key.string then
+          namesCurrentType = true
+        end
+      end
+      if not namesCurrentType then
+        circularReference = false
+      end
+    end
+  #--- Enter dependances, and only when there is circular reference
+    if circularReference then
+      for constant in self.mConstantList do
+        for (mValue0 *) in constant.associatedValueTypeList do
+          let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
+          if (propertyKey.string != key.string) then
+            [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+          end
+        end
       end
     end
   }
@@ -449,6 +460,9 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
+#    for type in self.associatedValuesTypes do
+#      [type addHeaderFileName1 !?ioInclusionSet]
+#    end
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = [constant.associatedValueTypeList count] > 0
