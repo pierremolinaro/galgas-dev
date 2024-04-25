@@ -8,21 +8,20 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Galgas permet à l'utilisateur de définir des types énumérés.
 
 \section{Déclaration}
 
-La déclaration d'un type \ggst+enum+ nomme l'ensemble des constantes associées à ce type.
+La déclaration d'un type \ggst+enum+ nomme l'ensemble des constantes du type énuméré. Dans ce premier exemple, les constantes n'ont pas de valeur associée.
 
 Par exemple :
 
-\begin{galgas3}
+\begin{galgas34}
 enum @feuTricolore {
   case vert
   case orange
   case rouge
 }
-\end{galgas3}
+\end{galgas34}
 
 Plusieurs types énumérés peuvent définir des constantes de même nom.
 
@@ -194,29 +193,3 @@ end
 
 
 
-\sectionLabel{Valeur par défaut}{valeurDefautTypeEnumere}
-
-Un type énuméré n'a pas de valeur par défaut, c'est-à-dire qu'appeler le constructeur \ggst=default= engendre une erreur de compilation.
-
-\begin{galgas3}
-@feuTricolore feu = .default # Erreur de compilation
-\end{galgas3}
-
-À partir de la version 3.3.3 de GALGAS, il est possible de définir une valeur par défaut, en la nommant dans une clause \ggst=default= à la fin de la déclaration du type énuméré :
-\begin{galgas3}
-enum @feuTricolore {
-  case vert
-  case orange
-  case rouge
-  default vert
-}
-\end{galgas3}
-
-La constante nommée dans la clause \ggst=default= ne doit pas avoir de valeur associée.
-
-On peut donc maintenant écrire :
-\begin{galgas3}
-@feuTricolore feu = .default # Équivalent à .vert
-\end{galgas3}
-
-Définir une valeur par défaut pour un type enuméré permet une structure qui l'utilise de posséder à son tour une valeur par défaut (\refSubsectionPage{constructeurParDefaut}).
