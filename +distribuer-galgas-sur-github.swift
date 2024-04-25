@@ -224,35 +224,9 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
 //-------------------- Vérifier la création de projet
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
-//-------------------- Recompiler en utilsant différents modes de génération
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-  runCommand ("/usr/bin/python3", ["build.py"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-  runCommand ("/usr/bin/python3", ["clean.py"])
-  runCommand ("/usr/bin/python3", ["build.py"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-  runCommand ("/usr/bin/python3", ["clean.py"])
-  runCommand ("/usr/bin/python3", ["build.py"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Créer le répertoire recevant les outils ligne de commande
   let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
   runCommand ("/bin/mkdir", [cliToolsDir])
-//-------------------- Construire la documentation Latex
-  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
-  let directoryEnumerator = fm.enumerator (atPath: latexDir)
-  while let filename = directoryEnumerator?.nextObject () as? String {
-    if filename.hasSuffix (".tex") {
-      remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: latexDir + "/" + filename)
-    }
-  }
-  runCommand (latexDir + "/+build.command", [])
-  runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
-  runCommand ("/bin/rm", ["-fr", latexDir])
 //-------------------- Créer l'archive de l'executable osx (release et debug)
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
   runCommand ("/usr/bin/python3", ["build.py"])
@@ -304,24 +278,35 @@ print ("ANNÉE : \(ANNÉE)")
   case .release:
     PRODUCT_NAME = "galgas"
   }
-//-------------------- Vérifier GMP
+//-------------------- Vérifier Big integers
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--check-big-int"])
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas-debug", ["--check-big-int"])
-////-------------------- Recompiler en utilsant différents modes de génération
-//  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-//  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-//  runCommand ("/usr/bin/python3", ["build.py"])
-//  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-//  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-//  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-//  runCommand ("/usr/bin/python3", ["clean.py"])
-//  runCommand ("/usr/bin/python3", ["build.py"])
-//  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-//  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-//  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
-//  runCommand ("/usr/bin/python3", ["clean.py"])
-//  runCommand ("/usr/bin/python3", ["build.py"])
-//  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+//-------------------- Recompiler en utilsant différents modes de génération
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand ("/usr/bin/python3", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand ("/usr/bin/python3", ["clean.py"])
+  runCommand ("/usr/bin/python3", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand ("/usr/bin/python3", ["clean.py"])
+  runCommand ("/usr/bin/python3", ["build.py"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+//-------------------- Construire la documentation Latex
+  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
+  let directoryEnumerator = fm.enumerator (atPath: latexDir)
+  while let filename = directoryEnumerator?.nextObject () as? String {
+    if filename.hasSuffix (".tex") {
+      remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: latexDir + "/" + filename)
+    }
+  }
+  runCommand (latexDir + "/+build.command", [])
+  runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
+  runCommand ("/bin/rm", ["-fr", latexDir])
 //-------------------- Construction package
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev")
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
