@@ -555,6 +555,8 @@ override method @ifInstructionForGeneration generateInstruction
       ]
       ioGeneratedCode += testVar + " = " + cppVarName + ".boolEnum () ;\n"
     case letExp (targetVarCppName exp targetType testType) :
+      [targetType addHeaderFileName !?ioInclusionSet]
+      [testType addHeaderFileName !?ioInclusionSet]
       let targetTypeName = [targetType identifierRepresentation]
       let testTypeName = [testType identifierRepresentation]
       [exp generateExpression
