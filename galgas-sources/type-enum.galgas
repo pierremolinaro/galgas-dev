@@ -113,9 +113,6 @@ syntax extension galgas4DeclarationsSyntax {
         $)$
       end
       constantList += !constantName !associatedValueTypeList
-#    while
-#    end
-#    repeat
     while
       <method_declaration> !enumTypeName !?ioDeclarations
     end
@@ -285,15 +282,26 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #--- getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
-      enterBaseGetterWithoutArgument (
-        !?getterMap
-        !?ioTypeMap
-        !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
-        !obsoleteName: ""
-        !returnedTypeName:"bool"
-        !hasCompilerArgument:false
-      )
       if [constant.associatedValueTypeList count] > 0 then
+        enterBaseGetterWithoutArgument (
+          !?getterMap
+          !?ioTypeMap
+          !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
+          !obsoleteName: ""
+          !returnedTypeName:"bool"
+          !hasCompilerArgument:false
+        )
+      end
+      if [constant.associatedValueTypeList count] == 0 then
+        enterBaseGetterWithoutArgument (
+          !?getterMap
+          !?ioTypeMap
+          !getterName: constant.name
+          !obsoleteName: ""
+          !returnedTypeName: "bool"
+          !hasCompilerArgument:false
+        )
+      else
         let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
         let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
         enterBaseGetterWithoutArgument (

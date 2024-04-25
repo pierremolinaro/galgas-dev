@@ -434,7 +434,7 @@ refclass @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGenera
       var @unifiedTypeMapEntry baseType = self.mReceiverType
       var @bool searching = true
       loop (@uint.max) while searching do
-        if not [[baseType definition].superType isNull] then
+        if not [[baseType definition].superType null] then
           if [[[baseType definition].superType definition].getterMap hasKey !self.mExtensionGetterName] then
             baseType = [baseType definition].superType
           else

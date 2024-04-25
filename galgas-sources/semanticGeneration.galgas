@@ -660,7 +660,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
-    if not [[baseType definition].superType isNull] then
+    if not [[baseType definition].superType null] then
       if [[[baseType definition].superType definition].instanceMethodMap hasKey !inMethodName] then
         baseType = [baseType definition].superType
       else

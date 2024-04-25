@@ -208,7 +208,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
   if inTypeName.string != "" then
     outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
-  if [outConstructorType isNull] then
+  if [outConstructorType null] then
     error inTypeName
     : "cannot infer type"
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument

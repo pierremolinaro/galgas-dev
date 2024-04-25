@@ -320,7 +320,7 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
   if inTypeName.string != "" then
     outInstanciedType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
-  if [outInstanciedType isNull] then
+  if [outInstanciedType null] then
     error inTypeName
     : "cannot infer type"
     : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName

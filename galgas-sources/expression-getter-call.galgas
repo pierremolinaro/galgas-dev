@@ -306,7 +306,7 @@ refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
      [baseType addHeaderFileName !?ioInclusionSet]
       var @bool searching = true
       loop (@uint.max) while searching do
-        if not [[baseType definition].superType isNull] then
+        if not [[baseType definition].superType null] then
           if [[[baseType definition].superType definition].getterMap hasKey !self.mGetterName] then
             baseType = [baseType definition].superType
           else

@@ -2232,6 +2232,12 @@ void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementCla
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_null (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_null == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_unifiedTypeMapEntry_2D_element_3F_ GALGAS_unifiedTypeMapEntry::getter_element (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapEntry_2D_element_3F_ result ;
   if (mEnum == Enumeration::enum_element) {

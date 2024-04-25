@@ -11708,16 +11708,16 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 122)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 119)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (ComparisonKind::equal, var_constantList_3404.getter_count (SOURCE_FILE ("type-enum.galgas", 123)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    test_2 = GALGAS_bool (ComparisonKind::equal, var_constantList_3404.getter_count (SOURCE_FILE ("type-enum.galgas", 120)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_2) {
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_enumTypeName_3138.readProperty_location (), GALGAS_string ("an enumerated type must define at least one case constant"), fixItArray3  COMMA_SOURCE_FILE ("type-enum.galgas", 124)) ;
+      inCompiler->emitSemanticError (var_enumTypeName_3138.readProperty_location (), GALGAS_string ("an enumerated type must define at least one case constant"), fixItArray3  COMMA_SOURCE_FILE ("type-enum.galgas", 121)) ;
     }
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_enumDeclarationAST::init_21_isPredefined_21__21__21_comparison (GALGAS_bool (false), var_enumTypeName_3138, var_constantList_3404, var_comparison_3201, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-enum.galgas", 126)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_enumDeclarationAST::init_21_isPredefined_21__21__21_comparison (GALGAS_bool (false), var_enumTypeName_3138, var_constantList_3404, var_comparison_3201, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-enum.galgas", 123)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -11774,7 +11774,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 122)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 119)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -11832,7 +11832,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 122)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 119)) ;
 }
 
 //------------------------------------------------------------------------------------------------

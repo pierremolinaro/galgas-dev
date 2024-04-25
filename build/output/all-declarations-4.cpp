@@ -5393,6 +5393,24 @@ GALGAS_structComparison GALGAS_structComparison::class_func_comparable (UNUSED_L
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_structComparison::getter_none (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_structComparison::getter_equatable (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equatable == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_structComparison::getter_comparable (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_comparable == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_structComparison [4] = {
   "(not built)",
   "none",

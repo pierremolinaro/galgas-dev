@@ -182,7 +182,7 @@ refclass @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     var inheritedSignature = @formalParameterSignature ()
     let inheritedDeclarationLocation = @location.here
     loop ([ioTypeMap count] + 1)
-    while (not [superType isNull]) & (baseTypeName == "") do
+    while (not [superType null]) & (baseTypeName == "") do
       if [[superType definition].setterMap hasKey !self.mOverridingExtensionSetterName.string] then
         [[superType definition].setterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
         if qualifier <= @methodQualifier.isBasicFinal then

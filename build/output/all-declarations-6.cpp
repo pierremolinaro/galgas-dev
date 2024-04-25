@@ -295,6 +295,30 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::class_f
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_argumentVarIn (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentVarIn == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_argumentOut (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentOut == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_argumentInOut (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentInOut == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::getter_argumentConstantIn (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_argumentConstantIn == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_formalArgumentPassingModeAST [5] = {
   "(not built)",
   "argumentVarIn",
@@ -3172,6 +3196,36 @@ void GALGAS_AccessControlAST::method_fileprivateSetAccess (GALGAS_location & out
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_AccessControlAST::getter_publicAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_publicAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_protectedAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_protectedSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_protectedSetAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_privateAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST::getter_privateSetAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_privateSetAccess == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ GALGAS_AccessControlAST::getter_fileprivateAccess (UNUSED_LOCATION_ARGS) const {
   GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ result ;
   if (mEnum == Enumeration::enum_fileprivateAccess) {
@@ -3358,6 +3412,12 @@ void GALGAS_propertyInCollectionInitializationAST::method_some (GALGAS_semanticE
     const auto ptr = (GALGAS_propertyInCollectionInitializationAST_2D_some *) mAssociatedValues.associatedValuesPointer () ;
     outAssociatedValue_expression = ptr->mProperty_expression ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_propertyInCollectionInitializationAST::getter_none (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10322,6 +10382,48 @@ GALGAS_methodQualifier GALGAS_methodQualifier::class_func_isVirtualOverridingAbs
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_methodQualifier::getter_isVirtual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtual == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodQualifier::getter_isVirtualAbstract (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtualAbstract == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodQualifier::getter_isBasic (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isBasic == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodQualifier::getter_isBasicFinal (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isBasicFinal == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodQualifier::getter_isInherited (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isInherited == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodQualifier::getter_isVirtualOverriding (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtualOverriding == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodQualifier::getter_isVirtualOverridingAbstract (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_isVirtualOverridingAbstract == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_methodQualifier [8] = {
   "(not built)",
   "isVirtual",
@@ -10462,6 +10564,18 @@ GALGAS_methodKind GALGAS_methodKind::class_func_definedAsExtension (UNUSED_LOCAT
   GALGAS_methodKind result ;
   result.mEnum = Enumeration::enum_definedAsExtension ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodKind::getter_definedAsMember (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_definedAsMember == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_methodKind::getter_definedAsExtension (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_definedAsExtension == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12019,6 +12133,12 @@ void GALGAS_AccessControl::method_fileprivateSetAccess (GALGAS_location & outAss
     const auto ptr = (GALGAS_AccessControl_2D_fileprivateSetAccess *) mAssociatedValues.associatedValuesPointer () ;
     outAssociatedValue_declarationLocation = ptr->mProperty_declarationLocation ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControl::getter_publicAccess (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_publicAccess == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------

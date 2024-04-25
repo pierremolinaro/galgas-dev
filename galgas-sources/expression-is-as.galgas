@@ -173,7 +173,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].superType isNull] do
+    while (not found) & not [[t definition].superType null] do
       t = [t definition].superType
       found = t == expression.mResultType
     end
@@ -231,7 +231,7 @@ override method @castInExpressionAST analyzeSemanticExpression
     var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].superType isNull] do
+    while (not found) & not [[t definition].superType null] do
       t = [t definition].superType
       found = t == expression.mResultType
     end

@@ -160,7 +160,7 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
     let propertyMap = [expressionType definition].propertyMap
     if let prop = propertyMap §[self.propertyName] then
       let typeKind = [expressionType definition].typeKind
-      if (not [typeKind isStructType]) & (not [typeKind isClassType]) then
+      if (not [typeKind structType]) & (not [typeKind isClassType]) then
         error self.propertyName: "the '.' operator requires the receiver to be a struct or a class"
       end
       if expression is @selfInExpressionForGeneration then

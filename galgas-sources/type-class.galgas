@@ -600,7 +600,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
-    if not [self.mSuperClass isNull] then
+    if not [self.mSuperClass null] then
       [self.mSuperClass addHeaderFileName !?ioInclusionSet]
     end
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
@@ -608,7 +608,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader1
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mIsAbstract
         !self.mCurrentTypedAttributeList
       ]
@@ -616,7 +616,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader1
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mIsAbstract
         !self.mCurrentTypedAttributeList
       ]
@@ -654,7 +654,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         let @string part1 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -665,7 +665,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         let @string part2 = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -688,7 +688,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         outHeader = [filewrapper classGenerationTemplate.referenceClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -699,7 +699,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         outHeader += [filewrapper classGenerationTemplate.referenceClassTypeHeader2part2
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -711,7 +711,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         let part1 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -721,7 +721,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         let part2 = [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -743,7 +743,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         outHeader = [filewrapper classGenerationTemplate.valueClassTypeHeader2part1
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -753,7 +753,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         outHeader += [filewrapper classGenerationTemplate.valueClassTypeHeader2part2
           !selfTypeDefinition.typeName.string
           ![self.mSelfTypeEntry identifierRepresentation]
-          !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+          !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
           !self.mCurrentTypedAttributeList
           !self.mAllTypedAttributeList
           !self.mIsAbstract
@@ -776,7 +776,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
         !currentPropertyList: self.mCurrentTypedAttributeList
         !allPropertyList: self.mAllTypedAttributeList
         !inheritedPropertyList: at
@@ -793,7 +793,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
       outImplementation = [filewrapper classGenerationTemplate.valueClassTypeSpecificImplementation
         !selfTypeDefinition.typeName.string
         ![self.mSelfTypeEntry identifierRepresentation]
-        !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+        !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
         !self.mCurrentTypedAttributeList
         !self.mAllTypedAttributeList
         !at
