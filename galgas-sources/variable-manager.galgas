@@ -613,19 +613,19 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
   case declared (*) : # The variable has no value
     self = .initialized
   case initialized : # The variable has been written once
-    if [inAttributes warnsOnAnyAcces] then
+    if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
-    if [inAttributes rejectWriteInInitializedAndReadStates] then
+    if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
-    elsif not [inAttributes acceptInitializedStateAsFinalState] && not inOverridenMap then
+    elsif not [inAttributes contains !.acceptInitializedStateAsFinalState] && not inOverridenMap then
       warning inVarName : "variable '" + inVarName + "' was written to, but never read"
     else
       self = .mutated
     end
   case read : # The variable has been written, and read
-    if [inAttributes rejectWriteInInitializedAndReadStates] then
+    if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
     else
@@ -706,15 +706,15 @@ setter @localVarValuation readTransition ?let @lstring inVarName
     self = .invalid
   case initialized: # The variable has been written once
     self = .read
-    if [inAttributes warnsOnAnyAcces] then
+    if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
   case read : # The variable has been written, and read
-    if [inAttributes warnsOnAnyAcces] then
+    if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
   case mutated : # The variable has been rewritten
-    if [inAttributes warnsOnAnyAcces] then
+    if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
   end
@@ -851,7 +851,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
   switch self
   case invalid :
   case declared (usedInOtherBlock) : # The variable has no value
-    if [inAttributes rejectDeclaredStateAsFinalState] then
+    if [inAttributes contains !.rejectDeclaredStateAsFinalState] then
       error inVarName : "variable '" + inVarName + "' should be initialized"
     elsif usedInOtherBlock then
       warning inVarName : "variable '" + inVarName + "' is only used  in sub scope; consider moving it"
@@ -859,13 +859,13 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
       warning inVarName : "variable '" + inVarName + "' was never used; consider removing it"
     end
   case initialized : # The variable has been written once
-    if [inAttributes suggestDeclareUnusedParameterAsUnused] then
+    if [inAttributes contains !.suggestDeclareUnusedParameterAsUnused] then
       warning inVarName : "parameter '" + inVarName + "' was never read; consider declaring it as unused"
-    elsif not [inAttributes acceptInitializedStateAsFinalState] then
+    elsif not [inAttributes contains !.acceptInitializedStateAsFinalState] then
       warning inVarName : "variable '" + inVarName + "' was never read; consider removing it"
     end
   case read :
-    if not [inAttributes acceptReadStateAsFinalState] then
+    if not [inAttributes contains !.acceptReadStateAsFinalState] then
       warning inVarName : "variable '" + inVarName + "' was never mutated; consider declaring it as 'let'"
     end
   case mutated :

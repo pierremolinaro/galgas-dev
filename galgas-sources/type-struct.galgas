@@ -325,12 +325,14 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       case none :
       case equatable :
         let propertyFeatures = [t definition].features
-        if (not [propertyFeatures equatable]) & not [propertyFeatures comparable] & not [propertyFeatures referenceEquatable] then
+        if (not [propertyFeatures contains !.equatable])
+           & not [propertyFeatures contains !.comparable]
+           & not [propertyFeatures contains !.referenceEquatable] then
           error property.name
           : "the structure is not equatable, because '" + property.name + "' is not"
         end
       case comparable :
-        if not [[t definition].features comparable] then
+        if not [[t definition].features contains !.comparable] then
           error property.name
           : "the structure is not comparable, because '" + property.name + "' is not"
         end
@@ -357,7 +359,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !constructorArgumentList
         !initializationCode
         !constructorNeedsCompilerVar
-        ![[structType definition].features generateSynthetizedInitializer]
+        ![[structType definition].features contains !.generateSynthetizedInitializer]
       }
   }
 

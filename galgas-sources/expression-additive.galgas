@@ -231,7 +231,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
        !self.mOperatorLocation
        !left.mValue >> [right.mValue uint]
      }
-  elsif not [[leftType definition].features infixShiftOperator] then
+  elsif not [[leftType definition].features contains !.infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
@@ -303,7 +303,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
        !self.mOperatorLocation
        !left.mValue << [right.mValue uint]
      }
-  elsif not [[leftType definition].features infixShiftOperator] then
+  elsif not [[leftType definition].features contains !.infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
@@ -361,7 +361,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixAddOperatorNoOVF]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixAddOperatorNoOVF]
     !"&+"
     !self.mOperatorLocation
     !?leftExpression
@@ -427,7 +427,7 @@ override method @addExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixAddOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixAddOperator]
     !"+"
     !self.mOperatorLocation
     !?leftExpression
@@ -494,7 +494,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixSubOperatorNoOVF]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixSubOperatorNoOVF]
     !"&-"
     !self.mOperatorLocation
     !?leftExpression
@@ -560,7 +560,7 @@ override method @subExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixSubOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixSubOperator]
     !"-"
     !self.mOperatorLocation
     !?leftExpression

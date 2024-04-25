@@ -460,14 +460,14 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         case none :
         case equatable :
           let associatedType = [associatedTypeEntry definition]
-          if (not [associatedType.features comparable])
-            & not [associatedType.features equatable]
-            & not [associatedType.features referenceEquatable] then
+          if (not [associatedType.features contains !.comparable])
+            & not [associatedType.features contains !.equatable]
+            & not [associatedType.features contains !.referenceEquatable] then
             error mValue0 : "the @" + mValue0 + " should be equatable"
           end
         case comparable :
           let associatedType = [associatedTypeEntry definition]
-          if not [associatedType.features comparable] then
+          if not [associatedType.features contains !.comparable] then
             error mValue0 : "the @" + mValue0 + " should be comparable"
           end
         end  

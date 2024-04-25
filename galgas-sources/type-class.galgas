@@ -783,7 +783,7 @@ refclass @classTypeForGeneration : @semanticTypeForGeneration {
         !self.mIsAbstract
         !self.initializerNeedsCompilerVariable
         !self.propertyInitializationCode
-        ![selfTypeDefinition.features generateSynthetizedInitializer]
+        ![selfTypeDefinition.features contains !.generateSynthetizedInitializer]
         !self.synthetizedInitializerArgumentList
         !self.inheritedSynthetizedInitializerArgumentList
         !selfTypeDefinition.initializerMap

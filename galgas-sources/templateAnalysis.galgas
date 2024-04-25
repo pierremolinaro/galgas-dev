@@ -331,7 +331,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixAndOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixAndOperator]
     !"&"
     !self.mOperatorLocation
     !?leftExpression
@@ -374,7 +374,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixOrOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixOrOperator]
     !"|"
     !self.mOperatorLocation
     !?leftExpression
@@ -417,7 +417,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixXorOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixXorOperator]
     !"^"
     !self.mOperatorLocation
     !?leftExpression
@@ -580,7 +580,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].features prefixNotOperator] then
+  if not [[type definition].features contains !.prefixNotOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"
     :outExpression
@@ -613,7 +613,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].features prefixTildeOperator] then
+  if not [[type definition].features contains !.prefixTildeOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the '~' operator"
     :outExpression
@@ -883,7 +883,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixAddOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixAddOperator]
     !"+"
     !self.mOperatorLocation
     !?leftExpression
@@ -928,7 +928,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixSubOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixSubOperator]
     !"-"
     !self.mOperatorLocation
     !?leftExpression
@@ -973,7 +973,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixMulOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixMulOperator]
     !"*"
     !self.mOperatorLocation
     !?leftExpression
@@ -1018,7 +1018,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixDivOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixDivOperator]
     !"/"
     !self.mOperatorLocation
     !?leftExpression
@@ -1063,7 +1063,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features infixModOperator]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixModOperator]
     !"mod"
     !self.mOperatorLocation
     !?leftExpression
@@ -1100,7 +1100,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not [[type definition].features prefixMinusOperator] then
+  if not [[type definition].features contains !.prefixMinusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
     :outExpression
@@ -1181,7 +1181,7 @@ override method @templateEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features equatable] | [[leftExpression.mResultType definition].features comparable]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.equatable] | [[leftExpression.mResultType definition].features contains !.comparable]
     !"=="
     !self.mOperatorLocation
     !?leftExpression
@@ -1224,7 +1224,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features equatable] | [[leftExpression.mResultType definition].features comparable]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.equatable] | [[leftExpression.mResultType definition].features contains !.comparable]
     !"!="
     !self.mOperatorLocation
     !?leftExpression
@@ -1267,7 +1267,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.comparable]
     !"<"
     !self.mOperatorLocation
     !?leftExpression
@@ -1310,7 +1310,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.comparable]
     !"<="
     !self.mOperatorLocation
     !?leftExpression
@@ -1353,7 +1353,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.comparable]
     !">"
     !self.mOperatorLocation
     !?leftExpression
@@ -1396,7 +1396,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
    ]
 #--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [[leftExpression.mResultType definition].features comparable]
+    !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.comparable]
     !">="
     !self.mOperatorLocation
     !?leftExpression
@@ -1440,7 +1440,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].features infixShiftOperator] then
+  if not [[leftType definition].features contains !.infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression
@@ -1488,7 +1488,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not [[leftType definition].features infixShiftOperator] then
+  if not [[leftType definition].features contains !.infixShiftOperator] then
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType definition].typeName.string + "' and does not support a shift operator"
     :outExpression

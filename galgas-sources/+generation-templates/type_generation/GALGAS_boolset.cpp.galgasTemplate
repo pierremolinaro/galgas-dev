@@ -153,14 +153,3 @@ end
   ioString.appendCString (">") ;
 }
 
-%for (mValue) in SLOT_LIST do (idx)
-  %//--------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  GALGAS_bool result ;\n%
-  %  if (mIsValid) {\n%
-  %    result = GALGAS_bool ((mFlags & (uint64_t (1) << %![idx string]%)) != 0) ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
-end
-%

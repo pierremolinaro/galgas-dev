@@ -468,7 +468,7 @@ override method @dictDeclarationAST semanticAnalysis
 {
 #--- Check key is comparable
   let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
-  if not [[keyType definition].features comparable] then
+  if not [[keyType definition].features contains !.comparable] then
     error self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable"
   end
 #--- Useful entities graph

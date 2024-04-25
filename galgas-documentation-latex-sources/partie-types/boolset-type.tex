@@ -91,25 +91,33 @@ var @MonEnsemble x = .indicateur1 | .indicateur2
 
 
 
-\section{Getters}
+\section{Getter}
 
-Un \emph{getter} sans argument est défini pour chaque élément~: il permet de savoir si un ensemble contient un élément.
+
+Le \emph{getter} \ggsq!contains! permet de savoir si le récepteur inclut la valeur de l'argument.
 
 
 \begin{galgas3}
-var x = @MonEnsemble.indicateur1
-var b = [x indicateur1]
-log b # LOGGING b: <@bool:true>
-b = [x indicateur2]
-log b # LOGGING b: <@bool:false>
+var @MonEnsemble x = ...
+var @MonEnsemble y = ...
+let @bool b = [x contains !y] // Vrai si x inclut y
 \end{galgas3}
 
 \begin{galgas4}
-var x = @MonEnsemble.indicateur1
-var b = x.indicateur1
-log b # LOGGING b: <@bool:true>
-b = x.indicateur2
-log b # LOGGING b: <@bool:false>
+var @MonEnsemble x = ...
+var @MonEnsemble y = ...
+let @bool b = x.contains (y) // Vrai si x inclut y
+\end{galgas4}
+
+Ce \emph{getter} permet de tester si un élément appartient à un ensemble :
+\begin{galgas3}
+var @MonEnsemble x = ...
+let @bool b = [x contains !.indicateur1] // Vrai si x contient indicateur1
+\end{galgas3}
+
+\begin{galgas4}
+var @MonEnsemble x = ...
+let @bool b = x.contains (.indicateur1) // Vrai si x contient indicateur1
 \end{galgas4}
 
 
@@ -155,5 +163,30 @@ Les opérateurs infixes du \refTableau{operateursInfixesBoolset} sont définis p
   \end{tabular}
   \caption{Opérateurs infixes des types \texttt{boolset}}
   \labelTableau{operateursInfixesBoolset}
+\end{table}
+
+
+
+
+
+
+
+
+
+\section{Opérateurs combinés avec l'affectation}
+
+Quatre opérateurs combinés avec l'affectation (\refTableau{operateursCombinesAffectationBoolset}) sont définis pour tout \ggsq=boolset=.
+
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{rl}
+    {\bf Expression} & {\bf Signification} \\
+    \ggsq+a &= b+ & Intersection~: équivalent à \ggsq!a = a & b!.\\
+    \ggsq+a |= b+ & Union~: équivalent à \ggsq!a = a | b!. \\
+    \ggsq+a ^= b+ & Intersection~: équivalent à \ggsq!a = a ^ b!.\\
+    \ggsq+a -= b+ & Union~: équivalent à \ggsq!a = a - b!. \\
+  \end{tabular}
+  \caption{Opérateurs combinés avec l'affectation des types \texttt{boolset}}
+  \labelTableau{operateursCombinesAffectationBoolset}
 \end{table}
 

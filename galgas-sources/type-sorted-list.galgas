@@ -402,7 +402,7 @@ override method @sortedListDeclarationAST semanticAnalysis
       error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
     end
     attributesUsedForSorting += !mSortedAttributeName.string
-    if not [[type definition].features comparable] then
+    if not [[type definition].features contains !.comparable] then
       error mSortedAttributeName : "the @" + [type definition].typeName + " type is not comparable"
     end
   end

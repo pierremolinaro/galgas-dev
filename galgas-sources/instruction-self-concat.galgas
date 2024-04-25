@@ -316,7 +316,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '+= exp' operator
-    if not [[selfAvailable.type definition].features plusEqualOperatorWithExpression] then
+    if not [[selfAvailable.type definition].features contains !.plusEqualOperatorWithExpression] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '+=' operator"
     end
@@ -362,7 +362,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '-= exp' operator
-    if not [[selfAvailable.type definition].features minusEqualOperatorWithExpression] then
+    if not [[selfAvailable.type definition].features contains !.minusEqualOperatorWithExpression] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '-=' operator"
     end
@@ -408,7 +408,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '*= exp' operator
-    if [[selfAvailable.type definition].features mulEqualOperatorWithExpression] then
+    if [[selfAvailable.type definition].features contains !.mulEqualOperatorWithExpression] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '*=' operator"
     end
@@ -454,7 +454,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target variable type support '/= exp' operator
-    if [[selfAvailable.type definition].features divEqualOperatorWithExpression] then
+    if [[selfAvailable.type definition].features contains !.divEqualOperatorWithExpression] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '/=' operator"
     end

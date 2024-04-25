@@ -93,69 +93,69 @@ end
 end%
 <tr class="result_line"><td>Operators</td>
   <td>
-    %if [[element definition].features infixAddOperator] then
+    %if [[element definition].features contains ![@typeFeatures infixAddOperator]] then
       %addition: %!linkForType (!type_lkey.string)% + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixSubOperator] then
+    if [[element definition].features contains ![@typeFeatures infixSubOperator]] then
       %substraction: %!linkForType (!type_lkey.string)% - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixMulOperator] then
+    if [[element definition].features contains ![@typeFeatures infixMulOperator]] then
       %multiplication: %!linkForType (!type_lkey.string)% * %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixDivOperator] then
+    if [[element definition].features contains ![@typeFeatures infixDivOperator]] then
       %division: %!linkForType (!type_lkey.string)% / %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixModOperator] then
+    if [[element definition].features contains ![@typeFeatures infixModOperator]] then
       %modulo: %!linkForType (!type_lkey.string)% <b>mod</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixShiftOperator] then
+    if [[element definition].features contains ![@typeFeatures infixShiftOperator]] then
       %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"bigint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"bigint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features prefixPlusOperator] then
+    if [[element definition].features contains ![@typeFeatures prefixPlusOperator]] then
       %prefix +: + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features prefixMinusOperator] then
+    if [[element definition].features contains ![@typeFeatures prefixMinusOperator]] then
       %prefix -: - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features prefixTildeOperator] then
+    if [[element definition].features contains ![@typeFeatures prefixTildeOperator]] then
       %bit wise negation: ~ %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixAndOperator] then
+    if [[element definition].features contains ![@typeFeatures infixAndOperator]] then
       %boolean and: %!linkForType (!type_lkey.string)% &amp; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixOrOperator] then
+    if [[element definition].features contains ![@typeFeatures infixOrOperator]] then
       %inclusive or: %!linkForType (!type_lkey.string)% | %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features infixXorOperator] then
+    if [[element definition].features contains ![@typeFeatures infixXorOperator]] then
       %exclusive or: %!linkForType (!type_lkey.string)% ^ %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features prefixNotOperator] then
+    if [[element definition].features contains ![@typeFeatures prefixNotOperator]] then
       %boolean negation: <b>not</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
     %equality test: %!linkForType (!type_lkey.string)% == %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
     %inequality test: %!linkForType (!type_lkey.string)% != %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
-    if [[element definition].features comparable] then
+    if [[element definition].features contains ![@typeFeatures comparable]] then
       %lower than test: %!linkForType (!type_lkey.string)% &lt; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %lower or equal test: %!linkForType (!type_lkey.string)% &lt;= %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %greater than test: %!linkForType (!type_lkey.string)% &gt; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %greater or equal test: %!linkForType (!type_lkey.string)% &gt;= %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
     end
-    if [[element definition].features plusEqualOperatorWithExpression] then
+    if [[element definition].features contains ![@typeFeatures plusEqualOperatorWithExpression]] then
       %+= instruction: %!linkForType (!type_lkey.string)% += %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features minusEqualOperatorWithExpression] then
+    if [[element definition].features contains ![@typeFeatures minusEqualOperatorWithExpression]] then
       %-= instruction: %!linkForType (!type_lkey.string)% -= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features mulEqualOperatorWithExpression] then
+    if [[element definition].features contains ![@typeFeatures mulEqualOperatorWithExpression]] then
       %*= instruction: %!linkForType (!type_lkey.string)% *= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features divEqualOperatorWithExpression] then
+    if [[element definition].features contains ![@typeFeatures divEqualOperatorWithExpression]] then
       %/= instruction: %!linkForType (!type_lkey.string)% /= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features incDecOperator] then
+    if [[element definition].features contains ![@typeFeatures incDecOperator]] then
       %incrementation instruction: %!linkForType (!type_lkey.string)% ++<br><br>%
       %decrementation instruction: %!linkForType (!type_lkey.string)% --<br><br>%
     end

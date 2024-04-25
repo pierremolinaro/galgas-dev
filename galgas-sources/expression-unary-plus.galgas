@@ -94,7 +94,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = outExpression.mResultType
-  if not [[type definition].features prefixPlusOperator] then
+  if not [[type definition].features contains !.prefixPlusOperator] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix '+' operator"
     :outExpression

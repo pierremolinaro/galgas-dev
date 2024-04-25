@@ -109,7 +109,7 @@ refclass @andEqualExpressionInstructionAST : @semanticInstructionAST {
       end
     end
   #--- Check target variable type support '/= exp' operator
-    if [[targetType definition].features andEqualOperatorWithExpression] then
+    if [[targetType definition].features contains !.andEqualOperatorWithExpression] then
       error self.mInstructionLocation
       :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '&=' operator"
     end
@@ -551,7 +551,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     end
   end
 #--- Check target variable type support '+= exp' operator
-  if not [[targetType definition].features plusEqualOperatorWithExpression] then
+  if not [[targetType definition].features contains !.plusEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
   end
@@ -633,7 +633,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     end
   end
 #--- Check target variable type support '-= exp' operator
-  if not [[targetType definition].features minusEqualOperatorWithExpression] then
+  if not [[targetType definition].features contains !.minusEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '-=' operator"
   end
@@ -716,7 +716,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     end
   end
 #--- Check target variable type support '*= exp' operator
-  if [[targetType definition].features mulEqualOperatorWithExpression] then
+  if [[targetType definition].features contains !.mulEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '*=' operator"
   end
@@ -799,7 +799,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     end
   end
 #--- Check target variable type support '/= exp' operator
-  if [[targetType definition].features divEqualOperatorWithExpression] then
+  if [[targetType definition].features contains !.divEqualOperatorWithExpression] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '/=' operator"
   end
@@ -976,7 +976,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if [[self.mTargetType definition].features plusEqualOperatorWithFieldListNeedsCompilerArg] then
+  if [[self.mTargetType definition].features contains !.plusEqualOperatorWithFieldListNeedsCompilerArg] then
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end

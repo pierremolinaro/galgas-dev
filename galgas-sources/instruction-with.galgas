@@ -432,8 +432,10 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
 #--- Check this type handle 'with' access
-  if not [[receiverType definition].features supportWithAccessor] then
-    error self.mEndOfReceiverExpression : "the '@"+ [receiverType definition].typeName.string + "' type cannot be used in a 'with' instruction"
+  if not [[receiverType definition].features contains !.supportWithAccessor] then
+    error self.mEndOfReceiverExpression
+    : "the '@"+ [receiverType definition].typeName.string
+    + "' type cannot be used in a 'with' instruction"
   end
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
@@ -562,7 +564,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check this type handle 'with' access
-  if not [[targetType definition].features supportWithAccessor] then
+  if not [[targetType definition].features contains !.supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].typeName.string + "' type cannot be used in a 'with' instruction"
   end
 #--- Check search method

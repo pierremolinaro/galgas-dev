@@ -95,7 +95,7 @@ refclass @tildeExpressionAST : @semanticExpressionAST {
         !exp.mLocation
         !~ exp.mValue
       }
-    elsif not [[type definition].features prefixTildeOperator] then
+    elsif not [[type definition].features contains !.prefixTildeOperator] then
       error self.mOperatorLocation
       : "operand type is '@" + [type definition].typeName.string
       + "' and does not support the '~' operator"

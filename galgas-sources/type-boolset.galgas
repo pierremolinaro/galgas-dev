@@ -158,15 +158,6 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
-#proc enterBaseGetterWithArgument
-#  ?!@getterMap ioGetterMap
-#  ?!@unifiedTypeMap ioUnifiedTypeMap
-#  ?getterName: let @string inGetterName
-#  ?argSelector: let @string inArgument1Selector
-#  ?argType: let @string inArgument1TypeName
-#  ?argName: let @string inArgument1Name
-#  ?returnedTypeName:let @string inReturnedTypeName
-#  ?hasCompilerArgument:let @bool inHasCompilerArgument
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioTypeMap
@@ -182,14 +173,14 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
       [!?classFunctionMap insertKey !slotName !() !false !boolsetTypeIndex]
-      enterBaseFinalGetterWithoutArgument (
-        !?getterMap
-        !?ioTypeMap
-        !getterName:slotName.string
-        !obsoleteName: ""
-        !returnedTypeName:"bool"
-        !hasCompilerArgument:false
-      )
+#      enterBaseFinalGetterWithoutArgument (
+#        !?getterMap
+#        !?ioTypeMap
+#        !getterName:slotName.string
+#        !obsoleteName: ""
+#        !returnedTypeName:"bool"
+#        !hasCompilerArgument:false
+#      )
     end
   end
 #--- Add initializer without argument

@@ -245,7 +245,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check target type accepts incrementation
-  if not [[targetType definition].features incDecOperator] then
+  if not [[targetType definition].features contains !.incDecOperator] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '++', '--' operators"
   end
@@ -284,7 +284,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Check target type accepts incrementation
-  if not [[targetType definition].features incDecOperator] then
+  if not [[targetType definition].features contains !.incDecOperator] then
     error self.mInstructionLocation
     :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '&++', '&--' operators"
   end
@@ -313,7 +313,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
-    if not [[selfAvailable.type definition].features incDecOperator] then
+    if not [[selfAvailable.type definition].features contains !.incDecOperator] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '&++' and  '&--' operators"
     end
@@ -345,7 +345,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   #--- Check target type accepts incrementation
-    if not [[selfAvailable.type definition].features incDecOperator] then
+    if not [[selfAvailable.type definition].features contains !.incDecOperator] then
       error self.mInstructionLocation
       :"the target object has the '@" + [selfAvailable.type definition].typeName.string + "' type, but this type does not support the '++' and  '--' operators"
     end
