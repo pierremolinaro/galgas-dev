@@ -6436,6 +6436,12 @@ bool GALGAS_bigint_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_bigint_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_bigint_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_bigint () ;

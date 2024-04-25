@@ -51,6 +51,12 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% () ;

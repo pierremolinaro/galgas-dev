@@ -3625,6 +3625,8 @@ class GALGAS_initializerMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9271,6 +9273,8 @@ class GALGAS_insertMethodMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9542,6 +9546,8 @@ class GALGAS_searchMethodMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 

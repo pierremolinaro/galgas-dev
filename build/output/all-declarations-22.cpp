@@ -1534,6 +1534,12 @@ bool GALGAS_templateVariableMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_templateVariableMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_templateVariableMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_templateVariableMap_2D_element () ;
@@ -3368,6 +3374,12 @@ bool GALGAS_terminalMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_terminalMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_terminalMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_terminalMap_2D_element () ;
@@ -3610,6 +3622,12 @@ bool GALGAS_lexicalTypeMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_lexicalTypeMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_lexicalTypeMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_lexicalTypeMap_2D_element () ;
@@ -3848,6 +3866,12 @@ bool GALGAS_lexicalAttributeMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_lexicalAttributeMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_lexicalAttributeMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4275,6 +4299,12 @@ bool GALGAS_lexicalExplicitTokenListMap_2D_element_3F_::isValuated (void) const 
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_lexicalExplicitTokenListMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_lexicalExplicitTokenListMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_lexicalExplicitTokenListMap_2D_element () ;
@@ -4537,6 +4567,12 @@ bool GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_::isValuated (void) con
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_lexicalExplicitTokenListMapMap_2D_element () ;
@@ -4785,6 +4821,12 @@ bool GALGAS_lexicalMessageMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_lexicalMessageMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_lexicalMessageMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5047,6 +5089,12 @@ bool GALGAS_lexicalRoutineMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_lexicalRoutineMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_lexicalRoutineMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5319,6 +5367,12 @@ bool GALGAS_lexicalFunctionMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_lexicalFunctionMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_lexicalFunctionMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5706,6 +5760,12 @@ bool GALGAS_styleMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_styleMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_styleMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_styleMap_2D_element () ;
@@ -5934,6 +5994,12 @@ bool GALGAS_lexicalTagMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_lexicalTagMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_lexicalTagMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6377,6 +6443,12 @@ bool GALGAS_commandLineOptionMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_commandLineOptionMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_commandLineOptionMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7147,6 +7219,12 @@ bool GALGAS_extensionMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_extensionMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_extensionMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_extensionMap_2D_element () ;
@@ -7657,6 +7735,12 @@ bool GALGAS_optionComponentMapForGeneration_2D_element_3F_::isValid (void) const
 
 bool GALGAS_optionComponentMapForGeneration_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_optionComponentMapForGeneration_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9022,6 +9106,12 @@ bool GALGAS_insertMethodMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_insertMethodMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_insertMethodMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_insertMethodMap_2D_element () ;
@@ -9250,6 +9340,12 @@ bool GALGAS_searchMethodMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_searchMethodMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_searchMethodMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9627,6 +9723,12 @@ bool GALGAS_subscriptMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_subscriptMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_subscriptMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_subscriptMap_2D_element () ;
@@ -9909,6 +10011,12 @@ bool GALGAS_scopeLocalVarMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_scopeLocalVarMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_scopeLocalVarMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_scopeLocalVarMap_2D_element () ;
@@ -10151,6 +10259,12 @@ bool GALGAS_unifiedTypeMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_unifiedTypeMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_unifiedTypeMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_unifiedTypeMap_2D_element () ;
@@ -10379,6 +10493,12 @@ bool GALGAS_typeDefinition_2D_solved_3F_::isValid (void) const {
 
 bool GALGAS_typeDefinition_2D_solved_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_typeDefinition_2D_solved_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12619,6 +12739,12 @@ bool GALGAS_classFunctionMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_classFunctionMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_classFunctionMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_classFunctionMap_2D_element () ;
@@ -12857,6 +12983,12 @@ bool GALGAS_initializerMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_initializerMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_initializerMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13304,6 +13436,12 @@ bool GALGAS_getterMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_getterMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_getterMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_getterMap_2D_element () ;
@@ -13727,6 +13865,12 @@ bool GALGAS_setterMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_setterMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_setterMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_setterMap_2D_element () ;
@@ -14019,6 +14163,12 @@ bool GALGAS_instanceMethodMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_instanceMethodMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_instanceMethodMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_instanceMethodMap_2D_element () ;
@@ -14267,6 +14417,12 @@ bool GALGAS_classMethodMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_classMethodMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_classMethodMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14684,6 +14840,12 @@ bool GALGAS_propertyMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_propertyMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_propertyMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_propertyMap_2D_element () ;
@@ -14952,6 +15114,12 @@ bool GALGAS_constantIndexMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_constantIndexMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_constantIndexMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_constantIndexMap_2D_element () ;
@@ -15190,6 +15358,12 @@ bool GALGAS_internalRoutineMap_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_internalRoutineMap_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_internalRoutineMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15446,6 +15620,12 @@ bool GALGAS_routineArgumentMap_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_routineArgumentMap_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_routineArgumentMap_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_routineArgumentMap_2D_element () ;
@@ -15630,127 +15810,6 @@ GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::extractObje
       result = *p ;
     }else{
       inCompiler->castError ("grammarLabelMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Optional @grammarLabelMap_2D_element_3F_
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_::GALGAS_grammarLabelMap_2D_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_::GALGAS_grammarLabelMap_2D_element_3F_ (const GALGAS_grammarLabelMap_2D_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_ GALGAS_grammarLabelMap_2D_element_3F_::init_nil (void) {
-  GALGAS_grammarLabelMap_2D_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_grammarLabelMap_2D_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_grammarLabelMap_2D_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_grammarLabelMap_2D_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GALGAS_grammarLabelMap_2D_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_grammarLabelMap_2D_element_3F_::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @grammarLabelMap-element? generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2D_element_3F_ ("grammarLabelMap-element?",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_grammarLabelMap_2D_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarLabelMap_2D_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_grammarLabelMap_2D_element_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_grammarLabelMap_2D_element_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_grammarLabelMap_2D_element_3F_ GALGAS_grammarLabelMap_2D_element_3F_::extractObject (const GALGAS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_grammarLabelMap_2D_element_3F_ result ;
-  const GALGAS_grammarLabelMap_2D_element_3F_ * p = (const GALGAS_grammarLabelMap_2D_element_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_grammarLabelMap_2D_element_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("grammarLabelMap-element?", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

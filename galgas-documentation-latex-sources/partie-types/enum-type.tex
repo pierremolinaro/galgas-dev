@@ -11,7 +11,7 @@
 
 \section{Déclaration}
 
-La déclaration d'un type \ggst+enum+ nomme l'ensemble des constantes du type énuméré. Dans ce premier exemple, les constantes n'ont pas de valeur associée.
+La déclaration d'un type \ggst+enum+ nomme l'ensemble des constantes du type énuméré. Plusieurs types énumérés peuvent définir des constantes de même nom. Dans ce premier exemple, les constantes n'ont pas de valeur associée.
 
 Par exemple :
 
@@ -23,25 +23,302 @@ enum @feuTricolore {
 }
 \end{galgas34}
 
-Plusieurs types énumérés peuvent définir des constantes de même nom.
+À chaque constante d'un type énuméré, on paut associer plusieurs valeurs. Par exemple~:
+
+\begin{galgas3}
+enum @monOption {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value @string name)
+}
+\end{galgas3}
+
+\begin{galgas4}
+enum @monOption {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value, @string name)
+}
+\end{galgas4}
+
+Chaque valeur associée est spécifiée par son type et son nom. Noter la virgule de séparation en GALGAS4.
+
+
+
+
+
 
 \section{Instanciation}
 
-Chaque constante définit un constructeur de même nom. On peut ainsi écrire :
+Chaque constante définit un initialisateur de même nom. Si la constante n'a pas de valeur associée, on écrit :
 
-\begin{galgas3}
-@feuTricolore feu = @feuTricolore.vert
-\end{galgas3}
+\begin{galgas34}
+var @feuTricolore feu = @feuTricolore.vert ()
+\end{galgas34}
+
+Les parenthèses peuvent être omises :
+\begin{galgas34}
+var @feuTricolore feu = @feuTricolore.vert
+\end{galgas34}
 
 L'annotation de type peut être omise :
 
-\begin{galgas3}
-@feuTricolore feu = .vert
-\end{galgas3}
+\begin{galgas34}
+var @feuTricolore feu = .vert
+\end{galgas34}
+
+\begin{galgas34}
+var feu = @feuTricolore.vert
+\end{galgas34}
+
+
+Si la constante présente des valeurs associées, l'initialisateur présente autant d'argument, chaque ayant comme étiquette le nom donné dans la déclaration~:
 
 \begin{galgas3}
-var feu = @feuTricolore.vert
+var @monOption feu = @monOption.option2 {!name: "toto" !value: 0}
 \end{galgas3}
+
+\begin{galgas34}
+var @monOption feu = @monOption.option2 (!name: "toto", !value: 0)
+\end{galgas34}
+
+Comme dans l'exemple précédent, l'annotation de type peut être omise.
+
+
+
+
+
+
+
+
+\section{L'instruction \texttt{switch}}
+
+L'instruction \ggst+switch+ (\refSectionPage{instructionSwitch}) est dédiée à tous les types énumérés. On écrit par exemple :
+
+\begin{galgas34}
+var @feuTricolore feu = ...
+switch feu
+case vert : ...
+case orange : ...
+case rouge : ...
+end
+\end{galgas34}
+
+Chaque constante doit apparaître une et une seule fois~: l'instruction \ggst+switch+ est exhaustive.
+
+Si une constante présente des valeurs associées, alors elles doivent toutes être mentionnées~:
+
+\begin{galgas3}
+var @monOption uneOption = ...
+switch uneOption
+case noOption : ...
+case option1 (@string unNom) : ...
+case option2 (@uint unEntier @string unNom) : ...
+end
+\end{galgas3}
+
+L'annotation de type d'une valeur associée peut être omise~:
+
+\begin{galgas3}
+var @monOption uneOption = ...
+switch uneOption
+case noOption : ...
+case option1 (unNom) : ...
+case option2 (unEntier unNom) : ...
+end
+\end{galgas3}
+
+Si une valeur associée n'est pas utile, on peut remplacer son nom par un joker~:
+\begin{galgas3}
+var @monOption uneOption = ...
+switch uneOption
+case noOption : ...
+case option1 (unNom) : ...
+case option2 (unEntier *) : ...
+end
+\end{galgas3}
+
+Plusieurs \emph{jokers} consécutifs peuvent être regroupés~:
+
+\begin{galgas3}
+var @monOption uneOption = ...
+switch uneOption
+case noOption : ...
+case option1 (unNom) : ...
+case option2 (2*) : ...
+end
+\end{galgas3}
+
+En GALGAS4, les valeurs associées consécutives doivent être séparées par des virgules~:
+
+\begin{galgas4}
+var @monOption uneOption = ...
+switch uneOption
+case noOption : ...
+case option1 (unNom) : ...
+case option2 (unEntier, unNom) : ...
+end
+\end{galgas4}
+
+\begin{galgas4}
+var @monOption uneOption = ...
+switch uneOption
+case noOption : ...
+case option1 (unNom) : ...
+case option2 (unEntier, *) : ...
+end
+\end{galgas4}
+
+
+
+
+
+
+\sectionLabel{Tester une valeur}{testerValeurEnum}
+
+Un type émuméré définit un \emph{getter} sans argument pour chaque constante déclarée.
+
+\subsection{Constante sans valeur associée}
+
+Si la constante n'a pas de valeur associée, ce getter renvoie une valeur booléenne qui permet de savoir si le récepteur a pour valeur cette constante. Ce \emph{getter} a pour signature~:
+\begin{galgas4}
+func @monOption.noOption () -> @bool
+\end{galgas4}
+\begin{galgas3}
+func @monOption noOption -> @bool
+\end{galgas3}
+
+Ainsi~:
+
+\begin{galgas4}
+var v = @monOption.noOption
+let @bool b = v.noOption // b est true
+v = @monOption.option1 (!name: "xyz")
+let @bool c = v.noOption // c est false
+\end{galgas4}
+\begin{galgas3}
+var v = @monOption.noOption
+let @bool b = [v noOption] // b est true
+v = @monOption.option1 (!name: "xyz")
+let @bool c = [v noOption] // c est false
+\end{galgas3}
+
+\subsection{Constante avec valeurs associées}
+
+Si la constante a des valeurs associées, ce getter renvoie une valeur optionnelle qui permet de savoir si le récepteur a pour valeur cette constante, et d'obtenir les valeurs associées.
+
+Pour chaque constante ayant des valeurs associées, un type structure est implicitement défini, dont les propriétés sont les valeurs associées. Ainsi, sont définis~:
+\begin{galgas4}
+struct @monOption.@option1 {
+  public let @string name
+}
+struct @monOption.@option2 {
+  public let @uint value
+  public let @string name
+}
+\end{galgas4}
+
+Les \emph{getter} associés ont pour signature~:
+\begin{galgas4}
+func @monOption.option1 () -> @monOption.@option1?
+func @monOption.option2 () -> @monOption.@option2?
+\end{galgas4}
+\begin{galgas3}
+func @monOption option1 -> @monOption.@option1?
+func @monOption option2 -> @monOption.@option2?
+\end{galgas3}
+
+\subsubsection{Pas d'intérêt pour les valeurs associées}
+
+Si l'on ne s'intéresse pas aux valeurs associées, on teste si la valeur retournée est \ggsq!nil!~:
+
+\begin{galgas4}
+var v = @monOption.noOption
+let @bool a = v.option1.isNil // a est true
+v = @monOption.option1 (!name: "xyz")
+let @bool b = v.option1.isNil // b est false
+\end{galgas4}
+\begin{galgas3}
+var v = @monOption.noOption
+let @bool a = [[v option1] isNil] // a est true
+v = @monOption.option1 (!name: "xyz")
+let @bool b = [[v option1] isNil] // b est false
+\end{galgas3}
+
+Si l'écriture paraît trop lourde, on peut définir un \emph{getter} qui renvoie une valeur boolénne~:
+\begin{galgas4}
+func @monOption.isOption1 () -> @bool {
+  result = not self.option1.isNil
+}
+\end{galgas4}
+\begin{galgas3}
+getter @monOption isOption1 -> @bool {
+  result = not [[self option1] isNil]
+}
+\end{galgas3}
+
+Les tests deviennent alors~:
+\begin{galgas4}
+var v = @monOption.noOption
+let @bool a = v.isOption1 // a est false
+v = @monOption.option1 (!name: "xyz")
+let @bool b = v.isOption1 // b est true
+\end{galgas4}
+\begin{galgas3}
+var v = @monOption.noOption
+let @bool a = [v isOption1] // a est false
+v = @monOption.option1 (!name: "xyz")
+let @bool b = [v isOption1] // b est true
+\end{galgas3}
+
+
+
+
+\subsubsection{Récupération des valeurs associées}
+
+Si on s'intéresse aux valeurs associées, il faut extraire la valeur embarquée dans la valeur optionnelle renvoyée, ce qui peut être fait dans une instruction \ggsq!if!~:
+
+\begin{galgas4}
+var v = ...
+if let x = v.option1 then
+  // Ici, v a pour valeur option1
+  // x a pour type @monOption.@option1
+  // On accède à la valeur associée par x.name
+else
+  // Ici, v a pour une valeur autre que option1
+  // et x n'est pas accessible
+end
+\end{galgas4}
+
+\begin{galgas3}
+var v = ...
+if let x = [v option1] then
+  // Ici, v a pour valeur option1
+  // x a pour type @monOption.@option1
+  // On accède à la valeur associée par x.name
+else
+  // Ici, v a pour une valeur autre que option1
+  // et x n'est pas accessible
+end
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Comparaison}
 
@@ -50,137 +327,95 @@ Un type enuméré accepte les six opérateurs de comparaison (\ggst+==+, \ggst+!
   @feuTricolore.vert < @feuTricolore.orange < @feuTricolore.rouge
 \end{galgas3}
 
-
-\sectionLabel{Tester une valeur}{testerValeurEnum}
-
 Il y a deux façons de tester une valeur d'un type énuméré. La première consiste à comparer avec une valeur obtenue par un constructeur, par exemple :
 \begin{galgas3}
   if feu == @feuTricolore.orange then ...
 \end{galgas3}
 
-La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \texttt{is<Constante>} (le préfixe \texttt{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \ggst+@bool+ qui est vrai si le récepteur a la valeur correspondante :
-\begin{galgas3}
-  if [feu isOrange] then ...
-\end{galgas3}
-
-\section{L'instruction \texttt{switch}}
-
-L'instruction \ggst+switch+ (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés. On écrit par exemple :
-
-\begin{galgas3}
-@feuTricolore feu = ...
-switch feu
-case vert : message "vert"
-case orange : message "orange"
-case rouge : message "rouge"
-end
-\end{galgas3}
 
 
 
 
 
 
-
-
-
-
-
-\section{Valeurs associées}
+\section{Exemple d'utilisation des valeurs associées}
 
 Il est possible d'associer des valeurs à chaque constante, ce qui permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
 
-\begin{galgas3}
-rule regleProduction {
+\begin{galgas34}
+rule <regleProduction> {
   select
   or
     $option$
-    $identifier$ ?let nomOption
+    $identifier$ (?let nomOption)
   end
 }
-\end{galgas3}
+\end{galgas34}
 
 Comment construire l'arbre syntaxique abstrait ? Il y a en fait trois possibilités.
 
 \textbf{Première solution.} La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
-\begin{galgas3}
-rule regleProduction {
-  @lstring nomOption
+\begin{galgas34}
+rule <regleProduction> {
+  let @lstring nomOption
   select
-    nomOption = ["" nowhere]
+    nomOption = "".here
   or
     $option$
-    $identifier$ ?nomOption
+    $identifier$ (?nomOption)
   end
 }
-\end{galgas3}
+\end{galgas34}
 
-Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considéré comme l'absence d'option.
+Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considérée comme l'absence d'option.
 
 \textbf{Deuxième solution.} La deuxième solution fait appel à trois classes :
-\begin{galgas3}
+\begin{galgas4}
 abstract class @abstractOption {}
 
 class @noOption : @abstractOption {}
 
-class @option : @abstractOption { @lstring mOptionName }
-\end{galgas3}
+class @option : @abstractOption { public let @lstring name }
+\end{galgas4}
 
-La construction de l'arbre est réalisée par :
-\begin{galgas3}
-rule regleProduction {
-  @abstractOption optionAST
+La construction est réalisée par :
+\begin{galgas4}
+rule <regleProduction> {
+  let @abstractOption optionAST
   select
-    optionAST = @noOption.new
+    optionAST = @noOption ()
   or
     $option$
-    $identifier$ ?let nomOption
-    optionAST = @option.new {!nomOption}
+    $identifier$ (?let nom)
+    optionAST = @option (nom)
   end
 }
-\end{galgas3}
+\end{galgas4}
 
-Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \ggst+@abstractOption+, et les redéfinir dans les deux classes héritières \ggst+@noOption+ et \ggst+@option+.
+Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes.
 
 \textbf{Troisième solution.} La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
 
-\begin{galgas3}
+\begin{galgas4}
 enum @option {
   case noOption
-  case optionPresente (@lstring optionName)
+  case optionPresente (@lstring name)
 }
-\end{galgas3}
+\end{galgas4}
 
-À la constante \ggst+optionPresente+ est associée une valeur de type \ggst+@lstring+, identifiée par le nom \ggst+optionName+. Ce nom est optionnel, on pourrait écrire \ggst+optionPresente (@lstring)+. La construction de l'arbre syntaxique est maintenant réalisée par :
-\begin{galgas3}
-rule regleProduction {
-  @option optionAST
+À la constante \ggst+optionPresente+ est associée une valeur de type \ggst+@lstring+, identifiée par le nom \ggst+name+. La construction est maintenant réalisée par :
+\begin{galgas4}
+rule <regleProduction> {
+  let @option optionAST
   select
-    optionAST = @option.noOption
+    optionAST = .noOption
   or
     $option$
-    $identifier$ ?let nomOption
-    optionAST = @option.optionPresente {!optionName:nomOption}
+    $identifier$ (?let nomOption)
+    optionAST = .optionPresente (!name: nomOption)
   end
 }
-\end{galgas3}
-
-À la constante \ggst+optionPresente+ correspond un constructeur de même nom, avec un argument qui correspond à la valeur associée \ggst+@lstring optionName+. Le nom \ggst+optionName+ est utilisé comme sélecteur. Si on avait déclaré la valeur associée sans nom par \ggst+optionPresente (@lstring)+, alors l'appel du constructeur serait \ggst+@option.optionPresente {!nomOption}+.
-
-Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
-
-Les six opérateurs de comparaison (\ggst+==+, \ggst+!=+, \ggst+<+, \ggst+<=+, \ggst+>+ et \ggst+>+) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
-
-Il n'y a qu'une façon d'extraire les valeurs associées, l'instruction \ggst+switch+ :
-
-\begin{galgas3}
-switch optionAST
-case noOption : ...
-case optionPresente (@lstring nomOption) : ...
-end
-\end{galgas3}
-
-\ggst+nomOption+ est une constante dont la portée s'étend jusqu'à la fin de la branche \ggst+case+ courante.
+\end{galgas4}
 
 
 

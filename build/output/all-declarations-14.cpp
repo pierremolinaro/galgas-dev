@@ -9792,6 +9792,12 @@ bool GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_::isValuated (vo
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_templateInstructionForEnumerationAST_2D_implicit () ;
@@ -10030,6 +10036,12 @@ bool GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_::isValid (void)
 
 bool GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12937,6 +12949,12 @@ bool GALGAS_typeKindEnum_2D_classType_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_typeKindEnum_2D_classType_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_typeKindEnum_2D_classType_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_typeKindEnum_2D_classType () ;
@@ -13175,6 +13193,12 @@ bool GALGAS_typeKindEnum_2D_weakReferenceType_3F_::isValid (void) const {
 
 bool GALGAS_typeKindEnum_2D_weakReferenceType_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_typeKindEnum_2D_weakReferenceType_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13421,6 +13445,12 @@ bool GALGAS_typeKindEnum_2D_enumType_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_typeKindEnum_2D_enumType_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_typeKindEnum_2D_enumType_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_typeKindEnum_2D_enumType () ;
@@ -13659,6 +13689,12 @@ bool GALGAS_localVarValuation_2D_declared_3F_::isValid (void) const {
 
 bool GALGAS_localVarValuation_2D_declared_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_localVarValuation_2D_declared_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------

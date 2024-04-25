@@ -5685,6 +5685,8 @@ class GALGAS_selfAvailability_2D_available_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9084,6 +9086,8 @@ class GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9236,6 +9240,8 @@ class GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9388,6 +9394,8 @@ class GALGAS_fixitElementAST_2D_fixItReplace_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -10063,6 +10071,8 @@ class GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ : public AC_GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -10203,6 +10213,8 @@ class GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ : public AC_GALG
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -10343,6 +10355,8 @@ class GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ : public AC_GALGAS_ro
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 

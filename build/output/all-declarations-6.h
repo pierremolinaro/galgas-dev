@@ -2416,6 +2416,8 @@ class GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -2556,6 +2558,8 @@ class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_roo
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -2698,6 +2702,8 @@ class GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ : public AC_GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7019,6 +7025,8 @@ class GALGAS_AccessControl_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7159,6 +7167,8 @@ class GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7299,6 +7309,8 @@ class GALGAS_AccessControl_2D_privateAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7439,6 +7451,8 @@ class GALGAS_AccessControl_2D_privateSetAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7579,6 +7593,8 @@ class GALGAS_AccessControl_2D_protectedAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7719,6 +7735,8 @@ class GALGAS_AccessControl_2D_protectedSetAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7885,6 +7903,8 @@ class GALGAS_constantIndexMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -8204,6 +8224,8 @@ class GALGAS_internalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -8400,6 +8422,8 @@ class GALGAS_routineArgumentMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9011,6 +9035,8 @@ class GALGAS_grammarLabelMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9221,6 +9247,8 @@ class GALGAS_grammarMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9431,6 +9459,8 @@ class GALGAS_functionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -9818,6 +9848,8 @@ class GALGAS_wrapperFileMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 

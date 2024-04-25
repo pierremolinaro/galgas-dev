@@ -62,6 +62,14 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
     ?!@semanticContext ioSemanticContext {
   #--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+    enterBaseGetterWithoutArgument (
+      !?getterMap
+      !?ioTypeMap
+      !getterName: "isNil"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
   #--- Add extensions
     var @instanceMethodMap instanceMethodMap = ()
     var @setterMap setterMap = ()

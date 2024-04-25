@@ -3830,6 +3830,8 @@ class GALGAS_terminalMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -4136,6 +4138,8 @@ class GALGAS_lexicalTypeMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -4442,6 +4446,8 @@ class GALGAS_lexicalAttributeMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -5182,6 +5188,8 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ : public AC_GALGAS_root 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -5758,6 +5766,8 @@ class GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ : public AC_GALGAS_ro
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -6091,6 +6101,8 @@ class GALGAS_lexicalMessageMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -6735,6 +6747,8 @@ class GALGAS_lexicalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7374,6 +7388,8 @@ class GALGAS_lexicalFunctionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -7991,6 +8007,8 @@ class GALGAS_styleMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -8270,6 +8288,8 @@ class GALGAS_lexicalTagMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 

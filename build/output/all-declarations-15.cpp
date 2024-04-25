@@ -282,6 +282,12 @@ bool GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_::isValuated (void) con
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_overrideKind_2D_selectOverrideFirstBranch () ;
@@ -520,6 +526,12 @@ bool GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_::isValid (void) const
 
 bool GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -877,6 +889,12 @@ bool GALGAS_unifiedTypeMapEntry_2D_element_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_unifiedTypeMapEntry_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_unifiedTypeMapEntry_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_unifiedTypeMapEntry_2D_element () ;
@@ -1226,6 +1244,12 @@ bool GALGAS_syntaxExtensionsDictionary_2D_element_3F_::isValid (void) const {
 
 bool GALGAS_syntaxExtensionsDictionary_2D_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_syntaxExtensionsDictionary_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1690,6 +1714,12 @@ bool GALGAS_propertyInCollectionInitializationAST_2D_some_3F_::isValid (void) co
 
 bool GALGAS_propertyInCollectionInitializationAST_2D_some_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_propertyInCollectionInitializationAST_2D_some_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3888,6 +3918,12 @@ bool GALGAS_selfAvailability_2D_available_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_selfAvailability_2D_available_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_selfAvailability_2D_available_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_selfAvailability_2D_available () ;
@@ -4271,6 +4307,12 @@ bool GALGAS_fixitElementAST_2D_fixItReplace_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_fixitElementAST_2D_fixItReplace_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_fixitElementAST_2D_fixItReplace_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_fixitElementAST_2D_fixItReplace () ;
@@ -4513,6 +4555,12 @@ bool GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_fixitElementAST_2D_fixItInsertAfter () ;
@@ -4751,6 +4799,12 @@ bool GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_::isValid (void) const {
 
 bool GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5336,6 +5390,12 @@ bool GALGAS_ifExpressionKind_2D_regularExp_3F_::isValid (void) const {
 
 bool GALGAS_ifExpressionKind_2D_regularExp_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_ifExpressionKind_2D_regularExp_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6661,6 +6721,12 @@ bool GALGAS_genericExtensionMethodListMapDictionary_2D_element_3F_::isValuated (
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_genericExtensionMethodListMapDictionary_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_genericExtensionMethodListMapDictionary_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_genericExtensionMethodListMapDictionary_2D_element () ;
@@ -7024,6 +7090,12 @@ bool GALGAS_descendantClassListMapDictionary_2D_element_3F_::isValuated (void) c
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_descendantClassListMapDictionary_2D_element_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_descendantClassListMapDictionary_2D_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_descendantClassListMapDictionary_2D_element () ;
@@ -7252,6 +7324,12 @@ bool GALGAS_AccessControlAST_2D_fileprivateAccess_3F_::isValid (void) const {
 
 bool GALGAS_AccessControlAST_2D_fileprivateAccess_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControlAST_2D_fileprivateAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7488,6 +7566,12 @@ bool GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_::isValuated (void) cons
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_AccessControlAST_2D_fileprivateSetAccess () ;
@@ -7716,6 +7800,12 @@ bool GALGAS_AccessControl_2D_protectedAccess_3F_::isValid (void) const {
 
 bool GALGAS_AccessControl_2D_protectedAccess_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControl_2D_protectedAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7952,6 +8042,12 @@ bool GALGAS_AccessControl_2D_protectedSetAccess_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_AccessControl_2D_protectedSetAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControl_2D_protectedSetAccess_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_AccessControl_2D_protectedSetAccess () ;
@@ -8180,6 +8276,12 @@ bool GALGAS_AccessControl_2D_privateAccess_3F_::isValid (void) const {
 
 bool GALGAS_AccessControl_2D_privateAccess_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControl_2D_privateAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8416,6 +8518,12 @@ bool GALGAS_AccessControl_2D_privateSetAccess_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_AccessControl_2D_privateSetAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControl_2D_privateSetAccess_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_AccessControl_2D_privateSetAccess () ;
@@ -8648,6 +8756,12 @@ bool GALGAS_AccessControl_2D_fileprivateAccess_3F_::isValuated (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_AccessControl_2D_fileprivateAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_AccessControl_2D_fileprivateAccess_3F_::drop (void) {
   mState = OptionalState::invalid ;
   mValue = GALGAS_AccessControl_2D_fileprivateAccess () ;
@@ -8876,6 +8990,12 @@ bool GALGAS_AccessControl_2D_fileprivateSetAccess_3F_::isValid (void) const {
 
 bool GALGAS_AccessControl_2D_fileprivateSetAccess_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_AccessControl_2D_fileprivateSetAccess_3F_::getter_isNil (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15440,333 +15560,6 @@ GALGAS_templateGetterCallInExpressionAST GALGAS_templateGetterCallInExpressionAS
       result = *p ;
     }else{
       inCompiler->castError ("templateGetterCallInExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateInstructionForeachAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mIsAscending (),
-mProperty_mExpression (),
-mProperty_mEnumeratedObjectProperties (),
-mProperty_mBeforeInstructionList (),
-mProperty_mDoInstructionList (),
-mProperty_mIndexIdentifier (),
-mProperty_mBetweenInstructionList (),
-mProperty_mAfterInstructionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionForeachAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsAscending.printNonNullClassInstanceProperties ("mIsAscending") ;
-    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
-    mProperty_mEnumeratedObjectProperties.printNonNullClassInstanceProperties ("mEnumeratedObjectProperties") ;
-    mProperty_mBeforeInstructionList.printNonNullClassInstanceProperties ("mBeforeInstructionList") ;
-    mProperty_mDoInstructionList.printNonNullClassInstanceProperties ("mDoInstructionList") ;
-    mProperty_mIndexIdentifier.printNonNullClassInstanceProperties ("mIndexIdentifier") ;
-    mProperty_mBetweenInstructionList.printNonNullClassInstanceProperties ("mBetweenInstructionList") ;
-    mProperty_mAfterInstructionList.printNonNullClassInstanceProperties ("mAfterInstructionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_templateInstructionForeachAST::objectCompare (const GALGAS_templateInstructionForeachAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForeachAST::GALGAS_templateInstructionForeachAST (void) :
-GALGAS_templateInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GALGAS_templateInstructionForeachAST GALGAS_templateInstructionForeachAST::
-init_21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_mIsAscending,
-                                      const GALGAS_templateExpressionAST & in_mExpression,
-                                      const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                      const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
-                                      const GALGAS_templateInstructionListAST & in_mDoInstructionList,
-                                      const GALGAS_lstring & in_mIndexIdentifier,
-                                      const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
-                                      const GALGAS_templateInstructionListAST & in_mAfterInstructionList,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cPtr_templateInstructionForeachAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateInstructionForeachAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionForeachAST_init_21__21__21__21__21__21__21__21_ (in_mIsAscending, in_mExpression, in_mEnumeratedObjectProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList, inCompiler) ;
-  const GALGAS_templateInstructionForeachAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateInstructionForeachAST::
-templateInstructionForeachAST_init_21__21__21__21__21__21__21__21_ (const GALGAS_bool & in_mIsAscending,
-                                                                    const GALGAS_templateExpressionAST & in_mExpression,
-                                                                    const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                                                    const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
-                                                                    const GALGAS_templateInstructionListAST & in_mDoInstructionList,
-                                                                    const GALGAS_lstring & in_mIndexIdentifier,
-                                                                    const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
-                                                                    const GALGAS_templateInstructionListAST & in_mAfterInstructionList,
-                                                                    Compiler * /* inCompiler */) {
-  mProperty_mIsAscending = in_mIsAscending ;
-  mProperty_mExpression = in_mExpression ;
-  mProperty_mEnumeratedObjectProperties = in_mEnumeratedObjectProperties ;
-  mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
-  mProperty_mDoInstructionList = in_mDoInstructionList ;
-  mProperty_mIndexIdentifier = in_mIndexIdentifier ;
-  mProperty_mBetweenInstructionList = in_mBetweenInstructionList ;
-  mProperty_mAfterInstructionList = in_mAfterInstructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForeachAST::GALGAS_templateInstructionForeachAST (const cPtr_templateInstructionForeachAST * inSourcePtr) :
-GALGAS_templateInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForeachAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForeachAST GALGAS_templateInstructionForeachAST::class_func_new (const GALGAS_bool & in_mIsAscending,
-                                                                                           const GALGAS_templateExpressionAST & in_mExpression,
-                                                                                           const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                                                                           const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
-                                                                                           const GALGAS_templateInstructionListAST & in_mDoInstructionList,
-                                                                                           const GALGAS_lstring & in_mIndexIdentifier,
-                                                                                           const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
-                                                                                           const GALGAS_templateInstructionListAST & in_mAfterInstructionList
-                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionForeachAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_templateInstructionForeachAST (in_mIsAscending, in_mExpression, in_mEnumeratedObjectProperties, in_mBeforeInstructionList, in_mDoInstructionList, in_mIndexIdentifier, in_mBetweenInstructionList, in_mAfterInstructionList COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_templateInstructionForeachAST::readProperty_mIsAscending (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_bool () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mIsAscending ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateExpressionAST GALGAS_templateInstructionForeachAST::readProperty_mExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateExpressionAST () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForeachAST::readProperty_mEnumeratedObjectProperties (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateInstructionForEnumerationAST () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mEnumeratedObjectProperties ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mBeforeInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mBeforeInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mDoInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mDoInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_templateInstructionForeachAST::readProperty_mIndexIdentifier (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_lstring () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mIndexIdentifier ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mBetweenInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mBetweenInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionListAST GALGAS_templateInstructionForeachAST::readProperty_mAfterInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GALGAS_templateInstructionListAST () ;
-  }else{
-    cPtr_templateInstructionForeachAST * p = (cPtr_templateInstructionForeachAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionForeachAST) ;
-    return p->mProperty_mAfterInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionForeachAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionForeachAST::cPtr_templateInstructionForeachAST (const GALGAS_bool & in_mIsAscending,
-                                                                        const GALGAS_templateExpressionAST & in_mExpression,
-                                                                        const GALGAS_templateInstructionForEnumerationAST & in_mEnumeratedObjectProperties,
-                                                                        const GALGAS_templateInstructionListAST & in_mBeforeInstructionList,
-                                                                        const GALGAS_templateInstructionListAST & in_mDoInstructionList,
-                                                                        const GALGAS_lstring & in_mIndexIdentifier,
-                                                                        const GALGAS_templateInstructionListAST & in_mBetweenInstructionList,
-                                                                        const GALGAS_templateInstructionListAST & in_mAfterInstructionList
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (THERE),
-mProperty_mIsAscending (),
-mProperty_mExpression (),
-mProperty_mEnumeratedObjectProperties (),
-mProperty_mBeforeInstructionList (),
-mProperty_mDoInstructionList (),
-mProperty_mIndexIdentifier (),
-mProperty_mBetweenInstructionList (),
-mProperty_mAfterInstructionList () {
-  mProperty_mIsAscending = in_mIsAscending ;
-  mProperty_mExpression = in_mExpression ;
-  mProperty_mEnumeratedObjectProperties = in_mEnumeratedObjectProperties ;
-  mProperty_mBeforeInstructionList = in_mBeforeInstructionList ;
-  mProperty_mDoInstructionList = in_mDoInstructionList ;
-  mProperty_mIndexIdentifier = in_mIndexIdentifier ;
-  mProperty_mBetweenInstructionList = in_mBetweenInstructionList ;
-  mProperty_mAfterInstructionList = in_mAfterInstructionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_templateInstructionForeachAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
-}
-
-void cPtr_templateInstructionForeachAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateInstructionForeachAST:") ;
-  mProperty_mIsAscending.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEnumeratedObjectProperties.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mBeforeInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mDoInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIndexIdentifier.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mBetweenInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mAfterInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_templateInstructionForeachAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionForeachAST (mProperty_mIsAscending, mProperty_mExpression, mProperty_mEnumeratedObjectProperties, mProperty_mBeforeInstructionList, mProperty_mDoInstructionList, mProperty_mIndexIdentifier, mProperty_mBetweenInstructionList, mProperty_mAfterInstructionList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateInstructionForeachAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST ("templateInstructionForeachAST",
-                                                                                     & kTypeDescriptor_GALGAS_templateInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_templateInstructionForeachAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_templateInstructionForeachAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_templateInstructionForeachAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_templateInstructionForeachAST GALGAS_templateInstructionForeachAST::extractObject (const GALGAS_object & inObject,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_templateInstructionForeachAST result ;
-  const GALGAS_templateInstructionForeachAST * p = (const GALGAS_templateInstructionForeachAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_templateInstructionForeachAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionForeachAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

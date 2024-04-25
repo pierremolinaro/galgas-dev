@@ -2933,6 +2933,8 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element_3F_ : publi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -4287,6 +4289,8 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element_3F_ : public AC_GAL
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -5103,6 +5107,8 @@ class GALGAS_genericExtensionMethodListMapDictionary_2D_element_3F_ : public AC_
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -5503,6 +5509,8 @@ class GALGAS_descendantClassListMapDictionary_2D_element_3F_ : public AC_GALGAS_
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -5860,6 +5868,8 @@ class GALGAS_extensionMethodMapForGlobalCheckings_2D_element_3F_ : public AC_GAL
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -6131,6 +6141,8 @@ class GALGAS_extensionSetterMapForGlobalCheckings_2D_element_3F_ : public AC_GAL
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -6402,6 +6414,8 @@ class GALGAS_extensionGetterMapForGlobalCheckings_2D_element_3F_ : public AC_GAL
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
