@@ -98,61 +98,62 @@ enum @typeKindEnum %equatable %testGetters {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @typeFeatures {
-  infixAddOperator,
-  infixSubOperator,
-  infixMulOperator,
-  infixDivOperator,
-  infixModOperator,
-  infixShiftOperator,
-  prefixPlusOperator,
-  prefixMinusOperator,
-  prefixTildeOperator,
-  incDecOperator,
+  case infixAddOperator
+  case infixSubOperator
+  case infixMulOperator
+  case infixDivOperator
+  case infixModOperator
+  case infixShiftOperator
+  case prefixPlusOperator
+  case prefixMinusOperator
+  case prefixTildeOperator
+  case incDecOperator
 
-  infixAndOperator,
-  infixOrOperator,
-  infixXorOperator,
-  prefixNotOperator,
+  case infixAndOperator
+  case infixOrOperator
+  case infixXorOperator
+  case prefixNotOperator
 
-  equatable, # Supports ==, != operators
-  comparable, # Supports <, <=, >, >= operators
-  referenceEquatable,  # Supports ===, !== operators
+  case equatable # Supports ==, != operators
+  case comparable # Supports <, <=, >, >= operators
+  case referenceEquatable # Supports ===, !== operators
 
-  plusEqualOperatorWithExpression, # var += exp ;
-  minusEqualOperatorWithExpression, # var -= exp ;
-  mulEqualOperatorWithExpression, # var *= exp ;
-  divEqualOperatorWithExpression, # var /= exp ;
+  case plusEqualOperatorWithExpression # var += exp ;
+  case minusEqualOperatorWithExpression # var -= exp ;
+  case mulEqualOperatorWithExpression # var *= exp ;
+  case divEqualOperatorWithExpression # var /= exp ;
 
-  infixAddOperatorNoOVF,
-  infixSubOperatorNoOVF,
-  infixMulOperatorNoOVF,
-  infixDivOperatorNoOVF,
-  prefixMinusOperatorNoOVF,
-  incDecOperatorNoOVF,
+  case infixAddOperatorNoOVF
+  case infixSubOperatorNoOVF
+  case infixMulOperatorNoOVF
+  case infixDivOperatorNoOVF
+  case prefixMinusOperatorNoOVF
+  case incDecOperatorNoOVF
 
-  supportWithAccessor,
-  plusEqualOperatorWithFieldListNeedsCompilerArg,
-  generateEnumerationHelperMethods,
-  doNotGenererateObjectCompare,
-  generateDescriptionGetterUtilityMethod,
-  generateCopyConstructorAndAssignmentOperator,
-  generateSynthetizedInitializer,
-  clonable
+  case supportWithAccessor
+  case plusEqualOperatorWithFieldListNeedsCompilerArg
+  case generateEnumerationHelperMethods
+  case doNotGenererateObjectCompare
+  case generateDescriptionGetterUtilityMethod
+  case generateCopyConstructorAndAssignmentOperator
+  case generateSynthetizedInitializer
+  case clonable
+
+  #-----------------------------------------------------------------------------------------------
+
+  getter generateCppObjectComparison -> @bool {
+    result = [self equatable]
+    if not result then
+      result = [self referenceEquatable]
+    end
+    if not result then
+      result = [self comparable]
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
 
 }
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-getter @typeFeatures generateCppObjectComparison -> @bool {
-  result = [self equatable]
-  if not result then
-    result = [self referenceEquatable]
-  end
-  if not result then
-    result = [self comparable]
-  end
-}
-
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #  SUBSCRIPT MAP

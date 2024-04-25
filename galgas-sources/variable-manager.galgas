@@ -343,12 +343,12 @@ setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @localVariableAttributes {
-  rejectWriteInInitializedAndReadStates,
-  rejectDeclaredStateAsFinalState,
-  acceptInitializedStateAsFinalState,
-  acceptReadStateAsFinalState,
-  warnsOnAnyAcces,
-  suggestDeclareUnusedParameterAsUnused
+  case rejectWriteInInitializedAndReadStates
+  case rejectDeclaredStateAsFinalState
+  case acceptInitializedStateAsFinalState
+  case acceptReadStateAsFinalState
+  case warnsOnAnyAcces
+  case suggestDeclareUnusedParameterAsUnused
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -5,7 +5,7 @@
 \chapterLabel{Le type \texttt{enum}}{typeEnum}
 %-------------------------------------------------------------
 
-\tableDesMatieresLocaleDeProfondeurRelative{1}
+\tableDesMatieresLocaleDeProfondeurRelative{2}
 
 
 
@@ -23,7 +23,7 @@ enum @feuTricolore {
 }
 \end{galgas34}
 
-À chaque constante d'un type énuméré, on paut associer plusieurs valeurs. Par exemple~:
+Il est possible d'associer plusieurs valeurs à chaque constante d'un type énuméré. Par exemple~:
 
 \begin{galgas3}
 enum @monOption {
@@ -72,7 +72,7 @@ var feu = @feuTricolore.vert
 \end{galgas34}
 
 
-Si la constante présente des valeurs associées, l'initialisateur présente autant d'argument, chaque ayant comme étiquette le nom donné dans la déclaration~:
+Si la constante présente des valeurs associées, l'initialisateur présente autant d'arguments, chaque ayant comme étiquette le nom donné dans la déclaration~:
 
 \begin{galgas3}
 var @monOption feu = @monOption.option2 {!name: "toto" !value: 0}
@@ -176,7 +176,7 @@ end
 
 \sectionLabel{Tester une valeur}{testerValeurEnum}
 
-Un type émuméré définit un \emph{getter} sans argument pour chaque constante déclarée.
+Un type émuméré définit implicitement un \emph{getter} sans argument pour chaque constante déclarée~; ce getter a pour nom le nom de la constante.
 
 \subsection{Constante sans valeur associée}
 
@@ -245,7 +245,7 @@ v = @monOption.option1 (!name: "xyz")
 let @bool b = [v option1].isSome // b est true
 \end{galgas3}
 
-Si l'écriture paraît trop lourde, on peut définir un \emph{getter} qui renvoie une valeur boolénne~:
+Si l'écriture paraît trop lourde, on peut définir un \emph{getter} qui renvoie une valeur booléenne~:
 \begin{galgas4}
 func @monOption.isOption1 () -> @bool {
   result = self.option1.isSome
@@ -319,18 +319,123 @@ end
 
 
 
+\section{L'attribut \texttt{\%testGetters}}
+
+En ajoutant l'attribut \ggsq!%testGetters! à la déclaration d'une énumération, un getter est automatiquement engendré pour tester la valeur indépendamment de la présence de valeurs associées.
+
+Par exemple~:
+
+\begin{galgas3}
+enum @monOption %testGetters {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value @string name)
+}
+\end{galgas3}
+
+\begin{galgas4}
+enum @monOption %testGetters {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value, @string name)
+}
+\end{galgas4}
+
+L'attribut \ggsq!%testGetters! engendre les trois getters suivants~:
+\begin{galgas3}
+getter @monOption isNoOption -> @bool
+getter @monOption isOption1 -> @bool
+getter @monOption isOption2 -> @bool
+\end{galgas3}
+\begin{galgas3}
+func @monOption.isNoOption () -> @bool
+func @monOption.isOption1 () -> @bool
+func @monOption.isOption2 () -> @bool
+\end{galgas3}
+
+Le nom du getter est \texttt{is} suivi du nom de la constante dont le premier caractère est mis en majuscule. Il faut veiller que ce nom n'entre pas en collision avec le nom d'une autre constante, comme dans l'exemple suivant~:
+
+\begin{galgas4}
+enum @enumerationAvecErreur %testGetters {
+  case isTruc
+  case truc // Erreur, le getter engendré entre en collision avec la 1re constante
+}
+\end{galgas4}
+
+
+On peut donc tester la valeur par~:
+\begin{galgas4}
+  v.isOption1 // même valeur que v.option1.isSome
+\end{galgas4}
+\begin{galgas3}
+  [v isOption1] // même valeur que [v isOption1].isSome
+\end{galgas3}
+
+Si le type énuméré ne définit aucune valeur associée, cette option n'a pas d'intérêt, les getters définis par défaut ont exactement le même rôle.
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Comparaison}
 
-Un type enuméré accepte les six opérateurs de comparaison (\ggst+==+, \ggst+!=+, \ggst+<+, \ggst+<=+, \ggst+>+ et \ggst+>+). L'ordre est celui de la déclaration, c'est-à-dire que :
+Par défaut, un type enuméré n'accepte aucun des six opérateurs de comparaison (\ggsq+==+, \ggsq+!=+, \ggsq+<+, \ggsq+<=+, \ggsq+>+, \ggsq+>+).
+
+\subsection{L'attribut \texttt{\%equatable}}
+
+Si le type énuméré est déclaré avec l'attribut \ggsq!%equatable!, alors les opérateurs \ggst+==+, \ggst+!=+ sont définis. Ceci exige que tous les types des valeurs associées soient eux-mêmes \ggsq!%equatable! ou \ggsq!%comparable!.
+
+Comme aucune relation d'ordre n'est définie, l'ordre de déclaration des constantes est sans importance.
+
 \begin{galgas3}
-  @feuTricolore.vert < @feuTricolore.orange < @feuTricolore.rouge
+enum @monOption %equatable {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value @string name)
+}
 \end{galgas3}
 
-Il y a deux façons de tester une valeur d'un type énuméré. La première consiste à comparer avec une valeur obtenue par un constructeur, par exemple :
+\begin{galgas4}
+enum @monOption %equatable {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value, @string name)
+}
+\end{galgas4}
+
+
+\subsection{L'attribut \texttt{\%comparable}}
+
+Si le type énuméré est déclaré avec l'attribut \ggsq!%comparable!, alors les six opérateurs \ggst+==+, \ggst+!=+, \ggsq+<+, \ggsq+<=+, \ggsq+>+ et \ggsq+>+ sont définis. Ceci exige que tous les types des valeurs associées soient eux-mêmes \ggsq!%comparable!.
+
 \begin{galgas3}
-  if feu == @feuTricolore.orange then ...
+enum @monOption %comparable {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value @string name)
+}
 \end{galgas3}
+
+\begin{galgas4}
+enum @monOption %comparable {
+  case noOption
+  case option1 (@string name)
+  case option2 (@uint value, @string name)
+}
+\end{galgas4}
+
+L'ordre est lexicographique : c'est celui de la déclaration, c'est-à-dire que \ggsq!@monOption.noOption < @monOption.option1! et \ggsq!@monOption.option1 < @monOption.option2!.
+
+Pour les constantes ayant des valeurs associées, l'ordre est obtenu en comparant ces valeurs les unes après les autres~: par exemple pour \ggsq!option2!, on compare d'abord \ggsq!value!, puis \ggsq!name!. 
+
+
 
 
 
@@ -340,7 +445,7 @@ Il y a deux façons de tester une valeur d'un type énuméré. La première cons
 
 \section{Exemple d'utilisation des valeurs associées}
 
-Il est possible d'associer des valeurs à chaque constante, ce qui permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
+Associer des valeurs à chaque constante permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
 
 \begin{galgas34}
 rule <regleProduction> {

@@ -38,12 +38,17 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     var @lstringlist slotList = ()
     repeat
+    while
+      $case$
       $identifier$ ?let slotName
       slotList += !slotName
     while
-      $,$
+      <method_declaration_ggs3> !boolsetTypeName !?ioDeclarations
     end
     $}$
+    if [slotList count] == 0 then
+      error boolsetTypeName : "a boolset type must define at least one case constant"
+    end
     ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
       !isPredefined: false # Is not predefined
       !boolsetTypeName
@@ -67,12 +72,17 @@ syntax extension galgas4DeclarationsSyntax {
     ${$
     var @lstringlist slotList = ()
     repeat
+    while
+      $case$
       $identifier$ ?let slotName
       slotList += !slotName
     while
-      $,$
+      <method_declaration> !boolsetTypeName !?ioDeclarations
     end
     $}$
+    if [slotList count] == 0 then
+      error boolsetTypeName : "a boolset type must define at least one case constant"
+    end
     ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
       !isPredefined: false # Is not predefined
       !boolsetTypeName
