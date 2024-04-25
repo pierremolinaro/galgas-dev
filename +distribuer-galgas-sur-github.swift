@@ -216,6 +216,14 @@ print ("ANNÉE : \(ANNÉE)")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/galgas-sources")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/libpm/command_line_interface")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/build")
+//-------------------- Vérifier les programmes d'exemple
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
+  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
+//-------------------- Exécuter les tests
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
+  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
+//-------------------- Vérifier la création de projet
+  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
 //-------------------- Recompiler en utilsant différents modes de génération
   runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
@@ -231,14 +239,6 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/usr/bin/python3", ["clean.py"])
   runCommand ("/usr/bin/python3", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-//-------------------- Vérifier les programmes d'exemple
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
-//-------------------- Exécuter les tests
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
-//-------------------- Vérifier la création de projet
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
 //-------------------- Créer le répertoire recevant les outils ligne de commande
   let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
   runCommand ("/bin/mkdir", [cliToolsDir])
