@@ -7903,7 +7903,8 @@ cPtr_enumDeclarationAST::cPtr_enumDeclarationAST (Compiler * inCompiler COMMA_LO
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_enumTypeName (),
 mProperty_mConstantList (),
-mProperty_comparison () {
+mProperty_comparison (),
+mProperty_testGetters () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7914,6 +7915,7 @@ mProperty_comparison () {
     mProperty_enumTypeName.printNonNullClassInstanceProperties ("enumTypeName") ;
     mProperty_mConstantList.printNonNullClassInstanceProperties ("mConstantList") ;
     mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
+    mProperty_testGetters.printNonNullClassInstanceProperties ("testGetters") ;
   }
 #endif
 
@@ -7944,15 +7946,16 @@ GALGAS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::
-init_21_isPredefined_21__21__21_comparison (const GALGAS_bool & in_isPredefined,
-                                            const GALGAS_lstring & in_enumTypeName,
-                                            const GALGAS_enumConstantList & in_mConstantList,
-                                            const GALGAS_structComparison & in_comparison,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21_comparison_21_testGetters (const GALGAS_bool & in_isPredefined,
+                                                           const GALGAS_lstring & in_enumTypeName,
+                                                           const GALGAS_enumConstantList & in_mConstantList,
+                                                           const GALGAS_structComparison & in_comparison,
+                                                           const GALGAS_bool & in_testGetters,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cPtr_enumDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_enumDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->enumDeclarationAST_init_21_isPredefined_21__21__21_comparison (in_isPredefined, in_enumTypeName, in_mConstantList, in_comparison, inCompiler) ;
+  object->enumDeclarationAST_init_21_isPredefined_21__21__21_comparison_21_testGetters (in_isPredefined, in_enumTypeName, in_mConstantList, in_comparison, in_testGetters, inCompiler) ;
   const GALGAS_enumDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -7961,15 +7964,17 @@ init_21_isPredefined_21__21__21_comparison (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumDeclarationAST::
-enumDeclarationAST_init_21_isPredefined_21__21__21_comparison (const GALGAS_bool & in_isPredefined,
-                                                               const GALGAS_lstring & in_enumTypeName,
-                                                               const GALGAS_enumConstantList & in_mConstantList,
-                                                               const GALGAS_structComparison & in_comparison,
-                                                               Compiler * /* inCompiler */) {
+enumDeclarationAST_init_21_isPredefined_21__21__21_comparison_21_testGetters (const GALGAS_bool & in_isPredefined,
+                                                                              const GALGAS_lstring & in_enumTypeName,
+                                                                              const GALGAS_enumConstantList & in_mConstantList,
+                                                                              const GALGAS_structComparison & in_comparison,
+                                                                              const GALGAS_bool & in_testGetters,
+                                                                              Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_enumTypeName = in_enumTypeName ;
   mProperty_mConstantList = in_mConstantList ;
   mProperty_comparison = in_comparison ;
+  mProperty_testGetters = in_testGetters ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7983,10 +7988,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::class_func_new (const GALGAS_bool & in_isPredefined,
                                                                      const GALGAS_lstring & in_enumTypeName,
                                                                      const GALGAS_enumConstantList & in_mConstantList,
-                                                                     const GALGAS_structComparison & in_comparison
+                                                                     const GALGAS_structComparison & in_comparison,
+                                                                     const GALGAS_bool & in_testGetters
                                                                      COMMA_LOCATION_ARGS) {
   GALGAS_enumDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_enumDeclarationAST (in_isPredefined, in_enumTypeName, in_mConstantList, in_comparison COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_enumDeclarationAST (in_isPredefined, in_enumTypeName, in_mConstantList, in_comparison, in_testGetters COMMA_THERE)) ;
   return result ;
 }
 
@@ -8027,22 +8033,37 @@ GALGAS_structComparison GALGAS_enumDeclarationAST::readProperty_comparison (void
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_enumDeclarationAST::readProperty_testGetters (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_enumDeclarationAST * p = (cPtr_enumDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumDeclarationAST) ;
+    return p->mProperty_testGetters ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @enumDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_enumDeclarationAST::cPtr_enumDeclarationAST (const GALGAS_bool & in_isPredefined,
                                                   const GALGAS_lstring & in_enumTypeName,
                                                   const GALGAS_enumConstantList & in_mConstantList,
-                                                  const GALGAS_structComparison & in_comparison
+                                                  const GALGAS_structComparison & in_comparison,
+                                                  const GALGAS_bool & in_testGetters
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_enumTypeName (),
 mProperty_mConstantList (),
-mProperty_comparison () {
+mProperty_comparison (),
+mProperty_testGetters () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_enumTypeName = in_enumTypeName ;
   mProperty_mConstantList = in_mConstantList ;
   mProperty_comparison = in_comparison ;
+  mProperty_testGetters = in_testGetters ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8061,6 +8082,8 @@ void cPtr_enumDeclarationAST::description (String & ioString,
   mProperty_mConstantList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_comparison.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_testGetters.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -8068,7 +8091,7 @@ void cPtr_enumDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_enumDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_isPredefined, mProperty_enumTypeName, mProperty_mConstantList, mProperty_comparison COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_isPredefined, mProperty_enumTypeName, mProperty_mConstantList, mProperty_comparison, mProperty_testGetters COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8122,7 +8145,8 @@ GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::extractObject (const GALGAS
 cPtr_enumTypeForGeneration::cPtr_enumTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
 mProperty_constantList (),
-mProperty_associatedValuesTypes () {
+mProperty_associatedValuesTypes (),
+mProperty_testGetters () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8132,6 +8156,7 @@ mProperty_associatedValuesTypes () {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_constantList.printNonNullClassInstanceProperties ("constantList") ;
     mProperty_associatedValuesTypes.printNonNullClassInstanceProperties ("associatedValuesTypes") ;
+    mProperty_testGetters.printNonNullClassInstanceProperties ("testGetters") ;
   }
 #endif
 
@@ -8162,14 +8187,15 @@ GALGAS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration::
-init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                  const GALGAS_enumConstantListForGeneration & in_constantList,
-                  const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                      const GALGAS_enumConstantListForGeneration & in_constantList,
+                      const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                      const GALGAS_bool & in_testGetters,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_enumTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_enumTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->enumTypeForGeneration_init_21__21__21_ (in_mSelfTypeEntry, in_constantList, in_associatedValuesTypes, inCompiler) ;
+  object->enumTypeForGeneration_init_21__21__21__21_ (in_mSelfTypeEntry, in_constantList, in_associatedValuesTypes, in_testGetters, inCompiler) ;
   const GALGAS_enumTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8178,13 +8204,15 @@ init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_enumTypeForGeneration::
-enumTypeForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                        const GALGAS_enumConstantListForGeneration & in_constantList,
-                                        const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
-                                        Compiler * /* inCompiler */) {
+enumTypeForGeneration_init_21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                            const GALGAS_enumConstantListForGeneration & in_constantList,
+                                            const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                            const GALGAS_bool & in_testGetters,
+                                            Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_constantList = in_constantList ;
   mProperty_associatedValuesTypes = in_associatedValuesTypes ;
+  mProperty_testGetters = in_testGetters ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8197,10 +8225,11 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                            const GALGAS_enumConstantListForGeneration & in_constantList,
-                                                                           const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
+                                                                           const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                                                           const GALGAS_bool & in_testGetters
                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_enumTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_enumTypeForGeneration (in_mSelfTypeEntry, in_constantList, in_associatedValuesTypes COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_enumTypeForGeneration (in_mSelfTypeEntry, in_constantList, in_associatedValuesTypes, in_testGetters COMMA_THERE)) ;
   return result ;
 }
 
@@ -8229,19 +8258,34 @@ GALGAS__5B_unifiedTypeMapEntry_5D_ GALGAS_enumTypeForGeneration::readProperty_as
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_enumTypeForGeneration::readProperty_testGetters (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_enumTypeForGeneration * p = (cPtr_enumTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_enumTypeForGeneration) ;
+    return p->mProperty_testGetters ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @enumTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_enumTypeForGeneration::cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                         const GALGAS_enumConstantListForGeneration & in_constantList,
-                                                        const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
+                                                        const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                                        const GALGAS_bool & in_testGetters
                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_constantList (),
-mProperty_associatedValuesTypes () {
+mProperty_associatedValuesTypes (),
+mProperty_testGetters () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_constantList = in_constantList ;
   mProperty_associatedValuesTypes = in_associatedValuesTypes ;
+  mProperty_testGetters = in_testGetters ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8258,6 +8302,8 @@ void cPtr_enumTypeForGeneration::description (String & ioString,
   mProperty_constantList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_associatedValuesTypes.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_testGetters.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -8265,7 +8311,7 @@ void cPtr_enumTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_enumTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_enumTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_constantList, mProperty_associatedValuesTypes COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_constantList, mProperty_associatedValuesTypes, mProperty_testGetters COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -10,6 +10,61 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @functionPredefinedTypeAST_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_functionPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_functionPredefinedTypeAST_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_functionPredefinedTypeAST_2D_weak (const class GALGAS_functionPredefinedTypeAST & inSource) ;
+
+  public: GALGAS_functionPredefinedTypeAST_2D_weak & operator = (const class GALGAS_functionPredefinedTypeAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_functionPredefinedTypeAST bang_functionPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_functionPredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_functionPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_functionPredefinedTypeAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_functionPredefinedTypeAST_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @locationPredefinedTypeAST reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -2501,10 +2556,6 @@ class GALGAS_AccessControlAST : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ getter_fileprivateSetAccess (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFileprivateAccess (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isFileprivateSetAccess (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_privateAccess (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_privateSetAccess (LOCATION_ARGS) const ;
@@ -2598,6 +2649,8 @@ class GALGAS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNone (LOCATION_ARGS) const ;
+
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSome (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_none (LOCATION_ARGS) const ;
@@ -4218,15 +4271,18 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_structComparison readProperty_comparison (void) const ;
 
+  public: class GALGAS_bool readProperty_testGetters (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_enumDeclarationAST init_21_isPredefined_21__21__21_comparison (const class GALGAS_bool & inOperand0,
-                                                                                       const class GALGAS_lstring & inOperand1,
-                                                                                       const class GALGAS_enumConstantList & inOperand2,
-                                                                                       const class GALGAS_structComparison & inOperand3,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_enumDeclarationAST init_21_isPredefined_21__21__21_comparison_21_testGetters (const class GALGAS_bool & inOperand0,
+                                                                                                      const class GALGAS_lstring & inOperand1,
+                                                                                                      const class GALGAS_enumConstantList & inOperand2,
+                                                                                                      const class GALGAS_structComparison & inOperand3,
+                                                                                                      const class GALGAS_bool & inOperand4,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4240,7 +4296,8 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
   public: static class GALGAS_enumDeclarationAST class_func_new (const class GALGAS_bool & inOperand0,
                                                                  const class GALGAS_lstring & inOperand1,
                                                                  const class GALGAS_enumConstantList & inOperand2,
-                                                                 const class GALGAS_structComparison & inOperand3
+                                                                 const class GALGAS_structComparison & inOperand3,
+                                                                 const class GALGAS_bool & inOperand4
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4278,11 +4335,12 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void enumDeclarationAST_init_21_isPredefined_21__21__21_comparison (const class GALGAS_bool & inOperand0,
-                                                                              const class GALGAS_lstring & inOperand1,
-                                                                              const class GALGAS_enumConstantList & inOperand2,
-                                                                              const class GALGAS_structComparison & inOperand3,
-                                                                              Compiler * inCompiler) ;
+  public: void enumDeclarationAST_init_21_isPredefined_21__21__21_comparison_21_testGetters (const class GALGAS_bool & inOperand0,
+                                                                                             const class GALGAS_lstring & inOperand1,
+                                                                                             const class GALGAS_enumConstantList & inOperand2,
+                                                                                             const class GALGAS_structComparison & inOperand3,
+                                                                                             const class GALGAS_bool & inOperand4,
+                                                                                             Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -4324,6 +4382,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GALGAS_lstring mProperty_enumTypeName ;
   public: GALGAS_enumConstantList mProperty_mConstantList ;
   public: GALGAS_structComparison mProperty_comparison ;
+  public: GALGAS_bool mProperty_testGetters ;
 
 
 //--- Default constructor
@@ -4333,7 +4392,8 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
   public: cPtr_enumDeclarationAST (const GALGAS_bool & in_isPredefined,
                                    const GALGAS_lstring & in_enumTypeName,
                                    const GALGAS_enumConstantList & in_mConstantList,
-                                   const GALGAS_structComparison & in_comparison
+                                   const GALGAS_structComparison & in_comparison,
+                                   const GALGAS_bool & in_testGetters
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

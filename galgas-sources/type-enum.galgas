@@ -26,15 +26,35 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let enumTypeName indexing enumDefinition
-    let @structComparison comparison
-    select
-      comparison = .none
-    or
+    var @structComparison comparison = .none
+    var testGetters = false
+    repeat
+    while
       $%comparable$
-      comparison = .comparable
-    or
+      switch comparison
+      case none :
+        comparison = .comparable
+      case comparable :
+        error .here : "duplicated attribute"
+      case equatable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    while
       $%equatable$
-      comparison = .equatable
+      switch comparison
+      case none :
+        comparison = .equatable
+      case equatable :
+        error .here : "duplicated attribute"
+      case comparable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    while
+      $%testGetters$
+      if testGetters then
+        error .here : "duplicated attribute"
+      end
+      testGetters = true
     end
     ${$
     var @enumConstantList constantList = ()
@@ -67,6 +87,7 @@ syntax extension galgas3DeclarationsSyntax {
       !enumTypeName
       !constantList
       !comparison: comparison
+      !testGetters: testGetters
     }
   }
 
@@ -83,15 +104,35 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
     $@type$ ?let enumTypeName indexing enumDefinition
-    let @structComparison comparison
-    select
-      comparison = .none
-    or
+    var @structComparison comparison = .none
+    var testGetters = false
+    repeat
+    while
       $%comparable$
-      comparison = .comparable
-    or
+      switch comparison
+      case none :
+        comparison = .comparable
+      case comparable :
+        error .here : "duplicated attribute"
+      case equatable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    while
       $%equatable$
-      comparison = .equatable
+      switch comparison
+      case none :
+        comparison = .equatable
+      case equatable :
+        error .here : "duplicated attribute"
+      case comparable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    while
+      $%testGetters$
+      if testGetters then
+        error .here : "duplicated attribute"
+      end
+      testGetters = true
     end
     ${$
     var @enumConstantList constantList = ()
@@ -125,6 +166,7 @@ syntax extension galgas4DeclarationsSyntax {
       !enumTypeName
       !constantList
       !comparison: comparison
+      !testGetters: testGetters
     }
   }
 
@@ -147,6 +189,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
   private let @enumConstantList mConstantList
   private let @structComparison comparison %initArgLabel
+  private let @bool testGetters %initArgLabel
 
   #·······························································································
 
@@ -282,16 +325,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #--- getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
-      if [constant.associatedValueTypeList count] > 0 then
-        enterBaseGetterWithoutArgument (
-          !?getterMap
-          !?ioTypeMap
-          !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
-          !obsoleteName: ""
-          !returnedTypeName:"bool"
-          !hasCompilerArgument:false
-        )
-      end
       if [constant.associatedValueTypeList count] == 0 then
         enterBaseGetterWithoutArgument (
           !?getterMap
@@ -311,6 +344,19 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           !obsoleteName: ""
           !returnedTypeName: optionalTypeName
           !hasCompilerArgument: false
+        )
+      end
+    end
+  #--- Add test getters ?
+    if self.testGetters then
+      for constant in self.mConstantList do
+        enterBaseGetterWithoutArgument (
+          !?getterMap
+          !?ioTypeMap
+          !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
+          !obsoleteName: ""
+          !returnedTypeName: "bool"
+          !hasCompilerArgument:false
         )
       end
     end
@@ -437,6 +483,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         !selfType
         !enumConstantListForGeneration
         !associatedValuesTypes
+        !self.testGetters
       }
   }
 
@@ -458,14 +505,12 @@ list @enumConstantListForGeneration {
 refclass @enumTypeForGeneration : @semanticTypeForGeneration {
   private let @enumConstantListForGeneration constantList
   private let [@unifiedTypeMapEntry] associatedValuesTypes
+  private let @bool testGetters
 
   #·······························································································
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
-#    for type in self.associatedValuesTypes do
-#      [type addHeaderFileName1 !?ioInclusionSet]
-#    end
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
       hasAssociatedValues = [constant.associatedValueTypeList count] > 0
@@ -516,6 +561,7 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
       !self.constantList
       !hasAssociatedValues
       ![selfTypeDefinition.features generateCppObjectComparison]
+      !self.testGetters
     ]
   }
 
@@ -540,6 +586,7 @@ filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
     ?@bool GENERATE_COMPARISON
+    ?@bool HAS_TEST_GETTERS
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

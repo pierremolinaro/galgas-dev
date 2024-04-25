@@ -337,7 +337,7 @@ list @propertyInCollectionListAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @propertyInCollectionInitializationAST %equatable {
+enum @propertyInCollectionInitializationAST %equatable %testGetters {
   case none
   case some (@semanticExpressionAST expression)
 }

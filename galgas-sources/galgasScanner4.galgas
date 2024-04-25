@@ -361,6 +361,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "tool-source" -> $%tool-source$,
   "templateEndMark" -> $%templateEndMark$,
   "templateReplacement" -> $%templateReplacement$,
+  "testGetters" -> $%testGetters$,
   "translate" -> $%translate$,
   "usefull" -> $%usefull$
 }

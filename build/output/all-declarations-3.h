@@ -4857,52 +4857,53 @@ class Lexique_galgasScanner_34_ : public Lexique {
    kToken__25_tool_2D_source /* 141 */ ,
    kToken__25_templateEndMark /* 142 */ ,
    kToken__25_templateReplacement /* 143 */ ,
-   kToken__25_translate /* 144 */ ,
-   kToken__25_usefull /* 145 */ ,
-   kToken__2A_ /* 146 */ ,
-   kToken__2C_ /* 147 */ ,
-   kToken__2B_ /* 148 */ ,
-   kToken__26__2B_ /* 149 */ ,
-   kToken__26__2D_ /* 150 */ ,
-   kToken__26__2A_ /* 151 */ ,
-   kToken__26__2F_ /* 152 */ ,
-   kToken__3E_ /* 153 */ ,
-   kToken__3B_ /* 154 */ ,
-   kToken__3A_ /* 155 */ ,
-   kToken__3A__3E_ /* 156 */ ,
-   kToken__2D_ /* 157 */ ,
-   kToken__28_ /* 158 */ ,
-   kToken__29_ /* 159 */ ,
-   kToken__2D__3E_ /* 160 */ ,
-   kToken__3D__3D_ /* 161 */ ,
-   kToken__3D_ /* 162 */ ,
-   kToken__26__26_ /* 163 */ ,
-   kToken__5B_ /* 164 */ ,
-   kToken__5D_ /* 165 */ ,
-   kToken__2B__3D_ /* 166 */ ,
-   kToken__2D__3D_ /* 167 */ ,
-   kToken__2A__3D_ /* 168 */ ,
-   kToken__2F__3D_ /* 169 */ ,
-   kToken__2F_ /* 170 */ ,
-   kToken__21__3D_ /* 171 */ ,
-   kToken__3E__3D_ /* 172 */ ,
-   kToken__26_ /* 173 */ ,
-   kToken__7B_ /* 174 */ ,
-   kToken__7D_ /* 175 */ ,
-   kToken__60_ /* 176 */ ,
-   kToken__7C__7C_ /* 177 */ ,
-   kToken__7C_ /* 178 */ ,
-   kToken__5E_ /* 179 */ ,
-   kToken__3E__3E_ /* 180 */ ,
-   kToken__7E_ /* 181 */ ,
-   kToken__2D__2D_ /* 182 */ ,
-   kToken__2B__2B_ /* 183 */ ,
-   kToken__26__2D__2D_ /* 184 */ ,
-   kToken__26__2B__2B_ /* 185 */ ,
-   kToken__3D__3D__3D_ /* 186 */ ,
-   kToken__21__3D__3D_ /* 187 */ ,
-   kToken__3F__5E_ /* 188 */ ,
-   kToken__21__5E_ /* 189 */ } ;
+   kToken__25_testGetters /* 144 */ ,
+   kToken__25_translate /* 145 */ ,
+   kToken__25_usefull /* 146 */ ,
+   kToken__2A_ /* 147 */ ,
+   kToken__2C_ /* 148 */ ,
+   kToken__2B_ /* 149 */ ,
+   kToken__26__2B_ /* 150 */ ,
+   kToken__26__2D_ /* 151 */ ,
+   kToken__26__2A_ /* 152 */ ,
+   kToken__26__2F_ /* 153 */ ,
+   kToken__3E_ /* 154 */ ,
+   kToken__3B_ /* 155 */ ,
+   kToken__3A_ /* 156 */ ,
+   kToken__3A__3E_ /* 157 */ ,
+   kToken__2D_ /* 158 */ ,
+   kToken__28_ /* 159 */ ,
+   kToken__29_ /* 160 */ ,
+   kToken__2D__3E_ /* 161 */ ,
+   kToken__3D__3D_ /* 162 */ ,
+   kToken__3D_ /* 163 */ ,
+   kToken__26__26_ /* 164 */ ,
+   kToken__5B_ /* 165 */ ,
+   kToken__5D_ /* 166 */ ,
+   kToken__2B__3D_ /* 167 */ ,
+   kToken__2D__3D_ /* 168 */ ,
+   kToken__2A__3D_ /* 169 */ ,
+   kToken__2F__3D_ /* 170 */ ,
+   kToken__2F_ /* 171 */ ,
+   kToken__21__3D_ /* 172 */ ,
+   kToken__3E__3D_ /* 173 */ ,
+   kToken__26_ /* 174 */ ,
+   kToken__7B_ /* 175 */ ,
+   kToken__7D_ /* 176 */ ,
+   kToken__60_ /* 177 */ ,
+   kToken__7C__7C_ /* 178 */ ,
+   kToken__7C_ /* 179 */ ,
+   kToken__5E_ /* 180 */ ,
+   kToken__3E__3E_ /* 181 */ ,
+   kToken__7E_ /* 182 */ ,
+   kToken__2D__2D_ /* 183 */ ,
+   kToken__2B__2B_ /* 184 */ ,
+   kToken__26__2D__2D_ /* 185 */ ,
+   kToken__26__2B__2B_ /* 186 */ ,
+   kToken__3D__3D__3D_ /* 187 */ ,
+   kToken__21__3D__3D_ /* 188 */ ,
+   kToken__3F__5E_ /* 189 */ ,
+   kToken__21__5E_ /* 190 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -5002,7 +5003,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 189 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 190 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -9517,59 +9518,4 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @functionPredefinedTypeAST_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_functionPredefinedTypeAST_2D_weak : public GALGAS_predefinedTypeAST_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_functionPredefinedTypeAST_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_functionPredefinedTypeAST_2D_weak (const class GALGAS_functionPredefinedTypeAST & inSource) ;
-
-  public: GALGAS_functionPredefinedTypeAST_2D_weak & operator = (const class GALGAS_functionPredefinedTypeAST & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_functionPredefinedTypeAST bang_functionPredefinedTypeAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_functionPredefinedTypeAST_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_functionPredefinedTypeAST_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_functionPredefinedTypeAST_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_functionPredefinedTypeAST_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedTypeAST_2D_weak ;
 

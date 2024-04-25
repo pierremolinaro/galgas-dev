@@ -52,7 +52,7 @@ struct @unifiedTypeDefinition {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @typeKindEnum %equatable {
+enum @typeKindEnum %equatable %testGetters {
   case classType (@bool isReference)
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)

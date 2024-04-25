@@ -255,7 +255,8 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                          const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
                                                                                          const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES,
-                                                                                         const class GALGAS_bool & in_GENERATE_5F_COMPARISON
+                                                                                         const class GALGAS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                         const class GALGAS_bool & in_HAS_5F_TEST_5F_GETTERS
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

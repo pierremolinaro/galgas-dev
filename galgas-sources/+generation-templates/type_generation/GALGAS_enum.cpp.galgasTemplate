@@ -108,8 +108,8 @@ end%
 } ;
 
 %
+if HAS_TEST_GETTERS then
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-  if [mAssociatedValueTypeList count] > 0 then
 %//--------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {

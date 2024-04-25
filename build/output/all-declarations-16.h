@@ -1031,14 +1031,17 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
   public: class GALGAS__5B_unifiedTypeMapEntry_5D_ readProperty_associatedValuesTypes (void) const ;
 
+  public: class GALGAS_bool readProperty_testGetters (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_enumTypeForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                const class GALGAS_enumConstantListForGeneration & inOperand1,
-                                                                const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_enumTypeForGeneration init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                    const class GALGAS_enumConstantListForGeneration & inOperand1,
+                                                                    const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
+                                                                    const class GALGAS_bool & inOperand3,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1051,7 +1054,8 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_enumTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
                                                                     const class GALGAS_enumConstantListForGeneration & inOperand1,
-                                                                    const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2
+                                                                    const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
+                                                                    const class GALGAS_bool & inOperand3
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1089,10 +1093,11 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void enumTypeForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                       const class GALGAS_enumConstantListForGeneration & inOperand1,
-                                                       const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
-                                                       Compiler * inCompiler) ;
+  public: void enumTypeForGeneration_init_21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                           const class GALGAS_enumConstantListForGeneration & inOperand1,
+                                                           const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
+                                                           const class GALGAS_bool & inOperand3,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -1109,6 +1114,7 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
   public: GALGAS_enumConstantListForGeneration mProperty_constantList ;
   public: GALGAS__5B_unifiedTypeMapEntry_5D_ mProperty_associatedValuesTypes ;
+  public: GALGAS_bool mProperty_testGetters ;
 
 
 //--- Default constructor
@@ -1117,7 +1123,8 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GALGAS_enumConstantListForGeneration & in_constantList,
-                                      const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
+                                      const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                      const GALGAS_bool & in_testGetters
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

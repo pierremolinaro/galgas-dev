@@ -1600,8 +1600,6 @@ class GALGAS_typeDefinition : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isSolved (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_typeDefinition_2D_solved_3F_ getter_solved (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_unsolved (LOCATION_ARGS) const ;
@@ -4376,10 +4374,6 @@ class GALGAS_templateInstructionForEnumerationAST : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ getter_explicit (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_ getter_implicit (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isExplicit (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isImplicit (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

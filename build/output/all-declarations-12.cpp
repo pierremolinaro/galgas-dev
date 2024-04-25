@@ -6390,74 +6390,128 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   GALGAS_lstring var_enumTypeName_1519 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_enumDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-enum.galgas", 28)) ;
-  GALGAS_structComparison var_comparison_1582 ;
-  switch (select_galgas_33_DeclarationsSyntax_17 (inCompiler)) {
-  case 1: {
-    var_comparison_1582 = GALGAS_structComparison::class_func_none (SOURCE_FILE ("type-enum.galgas", 31)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_comparable COMMA_SOURCE_FILE ("type-enum.galgas", 33)) ;
-    var_comparison_1582 = GALGAS_structComparison::class_func_comparable (SOURCE_FILE ("type-enum.galgas", 34)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_equatable COMMA_SOURCE_FILE ("type-enum.galgas", 36)) ;
-    var_comparison_1582 = GALGAS_structComparison::class_func_equatable (SOURCE_FILE ("type-enum.galgas", 37)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 39)) ;
-  GALGAS_enumConstantList var_constantList_1785 = GALGAS_enumConstantList::init (inCompiler COMMA_HERE) ;
+  GALGAS_structComparison var_comparison_1582 = GALGAS_structComparison::class_func_none (SOURCE_FILE ("type-enum.galgas", 29)) ;
+  GALGAS_bool var_testGetters_1609 = GALGAS_bool (false) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_DeclarationsSyntax_18 (inCompiler)) {
+    switch (select_galgas_33_DeclarationsSyntax_17 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 43)) ;
-      GALGAS_lstring var_constantName_1861 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 44)) ;
-      GALGAS__32_lstringlist var_associatedValueTypeList_1898 = GALGAS__32_lstringlist::init (inCompiler COMMA_HERE) ;
-      switch (select_galgas_33_DeclarationsSyntax_19 (inCompiler)) {
-      case 1: {
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("type-enum.galgas", 48)) ;
-        bool repeatFlag_1 = true ;
-        while (repeatFlag_1) {
-          GALGAS_lstring var_associatedValueType_2031 ;
-          nt_type_5F_definition_5F_ggs_33__ (ioArgument_ioDeclarations, var_associatedValueType_2031, inCompiler) ;
-          GALGAS_lstring var_associatedValueName_2079 = inCompiler->synthetizedAttribute_tokenString () ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 51)) ;
-          var_associatedValueTypeList_1898.addAssign_operation (var_associatedValueType_2031, var_associatedValueName_2079  COMMA_SOURCE_FILE ("type-enum.galgas", 52)) ;
-          if (select_galgas_33_DeclarationsSyntax_20 (inCompiler) == 2) {
-          }else{
-            repeatFlag_1 = false ;
-          }
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_comparable COMMA_SOURCE_FILE ("type-enum.galgas", 33)) ;
+      switch (var_comparison_1582.enumValue ()) {
+      case GALGAS_structComparison::Enumeration::invalid:
+        break ;
+      case GALGAS_structComparison::Enumeration::enum_none:
+        {
+          var_comparison_1582 = GALGAS_structComparison::class_func_comparable (SOURCE_FILE ("type-enum.galgas", 36)) ;
         }
-        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-enum.galgas", 55)) ;
-      } break ;
-      default:
+        break ;
+      case GALGAS_structComparison::Enumeration::enum_comparable:
+        {
+          TC_Array <FixItDescription> fixItArray1 ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 38)), GALGAS_string ("duplicated attribute"), fixItArray1  COMMA_SOURCE_FILE ("type-enum.galgas", 38)) ;
+        }
+        break ;
+      case GALGAS_structComparison::Enumeration::enum_equatable:
+        {
+          TC_Array <FixItDescription> fixItArray2 ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 40)), GALGAS_string ("%comparable and %equatable are mutually exclusive"), fixItArray2  COMMA_SOURCE_FILE ("type-enum.galgas", 40)) ;
+        }
         break ;
       }
-      var_constantList_1785.addAssign_operation (var_constantName_1861, var_associatedValueTypeList_1898  COMMA_SOURCE_FILE ("type-enum.galgas", 57)) ;
     } break ;
     case 3: {
-      nt_method_5F_declaration_5F_ggs_33__ (var_enumTypeName_1519, ioArgument_ioDeclarations, inCompiler) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_equatable COMMA_SOURCE_FILE ("type-enum.galgas", 43)) ;
+      switch (var_comparison_1582.enumValue ()) {
+      case GALGAS_structComparison::Enumeration::invalid:
+        break ;
+      case GALGAS_structComparison::Enumeration::enum_none:
+        {
+          var_comparison_1582 = GALGAS_structComparison::class_func_equatable (SOURCE_FILE ("type-enum.galgas", 46)) ;
+        }
+        break ;
+      case GALGAS_structComparison::Enumeration::enum_equatable:
+        {
+          TC_Array <FixItDescription> fixItArray3 ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 48)), GALGAS_string ("duplicated attribute"), fixItArray3  COMMA_SOURCE_FILE ("type-enum.galgas", 48)) ;
+        }
+        break ;
+      case GALGAS_structComparison::Enumeration::enum_comparable:
+        {
+          TC_Array <FixItDescription> fixItArray4 ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 50)), GALGAS_string ("%comparable and %equatable are mutually exclusive"), fixItArray4  COMMA_SOURCE_FILE ("type-enum.galgas", 50)) ;
+        }
+        break ;
+      }
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_testGetters COMMA_SOURCE_FILE ("type-enum.galgas", 53)) ;
+      enumGalgasBool test_5 = kBoolTrue ;
+      if (kBoolTrue == test_5) {
+        test_5 = var_testGetters_1609.boolEnum () ;
+        if (kBoolTrue == test_5) {
+          TC_Array <FixItDescription> fixItArray6 ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 55)), GALGAS_string ("duplicated attribute"), fixItArray6  COMMA_SOURCE_FILE ("type-enum.galgas", 55)) ;
+        }
+      }
+      var_testGetters_1609 = GALGAS_bool (true) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 61)) ;
-  enumGalgasBool test_2 = kBoolTrue ;
-  if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (ComparisonKind::equal, var_constantList_1785.getter_count (SOURCE_FILE ("type-enum.galgas", 62)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_enumTypeName_1519.readProperty_location (), GALGAS_string ("an enumerated type must define at least one case constant"), fixItArray3  COMMA_SOURCE_FILE ("type-enum.galgas", 63)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 59)) ;
+  GALGAS_enumConstantList var_constantList_2379 = GALGAS_enumConstantList::init (inCompiler COMMA_HERE) ;
+  bool repeatFlag_7 = true ;
+  while (repeatFlag_7) {
+    switch (select_galgas_33_DeclarationsSyntax_18 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 63)) ;
+      GALGAS_lstring var_constantName_2455 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 64)) ;
+      GALGAS__32_lstringlist var_associatedValueTypeList_2492 = GALGAS__32_lstringlist::init (inCompiler COMMA_HERE) ;
+      switch (select_galgas_33_DeclarationsSyntax_19 (inCompiler)) {
+      case 1: {
+      } break ;
+      case 2: {
+        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("type-enum.galgas", 68)) ;
+        bool repeatFlag_8 = true ;
+        while (repeatFlag_8) {
+          GALGAS_lstring var_associatedValueType_2625 ;
+          nt_type_5F_definition_5F_ggs_33__ (ioArgument_ioDeclarations, var_associatedValueType_2625, inCompiler) ;
+          GALGAS_lstring var_associatedValueName_2673 = inCompiler->synthetizedAttribute_tokenString () ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 71)) ;
+          var_associatedValueTypeList_2492.addAssign_operation (var_associatedValueType_2625, var_associatedValueName_2673  COMMA_SOURCE_FILE ("type-enum.galgas", 72)) ;
+          if (select_galgas_33_DeclarationsSyntax_20 (inCompiler) == 2) {
+          }else{
+            repeatFlag_8 = false ;
+          }
+        }
+        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-enum.galgas", 75)) ;
+      } break ;
+      default:
+        break ;
+      }
+      var_constantList_2379.addAssign_operation (var_constantName_2455, var_associatedValueTypeList_2492  COMMA_SOURCE_FILE ("type-enum.galgas", 77)) ;
+    } break ;
+    case 3: {
+      nt_method_5F_declaration_5F_ggs_33__ (var_enumTypeName_1519, ioArgument_ioDeclarations, inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_7 = false ;
+      break ;
     }
   }
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_enumDeclarationAST::init_21_isPredefined_21__21__21_comparison (GALGAS_bool (false), var_enumTypeName_1519, var_constantList_1785, var_comparison_1582, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-enum.galgas", 65)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 81)) ;
+  enumGalgasBool test_9 = kBoolTrue ;
+  if (kBoolTrue == test_9) {
+    test_9 = GALGAS_bool (ComparisonKind::equal, var_constantList_2379.getter_count (SOURCE_FILE ("type-enum.galgas", 82)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
+    if (kBoolTrue == test_9) {
+      TC_Array <FixItDescription> fixItArray10 ;
+      inCompiler->emitSemanticError (var_enumTypeName_1519.readProperty_location (), GALGAS_string ("an enumerated type must define at least one case constant"), fixItArray10  COMMA_SOURCE_FILE ("type-enum.galgas", 83)) ;
+    }
+  }
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GALGAS_enumDeclarationAST::init_21_isPredefined_21__21__21_comparison_21_testGetters (GALGAS_bool (false), var_enumTypeName_1519, var_constantList_2379, var_comparison_1582, var_testGetters_1609, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-enum.galgas", 85)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -6466,40 +6520,45 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_enum COMMA_SOURCE_FILE ("type-enum.galgas", 27)) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_enumDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-enum.galgas", 28)) ;
-  switch (select_galgas_33_DeclarationsSyntax_17 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_comparable COMMA_SOURCE_FILE ("type-enum.galgas", 33)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_equatable COMMA_SOURCE_FILE ("type-enum.galgas", 36)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 39)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
+    switch (select_galgas_33_DeclarationsSyntax_17 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_comparable COMMA_SOURCE_FILE ("type-enum.galgas", 33)) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_equatable COMMA_SOURCE_FILE ("type-enum.galgas", 43)) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_testGetters COMMA_SOURCE_FILE ("type-enum.galgas", 53)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 59)) ;
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     switch (select_galgas_33_DeclarationsSyntax_18 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 43)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 44)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 63)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 64)) ;
       switch (select_galgas_33_DeclarationsSyntax_19 (inCompiler)) {
       case 1: {
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("type-enum.galgas", 48)) ;
-        bool repeatFlag_1 = true ;
-        while (repeatFlag_1) {
+        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("type-enum.galgas", 68)) ;
+        bool repeatFlag_2 = true ;
+        while (repeatFlag_2) {
           nt_type_5F_definition_5F_ggs_33__parse (inCompiler) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 51)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 71)) ;
           if (select_galgas_33_DeclarationsSyntax_20 (inCompiler) == 2) {
           }else{
-            repeatFlag_1 = false ;
+            repeatFlag_2 = false ;
           }
         }
-        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-enum.galgas", 55)) ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-enum.galgas", 75)) ;
       } break ;
       default:
         break ;
@@ -6509,11 +6568,11 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
       nt_method_5F_declaration_5F_ggs_33__parse (inCompiler) ;
     } break ;
     default:
-      repeatFlag_0 = false ;
+      repeatFlag_1 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 61)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 81)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -6523,40 +6582,45 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_enum COMMA_SOURCE_FILE ("type-enum.galgas", 27)) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_33_::kIndexing_enumDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__40_type COMMA_SOURCE_FILE ("type-enum.galgas", 28)) ;
-  switch (select_galgas_33_DeclarationsSyntax_17 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_comparable COMMA_SOURCE_FILE ("type-enum.galgas", 33)) ;
-  } break ;
-  case 3: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_equatable COMMA_SOURCE_FILE ("type-enum.galgas", 36)) ;
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 39)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
+    switch (select_galgas_33_DeclarationsSyntax_17 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_comparable COMMA_SOURCE_FILE ("type-enum.galgas", 33)) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_equatable COMMA_SOURCE_FILE ("type-enum.galgas", 43)) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__25_testGetters COMMA_SOURCE_FILE ("type-enum.galgas", 53)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7B_ COMMA_SOURCE_FILE ("type-enum.galgas", 59)) ;
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     switch (select_galgas_33_DeclarationsSyntax_18 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 43)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 44)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_case COMMA_SOURCE_FILE ("type-enum.galgas", 63)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 64)) ;
       switch (select_galgas_33_DeclarationsSyntax_19 (inCompiler)) {
       case 1: {
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("type-enum.galgas", 48)) ;
-        bool repeatFlag_1 = true ;
-        while (repeatFlag_1) {
+        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__28_ COMMA_SOURCE_FILE ("type-enum.galgas", 68)) ;
+        bool repeatFlag_2 = true ;
+        while (repeatFlag_2) {
           nt_type_5F_definition_5F_ggs_33__indexing (inCompiler) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 51)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("type-enum.galgas", 71)) ;
           if (select_galgas_33_DeclarationsSyntax_20 (inCompiler) == 2) {
           }else{
-            repeatFlag_1 = false ;
+            repeatFlag_2 = false ;
           }
         }
-        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-enum.galgas", 55)) ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__29_ COMMA_SOURCE_FILE ("type-enum.galgas", 75)) ;
       } break ;
       default:
         break ;
@@ -6566,11 +6630,11 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
       nt_method_5F_declaration_5F_ggs_33__indexing (inCompiler) ;
     } break ;
     default:
-      repeatFlag_0 = false ;
+      repeatFlag_1 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 61)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7D_ COMMA_SOURCE_FILE ("type-enum.galgas", 81)) ;
 }
 
 //------------------------------------------------------------------------------------------------
