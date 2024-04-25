@@ -320,6 +320,9 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
+    for type in self.requiredTypes do
+      [type addHeaderFileName !?ioInclusionSet]
+    end
     var @stringlist parameterList = ()
     for (mExpression) in self.mEffectiveParameterList do
       [mExpression generateExpression
