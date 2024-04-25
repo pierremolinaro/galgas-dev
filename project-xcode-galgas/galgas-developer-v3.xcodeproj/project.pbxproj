@@ -969,8 +969,6 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
-				CFED148C2BD9AECE0053EAEB /* all-declarations-32.cpp */,
-				CFED148B2BD9AECD0053EAEB /* all-declarations-32.h */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
 				CF4C996827301EDB000A6A07 /* all-declarations-0.h */,
 				CF23743919967C4F0061D2D8 /* all-declarations-1.cpp */,
@@ -1035,6 +1033,8 @@
 				CFBBAAA52BAC985500F945E8 /* all-declarations-30.h */,
 				CF052E2F2BD666D200B079FB /* all-declarations-31.cpp */,
 				CF052E302BD666D200B079FB /* all-declarations-31.h */,
+				CFED148C2BD9AECE0053EAEB /* all-declarations-32.cpp */,
+				CFED148B2BD9AECD0053EAEB /* all-declarations-32.h */,
 				CF4C995327301EDA000A6A07 /* all-declarations.h */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 				CF4C996B27301EDB000A6A07 /* all-predefined-types.h */,

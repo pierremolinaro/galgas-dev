@@ -427,6 +427,7 @@ refclass @switchInstructionForGeneration : @semanticInstructionForGeneration {
         ioGeneratedCode += "{\n"
         if [branch.mExtractedAssociatedValuesForGeneration count] > 0 then
           for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
+            [associatedValue.mType addHeaderFileName !?ioInclusionSet]
             ioGeneratedCode += "  GALGAS_" + [associatedValue.mType identifierRepresentation]
             ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
           end

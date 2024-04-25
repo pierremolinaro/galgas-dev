@@ -8161,39 +8161,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControl_2D_pr
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 2: class for element of '@constantIndexMap' map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_constantIndexMap : public cMapElement {
-//--- Map attributes
-  public: GALGAS_uint mProperty_mIndex ;
-  public: GALGAS_associatedValueDescriptorList mProperty_mAssociatedTypeList ;
-
-//--- Constructors
-  public: cMapElement_constantIndexMap (const GALGAS_constantIndexMap_2D_element & inValue
-                                        COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_constantIndexMap (const GALGAS_lstring & inKey,
-                                        const GALGAS_uint & in_mIndex,
-                                        const GALGAS_associatedValueDescriptorList & in_mAssociatedTypeList
-                                        COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @constantIndexMap_2D_element struct
 //
 //--------------------------------------------------------------------------------------------------
