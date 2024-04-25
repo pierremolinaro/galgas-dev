@@ -33,7 +33,7 @@ setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !.none
+    ! ()
     !.declared {!usedInSubscope: false}
   ]
 }
@@ -50,7 +50,7 @@ setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
     !inType
     !inCppName
     !inNameForCheckingFormalParameterUsing
-    !if inWarnsIfNotMutated then .none else .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState end
+    !if inWarnsIfNotMutated then () else .acceptInitializedStateAsFinalState | .acceptReadStateAsFinalState end
     !.initialized
   ]
 }

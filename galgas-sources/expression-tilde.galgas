@@ -16,17 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @tildeExpressionAST : @semanticExpressionAST {
-  private let @location mOperatorLocation
-  private let @semanticExpressionAST mExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -63,56 +52,66 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+#!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @tildeExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
+refclass @tildeExpressionAST : @semanticExpressionAST {
+  private let @location mOperatorLocation
+  private let @semanticExpressionAST mExpression
 
-#·····················································································································
+  #·······························································································
 
-override method @tildeExpressionAST analyzeSemanticExpression
-  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@localVarManager ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-{
-#--- Expression analysis
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType: @unifiedTypeMapEntry.null
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
-  ]
-#--- Check operator availability
-  let @unifiedTypeMapEntry type = expression.mResultType
-  if let exp = expression as @literalBigIntExpressionForGeneration then
-    outExpression = @literalBigIntExpressionForGeneration {
-      !exp.mResultType
-      !exp.mLocation
-      !~ exp.mValue
-    }
-  elsif not [[type definition].features prefixTildeOperator] then
-    error self.mOperatorLocation
-    : "operand type is '@" + [type definition].typeName.string + "' and does not support the '~' operator"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @tildeExpressionForGeneration {
-      !type
-      !self.mOperatorLocation
-      !expression
-    }
-  end
+  override method enterExpressionInSemanticContext
+    ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  }
+
+  #·······························································································
+
+  override method analyzeSemanticExpression
+    ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?inferenceType: let @unifiedTypeMapEntry inType
+    ?let @analysisContext inAnalysisContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?!@localVarManager ioVariableMap
+    !@semanticExpressionForGeneration outExpression
+  {
+  #--- Expression analysis
+    [self.mExpression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: inType
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration expression
+    ]
+  #--- Check operator availability
+    let @unifiedTypeMapEntry type = expression.mResultType
+    if let exp = expression as @literalBigIntExpressionForGeneration then
+      outExpression = @literalBigIntExpressionForGeneration {
+        !exp.mResultType
+        !exp.mLocation
+        !~ exp.mValue
+      }
+    elsif not [[type definition].features prefixTildeOperator] then
+      error self.mOperatorLocation
+      : "operand type is '@" + [type definition].typeName.string
+      + "' and does not support the '~' operator"
+      : outExpression
+    else
+    #--- Generate expression
+      outExpression = @tildeExpressionForGeneration {
+        !type
+        !self.mOperatorLocation
+        !expression
+      }
+    end
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

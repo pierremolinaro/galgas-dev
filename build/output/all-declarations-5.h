@@ -6373,10 +6373,6 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
 
   public: static class GALGAS_localVariableAttributes class_func_acceptReadStateAsFinalState (LOCATION_ARGS) ;
 
-  public: static class GALGAS_localVariableAttributes class_func_all (LOCATION_ARGS) ;
-
-  public: static class GALGAS_localVariableAttributes class_func_none (LOCATION_ARGS) ;
-
   public: static class GALGAS_localVariableAttributes class_func_rejectDeclaredStateAsFinalState (LOCATION_ARGS) ;
 
   public: static class GALGAS_localVariableAttributes class_func_rejectWriteInInitializedAndReadStates (LOCATION_ARGS) ;
@@ -6384,6 +6380,16 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
   public: static class GALGAS_localVariableAttributes class_func_suggestDeclareUnusedParameterAsUnused (LOCATION_ARGS) ;
 
   public: static class GALGAS_localVariableAttributes class_func_warnsOnAnyAcces (LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_localVariableAttributes inOperand,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator (with expression)
+  public: VIRTUAL_IN_DEBUG void minusAssign_operation (const GALGAS_localVariableAttributes inOperand,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
   public: VIRTUAL_IN_DEBUG GALGAS_localVariableAttributes operator_and (const GALGAS_localVariableAttributes & inOperand
@@ -6421,9 +6427,8 @@ class GALGAS_localVariableAttributes : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_acceptReadStateAsFinalState (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_all (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_none (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_contains (const class GALGAS_localVariableAttributes & constinOperand0
+                                                              COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_rejectDeclaredStateAsFinalState (LOCATION_ARGS) const ;
 

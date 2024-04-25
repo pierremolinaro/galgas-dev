@@ -20,6 +20,16 @@ class GALGAS_bool extensionGetter_propertiesAreMutable (const class GALGAS_selfM
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension getter '@opAssignmentOperator features' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeFeatures extensionGetter_features (const class GALGAS_opAssignmentOperator & inObject,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @terminalInstructionForGrammarAnalysis reference class
 //
 //--------------------------------------------------------------------------------------------------

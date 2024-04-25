@@ -97,7 +97,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: true
     )
   #--- features
-    var features = @typeFeatures.none
+    var features = @typeFeatures ()
     if self.equatable then
       features = features | .equatable
     end

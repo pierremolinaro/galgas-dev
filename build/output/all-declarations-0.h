@@ -492,27 +492,29 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken__2D__3D_ /* 168 */ ,
    kToken__2A__3D_ /* 169 */ ,
    kToken__2F__3D_ /* 170 */ ,
-   kToken__2F_ /* 171 */ ,
-   kToken__21__3D_ /* 172 */ ,
-   kToken__3E__3D_ /* 173 */ ,
-   kToken__26_ /* 174 */ ,
-   kToken__7B_ /* 175 */ ,
-   kToken__7D_ /* 176 */ ,
-   kToken__60_ /* 177 */ ,
-   kToken__7C__7C_ /* 178 */ ,
-   kToken__7C_ /* 179 */ ,
-   kToken__5E_ /* 180 */ ,
-   kToken__3E__3E_ /* 181 */ ,
-   kToken__7E_ /* 182 */ ,
-   kToken__2D__2D_ /* 183 */ ,
-   kToken__2B__2B_ /* 184 */ ,
-   kToken__26__2D__2D_ /* 185 */ ,
-   kToken__26__2B__2B_ /* 186 */ ,
-   kToken__3D__3D__3D_ /* 187 */ ,
-   kToken__21__3D__3D_ /* 188 */ ,
-   kToken__3F__5E_ /* 189 */ ,
-   kToken__21__5E_ /* 190 */ ,
-   kToken__A7__5B_ /* 191 */ } ;
+   kToken__26__3D_ /* 171 */ ,
+   kToken__7C__3D_ /* 172 */ ,
+   kToken__2F_ /* 173 */ ,
+   kToken__21__3D_ /* 174 */ ,
+   kToken__3E__3D_ /* 175 */ ,
+   kToken__26_ /* 176 */ ,
+   kToken__7B_ /* 177 */ ,
+   kToken__7D_ /* 178 */ ,
+   kToken__60_ /* 179 */ ,
+   kToken__7C__7C_ /* 180 */ ,
+   kToken__7C_ /* 181 */ ,
+   kToken__5E_ /* 182 */ ,
+   kToken__3E__3E_ /* 183 */ ,
+   kToken__7E_ /* 184 */ ,
+   kToken__2D__2D_ /* 185 */ ,
+   kToken__2B__2B_ /* 186 */ ,
+   kToken__26__2D__2D_ /* 187 */ ,
+   kToken__26__2B__2B_ /* 188 */ ,
+   kToken__3D__3D__3D_ /* 189 */ ,
+   kToken__21__3D__3D_ /* 190 */ ,
+   kToken__3F__5E_ /* 191 */ ,
+   kToken__21__5E_ /* 192 */ ,
+   kToken__A7__5B_ /* 193 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -612,7 +614,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 191 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 193 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

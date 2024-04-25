@@ -20,18 +20,6 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUS
   return GALGAS_%!TYPE_IDENTIFIER% (0) ;
 }
 
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_none (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER% (0) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_all (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER% (uint64_t (%![FULL_SET hexString]%)) ;
-}
-
 %for (mValue) in SLOT_LIST do (idx)
 %//--------------------------------------------------------------------------------------------------
 
@@ -59,6 +47,37 @@ ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_I
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mIsValid ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
+            %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = GALGAS_bool ((mFlags & inOperand.mFlags) != 0) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+                                                      class Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags |= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::minusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+                                                       class Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= ~ inOperand.mFlags ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -111,7 +130,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::substract_operation (%?^%co
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (((uint64_t) %![FULL_SET hexString]%) ^ mFlags) ;
+    result = GALGAS_%!TYPE_IDENTIFIER% (uint64_t (%![FULL_SET hexString]%) ^ mFlags) ;
   }
   return result ;
 }
@@ -126,32 +145,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
   }else{
 %
 for (mValue) in SLOT_LIST do (idx)
-   %    if ((mFlags & ((uint64_t) 1) << %![idx string]%) != 0) {\n%
+   %    if ((mFlags & (uint64_t (1) << %![idx string]%)) != 0) {\n%
    %      ioString.appendCString (" %!mValue.string%") ;\n%
    %    }\n%
 end
 %  }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_none (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (mIsValid) {
-    result = GALGAS_bool (mFlags == 0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_all (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (mIsValid) {
-    result = GALGAS_bool (mFlags == uint64_t (%![FULL_SET hexString]%)) ;
-  }
-  return result ;
 }
 
 %for (mValue) in SLOT_LIST do (idx)

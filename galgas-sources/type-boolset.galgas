@@ -124,10 +124,8 @@ override getter @boolsetDeclarationAST keyRepresentation -> @string {
 
 private func %once forbiddenKeysForBoolset -> @stringset {
   result = ()
-  result += !"all"
   result += !"description"
   result += !"dynamicType"
-  result += !"none"
   result += !"object"
 }
 
@@ -158,27 +156,29 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   end
 #--- boolset type index
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
-#--- Class functions and attribute map
+#--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
+#proc enterBaseGetterWithArgument
+#  ?!@getterMap ioGetterMap
+#  ?!@unifiedTypeMap ioUnifiedTypeMap
+#  ?getterName: let @string inGetterName
+#  ?argSelector: let @string inArgument1Selector
+#  ?argType: let @string inArgument1TypeName
+#  ?argName: let @string inArgument1Name
+#  ?returnedTypeName:let @string inReturnedTypeName
+#  ?hasCompilerArgument:let @bool inHasCompilerArgument
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName: "contains"
+    !argSelector: ""
+    !argType: self.mBoolsetTypeName
+    !argName: "inOperand"
+    !returnedTypeName: "bool"
+    !hasCompilerArgument: false
+  )
+#--- class functions
   var @classFunctionMap classFunctionMap = ()
-  [!?classFunctionMap insertKey !["none" nowhere] !() !false !boolsetTypeIndex]
-  [!?classFunctionMap insertKey !["all" nowhere] !() !false !boolsetTypeIndex]
-  enterBaseFinalGetterWithoutArgument (
-    !?getterMap
-    !?ioTypeMap
-    !getterName:"none"
-    !obsoleteName: ""
-    !returnedTypeName:"bool"
-    !hasCompilerArgument:false
-  )
-  enterBaseFinalGetterWithoutArgument (
-    !?getterMap
-    !?ioTypeMap
-    !getterName:"all"
-    !obsoleteName: ""
-    !returnedTypeName:"bool"
-    !hasCompilerArgument:false
-  )
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
       [!?classFunctionMap insertKey !slotName !() !false !boolsetTypeIndex]
@@ -221,6 +221,8 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   let operators = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .equatable
+    | .plusEqualOperatorWithExpression # var += exp
+    | .minusEqualOperatorWithExpression # var -= exp
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mBoolsetTypeName

@@ -212,7 +212,7 @@ abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
   #-----------------------------------------------------------------------------------------------
 
   getter getSupportedOperatorFlags -> @typeFeatures outFlags {
-    outFlags = .none # No supported operator
+    outFlags = ()
   }
 
   #-----------------------------------------------------------------------------------------------
