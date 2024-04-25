@@ -3087,10 +3087,6 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalInputMode (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalInputOutputMode (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_lexicalInputMode (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_lexicalInputOutputMode (LOCATION_ARGS) const ;
@@ -3228,22 +3224,6 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_bigint (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_char (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_double (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_sint (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_sint_36__34_ (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_string (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_uint (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isLexicalType_5F_uint_36__34_ (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_lexicalType_5F_bigint (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_lexicalType_5F_char (LOCATION_ARGS) const ;
@@ -3822,6 +3802,16 @@ class GALGAS_terminalMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_terminalMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -3850,8 +3840,6 @@ class GALGAS_terminalMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -4130,6 +4118,16 @@ class GALGAS_lexicalTypeMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_lexicalTypeMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -4158,8 +4156,6 @@ class GALGAS_lexicalTypeMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -4438,6 +4434,16 @@ class GALGAS_lexicalAttributeMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_lexicalAttributeMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -4466,8 +4472,6 @@ class GALGAS_lexicalAttributeMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -5180,6 +5184,16 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ : public AC_GALGAS_root 
   public: inline GALGAS_lexicalExplicitTokenListMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -5208,8 +5222,6 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ : public AC_GALGAS_root 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -5758,6 +5770,16 @@ class GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ : public AC_GALGAS_ro
   public: inline GALGAS_lexicalExplicitTokenListMapMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -5786,8 +5808,6 @@ class GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ : public AC_GALGAS_ro
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -6093,6 +6113,16 @@ class GALGAS_lexicalMessageMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_lexicalMessageMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -6121,8 +6151,6 @@ class GALGAS_lexicalMessageMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -6739,6 +6767,16 @@ class GALGAS_lexicalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_lexicalRoutineMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -6767,8 +6805,6 @@ class GALGAS_lexicalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7380,6 +7416,16 @@ class GALGAS_lexicalFunctionMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_lexicalFunctionMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7408,8 +7454,6 @@ class GALGAS_lexicalFunctionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7999,6 +8043,16 @@ class GALGAS_styleMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_styleMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -8027,8 +8081,6 @@ class GALGAS_styleMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -8280,6 +8332,16 @@ class GALGAS_lexicalTagMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_lexicalTagMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -8308,8 +8370,6 @@ class GALGAS_lexicalTagMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -11718,12 +11778,6 @@ class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNoDefaultValue (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isStringDefaultValue (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isUnsignedDefaultValue (LOCATION_ARGS) const ;
-
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_noDefaultValue (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_stringDefaultValue (LOCATION_ARGS) const ;

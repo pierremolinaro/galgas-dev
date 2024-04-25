@@ -62,14 +62,21 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
     ?!@semanticContext ioSemanticContext {
   #--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
-    enterBaseGetterWithoutArgument (
-      !?getterMap
-      !?ioTypeMap
-      !getterName: "isNil"
-      !obsoleteName: ""
-      !returnedTypeName:"bool"
-      !hasCompilerArgument:false
-    )
+  #--- Properties
+    [!?ioTypeMap makeEntry !["bool" nowhere] ?let boolTypeEntry]
+    var @propertyMap propertyMap = ()
+    [!?propertyMap insertKey
+      !.init ("isSome", self.optionalTypeName)
+      !.publicAccess
+      !true
+      !boolTypeEntry
+    ]
+    [!?propertyMap insertKey
+      !.init ("isNil", self.optionalTypeName)
+      !.publicAccess
+      !true
+      !boolTypeEntry
+    ]
   #--- Add extensions
     var @instanceMethodMap instanceMethodMap = ()
     var @setterMap setterMap = ()
@@ -105,7 +112,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !typeKind: .listType
       !supportCollectionValue: false 
       !allTypedPropertyList: ()
-      !propertyMap: ()
+      !propertyMap: propertyMap
       !currentTypedPropertyList: ()
       !initializerMap: initializerMap
       !classFunctionMap: ()

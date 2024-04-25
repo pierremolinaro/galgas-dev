@@ -230,30 +230,30 @@ func @monOption option2 -> @monOption.@option2?
 
 \subsubsection{Pas d'intérêt pour les valeurs associées}
 
-Si l'on ne s'intéresse pas aux valeurs associées, on teste si la valeur retournée est \ggsq!nil!~:
+Si l'on ne s'intéresse pas aux valeurs associées, on teste si la valeur retournée est \ggsq!nil!. Tout optionnel présente deux propriétés, \ggsq!isNil! (qui renvoie \ggsq!true! si l'optionnel est \ggsq!nil!), et \ggsq!isSome! (qui renvoie \ggsq!true! si l'optionnel contient une valeur).
 
 \begin{galgas4}
 var v = @monOption.noOption
-let @bool a = v.option1.isNil // a est true
+let @bool a = v.option1.isSome // a est false
 v = @monOption.option1 (!name: "xyz")
-let @bool b = v.option1.isNil // b est false
+let @bool b = v.option1.isSome // b est true
 \end{galgas4}
 \begin{galgas3}
 var v = @monOption.noOption
-let @bool a = [[v option1] isNil] // a est true
+let @bool a = [v option1].isSome // a est false
 v = @monOption.option1 (!name: "xyz")
-let @bool b = [[v option1] isNil] // b est false
+let @bool b = [v option1].isSome // b est true
 \end{galgas3}
 
 Si l'écriture paraît trop lourde, on peut définir un \emph{getter} qui renvoie une valeur boolénne~:
 \begin{galgas4}
 func @monOption.isOption1 () -> @bool {
-  result = not self.option1.isNil
+  result = self.option1.isSome
 }
 \end{galgas4}
 \begin{galgas3}
 getter @monOption isOption1 -> @bool {
-  result = not [[self option1] isNil]
+  result = [self option1].isSome
 }
 \end{galgas3}
 

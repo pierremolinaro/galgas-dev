@@ -10,81 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @syntaxExtensions struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_syntaxExtensions : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_syntaxExtensionsDictionary mProperty_dictionary ;
-  public: inline GALGAS_syntaxExtensionsDictionary readProperty_dictionary (void) const {
-    return mProperty_dictionary ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_syntaxExtensions (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setDictionary (const GALGAS_syntaxExtensionsDictionary & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_dictionary = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GALGAS_syntaxExtensions (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_syntaxExtensions (const GALGAS_syntaxExtensionsDictionary & in_dictionary) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GALGAS_syntaxExtensions init (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_syntaxExtensions extractObject (const GALGAS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_syntaxExtensions class_func_new (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_syntaxExtensions class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension getter '@syntaxExtensions listForKey' (as function)
 //
 //--------------------------------------------------------------------------------------------------
@@ -2388,6 +2313,16 @@ class GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControlAST_2D_fileprivateAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -2416,8 +2351,6 @@ class GALGAS_AccessControlAST_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -2530,6 +2463,16 @@ class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_roo
   public: inline GALGAS_AccessControlAST_2D_fileprivateSetAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -2558,8 +2501,6 @@ class GALGAS_AccessControlAST_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_roo
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -2674,6 +2615,16 @@ class GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ : public AC_GALGA
   public: inline GALGAS_propertyInCollectionInitializationAST_2D_some unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -2702,8 +2653,6 @@ class GALGAS_propertyInCollectionInitializationAST_2D_some_3F_ : public AC_GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -6997,6 +6946,16 @@ class GALGAS_AccessControl_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControl_2D_fileprivateAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7025,8 +6984,6 @@ class GALGAS_AccessControl_2D_fileprivateAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7139,6 +7096,16 @@ class GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControl_2D_fileprivateSetAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7167,8 +7134,6 @@ class GALGAS_AccessControl_2D_fileprivateSetAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7281,6 +7246,16 @@ class GALGAS_AccessControl_2D_privateAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControl_2D_privateAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7309,8 +7284,6 @@ class GALGAS_AccessControl_2D_privateAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7423,6 +7396,16 @@ class GALGAS_AccessControl_2D_privateSetAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControl_2D_privateSetAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7451,8 +7434,6 @@ class GALGAS_AccessControl_2D_privateSetAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7565,6 +7546,16 @@ class GALGAS_AccessControl_2D_protectedAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControl_2D_protectedAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7593,8 +7584,6 @@ class GALGAS_AccessControl_2D_protectedAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7707,6 +7696,16 @@ class GALGAS_AccessControl_2D_protectedSetAccess_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_AccessControl_2D_protectedSetAccess unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7735,8 +7734,6 @@ class GALGAS_AccessControl_2D_protectedSetAccess_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -7875,6 +7872,16 @@ class GALGAS_constantIndexMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_constantIndexMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -7903,8 +7910,6 @@ class GALGAS_constantIndexMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -8196,6 +8201,16 @@ class GALGAS_internalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_internalRoutineMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -8224,8 +8239,6 @@ class GALGAS_internalRoutineMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -8394,6 +8407,16 @@ class GALGAS_routineArgumentMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_routineArgumentMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -8422,8 +8445,6 @@ class GALGAS_routineArgumentMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -9007,6 +9028,16 @@ class GALGAS_grammarLabelMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_grammarLabelMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -9035,8 +9066,6 @@ class GALGAS_grammarLabelMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -9219,6 +9248,16 @@ class GALGAS_grammarMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_grammarMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -9247,8 +9286,6 @@ class GALGAS_grammarMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -9431,6 +9468,16 @@ class GALGAS_functionMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_functionMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -9459,8 +9506,6 @@ class GALGAS_functionMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -9820,6 +9865,16 @@ class GALGAS_wrapperFileMap_2D_element_3F_ : public AC_GALGAS_root {
   public: inline GALGAS_wrapperFileMap_2D_element unwrappedValue (void) const {
     return mValue ;
   }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
   
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
@@ -9848,8 +9903,6 @@ class GALGAS_wrapperFileMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isNil (LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
@@ -9862,4 +9915,374 @@ class GALGAS_wrapperFileMap_2D_element_3F_ : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap_2D_element_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @wrapperDirectoryMap map
+//
+//--------------------------------------------------------------------------------------------------
+
+class cMapElement_wrapperDirectoryMap ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const char * kSearchErrorMessage_wrapperDirectoryMap_searchKey ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_wrapperDirectoryMap : public AC_GALGAS_map {
+//--------------------------------- Default constructor
+  public: GALGAS_wrapperDirectoryMap (void) ;
+
+//--------------------------------- Handle copy
+  public: GALGAS_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap & inSource) ;
+  public: GALGAS_wrapperDirectoryMap & operator = (const GALGAS_wrapperDirectoryMap & inSource) ;
+  
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_wrapperDirectoryMap init (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_wrapperDirectoryMap extractObject (const GALGAS_object & inObject,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_wrapperDirectoryMap class_func_emptyMap (LOCATION_ARGS) ;
+
+  public: static class GALGAS_wrapperDirectoryMap class_func_mapWithMapToOverride (const class GALGAS_wrapperDirectoryMap & inOperand0
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                     const class GALGAS_wrapperFileMap & inOperand1,
+                                                     const class GALGAS_wrapperDirectoryMap & inOperand2,
+                                                     const class GALGAS_uint & inOperand3,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_wrapperDirectoryMap add_operation (const GALGAS_wrapperDirectoryMap & inOperand,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
+                                                  class GALGAS_wrapperFileMap constinArgument1,
+                                                  class GALGAS_wrapperDirectoryMap constinArgument2,
+                                                  class GALGAS_uint constinArgument3,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMDirectoryMapForKey (class GALGAS_wrapperDirectoryMap constinArgument0,
+                                                               class GALGAS_string constinArgument1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMRegularFileMapForKey (class GALGAS_wrapperFileMap constinArgument0,
+                                                                 class GALGAS_string constinArgument1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMWrapperDirectoryIndexForKey (class GALGAS_uint constinArgument0,
+                                                                        class GALGAS_string constinArgument1,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
+                                                  class GALGAS_wrapperFileMap & outArgument1,
+                                                  class GALGAS_wrapperDirectoryMap & outArgument2,
+                                                  class GALGAS_uint & outArgument3,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_wrapperDirectoryMap getter_mDirectoryMapForKey (const class GALGAS_string & constinOperand0,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_wrapperFileMap getter_mRegularFileMapForKey (const class GALGAS_string & constinOperand0,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_uint getter_mWrapperDirectoryIndexForKey (const class GALGAS_string & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_wrapperDirectoryMap getter_overriddenMap (Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_wrapperDirectoryMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG cMapElement_wrapperDirectoryMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                                const GALGAS_string & inKey
+                                                                                                COMMA_LOCATION_ARGS) ;
+
+
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_wrapperDirectoryMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+  friend class cEnumerator_wrapperDirectoryMap ;
+ 
+} ; // End of GALGAS_wrapperDirectoryMap class
+
+//--------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//--------------------------------------------------------------------------------------------------
+
+class cEnumerator_wrapperDirectoryMap : public cGenericAbstractEnumerator {
+  public: cEnumerator_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap & inEnumeratedObject,
+                                           const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GALGAS_wrapperFileMap current_mRegularFileMap (LOCATION_ARGS) const ;
+  public: class GALGAS_wrapperDirectoryMap current_mDirectoryMap (LOCATION_ARGS) const ;
+  public: class GALGAS_uint current_mWrapperDirectoryIndex (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GALGAS_wrapperDirectoryMap_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@wrapperDirectoryMap' map
+//
+//--------------------------------------------------------------------------------------------------
+
+class cMapElement_wrapperDirectoryMap : public cMapElement {
+//--- Map attributes
+  public: GALGAS_wrapperFileMap mProperty_mRegularFileMap ;
+  public: GALGAS_wrapperDirectoryMap mProperty_mDirectoryMap ;
+  public: GALGAS_uint mProperty_mWrapperDirectoryIndex ;
+
+//--- Constructors
+  public: cMapElement_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap_2D_element & inValue
+                                           COMMA_LOCATION_ARGS) ;
+ 
+  public: cMapElement_wrapperDirectoryMap (const GALGAS_lstring & inKey,
+                                           const GALGAS_wrapperFileMap & in_mRegularFileMap,
+                                           const GALGAS_wrapperDirectoryMap & in_mDirectoryMap,
+                                           const GALGAS_uint & in_mWrapperDirectoryIndex
+                                           COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cMapElement * copy (void) ;
+
+//--- Description
+ public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @wrapperDirectoryMap_2D_element struct
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
+    return mProperty_lkey ;
+  }
+
+  public: GALGAS_wrapperFileMap mProperty_mRegularFileMap ;
+  public: inline GALGAS_wrapperFileMap readProperty_mRegularFileMap (void) const {
+    return mProperty_mRegularFileMap ;
+  }
+
+  public: GALGAS_wrapperDirectoryMap mProperty_mDirectoryMap ;
+  public: inline GALGAS_wrapperDirectoryMap readProperty_mDirectoryMap (void) const {
+    return mProperty_mDirectoryMap ;
+  }
+
+  public: GALGAS_uint mProperty_mWrapperDirectoryIndex ;
+  public: inline GALGAS_uint readProperty_mWrapperDirectoryIndex (void) const {
+    return mProperty_mWrapperDirectoryIndex ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_wrapperDirectoryMap_2D_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setLkey (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lkey = inValue ;
+  }
+
+  public: inline void setter_setMRegularFileMap (const GALGAS_wrapperFileMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mRegularFileMap = inValue ;
+  }
+
+  public: inline void setter_setMDirectoryMap (const GALGAS_wrapperDirectoryMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mDirectoryMap = inValue ;
+  }
+
+  public: inline void setter_setMWrapperDirectoryIndex (const GALGAS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mWrapperDirectoryIndex = inValue ;
+  }
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GALGAS_wrapperDirectoryMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_wrapperDirectoryMap_2D_element (const GALGAS_lstring & in_lkey,
+                                                 const GALGAS_wrapperFileMap & in_mRegularFileMap,
+                                                 const GALGAS_wrapperDirectoryMap & in_mDirectoryMap,
+                                                 const GALGAS_uint & in_mWrapperDirectoryIndex) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_wrapperDirectoryMap_2D_element init_21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_wrapperFileMap & inOperand1,
+                                                                             const class GALGAS_wrapperDirectoryMap & inOperand2,
+                                                                             const class GALGAS_uint & inOperand3,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_wrapperDirectoryMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_wrapperDirectoryMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_wrapperFileMap & inOperand1,
+                                                                             const class GALGAS_wrapperDirectoryMap & inOperand2,
+                                                                             const class GALGAS_uint & inOperand3,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_wrapperDirectoryMap_2D_element class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: wrapperDirectoryMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_wrapperDirectoryMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_wrapperDirectoryMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_wrapperDirectoryMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_wrapperDirectoryMap_2D_element_3F_ (const GALGAS_wrapperDirectoryMap_2D_element & inValue) ;
+  public: static GALGAS_wrapperDirectoryMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_wrapperDirectoryMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_wrapperDirectoryMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_wrapperDirectoryMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2D_element_3F_ ;
 

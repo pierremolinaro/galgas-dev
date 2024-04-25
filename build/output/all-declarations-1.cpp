@@ -2191,6 +2191,7 @@ mAssociatedValues (),
 mEnum (Enumeration::invalid) {
 }
 
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_null (UNUSED_LOCATION_ARGS) {
@@ -2261,12 +2262,6 @@ static const char * gEnumNameArrayFor_unifiedTypeMapEntry [3] = {
   "null",
   "element"
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isNull (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_null == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3136,6 +3131,7 @@ GALGAS_templateInstructionForEnumerationAST::GALGAS_templateInstructionForEnumer
 mAssociatedValues (),
 mEnum (Enumeration::invalid) {
 }
+
 
 //--------------------------------------------------------------------------------------------------
 

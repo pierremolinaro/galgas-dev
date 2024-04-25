@@ -423,7 +423,8 @@ method @currentVarManager checkSelfObjectIsFullyInitialized ?let @location inErr
   for entry in self.mLocalVarMap while fullyInitialized do
     let keyComponents = [entry.lkey.string componentsSeparatedByString !"."]
     if ([keyComponents count] == 2) && ([keyComponents mValueAtIndex !0] == "self") then
-      fullyInitialized = not [entry.mState isDeclared]
+      fullyInitialized = [entry.mState declared].isNil
+  //    fullyInitialized = not [entry.mState isDeclared]
     end
   end
   if not fullyInitialized then

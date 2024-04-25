@@ -8,6 +8,7 @@ end
 %mEnum (Enumeration::invalid) {
 }
 
+
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%

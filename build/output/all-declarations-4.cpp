@@ -5367,6 +5367,7 @@ GALGAS_structComparison::GALGAS_structComparison (void) :
 mEnum (Enumeration::invalid) {
 }
 
+
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_structComparison GALGAS_structComparison::class_func_none (UNUSED_LOCATION_ARGS) {
@@ -5417,24 +5418,6 @@ static const char * gEnumNameArrayFor_structComparison [4] = {
   "equatable",
   "comparable"
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_structComparison::getter_isNone (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_structComparison::getter_isEquatable (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equatable == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_structComparison::getter_isComparable (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_comparable == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
