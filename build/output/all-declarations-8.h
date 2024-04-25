@@ -4926,7 +4926,7 @@ class GALGAS_classFuncExpressionForGeneration : public GALGAS_semanticExpression
   public: GALGAS_classFuncExpressionForGeneration (const class cPtr_classFuncExpressionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GALGAS_unifiedTypeMapEntry readProperty_mConstructorType (void) const ;
+  public: class GALGAS_unifiedTypeMapEntry readProperty_classFuncType (void) const ;
 
   public: class GALGAS_string readProperty_classFuncName (void) const ;
 
@@ -4934,17 +4934,20 @@ class GALGAS_classFuncExpressionForGeneration : public GALGAS_semanticExpression
 
   public: class GALGAS_bool readProperty_mHasCompilerArgument (void) const ;
 
+  public: class GALGAS__5B_unifiedTypeMapEntry_5D_ readProperty_requiredTypes (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_classFuncExpressionForGeneration init_21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                                       const class GALGAS_location & inOperand1,
-                                                                                       const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                                       const class GALGAS_string & inOperand3,
-                                                                                       const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                                       const class GALGAS_bool & inOperand5,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_classFuncExpressionForGeneration init_21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                           const class GALGAS_location & inOperand1,
+                                                                                           const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                           const class GALGAS_string & inOperand3,
+                                                                                           const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                                           const class GALGAS_bool & inOperand5,
+                                                                                           const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand6,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4960,7 +4963,8 @@ class GALGAS_classFuncExpressionForGeneration : public GALGAS_semanticExpression
                                                                                const class GALGAS_unifiedTypeMapEntry & inOperand2,
                                                                                const class GALGAS_string & inOperand3,
                                                                                const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                               const class GALGAS_bool & inOperand5
+                                                                               const class GALGAS_bool & inOperand5,
+                                                                               const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand6
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4998,13 +5002,14 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
   #endif
 
 //--------------------------------- Initializers
-  public: void classFuncExpressionForGeneration_init_21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                              const class GALGAS_location & inOperand1,
-                                                                              const class GALGAS_unifiedTypeMapEntry & inOperand2,
-                                                                              const class GALGAS_string & inOperand3,
-                                                                              const class GALGAS_semanticExpressionListForGeneration & inOperand4,
-                                                                              const class GALGAS_bool & inOperand5,
-                                                                              Compiler * inCompiler) ;
+  public: void classFuncExpressionForGeneration_init_21__21__21__21__21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                                  const class GALGAS_location & inOperand1,
+                                                                                  const class GALGAS_unifiedTypeMapEntry & inOperand2,
+                                                                                  const class GALGAS_string & inOperand3,
+                                                                                  const class GALGAS_semanticExpressionListForGeneration & inOperand4,
+                                                                                  const class GALGAS_bool & inOperand5,
+                                                                                  const class GALGAS__5B_unifiedTypeMapEntry_5D_ & inOperand6,
+                                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension method generateExpression
@@ -5016,10 +5021,11 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GALGAS_unifiedTypeMapEntry mProperty_mConstructorType ;
+  public: GALGAS_unifiedTypeMapEntry mProperty_classFuncType ;
   public: GALGAS_string mProperty_classFuncName ;
   public: GALGAS_semanticExpressionListForGeneration mProperty_mEffectiveParameterList ;
   public: GALGAS_bool mProperty_mHasCompilerArgument ;
+  public: GALGAS__5B_unifiedTypeMapEntry_5D_ mProperty_requiredTypes ;
 
 
 //--- Default constructor
@@ -5028,10 +5034,11 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
 //--- Constructor
   public: cPtr_classFuncExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                  const GALGAS_location & in_mLocation,
-                                                 const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
+                                                 const GALGAS_unifiedTypeMapEntry & in_classFuncType,
                                                  const GALGAS_string & in_classFuncName,
                                                  const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
-                                                 const GALGAS_bool & in_mHasCompilerArgument
+                                                 const GALGAS_bool & in_mHasCompilerArgument,
+                                                 const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_requiredTypes
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

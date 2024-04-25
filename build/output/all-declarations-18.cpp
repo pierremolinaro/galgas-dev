@@ -3538,10 +3538,11 @@ GALGAS_classFuncExpressionAST GALGAS_classFuncExpressionAST::extractObject (cons
 
 cPtr_classFuncExpressionForGeneration::cPtr_classFuncExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mConstructorType (),
+mProperty_classFuncType (),
 mProperty_classFuncName (),
 mProperty_mEffectiveParameterList (),
-mProperty_mHasCompilerArgument () {
+mProperty_mHasCompilerArgument (),
+mProperty_requiredTypes () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3549,10 +3550,11 @@ mProperty_mHasCompilerArgument () {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_classFuncExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mConstructorType.printNonNullClassInstanceProperties ("mConstructorType") ;
+    mProperty_classFuncType.printNonNullClassInstanceProperties ("classFuncType") ;
     mProperty_classFuncName.printNonNullClassInstanceProperties ("classFuncName") ;
     mProperty_mEffectiveParameterList.printNonNullClassInstanceProperties ("mEffectiveParameterList") ;
     mProperty_mHasCompilerArgument.printNonNullClassInstanceProperties ("mHasCompilerArgument") ;
+    mProperty_requiredTypes.printNonNullClassInstanceProperties ("requiredTypes") ;
   }
 #endif
 
@@ -3583,17 +3585,18 @@ GALGAS_semanticExpressionForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_classFuncExpressionForGeneration GALGAS_classFuncExpressionForGeneration::
-init_21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                              const GALGAS_location & in_mLocation,
-                              const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
-                              const GALGAS_string & in_classFuncName,
-                              const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
-                              const GALGAS_bool & in_mHasCompilerArgument,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                  const GALGAS_location & in_mLocation,
+                                  const GALGAS_unifiedTypeMapEntry & in_classFuncType,
+                                  const GALGAS_string & in_classFuncName,
+                                  const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
+                                  const GALGAS_bool & in_mHasCompilerArgument,
+                                  const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_requiredTypes,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
   cPtr_classFuncExpressionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_classFuncExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->classFuncExpressionForGeneration_init_21__21__21__21__21__21_ (in_mResultType, in_mLocation, in_mConstructorType, in_classFuncName, in_mEffectiveParameterList, in_mHasCompilerArgument, inCompiler) ;
+  object->classFuncExpressionForGeneration_init_21__21__21__21__21__21__21_ (in_mResultType, in_mLocation, in_classFuncType, in_classFuncName, in_mEffectiveParameterList, in_mHasCompilerArgument, in_requiredTypes, inCompiler) ;
   const GALGAS_classFuncExpressionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -3602,19 +3605,21 @@ init_21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_classFuncExpressionForGeneration::
-classFuncExpressionForGeneration_init_21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
-                                                               const GALGAS_location & in_mLocation,
-                                                               const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
-                                                               const GALGAS_string & in_classFuncName,
-                                                               const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
-                                                               const GALGAS_bool & in_mHasCompilerArgument,
-                                                               Compiler * /* inCompiler */) {
+classFuncExpressionForGeneration_init_21__21__21__21__21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mResultType,
+                                                                   const GALGAS_location & in_mLocation,
+                                                                   const GALGAS_unifiedTypeMapEntry & in_classFuncType,
+                                                                   const GALGAS_string & in_classFuncName,
+                                                                   const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
+                                                                   const GALGAS_bool & in_mHasCompilerArgument,
+                                                                   const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_requiredTypes,
+                                                                   Compiler * /* inCompiler */) {
   mProperty_mResultType = in_mResultType ;
   mProperty_mLocation = in_mLocation ;
-  mProperty_mConstructorType = in_mConstructorType ;
+  mProperty_classFuncType = in_classFuncType ;
   mProperty_classFuncName = in_classFuncName ;
   mProperty_mEffectiveParameterList = in_mEffectiveParameterList ;
   mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  mProperty_requiredTypes = in_requiredTypes ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3627,25 +3632,26 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 GALGAS_classFuncExpressionForGeneration GALGAS_classFuncExpressionForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                                                                  const GALGAS_location & in_mLocation,
-                                                                                                 const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
+                                                                                                 const GALGAS_unifiedTypeMapEntry & in_classFuncType,
                                                                                                  const GALGAS_string & in_classFuncName,
                                                                                                  const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
-                                                                                                 const GALGAS_bool & in_mHasCompilerArgument
+                                                                                                 const GALGAS_bool & in_mHasCompilerArgument,
+                                                                                                 const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_requiredTypes
                                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_classFuncExpressionForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_classFuncExpressionForGeneration (in_mResultType, in_mLocation, in_mConstructorType, in_classFuncName, in_mEffectiveParameterList, in_mHasCompilerArgument COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classFuncExpressionForGeneration (in_mResultType, in_mLocation, in_classFuncType, in_classFuncName, in_mEffectiveParameterList, in_mHasCompilerArgument, in_requiredTypes COMMA_THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntry GALGAS_classFuncExpressionForGeneration::readProperty_mConstructorType (void) const {
+GALGAS_unifiedTypeMapEntry GALGAS_classFuncExpressionForGeneration::readProperty_classFuncType (void) const {
   if (nullptr == mObjectPtr) {
     return GALGAS_unifiedTypeMapEntry () ;
   }else{
     cPtr_classFuncExpressionForGeneration * p = (cPtr_classFuncExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classFuncExpressionForGeneration) ;
-    return p->mProperty_mConstructorType ;
+    return p->mProperty_classFuncType ;
   }
 }
 
@@ -3686,27 +3692,42 @@ GALGAS_bool GALGAS_classFuncExpressionForGeneration::readProperty_mHasCompilerAr
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS__5B_unifiedTypeMapEntry_5D_ GALGAS_classFuncExpressionForGeneration::readProperty_requiredTypes (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS__5B_unifiedTypeMapEntry_5D_ () ;
+  }else{
+    cPtr_classFuncExpressionForGeneration * p = (cPtr_classFuncExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_classFuncExpressionForGeneration) ;
+    return p->mProperty_requiredTypes ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @classFuncExpressionForGeneration class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_classFuncExpressionForGeneration::cPtr_classFuncExpressionForGeneration (const GALGAS_unifiedTypeMapEntry & in_mResultType,
                                                                               const GALGAS_location & in_mLocation,
-                                                                              const GALGAS_unifiedTypeMapEntry & in_mConstructorType,
+                                                                              const GALGAS_unifiedTypeMapEntry & in_classFuncType,
                                                                               const GALGAS_string & in_classFuncName,
                                                                               const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
-                                                                              const GALGAS_bool & in_mHasCompilerArgument
+                                                                              const GALGAS_bool & in_mHasCompilerArgument,
+                                                                              const GALGAS__5B_unifiedTypeMapEntry_5D_ & in_requiredTypes
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mConstructorType (),
+mProperty_classFuncType (),
 mProperty_classFuncName (),
 mProperty_mEffectiveParameterList (),
-mProperty_mHasCompilerArgument () {
+mProperty_mHasCompilerArgument (),
+mProperty_requiredTypes () {
   mProperty_mResultType = in_mResultType ;
   mProperty_mLocation = in_mLocation ;
-  mProperty_mConstructorType = in_mConstructorType ;
+  mProperty_classFuncType = in_classFuncType ;
   mProperty_classFuncName = in_classFuncName ;
   mProperty_mEffectiveParameterList = in_mEffectiveParameterList ;
   mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
+  mProperty_requiredTypes = in_requiredTypes ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3722,13 +3743,15 @@ void cPtr_classFuncExpressionForGeneration::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mLocation.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mConstructorType.description (ioString, inIndentation+1) ;
+  mProperty_classFuncType.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_classFuncName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mEffectiveParameterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_requiredTypes.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -3736,7 +3759,7 @@ void cPtr_classFuncExpressionForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_classFuncExpressionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classFuncExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mConstructorType, mProperty_classFuncName, mProperty_mEffectiveParameterList, mProperty_mHasCompilerArgument COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classFuncExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_classFuncType, mProperty_classFuncName, mProperty_mEffectiveParameterList, mProperty_mHasCompilerArgument, mProperty_requiredTypes COMMA_THERE)) ;
   return ptr ;
 }
 

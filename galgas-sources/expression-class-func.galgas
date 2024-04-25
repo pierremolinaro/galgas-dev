@@ -164,6 +164,7 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
       ?let @unifiedTypeMapEntry classFuncType
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
       ?let @bool hasCompilerArgument
+      ?let [@unifiedTypeMapEntry] requiredTypes
     )
     let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![classFuncType definition].typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
@@ -177,6 +178,7 @@ refclass @classFuncExpressionAST : @semanticExpressionAST {
       !self.classFuncName.string
       !constructorEffectiveParameterList
       !hasCompilerArgument
+      !requiredTypes
     }
   }
 
@@ -199,8 +201,10 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
                       !@unifiedTypeMapEntry outReturnedType
                       !@unifiedTypeMapEntry outConstructorType
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
-                      !@bool outHasCompilerArgument {
+                      !@bool outHasCompilerArgument
+                      ![@unifiedTypeMapEntry] outRequiredTypes {
   outConstructorType = inType
+  outRequiredTypes = ()
   if inTypeName.string != "" then
     outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
@@ -252,6 +256,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     outConstructorEffectiveParameterList = ()
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
         formalArg in constructorFormalArgumentTypeList do
+      [!?outRequiredTypes append !formalArg.mFormalArgumentType]
       [effectiveParameter.mExpression analyzeSemanticExpression
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -301,20 +306,19 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @unifiedTypeMapEntry mConstructorType
+  private let @unifiedTypeMapEntry classFuncType
   private let @string classFuncName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
   private let @bool mHasCompilerArgument
+  private let [@unifiedTypeMapEntry] requiredTypes
 
   #·······························································································
 
-  override method generateExpression
-    ?!@string ioGeneratedCode
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    !@string outCppExpression
-  {
+  override method generateExpression ?!@string ioGeneratedCode
+                                      ?!@stringset ioInclusionSet
+                                      ?!@uint ioTemporaryVariableIndex
+                                      ?!@stringset ioUnusedVariableCppNameSet
+                                      !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
     var @stringlist parameterList = ()
     for (mExpression) in self.mEffectiveParameterList do
@@ -327,9 +331,9 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
       ]
       parameterList += !parameter
     end
-    outCppExpression = "GALGAS_"  + [self.mConstructorType identifierRepresentation]
-                     + "::class_func_" + [self.classFuncName identifierRepresentation]
-                     + " ("
+    outCppExpression =  "GALGAS_"  + [self.classFuncType identifierRepresentation]
+    outCppExpression += "::class_func_" + [self.classFuncName identifierRepresentation]
+    outCppExpression += " ("
     for (mValue) in parameterList
       do outCppExpression += mValue
       between outCppExpression += ", "

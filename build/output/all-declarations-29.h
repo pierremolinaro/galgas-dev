@@ -40,26 +40,27 @@ class GALGAS_lstring function_rootRuleNameForUsefulEntitiesGraph (const class GA
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeConstructorInvocation?&??&&????!!!!'
+//Routine 'analyzeConstructorInvocation?&??&&????!!!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F__21__21__21__21_ (const class GALGAS_lstring constinArgument0,
-                                                                                                   class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                                   const class GALGAS_unifiedTypeMapEntry constinArgument2,
-                                                                                                   const class GALGAS_analysisContext constinArgument3,
-                                                                                                   class GALGAS_unifiedTypeMap & ioArgument4,
-                                                                                                   class GALGAS_localVarManager & ioArgument5,
-                                                                                                   const class GALGAS_lstring constinArgument6,
-                                                                                                   const class GALGAS_lstring constinArgument7,
-                                                                                                   const class GALGAS_actualOutputArgumentList constinArgument8,
-                                                                                                   const class GALGAS_location constinArgument9,
-                                                                                                   class GALGAS_unifiedTypeMapEntry & outArgument10,
-                                                                                                   class GALGAS_unifiedTypeMapEntry & outArgument11,
-                                                                                                   class GALGAS_semanticExpressionListForGeneration & outArgument12,
-                                                                                                   class GALGAS_bool & outArgument13,
-                                                                                                   class Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
+void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F__21__21__21__21__21_ (const class GALGAS_lstring constinArgument0,
+                                                                                                       class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                                       const class GALGAS_unifiedTypeMapEntry constinArgument2,
+                                                                                                       const class GALGAS_analysisContext constinArgument3,
+                                                                                                       class GALGAS_unifiedTypeMap & ioArgument4,
+                                                                                                       class GALGAS_localVarManager & ioArgument5,
+                                                                                                       const class GALGAS_lstring constinArgument6,
+                                                                                                       const class GALGAS_lstring constinArgument7,
+                                                                                                       const class GALGAS_actualOutputArgumentList constinArgument8,
+                                                                                                       const class GALGAS_location constinArgument9,
+                                                                                                       class GALGAS_unifiedTypeMapEntry & outArgument10,
+                                                                                                       class GALGAS_unifiedTypeMapEntry & outArgument11,
+                                                                                                       class GALGAS_semanticExpressionListForGeneration & outArgument12,
+                                                                                                       class GALGAS_bool & outArgument13,
+                                                                                                       class GALGAS__5B_unifiedTypeMapEntry_5D_ & outArgument14,
+                                                                                                       class Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

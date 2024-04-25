@@ -249,6 +249,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     end
   end
 #--- Analysis arguments
+  var [@unifiedTypeMapEntry] requiredTypes = ()
   var @semanticExpressionListForGeneration classFunctionEffectiveParameterList
   if [self.mExpressionList count] != [classFuncFormalArgumentTypeList count] then
     error self.mClassFunctionName
@@ -259,6 +260,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
   else
     classFunctionEffectiveParameterList = @semanticExpressionListForGeneration ()
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in classFuncFormalArgumentTypeList do
+      [!?requiredTypes append !mFormalArgumentType]
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
@@ -282,6 +284,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     !self.mClassFunctionName.string
     !classFunctionEffectiveParameterList
     !hasCompilerArgument
+    !requiredTypes
   }
 }
 
