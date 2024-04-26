@@ -24,7 +24,7 @@ struct @MaStructure2 {
 }
 \end{galgas34}
 
-Une déclaration de structure peut aussi déclarer~: des initialisateurs (\refSectionPage{initStruct}), des \emph{getters} (\refSectionPage{getterStruct}), des \emph{methodes} (\refSectionPage{methodStruct}) et des \emph{setters} (\refSectionPage{setterStruct}).
+Une déclaration de structure peut aussi déclarer~: des initialisateurs (\refSectionPage{initStruct}), des \emph{getters}, des \emph{methodes} et des \emph{setters}.
 
 Ces déclarations peuvent apparaître soit dans la déclaration de structure, soit comme une extension (\refChapterPage{chapitreExtensions}).
 
@@ -278,47 +278,6 @@ struct @maStructure {
 \end{table}
 
 
-%aussi bien en lecture, en écriture et en lecture/écriture.
-%
-%Exemple d'accès en lecture~:
-%\begin{galgas34}
-%var v = aVariable.propriété1
-%\end{galgas34}
-%
-%Exemple d'accès en écriture~:
-%\begin{galgas34}
-%aVariable.propriété1 = 10
-%\end{galgas34}
-%
-%
-%Exemple d'accès en lecture/écriture~:
-%\begin{galgas34}
-%aVariable.propriété1 += 1
-%\end{galgas34}
-
-
-
-
-
-\sectionLabel{Getters}{getterStruct}
-
-Un type structure définit un \emph{getter} sans argument par propriété, qui permet d'accéder en lecture à cette propriété. Son nom est celui de la propriété. Par exemple, à la place de~:
-\begin{galgas3}
-@uint v = aVariable.mProp1
-\end{galgas3}
-
-On peut écrire~:
-\begin{galgas3}
-@uint v = [aVariable mProp1]
-\end{galgas3}
-
-
-
-\sectionLabel{Méthodes}{methodStruct}
-
-
-
-\sectionLabel{Setters}{setterStruct}
 
 
 
