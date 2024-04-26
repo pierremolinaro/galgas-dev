@@ -568,8 +568,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 194)) {
-    static const char * syntaxErrorMessageArray [194] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 193)) {
+    static const char * syntaxErrorMessageArray [193] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -712,7 +712,6 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '%preserved' keyword",
         "the '%quietOutputByDefault' keyword",
         "the '%templateEndMark' keyword",
-        "the '%testGetters' keyword",
         "the '%tool-source' keyword",
         "the '%translate' keyword",
         "the '%usefull' keyword",
@@ -2301,21 +2300,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__temp
   TO_UNICODE ('k'),
 } ;
 
-//--- Unicode string for '$testGetters$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__testGetters = {
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('s'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('G'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('s'),
-} ;
-
 //--- Unicode string for '$then$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__then = {
   TO_UNICODE ('t'),
@@ -2485,7 +2469,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___A7_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 30 ;
+static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 29 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attributeKeyWordList [ktable_size_galgasScanner_33__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__from, Lexique_galgasScanner_33_::kToken__25_from),
@@ -2501,7 +2485,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__comparable, Lexique_galgasScanner_33_::kToken__25_comparable),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__libpmAtPath, Lexique_galgasScanner_33_::kToken__25_libpmAtPath),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__macCodeSign, Lexique_galgasScanner_33_::kToken__25_macCodeSign),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__testGetters, Lexique_galgasScanner_33_::kToken__25_testGetters),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__tool_2D_source, Lexique_galgasScanner_33_::kToken__25_tool_2D_source),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__initArgLabel, Lexique_galgasScanner_33_::kToken__25_initArgLabel),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__makefile_2D_unix, Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix),
@@ -3438,11 +3421,6 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken__25_templateEndMark:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%templateEndMark") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken__25_testGetters:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("%testGetters") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_tool_2D_source:
@@ -4816,7 +4794,6 @@ GALGAS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("%preserved") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%quietOutputByDefault") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%templateEndMark") COMMA_HERE) ;
-  result.addAssign_operation (GALGAS_string ("%testGetters") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%tool-source") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%translate") COMMA_HERE) ;
   result.addAssign_operation (GALGAS_string ("%usefull") COMMA_HERE) ;
@@ -4898,7 +4875,6 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("comparable") ;
     ioList.appendObject ("libpmAtPath") ;
     ioList.appendObject ("macCodeSign") ;
-    ioList.appendObject ("testGetters") ;
     ioList.appendObject ("tool-source") ;
     ioList.appendObject ("initArgLabel") ;
     ioList.appendObject ("makefile-unix") ;
@@ -5077,7 +5053,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [194] = {0,
+  static const uint32_t kTerminalSymbolStyles [193] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
@@ -5220,7 +5196,6 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     12 /* galgasScanner3_1__25_preserved */,
     12 /* galgasScanner3_1__25_quietOutputByDefault */,
     12 /* galgasScanner3_1__25_templateEndMark */,
-    12 /* galgasScanner3_1__25_testGetters */,
     12 /* galgasScanner3_1__25_tool_2D_source */,
     12 /* galgasScanner3_1__25_translate */,
     12 /* galgasScanner3_1__25_usefull */,
@@ -9848,6 +9823,24 @@ static const char * gEnumNameArrayFor_dynamicTypeComparisonKind [4] = {
   "inherited",
   "strictlyInherited"
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equal == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isInherited (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_inherited == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_isStrictlyInherited (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_strictlyInherited == mEnum) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -4857,55 +4857,54 @@ class Lexique_galgasScanner_34_ : public Lexique {
    kToken__25_tool_2D_source /* 141 */ ,
    kToken__25_templateEndMark /* 142 */ ,
    kToken__25_templateReplacement /* 143 */ ,
-   kToken__25_testGetters /* 144 */ ,
-   kToken__25_translate /* 145 */ ,
-   kToken__25_usefull /* 146 */ ,
-   kToken__2A_ /* 147 */ ,
-   kToken__2C_ /* 148 */ ,
-   kToken__2B_ /* 149 */ ,
-   kToken__26__2B_ /* 150 */ ,
-   kToken__26__2D_ /* 151 */ ,
-   kToken__26__2A_ /* 152 */ ,
-   kToken__26__2F_ /* 153 */ ,
-   kToken__3E_ /* 154 */ ,
-   kToken__3B_ /* 155 */ ,
-   kToken__3A_ /* 156 */ ,
-   kToken__3A__3E_ /* 157 */ ,
-   kToken__2D_ /* 158 */ ,
-   kToken__28_ /* 159 */ ,
-   kToken__29_ /* 160 */ ,
-   kToken__2D__3E_ /* 161 */ ,
-   kToken__3D__3D_ /* 162 */ ,
-   kToken__3D_ /* 163 */ ,
-   kToken__26__26_ /* 164 */ ,
-   kToken__5B_ /* 165 */ ,
-   kToken__5D_ /* 166 */ ,
-   kToken__2B__3D_ /* 167 */ ,
-   kToken__2D__3D_ /* 168 */ ,
-   kToken__2A__3D_ /* 169 */ ,
-   kToken__2F__3D_ /* 170 */ ,
-   kToken__26__3D_ /* 171 */ ,
-   kToken__7C__3D_ /* 172 */ ,
-   kToken__2F_ /* 173 */ ,
-   kToken__21__3D_ /* 174 */ ,
-   kToken__3E__3D_ /* 175 */ ,
-   kToken__26_ /* 176 */ ,
-   kToken__7B_ /* 177 */ ,
-   kToken__7D_ /* 178 */ ,
-   kToken__60_ /* 179 */ ,
-   kToken__7C__7C_ /* 180 */ ,
-   kToken__7C_ /* 181 */ ,
-   kToken__5E_ /* 182 */ ,
-   kToken__3E__3E_ /* 183 */ ,
-   kToken__7E_ /* 184 */ ,
-   kToken__2D__2D_ /* 185 */ ,
-   kToken__2B__2B_ /* 186 */ ,
-   kToken__26__2D__2D_ /* 187 */ ,
-   kToken__26__2B__2B_ /* 188 */ ,
-   kToken__3D__3D__3D_ /* 189 */ ,
-   kToken__21__3D__3D_ /* 190 */ ,
-   kToken__3F__5E_ /* 191 */ ,
-   kToken__21__5E_ /* 192 */ } ;
+   kToken__25_translate /* 144 */ ,
+   kToken__25_usefull /* 145 */ ,
+   kToken__2A_ /* 146 */ ,
+   kToken__2C_ /* 147 */ ,
+   kToken__2B_ /* 148 */ ,
+   kToken__26__2B_ /* 149 */ ,
+   kToken__26__2D_ /* 150 */ ,
+   kToken__26__2A_ /* 151 */ ,
+   kToken__26__2F_ /* 152 */ ,
+   kToken__3E_ /* 153 */ ,
+   kToken__3B_ /* 154 */ ,
+   kToken__3A_ /* 155 */ ,
+   kToken__3A__3E_ /* 156 */ ,
+   kToken__2D_ /* 157 */ ,
+   kToken__28_ /* 158 */ ,
+   kToken__29_ /* 159 */ ,
+   kToken__2D__3E_ /* 160 */ ,
+   kToken__3D__3D_ /* 161 */ ,
+   kToken__3D_ /* 162 */ ,
+   kToken__26__26_ /* 163 */ ,
+   kToken__5B_ /* 164 */ ,
+   kToken__5D_ /* 165 */ ,
+   kToken__2B__3D_ /* 166 */ ,
+   kToken__2D__3D_ /* 167 */ ,
+   kToken__2A__3D_ /* 168 */ ,
+   kToken__2F__3D_ /* 169 */ ,
+   kToken__26__3D_ /* 170 */ ,
+   kToken__7C__3D_ /* 171 */ ,
+   kToken__2F_ /* 172 */ ,
+   kToken__21__3D_ /* 173 */ ,
+   kToken__3E__3D_ /* 174 */ ,
+   kToken__26_ /* 175 */ ,
+   kToken__7B_ /* 176 */ ,
+   kToken__7D_ /* 177 */ ,
+   kToken__60_ /* 178 */ ,
+   kToken__7C__7C_ /* 179 */ ,
+   kToken__7C_ /* 180 */ ,
+   kToken__5E_ /* 181 */ ,
+   kToken__3E__3E_ /* 182 */ ,
+   kToken__7E_ /* 183 */ ,
+   kToken__2D__2D_ /* 184 */ ,
+   kToken__2B__2B_ /* 185 */ ,
+   kToken__26__2D__2D_ /* 186 */ ,
+   kToken__26__2B__2B_ /* 187 */ ,
+   kToken__3D__3D__3D_ /* 188 */ ,
+   kToken__21__3D__3D_ /* 189 */ ,
+   kToken__3F__5E_ /* 190 */ ,
+   kToken__21__5E_ /* 191 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -5005,7 +5004,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 192 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 191 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -6265,6 +6264,10 @@ class GALGAS_methodKind : public AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_definedAsMember (LOCATION_ARGS) const ;
 
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDefinedAsExtension (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDefinedAsMember (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
 
@@ -6360,6 +6363,20 @@ class GALGAS_methodQualifier : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isBasicFinal (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isInherited (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsBasic (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsBasicFinal (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsInherited (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsVirtual (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsVirtualAbstract (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsVirtualOverriding (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isIsVirtualOverridingAbstract (LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isVirtual (LOCATION_ARGS) const ;
 

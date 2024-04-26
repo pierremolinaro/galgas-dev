@@ -2265,6 +2265,18 @@ static const char * gEnumNameArrayFor_unifiedTypeMapEntry [3] = {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isNull (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_null == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_unifiedTypeMapEntry::getter_isElement (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_element == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_unifiedTypeMapEntry::description (String & ioString,
                                               const int32_t inIndentation) const {
   ioString.appendCString ("<enum @unifiedTypeMapEntry: ") ;
@@ -3244,6 +3256,18 @@ static const char * gEnumNameArrayFor_templateInstructionForEnumerationAST [3] =
   "implicit",
   "explicit"
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_templateInstructionForEnumerationAST::getter_isImplicit (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_implicit == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_templateInstructionForEnumerationAST::getter_isExplicit (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_explicit == mEnum) ;
+}
 
 //--------------------------------------------------------------------------------------------------
 

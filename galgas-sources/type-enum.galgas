@@ -27,7 +27,6 @@ syntax extension galgas3DeclarationsSyntax {
     $enum$
     $@type$ ?let enumTypeName indexing enumDefinition
     var @structComparison comparison = .none
-    var testGetters = false
     repeat
     while
       $%comparable$
@@ -49,12 +48,6 @@ syntax extension galgas3DeclarationsSyntax {
       case comparable :
         error .here : "%comparable and %equatable are mutually exclusive"
       end
-    while
-      $%testGetters$
-      if testGetters then
-        error .here : "duplicated attribute"
-      end
-      testGetters = true
     end
     ${$
     var @enumConstantList constantList = ()
@@ -87,7 +80,6 @@ syntax extension galgas3DeclarationsSyntax {
       !enumTypeName
       !constantList
       !comparison: comparison
-      !testGetters: testGetters
     }
   }
 
@@ -105,7 +97,6 @@ syntax extension galgas4DeclarationsSyntax {
     $enum$
     $@type$ ?let enumTypeName indexing enumDefinition
     var @structComparison comparison = .none
-    var testGetters = false
     repeat
     while
       $%comparable$
@@ -127,12 +118,6 @@ syntax extension galgas4DeclarationsSyntax {
       case comparable :
         error .here : "%comparable and %equatable are mutually exclusive"
       end
-    while
-      $%testGetters$
-      if testGetters then
-        error .here : "duplicated attribute"
-      end
-      testGetters = true
     end
     ${$
     var @enumConstantList constantList = ()
@@ -166,7 +151,6 @@ syntax extension galgas4DeclarationsSyntax {
       !enumTypeName
       !constantList
       !comparison: comparison
-      !testGetters: testGetters
     }
   }
 
@@ -189,7 +173,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
   private let @enumConstantList mConstantList
   private let @structComparison comparison %initArgLabel
-  private let @bool testGetters %initArgLabel
 
   #·······························································································
 
@@ -347,18 +330,16 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         )
       end
     end
-  #--- Add test getters ?
-    if self.testGetters then
-      for constant in self.mConstantList do
-        enterBaseGetterWithoutArgument (
-          !?getterMap
-          !?ioTypeMap
-          !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
-          !obsoleteName: ""
-          !returnedTypeName: "bool"
-          !hasCompilerArgument:false
-        )
-      end
+  #--- Add test getters
+    for constant in self.mConstantList do
+      enterBaseGetterWithoutArgument (
+        !?getterMap
+        !?ioTypeMap
+        !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
+        !obsoleteName: ""
+        !returnedTypeName: "bool"
+        !hasCompilerArgument:false
+      )
     end
   #--- Add Extensions
     var @initializerMap initializerMap = ()
@@ -483,7 +464,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
         !selfType
         !enumConstantListForGeneration
         !associatedValuesTypes
-        !self.testGetters
       }
   }
 
@@ -505,7 +485,6 @@ list @enumConstantListForGeneration {
 refclass @enumTypeForGeneration : @semanticTypeForGeneration {
   private let @enumConstantListForGeneration constantList
   private let [@unifiedTypeMapEntry] associatedValuesTypes
-  private let @bool testGetters
 
   #·······························································································
 
@@ -561,7 +540,6 @@ refclass @enumTypeForGeneration : @semanticTypeForGeneration {
       !self.constantList
       !hasAssociatedValues
       ![selfTypeDefinition.features generateCppObjectComparison]
-      !self.testGetters
     ]
   }
 
@@ -586,7 +564,6 @@ filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
     ?@bool GENERATE_COMPARISON
-    ?@bool HAS_TEST_GETTERS
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

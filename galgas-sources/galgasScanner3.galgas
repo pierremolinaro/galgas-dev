@@ -361,7 +361,6 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "preserved" -> $%preserved$,
   "quietOutputByDefault" -> $%quietOutputByDefault$,
   "templateEndMark" -> $%templateEndMark$,
-  "testGetters" -> $%testGetters$,
   "tool-source" -> $%tool-source$,
   "translate" -> $%translate$,
   "usefull" -> $%usefull$

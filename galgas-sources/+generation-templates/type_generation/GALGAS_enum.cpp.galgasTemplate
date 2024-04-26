@@ -108,7 +108,7 @@ end%
 } ;
 
 %
-if HAS_TEST_GETTERS then
+
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------
 
@@ -116,7 +116,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapita
   return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_%![mConstantName identifierRepresentation]% == mEnum) ;
 }\n\n%
 end
-end
+
 %//--------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,

@@ -244,57 +244,56 @@ let galgasScanner4_1__25_searchString : UInt16 = 140
 let galgasScanner4_1__25_tool_2D_source : UInt16 = 141
 let galgasScanner4_1__25_templateEndMark : UInt16 = 142
 let galgasScanner4_1__25_templateReplacement : UInt16 = 143
-let galgasScanner4_1__25_testGetters : UInt16 = 144
-let galgasScanner4_1__25_translate : UInt16 = 145
-let galgasScanner4_1__25_usefull : UInt16 = 146
-let galgasScanner4_1__2A_ : UInt16 = 147
-let galgasScanner4_1__2C_ : UInt16 = 148
-let galgasScanner4_1__2B_ : UInt16 = 149
-let galgasScanner4_1__26__2B_ : UInt16 = 150
-let galgasScanner4_1__26__2D_ : UInt16 = 151
-let galgasScanner4_1__26__2A_ : UInt16 = 152
-let galgasScanner4_1__26__2F_ : UInt16 = 153
-let galgasScanner4_1__3E_ : UInt16 = 154
-let galgasScanner4_1__3B_ : UInt16 = 155
-let galgasScanner4_1__3A_ : UInt16 = 156
-let galgasScanner4_1__3A__3E_ : UInt16 = 157
-let galgasScanner4_1__2D_ : UInt16 = 158
-let galgasScanner4_1__28_ : UInt16 = 159
-let galgasScanner4_1__29_ : UInt16 = 160
-let galgasScanner4_1__2D__3E_ : UInt16 = 161
-let galgasScanner4_1__3D__3D_ : UInt16 = 162
-let galgasScanner4_1__3D_ : UInt16 = 163
-let galgasScanner4_1__26__26_ : UInt16 = 164
-let galgasScanner4_1__5B_ : UInt16 = 165
-let galgasScanner4_1__5D_ : UInt16 = 166
-let galgasScanner4_1__2B__3D_ : UInt16 = 167
-let galgasScanner4_1__2D__3D_ : UInt16 = 168
-let galgasScanner4_1__2A__3D_ : UInt16 = 169
-let galgasScanner4_1__2F__3D_ : UInt16 = 170
-let galgasScanner4_1__26__3D_ : UInt16 = 171
-let galgasScanner4_1__7C__3D_ : UInt16 = 172
-let galgasScanner4_1__2F_ : UInt16 = 173
-let galgasScanner4_1__21__3D_ : UInt16 = 174
-let galgasScanner4_1__3E__3D_ : UInt16 = 175
-let galgasScanner4_1__26_ : UInt16 = 176
-let galgasScanner4_1__7B_ : UInt16 = 177
-let galgasScanner4_1__7D_ : UInt16 = 178
-let galgasScanner4_1__60_ : UInt16 = 179
-let galgasScanner4_1__7C__7C_ : UInt16 = 180
-let galgasScanner4_1__7C_ : UInt16 = 181
-let galgasScanner4_1__5E_ : UInt16 = 182
-let galgasScanner4_1__3E__3E_ : UInt16 = 183
-let galgasScanner4_1__7E_ : UInt16 = 184
-let galgasScanner4_1__2D__2D_ : UInt16 = 185
-let galgasScanner4_1__2B__2B_ : UInt16 = 186
-let galgasScanner4_1__26__2D__2D_ : UInt16 = 187
-let galgasScanner4_1__26__2B__2B_ : UInt16 = 188
-let galgasScanner4_1__3D__3D__3D_ : UInt16 = 189
-let galgasScanner4_1__21__3D__3D_ : UInt16 = 190
-let galgasScanner4_1__3F__5E_ : UInt16 = 191
-let galgasScanner4_1__21__5E_ : UInt16 = 192
-let galgasScanner4_2_ERROR : UInt16 = 193
-let galgasScanner4_2_TEMPLATE : UInt16 = 194
+let galgasScanner4_1__25_translate : UInt16 = 144
+let galgasScanner4_1__25_usefull : UInt16 = 145
+let galgasScanner4_1__2A_ : UInt16 = 146
+let galgasScanner4_1__2C_ : UInt16 = 147
+let galgasScanner4_1__2B_ : UInt16 = 148
+let galgasScanner4_1__26__2B_ : UInt16 = 149
+let galgasScanner4_1__26__2D_ : UInt16 = 150
+let galgasScanner4_1__26__2A_ : UInt16 = 151
+let galgasScanner4_1__26__2F_ : UInt16 = 152
+let galgasScanner4_1__3E_ : UInt16 = 153
+let galgasScanner4_1__3B_ : UInt16 = 154
+let galgasScanner4_1__3A_ : UInt16 = 155
+let galgasScanner4_1__3A__3E_ : UInt16 = 156
+let galgasScanner4_1__2D_ : UInt16 = 157
+let galgasScanner4_1__28_ : UInt16 = 158
+let galgasScanner4_1__29_ : UInt16 = 159
+let galgasScanner4_1__2D__3E_ : UInt16 = 160
+let galgasScanner4_1__3D__3D_ : UInt16 = 161
+let galgasScanner4_1__3D_ : UInt16 = 162
+let galgasScanner4_1__26__26_ : UInt16 = 163
+let galgasScanner4_1__5B_ : UInt16 = 164
+let galgasScanner4_1__5D_ : UInt16 = 165
+let galgasScanner4_1__2B__3D_ : UInt16 = 166
+let galgasScanner4_1__2D__3D_ : UInt16 = 167
+let galgasScanner4_1__2A__3D_ : UInt16 = 168
+let galgasScanner4_1__2F__3D_ : UInt16 = 169
+let galgasScanner4_1__26__3D_ : UInt16 = 170
+let galgasScanner4_1__7C__3D_ : UInt16 = 171
+let galgasScanner4_1__2F_ : UInt16 = 172
+let galgasScanner4_1__21__3D_ : UInt16 = 173
+let galgasScanner4_1__3E__3D_ : UInt16 = 174
+let galgasScanner4_1__26_ : UInt16 = 175
+let galgasScanner4_1__7B_ : UInt16 = 176
+let galgasScanner4_1__7D_ : UInt16 = 177
+let galgasScanner4_1__60_ : UInt16 = 178
+let galgasScanner4_1__7C__7C_ : UInt16 = 179
+let galgasScanner4_1__7C_ : UInt16 = 180
+let galgasScanner4_1__5E_ : UInt16 = 181
+let galgasScanner4_1__3E__3E_ : UInt16 = 182
+let galgasScanner4_1__7E_ : UInt16 = 183
+let galgasScanner4_1__2D__2D_ : UInt16 = 184
+let galgasScanner4_1__2B__2B_ : UInt16 = 185
+let galgasScanner4_1__26__2D__2D_ : UInt16 = 186
+let galgasScanner4_1__26__2B__2B_ : UInt16 = 187
+let galgasScanner4_1__3D__3D__3D_ : UInt16 = 188
+let galgasScanner4_1__21__3D__3D_ : UInt16 = 189
+let galgasScanner4_1__3F__5E_ : UInt16 = 190
+let galgasScanner4_1__21__5E_ : UInt16 = 191
+let galgasScanner4_2_ERROR : UInt16 = 192
+let galgasScanner4_2_TEMPLATE : UInt16 = 193
 
 //--------------------------------------------------------------------------------------------------
 
@@ -383,7 +382,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 192
+    return 191
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -560,57 +559,56 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       12, // 141 : galgasScanner4_1__25_tool_2D_source
       12, // 142 : galgasScanner4_1__25_templateEndMark
       12, // 143 : galgasScanner4_1__25_templateReplacement
-      12, // 144 : galgasScanner4_1__25_testGetters
-      12, // 145 : galgasScanner4_1__25_translate
-      12, // 146 : galgasScanner4_1__25_usefull
-      2, // 147 : galgasScanner4_1__2A_
-      2, // 148 : galgasScanner4_1__2C_
-      2, // 149 : galgasScanner4_1__2B_
-      2, // 150 : galgasScanner4_1__26__2B_
-      2, // 151 : galgasScanner4_1__26__2D_
-      2, // 152 : galgasScanner4_1__26__2A_
-      2, // 153 : galgasScanner4_1__26__2F_
-      2, // 154 : galgasScanner4_1__3E_
-      2, // 155 : galgasScanner4_1__3B_
-      2, // 156 : galgasScanner4_1__3A_
-      2, // 157 : galgasScanner4_1__3A__3E_
-      2, // 158 : galgasScanner4_1__2D_
-      2, // 159 : galgasScanner4_1__28_
-      2, // 160 : galgasScanner4_1__29_
-      2, // 161 : galgasScanner4_1__2D__3E_
-      2, // 162 : galgasScanner4_1__3D__3D_
-      2, // 163 : galgasScanner4_1__3D_
-      2, // 164 : galgasScanner4_1__26__26_
-      2, // 165 : galgasScanner4_1__5B_
-      2, // 166 : galgasScanner4_1__5D_
-      2, // 167 : galgasScanner4_1__2B__3D_
-      2, // 168 : galgasScanner4_1__2D__3D_
-      2, // 169 : galgasScanner4_1__2A__3D_
-      2, // 170 : galgasScanner4_1__2F__3D_
-      2, // 171 : galgasScanner4_1__26__3D_
-      2, // 172 : galgasScanner4_1__7C__3D_
-      2, // 173 : galgasScanner4_1__2F_
-      2, // 174 : galgasScanner4_1__21__3D_
-      2, // 175 : galgasScanner4_1__3E__3D_
-      2, // 176 : galgasScanner4_1__26_
-      2, // 177 : galgasScanner4_1__7B_
-      2, // 178 : galgasScanner4_1__7D_
-      2, // 179 : galgasScanner4_1__60_
-      2, // 180 : galgasScanner4_1__7C__7C_
-      2, // 181 : galgasScanner4_1__7C_
-      2, // 182 : galgasScanner4_1__5E_
-      2, // 183 : galgasScanner4_1__3E__3E_
-      2, // 184 : galgasScanner4_1__7E_
-      2, // 185 : galgasScanner4_1__2D__2D_
-      2, // 186 : galgasScanner4_1__2B__2B_
-      2, // 187 : galgasScanner4_1__26__2D__2D_
-      2, // 188 : galgasScanner4_1__26__2B__2B_
-      2, // 189 : galgasScanner4_1__3D__3D__3D_
-      2, // 190 : galgasScanner4_1__21__3D__3D_
-      2, // 191 : galgasScanner4_1__3F__5E_
-      2, // 192 : galgasScanner4_1__21__5E_
-      14, // 193 : galgasScanner4_2_ERROR
-      15  // 194 : galgasScanner4_2_TEMPLATE
+      12, // 144 : galgasScanner4_1__25_translate
+      12, // 145 : galgasScanner4_1__25_usefull
+      2, // 146 : galgasScanner4_1__2A_
+      2, // 147 : galgasScanner4_1__2C_
+      2, // 148 : galgasScanner4_1__2B_
+      2, // 149 : galgasScanner4_1__26__2B_
+      2, // 150 : galgasScanner4_1__26__2D_
+      2, // 151 : galgasScanner4_1__26__2A_
+      2, // 152 : galgasScanner4_1__26__2F_
+      2, // 153 : galgasScanner4_1__3E_
+      2, // 154 : galgasScanner4_1__3B_
+      2, // 155 : galgasScanner4_1__3A_
+      2, // 156 : galgasScanner4_1__3A__3E_
+      2, // 157 : galgasScanner4_1__2D_
+      2, // 158 : galgasScanner4_1__28_
+      2, // 159 : galgasScanner4_1__29_
+      2, // 160 : galgasScanner4_1__2D__3E_
+      2, // 161 : galgasScanner4_1__3D__3D_
+      2, // 162 : galgasScanner4_1__3D_
+      2, // 163 : galgasScanner4_1__26__26_
+      2, // 164 : galgasScanner4_1__5B_
+      2, // 165 : galgasScanner4_1__5D_
+      2, // 166 : galgasScanner4_1__2B__3D_
+      2, // 167 : galgasScanner4_1__2D__3D_
+      2, // 168 : galgasScanner4_1__2A__3D_
+      2, // 169 : galgasScanner4_1__2F__3D_
+      2, // 170 : galgasScanner4_1__26__3D_
+      2, // 171 : galgasScanner4_1__7C__3D_
+      2, // 172 : galgasScanner4_1__2F_
+      2, // 173 : galgasScanner4_1__21__3D_
+      2, // 174 : galgasScanner4_1__3E__3D_
+      2, // 175 : galgasScanner4_1__26_
+      2, // 176 : galgasScanner4_1__7B_
+      2, // 177 : galgasScanner4_1__7D_
+      2, // 178 : galgasScanner4_1__60_
+      2, // 179 : galgasScanner4_1__7C__7C_
+      2, // 180 : galgasScanner4_1__7C_
+      2, // 181 : galgasScanner4_1__5E_
+      2, // 182 : galgasScanner4_1__3E__3E_
+      2, // 183 : galgasScanner4_1__7E_
+      2, // 184 : galgasScanner4_1__2D__2D_
+      2, // 185 : galgasScanner4_1__2B__2B_
+      2, // 186 : galgasScanner4_1__26__2D__2D_
+      2, // 187 : galgasScanner4_1__26__2B__2B_
+      2, // 188 : galgasScanner4_1__3D__3D__3D_
+      2, // 189 : galgasScanner4_1__21__3D__3D_
+      2, // 190 : galgasScanner4_1__3F__5E_
+      2, // 191 : galgasScanner4_1__21__5E_
+      14, // 192 : galgasScanner4_2_ERROR
+      15  // 193 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -763,57 +761,56 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       true, // 141 : galgasScanner4_1__25_tool_2D_source
       true, // 142 : galgasScanner4_1__25_templateEndMark
       true, // 143 : galgasScanner4_1__25_templateReplacement
-      true, // 144 : galgasScanner4_1__25_testGetters
-      true, // 145 : galgasScanner4_1__25_translate
-      true, // 146 : galgasScanner4_1__25_usefull
-      true, // 147 : galgasScanner4_1__2A_
-      true, // 148 : galgasScanner4_1__2C_
-      true, // 149 : galgasScanner4_1__2B_
-      true, // 150 : galgasScanner4_1__26__2B_
-      true, // 151 : galgasScanner4_1__26__2D_
-      true, // 152 : galgasScanner4_1__26__2A_
-      true, // 153 : galgasScanner4_1__26__2F_
-      true, // 154 : galgasScanner4_1__3E_
-      true, // 155 : galgasScanner4_1__3B_
-      true, // 156 : galgasScanner4_1__3A_
-      true, // 157 : galgasScanner4_1__3A__3E_
-      true, // 158 : galgasScanner4_1__2D_
-      true, // 159 : galgasScanner4_1__28_
-      true, // 160 : galgasScanner4_1__29_
-      true, // 161 : galgasScanner4_1__2D__3E_
-      true, // 162 : galgasScanner4_1__3D__3D_
-      true, // 163 : galgasScanner4_1__3D_
-      true, // 164 : galgasScanner4_1__26__26_
-      true, // 165 : galgasScanner4_1__5B_
-      true, // 166 : galgasScanner4_1__5D_
-      true, // 167 : galgasScanner4_1__2B__3D_
-      true, // 168 : galgasScanner4_1__2D__3D_
-      true, // 169 : galgasScanner4_1__2A__3D_
-      true, // 170 : galgasScanner4_1__2F__3D_
-      true, // 171 : galgasScanner4_1__26__3D_
-      true, // 172 : galgasScanner4_1__7C__3D_
-      true, // 173 : galgasScanner4_1__2F_
-      true, // 174 : galgasScanner4_1__21__3D_
-      true, // 175 : galgasScanner4_1__3E__3D_
-      true, // 176 : galgasScanner4_1__26_
-      true, // 177 : galgasScanner4_1__7B_
-      true, // 178 : galgasScanner4_1__7D_
-      true, // 179 : galgasScanner4_1__60_
-      true, // 180 : galgasScanner4_1__7C__7C_
-      true, // 181 : galgasScanner4_1__7C_
-      true, // 182 : galgasScanner4_1__5E_
-      true, // 183 : galgasScanner4_1__3E__3E_
-      true, // 184 : galgasScanner4_1__7E_
-      true, // 185 : galgasScanner4_1__2D__2D_
-      true, // 186 : galgasScanner4_1__2B__2B_
-      true, // 187 : galgasScanner4_1__26__2D__2D_
-      true, // 188 : galgasScanner4_1__26__2B__2B_
-      true, // 189 : galgasScanner4_1__3D__3D__3D_
-      true, // 190 : galgasScanner4_1__21__3D__3D_
-      true, // 191 : galgasScanner4_1__3F__5E_
-      true, // 192 : galgasScanner4_1__21__5E_
-      false, // 193 : galgasScanner4_2_ERROR
-      false  // 194 : galgasScanner4_2_TEMPLATE
+      true, // 144 : galgasScanner4_1__25_translate
+      true, // 145 : galgasScanner4_1__25_usefull
+      true, // 146 : galgasScanner4_1__2A_
+      true, // 147 : galgasScanner4_1__2C_
+      true, // 148 : galgasScanner4_1__2B_
+      true, // 149 : galgasScanner4_1__26__2B_
+      true, // 150 : galgasScanner4_1__26__2D_
+      true, // 151 : galgasScanner4_1__26__2A_
+      true, // 152 : galgasScanner4_1__26__2F_
+      true, // 153 : galgasScanner4_1__3E_
+      true, // 154 : galgasScanner4_1__3B_
+      true, // 155 : galgasScanner4_1__3A_
+      true, // 156 : galgasScanner4_1__3A__3E_
+      true, // 157 : galgasScanner4_1__2D_
+      true, // 158 : galgasScanner4_1__28_
+      true, // 159 : galgasScanner4_1__29_
+      true, // 160 : galgasScanner4_1__2D__3E_
+      true, // 161 : galgasScanner4_1__3D__3D_
+      true, // 162 : galgasScanner4_1__3D_
+      true, // 163 : galgasScanner4_1__26__26_
+      true, // 164 : galgasScanner4_1__5B_
+      true, // 165 : galgasScanner4_1__5D_
+      true, // 166 : galgasScanner4_1__2B__3D_
+      true, // 167 : galgasScanner4_1__2D__3D_
+      true, // 168 : galgasScanner4_1__2A__3D_
+      true, // 169 : galgasScanner4_1__2F__3D_
+      true, // 170 : galgasScanner4_1__26__3D_
+      true, // 171 : galgasScanner4_1__7C__3D_
+      true, // 172 : galgasScanner4_1__2F_
+      true, // 173 : galgasScanner4_1__21__3D_
+      true, // 174 : galgasScanner4_1__3E__3D_
+      true, // 175 : galgasScanner4_1__26_
+      true, // 176 : galgasScanner4_1__7B_
+      true, // 177 : galgasScanner4_1__7D_
+      true, // 178 : galgasScanner4_1__60_
+      true, // 179 : galgasScanner4_1__7C__7C_
+      true, // 180 : galgasScanner4_1__7C_
+      true, // 181 : galgasScanner4_1__5E_
+      true, // 182 : galgasScanner4_1__3E__3E_
+      true, // 183 : galgasScanner4_1__7E_
+      true, // 184 : galgasScanner4_1__2D__2D_
+      true, // 185 : galgasScanner4_1__2B__2B_
+      true, // 186 : galgasScanner4_1__26__2D__2D_
+      true, // 187 : galgasScanner4_1__26__2B__2B_
+      true, // 188 : galgasScanner4_1__3D__3D__3D_
+      true, // 189 : galgasScanner4_1__21__3D__3D_
+      true, // 190 : galgasScanner4_1__3F__5E_
+      true, // 191 : galgasScanner4_1__21__5E_
+      false, // 192 : galgasScanner4_2_ERROR
+      false  // 193 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -1601,7 +1598,6 @@ fileprivate func search_into_galgasScanner_34__attributeKeyWordList (_ inSearche
     "insertAfter" : galgasScanner4_1__25_insertAfter,
     "libpmAtPath" : galgasScanner4_1__25_libpmAtPath,
     "macCodeSign" : galgasScanner4_1__25_macCodeSign,
-    "testGetters" : galgasScanner4_1__25_testGetters,
     "tool-source" : galgasScanner4_1__25_tool_2D_source,
     "errorMessage" : galgasScanner4_1__25_errorMessage,
     "initArgLabel" : galgasScanner4_1__25_initArgLabel,
