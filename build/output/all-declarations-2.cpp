@@ -3582,15 +3582,7 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::class_func_lexicalI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_lexicalArgumentModeAST::getter_lexicalInputMode (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputMode == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lexicalArgumentModeAST::getter_lexicalInputOutputMode (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputOutputMode == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3880,51 +3872,19 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_string (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_string == mEnum) ;
-}
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_char (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_char == mEnum) ;
-}
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_uint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_uint == mEnum) ;
-}
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_uint_36__34_ == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_sint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_sint == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_sint_36__34_ == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_double (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_double == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lexicalTypeEnum::getter_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_bigint == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15121,21 +15081,9 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::class_func_st
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_noDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_noDefaultValue == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_unsignedDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsignedDefaultValue == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_stringDefaultValue (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_stringDefaultValue == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 

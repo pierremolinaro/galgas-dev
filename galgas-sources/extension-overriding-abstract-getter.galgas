@@ -237,7 +237,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   var @unifiedTypeMapEntry inheritedReturnType = .null
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
-  while (not [superType null]) & (baseTypeName == "") do
+  while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType definition].getterMap hasKey !self.mAbstractExtensionGetterName.string] then
       [[superType definition].getterMap searchKey
         !self.mAbstractExtensionGetterName

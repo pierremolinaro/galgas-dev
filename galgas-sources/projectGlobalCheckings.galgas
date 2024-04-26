@@ -293,10 +293,7 @@ proc performGalgas3ProjectGlobalCheckings
   var @descendantClassListMap descendantClassListMap = ()
   for (lkey element) in ioTypeMap do
      let superType = [element definition].superType
-     if not [superType null] then
-#       descendantClassListMap +=
-#         ![superType definition].typeName.string
-#         ![ioTypeMap typeMapEntryForLKey !lkey]
+     if not [superType isNull] then
        [!?descendantClassListMap insertKey
          ![superType definition].typeName.string
          ![ioTypeMap typeMapEntryForLKey !lkey]

@@ -276,7 +276,7 @@ refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
 
 override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset ioInclusionSet
                                                                    !@string outHeader {
-  if not [self.mSuperClass null] then
+  if not [self.mSuperClass isNull] then
     [self.mSuperClass addHeaderFileName !?ioInclusionSet]
   end
   [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
@@ -284,7 +284,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
   outHeader = [filewrapper classGenerationTemplate.weakReferenceClassTypeHeader1
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
-    !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
+    !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !typeDefinition.typeName.string
@@ -317,7 +317,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
   outImplementation = [filewrapper classGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
     ![typeDefinition.typeName.string identifierRepresentation]
-    !if [self.mSuperClass null] then "" else [self.mSuperClass identifierRepresentation] end
+    !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
     !self.mTypedAttributeList
     !self.allTypedPropertyList
     ![self.allTypedPropertyList subListWithRange !.init {!0 ![self.allTypedPropertyList count] - [self.mTypedAttributeList count]}]

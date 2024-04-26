@@ -319,7 +319,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
         var testType = @unifiedTypeMapEntry.null
       #--- Check this is an optional
         let unwrappedType = [analyzedExpression.mResultType definition].unwrappedType 
-        if not [unwrappedType null] then
+        if not [unwrappedType isNull] then
           [!?ioVariableMap openOverrideForSelectBlock]
           [!?ioVariableMap openBranch]
           let targetVariableCppName = "var_" + [constantName identifierRepresentation]
@@ -350,7 +350,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
             var @unifiedTypeMapEntry t = castType
             var @bool found = t == analyzedExpression.mResultType
             loop ([ioTypeMap count] + 1)
-            while (not found) & not [[t definition].superType null] do
+            while (not found) & not [[t definition].superType isNull] do
               t = [t definition].superType
               found = t == analyzedExpression.mResultType
             end
@@ -394,7 +394,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
             found = true
           end
           loop ([ioTypeMap count] + 1)
-          while (not found) & not [[t definition].superType null] do
+          while (not found) & not [[t definition].superType isNull] do
             t = [t definition].superType
             if t == analyzedExpression.mResultType then
               found = true

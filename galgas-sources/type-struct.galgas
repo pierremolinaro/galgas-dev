@@ -169,7 +169,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     for property in self.mStructurePropertyListAST do
       [!?ioTypeMap makeEntry !property.typeName ?let propertyTypeEntry]
       let selector = [if property.hasSelector then property.name.string else "" end nowhere]
-      if [property.initialization none] then
+      if [property.initialization isNone] then
         constructorPropertyTypeList += !selector !propertyTypeEntry !property.name.string !true
       end
       typesToIncludeInHeaderCompilation += !propertyTypeEntry

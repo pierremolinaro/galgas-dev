@@ -260,7 +260,6 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #---
     var @classFunctionMap classFunctionMap = ()
     var @setterMap setterMap = ()
-    var @instanceMethodMap instanceMethodMap = ()
   #--- currentType type index
     [!?ioTypeMap makeEntry !self.enumTypeName ?let enumTypeEntry]
   #--- Class functions
@@ -284,6 +283,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
       ]
     end
   #--- Methods
+    var @instanceMethodMap instanceMethodMap = ()
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
         var @unifiedTypeMapEntryList associatedTypeList = ()
@@ -308,16 +308,16 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #--- getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
-      if [constant.associatedValueTypeList count] == 0 then
-        enterBaseGetterWithoutArgument (
-          !?getterMap
-          !?ioTypeMap
-          !getterName: constant.name
-          !obsoleteName: ""
-          !returnedTypeName: "bool"
-          !hasCompilerArgument:false
-        )
-      else
+      if [constant.associatedValueTypeList count] > 0 then
+#        enterBaseGetterWithoutArgument (
+#          !?getterMap
+#          !?ioTypeMap
+#          !getterName: constant.name
+#          !obsoleteName: ""
+#          !returnedTypeName: "bool"
+#          !hasCompilerArgument:false
+#        )
+#      else
         let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
         let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
         enterBaseGetterWithoutArgument (

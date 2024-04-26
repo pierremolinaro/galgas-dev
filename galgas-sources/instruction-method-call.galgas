@@ -156,7 +156,7 @@ refclass @methodCallInstructionAST : @semanticInstructionAST {
     var searching = true
     if @uint.errorCount == 0 then
       loop (@uint.max) while searching do
-        if [[baseType definition].superType null] then
+        if [[baseType definition].superType isNull] then
           searching = false
         else
           if [[[baseType definition].superType definition].instanceMethodMap hasKey !self.mMethodName.string] then

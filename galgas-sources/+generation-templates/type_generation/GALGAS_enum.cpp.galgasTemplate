@@ -70,11 +70,7 @@ end
 
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------\n\n%
-  if [mAssociatedValueTypeList count] == 0 then
-    %GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_%![mConstantName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_%![mConstantName identifierRepresentation]% == mEnum) ;\n%
-    %}\n\n%
-  else    
+  if [mAssociatedValueTypeList count] > 0 then
     %GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ GALGAS_%!TYPE_IDENTIFIER%::getter_%![mConstantName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ result ;\n%
     %  if (mEnum == Enumeration::enum_%![mConstantName identifierRepresentation]%) {\n%

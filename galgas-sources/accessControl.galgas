@@ -211,7 +211,7 @@ enum @AccessControl {
       case available (t *) :
         var currentType = t
         var ok = [declaringType typeName] == [currentType typeName]
-        loop while (not ok) && (not [[currentType definition].superType null]) do
+        loop while (not ok) && (not [[currentType definition].superType isNull]) do
           currentType = [currentType definition].superType
           ok = [declaringType typeName] == [currentType typeName]
         end
@@ -226,7 +226,7 @@ enum @AccessControl {
       case available (t *) :
         var currentType = t
         var ok = [declaringType typeName] == [currentType typeName]
-        loop while (not ok) && (not [[currentType definition].superType null]) do
+        loop while (not ok) && (not [[currentType definition].superType isNull]) do
           currentType = [currentType definition].superType
           ok = [declaringType typeName] == [currentType typeName]
         end
@@ -278,7 +278,7 @@ enum @AccessControl {
       case available (t *) :
         var currentType = t
         var ok = [declaringType typeName] == [currentType typeName]
-        loop while (not ok) && (not [[currentType definition].superType null]) do
+        loop while (not ok) && (not [[currentType definition].superType isNull]) do
           currentType = [currentType definition].superType
           ok = [declaringType typeName] == [currentType typeName]
         end

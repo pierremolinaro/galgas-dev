@@ -9799,21 +9799,9 @@ GALGAS_dynamicTypeComparisonKind GALGAS_dynamicTypeComparisonKind::class_func_st
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_equal (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_equal == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_inherited (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_inherited == mEnum) ;
-}
-
 //--------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_dynamicTypeComparisonKind::getter_strictlyInherited (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_strictlyInherited == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -88,7 +88,7 @@ end
     case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
-%if not [[element definition].superType null] then
+%if not [[element definition].superType isNull] then
 %<tr class="result_line"><td>Superclass</td><td>%!linkForType (![[element definition].superType definition].typeName.string)%</td></tr>% 
 end%
 <tr class="result_line"><td>Operators</td>
@@ -177,7 +177,7 @@ if [[element definition].enumerationDescriptorList count] > 0 then
   end
   %</td></tr>%
 end
-if not [[element definition].typeForEnumeratedElement null] then
+if not [[element definition].typeForEnumeratedElement isNull] then
   %<tr class="result_line"><td><b>for</b> enumeration type</td><td>%!linkForType (![[element definition].typeForEnumeratedElement definition].typeName.string)%</td></tr>%
 end
 #--- Class functions

@@ -33,7 +33,7 @@ map @unifiedTypeMap {
   getter unsolvedEntryList -> @lstringlist {
     result = ()
     for (lkey element) in self do
-      if [element.mDefinition unsolved] then
+      if [element.mDefinition isUnsolved] then
         result += !lkey
       end
     end
@@ -205,7 +205,7 @@ enum @unifiedTypeMapEntry %equatable {
 
   getter baseType -> @unifiedTypeMapEntry outBaseType {
     outBaseType = self
-    loop while not [[outBaseType definition].superType null] do
+    loop while not [[outBaseType definition].superType isNull] do
       outBaseType = [outBaseType definition].superType
     end
   }

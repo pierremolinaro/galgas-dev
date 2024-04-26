@@ -163,7 +163,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
   var inheritedSignature = @formalParameterSignature ()
   let @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
-  while (not [superType null]) & (baseTypeName == "") do
+  while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType definition].setterMap hasKey !self.mOverridingExtensionSetterName.string] then
       [[superType definition].setterMap searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?let qualifier ?*]
       if qualifier <= @methodQualifier.isBasicFinal then
@@ -285,7 +285,7 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
   var @unifiedTypeMapEntry baseType = self.mReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
-    if not [[baseType definition].superType null] then
+    if not [[baseType definition].superType isNull] then
       if [[[baseType definition].superType definition].setterMap hasKey !self.mExtensionSetterName] then
         baseType = [baseType definition].superType
       else

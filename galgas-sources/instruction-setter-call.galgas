@@ -270,7 +270,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var ok = true
   var errorLocation = self.mReceiverName.location
   for (value) in self.mReceiverStructProperties while ok do
-    ok = [[receiverType definition].typeKind structType]
+    ok = [[receiverType definition].typeKind isStructType]
     if not ok then
       error errorLocation : "a structure is required for '.' access"
     else
@@ -321,7 +321,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   var searching = true
   if @uint.errorCount == 0 then
     loop (@uint.max) while searching do
-      if [[baseType definition].superType null] then
+      if [[baseType definition].superType isNull] then
         searching = false
       else
         if [[[baseType definition].superType definition].setterMap hasKey !self.mSetterName.string] then

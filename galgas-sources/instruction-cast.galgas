@@ -176,7 +176,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     var @unifiedTypeMapEntry t = type
     var @bool found = t == castExpression.mResultType
     loop ([ioTypeMap count] + 1)
-    while (not found) & not [[t definition].superType null] do
+    while (not found) & not [[t definition].superType isNull] do
       t = [t definition].superType
       found = t == castExpression.mResultType
     end

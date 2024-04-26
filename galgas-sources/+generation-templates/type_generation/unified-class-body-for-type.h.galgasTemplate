@@ -421,7 +421,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
   for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
 %  public: class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
-  if not [ENUMERATED_OBJECT_TYPE null] then
+  if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
 %  public: class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end

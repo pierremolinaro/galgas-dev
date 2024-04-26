@@ -6383,7 +6383,7 @@ GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMa
   while (enumerator_1819.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = enumerator_1819.current_mElement (HERE).readProperty_mDefinition ().getter_unsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
+      test_1 = enumerator_1819.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
       if (kBoolTrue == test_1) {
         result_result.addAssign_operation (enumerator_1819.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 37)) ;
       }
@@ -6595,9 +6595,9 @@ GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition 
     break ;
   case GALGAS_typeDefinition::Enumeration::enum_solved:
     {
-      GALGAS_unifiedTypeDefinition extractedValue_6044_definition_0 ;
-      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_6044_definition_0) ;
-      result_result = extractedValue_6044_definition_0 ;
+      GALGAS_unifiedTypeDefinition extractedValue_6046_definition_0 ;
+      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_6046_definition_0) ;
+      result_result = extractedValue_6046_definition_0 ;
     }
     break ;
   }

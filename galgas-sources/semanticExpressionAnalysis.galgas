@@ -79,14 +79,14 @@ proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
                           ?let @location inErrorLocation {
   var @unifiedTypeMapEntry sourceType = inSourceType
   var @bool ok = inTargetType == sourceType
-  loop (@uint.max) while (not ok) & (not [[sourceType definition].superType null]) do
+  loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
     sourceType = [sourceType definition].superType
     ok = inTargetType == sourceType
   end
   if not ok, let weakRefType = [[inTargetType definition].typeKind weakReferenceType] then
     sourceType = inSourceType
     ok = weakRefType.referenceType == sourceType
-    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType null]) do
+    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
       sourceType = [sourceType definition].superType
       ok = weakRefType.referenceType == sourceType
     end
@@ -105,7 +105,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
                                                 ?!@semanticExpressionForGeneration ioExpression {
 #--- Optional ?
   let targetTypeDef = [inTargetType definition]
-  let targetTypeForBigIntAssignment = if not [targetTypeDef.unwrappedType null]
+  let targetTypeForBigIntAssignment = if not [targetTypeDef.unwrappedType isNull]
     then targetTypeDef.unwrappedType
     else inTargetType
   end
@@ -160,7 +160,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
 #---
   if not handled,
-        not [[inTargetType definition].unwrappedType null],
+        not [[inTargetType definition].unwrappedType isNull],
         [[inTargetType definition].unwrappedType typeName] == [inSourceType typeName] then
     handled = true
   end
@@ -168,14 +168,14 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   if not handled then
     var sourceType = inSourceType
     var ok = [inTargetType typeName] == [inSourceType typeName]
-    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType null]) do
+    loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
       sourceType = [sourceType definition].superType
       ok = inTargetType == sourceType
     end
     if not ok, let targetWeakRef = [targetTypeDef.typeKind weakReferenceType] then
       sourceType = inSourceType
       ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
-      loop (@uint.max) while (not ok) & (not [[sourceType definition].superType null]) do
+      loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
         sourceType = [sourceType definition].superType
         ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
       end
@@ -244,7 +244,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
   else
     var @unifiedTypeMapEntry rightType = rightResultType
     var @bool ok = leftResultType == rightType
-    loop (@uint.max) while (not ok) & (not [[rightType definition].superType null]) do
+    loop (@uint.max) while (not ok) & (not [[rightType definition].superType isNull]) do
       rightType = [rightType definition].superType
       ok = leftResultType == rightType
     end
