@@ -62,9 +62,19 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GALGAS_%!TYPE_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,
-                                                      class Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_%!TYPE_IDENTIFIER%::andAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+         %!^%class Compiler * /* inCompiler */
+         %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::orAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+         %!^%class Compiler * /* inCompiler */
+         %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags |= inOperand.mFlags ;
   }
@@ -72,9 +82,19 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (const GALGAS_%!TYPE_IDENTI
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::minusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,
-                                                       class Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_%!TYPE_IDENTIFIER%::xorAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+         %!^%class Compiler * /* inCompiler */
+         %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags ^= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_%!TYPE_IDENTIFIER%::minusAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+          %!^%class Compiler * /* inCompiler */
+          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= ~ inOperand.mFlags ;
   }

@@ -219,7 +219,7 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
     let @bool implementedAsFunction
   #--- Check self type is a class
     var isReferenceClass = false
-    if let selfClassType = [[selfType definition].typeKind classType] then
+    if let selfClassType = [[selfType definition].typeKind getClassType] then
       isReferenceClass = selfClassType.isReference
       selfObjectNameString = "this"
       selfObjectPropertyAccessorString = "this->"
@@ -239,14 +239,14 @@ refclass @extensionMethodAST : @semanticDeclarationAST {
       !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
     }
     var isRefClass = false
-    if let classType = [[selfType definition].typeKind classType] then
+    if let classType = [[selfType definition].typeKind getClassType] then
       isRefClass = classType.isReference
     end
     var mutableProperties = @typedPropertyList ()
     var nonMutableProperties = @typedPropertyList ()
     if [selfType definition].typeKind == .structType then
       nonMutableProperties = [selfType definition].allTypedPropertyList
-    elsif let classType = [[selfType definition].typeKind classType] then
+    elsif let classType = [[selfType definition].typeKind getClassType] then
       if classType.isReference then
         mutableProperties = [selfType definition].allTypedPropertyList
       else

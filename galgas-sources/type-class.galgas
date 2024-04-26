@@ -481,7 +481,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   # a base class can be freely declared as shared or not
   # a class should the same 'reference' status as its super class
     if superClassEntry != .null then
-      [[superClassEntry definition].typeKind classType ?isReference: let superClassIsReference]
+      [[superClassEntry definition].typeKind extractClassType ?isReference: let superClassIsReference]
       if superClassIsReference & not self.mIsReference then
         error self.mClassTypeName : "this class should be declared by 'refClass', as its super class"
       elsif not superClassIsReference & self.mIsReference then

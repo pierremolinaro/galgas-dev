@@ -122,6 +122,7 @@ boolset @typeFeatures {
   case minusEqualOperatorWithExpression # var -= exp ;
   case mulEqualOperatorWithExpression # var *= exp ;
   case divEqualOperatorWithExpression # var /= exp ;
+  case xorEqualOperatorWithExpression # var ^= exp ;
   case orEqualOperatorWithExpression # var |= exp ;
   case andEqualOperatorWithExpression # var &= exp ;
 

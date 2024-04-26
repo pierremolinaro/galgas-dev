@@ -6699,10 +6699,10 @@ GALGAS_selfAvailability GALGAS_selfAvailability::class_func_available (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & outAssociatedValue_type,
-                                                GALGAS_selfMutability & outAssociatedValue_selfMutability,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+void GALGAS_selfAvailability::method_extractAvailable (GALGAS_unifiedTypeMapEntry & outAssociatedValue_type,
+                                                       GALGAS_selfMutability & outAssociatedValue_selfMutability,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_available) {
     outAssociatedValue_type.drop () ;
     outAssociatedValue_selfMutability.drop () ;
@@ -6720,7 +6720,7 @@ void GALGAS_selfAvailability::method_available (GALGAS_unifiedTypeMapEntry & out
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_selfAvailability_2D_available_3F_ GALGAS_selfAvailability::getter_available (UNUSED_LOCATION_ARGS) const {
+GALGAS_selfAvailability_2D_available_3F_ GALGAS_selfAvailability::getter_getAvailable (UNUSED_LOCATION_ARGS) const {
   GALGAS_selfAvailability_2D_available_3F_ result ;
   if (mEnum == Enumeration::enum_available) {
     const auto ptr = (const GALGAS_selfAvailability_2D_available *) mAssociatedValues.associatedValuesPointer () ;
@@ -9050,8 +9050,72 @@ GALGAS_opAssignmentOperator GALGAS_opAssignmentOperator::extractObject (const GA
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@opAssignmentOperator string'
+//
+//--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_andEqualExpressionInstructionAST_2D_weak::objectCompare (const GALGAS_andEqualExpressionInstructionAST_2D_weak & inOperand) const {
+GALGAS_string extensionGetter_string (const GALGAS_opAssignmentOperator & inObject,
+                                      Compiler *
+                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const GALGAS_opAssignmentOperator temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GALGAS_opAssignmentOperator::Enumeration::invalid:
+    break ;
+  case GALGAS_opAssignmentOperator::Enumeration::enum_orAssign:
+    {
+      result_result = GALGAS_string ("orAssign_operation") ;
+    }
+    break ;
+  case GALGAS_opAssignmentOperator::Enumeration::enum_andAssign:
+    {
+      result_result = GALGAS_string ("andAssign_operation") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@opAssignmentOperator cppFunctionName'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string extensionGetter_cppFunctionName (const GALGAS_opAssignmentOperator & inObject,
+                                               Compiler *
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const GALGAS_opAssignmentOperator temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GALGAS_opAssignmentOperator::Enumeration::invalid:
+    break ;
+  case GALGAS_opAssignmentOperator::Enumeration::enum_orAssign:
+    {
+      result_result = GALGAS_string ("|=") ;
+    }
+    break ;
+  case GALGAS_opAssignmentOperator::Enumeration::enum_andAssign:
+    {
+      result_result = GALGAS_string ("&=") ;
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_opAssignExpressionInstructionAST_2D_weak::objectCompare (const GALGAS_opAssignExpressionInstructionAST_2D_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9071,13 +9135,13 @@ ComparisonResult GALGAS_andEqualExpressionInstructionAST_2D_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andEqualExpressionInstructionAST_2D_weak::GALGAS_andEqualExpressionInstructionAST_2D_weak (void) :
+GALGAS_opAssignExpressionInstructionAST_2D_weak::GALGAS_opAssignExpressionInstructionAST_2D_weak (void) :
 GALGAS_semanticInstructionAST_2D_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andEqualExpressionInstructionAST_2D_weak & GALGAS_andEqualExpressionInstructionAST_2D_weak::operator = (const GALGAS_andEqualExpressionInstructionAST & inSource) {
+GALGAS_opAssignExpressionInstructionAST_2D_weak & GALGAS_opAssignExpressionInstructionAST_2D_weak::operator = (const GALGAS_opAssignExpressionInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9089,29 +9153,29 @@ GALGAS_andEqualExpressionInstructionAST_2D_weak & GALGAS_andEqualExpressionInstr
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andEqualExpressionInstructionAST_2D_weak::GALGAS_andEqualExpressionInstructionAST_2D_weak (const GALGAS_andEqualExpressionInstructionAST & inSource) :
+GALGAS_opAssignExpressionInstructionAST_2D_weak::GALGAS_opAssignExpressionInstructionAST_2D_weak (const GALGAS_opAssignExpressionInstructionAST & inSource) :
 GALGAS_semanticInstructionAST_2D_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andEqualExpressionInstructionAST_2D_weak GALGAS_andEqualExpressionInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_andEqualExpressionInstructionAST_2D_weak result ;
+GALGAS_opAssignExpressionInstructionAST_2D_weak GALGAS_opAssignExpressionInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_opAssignExpressionInstructionAST_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andEqualExpressionInstructionAST GALGAS_andEqualExpressionInstructionAST_2D_weak::bang_andEqualExpressionInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_andEqualExpressionInstructionAST result ;
+GALGAS_opAssignExpressionInstructionAST GALGAS_opAssignExpressionInstructionAST_2D_weak::bang_opAssignExpressionInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_opAssignExpressionInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_andEqualExpressionInstructionAST) ;
-      result = GALGAS_andEqualExpressionInstructionAST ((cPtr_andEqualExpressionInstructionAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_opAssignExpressionInstructionAST) ;
+      result = GALGAS_opAssignExpressionInstructionAST ((cPtr_opAssignExpressionInstructionAST *) strongPtr) ;
     }
   }
   return result ;
@@ -9119,41 +9183,41 @@ GALGAS_andEqualExpressionInstructionAST GALGAS_andEqualExpressionInstructionAST_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @andEqualExpressionInstructionAST-weak generic code implementation
+//     @opAssignExpressionInstructionAST-weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andEqualExpressionInstructionAST_2D_weak ("andEqualExpressionInstructionAST-weak",
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST_2D_weak ("opAssignExpressionInstructionAST-weak",
                                                                                                 & kTypeDescriptor_GALGAS_semanticInstructionAST_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_andEqualExpressionInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_andEqualExpressionInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_opAssignExpressionInstructionAST_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST_2D_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_andEqualExpressionInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_opAssignExpressionInstructionAST_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_andEqualExpressionInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_opAssignExpressionInstructionAST_2D_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andEqualExpressionInstructionAST_2D_weak GALGAS_andEqualExpressionInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_opAssignExpressionInstructionAST_2D_weak GALGAS_opAssignExpressionInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_andEqualExpressionInstructionAST_2D_weak result ;
-  const GALGAS_andEqualExpressionInstructionAST_2D_weak * p = (const GALGAS_andEqualExpressionInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_opAssignExpressionInstructionAST_2D_weak result ;
+  const GALGAS_opAssignExpressionInstructionAST_2D_weak * p = (const GALGAS_opAssignExpressionInstructionAST_2D_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_andEqualExpressionInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_opAssignExpressionInstructionAST_2D_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("andEqualExpressionInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("opAssignExpressionInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10102,7 +10166,7 @@ GALGAS_plusEqualnstructionForGeneration_2D_weak GALGAS_plusEqualnstructionForGen
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_opEqualInstructionForGeneration_2D_weak::objectCompare (const GALGAS_opEqualInstructionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_opAssignInstructionForGeneration_2D_weak::objectCompare (const GALGAS_opAssignInstructionForGeneration_2D_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10122,13 +10186,13 @@ ComparisonResult GALGAS_opEqualInstructionForGeneration_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_opEqualInstructionForGeneration_2D_weak::GALGAS_opEqualInstructionForGeneration_2D_weak (void) :
+GALGAS_opAssignInstructionForGeneration_2D_weak::GALGAS_opAssignInstructionForGeneration_2D_weak (void) :
 GALGAS_semanticInstructionForGeneration_2D_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_opEqualInstructionForGeneration_2D_weak & GALGAS_opEqualInstructionForGeneration_2D_weak::operator = (const GALGAS_opEqualInstructionForGeneration & inSource) {
+GALGAS_opAssignInstructionForGeneration_2D_weak & GALGAS_opAssignInstructionForGeneration_2D_weak::operator = (const GALGAS_opAssignInstructionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10140,29 +10204,29 @@ GALGAS_opEqualInstructionForGeneration_2D_weak & GALGAS_opEqualInstructionForGen
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_opEqualInstructionForGeneration_2D_weak::GALGAS_opEqualInstructionForGeneration_2D_weak (const GALGAS_opEqualInstructionForGeneration & inSource) :
+GALGAS_opAssignInstructionForGeneration_2D_weak::GALGAS_opAssignInstructionForGeneration_2D_weak (const GALGAS_opAssignInstructionForGeneration & inSource) :
 GALGAS_semanticInstructionForGeneration_2D_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_opEqualInstructionForGeneration_2D_weak GALGAS_opEqualInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_opEqualInstructionForGeneration_2D_weak result ;
+GALGAS_opAssignInstructionForGeneration_2D_weak GALGAS_opAssignInstructionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_opAssignInstructionForGeneration_2D_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_opEqualInstructionForGeneration GALGAS_opEqualInstructionForGeneration_2D_weak::bang_opEqualInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_opEqualInstructionForGeneration result ;
+GALGAS_opAssignInstructionForGeneration GALGAS_opAssignInstructionForGeneration_2D_weak::bang_opAssignInstructionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_opAssignInstructionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_opEqualInstructionForGeneration) ;
-      result = GALGAS_opEqualInstructionForGeneration ((cPtr_opEqualInstructionForGeneration *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_opAssignInstructionForGeneration) ;
+      result = GALGAS_opAssignInstructionForGeneration ((cPtr_opAssignInstructionForGeneration *) strongPtr) ;
     }
   }
   return result ;
@@ -10170,41 +10234,41 @@ GALGAS_opEqualInstructionForGeneration GALGAS_opEqualInstructionForGeneration_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @opEqualInstructionForGeneration-weak generic code implementation
+//     @opAssignInstructionForGeneration-weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opEqualInstructionForGeneration_2D_weak ("opEqualInstructionForGeneration-weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration_2D_weak ("opAssignInstructionForGeneration-weak",
+                                                                                                & kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2D_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_opEqualInstructionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_opEqualInstructionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_opAssignInstructionForGeneration_2D_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_opAssignInstructionForGeneration_2D_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_opEqualInstructionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_opAssignInstructionForGeneration_2D_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_opEqualInstructionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_opAssignInstructionForGeneration_2D_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_opEqualInstructionForGeneration_2D_weak GALGAS_opEqualInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                              Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_opEqualInstructionForGeneration_2D_weak result ;
-  const GALGAS_opEqualInstructionForGeneration_2D_weak * p = (const GALGAS_opEqualInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
+GALGAS_opAssignInstructionForGeneration_2D_weak GALGAS_opAssignInstructionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_opAssignInstructionForGeneration_2D_weak result ;
+  const GALGAS_opAssignInstructionForGeneration_2D_weak * p = (const GALGAS_opAssignInstructionForGeneration_2D_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_opEqualInstructionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_opAssignInstructionForGeneration_2D_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("opEqualInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("opAssignInstructionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10560,10 +10624,10 @@ GALGAS_fixitElementAST GALGAS_fixitElementAST::class_func_fixItInsertBefore (con
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitElementAST::method_fixItReplace (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
-                                                  GALGAS_location & outAssociatedValue_errorLocation,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+void GALGAS_fixitElementAST::method_extractFixItReplace (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
+                                                         GALGAS_location & outAssociatedValue_errorLocation,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixItReplace) {
     outAssociatedValue_exp.drop () ;
     outAssociatedValue_errorLocation.drop () ;
@@ -10579,10 +10643,10 @@ void GALGAS_fixitElementAST::method_fixItReplace (GALGAS_semanticExpressionAST &
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitElementAST::method_fixItInsertAfter (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
-                                                      GALGAS_location & outAssociatedValue_errorLocation,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+void GALGAS_fixitElementAST::method_extractFixItInsertAfter (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
+                                                             GALGAS_location & outAssociatedValue_errorLocation,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixItInsertAfter) {
     outAssociatedValue_exp.drop () ;
     outAssociatedValue_errorLocation.drop () ;
@@ -10598,10 +10662,10 @@ void GALGAS_fixitElementAST::method_fixItInsertAfter (GALGAS_semanticExpressionA
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitElementAST::method_fixItInsertBefore (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
-                                                       GALGAS_location & outAssociatedValue_errorLocation,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+void GALGAS_fixitElementAST::method_extractFixItInsertBefore (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
+                                                              GALGAS_location & outAssociatedValue_errorLocation,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixItInsertBefore) {
     outAssociatedValue_exp.drop () ;
     outAssociatedValue_errorLocation.drop () ;
@@ -10619,7 +10683,7 @@ void GALGAS_fixitElementAST::method_fixItInsertBefore (GALGAS_semanticExpression
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_fixitElementAST_2D_fixItReplace_3F_ GALGAS_fixitElementAST::getter_fixItReplace (UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitElementAST_2D_fixItReplace_3F_ GALGAS_fixitElementAST::getter_getFixItReplace (UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitElementAST_2D_fixItReplace_3F_ result ;
   if (mEnum == Enumeration::enum_fixItReplace) {
     const auto ptr = (const GALGAS_fixitElementAST_2D_fixItReplace *) mAssociatedValues.associatedValuesPointer () ;
@@ -10639,7 +10703,7 @@ void GALGAS_fixitElementAST::getAssociatedValuesFor_fixItReplace (GALGAS_semanti
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ GALGAS_fixitElementAST::getter_fixItInsertAfter (UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ GALGAS_fixitElementAST::getter_getFixItInsertAfter (UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitElementAST_2D_fixItInsertAfter_3F_ result ;
   if (mEnum == Enumeration::enum_fixItInsertAfter) {
     const auto ptr = (const GALGAS_fixitElementAST_2D_fixItInsertAfter *) mAssociatedValues.associatedValuesPointer () ;
@@ -10659,7 +10723,7 @@ void GALGAS_fixitElementAST::getAssociatedValuesFor_fixItInsertAfter (GALGAS_sem
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ GALGAS_fixitElementAST::getter_fixItInsertBefore (UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ GALGAS_fixitElementAST::getter_getFixItInsertBefore (UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitElementAST_2D_fixItInsertBefore_3F_ result ;
   if (mEnum == Enumeration::enum_fixItInsertBefore) {
     const auto ptr = (const GALGAS_fixitElementAST_2D_fixItInsertBefore *) mAssociatedValues.associatedValuesPointer () ;
@@ -11646,9 +11710,9 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::class_func_fi
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitElementForGeneration::method_fixItReplace (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
+void GALGAS_fixitElementForGeneration::method_extractFixItReplace (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixItReplace) {
     outAssociatedValue_exp.drop () ;
     String s ;
@@ -11662,9 +11726,9 @@ void GALGAS_fixitElementForGeneration::method_fixItReplace (GALGAS_semanticExpre
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitElementForGeneration::method_fixItInsertBefore (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
+void GALGAS_fixitElementForGeneration::method_extractFixItInsertBefore (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixItInsertBefore) {
     outAssociatedValue_exp.drop () ;
     String s ;
@@ -11678,9 +11742,9 @@ void GALGAS_fixitElementForGeneration::method_fixItInsertBefore (GALGAS_semantic
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_fixitElementForGeneration::method_fixItInsertAfter (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
+void GALGAS_fixitElementForGeneration::method_extractFixItInsertAfter (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_fixItInsertAfter) {
     outAssociatedValue_exp.drop () ;
     String s ;
@@ -11696,7 +11760,7 @@ void GALGAS_fixitElementForGeneration::method_fixItInsertAfter (GALGAS_semanticE
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ GALGAS_fixitElementForGeneration::getter_fixItReplace (UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ GALGAS_fixitElementForGeneration::getter_getFixItReplace (UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitElementForGeneration_2D_fixItReplace_3F_ result ;
   if (mEnum == Enumeration::enum_fixItReplace) {
     const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItReplace *) mAssociatedValues.associatedValuesPointer () ;
@@ -11714,7 +11778,7 @@ void GALGAS_fixitElementForGeneration::getAssociatedValuesFor_fixItReplace (GALG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ GALGAS_fixitElementForGeneration::getter_fixItInsertBefore (UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ GALGAS_fixitElementForGeneration::getter_getFixItInsertBefore (UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitElementForGeneration_2D_fixItInsertBefore_3F_ result ;
   if (mEnum == Enumeration::enum_fixItInsertBefore) {
     const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItInsertBefore *) mAssociatedValues.associatedValuesPointer () ;
@@ -11732,7 +11796,7 @@ void GALGAS_fixitElementForGeneration::getAssociatedValuesFor_fixItInsertBefore 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ GALGAS_fixitElementForGeneration::getter_fixItInsertAfter (UNUSED_LOCATION_ARGS) const {
+GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ GALGAS_fixitElementForGeneration::getter_getFixItInsertAfter (UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitElementForGeneration_2D_fixItInsertAfter_3F_ result ;
   if (mEnum == Enumeration::enum_fixItInsertAfter) {
     const auto ptr = (const GALGAS_fixitElementForGeneration_2D_fixItInsertAfter *) mAssociatedValues.associatedValuesPointer () ;

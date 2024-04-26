@@ -2217,9 +2217,9 @@ GALGAS_unifiedTypeMapEntry GALGAS_unifiedTypeMapEntry::class_func_element (const
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue_weakElement,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
+void GALGAS_unifiedTypeMapEntry::method_extractElement (GALGAS_unifiedTypeMapElementClass_2D_weak & outAssociatedValue_weakElement,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_element) {
     outAssociatedValue_weakElement.drop () ;
     String s ;
@@ -2235,7 +2235,7 @@ void GALGAS_unifiedTypeMapEntry::method_element (GALGAS_unifiedTypeMapElementCla
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMapEntry_2D_element_3F_ GALGAS_unifiedTypeMapEntry::getter_element (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMapEntry_2D_element_3F_ GALGAS_unifiedTypeMapEntry::getter_getElement (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapEntry_2D_element_3F_ result ;
   if (mEnum == Enumeration::enum_element) {
     const auto ptr = (const GALGAS_unifiedTypeMapEntry_2D_element *) mAssociatedValues.associatedValuesPointer () ;
@@ -3169,10 +3169,10 @@ GALGAS_templateInstructionForEnumerationAST GALGAS_templateInstructionForEnumera
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionForEnumerationAST::method_implicit (GALGAS_string & outAssociatedValue_prefix,
-                                                                   GALGAS_location & outAssociatedValue_remplacementRange,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
+void GALGAS_templateInstructionForEnumerationAST::method_extractImplicit (GALGAS_string & outAssociatedValue_prefix,
+                                                                          GALGAS_location & outAssociatedValue_remplacementRange,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_implicit) {
     outAssociatedValue_prefix.drop () ;
     outAssociatedValue_remplacementRange.drop () ;
@@ -3188,10 +3188,10 @@ void GALGAS_templateInstructionForEnumerationAST::method_implicit (GALGAS_string
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateInstructionForEnumerationAST::method_explicit (GALGAS_lstringlist & outAssociatedValue_enumeration,
-                                                                   GALGAS_location & outAssociatedValue_endOfProperties,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
+void GALGAS_templateInstructionForEnumerationAST::method_extractExplicit (GALGAS_lstringlist & outAssociatedValue_enumeration,
+                                                                          GALGAS_location & outAssociatedValue_endOfProperties,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_explicit) {
     outAssociatedValue_enumeration.drop () ;
     outAssociatedValue_endOfProperties.drop () ;
@@ -3207,7 +3207,7 @@ void GALGAS_templateInstructionForEnumerationAST::method_explicit (GALGAS_lstrin
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_ GALGAS_templateInstructionForEnumerationAST::getter_implicit (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_ GALGAS_templateInstructionForEnumerationAST::getter_getImplicit (UNUSED_LOCATION_ARGS) const {
   GALGAS_templateInstructionForEnumerationAST_2D_implicit_3F_ result ;
   if (mEnum == Enumeration::enum_implicit) {
     const auto ptr = (const GALGAS_templateInstructionForEnumerationAST_2D_implicit *) mAssociatedValues.associatedValuesPointer () ;
@@ -3227,7 +3227,7 @@ void GALGAS_templateInstructionForEnumerationAST::getAssociatedValuesFor_implici
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ GALGAS_templateInstructionForEnumerationAST::getter_explicit (UNUSED_LOCATION_ARGS) const {
+GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ GALGAS_templateInstructionForEnumerationAST::getter_getExplicit (UNUSED_LOCATION_ARGS) const {
   GALGAS_templateInstructionForEnumerationAST_2D_explicit_3F_ result ;
   if (mEnum == Enumeration::enum_explicit) {
     const auto ptr = (const GALGAS_templateInstructionForEnumerationAST_2D_explicit *) mAssociatedValues.associatedValuesPointer () ;

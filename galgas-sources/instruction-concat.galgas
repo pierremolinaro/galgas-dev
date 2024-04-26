@@ -37,12 +37,37 @@ enum @opAssignmentOperator {
   }
 
   #·······························································································
+  
+  getter string -> @string {
+    switch self
+#  case plusEqualOperatorWithExpression # var += exp ;
+#  case minusEqualOperatorWithExpression # var -= exp ;
+#  case mulEqualOperatorWithExpression # var *= exp ;
+#  case divEqualOperatorWithExpression # var /= exp ;
+    case orAssign  : result = "orAssign_operation"
+    case andAssign : result = "andAssign_operation"
+    end
+  }
+  #·······························································································
+  
+  getter cppFunctionName -> @string {
+    switch self
+#  case plusEqualOperatorWithExpression # var += exp ;
+#  case minusEqualOperatorWithExpression # var -= exp ;
+#  case mulEqualOperatorWithExpression # var *= exp ;
+#  case divEqualOperatorWithExpression # var /= exp ;
+    case orAssign  : result = "|="
+    case andAssign : result = "&="
+    end
+  }
+
+  #·······························································································
 
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @andEqualExpressionInstructionAST : @semanticInstructionAST {
+refclass @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -69,7 +94,7 @@ refclass @andEqualExpressionInstructionAST : @semanticInstructionAST {
     let @string targetVariableCppName
     let @string nameForCheckingFormalParameterUsing
     if self.mPrefixedBySelf then
-      if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
         if not [selfAvailable.selfMutability selfIsMutable] then
           error self.mInstructionLocation : "'self' not mutable in this context"
         end
@@ -101,17 +126,15 @@ refclass @andEqualExpressionInstructionAST : @semanticInstructionAST {
       let propertyMap = [targetType definition].propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
       [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-  #    if not isPublic then
-  #      error mValue : " inaccessible property (due to its 'private' qualifier)"
-  #    end
       if isConstant then
         error self.mReceiverName : "a constant property cannot be modified"
       end
     end
   #--- Check target variable type support '/= exp' operator
-    if [[targetType definition].features contains !.andEqualOperatorWithExpression] then
+    if [[targetType definition].features contains ![self.mOperator features]] then
       error self.mInstructionLocation
-      :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '&=' operator"
+      :"the target object has the '@" + [targetType definition].typeName.string
+      + "' type, but this type does not support the '" + [self.mOperator string] + "' operator"
     end
   #--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
@@ -126,14 +149,14 @@ refclass @andEqualExpressionInstructionAST : @semanticInstructionAST {
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
       !targetType
       !targetVariableCppName
       !nameForCheckingFormalParameterUsing
       !self.mStructAttributeList
       !expression
-      !"divAssign_operation"
+      ![self.mOperator cppFunctionName]
     }
 }
 
@@ -266,7 +289,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $&=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @andEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -277,7 +300,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $|=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @andEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -387,7 +410,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $&=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @andEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -398,7 +421,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $|=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @andEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
@@ -515,7 +538,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       if not [selfAvailable.selfMutability propertiesAreMutable] then
         error self.mInstructionLocation : "property not mutable in this context"
       end
@@ -568,7 +591,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -594,7 +617,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -625,9 +648,6 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
     if isConstant then
       error value : "a constant property cannot be modified"
     end
@@ -650,7 +670,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -676,7 +696,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -733,7 +753,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -759,7 +779,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       if not [selfAvailable.selfMutability selfIsMutable] then
         error self.mInstructionLocation : "'self' not mutable in this context"
       end
@@ -816,7 +836,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 #--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
 #--- Generate instruction
-  ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
     !self.mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -842,7 +862,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
       nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
@@ -985,7 +1005,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 
 #·····················································································································*
 
-refclass @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
+refclass @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName
@@ -997,7 +1017,7 @@ refclass @opEqualInstructionForGeneration : @semanticInstructionForGeneration {
 
 #·····················································································································*
 
-override method @opEqualInstructionForGeneration generateInstruction
+override method @opAssignInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet

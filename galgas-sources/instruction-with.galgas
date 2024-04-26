@@ -529,7 +529,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   var @unifiedTypeMapEntry targetType
   let @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       if self.mReceiverName.string == "" then
         receiverVariableCppName = inAnalysisContext.selfObjectCppName
         targetType = selfAvailable.type

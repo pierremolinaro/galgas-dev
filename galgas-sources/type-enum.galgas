@@ -295,7 +295,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           hasAssociatedValues = true
         end
         [!?instanceMethodMap insertKey
-          !constant.name
+          !.init ("extract" + [constant.name stringByCapitalizingFirstCharacter], constant.name)
           !.definedAsMember
           !argumentTypeList
           !constant.name.location
@@ -309,21 +309,15 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
-#        enterBaseGetterWithoutArgument (
-#          !?getterMap
-#          !?ioTypeMap
-#          !getterName: constant.name
-#          !obsoleteName: ""
-#          !returnedTypeName: "bool"
-#          !hasCompilerArgument:false
-#        )
-#      else
-        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+        let associatedTypeName = @lstring (
+          self.enumTypeName.string + "-" + constant.name,
+          self.enumTypeName
+        )
         let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
         enterBaseGetterWithoutArgument (
           !?getterMap
           !?ioTypeMap
-          !getterName: constant.name
+          !getterName: "get" + [constant.name stringByCapitalizingFirstCharacter]
           !obsoleteName: ""
           !returnedTypeName: optionalTypeName
           !hasCompilerArgument: false

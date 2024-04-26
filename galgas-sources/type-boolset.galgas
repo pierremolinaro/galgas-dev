@@ -122,34 +122,17 @@ override getter @boolsetDeclarationAST keyRepresentation -> @string {
 #   SEMANTIC CONTEXT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func %once forbiddenKeysForBoolset -> @stringset {
-  result = ()
-  result += !"description"
-  result += !"dynamicType"
-  result += !"object"
-}
-
-#·······················································································································
-
 override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext
-{
+  ?!@semanticContext ioSemanticContext {
 #--- Check unicity of slot names
   var @stringset slotNameSet = ()
   for (slotName) in self.mFlagList do
-    if [forbiddenKeysForBoolset () hasKey !slotName.string] then
-      var @string m = "a slot cannot be named:"
-      for s in forbiddenKeysForBoolset () do
-        m += " " + s
-      end
-      m += "; theses names are reserved"
-      error slotName: m
-    elsif [slotNameSet hasKey !slotName] then
+    if [slotNameSet hasKey !slotName] then
       error slotName : "duplicated slot name"
     end
     slotNameSet += !slotName
@@ -157,7 +140,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
 #--- boolset type index
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Getters
-  commonGetterMapForAllTypes (!?ioTypeMap ?@getterMap getterMap)
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioTypeMap
@@ -173,14 +156,6 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
       [!?classFunctionMap insertKey !slotName !() !false !boolsetTypeIndex]
-#      enterBaseFinalGetterWithoutArgument (
-#        !?getterMap
-#        !?ioTypeMap
-#        !getterName:slotName.string
-#        !obsoleteName: ""
-#        !returnedTypeName:"bool"
-#        !hasCompilerArgument:false
-#      )
     end
   end
 #--- Add initializer without argument
@@ -212,7 +187,9 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   let operators = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .equatable
-    | .plusEqualOperatorWithExpression # var += exp
+    | .andEqualOperatorWithExpression # var &= exp
+    | .orEqualOperatorWithExpression # var |= exp
+    | .xorEqualOperatorWithExpression # var ^= exp
     | .minusEqualOperatorWithExpression # var -= exp
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {

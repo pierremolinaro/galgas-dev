@@ -250,7 +250,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -311,7 +311,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #--- Analyze "self", as receiver expression
 #  var @unifiedTypeMapEntry selfTypeEntry
 #  var @string selfObjectCppName
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -333,7 +333,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
@@ -357,7 +357,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -379,7 +379,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
@@ -403,7 +403,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -425,7 +425,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
@@ -449,7 +449,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
@@ -471,7 +471,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   #--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@opEqualInstructionForGeneration {
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName

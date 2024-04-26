@@ -63,6 +63,27 @@ if [SUPPORTED_OPERATORS contains ![@typeFeatures infixShiftOperator]] then
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
+if [SUPPORTED_OPERATORS contains ![@typeFeatures andEqualOperatorWithExpression]] then
+  %//--------------------------------- &= operator (with expression)\n%
+  %  public: VIRTUAL_IN_DEBUG void andAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                     class Compiler * inCompiler\n%
+  %                                                     COMMA_LOCATION_ARGS) ;\n\n%
+end
+
+if [SUPPORTED_OPERATORS contains ![@typeFeatures orEqualOperatorWithExpression]] then
+  %//--------------------------------- |= operator (with expression)\n%
+  %  public: VIRTUAL_IN_DEBUG void orAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                    class Compiler * inCompiler\n%
+  %                                                    COMMA_LOCATION_ARGS) ;\n\n%
+end
+
+if [SUPPORTED_OPERATORS contains ![@typeFeatures xorEqualOperatorWithExpression]] then
+  %//--------------------------------- ^= operator (with expression)\n%
+  %  public: VIRTUAL_IN_DEBUG void xorAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %                                                     class Compiler * inCompiler\n%
+  %                                                     COMMA_LOCATION_ARGS) ;\n\n%
+end
+
 if [SUPPORTED_OPERATORS contains ![@typeFeatures plusEqualOperatorWithExpression]] then
   %//--------------------------------- += operator (with expression)\n%
   %  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%

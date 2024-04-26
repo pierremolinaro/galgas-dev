@@ -45,7 +45,7 @@ end
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mConstantName identifierRepresentation]% (%?^
+    %void GALGAS_%!TYPE_IDENTIFIER%::method_extract%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^
     for (mType name) in mAssociatedValueTypeList do
       %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue_%!name%,\n%!^
     end
@@ -71,7 +71,7 @@ end
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------\n\n%
   if [mAssociatedValueTypeList count] > 0 then
-    %GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ GALGAS_%!TYPE_IDENTIFIER%::getter_%![mConstantName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ GALGAS_%!TYPE_IDENTIFIER%::getter_get%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ result ;\n%
     %  if (mEnum == Enumeration::enum_%![mConstantName identifierRepresentation]%) {\n%
     %    const auto ptr = (const GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%

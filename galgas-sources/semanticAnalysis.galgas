@@ -252,7 +252,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
     end
   end
 #--- Enter properties that should be explicitly initialized
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     for property in [selfAvailable.type definition].allTypedPropertyList do
       let initialized = if selfAvailable.selfMutability == .initializer
         then property.initialization != .none
@@ -398,7 +398,7 @@ proc analyzeFunctionBody
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #--- Enter properties that should be explicitly initialized
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     for property in [selfAvailable.type definition].allTypedPropertyList do
       [!?variableMap insertInitializerSelfProperty
         !property.name.string
@@ -1637,7 +1637,7 @@ private proc emitClassGraphFile ?let @string inDotDocumentFilePath
         case null :
           document += "  \"@" + definition.typeName + "\" ;\n"
         case element (@unifiedTypeMapElementClass.@weak superType) :
-          if let t = superType, let solvedType = [t.mDefinition solved] then
+          if let t = superType, let solvedType = [t.mDefinition getSolved] then
             document += "  \"@" + definition.typeName + "\" ;\n"
             document += "  \"@" + definition.typeName + "\" -> \"@" + solvedType.definition.typeName + "\" ;\n"
           end

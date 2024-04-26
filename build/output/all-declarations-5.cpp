@@ -2886,9 +2886,9 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::class_func_packageType (UNUSED_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue_isReference,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
+void GALGAS_typeKindEnum::method_extractClassType (GALGAS_bool & outAssociatedValue_isReference,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_classType) {
     outAssociatedValue_isReference.drop () ;
     String s ;
@@ -2902,9 +2902,9 @@ void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue_isR
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::method_weakReferenceType (GALGAS_unifiedTypeMapEntry & outAssociatedValue_referenceType,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
+void GALGAS_typeKindEnum::method_extractWeakReferenceType (GALGAS_unifiedTypeMapEntry & outAssociatedValue_referenceType,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_weakReferenceType) {
     outAssociatedValue_referenceType.drop () ;
     String s ;
@@ -2918,9 +2918,9 @@ void GALGAS_typeKindEnum::method_weakReferenceType (GALGAS_unifiedTypeMapEntry &
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeKindEnum::method_enumType (GALGAS_constantIndexMap & outAssociatedValue_constantMap,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
+void GALGAS_typeKindEnum::method_extractEnumType (GALGAS_constantIndexMap & outAssociatedValue_constantMap,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_enumType) {
     outAssociatedValue_constantMap.drop () ;
     String s ;
@@ -2934,7 +2934,7 @@ void GALGAS_typeKindEnum::method_enumType (GALGAS_constantIndexMap & outAssociat
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeKindEnum_2D_classType_3F_ GALGAS_typeKindEnum::getter_classType (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeKindEnum_2D_classType_3F_ GALGAS_typeKindEnum::getter_getClassType (UNUSED_LOCATION_ARGS) const {
   GALGAS_typeKindEnum_2D_classType_3F_ result ;
   if (mEnum == Enumeration::enum_classType) {
     const auto ptr = (const GALGAS_typeKindEnum_2D_classType *) mAssociatedValues.associatedValuesPointer () ;
@@ -2952,7 +2952,7 @@ void GALGAS_typeKindEnum::getAssociatedValuesFor_classType (GALGAS_bool & out_is
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeKindEnum_2D_weakReferenceType_3F_ GALGAS_typeKindEnum::getter_weakReferenceType (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeKindEnum_2D_weakReferenceType_3F_ GALGAS_typeKindEnum::getter_getWeakReferenceType (UNUSED_LOCATION_ARGS) const {
   GALGAS_typeKindEnum_2D_weakReferenceType_3F_ result ;
   if (mEnum == Enumeration::enum_weakReferenceType) {
     const auto ptr = (const GALGAS_typeKindEnum_2D_weakReferenceType *) mAssociatedValues.associatedValuesPointer () ;
@@ -2970,7 +2970,7 @@ void GALGAS_typeKindEnum::getAssociatedValuesFor_weakReferenceType (GALGAS_unifi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeKindEnum_2D_enumType_3F_ GALGAS_typeKindEnum::getter_enumType (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeKindEnum_2D_enumType_3F_ GALGAS_typeKindEnum::getter_getEnumType (UNUSED_LOCATION_ARGS) const {
   GALGAS_typeKindEnum_2D_enumType_3F_ result ;
   if (mEnum == Enumeration::enum_enumType) {
     const auto ptr = (const GALGAS_typeKindEnum_2D_enumType *) mAssociatedValues.associatedValuesPointer () ;
@@ -7164,98 +7164,104 @@ GALGAS_typeFeatures GALGAS_typeFeatures::class_func_divEqualOperatorWithExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_orEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_xorEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 21) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_andEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_orEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 22) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_andEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 23) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 24) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 25) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 26) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 27) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 28) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_supportWithAccessor (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 29) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_supportWithAccessor (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 30) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 31) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 32) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 33) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 34) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 35) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_clonable (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 36) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_clonable (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typeFeatures (uint64_t (1) << 37) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7292,9 +7298,19 @@ GALGAS_bool GALGAS_typeFeatures::getter_contains (const GALGAS_typeFeatures & in
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeFeatures::plusAssign_operation (const GALGAS_typeFeatures inOperand,
-                                                      class Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_typeFeatures::andAssign_operation (const GALGAS_typeFeatures inOperand,
+                                               class Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_typeFeatures::orAssign_operation (const GALGAS_typeFeatures inOperand,
+                                              class Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags |= inOperand.mFlags ;
   }
@@ -7302,9 +7318,19 @@ void GALGAS_typeFeatures::plusAssign_operation (const GALGAS_typeFeatures inOper
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_typeFeatures::xorAssign_operation (const GALGAS_typeFeatures inOperand,
+                                               class Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags ^= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_typeFeatures::minusAssign_operation (const GALGAS_typeFeatures inOperand,
-                                                       class Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+                                                 class Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= ~ inOperand.mFlags ;
   }
@@ -7360,7 +7386,7 @@ GALGAS_typeFeatures GALGAS_typeFeatures::substract_operation (const GALGAS_typeF
 GALGAS_typeFeatures GALGAS_typeFeatures::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_typeFeatures result ;
   if (mIsValid) {
-    result = GALGAS_typeFeatures (uint64_t (0x1FFFFFFFFF) ^ mFlags) ;
+    result = GALGAS_typeFeatures (uint64_t (0x3FFFFFFFFF) ^ mFlags) ;
   }
   return result ;
 }
@@ -7437,51 +7463,54 @@ void GALGAS_typeFeatures::description (String & ioString,
       ioString.appendCString (" divEqualOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 21)) != 0) {
-      ioString.appendCString (" orEqualOperatorWithExpression") ;
+      ioString.appendCString (" xorEqualOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 22)) != 0) {
-      ioString.appendCString (" andEqualOperatorWithExpression") ;
+      ioString.appendCString (" orEqualOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 23)) != 0) {
-      ioString.appendCString (" infixAddOperatorNoOVF") ;
+      ioString.appendCString (" andEqualOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 24)) != 0) {
-      ioString.appendCString (" infixSubOperatorNoOVF") ;
+      ioString.appendCString (" infixAddOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 25)) != 0) {
-      ioString.appendCString (" infixMulOperatorNoOVF") ;
+      ioString.appendCString (" infixSubOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 26)) != 0) {
-      ioString.appendCString (" infixDivOperatorNoOVF") ;
+      ioString.appendCString (" infixMulOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 27)) != 0) {
-      ioString.appendCString (" prefixMinusOperatorNoOVF") ;
+      ioString.appendCString (" infixDivOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 28)) != 0) {
-      ioString.appendCString (" incDecOperatorNoOVF") ;
+      ioString.appendCString (" prefixMinusOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 29)) != 0) {
-      ioString.appendCString (" supportWithAccessor") ;
+      ioString.appendCString (" incDecOperatorNoOVF") ;
     }
     if ((mFlags & (uint64_t (1) << 30)) != 0) {
-      ioString.appendCString (" plusEqualOperatorWithFieldListNeedsCompilerArg") ;
+      ioString.appendCString (" supportWithAccessor") ;
     }
     if ((mFlags & (uint64_t (1) << 31)) != 0) {
-      ioString.appendCString (" generateEnumerationHelperMethods") ;
+      ioString.appendCString (" plusEqualOperatorWithFieldListNeedsCompilerArg") ;
     }
     if ((mFlags & (uint64_t (1) << 32)) != 0) {
-      ioString.appendCString (" doNotGenererateObjectCompare") ;
+      ioString.appendCString (" generateEnumerationHelperMethods") ;
     }
     if ((mFlags & (uint64_t (1) << 33)) != 0) {
-      ioString.appendCString (" generateDescriptionGetterUtilityMethod") ;
+      ioString.appendCString (" doNotGenererateObjectCompare") ;
     }
     if ((mFlags & (uint64_t (1) << 34)) != 0) {
-      ioString.appendCString (" generateCopyConstructorAndAssignmentOperator") ;
+      ioString.appendCString (" generateDescriptionGetterUtilityMethod") ;
     }
     if ((mFlags & (uint64_t (1) << 35)) != 0) {
-      ioString.appendCString (" generateSynthetizedInitializer") ;
+      ioString.appendCString (" generateCopyConstructorAndAssignmentOperator") ;
     }
     if ((mFlags & (uint64_t (1) << 36)) != 0) {
+      ioString.appendCString (" generateSynthetizedInitializer") ;
+    }
+    if ((mFlags & (uint64_t (1) << 37)) != 0) {
       ioString.appendCString (" clonable") ;
     }
   }
@@ -8398,21 +8427,21 @@ GALGAS_bool extensionGetter_generateCppObjectComparison (const GALGAS_typeFeatur
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_result ; // Returned variable
   const GALGAS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_contains (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) ;
+  result_result = temp_0.getter_contains (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 148)).boolEnum () ;
+    test_1 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 149)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_typeFeatures temp_2 = inObject ;
-      result_result = temp_2.getter_contains (GALGAS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 149)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 149)) ;
+      result_result = temp_2.getter_contains (GALGAS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 150)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 150)) ;
     }
   }
   enumGalgasBool test_3 = kBoolTrue ;
   if (kBoolTrue == test_3) {
-    test_3 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 151)).boolEnum () ;
+    test_3 = result_result.operator_not (SOURCE_FILE ("unified-type-definition.galgas", 152)).boolEnum () ;
     if (kBoolTrue == test_3) {
       const GALGAS_typeFeatures temp_4 = inObject ;
-      result_result = temp_4.getter_contains (GALGAS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 152)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 152)) ;
+      result_result = temp_4.getter_contains (GALGAS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 153)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 153)) ;
     }
   }
 //---
@@ -8514,9 +8543,19 @@ GALGAS_bool GALGAS_localVariableAttributes::getter_contains (const GALGAS_localV
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localVariableAttributes::plusAssign_operation (const GALGAS_localVariableAttributes inOperand,
-                                                      class Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_localVariableAttributes::andAssign_operation (const GALGAS_localVariableAttributes inOperand,
+                                                          class Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_localVariableAttributes::orAssign_operation (const GALGAS_localVariableAttributes inOperand,
+                                                         class Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags |= inOperand.mFlags ;
   }
@@ -8524,9 +8563,19 @@ void GALGAS_localVariableAttributes::plusAssign_operation (const GALGAS_localVar
 
 //--------------------------------------------------------------------------------------------------
 
+void GALGAS_localVariableAttributes::xorAssign_operation (const GALGAS_localVariableAttributes inOperand,
+                                                          class Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags ^= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GALGAS_localVariableAttributes::minusAssign_operation (const GALGAS_localVariableAttributes inOperand,
-                                                       class Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+                                                            class Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= ~ inOperand.mFlags ;
   }
@@ -8716,9 +8765,9 @@ GALGAS_localVarValuation GALGAS_localVarValuation::class_func_mutated (UNUSED_LO
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue_usedInSubscope,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+void GALGAS_localVarValuation::method_extractDeclared (GALGAS_bool & outAssociatedValue_usedInSubscope,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_declared) {
     outAssociatedValue_usedInSubscope.drop () ;
     String s ;
@@ -8734,7 +8783,7 @@ void GALGAS_localVarValuation::method_declared (GALGAS_bool & outAssociatedValue
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_localVarValuation_2D_declared_3F_ GALGAS_localVarValuation::getter_declared (UNUSED_LOCATION_ARGS) const {
+GALGAS_localVarValuation_2D_declared_3F_ GALGAS_localVarValuation::getter_getDeclared (UNUSED_LOCATION_ARGS) const {
   GALGAS_localVarValuation_2D_declared_3F_ result ;
   if (mEnum == Enumeration::enum_declared) {
     const auto ptr = (const GALGAS_localVarValuation_2D_declared *) mAssociatedValues.associatedValuesPointer () ;
@@ -9881,9 +9930,9 @@ GALGAS_overrideKind GALGAS_overrideKind::class_func_repeatOverride (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideKind::method_selectOverrideFirstBranch (GALGAS_currentVarManager & outAssociatedValue_savedManager,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
+void GALGAS_overrideKind::method_extractSelectOverrideFirstBranch (GALGAS_currentVarManager & outAssociatedValue_savedManager,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_selectOverrideFirstBranch) {
     outAssociatedValue_savedManager.drop () ;
     String s ;
@@ -9897,10 +9946,10 @@ void GALGAS_overrideKind::method_selectOverrideFirstBranch (GALGAS_currentVarMan
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarManager & outAssociatedValue_savedManager,
-                                                             GALGAS_currentVarManager & outAssociatedValue_referenceManager,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
+void GALGAS_overrideKind::method_extractSelectOverrideNextBranches (GALGAS_currentVarManager & outAssociatedValue_savedManager,
+                                                                    GALGAS_currentVarManager & outAssociatedValue_referenceManager,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_selectOverrideNextBranches) {
     outAssociatedValue_savedManager.drop () ;
     outAssociatedValue_referenceManager.drop () ;
@@ -9916,7 +9965,7 @@ void GALGAS_overrideKind::method_selectOverrideNextBranches (GALGAS_currentVarMa
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ GALGAS_overrideKind::getter_selectOverrideFirstBranch (UNUSED_LOCATION_ARGS) const {
+GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ GALGAS_overrideKind::getter_getSelectOverrideFirstBranch (UNUSED_LOCATION_ARGS) const {
   GALGAS_overrideKind_2D_selectOverrideFirstBranch_3F_ result ;
   if (mEnum == Enumeration::enum_selectOverrideFirstBranch) {
     const auto ptr = (const GALGAS_overrideKind_2D_selectOverrideFirstBranch *) mAssociatedValues.associatedValuesPointer () ;
@@ -9934,7 +9983,7 @@ void GALGAS_overrideKind::getAssociatedValuesFor_selectOverrideFirstBranch (GALG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ GALGAS_overrideKind::getter_selectOverrideNextBranches (UNUSED_LOCATION_ARGS) const {
+GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ GALGAS_overrideKind::getter_getSelectOverrideNextBranches (UNUSED_LOCATION_ARGS) const {
   GALGAS_overrideKind_2D_selectOverrideNextBranches_3F_ result ;
   if (mEnum == Enumeration::enum_selectOverrideNextBranches) {
     const auto ptr = (const GALGAS_overrideKind_2D_selectOverrideNextBranches *) mAssociatedValues.associatedValuesPointer () ;
@@ -10592,7 +10641,7 @@ void extensionMethod_checkSelfObjectIsFullyInitialized (const GALGAS_currentVarM
         }
         test_2 = test_3.boolEnum () ;
         if (kBoolTrue == test_2) {
-          var_fullyInitialized_18599 = enumerator_18643.current (HERE).readProperty_mState ().getter_declared (SOURCE_FILE ("variable-manager.galgas", 426)).readProperty_isNil () ;
+          var_fullyInitialized_18599 = enumerator_18643.current (HERE).readProperty_mState ().getter_isDeclared (SOURCE_FILE ("variable-manager.galgas", 426)).operator_not (SOURCE_FILE ("variable-manager.galgas", 426)) ;
         }
       }
       enumerator_18643.gotoNextObject () ;
@@ -12286,9 +12335,9 @@ GALGAS_typeDefinition GALGAS_typeDefinition::class_func_solved (const GALGAS_uni
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAssociatedValue_definition,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
+void GALGAS_typeDefinition::method_extractSolved (GALGAS_unifiedTypeDefinition & outAssociatedValue_definition,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_solved) {
     outAssociatedValue_definition.drop () ;
     String s ;
@@ -12304,7 +12353,7 @@ void GALGAS_typeDefinition::method_solved (GALGAS_unifiedTypeDefinition & outAss
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeDefinition_2D_solved_3F_ GALGAS_typeDefinition::getter_solved (UNUSED_LOCATION_ARGS) const {
+GALGAS_typeDefinition_2D_solved_3F_ GALGAS_typeDefinition::getter_getSolved (UNUSED_LOCATION_ARGS) const {
   GALGAS_typeDefinition_2D_solved_3F_ result ;
   if (mEnum == Enumeration::enum_solved) {
     const auto ptr = (const GALGAS_typeDefinition_2D_solved *) mAssociatedValues.associatedValuesPointer () ;

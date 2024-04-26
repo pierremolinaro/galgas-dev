@@ -980,15 +980,6 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'forbiddenKeysForBoolset'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_stringset function_forbiddenKeysForBoolset (class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'structGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------

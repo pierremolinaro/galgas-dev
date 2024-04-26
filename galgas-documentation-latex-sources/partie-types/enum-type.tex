@@ -178,34 +178,40 @@ end
 
 Un type émuméré définit implicitement un \emph{getter} sans argument pour chaque constante déclarée~; ce getter a pour nom le nom de la constante.
 
-\subsection{Constante sans valeur associée}
+\subsection{Getter \texttt{is\emph{Name}}}
 
-Si la constante n'a pas de valeur associée, ce getter renvoie une valeur booléenne qui permet de savoir si le récepteur a pour valeur cette constante. Ce \emph{getter} a pour signature~:
+Un type émuméré définit implicitement un \emph{getter} sans argument pour chaque constante déclarée~; ce getter a pour nom \texttt{is} suivi du nom de la constante avec la première lettre en majuscule. Pour le type \ggsq!@monOption! cité enb exemple au dessus, les trois getters définis sont~:
 \begin{galgas4}
-func @monOption.noOption () -> @bool
+func @monOption.isNoOption () -> @bool
+func @monOption.isOption1 () -> @bool
+func @monOption.isOption2 () -> @bool
 \end{galgas4}
 \begin{galgas3}
-func @monOption noOption -> @bool
+func @monOption isNoOption -> @bool
+func @monOption isOption1 -> @bool
+func @monOption isOption2 -> @bool
 \end{galgas3}
 
 Ainsi~:
 
 \begin{galgas4}
 var v = @monOption.noOption
-let @bool b = v.noOption // b est true
+let @bool b = v.isNoOption // b est true
 v = @monOption.option1 (!name: "xyz")
-let @bool c = v.noOption // c est false
+let @bool c = v.isNoOption // c est false
 \end{galgas4}
 \begin{galgas3}
 var v = @monOption.noOption
-let @bool b = [v noOption] // b est true
+let @bool b = [v isNoOption] // b est true
 v = @monOption.option1 (!name: "xyz")
-let @bool c = [v noOption] // c est false
+let @bool c = [v isNoOption] // c est false
 \end{galgas3}
 
-\subsection{Constante avec valeurs associées}
 
-Si la constante a des valeurs associées, ce getter renvoie une valeur optionnelle qui permet de savoir si le récepteur a pour valeur cette constante, et d'obtenir les valeurs associées.
+
+\subsection{Getter \texttt{get\emph{Name}}}
+
+Uniquement pour les constantes ayant des valeurs associées, est défini un getter sans argument nommé \texttt{get} suivi du nom  de la constante avec la première lettre en majuscule. Ce getter renvoie une valeur optionnelle qui permet de savoir si le récepteur a pour valeur cette constante, et d'obtenir les valeurs associées.
 
 Pour chaque constante ayant des valeurs associées, un type structure est implicitement défini, dont les propriétés sont les valeurs associées. Ainsi, sont définis~:
 \begin{galgas4}
@@ -220,67 +226,19 @@ struct @monOption.@option2 {
 
 Les \emph{getter} associés ont pour signature~:
 \begin{galgas4}
-func @monOption.option1 () -> @monOption.@option1?
-func @monOption.option2 () -> @monOption.@option2?
+func @monOption.getOption1 () -> @monOption.@option1?
+func @monOption.getOption2 () -> @monOption.@option2?
 \end{galgas4}
 \begin{galgas3}
-func @monOption option1 -> @monOption.@option1?
-func @monOption option2 -> @monOption.@option2?
+func @monOption getOption1 -> @monOption.@option1?
+func @monOption getOption2 -> @monOption.@option2?
 \end{galgas3}
 
-\subsubsection{Pas d'intérêt pour les valeurs associées}
-
-Si l'on ne s'intéresse pas aux valeurs associées, on teste si la valeur retournée est \ggsq!nil!. Tout optionnel présente deux propriétés, \ggsq!isNil! (qui renvoie \ggsq!true! si l'optionnel est \ggsq!nil!), et \ggsq!isSome! (qui renvoie \ggsq!true! si l'optionnel contient une valeur).
-
-\begin{galgas4}
-var v = @monOption.noOption
-let @bool a = v.option1.isSome // a est false
-v = @monOption.option1 (!name: "xyz")
-let @bool b = v.option1.isSome // b est true
-\end{galgas4}
-\begin{galgas3}
-var v = @monOption.noOption
-let @bool a = [v option1].isSome // a est false
-v = @monOption.option1 (!name: "xyz")
-let @bool b = [v option1].isSome // b est true
-\end{galgas3}
-
-Si l'écriture paraît trop lourde, on peut définir un \emph{getter} qui renvoie une valeur booléenne~:
-\begin{galgas4}
-func @monOption.isOption1 () -> @bool {
-  result = self.option1.isSome
-}
-\end{galgas4}
-\begin{galgas3}
-getter @monOption isOption1 -> @bool {
-  result = [self option1].isSome
-}
-\end{galgas3}
-
-Les tests deviennent alors~:
-\begin{galgas4}
-var v = @monOption.noOption
-let @bool a = v.isOption1 // a est false
-v = @monOption.option1 (!name: "xyz")
-let @bool b = v.isOption1 // b est true
-\end{galgas4}
-\begin{galgas3}
-var v = @monOption.noOption
-let @bool a = [v isOption1] // a est false
-v = @monOption.option1 (!name: "xyz")
-let @bool b = [v isOption1] // b est true
-\end{galgas3}
-
-
-
-
-\subsubsection{Récupération des valeurs associées}
-
-Si on s'intéresse aux valeurs associées, il faut extraire la valeur embarquée dans la valeur optionnelle renvoyée, ce qui peut être fait dans une instruction \ggsq!if!~:
+Pour accéder aux aux valeurs associées, il faut extraire la valeur embarquée dans la valeur optionnelle renvoyée, ce qui peut être fait dans une instruction \ggsq!if!~:
 
 \begin{galgas4}
 var v = ...
-if let x = v.option1 then
+if let x = v.getOption1 then
   // Ici, v a pour valeur option1
   // x a pour type @monOption.@option1
   // On accède à la valeur associée par x.name
@@ -292,7 +250,7 @@ end
 
 \begin{galgas3}
 var v = ...
-if let x = [v option1] then
+if let x = [v getOption1] then
   // Ici, v a pour valeur option1
   // x a pour type @monOption.@option1
   // On accède à la valeur associée par x.name
@@ -301,77 +259,6 @@ else
   // et x n'est pas accessible
 end
 \end{galgas3}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\section{L'attribut \texttt{\%testGetters}}
-
-En ajoutant l'attribut \ggsq!%testGetters! à la déclaration d'une énumération, un getter est automatiquement engendré pour tester la valeur indépendamment de la présence de valeurs associées.
-
-Par exemple~:
-
-\begin{galgas3}
-enum @monOption %testGetters {
-  case noOption
-  case option1 (@string name)
-  case option2 (@uint value @string name)
-}
-\end{galgas3}
-
-\begin{galgas4}
-enum @monOption %testGetters {
-  case noOption
-  case option1 (@string name)
-  case option2 (@uint value, @string name)
-}
-\end{galgas4}
-
-L'attribut \ggsq!%testGetters! engendre les trois getters suivants~:
-\begin{galgas3}
-getter @monOption isNoOption -> @bool
-getter @monOption isOption1 -> @bool
-getter @monOption isOption2 -> @bool
-\end{galgas3}
-\begin{galgas3}
-func @monOption.isNoOption () -> @bool
-func @monOption.isOption1 () -> @bool
-func @monOption.isOption2 () -> @bool
-\end{galgas3}
-
-Le nom du getter est \texttt{is} suivi du nom de la constante dont le premier caractère est mis en majuscule. Il faut veiller que ce nom n'entre pas en collision avec le nom d'une autre constante, comme dans l'exemple suivant~:
-
-\begin{galgas4}
-enum @enumerationAvecErreur %testGetters {
-  case isTruc
-  case truc // Erreur, le getter engendré entre en collision avec la 1re constante
-}
-\end{galgas4}
-
-
-On peut donc tester la valeur par~:
-\begin{galgas4}
-  v.isOption1 // même valeur que v.option1.isSome
-\end{galgas4}
-\begin{galgas3}
-  [v isOption1] // même valeur que [v isOption1].isSome
-\end{galgas3}
-
-Si le type énuméré ne définit aucune valeur associée, cette option n'a pas d'intérêt, les getters définis par défaut ont exactement le même rôle.
 
 
 
@@ -385,6 +272,43 @@ Si le type énuméré ne définit aucune valeur associée, cette option n'a pas 
 
 
 \section{Méthodes d'extraction}
+
+Uniquement pour les constantes ayant des valeurs associées, est défini un méthode nommée \texttt{extract} suivi du nom  de la constante avec la première lettre en majuscule. Cette méthode renvoie dans les arguments de sortie les valeurs associées.
+
+{\bf Si le type émuméré n'a pas la valeur attendue, une erreur d'exécution est déclenchée, et les arguments de sortie ne sont pas construits~: il est plus propre d'utiliser un getter \texttt{get\emph{Name}} qui effectue à la fois le test et l'extraction.}
+
+
+Les \emph{méthodes} associées ont pour signature~:
+\begin{galgas4}
+proc @monOption.extractOption1 (!unNom: @string outNom)
+proc @monOption.extractOption2 (!unEntier: @uint outEntier, !unNom: @string outNom)
+\end{galgas4}
+\begin{galgas3}
+method @monOption extractOption1 !unNom: @string outNom
+method @monOption extractOption2 !unEntier: @uint outEntier !unNom: @string outNom
+\end{galgas3}
+
+Ces méthodes peuvent s'utiliser comme suit~:
+\begin{galgas4}
+var v = ...
+if v.isOption1 then
+  v.extractOption1 (?unNom: let nom) 
+  // Ici, 'nom' a pour valeur la valeur associée
+else
+  // ...
+end
+\end{galgas4}
+
+\begin{galgas3}
+var v = ...
+if v.isOption1 then
+  [v extractOption1 ?unNom: let nom] 
+  // Ici, 'nom' a pour valeur la valeur associée
+else
+  // ...
+end
+\end{galgas3}
+
 
 
 

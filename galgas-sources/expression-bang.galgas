@@ -98,7 +98,7 @@ override method @bangExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if let weakRef = [[type definition].typeKind weakReferenceType] then
+  if let weakRef = [[type definition].typeKind getWeakReferenceType] then
     outExpression = @bangExpressionForGeneration {
       !weakRef.referenceType
       !self.mOperatorLocation

@@ -83,7 +83,7 @@ proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
     sourceType = [sourceType definition].superType
     ok = inTargetType == sourceType
   end
-  if not ok, let weakRefType = [[inTargetType definition].typeKind weakReferenceType] then
+  if not ok, let weakRefType = [[inTargetType definition].typeKind getWeakReferenceType] then
     sourceType = inSourceType
     ok = weakRefType.referenceType == sourceType
     loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do
@@ -172,7 +172,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       sourceType = [sourceType definition].superType
       ok = inTargetType == sourceType
     end
-    if not ok, let targetWeakRef = [targetTypeDef.typeKind weakReferenceType] then
+    if not ok, let targetWeakRef = [targetTypeDef.typeKind getWeakReferenceType] then
       sourceType = inSourceType
       ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
       loop (@uint.max) while (not ok) & (not [[sourceType definition].superType isNull]) do

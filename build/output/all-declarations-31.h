@@ -10,6 +10,36 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'compileBeforeClauseGalgas3&&?&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GALGAS_lstringlist & ioArgument0,
+                                                                    class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                    const class GALGAS_analysisContext constinArgument2,
+                                                                    class GALGAS_unifiedTypeMap & ioArgument3,
+                                                                    const class GALGAS_prologueEpilogueList constinArgument4,
+                                                                    class GALGAS_programListForGeneration & ioArgument5,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'compileProgramRulesGalgas3&&?&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GALGAS_lstringlist & ioArgument0,
+                                                                    class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                    const class GALGAS_analysisContext constinArgument2,
+                                                                    class GALGAS_unifiedTypeMap & ioArgument3,
+                                                                    const class GALGAS_programRuleList constinArgument4,
+                                                                    class GALGAS_programListForGeneration & ioArgument5,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'compileAfterClauseGalgas3&&?&?&'
 //
 //--------------------------------------------------------------------------------------------------

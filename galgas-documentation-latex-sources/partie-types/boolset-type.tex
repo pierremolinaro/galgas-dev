@@ -9,28 +9,31 @@
 
 
 
-Le mot-clé \ggsq!boolset! permet de définir des types d'ensembles d'indicateurs booléens. Un tel objet a une sémantique de valeur.
+Le mot-clé \ggsq!boolset! permet de définir des types d'ensembles non ordonnés. Un tel objet a une sémantique de valeur.
 
-La syntaxe de définition d'un type ensemble d'indicateurs booléens est de la forme~:
+La syntaxe de définition d'un type ensemble est de la forme~:
 
 \begin{galgas34}
 boolset @MonEnsemble {
-  # Liste de déclaration d'indicateurs, par exemple :
-  case indicateur0
-  case indicateur1
-  case indicateur2
+  # Liste de déclaration d'éléments, par exemple :
+  case element0
+  case element1
+  case element2
 }
 \end{galgas34}
 
-Le nom des indicateurs doivent être différents des noms suivants~: \texttt{description}, \texttt{dynamicType}, \texttt{object}. L'implémentation actuelle limite à 64 le nombre d'indicateurs qui peuvent être définis.
+L'implémentation actuelle limite à 64 le nombre d'éléments qui peuvent être définis.
 
 \section{Initialisateur}
 
-Un \ggsq!boolset! ne définit qu'un seul initialisateur~:
+Un \ggsq!boolset! ne définit qu'un seul initialisateur, qui construit un ensemble vide~:
 \begin{galgas34}
 init @MonEnsemble () -> @MonEnsemble
 \end{galgas34}
-Il construit un ensemble vide.
+Pour construire un ensemble vide~:
+\begin{galgas34}
+var @MonEnsemble ensembleVide = ()
+\end{galgas34}
 
 Pour construire un ensemble plein, utiliser l'opérateur de complémentation \ggsq!~!~:
 \begin{galgas34}
@@ -48,27 +51,27 @@ var @MonEnsemble ensemblePlein = ~ ()
 
 \section{Fonctions de classes : construire un ensemble d'un seul élément}
 
-Pour chaque indicateur, une fonction de classe est implicitement définie, qui construit un ensemble constitué d'un seul élément~:
+Pour chaque élément, une fonction de classe est implicitement définie, qui construit un ensemble constitué d'un seul élément~:
 
 Pour initialiser un \ggsq!boolset!, on utilise un des constructeurs définis~:
 \begin{galgas34}
-var x = @MonEnsemble.indicateur1
+var x = @MonEnsemble.element1
 \end{galgas34}
 
 Si on veut un ensemble contenant plusieurs éléments, on utilise l'opérateur \ggsq=|=, qui effectue l'union de ses opérandes~:
 \begin{galgas34}
-var x = @MonEnsemble.indicateur1 | @MonEnsemble.indicateur2
-log x # LOGGING x: <boolset @MonEnsemble: indicateur1 indicateur2>
+var x = @MonEnsemble.element1 | @MonEnsemble.element2
+log x # LOGGING x: <boolset @MonEnsemble: element1 element2>
 \end{galgas34}
 
 L'inférence de type permet d'éliminer les annotations de type non nécessaires~:
 \begin{galgas34}
-var x = @MonEnsemble.indicateur1 | .indicateur2
+var x = @MonEnsemble.element1 | .element2
 \end{galgas34}
 
 Ou encore~:
 \begin{galgas34}
-var @MonEnsemble x = .indicateur1 | .indicateur2
+var @MonEnsemble x = .element1 | .element2
 \end{galgas34}
 
 
@@ -112,12 +115,12 @@ let @bool b = x.contains (y) // Vrai si x inclut y
 Ce \emph{getter} permet de tester si un élément appartient à un ensemble :
 \begin{galgas3}
 var @MonEnsemble x = ...
-let @bool b = [x contains !.indicateur1] // Vrai si x contient indicateur1
+let @bool b = [x contains !.element1] // Vrai si x contient element1
 \end{galgas3}
 
 \begin{galgas4}
 var @MonEnsemble x = ...
-let @bool b = x.contains (.indicateur1) // Vrai si x contient indicateur1
+let @bool b = x.contains (.element1) // Vrai si x contient element1
 \end{galgas4}
 
 
@@ -154,10 +157,10 @@ Les opérateurs infixes du \refTableau{operateursInfixesBoolset} sont définis p
   \centering
   \begin{tabular}{rl}
     {\bf Expression} & {\bf Signification} \\
-    \ggsq+a & b+ & Intersection~: ensemble des indicateurs appartenant à \ggsq=a= et à \ggsq=b=.\\
-    \ggsq+a | b+ & Union~: ensemble des indicateurs appartenant à \ggsq=a= ou à \ggsq=b=. \\
-    \ggsq+a ^ b+ & Exclusion~: ensemble des indicateurs appartenant soit à \ggsq=a=, soit à \ggsq=b=. \\
-    \ggsq+a - b+ & Différence~: ensemble des indicateurs appartenant à \ggsq=a= et n'appartenant pas à \ggsq=b=.
+    \ggsq+a & b+ & Intersection~: ensemble des éléments appartenant à \ggsq=a= et à \ggsq=b=.\\
+    \ggsq+a | b+ & Union~: ensemble des éléments appartenant à \ggsq=a= ou à \ggsq=b=. \\
+    \ggsq+a ^ b+ & Exclusion~: ensemble des éléments appartenant soit à \ggsq=a=, soit à \ggsq=b=. \\
+    \ggsq+a - b+ & Différence~: ensemble des éléments appartenant à \ggsq=a= et n'appartenant pas à \ggsq=b=.
 %    \ggsq+a == b+ & Test d'égalité \\
 %    \ggsq+a != b+ & Test d'inégalité
   \end{tabular}

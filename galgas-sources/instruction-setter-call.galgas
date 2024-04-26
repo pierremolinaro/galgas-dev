@@ -239,9 +239,9 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   let @string targetVariableCppName
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
-    if let selfAvailability = [inAnalysisContext.selfAvailability available] then
+    if let selfAvailability = [inAnalysisContext.selfAvailability getAvailable] then
     #--- Check self is not inkoed before full initialization
-      if let classTypeKind = [[selfAvailability.type definition].typeKind classType], classTypeKind.isReference then
+      if let classTypeKind = [[selfAvailability.type definition].typeKind getClassType], classTypeKind.isReference then
       elsif not [selfAvailability.selfMutability selfIsMutable] then
         error self.mSetterName : "'self' not mutable in this context"
       end
@@ -358,7 +358,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
 #--- Analyze "self", as receiver expression
-  if let selfAvailable = [inAnalysisContext.selfAvailability available] then
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mSetterName : "'self' not mutable in this context"
     end

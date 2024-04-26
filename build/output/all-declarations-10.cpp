@@ -2444,10 +2444,10 @@ GALGAS_ifExpressionKind GALGAS_ifExpressionKind::class_func_letExp (const GALGAS
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifExpressionKind::method_regularExp (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
-                                                 GALGAS_location & outAssociatedValue_endOfExp,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
+void GALGAS_ifExpressionKind::method_extractRegularExp (GALGAS_semanticExpressionAST & outAssociatedValue_exp,
+                                                        GALGAS_location & outAssociatedValue_endOfExp,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_regularExp) {
     outAssociatedValue_exp.drop () ;
     outAssociatedValue_endOfExp.drop () ;
@@ -2463,12 +2463,12 @@ void GALGAS_ifExpressionKind::method_regularExp (GALGAS_semanticExpressionAST & 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifExpressionKind::method_letExp (GALGAS_lstring & outAssociatedValue_constantName,
-                                             GALGAS_semanticExpressionAST & outAssociatedValue_exp,
-                                             GALGAS_location & outAssociatedValue_endOfExp,
-                                             GALGAS_lstring & outAssociatedValue_typeName,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
+void GALGAS_ifExpressionKind::method_extractLetExp (GALGAS_lstring & outAssociatedValue_constantName,
+                                                    GALGAS_semanticExpressionAST & outAssociatedValue_exp,
+                                                    GALGAS_location & outAssociatedValue_endOfExp,
+                                                    GALGAS_lstring & outAssociatedValue_typeName,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_letExp) {
     outAssociatedValue_constantName.drop () ;
     outAssociatedValue_exp.drop () ;
@@ -2488,7 +2488,7 @@ void GALGAS_ifExpressionKind::method_letExp (GALGAS_lstring & outAssociatedValue
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionKind_2D_regularExp_3F_ GALGAS_ifExpressionKind::getter_regularExp (UNUSED_LOCATION_ARGS) const {
+GALGAS_ifExpressionKind_2D_regularExp_3F_ GALGAS_ifExpressionKind::getter_getRegularExp (UNUSED_LOCATION_ARGS) const {
   GALGAS_ifExpressionKind_2D_regularExp_3F_ result ;
   if (mEnum == Enumeration::enum_regularExp) {
     const auto ptr = (const GALGAS_ifExpressionKind_2D_regularExp *) mAssociatedValues.associatedValuesPointer () ;
@@ -2508,7 +2508,7 @@ void GALGAS_ifExpressionKind::getAssociatedValuesFor_regularExp (GALGAS_semantic
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionKind_2D_letExp_3F_ GALGAS_ifExpressionKind::getter_letExp (UNUSED_LOCATION_ARGS) const {
+GALGAS_ifExpressionKind_2D_letExp_3F_ GALGAS_ifExpressionKind::getter_getLetExp (UNUSED_LOCATION_ARGS) const {
   GALGAS_ifExpressionKind_2D_letExp_3F_ result ;
   if (mEnum == Enumeration::enum_letExp) {
     const auto ptr = (const GALGAS_ifExpressionKind_2D_letExp *) mAssociatedValues.associatedValuesPointer () ;
@@ -3457,9 +3457,9 @@ GALGAS_ifTestForGeneration GALGAS_ifTestForGeneration::class_func_optionalExp (c
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifTestForGeneration::method_regular (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
+void GALGAS_ifTestForGeneration::method_extractRegular (GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_regular) {
     outAssociatedValue_exp.drop () ;
     String s ;
@@ -3473,12 +3473,12 @@ void GALGAS_ifTestForGeneration::method_regular (GALGAS_semanticExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifTestForGeneration::method_letExp (GALGAS_string & outAssociatedValue_targetVarCppName,
-                                                GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
-                                                GALGAS_unifiedTypeMapEntry & outAssociatedValue_targetType,
-                                                GALGAS_unifiedTypeMapEntry & outAssociatedValue_testType,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+void GALGAS_ifTestForGeneration::method_extractLetExp (GALGAS_string & outAssociatedValue_targetVarCppName,
+                                                       GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
+                                                       GALGAS_unifiedTypeMapEntry & outAssociatedValue_targetType,
+                                                       GALGAS_unifiedTypeMapEntry & outAssociatedValue_testType,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_letExp) {
     outAssociatedValue_targetVarCppName.drop () ;
     outAssociatedValue_exp.drop () ;
@@ -3498,11 +3498,11 @@ void GALGAS_ifTestForGeneration::method_letExp (GALGAS_string & outAssociatedVal
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ifTestForGeneration::method_optionalExp (GALGAS_string & outAssociatedValue_targetVarCppName,
-                                                     GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
-                                                     GALGAS_unifiedTypeMapEntry & outAssociatedValue_targetType,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+void GALGAS_ifTestForGeneration::method_extractOptionalExp (GALGAS_string & outAssociatedValue_targetVarCppName,
+                                                            GALGAS_semanticExpressionForGeneration & outAssociatedValue_exp,
+                                                            GALGAS_unifiedTypeMapEntry & outAssociatedValue_targetType,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_optionalExp) {
     outAssociatedValue_targetVarCppName.drop () ;
     outAssociatedValue_exp.drop () ;
@@ -3520,7 +3520,7 @@ void GALGAS_ifTestForGeneration::method_optionalExp (GALGAS_string & outAssociat
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifTestForGeneration_2D_regular_3F_ GALGAS_ifTestForGeneration::getter_regular (UNUSED_LOCATION_ARGS) const {
+GALGAS_ifTestForGeneration_2D_regular_3F_ GALGAS_ifTestForGeneration::getter_getRegular (UNUSED_LOCATION_ARGS) const {
   GALGAS_ifTestForGeneration_2D_regular_3F_ result ;
   if (mEnum == Enumeration::enum_regular) {
     const auto ptr = (const GALGAS_ifTestForGeneration_2D_regular *) mAssociatedValues.associatedValuesPointer () ;
@@ -3538,7 +3538,7 @@ void GALGAS_ifTestForGeneration::getAssociatedValuesFor_regular (GALGAS_semantic
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifTestForGeneration_2D_letExp_3F_ GALGAS_ifTestForGeneration::getter_letExp (UNUSED_LOCATION_ARGS) const {
+GALGAS_ifTestForGeneration_2D_letExp_3F_ GALGAS_ifTestForGeneration::getter_getLetExp (UNUSED_LOCATION_ARGS) const {
   GALGAS_ifTestForGeneration_2D_letExp_3F_ result ;
   if (mEnum == Enumeration::enum_letExp) {
     const auto ptr = (const GALGAS_ifTestForGeneration_2D_letExp *) mAssociatedValues.associatedValuesPointer () ;
@@ -3562,7 +3562,7 @@ void GALGAS_ifTestForGeneration::getAssociatedValuesFor_letExp (GALGAS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifTestForGeneration_2D_optionalExp_3F_ GALGAS_ifTestForGeneration::getter_optionalExp (UNUSED_LOCATION_ARGS) const {
+GALGAS_ifTestForGeneration_2D_optionalExp_3F_ GALGAS_ifTestForGeneration::getter_getOptionalExp (UNUSED_LOCATION_ARGS) const {
   GALGAS_ifTestForGeneration_2D_optionalExp_3F_ result ;
   if (mEnum == Enumeration::enum_optionalExp) {
     const auto ptr = (const GALGAS_ifTestForGeneration_2D_optionalExp *) mAssociatedValues.associatedValuesPointer () ;

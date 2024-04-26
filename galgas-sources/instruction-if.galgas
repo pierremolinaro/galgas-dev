@@ -379,7 +379,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
             !targetType: castType
             !testType: testType
           }
-        elsif let weakRefType = [[analyzedExpression.mResultType definition].typeKind weakReferenceType] then
+        elsif let weakRefType = [[analyzedExpression.mResultType definition].typeKind getWeakReferenceType] then
           if typeName.string == "" then
             castType = weakRefType.referenceType
           else
@@ -389,7 +389,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
           var @unifiedTypeMapEntry t = castType
           var @bool found = t == analyzedExpression.mResultType
           if found then
-            [[castType definition].typeKind weakReferenceType ?referenceType: castType]
+            [[castType definition].typeKind extractWeakReferenceType ?referenceType: castType]
           elsif t == weakRefType.referenceType then
             found = true
           end
@@ -398,7 +398,7 @@ refclass @ifInstructionAST : @semanticInstructionAST {
             t = [t definition].superType
             if t == analyzedExpression.mResultType then
               found = true
-              [[castType definition].typeKind weakReferenceType ?referenceType: castType]
+              [[castType definition].typeKind extractWeakReferenceType ?referenceType: castType]
             elsif t == weakRefType.referenceType then
               found = true
             end
