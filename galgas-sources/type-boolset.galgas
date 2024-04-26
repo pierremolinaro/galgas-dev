@@ -16,15 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @boolsetDeclarationAST : @semanticDeclarationAST {
-  private let @lstring mBoolsetTypeName
-  private let @lstringlist mFlagList
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -35,6 +26,13 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     ${$
     var @lstringlist slotList = ()
     repeat
@@ -53,6 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !boolsetTypeName
       !slotList
+      !isEquatable: isEquatable
     }
   }
 
@@ -69,6 +68,13 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $boolset$
     $@type$ ?let @lstring boolsetTypeName indexing structDefinition
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
     ${$
     var @lstringlist slotList = ()
     repeat
@@ -87,11 +93,22 @@ syntax extension galgas4DeclarationsSyntax {
       !isPredefined: false # Is not predefined
       !boolsetTypeName
       !slotList
+      !isEquatable: isEquatable
     }
   }
 
   #·······························································································
 
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @boolsetDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mBoolsetTypeName
+  private let @lstringlist mFlagList
+  private let @bool isEquatable %initArgLabel
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -184,13 +201,16 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Operators
-  let operators = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
+  var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
-    | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .equatable
+    | .generateDescriptionGetterUtilityMethod | .infixSubOperator
     | .andAssignOperatorWithExpression # var &= exp
     | .orAssignOperatorWithExpression # var |= exp
     | .xorAssignOperatorWithExpression # var ^= exp
     | .minusAssignOperatorWithExpression # var -= exp
+  if self.isEquatable then
+    features |= .equatable
+  end
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mBoolsetTypeName
@@ -211,7 +231,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !unwrappedType: .null
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()
-    !features: operators
+    !features: features
     !addAssignOperatorArguments: ()
     !mapSearchMethodList: ()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
@@ -249,6 +269,7 @@ override method @boolsetDeclarationAST semanticAnalysis
     !@boolsetTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mBoolsetTypeName]
       !self.mFlagList
+      !self.isEquatable
     }
 }
 
@@ -258,6 +279,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 
 refclass @boolsetTypeForGeneration : @semanticTypeForGeneration {
   private let @lstringlist mFlagList
+  private let @bool equatable
 }
 
 #·······················································································································
@@ -275,6 +297,7 @@ filewrapper structGenerationTemplate in "+generation-templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@lstringlist SLOT_LIST
     ?@bigint FULL_SET
+    ?@bool EQUATABLE
 }
 
 #·······················································································································
@@ -321,6 +344,7 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mFlagList
     !(1 << [self.mFlagList count]) - 1
+    !self.equatable
   ]
  }
 

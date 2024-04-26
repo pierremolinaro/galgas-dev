@@ -414,13 +414,16 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //--------------------------------- Property access
   public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
 
+  public: class GALGAS_bool readProperty_equatable (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_boolsetTypeForGeneration init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                               const class GALGAS_lstringlist & inOperand1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_boolsetTypeForGeneration init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GALGAS_lstringlist & inOperand1,
+                                                                   const class GALGAS_bool & inOperand2,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -432,7 +435,8 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_boolsetTypeForGeneration class_func_new (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GALGAS_lstringlist & inOperand1
+                                                                       const class GALGAS_lstringlist & inOperand1,
+                                                                       const class GALGAS_bool & inOperand2
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -470,9 +474,10 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void boolsetTypeForGeneration_init_21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
-                                                      const class GALGAS_lstringlist & inOperand1,
-                                                      Compiler * inCompiler) ;
+  public: void boolsetTypeForGeneration_init_21__21__21_ (const class GALGAS_unifiedTypeMapEntry & inOperand0,
+                                                          const class GALGAS_lstringlist & inOperand1,
+                                                          const class GALGAS_bool & inOperand2,
+                                                          Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -488,6 +493,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GALGAS_lstringlist mProperty_mFlagList ;
+  public: GALGAS_bool mProperty_equatable ;
 
 
 //--- Default constructor
@@ -495,7 +501,8 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Constructor
   public: cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                         const GALGAS_lstringlist & in_mFlagList
+                                         const GALGAS_lstringlist & in_mFlagList,
+                                         const GALGAS_bool & in_equatable
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

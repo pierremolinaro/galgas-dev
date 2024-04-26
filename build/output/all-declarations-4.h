@@ -2043,14 +2043,17 @@ class GALGAS_boolsetDeclarationAST : public GALGAS_semanticDeclarationAST {
 
   public: class GALGAS_lstringlist readProperty_mFlagList (void) const ;
 
+  public: class GALGAS_bool readProperty_isEquatable (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GALGAS_boolsetDeclarationAST init_21_isPredefined_21__21_ (const class GALGAS_bool & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
-                                                                            const class GALGAS_lstringlist & inOperand2,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GALGAS_boolsetDeclarationAST init_21_isPredefined_21__21__21_isEquatable (const class GALGAS_bool & inOperand0,
+                                                                                           const class GALGAS_lstring & inOperand1,
+                                                                                           const class GALGAS_lstringlist & inOperand2,
+                                                                                           const class GALGAS_bool & inOperand3,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2063,7 +2066,8 @@ class GALGAS_boolsetDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS class functions
   public: static class GALGAS_boolsetDeclarationAST class_func_new (const class GALGAS_bool & inOperand0,
                                                                     const class GALGAS_lstring & inOperand1,
-                                                                    const class GALGAS_lstringlist & inOperand2
+                                                                    const class GALGAS_lstringlist & inOperand2,
+                                                                    const class GALGAS_bool & inOperand3
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2101,10 +2105,11 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void boolsetDeclarationAST_init_21_isPredefined_21__21_ (const class GALGAS_bool & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_lstringlist & inOperand2,
-                                                                   Compiler * inCompiler) ;
+  public: void boolsetDeclarationAST_init_21_isPredefined_21__21__21_isEquatable (const class GALGAS_bool & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1,
+                                                                                  const class GALGAS_lstringlist & inOperand2,
+                                                                                  const class GALGAS_bool & inOperand3,
+                                                                                  Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -2141,6 +2146,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GALGAS_lstring mProperty_mBoolsetTypeName ;
   public: GALGAS_lstringlist mProperty_mFlagList ;
+  public: GALGAS_bool mProperty_isEquatable ;
 
 
 //--- Default constructor
@@ -2149,7 +2155,8 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public: cPtr_boolsetDeclarationAST (const GALGAS_bool & in_isPredefined,
                                       const GALGAS_lstring & in_mBoolsetTypeName,
-                                      const GALGAS_lstringlist & in_mFlagList
+                                      const GALGAS_lstringlist & in_mFlagList,
+                                      const GALGAS_bool & in_isEquatable
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

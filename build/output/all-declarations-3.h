@@ -7679,8 +7679,6 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_typeFeatures & inOperand) const ;
 
 //--------------------------------- Setters
 

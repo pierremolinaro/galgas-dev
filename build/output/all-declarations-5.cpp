@@ -7266,21 +7266,6 @@ GALGAS_typeFeatures GALGAS_typeFeatures::class_func_clonable (UNUSED_LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_typeFeatures::objectCompare (const GALGAS_typeFeatures & inOperand) const {
-   ComparisonResult result = ComparisonResult::invalid ;
-   if (mIsValid && inOperand.mIsValid) {
-     result = ComparisonResult::operandEqual ;
-     if (mFlags < inOperand.mFlags) {
-       result = ComparisonResult::firstOperandLowerThanSecond ;
-     }else if (mFlags > inOperand.mFlags) {
-       result = ComparisonResult::firstOperandGreaterThanSecond ;
-     }
-   }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GALGAS_typeFeatures::isValid (void) const {
   return mIsValid ;
 }
@@ -8507,21 +8492,6 @@ GALGAS_localVariableAttributes GALGAS_localVariableAttributes::class_func_warnsO
 
 GALGAS_localVariableAttributes GALGAS_localVariableAttributes::class_func_suggestDeclareUnusedParameterAsUnused (UNUSED_LOCATION_ARGS) {
   return GALGAS_localVariableAttributes (uint64_t (1) << 5) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_localVariableAttributes::objectCompare (const GALGAS_localVariableAttributes & inOperand) const {
-   ComparisonResult result = ComparisonResult::invalid ;
-   if (mIsValid && inOperand.mIsValid) {
-     result = ComparisonResult::operandEqual ;
-     if (mFlags < inOperand.mFlags) {
-       result = ComparisonResult::firstOperandLowerThanSecond ;
-     }else if (mFlags > inOperand.mFlags) {
-       result = ComparisonResult::firstOperandGreaterThanSecond ;
-     }
-   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

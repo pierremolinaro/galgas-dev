@@ -1017,6 +1017,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
                                                                                               const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                               const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                               const class GALGAS_lstringlist & in_SLOT_5F_LIST,
-                                                                                              const class GALGAS_bigint & in_FULL_5F_SET
+                                                                                              const class GALGAS_bigint & in_FULL_5F_SET,
+                                                                                              const class GALGAS_bool & in_EQUATABLE
                                                                                               COMMA_LOCATION_ARGS) ;
 

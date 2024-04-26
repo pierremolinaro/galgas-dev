@@ -193,3 +193,24 @@ Quatre opérateurs combinés avec l'affectation (\refTableau{operateursCombinesA
   \labelTableau{operateursCombinesAffectationBoolset}
 \end{table}
 
+
+
+
+
+
+\section{Comparaison}
+
+Par défaut, une instance de \ggsq!boolset! n'est ni égalable, ni comparable.
+
+On peut uniquement la rendre égalable (on peut alors tester l'égalité \ggsq!==! et l'inégalité \ggsq@!=@ entre deux instances), en ajoutant l'attribut \ggsq!%equatable! dans la déclaration~:
+
+\begin{galgas34}
+boolset @MonEnsemble %equatable {
+  # Liste de déclaration d'éléments, par exemple :
+  case element0
+  case element1
+  case element2
+}
+\end{galgas34}
+
+

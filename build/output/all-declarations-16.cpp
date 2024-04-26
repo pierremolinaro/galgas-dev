@@ -5930,7 +5930,8 @@ GALGAS_semanticTypeForGeneration_2D_weak GALGAS_semanticTypeForGeneration_2D_wea
 cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_mBoolsetTypeName (),
-mProperty_mFlagList () {
+mProperty_mFlagList (),
+mProperty_isEquatable () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5940,6 +5941,7 @@ mProperty_mFlagList () {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_mBoolsetTypeName.printNonNullClassInstanceProperties ("mBoolsetTypeName") ;
     mProperty_mFlagList.printNonNullClassInstanceProperties ("mFlagList") ;
+    mProperty_isEquatable.printNonNullClassInstanceProperties ("isEquatable") ;
   }
 #endif
 
@@ -5970,14 +5972,15 @@ GALGAS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_boolsetDeclarationAST GALGAS_boolsetDeclarationAST::
-init_21_isPredefined_21__21_ (const GALGAS_bool & in_isPredefined,
-                              const GALGAS_lstring & in_mBoolsetTypeName,
-                              const GALGAS_lstringlist & in_mFlagList,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21_isEquatable (const GALGAS_bool & in_isPredefined,
+                                             const GALGAS_lstring & in_mBoolsetTypeName,
+                                             const GALGAS_lstringlist & in_mFlagList,
+                                             const GALGAS_bool & in_isEquatable,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
   cPtr_boolsetDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_boolsetDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->boolsetDeclarationAST_init_21_isPredefined_21__21_ (in_isPredefined, in_mBoolsetTypeName, in_mFlagList, inCompiler) ;
+  object->boolsetDeclarationAST_init_21_isPredefined_21__21__21_isEquatable (in_isPredefined, in_mBoolsetTypeName, in_mFlagList, in_isEquatable, inCompiler) ;
   const GALGAS_boolsetDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5986,13 +5989,15 @@ init_21_isPredefined_21__21_ (const GALGAS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetDeclarationAST::
-boolsetDeclarationAST_init_21_isPredefined_21__21_ (const GALGAS_bool & in_isPredefined,
-                                                    const GALGAS_lstring & in_mBoolsetTypeName,
-                                                    const GALGAS_lstringlist & in_mFlagList,
-                                                    Compiler * /* inCompiler */) {
+boolsetDeclarationAST_init_21_isPredefined_21__21__21_isEquatable (const GALGAS_bool & in_isPredefined,
+                                                                   const GALGAS_lstring & in_mBoolsetTypeName,
+                                                                   const GALGAS_lstringlist & in_mFlagList,
+                                                                   const GALGAS_bool & in_isEquatable,
+                                                                   Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mBoolsetTypeName = in_mBoolsetTypeName ;
   mProperty_mFlagList = in_mFlagList ;
+  mProperty_isEquatable = in_isEquatable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6005,10 +6010,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_boolsetDeclarationAST GALGAS_boolsetDeclarationAST::class_func_new (const GALGAS_bool & in_isPredefined,
                                                                            const GALGAS_lstring & in_mBoolsetTypeName,
-                                                                           const GALGAS_lstringlist & in_mFlagList
+                                                                           const GALGAS_lstringlist & in_mFlagList,
+                                                                           const GALGAS_bool & in_isEquatable
                                                                            COMMA_LOCATION_ARGS) {
   GALGAS_boolsetDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_boolsetDeclarationAST (in_isPredefined, in_mBoolsetTypeName, in_mFlagList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_boolsetDeclarationAST (in_isPredefined, in_mBoolsetTypeName, in_mFlagList, in_isEquatable COMMA_THERE)) ;
   return result ;
 }
 
@@ -6037,19 +6043,34 @@ GALGAS_lstringlist GALGAS_boolsetDeclarationAST::readProperty_mFlagList (void) c
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_boolsetDeclarationAST::readProperty_isEquatable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_boolsetDeclarationAST * p = (cPtr_boolsetDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_boolsetDeclarationAST) ;
+    return p->mProperty_isEquatable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @boolsetDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (const GALGAS_bool & in_isPredefined,
                                                         const GALGAS_lstring & in_mBoolsetTypeName,
-                                                        const GALGAS_lstringlist & in_mFlagList
+                                                        const GALGAS_lstringlist & in_mFlagList,
+                                                        const GALGAS_bool & in_isEquatable
                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_mBoolsetTypeName (),
-mProperty_mFlagList () {
+mProperty_mFlagList (),
+mProperty_isEquatable () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mBoolsetTypeName = in_mBoolsetTypeName ;
   mProperty_mFlagList = in_mFlagList ;
+  mProperty_isEquatable = in_isEquatable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6066,6 +6087,8 @@ void cPtr_boolsetDeclarationAST::description (String & ioString,
   mProperty_mBoolsetTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mFlagList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_isEquatable.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -6073,7 +6096,7 @@ void cPtr_boolsetDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_boolsetDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_isPredefined, mProperty_mBoolsetTypeName, mProperty_mFlagList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_isPredefined, mProperty_mBoolsetTypeName, mProperty_mFlagList, mProperty_isEquatable COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6126,7 +6149,8 @@ GALGAS_boolsetDeclarationAST GALGAS_boolsetDeclarationAST::extractObject (const 
 
 cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mFlagList () {
+mProperty_mFlagList (),
+mProperty_equatable () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6135,6 +6159,7 @@ mProperty_mFlagList () {
   void cPtr_boolsetTypeForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_mFlagList.printNonNullClassInstanceProperties ("mFlagList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
   }
 #endif
 
@@ -6165,13 +6190,14 @@ GALGAS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GALGAS_boolsetTypeForGeneration GALGAS_boolsetTypeForGeneration::
-init_21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-              const GALGAS_lstringlist & in_mFlagList,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                  const GALGAS_lstringlist & in_mFlagList,
+                  const GALGAS_bool & in_equatable,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_boolsetTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_boolsetTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->boolsetTypeForGeneration_init_21__21_ (in_mSelfTypeEntry, in_mFlagList, inCompiler) ;
+  object->boolsetTypeForGeneration_init_21__21__21_ (in_mSelfTypeEntry, in_mFlagList, in_equatable, inCompiler) ;
   const GALGAS_boolsetTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6180,11 +6206,13 @@ init_21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_boolsetTypeForGeneration::
-boolsetTypeForGeneration_init_21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                       const GALGAS_lstringlist & in_mFlagList,
-                                       Compiler * /* inCompiler */) {
+boolsetTypeForGeneration_init_21__21__21_ (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                           const GALGAS_lstringlist & in_mFlagList,
+                                           const GALGAS_bool & in_equatable,
+                                           Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mFlagList = in_mFlagList ;
+  mProperty_equatable = in_equatable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6196,10 +6224,11 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_boolsetTypeForGeneration GALGAS_boolsetTypeForGeneration::class_func_new (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                                 const GALGAS_lstringlist & in_mFlagList
+                                                                                 const GALGAS_lstringlist & in_mFlagList,
+                                                                                 const GALGAS_bool & in_equatable
                                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_boolsetTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (in_mSelfTypeEntry, in_mFlagList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (in_mSelfTypeEntry, in_mFlagList, in_equatable COMMA_THERE)) ;
   return result ;
 }
 
@@ -6216,16 +6245,31 @@ GALGAS_lstringlist GALGAS_boolsetTypeForGeneration::readProperty_mFlagList (void
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GALGAS_bool GALGAS_boolsetTypeForGeneration::readProperty_equatable (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_bool () ;
+  }else{
+    cPtr_boolsetTypeForGeneration * p = (cPtr_boolsetTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_boolsetTypeForGeneration) ;
+    return p->mProperty_equatable ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @boolsetTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                              const GALGAS_lstringlist & in_mFlagList
+                                                              const GALGAS_lstringlist & in_mFlagList,
+                                                              const GALGAS_bool & in_equatable
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
-mProperty_mFlagList () {
+mProperty_mFlagList (),
+mProperty_equatable () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mFlagList = in_mFlagList ;
+  mProperty_equatable = in_equatable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6240,6 +6284,8 @@ void cPtr_boolsetTypeForGeneration::description (String & ioString,
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mFlagList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_equatable.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -6247,7 +6293,7 @@ void cPtr_boolsetTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_boolsetTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mFlagList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mFlagList, mProperty_equatable COMMA_THERE)) ;
   return ptr ;
 }
 

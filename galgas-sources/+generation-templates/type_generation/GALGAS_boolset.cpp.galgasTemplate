@@ -28,6 +28,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_%![mValue identi
 }
 
 %end
+if EQUATABLE then
 %//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
@@ -43,7 +44,8 @@ ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_I
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%end
+%//--------------------------------------------------------------------------------------------------
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mIsValid ;

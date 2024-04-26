@@ -8040,10 +8040,10 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInGraph (GALGAS_semantic
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_boolsetDeclarationAST temp_0 = this ;
   const GALGAS_boolsetDeclarationAST temp_1 = this ;
-  GALGAS_lstring var_key_4332 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (temp_0.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 109)), temp_1.readProperty_mBoolsetTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  GALGAS_lstring var_key_4686 = GALGAS_lstring::init_21__21_ (GALGAS_string ("@").add_operation (temp_0.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 126)), temp_1.readProperty_mBoolsetTypeName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
   const GALGAS_boolsetDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_4332, temp_2, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 110)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_4686, temp_2, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 127)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -8056,7 +8056,7 @@ GALGAS_string cPtr_boolsetDeclarationAST::getter_keyRepresentation (Compiler * i
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result_result ; // Returned variable
   const GALGAS_boolsetDeclarationAST temp_0 = this ;
-  result_result = GALGAS_string ("boolset @").add_operation (temp_0.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 118)) ;
+  result_result = GALGAS_string ("boolset @").add_operation (temp_0.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 135)) ;
 //---
   return result_result ;
 }
@@ -8076,68 +8076,76 @@ void cPtr_boolsetDeclarationAST::method_enterDeclarationInSemanticContext (const
                                                                            GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_stringset var_slotNameSet_5567 = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
+  GALGAS_stringset var_slotNameSet_5921 = GALGAS_stringset::init (inCompiler COMMA_HERE) ;
   const GALGAS_boolsetDeclarationAST temp_0 = this ;
-  cEnumerator_lstringlist enumerator_5591 (temp_0.readProperty_mFlagList (), EnumerationOrder::up) ;
-  while (enumerator_5591.hasCurrentObject ()) {
+  cEnumerator_lstringlist enumerator_5945 (temp_0.readProperty_mFlagList (), EnumerationOrder::up) ;
+  while (enumerator_5945.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = var_slotNameSet_5567.getter_hasKey (enumerator_5591.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-boolset.galgas", 135)).boolEnum () ;
+      test_1 = var_slotNameSet_5921.getter_hasKey (enumerator_5945.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-boolset.galgas", 152)).boolEnum () ;
       if (kBoolTrue == test_1) {
         TC_Array <FixItDescription> fixItArray2 ;
-        inCompiler->emitSemanticError (enumerator_5591.current_mValue (HERE).readProperty_location (), GALGAS_string ("duplicated slot name"), fixItArray2  COMMA_SOURCE_FILE ("type-boolset.galgas", 136)) ;
+        inCompiler->emitSemanticError (enumerator_5945.current_mValue (HERE).readProperty_location (), GALGAS_string ("duplicated slot name"), fixItArray2  COMMA_SOURCE_FILE ("type-boolset.galgas", 153)) ;
       }
     }
-    var_slotNameSet_5567.addAssign_operation (enumerator_5591.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-boolset.galgas", 138)) ;
-    enumerator_5591.gotoNextObject () ;
+    var_slotNameSet_5921.addAssign_operation (enumerator_5945.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("type-boolset.galgas", 155)) ;
+    enumerator_5945.gotoNextObject () ;
   }
-  GALGAS_unifiedTypeMapEntry var_boolsetTypeIndex_5831 ;
+  GALGAS_unifiedTypeMapEntry var_boolsetTypeIndex_6185 ;
   {
   const GALGAS_boolsetDeclarationAST temp_3 = this ;
-  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_3.readProperty_mBoolsetTypeName (), var_boolsetTypeIndex_5831, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 141)) ;
+  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_3.readProperty_mBoolsetTypeName (), var_boolsetTypeIndex_6185, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 158)) ;
   }
-  GALGAS_getterMap var_getterMap_5920 ;
+  GALGAS_getterMap var_getterMap_6274 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_5920, inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 143)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_6274, inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 160)) ;
   }
   {
   const GALGAS_boolsetDeclarationAST temp_4 = this ;
-  routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F_argType_3F_argName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5920, ioArgument_ioTypeMap, GALGAS_string ("contains"), GALGAS_string::makeEmptyString (), temp_4.readProperty_mBoolsetTypeName ().readProperty_string (), GALGAS_string ("inOperand"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 144)) ;
+  routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F_argType_3F_argName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_6274, ioArgument_ioTypeMap, GALGAS_string ("contains"), GALGAS_string::makeEmptyString (), temp_4.readProperty_mBoolsetTypeName ().readProperty_string (), GALGAS_string ("inOperand"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 161)) ;
   }
-  GALGAS_classFunctionMap var_classFunctionMap_6217 = GALGAS_classFunctionMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_classFunctionMap var_classFunctionMap_6571 = GALGAS_classFunctionMap::init (inCompiler COMMA_HERE) ;
   const GALGAS_boolsetDeclarationAST temp_5 = this ;
-  cEnumerator_lstringlist enumerator_6246 (temp_5.readProperty_mFlagList (), EnumerationOrder::up) ;
-  while (enumerator_6246.hasCurrentObject ()) {
+  cEnumerator_lstringlist enumerator_6600 (temp_5.readProperty_mFlagList (), EnumerationOrder::up) ;
+  while (enumerator_6600.hasCurrentObject ()) {
     enumGalgasBool test_6 = kBoolTrue ;
     if (kBoolTrue == test_6) {
-      test_6 = var_classFunctionMap_6217.getter_hasKey (enumerator_6246.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-boolset.galgas", 157)).operator_not (SOURCE_FILE ("type-boolset.galgas", 157)).boolEnum () ;
+      test_6 = var_classFunctionMap_6571.getter_hasKey (enumerator_6600.current_mValue (HERE).readProperty_string () COMMA_SOURCE_FILE ("type-boolset.galgas", 174)).operator_not (SOURCE_FILE ("type-boolset.galgas", 174)).boolEnum () ;
       if (kBoolTrue == test_6) {
         {
-        var_classFunctionMap_6217.setter_insertKey (enumerator_6246.current_mValue (HERE), GALGAS_functionSignature::init (inCompiler COMMA_HERE), GALGAS_bool (false), var_boolsetTypeIndex_5831, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 158)) ;
+        var_classFunctionMap_6571.setter_insertKey (enumerator_6600.current_mValue (HERE), GALGAS_functionSignature::init (inCompiler COMMA_HERE), GALGAS_bool (false), var_boolsetTypeIndex_6185, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 175)) ;
         }
       }
     }
-    enumerator_6246.gotoNextObject () ;
+    enumerator_6600.gotoNextObject () ;
   }
-  GALGAS_initializerMap var_initializerMap_6479 = GALGAS_initializerMap::init (inCompiler COMMA_HERE) ;
-  GALGAS_functionSignature var_emptyArgumentList_6524 = GALGAS_functionSignature::init (inCompiler COMMA_HERE) ;
+  GALGAS_initializerMap var_initializerMap_6833 = GALGAS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_functionSignature var_emptyArgumentList_6878 = GALGAS_functionSignature::init (inCompiler COMMA_HERE) ;
   {
   const GALGAS_boolsetDeclarationAST temp_7 = this ;
-  var_initializerMap_6479.setter_insertKey (GALGAS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_emptyArgumentList_6524, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 165)), temp_7.readProperty_mBoolsetTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_emptyArgumentList_6524, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 164)) ;
+  var_initializerMap_6833.setter_insertKey (GALGAS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_emptyArgumentList_6878, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 182)), temp_7.readProperty_mBoolsetTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_emptyArgumentList_6878, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 181)) ;
   }
-  GALGAS_setterMap var_setterMap_6719 = GALGAS_setterMap::init (inCompiler COMMA_HERE) ;
-  GALGAS_instanceMethodMap var_instanceMethodMap_6759 = GALGAS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_setterMap var_setterMap_7073 = GALGAS_setterMap::init (inCompiler COMMA_HERE) ;
+  GALGAS_instanceMethodMap var_instanceMethodMap_7113 = GALGAS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
   {
   const GALGAS_boolsetDeclarationAST temp_8 = this ;
-  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_mBoolsetTypeName (), GALGAS_bool (false), var_initializerMap_6479, var_getterMap_5920, var_setterMap_6719, var_instanceMethodMap_6759, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 171)) ;
+  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_mBoolsetTypeName (), GALGAS_bool (false), var_initializerMap_6833, var_getterMap_6274, var_setterMap_7073, var_instanceMethodMap_7113, GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 188)) ;
   }
-  GALGAS_typeFeatures var_operators_7195 = GALGAS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("type-boolset.galgas", 187)).operator_or (GALGAS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)).operator_or (GALGAS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("type-boolset.galgas", 187)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)).operator_or (GALGAS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("type-boolset.galgas", 188)) COMMA_SOURCE_FILE ("type-boolset.galgas", 187)).operator_or (GALGAS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("type-boolset.galgas", 189)) COMMA_SOURCE_FILE ("type-boolset.galgas", 188)).operator_or (GALGAS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("type-boolset.galgas", 189)) COMMA_SOURCE_FILE ("type-boolset.galgas", 189)).operator_or (GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("type-boolset.galgas", 189)) COMMA_SOURCE_FILE ("type-boolset.galgas", 189)).operator_or (GALGAS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 190)) COMMA_SOURCE_FILE ("type-boolset.galgas", 189)).operator_or (GALGAS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 191)) COMMA_SOURCE_FILE ("type-boolset.galgas", 190)).operator_or (GALGAS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 192)) COMMA_SOURCE_FILE ("type-boolset.galgas", 191)).operator_or (GALGAS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 193)) COMMA_SOURCE_FILE ("type-boolset.galgas", 192)) ;
-  const GALGAS_boolsetDeclarationAST temp_9 = this ;
-  const GALGAS_boolsetDeclarationAST temp_10 = this ;
+  GALGAS_typeFeatures var_features_7549 = GALGAS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("type-boolset.galgas", 204)).operator_or (GALGAS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("type-boolset.galgas", 204)) COMMA_SOURCE_FILE ("type-boolset.galgas", 204)).operator_or (GALGAS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("type-boolset.galgas", 204)) COMMA_SOURCE_FILE ("type-boolset.galgas", 204)).operator_or (GALGAS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("type-boolset.galgas", 205)) COMMA_SOURCE_FILE ("type-boolset.galgas", 204)).operator_or (GALGAS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("type-boolset.galgas", 206)) COMMA_SOURCE_FILE ("type-boolset.galgas", 205)).operator_or (GALGAS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("type-boolset.galgas", 206)) COMMA_SOURCE_FILE ("type-boolset.galgas", 206)).operator_or (GALGAS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 207)) COMMA_SOURCE_FILE ("type-boolset.galgas", 206)).operator_or (GALGAS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 208)) COMMA_SOURCE_FILE ("type-boolset.galgas", 207)).operator_or (GALGAS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 209)) COMMA_SOURCE_FILE ("type-boolset.galgas", 208)).operator_or (GALGAS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("type-boolset.galgas", 210)) COMMA_SOURCE_FILE ("type-boolset.galgas", 209)) ;
+  enumGalgasBool test_9 = kBoolTrue ;
+  if (kBoolTrue == test_9) {
+    const GALGAS_boolsetDeclarationAST temp_10 = this ;
+    test_9 = temp_10.readProperty_isEquatable ().boolEnum () ;
+    if (kBoolTrue == test_9) {
+      var_features_7549.orAssign_operation(GALGAS_typeFeatures::class_func_equatable (SOURCE_FILE ("type-boolset.galgas", 212)), inCompiler  COMMA_SOURCE_FILE ("type-boolset.galgas", 212)) ;
+    }
+  }
   const GALGAS_boolsetDeclarationAST temp_11 = this ;
-  GALGAS_unifiedTypeDefinition var_typeDefinition_7621 = GALGAS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_9.readProperty_mBoolsetTypeName (), temp_10.readProperty_isPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 199)), GALGAS_typeKindEnum::class_func_boolsetType (SOURCE_FILE ("type-boolset.galgas", 200)), GALGAS_bool (false), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), GALGAS_propertyMap::init (inCompiler COMMA_HERE), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_6479, var_classFunctionMap_6217, var_getterMap_5920, var_setterMap_6719, var_instanceMethodMap_6759, GALGAS_classMethodMap::init (inCompiler COMMA_HERE), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 211)), GALGAS_subscriptMap::init (inCompiler COMMA_HERE), GALGAS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_operators_7195, GALGAS_functionSignature::init (inCompiler COMMA_HERE), GALGAS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 218)), GALGAS_string ("boolset-").add_operation (temp_11.readProperty_mBoolsetTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-boolset.galgas", 219)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 219)), GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("type-boolset.galgas", 220)), inCompiler COMMA_HERE) ;
+  const GALGAS_boolsetDeclarationAST temp_12 = this ;
+  const GALGAS_boolsetDeclarationAST temp_13 = this ;
+  GALGAS_unifiedTypeDefinition var_typeDefinition_8021 = GALGAS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_11.readProperty_mBoolsetTypeName (), temp_12.readProperty_isPredefined (), GALGAS_bool (true), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 219)), GALGAS_typeKindEnum::class_func_boolsetType (SOURCE_FILE ("type-boolset.galgas", 220)), GALGAS_bool (false), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), GALGAS_propertyMap::init (inCompiler COMMA_HERE), GALGAS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_6833, var_classFunctionMap_6571, var_getterMap_6274, var_setterMap_7073, var_instanceMethodMap_7113, GALGAS_classMethodMap::init (inCompiler COMMA_HERE), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 231)), GALGAS_subscriptMap::init (inCompiler COMMA_HERE), GALGAS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_7549, GALGAS_functionSignature::init (inCompiler COMMA_HERE), GALGAS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GALGAS_bool (false), GALGAS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("type-boolset.galgas", 238)), GALGAS_string ("boolset-").add_operation (temp_13.readProperty_mBoolsetTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("type-boolset.galgas", 239)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 239)), GALGAS_headerKind::class_func_oneHeader (SOURCE_FILE ("type-boolset.galgas", 240)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_7621.readProperty_typeName (), var_typeDefinition_7621, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 222)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_8021.readProperty_typeName (), var_typeDefinition_8021, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 242)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -8158,24 +8166,25 @@ void cPtr_boolsetDeclarationAST::method_semanticAnalysis (GALGAS_lstringlist & /
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_boolsetDeclarationAST temp_1 = this ;
-    test_0 = GALGAS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 240)).objectCompare (GALGAS_uint (uint32_t (64U)))).boolEnum () ;
+    test_0 = GALGAS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 260)).objectCompare (GALGAS_uint (uint32_t (64U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       const GALGAS_boolsetDeclarationAST temp_2 = this ;
-      GALGAS_location var_s_9375 = temp_2.readProperty_mFlagList ().getter_mValueAtIndex (GALGAS_uint (uint32_t (64U)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 241)).readProperty_location () ;
+      GALGAS_location var_s_9774 = temp_2.readProperty_mFlagList ().getter_mValueAtIndex (GALGAS_uint (uint32_t (64U)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 261)).readProperty_location () ;
       const GALGAS_boolsetDeclarationAST temp_3 = this ;
       TC_Array <FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (var_s_9375, GALGAS_string ("max flags count is 64 (here: ").add_operation (temp_3.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 242)).getter_string (SOURCE_FILE ("type-boolset.galgas", 242)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 242)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 242)), fixItArray4  COMMA_SOURCE_FILE ("type-boolset.galgas", 242)) ;
+      inCompiler->emitSemanticError (var_s_9774, GALGAS_string ("max flags count is 64 (here: ").add_operation (temp_3.readProperty_mFlagList ().getter_count (SOURCE_FILE ("type-boolset.galgas", 262)).getter_string (SOURCE_FILE ("type-boolset.galgas", 262)), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 262)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 262)), fixItArray4  COMMA_SOURCE_FILE ("type-boolset.galgas", 262)) ;
     }
   }
   const GALGAS_boolsetDeclarationAST temp_5 = this ;
-  GALGAS_lstring var_boolsetNameForUsefulness_9530 = function_typeNameForUsefulEntitiesGraph (temp_5.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 245)) ;
+  GALGAS_lstring var_boolsetNameForUsefulness_9929 = function_typeNameForUsefulEntitiesGraph (temp_5.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 265)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_boolsetNameForUsefulness_9530, var_boolsetNameForUsefulness_9530, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 246)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_boolsetNameForUsefulness_9929, var_boolsetNameForUsefulness_9929, inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 266)) ;
   }
   const GALGAS_boolsetDeclarationAST temp_6 = this ;
   const GALGAS_boolsetDeclarationAST temp_7 = this ;
   const GALGAS_boolsetDeclarationAST temp_8 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("boolset ").add_operation (temp_6.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 248)), GALGAS_boolsetTypeForGeneration::init_21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_7.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 250)), temp_8.readProperty_mFlagList (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-boolset.galgas", 247)) ;
+  const GALGAS_boolsetDeclarationAST temp_9 = this ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("boolset ").add_operation (temp_6.readProperty_mBoolsetTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 268)), GALGAS_boolsetTypeForGeneration::init_21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_7.readProperty_mBoolsetTypeName (), inCompiler COMMA_SOURCE_FILE ("type-boolset.galgas", 270)), temp_8.readProperty_mFlagList (), temp_9.readProperty_isEquatable (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("type-boolset.galgas", 267)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -8240,7 +8249,8 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
                                                                                               const GALGAS_string & in_TYPE_5F_NAME,
                                                                                               const GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                               const GALGAS_lstringlist & in_SLOT_5F_LIST,
-                                                                                              const GALGAS_bigint & in_FULL_5F_SET
+                                                                                              const GALGAS_bigint & in_FULL_5F_SET,
+                                                                                              const GALGAS_bool & in_EQUATABLE
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   uint32_t columnMarker = 0 ;
@@ -8278,11 +8288,21 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
       enumerator_734.gotoNextObject () ;
     }
   }
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n\nComparisonResult GALGAS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString ("::objectCompare (const GALGAS_") ;
-  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" & inOperand) const {\n   ComparisonResult result = ComparisonResult::invalid ;\n   if (mIsValid && inOperand.mIsValid) {\n     result = ComparisonResult::operandEqual ;\n     if (mFlags < inOperand.mFlags) {\n       result = ComparisonResult::firstOperandLowerThanSecond ;\n     }else if (mFlags > inOperand.mFlags) {\n       result = ComparisonResult::firstOperandGreaterThanSecond ;\n     }\n   }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nbool GALGAS_") ;
+  const enumGalgasBool test_0 = in_EQUATABLE.boolEnum () ;
+  switch (test_0) {
+  case kBoolTrue : {
+    result.appendString ("//--------------------------------------------------------------------------------------------------\n\nComparisonResult GALGAS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("::objectCompare (const GALGAS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const {\n   ComparisonResult result = ComparisonResult::invalid ;\n   if (mIsValid && inOperand.mIsValid) {\n     result = ComparisonResult::operandEqual ;\n     if (mFlags < inOperand.mFlags) {\n       result = ComparisonResult::firstOperandLowerThanSecond ;\n     }else if (mFlags > inOperand.mFlags) {\n       result = ComparisonResult::firstOperandGreaterThanSecond ;\n     }\n   }\n  return result ;\n}\n\n") ;
+    } break ;
+  case kBoolFalse : {
+    } break ;
+  default :
+    break ;
+  }
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n\nbool GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::isValid (void) const {\n  return mIsValid ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGALGAS_bool GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -8399,7 +8419,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result.appendString (" result ;\n  if (mIsValid) {\n    result = GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (uint64_t (") ;
-  result.appendString (in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 153)).stringValue ()) ;
+  result.appendString (in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 155)).stringValue ()) ;
   result.appendString (") ^ mFlags) ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::description (") ;
@@ -8409,17 +8429,17 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result.appendString ("const int32_t /* inIndentation */) const {\n  ioString.appendCString (\"<boolset @") ;
   result.appendString (in_TYPE_5F_NAME.stringValue ()) ;
   result.appendString (":\") ;\n  if (! isValid ()) {\n    ioString.appendCString (\" not built\") ;\n  }else{\n") ;
-  GALGAS_uint index_6431_idx (0) ;
+  GALGAS_uint index_6455_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_6431 (in_SLOT_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_6431.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_6455 (in_SLOT_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_6455.hasCurrentObject ()) {
       result.appendString ("    if ((mFlags & (uint64_t (1) << ") ;
-      result.appendString (index_6431_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 168)).stringValue ()) ;
+      result.appendString (index_6455_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 170)).stringValue ()) ;
       result.appendString (")) != 0) {\n      ioString.appendCString (\" ") ;
-      result.appendString (enumerator_6431.current_mValue (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_6455.current_mValue (HERE).readProperty_string ().stringValue ()) ;
       result.appendString ("\") ;\n    }\n") ;
-      index_6431_idx.increment () ;
-      enumerator_6431.gotoNextObject () ;
+      index_6455_idx.increment () ;
+      enumerator_6455.gotoNextObject () ;
     }
   }
   result.appendString ("  }\n  ioString.appendCString (\">\") ;\n}\n\n") ;
