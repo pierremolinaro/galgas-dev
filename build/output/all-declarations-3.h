@@ -4885,26 +4885,27 @@ class Lexique_galgasScanner_34_ : public Lexique {
    kToken__2F__3D_ /* 169 */ ,
    kToken__26__3D_ /* 170 */ ,
    kToken__7C__3D_ /* 171 */ ,
-   kToken__2F_ /* 172 */ ,
-   kToken__21__3D_ /* 173 */ ,
-   kToken__3E__3D_ /* 174 */ ,
-   kToken__26_ /* 175 */ ,
-   kToken__7B_ /* 176 */ ,
-   kToken__7D_ /* 177 */ ,
-   kToken__60_ /* 178 */ ,
-   kToken__7C__7C_ /* 179 */ ,
-   kToken__7C_ /* 180 */ ,
-   kToken__5E_ /* 181 */ ,
-   kToken__3E__3E_ /* 182 */ ,
-   kToken__7E_ /* 183 */ ,
-   kToken__2D__2D_ /* 184 */ ,
-   kToken__2B__2B_ /* 185 */ ,
-   kToken__26__2D__2D_ /* 186 */ ,
-   kToken__26__2B__2B_ /* 187 */ ,
-   kToken__3D__3D__3D_ /* 188 */ ,
-   kToken__21__3D__3D_ /* 189 */ ,
-   kToken__3F__5E_ /* 190 */ ,
-   kToken__21__5E_ /* 191 */ } ;
+   kToken__5E__3D_ /* 172 */ ,
+   kToken__2F_ /* 173 */ ,
+   kToken__21__3D_ /* 174 */ ,
+   kToken__3E__3D_ /* 175 */ ,
+   kToken__26_ /* 176 */ ,
+   kToken__7B_ /* 177 */ ,
+   kToken__7D_ /* 178 */ ,
+   kToken__60_ /* 179 */ ,
+   kToken__7C__7C_ /* 180 */ ,
+   kToken__7C_ /* 181 */ ,
+   kToken__5E_ /* 182 */ ,
+   kToken__3E__3E_ /* 183 */ ,
+   kToken__7E_ /* 184 */ ,
+   kToken__2D__2D_ /* 185 */ ,
+   kToken__2B__2B_ /* 186 */ ,
+   kToken__26__2D__2D_ /* 187 */ ,
+   kToken__26__2B__2B_ /* 188 */ ,
+   kToken__3D__3D__3D_ /* 189 */ ,
+   kToken__21__3D__3D_ /* 190 */ ,
+   kToken__3F__5E_ /* 191 */ ,
+   kToken__21__5E_ /* 192 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -5004,7 +5005,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 191 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 192 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -7559,13 +7560,13 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_typeFeatures class_func_andEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_andAssignOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_clonable (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_comparable (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_divEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_divAssignOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
 
@@ -7609,13 +7610,13 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
   public: static class GALGAS_typeFeatures class_func_infixXorOperator (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_minusEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_minusAssignOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_mulEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_mulAssignOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_orEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_orAssignOperatorWithExpression (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_plusEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_plusAssignOperatorWithExpression (LOCATION_ARGS) ;
 
   public: static class GALGAS_typeFeatures class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) ;
 
@@ -7633,7 +7634,7 @@ class GALGAS_typeFeatures : public AC_GALGAS_root {
 
   public: static class GALGAS_typeFeatures class_func_supportWithAccessor (LOCATION_ARGS) ;
 
-  public: static class GALGAS_typeFeatures class_func_xorEqualOperatorWithExpression (LOCATION_ARGS) ;
+  public: static class GALGAS_typeFeatures class_func_xorAssignOperatorWithExpression (LOCATION_ARGS) ;
 
 //--------------------------------- &= operator (with expression)
   public: VIRTUAL_IN_DEBUG void andAssign_operation (const GALGAS_typeFeatures inOperand,

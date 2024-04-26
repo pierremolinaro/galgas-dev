@@ -383,7 +383,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = ()
     var @typeFeatures features = if self.mIsReference then .referenceEquatable else .comparable end
     if self.clonable then
-      features = features | .clonable
+      features |= .clonable
       var @functionSignature cloneInitializerArgumentList = ()
       cloneInitializerArgumentList +=
         !["cloned" nowhere]
@@ -413,7 +413,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     )
   #--- Synthetize an initializer, if the structure defines none
     if [initializerMap count] == if self.clonable then 1 else 0 end then
-      features = features | .generateSynthetizedInitializer
+      features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
         !.init {![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
         !synthetizedInitializerArgumentList

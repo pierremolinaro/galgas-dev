@@ -47,7 +47,7 @@ refclass @stringsetPredefinedTypeAST : @predefinedTypeAST {
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixSubOperator
       | .infixAndOperator | .infixOrOperator
-      | .generateDescriptionGetterUtilityMethod | .plusEqualOperatorWithExpression
+      | .generateDescriptionGetterUtilityMethod | .plusAssignOperatorWithExpression
       | .generateEnumerationHelperMethods | .equatable | .comparable
       | .generateCopyConstructorAndAssignmentOperator
   }

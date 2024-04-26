@@ -118,13 +118,13 @@ boolset @typeFeatures {
   case comparable # Supports <, <=, >, >= operators
   case referenceEquatable # Supports ===, !== operators
 
-  case plusEqualOperatorWithExpression # var += exp ;
-  case minusEqualOperatorWithExpression # var -= exp ;
-  case mulEqualOperatorWithExpression # var *= exp ;
-  case divEqualOperatorWithExpression # var /= exp ;
-  case xorEqualOperatorWithExpression # var ^= exp ;
-  case orEqualOperatorWithExpression # var |= exp ;
-  case andEqualOperatorWithExpression # var &= exp ;
+  case plusAssignOperatorWithExpression # var += exp ;
+  case minusAssignOperatorWithExpression # var -= exp ;
+  case mulAssignOperatorWithExpression # var *= exp ;
+  case divAssignOperatorWithExpression # var /= exp ;
+  case xorAssignOperatorWithExpression # var ^= exp ;
+  case orAssignOperatorWithExpression # var |= exp ;
+  case andAssignOperatorWithExpression # var &= exp ;
 
   case infixAddOperatorNoOVF
   case infixSubOperatorNoOVF

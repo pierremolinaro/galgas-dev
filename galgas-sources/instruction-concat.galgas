@@ -16,200 +16,6 @@
 # DEALINGS IN THE SOFTWARE.
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @opAssignmentOperator {
-  case andAssign // &=
-  case orAssign // &=
-
-  #·······························································································
-  
-  getter features -> @typeFeatures {
-    switch self
-#  case plusEqualOperatorWithExpression # var += exp ;
-#  case minusEqualOperatorWithExpression # var -= exp ;
-#  case mulEqualOperatorWithExpression # var *= exp ;
-#  case divEqualOperatorWithExpression # var /= exp ;
-    case orAssign  : result = .orEqualOperatorWithExpression # var |= exp ;
-    case andAssign : result = .andEqualOperatorWithExpression # var &= exp ;
-    end
-  }
-
-  #·······························································································
-  
-  getter string -> @string {
-    switch self
-#  case plusEqualOperatorWithExpression # var += exp ;
-#  case minusEqualOperatorWithExpression # var -= exp ;
-#  case mulEqualOperatorWithExpression # var *= exp ;
-#  case divEqualOperatorWithExpression # var /= exp ;
-    case orAssign  : result = "orAssign_operation"
-    case andAssign : result = "andAssign_operation"
-    end
-  }
-  #·······························································································
-  
-  getter cppFunctionName -> @string {
-    switch self
-#  case plusEqualOperatorWithExpression # var += exp ;
-#  case minusEqualOperatorWithExpression # var -= exp ;
-#  case mulEqualOperatorWithExpression # var *= exp ;
-#  case divEqualOperatorWithExpression # var /= exp ;
-    case orAssign  : result = "|="
-    case andAssign : result = "&="
-    end
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @opAssignExpressionInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @opAssignmentOperator mOperator
-  private let @semanticExpressionAST mExpression
-
-  #·······························································································
-  
-  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-  }
-
-  #·······························································································
-
-  override method analyzeSemanticInstruction
-                    ?let @lstring inUsefulnessCallerEntityName
-                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                    ?let @analysisContext inAnalysisContext
-                    ?!@unifiedTypeMap ioTypeMap
-                    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-                    ?!@localVarManager ioVariableMap {
-  #--- Check target variable, or self.property
-    var @unifiedTypeMapEntry targetType
-    let @string targetVariableCppName
-    let @string nameForCheckingFormalParameterUsing
-    if self.mPrefixedBySelf then
-      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-        if not [selfAvailable.selfMutability selfIsMutable] then
-          error self.mInstructionLocation : "'self' not mutable in this context"
-        end
-        let propertyMap = [selfAvailable.type definition].propertyMap
-        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-        nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-        targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-        if isConstant then
-          error self.mReceiverName : "a constant property cannot be modified"
-        end
-        if not [selfAvailable.selfMutability propertiesAreMutable] then
-          error self.mReceiverName : "the property is not mutable in this context"
-        end
-      else
-        error self.mInstructionLocation : "'self' not available in this context"
-        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
-      end
-    else
-      [!?ioVariableMap searchForReadWriteAccess
-        !self.mReceiverName
-        ?targetType
-        ?targetVariableCppName
-        ?nameForCheckingFormalParameterUsing
-      ]
-    end
-  #--- Check target variable
-    for (value) in self.mStructAttributeList do
-      let propertyMap = [targetType definition].propertyMap
-      [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-      if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
-      end
-    end
-  #--- Check target variable type support '/= exp' operator
-    if [[targetType definition].features contains ![self.mOperator features]] then
-      error self.mInstructionLocation
-      :"the target object has the '@" + [targetType definition].typeName.string
-      + "' type, but this type does not support the '" + [self.mOperator string] + "' operator"
-    end
-  #--- Analyze source expression
-    [self.mExpression analyzeSemanticExpression
-      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inferenceType:  targetType
-      !inAnalysisContext
-      !?ioTypeMap
-      !?ioVariableMap
-      ?@semanticExpressionForGeneration expression
-    ]
-  #--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-  #--- Generate instruction
-    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-      !self.mInstructionLocation
-      !targetType
-      !targetVariableCppName
-      !nameForCheckingFormalParameterUsing
-      !self.mStructAttributeList
-      !expression
-      ![self.mOperator cppFunctionName]
-    }
-}
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @actualOutputArgumentList mExpressions
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @plusEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @semanticExpressionAST mExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @minusEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @semanticExpressionAST mExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @mulEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @semanticExpressionAST mExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-refclass @divEqualExpressionInstructionAST : @semanticInstructionAST {
-  private let @bool mPrefixedBySelf
-  private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
-  private let @semanticExpressionAST mExpression
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -248,11 +54,12 @@ syntax extension galgas3InstructionsSyntax {
     select
       $-=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @minusEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.minusAssign
         !expression
       }
     or
@@ -268,22 +75,24 @@ syntax extension galgas3InstructionsSyntax {
         }
       or
         <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-        outInstruction = @plusEqualExpressionInstructionAST {
+        outInstruction = @opAssignExpressionInstructionAST {
           !instructionLocation
           !inHasSelfPrefix
           !receiverName
           !propertyList
+          !.plusAssign
           !expression
         }
       end
     or
       $*=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @mulEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.mulAssign
         !expression
       }
     or
@@ -309,13 +118,25 @@ syntax extension galgas3InstructionsSyntax {
         !expression
       }
     or
-      $/=$
+      $^=$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @divEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.xorAssign
+        !expression
+      }
+    or
+      $/=$
+      <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression
+      outInstruction = @opAssignExpressionInstructionAST {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !propertyList
+        !.divAssign
         !expression
       }
     end
@@ -380,31 +201,34 @@ syntax extension galgas4InstructionsSyntax {
     select
       $-=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @minusEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.minusAssign
         !expression
       }
     or
       $+=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @plusEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.plusAssign
         !expression
       }
     or
       $*=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @mulEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.mulAssign
         !expression
       }
     or
@@ -430,13 +254,25 @@ syntax extension galgas4InstructionsSyntax {
         !expression
       }
     or
-      $/=$
+      $^=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
-      outInstruction = @divEqualExpressionInstructionAST {
+      outInstruction = @opAssignExpressionInstructionAST {
         !instructionLocation
         !inHasSelfPrefix
         !receiverName
         !propertyList
+        !.xorAssign
+        !expression
+      }
+    or
+      $/=$
+      <expression> !?ioDeclarations ?let @semanticExpressionAST expression
+      outInstruction = @opAssignExpressionInstructionAST {
+        !instructionLocation
+        !inHasSelfPrefix
+        !receiverName
+        !propertyList
+        !.divAssign
         !expression
       }
     or
@@ -490,463 +326,281 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @plusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
+enum @opAssignmentOperator {
+  case andAssign // &=
+  case orAssign // &=
+  case xorAssign // ^=
+  case plusAssign // +=
+  case minusAssign // -=
+  case mulAssign // *=
+  case divAssign // /=
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @minusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @mulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @divEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································*
-
-override method @plusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [self.mExpressions enterInSemanticContext !?ioTypeMap]
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-#--- Check target variable, or self.property
-  var @unifiedTypeMapEntry targetType
-  let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
-  if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-      if not [selfAvailable.selfMutability propertiesAreMutable] then
-        error self.mInstructionLocation : "property not mutable in this context"
-      end
-      let propertyMap = [selfAvailable.type definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-      if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
-      end
-    else
-      error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+  #·······························································································
+  
+  getter features -> @typeFeatures {
+    switch self
+    case orAssign  : result = .orAssignOperatorWithExpression # var |= exp ;
+    case xorAssign  : result = .xorAssignOperatorWithExpression # var ^= exp ;
+    case andAssign : result = .andAssignOperatorWithExpression # var &= exp ;
+    case plusAssign  : result = .plusAssignOperatorWithExpression # var += exp ;
+    case minusAssign  : result = .minusAssignOperatorWithExpression # var -= exp ;
+    case mulAssign  : result = .mulAssignOperatorWithExpression # var *= exp ;
+    case divAssign  : result = .divAssignOperatorWithExpression # var /= exp ;
     end
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !self.mReceiverName
-      ?targetType
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-  for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
-    if isConstant then
-      error value : "a constant property cannot be modified"
-    end
-  end
-#--- Check target variable type support '+= exp' operator
-  if not [[targetType definition].features contains !.plusEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  targetType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-    !self.mInstructionLocation
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mStructAttributeList
-    !expression
-    !"plusAssign_operation"
   }
+
+  #·······························································································
+  
+  getter string -> @string {
+    switch self
+    case orAssign  : result = "|="
+    case xorAssign  : result = "^="
+    case andAssign : result = "&="
+    case plusAssign : result = "+="
+    case minusAssign : result = "-="
+    case mulAssign : result = "*="
+    case divAssign : result = "/="
+    end
+  }
+
+  #·······························································································
+  
+  getter cppFunctionName -> @string {
+    switch self
+    case orAssign  : result = "orAssign_operation"
+    case xorAssign  : result = "xorAssign_operation"
+    case andAssign : result = "andAssign_operation"
+    case plusAssign : result = "plusAssign_operation"
+    case minusAssign : result = "minusAssign_operation"
+    case mulAssign : result = "mulAssign_operation"
+    case divAssign : result = "divAssign_operation"
+    end
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction # -= exp
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-#--- Check target variable, or self.property
-  var @unifiedTypeMapEntry targetType
-  let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
-  if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-      if not [selfAvailable.selfMutability selfIsMutable] then
-        error self.mInstructionLocation : "'self' not mutable in this context"
-      end
-      let propertyMap = [selfAvailable.type definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-      if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
-      end
-      if not [selfAvailable.selfMutability propertiesAreMutable] then
-        error self.mReceiverName : "the property is not mutable in this context"
-      end
-    else
-      error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
-    end
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !self.mReceiverName
-      ?targetType
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-  for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-    if isConstant then
-      error value : "a constant property cannot be modified"
-    end
-  end
-#--- Check target variable type support '-= exp' operator
-  if not [[targetType definition].features contains !.minusEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '-=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  targetType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-    !self.mInstructionLocation
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mStructAttributeList
-    !expression
-    !"minusAssign_operation"
+refclass @opAssignExpressionInstructionAST : @semanticInstructionAST {
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @opAssignmentOperator mOperator
+  private let @semanticExpressionAST mExpression
+
+  #·······························································································
+  
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
-}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+  #·······························································································
 
-override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *= exp
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-#--- Check target variable, or self.property
-  var @unifiedTypeMapEntry targetType
-  let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
-  if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-      if not [selfAvailable.selfMutability selfIsMutable] then
-        error self.mInstructionLocation : "'self' not mutable in this context"
-      end
-      let propertyMap = [selfAvailable.type definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-      if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
-      end
-      if not [selfAvailable.selfMutability propertiesAreMutable] then
-        error self.mReceiverName : "the property is not mutable in this context"
-      end
-    else
-      error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
-    end
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !self.mReceiverName
-      ?targetType
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-#--- Check target variable
-  for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
-    if isConstant then
-      error value : "a constant property cannot be modified"
-    end
-  end
-#--- Check target variable type support '*= exp' operator
-  if [[targetType definition].features contains !.mulEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '*=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  targetType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-    !self.mInstructionLocation
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mStructAttributeList
-    !expression
-    !"mulAssign_operation"
-  }
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /= exp
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-#--- Check target variable, or self.property
-  var @unifiedTypeMapEntry targetType
-  let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
-  if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-      if not [selfAvailable.selfMutability selfIsMutable] then
-        error self.mInstructionLocation : "'self' not mutable in this context"
-      end
-      let propertyMap = [selfAvailable.type definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-      if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
-      end
-      if not [selfAvailable.selfMutability propertiesAreMutable] then
-        error self.mReceiverName : "the property is not mutable in this context"
-      end
-    else
-      error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
-    end
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !self.mReceiverName
-      ?targetType
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-#--- Check target variable
-  for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
-    if isConstant then
-      error self.mReceiverName : "a constant property cannot be modified"
-    end
-  end
-#--- Check target variable type support '/= exp' operator
-  if [[targetType definition].features contains !.divEqualOperatorWithExpression] then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '/=' operator"
-  end
-#--- Analyze source expression
-  [self.mExpression analyzeSemanticExpression
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inferenceType:  targetType
-    !inAnalysisContext
-    !?ioTypeMap
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-#--- Generate instruction
-  ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
-    !self.mInstructionLocation
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !self.mStructAttributeList
-    !expression
-    !"divAssign_operation"
-  }
-}
-
-#·····················································································································*
-
-override method @plusEqualElementsInstructionAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @analysisContext inAnalysisContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@localVarManager ioVariableMap
-{
-#--- Check target variable, or self.property
-  var @unifiedTypeMapEntry targetType
-  let @string targetVariableCppName
-  let @string nameForCheckingFormalParameterUsing
-  if self.mPrefixedBySelf then
-    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-      let propertyMap = [selfAvailable.type definition].propertyMap
-      [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
-      targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
-        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
-      if isConstant then
-        error self.mReceiverName : "a constant property cannot be modified"
-      end
-      if not [selfAvailable.selfMutability propertiesAreMutable] then
-        error self.mReceiverName : "the property cannot be mutated in this context"
-      end
-    else
-      error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
-    end
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !self.mReceiverName
-      ?targetType
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-#--- Check target variable
-  for (value) in self.mStructAttributeList do
-    let propertyMap = [targetType definition].propertyMap
-#    let previousTargetType = targetType
-    [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
-    [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
-#    if not isPublic  then
-#      switch inAnalysisContext.selfType
-#      case none :
-#        error value : " inaccessible property (due to its 'private' qualifier)"
-#      case available (selfType 2*) :
-#        if previousTargetType != selfType then
-#          error value : " inaccessible property (due to its 'private' qualifier)"
+  override method analyzeSemanticInstruction
+                    ?let @lstring inUsefulnessCallerEntityName
+                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                    ?let @analysisContext inAnalysisContext
+                    ?!@unifiedTypeMap ioTypeMap
+                    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                    ?!@localVarManager ioVariableMap {
+  #--- Check target variable, or self.property
+    var @unifiedTypeMapEntry targetType
+    let @string targetVariableCppName
+    let @string nameForCheckingFormalParameterUsing
+    if self.mPrefixedBySelf then
+      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+        if not [selfAvailable.selfMutability propertiesAreMutable] then
+          error self.mInstructionLocation : "property not mutable in this context"
+        end
+#        if not [selfAvailable.selfMutability selfIsMutable] then
+#          error self.mInstructionLocation : "'self' not mutable in this context"
 #        end
-#      end
-#    end
-    if isConstant then
-      error value : "a constant property cannot be modified"
-    end
-  end
-#--- Check target variable type support '+=' operator
-  let addAssignOperatorArguments= [targetType definition].addAssignOperatorArguments # Empty list if += operator is not supported
-  if [addAssignOperatorArguments count] == 0 then
-    error self.mInstructionLocation
-    :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
-#--- Analyze source expressions
-  elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
-    error self.mInstructionLocation
-    : "calling the '+=' operator on an '@" + [targetType definition].typeName.string + "' object requires "
-    + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
-    + [[self.mExpressions count] string] + " parameter(s)"
-  else
-    var @semanticExpressionListForGeneration effectiveParameterList = ()
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
-      [mExpression analyzeSemanticExpression
-        !usefulnessCallerEntityName: inUsefulnessCallerEntityName
-        !?ioUsefulEntitiesGraph
-        !inferenceType: mFormalArgumentType
-        !inAnalysisContext
-        !?ioTypeMap
-        !?ioVariableMap
-        ?@semanticExpressionForGeneration expression
-      ]
-      if mFormalSelector.string != mActualSelector.string then
-        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mActualSelector
-#          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        let propertyMap = [selfAvailable.type definition].propertyMap
+        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+        nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+        targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
+          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+        if isConstant then
+          error self.mReceiverName : "a constant property cannot be modified"
+        end
+        if not [selfAvailable.selfMutability propertiesAreMutable] then
+          error self.mReceiverName : "the property is not mutable in this context"
+        end
+      else
+        error self.mInstructionLocation : "'self' not available in this context"
+        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
       end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
-      effectiveParameterList += !expression
+    else
+      [!?ioVariableMap searchForReadWriteAccess
+        !self.mReceiverName
+        ?targetType
+        ?targetVariableCppName
+        ?nameForCheckingFormalParameterUsing
+      ]
     end
+  #--- Check target variable
+    for (value) in self.mStructAttributeList do
+      let propertyMap = [targetType definition].propertyMap
+      [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
+      if isConstant then
+        error self.mReceiverName : "a constant property cannot be modified"
+      end
+    end
+  #--- Check target variable type support 'X= exp' operator
+    if not [[targetType definition].features contains ![self.mOperator features]] then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [targetType definition].typeName.string
+      + "' type, but this type does not support the '" + [self.mOperator string] + "' operator"
+    end
+  #--- Analyze source expression
+    [self.mExpression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: targetType
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?@semanticExpressionForGeneration expression
+    ]
+  #--- Check assignment type compatibility
+    checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
   #--- Generate instruction
-    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
-      !targetVariableCppName
-      !targetType
-      !nameForCheckingFormalParameterUsing
+    ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
+      !targetType
+      !targetVariableCppName
+      !nameForCheckingFormalParameterUsing
       !self.mStructAttributeList
-      !effectiveParameterList}
-  end
+      !expression
+      ![self.mOperator cppFunctionName]
+    }
+}
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
+  private let @bool mPrefixedBySelf
+  private let @lstring mReceiverName
+  private let @lstringlist mStructAttributeList
+  private let @actualOutputArgumentList mExpressions
+
+  #·······························································································
+
+  override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+    [self.mExpressions enterInSemanticContext !?ioTypeMap]
+  }
+
+  #·······························································································
+
+  override method analyzeSemanticInstruction
+                            ?let @lstring inUsefulnessCallerEntityName
+                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                            ?let @analysisContext inAnalysisContext
+                            ?!@unifiedTypeMap ioTypeMap
+                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+                            ?!@localVarManager ioVariableMap {
+  #--- Check target variable, or self.property
+    var @unifiedTypeMapEntry targetType
+    let @string targetVariableCppName
+    let @string nameForCheckingFormalParameterUsing
+    if self.mPrefixedBySelf then
+      if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+        let propertyMap = [selfAvailable.type definition].propertyMap
+        [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
+        nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+        targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
+          + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+        if isConstant then
+          error self.mReceiverName : "a constant property cannot be modified"
+        end
+        if not [selfAvailable.selfMutability propertiesAreMutable] then
+          error self.mReceiverName : "the property cannot be mutated in this context"
+        end
+      else
+        error self.mInstructionLocation : "'self' not available in this context"
+        : targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
+      end
+    else
+      [!?ioVariableMap searchForReadWriteAccess
+        !self.mReceiverName
+        ?targetType
+        ?targetVariableCppName
+        ?nameForCheckingFormalParameterUsing
+      ]
+    end
+  #--- Check target variable
+    for (value) in self.mStructAttributeList do
+      let propertyMap = [targetType definition].propertyMap
+  #    let previousTargetType = targetType
+      [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
+      [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value]
+  #    if not isPublic  then
+  #      switch inAnalysisContext.selfType
+  #      case none :
+  #        error value : " inaccessible property (due to its 'private' qualifier)"
+  #      case available (selfType 2*) :
+  #        if previousTargetType != selfType then
+  #          error value : " inaccessible property (due to its 'private' qualifier)"
+  #        end
+  #      end
+  #    end
+      if isConstant then
+        error value : "a constant property cannot be modified"
+      end
+    end
+  #--- Check target variable type support '+=' operator
+    let addAssignOperatorArguments= [targetType definition].addAssignOperatorArguments # Empty list if += operator is not supported
+    if [addAssignOperatorArguments count] == 0 then
+      error self.mInstructionLocation
+      :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
+  #--- Analyze source expressions
+    elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
+      error self.mInstructionLocation
+      : "calling the '+=' operator on an '@" + [targetType definition].typeName.string + "' object requires "
+      + [[addAssignOperatorArguments count] string] + " parameter(s), while this invocation has "
+      + [[self.mExpressions count] string] + " parameter(s)"
+    else
+      var @semanticExpressionListForGeneration effectiveParameterList = ()
+      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in addAssignOperatorArguments do
+        [mExpression analyzeSemanticExpression
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
+          !inferenceType: mFormalArgumentType
+          !inAnalysisContext
+          !?ioTypeMap
+          !?ioVariableMap
+          ?@semanticExpressionForGeneration expression
+        ]
+        if mFormalSelector.string != mActualSelector.string then
+          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
+          error mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
+  #        error mActualSelector
+  #          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        end
+        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
+        effectiveParameterList += !expression
+      end
+    #--- Generate instruction
+      ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
+        !targetVariableCppName
+        !targetType
+        !nameForCheckingFormalParameterUsing
+        !self.mInstructionLocation
+        !self.mStructAttributeList
+        !effectiveParameterList}
+    end
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -960,50 +614,53 @@ refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @lstringlist mStructAttributeList
   private let @semanticExpressionListForGeneration mExpressionList
+
+  #·······························································································
+
+  override method generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode {
+  #--- Parameters
+    [self.mTargetType addHeaderFileName !?ioInclusionSet]
+    var parameterList = @stringlist ()
+    for (mExpression) in self.mExpressionList do
+      [mExpression generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let @string parameter
+      ]
+      parameterList += !parameter
+    end
+  #--- Receiver
+    [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+    ioGeneratedCode += self.mReceiverCppName
+    for (mValue) in self.mStructAttributeList do
+      ioGeneratedCode += ".mProperty_" + [mValue.string identifierRepresentation]
+    end
+  #--- Call add assign (+=) operator
+    ioGeneratedCode += ".addAssign_operation ("
+    [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
+    for (mValue) in parameterList
+      do ioGeneratedCode += mValue
+      between ioGeneratedCode += ", "
+    end
+    if [[self.mTargetType definition].features contains !.plusEqualOperatorWithFieldListNeedsCompilerArg] then
+      ioGeneratedCode  += ", " + compilerCppName ()
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    end
+    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+  }
+
+  #·······························································································
+
 }
 
-#·····················································································································*
-
-override method @plusEqualnstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-#--- Parameters
-  [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  var parameterList = @stringlist ()
-  for (mExpression) in self.mExpressionList do
-    [mExpression generateExpression
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      ?let @string parameter
-    ]
-    parameterList += !parameter
-  end
-#--- Receiver
-  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
-  ioGeneratedCode += self.mReceiverCppName
-  for (mValue) in self.mStructAttributeList do
-    ioGeneratedCode += ".mProperty_" + [mValue.string identifierRepresentation]
-  end
-#--- Call add assign (+=) operator
-  ioGeneratedCode += ".addAssign_operation ("
-  [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
-  for (mValue) in parameterList
-    do ioGeneratedCode += mValue
-    between ioGeneratedCode += ", "
-  end
-  if [[self.mTargetType definition].features contains !.plusEqualOperatorWithFieldListNeedsCompilerArg] then
-    ioGeneratedCode  += ", " + compilerCppName ()
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  end
-  ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
-}
-
-#·····················································································································*
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -1013,34 +670,37 @@ refclass @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstringlist mStructAttributeList
   private let @semanticExpressionForGeneration mSourceExpression
   private let @string mGeneratedMethod
-}
 
-#·····················································································································*
+  #·······························································································
 
-override method @opAssignInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  [self.mSourceExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string sourceVar
-  ]
-  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
-  ioGeneratedCode += self.mTargetVariableCppName
-  for (mValue) in self.mStructAttributeList do
-    ioGeneratedCode += ".mProperty_" + mValue
-  end
-  ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
-  ioGeneratedCode += ", " + compilerCppName ()
-  ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
+  override method generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode {
+    [self.mTargetType addHeaderFileName !?ioInclusionSet]
+    [self.mSourceExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string sourceVar
+    ]
+    [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+    ioGeneratedCode += self.mTargetVariableCppName
+    for (mValue) in self.mStructAttributeList do
+      ioGeneratedCode += ".mProperty_" + mValue
+    end
+    ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
+    ioGeneratedCode += ", " + compilerCppName ()
+    ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
+  }
+
+  #·······························································································
+
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

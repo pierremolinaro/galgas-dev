@@ -38,8 +38,8 @@ refclass @uintPredefinedTypeAST : @predefinedTypeAST {
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
       | .generateDescriptionGetterUtilityMethod | .incDecOperator | .incDecOperatorNoOVF | .comparable | .equatable
       | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
-      | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
-      | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
+      | .plusAssignOperatorWithExpression | .minusAssignOperatorWithExpression
+      | .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
   #-----------------------------------------------------------------------------------------------

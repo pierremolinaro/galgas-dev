@@ -377,9 +377,9 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- features
-  var features = @typeFeatures.plusEqualOperatorWithExpression | .infixAddOperator | .doNotGenererateObjectCompare
+  var features = @typeFeatures.plusAssignOperatorWithExpression | .infixAddOperator | .doNotGenererateObjectCompare
   if self.equatable then
-    features = features | .equatable
+    features |= .equatable
   end
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {

@@ -323,9 +323,9 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- features
-  var features = @typeFeatures.plusEqualOperatorWithExpression | .doNotGenererateObjectCompare
+  var features = @typeFeatures.plusAssignOperatorWithExpression | .doNotGenererateObjectCompare
   if self.equatable then
-    features = features | .equatable
+    features |= .equatable
   end
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {

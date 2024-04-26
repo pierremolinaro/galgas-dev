@@ -587,7 +587,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   var features = @typeFeatures.plusEqualOperatorWithFieldListNeedsCompilerArg
            | .supportWithAccessor | .infixAddOperator | .doNotGenererateObjectCompare
   if self.equatable then
-    features = features | .equatable
+    features |= .equatable
   end
 #--- Add extensions
   addExtensions (

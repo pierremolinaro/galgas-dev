@@ -30,8 +30,8 @@ refclass @doublePredefinedTypeAST : @predefinedTypeAST {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
       | .prefixPlusOperator | .prefixMinusOperator | .infixModOperator | .infixDivOperatorNoOVF
       | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
-      | .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression
-      | .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
+      | .plusAssignOperatorWithExpression | .minusAssignOperatorWithExpression
+      | .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
   #-----------------------------------------------------------------------------------------------

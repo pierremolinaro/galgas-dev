@@ -1462,16 +1462,16 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                       GALGAS_semanticInstructionAST & outArgument_outInstruction,
                                                                                                                       Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-concat.galgas", 229)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 230)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-concat.galgas", 35)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 36)) ;
   nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_ (ioArgument_ioDeclarations, GALGAS_bool (true), outArgument_outInstruction, inCompiler) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_parse (Lexique_galgasScanner_33_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-concat.galgas", 229)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 230)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-concat.galgas", 35)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 36)) ;
   nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
@@ -1479,8 +1479,8 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_ggs_33__i17_indexing (Lexique_galgasScanner_33_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-concat.galgas", 229)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 230)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_self COMMA_SOURCE_FILE ("instruction-concat.galgas", 35)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 36)) ;
   nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_indexing (inCompiler) ;
 }
 
@@ -1491,68 +1491,74 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
                                                                                                                                               GALGAS_semanticInstructionAST & outArgument_outInstruction,
                                                                                                                                               Lexique_galgasScanner_33_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  GALGAS_lstring var_receiverName_10498 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 239)) ;
-  GALGAS_location var_instructionLocation_10519 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 240)) ;
-  GALGAS_lstringlist var_propertyList_10577 = GALGAS_lstringlist::init (inCompiler COMMA_HERE) ;
+  GALGAS_lstring var_receiverName_2496 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 45)) ;
+  GALGAS_location var_instructionLocation_2517 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 46)) ;
+  GALGAS_lstringlist var_propertyList_2575 = GALGAS_lstringlist::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_InstructionsSyntax_22 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 244)) ;
-      GALGAS_lstring var_attributeName_10650 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 245)) ;
-      var_propertyList_10577.addAssign_operation (var_attributeName_10650  COMMA_SOURCE_FILE ("instruction-concat.galgas", 246)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 50)) ;
+      GALGAS_lstring var_attributeName_2648 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 51)) ;
+      var_propertyList_2575.addAssign_operation (var_attributeName_2648  COMMA_SOURCE_FILE ("instruction-concat.galgas", 52)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   switch (select_galgas_33_InstructionsSyntax_23 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 249)) ;
-    GALGAS_semanticExpressionAST var_expression_10800 ;
-    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_10800, inCompiler) ;
-    outArgument_outInstruction = GALGAS_minusEqualExpressionInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, var_expression_10800, inCompiler COMMA_HERE) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 55)) ;
+    GALGAS_semanticExpressionAST var_expression_2798 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_2798, inCompiler) ;
+    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_minusAssign (SOURCE_FILE ("instruction-concat.galgas", 62)), var_expression_2798, inCompiler COMMA_HERE) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 259)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 66)) ;
     switch (select_galgas_33_InstructionsSyntax_24 (inCompiler)) {
     case 1: {
-      GALGAS_actualOutputArgumentList var_expressionList_11125 ;
-      nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__ (ioArgument_ioDeclarations, var_expressionList_11125, inCompiler) ;
-      outArgument_outInstruction = GALGAS_plusEqualElementsInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, var_expressionList_11125, inCompiler COMMA_HERE) ;
+      GALGAS_actualOutputArgumentList var_expressionList_3143 ;
+      nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__ (ioArgument_ioDeclarations, var_expressionList_3143, inCompiler) ;
+      outArgument_outInstruction = GALGAS_plusEqualElementsInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, var_expressionList_3143, inCompiler COMMA_HERE) ;
     } break ;
     case 2: {
-      GALGAS_semanticExpressionAST var_expression_11422 ;
-      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_11422, inCompiler) ;
-      outArgument_outInstruction = GALGAS_plusEqualExpressionInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, var_expression_11422, inCompiler COMMA_HERE) ;
+      GALGAS_semanticExpressionAST var_expression_3440 ;
+      nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3440, inCompiler) ;
+      outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_plusAssign (SOURCE_FILE ("instruction-concat.galgas", 83)), var_expression_3440, inCompiler COMMA_HERE) ;
     } break ;
     default:
       break ;
     }
   } break ;
   case 3: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 280)) ;
-    GALGAS_semanticExpressionAST var_expression_11730 ;
-    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_11730, inCompiler) ;
-    outArgument_outInstruction = GALGAS_mulEqualExpressionInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, var_expression_11730, inCompiler COMMA_HERE) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 88)) ;
+    GALGAS_semanticExpressionAST var_expression_3770 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_3770, inCompiler) ;
+    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_mulAssign (SOURCE_FILE ("instruction-concat.galgas", 95)), var_expression_3770, inCompiler COMMA_HERE) ;
   } break ;
   case 4: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 290)) ;
-    GALGAS_semanticExpressionAST var_expression_12013 ;
-    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_12013, inCompiler) ;
-    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, GALGAS_opAssignmentOperator::class_func_andAssign (SOURCE_FILE ("instruction-concat.galgas", 297)), var_expression_12013, inCompiler COMMA_HERE) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 99)) ;
+    GALGAS_semanticExpressionAST var_expression_4073 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_4073, inCompiler) ;
+    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_andAssign (SOURCE_FILE ("instruction-concat.galgas", 106)), var_expression_4073, inCompiler COMMA_HERE) ;
   } break ;
   case 5: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 301)) ;
-    GALGAS_semanticExpressionAST var_expression_12316 ;
-    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_12316, inCompiler) ;
-    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, GALGAS_opAssignmentOperator::class_func_orAssign (SOURCE_FILE ("instruction-concat.galgas", 308)), var_expression_12316, inCompiler COMMA_HERE) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 110)) ;
+    GALGAS_semanticExpressionAST var_expression_4376 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_4376, inCompiler) ;
+    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_orAssign (SOURCE_FILE ("instruction-concat.galgas", 117)), var_expression_4376, inCompiler COMMA_HERE) ;
   } break ;
   case 6: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 312)) ;
-    GALGAS_semanticExpressionAST var_expression_12618 ;
-    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_12618, inCompiler) ;
-    outArgument_outInstruction = GALGAS_divEqualExpressionInstructionAST::init_21__21__21__21__21_ (var_instructionLocation_10519, constinArgument_inHasSelfPrefix, var_receiverName_10498, var_propertyList_10577, var_expression_12618, inCompiler COMMA_HERE) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5E__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 121)) ;
+    GALGAS_semanticExpressionAST var_expression_4678 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_4678, inCompiler) ;
+    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_xorAssign (SOURCE_FILE ("instruction-concat.galgas", 128)), var_expression_4678, inCompiler COMMA_HERE) ;
+  } break ;
+  case 7: {
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 132)) ;
+    GALGAS_semanticExpressionAST var_expression_4981 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_4981, inCompiler) ;
+    outArgument_outInstruction = GALGAS_opAssignExpressionInstructionAST::init_21__21__21__21__21__21_ (var_instructionLocation_2517, constinArgument_inHasSelfPrefix, var_receiverName_2496, var_propertyList_2575, GALGAS_opAssignmentOperator::class_func_divAssign (SOURCE_FILE ("instruction-concat.galgas", 139)), var_expression_4981, inCompiler COMMA_HERE) ;
   } break ;
   default:
     break ;
@@ -1562,23 +1568,23 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i18_parse (Lexique_galgasScanner_33_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 239)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 45)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_InstructionsSyntax_22 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 244)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 245)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 50)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 51)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   switch (select_galgas_33_InstructionsSyntax_23 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 249)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 55)) ;
     nt_expression_5F_ggs_33__parse (inCompiler) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 259)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 66)) ;
     switch (select_galgas_33_InstructionsSyntax_24 (inCompiler)) {
     case 1: {
       nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__parse (inCompiler) ;
@@ -1591,19 +1597,23 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     }
   } break ;
   case 3: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 280)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 88)) ;
     nt_expression_5F_ggs_33__parse (inCompiler) ;
   } break ;
   case 4: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 290)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 99)) ;
     nt_expression_5F_ggs_33__parse (inCompiler) ;
   } break ;
   case 5: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 301)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 110)) ;
     nt_expression_5F_ggs_33__parse (inCompiler) ;
   } break ;
   case 6: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 312)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5E__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 121)) ;
+    nt_expression_5F_ggs_33__parse (inCompiler) ;
+  } break ;
+  case 7: {
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 132)) ;
     nt_expression_5F_ggs_33__parse (inCompiler) ;
   } break ;
   default:
@@ -1615,23 +1625,23 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i18_indexing (Lexique_galgasScanner_33_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 239)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 45)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_33_InstructionsSyntax_22 (inCompiler) == 2) {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 244)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 245)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 50)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_identifier COMMA_SOURCE_FILE ("instruction-concat.galgas", 51)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   switch (select_galgas_33_InstructionsSyntax_23 (inCompiler)) {
   case 1: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 249)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 55)) ;
     nt_expression_5F_ggs_33__indexing (inCompiler) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 259)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2B__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 66)) ;
     switch (select_galgas_33_InstructionsSyntax_24 (inCompiler)) {
     case 1: {
       nt_non_5F_empty_5F_output_5F_expression_5F_list_5F_ggs_33__indexing (inCompiler) ;
@@ -1644,19 +1654,23 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
     }
   } break ;
   case 3: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 280)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 88)) ;
     nt_expression_5F_ggs_33__indexing (inCompiler) ;
   } break ;
   case 4: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 290)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__26__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 99)) ;
     nt_expression_5F_ggs_33__indexing (inCompiler) ;
   } break ;
   case 5: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 301)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__7C__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 110)) ;
     nt_expression_5F_ggs_33__indexing (inCompiler) ;
   } break ;
   case 6: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 312)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__5E__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 121)) ;
+    nt_expression_5F_ggs_33__indexing (inCompiler) ;
+  } break ;
+  case 7: {
+    inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2F__3D_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 132)) ;
     nt_expression_5F_ggs_33__indexing (inCompiler) ;
   } break ;
   default:
@@ -1673,22 +1687,22 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_non
   outArgument_outExpressionList = GALGAS_actualOutputArgumentList::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GALGAS_lstring var_selector_13164 ;
+    GALGAS_lstring var_selector_5547 ;
     switch (select_galgas_33_InstructionsSyntax_26 (inCompiler)) {
     case 1: {
-      var_selector_13164 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 332)) ;
+      var_selector_5547 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 153)) ;
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 334)) ;
-      var_selector_13164 = GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 335)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 155)) ;
+      var_selector_5547 = GALGAS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 156)) ;
     } break ;
     default:
       break ;
     }
-    GALGAS_semanticExpressionAST var_expression_13346 ;
-    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_13346, inCompiler) ;
-    outArgument_outExpressionList.addAssign_operation (var_selector_13164, var_expression_13346, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 338))  COMMA_SOURCE_FILE ("instruction-concat.galgas", 338)) ;
+    GALGAS_semanticExpressionAST var_expression_5729 ;
+    nt_expression_5F_ggs_33__ (ioArgument_ioDeclarations, var_expression_5729, inCompiler) ;
+    outArgument_outExpressionList.addAssign_operation (var_selector_5547, var_expression_5729, GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 159))  COMMA_SOURCE_FILE ("instruction-concat.galgas", 159)) ;
     if (select_galgas_33_InstructionsSyntax_25 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;
@@ -1703,10 +1717,10 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_non
   while (repeatFlag_0) {
     switch (select_galgas_33_InstructionsSyntax_26 (inCompiler)) {
     case 1: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 332)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 153)) ;
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 334)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 155)) ;
     } break ;
     default:
       break ;
@@ -1727,10 +1741,10 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_non
   while (repeatFlag_0) {
     switch (select_galgas_33_InstructionsSyntax_26 (inCompiler)) {
     case 1: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 332)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 153)) ;
     } break ;
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 334)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__21_ COMMA_SOURCE_FILE ("instruction-concat.galgas", 155)) ;
     } break ;
     default:
       break ;

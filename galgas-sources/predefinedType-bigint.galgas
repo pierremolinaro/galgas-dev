@@ -314,8 +314,8 @@ refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
                .infixShiftOperator | .infixModOperator |
                .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
                .incDecOperator | .comparable | .equatable |
-               .plusEqualOperatorWithExpression | .minusEqualOperatorWithExpression |
-               .mulEqualOperatorWithExpression | .divEqualOperatorWithExpression
+               .plusAssignOperatorWithExpression | .minusAssignOperatorWithExpression |
+               .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
   #-----------------------------------------------------------------------------------------------

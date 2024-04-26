@@ -187,10 +187,10 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   let operators = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator | .equatable
-    | .andEqualOperatorWithExpression # var &= exp
-    | .orEqualOperatorWithExpression # var |= exp
-    | .xorEqualOperatorWithExpression # var ^= exp
-    | .minusEqualOperatorWithExpression # var -= exp
+    | .andAssignOperatorWithExpression # var &= exp
+    | .orAssignOperatorWithExpression # var |= exp
+    | .xorAssignOperatorWithExpression # var ^= exp
+    | .minusAssignOperatorWithExpression # var -= exp
 #--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mBoolsetTypeName

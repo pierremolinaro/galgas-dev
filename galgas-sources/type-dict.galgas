@@ -363,7 +363,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
 #--- Features
   var features = @typeFeatures.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
   if self.equatable then
-    features = features | .equatable
+    features |= .equatable
   end
 #--- Optional Element type index
   let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)

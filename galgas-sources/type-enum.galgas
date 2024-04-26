@@ -358,9 +358,9 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     switch self.comparison
     case none :
     case equatable :
-      features = features | .equatable
+      features |= .equatable
     case comparable :
-      features = features | .comparable | .equatable
+      features |= .comparable | .equatable
     end  
   #--- Enter type in type map
     let typeDefinition = @unifiedTypeDefinition {

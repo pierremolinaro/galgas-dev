@@ -143,16 +143,16 @@ end%
       %greater than test: %!linkForType (!type_lkey.string)% &gt; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
       %greater or equal test: %!linkForType (!type_lkey.string)% &gt;= %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
     end
-    if [[element definition].features contains ![@typeFeatures plusEqualOperatorWithExpression]] then
+    if [[element definition].features contains ![@typeFeatures plusAssignOperatorWithExpression]] then
       %+= instruction: %!linkForType (!type_lkey.string)% += %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features contains ![@typeFeatures minusEqualOperatorWithExpression]] then
+    if [[element definition].features contains ![@typeFeatures minusAssignOperatorWithExpression]] then
       %-= instruction: %!linkForType (!type_lkey.string)% -= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features contains ![@typeFeatures mulEqualOperatorWithExpression]] then
+    if [[element definition].features contains ![@typeFeatures mulAssignOperatorWithExpression]] then
       %*= instruction: %!linkForType (!type_lkey.string)% *= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features contains ![@typeFeatures divEqualOperatorWithExpression]] then
+    if [[element definition].features contains ![@typeFeatures divAssignOperatorWithExpression]] then
       %/= instruction: %!linkForType (!type_lkey.string)% /= %!linkForType (!type_lkey.string)%<br><br>%
     end
     if [[element definition].features contains ![@typeFeatures incDecOperator]] then

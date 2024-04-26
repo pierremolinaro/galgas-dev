@@ -99,7 +99,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
   #--- features
     var features = @typeFeatures ()
     if self.equatable then
-      features = features | .equatable
+      features |= .equatable
     end
   #--- unwrapped type index
     [!?ioTypeMap makeEntry !self.unwrappedTypeName ?let unwrappedType]

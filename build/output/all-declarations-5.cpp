@@ -7140,43 +7140,43 @@ GALGAS_typeFeatures GALGAS_typeFeatures::class_func_referenceEquatable (UNUSED_L
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_plusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_plusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 17) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_minusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_minusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 18) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_mulEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_mulAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 19) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_divEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_divAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 20) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_xorEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_xorAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 21) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_orEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_orAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 22) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typeFeatures GALGAS_typeFeatures::class_func_andEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GALGAS_typeFeatures GALGAS_typeFeatures::class_func_andAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GALGAS_typeFeatures (uint64_t (1) << 23) ;
 }
 
@@ -7451,25 +7451,25 @@ void GALGAS_typeFeatures::description (String & ioString,
       ioString.appendCString (" referenceEquatable") ;
     }
     if ((mFlags & (uint64_t (1) << 17)) != 0) {
-      ioString.appendCString (" plusEqualOperatorWithExpression") ;
+      ioString.appendCString (" plusAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 18)) != 0) {
-      ioString.appendCString (" minusEqualOperatorWithExpression") ;
+      ioString.appendCString (" minusAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 19)) != 0) {
-      ioString.appendCString (" mulEqualOperatorWithExpression") ;
+      ioString.appendCString (" mulAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 20)) != 0) {
-      ioString.appendCString (" divEqualOperatorWithExpression") ;
+      ioString.appendCString (" divAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 21)) != 0) {
-      ioString.appendCString (" xorEqualOperatorWithExpression") ;
+      ioString.appendCString (" xorAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 22)) != 0) {
-      ioString.appendCString (" orEqualOperatorWithExpression") ;
+      ioString.appendCString (" orAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 23)) != 0) {
-      ioString.appendCString (" andEqualOperatorWithExpression") ;
+      ioString.appendCString (" andAssignOperatorWithExpression") ;
     }
     if ((mFlags & (uint64_t (1) << 24)) != 0) {
       ioString.appendCString (" infixAddOperatorNoOVF") ;
