@@ -2219,13 +2219,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'optionalTypeName'
+//Function 'makeOptionalTypeLName'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_lstring function_optionalTypeName (const class GALGAS_lstring & constinArgument0,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
+class GALGAS_lstring function_makeOptionalTypeLName (const class GALGAS_lstring & constinArgument0,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

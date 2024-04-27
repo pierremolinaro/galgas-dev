@@ -199,58 +199,6 @@ refclass @equatableExtensionAST : @semanticDeclarationAST {
                 ?!@unifiedTypeMap unused ioTypeMap
                 ?let @predefinedTypes unused inPredefinedTypes
                 ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration {
-#  #--- Useful entities graph
-#    let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-#      !self.mTypeName
-#      ![self.mFormalParameterList initializerSignature]
-#    )
-#  #--- Self type
-#    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#    let @string selfObjectNameString
-#    let @string selfObjectAccessorString
-#  #--- Check self type is a class
-#    var isReferenceClass = false
-#    if let classType = [[selfType definition].typeKind getClassType] then
-#      isReferenceClass = classType.isReference
-#      selfObjectNameString = "<< this >>"
-#      selfObjectAccessorString = ""
-#    else
-#      selfObjectNameString = "result"
-#      selfObjectAccessorString = "result."
-#    end
-#  #--- Analyze instruction list
-#    let analysisContextNew = @analysisContext {
-#      !inSemanticContext
-#      !inPredefinedTypes
-#      !selfObjectCppName: selfObjectNameString
-#      !selfAvailability: .available {!type: selfType !selfMutability: .initializer}
-#      !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
-#      !requiresSelfForAccessingProperty: true
-#    }
-#    analyzeInitializerBody (
-#      !nameForUsefulness
-#      !?ioUsefulEntitiesGraph
-#      !analysisContextNew
-#      !?ioTypeMap
-#      !self.mFormalParameterList
-#      !self.mInstructionList
-#      !self.mEndOfInitializerLocation
-#      ?let semanticInstructionListForGeneration
-#      ?let formalParameterListForGeneration
-#    )
-#  #---
-#    let initializerName = [self.mFormalParameterList initializerSignature]
-#    ioSemanticDeclarationListForGeneration +=
-#      !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
-#      !@extensionInitializerForGeneration {
-#        !generateHeader: false # Generate Cpp header file
-#        !implementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
-#        !selfType
-#        !initializerName
-#        !formalParameterListForGeneration
-#        ![selfType definition].allTypedPropertyList
-#        !semanticInstructionListForGeneration
-#      }
   }
 
   #·······························································································

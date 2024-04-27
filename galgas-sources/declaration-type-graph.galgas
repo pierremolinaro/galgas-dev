@@ -531,7 +531,7 @@ override method @graphDeclarationAST semanticAnalysis
   let graphTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mGraphTypeName]
   let associatedListTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
   let associatedListElementTypeEntry = [ioTypeMap typeMapEntryForLKey
-    !@lstring {!self.mAssociatedListTypeName.string +elementTypeNameSuffix () !self.mAssociatedListTypeName.location}
+    !makeEmbeddedElementTypeLName (!self.mAssociatedListTypeName)
   ]
   if [associatedListTypeEntry definition].typeKind != .listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"

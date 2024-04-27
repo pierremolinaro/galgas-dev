@@ -185,7 +185,10 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
-        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+        let associatedTypeName = @lstring (
+          makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name),
+          constant.name
+        )
         var @propertyInCollectionListAST propertyListAST = ()
         for (typeName propertyName) in constant.associatedValueTypeList do
           propertyListAST +=
@@ -311,11 +314,8 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
-        let associatedTypeName = @lstring (
-          self.enumTypeName.string + "-" + constant.name,
-          self.enumTypeName
-        )
-        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
+        let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
+        let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
         enterBaseGetterWithoutArgument (
           !?getterMap
           !?ioTypeMap
@@ -422,9 +422,9 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     var constantMap = @constantIndexMap ()
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
-        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
-        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
-        let associatedType = [ioTypeMap typeMapEntryForLKey !optionalTypeName]
+        let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
+        let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
+        let associatedType = [ioTypeMap typeMapEntryForLKey !.init (optionalTypeName, constant.name)]
         [!?associatedValuesTypes append !associatedType]    
       end
       constantList += !constant.name.string

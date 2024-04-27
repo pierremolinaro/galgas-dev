@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-class cNode_%!TYPE_IDENTIFIER% : public GALGAS_%!TYPE_IDENTIFIER%_2D_element {
+class cNode_%!TYPE_IDENTIFIER% : public GALGAS_%!ELEMENT_TYPE_IDENTIFIER% {
   public: cNode_%!TYPE_IDENTIFIER% * mInfPtr ;
   public: cNode_%!TYPE_IDENTIFIER% * mSupPtr ;
   public: int32_t mBalance ;
@@ -10,7 +10,7 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST
   do %,\n%!^%const GALGAS_%![propertyTypeEntry identifierRepresentation]% & inProperty_%![propertyName identifierRepresentation]
 end
 %) :
-  GALGAS_%!TYPE_IDENTIFIER%_2D_element (in_key%
+  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% (in_key%
 for (* propertyName 3*) in CURRENT_PROPERTY_LIST
   do %, inProperty_%![propertyName identifierRepresentation]
 end
@@ -59,7 +59,7 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% : public SharedObject {
   protected: VIRTUAL_IN_DEBUG void copyFrom (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inSource) ;
 
 //--------------------------------- Insert
-  protected: VIRTUAL_IN_DEBUG void performInsert (const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode,
+  protected: VIRTUAL_IN_DEBUG void performInsert (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inNewNode,
                                                   const bool inEntryOverrideAllowed) {
     macroUniqueSharedObject (this) ;
     bool extension = false ;
@@ -111,7 +111,7 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% : public SharedObject {
   }
 
   protected: static void recursiveAddEntry (cNode_%!TYPE_IDENTIFIER% * & ioRootPtr,
-                                            const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode,
+                                            const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inNewNode,
                                             bool & outEntryAlreadyPresent,
                                             bool & ioExtension,
                                             const bool inEntryOverrideAllowed) {
@@ -473,7 +473,7 @@ GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
 cNode_%!TYPE_IDENTIFIER%::cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode) :
-GALGAS_%!TYPE_IDENTIFIER%_2D_element (inNode->mProperty_key%
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% (inNode->mProperty_key%
 for (* propertyName 3*) in CURRENT_PROPERTY_LIST
   do %, inNode->mProperty_%![propertyName identifierRepresentation]
 end
@@ -526,7 +526,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue,
+void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inValue.isValid ()) {
@@ -545,7 +545,7 @@ for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
 end
 %,\n %!^%Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
-%  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
+%  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% newElement (inKey%
 for (5*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
@@ -566,7 +566,7 @@ for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
 end
 %,\n %!^%Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
-%  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
+%  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% newElement (inKey%
 for (5*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
@@ -726,10 +726,10 @@ ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_I
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
-  public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mElement ;
+  public: GALGAS_%!ELEMENT_TYPE_IDENTIFIER% mElement ;
 
 //--- Constructor
-  public: cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inElement) :
+  public: cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inElement) :
   cCollectionElement (HERE),
   mElement (inElement) {
   }
@@ -806,10 +806,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
   macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-  return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mElement) ;
+  return GALGAS_%!ELEMENT_TYPE_IDENTIFIER% (p->mElement) ;
 }
 
 //--------------------------------------------------------------------------------------------------

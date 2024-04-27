@@ -113,6 +113,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/declaration-predefined-type-uint64.galgas"
 
 #--- Type declaration
+  "galgas-sources/declaration-type-alias-and-type-declaration.galgas"
   "galgas-sources/declaration-type-array.galgas"
   "galgas-sources/declaration-type-boolset.galgas"
   "galgas-sources/declaration-type-class.galgas"
@@ -126,7 +127,6 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/declaration-type-optional.galgas"
   "galgas-sources/declaration-type-sorted-list.galgas"
   "galgas-sources/declaration-type-struct.galgas"
-  "galgas-sources/declaration-type-alias-and-type-declaration.galgas"
 
 #--- Extensions
   "galgas-sources/extension-abstract-getter.galgas"

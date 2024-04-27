@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue
+cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
       %!^%COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE)%
 for (* mPropertyName * * *) in ATTRIBUTE_LIST
@@ -149,7 +149,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%C
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue,
+void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) {
   cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;
@@ -356,10 +356,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
-  return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mProperty_lkey%
+  return GALGAS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
   %, p->mProperty_%![mPropertyName identifierRepresentation]
 end

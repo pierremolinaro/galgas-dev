@@ -17,13 +17,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func optionalTypeName ?forTypeNamed: let @lstring inTypeName -> @lstring {
-  result = inTypeName
-  result.string += "?"
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring optionalTypeName %initArgLabel
   private let @lstring unwrappedTypeName %initArgLabel

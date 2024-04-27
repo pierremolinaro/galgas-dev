@@ -141,7 +141,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST
       !hasSelector: hasSelector
       !initialization: .none
   end
-  let elementTypeName = @lstring (self.mDictTypeName.string + elementTypeNameSuffix (), self.mDictTypeName)
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
   ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
     !elementTypeName
@@ -357,7 +357,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  let elementTypeName = @lstring (self.mDictTypeName.string + elementTypeNameSuffix (), self.mDictTypeName)
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
   [!?ioTypeMap makeEntry
     !elementTypeName
     ?let @unifiedTypeMapEntry elementTypeEntry
@@ -375,7 +375,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     !acceptComparable: false
   )
 #--- Optional Element type index
-  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   [!?ioTypeMap makeEntry
     !optionalElementTypeName
     ?let @unifiedTypeMapEntry optionalElementTypeEntry
@@ -483,7 +483,7 @@ override method @dictDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mDictTypeName.string + "-element" !self.mDictTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mDictTypeName))
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = ()
@@ -510,15 +510,15 @@ override method @dictDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Optional Element type index
-  let elementTypeName = @lstring (self.mDictTypeName.string + elementTypeNameSuffix (), self.mDictTypeName)
-  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
+  let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "dict " + self.mDictTypeName
     !@dictTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName]
-      ![ioTypeMap typeMapEntryForLKey !@lstring {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !elementTypeName]
       !self.mDictTypeName
       !typedAttributeList
       !self.mKeyTypeName

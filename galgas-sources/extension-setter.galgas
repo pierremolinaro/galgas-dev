@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $.$
       $@type$ ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
@@ -70,7 +70,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
@@ -108,7 +108,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       <simple_type_definition> !?ioDeclarations ?let t
-      typeName = .init (typeName.string + "-" + t.string, [typeName.location union !t.location])
+      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
       $.$
     end
     $identifier$ ?let @lstring setterName indexing extensionSetterDefinition

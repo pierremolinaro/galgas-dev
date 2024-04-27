@@ -322,7 +322,6 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
   #--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.arrayTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#    let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.arrayTypeName.string + "-element" !self.arrayTypeName})
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.elementTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
     if self.isUsefull then

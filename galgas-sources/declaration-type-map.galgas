@@ -292,7 +292,7 @@ override method @mapDeclarationAST addAssociatedElement
       !hasSelector: hasSelector
       !initialization: initExpression
   end
-  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
   ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
     !elementTypeName
@@ -615,13 +615,13 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !acceptSetters: true
   )
 #--- Element type index
-  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
   [!?ioTypeMap makeEntry
     !elementTypeName
     ?let @unifiedTypeMapEntry elementTypeEntry
   ]
 #--- Optional Element type index
-  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   [!?ioTypeMap makeEntry
     !optionalElementTypeName
     ?let @unifiedTypeMapEntry optionalElementTypeEntry
@@ -693,7 +693,7 @@ override method @mapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mMapTypeName.string + "-element" !self.mMapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mMapTypeName))
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter property
   var @typedPropertyList typedAttributeList = ()
@@ -750,9 +750,9 @@ override method @mapDeclarationAST semanticAnalysis
       : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end
 #--- Optional Element type index
-  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
   let elementTypeEntry = [ioTypeMap typeMapEntryForLKey !elementTypeName]
-  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
@@ -831,6 +831,7 @@ override method @mapTypeForGeneration appendDeclaration2
     ![self.mSelfTypeEntry  identifierRepresentation]
     !self.mTypedAttributeList
     ![selfTypeDefinition.features generateCppObjectComparison]
+    ![self.mElementTypeEntry identifierRepresentation]
   ]
 }
 
@@ -875,6 +876,7 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
     ?@bool GENERATE_COMPARISON
+    ?@string ELEMENT_TYPE_IDENTIFIER
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER

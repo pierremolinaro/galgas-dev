@@ -179,7 +179,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry !self.mListTypeName ?let listTypeIndex]
 #--- Element type index
   [!?ioTypeMap makeEntry
-    !@lstring {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
+    !makeEmbeddedElementTypeLName (!self.mListTypeName)
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Property description
@@ -437,7 +437,7 @@ override method @listDeclarationAST addAssociatedElement
   end
   ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !.init {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}
+    !makeEmbeddedElementTypeLName (!self.mListTypeName)
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
@@ -462,7 +462,7 @@ override method @listDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mListTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mListTypeName.string + "-element" !self.mListTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mListTypeName))
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
   if self.usefullList then
     ioUsefulnessRootEntities += !nameForUsefulness
@@ -491,7 +491,7 @@ override method @listDeclarationAST semanticAnalysis
     !infoMessage: "list type " + self.mListTypeName
     !@listTypeForGeneration {
       !selfType
-      ![ioTypeMap typeMapEntryForLKey !.init {!self.mListTypeName.string + elementTypeNameSuffix () !self.mListTypeName.location}]
+      ![ioTypeMap typeMapEntryForLKey !makeEmbeddedElementTypeLName (!self.mListTypeName)]
       !typedAttributeList
     }
 }

@@ -136,8 +136,7 @@ syntax extension galgas4ExpressionSyntax {
                                           !@semanticExpressionAST outExpression {
   #--- Type name
     <simple_type_definition> !?ioDeclarations ?let t
-    let typeName = @lstring (inTypeName.string + "-" + t.string,
-                             [inTypeName.location union !t])
+    let typeName = makeEmbeddedTypeLName (!outer: inTypeName !inner: t)
     select
       <primary_beginning_by_type> !typeName !?ioDeclarations ?outExpression
     or

@@ -19,6 +19,48 @@
 #   SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
+                          ?inner: let @lstring inInnerTypeName -> @lstring {
+  result = .init (makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
+                  [inOuterTypeName.location union !inInnerTypeName])
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeEmbeddedTypeName ?outer: let @string inOuterTypeName
+                          ?inner: let @string inInnerTypeName -> @string {
+  result = inOuterTypeName + "-" + inInnerTypeName
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeOptionalTypeName ?forTypeNamed: let @string inTypeName -> @string {
+  result = inTypeName + "?"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeOptionalTypeLName ?forTypeNamed: let @lstring inTypeName -> @lstring {
+  result = inTypeName
+  result.string += "?"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeEmbeddedElementTypeName ?let @string inTypeName -> @string {
+  result = makeEmbeddedTypeName (!outer: inTypeName !inner: "element")
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
+  result = .init (makeEmbeddedElementTypeName (!inTypeName), inTypeName)
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 syntax extension galgas3DeclarationsSyntax {
 
   #·······························································································
@@ -46,8 +88,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $.$
       $@type$ ?let typeName
-      outTypeName = .init (outTypeName.string + "-" + typeName.string,
-                           [outTypeName.location union !typeName])
+      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName !inner: typeName)
     end
   }
 
@@ -133,8 +174,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $.$
       <simple_type_definition> !?ioDeclarations ?let typeName
-      outTypeName = .init (outTypeName.string + "-" + typeName.string,
-                           [outTypeName.location union !typeName])
+      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName !inner: typeName)
     while
       $<$
       repeat

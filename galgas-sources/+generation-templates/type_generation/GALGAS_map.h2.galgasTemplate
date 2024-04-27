@@ -12,7 +12,7 @@ class cMapElement_%!TYPE_IDENTIFIER% : public cMapElement {
     end
 %
 //--- Constructors
-  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inValue
+  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
              %!^%COMMA_LOCATION_ARGS) ;
  
   public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%

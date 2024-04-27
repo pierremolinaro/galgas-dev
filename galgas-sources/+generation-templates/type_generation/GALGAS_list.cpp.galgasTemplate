@@ -5,7 +5,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
-  public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
+  public: GALGAS_%!ELEMENT_TYPE_IDENTIFIER% mObject ;
 
 //--- Class functions
   public: cCollectionElement_%!TYPE_IDENTIFIER% (%?^
@@ -501,7 +501,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
   return p->mObject ;

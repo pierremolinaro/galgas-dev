@@ -5,7 +5,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
-  public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
+  public: GALGAS_%!ELEMENT_TYPE_IDENTIFIER% mObject ;
 
 //--- Constructors
   public: cSortedListElement_%!TYPE_IDENTIFIER% (%?^
@@ -16,7 +16,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
 
-  public: cSortedListElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inObject
+  public: cSortedListElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject
         %!^%COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
@@ -56,7 +56,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 cSortedListElement_%!TYPE_IDENTIFIER%::
-cSortedListElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inObject
+cSortedListElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject
                %!^%COMMA_LOCATION_ARGS) :
 cSortedListElement (THERE),
 mObject (inObject) {
@@ -346,7 +346,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
   return p->mObject ;

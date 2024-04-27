@@ -78,31 +78,3 @@ class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabel
                                                                                      class Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'grammarRulesInTexDocumentTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'grammarRulesInTexDocumentTemplate document'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class Compiler * inCompiler,
-                                                                              const class GALGAS_string & in_DOCUMENT_5F_NAME,
-                                                                              const class GALGAS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-

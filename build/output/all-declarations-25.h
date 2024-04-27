@@ -833,6 +833,47 @@ void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GALGAS_s
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'makeEmbeddedTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_makeEmbeddedTypeName (const class GALGAS_string & constinArgument0,
+                                                   const class GALGAS_string & constinArgument1,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'makeOptionalTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_makeOptionalTypeName (const class GALGAS_string & constinArgument0,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'makeEmbeddedElementTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_makeEmbeddedElementTypeName (const class GALGAS_string & constinArgument0,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'makeEmbeddedElementTypeLName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_makeEmbeddedElementTypeLName (const class GALGAS_lstring & constinArgument0,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'handleEquatableComparableExtension&?&?acceptEquatable?acceptComparable'
 //
 //--------------------------------------------------------------------------------------------------

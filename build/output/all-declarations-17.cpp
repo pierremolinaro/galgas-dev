@@ -12215,7 +12215,7 @@ void extensionSetter_getOptionalTypeName (GALGAS_galgasDeclarationAST & ioObject
                                           Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outOptionalTypeName.drop () ; // Release 'out' argument
-  outArgument_outOptionalTypeName = function_optionalTypeName (inArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 512)) ;
+  outArgument_outOptionalTypeName = function_makeOptionalTypeLName (inArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 512)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GALGAS_galgasDeclarationAST temp_1 = ioObject ;

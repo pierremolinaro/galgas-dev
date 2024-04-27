@@ -553,12 +553,6 @@ proc addExtensions
 #! enterInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-func %once elementTypeNameSuffix -> @string {
-  result = "-element"
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 map @wrapperExtensionMap {
   insert insertKey error message "the '%K' extension has been already declared"
 }

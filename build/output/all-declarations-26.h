@@ -334,15 +334,6 @@ void routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_obsole
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'elementTypeNameSuffix'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_string function_elementTypeNameSuffix (class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'check_K_L_escapeCharacters?'
 //
 //--------------------------------------------------------------------------------------------------
@@ -515,7 +506,8 @@ GALGAS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_32_ (class
                                                                            const class GALGAS_string & in_TYPE_5F_NAME,
                                                                            const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                            const class GALGAS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                           const class GALGAS_bool & in_GENERATE_5F_COMPARISON
+                                                                           const class GALGAS_bool & in_GENERATE_5F_COMPARISON,
+                                                                           const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

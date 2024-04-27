@@ -189,7 +189,7 @@ override method @sortedListDeclarationAST addAssociatedElement
   end
   ioDeclarations.mDeclarationList += !@structDeclarationAST {
     !isPredefined: self.isPredefined
-    !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
+    !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
@@ -212,7 +212,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
   [!?ioTypeMap makeEntry
-    !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
+    !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 #--- Enumeration description
@@ -383,7 +383,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
   [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mSortedListTypeName.string + "-element" !self.mSortedListTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mSortedListTypeName))
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
 #--- Attribute
   var typedAttributeList = @typedPropertyList ()
@@ -420,7 +420,7 @@ override method @sortedListDeclarationAST semanticAnalysis
     !infoMessage: "sorted list " + self.mSortedListTypeName
     !@sortedListTypeForGeneration {
       ![ioTypeMap typeMapEntryForLKey !self.mSortedListTypeName]
-      ![ioTypeMap typeMapEntryForLKey !.init {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
+      ![ioTypeMap typeMapEntryForLKey !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)]
       !typedAttributeList
       !sortDescriptorList
     }
@@ -442,24 +442,6 @@ refclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
   private let @typedPropertyList mTypedAttributeList
   private let @sortDescriptorListForGeneration mSortDescriptorList
-}
-
-#·······················································································································
-
-filewrapper sortedListGenerationTemplate in "+generation-templates/type_generation" {
-}{
-}{
-  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-
-  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
-    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
-    ?@string ELEMENT_TYPE_IDENTIFIER
-    ?@bool GENERATE_COMPARISON
 }
 
 #·······················································································································
@@ -512,6 +494,24 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
     ![t.features generateCppObjectComparison]
   ]
  }
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper sortedListGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+
+  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
+}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

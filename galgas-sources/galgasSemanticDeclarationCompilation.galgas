@@ -121,7 +121,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
                                         !@semanticContext outSemanticContext
                                         !@unifiedTypeMap outTypeMap
                                         !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
-#------ Create associated type (@TYPE-element) for lists, maps, ...
+#------ Create associated types for lists, maps, ...
   var @galgasDeclarationAST semanticDeclarations = inDeclarations
   for declaration in inDeclarations.mDeclarationList do
     [declaration.mSemanticDeclaration addAssociatedElement !?semanticDeclarations]
