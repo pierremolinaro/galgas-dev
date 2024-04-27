@@ -16,10 +16,6 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-func weakSuffix -> @string { result = "-weak" }
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -92,10 +88,10 @@ syntax extension galgas3DeclarationsSyntax {
       ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
         !isPredefined: false # Is not predefined
         !className
-        !.init {!className.string + weakSuffix () !className.location}
+        !makeWeakTypeLName (!className)
         !if superClassName.string == ""
            then superClassName
-           else .init {!superClassName.string + "-weak" !superClassName.location}
+           else makeWeakTypeLName (!superClassName)
          end
         !generateInSeparateFile
         !propertyList
@@ -168,10 +164,10 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
       !isPredefined: false # Is not predefined
       !className
-      !.init {!className.string + weakSuffix () !className.location}
+      !makeWeakTypeLName (!className)
       !if superClassName.string == ""
          then superClassName
-         else .init {!superClassName.string + "-weak" !superClassName.location}
+         else makeWeakTypeLName (!superClassName)
        end
       !generateInSeparateFile
       !propertyList
@@ -476,7 +472,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
     end
     if self.mIsReference then
-      let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init {!self.mClassTypeName.string + weakSuffix () !self.mClassTypeName})
+      let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
     end
   #------ Self type

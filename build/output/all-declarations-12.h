@@ -1881,12 +1881,13 @@ class GALGAS_lstring function_makeEmbeddedTypeLName (const class GALGAS_lstring 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'weakSuffix'
+//Function 'makeWeakTypeLName'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_string function_weakSuffix (class Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+class GALGAS_lstring function_makeWeakTypeLName (const class GALGAS_lstring & constinArgument0,
+                                                 class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

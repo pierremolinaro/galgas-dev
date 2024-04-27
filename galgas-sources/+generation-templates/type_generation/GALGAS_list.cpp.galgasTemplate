@@ -242,26 +242,18 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
    %const GALGAS_uint inInsertionIndex,\n%!^
    %Compiler * inCompiler\n%!^
    %COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid ()%
-  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
-  do (IDX) % && inOperand%![IDX string]%.isValid ()%
-  end
-  %) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
       for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST
       do (IDX) %inOperand%![IDX string]
       between %, %
       end
       % COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -274,37 +266,26 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
    %const GALGAS_uint inRemoveIndex,\n%!^
    %Compiler * inCompiler\n%!^
    %COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-      if (nullptr == p) {
 %
  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
-    %        outOperand%![IDX string] %.drop () ;\n%
+    %  outOperand%![IDX string] %.drop () ;\n%
   end
-%        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-%
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
-    %        outOperand%![IDX string] % = p->mObject.mProperty_%![propertyName identifierRepresentation]% ;\n%
-  end
-%      }
+%  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
+      macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
-    %      outOperand%![IDX string] %.drop () ;\n%
+    %      outOperand%![IDX string] % = p->mObject.mProperty_%![propertyName identifierRepresentation]% ;\n%
   end
-%      drop () ;    
-    }
+%    }
   }else{
-%
- for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
-    %    outOperand%![IDX string] %.drop () ;\n%
-  end
-%  }
+    drop () ;    
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

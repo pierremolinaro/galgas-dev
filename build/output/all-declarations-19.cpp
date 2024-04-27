@@ -12985,7 +12985,7 @@ GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGramma
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis_2D_weak & inOperand) const {
+ComparisonResult GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13005,13 +13005,13 @@ ComparisonResult GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::objectCom
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::GALGAS_terminalInstructionForGrammarAnalysis_2D_weak (void) :
-GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak () {
+GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::GALGAS_terminalInstructionForGrammarAnalysis_2E_weak (void) :
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis_2D_weak & GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::operator = (const GALGAS_terminalInstructionForGrammarAnalysis & inSource) {
+GALGAS_terminalInstructionForGrammarAnalysis_2E_weak & GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::operator = (const GALGAS_terminalInstructionForGrammarAnalysis & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13023,21 +13023,21 @@ GALGAS_terminalInstructionForGrammarAnalysis_2D_weak & GALGAS_terminalInstructio
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::GALGAS_terminalInstructionForGrammarAnalysis_2D_weak (const GALGAS_terminalInstructionForGrammarAnalysis & inSource) :
-GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak (inSource) {
+GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::GALGAS_terminalInstructionForGrammarAnalysis_2E_weak (const GALGAS_terminalInstructionForGrammarAnalysis & inSource) :
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis_2D_weak GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_terminalInstructionForGrammarAnalysis_2D_weak result ;
+GALGAS_terminalInstructionForGrammarAnalysis_2E_weak GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_terminalInstructionForGrammarAnalysis_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::bang_terminalInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::bang_terminalInstructionForGrammarAnalysis_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_terminalInstructionForGrammarAnalysis result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13053,41 +13053,41 @@ GALGAS_terminalInstructionForGrammarAnalysis GALGAS_terminalInstructionForGramma
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @terminalInstructionForGrammarAnalysis-weak generic code implementation
+//     @terminalInstructionForGrammarAnalysis.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2D_weak ("terminalInstructionForGrammarAnalysis-weak",
-                                                                                                     & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2E_weak ("terminalInstructionForGrammarAnalysis.weak",
+                                                                                                     & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_terminalInstructionForGrammarAnalysis_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_terminalInstructionForGrammarAnalysis_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalInstructionForGrammarAnalysis_2D_weak GALGAS_terminalInstructionForGrammarAnalysis_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_terminalInstructionForGrammarAnalysis_2E_weak GALGAS_terminalInstructionForGrammarAnalysis_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                           Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_terminalInstructionForGrammarAnalysis_2D_weak result ;
-  const GALGAS_terminalInstructionForGrammarAnalysis_2D_weak * p = (const GALGAS_terminalInstructionForGrammarAnalysis_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_terminalInstructionForGrammarAnalysis_2E_weak result ;
+  const GALGAS_terminalInstructionForGrammarAnalysis_2E_weak * p = (const GALGAS_terminalInstructionForGrammarAnalysis_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_terminalInstructionForGrammarAnalysis_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_terminalInstructionForGrammarAnalysis_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("terminalInstructionForGrammarAnalysis-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("terminalInstructionForGrammarAnalysis.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

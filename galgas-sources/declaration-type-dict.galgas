@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
   #--- Dict type name
-    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition ".element"
     let @bool equatable
     select
       equatable = false
@@ -85,7 +85,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $dict$
   #--- Dict type name
-    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition ".element"
     let @bool equatable
     select
       equatable = false

@@ -10,11 +10,11 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@productionRuleListForGrammarAnalysis-element displayRuleVertically'
+//Extension method '@productionRuleListForGrammarAnalysis.element displayRuleVertically'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_displayRuleVertically (const class GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
+void extensionMethod_displayRuleVertically (const class GALGAS_productionRuleListForGrammarAnalysis_2E_element inObject,
                                             const class GALGAS_string constin_inSyntaxComponentName,
                                             class GALGAS_string & io_ioGeneratedCode,
                                             class Compiler * inCompiler

@@ -1,4 +1,6 @@
 //--------------------------------------------------------------------------------------------------
+//  Enum %!TYPE_NAME%
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %
@@ -27,7 +29,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   %  result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
   if [mAssociatedValueTypeList count] > 0 then
     %  AC_GALGAS_root * p = nullptr ;\n%
-    %  macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% (%
+    %  macroMyNew (p, GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% (%
     for (mType *) in mAssociatedValueTypeList
     do (idx) %inAssociatedValue%![idx string]
     between %, %
@@ -59,7 +61,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %    s.appendCString ("method @%!TYPE_IDENTIFIER%.%!mConstantName% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
-    %    const auto ptr = (GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%    
+    %    const auto ptr = (GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%    
     for (mType name) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue_%!name% = ptr->mProperty_%![name identifierRepresentation]% ;\n%
     end
@@ -71,11 +73,11 @@ end
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------\n\n%
   if [mAssociatedValueTypeList count] > 0 then
-    %GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ GALGAS_%!TYPE_IDENTIFIER%::getter_get%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]%_3F_ result ;\n%
+    %GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]%_3F_ GALGAS_%!TYPE_IDENTIFIER%::getter_get%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]%_3F_ result ;\n%
     %  if (mEnum == Enumeration::enum_%![mConstantName identifierRepresentation]%) {\n%
-    %    const auto ptr = (const GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
-    %    result = GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% (*ptr) ;\n%
+    %    const auto ptr = (const GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+    %    result = GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% (*ptr) ;\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
@@ -86,7 +88,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     between %,\n%!^
     end
     %) const {\n%
-    %  const auto ptr = (const GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+    %  const auto ptr = (const GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
     for (* value) in mAssociatedValueTypeList do
        %  out_%!value% = ptr->mProperty_%![value identifierRepresentation]% ;\n%
     end
@@ -149,8 +151,8 @@ if HAS_ASSOCIATED_VALUES then
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
 %      case Enumeration::enum_%![mConstantName identifierRepresentation]%: {\n%
-%        const auto left = (GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
-%        const auto right = (GALGAS_%!TYPE_IDENTIFIER%_2D_%![mConstantName identifierRepresentation]% *) inOperand.mAssociatedValues.associatedValuesPointer () ;\n%
+%        const auto left = (GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+%        const auto right = (GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) inOperand.mAssociatedValues.associatedValuesPointer () ;\n%
 %        result = left->objectCompare (*right) ;\n%
 %        }break ;\n%
   end

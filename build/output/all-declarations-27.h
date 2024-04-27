@@ -776,3 +776,12 @@ class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class G
 class GALGAS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'syntaxDirectedTranslationResultVarName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+

@@ -121,7 +121,7 @@ void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GA
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GALGAS_galgasGUIComponentListAST_2D_element constinArgument0,
+void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GALGAS_galgasGUIComponentListAST_2E_element constinArgument0,
                                                        const class GALGAS_semanticContext constinArgument1,
                                                        class GALGAS_optionComponentMapForGeneration & ioArgument2,
                                                        class Compiler * inCompiler
@@ -871,6 +871,16 @@ class GALGAS_string function_makeEmbeddedElementTypeName (const class GALGAS_str
 class GALGAS_lstring function_makeEmbeddedElementTypeLName (const class GALGAS_lstring & constinArgument0,
                                                             class Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'makeWeakTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_makeWeakTypeName (const class GALGAS_string & constinArgument0,
+                                               class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -179,21 +179,21 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @extensionGetterForGeneration_2D_weak weak reference class
+// Phase 1: @extensionGetterForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_extensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_extensionGetterForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_extensionGetterForGeneration_2D_weak (void) ;
+  public: GALGAS_extensionGetterForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_extensionGetterForGeneration_2D_weak (const class GALGAS_extensionGetterForGeneration & inSource) ;
+  public: GALGAS_extensionGetterForGeneration_2E_weak (const class GALGAS_extensionGetterForGeneration & inSource) ;
 
-  public: GALGAS_extensionGetterForGeneration_2D_weak & operator = (const class GALGAS_extensionGetterForGeneration & inSource) ;
+  public: GALGAS_extensionGetterForGeneration_2E_weak & operator = (const class GALGAS_extensionGetterForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionGetterForGeneration bang_extensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionGetterForGeneration bang_extensionGetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -203,15 +203,15 @@ class GALGAS_extensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclar
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_extensionGetterForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_extensionGetterForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_extensionGetterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionGetterForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_extensionGetterForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_extensionGetterForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -225,12 +225,12 @@ class GALGAS_extensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_extensionGetterForGeneration_2D_weak class
+} ; // End of GALGAS_extensionGetterForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -389,21 +389,21 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @extensionMethodForGeneration_2D_weak weak reference class
+// Phase 1: @extensionMethodForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_extensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_extensionMethodForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_extensionMethodForGeneration_2D_weak (void) ;
+  public: GALGAS_extensionMethodForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_extensionMethodForGeneration_2D_weak (const class GALGAS_extensionMethodForGeneration & inSource) ;
+  public: GALGAS_extensionMethodForGeneration_2E_weak (const class GALGAS_extensionMethodForGeneration & inSource) ;
 
-  public: GALGAS_extensionMethodForGeneration_2D_weak & operator = (const class GALGAS_extensionMethodForGeneration & inSource) ;
+  public: GALGAS_extensionMethodForGeneration_2E_weak & operator = (const class GALGAS_extensionMethodForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionMethodForGeneration bang_extensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionMethodForGeneration bang_extensionMethodForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -413,15 +413,15 @@ class GALGAS_extensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclar
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_extensionMethodForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_extensionMethodForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_extensionMethodForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionMethodForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_extensionMethodForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_extensionMethodForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -435,12 +435,12 @@ class GALGAS_extensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_extensionMethodForGeneration_2D_weak class
+} ; // End of GALGAS_extensionMethodForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -599,21 +599,21 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @extensionSetterForGeneration_2D_weak weak reference class
+// Phase 1: @extensionSetterForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_extensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_extensionSetterForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_extensionSetterForGeneration_2D_weak (void) ;
+  public: GALGAS_extensionSetterForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_extensionSetterForGeneration_2D_weak (const class GALGAS_extensionSetterForGeneration & inSource) ;
+  public: GALGAS_extensionSetterForGeneration_2E_weak (const class GALGAS_extensionSetterForGeneration & inSource) ;
 
-  public: GALGAS_extensionSetterForGeneration_2D_weak & operator = (const class GALGAS_extensionSetterForGeneration & inSource) ;
+  public: GALGAS_extensionSetterForGeneration_2E_weak & operator = (const class GALGAS_extensionSetterForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionSetterForGeneration bang_extensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionSetterForGeneration bang_extensionSetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -623,15 +623,15 @@ class GALGAS_extensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclar
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_extensionSetterForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_extensionSetterForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_extensionSetterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionSetterForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_extensionSetterForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_extensionSetterForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -645,12 +645,12 @@ class GALGAS_extensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclar
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_extensionSetterForGeneration_2D_weak class
+} ; // End of GALGAS_extensionSetterForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -797,21 +797,21 @@ class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWi
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @extensionInitializerForGeneration_2D_weak weak reference class
+// Phase 1: @extensionInitializerForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_extensionInitializerForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_extensionInitializerForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_extensionInitializerForGeneration_2D_weak (void) ;
+  public: GALGAS_extensionInitializerForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_extensionInitializerForGeneration_2D_weak (const class GALGAS_extensionInitializerForGeneration & inSource) ;
+  public: GALGAS_extensionInitializerForGeneration_2E_weak (const class GALGAS_extensionInitializerForGeneration & inSource) ;
 
-  public: GALGAS_extensionInitializerForGeneration_2D_weak & operator = (const class GALGAS_extensionInitializerForGeneration & inSource) ;
+  public: GALGAS_extensionInitializerForGeneration_2E_weak & operator = (const class GALGAS_extensionInitializerForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_extensionInitializerForGeneration bang_extensionInitializerForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_extensionInitializerForGeneration bang_extensionInitializerForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -821,15 +821,15 @@ class GALGAS_extensionInitializerForGeneration_2D_weak : public GALGAS_semanticD
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_extensionInitializerForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_extensionInitializerForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_extensionInitializerForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_extensionInitializerForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_extensionInitializerForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_extensionInitializerForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -843,12 +843,12 @@ class GALGAS_extensionInitializerForGeneration_2D_weak : public GALGAS_semanticD
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_extensionInitializerForGeneration_2D_weak class
+} ; // End of GALGAS_extensionInitializerForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1016,21 +1016,21 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @overrideExtensionGetterForGeneration_2D_weak weak reference class
+// Phase 1: @overrideExtensionGetterForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_overrideExtensionGetterForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_overrideExtensionGetterForGeneration_2D_weak (void) ;
+  public: GALGAS_overrideExtensionGetterForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_overrideExtensionGetterForGeneration_2D_weak (const class GALGAS_overrideExtensionGetterForGeneration & inSource) ;
+  public: GALGAS_overrideExtensionGetterForGeneration_2E_weak (const class GALGAS_overrideExtensionGetterForGeneration & inSource) ;
 
-  public: GALGAS_overrideExtensionGetterForGeneration_2D_weak & operator = (const class GALGAS_overrideExtensionGetterForGeneration & inSource) ;
+  public: GALGAS_overrideExtensionGetterForGeneration_2E_weak & operator = (const class GALGAS_overrideExtensionGetterForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overrideExtensionGetterForGeneration bang_overrideExtensionGetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overrideExtensionGetterForGeneration bang_overrideExtensionGetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -1040,15 +1040,15 @@ class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semant
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_overrideExtensionGetterForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_overrideExtensionGetterForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_overrideExtensionGetterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_overrideExtensionGetterForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_overrideExtensionGetterForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_overrideExtensionGetterForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1062,12 +1062,12 @@ class GALGAS_overrideExtensionGetterForGeneration_2D_weak : public GALGAS_semant
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_overrideExtensionGetterForGeneration_2D_weak class
+} ; // End of GALGAS_overrideExtensionGetterForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1221,21 +1221,21 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @overridingExtensionMethodForGeneration_2D_weak weak reference class
+// Phase 1: @overridingExtensionMethodForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_overridingExtensionMethodForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_overridingExtensionMethodForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_overridingExtensionMethodForGeneration_2D_weak (void) ;
+  public: GALGAS_overridingExtensionMethodForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_overridingExtensionMethodForGeneration_2D_weak (const class GALGAS_overridingExtensionMethodForGeneration & inSource) ;
+  public: GALGAS_overridingExtensionMethodForGeneration_2E_weak (const class GALGAS_overridingExtensionMethodForGeneration & inSource) ;
 
-  public: GALGAS_overridingExtensionMethodForGeneration_2D_weak & operator = (const class GALGAS_overridingExtensionMethodForGeneration & inSource) ;
+  public: GALGAS_overridingExtensionMethodForGeneration_2E_weak & operator = (const class GALGAS_overridingExtensionMethodForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingExtensionMethodForGeneration bang_overridingExtensionMethodForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingExtensionMethodForGeneration bang_overridingExtensionMethodForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -1245,15 +1245,15 @@ class GALGAS_overridingExtensionMethodForGeneration_2D_weak : public GALGAS_sema
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_overridingExtensionMethodForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_overridingExtensionMethodForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_overridingExtensionMethodForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_overridingExtensionMethodForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionMethodForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionMethodForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1267,12 +1267,12 @@ class GALGAS_overridingExtensionMethodForGeneration_2D_weak : public GALGAS_sema
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_overridingExtensionMethodForGeneration_2D_weak class
+} ; // End of GALGAS_overridingExtensionMethodForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1426,21 +1426,21 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @overridingExtensionSetterForGeneration_2D_weak weak reference class
+// Phase 1: @overridingExtensionSetterForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_overridingExtensionSetterForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_overridingExtensionSetterForGeneration_2D_weak (void) ;
+  public: GALGAS_overridingExtensionSetterForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_overridingExtensionSetterForGeneration_2D_weak (const class GALGAS_overridingExtensionSetterForGeneration & inSource) ;
+  public: GALGAS_overridingExtensionSetterForGeneration_2E_weak (const class GALGAS_overridingExtensionSetterForGeneration & inSource) ;
 
-  public: GALGAS_overridingExtensionSetterForGeneration_2D_weak & operator = (const class GALGAS_overridingExtensionSetterForGeneration & inSource) ;
+  public: GALGAS_overridingExtensionSetterForGeneration_2E_weak & operator = (const class GALGAS_overridingExtensionSetterForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_overridingExtensionSetterForGeneration bang_overridingExtensionSetterForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_overridingExtensionSetterForGeneration bang_overridingExtensionSetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -1450,15 +1450,15 @@ class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_sema
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_overridingExtensionSetterForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_overridingExtensionSetterForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_overridingExtensionSetterForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_overridingExtensionSetterForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionSetterForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_overridingExtensionSetterForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1472,12 +1472,12 @@ class GALGAS_overridingExtensionSetterForGeneration_2D_weak : public GALGAS_sema
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_overridingExtensionSetterForGeneration_2D_weak class
+} ; // End of GALGAS_overridingExtensionSetterForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1982,21 +1982,21 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @routinePrototypeDeclarationForGeneration_2D_weak weak reference class
+// Phase 1: @routinePrototypeDeclarationForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak {
+class GALGAS_routinePrototypeDeclarationForGeneration_2E_weak : public GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (void) ;
+  public: GALGAS_routinePrototypeDeclarationForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
+  public: GALGAS_routinePrototypeDeclarationForGeneration_2E_weak (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
 
-  public: GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & operator = (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
+  public: GALGAS_routinePrototypeDeclarationForGeneration_2E_weak & operator = (const class GALGAS_routinePrototypeDeclarationForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_routinePrototypeDeclarationForGeneration bang_routinePrototypeDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_routinePrototypeDeclarationForGeneration bang_routinePrototypeDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -2006,15 +2006,15 @@ class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_se
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_routinePrototypeDeclarationForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_routinePrototypeDeclarationForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_routinePrototypeDeclarationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2028,12 +2028,12 @@ class GALGAS_routinePrototypeDeclarationForGeneration_2D_weak : public GALGAS_se
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_routinePrototypeDeclarationForGeneration_2D_weak class
+} ; // End of GALGAS_routinePrototypeDeclarationForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDeclarationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2164,21 +2164,21 @@ class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDecl
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @routineImplementationForGeneration_2D_weak weak reference class
+// Phase 1: @routineImplementationForGeneration_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_routineImplementationForGeneration_2D_weak : public GALGAS_routinePrototypeDeclarationForGeneration_2D_weak {
+class GALGAS_routineImplementationForGeneration_2E_weak : public GALGAS_routinePrototypeDeclarationForGeneration_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_routineImplementationForGeneration_2D_weak (void) ;
+  public: GALGAS_routineImplementationForGeneration_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_routineImplementationForGeneration_2D_weak (const class GALGAS_routineImplementationForGeneration & inSource) ;
+  public: GALGAS_routineImplementationForGeneration_2E_weak (const class GALGAS_routineImplementationForGeneration & inSource) ;
 
-  public: GALGAS_routineImplementationForGeneration_2D_weak & operator = (const class GALGAS_routineImplementationForGeneration & inSource) ;
+  public: GALGAS_routineImplementationForGeneration_2E_weak & operator = (const class GALGAS_routineImplementationForGeneration & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_routineImplementationForGeneration bang_routineImplementationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_routineImplementationForGeneration bang_routineImplementationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -2188,15 +2188,15 @@ class GALGAS_routineImplementationForGeneration_2D_weak : public GALGAS_routineP
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_routineImplementationForGeneration_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_routineImplementationForGeneration_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_routineImplementationForGeneration_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_routineImplementationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_routineImplementationForGeneration_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_routineImplementationForGeneration_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2210,12 +2210,12 @@ class GALGAS_routineImplementationForGeneration_2D_weak : public GALGAS_routineP
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_routineImplementationForGeneration_2D_weak class
+} ; // End of GALGAS_routineImplementationForGeneration_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementationForGeneration_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //

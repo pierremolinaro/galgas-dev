@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $list$
-    $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition ".element"
     var isUsefull = false
     var isEquatable = false
     repeat
@@ -86,7 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $list$
-    $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition "-element"
+    $@type$ ?let @lstring listTypeName indexing listDefinition, structDefinition ".element"
     var isUsefull = false
     var isEquatable = false
     repeat

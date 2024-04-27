@@ -9,7 +9,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalStringMatchAST_2E_weak::objectCompare (const GALGAS_lexicalStringMatchAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -29,13 +29,13 @@ ComparisonResult GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (void) :
-GALGAS_lexicalExpressionAST_2D_weak () {
+GALGAS_lexicalStringMatchAST_2E_weak::GALGAS_lexicalStringMatchAST_2E_weak (void) :
+GALGAS_lexicalExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::operator = (const GALGAS_lexicalCharacterIntervalMatchAST & inSource) {
+GALGAS_lexicalStringMatchAST_2E_weak & GALGAS_lexicalStringMatchAST_2E_weak::operator = (const GALGAS_lexicalStringMatchAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -47,131 +47,21 @@ GALGAS_lexicalCharacterIntervalMatchAST_2D_weak & GALGAS_lexicalCharacterInterva
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (const GALGAS_lexicalCharacterIntervalMatchAST & inSource) :
-GALGAS_lexicalExpressionAST_2D_weak (inSource) {
+GALGAS_lexicalStringMatchAST_2E_weak::GALGAS_lexicalStringMatchAST_2E_weak (const GALGAS_lexicalStringMatchAST & inSource) :
+GALGAS_lexicalExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalCharacterIntervalMatchAST_2D_weak result ;
+GALGAS_lexicalStringMatchAST_2E_weak GALGAS_lexicalStringMatchAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalStringMatchAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterIntervalMatchAST GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::bang_lexicalCharacterIntervalMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalCharacterIntervalMatchAST result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_lexicalCharacterIntervalMatchAST) ;
-      result = GALGAS_lexicalCharacterIntervalMatchAST ((cPtr_lexicalCharacterIntervalMatchAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @lexicalCharacterIntervalMatchAST-weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST_2D_weak ("lexicalCharacterIntervalMatchAST-weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST_2D_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalCharacterIntervalMatchAST_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalCharacterIntervalMatchAST_2D_weak GALGAS_lexicalCharacterIntervalMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalCharacterIntervalMatchAST_2D_weak result ;
-  const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak * p = (const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterIntervalMatchAST_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalCharacterIntervalMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_lexicalStringMatchAST_2D_weak::objectCompare (const GALGAS_lexicalStringMatchAST_2D_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalStringMatchAST_2D_weak::GALGAS_lexicalStringMatchAST_2D_weak (void) :
-GALGAS_lexicalExpressionAST_2D_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalStringMatchAST_2D_weak & GALGAS_lexicalStringMatchAST_2D_weak::operator = (const GALGAS_lexicalStringMatchAST & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalStringMatchAST_2D_weak::GALGAS_lexicalStringMatchAST_2D_weak (const GALGAS_lexicalStringMatchAST & inSource) :
-GALGAS_lexicalExpressionAST_2D_weak (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalStringMatchAST_2D_weak GALGAS_lexicalStringMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalStringMatchAST_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lexicalStringMatchAST GALGAS_lexicalStringMatchAST_2D_weak::bang_lexicalStringMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalStringMatchAST GALGAS_lexicalStringMatchAST_2E_weak::bang_lexicalStringMatchAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalStringMatchAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -187,41 +77,41 @@ GALGAS_lexicalStringMatchAST GALGAS_lexicalStringMatchAST_2D_weak::bang_lexicalS
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalStringMatchAST-weak generic code implementation
+//     @lexicalStringMatchAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST_2D_weak ("lexicalStringMatchAST-weak",
-                                                                                     & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringMatchAST_2E_weak ("lexicalStringMatchAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_lexicalExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalStringMatchAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStringMatchAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalStringMatchAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStringMatchAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalStringMatchAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalStringMatchAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalStringMatchAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalStringMatchAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringMatchAST_2D_weak GALGAS_lexicalStringMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalStringMatchAST_2E_weak GALGAS_lexicalStringMatchAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalStringMatchAST_2D_weak result ;
-  const GALGAS_lexicalStringMatchAST_2D_weak * p = (const GALGAS_lexicalStringMatchAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalStringMatchAST_2E_weak result ;
+  const GALGAS_lexicalStringMatchAST_2E_weak * p = (const GALGAS_lexicalStringMatchAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalStringMatchAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalStringMatchAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalStringMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalStringMatchAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -229,7 +119,7 @@ GALGAS_lexicalStringMatchAST_2D_weak GALGAS_lexicalStringMatchAST_2D_weak::extra
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalStringNotMatchAST_2D_weak::objectCompare (const GALGAS_lexicalStringNotMatchAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalStringNotMatchAST_2E_weak::objectCompare (const GALGAS_lexicalStringNotMatchAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -249,13 +139,13 @@ ComparisonResult GALGAS_lexicalStringNotMatchAST_2D_weak::objectCompare (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringNotMatchAST_2D_weak::GALGAS_lexicalStringNotMatchAST_2D_weak (void) :
-GALGAS_lexicalExpressionAST_2D_weak () {
+GALGAS_lexicalStringNotMatchAST_2E_weak::GALGAS_lexicalStringNotMatchAST_2E_weak (void) :
+GALGAS_lexicalExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringNotMatchAST_2D_weak & GALGAS_lexicalStringNotMatchAST_2D_weak::operator = (const GALGAS_lexicalStringNotMatchAST & inSource) {
+GALGAS_lexicalStringNotMatchAST_2E_weak & GALGAS_lexicalStringNotMatchAST_2E_weak::operator = (const GALGAS_lexicalStringNotMatchAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -267,21 +157,21 @@ GALGAS_lexicalStringNotMatchAST_2D_weak & GALGAS_lexicalStringNotMatchAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringNotMatchAST_2D_weak::GALGAS_lexicalStringNotMatchAST_2D_weak (const GALGAS_lexicalStringNotMatchAST & inSource) :
-GALGAS_lexicalExpressionAST_2D_weak (inSource) {
+GALGAS_lexicalStringNotMatchAST_2E_weak::GALGAS_lexicalStringNotMatchAST_2E_weak (const GALGAS_lexicalStringNotMatchAST & inSource) :
+GALGAS_lexicalExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringNotMatchAST_2D_weak GALGAS_lexicalStringNotMatchAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalStringNotMatchAST_2D_weak result ;
+GALGAS_lexicalStringNotMatchAST_2E_weak GALGAS_lexicalStringNotMatchAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalStringNotMatchAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringNotMatchAST GALGAS_lexicalStringNotMatchAST_2D_weak::bang_lexicalStringNotMatchAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalStringNotMatchAST GALGAS_lexicalStringNotMatchAST_2E_weak::bang_lexicalStringNotMatchAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalStringNotMatchAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -297,41 +187,41 @@ GALGAS_lexicalStringNotMatchAST GALGAS_lexicalStringNotMatchAST_2D_weak::bang_le
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalStringNotMatchAST-weak generic code implementation
+//     @lexicalStringNotMatchAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST_2D_weak ("lexicalStringNotMatchAST-weak",
-                                                                                        & kTypeDescriptor_GALGAS_lexicalExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST_2E_weak ("lexicalStringNotMatchAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalStringNotMatchAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStringNotMatchAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalStringNotMatchAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStringNotMatchAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalStringNotMatchAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalStringNotMatchAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalStringNotMatchAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalStringNotMatchAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStringNotMatchAST_2D_weak GALGAS_lexicalStringNotMatchAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalStringNotMatchAST_2E_weak GALGAS_lexicalStringNotMatchAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalStringNotMatchAST_2D_weak result ;
-  const GALGAS_lexicalStringNotMatchAST_2D_weak * p = (const GALGAS_lexicalStringNotMatchAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalStringNotMatchAST_2E_weak result ;
+  const GALGAS_lexicalStringNotMatchAST_2E_weak * p = (const GALGAS_lexicalStringNotMatchAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalStringNotMatchAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalStringNotMatchAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalStringNotMatchAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalStringNotMatchAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -344,13 +234,13 @@ GALGAS_lexicalStringNotMatchAST_2D_weak GALGAS_lexicalStringNotMatchAST_2D_weak:
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
-  public: GALGAS_lexicalSendSearchListAST_2D_element mObject ;
+  public: GALGAS_lexicalSendSearchListAST_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalSendSearchListAST (const GALGAS_lstring & in_mAttributeName,
                                                        const GALGAS_lstring & in_mSearchListName
                                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalSendSearchListAST (const GALGAS_lexicalSendSearchListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalSendSearchListAST (const GALGAS_lexicalSendSearchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -375,7 +265,7 @@ mObject (in_mAttributeName, in_mSearchListName) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalSendSearchListAST::cCollectionElement_lexicalSendSearchListAST (const GALGAS_lexicalSendSearchListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalSendSearchListAST::cCollectionElement_lexicalSendSearchListAST (const GALGAS_lexicalSendSearchListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mAttributeName, inElement.mProperty_mSearchListName) {
 }
@@ -433,7 +323,7 @@ GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalSendSearchListAST::enterElement (const GALGAS_lexicalSendSearchListAST_2D_element & inValue,
+void GALGAS_lexicalSendSearchListAST::enterElement (const GALGAS_lexicalSendSearchListAST_2E_element & inValue,
                                                     Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -510,17 +400,13 @@ void GALGAS_lexicalSendSearchListAST::setter_insertAtIndex (const GALGAS_lstring
                                                             const GALGAS_uint inInsertionIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -531,28 +417,21 @@ void GALGAS_lexicalSendSearchListAST::setter_removeAtIndex (GALGAS_lstring & out
                                                             const GALGAS_uint inRemoveIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
-        outOperand0 = p->mObject.mProperty_mAttributeName ;
-        outOperand1 = p->mObject.mProperty_mSearchListName ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+      outOperand0 = p->mObject.mProperty_mAttributeName ;
+      outOperand1 = p->mObject.mProperty_mSearchListName ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
+    drop () ;    
   }
 }
 
@@ -753,7 +632,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendSearchListAST_2D_element cEnumerator_lexicalSendSearchListAST::current (LOCATION_ARGS) const {
+GALGAS_lexicalSendSearchListAST_2E_element cEnumerator_lexicalSendSearchListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
   return p->mObject ;
@@ -920,7 +799,7 @@ GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalSendDefaultActionAST_2D_weak::objectCompare (const GALGAS_lexicalSendDefaultActionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalSendDefaultActionAST_2E_weak::objectCompare (const GALGAS_lexicalSendDefaultActionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -940,13 +819,13 @@ ComparisonResult GALGAS_lexicalSendDefaultActionAST_2D_weak::objectCompare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST_2D_weak::GALGAS_lexicalSendDefaultActionAST_2D_weak (void) :
+GALGAS_lexicalSendDefaultActionAST_2E_weak::GALGAS_lexicalSendDefaultActionAST_2E_weak (void) :
 AC_GALGAS_weak_reference () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST_2D_weak & GALGAS_lexicalSendDefaultActionAST_2D_weak::operator = (const GALGAS_lexicalSendDefaultActionAST & inSource) {
+GALGAS_lexicalSendDefaultActionAST_2E_weak & GALGAS_lexicalSendDefaultActionAST_2E_weak::operator = (const GALGAS_lexicalSendDefaultActionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -958,21 +837,21 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak & GALGAS_lexicalSendDefaultActionAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST_2D_weak::GALGAS_lexicalSendDefaultActionAST_2D_weak (const GALGAS_lexicalSendDefaultActionAST & inSource) :
+GALGAS_lexicalSendDefaultActionAST_2E_weak::GALGAS_lexicalSendDefaultActionAST_2E_weak (const GALGAS_lexicalSendDefaultActionAST & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalSendDefaultActionAST_2D_weak result ;
+GALGAS_lexicalSendDefaultActionAST_2E_weak GALGAS_lexicalSendDefaultActionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalSendDefaultActionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST_2D_weak::bang_lexicalSendDefaultActionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST_2E_weak::bang_lexicalSendDefaultActionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSendDefaultActionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -988,41 +867,41 @@ GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST_2D_weak::b
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalSendDefaultActionAST-weak generic code implementation
+//     @lexicalSendDefaultActionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak ("lexicalSendDefaultActionAST-weak",
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2E_weak ("lexicalSendDefaultActionAST.weak",
                                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalSendDefaultActionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalSendDefaultActionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalSendDefaultActionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalSendDefaultActionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalSendDefaultActionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalSendDefaultActionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalSendDefaultActionAST_2E_weak GALGAS_lexicalSendDefaultActionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalSendDefaultActionAST_2D_weak result ;
-  const GALGAS_lexicalSendDefaultActionAST_2D_weak * p = (const GALGAS_lexicalSendDefaultActionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalSendDefaultActionAST_2E_weak result ;
+  const GALGAS_lexicalSendDefaultActionAST_2E_weak * p = (const GALGAS_lexicalSendDefaultActionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalSendDefaultActionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalSendDefaultActionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalSendDefaultActionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalSendDefaultActionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -1030,7 +909,7 @@ GALGAS_lexicalSendDefaultActionAST_2D_weak GALGAS_lexicalSendDefaultActionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -1050,13 +929,13 @@ ComparisonResult GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::GALGAS_lexicalSendTerminalByDefaultAST_2D_weak (void) :
-GALGAS_lexicalSendDefaultActionAST_2D_weak () {
+GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::GALGAS_lexicalSendTerminalByDefaultAST_2E_weak (void) :
+GALGAS_lexicalSendDefaultActionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::operator = (const GALGAS_lexicalSendTerminalByDefaultAST & inSource) {
+GALGAS_lexicalSendTerminalByDefaultAST_2E_weak & GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::operator = (const GALGAS_lexicalSendTerminalByDefaultAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -1068,21 +947,21 @@ GALGAS_lexicalSendTerminalByDefaultAST_2D_weak & GALGAS_lexicalSendTerminalByDef
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::GALGAS_lexicalSendTerminalByDefaultAST_2D_weak (const GALGAS_lexicalSendTerminalByDefaultAST & inSource) :
-GALGAS_lexicalSendDefaultActionAST_2D_weak (inSource) {
+GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::GALGAS_lexicalSendTerminalByDefaultAST_2E_weak (const GALGAS_lexicalSendTerminalByDefaultAST & inSource) :
+GALGAS_lexicalSendDefaultActionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendTerminalByDefaultAST_2D_weak GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalSendTerminalByDefaultAST_2D_weak result ;
+GALGAS_lexicalSendTerminalByDefaultAST_2E_weak GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalSendTerminalByDefaultAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendTerminalByDefaultAST GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::bang_lexicalSendTerminalByDefaultAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalSendTerminalByDefaultAST GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::bang_lexicalSendTerminalByDefaultAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSendTerminalByDefaultAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1098,41 +977,41 @@ GALGAS_lexicalSendTerminalByDefaultAST GALGAS_lexicalSendTerminalByDefaultAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalSendTerminalByDefaultAST-weak generic code implementation
+//     @lexicalSendTerminalByDefaultAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST_2D_weak ("lexicalSendTerminalByDefaultAST-weak",
-                                                                                               & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST_2E_weak ("lexicalSendTerminalByDefaultAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSendTerminalByDefaultAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalSendTerminalByDefaultAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalSendTerminalByDefaultAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSendTerminalByDefaultAST_2D_weak GALGAS_lexicalSendTerminalByDefaultAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalSendTerminalByDefaultAST_2E_weak GALGAS_lexicalSendTerminalByDefaultAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalSendTerminalByDefaultAST_2D_weak result ;
-  const GALGAS_lexicalSendTerminalByDefaultAST_2D_weak * p = (const GALGAS_lexicalSendTerminalByDefaultAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalSendTerminalByDefaultAST_2E_weak result ;
+  const GALGAS_lexicalSendTerminalByDefaultAST_2E_weak * p = (const GALGAS_lexicalSendTerminalByDefaultAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalSendTerminalByDefaultAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalSendTerminalByDefaultAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalSendTerminalByDefaultAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalSendTerminalByDefaultAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -1140,7 +1019,7 @@ GALGAS_lexicalSendTerminalByDefaultAST_2D_weak GALGAS_lexicalSendTerminalByDefau
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalErrorByDefaultAST_2D_weak::objectCompare (const GALGAS_lexicalErrorByDefaultAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalErrorByDefaultAST_2E_weak::objectCompare (const GALGAS_lexicalErrorByDefaultAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -1160,13 +1039,13 @@ ComparisonResult GALGAS_lexicalErrorByDefaultAST_2D_weak::objectCompare (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorByDefaultAST_2D_weak::GALGAS_lexicalErrorByDefaultAST_2D_weak (void) :
-GALGAS_lexicalSendDefaultActionAST_2D_weak () {
+GALGAS_lexicalErrorByDefaultAST_2E_weak::GALGAS_lexicalErrorByDefaultAST_2E_weak (void) :
+GALGAS_lexicalSendDefaultActionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorByDefaultAST_2D_weak & GALGAS_lexicalErrorByDefaultAST_2D_weak::operator = (const GALGAS_lexicalErrorByDefaultAST & inSource) {
+GALGAS_lexicalErrorByDefaultAST_2E_weak & GALGAS_lexicalErrorByDefaultAST_2E_weak::operator = (const GALGAS_lexicalErrorByDefaultAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -1178,21 +1057,21 @@ GALGAS_lexicalErrorByDefaultAST_2D_weak & GALGAS_lexicalErrorByDefaultAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorByDefaultAST_2D_weak::GALGAS_lexicalErrorByDefaultAST_2D_weak (const GALGAS_lexicalErrorByDefaultAST & inSource) :
-GALGAS_lexicalSendDefaultActionAST_2D_weak (inSource) {
+GALGAS_lexicalErrorByDefaultAST_2E_weak::GALGAS_lexicalErrorByDefaultAST_2E_weak (const GALGAS_lexicalErrorByDefaultAST & inSource) :
+GALGAS_lexicalSendDefaultActionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorByDefaultAST_2D_weak GALGAS_lexicalErrorByDefaultAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalErrorByDefaultAST_2D_weak result ;
+GALGAS_lexicalErrorByDefaultAST_2E_weak GALGAS_lexicalErrorByDefaultAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalErrorByDefaultAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST_2D_weak::bang_lexicalErrorByDefaultAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST_2E_weak::bang_lexicalErrorByDefaultAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalErrorByDefaultAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -1208,41 +1087,41 @@ GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST_2D_weak::bang_le
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalErrorByDefaultAST-weak generic code implementation
+//     @lexicalErrorByDefaultAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST_2D_weak ("lexicalErrorByDefaultAST-weak",
-                                                                                        & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST_2E_weak ("lexicalErrorByDefaultAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalErrorByDefaultAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalErrorByDefaultAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalErrorByDefaultAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalErrorByDefaultAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalErrorByDefaultAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalErrorByDefaultAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalErrorByDefaultAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorByDefaultAST_2D_weak GALGAS_lexicalErrorByDefaultAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalErrorByDefaultAST_2E_weak GALGAS_lexicalErrorByDefaultAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalErrorByDefaultAST_2D_weak result ;
-  const GALGAS_lexicalErrorByDefaultAST_2D_weak * p = (const GALGAS_lexicalErrorByDefaultAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalErrorByDefaultAST_2E_weak result ;
+  const GALGAS_lexicalErrorByDefaultAST_2E_weak * p = (const GALGAS_lexicalErrorByDefaultAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalErrorByDefaultAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalErrorByDefaultAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalErrorByDefaultAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalErrorByDefaultAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -1255,13 +1134,13 @@ GALGAS_lexicalErrorByDefaultAST_2D_weak GALGAS_lexicalErrorByDefaultAST_2D_weak:
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalWhileBranchListAST : public cCollectionElement {
-  public: GALGAS_lexicalWhileBranchListAST_2D_element mObject ;
+  public: GALGAS_lexicalWhileBranchListAST_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalWhileBranchListAST (const GALGAS_lexicalExpressionAST & in_mWhileExpression,
                                                         const GALGAS_lexicalInstructionListAST & in_mWhileInstructionList
                                                         COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalWhileBranchListAST (const GALGAS_lexicalWhileBranchListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalWhileBranchListAST (const GALGAS_lexicalWhileBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -1286,7 +1165,7 @@ mObject (in_mWhileExpression, in_mWhileInstructionList) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalWhileBranchListAST::cCollectionElement_lexicalWhileBranchListAST (const GALGAS_lexicalWhileBranchListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalWhileBranchListAST::cCollectionElement_lexicalWhileBranchListAST (const GALGAS_lexicalWhileBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mWhileExpression, inElement.mProperty_mWhileInstructionList) {
 }
@@ -1344,7 +1223,7 @@ GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::init (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalWhileBranchListAST::enterElement (const GALGAS_lexicalWhileBranchListAST_2D_element & inValue,
+void GALGAS_lexicalWhileBranchListAST::enterElement (const GALGAS_lexicalWhileBranchListAST_2E_element & inValue,
                                                      Compiler * /* inCompiler */
                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -1421,17 +1300,13 @@ void GALGAS_lexicalWhileBranchListAST::setter_insertAtIndex (const GALGAS_lexica
                                                              const GALGAS_uint inInsertionIndex,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalWhileBranchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalWhileBranchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -1442,28 +1317,21 @@ void GALGAS_lexicalWhileBranchListAST::setter_removeAtIndex (GALGAS_lexicalExpre
                                                              const GALGAS_uint inRemoveIndex,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalWhileBranchListAST * p = (cCollectionElement_lexicalWhileBranchListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalWhileBranchListAST) ;
-        outOperand0 = p->mObject.mProperty_mWhileExpression ;
-        outOperand1 = p->mObject.mProperty_mWhileInstructionList ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalWhileBranchListAST * p = (cCollectionElement_lexicalWhileBranchListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalWhileBranchListAST) ;
+      outOperand0 = p->mObject.mProperty_mWhileExpression ;
+      outOperand1 = p->mObject.mProperty_mWhileInstructionList ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
+    drop () ;    
   }
 }
 
@@ -1664,7 +1532,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWhileBranchListAST_2D_element cEnumerator_lexicalWhileBranchListAST::current (LOCATION_ARGS) const {
+GALGAS_lexicalWhileBranchListAST_2E_element cEnumerator_lexicalWhileBranchListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalWhileBranchListAST * p = (const cCollectionElement_lexicalWhileBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalWhileBranchListAST) ;
   return p->mObject ;
@@ -1739,13 +1607,13 @@ GALGAS_lexicalWhileBranchListAST GALGAS_lexicalWhileBranchListAST::extractObject
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSelectBranchListAST : public cCollectionElement {
-  public: GALGAS_lexicalSelectBranchListAST_2D_element mObject ;
+  public: GALGAS_lexicalSelectBranchListAST_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalSelectBranchListAST (const GALGAS_lexicalExpressionAST & in_mSelectExpression,
                                                          const GALGAS_lexicalInstructionListAST & in_mSelectInstructionList
                                                          COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalSelectBranchListAST (const GALGAS_lexicalSelectBranchListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalSelectBranchListAST (const GALGAS_lexicalSelectBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -1770,7 +1638,7 @@ mObject (in_mSelectExpression, in_mSelectInstructionList) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalSelectBranchListAST::cCollectionElement_lexicalSelectBranchListAST (const GALGAS_lexicalSelectBranchListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalSelectBranchListAST::cCollectionElement_lexicalSelectBranchListAST (const GALGAS_lexicalSelectBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mSelectExpression, inElement.mProperty_mSelectInstructionList) {
 }
@@ -1828,7 +1696,7 @@ GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectBranchListAST::init (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalSelectBranchListAST::enterElement (const GALGAS_lexicalSelectBranchListAST_2D_element & inValue,
+void GALGAS_lexicalSelectBranchListAST::enterElement (const GALGAS_lexicalSelectBranchListAST_2E_element & inValue,
                                                       Compiler * /* inCompiler */
                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -1905,17 +1773,13 @@ void GALGAS_lexicalSelectBranchListAST::setter_insertAtIndex (const GALGAS_lexic
                                                               const GALGAS_uint inInsertionIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalSelectBranchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalSelectBranchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -1926,28 +1790,21 @@ void GALGAS_lexicalSelectBranchListAST::setter_removeAtIndex (GALGAS_lexicalExpr
                                                               const GALGAS_uint inRemoveIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalSelectBranchListAST * p = (cCollectionElement_lexicalSelectBranchListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalSelectBranchListAST) ;
-        outOperand0 = p->mObject.mProperty_mSelectExpression ;
-        outOperand1 = p->mObject.mProperty_mSelectInstructionList ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalSelectBranchListAST * p = (cCollectionElement_lexicalSelectBranchListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalSelectBranchListAST) ;
+      outOperand0 = p->mObject.mProperty_mSelectExpression ;
+      outOperand1 = p->mObject.mProperty_mSelectInstructionList ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
+    drop () ;    
   }
 }
 
@@ -2148,7 +2005,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectBranchListAST_2D_element cEnumerator_lexicalSelectBranchListAST::current (LOCATION_ARGS) const {
+GALGAS_lexicalSelectBranchListAST_2E_element cEnumerator_lexicalSelectBranchListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSelectBranchListAST * p = (const cCollectionElement_lexicalSelectBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalSelectBranchListAST) ;
   return p->mObject ;
@@ -2315,7 +2172,7 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFun
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -2335,13 +2192,13 @@ ComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (void) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (void) :
 AC_GALGAS_weak_reference () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak & GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inSource) {
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak & GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -2353,21 +2210,21 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak & GALGAS_lexicalRo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inSource) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak result ;
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::bang_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::bang_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2383,41 +2240,41 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFun
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalRoutineOrFunctionFormalInputArgumentAST-weak generic code implementation
+//     @lexicalRoutineOrFunctionFormalInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak ("lexicalRoutineOrFunctionFormalInputArgumentAST-weak",
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak ("lexicalRoutineOrFunctionFormalInputArgumentAST.weak",
                                                                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                             Compiler * inCompiler
                                                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak * p = (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak * p = (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalRoutineOrFunctionFormalInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalRoutineOrFunctionFormalInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -2430,12 +2287,12 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak GALGAS_lexicalRout
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalFunctionCallActualArgumentListAST : public cCollectionElement {
-  public: GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element mObject ;
+  public: GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mLexicalActualInputArgument
                                                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -2459,7 +2316,7 @@ mObject (in_mLexicalActualInputArgument) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalFunctionCallActualArgumentListAST::cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalFunctionCallActualArgumentListAST::cCollectionElement_lexicalFunctionCallActualArgumentListAST (const GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalActualInputArgument) {
 }
@@ -2513,7 +2370,7 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalFunctionCallActualArgumentListAST::enterElement (const GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element & inValue,
+void GALGAS_lexicalFunctionCallActualArgumentListAST::enterElement (const GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element & inValue,
                                                                     Compiler * /* inCompiler */
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -2584,17 +2441,13 @@ void GALGAS_lexicalFunctionCallActualArgumentListAST::setter_insertAtIndex (cons
                                                                             const GALGAS_uint inInsertionIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -2604,24 +2457,19 @@ void GALGAS_lexicalFunctionCallActualArgumentListAST::setter_removeAtIndex (GALG
                                                                             const GALGAS_uint inRemoveIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalFunctionCallActualArgumentListAST * p = (cCollectionElement_lexicalFunctionCallActualArgumentListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST) ;
-        outOperand0 = p->mObject.mProperty_mLexicalActualInputArgument ;
-      }
+  outOperand0.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalFunctionCallActualArgumentListAST * p = (cCollectionElement_lexicalFunctionCallActualArgumentListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST) ;
+      outOperand0 = p->mObject.mProperty_mLexicalActualInputArgument ;
     }
   }else{
-    outOperand0.drop () ;
+    drop () ;    
   }
 }
 
@@ -2781,7 +2629,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element cEnumerator_lexicalFunctionCallActualArgumentListAST::current (LOCATION_ARGS) const {
+GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element cEnumerator_lexicalFunctionCallActualArgumentListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionCallActualArgumentListAST * p = (const cCollectionElement_lexicalFunctionCallActualArgumentListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalFunctionCallActualArgumentListAST) ;
   return p->mObject ;
@@ -2843,7 +2691,7 @@ GALGAS_lexicalFunctionCallActualArgumentListAST GALGAS_lexicalFunctionCallActual
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalAttributeInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalAttributeInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalAttributeInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalAttributeInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -2863,13 +2711,13 @@ ComparisonResult GALGAS_lexicalAttributeInputArgumentAST_2D_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST_2D_weak::GALGAS_lexicalAttributeInputArgumentAST_2D_weak (void) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
+GALGAS_lexicalAttributeInputArgumentAST_2E_weak::GALGAS_lexicalAttributeInputArgumentAST_2E_weak (void) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST_2D_weak & GALGAS_lexicalAttributeInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalAttributeInputArgumentAST & inSource) {
+GALGAS_lexicalAttributeInputArgumentAST_2E_weak & GALGAS_lexicalAttributeInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalAttributeInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -2881,21 +2729,21 @@ GALGAS_lexicalAttributeInputArgumentAST_2D_weak & GALGAS_lexicalAttributeInputAr
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST_2D_weak::GALGAS_lexicalAttributeInputArgumentAST_2D_weak (const GALGAS_lexicalAttributeInputArgumentAST & inSource) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalAttributeInputArgumentAST_2E_weak::GALGAS_lexicalAttributeInputArgumentAST_2E_weak (const GALGAS_lexicalAttributeInputArgumentAST & inSource) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalAttributeInputArgumentAST_2D_weak result ;
+GALGAS_lexicalAttributeInputArgumentAST_2E_weak GALGAS_lexicalAttributeInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalAttributeInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST_2D_weak::bang_lexicalAttributeInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST_2E_weak::bang_lexicalAttributeInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalAttributeInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2911,41 +2759,41 @@ GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalAttributeInputArgumentAST-weak generic code implementation
+//     @lexicalAttributeInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2D_weak ("lexicalAttributeInputArgumentAST-weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2E_weak ("lexicalAttributeInputArgumentAST.weak",
+                                                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalAttributeInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalAttributeInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalAttributeInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalAttributeInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalAttributeInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalAttributeInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalAttributeInputArgumentAST_2E_weak GALGAS_lexicalAttributeInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalAttributeInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalAttributeInputArgumentAST_2D_weak * p = (const GALGAS_lexicalAttributeInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalAttributeInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalAttributeInputArgumentAST_2E_weak * p = (const GALGAS_lexicalAttributeInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalAttributeInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalAttributeInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalAttributeInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalAttributeInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -2953,7 +2801,7 @@ GALGAS_lexicalAttributeInputArgumentAST_2D_weak GALGAS_lexicalAttributeInputArgu
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalCharacterInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalCharacterInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalCharacterInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalCharacterInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -2973,13 +2821,13 @@ ComparisonResult GALGAS_lexicalCharacterInputArgumentAST_2D_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST_2D_weak::GALGAS_lexicalCharacterInputArgumentAST_2D_weak (void) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
+GALGAS_lexicalCharacterInputArgumentAST_2E_weak::GALGAS_lexicalCharacterInputArgumentAST_2E_weak (void) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST_2D_weak & GALGAS_lexicalCharacterInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalCharacterInputArgumentAST & inSource) {
+GALGAS_lexicalCharacterInputArgumentAST_2E_weak & GALGAS_lexicalCharacterInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalCharacterInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -2991,21 +2839,21 @@ GALGAS_lexicalCharacterInputArgumentAST_2D_weak & GALGAS_lexicalCharacterInputAr
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST_2D_weak::GALGAS_lexicalCharacterInputArgumentAST_2D_weak (const GALGAS_lexicalCharacterInputArgumentAST & inSource) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalCharacterInputArgumentAST_2E_weak::GALGAS_lexicalCharacterInputArgumentAST_2E_weak (const GALGAS_lexicalCharacterInputArgumentAST & inSource) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalCharacterInputArgumentAST_2D_weak result ;
+GALGAS_lexicalCharacterInputArgumentAST_2E_weak GALGAS_lexicalCharacterInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalCharacterInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST_2D_weak::bang_lexicalCharacterInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST_2E_weak::bang_lexicalCharacterInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalCharacterInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3021,41 +2869,41 @@ GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalCharacterInputArgumentAST-weak generic code implementation
+//     @lexicalCharacterInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2D_weak ("lexicalCharacterInputArgumentAST-weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2E_weak ("lexicalCharacterInputArgumentAST.weak",
+                                                                                                & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalCharacterInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalCharacterInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalCharacterInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalCharacterInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalCharacterInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalCharacterInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalCharacterInputArgumentAST_2E_weak GALGAS_lexicalCharacterInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalCharacterInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalCharacterInputArgumentAST_2D_weak * p = (const GALGAS_lexicalCharacterInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalCharacterInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalCharacterInputArgumentAST_2E_weak * p = (const GALGAS_lexicalCharacterInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalCharacterInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalCharacterInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalCharacterInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -3063,7 +2911,7 @@ GALGAS_lexicalCharacterInputArgumentAST_2D_weak GALGAS_lexicalCharacterInputArgu
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -3083,13 +2931,13 @@ ComparisonResult GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::GALGAS_lexicalUnsignedInputArgumentAST_2D_weak (void) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
+GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::GALGAS_lexicalUnsignedInputArgumentAST_2E_weak (void) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST_2D_weak & GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalUnsignedInputArgumentAST & inSource) {
+GALGAS_lexicalUnsignedInputArgumentAST_2E_weak & GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalUnsignedInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -3101,21 +2949,21 @@ GALGAS_lexicalUnsignedInputArgumentAST_2D_weak & GALGAS_lexicalUnsignedInputArgu
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::GALGAS_lexicalUnsignedInputArgumentAST_2D_weak (const GALGAS_lexicalUnsignedInputArgumentAST & inSource) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::GALGAS_lexicalUnsignedInputArgumentAST_2E_weak (const GALGAS_lexicalUnsignedInputArgumentAST & inSource) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalUnsignedInputArgumentAST_2D_weak result ;
+GALGAS_lexicalUnsignedInputArgumentAST_2E_weak GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalUnsignedInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::bang_lexicalUnsignedInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::bang_lexicalUnsignedInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalUnsignedInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3131,41 +2979,41 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalUnsignedInputArgumentAST-weak generic code implementation
+//     @lexicalUnsignedInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2D_weak ("lexicalUnsignedInputArgumentAST-weak",
-                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2E_weak ("lexicalUnsignedInputArgumentAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalUnsignedInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalUnsignedInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalUnsignedInputArgumentAST_2D_weak GALGAS_lexicalUnsignedInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalUnsignedInputArgumentAST_2E_weak GALGAS_lexicalUnsignedInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalUnsignedInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalUnsignedInputArgumentAST_2D_weak * p = (const GALGAS_lexicalUnsignedInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalUnsignedInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalUnsignedInputArgumentAST_2E_weak * p = (const GALGAS_lexicalUnsignedInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalUnsignedInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalUnsignedInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalUnsignedInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalUnsignedInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -3339,7 +3187,7 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -3359,13 +3207,13 @@ ComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::objectC
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak (void) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
+GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak (void) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak & GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inSource) {
+GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak & GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -3377,21 +3225,21 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak & GALGAS_lexicalCurrentCh
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inSource) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inSource) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak result ;
+GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::bang_lexicalCurrentCharacterInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::bang_lexicalCurrentCharacterInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalCurrentCharacterInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3407,41 +3255,41 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalCurrentCharacterInputArgumentAST-weak generic code implementation
+//     @lexicalCurrentCharacterInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak ("lexicalCurrentCharacterInputArgumentAST-weak",
-                                                                                                       & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak ("lexicalCurrentCharacterInputArgumentAST.weak",
+                                                                                                       & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                               Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak * p = (const GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak * p = (const GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalCurrentCharacterInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalCurrentCharacterInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalCurrentCharacterInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -3449,7 +3297,7 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST_2D_weak GALGAS_lexicalCurrentChar
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalFunctionInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalFunctionInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalFunctionInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalFunctionInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -3469,13 +3317,13 @@ ComparisonResult GALGAS_lexicalFunctionInputArgumentAST_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST_2D_weak::GALGAS_lexicalFunctionInputArgumentAST_2D_weak (void) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak () {
+GALGAS_lexicalFunctionInputArgumentAST_2E_weak::GALGAS_lexicalFunctionInputArgumentAST_2E_weak (void) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST_2D_weak & GALGAS_lexicalFunctionInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalFunctionInputArgumentAST & inSource) {
+GALGAS_lexicalFunctionInputArgumentAST_2E_weak & GALGAS_lexicalFunctionInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalFunctionInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -3487,21 +3335,21 @@ GALGAS_lexicalFunctionInputArgumentAST_2D_weak & GALGAS_lexicalFunctionInputArgu
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST_2D_weak::GALGAS_lexicalFunctionInputArgumentAST_2D_weak (const GALGAS_lexicalFunctionInputArgumentAST & inSource) :
-GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalFunctionInputArgumentAST_2E_weak::GALGAS_lexicalFunctionInputArgumentAST_2E_weak (const GALGAS_lexicalFunctionInputArgumentAST & inSource) :
+GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalFunctionInputArgumentAST_2D_weak result ;
+GALGAS_lexicalFunctionInputArgumentAST_2E_weak GALGAS_lexicalFunctionInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalFunctionInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST_2D_weak::bang_lexicalFunctionInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST_2E_weak::bang_lexicalFunctionInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalFunctionInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3517,46 +3365,48 @@ GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalFunctionInputArgumentAST-weak generic code implementation
+//     @lexicalFunctionInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST_2D_weak ("lexicalFunctionInputArgumentAST-weak",
-                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST_2E_weak ("lexicalFunctionInputArgumentAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalFunctionInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalFunctionInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalFunctionInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalFunctionInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalFunctionInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalFunctionInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalFunctionInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionInputArgumentAST_2D_weak GALGAS_lexicalFunctionInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalFunctionInputArgumentAST_2E_weak GALGAS_lexicalFunctionInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalFunctionInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalFunctionInputArgumentAST_2D_weak * p = (const GALGAS_lexicalFunctionInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalFunctionInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalFunctionInputArgumentAST_2E_weak * p = (const GALGAS_lexicalFunctionInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalFunctionInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalFunctionInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalFunctionInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalFunctionInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//  Enum lexicalArgumentModeAST
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalArgumentModeAST::GALGAS_lexicalArgumentModeAST (void) :
@@ -3800,6 +3650,8 @@ GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexical
 
 
 //--------------------------------------------------------------------------------------------------
+//  Enum lexicalTypeEnum
+//--------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum::GALGAS_lexicalTypeEnum (void) :
 mEnum (Enumeration::invalid) {
@@ -4022,14 +3874,14 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::extractObject (const GALGAS_objec
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSentValueList : public cCollectionElement {
-  public: GALGAS_lexicalSentValueList_2D_element mObject ;
+  public: GALGAS_lexicalSentValueList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalSentValueList (const GALGAS_lstring & in_mLexicalFormalSelector,
                                                    const GALGAS_string & in_mLexicalAttributeName,
                                                    const GALGAS_lexicalTypeEnum & in_mLexicalType
                                                    COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalSentValueList (const GALGAS_lexicalSentValueList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalSentValueList (const GALGAS_lexicalSentValueList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -4055,7 +3907,7 @@ mObject (in_mLexicalFormalSelector, in_mLexicalAttributeName, in_mLexicalType) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalSentValueList::cCollectionElement_lexicalSentValueList (const GALGAS_lexicalSentValueList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalSentValueList::cCollectionElement_lexicalSentValueList (const GALGAS_lexicalSentValueList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalFormalSelector, inElement.mProperty_mLexicalAttributeName, inElement.mProperty_mLexicalType) {
 }
@@ -4117,7 +3969,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::init (Compiler * COMMA_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalSentValueList::enterElement (const GALGAS_lexicalSentValueList_2D_element & inValue,
+void GALGAS_lexicalSentValueList::enterElement (const GALGAS_lexicalSentValueList_2E_element & inValue,
                                                 Compiler * /* inCompiler */
                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -4200,17 +4052,13 @@ void GALGAS_lexicalSentValueList::setter_insertAtIndex (const GALGAS_lstring inO
                                                         const GALGAS_uint inInsertionIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalSentValueList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalSentValueList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -4222,32 +4070,23 @@ void GALGAS_lexicalSentValueList::setter_removeAtIndex (GALGAS_lstring & outOper
                                                         const GALGAS_uint inRemoveIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalSentValueList * p = (cCollectionElement_lexicalSentValueList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalSentValueList) ;
-        outOperand0 = p->mObject.mProperty_mLexicalFormalSelector ;
-        outOperand1 = p->mObject.mProperty_mLexicalAttributeName ;
-        outOperand2 = p->mObject.mProperty_mLexicalType ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalSentValueList * p = (cCollectionElement_lexicalSentValueList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalSentValueList) ;
+      outOperand0 = p->mObject.mProperty_mLexicalFormalSelector ;
+      outOperand1 = p->mObject.mProperty_mLexicalAttributeName ;
+      outOperand2 = p->mObject.mProperty_mLexicalType ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
+    drop () ;    
   }
 }
 
@@ -4489,7 +4328,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSentValueList_2D_element cEnumerator_lexicalSentValueList::current (LOCATION_ARGS) const {
+GALGAS_lexicalSentValueList_2E_element cEnumerator_lexicalSentValueList::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSentValueList * p = (const cCollectionElement_lexicalSentValueList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalSentValueList) ;
   return p->mObject ;
@@ -4567,7 +4406,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::extractObject (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_terminalMap::cMapElement_terminalMap (const GALGAS_terminalMap_2D_element & inValue
+cMapElement_terminalMap::cMapElement_terminalMap (const GALGAS_terminalMap_2E_element & inValue
                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mSentAttributeList (inValue.mProperty_mSentAttributeList) {
@@ -4642,17 +4481,17 @@ GALGAS_terminalMap GALGAS_terminalMap::class_func_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalMap_2D_element_3F_ GALGAS_terminalMap
+GALGAS_terminalMap_2E_element_3F_ GALGAS_terminalMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_terminalMap_2D_element_3F_ result ;
+  GALGAS_terminalMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_terminalMap * p = (cMapElement_terminalMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_terminalMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_terminalMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_terminalMap_2D_element element ;
+      GALGAS_terminalMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mSentAttributeList = p->mProperty_mSentAttributeList ;
       result = element ;
@@ -4681,7 +4520,7 @@ GALGAS_terminalMap GALGAS_terminalMap::getter_overriddenMap (Compiler * inCompil
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalMap::enterElement (const GALGAS_terminalMap_2D_element & inValue,
+void GALGAS_terminalMap::enterElement (const GALGAS_terminalMap_2E_element & inValue,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   cMapElement_terminalMap * p = nullptr ;
@@ -4811,10 +4650,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalMap_2D_element cEnumerator_terminalMap::current (LOCATION_ARGS) const {
+GALGAS_terminalMap_2E_element cEnumerator_terminalMap::current (LOCATION_ARGS) const {
   const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_terminalMap) ;
-  return GALGAS_terminalMap_2D_element (p->mProperty_lkey, p->mProperty_mSentAttributeList) ;
+  return GALGAS_terminalMap_2E_element (p->mProperty_lkey, p->mProperty_mSentAttributeList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4877,7 +4716,7 @@ GALGAS_terminalMap GALGAS_terminalMap::extractObject (const GALGAS_object & inOb
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GALGAS_lexicalTypeMap_2D_element & inValue
+cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GALGAS_lexicalTypeMap_2E_element & inValue
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLexicalType (inValue.mProperty_mLexicalType) {
@@ -4952,17 +4791,17 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::class_func_emptyMap (LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeMap_2D_element_3F_ GALGAS_lexicalTypeMap
+GALGAS_lexicalTypeMap_2E_element_3F_ GALGAS_lexicalTypeMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalTypeMap_2D_element_3F_ result ;
+  GALGAS_lexicalTypeMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalTypeMap * p = (cMapElement_lexicalTypeMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalTypeMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalTypeMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalTypeMap_2D_element element ;
+      GALGAS_lexicalTypeMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLexicalType = p->mProperty_mLexicalType ;
       result = element ;
@@ -4991,7 +4830,7 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::getter_overriddenMap (Compiler * in
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalTypeMap::enterElement (const GALGAS_lexicalTypeMap_2D_element & inValue,
+void GALGAS_lexicalTypeMap::enterElement (const GALGAS_lexicalTypeMap_2E_element & inValue,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   cMapElement_lexicalTypeMap * p = nullptr ;
@@ -5121,10 +4960,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTypeMap_2D_element cEnumerator_lexicalTypeMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalTypeMap_2E_element cEnumerator_lexicalTypeMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalTypeMap) ;
-  return GALGAS_lexicalTypeMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
+  return GALGAS_lexicalTypeMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5187,7 +5026,7 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::extractObject (const GALGAS_object 
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GALGAS_lexicalAttributeMap_2D_element & inValue
+cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GALGAS_lexicalAttributeMap_2E_element & inValue
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLexicalType (inValue.mProperty_mLexicalType) {
@@ -5262,17 +5101,17 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::class_func_emptyMap (LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeMap_2D_element_3F_ GALGAS_lexicalAttributeMap
+GALGAS_lexicalAttributeMap_2E_element_3F_ GALGAS_lexicalAttributeMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalAttributeMap_2D_element_3F_ result ;
+  GALGAS_lexicalAttributeMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalAttributeMap * p = (cMapElement_lexicalAttributeMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalAttributeMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalAttributeMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalAttributeMap_2D_element element ;
+      GALGAS_lexicalAttributeMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLexicalType = p->mProperty_mLexicalType ;
       result = element ;
@@ -5301,7 +5140,7 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::getter_overriddenMap (Com
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalAttributeMap::enterElement (const GALGAS_lexicalAttributeMap_2D_element & inValue,
+void GALGAS_lexicalAttributeMap::enterElement (const GALGAS_lexicalAttributeMap_2E_element & inValue,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   cMapElement_lexicalAttributeMap * p = nullptr ;
@@ -5431,10 +5270,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeMap_2D_element cEnumerator_lexicalAttributeMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalAttributeMap_2E_element cEnumerator_lexicalAttributeMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalAttributeMap) ;
-  return GALGAS_lexicalAttributeMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
+  return GALGAS_lexicalAttributeMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5502,7 +5341,7 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::extractObject (const GALG
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalList : public cCollectionElement {
-  public: GALGAS_terminalList_2D_element mObject ;
+  public: GALGAS_terminalList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_terminalList (const GALGAS_lstring & in_mTerminalName,
@@ -5512,7 +5351,7 @@ class cCollectionElement_terminalList : public cCollectionElement {
                                            const GALGAS_bool & in_atomicSelection,
                                            const GALGAS_uint & in_mStyleIndex
                                            COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_terminalList (const GALGAS_terminalList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_terminalList (const GALGAS_terminalList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -5541,7 +5380,7 @@ mObject (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_isE
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_terminalList::cCollectionElement_terminalList (const GALGAS_terminalList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_terminalList::cCollectionElement_terminalList (const GALGAS_terminalList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mTerminalName, inElement.mProperty_mSentAttributeList, inElement.mProperty_mSyntaxErrorMessage, inElement.mProperty_isEndOfTemplateMark, inElement.mProperty_atomicSelection, inElement.mProperty_mStyleIndex) {
 }
@@ -5615,7 +5454,7 @@ GALGAS_terminalList GALGAS_terminalList::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_terminalList::enterElement (const GALGAS_terminalList_2D_element & inValue,
+void GALGAS_terminalList::enterElement (const GALGAS_terminalList_2E_element & inValue,
                                         Compiler * /* inCompiler */
                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -5716,17 +5555,13 @@ void GALGAS_terminalList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                 const GALGAS_uint inInsertionIndex,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_terminalList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_terminalList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -5741,44 +5576,29 @@ void GALGAS_terminalList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                 const GALGAS_uint inRemoveIndex,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_terminalList * p = (cCollectionElement_terminalList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        outOperand3.drop () ;
-        outOperand4.drop () ;
-        outOperand5.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_terminalList) ;
-        outOperand0 = p->mObject.mProperty_mTerminalName ;
-        outOperand1 = p->mObject.mProperty_mSentAttributeList ;
-        outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
-        outOperand3 = p->mObject.mProperty_isEndOfTemplateMark ;
-        outOperand4 = p->mObject.mProperty_atomicSelection ;
-        outOperand5 = p->mObject.mProperty_mStyleIndex ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_terminalList * p = (cCollectionElement_terminalList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
-      outOperand4.drop () ;
-      outOperand5.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_terminalList) ;
+      outOperand0 = p->mObject.mProperty_mTerminalName ;
+      outOperand1 = p->mObject.mProperty_mSentAttributeList ;
+      outOperand2 = p->mObject.mProperty_mSyntaxErrorMessage ;
+      outOperand3 = p->mObject.mProperty_isEndOfTemplateMark ;
+      outOperand4 = p->mObject.mProperty_atomicSelection ;
+      outOperand5 = p->mObject.mProperty_mStyleIndex ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
+    drop () ;    
   }
 }
 
@@ -6143,7 +5963,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_terminalList_2D_element cEnumerator_terminalList::current (LOCATION_ARGS) const {
+GALGAS_terminalList_2E_element cEnumerator_terminalList::current (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_terminalList) ;
   return p->mObject ;
@@ -6245,7 +6065,7 @@ GALGAS_terminalList GALGAS_terminalList::extractObject (const GALGAS_object & in
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap_2D_element & inValue
+cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap_2E_element & inValue
                                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mTerminal (inValue.mProperty_mTerminal),
@@ -6334,17 +6154,17 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::class_fun
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ GALGAS_lexicalExplicitTokenListMap
+GALGAS_lexicalExplicitTokenListMap_2E_element_3F_ GALGAS_lexicalExplicitTokenListMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalExplicitTokenListMap_2D_element_3F_ result ;
+  GALGAS_lexicalExplicitTokenListMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalExplicitTokenListMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalExplicitTokenListMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalExplicitTokenListMap_2D_element element ;
+      GALGAS_lexicalExplicitTokenListMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mTerminal = p->mProperty_mTerminal ;
       element.mProperty_atomicSelection = p->mProperty_atomicSelection ;
@@ -6375,7 +6195,7 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::getter_ov
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalExplicitTokenListMap::enterElement (const GALGAS_lexicalExplicitTokenListMap_2D_element & inValue,
+void GALGAS_lexicalExplicitTokenListMap::enterElement (const GALGAS_lexicalExplicitTokenListMap_2E_element & inValue,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   cMapElement_lexicalExplicitTokenListMap * p = nullptr ;
@@ -6573,10 +6393,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMap_2D_element cEnumerator_lexicalExplicitTokenListMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalExplicitTokenListMap_2E_element cEnumerator_lexicalExplicitTokenListMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return GALGAS_lexicalExplicitTokenListMap_2D_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_atomicSelection, p->mProperty_isEndOfTemplateMark) ;
+  return GALGAS_lexicalExplicitTokenListMap_2E_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_atomicSelection, p->mProperty_isEndOfTemplateMark) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6660,7 +6480,7 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::extractOb
 //--------------------------------------------------------------------------------------------------
 
 class cSortedListElement_tokenSortedlist : public cSortedListElement {
-  public: GALGAS_tokenSortedlist_2D_element mObject ;
+  public: GALGAS_tokenSortedlist_2E_element mObject ;
 
 //--- Constructors
   public: cSortedListElement_tokenSortedlist (const GALGAS_uint & in_mLength,
@@ -6668,7 +6488,7 @@ class cSortedListElement_tokenSortedlist : public cSortedListElement {
                                               const GALGAS_string & in_mTerminalName
                                               COMMA_LOCATION_ARGS) ;
 
-  public: cSortedListElement_tokenSortedlist (const GALGAS_tokenSortedlist_2D_element & inObject
+  public: cSortedListElement_tokenSortedlist (const GALGAS_tokenSortedlist_2E_element & inObject
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
@@ -6699,7 +6519,7 @@ mObject (in_mLength, in_mName, in_mTerminalName) {
 //--------------------------------------------------------------------------------------------------
 
 cSortedListElement_tokenSortedlist::
-cSortedListElement_tokenSortedlist (const GALGAS_tokenSortedlist_2D_element & inObject
+cSortedListElement_tokenSortedlist (const GALGAS_tokenSortedlist_2E_element & inObject
                                     COMMA_LOCATION_ARGS) :
 cSortedListElement (THERE),
 mObject (inObject) {
@@ -6744,7 +6564,7 @@ AC_GALGAS_sortedlist () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_tokenSortedlist::enterElement (const GALGAS_tokenSortedlist_2D_element & inValue,
+void GALGAS_tokenSortedlist::enterElement (const GALGAS_tokenSortedlist_2E_element & inValue,
                                            Compiler * /* inCompiler */
                                            COMMA_LOCATION_ARGS) {
   cSortedListElement * p = nullptr ;
@@ -6943,7 +6763,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_tokenSortedlist_2D_element cEnumerator_tokenSortedlist::current (LOCATION_ARGS) const {
+GALGAS_tokenSortedlist_2E_element cEnumerator_tokenSortedlist::current (LOCATION_ARGS) const {
   const cSortedListElement_tokenSortedlist * p = (const cSortedListElement_tokenSortedlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cSortedListElement_tokenSortedlist) ;
   return p->mObject ;
@@ -7019,7 +6839,7 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::extractObject (const GALGAS_objec
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap_2D_element & inValue
+cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap_2E_element & inValue
                                                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mExplicitTokenListMap (inValue.mProperty_mExplicitTokenListMap),
@@ -7108,17 +6928,17 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::cla
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ GALGAS_lexicalExplicitTokenListMapMap
+GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ GALGAS_lexicalExplicitTokenListMapMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_ result ;
+  GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalExplicitTokenListMapMap * p = (cMapElement_lexicalExplicitTokenListMapMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalExplicitTokenListMapMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalExplicitTokenListMapMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalExplicitTokenListMapMap_2D_element element ;
+      GALGAS_lexicalExplicitTokenListMapMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mExplicitTokenListMap = p->mProperty_mExplicitTokenListMap ;
       element.mProperty_mTokenSortedList = p->mProperty_mTokenSortedList ;
@@ -7149,7 +6969,7 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::get
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalExplicitTokenListMapMap::enterElement (const GALGAS_lexicalExplicitTokenListMapMap_2D_element & inValue,
+void GALGAS_lexicalExplicitTokenListMapMap::enterElement (const GALGAS_lexicalExplicitTokenListMapMap_2E_element & inValue,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   cMapElement_lexicalExplicitTokenListMapMap * p = nullptr ;
@@ -7347,10 +7167,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalExplicitTokenListMapMap_2D_element cEnumerator_lexicalExplicitTokenListMapMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalExplicitTokenListMapMap_2E_element cEnumerator_lexicalExplicitTokenListMapMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMapMap) ;
-  return GALGAS_lexicalExplicitTokenListMapMap_2D_element (p->mProperty_lkey, p->mProperty_mExplicitTokenListMap, p->mProperty_mTokenSortedList, p->mProperty_mShouldBeGenerated) ;
+  return GALGAS_lexicalExplicitTokenListMapMap_2E_element (p->mProperty_lkey, p->mProperty_mExplicitTokenListMap, p->mProperty_mTokenSortedList, p->mProperty_mShouldBeGenerated) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7429,7 +7249,7 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::ext
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GALGAS_lexicalMessageMap_2D_element & inValue
+cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GALGAS_lexicalMessageMap_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLexicalMessage (inValue.mProperty_mLexicalMessage),
@@ -7511,17 +7331,17 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::class_func_emptyMap (LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageMap_2D_element_3F_ GALGAS_lexicalMessageMap
+GALGAS_lexicalMessageMap_2E_element_3F_ GALGAS_lexicalMessageMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalMessageMap_2D_element_3F_ result ;
+  GALGAS_lexicalMessageMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalMessageMap * p = (cMapElement_lexicalMessageMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalMessageMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalMessageMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalMessageMap_2D_element element ;
+      GALGAS_lexicalMessageMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLexicalMessage = p->mProperty_mLexicalMessage ;
       element.mProperty_mMessageIsUsed = p->mProperty_mMessageIsUsed ;
@@ -7551,7 +7371,7 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::getter_overriddenMap (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalMessageMap::enterElement (const GALGAS_lexicalMessageMap_2D_element & inValue,
+void GALGAS_lexicalMessageMap::enterElement (const GALGAS_lexicalMessageMap_2E_element & inValue,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   cMapElement_lexicalMessageMap * p = nullptr ;
@@ -7715,10 +7535,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalMessageMap_2D_element cEnumerator_lexicalMessageMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalMessageMap_2E_element cEnumerator_lexicalMessageMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalMessageMap) ;
-  return GALGAS_lexicalMessageMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalMessage, p->mProperty_mMessageIsUsed) ;
+  return GALGAS_lexicalMessageMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalMessage, p->mProperty_mMessageIsUsed) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7794,14 +7614,14 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::extractObject (const GALGAS_o
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionElement {
-  public: GALGAS_lexicalRoutineFormalArgumentList_2D_element mObject ;
+  public: GALGAS_lexicalRoutineFormalArgumentList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
                                                                const GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
                                                                const GALGAS_string & in_mArgumentNameForComment
                                                                COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -7827,7 +7647,7 @@ mObject (in_mLexicalFormalArgumentMode, in_mLexicalFormalArgumentType, in_mArgum
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalRoutineFormalArgumentList::cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalRoutineFormalArgumentList::cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalFormalArgumentMode, inElement.mProperty_mLexicalFormalArgumentType, inElement.mProperty_mArgumentNameForComment) {
 }
@@ -7889,7 +7709,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRoutineFormalArgumentList::enterElement (const GALGAS_lexicalRoutineFormalArgumentList_2D_element & inValue,
+void GALGAS_lexicalRoutineFormalArgumentList::enterElement (const GALGAS_lexicalRoutineFormalArgumentList_2E_element & inValue,
                                                             Compiler * /* inCompiler */
                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -7972,17 +7792,13 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_insertAtIndex (const GALGAS
                                                                     const GALGAS_uint inInsertionIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalRoutineFormalArgumentList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalRoutineFormalArgumentList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -7994,32 +7810,23 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_removeAtIndex (GALGAS_lexic
                                                                     const GALGAS_uint inRemoveIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalRoutineFormalArgumentList * p = (cCollectionElement_lexicalRoutineFormalArgumentList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalRoutineFormalArgumentList) ;
-        outOperand0 = p->mObject.mProperty_mLexicalFormalArgumentMode ;
-        outOperand1 = p->mObject.mProperty_mLexicalFormalArgumentType ;
-        outOperand2 = p->mObject.mProperty_mArgumentNameForComment ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalRoutineFormalArgumentList * p = (cCollectionElement_lexicalRoutineFormalArgumentList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalRoutineFormalArgumentList) ;
+      outOperand0 = p->mObject.mProperty_mLexicalFormalArgumentMode ;
+      outOperand1 = p->mObject.mProperty_mLexicalFormalArgumentType ;
+      outOperand2 = p->mObject.mProperty_mArgumentNameForComment ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
+    drop () ;    
   }
 }
 
@@ -8261,7 +8068,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineFormalArgumentList_2D_element cEnumerator_lexicalRoutineFormalArgumentList::current (LOCATION_ARGS) const {
+GALGAS_lexicalRoutineFormalArgumentList_2E_element cEnumerator_lexicalRoutineFormalArgumentList::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalRoutineFormalArgumentList * p = (const cCollectionElement_lexicalRoutineFormalArgumentList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalRoutineFormalArgumentList) ;
   return p->mObject ;
@@ -8339,7 +8146,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GALGAS_lexicalRoutineMap_2D_element & inValue
+cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GALGAS_lexicalRoutineMap_2E_element & inValue
                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLexicalRoutineFormalArgumentList (inValue.mProperty_mLexicalRoutineFormalArgumentList),
@@ -8428,17 +8235,17 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::class_func_emptyMap (LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineMap_2D_element_3F_ GALGAS_lexicalRoutineMap
+GALGAS_lexicalRoutineMap_2E_element_3F_ GALGAS_lexicalRoutineMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalRoutineMap_2D_element_3F_ result ;
+  GALGAS_lexicalRoutineMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalRoutineMap * p = (cMapElement_lexicalRoutineMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalRoutineMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalRoutineMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalRoutineMap_2D_element element ;
+      GALGAS_lexicalRoutineMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLexicalRoutineFormalArgumentList = p->mProperty_mLexicalRoutineFormalArgumentList ;
       element.mProperty_mErrorMessageList = p->mProperty_mErrorMessageList ;
@@ -8469,7 +8276,7 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::getter_overriddenMap (Compile
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRoutineMap::enterElement (const GALGAS_lexicalRoutineMap_2D_element & inValue,
+void GALGAS_lexicalRoutineMap::enterElement (const GALGAS_lexicalRoutineMap_2E_element & inValue,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   cMapElement_lexicalRoutineMap * p = nullptr ;
@@ -8667,10 +8474,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineMap_2D_element cEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalRoutineMap_2E_element cEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalRoutineMap) ;
-  return GALGAS_lexicalRoutineMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalRoutineFormalArgumentList, p->mProperty_mErrorMessageList, p->mProperty_mIsExtern) ;
+  return GALGAS_lexicalRoutineMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalRoutineFormalArgumentList, p->mProperty_mErrorMessageList, p->mProperty_mIsExtern) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8754,13 +8561,13 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::extractObject (const GALGAS_o
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionElement {
-  public: GALGAS_lexicalFunctionFormalArgumentList_2D_element mObject ;
+  public: GALGAS_lexicalFunctionFormalArgumentList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalTypeEnum & in_mLexicalType,
                                                                 const GALGAS_string & in_mArgumentNameForComment
                                                                 COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -8785,7 +8592,7 @@ mObject (in_mLexicalType, in_mArgumentNameForComment) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalFunctionFormalArgumentList::cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalFunctionFormalArgumentList::cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalType, inElement.mProperty_mArgumentNameForComment) {
 }
@@ -8843,7 +8650,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalFunctionFormalArgumentList::enterElement (const GALGAS_lexicalFunctionFormalArgumentList_2D_element & inValue,
+void GALGAS_lexicalFunctionFormalArgumentList::enterElement (const GALGAS_lexicalFunctionFormalArgumentList_2E_element & inValue,
                                                              Compiler * /* inCompiler */
                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -8920,17 +8727,13 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_insertAtIndex (const GALGA
                                                                      const GALGAS_uint inInsertionIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalFunctionFormalArgumentList (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalFunctionFormalArgumentList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -8941,28 +8744,21 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_removeAtIndex (GALGAS_lexi
                                                                      const GALGAS_uint inRemoveIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalFunctionFormalArgumentList * p = (cCollectionElement_lexicalFunctionFormalArgumentList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalFunctionFormalArgumentList) ;
-        outOperand0 = p->mObject.mProperty_mLexicalType ;
-        outOperand1 = p->mObject.mProperty_mArgumentNameForComment ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalFunctionFormalArgumentList * p = (cCollectionElement_lexicalFunctionFormalArgumentList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalFunctionFormalArgumentList) ;
+      outOperand0 = p->mObject.mProperty_mLexicalType ;
+      outOperand1 = p->mObject.mProperty_mArgumentNameForComment ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
+    drop () ;    
   }
 }
 
@@ -9163,7 +8959,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionFormalArgumentList_2D_element cEnumerator_lexicalFunctionFormalArgumentList::current (LOCATION_ARGS) const {
+GALGAS_lexicalFunctionFormalArgumentList_2E_element cEnumerator_lexicalFunctionFormalArgumentList::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionFormalArgumentList * p = (const cCollectionElement_lexicalFunctionFormalArgumentList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalFunctionFormalArgumentList) ;
   return p->mObject ;
@@ -9233,7 +9029,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GALGAS_lexicalFunctionMap_2D_element & inValue
+cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GALGAS_lexicalFunctionMap_2E_element & inValue
                                                                 COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLexicalTypeList (inValue.mProperty_mLexicalTypeList),
@@ -9329,17 +9125,17 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::class_func_emptyMap (LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionMap_2D_element_3F_ GALGAS_lexicalFunctionMap
+GALGAS_lexicalFunctionMap_2E_element_3F_ GALGAS_lexicalFunctionMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionMap_2D_element_3F_ result ;
+  GALGAS_lexicalFunctionMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalFunctionMap * p = (cMapElement_lexicalFunctionMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalFunctionMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalFunctionMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalFunctionMap_2D_element element ;
+      GALGAS_lexicalFunctionMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLexicalTypeList = p->mProperty_mLexicalTypeList ;
       element.mProperty_mReturnedLexicalType = p->mProperty_mReturnedLexicalType ;
@@ -9371,7 +9167,7 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::getter_overriddenMap (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalFunctionMap::enterElement (const GALGAS_lexicalFunctionMap_2D_element & inValue,
+void GALGAS_lexicalFunctionMap::enterElement (const GALGAS_lexicalFunctionMap_2E_element & inValue,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   cMapElement_lexicalFunctionMap * p = nullptr ;
@@ -9603,10 +9399,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFunctionMap_2D_element cEnumerator_lexicalFunctionMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalFunctionMap_2E_element cEnumerator_lexicalFunctionMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalFunctionMap) ;
-  return GALGAS_lexicalFunctionMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalTypeList, p->mProperty_mReturnedLexicalType, p->mProperty_mReplacementFunctionName, p->mProperty_mIsExtern) ;
+  return GALGAS_lexicalFunctionMap_2E_element (p->mProperty_lkey, p->mProperty_mLexicalTypeList, p->mProperty_mReturnedLexicalType, p->mProperty_mReplacementFunctionName, p->mProperty_mIsExtern) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9698,14 +9494,14 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::extractObject (const GALGAS
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateDelimitorList : public cCollectionElement {
-  public: GALGAS_templateDelimitorList_2D_element mObject ;
+  public: GALGAS_templateDelimitorList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_templateDelimitorList (const GALGAS_lstring & in_mStartString,
                                                     const GALGAS_lstring & in_mEndString,
                                                     const GALGAS_bool & in_mPreservesStartDelimiter
                                                     COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_templateDelimitorList (const GALGAS_templateDelimitorList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_templateDelimitorList (const GALGAS_templateDelimitorList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -9731,7 +9527,7 @@ mObject (in_mStartString, in_mEndString, in_mPreservesStartDelimiter) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_templateDelimitorList::cCollectionElement_templateDelimitorList (const GALGAS_templateDelimitorList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_templateDelimitorList::cCollectionElement_templateDelimitorList (const GALGAS_templateDelimitorList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mStartString, inElement.mProperty_mEndString, inElement.mProperty_mPreservesStartDelimiter) {
 }
@@ -9793,7 +9589,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_templateDelimitorList::enterElement (const GALGAS_templateDelimitorList_2D_element & inValue,
+void GALGAS_templateDelimitorList::enterElement (const GALGAS_templateDelimitorList_2E_element & inValue,
                                                  Compiler * /* inCompiler */
                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -9876,17 +9672,13 @@ void GALGAS_templateDelimitorList::setter_insertAtIndex (const GALGAS_lstring in
                                                          const GALGAS_uint inInsertionIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_templateDelimitorList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_templateDelimitorList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -9898,32 +9690,23 @@ void GALGAS_templateDelimitorList::setter_removeAtIndex (GALGAS_lstring & outOpe
                                                          const GALGAS_uint inRemoveIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_templateDelimitorList * p = (cCollectionElement_templateDelimitorList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_templateDelimitorList) ;
-        outOperand0 = p->mObject.mProperty_mStartString ;
-        outOperand1 = p->mObject.mProperty_mEndString ;
-        outOperand2 = p->mObject.mProperty_mPreservesStartDelimiter ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_templateDelimitorList * p = (cCollectionElement_templateDelimitorList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_templateDelimitorList) ;
+      outOperand0 = p->mObject.mProperty_mStartString ;
+      outOperand1 = p->mObject.mProperty_mEndString ;
+      outOperand2 = p->mObject.mProperty_mPreservesStartDelimiter ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
+    drop () ;    
   }
 }
 
@@ -10165,7 +9948,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_templateDelimitorList_2D_element cEnumerator_templateDelimitorList::current (LOCATION_ARGS) const {
+GALGAS_templateDelimitorList_2E_element cEnumerator_templateDelimitorList::current (LOCATION_ARGS) const {
   const cCollectionElement_templateDelimitorList * p = (const cCollectionElement_templateDelimitorList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateDelimitorList) ;
   return p->mObject ;
@@ -10243,7 +10026,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_styleMap::cMapElement_styleMap (const GALGAS_styleMap_2D_element & inValue
+cMapElement_styleMap::cMapElement_styleMap (const GALGAS_styleMap_2E_element & inValue
                                             COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mComment (inValue.mProperty_mComment),
@@ -10325,17 +10108,17 @@ GALGAS_styleMap GALGAS_styleMap::class_func_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_styleMap_2D_element_3F_ GALGAS_styleMap
+GALGAS_styleMap_2E_element_3F_ GALGAS_styleMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_styleMap_2D_element_3F_ result ;
+  GALGAS_styleMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_styleMap * p = (cMapElement_styleMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_styleMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_styleMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_styleMap_2D_element element ;
+      GALGAS_styleMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mComment = p->mProperty_mComment ;
       element.mProperty_mStyleIndex = p->mProperty_mStyleIndex ;
@@ -10365,7 +10148,7 @@ GALGAS_styleMap GALGAS_styleMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_styleMap::enterElement (const GALGAS_styleMap_2D_element & inValue,
+void GALGAS_styleMap::enterElement (const GALGAS_styleMap_2E_element & inValue,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   cMapElement_styleMap * p = nullptr ;
@@ -10529,10 +10312,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_styleMap_2D_element cEnumerator_styleMap::current (LOCATION_ARGS) const {
+GALGAS_styleMap_2E_element cEnumerator_styleMap::current (LOCATION_ARGS) const {
   const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_styleMap) ;
-  return GALGAS_styleMap_2D_element (p->mProperty_lkey, p->mProperty_mComment, p->mProperty_mStyleIndex) ;
+  return GALGAS_styleMap_2E_element (p->mProperty_lkey, p->mProperty_mComment, p->mProperty_mStyleIndex) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10603,7 +10386,7 @@ GALGAS_styleMap GALGAS_styleMap::extractObject (const GALGAS_object & inObject,
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GALGAS_lexicalTagMap_2D_element & inValue
+cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GALGAS_lexicalTagMap_2E_element & inValue
                                                       COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE) {
 }
@@ -10671,17 +10454,17 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::class_func_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagMap_2D_element_3F_ GALGAS_lexicalTagMap
+GALGAS_lexicalTagMap_2E_element_3F_ GALGAS_lexicalTagMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalTagMap_2D_element_3F_ result ;
+  GALGAS_lexicalTagMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_lexicalTagMap * p = (cMapElement_lexicalTagMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_lexicalTagMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_lexicalTagMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_lexicalTagMap_2D_element element ;
+      GALGAS_lexicalTagMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       result = element ;
     }
@@ -10709,7 +10492,7 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::getter_overriddenMap (Compiler * inCo
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalTagMap::enterElement (const GALGAS_lexicalTagMap_2D_element & inValue,
+void GALGAS_lexicalTagMap::enterElement (const GALGAS_lexicalTagMap_2E_element & inValue,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   cMapElement_lexicalTagMap * p = nullptr ;
@@ -10805,10 +10588,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagMap_2D_element cEnumerator_lexicalTagMap::current (LOCATION_ARGS) const {
+GALGAS_lexicalTagMap_2E_element cEnumerator_lexicalTagMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
-  return GALGAS_lexicalTagMap_2D_element (p->mProperty_lkey) ;
+  return GALGAS_lexicalTagMap_2E_element (p->mProperty_lkey) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12191,7 +11974,7 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalStructuredSendInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalStructuredSendInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12211,13 +11994,13 @@ ComparisonResult GALGAS_lexicalStructuredSendInstructionAST_2D_weak::objectCompa
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST_2D_weak::GALGAS_lexicalStructuredSendInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalStructuredSendInstructionAST_2E_weak::GALGAS_lexicalStructuredSendInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST_2D_weak & GALGAS_lexicalStructuredSendInstructionAST_2D_weak::operator = (const GALGAS_lexicalStructuredSendInstructionAST & inSource) {
+GALGAS_lexicalStructuredSendInstructionAST_2E_weak & GALGAS_lexicalStructuredSendInstructionAST_2E_weak::operator = (const GALGAS_lexicalStructuredSendInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12229,21 +12012,21 @@ GALGAS_lexicalStructuredSendInstructionAST_2D_weak & GALGAS_lexicalStructuredSen
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST_2D_weak::GALGAS_lexicalStructuredSendInstructionAST_2D_weak (const GALGAS_lexicalStructuredSendInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalStructuredSendInstructionAST_2E_weak::GALGAS_lexicalStructuredSendInstructionAST_2E_weak (const GALGAS_lexicalStructuredSendInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalStructuredSendInstructionAST_2D_weak result ;
+GALGAS_lexicalStructuredSendInstructionAST_2E_weak GALGAS_lexicalStructuredSendInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalStructuredSendInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST_2D_weak::bang_lexicalStructuredSendInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructionAST_2E_weak::bang_lexicalStructuredSendInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalStructuredSendInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12259,41 +12042,41 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalStructuredSendInstructionAST-weak generic code implementation
+//     @lexicalStructuredSendInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2D_weak ("lexicalStructuredSendInstructionAST-weak",
-                                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2E_weak ("lexicalStructuredSendInstructionAST.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalStructuredSendInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalStructuredSendInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalStructuredSendInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalStructuredSendInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalStructuredSendInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalStructuredSendInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalStructuredSendInstructionAST_2E_weak GALGAS_lexicalStructuredSendInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalStructuredSendInstructionAST_2D_weak result ;
-  const GALGAS_lexicalStructuredSendInstructionAST_2D_weak * p = (const GALGAS_lexicalStructuredSendInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalStructuredSendInstructionAST_2E_weak result ;
+  const GALGAS_lexicalStructuredSendInstructionAST_2E_weak * p = (const GALGAS_lexicalStructuredSendInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalStructuredSendInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalStructuredSendInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalStructuredSendInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalStructuredSendInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12301,7 +12084,7 @@ GALGAS_lexicalStructuredSendInstructionAST_2D_weak GALGAS_lexicalStructuredSendI
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalDropInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalDropInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalDropInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalDropInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12321,13 +12104,13 @@ ComparisonResult GALGAS_lexicalDropInstructionAST_2D_weak::objectCompare (const 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST_2D_weak::GALGAS_lexicalDropInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalDropInstructionAST_2E_weak::GALGAS_lexicalDropInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST_2D_weak & GALGAS_lexicalDropInstructionAST_2D_weak::operator = (const GALGAS_lexicalDropInstructionAST & inSource) {
+GALGAS_lexicalDropInstructionAST_2E_weak & GALGAS_lexicalDropInstructionAST_2E_weak::operator = (const GALGAS_lexicalDropInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12339,21 +12122,21 @@ GALGAS_lexicalDropInstructionAST_2D_weak & GALGAS_lexicalDropInstructionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST_2D_weak::GALGAS_lexicalDropInstructionAST_2D_weak (const GALGAS_lexicalDropInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalDropInstructionAST_2E_weak::GALGAS_lexicalDropInstructionAST_2E_weak (const GALGAS_lexicalDropInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalDropInstructionAST_2D_weak result ;
+GALGAS_lexicalDropInstructionAST_2E_weak GALGAS_lexicalDropInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalDropInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST_2D_weak::bang_lexicalDropInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST_2E_weak::bang_lexicalDropInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalDropInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12369,41 +12152,41 @@ GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST_2D_weak::bang_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalDropInstructionAST-weak generic code implementation
+//     @lexicalDropInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2D_weak ("lexicalDropInstructionAST-weak",
-                                                                                         & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2E_weak ("lexicalDropInstructionAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalDropInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalDropInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalDropInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalDropInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalDropInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalDropInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalDropInstructionAST_2E_weak GALGAS_lexicalDropInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalDropInstructionAST_2D_weak result ;
-  const GALGAS_lexicalDropInstructionAST_2D_weak * p = (const GALGAS_lexicalDropInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalDropInstructionAST_2E_weak result ;
+  const GALGAS_lexicalDropInstructionAST_2E_weak * p = (const GALGAS_lexicalDropInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalDropInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalDropInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalDropInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalDropInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12411,7 +12194,7 @@ GALGAS_lexicalDropInstructionAST_2D_weak GALGAS_lexicalDropInstructionAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalErrorInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalErrorInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalErrorInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalErrorInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12431,13 +12214,13 @@ ComparisonResult GALGAS_lexicalErrorInstructionAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST_2D_weak::GALGAS_lexicalErrorInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalErrorInstructionAST_2E_weak::GALGAS_lexicalErrorInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST_2D_weak & GALGAS_lexicalErrorInstructionAST_2D_weak::operator = (const GALGAS_lexicalErrorInstructionAST & inSource) {
+GALGAS_lexicalErrorInstructionAST_2E_weak & GALGAS_lexicalErrorInstructionAST_2E_weak::operator = (const GALGAS_lexicalErrorInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12449,21 +12232,21 @@ GALGAS_lexicalErrorInstructionAST_2D_weak & GALGAS_lexicalErrorInstructionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST_2D_weak::GALGAS_lexicalErrorInstructionAST_2D_weak (const GALGAS_lexicalErrorInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalErrorInstructionAST_2E_weak::GALGAS_lexicalErrorInstructionAST_2E_weak (const GALGAS_lexicalErrorInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalErrorInstructionAST_2D_weak result ;
+GALGAS_lexicalErrorInstructionAST_2E_weak GALGAS_lexicalErrorInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalErrorInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST_2D_weak::bang_lexicalErrorInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST_2E_weak::bang_lexicalErrorInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalErrorInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12479,41 +12262,41 @@ GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalErrorInstructionAST-weak generic code implementation
+//     @lexicalErrorInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2D_weak ("lexicalErrorInstructionAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2E_weak ("lexicalErrorInstructionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalErrorInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalErrorInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalErrorInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalErrorInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalErrorInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalErrorInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalErrorInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalErrorInstructionAST_2D_weak GALGAS_lexicalErrorInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalErrorInstructionAST_2E_weak GALGAS_lexicalErrorInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalErrorInstructionAST_2D_weak result ;
-  const GALGAS_lexicalErrorInstructionAST_2D_weak * p = (const GALGAS_lexicalErrorInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalErrorInstructionAST_2E_weak result ;
+  const GALGAS_lexicalErrorInstructionAST_2E_weak * p = (const GALGAS_lexicalErrorInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalErrorInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalErrorInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalErrorInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalErrorInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12664,7 +12447,7 @@ GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalLogInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalLogInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalLogInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalLogInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12684,13 +12467,13 @@ ComparisonResult GALGAS_lexicalLogInstructionAST_2D_weak::objectCompare (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST_2D_weak::GALGAS_lexicalLogInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalLogInstructionAST_2E_weak::GALGAS_lexicalLogInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST_2D_weak & GALGAS_lexicalLogInstructionAST_2D_weak::operator = (const GALGAS_lexicalLogInstructionAST & inSource) {
+GALGAS_lexicalLogInstructionAST_2E_weak & GALGAS_lexicalLogInstructionAST_2E_weak::operator = (const GALGAS_lexicalLogInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12702,21 +12485,21 @@ GALGAS_lexicalLogInstructionAST_2D_weak & GALGAS_lexicalLogInstructionAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST_2D_weak::GALGAS_lexicalLogInstructionAST_2D_weak (const GALGAS_lexicalLogInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalLogInstructionAST_2E_weak::GALGAS_lexicalLogInstructionAST_2E_weak (const GALGAS_lexicalLogInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalLogInstructionAST_2D_weak result ;
+GALGAS_lexicalLogInstructionAST_2E_weak GALGAS_lexicalLogInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalLogInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST_2D_weak::bang_lexicalLogInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST_2E_weak::bang_lexicalLogInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalLogInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12732,41 +12515,41 @@ GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST_2D_weak::bang_le
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalLogInstructionAST-weak generic code implementation
+//     @lexicalLogInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2D_weak ("lexicalLogInstructionAST-weak",
-                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2E_weak ("lexicalLogInstructionAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalLogInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalLogInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalLogInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalLogInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalLogInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalLogInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalLogInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalLogInstructionAST_2D_weak GALGAS_lexicalLogInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalLogInstructionAST_2E_weak GALGAS_lexicalLogInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalLogInstructionAST_2D_weak result ;
-  const GALGAS_lexicalLogInstructionAST_2D_weak * p = (const GALGAS_lexicalLogInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalLogInstructionAST_2E_weak result ;
+  const GALGAS_lexicalLogInstructionAST_2E_weak * p = (const GALGAS_lexicalLogInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalLogInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalLogInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalLogInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalLogInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12986,7 +12769,7 @@ GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalRepeatInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalRepeatInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalRepeatInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalRepeatInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13006,13 +12789,13 @@ ComparisonResult GALGAS_lexicalRepeatInstructionAST_2D_weak::objectCompare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST_2D_weak::GALGAS_lexicalRepeatInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalRepeatInstructionAST_2E_weak::GALGAS_lexicalRepeatInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST_2D_weak & GALGAS_lexicalRepeatInstructionAST_2D_weak::operator = (const GALGAS_lexicalRepeatInstructionAST & inSource) {
+GALGAS_lexicalRepeatInstructionAST_2E_weak & GALGAS_lexicalRepeatInstructionAST_2E_weak::operator = (const GALGAS_lexicalRepeatInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13024,21 +12807,21 @@ GALGAS_lexicalRepeatInstructionAST_2D_weak & GALGAS_lexicalRepeatInstructionAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST_2D_weak::GALGAS_lexicalRepeatInstructionAST_2D_weak (const GALGAS_lexicalRepeatInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalRepeatInstructionAST_2E_weak::GALGAS_lexicalRepeatInstructionAST_2E_weak (const GALGAS_lexicalRepeatInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalRepeatInstructionAST_2D_weak result ;
+GALGAS_lexicalRepeatInstructionAST_2E_weak GALGAS_lexicalRepeatInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalRepeatInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST_2D_weak::bang_lexicalRepeatInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST_2E_weak::bang_lexicalRepeatInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRepeatInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13054,41 +12837,41 @@ GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST_2D_weak::b
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalRepeatInstructionAST-weak generic code implementation
+//     @lexicalRepeatInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2D_weak ("lexicalRepeatInstructionAST-weak",
-                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2E_weak ("lexicalRepeatInstructionAST.weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalRepeatInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalRepeatInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalRepeatInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalRepeatInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalRepeatInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalRepeatInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalRepeatInstructionAST_2E_weak GALGAS_lexicalRepeatInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalRepeatInstructionAST_2D_weak result ;
-  const GALGAS_lexicalRepeatInstructionAST_2D_weak * p = (const GALGAS_lexicalRepeatInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalRepeatInstructionAST_2E_weak result ;
+  const GALGAS_lexicalRepeatInstructionAST_2E_weak * p = (const GALGAS_lexicalRepeatInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalRepeatInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalRepeatInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalRepeatInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalRepeatInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13096,7 +12879,7 @@ GALGAS_lexicalRepeatInstructionAST_2D_weak GALGAS_lexicalRepeatInstructionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalRewindInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalRewindInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalRewindInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalRewindInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13116,13 +12899,13 @@ ComparisonResult GALGAS_lexicalRewindInstructionAST_2D_weak::objectCompare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST_2D_weak::GALGAS_lexicalRewindInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalRewindInstructionAST_2E_weak::GALGAS_lexicalRewindInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST_2D_weak & GALGAS_lexicalRewindInstructionAST_2D_weak::operator = (const GALGAS_lexicalRewindInstructionAST & inSource) {
+GALGAS_lexicalRewindInstructionAST_2E_weak & GALGAS_lexicalRewindInstructionAST_2E_weak::operator = (const GALGAS_lexicalRewindInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13134,21 +12917,21 @@ GALGAS_lexicalRewindInstructionAST_2D_weak & GALGAS_lexicalRewindInstructionAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST_2D_weak::GALGAS_lexicalRewindInstructionAST_2D_weak (const GALGAS_lexicalRewindInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalRewindInstructionAST_2E_weak::GALGAS_lexicalRewindInstructionAST_2E_weak (const GALGAS_lexicalRewindInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalRewindInstructionAST_2D_weak result ;
+GALGAS_lexicalRewindInstructionAST_2E_weak GALGAS_lexicalRewindInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalRewindInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST_2D_weak::bang_lexicalRewindInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST_2E_weak::bang_lexicalRewindInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRewindInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13164,41 +12947,41 @@ GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST_2D_weak::b
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalRewindInstructionAST-weak generic code implementation
+//     @lexicalRewindInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2D_weak ("lexicalRewindInstructionAST-weak",
-                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2E_weak ("lexicalRewindInstructionAST.weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalRewindInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalRewindInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalRewindInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalRewindInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalRewindInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalRewindInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalRewindInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRewindInstructionAST_2D_weak GALGAS_lexicalRewindInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalRewindInstructionAST_2E_weak GALGAS_lexicalRewindInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalRewindInstructionAST_2D_weak result ;
-  const GALGAS_lexicalRewindInstructionAST_2D_weak * p = (const GALGAS_lexicalRewindInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalRewindInstructionAST_2E_weak result ;
+  const GALGAS_lexicalRewindInstructionAST_2E_weak * p = (const GALGAS_lexicalRewindInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalRewindInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalRewindInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalRewindInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalRewindInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13320,7 +13103,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActu
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13340,13 +13123,13 @@ ComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::objectC
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (void) :
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak (void) :
 AC_GALGAS_weak_reference () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak & GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::operator = (const GALGAS_abstractLexicalRoutineActualArgumentAST & inSource) {
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak & GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::operator = (const GALGAS_abstractLexicalRoutineActualArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13358,21 +13141,21 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak & GALGAS_abstractLexicalR
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (const GALGAS_abstractLexicalRoutineActualArgumentAST & inSource) :
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak (const GALGAS_abstractLexicalRoutineActualArgumentAST & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak result ;
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::bang_abstractLexicalRoutineActualArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::bang_abstractLexicalRoutineActualArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_abstractLexicalRoutineActualArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13388,41 +13171,41 @@ GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActu
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @abstractLexicalRoutineActualArgumentAST-weak generic code implementation
+//     @abstractLexicalRoutineActualArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak ("abstractLexicalRoutineActualArgumentAST-weak",
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak ("abstractLexicalRoutineActualArgumentAST.weak",
                                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                               Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak result ;
-  const GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak * p = (const GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak result ;
+  const GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak * p = (const GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("abstractLexicalRoutineActualArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("abstractLexicalRoutineActualArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13430,7 +13213,7 @@ GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak GALGAS_abstractLexicalRou
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13450,13 +13233,13 @@ ComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::objectCo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak (void) :
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak () {
+GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak (void) :
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak & GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::operator = (const GALGAS_lexicalAttributeInputOutputArgumentAST & inSource) {
+GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak & GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::operator = (const GALGAS_lexicalAttributeInputOutputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13468,21 +13251,21 @@ GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak & GALGAS_lexicalAttributeI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak (const GALGAS_lexicalAttributeInputOutputArgumentAST & inSource) :
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak (const GALGAS_lexicalAttributeInputOutputArgumentAST & inSource) :
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak result ;
+GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::bang_lexicalAttributeInputOutputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::bang_lexicalAttributeInputOutputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalAttributeInputOutputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13498,41 +13281,41 @@ GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutput
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalAttributeInputOutputArgumentAST-weak generic code implementation
+//     @lexicalAttributeInputOutputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak ("lexicalAttributeInputOutputArgumentAST-weak",
-                                                                                                      & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak ("lexicalAttributeInputOutputArgumentAST.weak",
+                                                                                                      & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                             Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak * p = (const GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak * p = (const GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalAttributeInputOutputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalAttributeInputOutputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalAttributeInputOutputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalAttributeInputOutputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13714,7 +13497,7 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::extra
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalFormalInputArgumentAST_2D_weak::objectCompare (const GALGAS_lexicalFormalInputArgumentAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalFormalInputArgumentAST_2E_weak::objectCompare (const GALGAS_lexicalFormalInputArgumentAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13734,13 +13517,13 @@ ComparisonResult GALGAS_lexicalFormalInputArgumentAST_2D_weak::objectCompare (co
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST_2D_weak::GALGAS_lexicalFormalInputArgumentAST_2D_weak (void) :
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak () {
+GALGAS_lexicalFormalInputArgumentAST_2E_weak::GALGAS_lexicalFormalInputArgumentAST_2E_weak (void) :
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST_2D_weak & GALGAS_lexicalFormalInputArgumentAST_2D_weak::operator = (const GALGAS_lexicalFormalInputArgumentAST & inSource) {
+GALGAS_lexicalFormalInputArgumentAST_2E_weak & GALGAS_lexicalFormalInputArgumentAST_2E_weak::operator = (const GALGAS_lexicalFormalInputArgumentAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13752,21 +13535,21 @@ GALGAS_lexicalFormalInputArgumentAST_2D_weak & GALGAS_lexicalFormalInputArgument
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST_2D_weak::GALGAS_lexicalFormalInputArgumentAST_2D_weak (const GALGAS_lexicalFormalInputArgumentAST & inSource) :
-GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak (inSource) {
+GALGAS_lexicalFormalInputArgumentAST_2E_weak::GALGAS_lexicalFormalInputArgumentAST_2E_weak (const GALGAS_lexicalFormalInputArgumentAST & inSource) :
+GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalFormalInputArgumentAST_2D_weak result ;
+GALGAS_lexicalFormalInputArgumentAST_2E_weak GALGAS_lexicalFormalInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalFormalInputArgumentAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST_2D_weak::bang_lexicalFormalInputArgumentAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST_2E_weak::bang_lexicalFormalInputArgumentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalFormalInputArgumentAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13782,41 +13565,41 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalFormalInputArgumentAST-weak generic code implementation
+//     @lexicalFormalInputArgumentAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST_2D_weak ("lexicalFormalInputArgumentAST-weak",
-                                                                                             & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST_2E_weak ("lexicalFormalInputArgumentAST.weak",
+                                                                                             & kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalFormalInputArgumentAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalFormalInputArgumentAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalFormalInputArgumentAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalFormalInputArgumentAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalFormalInputArgumentAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalFormalInputArgumentAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalFormalInputArgumentAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalFormalInputArgumentAST_2E_weak GALGAS_lexicalFormalInputArgumentAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalFormalInputArgumentAST_2D_weak result ;
-  const GALGAS_lexicalFormalInputArgumentAST_2D_weak * p = (const GALGAS_lexicalFormalInputArgumentAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalFormalInputArgumentAST_2E_weak result ;
+  const GALGAS_lexicalFormalInputArgumentAST_2E_weak * p = (const GALGAS_lexicalFormalInputArgumentAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalFormalInputArgumentAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalFormalInputArgumentAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalFormalInputArgumentAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalFormalInputArgumentAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13829,12 +13612,12 @@ GALGAS_lexicalFormalInputArgumentAST_2D_weak GALGAS_lexicalFormalInputArgumentAS
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalRoutineCallActualArgumentListAST : public cCollectionElement {
-  public: GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element mObject ;
+  public: GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_lexicalRoutineCallActualArgumentListAST (const GALGAS_abstractLexicalRoutineActualArgumentAST & in_mLexicalRoutineActualArgument
                                                                       COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_lexicalRoutineCallActualArgumentListAST (const GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalRoutineCallActualArgumentListAST (const GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -13858,7 +13641,7 @@ mObject (in_mLexicalRoutineActualArgument) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_lexicalRoutineCallActualArgumentListAST::cCollectionElement_lexicalRoutineCallActualArgumentListAST (const GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_lexicalRoutineCallActualArgumentListAST::cCollectionElement_lexicalRoutineCallActualArgumentListAST (const GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalRoutineActualArgument) {
 }
@@ -13912,7 +13695,7 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_lexicalRoutineCallActualArgumentListAST::enterElement (const GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element & inValue,
+void GALGAS_lexicalRoutineCallActualArgumentListAST::enterElement (const GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element & inValue,
                                                                    Compiler * /* inCompiler */
                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -13983,17 +13766,13 @@ void GALGAS_lexicalRoutineCallActualArgumentListAST::setter_insertAtIndex (const
                                                                            const GALGAS_uint inInsertionIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -14003,24 +13782,19 @@ void GALGAS_lexicalRoutineCallActualArgumentListAST::setter_removeAtIndex (GALGA
                                                                            const GALGAS_uint inRemoveIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_lexicalRoutineCallActualArgumentListAST * p = (cCollectionElement_lexicalRoutineCallActualArgumentListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST) ;
-        outOperand0 = p->mObject.mProperty_mLexicalRoutineActualArgument ;
-      }
+  outOperand0.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalRoutineCallActualArgumentListAST * p = (cCollectionElement_lexicalRoutineCallActualArgumentListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST) ;
+      outOperand0 = p->mObject.mProperty_mLexicalRoutineActualArgument ;
     }
   }else{
-    outOperand0.drop () ;
+    drop () ;    
   }
 }
 
@@ -14180,7 +13954,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element cEnumerator_lexicalRoutineCallActualArgumentListAST::current (LOCATION_ARGS) const {
+GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element cEnumerator_lexicalRoutineCallActualArgumentListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalRoutineCallActualArgumentListAST * p = (const cCollectionElement_lexicalRoutineCallActualArgumentListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalRoutineCallActualArgumentListAST) ;
   return p->mObject ;
@@ -14242,7 +14016,7 @@ GALGAS_lexicalRoutineCallActualArgumentListAST GALGAS_lexicalRoutineCallActualAr
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalRoutineCallInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalRoutineCallInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalRoutineCallInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalRoutineCallInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14262,13 +14036,13 @@ ComparisonResult GALGAS_lexicalRoutineCallInstructionAST_2D_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST_2D_weak::GALGAS_lexicalRoutineCallInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalRoutineCallInstructionAST_2E_weak::GALGAS_lexicalRoutineCallInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST_2D_weak & GALGAS_lexicalRoutineCallInstructionAST_2D_weak::operator = (const GALGAS_lexicalRoutineCallInstructionAST & inSource) {
+GALGAS_lexicalRoutineCallInstructionAST_2E_weak & GALGAS_lexicalRoutineCallInstructionAST_2E_weak::operator = (const GALGAS_lexicalRoutineCallInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14280,21 +14054,21 @@ GALGAS_lexicalRoutineCallInstructionAST_2D_weak & GALGAS_lexicalRoutineCallInstr
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST_2D_weak::GALGAS_lexicalRoutineCallInstructionAST_2D_weak (const GALGAS_lexicalRoutineCallInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalRoutineCallInstructionAST_2E_weak::GALGAS_lexicalRoutineCallInstructionAST_2E_weak (const GALGAS_lexicalRoutineCallInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST_2D_weak GALGAS_lexicalRoutineCallInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalRoutineCallInstructionAST_2D_weak result ;
+GALGAS_lexicalRoutineCallInstructionAST_2E_weak GALGAS_lexicalRoutineCallInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalRoutineCallInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST GALGAS_lexicalRoutineCallInstructionAST_2D_weak::bang_lexicalRoutineCallInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalRoutineCallInstructionAST GALGAS_lexicalRoutineCallInstructionAST_2E_weak::bang_lexicalRoutineCallInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalRoutineCallInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14310,41 +14084,41 @@ GALGAS_lexicalRoutineCallInstructionAST GALGAS_lexicalRoutineCallInstructionAST_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalRoutineCallInstructionAST-weak generic code implementation
+//     @lexicalRoutineCallInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2D_weak ("lexicalRoutineCallInstructionAST-weak",
-                                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2E_weak ("lexicalRoutineCallInstructionAST.weak",
+                                                                                                & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalRoutineCallInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalRoutineCallInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalRoutineCallInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalRoutineCallInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalRoutineCallInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalRoutineCallInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalRoutineCallInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalRoutineCallInstructionAST_2D_weak GALGAS_lexicalRoutineCallInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalRoutineCallInstructionAST_2E_weak GALGAS_lexicalRoutineCallInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalRoutineCallInstructionAST_2D_weak result ;
-  const GALGAS_lexicalRoutineCallInstructionAST_2D_weak * p = (const GALGAS_lexicalRoutineCallInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalRoutineCallInstructionAST_2E_weak result ;
+  const GALGAS_lexicalRoutineCallInstructionAST_2E_weak * p = (const GALGAS_lexicalRoutineCallInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalRoutineCallInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalRoutineCallInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalRoutineCallInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalRoutineCallInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14610,7 +14384,7 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalSelectInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalSelectInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalSelectInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalSelectInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14630,13 +14404,13 @@ ComparisonResult GALGAS_lexicalSelectInstructionAST_2D_weak::objectCompare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST_2D_weak::GALGAS_lexicalSelectInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalSelectInstructionAST_2E_weak::GALGAS_lexicalSelectInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST_2D_weak & GALGAS_lexicalSelectInstructionAST_2D_weak::operator = (const GALGAS_lexicalSelectInstructionAST & inSource) {
+GALGAS_lexicalSelectInstructionAST_2E_weak & GALGAS_lexicalSelectInstructionAST_2E_weak::operator = (const GALGAS_lexicalSelectInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14648,21 +14422,21 @@ GALGAS_lexicalSelectInstructionAST_2D_weak & GALGAS_lexicalSelectInstructionAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST_2D_weak::GALGAS_lexicalSelectInstructionAST_2D_weak (const GALGAS_lexicalSelectInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalSelectInstructionAST_2E_weak::GALGAS_lexicalSelectInstructionAST_2E_weak (const GALGAS_lexicalSelectInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalSelectInstructionAST_2D_weak result ;
+GALGAS_lexicalSelectInstructionAST_2E_weak GALGAS_lexicalSelectInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalSelectInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST_2D_weak::bang_lexicalSelectInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST_2E_weak::bang_lexicalSelectInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSelectInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14678,41 +14452,41 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST_2D_weak::b
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalSelectInstructionAST-weak generic code implementation
+//     @lexicalSelectInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2D_weak ("lexicalSelectInstructionAST-weak",
-                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ("lexicalSelectInstructionAST.weak",
+                                                                                           & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalSelectInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalSelectInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalSelectInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalSelectInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalSelectInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalSelectInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalSelectInstructionAST_2E_weak GALGAS_lexicalSelectInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalSelectInstructionAST_2D_weak result ;
-  const GALGAS_lexicalSelectInstructionAST_2D_weak * p = (const GALGAS_lexicalSelectInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalSelectInstructionAST_2E_weak result ;
+  const GALGAS_lexicalSelectInstructionAST_2E_weak * p = (const GALGAS_lexicalSelectInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalSelectInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalSelectInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalSelectInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalSelectInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14720,7 +14494,7 @@ GALGAS_lexicalSelectInstructionAST_2D_weak GALGAS_lexicalSelectInstructionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalSimpleSendInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalSimpleSendInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14740,13 +14514,13 @@ ComparisonResult GALGAS_lexicalSimpleSendInstructionAST_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST_2D_weak::GALGAS_lexicalSimpleSendInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalSimpleSendInstructionAST_2E_weak::GALGAS_lexicalSimpleSendInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST_2D_weak & GALGAS_lexicalSimpleSendInstructionAST_2D_weak::operator = (const GALGAS_lexicalSimpleSendInstructionAST & inSource) {
+GALGAS_lexicalSimpleSendInstructionAST_2E_weak & GALGAS_lexicalSimpleSendInstructionAST_2E_weak::operator = (const GALGAS_lexicalSimpleSendInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14758,21 +14532,21 @@ GALGAS_lexicalSimpleSendInstructionAST_2D_weak & GALGAS_lexicalSimpleSendInstruc
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST_2D_weak::GALGAS_lexicalSimpleSendInstructionAST_2D_weak (const GALGAS_lexicalSimpleSendInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalSimpleSendInstructionAST_2E_weak::GALGAS_lexicalSimpleSendInstructionAST_2E_weak (const GALGAS_lexicalSimpleSendInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalSimpleSendInstructionAST_2D_weak result ;
+GALGAS_lexicalSimpleSendInstructionAST_2E_weak GALGAS_lexicalSimpleSendInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalSimpleSendInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST_2D_weak::bang_lexicalSimpleSendInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST_2E_weak::bang_lexicalSimpleSendInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalSimpleSendInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14788,41 +14562,41 @@ GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalSimpleSendInstructionAST-weak generic code implementation
+//     @lexicalSimpleSendInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2D_weak ("lexicalSimpleSendInstructionAST-weak",
-                                                                                               & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2E_weak ("lexicalSimpleSendInstructionAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalSimpleSendInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalSimpleSendInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalSimpleSendInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalSimpleSendInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalSimpleSendInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalSimpleSendInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalSimpleSendInstructionAST_2E_weak GALGAS_lexicalSimpleSendInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalSimpleSendInstructionAST_2D_weak result ;
-  const GALGAS_lexicalSimpleSendInstructionAST_2D_weak * p = (const GALGAS_lexicalSimpleSendInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalSimpleSendInstructionAST_2E_weak result ;
+  const GALGAS_lexicalSimpleSendInstructionAST_2E_weak * p = (const GALGAS_lexicalSimpleSendInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalSimpleSendInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalSimpleSendInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalSimpleSendInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalSimpleSendInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14830,7 +14604,7 @@ GALGAS_lexicalSimpleSendInstructionAST_2D_weak GALGAS_lexicalSimpleSendInstructi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalTagInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalTagInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalTagInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalTagInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14850,13 +14624,13 @@ ComparisonResult GALGAS_lexicalTagInstructionAST_2D_weak::objectCompare (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST_2D_weak::GALGAS_lexicalTagInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalTagInstructionAST_2E_weak::GALGAS_lexicalTagInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST_2D_weak & GALGAS_lexicalTagInstructionAST_2D_weak::operator = (const GALGAS_lexicalTagInstructionAST & inSource) {
+GALGAS_lexicalTagInstructionAST_2E_weak & GALGAS_lexicalTagInstructionAST_2E_weak::operator = (const GALGAS_lexicalTagInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14868,21 +14642,21 @@ GALGAS_lexicalTagInstructionAST_2D_weak & GALGAS_lexicalTagInstructionAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST_2D_weak::GALGAS_lexicalTagInstructionAST_2D_weak (const GALGAS_lexicalTagInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalTagInstructionAST_2E_weak::GALGAS_lexicalTagInstructionAST_2E_weak (const GALGAS_lexicalTagInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalTagInstructionAST_2D_weak result ;
+GALGAS_lexicalTagInstructionAST_2E_weak GALGAS_lexicalTagInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalTagInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST_2D_weak::bang_lexicalTagInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST_2E_weak::bang_lexicalTagInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalTagInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14898,41 +14672,41 @@ GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST_2D_weak::bang_le
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalTagInstructionAST-weak generic code implementation
+//     @lexicalTagInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2D_weak ("lexicalTagInstructionAST-weak",
-                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2E_weak ("lexicalTagInstructionAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalTagInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalTagInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalTagInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalTagInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalTagInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalTagInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalTagInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalTagInstructionAST_2E_weak GALGAS_lexicalTagInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalTagInstructionAST_2D_weak result ;
-  const GALGAS_lexicalTagInstructionAST_2D_weak * p = (const GALGAS_lexicalTagInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalTagInstructionAST_2E_weak result ;
+  const GALGAS_lexicalTagInstructionAST_2E_weak * p = (const GALGAS_lexicalTagInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalTagInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalTagInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalTagInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalTagInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14940,7 +14714,7 @@ GALGAS_lexicalTagInstructionAST_2D_weak GALGAS_lexicalTagInstructionAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexicalWarningInstructionAST_2D_weak::objectCompare (const GALGAS_lexicalWarningInstructionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexicalWarningInstructionAST_2E_weak::objectCompare (const GALGAS_lexicalWarningInstructionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14960,13 +14734,13 @@ ComparisonResult GALGAS_lexicalWarningInstructionAST_2D_weak::objectCompare (con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST_2D_weak::GALGAS_lexicalWarningInstructionAST_2D_weak (void) :
-GALGAS_lexicalInstructionAST_2D_weak () {
+GALGAS_lexicalWarningInstructionAST_2E_weak::GALGAS_lexicalWarningInstructionAST_2E_weak (void) :
+GALGAS_lexicalInstructionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST_2D_weak & GALGAS_lexicalWarningInstructionAST_2D_weak::operator = (const GALGAS_lexicalWarningInstructionAST & inSource) {
+GALGAS_lexicalWarningInstructionAST_2E_weak & GALGAS_lexicalWarningInstructionAST_2E_weak::operator = (const GALGAS_lexicalWarningInstructionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14978,21 +14752,21 @@ GALGAS_lexicalWarningInstructionAST_2D_weak & GALGAS_lexicalWarningInstructionAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST_2D_weak::GALGAS_lexicalWarningInstructionAST_2D_weak (const GALGAS_lexicalWarningInstructionAST & inSource) :
-GALGAS_lexicalInstructionAST_2D_weak (inSource) {
+GALGAS_lexicalWarningInstructionAST_2E_weak::GALGAS_lexicalWarningInstructionAST_2E_weak (const GALGAS_lexicalWarningInstructionAST & inSource) :
+GALGAS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexicalWarningInstructionAST_2D_weak result ;
+GALGAS_lexicalWarningInstructionAST_2E_weak GALGAS_lexicalWarningInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexicalWarningInstructionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2D_weak::bang_lexicalWarningInstructionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2E_weak::bang_lexicalWarningInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexicalWarningInstructionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15008,46 +14782,48 @@ GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexicalWarningInstructionAST-weak generic code implementation
+//     @lexicalWarningInstructionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2D_weak ("lexicalWarningInstructionAST-weak",
-                                                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2E_weak ("lexicalWarningInstructionAST.weak",
+                                                                                            & kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexicalWarningInstructionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexicalWarningInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalWarningInstructionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexicalWarningInstructionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexicalWarningInstructionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalWarningInstructionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexicalWarningInstructionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexicalWarningInstructionAST_2D_weak GALGAS_lexicalWarningInstructionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexicalWarningInstructionAST_2E_weak GALGAS_lexicalWarningInstructionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalWarningInstructionAST_2D_weak result ;
-  const GALGAS_lexicalWarningInstructionAST_2D_weak * p = (const GALGAS_lexicalWarningInstructionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexicalWarningInstructionAST_2E_weak result ;
+  const GALGAS_lexicalWarningInstructionAST_2E_weak * p = (const GALGAS_lexicalWarningInstructionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexicalWarningInstructionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexicalWarningInstructionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexicalWarningInstructionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexicalWarningInstructionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//  Enum optionDefaultValueEnumAST
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST::GALGAS_optionDefaultValueEnumAST (void) :
@@ -15186,7 +14962,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::extractObject
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
-  public: GALGAS_commandLineOptionListAST_2D_element mObject ;
+  public: GALGAS_commandLineOptionListAST_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_commandLineOptionListAST (const GALGAS_lstring & in_mOptionTypeName,
@@ -15197,7 +14973,7 @@ class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
                                                        const GALGAS_lstring & in_mOptionDefaultValue,
                                                        const GALGAS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind
                                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_commandLineOptionListAST (const GALGAS_commandLineOptionListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_commandLineOptionListAST (const GALGAS_commandLineOptionListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -15227,7 +15003,7 @@ mObject (in_mOptionTypeName, in_mOptionInternalName, in_mOptionInvocationLetter,
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_commandLineOptionListAST::cCollectionElement_commandLineOptionListAST (const GALGAS_commandLineOptionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_commandLineOptionListAST::cCollectionElement_commandLineOptionListAST (const GALGAS_commandLineOptionListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mOptionTypeName, inElement.mProperty_mOptionInternalName, inElement.mProperty_mOptionInvocationLetter, inElement.mProperty_mOptionInvocationString, inElement.mProperty_mOptionComment, inElement.mProperty_mOptionDefaultValue, inElement.mProperty_mOptionDefaultValueKind) {
 }
@@ -15305,7 +15081,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_commandLineOptionListAST::enterElement (const GALGAS_commandLineOptionListAST_2D_element & inValue,
+void GALGAS_commandLineOptionListAST::enterElement (const GALGAS_commandLineOptionListAST_2E_element & inValue,
                                                     Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -15412,17 +15188,13 @@ void GALGAS_commandLineOptionListAST::setter_insertAtIndex (const GALGAS_lstring
                                                             const GALGAS_uint inInsertionIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_commandLineOptionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_commandLineOptionListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -15438,48 +15210,31 @@ void GALGAS_commandLineOptionListAST::setter_removeAtIndex (GALGAS_lstring & out
                                                             const GALGAS_uint inRemoveIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        outOperand3.drop () ;
-        outOperand4.drop () ;
-        outOperand5.drop () ;
-        outOperand6.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
-        outOperand0 = p->mObject.mProperty_mOptionTypeName ;
-        outOperand1 = p->mObject.mProperty_mOptionInternalName ;
-        outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
-        outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
-        outOperand4 = p->mObject.mProperty_mOptionComment ;
-        outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
-        outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_commandLineOptionListAST * p = (cCollectionElement_commandLineOptionListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
-      outOperand4.drop () ;
-      outOperand5.drop () ;
-      outOperand6.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
+      outOperand0 = p->mObject.mProperty_mOptionTypeName ;
+      outOperand1 = p->mObject.mProperty_mOptionInternalName ;
+      outOperand2 = p->mObject.mProperty_mOptionInvocationLetter ;
+      outOperand3 = p->mObject.mProperty_mOptionInvocationString ;
+      outOperand4 = p->mObject.mProperty_mOptionComment ;
+      outOperand5 = p->mObject.mProperty_mOptionDefaultValue ;
+      outOperand6 = p->mObject.mProperty_mOptionDefaultValueKind ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
+    drop () ;    
   }
 }
 
@@ -15885,7 +15640,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_commandLineOptionListAST_2D_element cEnumerator_commandLineOptionListAST::current (LOCATION_ARGS) const {
+GALGAS_commandLineOptionListAST_2E_element cEnumerator_commandLineOptionListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_commandLineOptionListAST) ;
   return p->mObject ;

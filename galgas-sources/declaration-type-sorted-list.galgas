@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $sortedlist$
-    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition ".element"
     let @bool isEquatable
     select
       isEquatable = false
@@ -102,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $sortedlist$
-    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition ".element"
     let @bool isEquatable
     select
       isEquatable = false

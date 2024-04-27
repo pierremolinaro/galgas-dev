@@ -3345,7 +3345,7 @@ void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const GALGAS_g
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GALGAS_galgasGUIComponentListAST_2D_element constinArgument_inGUIComponentAST,
+void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GALGAS_galgasGUIComponentListAST_2E_element constinArgument_inGUIComponentAST,
                                                        const GALGAS_semanticContext constinArgument_inSemanticContext,
                                                        GALGAS_optionComponentMapForGeneration & ioArgument_ioOptionComponentMapForGeneration,
                                                        Compiler * inCompiler
@@ -5196,7 +5196,7 @@ GALGAS_initializerSignatureList cPtr_binarysetPredefinedTypeAST::getter_initiali
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_initializerSignatureList result_result ; // Returned variable
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-binaryset.galgas", 30)) ;
-  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-binaryset.galgas", 30)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2E_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-binaryset.galgas", 30)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -5660,7 +5660,7 @@ GALGAS_initializerSignatureList cPtr_dataPredefinedTypeAST::getter_initializers 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_initializerSignatureList result_result ; // Returned variable
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 30)) ;
-  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 30)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2E_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 30)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -6285,7 +6285,7 @@ GALGAS_initializerSignatureList cPtr_stringsetPredefinedTypeAST::getter_initiali
                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_initializerSignatureList result_result ; // Returned variable
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 36)) ;
-  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 36)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2E_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 36)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -6402,7 +6402,7 @@ void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GALGAS_un
   extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), var_stringTypeIndex_5334, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 135)) ;
   }
   GALGAS_functionSignature temp_0 = GALGAS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
-  temp_0.enterElement (GALGAS_functionSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)), var_stringTypeIndex_5334, GALGAS_string ("inString"), GALGAS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
+  temp_0.enterElement (GALGAS_functionSignature_2E_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)), var_stringTypeIndex_5334, GALGAS_string ("inString"), GALGAS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
   outArgument_outAddAssignArgumentList = temp_0 ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -7132,7 +7132,7 @@ GALGAS_initializerSignatureList cPtr_timerPredefinedTypeAST::getter_initializers
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_initializerSignatureList result_result ; // Returned variable
   GALGAS_initializerSignatureList temp_0 = GALGAS_initializerSignatureList::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-timer.galgas", 30)) ;
-  temp_0.enterElement (GALGAS_initializerSignatureList_2D_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-timer.galgas", 30)) ;
+  temp_0.enterElement (GALGAS_initializerSignatureList_2E_element::init_21_ (GALGAS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-timer.galgas", 30)) ;
   result_result = temp_0 ;
 //---
   return result_result ;
@@ -7616,7 +7616,7 @@ GALGAS_string function_makeEmbeddedTypeName (const GALGAS_string & constinArgume
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  result_result = constinArgument_inOuterTypeName.add_operation (GALGAS_string ("-"), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 32)).add_operation (constinArgument_inInnerTypeName, inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 32)) ;
+  result_result = constinArgument_inOuterTypeName.add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 32)).add_operation (constinArgument_inInnerTypeName, inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 32)) ;
 //---
   return result_result ;
 }
@@ -7668,7 +7668,7 @@ GALGAS_string function_makeOptionalTypeName (const GALGAS_string & constinArgume
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  result_result = constinArgument_inTypeName.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 38)) ;
+  result_result = constinArgument_inTypeName.add_operation (GALGAS_string ("\?"), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 40)) ;
 //---
   return result_result ;
 }
@@ -7716,7 +7716,7 @@ GALGAS_lstring function_makeOptionalTypeLName (const GALGAS_lstring & constinArg
                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
   result_result = constinArgument_inTypeName ;
-  result_result.mProperty_string.plusAssign_operation(GALGAS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 45)) ;
+  result_result.mProperty_string.plusAssign_operation(GALGAS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 47)) ;
 //---
   return result_result ;
 }
@@ -7763,7 +7763,7 @@ GALGAS_string function_makeEmbeddedElementTypeName (const GALGAS_string & consti
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_result ; // Returned variable
-  result_result = function_makeEmbeddedTypeName (constinArgument_inTypeName, GALGAS_string ("element"), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 51)) ;
+  result_result = function_makeEmbeddedTypeName (constinArgument_inTypeName, GALGAS_string ("element"), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 55)) ;
 //---
   return result_result ;
 }
@@ -7810,7 +7810,7 @@ GALGAS_lstring function_makeEmbeddedElementTypeLName (const GALGAS_lstring & con
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::init_21__21_ (function_makeEmbeddedElementTypeName (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 57)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GALGAS_lstring::init_21__21_ (function_makeEmbeddedElementTypeName (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 61)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -7846,6 +7846,100 @@ C_galgas_function_descriptor functionDescriptor_makeEmbeddedElementTypeLName ("m
                                                                               & kTypeDescriptor_GALGAS_lstring,
                                                                               1,
                                                                               functionArgs_makeEmbeddedElementTypeLName) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'makeWeakTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string function_makeWeakTypeName (const GALGAS_string & constinArgument_inTypeName,
+                                         Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = function_makeEmbeddedTypeName (constinArgument_inTypeName, GALGAS_string ("weak"), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 69)) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const C_galgas_type_descriptor * functionArgs_makeWeakTypeName [2] = {
+  & kTypeDescriptor_GALGAS_string,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GALGAS_object functionWithGenericHeader_makeWeakTypeName (Compiler * inCompiler,
+                                                                 const cObjectArray & inEffectiveParameterArray,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  const GALGAS_string operand0 = GALGAS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                               inCompiler
+                                                               COMMA_THERE) ;
+  return function_makeWeakTypeName (operand0,
+                                    inCompiler
+                                    COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_makeWeakTypeName ("makeWeakTypeName",
+                                                                  functionWithGenericHeader_makeWeakTypeName,
+                                                                  & kTypeDescriptor_GALGAS_string,
+                                                                  1,
+                                                                  functionArgs_makeWeakTypeName) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'makeWeakTypeLName'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring function_makeWeakTypeLName (const GALGAS_lstring & constinArgument_inTypeName,
+                                           Compiler * inCompiler
+                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_lstring result_result ; // Returned variable
+  result_result = GALGAS_lstring::init_21__21_ (function_makeWeakTypeName (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas", 75)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//--------------------------------------------------------------------------------------------------
+
+static const C_galgas_type_descriptor * functionArgs_makeWeakTypeLName [2] = {
+  & kTypeDescriptor_GALGAS_lstring,
+  nullptr
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+static GALGAS_object functionWithGenericHeader_makeWeakTypeLName (Compiler * inCompiler,
+                                                                  const cObjectArray & inEffectiveParameterArray,
+                                                                  const GALGAS_location & /* inErrorLocation */
+                                                                  COMMA_LOCATION_ARGS) {
+  const GALGAS_lstring operand0 = GALGAS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                                 inCompiler
+                                                                 COMMA_THERE) ;
+  return function_makeWeakTypeLName (operand0,
+                                     inCompiler
+                                     COMMA_THERE).getter_object (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+C_galgas_function_descriptor functionDescriptor_makeWeakTypeLName ("makeWeakTypeLName",
+                                                                   functionWithGenericHeader_makeWeakTypeLName,
+                                                                   & kTypeDescriptor_GALGAS_lstring,
+                                                                   1,
+                                                                   functionArgs_makeWeakTypeLName) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7916,10 +8010,10 @@ void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInSemanticContext (GAL
   extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_elementTypeName (), var_elementType_4727, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 99)) ;
   }
   GALGAS_formalParameterSignature temp_1 = GALGAS_formalParameterSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 102)) ;
-  temp_1.enterElement (GALGAS_formalParameterSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 102)), var_elementType_4727, GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 102)), GALGAS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 102)) ;
+  temp_1.enterElement (GALGAS_formalParameterSignature_2E_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 102)), var_elementType_4727, GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 102)), GALGAS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 102)) ;
   GALGAS_formalParameterSignature var_setterInputFormalArgumentList_4802 = temp_1 ;
   GALGAS_formalParameterSignature temp_2 = GALGAS_formalParameterSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 105)) ;
-  temp_2.enterElement (GALGAS_formalParameterSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 105)), var_elementType_4727, GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-type-array.galgas", 105)), GALGAS_string ("outElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 105)) ;
+  temp_2.enterElement (GALGAS_formalParameterSignature_2E_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 105)), var_elementType_4727, GALGAS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-type-array.galgas", 105)), GALGAS_string ("outElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 105)) ;
   GALGAS_formalParameterSignature var_setterOutputFormalArgumentList_4951 = temp_2 ;
   GALGAS_getterMap var_getterMap_5136 ;
   {
@@ -7938,7 +8032,7 @@ void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInSemanticContext (GAL
   GALGAS_setterMap var_setterMap_6977 = GALGAS_setterMap::init (inCompiler COMMA_HERE) ;
   {
   GALGAS_formalParameterSignature temp_3 = GALGAS_formalParameterSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 174)) ;
-  temp_3.enterElement (GALGAS_formalParameterSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 174)), var_elementType_4727, GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 174)), GALGAS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 174)) ;
+  temp_3.enterElement (GALGAS_formalParameterSignature_2E_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 174)), var_elementType_4727, GALGAS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 174)), GALGAS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 174)) ;
   var_setterMap_6977.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("append"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 172)), inCompiler COMMA_HERE), GALGAS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 173)), temp_3, GALGAS_bool (true), GALGAS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 176)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 171)) ;
   }
   {
@@ -7963,7 +8057,7 @@ void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInSemanticContext (GAL
   }
   GALGAS_subscriptMap var_readSubscriptMap_8612 = GALGAS_subscriptMap::init (inCompiler COMMA_HERE) ;
   GALGAS_functionSignature temp_5 = GALGAS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 223)) ;
-  temp_5.enterElement (GALGAS_functionSignature_2D_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 223)), var_uintType_4637, GALGAS_string ("inIndex"), GALGAS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 223)) ;
+  temp_5.enterElement (GALGAS_functionSignature_2E_element::init_21__21__21__21_ (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 223)), var_uintType_4637, GALGAS_string ("inIndex"), GALGAS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 223)) ;
   GALGAS_functionSignature var_argumentTypeList_8661 = temp_5 ;
   {
   var_readSubscriptMap_8612.setter_insertKey (GALGAS_lstring::init_21__21_ (extensionGetter_subcriptSignature (var_argumentTypeList_8661, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 225)), GALGAS_location::class_func_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 225)), inCompiler COMMA_HERE), var_argumentTypeList_8661, var_elementType_4727, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 224)) ;

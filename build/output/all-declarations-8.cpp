@@ -8,526 +8,8 @@
 #include "all-declarations-8.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'
-//
-//--------------------------------------------------------------------------------------------------
 
-GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGAS_formalArgumentPassingModeAST & inObject,
-                                                                     Compiler *
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_result ; // Returned variable
-  const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GALGAS_formalArgumentPassingModeAST::Enumeration::invalid:
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
-    {
-      result_result = GALGAS_string ("!") ;
-    }
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
-    {
-      result_result = GALGAS_string ("!") ;
-    }
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
-    {
-      result_result = GALGAS_string ("\?") ;
-    }
-    break ;
-  case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
-    {
-      result_result = GALGAS_string ("!\?") ;
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-// @abstractGrammarInstructionSyntaxDirectedTranslationResult reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::objectCompare (const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult (void) :
-AC_GALGAS_reference_class () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inSourcePtr) :
-AC_GALGAS_reference_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @abstractGrammarInstructionSyntaxDirectedTranslationResult generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult ("abstractGrammarInstructionSyntaxDirectedTranslationResult",
-                                                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult::extractObject (const GALGAS_object & inObject,
-                                                                                                                                                  Compiler * inCompiler
-                                                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult result ;
-  const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult * p = (const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("abstractGrammarInstructionSyntaxDirectedTranslationResult", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterDeclarationInGraph (cPtr_semanticDeclarationAST * inObject,
-                                                  GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
-                                                  GALGAS_equatableExtensionMap & io_ioEquatableExtensionMap,
-                                                  GALGAS_extensionInitializerForBuildingContext & io_ioExtensionInitializerForBuildingContext,
-                                                  GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
-                                                  GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
-                                                  GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
-                                                  GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_enterDeclarationInGraph (io_ioSemanticTypePrecedenceGraph, io_ioEquatableExtensionMap, io_ioExtensionInitializerForBuildingContext, io_ioExtensionMethodMapForBuildingContext, io_ioExtensionGetterMapForBuildingContext, io_ioExtensionSetterMapForBuildingContext, io_ioExtensionOverrideDefinitionList, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterDeclarationInSemanticContext (cPtr_semanticDeclarationAST * inObject,
-                                                            GALGAS_equatableExtensionMap & io_ioEquatableExtensionMap,
-                                                            const GALGAS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
-                                                            const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
-                                                            const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
-                                                            const GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
-                                                            GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                            GALGAS_semanticContext & io_ioSemanticContext,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_enterDeclarationInSemanticContext (io_ioEquatableExtensionMap, constin_inExtensionInitializerMapForBuildingContext, constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionSetterMapForBuildingContext, io_ioTypeMap, io_ioSemanticContext, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@semanticDeclarationAST semanticAnalysis'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObject,
-                                           GALGAS_lstringlist & io_ioUsefulnessRootEntities,
-                                           GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                           const GALGAS_string constin_inProductDirectory,
-                                           const GALGAS_semanticContext constin_inSemanticContext,
-                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                           const GALGAS_predefinedTypes constin_inPredefinedTypes,
-                                           GALGAS_semanticDeclarationListForGeneration & io_ioSemanticDeclarationListForGeneration,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_semanticAnalysis (io_ioUsefulnessRootEntities, io_ioUsefulEntitiesGraph, constin_inProductDirectory, constin_inSemanticContext, io_ioTypeMap, constin_inPredefinedTypes, io_ioSemanticDeclarationListForGeneration, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_propertyIndexMap::cMapElement_propertyIndexMap (const GALGAS_propertyIndexMap_2D_element & inValue
-                                                            COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mPropertyTypeIndex (inValue.mProperty_mPropertyTypeIndex) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_propertyIndexMap::cMapElement_propertyIndexMap (const GALGAS_lstring & inKey,
-                                                            const GALGAS_unifiedTypeMapEntry & in_mPropertyTypeIndex
-                                                            COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mPropertyTypeIndex (in_mPropertyTypeIndex) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_propertyIndexMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_propertyIndexMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_propertyIndexMap (mProperty_lkey, mProperty_mPropertyTypeIndex COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_propertyIndexMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mPropertyTypeIndex" ":") ;
-  mProperty_mPropertyTypeIndex.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap::GALGAS_propertyIndexMap (void) :
-AC_GALGAS_map () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap::GALGAS_propertyIndexMap (const GALGAS_propertyIndexMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap & GALGAS_propertyIndexMap::operator = (const GALGAS_propertyIndexMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap GALGAS_propertyIndexMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GALGAS_propertyIndexMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap GALGAS_propertyIndexMap::class_func_emptyMap (LOCATION_ARGS) {
-  GALGAS_propertyIndexMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap_2D_element_3F_ GALGAS_propertyIndexMap
-::readSubscript__3F_ (const class GALGAS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_propertyIndexMap_2D_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    cMapElement_propertyIndexMap * p = (cMapElement_propertyIndexMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
-      result = GALGAS_propertyIndexMap_2D_element_3F_::init_nil () ;
-    }else{
-      GALGAS_propertyIndexMap_2D_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mPropertyTypeIndex = p->mProperty_mPropertyTypeIndex ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap GALGAS_propertyIndexMap::class_func_mapWithMapToOverride (const GALGAS_propertyIndexMap & inMapToOverride
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_propertyIndexMap result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap GALGAS_propertyIndexMap::getter_overriddenMap (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_propertyIndexMap result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyIndexMap::enterElement (const GALGAS_propertyIndexMap_2D_element & inValue,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  cMapElement_propertyIndexMap * p = nullptr ;
-  macroMyNew (p, cMapElement_propertyIndexMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@propertyIndexMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyIndexMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                   const GALGAS_unifiedTypeMapEntry & inArgument0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_propertyIndexMap * p = nullptr ;
-  macroMyNew (p, cMapElement_propertyIndexMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@propertyIndexMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap GALGAS_propertyIndexMap::add_operation (const GALGAS_propertyIndexMap & inOperand,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_propertyIndexMap result = *this ;
-  cEnumerator_propertyIndexMap enumerator (inOperand, EnumerationOrder::up) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mPropertyTypeIndex (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyIndexMap::setter_insertKey (GALGAS_lstring inKey,
-                                                GALGAS_unifiedTypeMapEntry inArgument0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  cMapElement_propertyIndexMap * p = nullptr ;
-  macroMyNew (p, cMapElement_propertyIndexMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' attribute is already declared" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const char * kSearchErrorMessage_propertyIndexMap_searchKey = "the '%K' attribute is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyIndexMap::method_searchKey (GALGAS_lstring inKey,
-                                                GALGAS_unifiedTypeMapEntry & outArgument0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  const cMapElement_propertyIndexMap * p = (const cMapElement_propertyIndexMap *) performSearch (inKey,
-                                                                                                 inCompiler,
-                                                                                                 kSearchErrorMessage_propertyIndexMap_searchKey
-                                                                                                 COMMA_THERE) ;
-  if (nullptr == p) {
-    outArgument0.drop () ;
-  }else{
-    macroValidSharedObject (p, cMapElement_propertyIndexMap) ;
-    outArgument0 = p->mProperty_mPropertyTypeIndex ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapEntry GALGAS_propertyIndexMap::getter_mPropertyTypeIndexForKey (const GALGAS_string & inKey,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_propertyIndexMap * p = (const cMapElement_propertyIndexMap *) attributes ;
-  GALGAS_unifiedTypeMapEntry result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_propertyIndexMap) ;
-    result = p->mProperty_mPropertyTypeIndex ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GALGAS_propertyIndexMap::setter_setMPropertyTypeIndexForKey (GALGAS_unifiedTypeMapEntry inAttributeValue,
-                                                                  GALGAS_string inKey,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_propertyIndexMap * p = (cMapElement_propertyIndexMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_propertyIndexMap) ;
-    p->mProperty_mPropertyTypeIndex = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_propertyIndexMap * GALGAS_propertyIndexMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                           const GALGAS_string & inKey
-                                                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_propertyIndexMap * result = (cMapElement_propertyIndexMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_propertyIndexMap) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_propertyIndexMap::cEnumerator_propertyIndexMap (const GALGAS_propertyIndexMap & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap_2D_element cEnumerator_propertyIndexMap::current (LOCATION_ARGS) const {
-  const cMapElement_propertyIndexMap * p = (const cMapElement_propertyIndexMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_propertyIndexMap) ;
-  return GALGAS_propertyIndexMap_2D_element (p->mProperty_lkey, p->mProperty_mPropertyTypeIndex) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_lstring cEnumerator_propertyIndexMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_unifiedTypeMapEntry cEnumerator_propertyIndexMap::current_mPropertyTypeIndex (LOCATION_ARGS) const {
-  const cMapElement_propertyIndexMap * p = (const cMapElement_propertyIndexMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_propertyIndexMap) ;
-  return p->mProperty_mPropertyTypeIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @propertyIndexMap generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap ("propertyIndexMap",
-                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_propertyIndexMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_propertyIndexMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_propertyIndexMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_propertyIndexMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_propertyIndexMap GALGAS_propertyIndexMap::extractObject (const GALGAS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_propertyIndexMap result ;
-  const GALGAS_propertyIndexMap * p = (const GALGAS_propertyIndexMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_propertyIndexMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("propertyIndexMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_nonterminalLabelMap::cMapElement_nonterminalLabelMap (const GALGAS_nonterminalLabelMap_2D_element & inValue
+cMapElement_nonterminalLabelMap::cMapElement_nonterminalLabelMap (const GALGAS_nonterminalLabelMap_2E_element & inValue
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mSignatureForGeneration (inValue.mProperty_mSignatureForGeneration),
@@ -616,17 +98,17 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::class_func_emptyMap (LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalLabelMap_2D_element_3F_ GALGAS_nonterminalLabelMap
+GALGAS_nonterminalLabelMap_2E_element_3F_ GALGAS_nonterminalLabelMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_nonterminalLabelMap_2D_element_3F_ result ;
+  GALGAS_nonterminalLabelMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_nonterminalLabelMap * p = (cMapElement_nonterminalLabelMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_nonterminalLabelMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_nonterminalLabelMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_nonterminalLabelMap_2D_element element ;
+      GALGAS_nonterminalLabelMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mSignatureForGeneration = p->mProperty_mSignatureForGeneration ;
       element.mProperty_mSignature = p->mProperty_mSignature ;
@@ -657,7 +139,7 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::getter_overriddenMap (Com
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonterminalLabelMap::enterElement (const GALGAS_nonterminalLabelMap_2D_element & inValue,
+void GALGAS_nonterminalLabelMap::enterElement (const GALGAS_nonterminalLabelMap_2E_element & inValue,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   cMapElement_nonterminalLabelMap * p = nullptr ;
@@ -855,10 +337,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalLabelMap_2D_element cEnumerator_nonterminalLabelMap::current (LOCATION_ARGS) const {
+GALGAS_nonterminalLabelMap_2E_element cEnumerator_nonterminalLabelMap::current (LOCATION_ARGS) const {
   const cMapElement_nonterminalLabelMap * p = (const cMapElement_nonterminalLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-  return GALGAS_nonterminalLabelMap_2D_element (p->mProperty_lkey, p->mProperty_mSignatureForGeneration, p->mProperty_mSignature, p->mProperty_mEndOfArgumentLocation) ;
+  return GALGAS_nonterminalLabelMap_2E_element (p->mProperty_lkey, p->mProperty_mSignatureForGeneration, p->mProperty_mSignature, p->mProperty_mEndOfArgumentLocation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -937,7 +419,7 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalLabelMap::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_nonterminalMap::cMapElement_nonterminalMap (const GALGAS_nonterminalMap_2D_element & inValue
+cMapElement_nonterminalMap::cMapElement_nonterminalMap (const GALGAS_nonterminalMap_2E_element & inValue
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLabelMap (inValue.mProperty_mLabelMap) {
@@ -1012,17 +494,17 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::class_func_emptyMap (LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalMap_2D_element_3F_ GALGAS_nonterminalMap
+GALGAS_nonterminalMap_2E_element_3F_ GALGAS_nonterminalMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_nonterminalMap_2D_element_3F_ result ;
+  GALGAS_nonterminalMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_nonterminalMap * p = (cMapElement_nonterminalMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_nonterminalMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_nonterminalMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_nonterminalMap_2D_element element ;
+      GALGAS_nonterminalMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLabelMap = p->mProperty_mLabelMap ;
       result = element ;
@@ -1051,7 +533,7 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::getter_overriddenMap (Compiler * in
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_nonterminalMap::enterElement (const GALGAS_nonterminalMap_2D_element & inValue,
+void GALGAS_nonterminalMap::enterElement (const GALGAS_nonterminalMap_2E_element & inValue,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   cMapElement_nonterminalMap * p = nullptr ;
@@ -1181,10 +663,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_nonterminalMap_2D_element cEnumerator_nonterminalMap::current (LOCATION_ARGS) const {
+GALGAS_nonterminalMap_2E_element cEnumerator_nonterminalMap::current (LOCATION_ARGS) const {
   const cMapElement_nonterminalMap * p = (const cMapElement_nonterminalMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalMap) ;
-  return GALGAS_nonterminalMap_2D_element (p->mProperty_lkey, p->mProperty_mLabelMap) ;
+  return GALGAS_nonterminalMap_2E_element (p->mProperty_lkey, p->mProperty_mLabelMap) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1252,7 +734,7 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::extractObject (const GALGAS_object 
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_ruleLabelImplementationList : public cCollectionElement {
-  public: GALGAS_ruleLabelImplementationList_2D_element mObject ;
+  public: GALGAS_ruleLabelImplementationList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_ruleLabelImplementationList (const GALGAS_lstring & in_mLabelName,
@@ -1261,7 +743,7 @@ class cCollectionElement_ruleLabelImplementationList : public cCollectionElement
                                                           const GALGAS_location & in_mEndOfArgumentLocation,
                                                           const GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration
                                                           COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_ruleLabelImplementationList (const GALGAS_ruleLabelImplementationList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_ruleLabelImplementationList (const GALGAS_ruleLabelImplementationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -1289,7 +771,7 @@ mObject (in_mLabelName, in_mSignatureForGeneration, in_mSignature, in_mEndOfArgu
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_ruleLabelImplementationList::cCollectionElement_ruleLabelImplementationList (const GALGAS_ruleLabelImplementationList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_ruleLabelImplementationList::cCollectionElement_ruleLabelImplementationList (const GALGAS_ruleLabelImplementationList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLabelName, inElement.mProperty_mSignatureForGeneration, inElement.mProperty_mSignature, inElement.mProperty_mEndOfArgumentLocation, inElement.mProperty_mInstructionListForGeneration) {
 }
@@ -1359,7 +841,7 @@ GALGAS_ruleLabelImplementationList GALGAS_ruleLabelImplementationList::init (Com
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ruleLabelImplementationList::enterElement (const GALGAS_ruleLabelImplementationList_2D_element & inValue,
+void GALGAS_ruleLabelImplementationList::enterElement (const GALGAS_ruleLabelImplementationList_2E_element & inValue,
                                                        Compiler * /* inCompiler */
                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -1454,17 +936,13 @@ void GALGAS_ruleLabelImplementationList::setter_insertAtIndex (const GALGAS_lstr
                                                                const GALGAS_uint inInsertionIndex,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_ruleLabelImplementationList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_ruleLabelImplementationList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -1478,40 +956,27 @@ void GALGAS_ruleLabelImplementationList::setter_removeAtIndex (GALGAS_lstring & 
                                                                const GALGAS_uint inRemoveIndex,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_ruleLabelImplementationList * p = (cCollectionElement_ruleLabelImplementationList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        outOperand3.drop () ;
-        outOperand4.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-        outOperand0 = p->mObject.mProperty_mLabelName ;
-        outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
-        outOperand2 = p->mObject.mProperty_mSignature ;
-        outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
-        outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_ruleLabelImplementationList * p = (cCollectionElement_ruleLabelImplementationList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
-      outOperand4.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
+      outOperand0 = p->mObject.mProperty_mLabelName ;
+      outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
+      outOperand2 = p->mObject.mProperty_mSignature ;
+      outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
+      outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
+    drop () ;    
   }
 }
 
@@ -1835,7 +1300,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ruleLabelImplementationList_2D_element cEnumerator_ruleLabelImplementationList::current (LOCATION_ARGS) const {
+GALGAS_ruleLabelImplementationList_2E_element cEnumerator_ruleLabelImplementationList::current (LOCATION_ARGS) const {
   const cCollectionElement_ruleLabelImplementationList * p = (const cCollectionElement_ruleLabelImplementationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
   return p->mObject ;
@@ -1934,14 +1399,14 @@ GALGAS_ruleLabelImplementationList GALGAS_ruleLabelImplementationList::extractOb
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_ruleDeclarationList : public cCollectionElement {
-  public: GALGAS_ruleDeclarationList_2D_element mObject ;
+  public: GALGAS_ruleDeclarationList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_ruleDeclarationList (const GALGAS_string & in_mNonterminalName,
                                                   const GALGAS_uint & in_mRuleIndex,
                                                   const GALGAS_ruleLabelImplementationList & in_mLabelImplementationList
                                                   COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_ruleDeclarationList (const GALGAS_ruleDeclarationList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_ruleDeclarationList (const GALGAS_ruleDeclarationList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -1967,7 +1432,7 @@ mObject (in_mNonterminalName, in_mRuleIndex, in_mLabelImplementationList) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_ruleDeclarationList::cCollectionElement_ruleDeclarationList (const GALGAS_ruleDeclarationList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_ruleDeclarationList::cCollectionElement_ruleDeclarationList (const GALGAS_ruleDeclarationList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mRuleIndex, inElement.mProperty_mLabelImplementationList) {
 }
@@ -2029,7 +1494,7 @@ GALGAS_ruleDeclarationList GALGAS_ruleDeclarationList::init (Compiler * COMMA_UN
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_ruleDeclarationList::enterElement (const GALGAS_ruleDeclarationList_2D_element & inValue,
+void GALGAS_ruleDeclarationList::enterElement (const GALGAS_ruleDeclarationList_2E_element & inValue,
                                                Compiler * /* inCompiler */
                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -2112,17 +1577,13 @@ void GALGAS_ruleDeclarationList::setter_insertAtIndex (const GALGAS_string inOpe
                                                        const GALGAS_uint inInsertionIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_ruleDeclarationList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_ruleDeclarationList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -2134,32 +1595,23 @@ void GALGAS_ruleDeclarationList::setter_removeAtIndex (GALGAS_string & outOperan
                                                        const GALGAS_uint inRemoveIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_ruleDeclarationList * p = (cCollectionElement_ruleDeclarationList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-        outOperand0 = p->mObject.mProperty_mNonterminalName ;
-        outOperand1 = p->mObject.mProperty_mRuleIndex ;
-        outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_ruleDeclarationList * p = (cCollectionElement_ruleDeclarationList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
+      outOperand0 = p->mObject.mProperty_mNonterminalName ;
+      outOperand1 = p->mObject.mProperty_mRuleIndex ;
+      outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
+    drop () ;    
   }
 }
 
@@ -2401,7 +1853,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ruleDeclarationList_2D_element cEnumerator_ruleDeclarationList::current (LOCATION_ARGS) const {
+GALGAS_ruleDeclarationList_2E_element cEnumerator_ruleDeclarationList::current (LOCATION_ARGS) const {
   const cCollectionElement_ruleDeclarationList * p = (const cCollectionElement_ruleDeclarationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
   return p->mObject ;
@@ -2874,7 +2326,7 @@ GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration::ext
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_syntaxDeclarationForGeneration_2D_weak::objectCompare (const GALGAS_syntaxDeclarationForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_syntaxDeclarationForGeneration_2E_weak::objectCompare (const GALGAS_syntaxDeclarationForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -2894,13 +2346,13 @@ ComparisonResult GALGAS_syntaxDeclarationForGeneration_2D_weak::objectCompare (c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration_2D_weak::GALGAS_syntaxDeclarationForGeneration_2D_weak (void) :
-GALGAS_semanticDeclarationForGeneration_2D_weak () {
+GALGAS_syntaxDeclarationForGeneration_2E_weak::GALGAS_syntaxDeclarationForGeneration_2E_weak (void) :
+GALGAS_semanticDeclarationForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration_2D_weak & GALGAS_syntaxDeclarationForGeneration_2D_weak::operator = (const GALGAS_syntaxDeclarationForGeneration & inSource) {
+GALGAS_syntaxDeclarationForGeneration_2E_weak & GALGAS_syntaxDeclarationForGeneration_2E_weak::operator = (const GALGAS_syntaxDeclarationForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -2912,21 +2364,21 @@ GALGAS_syntaxDeclarationForGeneration_2D_weak & GALGAS_syntaxDeclarationForGener
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration_2D_weak::GALGAS_syntaxDeclarationForGeneration_2D_weak (const GALGAS_syntaxDeclarationForGeneration & inSource) :
-GALGAS_semanticDeclarationForGeneration_2D_weak (inSource) {
+GALGAS_syntaxDeclarationForGeneration_2E_weak::GALGAS_syntaxDeclarationForGeneration_2E_weak (const GALGAS_syntaxDeclarationForGeneration & inSource) :
+GALGAS_semanticDeclarationForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration_2D_weak GALGAS_syntaxDeclarationForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_syntaxDeclarationForGeneration_2D_weak result ;
+GALGAS_syntaxDeclarationForGeneration_2E_weak GALGAS_syntaxDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_syntaxDeclarationForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration_2D_weak::bang_syntaxDeclarationForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration_2E_weak::bang_syntaxDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_syntaxDeclarationForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -2942,41 +2394,41 @@ GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration_2D_w
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @syntaxDeclarationForGeneration-weak generic code implementation
+//     @syntaxDeclarationForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2D_weak ("syntaxDeclarationForGeneration-weak",
-                                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2E_weak ("syntaxDeclarationForGeneration.weak",
+                                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_syntaxDeclarationForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_syntaxDeclarationForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_syntaxDeclarationForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_syntaxDeclarationForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_syntaxDeclarationForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_syntaxDeclarationForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_syntaxDeclarationForGeneration_2D_weak GALGAS_syntaxDeclarationForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_syntaxDeclarationForGeneration_2E_weak GALGAS_syntaxDeclarationForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_syntaxDeclarationForGeneration_2D_weak result ;
-  const GALGAS_syntaxDeclarationForGeneration_2D_weak * p = (const GALGAS_syntaxDeclarationForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_syntaxDeclarationForGeneration_2E_weak result ;
+  const GALGAS_syntaxDeclarationForGeneration_2E_weak * p = (const GALGAS_syntaxDeclarationForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_syntaxDeclarationForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_syntaxDeclarationForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("syntaxDeclarationForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("syntaxDeclarationForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -3174,7 +2626,7 @@ GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap_2D_element & inValue
+cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap_2E_element & inValue
                                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
 mProperty_mLocation (inValue.mProperty_mLocation) {
@@ -3249,17 +2701,17 @@ GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::class_func_empt
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uselessEntityLocationMap_2D_element_3F_ GALGAS_uselessEntityLocationMap
+GALGAS_uselessEntityLocationMap_2E_element_3F_ GALGAS_uselessEntityLocationMap
 ::readSubscript__3F_ (const class GALGAS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_uselessEntityLocationMap_2D_element_3F_ result ;
+  GALGAS_uselessEntityLocationMap_2E_element_3F_ result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_uselessEntityLocationMap * p = (cMapElement_uselessEntityLocationMap *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_uselessEntityLocationMap_2D_element_3F_::init_nil () ;
+      result = GALGAS_uselessEntityLocationMap_2E_element_3F_::init_nil () ;
     }else{
-      GALGAS_uselessEntityLocationMap_2D_element element ;
+      GALGAS_uselessEntityLocationMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
       element.mProperty_mLocation = p->mProperty_mLocation ;
       result = element ;
@@ -3288,7 +2740,7 @@ GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::getter_overridd
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_uselessEntityLocationMap::enterElement (const GALGAS_uselessEntityLocationMap_2D_element & inValue,
+void GALGAS_uselessEntityLocationMap::enterElement (const GALGAS_uselessEntityLocationMap_2E_element & inValue,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   cMapElement_uselessEntityLocationMap * p = nullptr ;
@@ -3396,10 +2848,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uselessEntityLocationMap_2D_element cEnumerator_uselessEntityLocationMap::current (LOCATION_ARGS) const {
+GALGAS_uselessEntityLocationMap_2E_element cEnumerator_uselessEntityLocationMap::current (LOCATION_ARGS) const {
   const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-  return GALGAS_uselessEntityLocationMap_2D_element (p->mProperty_lkey, p->mProperty_mLocation) ;
+  return GALGAS_uselessEntityLocationMap_2E_element (p->mProperty_lkey, p->mProperty_mLocation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3674,7 +3126,7 @@ GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_rightShiftExpressionAST_2D_weak::objectCompare (const GALGAS_rightShiftExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_rightShiftExpressionAST_2E_weak::objectCompare (const GALGAS_rightShiftExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -3694,13 +3146,13 @@ ComparisonResult GALGAS_rightShiftExpressionAST_2D_weak::objectCompare (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST_2D_weak::GALGAS_rightShiftExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_rightShiftExpressionAST_2E_weak::GALGAS_rightShiftExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST_2D_weak & GALGAS_rightShiftExpressionAST_2D_weak::operator = (const GALGAS_rightShiftExpressionAST & inSource) {
+GALGAS_rightShiftExpressionAST_2E_weak & GALGAS_rightShiftExpressionAST_2E_weak::operator = (const GALGAS_rightShiftExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -3712,21 +3164,21 @@ GALGAS_rightShiftExpressionAST_2D_weak & GALGAS_rightShiftExpressionAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST_2D_weak::GALGAS_rightShiftExpressionAST_2D_weak (const GALGAS_rightShiftExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_rightShiftExpressionAST_2E_weak::GALGAS_rightShiftExpressionAST_2E_weak (const GALGAS_rightShiftExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST_2D_weak GALGAS_rightShiftExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_rightShiftExpressionAST_2D_weak result ;
+GALGAS_rightShiftExpressionAST_2E_weak GALGAS_rightShiftExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_rightShiftExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST_2D_weak::bang_rightShiftExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST_2E_weak::bang_rightShiftExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_rightShiftExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -3742,41 +3194,41 @@ GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST_2D_weak::bang_righ
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @rightShiftExpressionAST-weak generic code implementation
+//     @rightShiftExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST_2D_weak ("rightShiftExpressionAST-weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST_2E_weak ("rightShiftExpressionAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_rightShiftExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_rightShiftExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_rightShiftExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_rightShiftExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_rightShiftExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_rightShiftExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_rightShiftExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_rightShiftExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_rightShiftExpressionAST_2D_weak GALGAS_rightShiftExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_rightShiftExpressionAST_2E_weak GALGAS_rightShiftExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_rightShiftExpressionAST_2D_weak result ;
-  const GALGAS_rightShiftExpressionAST_2D_weak * p = (const GALGAS_rightShiftExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_rightShiftExpressionAST_2E_weak result ;
+  const GALGAS_rightShiftExpressionAST_2E_weak * p = (const GALGAS_rightShiftExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_rightShiftExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_rightShiftExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("rightShiftExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("rightShiftExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -3996,7 +3448,7 @@ GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST::extractObject (cons
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_leftShiftExpressionAST_2D_weak::objectCompare (const GALGAS_leftShiftExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_leftShiftExpressionAST_2E_weak::objectCompare (const GALGAS_leftShiftExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -4016,13 +3468,13 @@ ComparisonResult GALGAS_leftShiftExpressionAST_2D_weak::objectCompare (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST_2D_weak::GALGAS_leftShiftExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_leftShiftExpressionAST_2E_weak::GALGAS_leftShiftExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST_2D_weak & GALGAS_leftShiftExpressionAST_2D_weak::operator = (const GALGAS_leftShiftExpressionAST & inSource) {
+GALGAS_leftShiftExpressionAST_2E_weak & GALGAS_leftShiftExpressionAST_2E_weak::operator = (const GALGAS_leftShiftExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -4034,21 +3486,21 @@ GALGAS_leftShiftExpressionAST_2D_weak & GALGAS_leftShiftExpressionAST_2D_weak::o
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST_2D_weak::GALGAS_leftShiftExpressionAST_2D_weak (const GALGAS_leftShiftExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_leftShiftExpressionAST_2E_weak::GALGAS_leftShiftExpressionAST_2E_weak (const GALGAS_leftShiftExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST_2D_weak GALGAS_leftShiftExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_leftShiftExpressionAST_2D_weak result ;
+GALGAS_leftShiftExpressionAST_2E_weak GALGAS_leftShiftExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_leftShiftExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST_2D_weak::bang_leftShiftExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST_2E_weak::bang_leftShiftExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_leftShiftExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4064,41 +3516,41 @@ GALGAS_leftShiftExpressionAST GALGAS_leftShiftExpressionAST_2D_weak::bang_leftSh
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @leftShiftExpressionAST-weak generic code implementation
+//     @leftShiftExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST_2D_weak ("leftShiftExpressionAST-weak",
-                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST_2E_weak ("leftShiftExpressionAST.weak",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_leftShiftExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_leftShiftExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_leftShiftExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_leftShiftExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_leftShiftExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_leftShiftExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_leftShiftExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_leftShiftExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_leftShiftExpressionAST_2D_weak GALGAS_leftShiftExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_leftShiftExpressionAST_2E_weak GALGAS_leftShiftExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_leftShiftExpressionAST_2D_weak result ;
-  const GALGAS_leftShiftExpressionAST_2D_weak * p = (const GALGAS_leftShiftExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_leftShiftExpressionAST_2E_weak result ;
+  const GALGAS_leftShiftExpressionAST_2E_weak * p = (const GALGAS_leftShiftExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_leftShiftExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_leftShiftExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("leftShiftExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("leftShiftExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4318,7 +3770,7 @@ GALGAS_addExpressionAST GALGAS_addExpressionAST::extractObject (const GALGAS_obj
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_addExpressionAST_2D_weak::objectCompare (const GALGAS_addExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_addExpressionAST_2E_weak::objectCompare (const GALGAS_addExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -4338,13 +3790,13 @@ ComparisonResult GALGAS_addExpressionAST_2D_weak::objectCompare (const GALGAS_ad
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST_2D_weak::GALGAS_addExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_addExpressionAST_2E_weak::GALGAS_addExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST_2D_weak & GALGAS_addExpressionAST_2D_weak::operator = (const GALGAS_addExpressionAST & inSource) {
+GALGAS_addExpressionAST_2E_weak & GALGAS_addExpressionAST_2E_weak::operator = (const GALGAS_addExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -4356,21 +3808,21 @@ GALGAS_addExpressionAST_2D_weak & GALGAS_addExpressionAST_2D_weak::operator = (c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST_2D_weak::GALGAS_addExpressionAST_2D_weak (const GALGAS_addExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_addExpressionAST_2E_weak::GALGAS_addExpressionAST_2E_weak (const GALGAS_addExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST_2D_weak GALGAS_addExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_addExpressionAST_2D_weak result ;
+GALGAS_addExpressionAST_2E_weak GALGAS_addExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_addExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST GALGAS_addExpressionAST_2D_weak::bang_addExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_addExpressionAST GALGAS_addExpressionAST_2E_weak::bang_addExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_addExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4386,41 +3838,41 @@ GALGAS_addExpressionAST GALGAS_addExpressionAST_2D_weak::bang_addExpressionAST_2
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @addExpressionAST-weak generic code implementation
+//     @addExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST_2D_weak ("addExpressionAST-weak",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST_2E_weak ("addExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_addExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_addExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_addExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_addExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_addExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_addExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_addExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_addExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionAST_2D_weak GALGAS_addExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_addExpressionAST_2E_weak GALGAS_addExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_addExpressionAST_2D_weak result ;
-  const GALGAS_addExpressionAST_2D_weak * p = (const GALGAS_addExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_addExpressionAST_2E_weak result ;
+  const GALGAS_addExpressionAST_2E_weak * p = (const GALGAS_addExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_addExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_addExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("addExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("addExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4640,7 +4092,7 @@ GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST::extractObje
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_addExpressionNoOverflowAST_2D_weak::objectCompare (const GALGAS_addExpressionNoOverflowAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_addExpressionNoOverflowAST_2E_weak::objectCompare (const GALGAS_addExpressionNoOverflowAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -4660,13 +4112,13 @@ ComparisonResult GALGAS_addExpressionNoOverflowAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST_2D_weak::GALGAS_addExpressionNoOverflowAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_addExpressionNoOverflowAST_2E_weak::GALGAS_addExpressionNoOverflowAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST_2D_weak & GALGAS_addExpressionNoOverflowAST_2D_weak::operator = (const GALGAS_addExpressionNoOverflowAST & inSource) {
+GALGAS_addExpressionNoOverflowAST_2E_weak & GALGAS_addExpressionNoOverflowAST_2E_weak::operator = (const GALGAS_addExpressionNoOverflowAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -4678,21 +4130,21 @@ GALGAS_addExpressionNoOverflowAST_2D_weak & GALGAS_addExpressionNoOverflowAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST_2D_weak::GALGAS_addExpressionNoOverflowAST_2D_weak (const GALGAS_addExpressionNoOverflowAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_addExpressionNoOverflowAST_2E_weak::GALGAS_addExpressionNoOverflowAST_2E_weak (const GALGAS_addExpressionNoOverflowAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST_2D_weak GALGAS_addExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_addExpressionNoOverflowAST_2D_weak result ;
+GALGAS_addExpressionNoOverflowAST_2E_weak GALGAS_addExpressionNoOverflowAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_addExpressionNoOverflowAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST_2D_weak::bang_addExpressionNoOverflowAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST_2E_weak::bang_addExpressionNoOverflowAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_addExpressionNoOverflowAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -4708,41 +4160,41 @@ GALGAS_addExpressionNoOverflowAST GALGAS_addExpressionNoOverflowAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @addExpressionNoOverflowAST-weak generic code implementation
+//     @addExpressionNoOverflowAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2D_weak ("addExpressionNoOverflowAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2E_weak ("addExpressionNoOverflowAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_addExpressionNoOverflowAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_addExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_addExpressionNoOverflowAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_addExpressionNoOverflowAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_addExpressionNoOverflowAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_addExpressionNoOverflowAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_addExpressionNoOverflowAST_2D_weak GALGAS_addExpressionNoOverflowAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_addExpressionNoOverflowAST_2E_weak GALGAS_addExpressionNoOverflowAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_addExpressionNoOverflowAST_2D_weak result ;
-  const GALGAS_addExpressionNoOverflowAST_2D_weak * p = (const GALGAS_addExpressionNoOverflowAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_addExpressionNoOverflowAST_2E_weak result ;
+  const GALGAS_addExpressionNoOverflowAST_2E_weak * p = (const GALGAS_addExpressionNoOverflowAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_addExpressionNoOverflowAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_addExpressionNoOverflowAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("addExpressionNoOverflowAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("addExpressionNoOverflowAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4962,7 +4414,7 @@ GALGAS_subExpressionAST GALGAS_subExpressionAST::extractObject (const GALGAS_obj
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_subExpressionAST_2D_weak::objectCompare (const GALGAS_subExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_subExpressionAST_2E_weak::objectCompare (const GALGAS_subExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -4982,13 +4434,13 @@ ComparisonResult GALGAS_subExpressionAST_2D_weak::objectCompare (const GALGAS_su
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST_2D_weak::GALGAS_subExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_subExpressionAST_2E_weak::GALGAS_subExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST_2D_weak & GALGAS_subExpressionAST_2D_weak::operator = (const GALGAS_subExpressionAST & inSource) {
+GALGAS_subExpressionAST_2E_weak & GALGAS_subExpressionAST_2E_weak::operator = (const GALGAS_subExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -5000,21 +4452,21 @@ GALGAS_subExpressionAST_2D_weak & GALGAS_subExpressionAST_2D_weak::operator = (c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST_2D_weak::GALGAS_subExpressionAST_2D_weak (const GALGAS_subExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_subExpressionAST_2E_weak::GALGAS_subExpressionAST_2E_weak (const GALGAS_subExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST_2D_weak GALGAS_subExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_subExpressionAST_2D_weak result ;
+GALGAS_subExpressionAST_2E_weak GALGAS_subExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_subExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST GALGAS_subExpressionAST_2D_weak::bang_subExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_subExpressionAST GALGAS_subExpressionAST_2E_weak::bang_subExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_subExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5030,41 +4482,41 @@ GALGAS_subExpressionAST GALGAS_subExpressionAST_2D_weak::bang_subExpressionAST_2
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @subExpressionAST-weak generic code implementation
+//     @subExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST_2D_weak ("subExpressionAST-weak",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST_2E_weak ("subExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_subExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_subExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_subExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_subExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_subExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_subExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_subExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionAST_2D_weak GALGAS_subExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_subExpressionAST_2E_weak GALGAS_subExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_subExpressionAST_2D_weak result ;
-  const GALGAS_subExpressionAST_2D_weak * p = (const GALGAS_subExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_subExpressionAST_2E_weak result ;
+  const GALGAS_subExpressionAST_2E_weak * p = (const GALGAS_subExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_subExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_subExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("subExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("subExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -5284,7 +4736,7 @@ GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST::extractObje
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_subExpressionNoOverflowAST_2D_weak::objectCompare (const GALGAS_subExpressionNoOverflowAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_subExpressionNoOverflowAST_2E_weak::objectCompare (const GALGAS_subExpressionNoOverflowAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -5304,13 +4756,13 @@ ComparisonResult GALGAS_subExpressionNoOverflowAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST_2D_weak::GALGAS_subExpressionNoOverflowAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_subExpressionNoOverflowAST_2E_weak::GALGAS_subExpressionNoOverflowAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST_2D_weak & GALGAS_subExpressionNoOverflowAST_2D_weak::operator = (const GALGAS_subExpressionNoOverflowAST & inSource) {
+GALGAS_subExpressionNoOverflowAST_2E_weak & GALGAS_subExpressionNoOverflowAST_2E_weak::operator = (const GALGAS_subExpressionNoOverflowAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -5322,21 +4774,21 @@ GALGAS_subExpressionNoOverflowAST_2D_weak & GALGAS_subExpressionNoOverflowAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST_2D_weak::GALGAS_subExpressionNoOverflowAST_2D_weak (const GALGAS_subExpressionNoOverflowAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_subExpressionNoOverflowAST_2E_weak::GALGAS_subExpressionNoOverflowAST_2E_weak (const GALGAS_subExpressionNoOverflowAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST_2D_weak GALGAS_subExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_subExpressionNoOverflowAST_2D_weak result ;
+GALGAS_subExpressionNoOverflowAST_2E_weak GALGAS_subExpressionNoOverflowAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_subExpressionNoOverflowAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST_2D_weak::bang_subExpressionNoOverflowAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST_2E_weak::bang_subExpressionNoOverflowAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_subExpressionNoOverflowAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5352,46 +4804,48 @@ GALGAS_subExpressionNoOverflowAST GALGAS_subExpressionNoOverflowAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @subExpressionNoOverflowAST-weak generic code implementation
+//     @subExpressionNoOverflowAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowAST_2D_weak ("subExpressionNoOverflowAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowAST_2E_weak ("subExpressionNoOverflowAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_subExpressionNoOverflowAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_subExpressionNoOverflowAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_subExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subExpressionNoOverflowAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_subExpressionNoOverflowAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_subExpressionNoOverflowAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_subExpressionNoOverflowAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_subExpressionNoOverflowAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_subExpressionNoOverflowAST_2D_weak GALGAS_subExpressionNoOverflowAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_subExpressionNoOverflowAST_2E_weak GALGAS_subExpressionNoOverflowAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_subExpressionNoOverflowAST_2D_weak result ;
-  const GALGAS_subExpressionNoOverflowAST_2D_weak * p = (const GALGAS_subExpressionNoOverflowAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_subExpressionNoOverflowAST_2E_weak result ;
+  const GALGAS_subExpressionNoOverflowAST_2E_weak * p = (const GALGAS_subExpressionNoOverflowAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_subExpressionNoOverflowAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_subExpressionNoOverflowAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("subExpressionNoOverflowAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("subExpressionNoOverflowAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//  Enum binaryOperator
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_binaryOperator::GALGAS_binaryOperator (void) :
@@ -5697,7 +5151,7 @@ GALGAS_binaryOperator GALGAS_binaryOperator::extractObject (const GALGAS_object 
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_binaryOperatorExpressionForGeneration_2D_weak::objectCompare (const GALGAS_binaryOperatorExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_binaryOperatorExpressionForGeneration_2E_weak::objectCompare (const GALGAS_binaryOperatorExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -5717,13 +5171,13 @@ ComparisonResult GALGAS_binaryOperatorExpressionForGeneration_2D_weak::objectCom
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration_2D_weak::GALGAS_binaryOperatorExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_binaryOperatorExpressionForGeneration_2E_weak::GALGAS_binaryOperatorExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration_2D_weak & GALGAS_binaryOperatorExpressionForGeneration_2D_weak::operator = (const GALGAS_binaryOperatorExpressionForGeneration & inSource) {
+GALGAS_binaryOperatorExpressionForGeneration_2E_weak & GALGAS_binaryOperatorExpressionForGeneration_2E_weak::operator = (const GALGAS_binaryOperatorExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -5735,21 +5189,21 @@ GALGAS_binaryOperatorExpressionForGeneration_2D_weak & GALGAS_binaryOperatorExpr
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration_2D_weak::GALGAS_binaryOperatorExpressionForGeneration_2D_weak (const GALGAS_binaryOperatorExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_binaryOperatorExpressionForGeneration_2E_weak::GALGAS_binaryOperatorExpressionForGeneration_2E_weak (const GALGAS_binaryOperatorExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration_2D_weak GALGAS_binaryOperatorExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_binaryOperatorExpressionForGeneration_2D_weak result ;
+GALGAS_binaryOperatorExpressionForGeneration_2E_weak GALGAS_binaryOperatorExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_binaryOperatorExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration GALGAS_binaryOperatorExpressionForGeneration_2D_weak::bang_binaryOperatorExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_binaryOperatorExpressionForGeneration GALGAS_binaryOperatorExpressionForGeneration_2E_weak::bang_binaryOperatorExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_binaryOperatorExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -5765,41 +5219,41 @@ GALGAS_binaryOperatorExpressionForGeneration GALGAS_binaryOperatorExpressionForG
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @binaryOperatorExpressionForGeneration-weak generic code implementation
+//     @binaryOperatorExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration_2D_weak ("binaryOperatorExpressionForGeneration-weak",
-                                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration_2E_weak ("binaryOperatorExpressionForGeneration.weak",
+                                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_binaryOperatorExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_binaryOperatorExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_binaryOperatorExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_binaryOperatorExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_binaryOperatorExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_binaryOperatorExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_binaryOperatorExpressionForGeneration_2D_weak GALGAS_binaryOperatorExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_binaryOperatorExpressionForGeneration_2E_weak GALGAS_binaryOperatorExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                           Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_binaryOperatorExpressionForGeneration_2D_weak result ;
-  const GALGAS_binaryOperatorExpressionForGeneration_2D_weak * p = (const GALGAS_binaryOperatorExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_binaryOperatorExpressionForGeneration_2E_weak result ;
+  const GALGAS_binaryOperatorExpressionForGeneration_2E_weak * p = (const GALGAS_binaryOperatorExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_binaryOperatorExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_binaryOperatorExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("binaryOperatorExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("binaryOperatorExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6019,7 +5473,7 @@ GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_andShortExpressionAST_2D_weak::objectCompare (const GALGAS_andShortExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_andShortExpressionAST_2E_weak::objectCompare (const GALGAS_andShortExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -6039,13 +5493,13 @@ ComparisonResult GALGAS_andShortExpressionAST_2D_weak::objectCompare (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST_2D_weak::GALGAS_andShortExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_andShortExpressionAST_2E_weak::GALGAS_andShortExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST_2D_weak & GALGAS_andShortExpressionAST_2D_weak::operator = (const GALGAS_andShortExpressionAST & inSource) {
+GALGAS_andShortExpressionAST_2E_weak & GALGAS_andShortExpressionAST_2E_weak::operator = (const GALGAS_andShortExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -6057,21 +5511,21 @@ GALGAS_andShortExpressionAST_2D_weak & GALGAS_andShortExpressionAST_2D_weak::ope
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST_2D_weak::GALGAS_andShortExpressionAST_2D_weak (const GALGAS_andShortExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_andShortExpressionAST_2E_weak::GALGAS_andShortExpressionAST_2E_weak (const GALGAS_andShortExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST_2D_weak GALGAS_andShortExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_andShortExpressionAST_2D_weak result ;
+GALGAS_andShortExpressionAST_2E_weak GALGAS_andShortExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_andShortExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST_2D_weak::bang_andShortExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST_2E_weak::bang_andShortExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_andShortExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6087,41 +5541,41 @@ GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST_2D_weak::bang_andShort
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @andShortExpressionAST-weak generic code implementation
+//     @andShortExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST_2D_weak ("andShortExpressionAST-weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST_2E_weak ("andShortExpressionAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_andShortExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_andShortExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_andShortExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andShortExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_andShortExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_andShortExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_andShortExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_andShortExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionAST_2D_weak GALGAS_andShortExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_andShortExpressionAST_2E_weak GALGAS_andShortExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_andShortExpressionAST_2D_weak result ;
-  const GALGAS_andShortExpressionAST_2D_weak * p = (const GALGAS_andShortExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_andShortExpressionAST_2E_weak result ;
+  const GALGAS_andShortExpressionAST_2E_weak * p = (const GALGAS_andShortExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_andShortExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_andShortExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("andShortExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("andShortExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6341,7 +5795,7 @@ GALGAS_andExpressionAST GALGAS_andExpressionAST::extractObject (const GALGAS_obj
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_andExpressionAST_2D_weak::objectCompare (const GALGAS_andExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_andExpressionAST_2E_weak::objectCompare (const GALGAS_andExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -6361,13 +5815,13 @@ ComparisonResult GALGAS_andExpressionAST_2D_weak::objectCompare (const GALGAS_an
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST_2D_weak::GALGAS_andExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_andExpressionAST_2E_weak::GALGAS_andExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST_2D_weak & GALGAS_andExpressionAST_2D_weak::operator = (const GALGAS_andExpressionAST & inSource) {
+GALGAS_andExpressionAST_2E_weak & GALGAS_andExpressionAST_2E_weak::operator = (const GALGAS_andExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -6379,21 +5833,21 @@ GALGAS_andExpressionAST_2D_weak & GALGAS_andExpressionAST_2D_weak::operator = (c
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST_2D_weak::GALGAS_andExpressionAST_2D_weak (const GALGAS_andExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_andExpressionAST_2E_weak::GALGAS_andExpressionAST_2E_weak (const GALGAS_andExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST_2D_weak GALGAS_andExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_andExpressionAST_2D_weak result ;
+GALGAS_andExpressionAST_2E_weak GALGAS_andExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_andExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST GALGAS_andExpressionAST_2D_weak::bang_andExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_andExpressionAST GALGAS_andExpressionAST_2E_weak::bang_andExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_andExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6409,41 +5863,41 @@ GALGAS_andExpressionAST GALGAS_andExpressionAST_2D_weak::bang_andExpressionAST_2
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @andExpressionAST-weak generic code implementation
+//     @andExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST_2D_weak ("andExpressionAST-weak",
-                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST_2E_weak ("andExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_andExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_andExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_andExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_andExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_andExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_andExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_andExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andExpressionAST_2D_weak GALGAS_andExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_andExpressionAST_2E_weak GALGAS_andExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_andExpressionAST_2D_weak result ;
-  const GALGAS_andExpressionAST_2D_weak * p = (const GALGAS_andExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_andExpressionAST_2E_weak result ;
+  const GALGAS_andExpressionAST_2E_weak * p = (const GALGAS_andExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_andExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_andExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("andExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("andExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6451,7 +5905,7 @@ GALGAS_andExpressionAST_2D_weak GALGAS_andExpressionAST_2D_weak::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_andShortExpressionForGeneration_2D_weak::objectCompare (const GALGAS_andShortExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_andShortExpressionForGeneration_2E_weak::objectCompare (const GALGAS_andShortExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -6471,13 +5925,13 @@ ComparisonResult GALGAS_andShortExpressionForGeneration_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration_2D_weak::GALGAS_andShortExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_andShortExpressionForGeneration_2E_weak::GALGAS_andShortExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration_2D_weak & GALGAS_andShortExpressionForGeneration_2D_weak::operator = (const GALGAS_andShortExpressionForGeneration & inSource) {
+GALGAS_andShortExpressionForGeneration_2E_weak & GALGAS_andShortExpressionForGeneration_2E_weak::operator = (const GALGAS_andShortExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -6489,21 +5943,21 @@ GALGAS_andShortExpressionForGeneration_2D_weak & GALGAS_andShortExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration_2D_weak::GALGAS_andShortExpressionForGeneration_2D_weak (const GALGAS_andShortExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_andShortExpressionForGeneration_2E_weak::GALGAS_andShortExpressionForGeneration_2E_weak (const GALGAS_andShortExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration_2D_weak GALGAS_andShortExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_andShortExpressionForGeneration_2D_weak result ;
+GALGAS_andShortExpressionForGeneration_2E_weak GALGAS_andShortExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_andShortExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration_2D_weak::bang_andShortExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration_2E_weak::bang_andShortExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_andShortExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6519,41 +5973,41 @@ GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @andShortExpressionForGeneration-weak generic code implementation
+//     @andShortExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration_2D_weak ("andShortExpressionForGeneration-weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration_2E_weak ("andShortExpressionForGeneration.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_andShortExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_andShortExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_andShortExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andShortExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_andShortExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_andShortExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_andShortExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_andShortExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_andShortExpressionForGeneration_2D_weak GALGAS_andShortExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_andShortExpressionForGeneration_2E_weak GALGAS_andShortExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_andShortExpressionForGeneration_2D_weak result ;
-  const GALGAS_andShortExpressionForGeneration_2D_weak * p = (const GALGAS_andShortExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_andShortExpressionForGeneration_2E_weak result ;
+  const GALGAS_andShortExpressionForGeneration_2E_weak * p = (const GALGAS_andShortExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_andShortExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_andShortExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("andShortExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("andShortExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6750,7 +6204,7 @@ GALGAS_bangExpressionAST GALGAS_bangExpressionAST::extractObject (const GALGAS_o
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_bangExpressionAST_2D_weak::objectCompare (const GALGAS_bangExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_bangExpressionAST_2E_weak::objectCompare (const GALGAS_bangExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -6770,13 +6224,13 @@ ComparisonResult GALGAS_bangExpressionAST_2D_weak::objectCompare (const GALGAS_b
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST_2D_weak::GALGAS_bangExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_bangExpressionAST_2E_weak::GALGAS_bangExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST_2D_weak & GALGAS_bangExpressionAST_2D_weak::operator = (const GALGAS_bangExpressionAST & inSource) {
+GALGAS_bangExpressionAST_2E_weak & GALGAS_bangExpressionAST_2E_weak::operator = (const GALGAS_bangExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -6788,21 +6242,21 @@ GALGAS_bangExpressionAST_2D_weak & GALGAS_bangExpressionAST_2D_weak::operator = 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST_2D_weak::GALGAS_bangExpressionAST_2D_weak (const GALGAS_bangExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_bangExpressionAST_2E_weak::GALGAS_bangExpressionAST_2E_weak (const GALGAS_bangExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST_2D_weak GALGAS_bangExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_bangExpressionAST_2D_weak result ;
+GALGAS_bangExpressionAST_2E_weak GALGAS_bangExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_bangExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST GALGAS_bangExpressionAST_2D_weak::bang_bangExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_bangExpressionAST GALGAS_bangExpressionAST_2E_weak::bang_bangExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_bangExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6818,41 +6272,41 @@ GALGAS_bangExpressionAST GALGAS_bangExpressionAST_2D_weak::bang_bangExpressionAS
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @bangExpressionAST-weak generic code implementation
+//     @bangExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionAST_2D_weak ("bangExpressionAST-weak",
-                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionAST_2E_weak ("bangExpressionAST.weak",
+                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_bangExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_bangExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_bangExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bangExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_bangExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_bangExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_bangExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_bangExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionAST_2D_weak GALGAS_bangExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_bangExpressionAST_2E_weak GALGAS_bangExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_bangExpressionAST_2D_weak result ;
-  const GALGAS_bangExpressionAST_2D_weak * p = (const GALGAS_bangExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_bangExpressionAST_2E_weak result ;
+  const GALGAS_bangExpressionAST_2E_weak * p = (const GALGAS_bangExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_bangExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_bangExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("bangExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("bangExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6860,7 +6314,7 @@ GALGAS_bangExpressionAST_2D_weak GALGAS_bangExpressionAST_2D_weak::extractObject
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_bangExpressionForGeneration_2D_weak::objectCompare (const GALGAS_bangExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_bangExpressionForGeneration_2E_weak::objectCompare (const GALGAS_bangExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -6880,13 +6334,13 @@ ComparisonResult GALGAS_bangExpressionForGeneration_2D_weak::objectCompare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration_2D_weak::GALGAS_bangExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_bangExpressionForGeneration_2E_weak::GALGAS_bangExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration_2D_weak & GALGAS_bangExpressionForGeneration_2D_weak::operator = (const GALGAS_bangExpressionForGeneration & inSource) {
+GALGAS_bangExpressionForGeneration_2E_weak & GALGAS_bangExpressionForGeneration_2E_weak::operator = (const GALGAS_bangExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -6898,21 +6352,21 @@ GALGAS_bangExpressionForGeneration_2D_weak & GALGAS_bangExpressionForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration_2D_weak::GALGAS_bangExpressionForGeneration_2D_weak (const GALGAS_bangExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_bangExpressionForGeneration_2E_weak::GALGAS_bangExpressionForGeneration_2E_weak (const GALGAS_bangExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration_2D_weak GALGAS_bangExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_bangExpressionForGeneration_2D_weak result ;
+GALGAS_bangExpressionForGeneration_2E_weak GALGAS_bangExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_bangExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration GALGAS_bangExpressionForGeneration_2D_weak::bang_bangExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_bangExpressionForGeneration GALGAS_bangExpressionForGeneration_2E_weak::bang_bangExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_bangExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -6928,41 +6382,41 @@ GALGAS_bangExpressionForGeneration GALGAS_bangExpressionForGeneration_2D_weak::b
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @bangExpressionForGeneration-weak generic code implementation
+//     @bangExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration_2D_weak ("bangExpressionForGeneration-weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration_2E_weak ("bangExpressionForGeneration.weak",
+                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_bangExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_bangExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_bangExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_bangExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_bangExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_bangExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_bangExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_bangExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bangExpressionForGeneration_2D_weak GALGAS_bangExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_bangExpressionForGeneration_2E_weak GALGAS_bangExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_bangExpressionForGeneration_2D_weak result ;
-  const GALGAS_bangExpressionForGeneration_2D_weak * p = (const GALGAS_bangExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_bangExpressionForGeneration_2E_weak result ;
+  const GALGAS_bangExpressionForGeneration_2E_weak * p = (const GALGAS_bangExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_bangExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_bangExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("bangExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("bangExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6975,14 +6429,14 @@ GALGAS_bangExpressionForGeneration_2D_weak GALGAS_bangExpressionForGeneration_2D
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_actualOutputArgumentList : public cCollectionElement {
-  public: GALGAS_actualOutputArgumentList_2D_element mObject ;
+  public: GALGAS_actualOutputArgumentList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_actualOutputArgumentList (const GALGAS_lstring & in_mActualSelector,
                                                        const GALGAS_semanticExpressionAST & in_mExpression,
                                                        const GALGAS_location & in_mEndOfExpressionLocation
                                                        COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_actualOutputArgumentList (const GALGAS_actualOutputArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_actualOutputArgumentList (const GALGAS_actualOutputArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -7008,7 +6462,7 @@ mObject (in_mActualSelector, in_mExpression, in_mEndOfExpressionLocation) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_actualOutputArgumentList::cCollectionElement_actualOutputArgumentList (const GALGAS_actualOutputArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_actualOutputArgumentList::cCollectionElement_actualOutputArgumentList (const GALGAS_actualOutputArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mActualSelector, inElement.mProperty_mExpression, inElement.mProperty_mEndOfExpressionLocation) {
 }
@@ -7070,7 +6524,7 @@ GALGAS_actualOutputArgumentList GALGAS_actualOutputArgumentList::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_actualOutputArgumentList::enterElement (const GALGAS_actualOutputArgumentList_2D_element & inValue,
+void GALGAS_actualOutputArgumentList::enterElement (const GALGAS_actualOutputArgumentList_2E_element & inValue,
                                                     Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -7153,17 +6607,13 @@ void GALGAS_actualOutputArgumentList::setter_insertAtIndex (const GALGAS_lstring
                                                             const GALGAS_uint inInsertionIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_actualOutputArgumentList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_actualOutputArgumentList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -7175,32 +6625,23 @@ void GALGAS_actualOutputArgumentList::setter_removeAtIndex (GALGAS_lstring & out
                                                             const GALGAS_uint inRemoveIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_actualOutputArgumentList * p = (cCollectionElement_actualOutputArgumentList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        outOperand2.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_actualOutputArgumentList) ;
-        outOperand0 = p->mObject.mProperty_mActualSelector ;
-        outOperand1 = p->mObject.mProperty_mExpression ;
-        outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_actualOutputArgumentList * p = (cCollectionElement_actualOutputArgumentList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_actualOutputArgumentList) ;
+      outOperand0 = p->mObject.mProperty_mActualSelector ;
+      outOperand1 = p->mObject.mProperty_mExpression ;
+      outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
+    drop () ;    
   }
 }
 
@@ -7442,7 +6883,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_actualOutputArgumentList_2D_element cEnumerator_actualOutputArgumentList::current (LOCATION_ARGS) const {
+GALGAS_actualOutputArgumentList_2E_element cEnumerator_actualOutputArgumentList::current (LOCATION_ARGS) const {
   const cCollectionElement_actualOutputArgumentList * p = (const cCollectionElement_actualOutputArgumentList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_actualOutputArgumentList) ;
   return p->mObject ;
@@ -7520,7 +6961,7 @@ GALGAS_actualOutputArgumentList GALGAS_actualOutputArgumentList::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_classFuncExpressionAST_2D_weak::objectCompare (const GALGAS_classFuncExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_classFuncExpressionAST_2E_weak::objectCompare (const GALGAS_classFuncExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -7540,13 +6981,13 @@ ComparisonResult GALGAS_classFuncExpressionAST_2D_weak::objectCompare (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionAST_2D_weak::GALGAS_classFuncExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_classFuncExpressionAST_2E_weak::GALGAS_classFuncExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionAST_2D_weak & GALGAS_classFuncExpressionAST_2D_weak::operator = (const GALGAS_classFuncExpressionAST & inSource) {
+GALGAS_classFuncExpressionAST_2E_weak & GALGAS_classFuncExpressionAST_2E_weak::operator = (const GALGAS_classFuncExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -7558,21 +6999,21 @@ GALGAS_classFuncExpressionAST_2D_weak & GALGAS_classFuncExpressionAST_2D_weak::o
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionAST_2D_weak::GALGAS_classFuncExpressionAST_2D_weak (const GALGAS_classFuncExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_classFuncExpressionAST_2E_weak::GALGAS_classFuncExpressionAST_2E_weak (const GALGAS_classFuncExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionAST_2D_weak GALGAS_classFuncExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_classFuncExpressionAST_2D_weak result ;
+GALGAS_classFuncExpressionAST_2E_weak GALGAS_classFuncExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_classFuncExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionAST GALGAS_classFuncExpressionAST_2D_weak::bang_classFuncExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_classFuncExpressionAST GALGAS_classFuncExpressionAST_2E_weak::bang_classFuncExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_classFuncExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7588,41 +7029,41 @@ GALGAS_classFuncExpressionAST GALGAS_classFuncExpressionAST_2D_weak::bang_classF
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @classFuncExpressionAST-weak generic code implementation
+//     @classFuncExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST_2D_weak ("classFuncExpressionAST-weak",
-                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST_2E_weak ("classFuncExpressionAST.weak",
+                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_classFuncExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_classFuncExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_classFuncExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classFuncExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_classFuncExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_classFuncExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_classFuncExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_classFuncExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionAST_2D_weak GALGAS_classFuncExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_classFuncExpressionAST_2E_weak GALGAS_classFuncExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_classFuncExpressionAST_2D_weak result ;
-  const GALGAS_classFuncExpressionAST_2D_weak * p = (const GALGAS_classFuncExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_classFuncExpressionAST_2E_weak result ;
+  const GALGAS_classFuncExpressionAST_2E_weak * p = (const GALGAS_classFuncExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_classFuncExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_classFuncExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("classFuncExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("classFuncExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -7630,7 +7071,7 @@ GALGAS_classFuncExpressionAST_2D_weak GALGAS_classFuncExpressionAST_2D_weak::ext
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_classFuncExpressionForGeneration_2D_weak::objectCompare (const GALGAS_classFuncExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_classFuncExpressionForGeneration_2E_weak::objectCompare (const GALGAS_classFuncExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -7650,13 +7091,13 @@ ComparisonResult GALGAS_classFuncExpressionForGeneration_2D_weak::objectCompare 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionForGeneration_2D_weak::GALGAS_classFuncExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_classFuncExpressionForGeneration_2E_weak::GALGAS_classFuncExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionForGeneration_2D_weak & GALGAS_classFuncExpressionForGeneration_2D_weak::operator = (const GALGAS_classFuncExpressionForGeneration & inSource) {
+GALGAS_classFuncExpressionForGeneration_2E_weak & GALGAS_classFuncExpressionForGeneration_2E_weak::operator = (const GALGAS_classFuncExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -7668,21 +7109,21 @@ GALGAS_classFuncExpressionForGeneration_2D_weak & GALGAS_classFuncExpressionForG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionForGeneration_2D_weak::GALGAS_classFuncExpressionForGeneration_2D_weak (const GALGAS_classFuncExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_classFuncExpressionForGeneration_2E_weak::GALGAS_classFuncExpressionForGeneration_2E_weak (const GALGAS_classFuncExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionForGeneration_2D_weak GALGAS_classFuncExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_classFuncExpressionForGeneration_2D_weak result ;
+GALGAS_classFuncExpressionForGeneration_2E_weak GALGAS_classFuncExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_classFuncExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionForGeneration GALGAS_classFuncExpressionForGeneration_2D_weak::bang_classFuncExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_classFuncExpressionForGeneration GALGAS_classFuncExpressionForGeneration_2E_weak::bang_classFuncExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_classFuncExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -7698,41 +7139,41 @@ GALGAS_classFuncExpressionForGeneration GALGAS_classFuncExpressionForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @classFuncExpressionForGeneration-weak generic code implementation
+//     @classFuncExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2D_weak ("classFuncExpressionForGeneration-weak",
-                                                                                                & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2E_weak ("classFuncExpressionForGeneration.weak",
+                                                                                                & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_classFuncExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_classFuncExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_classFuncExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_classFuncExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_classFuncExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_classFuncExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_classFuncExpressionForGeneration_2D_weak GALGAS_classFuncExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_classFuncExpressionForGeneration_2E_weak GALGAS_classFuncExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_classFuncExpressionForGeneration_2D_weak result ;
-  const GALGAS_classFuncExpressionForGeneration_2D_weak * p = (const GALGAS_classFuncExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_classFuncExpressionForGeneration_2E_weak result ;
+  const GALGAS_classFuncExpressionForGeneration_2E_weak * p = (const GALGAS_classFuncExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_classFuncExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_classFuncExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("classFuncExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("classFuncExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -7745,13 +7186,13 @@ GALGAS_classFuncExpressionForGeneration_2D_weak GALGAS_classFuncExpressionForGen
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_collectionValueElementList : public cCollectionElement {
-  public: GALGAS_collectionValueElementList_2D_element mObject ;
+  public: GALGAS_collectionValueElementList_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_collectionValueElementList (const GALGAS_semanticExpressionAST & in_mExpression,
                                                          const GALGAS_location & in_location
                                                          COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_collectionValueElementList (const GALGAS_collectionValueElementList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_collectionValueElementList (const GALGAS_collectionValueElementList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -7776,7 +7217,7 @@ mObject (in_mExpression, in_location) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_collectionValueElementList::cCollectionElement_collectionValueElementList (const GALGAS_collectionValueElementList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_collectionValueElementList::cCollectionElement_collectionValueElementList (const GALGAS_collectionValueElementList_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mExpression, inElement.mProperty_location) {
 }
@@ -7834,7 +7275,7 @@ GALGAS_collectionValueElementList GALGAS_collectionValueElementList::init (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_collectionValueElementList::enterElement (const GALGAS_collectionValueElementList_2D_element & inValue,
+void GALGAS_collectionValueElementList::enterElement (const GALGAS_collectionValueElementList_2E_element & inValue,
                                                       Compiler * /* inCompiler */
                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -7911,17 +7352,13 @@ void GALGAS_collectionValueElementList::setter_insertAtIndex (const GALGAS_seman
                                                               const GALGAS_uint inInsertionIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_collectionValueElementList (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_collectionValueElementList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -7932,28 +7369,21 @@ void GALGAS_collectionValueElementList::setter_removeAtIndex (GALGAS_semanticExp
                                                               const GALGAS_uint inRemoveIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_collectionValueElementList * p = (cCollectionElement_collectionValueElementList *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_collectionValueElementList) ;
-        outOperand0 = p->mObject.mProperty_mExpression ;
-        outOperand1 = p->mObject.mProperty_location ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_collectionValueElementList * p = (cCollectionElement_collectionValueElementList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_collectionValueElementList) ;
+      outOperand0 = p->mObject.mProperty_mExpression ;
+      outOperand1 = p->mObject.mProperty_location ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
+    drop () ;    
   }
 }
 
@@ -8154,7 +7584,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueElementList_2D_element cEnumerator_collectionValueElementList::current (LOCATION_ARGS) const {
+GALGAS_collectionValueElementList_2E_element cEnumerator_collectionValueElementList::current (LOCATION_ARGS) const {
   const cCollectionElement_collectionValueElementList * p = (const cCollectionElement_collectionValueElementList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_collectionValueElementList) ;
   return p->mObject ;
@@ -8224,7 +7654,7 @@ GALGAS_collectionValueElementList GALGAS_collectionValueElementList::extractObje
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_collectionValueAST_2D_weak::objectCompare (const GALGAS_collectionValueAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_collectionValueAST_2E_weak::objectCompare (const GALGAS_collectionValueAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -8244,13 +7674,13 @@ ComparisonResult GALGAS_collectionValueAST_2D_weak::objectCompare (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST_2D_weak::GALGAS_collectionValueAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_collectionValueAST_2E_weak::GALGAS_collectionValueAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST_2D_weak & GALGAS_collectionValueAST_2D_weak::operator = (const GALGAS_collectionValueAST & inSource) {
+GALGAS_collectionValueAST_2E_weak & GALGAS_collectionValueAST_2E_weak::operator = (const GALGAS_collectionValueAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -8262,21 +7692,21 @@ GALGAS_collectionValueAST_2D_weak & GALGAS_collectionValueAST_2D_weak::operator 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST_2D_weak::GALGAS_collectionValueAST_2D_weak (const GALGAS_collectionValueAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_collectionValueAST_2E_weak::GALGAS_collectionValueAST_2E_weak (const GALGAS_collectionValueAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST_2D_weak GALGAS_collectionValueAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_collectionValueAST_2D_weak result ;
+GALGAS_collectionValueAST_2E_weak GALGAS_collectionValueAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_collectionValueAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST GALGAS_collectionValueAST_2D_weak::bang_collectionValueAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_collectionValueAST GALGAS_collectionValueAST_2E_weak::bang_collectionValueAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_collectionValueAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8292,41 +7722,41 @@ GALGAS_collectionValueAST GALGAS_collectionValueAST_2D_weak::bang_collectionValu
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @collectionValueAST-weak generic code implementation
+//     @collectionValueAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST_2D_weak ("collectionValueAST-weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST_2E_weak ("collectionValueAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_collectionValueAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_collectionValueAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_collectionValueAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_collectionValueAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_collectionValueAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_collectionValueAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_collectionValueAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueAST_2D_weak GALGAS_collectionValueAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_collectionValueAST_2E_weak GALGAS_collectionValueAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_collectionValueAST_2D_weak result ;
-  const GALGAS_collectionValueAST_2D_weak * p = (const GALGAS_collectionValueAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_collectionValueAST_2E_weak result ;
+  const GALGAS_collectionValueAST_2E_weak * p = (const GALGAS_collectionValueAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_collectionValueAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_collectionValueAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("collectionValueAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("collectionValueAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -8339,13 +7769,13 @@ GALGAS_collectionValueAST_2D_weak GALGAS_collectionValueAST_2D_weak::extractObje
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_collectionValueElementListForGeneration : public cCollectionElement {
-  public: GALGAS_collectionValueElementListForGeneration_2D_element mObject ;
+  public: GALGAS_collectionValueElementListForGeneration_2E_element mObject ;
 
 //--- Class functions
   public: cCollectionElement_collectionValueElementListForGeneration (const GALGAS_semanticExpressionForGeneration & in_expression,
                                                                       const GALGAS_location & in_location
                                                                       COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
 
@@ -8370,7 +7800,7 @@ mObject (in_expression, in_location) {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_collectionValueElementListForGeneration::cCollectionElement_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement_collectionValueElementListForGeneration::cCollectionElement_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_expression, inElement.mProperty_location) {
 }
@@ -8428,7 +7858,7 @@ GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementList
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_collectionValueElementListForGeneration::enterElement (const GALGAS_collectionValueElementListForGeneration_2D_element & inValue,
+void GALGAS_collectionValueElementListForGeneration::enterElement (const GALGAS_collectionValueElementListForGeneration_2E_element & inValue,
                                                                    Compiler * /* inCompiler */
                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
@@ -8505,17 +7935,13 @@ void GALGAS_collectionValueElementListForGeneration::setter_insertAtIndex (const
                                                                            const GALGAS_uint inInsertionIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_collectionValueElementListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-    }else{
-      drop () ;
-    }
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_collectionValueElementListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -8526,28 +7952,21 @@ void GALGAS_collectionValueElementListForGeneration::setter_removeAtIndex (GALGA
                                                                            const GALGAS_uint inRemoveIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (inRemoveIndex.isValid ()) {
-      capCollectionElement attributes ;
-      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-      cCollectionElement_collectionValueElementListForGeneration * p = (cCollectionElement_collectionValueElementListForGeneration *) attributes.ptr () ;
-      if (nullptr == p) {
-        outOperand0.drop () ;
-        outOperand1.drop () ;
-        drop () ;
-      }else{
-        macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-        outOperand0 = p->mObject.mProperty_expression ;
-        outOperand1 = p->mObject.mProperty_location ;
-      }
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_collectionValueElementListForGeneration * p = (cCollectionElement_collectionValueElementListForGeneration *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
     }else{
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      drop () ;    
+      macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
+      outOperand0 = p->mObject.mProperty_expression ;
+      outOperand1 = p->mObject.mProperty_location ;
     }
   }else{
-    outOperand0.drop () ;
-    outOperand1.drop () ;
+    drop () ;    
   }
 }
 
@@ -8748,7 +8167,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_collectionValueElementListForGeneration_2D_element cEnumerator_collectionValueElementListForGeneration::current (LOCATION_ARGS) const {
+GALGAS_collectionValueElementListForGeneration_2E_element cEnumerator_collectionValueElementListForGeneration::current (LOCATION_ARGS) const {
   const cCollectionElement_collectionValueElementListForGeneration * p = (const cCollectionElement_collectionValueElementListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
   return p->mObject ;
@@ -8818,7 +8237,7 @@ GALGAS_collectionValueElementListForGeneration GALGAS_collectionValueElementList
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_expressionCollectionForGeneration_2D_weak::objectCompare (const GALGAS_expressionCollectionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_expressionCollectionForGeneration_2E_weak::objectCompare (const GALGAS_expressionCollectionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -8838,13 +8257,13 @@ ComparisonResult GALGAS_expressionCollectionForGeneration_2D_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration_2D_weak::GALGAS_expressionCollectionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_expressionCollectionForGeneration_2E_weak::GALGAS_expressionCollectionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration_2D_weak & GALGAS_expressionCollectionForGeneration_2D_weak::operator = (const GALGAS_expressionCollectionForGeneration & inSource) {
+GALGAS_expressionCollectionForGeneration_2E_weak & GALGAS_expressionCollectionForGeneration_2E_weak::operator = (const GALGAS_expressionCollectionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -8856,21 +8275,21 @@ GALGAS_expressionCollectionForGeneration_2D_weak & GALGAS_expressionCollectionFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration_2D_weak::GALGAS_expressionCollectionForGeneration_2D_weak (const GALGAS_expressionCollectionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_expressionCollectionForGeneration_2E_weak::GALGAS_expressionCollectionForGeneration_2E_weak (const GALGAS_expressionCollectionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration_2D_weak GALGAS_expressionCollectionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_expressionCollectionForGeneration_2D_weak result ;
+GALGAS_expressionCollectionForGeneration_2E_weak GALGAS_expressionCollectionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_expressionCollectionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration_2D_weak::bang_expressionCollectionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration_2E_weak::bang_expressionCollectionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_expressionCollectionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -8886,46 +8305,48 @@ GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @expressionCollectionForGeneration-weak generic code implementation
+//     @expressionCollectionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration_2D_weak ("expressionCollectionForGeneration-weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration_2E_weak ("expressionCollectionForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_expressionCollectionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_expressionCollectionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_expressionCollectionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_expressionCollectionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_expressionCollectionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_expressionCollectionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_expressionCollectionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_expressionCollectionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_expressionCollectionForGeneration_2D_weak GALGAS_expressionCollectionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_expressionCollectionForGeneration_2E_weak GALGAS_expressionCollectionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_expressionCollectionForGeneration_2D_weak result ;
-  const GALGAS_expressionCollectionForGeneration_2D_weak * p = (const GALGAS_expressionCollectionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_expressionCollectionForGeneration_2E_weak result ;
+  const GALGAS_expressionCollectionForGeneration_2E_weak * p = (const GALGAS_expressionCollectionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_expressionCollectionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_expressionCollectionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("expressionCollectionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("expressionCollectionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//  Enum comparison
 //--------------------------------------------------------------------------------------------------
 
 GALGAS_comparison::GALGAS_comparison (void) :
@@ -9364,7 +8785,7 @@ GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_comparisonExpressionAST_2D_weak::objectCompare (const GALGAS_comparisonExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_comparisonExpressionAST_2E_weak::objectCompare (const GALGAS_comparisonExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9384,13 +8805,13 @@ ComparisonResult GALGAS_comparisonExpressionAST_2D_weak::objectCompare (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST_2D_weak::GALGAS_comparisonExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_comparisonExpressionAST_2E_weak::GALGAS_comparisonExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST_2D_weak & GALGAS_comparisonExpressionAST_2D_weak::operator = (const GALGAS_comparisonExpressionAST & inSource) {
+GALGAS_comparisonExpressionAST_2E_weak & GALGAS_comparisonExpressionAST_2E_weak::operator = (const GALGAS_comparisonExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9402,21 +8823,21 @@ GALGAS_comparisonExpressionAST_2D_weak & GALGAS_comparisonExpressionAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST_2D_weak::GALGAS_comparisonExpressionAST_2D_weak (const GALGAS_comparisonExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_comparisonExpressionAST_2E_weak::GALGAS_comparisonExpressionAST_2E_weak (const GALGAS_comparisonExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST_2D_weak GALGAS_comparisonExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_comparisonExpressionAST_2D_weak result ;
+GALGAS_comparisonExpressionAST_2E_weak GALGAS_comparisonExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_comparisonExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST_2D_weak::bang_comparisonExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST_2E_weak::bang_comparisonExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_comparisonExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9432,41 +8853,41 @@ GALGAS_comparisonExpressionAST GALGAS_comparisonExpressionAST_2D_weak::bang_comp
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @comparisonExpressionAST-weak generic code implementation
+//     @comparisonExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionAST_2D_weak ("comparisonExpressionAST-weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionAST_2E_weak ("comparisonExpressionAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_comparisonExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_comparisonExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_comparisonExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_comparisonExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_comparisonExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_comparisonExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_comparisonExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_comparisonExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionAST_2D_weak GALGAS_comparisonExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_comparisonExpressionAST_2E_weak GALGAS_comparisonExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_comparisonExpressionAST_2D_weak result ;
-  const GALGAS_comparisonExpressionAST_2D_weak * p = (const GALGAS_comparisonExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_comparisonExpressionAST_2E_weak result ;
+  const GALGAS_comparisonExpressionAST_2E_weak * p = (const GALGAS_comparisonExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_comparisonExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_comparisonExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("comparisonExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("comparisonExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9474,7 +8895,7 @@ GALGAS_comparisonExpressionAST_2D_weak GALGAS_comparisonExpressionAST_2D_weak::e
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_comparisonExpressionForGeneration_2D_weak::objectCompare (const GALGAS_comparisonExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_comparisonExpressionForGeneration_2E_weak::objectCompare (const GALGAS_comparisonExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9494,13 +8915,13 @@ ComparisonResult GALGAS_comparisonExpressionForGeneration_2D_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration_2D_weak::GALGAS_comparisonExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_comparisonExpressionForGeneration_2E_weak::GALGAS_comparisonExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration_2D_weak & GALGAS_comparisonExpressionForGeneration_2D_weak::operator = (const GALGAS_comparisonExpressionForGeneration & inSource) {
+GALGAS_comparisonExpressionForGeneration_2E_weak & GALGAS_comparisonExpressionForGeneration_2E_weak::operator = (const GALGAS_comparisonExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9512,21 +8933,21 @@ GALGAS_comparisonExpressionForGeneration_2D_weak & GALGAS_comparisonExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration_2D_weak::GALGAS_comparisonExpressionForGeneration_2D_weak (const GALGAS_comparisonExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_comparisonExpressionForGeneration_2E_weak::GALGAS_comparisonExpressionForGeneration_2E_weak (const GALGAS_comparisonExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration_2D_weak GALGAS_comparisonExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_comparisonExpressionForGeneration_2D_weak result ;
+GALGAS_comparisonExpressionForGeneration_2E_weak GALGAS_comparisonExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_comparisonExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneration_2D_weak::bang_comparisonExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneration_2E_weak::bang_comparisonExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_comparisonExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9542,41 +8963,41 @@ GALGAS_comparisonExpressionForGeneration GALGAS_comparisonExpressionForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @comparisonExpressionForGeneration-weak generic code implementation
+//     @comparisonExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionForGeneration_2D_weak ("comparisonExpressionForGeneration-weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionForGeneration_2E_weak ("comparisonExpressionForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_comparisonExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_comparisonExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_comparisonExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_comparisonExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_comparisonExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_comparisonExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_comparisonExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_comparisonExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_comparisonExpressionForGeneration_2D_weak GALGAS_comparisonExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_comparisonExpressionForGeneration_2E_weak GALGAS_comparisonExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_comparisonExpressionForGeneration_2D_weak result ;
-  const GALGAS_comparisonExpressionForGeneration_2D_weak * p = (const GALGAS_comparisonExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_comparisonExpressionForGeneration_2E_weak result ;
+  const GALGAS_comparisonExpressionForGeneration_2E_weak * p = (const GALGAS_comparisonExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_comparisonExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_comparisonExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("comparisonExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("comparisonExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9584,7 +9005,7 @@ GALGAS_comparisonExpressionForGeneration_2D_weak GALGAS_comparisonExpressionForG
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::objectCompare (const GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::objectCompare (const GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9604,13 +9025,13 @@ ComparisonResult GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::o
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak & GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::operator = (const GALGAS_filewrapperObjectInstanciationInExpressionAST & inSource) {
+GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak & GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::operator = (const GALGAS_filewrapperObjectInstanciationInExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9622,21 +9043,21 @@ GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak & GALGAS_filewrappe
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak (const GALGAS_filewrapperObjectInstanciationInExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak (const GALGAS_filewrapperObjectInstanciationInExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak result ;
+GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::bang_filewrapperObjectInstanciationInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperObjectInstanciationInExpressionAST GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::bang_filewrapperObjectInstanciationInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperObjectInstanciationInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9652,41 +9073,41 @@ GALGAS_filewrapperObjectInstanciationInExpressionAST GALGAS_filewrapperObjectIns
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @filewrapperObjectInstanciationInExpressionAST-weak generic code implementation
+//     @filewrapperObjectInstanciationInExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak ("filewrapperObjectInstanciationInExpressionAST-weak",
-                                                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak ("filewrapperObjectInstanciationInExpressionAST.weak",
+                                                                                                             & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                           Compiler * inCompiler
                                                                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak result ;
-  const GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak * p = (const GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak result ;
+  const GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak * p = (const GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("filewrapperObjectInstanciationInExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("filewrapperObjectInstanciationInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9694,7 +9115,7 @@ GALGAS_filewrapperObjectInstanciationInExpressionAST_2D_weak GALGAS_filewrapperO
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapperInExpressionAST_2D_weak::objectCompare (const GALGAS_filewrapperInExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_filewrapperInExpressionAST_2E_weak::objectCompare (const GALGAS_filewrapperInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9714,13 +9135,13 @@ ComparisonResult GALGAS_filewrapperInExpressionAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST_2D_weak::GALGAS_filewrapperInExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_filewrapperInExpressionAST_2E_weak::GALGAS_filewrapperInExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST_2D_weak & GALGAS_filewrapperInExpressionAST_2D_weak::operator = (const GALGAS_filewrapperInExpressionAST & inSource) {
+GALGAS_filewrapperInExpressionAST_2E_weak & GALGAS_filewrapperInExpressionAST_2E_weak::operator = (const GALGAS_filewrapperInExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9732,21 +9153,21 @@ GALGAS_filewrapperInExpressionAST_2D_weak & GALGAS_filewrapperInExpressionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST_2D_weak::GALGAS_filewrapperInExpressionAST_2D_weak (const GALGAS_filewrapperInExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_filewrapperInExpressionAST_2E_weak::GALGAS_filewrapperInExpressionAST_2E_weak (const GALGAS_filewrapperInExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST_2D_weak GALGAS_filewrapperInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_filewrapperInExpressionAST_2D_weak result ;
+GALGAS_filewrapperInExpressionAST_2E_weak GALGAS_filewrapperInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_filewrapperInExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST GALGAS_filewrapperInExpressionAST_2D_weak::bang_filewrapperInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperInExpressionAST GALGAS_filewrapperInExpressionAST_2E_weak::bang_filewrapperInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9762,41 +9183,41 @@ GALGAS_filewrapperInExpressionAST GALGAS_filewrapperInExpressionAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @filewrapperInExpressionAST-weak generic code implementation
+//     @filewrapperInExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST_2D_weak ("filewrapperInExpressionAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST_2E_weak ("filewrapperInExpressionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_filewrapperInExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperInExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_filewrapperInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_filewrapperInExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_filewrapperInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperInExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_filewrapperInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionAST_2D_weak GALGAS_filewrapperInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_filewrapperInExpressionAST_2E_weak GALGAS_filewrapperInExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperInExpressionAST_2D_weak result ;
-  const GALGAS_filewrapperInExpressionAST_2D_weak * p = (const GALGAS_filewrapperInExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_filewrapperInExpressionAST_2E_weak result ;
+  const GALGAS_filewrapperInExpressionAST_2E_weak * p = (const GALGAS_filewrapperInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperInExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("filewrapperInExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("filewrapperInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9804,7 +9225,7 @@ GALGAS_filewrapperInExpressionAST_2D_weak GALGAS_filewrapperInExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapperTemplateInExpressionAST_2D_weak::objectCompare (const GALGAS_filewrapperTemplateInExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_filewrapperTemplateInExpressionAST_2E_weak::objectCompare (const GALGAS_filewrapperTemplateInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9824,13 +9245,13 @@ ComparisonResult GALGAS_filewrapperTemplateInExpressionAST_2D_weak::objectCompar
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST_2D_weak::GALGAS_filewrapperTemplateInExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_filewrapperTemplateInExpressionAST_2E_weak::GALGAS_filewrapperTemplateInExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST_2D_weak & GALGAS_filewrapperTemplateInExpressionAST_2D_weak::operator = (const GALGAS_filewrapperTemplateInExpressionAST & inSource) {
+GALGAS_filewrapperTemplateInExpressionAST_2E_weak & GALGAS_filewrapperTemplateInExpressionAST_2E_weak::operator = (const GALGAS_filewrapperTemplateInExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9842,21 +9263,21 @@ GALGAS_filewrapperTemplateInExpressionAST_2D_weak & GALGAS_filewrapperTemplateIn
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST_2D_weak::GALGAS_filewrapperTemplateInExpressionAST_2D_weak (const GALGAS_filewrapperTemplateInExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_filewrapperTemplateInExpressionAST_2E_weak::GALGAS_filewrapperTemplateInExpressionAST_2E_weak (const GALGAS_filewrapperTemplateInExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST_2D_weak GALGAS_filewrapperTemplateInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_filewrapperTemplateInExpressionAST_2D_weak result ;
+GALGAS_filewrapperTemplateInExpressionAST_2E_weak GALGAS_filewrapperTemplateInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_filewrapperTemplateInExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST GALGAS_filewrapperTemplateInExpressionAST_2D_weak::bang_filewrapperTemplateInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperTemplateInExpressionAST GALGAS_filewrapperTemplateInExpressionAST_2E_weak::bang_filewrapperTemplateInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9872,41 +9293,41 @@ GALGAS_filewrapperTemplateInExpressionAST GALGAS_filewrapperTemplateInExpression
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @filewrapperTemplateInExpressionAST-weak generic code implementation
+//     @filewrapperTemplateInExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST_2D_weak ("filewrapperTemplateInExpressionAST-weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST_2E_weak ("filewrapperTemplateInExpressionAST.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_filewrapperTemplateInExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_filewrapperTemplateInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_filewrapperTemplateInExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_filewrapperTemplateInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperTemplateInExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_filewrapperTemplateInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionAST_2D_weak GALGAS_filewrapperTemplateInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_filewrapperTemplateInExpressionAST_2E_weak GALGAS_filewrapperTemplateInExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperTemplateInExpressionAST_2D_weak result ;
-  const GALGAS_filewrapperTemplateInExpressionAST_2D_weak * p = (const GALGAS_filewrapperTemplateInExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_filewrapperTemplateInExpressionAST_2E_weak result ;
+  const GALGAS_filewrapperTemplateInExpressionAST_2E_weak * p = (const GALGAS_filewrapperTemplateInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateInExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("filewrapperTemplateInExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("filewrapperTemplateInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9914,7 +9335,7 @@ GALGAS_filewrapperTemplateInExpressionAST_2D_weak GALGAS_filewrapperTemplateInEx
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapperInExpressionForGeneration_2D_weak::objectCompare (const GALGAS_filewrapperInExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_filewrapperInExpressionForGeneration_2E_weak::objectCompare (const GALGAS_filewrapperInExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -9934,13 +9355,13 @@ ComparisonResult GALGAS_filewrapperInExpressionForGeneration_2D_weak::objectComp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration_2D_weak::GALGAS_filewrapperInExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_filewrapperInExpressionForGeneration_2E_weak::GALGAS_filewrapperInExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration_2D_weak & GALGAS_filewrapperInExpressionForGeneration_2D_weak::operator = (const GALGAS_filewrapperInExpressionForGeneration & inSource) {
+GALGAS_filewrapperInExpressionForGeneration_2E_weak & GALGAS_filewrapperInExpressionForGeneration_2E_weak::operator = (const GALGAS_filewrapperInExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -9952,21 +9373,21 @@ GALGAS_filewrapperInExpressionForGeneration_2D_weak & GALGAS_filewrapperInExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration_2D_weak::GALGAS_filewrapperInExpressionForGeneration_2D_weak (const GALGAS_filewrapperInExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_filewrapperInExpressionForGeneration_2E_weak::GALGAS_filewrapperInExpressionForGeneration_2E_weak (const GALGAS_filewrapperInExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration_2D_weak GALGAS_filewrapperInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_filewrapperInExpressionForGeneration_2D_weak result ;
+GALGAS_filewrapperInExpressionForGeneration_2E_weak GALGAS_filewrapperInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_filewrapperInExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration_2D_weak::bang_filewrapperInExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration_2E_weak::bang_filewrapperInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperInExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -9982,41 +9403,41 @@ GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @filewrapperInExpressionForGeneration-weak generic code implementation
+//     @filewrapperInExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration_2D_weak ("filewrapperInExpressionForGeneration-weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration_2E_weak ("filewrapperInExpressionForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_filewrapperInExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_filewrapperInExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_filewrapperInExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_filewrapperInExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperInExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_filewrapperInExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperInExpressionForGeneration_2D_weak GALGAS_filewrapperInExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_filewrapperInExpressionForGeneration_2E_weak GALGAS_filewrapperInExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperInExpressionForGeneration_2D_weak result ;
-  const GALGAS_filewrapperInExpressionForGeneration_2D_weak * p = (const GALGAS_filewrapperInExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_filewrapperInExpressionForGeneration_2E_weak result ;
+  const GALGAS_filewrapperInExpressionForGeneration_2E_weak * p = (const GALGAS_filewrapperInExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperInExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperInExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("filewrapperInExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("filewrapperInExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10024,7 +9445,7 @@ GALGAS_filewrapperInExpressionForGeneration_2D_weak GALGAS_filewrapperInExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::objectCompare (const GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::objectCompare (const GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10044,13 +9465,13 @@ ComparisonResult GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::ob
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak & GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::operator = (const GALGAS_filewrapperTemplateInExpressionForGeneration & inSource) {
+GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak & GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::operator = (const GALGAS_filewrapperTemplateInExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10062,21 +9483,21 @@ GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak & GALGAS_filewrapper
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak (const GALGAS_filewrapperTemplateInExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak (const GALGAS_filewrapperTemplateInExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak result ;
+GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::bang_filewrapperTemplateInExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::bang_filewrapperTemplateInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperTemplateInExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10092,41 +9513,41 @@ GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateIn
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @filewrapperTemplateInExpressionForGeneration-weak generic code implementation
+//     @filewrapperTemplateInExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak ("filewrapperTemplateInExpressionForGeneration-weak",
-                                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak ("filewrapperTemplateInExpressionForGeneration.weak",
+                                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                         Compiler * inCompiler
                                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak result ;
-  const GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak * p = (const GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak result ;
+  const GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak * p = (const GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("filewrapperTemplateInExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("filewrapperTemplateInExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10134,7 +9555,7 @@ GALGAS_filewrapperTemplateInExpressionForGeneration_2D_weak GALGAS_filewrapperTe
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::objectCompare (const GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::objectCompare (const GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10154,13 +9575,13 @@ ComparisonResult GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak & GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::operator = (const GALGAS_filewrapperStaticPathInExpressionForGeneration & inSource) {
+GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak & GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::operator = (const GALGAS_filewrapperStaticPathInExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10172,21 +9593,21 @@ GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak & GALGAS_filewrapp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak (const GALGAS_filewrapperStaticPathInExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak (const GALGAS_filewrapperStaticPathInExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak result ;
+GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::bang_filewrapperStaticPathInExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::bang_filewrapperStaticPathInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_filewrapperStaticPathInExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10202,41 +9623,41 @@ GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPa
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @filewrapperStaticPathInExpressionForGeneration-weak generic code implementation
+//     @filewrapperStaticPathInExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak ("filewrapperStaticPathInExpressionForGeneration-weak",
-                                                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak ("filewrapperStaticPathInExpressionForGeneration.weak",
+                                                                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                             Compiler * inCompiler
                                                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak result ;
-  const GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak * p = (const GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak result ;
+  const GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak * p = (const GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("filewrapperStaticPathInExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("filewrapperStaticPathInExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10244,7 +9665,7 @@ GALGAS_filewrapperStaticPathInExpressionForGeneration_2D_weak GALGAS_filewrapper
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_functionCallExpressionAST_2D_weak::objectCompare (const GALGAS_functionCallExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_functionCallExpressionAST_2E_weak::objectCompare (const GALGAS_functionCallExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10264,13 +9685,13 @@ ComparisonResult GALGAS_functionCallExpressionAST_2D_weak::objectCompare (const 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST_2D_weak::GALGAS_functionCallExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_functionCallExpressionAST_2E_weak::GALGAS_functionCallExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST_2D_weak & GALGAS_functionCallExpressionAST_2D_weak::operator = (const GALGAS_functionCallExpressionAST & inSource) {
+GALGAS_functionCallExpressionAST_2E_weak & GALGAS_functionCallExpressionAST_2E_weak::operator = (const GALGAS_functionCallExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10282,21 +9703,21 @@ GALGAS_functionCallExpressionAST_2D_weak & GALGAS_functionCallExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST_2D_weak::GALGAS_functionCallExpressionAST_2D_weak (const GALGAS_functionCallExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_functionCallExpressionAST_2E_weak::GALGAS_functionCallExpressionAST_2E_weak (const GALGAS_functionCallExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST_2D_weak GALGAS_functionCallExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_functionCallExpressionAST_2D_weak result ;
+GALGAS_functionCallExpressionAST_2E_weak GALGAS_functionCallExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_functionCallExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST GALGAS_functionCallExpressionAST_2D_weak::bang_functionCallExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_functionCallExpressionAST GALGAS_functionCallExpressionAST_2E_weak::bang_functionCallExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionCallExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10312,41 +9733,41 @@ GALGAS_functionCallExpressionAST GALGAS_functionCallExpressionAST_2D_weak::bang_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @functionCallExpressionAST-weak generic code implementation
+//     @functionCallExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionAST_2D_weak ("functionCallExpressionAST-weak",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionAST_2E_weak ("functionCallExpressionAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_functionCallExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionCallExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_functionCallExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionCallExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_functionCallExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_functionCallExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_functionCallExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_functionCallExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionAST_2D_weak GALGAS_functionCallExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_functionCallExpressionAST_2E_weak GALGAS_functionCallExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_functionCallExpressionAST_2D_weak result ;
-  const GALGAS_functionCallExpressionAST_2D_weak * p = (const GALGAS_functionCallExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_functionCallExpressionAST_2E_weak result ;
+  const GALGAS_functionCallExpressionAST_2E_weak * p = (const GALGAS_functionCallExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_functionCallExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_functionCallExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("functionCallExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("functionCallExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10354,7 +9775,7 @@ GALGAS_functionCallExpressionAST_2D_weak GALGAS_functionCallExpressionAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_functionCallExpressionForGeneration_2D_weak::objectCompare (const GALGAS_functionCallExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_functionCallExpressionForGeneration_2E_weak::objectCompare (const GALGAS_functionCallExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10374,13 +9795,13 @@ ComparisonResult GALGAS_functionCallExpressionForGeneration_2D_weak::objectCompa
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration_2D_weak::GALGAS_functionCallExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_functionCallExpressionForGeneration_2E_weak::GALGAS_functionCallExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration_2D_weak & GALGAS_functionCallExpressionForGeneration_2D_weak::operator = (const GALGAS_functionCallExpressionForGeneration & inSource) {
+GALGAS_functionCallExpressionForGeneration_2E_weak & GALGAS_functionCallExpressionForGeneration_2E_weak::operator = (const GALGAS_functionCallExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10392,21 +9813,21 @@ GALGAS_functionCallExpressionForGeneration_2D_weak & GALGAS_functionCallExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration_2D_weak::GALGAS_functionCallExpressionForGeneration_2D_weak (const GALGAS_functionCallExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_functionCallExpressionForGeneration_2E_weak::GALGAS_functionCallExpressionForGeneration_2E_weak (const GALGAS_functionCallExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration_2D_weak GALGAS_functionCallExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_functionCallExpressionForGeneration_2D_weak result ;
+GALGAS_functionCallExpressionForGeneration_2E_weak GALGAS_functionCallExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_functionCallExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration_2D_weak::bang_functionCallExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration_2E_weak::bang_functionCallExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_functionCallExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10422,41 +9843,41 @@ GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGener
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @functionCallExpressionForGeneration-weak generic code implementation
+//     @functionCallExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration_2D_weak ("functionCallExpressionForGeneration-weak",
-                                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration_2E_weak ("functionCallExpressionForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_functionCallExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionCallExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_functionCallExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionCallExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_functionCallExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_functionCallExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_functionCallExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_functionCallExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionCallExpressionForGeneration_2D_weak GALGAS_functionCallExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_functionCallExpressionForGeneration_2E_weak GALGAS_functionCallExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_functionCallExpressionForGeneration_2D_weak result ;
-  const GALGAS_functionCallExpressionForGeneration_2D_weak * p = (const GALGAS_functionCallExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_functionCallExpressionForGeneration_2E_weak result ;
+  const GALGAS_functionCallExpressionForGeneration_2E_weak * p = (const GALGAS_functionCallExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_functionCallExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_functionCallExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("functionCallExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("functionCallExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10464,7 +9885,7 @@ GALGAS_functionCallExpressionForGeneration_2D_weak GALGAS_functionCallExpression
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_getterCallExpressionAST_2D_weak::objectCompare (const GALGAS_getterCallExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_getterCallExpressionAST_2E_weak::objectCompare (const GALGAS_getterCallExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10484,13 +9905,13 @@ ComparisonResult GALGAS_getterCallExpressionAST_2D_weak::objectCompare (const GA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST_2D_weak::GALGAS_getterCallExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_getterCallExpressionAST_2E_weak::GALGAS_getterCallExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST_2D_weak & GALGAS_getterCallExpressionAST_2D_weak::operator = (const GALGAS_getterCallExpressionAST & inSource) {
+GALGAS_getterCallExpressionAST_2E_weak & GALGAS_getterCallExpressionAST_2E_weak::operator = (const GALGAS_getterCallExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10502,21 +9923,21 @@ GALGAS_getterCallExpressionAST_2D_weak & GALGAS_getterCallExpressionAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST_2D_weak::GALGAS_getterCallExpressionAST_2D_weak (const GALGAS_getterCallExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_getterCallExpressionAST_2E_weak::GALGAS_getterCallExpressionAST_2E_weak (const GALGAS_getterCallExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST_2D_weak GALGAS_getterCallExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_getterCallExpressionAST_2D_weak result ;
+GALGAS_getterCallExpressionAST_2E_weak GALGAS_getterCallExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_getterCallExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST GALGAS_getterCallExpressionAST_2D_weak::bang_getterCallExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_getterCallExpressionAST GALGAS_getterCallExpressionAST_2E_weak::bang_getterCallExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_getterCallExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10532,41 +9953,41 @@ GALGAS_getterCallExpressionAST GALGAS_getterCallExpressionAST_2D_weak::bang_gett
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @getterCallExpressionAST-weak generic code implementation
+//     @getterCallExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionAST_2D_weak ("getterCallExpressionAST-weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionAST_2E_weak ("getterCallExpressionAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_getterCallExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_getterCallExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_getterCallExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_getterCallExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_getterCallExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_getterCallExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_getterCallExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_getterCallExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionAST_2D_weak GALGAS_getterCallExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_getterCallExpressionAST_2E_weak GALGAS_getterCallExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_getterCallExpressionAST_2D_weak result ;
-  const GALGAS_getterCallExpressionAST_2D_weak * p = (const GALGAS_getterCallExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_getterCallExpressionAST_2E_weak result ;
+  const GALGAS_getterCallExpressionAST_2E_weak * p = (const GALGAS_getterCallExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_getterCallExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_getterCallExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("getterCallExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("getterCallExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10574,7 +9995,7 @@ GALGAS_getterCallExpressionAST_2D_weak GALGAS_getterCallExpressionAST_2D_weak::e
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_getterCallExpressionForGeneration_2D_weak::objectCompare (const GALGAS_getterCallExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_getterCallExpressionForGeneration_2E_weak::objectCompare (const GALGAS_getterCallExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10594,13 +10015,13 @@ ComparisonResult GALGAS_getterCallExpressionForGeneration_2D_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration_2D_weak::GALGAS_getterCallExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_getterCallExpressionForGeneration_2E_weak::GALGAS_getterCallExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration_2D_weak & GALGAS_getterCallExpressionForGeneration_2D_weak::operator = (const GALGAS_getterCallExpressionForGeneration & inSource) {
+GALGAS_getterCallExpressionForGeneration_2E_weak & GALGAS_getterCallExpressionForGeneration_2E_weak::operator = (const GALGAS_getterCallExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10612,21 +10033,21 @@ GALGAS_getterCallExpressionForGeneration_2D_weak & GALGAS_getterCallExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration_2D_weak::GALGAS_getterCallExpressionForGeneration_2D_weak (const GALGAS_getterCallExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_getterCallExpressionForGeneration_2E_weak::GALGAS_getterCallExpressionForGeneration_2E_weak (const GALGAS_getterCallExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration_2D_weak GALGAS_getterCallExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_getterCallExpressionForGeneration_2D_weak result ;
+GALGAS_getterCallExpressionForGeneration_2E_weak GALGAS_getterCallExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_getterCallExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration GALGAS_getterCallExpressionForGeneration_2D_weak::bang_getterCallExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_getterCallExpressionForGeneration GALGAS_getterCallExpressionForGeneration_2E_weak::bang_getterCallExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_getterCallExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10642,41 +10063,41 @@ GALGAS_getterCallExpressionForGeneration GALGAS_getterCallExpressionForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @getterCallExpressionForGeneration-weak generic code implementation
+//     @getterCallExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration_2D_weak ("getterCallExpressionForGeneration-weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration_2E_weak ("getterCallExpressionForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_getterCallExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_getterCallExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_getterCallExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_getterCallExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_getterCallExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_getterCallExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_getterCallExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_getterCallExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_getterCallExpressionForGeneration_2D_weak GALGAS_getterCallExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_getterCallExpressionForGeneration_2E_weak GALGAS_getterCallExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_getterCallExpressionForGeneration_2D_weak result ;
-  const GALGAS_getterCallExpressionForGeneration_2D_weak * p = (const GALGAS_getterCallExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_getterCallExpressionForGeneration_2E_weak result ;
+  const GALGAS_getterCallExpressionForGeneration_2E_weak * p = (const GALGAS_getterCallExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_getterCallExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_getterCallExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("getterCallExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("getterCallExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -10919,7 +10340,7 @@ GALGAS_ifExpressionAST GALGAS_ifExpressionAST::extractObject (const GALGAS_objec
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_ifExpressionAST_2D_weak::objectCompare (const GALGAS_ifExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_ifExpressionAST_2E_weak::objectCompare (const GALGAS_ifExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -10939,13 +10360,13 @@ ComparisonResult GALGAS_ifExpressionAST_2D_weak::objectCompare (const GALGAS_ifE
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionAST_2D_weak::GALGAS_ifExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_ifExpressionAST_2E_weak::GALGAS_ifExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionAST_2D_weak & GALGAS_ifExpressionAST_2D_weak::operator = (const GALGAS_ifExpressionAST & inSource) {
+GALGAS_ifExpressionAST_2E_weak & GALGAS_ifExpressionAST_2E_weak::operator = (const GALGAS_ifExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -10957,21 +10378,21 @@ GALGAS_ifExpressionAST_2D_weak & GALGAS_ifExpressionAST_2D_weak::operator = (con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionAST_2D_weak::GALGAS_ifExpressionAST_2D_weak (const GALGAS_ifExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_ifExpressionAST_2E_weak::GALGAS_ifExpressionAST_2E_weak (const GALGAS_ifExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionAST_2D_weak GALGAS_ifExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_ifExpressionAST_2D_weak result ;
+GALGAS_ifExpressionAST_2E_weak GALGAS_ifExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_ifExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionAST GALGAS_ifExpressionAST_2D_weak::bang_ifExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_ifExpressionAST GALGAS_ifExpressionAST_2E_weak::bang_ifExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_ifExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -10987,41 +10408,41 @@ GALGAS_ifExpressionAST GALGAS_ifExpressionAST_2D_weak::bang_ifExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @ifExpressionAST-weak generic code implementation
+//     @ifExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionAST_2D_weak ("ifExpressionAST-weak",
-                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionAST_2E_weak ("ifExpressionAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_ifExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_ifExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_ifExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_ifExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_ifExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_ifExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionAST_2D_weak GALGAS_ifExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_ifExpressionAST_2E_weak GALGAS_ifExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionAST_2D_weak result ;
-  const GALGAS_ifExpressionAST_2D_weak * p = (const GALGAS_ifExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_ifExpressionAST_2E_weak result ;
+  const GALGAS_ifExpressionAST_2E_weak * p = (const GALGAS_ifExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_ifExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_ifExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("ifExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11029,7 +10450,7 @@ GALGAS_ifExpressionAST_2D_weak GALGAS_ifExpressionAST_2D_weak::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_ifExpressionForGeneration_2D_weak::objectCompare (const GALGAS_ifExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_ifExpressionForGeneration_2E_weak::objectCompare (const GALGAS_ifExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11049,13 +10470,13 @@ ComparisonResult GALGAS_ifExpressionForGeneration_2D_weak::objectCompare (const 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration_2D_weak::GALGAS_ifExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_ifExpressionForGeneration_2E_weak::GALGAS_ifExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration_2D_weak & GALGAS_ifExpressionForGeneration_2D_weak::operator = (const GALGAS_ifExpressionForGeneration & inSource) {
+GALGAS_ifExpressionForGeneration_2E_weak & GALGAS_ifExpressionForGeneration_2E_weak::operator = (const GALGAS_ifExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11067,21 +10488,21 @@ GALGAS_ifExpressionForGeneration_2D_weak & GALGAS_ifExpressionForGeneration_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration_2D_weak::GALGAS_ifExpressionForGeneration_2D_weak (const GALGAS_ifExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_ifExpressionForGeneration_2E_weak::GALGAS_ifExpressionForGeneration_2E_weak (const GALGAS_ifExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration_2D_weak GALGAS_ifExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_ifExpressionForGeneration_2D_weak result ;
+GALGAS_ifExpressionForGeneration_2E_weak GALGAS_ifExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_ifExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration_2D_weak::bang_ifExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration_2E_weak::bang_ifExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_ifExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11097,41 +10518,41 @@ GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration_2D_weak::bang_
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @ifExpressionForGeneration-weak generic code implementation
+//     @ifExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGeneration_2D_weak ("ifExpressionForGeneration-weak",
-                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGeneration_2E_weak ("ifExpressionForGeneration.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_ifExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_ifExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_ifExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_ifExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_ifExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_ifExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_ifExpressionForGeneration_2D_weak GALGAS_ifExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_ifExpressionForGeneration_2E_weak GALGAS_ifExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_ifExpressionForGeneration_2D_weak result ;
-  const GALGAS_ifExpressionForGeneration_2D_weak * p = (const GALGAS_ifExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_ifExpressionForGeneration_2E_weak result ;
+  const GALGAS_ifExpressionForGeneration_2E_weak * p = (const GALGAS_ifExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_ifExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_ifExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("ifExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("ifExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11139,7 +10560,7 @@ GALGAS_ifExpressionForGeneration_2D_weak GALGAS_ifExpressionForGeneration_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_initializerCallAST_2D_weak::objectCompare (const GALGAS_initializerCallAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_initializerCallAST_2E_weak::objectCompare (const GALGAS_initializerCallAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11159,13 +10580,13 @@ ComparisonResult GALGAS_initializerCallAST_2D_weak::objectCompare (const GALGAS_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallAST_2D_weak::GALGAS_initializerCallAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_initializerCallAST_2E_weak::GALGAS_initializerCallAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallAST_2D_weak & GALGAS_initializerCallAST_2D_weak::operator = (const GALGAS_initializerCallAST & inSource) {
+GALGAS_initializerCallAST_2E_weak & GALGAS_initializerCallAST_2E_weak::operator = (const GALGAS_initializerCallAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11177,21 +10598,21 @@ GALGAS_initializerCallAST_2D_weak & GALGAS_initializerCallAST_2D_weak::operator 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallAST_2D_weak::GALGAS_initializerCallAST_2D_weak (const GALGAS_initializerCallAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_initializerCallAST_2E_weak::GALGAS_initializerCallAST_2E_weak (const GALGAS_initializerCallAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallAST_2D_weak GALGAS_initializerCallAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_initializerCallAST_2D_weak result ;
+GALGAS_initializerCallAST_2E_weak GALGAS_initializerCallAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_initializerCallAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallAST GALGAS_initializerCallAST_2D_weak::bang_initializerCallAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_initializerCallAST GALGAS_initializerCallAST_2E_weak::bang_initializerCallAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_initializerCallAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11207,41 +10628,41 @@ GALGAS_initializerCallAST GALGAS_initializerCallAST_2D_weak::bang_initializerCal
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @initializerCallAST-weak generic code implementation
+//     @initializerCallAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallAST_2D_weak ("initializerCallAST-weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallAST_2E_weak ("initializerCallAST.weak",
+                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_initializerCallAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerCallAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_initializerCallAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_initializerCallAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_initializerCallAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_initializerCallAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_initializerCallAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_initializerCallAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallAST_2D_weak GALGAS_initializerCallAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_initializerCallAST_2E_weak GALGAS_initializerCallAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_initializerCallAST_2D_weak result ;
-  const GALGAS_initializerCallAST_2D_weak * p = (const GALGAS_initializerCallAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_initializerCallAST_2E_weak result ;
+  const GALGAS_initializerCallAST_2E_weak * p = (const GALGAS_initializerCallAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_initializerCallAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_initializerCallAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("initializerCallAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("initializerCallAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11249,7 +10670,7 @@ GALGAS_initializerCallAST_2D_weak GALGAS_initializerCallAST_2D_weak::extractObje
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_initializerCallForGeneration_2D_weak::objectCompare (const GALGAS_initializerCallForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_initializerCallForGeneration_2E_weak::objectCompare (const GALGAS_initializerCallForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11269,13 +10690,13 @@ ComparisonResult GALGAS_initializerCallForGeneration_2D_weak::objectCompare (con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallForGeneration_2D_weak::GALGAS_initializerCallForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_initializerCallForGeneration_2E_weak::GALGAS_initializerCallForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallForGeneration_2D_weak & GALGAS_initializerCallForGeneration_2D_weak::operator = (const GALGAS_initializerCallForGeneration & inSource) {
+GALGAS_initializerCallForGeneration_2E_weak & GALGAS_initializerCallForGeneration_2E_weak::operator = (const GALGAS_initializerCallForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11287,21 +10708,21 @@ GALGAS_initializerCallForGeneration_2D_weak & GALGAS_initializerCallForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallForGeneration_2D_weak::GALGAS_initializerCallForGeneration_2D_weak (const GALGAS_initializerCallForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_initializerCallForGeneration_2E_weak::GALGAS_initializerCallForGeneration_2E_weak (const GALGAS_initializerCallForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallForGeneration_2D_weak GALGAS_initializerCallForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_initializerCallForGeneration_2D_weak result ;
+GALGAS_initializerCallForGeneration_2E_weak GALGAS_initializerCallForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_initializerCallForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallForGeneration GALGAS_initializerCallForGeneration_2D_weak::bang_initializerCallForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_initializerCallForGeneration GALGAS_initializerCallForGeneration_2E_weak::bang_initializerCallForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_initializerCallForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11317,41 +10738,41 @@ GALGAS_initializerCallForGeneration GALGAS_initializerCallForGeneration_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @initializerCallForGeneration-weak generic code implementation
+//     @initializerCallForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallForGeneration_2D_weak ("initializerCallForGeneration-weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallForGeneration_2E_weak ("initializerCallForGeneration.weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_initializerCallForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerCallForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_initializerCallForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_initializerCallForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_initializerCallForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_initializerCallForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_initializerCallForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_initializerCallForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_initializerCallForGeneration_2D_weak GALGAS_initializerCallForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_initializerCallForGeneration_2E_weak GALGAS_initializerCallForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_initializerCallForGeneration_2D_weak result ;
-  const GALGAS_initializerCallForGeneration_2D_weak * p = (const GALGAS_initializerCallForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_initializerCallForGeneration_2E_weak result ;
+  const GALGAS_initializerCallForGeneration_2E_weak * p = (const GALGAS_initializerCallForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_initializerCallForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_initializerCallForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("initializerCallForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("initializerCallForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11359,7 +10780,7 @@ GALGAS_initializerCallForGeneration_2D_weak GALGAS_initializerCallForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_testDynamicClassInExpressionAST_2D_weak::objectCompare (const GALGAS_testDynamicClassInExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_testDynamicClassInExpressionAST_2E_weak::objectCompare (const GALGAS_testDynamicClassInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11379,13 +10800,13 @@ ComparisonResult GALGAS_testDynamicClassInExpressionAST_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST_2D_weak::GALGAS_testDynamicClassInExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_testDynamicClassInExpressionAST_2E_weak::GALGAS_testDynamicClassInExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST_2D_weak & GALGAS_testDynamicClassInExpressionAST_2D_weak::operator = (const GALGAS_testDynamicClassInExpressionAST & inSource) {
+GALGAS_testDynamicClassInExpressionAST_2E_weak & GALGAS_testDynamicClassInExpressionAST_2E_weak::operator = (const GALGAS_testDynamicClassInExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11397,21 +10818,21 @@ GALGAS_testDynamicClassInExpressionAST_2D_weak & GALGAS_testDynamicClassInExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST_2D_weak::GALGAS_testDynamicClassInExpressionAST_2D_weak (const GALGAS_testDynamicClassInExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_testDynamicClassInExpressionAST_2E_weak::GALGAS_testDynamicClassInExpressionAST_2E_weak (const GALGAS_testDynamicClassInExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST_2D_weak GALGAS_testDynamicClassInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_testDynamicClassInExpressionAST_2D_weak result ;
+GALGAS_testDynamicClassInExpressionAST_2E_weak GALGAS_testDynamicClassInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_testDynamicClassInExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST_2D_weak::bang_testDynamicClassInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST_2E_weak::bang_testDynamicClassInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_testDynamicClassInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11427,41 +10848,41 @@ GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @testDynamicClassInExpressionAST-weak generic code implementation
+//     @testDynamicClassInExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST_2D_weak ("testDynamicClassInExpressionAST-weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST_2E_weak ("testDynamicClassInExpressionAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_testDynamicClassInExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_testDynamicClassInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_testDynamicClassInExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_testDynamicClassInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_testDynamicClassInExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_testDynamicClassInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionAST_2D_weak GALGAS_testDynamicClassInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_testDynamicClassInExpressionAST_2E_weak GALGAS_testDynamicClassInExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_testDynamicClassInExpressionAST_2D_weak result ;
-  const GALGAS_testDynamicClassInExpressionAST_2D_weak * p = (const GALGAS_testDynamicClassInExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_testDynamicClassInExpressionAST_2E_weak result ;
+  const GALGAS_testDynamicClassInExpressionAST_2E_weak * p = (const GALGAS_testDynamicClassInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_testDynamicClassInExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_testDynamicClassInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("testDynamicClassInExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("testDynamicClassInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11469,7 +10890,7 @@ GALGAS_testDynamicClassInExpressionAST_2D_weak GALGAS_testDynamicClassInExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_castInExpressionAST_2D_weak::objectCompare (const GALGAS_castInExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_castInExpressionAST_2E_weak::objectCompare (const GALGAS_castInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11489,13 +10910,13 @@ ComparisonResult GALGAS_castInExpressionAST_2D_weak::objectCompare (const GALGAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST_2D_weak::GALGAS_castInExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_castInExpressionAST_2E_weak::GALGAS_castInExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST_2D_weak & GALGAS_castInExpressionAST_2D_weak::operator = (const GALGAS_castInExpressionAST & inSource) {
+GALGAS_castInExpressionAST_2E_weak & GALGAS_castInExpressionAST_2E_weak::operator = (const GALGAS_castInExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11507,21 +10928,21 @@ GALGAS_castInExpressionAST_2D_weak & GALGAS_castInExpressionAST_2D_weak::operato
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST_2D_weak::GALGAS_castInExpressionAST_2D_weak (const GALGAS_castInExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_castInExpressionAST_2E_weak::GALGAS_castInExpressionAST_2E_weak (const GALGAS_castInExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST_2D_weak GALGAS_castInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_castInExpressionAST_2D_weak result ;
+GALGAS_castInExpressionAST_2E_weak GALGAS_castInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_castInExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST GALGAS_castInExpressionAST_2D_weak::bang_castInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_castInExpressionAST GALGAS_castInExpressionAST_2E_weak::bang_castInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_castInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11537,41 +10958,41 @@ GALGAS_castInExpressionAST GALGAS_castInExpressionAST_2D_weak::bang_castInExpres
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @castInExpressionAST-weak generic code implementation
+//     @castInExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST_2D_weak ("castInExpressionAST-weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST_2E_weak ("castInExpressionAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_castInExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_castInExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_castInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_castInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_castInExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_castInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_castInExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_castInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_castInExpressionAST_2D_weak GALGAS_castInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_castInExpressionAST_2E_weak GALGAS_castInExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_castInExpressionAST_2D_weak result ;
-  const GALGAS_castInExpressionAST_2D_weak * p = (const GALGAS_castInExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_castInExpressionAST_2E_weak result ;
+  const GALGAS_castInExpressionAST_2E_weak * p = (const GALGAS_castInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_castInExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_castInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("castInExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("castInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11579,7 +11000,7 @@ GALGAS_castInExpressionAST_2D_weak GALGAS_castInExpressionAST_2D_weak::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::objectCompare (const GALGAS_testDynamicClassInExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::objectCompare (const GALGAS_testDynamicClassInExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11599,13 +11020,13 @@ ComparisonResult GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::objec
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::GALGAS_testDynamicClassInExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::GALGAS_testDynamicClassInExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration_2D_weak & GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::operator = (const GALGAS_testDynamicClassInExpressionForGeneration & inSource) {
+GALGAS_testDynamicClassInExpressionForGeneration_2E_weak & GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::operator = (const GALGAS_testDynamicClassInExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11617,21 +11038,21 @@ GALGAS_testDynamicClassInExpressionForGeneration_2D_weak & GALGAS_testDynamicCla
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::GALGAS_testDynamicClassInExpressionForGeneration_2D_weak (const GALGAS_testDynamicClassInExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::GALGAS_testDynamicClassInExpressionForGeneration_2E_weak (const GALGAS_testDynamicClassInExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration_2D_weak GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_testDynamicClassInExpressionForGeneration_2D_weak result ;
+GALGAS_testDynamicClassInExpressionForGeneration_2E_weak GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_testDynamicClassInExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::bang_testDynamicClassInExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::bang_testDynamicClassInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_testDynamicClassInExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11647,41 +11068,41 @@ GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpres
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @testDynamicClassInExpressionForGeneration-weak generic code implementation
+//     @testDynamicClassInExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration_2D_weak ("testDynamicClassInExpressionForGeneration-weak",
-                                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration_2E_weak ("testDynamicClassInExpressionForGeneration.weak",
+                                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_testDynamicClassInExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_testDynamicClassInExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_testDynamicClassInExpressionForGeneration_2D_weak GALGAS_testDynamicClassInExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_testDynamicClassInExpressionForGeneration_2E_weak GALGAS_testDynamicClassInExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                   Compiler * inCompiler
                                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_testDynamicClassInExpressionForGeneration_2D_weak result ;
-  const GALGAS_testDynamicClassInExpressionForGeneration_2D_weak * p = (const GALGAS_testDynamicClassInExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_testDynamicClassInExpressionForGeneration_2E_weak result ;
+  const GALGAS_testDynamicClassInExpressionForGeneration_2E_weak * p = (const GALGAS_testDynamicClassInExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_testDynamicClassInExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_testDynamicClassInExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("testDynamicClassInExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("testDynamicClassInExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11689,7 +11110,7 @@ GALGAS_testDynamicClassInExpressionForGeneration_2D_weak GALGAS_testDynamicClass
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_extractObjectInExpressionForGeneration_2D_weak::objectCompare (const GALGAS_extractObjectInExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_extractObjectInExpressionForGeneration_2E_weak::objectCompare (const GALGAS_extractObjectInExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11709,13 +11130,13 @@ ComparisonResult GALGAS_extractObjectInExpressionForGeneration_2D_weak::objectCo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration_2D_weak::GALGAS_extractObjectInExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_extractObjectInExpressionForGeneration_2E_weak::GALGAS_extractObjectInExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration_2D_weak & GALGAS_extractObjectInExpressionForGeneration_2D_weak::operator = (const GALGAS_extractObjectInExpressionForGeneration & inSource) {
+GALGAS_extractObjectInExpressionForGeneration_2E_weak & GALGAS_extractObjectInExpressionForGeneration_2E_weak::operator = (const GALGAS_extractObjectInExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11727,21 +11148,21 @@ GALGAS_extractObjectInExpressionForGeneration_2D_weak & GALGAS_extractObjectInEx
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration_2D_weak::GALGAS_extractObjectInExpressionForGeneration_2D_weak (const GALGAS_extractObjectInExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_extractObjectInExpressionForGeneration_2E_weak::GALGAS_extractObjectInExpressionForGeneration_2E_weak (const GALGAS_extractObjectInExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration_2D_weak GALGAS_extractObjectInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_extractObjectInExpressionForGeneration_2D_weak result ;
+GALGAS_extractObjectInExpressionForGeneration_2E_weak GALGAS_extractObjectInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_extractObjectInExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration_2D_weak::bang_extractObjectInExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration_2E_weak::bang_extractObjectInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_extractObjectInExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11757,41 +11178,41 @@ GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @extractObjectInExpressionForGeneration-weak generic code implementation
+//     @extractObjectInExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration_2D_weak ("extractObjectInExpressionForGeneration-weak",
-                                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration_2E_weak ("extractObjectInExpressionForGeneration.weak",
+                                                                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_extractObjectInExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_extractObjectInExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_extractObjectInExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_extractObjectInExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_extractObjectInExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_extractObjectInExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_extractObjectInExpressionForGeneration_2D_weak GALGAS_extractObjectInExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_extractObjectInExpressionForGeneration_2E_weak GALGAS_extractObjectInExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                             Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_extractObjectInExpressionForGeneration_2D_weak result ;
-  const GALGAS_extractObjectInExpressionForGeneration_2D_weak * p = (const GALGAS_extractObjectInExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_extractObjectInExpressionForGeneration_2E_weak result ;
+  const GALGAS_extractObjectInExpressionForGeneration_2E_weak * p = (const GALGAS_extractObjectInExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_extractObjectInExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_extractObjectInExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("extractObjectInExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("extractObjectInExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11799,7 +11220,7 @@ GALGAS_extractObjectInExpressionForGeneration_2D_weak GALGAS_extractObjectInExpr
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalCharExpressionAST_2D_weak::objectCompare (const GALGAS_literalCharExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalCharExpressionAST_2E_weak::objectCompare (const GALGAS_literalCharExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11819,13 +11240,13 @@ ComparisonResult GALGAS_literalCharExpressionAST_2D_weak::objectCompare (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST_2D_weak::GALGAS_literalCharExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_literalCharExpressionAST_2E_weak::GALGAS_literalCharExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST_2D_weak & GALGAS_literalCharExpressionAST_2D_weak::operator = (const GALGAS_literalCharExpressionAST & inSource) {
+GALGAS_literalCharExpressionAST_2E_weak & GALGAS_literalCharExpressionAST_2E_weak::operator = (const GALGAS_literalCharExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11837,21 +11258,21 @@ GALGAS_literalCharExpressionAST_2D_weak & GALGAS_literalCharExpressionAST_2D_wea
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST_2D_weak::GALGAS_literalCharExpressionAST_2D_weak (const GALGAS_literalCharExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_literalCharExpressionAST_2E_weak::GALGAS_literalCharExpressionAST_2E_weak (const GALGAS_literalCharExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST_2D_weak GALGAS_literalCharExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalCharExpressionAST_2D_weak result ;
+GALGAS_literalCharExpressionAST_2E_weak GALGAS_literalCharExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalCharExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST_2D_weak::bang_literalCharExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST_2E_weak::bang_literalCharExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalCharExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11867,41 +11288,41 @@ GALGAS_literalCharExpressionAST GALGAS_literalCharExpressionAST_2D_weak::bang_li
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalCharExpressionAST-weak generic code implementation
+//     @literalCharExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionAST_2D_weak ("literalCharExpressionAST-weak",
-                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionAST_2E_weak ("literalCharExpressionAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalCharExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalCharExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalCharExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalCharExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalCharExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalCharExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalCharExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalCharExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionAST_2D_weak GALGAS_literalCharExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalCharExpressionAST_2E_weak GALGAS_literalCharExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                 Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) {
-  GALGAS_literalCharExpressionAST_2D_weak result ;
-  const GALGAS_literalCharExpressionAST_2D_weak * p = (const GALGAS_literalCharExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalCharExpressionAST_2E_weak result ;
+  const GALGAS_literalCharExpressionAST_2E_weak * p = (const GALGAS_literalCharExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalCharExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalCharExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalCharExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalCharExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11909,7 +11330,7 @@ GALGAS_literalCharExpressionAST_2D_weak GALGAS_literalCharExpressionAST_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalCharExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalCharExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalCharExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalCharExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -11929,13 +11350,13 @@ ComparisonResult GALGAS_literalCharExpressionForGeneration_2D_weak::objectCompar
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration_2D_weak::GALGAS_literalCharExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalCharExpressionForGeneration_2E_weak::GALGAS_literalCharExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration_2D_weak & GALGAS_literalCharExpressionForGeneration_2D_weak::operator = (const GALGAS_literalCharExpressionForGeneration & inSource) {
+GALGAS_literalCharExpressionForGeneration_2E_weak & GALGAS_literalCharExpressionForGeneration_2E_weak::operator = (const GALGAS_literalCharExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -11947,21 +11368,21 @@ GALGAS_literalCharExpressionForGeneration_2D_weak & GALGAS_literalCharExpression
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration_2D_weak::GALGAS_literalCharExpressionForGeneration_2D_weak (const GALGAS_literalCharExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalCharExpressionForGeneration_2E_weak::GALGAS_literalCharExpressionForGeneration_2E_weak (const GALGAS_literalCharExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration_2D_weak GALGAS_literalCharExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalCharExpressionForGeneration_2D_weak result ;
+GALGAS_literalCharExpressionForGeneration_2E_weak GALGAS_literalCharExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalCharExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration_2D_weak::bang_literalCharExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration_2E_weak::bang_literalCharExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalCharExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -11977,41 +11398,41 @@ GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGenerat
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalCharExpressionForGeneration-weak generic code implementation
+//     @literalCharExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionForGeneration_2D_weak ("literalCharExpressionForGeneration-weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionForGeneration_2E_weak ("literalCharExpressionForGeneration.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalCharExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalCharExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalCharExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalCharExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalCharExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalCharExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalCharExpressionForGeneration_2D_weak GALGAS_literalCharExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalCharExpressionForGeneration_2E_weak GALGAS_literalCharExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalCharExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalCharExpressionForGeneration_2D_weak * p = (const GALGAS_literalCharExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalCharExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalCharExpressionForGeneration_2E_weak * p = (const GALGAS_literalCharExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalCharExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalCharExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalCharExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalCharExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12019,7 +11440,7 @@ GALGAS_literalCharExpressionForGeneration_2D_weak GALGAS_literalCharExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalDoubleExpressionAST_2D_weak::objectCompare (const GALGAS_literalDoubleExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalDoubleExpressionAST_2E_weak::objectCompare (const GALGAS_literalDoubleExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12039,13 +11460,13 @@ ComparisonResult GALGAS_literalDoubleExpressionAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST_2D_weak::GALGAS_literalDoubleExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_literalDoubleExpressionAST_2E_weak::GALGAS_literalDoubleExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST_2D_weak & GALGAS_literalDoubleExpressionAST_2D_weak::operator = (const GALGAS_literalDoubleExpressionAST & inSource) {
+GALGAS_literalDoubleExpressionAST_2E_weak & GALGAS_literalDoubleExpressionAST_2E_weak::operator = (const GALGAS_literalDoubleExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12057,21 +11478,21 @@ GALGAS_literalDoubleExpressionAST_2D_weak & GALGAS_literalDoubleExpressionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST_2D_weak::GALGAS_literalDoubleExpressionAST_2D_weak (const GALGAS_literalDoubleExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_literalDoubleExpressionAST_2E_weak::GALGAS_literalDoubleExpressionAST_2E_weak (const GALGAS_literalDoubleExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST_2D_weak GALGAS_literalDoubleExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalDoubleExpressionAST_2D_weak result ;
+GALGAS_literalDoubleExpressionAST_2E_weak GALGAS_literalDoubleExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalDoubleExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST_2D_weak::bang_literalDoubleExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST_2E_weak::bang_literalDoubleExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalDoubleExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12087,41 +11508,41 @@ GALGAS_literalDoubleExpressionAST GALGAS_literalDoubleExpressionAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalDoubleExpressionAST-weak generic code implementation
+//     @literalDoubleExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionAST_2D_weak ("literalDoubleExpressionAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionAST_2E_weak ("literalDoubleExpressionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalDoubleExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalDoubleExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalDoubleExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalDoubleExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalDoubleExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalDoubleExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalDoubleExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalDoubleExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionAST_2D_weak GALGAS_literalDoubleExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalDoubleExpressionAST_2E_weak GALGAS_literalDoubleExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalDoubleExpressionAST_2D_weak result ;
-  const GALGAS_literalDoubleExpressionAST_2D_weak * p = (const GALGAS_literalDoubleExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalDoubleExpressionAST_2E_weak result ;
+  const GALGAS_literalDoubleExpressionAST_2E_weak * p = (const GALGAS_literalDoubleExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalDoubleExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalDoubleExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalDoubleExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalDoubleExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12129,7 +11550,7 @@ GALGAS_literalDoubleExpressionAST_2D_weak GALGAS_literalDoubleExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalDoubleExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalDoubleExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalDoubleExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalDoubleExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12149,13 +11570,13 @@ ComparisonResult GALGAS_literalDoubleExpressionForGeneration_2D_weak::objectComp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration_2D_weak::GALGAS_literalDoubleExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalDoubleExpressionForGeneration_2E_weak::GALGAS_literalDoubleExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration_2D_weak & GALGAS_literalDoubleExpressionForGeneration_2D_weak::operator = (const GALGAS_literalDoubleExpressionForGeneration & inSource) {
+GALGAS_literalDoubleExpressionForGeneration_2E_weak & GALGAS_literalDoubleExpressionForGeneration_2E_weak::operator = (const GALGAS_literalDoubleExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12167,21 +11588,21 @@ GALGAS_literalDoubleExpressionForGeneration_2D_weak & GALGAS_literalDoubleExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration_2D_weak::GALGAS_literalDoubleExpressionForGeneration_2D_weak (const GALGAS_literalDoubleExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalDoubleExpressionForGeneration_2E_weak::GALGAS_literalDoubleExpressionForGeneration_2E_weak (const GALGAS_literalDoubleExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration_2D_weak GALGAS_literalDoubleExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalDoubleExpressionForGeneration_2D_weak result ;
+GALGAS_literalDoubleExpressionForGeneration_2E_weak GALGAS_literalDoubleExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalDoubleExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration_2D_weak::bang_literalDoubleExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration_2E_weak::bang_literalDoubleExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalDoubleExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12197,41 +11618,41 @@ GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalDoubleExpressionForGeneration-weak generic code implementation
+//     @literalDoubleExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration_2D_weak ("literalDoubleExpressionForGeneration-weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration_2E_weak ("literalDoubleExpressionForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalDoubleExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalDoubleExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalDoubleExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalDoubleExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalDoubleExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalDoubleExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalDoubleExpressionForGeneration_2D_weak GALGAS_literalDoubleExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalDoubleExpressionForGeneration_2E_weak GALGAS_literalDoubleExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_literalDoubleExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalDoubleExpressionForGeneration_2D_weak * p = (const GALGAS_literalDoubleExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalDoubleExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalDoubleExpressionForGeneration_2E_weak * p = (const GALGAS_literalDoubleExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalDoubleExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalDoubleExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalDoubleExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalDoubleExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12239,7 +11660,7 @@ GALGAS_literalDoubleExpressionForGeneration_2D_weak GALGAS_literalDoubleExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalBigIntExpressionAST_2D_weak::objectCompare (const GALGAS_literalBigIntExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalBigIntExpressionAST_2E_weak::objectCompare (const GALGAS_literalBigIntExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12259,13 +11680,13 @@ ComparisonResult GALGAS_literalBigIntExpressionAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST_2D_weak::GALGAS_literalBigIntExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_literalBigIntExpressionAST_2E_weak::GALGAS_literalBigIntExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST_2D_weak & GALGAS_literalBigIntExpressionAST_2D_weak::operator = (const GALGAS_literalBigIntExpressionAST & inSource) {
+GALGAS_literalBigIntExpressionAST_2E_weak & GALGAS_literalBigIntExpressionAST_2E_weak::operator = (const GALGAS_literalBigIntExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12277,21 +11698,21 @@ GALGAS_literalBigIntExpressionAST_2D_weak & GALGAS_literalBigIntExpressionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST_2D_weak::GALGAS_literalBigIntExpressionAST_2D_weak (const GALGAS_literalBigIntExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_literalBigIntExpressionAST_2E_weak::GALGAS_literalBigIntExpressionAST_2E_weak (const GALGAS_literalBigIntExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST_2D_weak GALGAS_literalBigIntExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionAST_2D_weak result ;
+GALGAS_literalBigIntExpressionAST_2E_weak GALGAS_literalBigIntExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalBigIntExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST_2D_weak::bang_literalBigIntExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST_2E_weak::bang_literalBigIntExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalBigIntExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12307,41 +11728,41 @@ GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalBigIntExpressionAST-weak generic code implementation
+//     @literalBigIntExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST_2D_weak ("literalBigIntExpressionAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST_2E_weak ("literalBigIntExpressionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalBigIntExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalBigIntExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalBigIntExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalBigIntExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalBigIntExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalBigIntExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionAST_2D_weak GALGAS_literalBigIntExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalBigIntExpressionAST_2E_weak GALGAS_literalBigIntExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionAST_2D_weak result ;
-  const GALGAS_literalBigIntExpressionAST_2D_weak * p = (const GALGAS_literalBigIntExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalBigIntExpressionAST_2E_weak result ;
+  const GALGAS_literalBigIntExpressionAST_2E_weak * p = (const GALGAS_literalBigIntExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalBigIntExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalBigIntExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalBigIntExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalBigIntExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12349,7 +11770,7 @@ GALGAS_literalBigIntExpressionAST_2D_weak GALGAS_literalBigIntExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalUIntExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalUIntExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalUIntExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalUIntExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12369,13 +11790,13 @@ ComparisonResult GALGAS_literalUIntExpressionForGeneration_2D_weak::objectCompar
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration_2D_weak::GALGAS_literalUIntExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalUIntExpressionForGeneration_2E_weak::GALGAS_literalUIntExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration_2D_weak & GALGAS_literalUIntExpressionForGeneration_2D_weak::operator = (const GALGAS_literalUIntExpressionForGeneration & inSource) {
+GALGAS_literalUIntExpressionForGeneration_2E_weak & GALGAS_literalUIntExpressionForGeneration_2E_weak::operator = (const GALGAS_literalUIntExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12387,21 +11808,21 @@ GALGAS_literalUIntExpressionForGeneration_2D_weak & GALGAS_literalUIntExpression
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration_2D_weak::GALGAS_literalUIntExpressionForGeneration_2D_weak (const GALGAS_literalUIntExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalUIntExpressionForGeneration_2E_weak::GALGAS_literalUIntExpressionForGeneration_2E_weak (const GALGAS_literalUIntExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration_2D_weak GALGAS_literalUIntExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalUIntExpressionForGeneration_2D_weak result ;
+GALGAS_literalUIntExpressionForGeneration_2E_weak GALGAS_literalUIntExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalUIntExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration_2D_weak::bang_literalUIntExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration_2E_weak::bang_literalUIntExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalUIntExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12417,41 +11838,41 @@ GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGenerat
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalUIntExpressionForGeneration-weak generic code implementation
+//     @literalUIntExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration_2D_weak ("literalUIntExpressionForGeneration-weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration_2E_weak ("literalUIntExpressionForGeneration.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalUIntExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalUIntExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalUIntExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalUIntExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalUIntExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalUIntExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUIntExpressionForGeneration_2D_weak GALGAS_literalUIntExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalUIntExpressionForGeneration_2E_weak GALGAS_literalUIntExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalUIntExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalUIntExpressionForGeneration_2D_weak * p = (const GALGAS_literalUIntExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalUIntExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalUIntExpressionForGeneration_2E_weak * p = (const GALGAS_literalUIntExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalUIntExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalUIntExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalUIntExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalUIntExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12459,7 +11880,7 @@ GALGAS_literalUIntExpressionForGeneration_2D_weak GALGAS_literalUIntExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12479,13 +11900,13 @@ ComparisonResult GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::obje
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak & GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::operator = (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inSource) {
+GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak & GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::operator = (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12497,21 +11918,21 @@ GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak & GALGAS_literalUInt_3
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak result ;
+GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::bang_literalUInt_36__34_ExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::bang_literalUInt_36__34_ExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalUInt_36__34_ExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12527,41 +11948,41 @@ GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_Expr
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalUInt64ExpressionForGeneration-weak generic code implementation
+//     @literalUInt64ExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak ("literalUInt64ExpressionForGeneration-weak",
-                                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak ("literalUInt64ExpressionForGeneration.weak",
+                                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                     Compiler * inCompiler
                                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak * p = (const GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak * p = (const GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalUInt64ExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalUInt64ExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12569,7 +11990,7 @@ GALGAS_literalUInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalUInt_36_
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalSIntExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalSIntExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalSIntExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalSIntExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12589,13 +12010,13 @@ ComparisonResult GALGAS_literalSIntExpressionForGeneration_2D_weak::objectCompar
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration_2D_weak::GALGAS_literalSIntExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalSIntExpressionForGeneration_2E_weak::GALGAS_literalSIntExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration_2D_weak & GALGAS_literalSIntExpressionForGeneration_2D_weak::operator = (const GALGAS_literalSIntExpressionForGeneration & inSource) {
+GALGAS_literalSIntExpressionForGeneration_2E_weak & GALGAS_literalSIntExpressionForGeneration_2E_weak::operator = (const GALGAS_literalSIntExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12607,21 +12028,21 @@ GALGAS_literalSIntExpressionForGeneration_2D_weak & GALGAS_literalSIntExpression
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration_2D_weak::GALGAS_literalSIntExpressionForGeneration_2D_weak (const GALGAS_literalSIntExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalSIntExpressionForGeneration_2E_weak::GALGAS_literalSIntExpressionForGeneration_2E_weak (const GALGAS_literalSIntExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration_2D_weak GALGAS_literalSIntExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalSIntExpressionForGeneration_2D_weak result ;
+GALGAS_literalSIntExpressionForGeneration_2E_weak GALGAS_literalSIntExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalSIntExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration_2D_weak::bang_literalSIntExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration_2E_weak::bang_literalSIntExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalSIntExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12637,41 +12058,41 @@ GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGenerat
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalSIntExpressionForGeneration-weak generic code implementation
+//     @literalSIntExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration_2D_weak ("literalSIntExpressionForGeneration-weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration_2E_weak ("literalSIntExpressionForGeneration.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalSIntExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalSIntExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalSIntExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalSIntExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalSIntExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalSIntExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSIntExpressionForGeneration_2D_weak GALGAS_literalSIntExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalSIntExpressionForGeneration_2E_weak GALGAS_literalSIntExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalSIntExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalSIntExpressionForGeneration_2D_weak * p = (const GALGAS_literalSIntExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalSIntExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalSIntExpressionForGeneration_2E_weak * p = (const GALGAS_literalSIntExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalSIntExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalSIntExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalSIntExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalSIntExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12679,7 +12100,7 @@ GALGAS_literalSIntExpressionForGeneration_2D_weak GALGAS_literalSIntExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12699,13 +12120,13 @@ ComparisonResult GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::obje
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak & GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::operator = (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inSource) {
+GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak & GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::operator = (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12717,21 +12138,21 @@ GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak & GALGAS_literalSInt_3
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak result ;
+GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::bang_literalSInt_36__34_ExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::bang_literalSInt_36__34_ExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12747,41 +12168,41 @@ GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_Expr
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalSInt64ExpressionForGeneration-weak generic code implementation
+//     @literalSInt64ExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak ("literalSInt64ExpressionForGeneration-weak",
-                                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak ("literalSInt64ExpressionForGeneration.weak",
+                                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                                     Compiler * inCompiler
                                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak * p = (const GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak * p = (const GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalSInt64ExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalSInt64ExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12789,7 +12210,7 @@ GALGAS_literalSInt_36__34_ExpressionForGeneration_2D_weak GALGAS_literalSInt_36_
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalBigIntExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalBigIntExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalBigIntExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalBigIntExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -12809,13 +12230,13 @@ ComparisonResult GALGAS_literalBigIntExpressionForGeneration_2D_weak::objectComp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration_2D_weak::GALGAS_literalBigIntExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalBigIntExpressionForGeneration_2E_weak::GALGAS_literalBigIntExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration_2D_weak & GALGAS_literalBigIntExpressionForGeneration_2D_weak::operator = (const GALGAS_literalBigIntExpressionForGeneration & inSource) {
+GALGAS_literalBigIntExpressionForGeneration_2E_weak & GALGAS_literalBigIntExpressionForGeneration_2E_weak::operator = (const GALGAS_literalBigIntExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -12827,21 +12248,21 @@ GALGAS_literalBigIntExpressionForGeneration_2D_weak & GALGAS_literalBigIntExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration_2D_weak::GALGAS_literalBigIntExpressionForGeneration_2D_weak (const GALGAS_literalBigIntExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalBigIntExpressionForGeneration_2E_weak::GALGAS_literalBigIntExpressionForGeneration_2E_weak (const GALGAS_literalBigIntExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration_2D_weak GALGAS_literalBigIntExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionForGeneration_2D_weak result ;
+GALGAS_literalBigIntExpressionForGeneration_2E_weak GALGAS_literalBigIntExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalBigIntExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration_2D_weak::bang_literalBigIntExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration_2E_weak::bang_literalBigIntExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalBigIntExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -12857,41 +12278,41 @@ GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalBigIntExpressionForGeneration-weak generic code implementation
+//     @literalBigIntExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration_2D_weak ("literalBigIntExpressionForGeneration-weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration_2E_weak ("literalBigIntExpressionForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalBigIntExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalBigIntExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalBigIntExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalBigIntExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalBigIntExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalBigIntExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalBigIntExpressionForGeneration_2D_weak GALGAS_literalBigIntExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalBigIntExpressionForGeneration_2E_weak GALGAS_literalBigIntExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalBigIntExpressionForGeneration_2D_weak * p = (const GALGAS_literalBigIntExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalBigIntExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalBigIntExpressionForGeneration_2E_weak * p = (const GALGAS_literalBigIntExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalBigIntExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalBigIntExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalBigIntExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalBigIntExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13088,7 +12509,7 @@ GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST::extractObje
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalStringExpressionAST_2D_weak::objectCompare (const GALGAS_literalStringExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalStringExpressionAST_2E_weak::objectCompare (const GALGAS_literalStringExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13108,13 +12529,13 @@ ComparisonResult GALGAS_literalStringExpressionAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionAST_2D_weak::GALGAS_literalStringExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_literalStringExpressionAST_2E_weak::GALGAS_literalStringExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionAST_2D_weak & GALGAS_literalStringExpressionAST_2D_weak::operator = (const GALGAS_literalStringExpressionAST & inSource) {
+GALGAS_literalStringExpressionAST_2E_weak & GALGAS_literalStringExpressionAST_2E_weak::operator = (const GALGAS_literalStringExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13126,21 +12547,21 @@ GALGAS_literalStringExpressionAST_2D_weak & GALGAS_literalStringExpressionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionAST_2D_weak::GALGAS_literalStringExpressionAST_2D_weak (const GALGAS_literalStringExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_literalStringExpressionAST_2E_weak::GALGAS_literalStringExpressionAST_2E_weak (const GALGAS_literalStringExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionAST_2D_weak GALGAS_literalStringExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalStringExpressionAST_2D_weak result ;
+GALGAS_literalStringExpressionAST_2E_weak GALGAS_literalStringExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalStringExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST_2D_weak::bang_literalStringExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST_2E_weak::bang_literalStringExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalStringExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13156,41 +12577,41 @@ GALGAS_literalStringExpressionAST GALGAS_literalStringExpressionAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalStringExpressionAST-weak generic code implementation
+//     @literalStringExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionAST_2D_weak ("literalStringExpressionAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionAST_2E_weak ("literalStringExpressionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalStringExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalStringExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalStringExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalStringExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalStringExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalStringExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalStringExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalStringExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionAST_2D_weak GALGAS_literalStringExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalStringExpressionAST_2E_weak GALGAS_literalStringExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalStringExpressionAST_2D_weak result ;
-  const GALGAS_literalStringExpressionAST_2D_weak * p = (const GALGAS_literalStringExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalStringExpressionAST_2E_weak result ;
+  const GALGAS_literalStringExpressionAST_2E_weak * p = (const GALGAS_literalStringExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalStringExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalStringExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalStringExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalStringExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13198,7 +12619,7 @@ GALGAS_literalStringExpressionAST_2D_weak GALGAS_literalStringExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalStringExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalStringExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalStringExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalStringExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13218,13 +12639,13 @@ ComparisonResult GALGAS_literalStringExpressionForGeneration_2D_weak::objectComp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration_2D_weak::GALGAS_literalStringExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalStringExpressionForGeneration_2E_weak::GALGAS_literalStringExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration_2D_weak & GALGAS_literalStringExpressionForGeneration_2D_weak::operator = (const GALGAS_literalStringExpressionForGeneration & inSource) {
+GALGAS_literalStringExpressionForGeneration_2E_weak & GALGAS_literalStringExpressionForGeneration_2E_weak::operator = (const GALGAS_literalStringExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13236,21 +12657,21 @@ GALGAS_literalStringExpressionForGeneration_2D_weak & GALGAS_literalStringExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration_2D_weak::GALGAS_literalStringExpressionForGeneration_2D_weak (const GALGAS_literalStringExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalStringExpressionForGeneration_2E_weak::GALGAS_literalStringExpressionForGeneration_2E_weak (const GALGAS_literalStringExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration_2D_weak GALGAS_literalStringExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalStringExpressionForGeneration_2D_weak result ;
+GALGAS_literalStringExpressionForGeneration_2E_weak GALGAS_literalStringExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalStringExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration_2D_weak::bang_literalStringExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration_2E_weak::bang_literalStringExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalStringExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13266,41 +12687,41 @@ GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalStringExpressionForGeneration-weak generic code implementation
+//     @literalStringExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionForGeneration_2D_weak ("literalStringExpressionForGeneration-weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionForGeneration_2E_weak ("literalStringExpressionForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalStringExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalStringExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalStringExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalStringExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalStringExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalStringExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalStringExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalStringExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalStringExpressionForGeneration_2D_weak GALGAS_literalStringExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalStringExpressionForGeneration_2E_weak GALGAS_literalStringExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_literalStringExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalStringExpressionForGeneration_2D_weak * p = (const GALGAS_literalStringExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalStringExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalStringExpressionForGeneration_2E_weak * p = (const GALGAS_literalStringExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalStringExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalStringExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalStringExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalStringExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13308,7 +12729,7 @@ GALGAS_literalStringExpressionForGeneration_2D_weak GALGAS_literalStringExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalTypeInExpressionAST_2D_weak::objectCompare (const GALGAS_literalTypeInExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalTypeInExpressionAST_2E_weak::objectCompare (const GALGAS_literalTypeInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13328,13 +12749,13 @@ ComparisonResult GALGAS_literalTypeInExpressionAST_2D_weak::objectCompare (const
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST_2D_weak::GALGAS_literalTypeInExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_literalTypeInExpressionAST_2E_weak::GALGAS_literalTypeInExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST_2D_weak & GALGAS_literalTypeInExpressionAST_2D_weak::operator = (const GALGAS_literalTypeInExpressionAST & inSource) {
+GALGAS_literalTypeInExpressionAST_2E_weak & GALGAS_literalTypeInExpressionAST_2E_weak::operator = (const GALGAS_literalTypeInExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13346,21 +12767,21 @@ GALGAS_literalTypeInExpressionAST_2D_weak & GALGAS_literalTypeInExpressionAST_2D
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST_2D_weak::GALGAS_literalTypeInExpressionAST_2D_weak (const GALGAS_literalTypeInExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_literalTypeInExpressionAST_2E_weak::GALGAS_literalTypeInExpressionAST_2E_weak (const GALGAS_literalTypeInExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST_2D_weak GALGAS_literalTypeInExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalTypeInExpressionAST_2D_weak result ;
+GALGAS_literalTypeInExpressionAST_2E_weak GALGAS_literalTypeInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalTypeInExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST GALGAS_literalTypeInExpressionAST_2D_weak::bang_literalTypeInExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalTypeInExpressionAST GALGAS_literalTypeInExpressionAST_2E_weak::bang_literalTypeInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalTypeInExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13376,41 +12797,41 @@ GALGAS_literalTypeInExpressionAST GALGAS_literalTypeInExpressionAST_2D_weak::ban
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalTypeInExpressionAST-weak generic code implementation
+//     @literalTypeInExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionAST_2D_weak ("literalTypeInExpressionAST-weak",
-                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionAST_2E_weak ("literalTypeInExpressionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalTypeInExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalTypeInExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalTypeInExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalTypeInExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalTypeInExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalTypeInExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalTypeInExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalTypeInExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionAST_2D_weak GALGAS_literalTypeInExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalTypeInExpressionAST_2E_weak GALGAS_literalTypeInExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_literalTypeInExpressionAST_2D_weak result ;
-  const GALGAS_literalTypeInExpressionAST_2D_weak * p = (const GALGAS_literalTypeInExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalTypeInExpressionAST_2E_weak result ;
+  const GALGAS_literalTypeInExpressionAST_2E_weak * p = (const GALGAS_literalTypeInExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalTypeInExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalTypeInExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalTypeInExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalTypeInExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13418,7 +12839,7 @@ GALGAS_literalTypeInExpressionAST_2D_weak GALGAS_literalTypeInExpressionAST_2D_w
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_literalTypeInExpressionForGeneration_2D_weak::objectCompare (const GALGAS_literalTypeInExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_literalTypeInExpressionForGeneration_2E_weak::objectCompare (const GALGAS_literalTypeInExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13438,13 +12859,13 @@ ComparisonResult GALGAS_literalTypeInExpressionForGeneration_2D_weak::objectComp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration_2D_weak::GALGAS_literalTypeInExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_literalTypeInExpressionForGeneration_2E_weak::GALGAS_literalTypeInExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration_2D_weak & GALGAS_literalTypeInExpressionForGeneration_2D_weak::operator = (const GALGAS_literalTypeInExpressionForGeneration & inSource) {
+GALGAS_literalTypeInExpressionForGeneration_2E_weak & GALGAS_literalTypeInExpressionForGeneration_2E_weak::operator = (const GALGAS_literalTypeInExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13456,21 +12877,21 @@ GALGAS_literalTypeInExpressionForGeneration_2D_weak & GALGAS_literalTypeInExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration_2D_weak::GALGAS_literalTypeInExpressionForGeneration_2D_weak (const GALGAS_literalTypeInExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_literalTypeInExpressionForGeneration_2E_weak::GALGAS_literalTypeInExpressionForGeneration_2E_weak (const GALGAS_literalTypeInExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration_2D_weak GALGAS_literalTypeInExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_literalTypeInExpressionForGeneration_2D_weak result ;
+GALGAS_literalTypeInExpressionForGeneration_2E_weak GALGAS_literalTypeInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_literalTypeInExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration_2D_weak::bang_literalTypeInExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration_2E_weak::bang_literalTypeInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_literalTypeInExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13486,41 +12907,41 @@ GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @literalTypeInExpressionForGeneration-weak generic code implementation
+//     @literalTypeInExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration_2D_weak ("literalTypeInExpressionForGeneration-weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration_2E_weak ("literalTypeInExpressionForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_literalTypeInExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_literalTypeInExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_literalTypeInExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_literalTypeInExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_literalTypeInExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_literalTypeInExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_literalTypeInExpressionForGeneration_2D_weak GALGAS_literalTypeInExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_literalTypeInExpressionForGeneration_2E_weak GALGAS_literalTypeInExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_literalTypeInExpressionForGeneration_2D_weak result ;
-  const GALGAS_literalTypeInExpressionForGeneration_2D_weak * p = (const GALGAS_literalTypeInExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_literalTypeInExpressionForGeneration_2E_weak result ;
+  const GALGAS_literalTypeInExpressionForGeneration_2E_weak * p = (const GALGAS_literalTypeInExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_literalTypeInExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_literalTypeInExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("literalTypeInExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("literalTypeInExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13528,7 +12949,7 @@ GALGAS_literalTypeInExpressionForGeneration_2D_weak GALGAS_literalTypeInExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::objectCompare (const GALGAS_lexiqueIntrospectionExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::objectCompare (const GALGAS_lexiqueIntrospectionExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13548,13 +12969,13 @@ ComparisonResult GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::GALGAS_lexiqueIntrospectionExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::GALGAS_lexiqueIntrospectionExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST_2D_weak & GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::operator = (const GALGAS_lexiqueIntrospectionExpressionAST & inSource) {
+GALGAS_lexiqueIntrospectionExpressionAST_2E_weak & GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::operator = (const GALGAS_lexiqueIntrospectionExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13566,21 +12987,21 @@ GALGAS_lexiqueIntrospectionExpressionAST_2D_weak & GALGAS_lexiqueIntrospectionEx
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::GALGAS_lexiqueIntrospectionExpressionAST_2D_weak (const GALGAS_lexiqueIntrospectionExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::GALGAS_lexiqueIntrospectionExpressionAST_2E_weak (const GALGAS_lexiqueIntrospectionExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST_2D_weak GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexiqueIntrospectionExpressionAST_2D_weak result ;
+GALGAS_lexiqueIntrospectionExpressionAST_2E_weak GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexiqueIntrospectionExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::bang_lexiqueIntrospectionExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexiqueIntrospectionExpressionAST GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::bang_lexiqueIntrospectionExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexiqueIntrospectionExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13596,41 +13017,41 @@ GALGAS_lexiqueIntrospectionExpressionAST GALGAS_lexiqueIntrospectionExpressionAS
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexiqueIntrospectionExpressionAST-weak generic code implementation
+//     @lexiqueIntrospectionExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST_2D_weak ("lexiqueIntrospectionExpressionAST-weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST_2E_weak ("lexiqueIntrospectionExpressionAST.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexiqueIntrospectionExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexiqueIntrospectionExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionExpressionAST_2D_weak GALGAS_lexiqueIntrospectionExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexiqueIntrospectionExpressionAST_2E_weak GALGAS_lexiqueIntrospectionExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_lexiqueIntrospectionExpressionAST_2D_weak result ;
-  const GALGAS_lexiqueIntrospectionExpressionAST_2D_weak * p = (const GALGAS_lexiqueIntrospectionExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexiqueIntrospectionExpressionAST_2E_weak result ;
+  const GALGAS_lexiqueIntrospectionExpressionAST_2E_weak * p = (const GALGAS_lexiqueIntrospectionExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexiqueIntrospectionExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexiqueIntrospectionExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexiqueIntrospectionExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexiqueIntrospectionExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13638,7 +13059,7 @@ GALGAS_lexiqueIntrospectionExpressionAST_2D_weak GALGAS_lexiqueIntrospectionExpr
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_lexiqueIntrospectionForGeneration_2D_weak::objectCompare (const GALGAS_lexiqueIntrospectionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_lexiqueIntrospectionForGeneration_2E_weak::objectCompare (const GALGAS_lexiqueIntrospectionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13658,13 +13079,13 @@ ComparisonResult GALGAS_lexiqueIntrospectionForGeneration_2D_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration_2D_weak::GALGAS_lexiqueIntrospectionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_lexiqueIntrospectionForGeneration_2E_weak::GALGAS_lexiqueIntrospectionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration_2D_weak & GALGAS_lexiqueIntrospectionForGeneration_2D_weak::operator = (const GALGAS_lexiqueIntrospectionForGeneration & inSource) {
+GALGAS_lexiqueIntrospectionForGeneration_2E_weak & GALGAS_lexiqueIntrospectionForGeneration_2E_weak::operator = (const GALGAS_lexiqueIntrospectionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13676,21 +13097,21 @@ GALGAS_lexiqueIntrospectionForGeneration_2D_weak & GALGAS_lexiqueIntrospectionFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration_2D_weak::GALGAS_lexiqueIntrospectionForGeneration_2D_weak (const GALGAS_lexiqueIntrospectionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_lexiqueIntrospectionForGeneration_2E_weak::GALGAS_lexiqueIntrospectionForGeneration_2E_weak (const GALGAS_lexiqueIntrospectionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration_2D_weak GALGAS_lexiqueIntrospectionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_lexiqueIntrospectionForGeneration_2D_weak result ;
+GALGAS_lexiqueIntrospectionForGeneration_2E_weak GALGAS_lexiqueIntrospectionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_lexiqueIntrospectionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration_2D_weak::bang_lexiqueIntrospectionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration_2E_weak::bang_lexiqueIntrospectionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_lexiqueIntrospectionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13706,41 +13127,41 @@ GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @lexiqueIntrospectionForGeneration-weak generic code implementation
+//     @lexiqueIntrospectionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration_2D_weak ("lexiqueIntrospectionForGeneration-weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration_2E_weak ("lexiqueIntrospectionForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_lexiqueIntrospectionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_lexiqueIntrospectionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_lexiqueIntrospectionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_lexiqueIntrospectionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_lexiqueIntrospectionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_lexiqueIntrospectionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lexiqueIntrospectionForGeneration_2D_weak GALGAS_lexiqueIntrospectionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_lexiqueIntrospectionForGeneration_2E_weak GALGAS_lexiqueIntrospectionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_lexiqueIntrospectionForGeneration_2D_weak result ;
-  const GALGAS_lexiqueIntrospectionForGeneration_2D_weak * p = (const GALGAS_lexiqueIntrospectionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_lexiqueIntrospectionForGeneration_2E_weak result ;
+  const GALGAS_lexiqueIntrospectionForGeneration_2E_weak * p = (const GALGAS_lexiqueIntrospectionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_lexiqueIntrospectionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_lexiqueIntrospectionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("lexiqueIntrospectionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("lexiqueIntrospectionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13748,7 +13169,7 @@ GALGAS_lexiqueIntrospectionForGeneration_2D_weak GALGAS_lexiqueIntrospectionForG
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_optionExpressionAST_2D_weak::objectCompare (const GALGAS_optionExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_optionExpressionAST_2E_weak::objectCompare (const GALGAS_optionExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13768,13 +13189,13 @@ ComparisonResult GALGAS_optionExpressionAST_2D_weak::objectCompare (const GALGAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST_2D_weak::GALGAS_optionExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_optionExpressionAST_2E_weak::GALGAS_optionExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST_2D_weak & GALGAS_optionExpressionAST_2D_weak::operator = (const GALGAS_optionExpressionAST & inSource) {
+GALGAS_optionExpressionAST_2E_weak & GALGAS_optionExpressionAST_2E_weak::operator = (const GALGAS_optionExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13786,21 +13207,21 @@ GALGAS_optionExpressionAST_2D_weak & GALGAS_optionExpressionAST_2D_weak::operato
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST_2D_weak::GALGAS_optionExpressionAST_2D_weak (const GALGAS_optionExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_optionExpressionAST_2E_weak::GALGAS_optionExpressionAST_2E_weak (const GALGAS_optionExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST_2D_weak GALGAS_optionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_optionExpressionAST_2D_weak result ;
+GALGAS_optionExpressionAST_2E_weak GALGAS_optionExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_optionExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST GALGAS_optionExpressionAST_2D_weak::bang_optionExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_optionExpressionAST GALGAS_optionExpressionAST_2E_weak::bang_optionExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_optionExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13816,41 +13237,41 @@ GALGAS_optionExpressionAST GALGAS_optionExpressionAST_2D_weak::bang_optionExpres
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @optionExpressionAST-weak generic code implementation
+//     @optionExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST_2D_weak ("optionExpressionAST-weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST_2E_weak ("optionExpressionAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_optionExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_optionExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_optionExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_optionExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_optionExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_optionExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionExpressionAST_2D_weak GALGAS_optionExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_optionExpressionAST_2E_weak GALGAS_optionExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_optionExpressionAST_2D_weak result ;
-  const GALGAS_optionExpressionAST_2D_weak * p = (const GALGAS_optionExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_optionExpressionAST_2E_weak result ;
+  const GALGAS_optionExpressionAST_2E_weak * p = (const GALGAS_optionExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_optionExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("optionExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("optionExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13858,7 +13279,7 @@ GALGAS_optionExpressionAST_2D_weak GALGAS_optionExpressionAST_2D_weak::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_optionValueExpressionForGeneration_2D_weak::objectCompare (const GALGAS_optionValueExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_optionValueExpressionForGeneration_2E_weak::objectCompare (const GALGAS_optionValueExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13878,13 +13299,13 @@ ComparisonResult GALGAS_optionValueExpressionForGeneration_2D_weak::objectCompar
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration_2D_weak::GALGAS_optionValueExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_optionValueExpressionForGeneration_2E_weak::GALGAS_optionValueExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration_2D_weak & GALGAS_optionValueExpressionForGeneration_2D_weak::operator = (const GALGAS_optionValueExpressionForGeneration & inSource) {
+GALGAS_optionValueExpressionForGeneration_2E_weak & GALGAS_optionValueExpressionForGeneration_2E_weak::operator = (const GALGAS_optionValueExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -13896,21 +13317,21 @@ GALGAS_optionValueExpressionForGeneration_2D_weak & GALGAS_optionValueExpression
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration_2D_weak::GALGAS_optionValueExpressionForGeneration_2D_weak (const GALGAS_optionValueExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_optionValueExpressionForGeneration_2E_weak::GALGAS_optionValueExpressionForGeneration_2E_weak (const GALGAS_optionValueExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration_2D_weak GALGAS_optionValueExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_optionValueExpressionForGeneration_2D_weak result ;
+GALGAS_optionValueExpressionForGeneration_2E_weak GALGAS_optionValueExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_optionValueExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGeneration_2D_weak::bang_optionValueExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGeneration_2E_weak::bang_optionValueExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_optionValueExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -13926,41 +13347,41 @@ GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGenerat
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @optionValueExpressionForGeneration-weak generic code implementation
+//     @optionValueExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration_2D_weak ("optionValueExpressionForGeneration-weak",
-                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration_2E_weak ("optionValueExpressionForGeneration.weak",
+                                                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_optionValueExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionValueExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_optionValueExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionValueExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_optionValueExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_optionValueExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_optionValueExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_optionValueExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionValueExpressionForGeneration_2D_weak GALGAS_optionValueExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_optionValueExpressionForGeneration_2E_weak GALGAS_optionValueExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_optionValueExpressionForGeneration_2D_weak result ;
-  const GALGAS_optionValueExpressionForGeneration_2D_weak * p = (const GALGAS_optionValueExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_optionValueExpressionForGeneration_2E_weak result ;
+  const GALGAS_optionValueExpressionForGeneration_2E_weak * p = (const GALGAS_optionValueExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionValueExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_optionValueExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("optionValueExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("optionValueExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13968,7 +13389,7 @@ GALGAS_optionValueExpressionForGeneration_2D_weak GALGAS_optionValueExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_optionCharExpressionForGeneration_2D_weak::objectCompare (const GALGAS_optionCharExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_optionCharExpressionForGeneration_2E_weak::objectCompare (const GALGAS_optionCharExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -13988,13 +13409,13 @@ ComparisonResult GALGAS_optionCharExpressionForGeneration_2D_weak::objectCompare
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration_2D_weak::GALGAS_optionCharExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_optionCharExpressionForGeneration_2E_weak::GALGAS_optionCharExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration_2D_weak & GALGAS_optionCharExpressionForGeneration_2D_weak::operator = (const GALGAS_optionCharExpressionForGeneration & inSource) {
+GALGAS_optionCharExpressionForGeneration_2E_weak & GALGAS_optionCharExpressionForGeneration_2E_weak::operator = (const GALGAS_optionCharExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14006,21 +13427,21 @@ GALGAS_optionCharExpressionForGeneration_2D_weak & GALGAS_optionCharExpressionFo
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration_2D_weak::GALGAS_optionCharExpressionForGeneration_2D_weak (const GALGAS_optionCharExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_optionCharExpressionForGeneration_2E_weak::GALGAS_optionCharExpressionForGeneration_2E_weak (const GALGAS_optionCharExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration_2D_weak GALGAS_optionCharExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_optionCharExpressionForGeneration_2D_weak result ;
+GALGAS_optionCharExpressionForGeneration_2E_weak GALGAS_optionCharExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_optionCharExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneration_2D_weak::bang_optionCharExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneration_2E_weak::bang_optionCharExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_optionCharExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14036,41 +13457,41 @@ GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @optionCharExpressionForGeneration-weak generic code implementation
+//     @optionCharExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration_2D_weak ("optionCharExpressionForGeneration-weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration_2E_weak ("optionCharExpressionForGeneration.weak",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_optionCharExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionCharExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_optionCharExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionCharExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_optionCharExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_optionCharExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_optionCharExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_optionCharExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCharExpressionForGeneration_2D_weak GALGAS_optionCharExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_optionCharExpressionForGeneration_2E_weak GALGAS_optionCharExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                   Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_optionCharExpressionForGeneration_2D_weak result ;
-  const GALGAS_optionCharExpressionForGeneration_2D_weak * p = (const GALGAS_optionCharExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_optionCharExpressionForGeneration_2E_weak result ;
+  const GALGAS_optionCharExpressionForGeneration_2E_weak * p = (const GALGAS_optionCharExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionCharExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_optionCharExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("optionCharExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("optionCharExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14078,7 +13499,7 @@ GALGAS_optionCharExpressionForGeneration_2D_weak GALGAS_optionCharExpressionForG
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_optionStringExpressionForGeneration_2D_weak::objectCompare (const GALGAS_optionStringExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_optionStringExpressionForGeneration_2E_weak::objectCompare (const GALGAS_optionStringExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14098,13 +13519,13 @@ ComparisonResult GALGAS_optionStringExpressionForGeneration_2D_weak::objectCompa
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration_2D_weak::GALGAS_optionStringExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_optionStringExpressionForGeneration_2E_weak::GALGAS_optionStringExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration_2D_weak & GALGAS_optionStringExpressionForGeneration_2D_weak::operator = (const GALGAS_optionStringExpressionForGeneration & inSource) {
+GALGAS_optionStringExpressionForGeneration_2E_weak & GALGAS_optionStringExpressionForGeneration_2E_weak::operator = (const GALGAS_optionStringExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14116,21 +13537,21 @@ GALGAS_optionStringExpressionForGeneration_2D_weak & GALGAS_optionStringExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration_2D_weak::GALGAS_optionStringExpressionForGeneration_2D_weak (const GALGAS_optionStringExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_optionStringExpressionForGeneration_2E_weak::GALGAS_optionStringExpressionForGeneration_2E_weak (const GALGAS_optionStringExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration_2D_weak GALGAS_optionStringExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_optionStringExpressionForGeneration_2D_weak result ;
+GALGAS_optionStringExpressionForGeneration_2E_weak GALGAS_optionStringExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_optionStringExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration_2D_weak::bang_optionStringExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration_2E_weak::bang_optionStringExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_optionStringExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14146,41 +13567,41 @@ GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGener
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @optionStringExpressionForGeneration-weak generic code implementation
+//     @optionStringExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration_2D_weak ("optionStringExpressionForGeneration-weak",
-                                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration_2E_weak ("optionStringExpressionForGeneration.weak",
+                                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_optionStringExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_optionStringExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionStringExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_optionStringExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_optionStringExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_optionStringExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_optionStringExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionStringExpressionForGeneration_2D_weak GALGAS_optionStringExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_optionStringExpressionForGeneration_2E_weak GALGAS_optionStringExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_optionStringExpressionForGeneration_2D_weak result ;
-  const GALGAS_optionStringExpressionForGeneration_2D_weak * p = (const GALGAS_optionStringExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_optionStringExpressionForGeneration_2E_weak result ;
+  const GALGAS_optionStringExpressionForGeneration_2E_weak * p = (const GALGAS_optionStringExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionStringExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_optionStringExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("optionStringExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("optionStringExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14188,7 +13609,7 @@ GALGAS_optionStringExpressionForGeneration_2D_weak GALGAS_optionStringExpression
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_optionCommentExpressionForGeneration_2D_weak::objectCompare (const GALGAS_optionCommentExpressionForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_optionCommentExpressionForGeneration_2E_weak::objectCompare (const GALGAS_optionCommentExpressionForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14208,13 +13629,13 @@ ComparisonResult GALGAS_optionCommentExpressionForGeneration_2D_weak::objectComp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration_2D_weak::GALGAS_optionCommentExpressionForGeneration_2D_weak (void) :
-GALGAS_semanticExpressionForGeneration_2D_weak () {
+GALGAS_optionCommentExpressionForGeneration_2E_weak::GALGAS_optionCommentExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration_2D_weak & GALGAS_optionCommentExpressionForGeneration_2D_weak::operator = (const GALGAS_optionCommentExpressionForGeneration & inSource) {
+GALGAS_optionCommentExpressionForGeneration_2E_weak & GALGAS_optionCommentExpressionForGeneration_2E_weak::operator = (const GALGAS_optionCommentExpressionForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14226,21 +13647,21 @@ GALGAS_optionCommentExpressionForGeneration_2D_weak & GALGAS_optionCommentExpres
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration_2D_weak::GALGAS_optionCommentExpressionForGeneration_2D_weak (const GALGAS_optionCommentExpressionForGeneration & inSource) :
-GALGAS_semanticExpressionForGeneration_2D_weak (inSource) {
+GALGAS_optionCommentExpressionForGeneration_2E_weak::GALGAS_optionCommentExpressionForGeneration_2E_weak (const GALGAS_optionCommentExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration_2D_weak GALGAS_optionCommentExpressionForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_optionCommentExpressionForGeneration_2D_weak result ;
+GALGAS_optionCommentExpressionForGeneration_2E_weak GALGAS_optionCommentExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_optionCommentExpressionForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration_2D_weak::bang_optionCommentExpressionForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration_2E_weak::bang_optionCommentExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_optionCommentExpressionForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14256,41 +13677,41 @@ GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGen
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @optionCommentExpressionForGeneration-weak generic code implementation
+//     @optionCommentExpressionForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration_2D_weak ("optionCommentExpressionForGeneration-weak",
-                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration_2E_weak ("optionCommentExpressionForGeneration.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_optionCommentExpressionForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_optionCommentExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_optionCommentExpressionForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_optionCommentExpressionForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_optionCommentExpressionForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_optionCommentExpressionForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionCommentExpressionForGeneration_2D_weak GALGAS_optionCommentExpressionForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_optionCommentExpressionForGeneration_2E_weak GALGAS_optionCommentExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                         Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_optionCommentExpressionForGeneration_2D_weak result ;
-  const GALGAS_optionCommentExpressionForGeneration_2D_weak * p = (const GALGAS_optionCommentExpressionForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_optionCommentExpressionForGeneration_2E_weak result ;
+  const GALGAS_optionCommentExpressionForGeneration_2E_weak * p = (const GALGAS_optionCommentExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionCommentExpressionForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_optionCommentExpressionForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("optionCommentExpressionForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("optionCommentExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14510,7 +13931,7 @@ GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST::extractOb
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_multiplicationExpressionAST_2D_weak::objectCompare (const GALGAS_multiplicationExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_multiplicationExpressionAST_2E_weak::objectCompare (const GALGAS_multiplicationExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14530,13 +13951,13 @@ ComparisonResult GALGAS_multiplicationExpressionAST_2D_weak::objectCompare (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST_2D_weak::GALGAS_multiplicationExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_multiplicationExpressionAST_2E_weak::GALGAS_multiplicationExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST_2D_weak & GALGAS_multiplicationExpressionAST_2D_weak::operator = (const GALGAS_multiplicationExpressionAST & inSource) {
+GALGAS_multiplicationExpressionAST_2E_weak & GALGAS_multiplicationExpressionAST_2E_weak::operator = (const GALGAS_multiplicationExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14548,21 +13969,21 @@ GALGAS_multiplicationExpressionAST_2D_weak & GALGAS_multiplicationExpressionAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST_2D_weak::GALGAS_multiplicationExpressionAST_2D_weak (const GALGAS_multiplicationExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_multiplicationExpressionAST_2E_weak::GALGAS_multiplicationExpressionAST_2E_weak (const GALGAS_multiplicationExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST_2D_weak GALGAS_multiplicationExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_multiplicationExpressionAST_2D_weak result ;
+GALGAS_multiplicationExpressionAST_2E_weak GALGAS_multiplicationExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_multiplicationExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST_2D_weak::bang_multiplicationExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST_2E_weak::bang_multiplicationExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_multiplicationExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14578,41 +13999,41 @@ GALGAS_multiplicationExpressionAST GALGAS_multiplicationExpressionAST_2D_weak::b
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @multiplicationExpressionAST-weak generic code implementation
+//     @multiplicationExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST_2D_weak ("multiplicationExpressionAST-weak",
-                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST_2E_weak ("multiplicationExpressionAST.weak",
+                                                                                           & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_multiplicationExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_multiplicationExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_multiplicationExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_multiplicationExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_multiplicationExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_multiplicationExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_multiplicationExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_multiplicationExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionAST_2D_weak GALGAS_multiplicationExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_multiplicationExpressionAST_2E_weak GALGAS_multiplicationExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_multiplicationExpressionAST_2D_weak result ;
-  const GALGAS_multiplicationExpressionAST_2D_weak * p = (const GALGAS_multiplicationExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_multiplicationExpressionAST_2E_weak result ;
+  const GALGAS_multiplicationExpressionAST_2E_weak * p = (const GALGAS_multiplicationExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_multiplicationExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_multiplicationExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("multiplicationExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("multiplicationExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14832,7 +14253,7 @@ GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOv
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::objectCompare (const GALGAS_multiplicationExpressionNoOverflowAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::objectCompare (const GALGAS_multiplicationExpressionNoOverflowAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -14852,13 +14273,13 @@ ComparisonResult GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::objectCom
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::GALGAS_multiplicationExpressionNoOverflowAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::GALGAS_multiplicationExpressionNoOverflowAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST_2D_weak & GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::operator = (const GALGAS_multiplicationExpressionNoOverflowAST & inSource) {
+GALGAS_multiplicationExpressionNoOverflowAST_2E_weak & GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::operator = (const GALGAS_multiplicationExpressionNoOverflowAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -14870,21 +14291,21 @@ GALGAS_multiplicationExpressionNoOverflowAST_2D_weak & GALGAS_multiplicationExpr
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::GALGAS_multiplicationExpressionNoOverflowAST_2D_weak (const GALGAS_multiplicationExpressionNoOverflowAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::GALGAS_multiplicationExpressionNoOverflowAST_2E_weak (const GALGAS_multiplicationExpressionNoOverflowAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST_2D_weak GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_multiplicationExpressionNoOverflowAST_2D_weak result ;
+GALGAS_multiplicationExpressionNoOverflowAST_2E_weak GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_multiplicationExpressionNoOverflowAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::bang_multiplicationExpressionNoOverflowAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::bang_multiplicationExpressionNoOverflowAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_multiplicationExpressionNoOverflowAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -14900,41 +14321,41 @@ GALGAS_multiplicationExpressionNoOverflowAST GALGAS_multiplicationExpressionNoOv
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @multiplicationExpressionNoOverflowAST-weak generic code implementation
+//     @multiplicationExpressionNoOverflowAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2D_weak ("multiplicationExpressionNoOverflowAST-weak",
-                                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2E_weak ("multiplicationExpressionNoOverflowAST.weak",
+                                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_multiplicationExpressionNoOverflowAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_multiplicationExpressionNoOverflowAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_multiplicationExpressionNoOverflowAST_2D_weak GALGAS_multiplicationExpressionNoOverflowAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_multiplicationExpressionNoOverflowAST_2E_weak GALGAS_multiplicationExpressionNoOverflowAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                                           Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_multiplicationExpressionNoOverflowAST_2D_weak result ;
-  const GALGAS_multiplicationExpressionNoOverflowAST_2D_weak * p = (const GALGAS_multiplicationExpressionNoOverflowAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_multiplicationExpressionNoOverflowAST_2E_weak result ;
+  const GALGAS_multiplicationExpressionNoOverflowAST_2E_weak * p = (const GALGAS_multiplicationExpressionNoOverflowAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_multiplicationExpressionNoOverflowAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_multiplicationExpressionNoOverflowAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("multiplicationExpressionNoOverflowAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("multiplicationExpressionNoOverflowAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -15154,7 +14575,7 @@ GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_divisionExpressionAST_2D_weak::objectCompare (const GALGAS_divisionExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_divisionExpressionAST_2E_weak::objectCompare (const GALGAS_divisionExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -15174,13 +14595,13 @@ ComparisonResult GALGAS_divisionExpressionAST_2D_weak::objectCompare (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST_2D_weak::GALGAS_divisionExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_divisionExpressionAST_2E_weak::GALGAS_divisionExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST_2D_weak & GALGAS_divisionExpressionAST_2D_weak::operator = (const GALGAS_divisionExpressionAST & inSource) {
+GALGAS_divisionExpressionAST_2E_weak & GALGAS_divisionExpressionAST_2E_weak::operator = (const GALGAS_divisionExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -15192,21 +14613,21 @@ GALGAS_divisionExpressionAST_2D_weak & GALGAS_divisionExpressionAST_2D_weak::ope
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST_2D_weak::GALGAS_divisionExpressionAST_2D_weak (const GALGAS_divisionExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_divisionExpressionAST_2E_weak::GALGAS_divisionExpressionAST_2E_weak (const GALGAS_divisionExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST_2D_weak GALGAS_divisionExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_divisionExpressionAST_2D_weak result ;
+GALGAS_divisionExpressionAST_2E_weak GALGAS_divisionExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_divisionExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST_2D_weak::bang_divisionExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST_2E_weak::bang_divisionExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_divisionExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15222,41 +14643,41 @@ GALGAS_divisionExpressionAST GALGAS_divisionExpressionAST_2D_weak::bang_division
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @divisionExpressionAST-weak generic code implementation
+//     @divisionExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST_2D_weak ("divisionExpressionAST-weak",
-                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST_2E_weak ("divisionExpressionAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_divisionExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_divisionExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_divisionExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divisionExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_divisionExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_divisionExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_divisionExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_divisionExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionAST_2D_weak GALGAS_divisionExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_divisionExpressionAST_2E_weak GALGAS_divisionExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_divisionExpressionAST_2D_weak result ;
-  const GALGAS_divisionExpressionAST_2D_weak * p = (const GALGAS_divisionExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_divisionExpressionAST_2E_weak result ;
+  const GALGAS_divisionExpressionAST_2E_weak * p = (const GALGAS_divisionExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_divisionExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_divisionExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("divisionExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("divisionExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -15476,7 +14897,7 @@ GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST::e
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_divisionExpressionNoOverflowAST_2D_weak::objectCompare (const GALGAS_divisionExpressionNoOverflowAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_divisionExpressionNoOverflowAST_2E_weak::objectCompare (const GALGAS_divisionExpressionNoOverflowAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -15496,13 +14917,13 @@ ComparisonResult GALGAS_divisionExpressionNoOverflowAST_2D_weak::objectCompare (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST_2D_weak::GALGAS_divisionExpressionNoOverflowAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_divisionExpressionNoOverflowAST_2E_weak::GALGAS_divisionExpressionNoOverflowAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST_2D_weak & GALGAS_divisionExpressionNoOverflowAST_2D_weak::operator = (const GALGAS_divisionExpressionNoOverflowAST & inSource) {
+GALGAS_divisionExpressionNoOverflowAST_2E_weak & GALGAS_divisionExpressionNoOverflowAST_2E_weak::operator = (const GALGAS_divisionExpressionNoOverflowAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -15514,21 +14935,21 @@ GALGAS_divisionExpressionNoOverflowAST_2D_weak & GALGAS_divisionExpressionNoOver
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST_2D_weak::GALGAS_divisionExpressionNoOverflowAST_2D_weak (const GALGAS_divisionExpressionNoOverflowAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_divisionExpressionNoOverflowAST_2E_weak::GALGAS_divisionExpressionNoOverflowAST_2E_weak (const GALGAS_divisionExpressionNoOverflowAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST_2D_weak GALGAS_divisionExpressionNoOverflowAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_divisionExpressionNoOverflowAST_2D_weak result ;
+GALGAS_divisionExpressionNoOverflowAST_2E_weak GALGAS_divisionExpressionNoOverflowAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_divisionExpressionNoOverflowAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST_2D_weak::bang_divisionExpressionNoOverflowAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST_2E_weak::bang_divisionExpressionNoOverflowAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_divisionExpressionNoOverflowAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15544,41 +14965,41 @@ GALGAS_divisionExpressionNoOverflowAST GALGAS_divisionExpressionNoOverflowAST_2D
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @divisionExpressionNoOverflowAST-weak generic code implementation
+//     @divisionExpressionNoOverflowAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2D_weak ("divisionExpressionNoOverflowAST-weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2E_weak ("divisionExpressionNoOverflowAST.weak",
+                                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_divisionExpressionNoOverflowAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_divisionExpressionNoOverflowAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_divisionExpressionNoOverflowAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_divisionExpressionNoOverflowAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_divisionExpressionNoOverflowAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_divisionExpressionNoOverflowAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_divisionExpressionNoOverflowAST_2D_weak GALGAS_divisionExpressionNoOverflowAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_divisionExpressionNoOverflowAST_2E_weak GALGAS_divisionExpressionNoOverflowAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                               Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_divisionExpressionNoOverflowAST_2D_weak result ;
-  const GALGAS_divisionExpressionNoOverflowAST_2D_weak * p = (const GALGAS_divisionExpressionNoOverflowAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_divisionExpressionNoOverflowAST_2E_weak result ;
+  const GALGAS_divisionExpressionNoOverflowAST_2E_weak * p = (const GALGAS_divisionExpressionNoOverflowAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_divisionExpressionNoOverflowAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_divisionExpressionNoOverflowAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("divisionExpressionNoOverflowAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("divisionExpressionNoOverflowAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -15798,7 +15219,7 @@ GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST::extractObject (const GALG
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_moduloExpressionAST_2D_weak::objectCompare (const GALGAS_moduloExpressionAST_2D_weak & inOperand) const {
+ComparisonResult GALGAS_moduloExpressionAST_2E_weak::objectCompare (const GALGAS_moduloExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -15818,13 +15239,13 @@ ComparisonResult GALGAS_moduloExpressionAST_2D_weak::objectCompare (const GALGAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST_2D_weak::GALGAS_moduloExpressionAST_2D_weak (void) :
-GALGAS_semanticExpressionAST_2D_weak () {
+GALGAS_moduloExpressionAST_2E_weak::GALGAS_moduloExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST_2D_weak & GALGAS_moduloExpressionAST_2D_weak::operator = (const GALGAS_moduloExpressionAST & inSource) {
+GALGAS_moduloExpressionAST_2E_weak & GALGAS_moduloExpressionAST_2E_weak::operator = (const GALGAS_moduloExpressionAST & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -15836,21 +15257,21 @@ GALGAS_moduloExpressionAST_2D_weak & GALGAS_moduloExpressionAST_2D_weak::operato
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST_2D_weak::GALGAS_moduloExpressionAST_2D_weak (const GALGAS_moduloExpressionAST & inSource) :
-GALGAS_semanticExpressionAST_2D_weak (inSource) {
+GALGAS_moduloExpressionAST_2E_weak::GALGAS_moduloExpressionAST_2E_weak (const GALGAS_moduloExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST_2D_weak GALGAS_moduloExpressionAST_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_moduloExpressionAST_2D_weak result ;
+GALGAS_moduloExpressionAST_2E_weak GALGAS_moduloExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_moduloExpressionAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST_2D_weak::bang_moduloExpressionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST_2E_weak::bang_moduloExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_moduloExpressionAST result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -15866,41 +15287,41 @@ GALGAS_moduloExpressionAST GALGAS_moduloExpressionAST_2D_weak::bang_moduloExpres
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @moduloExpressionAST-weak generic code implementation
+//     @moduloExpressionAST.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2D_weak ("moduloExpressionAST-weak",
-                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ("moduloExpressionAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_moduloExpressionAST_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_moduloExpressionAST_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_moduloExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_moduloExpressionAST_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_moduloExpressionAST_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_moduloExpressionAST_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_moduloExpressionAST_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_moduloExpressionAST_2D_weak GALGAS_moduloExpressionAST_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_moduloExpressionAST_2E_weak GALGAS_moduloExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) {
-  GALGAS_moduloExpressionAST_2D_weak result ;
-  const GALGAS_moduloExpressionAST_2D_weak * p = (const GALGAS_moduloExpressionAST_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_moduloExpressionAST_2E_weak result ;
+  const GALGAS_moduloExpressionAST_2E_weak * p = (const GALGAS_moduloExpressionAST_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_moduloExpressionAST_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_moduloExpressionAST_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("moduloExpressionAST-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("moduloExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -16067,6 +15488,525 @@ GALGAS_nilExpressionAST GALGAS_nilExpressionAST::extractObject (const GALGAS_obj
       result = *p ;
     }else{
       inCompiler->castError ("nilExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_nilExpressionAST_2E_weak::objectCompare (const GALGAS_nilExpressionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionAST_2E_weak::GALGAS_nilExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionAST_2E_weak & GALGAS_nilExpressionAST_2E_weak::operator = (const GALGAS_nilExpressionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionAST_2E_weak::GALGAS_nilExpressionAST_2E_weak (const GALGAS_nilExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionAST_2E_weak GALGAS_nilExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_nilExpressionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionAST GALGAS_nilExpressionAST_2E_weak::bang_nilExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_nilExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_nilExpressionAST) ;
+      result = GALGAS_nilExpressionAST ((cPtr_nilExpressionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @nilExpressionAST.weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionAST_2E_weak ("nilExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_nilExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nilExpressionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_nilExpressionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_nilExpressionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionAST_2E_weak GALGAS_nilExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_nilExpressionAST_2E_weak result ;
+  const GALGAS_nilExpressionAST_2E_weak * p = (const GALGAS_nilExpressionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nilExpressionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("nilExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_nilExpressionForGeneration_2E_weak::objectCompare (const GALGAS_nilExpressionForGeneration_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionForGeneration_2E_weak::GALGAS_nilExpressionForGeneration_2E_weak (void) :
+GALGAS_semanticExpressionForGeneration_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionForGeneration_2E_weak & GALGAS_nilExpressionForGeneration_2E_weak::operator = (const GALGAS_nilExpressionForGeneration & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionForGeneration_2E_weak::GALGAS_nilExpressionForGeneration_2E_weak (const GALGAS_nilExpressionForGeneration & inSource) :
+GALGAS_semanticExpressionForGeneration_2E_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionForGeneration_2E_weak GALGAS_nilExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_nilExpressionForGeneration_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionForGeneration GALGAS_nilExpressionForGeneration_2E_weak::bang_nilExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_nilExpressionForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_nilExpressionForGeneration) ;
+      result = GALGAS_nilExpressionForGeneration ((cPtr_nilExpressionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @nilExpressionForGeneration.weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionForGeneration_2E_weak ("nilExpressionForGeneration.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_nilExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nilExpressionForGeneration_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_nilExpressionForGeneration_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_nilExpressionForGeneration_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_nilExpressionForGeneration_2E_weak GALGAS_nilExpressionForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_nilExpressionForGeneration_2E_weak result ;
+  const GALGAS_nilExpressionForGeneration_2E_weak * p = (const GALGAS_nilExpressionForGeneration_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_nilExpressionForGeneration_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("nilExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @notExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_notExpressionAST::cPtr_notExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_notExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_notExpressionAST::objectCompare (const GALGAS_notExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST::GALGAS_notExpressionAST (void) :
+GALGAS_semanticExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_notExpressionAST GALGAS_notExpressionAST::
+init_21__21_ (const GALGAS_location & in_mOperatorLocation,
+              const GALGAS_semanticExpressionAST & in_mExpression,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_notExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_notExpressionAST (inCompiler COMMA_THERE)) ;
+  object->notExpressionAST_init_21__21_ (in_mOperatorLocation, in_mExpression, inCompiler) ;
+  const GALGAS_notExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_notExpressionAST::
+notExpressionAST_init_21__21_ (const GALGAS_location & in_mOperatorLocation,
+                               const GALGAS_semanticExpressionAST & in_mExpression,
+                               Compiler * /* inCompiler */) {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST::GALGAS_notExpressionAST (const cPtr_notExpressionAST * inSourcePtr) :
+GALGAS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_notExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST GALGAS_notExpressionAST::class_func_new (const GALGAS_location & in_mOperatorLocation,
+                                                                 const GALGAS_semanticExpressionAST & in_mExpression
+                                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_notExpressionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_notExpressionAST (in_mOperatorLocation, in_mExpression COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_notExpressionAST::readProperty_mOperatorLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_location () ;
+  }else{
+    cPtr_notExpressionAST * p = (cPtr_notExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_notExpressionAST) ;
+    return p->mProperty_mOperatorLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_semanticExpressionAST GALGAS_notExpressionAST::readProperty_mExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_semanticExpressionAST () ;
+  }else{
+    cPtr_notExpressionAST * p = (cPtr_notExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_notExpressionAST) ;
+    return p->mProperty_mExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @notExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_notExpressionAST::cPtr_notExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                              const GALGAS_semanticExpressionAST & in_mExpression
+                                              COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (THERE),
+mProperty_mOperatorLocation (),
+mProperty_mExpression () {
+  mProperty_mOperatorLocation = in_mOperatorLocation ;
+  mProperty_mExpression = in_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_notExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_notExpressionAST ;
+}
+
+void cPtr_notExpressionAST::description (String & ioString,
+                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@notExpressionAST:") ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_notExpressionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_notExpressionAST (mProperty_mOperatorLocation, mProperty_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @notExpressionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST ("notExpressionAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_notExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_notExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_notExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_notExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST GALGAS_notExpressionAST::extractObject (const GALGAS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_notExpressionAST result ;
+  const GALGAS_notExpressionAST * p = (const GALGAS_notExpressionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_notExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("notExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_notExpressionAST_2E_weak::objectCompare (const GALGAS_notExpressionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST_2E_weak::GALGAS_notExpressionAST_2E_weak (void) :
+GALGAS_semanticExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST_2E_weak & GALGAS_notExpressionAST_2E_weak::operator = (const GALGAS_notExpressionAST & inSource) {
+  cPtr_weakReference_proxy * proxyPtr = nullptr ;
+  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST_2E_weak::GALGAS_notExpressionAST_2E_weak (const GALGAS_notExpressionAST & inSource) :
+GALGAS_semanticExpressionAST_2E_weak (inSource) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST_2E_weak GALGAS_notExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_notExpressionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST GALGAS_notExpressionAST_2E_weak::bang_notExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GALGAS_notExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_notExpressionAST) ;
+      result = GALGAS_notExpressionAST ((cPtr_notExpressionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @notExpressionAST.weak generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST_2E_weak ("notExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_notExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_notExpressionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_notExpressionAST_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_notExpressionAST_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_notExpressionAST_2E_weak GALGAS_notExpressionAST_2E_weak::extractObject (const GALGAS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_notExpressionAST_2E_weak result ;
+  const GALGAS_notExpressionAST_2E_weak * p = (const GALGAS_notExpressionAST_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_notExpressionAST_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("notExpressionAST.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

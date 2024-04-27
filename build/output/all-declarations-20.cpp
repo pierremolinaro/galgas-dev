@@ -206,7 +206,7 @@ GALGAS_nonTerminalInstructionForGrammarAnalysis GALGAS_nonTerminalInstructionFor
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_productionRuleListForGrammarAnalysis_2D_element::GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) :
+GALGAS_productionRuleListForGrammarAnalysis_2E_element::GALGAS_productionRuleListForGrammarAnalysis_2E_element (void) :
 mProperty_mLeftNonterminalSymbol (),
 mProperty_mLeftNonterminalSymbolIndex (),
 mProperty_mInstructionList (),
@@ -215,18 +215,18 @@ mProperty_mProductionIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_productionRuleListForGrammarAnalysis_2D_element::~ GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) {
+GALGAS_productionRuleListForGrammarAnalysis_2E_element::~ GALGAS_productionRuleListForGrammarAnalysis_2E_element (void) {
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::init_21__21__21__21_ (const GALGAS_lstring & in_mLeftNonterminalSymbol,
+GALGAS_productionRuleListForGrammarAnalysis_2E_element GALGAS_productionRuleListForGrammarAnalysis_2E_element::init_21__21__21__21_ (const GALGAS_lstring & in_mLeftNonterminalSymbol,
                                                                                                                                      const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
                                                                                                                                      const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
                                                                                                                                      const GALGAS_uint & in_mProductionIndex,
                                                                                                                                      Compiler * inCompiler
                                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
+  GALGAS_productionRuleListForGrammarAnalysis_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLeftNonterminalSymbol = in_mLeftNonterminalSymbol ;
   result.mProperty_mLeftNonterminalSymbolIndex = in_mLeftNonterminalSymbolIndex ;
@@ -237,12 +237,12 @@ GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleList
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::setInitializedProperties (Compiler * /* inCompiler */) {
+void GALGAS_productionRuleListForGrammarAnalysis_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_productionRuleListForGrammarAnalysis_2D_element::GALGAS_productionRuleListForGrammarAnalysis_2D_element (const GALGAS_lstring & inOperand0,
+GALGAS_productionRuleListForGrammarAnalysis_2E_element::GALGAS_productionRuleListForGrammarAnalysis_2E_element (const GALGAS_lstring & inOperand0,
                                                                                                                 const GALGAS_uint & inOperand1,
                                                                                                                 const GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand2,
                                                                                                                 const GALGAS_uint & inOperand3) :
@@ -254,13 +254,13 @@ mProperty_mProductionIndex (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::class_func_new (const GALGAS_lstring & in_mLeftNonterminalSymbol,
+GALGAS_productionRuleListForGrammarAnalysis_2E_element GALGAS_productionRuleListForGrammarAnalysis_2E_element::class_func_new (const GALGAS_lstring & in_mLeftNonterminalSymbol,
                                                                                                                                const GALGAS_uint & in_mLeftNonterminalSymbolIndex,
                                                                                                                                const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mInstructionList,
                                                                                                                                const GALGAS_uint & in_mProductionIndex,
                                                                                                                                Compiler * inCompiler
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
+  GALGAS_productionRuleListForGrammarAnalysis_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLeftNonterminalSymbol = in_mLeftNonterminalSymbol ;
   result.mProperty_mLeftNonterminalSymbolIndex = in_mLeftNonterminalSymbolIndex ;
@@ -271,13 +271,13 @@ GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleList
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_productionRuleListForGrammarAnalysis_2D_element::isValid (void) const {
+bool GALGAS_productionRuleListForGrammarAnalysis_2E_element::isValid (void) const {
   return mProperty_mLeftNonterminalSymbol.isValid () && mProperty_mLeftNonterminalSymbolIndex.isValid () && mProperty_mInstructionList.isValid () && mProperty_mProductionIndex.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::drop (void) {
+void GALGAS_productionRuleListForGrammarAnalysis_2E_element::drop (void) {
   mProperty_mLeftNonterminalSymbol.drop () ;
   mProperty_mLeftNonterminalSymbolIndex.drop () ;
   mProperty_mInstructionList.drop () ;
@@ -286,9 +286,9 @@ void GALGAS_productionRuleListForGrammarAnalysis_2D_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (String & ioString,
+void GALGAS_productionRuleListForGrammarAnalysis_2E_element::description (String & ioString,
                                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @productionRuleListForGrammarAnalysis-element:") ;
+  ioString.appendCString ("<struct @productionRuleListForGrammarAnalysis.element:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
@@ -305,41 +305,41 @@ void GALGAS_productionRuleListForGrammarAnalysis_2D_element::description (String
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @productionRuleListForGrammarAnalysis-element generic code implementation
+//     @productionRuleListForGrammarAnalysis.element generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis_2D_element ("productionRuleListForGrammarAnalysis-element",
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis_2E_element ("productionRuleListForGrammarAnalysis.element",
                                                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_productionRuleListForGrammarAnalysis_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis_2D_element ;
+const C_galgas_type_descriptor * GALGAS_productionRuleListForGrammarAnalysis_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis_2E_element ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_productionRuleListForGrammarAnalysis_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_productionRuleListForGrammarAnalysis_2E_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_productionRuleListForGrammarAnalysis_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_productionRuleListForGrammarAnalysis_2E_element (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleListForGrammarAnalysis_2D_element::extractObject (const GALGAS_object & inObject,
+GALGAS_productionRuleListForGrammarAnalysis_2E_element GALGAS_productionRuleListForGrammarAnalysis_2E_element::extractObject (const GALGAS_object & inObject,
                                                                                                                               Compiler * inCompiler
                                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_productionRuleListForGrammarAnalysis_2D_element result ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element * p = (const GALGAS_productionRuleListForGrammarAnalysis_2D_element *) inObject.embeddedObject () ;
+  GALGAS_productionRuleListForGrammarAnalysis_2E_element result ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element * p = (const GALGAS_productionRuleListForGrammarAnalysis_2E_element *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_productionRuleListForGrammarAnalysis_2D_element *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_productionRuleListForGrammarAnalysis_2E_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("productionRuleListForGrammarAnalysis-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("productionRuleListForGrammarAnalysis.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -347,34 +347,34 @@ GALGAS_productionRuleListForGrammarAnalysis_2D_element GALGAS_productionRuleList
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@productionRuleListForGrammarAnalysis-element displayRuleVertically'
+//Extension method '@productionRuleListForGrammarAnalysis.element displayRuleVertically'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
+void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGrammarAnalysis_2E_element inObject,
                                             const GALGAS_string constinArgument_inSyntaxComponentName,
                                             GALGAS_string & ioArgument_ioGeneratedCode,
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_currentNode_6877 = GALGAS_string ("P0start") ;
   GALGAS_rowList var_rowArray_6916 = GALGAS_rowList::init (inCompiler COMMA_HERE) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_0 = inObject ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element temp_0 = inObject ;
   cEnumerator_range enumerator_6975 (GALGAS_range (GALGAS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GALGAS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173))), EnumerationOrder::up) ;
   while (enumerator_6975.hasCurrentObject ()) {
     GALGAS__32_stringlist temp_1 = GALGAS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
-    temp_1.enterElement (GALGAS__32_stringlist_2D_element::init_21__21_ (GALGAS_string::makeEmptyString (), GALGAS_string::makeEmptyString (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
+    temp_1.enterElement (GALGAS__32_stringlist_2E_element::init_21__21_ (GALGAS_string::makeEmptyString (), GALGAS_string::makeEmptyString (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
     var_rowArray_6916.addAssign_operation (temp_1  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
     enumerator_6975.gotoNextObject () ;
   }
   GALGAS__32_stringlist temp_2 = GALGAS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
-  temp_2.enterElement (GALGAS__32_stringlist_2D_element::init_21__21_ (var_currentNode_6877, GALGAS_string ("[firstPoint] ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
+  temp_2.enterElement (GALGAS__32_stringlist_2E_element::init_21__21_ (var_currentNode_6877, GALGAS_string ("[firstPoint] ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
   var_rowArray_6916.addAssign_operation (temp_2  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 176)) ;
   GALGAS_string var_arrows_7092 = GALGAS_string::makeEmptyString () ;
   GALGAS_string var_arrowStyle_7118 = GALGAS_string ("--") ;
   GALGAS_uint var_unusedMaxUsedRowIndex_7148 = GALGAS_uint (uint32_t (0U)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element temp_3 = inObject ;
   GALGAS_uint var_row_7189 = temp_3.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 180)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_4 = inObject ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element temp_4 = inObject ;
   cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7232 (temp_4.readProperty_mInstructionList (), EnumerationOrder::up) ;
   while (enumerator_7232.hasCurrentObject ()) {
     var_row_7189.minusAssign_operation(GALGAS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 182)) ;
@@ -387,7 +387,7 @@ void extensionMethod_displayRuleVertically (const GALGAS_productionRuleListForGr
   extensionSetter_appendRow (var_rowArray_6916, GALGAS_string ("[lastPoint] ()"), var_row_7189, GALGAS_uint (uint32_t (2U)), var_lastNodeName_7666, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 196)) ;
   }
   var_arrows_7092.plusAssign_operation(GALGAS_string ("  \\draw[->] (").add_operation (var_currentNode_6877, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)).add_operation (GALGAS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)).add_operation (var_lastNodeName_7666, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 197)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_5 = inObject ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element temp_5 = inObject ;
   GALGAS_location var_loc_7785 = temp_5.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)).add_operation (function_escapeForTex (var_loc_7785.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 202)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).add_operation (function_escapeForTex (var_loc_7785.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GALGAS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 205)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 206)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)) ;
   cEnumerator_rowList enumerator_8207 (var_rowArray_6916, EnumerationOrder::down) ;
@@ -443,7 +443,7 @@ void extensionSetter_insertKey (GALGAS_genericExtensionMethodListMap & ioObject,
   }
   if (kBoolFalse == test_0) {
     GALGAS_lstringlist temp_3 = GALGAS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
-    temp_3.enterElement (GALGAS_lstringlist_2D_element::init_21_ (constinArgument_inValue, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
+    temp_3.enterElement (GALGAS_lstringlist_2E_element::init_21_ (constinArgument_inValue, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
     ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
   }
 }
@@ -476,7 +476,7 @@ void extensionSetter_insertKey (GALGAS_descendantClassListMap & ioObject,
   }
   if (kBoolFalse == test_0) {
     GALGAS_unifiedTypeMapEntryList temp_3 = GALGAS_unifiedTypeMapEntryList::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
-    temp_3.enterElement (GALGAS_unifiedTypeMapEntryList_2D_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
+    temp_3.enterElement (GALGAS_unifiedTypeMapEntryList_2E_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
     ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
   }
 }

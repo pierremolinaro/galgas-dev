@@ -95,21 +95,21 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstruction
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @terminalInstructionForGrammarAnalysis_2D_weak weak reference class
+// Phase 1: @terminalInstructionForGrammarAnalysis_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2D_weak {
+class GALGAS_terminalInstructionForGrammarAnalysis_2E_weak : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak {
 //--------------------------------- Default constructor
-  public: GALGAS_terminalInstructionForGrammarAnalysis_2D_weak (void) ;
+  public: GALGAS_terminalInstructionForGrammarAnalysis_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_terminalInstructionForGrammarAnalysis_2D_weak (const class GALGAS_terminalInstructionForGrammarAnalysis & inSource) ;
+  public: GALGAS_terminalInstructionForGrammarAnalysis_2E_weak (const class GALGAS_terminalInstructionForGrammarAnalysis & inSource) ;
 
-  public: GALGAS_terminalInstructionForGrammarAnalysis_2D_weak & operator = (const class GALGAS_terminalInstructionForGrammarAnalysis & inSource) ;
+  public: GALGAS_terminalInstructionForGrammarAnalysis_2E_weak & operator = (const class GALGAS_terminalInstructionForGrammarAnalysis & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_terminalInstructionForGrammarAnalysis bang_terminalInstructionForGrammarAnalysis_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GALGAS_terminalInstructionForGrammarAnalysis bang_terminalInstructionForGrammarAnalysis_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
 
@@ -119,15 +119,15 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GALGAS_terminalInstructionForGrammarAnalysis_2D_weak extractObject (const GALGAS_object & inObject,
+  public: static GALGAS_terminalInstructionForGrammarAnalysis_2E_weak extractObject (const GALGAS_object & inObject,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GALGAS_terminalInstructionForGrammarAnalysis_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -141,10 +141,10 @@ class GALGAS_terminalInstructionForGrammarAnalysis_2D_weak : public GALGAS_abstr
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GALGAS_terminalInstructionForGrammarAnalysis_2D_weak class
+} ; // End of GALGAS_terminalInstructionForGrammarAnalysis_2E_weak class
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2D_weak ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2E_weak ;
 

@@ -16,7 +16,7 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+#   EMBEDDED TYPE NAME UTILITIES
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
@@ -29,9 +29,11 @@ func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
 
 func makeEmbeddedTypeName ?outer: let @string inOuterTypeName
                           ?inner: let @string inInnerTypeName -> @string {
-  result = inOuterTypeName + "-" + inInnerTypeName
+  result = inOuterTypeName + "." + inInnerTypeName
 }
 
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   OPTIONAL TYPE NAME UTILITIES
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeOptionalTypeName ?forTypeNamed: let @string inTypeName -> @string {
@@ -46,6 +48,8 @@ func makeOptionalTypeLName ?forTypeNamed: let @lstring inTypeName -> @lstring {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
+#   EMBEDDED ELEMENT TYPE NAME UTILITIES
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedElementTypeName ?let @string inTypeName -> @string {
   result = makeEmbeddedTypeName (!outer: inTypeName !inner: "element")
@@ -55,6 +59,20 @@ func makeEmbeddedElementTypeName ?let @string inTypeName -> @string {
 
 func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
   result = .init (makeEmbeddedElementTypeName (!inTypeName), inTypeName)
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   WEAK TYPE NAME UTILITIES
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeWeakTypeName ?let @string inTypeName -> @string {
+  result = makeEmbeddedTypeName (!outer: inTypeName !inner: "weak")
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeWeakTypeLName ?let @lstring inTypeName -> @lstring {
+  result = .init (makeWeakTypeName (!inTypeName), inTypeName)
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -313,7 +331,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    switch definedTypeEntry
 #    case null :
 #      error self.mDefinedTypeName : "Undefined type"
-#    case element (@unifiedTypeMapElementClass-weak weakElement) :
+#    case element (@unifiedTypeMapElementClass.@weak weakElement) :
 #      switch weakElement.bang.mDefinition
 #      case unsolved :
 #        error self.mDefinedTypeName : "Undefined type"

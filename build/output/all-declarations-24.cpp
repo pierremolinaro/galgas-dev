@@ -632,7 +632,7 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::extract
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_optionComponentForGeneration_2D_weak::objectCompare (const GALGAS_optionComponentForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_optionComponentForGeneration_2E_weak::objectCompare (const GALGAS_optionComponentForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -652,13 +652,13 @@ ComparisonResult GALGAS_optionComponentForGeneration_2D_weak::objectCompare (con
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentForGeneration_2D_weak::GALGAS_optionComponentForGeneration_2D_weak (void) :
-GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak () {
+GALGAS_optionComponentForGeneration_2E_weak::GALGAS_optionComponentForGeneration_2E_weak (void) :
+GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentForGeneration_2D_weak & GALGAS_optionComponentForGeneration_2D_weak::operator = (const GALGAS_optionComponentForGeneration & inSource) {
+GALGAS_optionComponentForGeneration_2E_weak & GALGAS_optionComponentForGeneration_2E_weak::operator = (const GALGAS_optionComponentForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -670,21 +670,21 @@ GALGAS_optionComponentForGeneration_2D_weak & GALGAS_optionComponentForGeneratio
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentForGeneration_2D_weak::GALGAS_optionComponentForGeneration_2D_weak (const GALGAS_optionComponentForGeneration & inSource) :
-GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak (inSource) {
+GALGAS_optionComponentForGeneration_2E_weak::GALGAS_optionComponentForGeneration_2E_weak (const GALGAS_optionComponentForGeneration & inSource) :
+GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentForGeneration_2D_weak GALGAS_optionComponentForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_optionComponentForGeneration_2D_weak result ;
+GALGAS_optionComponentForGeneration_2E_weak GALGAS_optionComponentForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_optionComponentForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration_2D_weak::bang_optionComponentForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration_2E_weak::bang_optionComponentForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_optionComponentForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -700,41 +700,41 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration_2D_weak:
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @optionComponentForGeneration-weak generic code implementation
+//     @optionComponentForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2D_weak ("optionComponentForGeneration-weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ("optionComponentForGeneration.weak",
+                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_optionComponentForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_optionComponentForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_optionComponentForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_optionComponentForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_optionComponentForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_optionComponentForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_optionComponentForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_optionComponentForGeneration_2D_weak GALGAS_optionComponentForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_optionComponentForGeneration_2E_weak GALGAS_optionComponentForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_optionComponentForGeneration_2D_weak result ;
-  const GALGAS_optionComponentForGeneration_2D_weak * p = (const GALGAS_optionComponentForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_optionComponentForGeneration_2E_weak result ;
+  const GALGAS_optionComponentForGeneration_2E_weak * p = (const GALGAS_optionComponentForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_optionComponentForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_optionComponentForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("optionComponentForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("optionComponentForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -916,7 +916,7 @@ GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration::extractObject (cons
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_arrayTypeForGeneration_2D_weak::objectCompare (const GALGAS_arrayTypeForGeneration_2D_weak & inOperand) const {
+ComparisonResult GALGAS_arrayTypeForGeneration_2E_weak::objectCompare (const GALGAS_arrayTypeForGeneration_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -936,13 +936,13 @@ ComparisonResult GALGAS_arrayTypeForGeneration_2D_weak::objectCompare (const GAL
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_arrayTypeForGeneration_2D_weak::GALGAS_arrayTypeForGeneration_2D_weak (void) :
-GALGAS_semanticTypeForGeneration_2D_weak () {
+GALGAS_arrayTypeForGeneration_2E_weak::GALGAS_arrayTypeForGeneration_2E_weak (void) :
+GALGAS_semanticTypeForGeneration_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_arrayTypeForGeneration_2D_weak & GALGAS_arrayTypeForGeneration_2D_weak::operator = (const GALGAS_arrayTypeForGeneration & inSource) {
+GALGAS_arrayTypeForGeneration_2E_weak & GALGAS_arrayTypeForGeneration_2E_weak::operator = (const GALGAS_arrayTypeForGeneration & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -954,21 +954,21 @@ GALGAS_arrayTypeForGeneration_2D_weak & GALGAS_arrayTypeForGeneration_2D_weak::o
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_arrayTypeForGeneration_2D_weak::GALGAS_arrayTypeForGeneration_2D_weak (const GALGAS_arrayTypeForGeneration & inSource) :
-GALGAS_semanticTypeForGeneration_2D_weak (inSource) {
+GALGAS_arrayTypeForGeneration_2E_weak::GALGAS_arrayTypeForGeneration_2E_weak (const GALGAS_arrayTypeForGeneration & inSource) :
+GALGAS_semanticTypeForGeneration_2E_weak (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_arrayTypeForGeneration_2D_weak GALGAS_arrayTypeForGeneration_2D_weak::class_func_nil (LOCATION_ARGS) {
-  GALGAS_arrayTypeForGeneration_2D_weak result ;
+GALGAS_arrayTypeForGeneration_2E_weak GALGAS_arrayTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GALGAS_arrayTypeForGeneration_2E_weak result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration_2D_weak::bang_arrayTypeForGeneration_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration_2E_weak::bang_arrayTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GALGAS_arrayTypeForGeneration result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
@@ -984,41 +984,41 @@ GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration_2D_weak::bang_arrayT
 
 //--------------------------------------------------------------------------------------------------
 //
-//     @arrayTypeForGeneration-weak generic code implementation
+//     @arrayTypeForGeneration.weak generic code implementation
 //
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2D_weak ("arrayTypeForGeneration-weak",
-                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2D_weak) ;
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ("arrayTypeForGeneration.weak",
+                                                                                      & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_arrayTypeForGeneration_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_arrayTypeForGeneration_2D_weak ;
+const C_galgas_type_descriptor * GALGAS_arrayTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_arrayTypeForGeneration_2D_weak::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_arrayTypeForGeneration_2E_weak::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_arrayTypeForGeneration_2D_weak (*this)) ;
+    macroMyNew (result, GALGAS_arrayTypeForGeneration_2E_weak (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_arrayTypeForGeneration_2D_weak GALGAS_arrayTypeForGeneration_2D_weak::extractObject (const GALGAS_object & inObject,
+GALGAS_arrayTypeForGeneration_2E_weak GALGAS_arrayTypeForGeneration_2E_weak::extractObject (const GALGAS_object & inObject,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_arrayTypeForGeneration_2D_weak result ;
-  const GALGAS_arrayTypeForGeneration_2D_weak * p = (const GALGAS_arrayTypeForGeneration_2D_weak *) inObject.embeddedObject () ;
+  GALGAS_arrayTypeForGeneration_2E_weak result ;
+  const GALGAS_arrayTypeForGeneration_2E_weak * p = (const GALGAS_arrayTypeForGeneration_2E_weak *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_arrayTypeForGeneration_2D_weak *> (p)) {
+    if (nullptr != dynamic_cast <const GALGAS_arrayTypeForGeneration_2E_weak *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("arrayTypeForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("arrayTypeForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -1251,11 +1251,11 @@ GALGAS_analysisContext GALGAS_analysisContext::extractObject (const GALGAS_objec
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension method '@productionRuleListForGrammarAnalysis-element displayRule'
+//Extension method '@productionRuleListForGrammarAnalysis.element displayRule'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnalysis_2D_element inObject,
+void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnalysis_2E_element inObject,
                                   const GALGAS_string constinArgument_inSyntaxComponentName,
                                   GALGAS_string & ioArgument_ioGeneratedCode,
                                   Compiler * inCompiler
@@ -1263,14 +1263,14 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
   GALGAS_string var_currentNode_5020 = GALGAS_string ("P0start") ;
   GALGAS_rowList temp_0 = GALGAS_rowList::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 118)) ;
   GALGAS__32_stringlist temp_1 = GALGAS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 118)) ;
-  temp_1.enterElement (GALGAS__32_stringlist_2D_element::init_21__21_ (var_currentNode_5020, GALGAS_string ("[firstPoint] ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 118)) ;
-  temp_0.enterElement (GALGAS_rowList_2D_element::init_21_ (temp_1, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 118)) ;
+  temp_1.enterElement (GALGAS__32_stringlist_2E_element::init_21__21_ (var_currentNode_5020, GALGAS_string ("[firstPoint] ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 118)) ;
+  temp_0.enterElement (GALGAS_rowList_2E_element::init_21_ (temp_1, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 118)) ;
   GALGAS_rowList var_rowArray_5059 = temp_0 ;
   GALGAS_string var_arrows_5137 = GALGAS_string::makeEmptyString () ;
   GALGAS_string var_arrowStyle_5163 = GALGAS_string ("--") ;
   GALGAS_uint var_column_5193 = GALGAS_uint (uint32_t (1U)) ;
   GALGAS_uint var_unusedMaxUsedRowIndex_5216 = GALGAS_uint (uint32_t (0U)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_2 = inObject ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element temp_2 = inObject ;
   cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_5258 (temp_2.readProperty_mInstructionList (), EnumerationOrder::up) ;
   while (enumerator_5258.hasCurrentObject ()) {
     callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_5258.current_mInstruction (HERE).ptr (), var_rowArray_5059, GALGAS_uint (uint32_t (0U)), var_column_5193, var_currentNode_5020, var_arrowStyle_5163, var_arrows_5137, var_unusedMaxUsedRowIndex_5216, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 124)) ;
@@ -1281,7 +1281,7 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
   extensionSetter_appendRow (var_rowArray_5059, GALGAS_string ("[lastPoint] ()"), GALGAS_uint (uint32_t (0U)), var_column_5193, var_lastNodeName_5655, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)) ;
   }
   var_arrows_5137.plusAssign_operation(GALGAS_string ("  \\draw[->] (").add_operation (var_currentNode_5020, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (GALGAS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (var_lastNodeName_5655, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)) ;
-  const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
+  const GALGAS_productionRuleListForGrammarAnalysis_2E_element temp_3 = inObject ;
   GALGAS_location var_loc_5774 = temp_3.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 140)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 141)).add_operation (function_escapeForTex (var_loc_5774.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 143)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 143)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 143)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 143)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 142)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 143)).add_operation (function_escapeForTex (var_loc_5774.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 144)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 144)).add_operation (GALGAS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 144)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 146)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 140)) ;
   cEnumerator_rowList enumerator_6196 (var_rowArray_5059, EnumerationOrder::down) ;
@@ -1978,7 +1978,7 @@ void cPtr_templateGetterCallInExpressionAST::method_templateExpressionAnalysis (
       test_1 = GALGAS_bool (ComparisonKind::equal, temp_3.readProperty_mExpressionList ().getter_count (SOURCE_FILE ("templateAnalysis.galgas", 92)).objectCompare (GALGAS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_1) {
         const GALGAS_templateGetterCallInExpressionAST temp_4 = this ;
-        const GALGAS_propertyMap_2D_element var_theGetter_4182 = extensionGetter_definition (var_receiverType_3858, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 93)).readProperty_propertyMap ().readSubscript__3F_ (temp_4.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+        const GALGAS_propertyMap_2E_element var_theGetter_4182 = extensionGetter_definition (var_receiverType_3858, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 93)).readProperty_propertyMap ().readSubscript__3F_ (temp_4.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
         if (!extensionGetter_definition (var_receiverType_3858, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 93)).readProperty_propertyMap ().readSubscript__3F_ (temp_4.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
           test_1 = kBoolFalse ;
         }
@@ -4008,7 +4008,7 @@ void cPtr_templateInstructionSwitchAST::method_templateInstructionAnalysis (cons
   callExtensionMethod_templateExpressionAnalysis ((cPtr_templateExpressionAST *) temp_0.readProperty_mSwitchExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_switchExpression_5519, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 139)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    const GALGAS_typeKindEnum_2D_enumType var_enumType_5549 = extensionGetter_definition (var_switchExpression_5519.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 146)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("template-switch-instruction.galgas", 146)).unwrappedValue () ;
+    const GALGAS_typeKindEnum_2E_enumType var_enumType_5549 = extensionGetter_definition (var_switchExpression_5519.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 146)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("template-switch-instruction.galgas", 146)).unwrappedValue () ;
     if (!extensionGetter_definition (var_switchExpression_5519.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 146)).readProperty_typeKind ().getter_getEnumType (SOURCE_FILE ("template-switch-instruction.galgas", 146)).isValuated ()) {
       test_1 = kBoolFalse ;
     }
@@ -7869,7 +7869,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   }
   {
   GALGAS_lexicalRoutineFormalArgumentList temp_0 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 84)) ;
-  temp_0.enterElement (GALGAS_lexicalRoutineFormalArgumentList_2D_element::init_21__21__21_ (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 84)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas", 84)), GALGAS_string ("ioString"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 84)) ;
+  temp_0.enterElement (GALGAS_lexicalRoutineFormalArgumentList_2E_element::init_21__21__21_ (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 84)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas", 84)), GALGAS_string ("ioString"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 84)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("resetString"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 83)), inCompiler COMMA_HERE), temp_0, GALGAS_stringlist::init (inCompiler COMMA_HERE), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 82)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -7940,7 +7940,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 186)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas", 186)), GALGAS_string ("ioBigInt")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 186)) ;
   {
   GALGAS_stringlist temp_1 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 190)) ;
-  temp_1.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotDecimalDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 190)) ;
+  temp_1.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotDecimalDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 190)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("enterDecimalDigitIntoBigInt"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 188)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_1, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 187)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -7948,7 +7948,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 196)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas", 196)), GALGAS_string ("ioBigInt")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 196)) ;
   {
   GALGAS_stringlist temp_2 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 200)) ;
-  temp_2.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotBinaryDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 200)) ;
+  temp_2.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotBinaryDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 200)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("enterBinaryDigitIntoBigInt"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 198)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_2, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 197)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -7956,7 +7956,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 206)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas", 206)), GALGAS_string ("ioBigInt")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 206)) ;
   {
   GALGAS_stringlist temp_3 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 210)) ;
-  temp_3.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotHexDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 210)) ;
+  temp_3.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotHexDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 210)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("enterHexDigitIntoBigInt"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 208)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_3, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 207)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -7964,7 +7964,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 216)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas", 216)), GALGAS_string ("ioUnsignedNumber")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 216)) ;
   {
   GALGAS_stringlist temp_4 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 220)) ;
-  temp_4.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotDecimalDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 220)) ;
+  temp_4.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotDecimalDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 220)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("convertDecimalStringIntoBigInt"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 218)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_4, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 217)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -7977,7 +7977,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 235)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas", 235)), GALGAS_string ("ioUnsignedNumber")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 235)) ;
   {
   GALGAS_stringlist temp_5 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 239)) ;
-  temp_5.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotBinaryDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 239)) ;
+  temp_5.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotBinaryDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 239)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("convertBinaryStringIntoBigInt"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 237)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_5, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 236)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -7985,7 +7985,7 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 245)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas", 245)), GALGAS_string ("ioUnsignedNumber")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 245)) ;
   {
   GALGAS_stringlist temp_6 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 249)) ;
-  temp_6.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotHexDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 249)) ;
+  temp_6.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotHexDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 249)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("convertHexStringIntoBigInt"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 247)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_6, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 246)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
@@ -8029,8 +8029,8 @@ void routine_buildLexicalRoutineMap_21_ (GALGAS_lexicalRoutineMap & outArgument_
   var_lexicalRoutineFormalArgumentList_2228.addAssign_operation (GALGAS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas", 307)), GALGAS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas", 307)), GALGAS_string ("ioUnsignedNumber")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 307)) ;
   {
   GALGAS_stringlist temp_7 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 311)) ;
-  temp_7.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inNumberTooLargeError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 311)) ;
-  temp_7.enterElement (GALGAS_stringlist_2D_element::init_21_ (GALGAS_string ("inCharacterIsNotDecimalDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 311)) ;
+  temp_7.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inNumberTooLargeError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 311)) ;
+  temp_7.enterElement (GALGAS_stringlist_2E_element::init_21_ (GALGAS_string ("inCharacterIsNotDecimalDigitError"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 311)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GALGAS_lstring::init_21__21_ (GALGAS_string ("convertDecimalStringIntoUInt64"), GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 309)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2228, temp_7, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas", 308)) ;
   }
   var_lexicalRoutineFormalArgumentList_2228 = GALGAS_lexicalRoutineFormalArgumentList::init (inCompiler COMMA_HERE) ;
