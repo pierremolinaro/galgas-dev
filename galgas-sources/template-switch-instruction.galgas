@@ -271,14 +271,14 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ]
 #---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_"
+  ioGeneratedCode += "case GGS_"
   ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
   ioGeneratedCode += "::Enumeration::invalid :\n"
   ioGeneratedCode += "  break ;\n"
 #---
   for branch in self.templateInstructionSwitchBranchList do
     for constantName in branch.mConstantList do
-      ioGeneratedCode += "case GALGAS_"
+      ioGeneratedCode += "case GGS_"
       ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
       ioGeneratedCode += "::Enumeration::enum_"
       ioGeneratedCode += [constantName.string identifierRepresentation] + " :\n"
@@ -288,7 +288,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
     if [branch.mExtractedAssociatedValuesForGeneration count] > 0 then
       for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
         [associatedValue.mType addHeaderFileName !?ioInclusionSet]
-        ioGeneratedCode += "  GALGAS_" + [associatedValue.mType identifierRepresentation]
+        ioGeneratedCode += "  GGS_" + [associatedValue.mType identifierRepresentation]
         ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
       end
       ioGeneratedCode += "  " + switchVarCppName + ".getAssociatedValuesFor_"

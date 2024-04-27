@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_enumerable : Base class for GALGAS enumerable object
+//  GGS_enumerable : Base class for GALGAS enumerable object
 //
 //  This file is part of libpm library
 //

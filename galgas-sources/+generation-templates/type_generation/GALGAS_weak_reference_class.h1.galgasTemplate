@@ -4,19 +4,19 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
+class GGS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
   if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
   then %AC_GALGAS_weak_reference%
-  else %GALGAS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
+  else %GGS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
   end% {
 //--------------------------------- Default constructor
-  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
 
-  public: GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
 
 //--------------------------------- Bang operator
-  public: GALGAS_%!CLASS_TYPE_IDENTIFIER% bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GGS_%!CLASS_TYPE_IDENTIFIER% bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 

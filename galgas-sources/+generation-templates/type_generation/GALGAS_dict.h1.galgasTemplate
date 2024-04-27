@@ -8,19 +8,19 @@ class cSharedDictRoot_%!TYPE_IDENTIFIER% ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Attributes
   private: cSharedDictRoot_%!TYPE_IDENTIFIER% * mSharedDict ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Destructor
-  public: virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-  public: GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--- isValid
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedDict != nullptr ; }
@@ -36,7 +36,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   private: void insulate (LOCATION_ARGS) ;
 
 //--- Object compare
-  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
+  public: VIRTUAL_IN_DEBUG ComparisonResult objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;
 
 //--- Enumeration
   public: void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;

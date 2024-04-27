@@ -103,7 +103,7 @@ override method @selfInExpressionForGeneration generateExpression
   !@string outCppExpression {
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "const GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
+  ioGeneratedCode += "const GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 }
 

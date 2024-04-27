@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_type : public AC_GALGAS_root {
+class GGS_type : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: const C_galgas_type_descriptor * mTypeDescriptor ;
 
@@ -14,17 +14,17 @@ class GALGAS_type : public AC_GALGAS_root {
   public: inline const C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_type (void) ;
+  public: GGS_type (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public: virtual ~ GALGAS_type (void) ;
+  public: virtual ~ GGS_type (void) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_type (const GALGAS_type & inSource) ;
-  public: GALGAS_type & operator = (const GALGAS_type & inSource) ;
+  public: GGS_type (const GGS_type & inSource) ;
+  public: GGS_type & operator = (const GGS_type & inSource) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_type (const C_galgas_type_descriptor * inValue) ;
+  public: GGS_type (const C_galgas_type_descriptor * inValue) ;
 
 %
 

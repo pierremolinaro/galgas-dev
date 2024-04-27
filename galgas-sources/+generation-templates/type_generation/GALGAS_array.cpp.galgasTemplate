@@ -4,48 +4,48 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
 mSharedArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_root (),
 mSharedArray (inSource.mSharedArray) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource)  {
+GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource)  {
   mSharedArray = inSource.mSharedArray ;
   return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
   result.mSharedArray.setCapacity (16) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
+bool GGS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
+void GGS_%!TYPE_IDENTIFIER%::drop (void) {
   mSharedArray.free () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
+void GGS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
@@ -53,20 +53,20 @@ void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_ID
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.mSharedArray.appendDataFromPointer (
@@ -79,7 +79,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GA
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
      %!^%const int32_t /* inIndentation */) const {
   ioString.appendCString ("<array @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
@@ -92,9 +92,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+            %!^%Compiler * /* inCompiler */
+            %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mSharedArray.appendDataFromPointer (
       inOperand.mSharedArray.unsafeArrayPointer (),
@@ -105,7 +105,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (const GALGAS_%!TYPE_IDENTI
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+void GGS_%!TYPE_IDENTIFIER%::setter_append (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
@@ -115,8 +115,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%const GALGAS_%!ELEMENT_TYPE_I
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
-      %!^%const GALGAS_uint inInsertionIndex,
+void GGS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+      %!^%const GGS_uint inInsertionIndex,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -127,8 +127,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^%const GALGAS_%!ELEMENT
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
-      %!^%const GALGAS_uint inRemoveIndex,
+void GGS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%const GGS_uint inRemoveIndex,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
@@ -142,7 +142,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+void GGS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
@@ -155,7 +155,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^%GALGAS_%!ELEMENT_TYPE_IDENT
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
@@ -168,7 +168,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GALGAS_%!ELEMENT_TYPE_IDENTI
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+void GGS_%!TYPE_IDENTIFIER%::method_first (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) const {
   if (isValid ()) {
@@ -180,7 +180,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFI
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+void GGS_%!TYPE_IDENTIFIER%::method_last (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) const {
   if (isValid ()) {
@@ -192,10 +192,10 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIE
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GALGAS_uint & inIndex,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GGS_uint & inIndex,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
@@ -215,7 +215,7 @@ GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::readSubscript__3F_ 
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const EnumerationOrder inOrder) :
 mSharedArray (inEnumeratedObject.mSharedArray),
 mCurrent (0),
@@ -224,8 +224,8 @@ mEnumerationOrder (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
-  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+GGS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
   if (mCurrent < mSharedArray.count ()) {
     switch (mEnumerationOrder) {
     case EnumerationOrder::up :

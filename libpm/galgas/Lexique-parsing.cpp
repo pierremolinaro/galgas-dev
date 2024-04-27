@@ -611,8 +611,8 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString.appendCString ("}\n") ;
       const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + String (".dot") ;
-      GALGAS_bool fileWritten ;
-      GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
+      GGS_bool fileWritten ;
+      GGS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GGS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
   //--- Set current read location to 0
     listForSecondPassParsing.copyTo (mArrayForSecondPassParsing) ;
@@ -933,8 +933,8 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString.appendCString ("}\n") ;
       const String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
-      GALGAS_bool fileWritten ;
-      GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
+      GGS_bool fileWritten ;
+      GGS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GGS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
     if (executionModeIsSyntaxAnalysisOnly ()) {
       gCout.appendCString ("*** END OF PARSING (success: ") ;

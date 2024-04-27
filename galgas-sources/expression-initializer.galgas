@@ -413,7 +413,7 @@ refclass @initializerCallForGeneration : @semanticExpressionForGeneration {
       ]
       parameterList += !parameter
     end
-    outCppExpression = "GALGAS_"  + [self.mResultType identifierRepresentation]
+    outCppExpression = "GGS_"  + [self.mResultType identifierRepresentation]
                      + "::" + [self.initializerName identifierRepresentation]
                      + " ("
     for (mValue) in parameterList do

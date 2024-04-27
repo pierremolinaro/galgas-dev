@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
 mValue (),
 mState (OptionalState::invalid) {
@@ -12,7 +12,7 @@ mState (OptionalState::invalid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% & inSource) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!UNWRAPPED_TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_root (),
 mValue (inSource),
 mState (OptionalState::valuated) {
@@ -20,15 +20,15 @@ mState (OptionalState::valuated) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init_nil (void) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init_nil (void) {
+  GGS_%!TYPE_IDENTIFIER% result ;
   result.mState = OptionalState::isNil ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
+bool GGS_%!TYPE_IDENTIFIER%::isValid (void) const {
   bool result = false ;
   switch (mState) {
   case OptionalState::invalid :
@@ -45,20 +45,20 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool GALGAS_%!TYPE_IDENTIFIER%::isValuated (void) const {
+bool GGS_%!TYPE_IDENTIFIER%::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
+void GGS_%!TYPE_IDENTIFIER%::drop (void) {
   mState = OptionalState::invalid ;
-  mValue = GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% () ;
+  mValue = GGS_%!UNWRAPPED_TYPE_IDENTIFIER% () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
      %!^%const int32_t inIndentation) const {
   ioString.appendCString ("<optional @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;

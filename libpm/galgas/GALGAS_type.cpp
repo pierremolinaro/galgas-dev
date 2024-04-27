@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_bool : this class implements introspection for GALGAS types
+//  GGS_type : this class implements introspection for GALGAS types
 //
 //  This file is part of libpm library
 //
@@ -23,44 +23,44 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//                     'GALGAS_type' class
+//                     'GGS_type' class
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type::GALGAS_type (void) :
+GGS_type::GGS_type (void) :
 AC_GALGAS_root (),
 mTypeDescriptor (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type::GALGAS_type (const C_galgas_type_descriptor * inTypeReference) :
+GGS_type::GGS_type (const C_galgas_type_descriptor * inTypeReference) :
 AC_GALGAS_root (),
 mTypeDescriptor (inTypeReference) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type::GALGAS_type (const GALGAS_type & inSource) :
+GGS_type::GGS_type (const GGS_type & inSource) :
 AC_GALGAS_root (),
 mTypeDescriptor (inSource.mTypeDescriptor) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type & GALGAS_type::operator = (const GALGAS_type & inSource) {
+GGS_type & GGS_type::operator = (const GGS_type & inSource) {
   mTypeDescriptor = inSource.mTypeDescriptor ;
   return *this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type::~ GALGAS_type (void) {
+GGS_type::~ GGS_type (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_type::description (String & ioString,
+void GGS_type::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@type: ") ;
   if (nullptr == mTypeDescriptor) {
@@ -74,33 +74,33 @@ void GALGAS_type::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_type::class_func_typeList (LOCATION_ARGS) {
+GGS_typelist GGS_type::class_func_typeList (LOCATION_ARGS) {
   TC_UniqueArray <C_galgas_type_descriptor *> typeList ;
   C_galgas_type_descriptor::typeListRoot (typeList) ;
-  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
+  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
   for (int32_t i=0 ; i<typeList.count () ; i++) {
-    result.addAssign_operation (GALGAS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
+    result.addAssign_operation (GGS_type (typeList (i COMMA_THERE)) COMMA_HERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_type::getter_name (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_string (mTypeDescriptor->mGalgasTypeName) ;
+GGS_string GGS_type::getter_name (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (mTypeDescriptor->mGalgasTypeName) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_type::getter_hasSuperclass (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (nullptr != mTypeDescriptor->mSuperclassDescriptor) ;
+GGS_bool GGS_type::getter_hasSuperclass (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (nullptr != mTypeDescriptor->mSuperclassDescriptor) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
+GGS_type GGS_type::getter_superclass (Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_type result ;
+  GGS_type result ;
   if (mTypeDescriptor != nullptr) {
     if (nullptr == mTypeDescriptor->mSuperclassDescriptor) {
       String s = "'superclass' reader invoked on class type value '@" ;
@@ -108,7 +108,7 @@ GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
       s.appendCString ("', without super class") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
-      result = GALGAS_type (mTypeDescriptor->mSuperclassDescriptor) ;
+      result = GGS_type (mTypeDescriptor->mSuperclassDescriptor) ;
     }
   }
   return result ;
@@ -116,7 +116,7 @@ GALGAS_type GALGAS_type::getter_superclass (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_type::objectCompare (const GALGAS_type & inOperand) const {
+ComparisonResult GGS_type::objectCompare (const GGS_type & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mTypeDescriptor - inOperand.mTypeDescriptor ;

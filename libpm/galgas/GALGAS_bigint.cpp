@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_bigint                                                                                
+//  GGS_bigint                                                                                
 //
 //  This file is part of libpm library                                                           
 //
@@ -29,7 +29,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint::GALGAS_bigint (void) :
+GGS_bigint::GGS_bigint (void) :
 AC_GALGAS_root (),
 mIsValid (false),
 mValue (0) {
@@ -37,7 +37,7 @@ mValue (0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint::GALGAS_bigint (const BigSigned & inValue) :
+GGS_bigint::GGS_bigint (const BigSigned & inValue) :
 AC_GALGAS_root (),
 mIsValid (true),
 mValue (inValue) {
@@ -47,7 +47,7 @@ mValue (inValue) {
 
 static bool gOk ;
 
-GALGAS_bigint::GALGAS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) :
+GGS_bigint::GGS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) :
 AC_GALGAS_root (),
 mIsValid (true),
 mValue (inDecimalString, BigUnsignedBase::ten, gOk) {
@@ -58,7 +58,7 @@ mValue (inDecimalString, BigUnsignedBase::ten, gOk) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint::~GALGAS_bigint (void) {
+GGS_bigint::~GGS_bigint (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -69,14 +69,14 @@ GALGAS_bigint::~GALGAS_bigint (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::drop (void) {
+void GGS_bigint::drop (void) {
   mIsValid = false ;
   mValue = BigSigned () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::description (String & ioString,
+void GGS_bigint::description (String & ioString,
                                  const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@bigint: ") ;
   if (!mIsValid) {
@@ -89,7 +89,7 @@ void GALGAS_bigint::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOperand) const {
+ComparisonResult GGS_bigint::objectCompare (const GGS_bigint & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t cmp = mValue.compare (inOperand.mValue) ;
@@ -112,8 +112,8 @@ ComparisonResult GALGAS_bigint::objectCompare (const GALGAS_bigint & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::class_func_zero (UNUSED_LOCATION_ARGS) {
-  GALGAS_bigint result ;
+GGS_bigint GGS_bigint::class_func_zero (UNUSED_LOCATION_ARGS) {
+  GGS_bigint result ;
   result.mIsValid = true ;
   return result ;
 }
@@ -126,94 +126,94 @@ GALGAS_bigint GALGAS_bigint::class_func_zero (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_bigint::getter_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint GGS_bigint::getter_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mValue.requiredBitCountForSignedRepresentation ()) ;
+    result = GGS_uint (mValue.requiredBitCountForSignedRepresentation ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_bigint::getter_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint GGS_bigint::getter_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mValue.requiredBitCountForUnsignedRepresentation ()) ;
+    result = GGS_uint (mValue.requiredBitCountForUnsignedRepresentation ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bigint::getter_fitsInUInt (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_bigint::getter_fitsInUInt (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.fitsInUInt32 ()) ;
+    result = GGS_bool (mValue.fitsInUInt32 ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bigint::getter_fitsInSInt (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_bigint::getter_fitsInSInt (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.fitsInSInt32 ()) ;
+    result = GGS_bool (mValue.fitsInSInt32 ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bigint::getter_fitsInUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_bigint::getter_fitsInUInt_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.fitsInUInt64 ()) ;
+    result = GGS_bool (mValue.fitsInUInt64 ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bigint::getter_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_bigint::getter_fitsInSInt_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.fitsInSInt64 ()) ;
+    result = GGS_bool (mValue.fitsInSInt64 ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bigint::getter_isZero (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_bigint::getter_isZero (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mValue.isZero ()) ;
+    result = GGS_bool (mValue.isZero ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
-  GALGAS_sint result ;
+GGS_sint GGS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
+  GGS_sint result ;
   if (isValid ()) {
-    result = GALGAS_sint (mValue.sign ()) ;
+    result = GGS_sint (mValue.sign ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_ARGS) const {
-  GALGAS_uintlist result ;
+GGS_uintlist GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_ARGS) const {
+  GGS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
-    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
+    result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      result.addAssign_operation (GALGAS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssign_operation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -221,14 +221,14 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARGS) const {
-  GALGAS_uintlist result ;
+GGS_uintlist GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARGS) const {
+  GGS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
-    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
+    result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      result.addAssign_operation (GALGAS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssign_operation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -236,14 +236,14 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_38_ForSignedRepresentation (LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATION_ARGS) const {
-  GALGAS_uintlist result ;
+GGS_uintlist GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATION_ARGS) const {
+  GGS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, 0) ;
-    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
+    result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
       uint32_t v = valueArray (i+3 COMMA_HERE) ;
       v <<= 8 ;
@@ -252,7 +252,7 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForUnsignedRepresentation (
       v |= valueArray (i+1 COMMA_HERE) ;
       v <<= 8 ;
       v |= valueArray (i COMMA_HERE) ;
-      result.addAssign_operation (GALGAS_uint (v) COMMA_HERE) ;
+      result.addAssign_operation (GGS_uint (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -260,14 +260,14 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForUnsignedRepresentation (
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION_ARGS) const {
-  GALGAS_uintlist result ;
+GGS_uintlist GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION_ARGS) const {
+  GGS_uintlist result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
-    result = GALGAS_uintlist::class_func_emptyList (THERE) ;
+    result = GGS_uintlist::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
       uint32_t v = valueArray (i+3 COMMA_HERE) ;
       v <<= 8 ;
@@ -276,7 +276,7 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForSignedRepresentation (LO
       v |= valueArray (i+1 COMMA_HERE) ;
       v <<= 8 ;
       v |= valueArray (i COMMA_HERE) ;
-      result.addAssign_operation (GALGAS_uint (v) COMMA_HERE) ;
+      result.addAssign_operation (GGS_uint (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -284,21 +284,21 @@ GALGAS_uintlist GALGAS_bigint::getter_extract_33__32_ForSignedRepresentation (LO
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result ;
+GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {
+  GGS_uint_36__34_list result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, 0) ;
-    result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
+    result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=8) {
       uint64_t v = 0 ;
       for (int32_t j=7 ; j>=0 ; j--) {
         v <<= 8 ;
         v |= valueArray (i+j COMMA_HERE) ;
       }
-      result.addAssign_operation (GALGAS_uint_36__34_ (v) COMMA_HERE) ;
+      result.addAssign_operation (GGS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -306,21 +306,21 @@ GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForUnsignedRepresen
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result ;
+GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {
+  GGS_uint_36__34_list result ;
   if (isValid ()) {
     TC_UniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
-    result = GALGAS_uint_36__34_list::class_func_emptyList (THERE) ;
+    result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=8) {
       uint64_t v = 0 ;
       for (int32_t j=7 ; j>=0 ; j--) {
         v <<= 8 ;
         v |= valueArray (i+j COMMA_HERE) ;
       }
-      result.addAssign_operation (GALGAS_uint_36__34_ (v) COMMA_HERE) ;
+      result.addAssign_operation (GGS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -334,41 +334,41 @@ GALGAS_uint_36__34_list GALGAS_bigint::getter_extract_36__34_ForSignedRepresenta
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_bigint::getter_string (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GGS_string GGS_bigint::getter_string (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
   if (isValid ()) {
-    result = GALGAS_string (mValue.decimalString ()) ;
+    result = GGS_string (mValue.decimalString ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_bigint::getter_spacedString (const GALGAS_uint & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GGS_string GGS_bigint::getter_spacedString (const GGS_uint & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
   if (isValid () && inSeparation.isValid ()) {
-    result = GALGAS_string (mValue.spacedDecimalString (inSeparation.uintValue ())) ;
+    result = GGS_string (mValue.spacedDecimalString (inSeparation.uintValue ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_bigint::getter_hexString (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GGS_string GGS_bigint::getter_hexString (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
   if (isValid ()) {
-    result = GALGAS_string (mValue.hexString ()) ;
+    result = GGS_string (mValue.hexString ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_bigint::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
-                                                          const GALGAS_uint & inGroup,
+GGS_string GGS_bigint::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
+                                                          const GGS_uint & inGroup,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_string result ;
+  GGS_string result ;
   if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
     const int group = (int) inGroup.uintValue () ;
     if (group <= 0) {
@@ -379,7 +379,7 @@ GALGAS_string GALGAS_bigint::getter_hexStringSeparatedBy (const GALGAS_char & in
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
       }
-      result = GALGAS_string (String ("0x") + s) ;
+      result = GGS_string (String ("0x") + s) ;
     }
   }
   return result ;
@@ -387,10 +387,10 @@ GALGAS_string GALGAS_bigint::getter_hexStringSeparatedBy (const GALGAS_char & in
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GGS_string GGS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
   if (isValid ()) {
-    result = GALGAS_string (mValue.xString ()) ;
+    result = GGS_string (mValue.xString ()) ;
   }
   return result ;
 }
@@ -403,7 +403,7 @@ GALGAS_string GALGAS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::increment_operation (Compiler * /* inCompiler */
+void GGS_bigint::increment_operation (Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mValue += 1 ;
@@ -412,7 +412,7 @@ void GALGAS_bigint::increment_operation (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::decrement_operation (Compiler * /* inCompiler */
+void GGS_bigint::decrement_operation (Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mValue -= 1 ;
@@ -427,18 +427,18 @@ void GALGAS_bigint::decrement_operation (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_bigint::getter_bitAtIndex (const GALGAS_uint & inBitIndex
+GGS_bool GGS_bigint::getter_bitAtIndex (const GGS_uint & inBitIndex
                                               COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (isValid () && inBitIndex.isValid ()) {
-    result = GALGAS_bool (mValue.bitAtIndex (inBitIndex.uintValue ())) ;
+    result = GGS_bool (mValue.bitAtIndex (inBitIndex.uintValue ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::setter_complementBitAtIndex (const GALGAS_uint inBitIndex
+void GGS_bigint::setter_complementBitAtIndex (const GGS_uint inBitIndex
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inBitIndex.isValid ()) {
     mValue.complementBitAtIndex (inBitIndex.uintValue ()) ;
@@ -447,8 +447,8 @@ void GALGAS_bigint::setter_complementBitAtIndex (const GALGAS_uint inBitIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::setter_setBitAtIndex (const GALGAS_bool inBitValue,
-                                            const GALGAS_uint inBitIndex
+void GGS_bigint::setter_setBitAtIndex (const GGS_bool inBitValue,
+                                            const GGS_uint inBitIndex
                                             COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inBitValue.isValid () && inBitIndex.isValid ()) {
     mValue.setBitAtIndex (inBitValue.boolValue(), inBitIndex.uintValue ()) ;
@@ -463,22 +463,22 @@ void GALGAS_bigint::setter_setBitAtIndex (const GALGAS_bool inBitValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::getter_abs (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+GGS_bigint GGS_bigint::getter_abs (UNUSED_LOCATION_ARGS) const {
+  GGS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (mValue.abs ()) ;
+    result = GGS_bigint (mValue.abs ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_bigint::getter_uint (Compiler * inCompiler
+GGS_uint GGS_bigint::getter_uint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (mValue.fitsInUInt32 ()) {
-      result = GALGAS_uint (mValue.uint32 ()) ;
+      result = GGS_uint (mValue.uint32 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint conversion overflow" COMMA_THERE) ;
     }
@@ -488,12 +488,12 @@ GALGAS_uint GALGAS_bigint::getter_uint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint GALGAS_bigint::getter_sint (Compiler * inCompiler
+GGS_sint GGS_bigint::getter_sint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_sint result ;
+  GGS_sint result ;
   if (isValid ()) {
     if (mValue.fitsInSInt32 ()) {
-      result = GALGAS_sint (mValue.int32 ()) ;
+      result = GGS_sint (mValue.int32 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @sint conversion overflow" COMMA_THERE) ;
     }
@@ -503,12 +503,12 @@ GALGAS_sint GALGAS_bigint::getter_sint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint_36__34_ GALGAS_bigint::getter_uint_36__34_ (Compiler * inCompiler
+GGS_uint_36__34_ GGS_bigint::getter_uint_36__34_ (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_ result ;
+  GGS_uint_36__34_ result ;
   if (isValid ()) {
     if (mValue.fitsInUInt64 ()) {
-      result = GALGAS_uint_36__34_ (mValue.uint64 ()) ;
+      result = GGS_uint_36__34_ (mValue.uint64 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint64 conversion overflow" COMMA_THERE) ;
     }
@@ -518,12 +518,12 @@ GALGAS_uint_36__34_ GALGAS_bigint::getter_uint_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_sint_36__34_ GALGAS_bigint::getter_sint_36__34_ (Compiler * inCompiler
+GGS_sint_36__34_ GGS_bigint::getter_sint_36__34_ (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_sint_36__34_ result ;
+  GGS_sint_36__34_ result ;
   if (isValid ()) {
     if (mValue.fitsInSInt64 ()) {
-      result = GALGAS_sint_36__34_ (mValue.int64 ()) ;
+      result = GGS_sint_36__34_ (mValue.int64 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @sint64 conversion overflow" COMMA_THERE) ;
     }
@@ -539,61 +539,61 @@ GALGAS_sint_36__34_ GALGAS_bigint::getter_sint_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::operator_unary_minus (Compiler * /* inCompiler */ COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+GGS_bigint GGS_bigint::operator_unary_minus (Compiler * /* inCompiler */ COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (- mValue) ;
+    result = GGS_bigint (- mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::add_operation (const GALGAS_bigint & inOperand,
+GGS_bigint GGS_bigint::add_operation (const GGS_bigint & inOperand,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
-    result = GALGAS_bigint (mValue + inOperand.mValue) ;
+    result = GGS_bigint (mValue + inOperand.mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::substract_operation (const GALGAS_bigint & inOperand,
+GGS_bigint GGS_bigint::substract_operation (const GGS_bigint & inOperand,
                                                   Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
-    result = GALGAS_bigint (mValue - inOperand.mValue) ;
+    result = GGS_bigint (mValue - inOperand.mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::multiply_operation (const GALGAS_bigint & inOperand,
+GGS_bigint GGS_bigint::multiply_operation (const GGS_bigint & inOperand,
                                                  Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
-    result = GALGAS_bigint (mValue * inOperand.mValue) ;
+    result = GGS_bigint (mValue * inOperand.mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::divide_operation (const GALGAS_bigint & inOperand,
+GGS_bigint GGS_bigint::divide_operation (const GGS_bigint & inOperand,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid() && inOperand.isValid ()) {
     if (inOperand.mValue.isZero ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint divide by zero" COMMA_THERE) ;
     }else{
-      result = GALGAS_bigint (mValue / inOperand.mValue) ;
+      result = GGS_bigint (mValue / inOperand.mValue) ;
     }
   }
   return result ;
@@ -601,15 +601,15 @@ GALGAS_bigint GALGAS_bigint::divide_operation (const GALGAS_bigint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
+GGS_bigint GGS_bigint::modulo_operation (const GGS_bigint & inOperand2,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mValue.isZero ()) {
       inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
     }else{
-      result = GALGAS_bigint (mValue % inOperand2.mValue) ;
+      result = GGS_bigint (mValue % inOperand2.mValue) ;
     }
   }
   return result ;
@@ -617,9 +617,9 @@ GALGAS_bigint GALGAS_bigint::modulo_operation (const GALGAS_bigint & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
-                                     GALGAS_bigint & outQuotient,
-                                     GALGAS_bigint & outRemainder,
+void GGS_bigint::method_divideBy (GGS_bigint inDivisor,
+                                     GGS_bigint & outQuotient,
+                                     GGS_bigint & outRemainder,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
   outQuotient.drop () ;
@@ -629,8 +629,8 @@ void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
       inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
     }else{
       const BigSignedQuotientRemainder r = mValue.divideByBigSigned (inDivisor.mValue) ;
-      outQuotient = GALGAS_bigint (r.quotient ()) ;
-      outRemainder = GALGAS_bigint (r.remainder ()) ;
+      outQuotient = GGS_bigint (r.quotient ()) ;
+      outRemainder = GGS_bigint (r.remainder ()) ;
     }
   }
 }
@@ -643,43 +643,43 @@ void GALGAS_bigint::method_divideBy (GALGAS_bigint inDivisor,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::operator_and (const GALGAS_bigint & inOperand
+GGS_bigint GGS_bigint::operator_and (const GGS_bigint & inOperand
                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_bigint (mValue & inOperand.mValue) ;
+    result = GGS_bigint (mValue & inOperand.mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::operator_or (const GALGAS_bigint & inOperand
+GGS_bigint GGS_bigint::operator_or (const GGS_bigint & inOperand
                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_bigint (mValue | inOperand.mValue) ;
+    result = GGS_bigint (mValue | inOperand.mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::operator_xor (const GALGAS_bigint & inOperand
+GGS_bigint GGS_bigint::operator_xor (const GGS_bigint & inOperand
                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_bigint (mValue ^ inOperand.mValue) ;
+    result = GGS_bigint (mValue ^ inOperand.mValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::operator_tilde (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+GGS_bigint GGS_bigint::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GGS_bigint result ;
   if (isValid ()) {
-    result = GALGAS_bigint (~ mValue) ;
+    result = GGS_bigint (~ mValue) ;
   }
   return result ;
 }
@@ -692,31 +692,31 @@ GALGAS_bigint GALGAS_bigint::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_uint inShiftOperand,
+GGS_bigint GGS_bigint::left_shift_operation (const GGS_uint inShiftOperand,
                                                    class Compiler * /* inCompiler*/
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
 
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    result = GALGAS_bigint (mValue << inShiftOperand.uintValue ()) ;
+    result = GGS_bigint (mValue << inShiftOperand.uintValue ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_bigint inShiftOperand,
+GGS_bigint GGS_bigint::left_shift_operation (const GGS_bigint inShiftOperand,
                                                    class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
 
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.mValue.isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint left shift by a negative amount" COMMA_THERE) ;
     }else if (!inShiftOperand.mValue.fitsInUInt32 ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint left shift too large amount" COMMA_THERE) ;
     }else{
-      result = GALGAS_bigint (mValue << inShiftOperand.mValue.uint32 ()) ;
+      result = GGS_bigint (mValue << inShiftOperand.mValue.uint32 ()) ;
     }
   }
   return result ;
@@ -724,30 +724,30 @@ GALGAS_bigint GALGAS_bigint::left_shift_operation (const GALGAS_bigint inShiftOp
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_uint inShiftOperand,
+GGS_bigint GGS_bigint::right_shift_operation (const GGS_uint inShiftOperand,
                                                     class Compiler * /* inCompiler*/
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    result = GALGAS_bigint (mValue >> inShiftOperand.uintValue ()) ;
+    result = GGS_bigint (mValue >> inShiftOperand.uintValue ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_bigint inShiftOperand,
+GGS_bigint GGS_bigint::right_shift_operation (const GGS_bigint inShiftOperand,
                                                     class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
 
-  GALGAS_bigint result ;
+  GGS_bigint result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.mValue.isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint right shift by a negative amount" COMMA_THERE) ;
     }else if (!inShiftOperand.mValue.fitsInUInt32 ()) {
       inCompiler->onTheFlyRunTimeError ("@bigint right shift too large amount" COMMA_THERE) ;
     }else{
-      result = GALGAS_bigint (mValue >> inShiftOperand.mValue.uint32 ()) ;
+      result = GGS_bigint (mValue >> inShiftOperand.mValue.uint32 ()) ;
     }
   }
   return result ;
@@ -755,7 +755,7 @@ GALGAS_bigint GALGAS_bigint::right_shift_operation (const GALGAS_bigint inShiftO
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::plusAssign_operation (const GALGAS_bigint inOperand,
+void GGS_bigint::plusAssign_operation (const GGS_bigint inOperand,
                                           Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -765,7 +765,7 @@ void GALGAS_bigint::plusAssign_operation (const GALGAS_bigint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::minusAssign_operation (const GALGAS_bigint inOperand,
+void GGS_bigint::minusAssign_operation (const GGS_bigint inOperand,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -776,7 +776,7 @@ void GALGAS_bigint::minusAssign_operation (const GALGAS_bigint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::mulAssign_operation (const GALGAS_bigint inOperand,
+void GGS_bigint::mulAssign_operation (const GGS_bigint inOperand,
                                          Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -786,7 +786,7 @@ void GALGAS_bigint::mulAssign_operation (const GALGAS_bigint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_bigint::divAssign_operation (const GALGAS_bigint inOperand,
+void GGS_bigint::divAssign_operation (const GGS_bigint inOperand,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {

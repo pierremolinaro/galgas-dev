@@ -8,7 +8,7 @@ class C_galgas_function_descriptor ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_function : public AC_GALGAS_root {
+class GGS_function : public AC_GALGAS_root {
 //--------------------------------- Private data member
   private: const C_galgas_function_descriptor * mFunctionDescriptor ;
 
@@ -18,17 +18,17 @@ class GALGAS_function : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG inline const C_galgas_function_descriptor * functionValue (void) const { return mFunctionDescriptor ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_function (void) ;
+  public: GGS_function (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public: virtual ~ GALGAS_function (void) ;
+  public: virtual ~ GGS_function (void) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_function (const GALGAS_function & inSource) ;
-  public: GALGAS_function & operator = (const GALGAS_function & inSource) ;
+  public: GGS_function (const GGS_function & inSource) ;
+  public: GGS_function & operator = (const GGS_function & inSource) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_function (const C_galgas_function_descriptor * inValue) ;
+  public: GGS_function (const C_galgas_function_descriptor * inValue) ;
 
 %
 

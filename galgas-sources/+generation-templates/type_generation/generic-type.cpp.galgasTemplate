@@ -9,29 +9,29 @@ const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% (%?^%"%
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::staticTypeDescriptor (void) const {
+const C_galgas_type_descriptor * GGS_%!TYPE_IDENTIFIER%::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
+AC_GALGAS_root * GGS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (*this)) ;
+    macroMyNew (result, GGS_%!TYPE_IDENTIFIER% (*this)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::extractObject (%?^%const GALGAS_object & inObject,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::extractObject (%?^%const GGS_object & inObject,
                %!^%Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
-  const GALGAS_%!TYPE_IDENTIFIER% * p = (const GALGAS_%!TYPE_IDENTIFIER% *) inObject.embeddedObject () ;
+  GGS_%!TYPE_IDENTIFIER% result ;
+  const GGS_%!TYPE_IDENTIFIER% * p = (const GGS_%!TYPE_IDENTIFIER% *) inObject.embeddedObject () ;
   if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GALGAS_%!TYPE_IDENTIFIER% *> (p)) {
+    if (nullptr != dynamic_cast <const GGS_%!TYPE_IDENTIFIER% *> (p)) {
       result = *p ;
     }else{
       inCompiler->castError ("%!TYPE_NAME%", p->dynamicTypeDescriptor () COMMA_THERE) ;

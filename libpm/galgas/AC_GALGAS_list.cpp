@@ -127,20 +127,20 @@ uint32_t AC_GALGAS_list::count () const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint AC_GALGAS_list::getter_count (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint AC_GALGAS_list::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mSharedArray.count ()) ;
+    result = GGS_uint (mSharedArray.count ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_range AC_GALGAS_list::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
+GGS_range AC_GALGAS_list::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
   if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedArray.count ())) ;
+    result = GGS_range (GGS_uint (0), GGS_uint (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -186,7 +186,7 @@ void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
-                                       const GALGAS_range & inRange,
+                                       const GGS_range & inRange,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inRange.isValid ()) {
@@ -205,7 +205,7 @@ void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::subListFromIndex (AC_GALGAS_list & outList,
-                                       const GALGAS_uint & inIndex,
+                                       const GGS_uint & inIndex,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
   if (isValid () && inIndex.isValid ()) {
@@ -220,7 +220,7 @@ void AC_GALGAS_list::subListFromIndex (AC_GALGAS_list & outList,
 //--------------------------------------------------------------------------------------------------
 
 void AC_GALGAS_list::subListToIndex (AC_GALGAS_list & outList,
-                                     const GALGAS_uint & inIndex,
+                                     const GGS_uint & inIndex,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
   if (isValid () && inIndex.isValid ()) {
@@ -242,7 +242,7 @@ void AC_GALGAS_list::appendList (const AC_GALGAS_list & inList) {
 
 //--------------------------------------------------------------------------------------------------
 
-capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIndex,
+capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement result ;
@@ -264,7 +264,7 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
+cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GGS_uint & inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * result = nullptr ;

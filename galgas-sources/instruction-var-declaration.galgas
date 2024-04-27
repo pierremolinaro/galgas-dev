@@ -45,7 +45,8 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationNoAssignmentAST {!typeName.location !typeName !variableName}
     if [option galgas_cli_options.errorOldStyleLocalVarDeclaration value] then
-      error typeName : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
+      error typeName
+      : "old style local variable declaration (due to '--error-old-style-local-var-declaration' option)"
       fixit { replace "var @" + typeName }
     end
   }
@@ -266,7 +267,7 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   [self.mVariableType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GALGAS_" + [self.mVariableType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
+  ioGeneratedCode += "GGS_" + [self.mVariableType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

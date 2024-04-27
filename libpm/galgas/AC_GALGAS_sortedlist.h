@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_uint ;
+class GGS_uint ;
 class Compiler ;
 class cSharedSortedListRoot ;
 class String ;
@@ -101,7 +101,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const AC_GALGAS_sortedlist & inOperand) const ;
 
 //--------------------------------- Readers
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_uint getter_count (LOCATION_ARGS) const ;
 
 //--------------------------------- introspection
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0;

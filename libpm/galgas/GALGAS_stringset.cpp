@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_stringset
+//  GGS_stringset
 //
 //  This file is part of libpm library
 //
@@ -29,11 +29,11 @@
 
 class cCollectionElement_stringset : public cCollectionElement {
 //--- Private member
-  protected: GALGAS_string mProperty_key ;
-  public: inline GALGAS_string attribute_key (void) const { return mProperty_key ; }
+  protected: GGS_string mProperty_key ;
+  public: inline GGS_string attribute_key (void) const { return mProperty_key ; }
 
 //--- Default constructor
-  public: cCollectionElement_stringset (const GALGAS_string & inString
+  public: cCollectionElement_stringset (const GGS_string & inString
                                          COMMA_LOCATION_ARGS) ;
 
 //--- No copy
@@ -55,7 +55,7 @@ class cCollectionElement_stringset : public cCollectionElement {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_stringset::cCollectionElement_stringset (const GALGAS_string & inKey
+cCollectionElement_stringset::cCollectionElement_stringset (const GGS_string & inKey
                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mProperty_key (inKey) {
@@ -421,7 +421,7 @@ class cSharedStringsetRoot : public SharedObject {
   public: void buildOrderedKeyList (TC_UniqueArray <String> & ioList) const ;
 
 //--- enter contents into stringlist
-  public: void addToStringList (GALGAS_stringlist & ioResult) const ;
+  public: void addToStringList (GGS_stringlist & ioResult) const ;
 
 //--- Copy from
   public: void copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) ;
@@ -572,25 +572,25 @@ bool cSharedStringsetRoot::hasKey (const String & inKey) const {
 
 //--------------------------------------------------------------------------------------------------
 
-static void recursiveAddToStringList (GALGAS_stringlist & ioResult,
+static void recursiveAddToStringList (GGS_stringlist & ioResult,
                                       const cStringsetNode * inNode) {
   if (inNode != nullptr) {
     recursiveAddToStringList (ioResult, inNode->mInfPtr) ;
-    ioResult.addAssign_operation (GALGAS_string (inNode->mKey) COMMA_HERE) ;
+    ioResult.addAssign_operation (GGS_string (inNode->mKey) COMMA_HERE) ;
     recursiveAddToStringList (ioResult, inNode->mSupPtr) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cSharedStringsetRoot::addToStringList (GALGAS_stringlist & ioResult) const {
+void cSharedStringsetRoot::addToStringList (GGS_stringlist & ioResult) const {
   recursiveAddToStringList (ioResult, mRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark GALGAS_stringset
+  #pragma mark GGS_stringset
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -599,26 +599,26 @@ void cSharedStringsetRoot::addToStringList (GALGAS_stringlist & ioResult) const 
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset::GALGAS_stringset (void) :
+GGS_stringset::GGS_stringset (void) :
 AC_GALGAS_root (),
 mSharedRoot (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset::~GALGAS_stringset (void) {
+GGS_stringset::~GGS_stringset (void) {
   macroDetachSharedObject (mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::drop (void) {
+void GGS_stringset::drop (void) {
   macroDetachSharedObject (mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset::GALGAS_stringset (const GALGAS_stringset & inSource) :
+GGS_stringset::GGS_stringset (const GGS_stringset & inSource) :
 AC_GALGAS_root (),
 mSharedRoot (nullptr) {
   macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
@@ -626,7 +626,7 @@ mSharedRoot (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSource) {
+GGS_stringset & GGS_stringset::operator = (const GGS_stringset & inSource) {
   macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
   return * this ;
 }
@@ -634,7 +634,7 @@ GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSour
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void GALGAS_stringset::checkStringset (LOCATION_ARGS) const {
+  void GGS_stringset::checkStringset (LOCATION_ARGS) const {
     if (nullptr != mSharedRoot) {
       mSharedRoot->checkStringset (THERE) ;
     }
@@ -643,7 +643,7 @@ GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSour
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::description (String & ioString,
+void GGS_stringset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@stringset:") ;
   if (nullptr == mSharedRoot) {
@@ -656,7 +656,7 @@ void GALGAS_stringset::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::insulate (LOCATION_ARGS) {
+void GGS_stringset::insulate (LOCATION_ARGS) {
   if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
     cSharedStringsetRoot * p = nullptr ;
     macroMyNew (p, cSharedStringsetRoot (THERE)) ;
@@ -671,7 +671,7 @@ void GALGAS_stringset::insulate (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::setter_insert (const GALGAS_string inKey,
+void GGS_stringset::setter_insert (const GGS_string inKey,
                                       Compiler * /* inCompiler */
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
@@ -691,7 +691,7 @@ void GALGAS_stringset::setter_insert (const GALGAS_string inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
+void GGS_stringset::addAssign_operation (const GGS_string & inKey
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -710,7 +710,7 @@ void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
+void GGS_stringset::setter_removeKey (GGS_string inKey
                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -741,9 +741,9 @@ void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOperand2
+GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand2
                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_stringset result ;
+  GGS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkStringset (HERE) ;
@@ -768,7 +768,7 @@ GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOper
         }else if (cmp > 0) {
           rightIndex ++ ;
         }else{
-          result.addAssign_operation (GALGAS_string (leftList ((int32_t) leftIndex COMMA_THERE)) COMMA_HERE) ;
+          result.addAssign_operation (GGS_string (leftList ((int32_t) leftIndex COMMA_THERE)) COMMA_HERE) ;
           leftIndex ++ ;
           rightIndex ++ ;
         }
@@ -787,9 +787,9 @@ GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOper
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOperand2
+GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand2
                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_stringset result ;
+  GGS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkStringset (HERE) ;
@@ -802,7 +802,7 @@ GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOpera
       inOperand2.mSharedRoot->buildOrderedKeyList (rightList) ;
     }
     for (uint32_t i=0 ; i<rightCount ; i++) {
-      result.addAssign_operation (GALGAS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
+      result.addAssign_operation (GGS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       result.checkStringset (HERE) ;
@@ -813,7 +813,7 @@ GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOpera
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
+void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand2,
                                              Compiler *
                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand2.isValid ()) {
@@ -827,7 +827,7 @@ void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
       inOperand2.mSharedRoot->buildOrderedKeyList (rightList) ;
     }
     for (uint32_t i=0 ; i<rightCount ; i++) {
-      addAssign_operation (GALGAS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
+      addAssign_operation (GGS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkStringset (HERE) ;
@@ -843,10 +843,10 @@ void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset & inOperand2,
+GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperand2,
                                                         Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_stringset result ;
+  GGS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkStringset (HERE) ;
@@ -858,7 +858,7 @@ GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset &
     mSharedRoot->buildOrderedKeyList (leftList) ;
     for (int32_t i=0 ; i<leftCount ; i++) {
       if (! inOperand2.mSharedRoot->hasKey (leftList (i COMMA_HERE))) {
-        result.addAssign_operation (GALGAS_string (leftList (i COMMA_HERE)) COMMA_HERE) ;
+        result.addAssign_operation (GGS_string (leftList (i COMMA_HERE)) COMMA_HERE) ;
       }
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -876,10 +876,10 @@ GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset &
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist GALGAS_stringset::getter_stringList (LOCATION_ARGS) const {
-  GALGAS_stringlist result ;
+GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
+  GGS_stringlist result ;
   if (isValid ()) {
-    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::class_func_emptyList (THERE) ;
     mSharedRoot->addToStringList (result) ;
   }
   return result ;
@@ -887,37 +887,37 @@ GALGAS_stringlist GALGAS_stringset::getter_stringList (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_stringset::getter_hasKey (const GALGAS_string & inKey
+GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
-    result = GALGAS_bool (mSharedRoot->hasKey (key)) ;
+    result = GGS_bool (mSharedRoot->hasKey (key)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mSharedRoot->count ()) ;
+    result = GGS_uint (mSharedRoot->count ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_stringset::getter_anyString (Compiler * inCompiler
+GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_string result ;
+  GGS_string result ;
   if (isValid ()) {
     if (mSharedRoot->count () == 0) {
       String message = "@stringset anyString: receiver is empty" ;
       inCompiler->onTheFlySemanticError(message COMMA_THERE) ;
      }else{
-      result = GALGAS_string (mSharedRoot->rootKey ()) ;
+      result = GGS_string (mSharedRoot->rootKey ()) ;
     }
   }
   return result ;
@@ -931,7 +931,7 @@ GALGAS_string GALGAS_stringset::getter_anyString (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 //
-//                 'GALGAS_stringset::cEnumerator' class
+//                 'GGS_stringset::cEnumerator' class
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -940,7 +940,7 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
   if (inNode != nullptr) {
     enterAscendingEnumeration (inNode->mInfPtr, ioResult) ;
     cCollectionElement_stringset * p = nullptr ;
-    GALGAS_string str (GALGAS_string (inNode->mKey)) ;
+    GGS_string str (GGS_string (inNode->mKey)) ;
     macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
     capCollectionElement object ;
     object.setPointer (p) ;
@@ -952,7 +952,7 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
+void GGS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   if (isValid ()) {
     inEnumerationArray.setCapacity (mSharedRoot->count ()) ;
     enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ;
@@ -966,7 +966,7 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
+cEnumerator_stringset::cEnumerator_stringset (const GGS_stringset & inEnumeratedObject,
                                               const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
@@ -974,7 +974,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
+GGS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
@@ -982,7 +982,7 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
+GGS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
@@ -994,7 +994,7 @@ GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
 //
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & inOperand) const {
+ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t count1 = (int32_t) mSharedRoot->count () ;
@@ -1033,23 +1033,23 @@ ComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & inOpe
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::class_func_emptySet (LOCATION_ARGS) {
-  GALGAS_stringset result ;
+GGS_stringset GGS_stringset::class_func_emptySet (LOCATION_ARGS) {
+  GGS_stringset result ;
   macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
-  GALGAS_stringset result ;
+GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_stringset result ;
   macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_stringset::enterElement (const GALGAS_string & inValue,
+void GGS_stringset::enterElement (const GGS_string & inValue,
                                      Compiler *
                                      COMMA_LOCATION_ARGS) {
   addAssign_operation (inValue COMMA_THERE) ;
@@ -1057,9 +1057,9 @@ void GALGAS_stringset::enterElement (const GALGAS_string & inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::class_func_setWithString (const GALGAS_string & inString
+GGS_stringset GGS_stringset::class_func_setWithString (const GGS_string & inString
                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_stringset result ;
+  GGS_stringset result ;
   if (inString.isValid ()) {
     result = class_func_emptySet (THERE) ;
     result.addAssign_operation (inString COMMA_HERE) ;
@@ -1072,9 +1072,9 @@ GALGAS_stringset GALGAS_stringset::class_func_setWithString (const GALGAS_string
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::class_func_setWithStringList (const GALGAS_stringlist & inStringList
+GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist & inStringList
                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_stringset result ;
+  GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
     cEnumerator_stringlist enumerator (inStringList, EnumerationOrder::up) ;
@@ -1091,9 +1091,9 @@ GALGAS_stringset GALGAS_stringset::class_func_setWithStringList (const GALGAS_st
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset GALGAS_stringset::class_func_setWithLStringList (const GALGAS_lstringlist & inStringList
+GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlist & inStringList
                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_stringset result ;
+  GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
     cEnumerator_lstringlist enumerator (inStringList, EnumerationOrder::up) ;

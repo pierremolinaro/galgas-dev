@@ -4,13 +4,13 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!RETURN_TYPE_IDENTIFIER% extensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const class GALGAS_%![TYPE_NAME identifierRepresentation]% & inObject%
+class GGS_%!RETURN_TYPE_IDENTIFIER% extensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const class GGS_%![TYPE_NAME identifierRepresentation]% & inObject%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)
     %,\n%!^
     if mIsConstant then
-      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]
+      %const class GGS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]
     else
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      %class GGS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
   end
   %,\n%!^

@@ -26,15 +26,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_object ;
-class GALGAS_objectlist ;
+class GGS_object ;
+class GGS_objectlist ;
 class Compiler ;
 
 //--------------------------------------------------------------------------------------------------
 
 class cObjectArray final {
 //--- Default constructor
-  public: cObjectArray (const GALGAS_objectlist & inObjectList,
+  public: cObjectArray (const GGS_objectlist & inObjectList,
                         Compiler * inCompiler
                         COMMA_LOCATION_ARGS) ;
 
@@ -49,10 +49,10 @@ class cObjectArray final {
   public: inline uint32_t count (void) const { return mCount ; }
 
 //--- Object at index
-  public: GALGAS_object objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public: GGS_object objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Attributes
-  private: GALGAS_object * mArray ;
+  private: GGS_object * mArray ;
   private: uint32_t mCount ;
 } ;
 

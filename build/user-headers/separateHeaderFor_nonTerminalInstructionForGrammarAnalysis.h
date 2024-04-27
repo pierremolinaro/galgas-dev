@@ -15,24 +15,24 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
   #endif
 
 //--------------------------------- Initializers
-  public: void nonTerminalInstructionForGrammarAnalysis_init_21__21__21_ (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_lstring & inOperand1,
-                                                                          const class GALGAS_uint & inOperand2,
+  public: void nonTerminalInstructionForGrammarAnalysis_init_21__21__21_ (const class GGS_location & inOperand0,
+                                                                          const class GGS_lstring & inOperand1,
+                                                                          const class GGS_uint & inOperand2,
                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension getter isLinear
-  public: virtual class GALGAS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GGS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension method tikzNodeForSyntaxInstruction
-  public: virtual void method_tikzNodeForSyntaxInstruction (class GALGAS_rowList & arg_ioRowList,
-           const class GALGAS_uint arg_inRow,
-           class GALGAS_uint & arg_ioColumn,
-           class GALGAS_string & arg_ioCurrentNode,
-           class GALGAS_string & arg_ioArrowShape,
-           class GALGAS_string & arg_ioArrows,
-           class GALGAS_uint & arg_ioMaxUsedRowIndex,
-           const class GALGAS_bool arg_inDebug,
+  public: virtual void method_tikzNodeForSyntaxInstruction (class GGS_rowList & arg_ioRowList,
+           const class GGS_uint arg_inRow,
+           class GGS_uint & arg_ioColumn,
+           class GGS_string & arg_ioCurrentNode,
+           class GGS_string & arg_ioArrowShape,
+           class GGS_string & arg_ioArrows,
+           class GGS_uint & arg_ioMaxUsedRowIndex,
+           const class GGS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- START OF USER ZONE 2
@@ -55,17 +55,17 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_lstring mProperty_mNonterminalSymbolName ;
-  public: GALGAS_uint mProperty_mNonterminalSymbolIndex ;
+  public: GGS_lstring mProperty_mNonterminalSymbolName ;
+  public: GGS_uint mProperty_mNonterminalSymbolIndex ;
 
 
 //--- Default constructor
   public: cPtr_nonTerminalInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_nonTerminalInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,
-                                                         const GALGAS_lstring & in_mNonterminalSymbolName,
-                                                         const GALGAS_uint & in_mNonterminalSymbolIndex
+  public: cPtr_nonTerminalInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
+                                                         const GGS_lstring & in_mNonterminalSymbolName,
+                                                         const GGS_uint & in_mNonterminalSymbolIndex
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

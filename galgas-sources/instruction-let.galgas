@@ -306,7 +306,7 @@ override method @undefinedLocalConstantDeclarationForGeneration generateInstruct
   ?!@string ioGeneratedCode
 {
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GALGAS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
+  ioGeneratedCode += "GGS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
 #······················································································································
@@ -325,7 +325,7 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
      !?ioUnusedVariableCppNameSet
      ?let @string sourceVar
   ]
-  ioGeneratedCode += "GALGAS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
+  ioGeneratedCode += "GGS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

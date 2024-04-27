@@ -18,22 +18,22 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
   #endif
 
 //--------------------------------- Initializers
-  public: void abstractSyntaxInstructionForGrammarAnalysis_init_21_ (const class GALGAS_location & inOperand0,
+  public: void abstractSyntaxInstructionForGrammarAnalysis_init_21_ (const class GGS_location & inOperand0,
                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension getter isLinear
-  public: virtual class GALGAS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+  public: virtual class GGS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension method tikzNodeForSyntaxInstruction
-  public: virtual void method_tikzNodeForSyntaxInstruction (class GALGAS_rowList & arg_ioRowList,
-           const class GALGAS_uint arg_inRow,
-           class GALGAS_uint & arg_ioColumn,
-           class GALGAS_string & arg_ioCurrentNode,
-           class GALGAS_string & arg_ioArrowShape,
-           class GALGAS_string & arg_ioArrows,
-           class GALGAS_uint & arg_ioMaxUsedRowIndex,
-           const class GALGAS_bool arg_inDebug,
+  public: virtual void method_tikzNodeForSyntaxInstruction (class GGS_rowList & arg_ioRowList,
+           const class GGS_uint arg_inRow,
+           class GGS_uint & arg_ioColumn,
+           class GGS_string & arg_ioCurrentNode,
+           class GGS_string & arg_ioArrowShape,
+           class GGS_string & arg_ioArrows,
+           class GGS_uint & arg_ioMaxUsedRowIndex,
+           const class GGS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- START OF USER ZONE 2
@@ -55,14 +55,14 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_location mProperty_mStartLocation ;
+  public: GGS_location mProperty_mStartLocation ;
 
 
 //--- Default constructor
   public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation
+  public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors

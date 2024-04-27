@@ -35,7 +35,7 @@ class cPureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class String ;
-class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
+class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ void LR1_computations (const cPureBNFproductionsList & inProductionRules,
                        const bool inPopulateHTMLHelperString,
                        const TC_UniqueArray <TC_UniqueArray <uint64_t> > & FIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                       const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                        const uint32_t inOriginalGrammarStartSymbol,
                        const String & inTargetFileName,
                        String & ioCppFileContents,

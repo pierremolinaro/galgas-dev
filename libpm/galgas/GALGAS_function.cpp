@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_function : this class implements introspection for GALGAS functions
+//  GGS_function : this class implements introspection for GALGAS functions
 //
 //  This file is part of libpm library
 //
@@ -26,44 +26,44 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//                     'GALGAS_function' class
+//                     'GGS_function' class
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function::GALGAS_function (void) :
+GGS_function::GGS_function (void) :
 AC_GALGAS_root (),
 mFunctionDescriptor (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function::GALGAS_function (const C_galgas_function_descriptor * inFunctionDescriptor) :
+GGS_function::GGS_function (const C_galgas_function_descriptor * inFunctionDescriptor) :
 AC_GALGAS_root (),
 mFunctionDescriptor (inFunctionDescriptor) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function::GALGAS_function (const GALGAS_function & inSource) :
+GGS_function::GGS_function (const GGS_function & inSource) :
 AC_GALGAS_root (),
 mFunctionDescriptor (inSource.mFunctionDescriptor) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function & GALGAS_function::operator = (const GALGAS_function & inSource) {
+GGS_function & GGS_function::operator = (const GGS_function & inSource) {
   mFunctionDescriptor = inSource.mFunctionDescriptor ;
   return * this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function::~ GALGAS_function (void) {
+GGS_function::~ GGS_function (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_function::description (String & ioString,
+void GGS_function::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@function:") ;
   if (nullptr == mFunctionDescriptor) {
@@ -86,11 +86,11 @@ void GALGAS_function::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_functionlist GALGAS_function::class_func_functionList (LOCATION_ARGS) {
-  GALGAS_functionlist result = GALGAS_functionlist::class_func_emptyList (THERE) ;
+GGS_functionlist GGS_function::class_func_functionList (LOCATION_ARGS) {
+  GGS_functionlist result = GGS_functionlist::class_func_emptyList (THERE) ;
   const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
   while (nullptr != p) {
-    result.addAssign_operation (GALGAS_function (p) COMMA_HERE) ;
+    result.addAssign_operation (GGS_function (p) COMMA_HERE) ;
     p = p->mNextFunction ;
   }
   return result ;
@@ -98,9 +98,9 @@ GALGAS_functionlist GALGAS_function::class_func_functionList (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_function::class_func_isFunctionDefined (const GALGAS_string & inFunctionName
+GGS_bool GGS_function::class_func_isFunctionDefined (const GGS_string & inFunctionName
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (inFunctionName.isValid ()) {
     bool resultValue = false ;
     const String functionName = inFunctionName.stringValue () ;
@@ -109,22 +109,22 @@ GALGAS_bool GALGAS_function::class_func_isFunctionDefined (const GALGAS_string &
       resultValue = functionName == p->mFunctionName ;
       p = p->mNextFunction ;
     }
-    result = GALGAS_bool (resultValue) ;
+    result = GGS_bool (resultValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_function GALGAS_function::class_func_functionWithName (const GALGAS_string & inFunctionName
+GGS_function GGS_function::class_func_functionWithName (const GGS_string & inFunctionName
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_function result ;
+  GGS_function result ;
   if (inFunctionName.isValid ()) {
     const String functionName = inFunctionName.stringValue () ;
     const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
     while ((nullptr != p) && ! result.isValid ()) {
       if (functionName == p->mFunctionName) {
-        result = GALGAS_function (p) ;
+        result = GGS_function (p) ;
       }
       p = p->mNextFunction ;
     }
@@ -134,30 +134,30 @@ GALGAS_function GALGAS_function::class_func_functionWithName (const GALGAS_strin
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_typelist GALGAS_function::getter_formalParameterTypeList (LOCATION_ARGS) const {
-  GALGAS_typelist result = GALGAS_typelist::class_func_emptyList (THERE) ;
+GGS_typelist GGS_function::getter_formalParameterTypeList (LOCATION_ARGS) const {
+  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
   for (uint32_t i=0 ; i<mFunctionDescriptor->mParameterCount ; i++) {
-    result.addAssign_operation (GALGAS_type (mFunctionDescriptor->mFormalParameterTypeList [i]) COMMA_HERE) ;
+    result.addAssign_operation (GGS_type (mFunctionDescriptor->mFormalParameterTypeList [i]) COMMA_HERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_function::getter_name (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_string (mFunctionDescriptor->mFunctionName) ;
+GGS_string GGS_function::getter_name (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (mFunctionDescriptor->mFunctionName) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type GALGAS_function::getter_resultType (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_type (mFunctionDescriptor->mResultType) ;
+GGS_type GGS_function::getter_resultType (UNUSED_LOCATION_ARGS) const {
+  return GGS_type (mFunctionDescriptor->mResultType) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObjectList,
-                                              const GALGAS_location & inErrorLocation,
+GGS_object GGS_function::getter_invoke (const GGS_objectlist & inObjectList,
+                                              const GGS_location & inErrorLocation,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   const cObjectArray argumentsArray (inObjectList, inCompiler COMMA_THERE) ;
@@ -177,7 +177,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
   }
 //--- Check parameters
   for (uint32_t i=0 ; (i<mFunctionDescriptor->mParameterCount) && ok ; i++) {
-    const GALGAS_object parameter = argumentsArray.objectAtIndex (i COMMA_HERE) ;
+    const GGS_object parameter = argumentsArray.objectAtIndex (i COMMA_HERE) ;
     ok = parameter.isValid () ;
     if (ok) {
       const C_galgas_type_descriptor * t = parameter.getter_objectStaticType (HERE).typeValue () ;
@@ -202,7 +202,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
     }
   }
 //--- Invoke function
-  GALGAS_object result ;
+  GGS_object result ;
   if (ok) {
     result = mFunctionDescriptor->mFunctionPointer (inCompiler, argumentsArray, inErrorLocation COMMA_THERE) ;
   }
@@ -211,7 +211,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_function::objectCompare (const GALGAS_function & inOperand) const {
+ComparisonResult GGS_function::objectCompare (const GGS_function & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mFunctionDescriptor - inOperand.mFunctionDescriptor ;

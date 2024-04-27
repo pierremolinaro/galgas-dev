@@ -138,7 +138,7 @@ override method @trueExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_bool (true)"
+  outCppExpression = "GGS_bool (true)"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -154,7 +154,7 @@ override method @falseExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_bool (false)"
+  outCppExpression = "GGS_bool (false)"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

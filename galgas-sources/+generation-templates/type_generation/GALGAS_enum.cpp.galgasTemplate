@@ -2,7 +2,7 @@
 //  Enum %!TYPE_NAME%
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 %
 if HAS_ASSOCIATED_VALUES then
   %mAssociatedValues (),\n%
@@ -14,22 +14,22 @@ end
 %
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_%![mConstantName identifierRepresentation]% (%?^
+  %GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_%![mConstantName identifierRepresentation]% (%?^
   if [mAssociatedValueTypeList count] == 0 then
     %UNUSED_LOCATION_ARGS%
   else
     for (mType *) in mAssociatedValueTypeList
-    do (idx) %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
+    do (idx) %const GGS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^%COMMA_UNUSED_LOCATION_ARGS%
   end
   %) {\n%
-  %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
+  %  GGS_%!TYPE_IDENTIFIER% result ;\n%
   %  result.mEnum = Enumeration::enum_%![mConstantName identifierRepresentation]% ;\n%
   if [mAssociatedValueTypeList count] > 0 then
     %  AC_GALGAS_root * p = nullptr ;\n%
-    %  macroMyNew (p, GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% (%
+    %  macroMyNew (p, GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% (%
     for (mType *) in mAssociatedValueTypeList
     do (idx) %inAssociatedValue%![idx string]
     between %, %
@@ -47,9 +47,9 @@ end
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void GALGAS_%!TYPE_IDENTIFIER%::method_extract%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^
+    %void GGS_%!TYPE_IDENTIFIER%::method_extract%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^
     for (mType name) in mAssociatedValueTypeList do
-      %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue_%!name%,\n%!^
+      %GGS_%![mType identifierRepresentation]% & outAssociatedValue_%!name%,\n%!^
     end
     !^%Compiler * inCompiler\n%
     !^%COMMA_LOCATION_ARGS) const {\n%
@@ -61,7 +61,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
     %    s.appendCString ("method @%!TYPE_IDENTIFIER%.%!mConstantName% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
-    %    const auto ptr = (GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%    
+    %    const auto ptr = (GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%    
     for (mType name) in mAssociatedValueTypeList do (idx)
       %    outAssociatedValue_%!name% = ptr->mProperty_%![name identifierRepresentation]% ;\n%
     end
@@ -73,22 +73,22 @@ end
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------\n\n%
   if [mAssociatedValueTypeList count] > 0 then
-    %GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]%_3F_ GALGAS_%!TYPE_IDENTIFIER%::getter_get%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]%_3F_ result ;\n%
+    %GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]%_3F_ GGS_%!TYPE_IDENTIFIER%::getter_get%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]%_3F_ result ;\n%
     %  if (mEnum == Enumeration::enum_%![mConstantName identifierRepresentation]%) {\n%
-    %    const auto ptr = (const GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
-    %    result = GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% (*ptr) ;\n%
+    %    const auto ptr = (const GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+    %    result = GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% (*ptr) ;\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
   %//--------------------------------------------------------------------------------------------------\n\n%
-    %void GALGAS_%!TYPE_IDENTIFIER%::getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
+    %void GGS_%!TYPE_IDENTIFIER%::getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
     for (mType valueName) in mAssociatedValueTypeList
-    do (idx) %GALGAS_%![mType identifierRepresentation]% & out_%!valueName
+    do (idx) %GGS_%![mType identifierRepresentation]% & out_%!valueName
     between %,\n%!^
     end
     %) const {\n%
-    %  const auto ptr = (const GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+    %  const auto ptr = (const GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
     for (* value) in mAssociatedValueTypeList do
        %  out_%!value% = ptr->mProperty_%![value identifierRepresentation]% ;\n%
     end
@@ -110,14 +110,14 @@ end%
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
 %//--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (Enumeration::invalid != mEnum, Enumeration::enum_%![mConstantName identifierRepresentation]% == mEnum) ;
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_is%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_%![mConstantName identifierRepresentation]% == mEnum) ;
 }\n\n%
 end
 
 %//--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
 %                                       !^%const int32_t %
 if HAS_ASSOCIATED_VALUES then
   %inIndentation%
@@ -137,7 +137,7 @@ end
 %if GENERATE_COMPARISON then
 %//--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     if (mEnum < inOperand.mEnum) {
@@ -151,8 +151,8 @@ if HAS_ASSOCIATED_VALUES then
 for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
 %      case Enumeration::enum_%![mConstantName identifierRepresentation]%: {\n%
-%        const auto left = (GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
-%        const auto right = (GALGAS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) inOperand.mAssociatedValues.associatedValuesPointer () ;\n%
+%        const auto left = (GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
+%        const auto right = (GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: mConstantName) identifierRepresentation]% *) inOperand.mAssociatedValues.associatedValuesPointer () ;\n%
 %        result = left->objectCompare (*right) ;\n%
 %        }break ;\n%
   end

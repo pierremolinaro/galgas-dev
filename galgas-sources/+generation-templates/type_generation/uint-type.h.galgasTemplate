@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_uint : public AC_GALGAS_root {
+class GGS_uint : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint32_t mUIntValue ;
@@ -16,11 +16,11 @@ class GALGAS_uint : public AC_GALGAS_root {
   public: inline void increment (void) { mUIntValue ++ ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_uint (void) ;
+  public: GGS_uint (void) ;
 
 //--------------------------------- Native constructors
-  public: GALGAS_uint (const uint32_t inValue) ;
-  public: GALGAS_uint (const bool inValid, const uint32_t inValue) ;
+  public: GGS_uint (const uint32_t inValue) ;
+  public: GGS_uint (const bool inValid, const uint32_t inValue) ;
 
 %
 

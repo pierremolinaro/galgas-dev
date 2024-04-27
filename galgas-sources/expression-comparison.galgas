@@ -310,7 +310,7 @@ override method @comparisonExpressionForGeneration generateExpression
   case greaterThan : operatorName = "ComparisonKind::greaterThan"
   end
 #--- Generate Comparison
-  outCppExpression = "GALGAS_bool (" + operatorName + ", " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
+  outCppExpression = "GGS_bool (" + operatorName + ", " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -82,7 +82,7 @@ override method @inputJokerParameterForGeneration generateActualParameter
   !@string outCppName {
   [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   outCppName = self.mInputActualCppName
-  ioImplementation += "GALGAS_" + [self.mFormalArgumentType identifierRepresentation] + " " + outCppName + " ; // Joker input parameter\n"
+  ioImplementation += "GGS_" + [self.mFormalArgumentType identifierRepresentation] + " " + outCppName + " ; // Joker input parameter\n"
   ioJokerParametersToReleaseList += !self.mInputActualCppName
   ioOutputVariableList += !self.mInputActualCppName
 }

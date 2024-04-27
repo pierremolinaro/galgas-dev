@@ -493,7 +493,7 @@ override method @orShortExpressionForGeneration generateExpression
 #--- Generate Comparison
   let testVar = "test_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "GALGAS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
+  ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (kBoolTrue != " + testVar + ".boolEnum ()) {\n"
 #--- Right operand
   [!?ioGeneratedCode incIndentation !2]
@@ -537,8 +537,8 @@ override method @closedSliceExpressionForGeneration generateExpression
   ]
 #--- Generate Comparison
   outCppExpression =
-   "GALGAS_range (" + leftTemporaryOperand + ", "
-   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ").add_operation (GALGAS_uint (1), " + compilerCppName () + [self.mLocation commaSourceFile] + "))"
+   "GGS_range (" + leftTemporaryOperand + ", "
+   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ").add_operation (GGS_uint (1), " + compilerCppName () + [self.mLocation commaSourceFile] + "))"
 }
 
 #·····················································································································
@@ -570,7 +570,7 @@ override method @openedSliceExpressionForGeneration generateExpression
 #--- Generate Comparison
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression =
-   "GALGAS_range (" + leftTemporaryOperand + ", "
+   "GGS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName ()
    + [self.mLocation commaSourceFile] + "))"
 }

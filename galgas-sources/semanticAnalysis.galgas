@@ -1361,7 +1361,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  ioGeneratedCode += cppName + " = GALGAS_string (" + inAccessMethodName + ") ;\n"
+  ioGeneratedCode += cppName + " = GGS_string (" + inAccessMethodName + ") ;\n"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1372,7 +1372,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  ioGeneratedCode += "GALGAS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
+  ioGeneratedCode += "GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1383,7 +1383,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
-  ioGeneratedCode += "const GALGAS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
+  ioGeneratedCode += "const GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

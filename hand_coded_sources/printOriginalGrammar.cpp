@@ -35,7 +35,7 @@
 //--------------------------------------------------------------------------------------------------
 
 static void
-printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
+printInstructionsListForGrammar (const GGS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
                                  HTMLString & inHTMLfile) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, EnumerationOrder::up) ;
   while (currentInstruction.hasCurrentObject ()) {
@@ -131,7 +131,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
 //--------------------------------------------------------------------------------------------------
 
 void printOriginalGrammar (HTMLString & inHTMLfile,
-                           const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
+                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
 //--- Print message
   int32_t productionsCount = 0 ;
   cEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList, EnumerationOrder::up) ;

@@ -112,9 +112,9 @@ override method @literalStringExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   if self.mString == "" then
-    outCppExpression = "GALGAS_string::makeEmptyString ()"
+    outCppExpression = "GGS_string::makeEmptyString ()"
   else
-    outCppExpression = "GALGAS_string (" + [self.mString utf8RepresentationEscapingQuestionMark] + ")"
+    outCppExpression = "GGS_string (" + [self.mString utf8RepresentationEscapingQuestionMark] + ")"
   end
 }
 

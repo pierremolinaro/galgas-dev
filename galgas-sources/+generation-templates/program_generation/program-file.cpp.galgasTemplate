@@ -76,9 +76,9 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
         const String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
-        const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
-        const GALGAS_location location = commonCompiler->here () ;
-        const GALGAS_lstring sourceFilePath (sfp, location) ;
+        const GGS_string sfp = GGS_string (sourceFilesArray (i COMMA_HERE)) ;
+        const GGS_location location = commonCompiler->here () ;
+        const GGS_lstring sourceFilePath (sfp, location) ;
 %if [PROGRAM_RULE_LIST count] > 0 then
 %        int r = 0 ;
         %

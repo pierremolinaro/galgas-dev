@@ -28,11 +28,11 @@
 //--------------------------------------------------------------------------------------------------
 
 class HTMLString ;
-class GALGAS_syntaxComponentListForGrammarAnalysis ;
+class GGS_syntaxComponentListForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 
 void printOriginalGrammar (HTMLString & inHTMLfile,
-                           const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
+                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
 
 //--------------------------------------------------------------------------------------------------

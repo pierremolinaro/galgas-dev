@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_uint_36__34_ : public AC_GALGAS_root {
+class GGS_uint_36__34_ : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint64_t mUInt64Value ;
@@ -15,10 +15,10 @@ class GALGAS_uint_36__34_ : public AC_GALGAS_root {
   public: inline uint64_t uint64Value (void) const { return mUInt64Value ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_uint_36__34_ (void) ;
+  public: GGS_uint_36__34_ (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_uint_36__34_ (const uint64_t inValue) ;
+  public: GGS_uint_36__34_ (const uint64_t inValue) ;
 
 %
 

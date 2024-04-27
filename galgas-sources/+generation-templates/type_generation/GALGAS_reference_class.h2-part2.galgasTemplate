@@ -1,7 +1,7 @@
 //--- Properties
 %
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
-    %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+    %  public: GGS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %
 
@@ -11,7 +11,7 @@
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in INITIALIZER_ARGUMENT_LIST
-    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [INITIALIZER_ARGUMENT_LIST count] > 0 then

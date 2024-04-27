@@ -70,8 +70,8 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 //--------------------------------------------------------------------------------------------------
 
 static bool displayUnusefulSymbols (Compiler * inCompiler,
-                                    const GALGAS_location & inErrorLocation,
-                                    const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                                    const GGS_location & inErrorLocation,
+                                    const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                     const BinaryDecisionDiagramRelation & inUsefulSymbolsRelation,
                                     HTMLString & ioHTMLFileContents,
                                     const GrammarVocabulary & inVocabulary,
@@ -185,8 +185,8 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void useful_symbols_computations (Compiler * inCompiler,
-                                  const GALGAS_location & inErrorLocation,
-                                  const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                                  const GGS_location & inErrorLocation,
+                                  const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                                   const GrammarVocabulary & inVocabulary,

@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_timer : public AC_GALGAS_root {
+class GGS_timer : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
   private: Timer mTimer ;
@@ -14,7 +14,7 @@ class GALGAS_timer : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_timer (void) ;
+  public: GGS_timer (void) ;
 
 %
 

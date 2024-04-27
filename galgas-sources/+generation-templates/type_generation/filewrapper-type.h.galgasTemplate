@@ -46,7 +46,7 @@ class cDirectoryWrapper {
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_filewrapper : public AC_GALGAS_root {
+class GGS_filewrapper : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: const cDirectoryWrapper * mRootDirectoryPtr ;
   private: String mCurrentDirectory ;
@@ -56,14 +56,14 @@ class GALGAS_filewrapper : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mRootDirectoryPtr = nullptr ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_filewrapper (void) ;
+  public: GGS_filewrapper (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_filewrapper (const cDirectoryWrapper & inRootDirectory) ;
+  public: GGS_filewrapper (const cDirectoryWrapper & inRootDirectory) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_filewrapper (const GALGAS_filewrapper & inSource) ;
-  public: GALGAS_filewrapper & operator = (const GALGAS_filewrapper & inSource) ;
+  public: GGS_filewrapper (const GGS_filewrapper & inSource) ;
+  public: GGS_filewrapper & operator = (const GGS_filewrapper & inSource) ;
 
 %
 

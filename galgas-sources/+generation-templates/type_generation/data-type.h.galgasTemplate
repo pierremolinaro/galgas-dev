@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_data : public AC_GALGAS_root {
+class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: U8Data mData ;
@@ -15,10 +15,10 @@ class GALGAS_data : public AC_GALGAS_root {
   public: inline U8Data dataValue (void) const { return mData ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_data (void) ;
+  public: GGS_data (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_data (const U8Data & inData) ;
+  public: GGS_data (const U8Data & inData) ;
 
 %
 

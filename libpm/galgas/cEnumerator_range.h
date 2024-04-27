@@ -26,14 +26,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_range ;
-class GALGAS_uint ;
+class GGS_range ;
+class GGS_uint ;
 
 //--------------------------------------------------------------------------------------------------
 
 class cEnumerator_range final {
 //--- Constructor
-  public: cEnumerator_range (const GALGAS_range & inEnumeratedRange,
+  public: cEnumerator_range (const GGS_range & inEnumeratedRange,
                              const EnumerationOrder inOrder) ;
 
 //--- Destructor
@@ -49,7 +49,7 @@ class cEnumerator_range final {
   public: void gotoNextObject (void) ;
 
 //--- Current element access
-  public: GALGAS_uint current (LOCATION_ARGS) const ;
+  public: GGS_uint current (LOCATION_ARGS) const ;
 
 //---- Properties
   private: const bool mIsValid ;

@@ -23,15 +23,15 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cObjectArray::cObjectArray (const GALGAS_objectlist & inObjectList,
+cObjectArray::cObjectArray (const GGS_objectlist & inObjectList,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) :
 mArray (nullptr),
 mCount (0) {
   mCount = inObjectList.count () ;
-  macroMyNewArray (mArray, GALGAS_object, mCount) ;
+  macroMyNewArray (mArray, GGS_object, mCount) ;
   for (uint32_t i=0 ; i<mCount ; i++) {
-    mArray [i] = inObjectList.getter_mValueAtIndex (GALGAS_uint (i), inCompiler COMMA_THERE) ;
+    mArray [i] = inObjectList.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -44,7 +44,7 @@ cObjectArray::~cObjectArray (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object cObjectArray::objectAtIndex (const uint32_t inIndex
+GGS_object cObjectArray::objectAtIndex (const uint32_t inIndex
                                            COMMA_LOCATION_ARGS) const {
   macroAssertThere (inIndex < mCount, "inIndex (%ld) >= mCount (%ld)", inIndex, mCount) ;
   return mArray [inIndex] ;

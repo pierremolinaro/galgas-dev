@@ -838,7 +838,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
   result = ""
   if generateMethodDeclaration then
     result = "//--- Extension getter " + inGetterName + "\n"
-    result += "  public: virtual class GALGAS_" + [inReturnedType identifierRepresentation]
+    result += "  public: virtual class GGS_" + [inReturnedType identifierRepresentation]
     result += " getter_" + [inGetterName identifierRepresentation] + " ("
     var first = true
     for formalArgument in inArgumentTypeList
@@ -848,7 +848,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
       else
         result += ",\n           "
       end
-      result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+      result += "const class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       result += " " + formalArgument.mFormalArgumentName
     end
     if inHasCompilerArgument then
@@ -900,13 +900,13 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
       end
       switch formalArgument.mFormalArgumentPassingMode
       case argumentConstantIn :
-        result += "const class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+        result += "const class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       case argumentInOut :
-        result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
+        result += "class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
       case argumentOut :
-        result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
+        result += "class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation] + " &"
       case argumentVarIn :
-        result += "class GALGAS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
+        result += "class GGS_" + [formalArgument.mFormalArgumentType identifierRepresentation]
       end
       result += " arg_" + formalArgument.mFormalArgumentName
     end

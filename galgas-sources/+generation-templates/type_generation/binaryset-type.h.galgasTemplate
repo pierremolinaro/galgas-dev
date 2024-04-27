@@ -8,7 +8,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_binaryset : public AC_GALGAS_root {
+class GGS_binaryset : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: BinaryDecisionDiagram mBDD ;
@@ -19,10 +19,10 @@ class GALGAS_binaryset : public AC_GALGAS_root {
   public: inline BinaryDecisionDiagram bddValue (void) const { return mBDD ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_binaryset (void) ;
+  public: GGS_binaryset (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_binaryset (const BinaryDecisionDiagram & inValue) ;
+  public: GGS_binaryset (const BinaryDecisionDiagram & inValue) ;
 
 %
 

@@ -665,7 +665,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                                const GrammarVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_UniqueArray <c_LR0_automaton_transition> & inTransitionList,
-                               const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                               const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const String & inLexiqueName,
                                const String & inTargetFileName,
@@ -978,20 +978,20 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
+        if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
           ioCppFileContents.appendCString ("const ") ;
         }
-        ioCppFileContents.appendCString ("GALGAS_") ;
+        ioCppFileContents.appendCString ("GGS_") ;
         ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
+        case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
-        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
+        case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
-        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
-        case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
+        case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
+        case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
           ioCppFileContents.appendCString (" & ") ;
           break ;
         default : break ;
@@ -1148,25 +1148,25 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
           ioCppFileContents.appendCString (",\n                                ") ;
         }
-        ioCppFileContents.appendCString ("GALGAS_lstring inFilePath") ;
+        ioCppFileContents.appendCString ("GGS_lstring inFilePath") ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
         int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
             ioCppFileContents.appendCString ("const ") ;
           }
-          ioCppFileContents.appendCString ("GALGAS_") ;
+          ioCppFileContents.appendCString ("GGS_") ;
           ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
             ioCppFileContents.appendCString (" & ") ;
             break ;
           default : break ;
@@ -1178,7 +1178,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
         }
         ioCppFileContents.appendCString ("\n                                COMMA_LOCATION_ARGS) {\n");
         ioCppFileContents.appendCString ("  if (inFilePath.isValid ()) {\n"
-                             "    const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;\n"
+                             "    const GGS_string filePathAsString = inFilePath.readProperty_string () ;\n"
                              "    String filePath = filePathAsString.stringValue () ;\n"
                              "    if (! FileManager::isAbsolutePath (filePath)) {\n"
                              "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
@@ -1232,7 +1232,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "        message.appendString (\"the '\") ;\n"
                              "        message.appendString (filePath) ;\n"
                              "        message.appendString (\"' file exists, but cannot be read\") ;\n"
-                             "        const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
+                             "        const GGS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "        inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
                              "      }\n"
                              "      macroDetachSharedObject (scanner) ;\n"
@@ -1241,7 +1241,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
                              "      message.appendString (\"the '\") ;\n"
                              "      message.appendString (filePath) ;\n"
                              "      message.appendString (\"' file does not exist\") ;\n"
-                             "      const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
+                             "      const GGS_location errorLocation (inFilePath.readProperty_location ()) ;\n"
                              "      inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <FixItDescription> () COMMA_THERE) ;\n"
                              "    }\n"
                              "  }\n"
@@ -1259,27 +1259,27 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
           ioCppFileContents.appendCString (",\n                                ") ;
         }
-        ioCppFileContents.appendCString ("GALGAS_string inSourceString"
+        ioCppFileContents.appendCString ("GGS_string inSourceString"
                                      ",\n                                "
-                                     "GALGAS_string inNameString") ;
+                                     "GGS_string inNameString") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
             ioCppFileContents.appendCString ("const ") ;
           }
-          ioCppFileContents.appendCString ("GALGAS_") ;
+          ioCppFileContents.appendCString ("GGS_") ;
           ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
-          case GALGAS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut :
+          case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut :
             ioCppFileContents.appendCString (" & ") ;
             break ;
           default : break ;
@@ -1436,7 +1436,7 @@ SLR_computations (const cPureBNFproductionsList & inProductionRules,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
-                  const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,
                   String & ioCppFileContents,

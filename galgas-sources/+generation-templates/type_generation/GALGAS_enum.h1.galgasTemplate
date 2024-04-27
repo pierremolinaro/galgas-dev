@@ -2,9 +2,9 @@
 //   enum %!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Enumeration
   public: enum class Enumeration {
@@ -28,7 +28,7 @@ for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
   if [mAssociatedValueTypeList count] > 0 then
     %  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
     for (mType valueName) in mAssociatedValueTypeList
-    do (idx) %class GALGAS_%![mType identifierRepresentation]% & out_%!valueName
+    do (idx) %class GGS_%![mType identifierRepresentation]% & out_%!valueName
     between %,\n%!^
     end
     %) const ;\n%

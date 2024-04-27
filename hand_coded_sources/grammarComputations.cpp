@@ -300,15 +300,15 @@ static const char k_default_style [] = {
 static void
 analyzeGrammar (Compiler * inCompiler,
                 const String & inHTMLFileName,
-                const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                const GALGAS_lstring & inTargetFileName,
-                const GALGAS_lstring & inGrammarClass,
-                const GALGAS_uint & inOriginalGrammarStartSymbol,
+                const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                const GGS_lstring & inTargetFileName,
+                const GGS_lstring & inGrammarClass,
+                const GGS_uint & inOriginalGrammarStartSymbol,
                 const String & inLexiqueName,
-                const GALGAS_location & inErrorLocation,
-                const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
-                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                const GGS_location & inErrorLocation,
+                const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+                const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const String & inSyntaxDirectedTranslationVarName,
                 String & ioCppFileContents,
                 HTMLString & outHTMLHelperFileContents,
@@ -645,25 +645,25 @@ analyzeGrammar (Compiler * inCompiler,
 //--------------------------------------------------------------------------------------------------
 
 void
-routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21_ (const GALGAS_lstring inTargetFileName,
-                                      const GALGAS_lstring inGrammarClass,
-                                      const GALGAS_uint inOriginalGrammarStartSymbol,
-                                      const GALGAS_string inLexiqueName,
-                                      const GALGAS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
-                                      const GALGAS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
-                                      const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-                                      const GALGAS_string inHTMLFileName,
-                                      const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
-                                      const GALGAS_string inSyntaxDirectedTranslationVarName,
-                                      GALGAS_string & outCppFileContents,
-                                      GALGAS_string & outHTMLHelperFileContents,
+routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21_ (const GGS_lstring inTargetFileName,
+                                      const GGS_lstring inGrammarClass,
+                                      const GGS_uint inOriginalGrammarStartSymbol,
+                                      const GGS_string inLexiqueName,
+                                      const GGS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
+                                      const GGS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
+                                      const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
+                                      const GGS_string inHTMLFileName,
+                                      const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+                                      const GGS_string inSyntaxDirectedTranslationVarName,
+                                      GGS_string & outCppFileContents,
+                                      GGS_string & outHTMLHelperFileContents,
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
     BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
     BinaryDecisionDiagram::checkAllBDDsAreWellFormed (HERE) ;
 
-    const GALGAS_location inErrorLocation = inTargetFileName.mProperty_location ;
+    const GGS_location inErrorLocation = inTargetFileName.mProperty_location ;
 
     HTMLString HTMLHelperFileContents ;
     String CppFileContents ;
@@ -683,8 +683,8 @@ routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21_
                     CppFileContents,
                     HTMLHelperFileContents,
                     populateHTMLHelperString) ;
-    outHTMLHelperFileContents = GALGAS_string (HTMLHelperFileContents) ;
-    outCppFileContents = GALGAS_string (CppFileContents) ;
+    outHTMLHelperFileContents = GGS_string (HTMLHelperFileContents) ;
+    outCppFileContents = GGS_string (CppFileContents) ;
   }
 }
 

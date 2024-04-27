@@ -344,7 +344,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
-  outCppExpression = "GALGAS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
+  outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -376,7 +376,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
     ]
     parameterList += !parameter
   end
-  outCppExpression = "GALGAS_string (filewrapperTemplate_" + [self.mFilewrapperName identifierRepresentation] + "_" + [self.mFilewrapperTemplateName identifierRepresentation]
+  outCppExpression = "GGS_string (filewrapperTemplate_" + [self.mFilewrapperName identifierRepresentation] + "_" + [self.mFilewrapperTemplateName identifierRepresentation]
                   + " (" + compilerCppName ()
   for (mValue) in parameterList do
     outCppExpression += ", " + mValue
@@ -403,7 +403,7 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   !@string outCppExpression {
 #---
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
-  outCppExpression = if self.mIsTextFile then "GALGAS_string" else "GALGAS_data" end
+  outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end
   outCppExpression += " (gWrapperFileContent_" + [self.mFilewrapperFileIndex string] + "_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 

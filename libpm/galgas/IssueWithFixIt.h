@@ -28,10 +28,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_stringlist ;
-class GALGAS_lstringlist ;
-class GALGAS_string ;
-class GALGAS_stringset ;
+class GGS_stringlist ;
+class GGS_lstringlist ;
+class GGS_string ;
+class GGS_stringset ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -82,24 +82,24 @@ class IssueWithFixIt final {
 
 void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GALGAS_stringlist & inList) ;
+                         const GGS_stringlist & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
 void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GALGAS_lstringlist & inList) ;
+                         const GGS_lstringlist & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
 void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GALGAS_string & inString) ;
+                         const GGS_string & inString) ;
 
 //--------------------------------------------------------------------------------------------------
 
 void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GALGAS_stringset & inStringSet) ;
+                         const GGS_stringset & inStringSet) ;
 
 //--------------------------------------------------------------------------------------------------

@@ -8,7 +8,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement::cMapElement (const GALGAS_lstring & inLKey
+cMapElement::cMapElement (const GGS_lstring & inLKey
                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mProperty_lkey (inLKey) {

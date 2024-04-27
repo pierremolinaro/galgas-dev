@@ -353,7 +353,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Get synthetized attributes
   for (mTypeName mTargetVarCppName mSourceLexicalAttributeName) in self.mTerminalCheckAssignementList do
     if mTypeName != "" then
-      ioGeneratedCode += "GALGAS_" + [mTypeName identifierRepresentation] + " "
+      ioGeneratedCode += "GGS_" + [mTypeName identifierRepresentation] + " "
     else
     end
     ioGeneratedCode += mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"

@@ -32,8 +32,8 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_terminalSymbolsMapForGrammarAnalysis ;
-class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
+class GGS_terminalSymbolsMapForGrammarAnalysis ;
+class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -47,8 +47,8 @@ class GrammarVocabulary final {
   public: ~ GrammarVocabulary (void) ;
 
 //--- Build vocabulary from original grammar
-  public: void buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+  public: void buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                                const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                 const uint32_t inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol

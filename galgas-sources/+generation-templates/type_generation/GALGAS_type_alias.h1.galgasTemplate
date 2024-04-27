@@ -4,5 +4,5 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-typedef GALGAS_%!REFERENCED_TYPE_IDENTIFIER% GALGAS_%!ALIAS_TYPE_IDENTIFIER% ;
+typedef GGS_%!REFERENCED_TYPE_IDENTIFIER% GGS_%!ALIAS_TYPE_IDENTIFIER% ;
 

@@ -4,23 +4,23 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public %
+class GGS_%!TYPE_IDENTIFIER% : public %
   if SUPER_TYPE_IDENTIFIER == ""
   then %AC_GALGAS_reference_class%
-  else %GALGAS_%!SUPER_TYPE_IDENTIFIER
+  else %GGS_%!SUPER_TYPE_IDENTIFIER
   end% {
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GALGAS_%!TYPE_IDENTIFIER% (const class cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const class cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
 //--------------------------------- Property access
 %
 for (mPropertyTypeEntry mPropertyName * mHasSetter *) in CURRENT_PROPERTY_LIST do
-  %  public: class GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const ;\n%
+  %  public: class GGS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const ;\n%
   if mHasSetter then
-    %  public: void setProperty_%![mPropertyName identifierRepresentation]% (const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inValue) ;\n%
+    %  public: void setProperty_%![mPropertyName identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue) ;\n%
   end
   %\n%
 end

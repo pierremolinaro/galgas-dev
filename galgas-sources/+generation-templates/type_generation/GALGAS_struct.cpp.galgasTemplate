@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 %
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
   do %mProperty_%![mPropertyName identifierRepresentation]% ()%
@@ -10,20 +10,20 @@ end% {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
+GGS_%!TYPE_IDENTIFIER%::~ GGS_%!TYPE_IDENTIFIER% (void) {
 }
 
 %
 if GENERATE_SYNTHETIZED_INITIALIZER then
 %//---Synthetized initializer -----------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%?^
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::%![[INITIALIZER_ARGUMENT_LIST initializerSignature] identifierRepresentation]% (%?^
   for (typeEntry name 3*) in INITIALIZER_ARGUMENT_LIST do
-    %const GALGAS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
+    %const GGS_%![typeEntry identifierRepresentation]% & in_%![name identifierRepresentation]%,\n%!^
   end
           %Compiler * inCompiler
           %!^%COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   result.setInitializedProperties (inCompiler) ;
 %
   for (* name 3*) in INITIALIZER_ARGUMENT_LIST do
@@ -35,7 +35,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::%![[INITIALIZER_ARGUMENT_LI
 %end
 %//--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::setInitializedProperties (%
+void GGS_%!TYPE_IDENTIFIER%::setInitializedProperties (%
 if CONSTRUCTOR_NEEDS_COMPILER_VAR then
   %Compiler * inCompiler%
 else
@@ -46,9 +46,9 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (%?^
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
-  do (IDX) %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
+  do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end%) :\n%
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do (IDX)
@@ -60,19 +60,19 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_new (%?^
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_new (%?^
 if [INITIALIZER_ARGUMENT_LIST count] == 0 then
   %Compiler * inCompiler\n%
   !^%COMMA_UNUSED_LOCATION_ARGS) {
 %else
 for (propertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST
-  do %const GALGAS_%![propertyTypeEntry identifierRepresentation]% & in_%!propertyName.string%,\n%!^
+  do %const GGS_%![propertyTypeEntry identifierRepresentation]% & in_%!propertyName.string%,\n%!^
 end
   %Compiler * inCompiler\n%
   !^%COMMA_UNUSED_LOCATION_ARGS) {
 %
 end
-%  GALGAS_%!TYPE_IDENTIFIER% result ;
+%  GGS_%!TYPE_IDENTIFIER% result ;
   result.setInitializedProperties (inCompiler) ;
 %
 for (mPropertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST do
@@ -83,7 +83,7 @@ for (mPropertyTypeEntry propertyName 3*) in INITIALIZER_ARGUMENT_LIST do
 
 %if GENERATE_COMPARISON then%//--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
   %  if (result == ComparisonResult::operandEqual) {\n%
@@ -95,7 +95,7 @@ end
 
 %end%//--------------------------------------------------------------------------------------------------
 
-bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
+bool GGS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return %
     for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
       do %mProperty_%![mPropertyName identifierRepresentation]%.isValid ()%
@@ -106,7 +106,7 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
+void GGS_%!TYPE_IDENTIFIER%::drop (void) {
 %  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do %  mProperty_%![mPropertyName identifierRepresentation]%.drop () ;\n%
   end
@@ -114,7 +114,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
                               %!^%const int32_t inIndentation) const {
   ioString.appendCString ("<struct @%!TYPE_NAME%:") ;
   if (! isValid ()) {

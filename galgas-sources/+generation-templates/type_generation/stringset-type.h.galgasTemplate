@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_stringset : public AC_GALGAS_root {
+class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: class cSharedStringsetRoot * mSharedRoot ;
 
@@ -13,10 +13,10 @@ class GALGAS_stringset : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_stringset (void) ;
+  public: GGS_stringset (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public: virtual ~ GALGAS_stringset (void) ;
+  public: virtual ~ GGS_stringset (void) ;
 
 //--------------------------------- In debug mode : check method
   protected: void checkStringset (LOCATION_ARGS) const ;

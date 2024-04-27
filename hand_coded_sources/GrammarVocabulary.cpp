@@ -48,8 +48,8 @@ GrammarVocabulary::~GrammarVocabulary (void) {
 //--------------------------------------------------------------------------------------------------
 
 void GrammarVocabulary::
-buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                 const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                  const uint32_t inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols

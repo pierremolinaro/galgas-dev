@@ -15,7 +15,7 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
 %  public: void %!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% (%?^
     for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
       if isConstant then %const % else end
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
+      %class GGS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
     end
     %Compiler * inCompiler) ;
 %end%

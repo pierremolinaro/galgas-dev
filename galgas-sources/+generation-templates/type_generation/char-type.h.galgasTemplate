@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_char : public AC_GALGAS_root {
+class GGS_char : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: utf32 mCharValue ;
@@ -15,10 +15,10 @@ class GALGAS_char : public AC_GALGAS_root {
   public: inline utf32 charValue (void) const { return mCharValue ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_char (void) ;
+  public: GGS_char (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_char (const utf32 inValue) ;
+  public: GGS_char (const utf32 inValue) ;
 
 %
 

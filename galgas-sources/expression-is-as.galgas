@@ -294,15 +294,15 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   [self.mCastType addHeaderFileName !?ioInclusionSet]
   switch self.mTypeComparisonKind
   case equal :
-    outCppExpression = "GALGAS_bool (" + receiverExpression
+    outCppExpression = "GGS_bool (" + receiverExpression
       + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
       + typeNameRepresentation + ")"
   case inherited :
-    outCppExpression = "GALGAS_bool (nullptr != dynamic_cast <const cPtr_"
+    outCppExpression = "GGS_bool (nullptr != dynamic_cast <const cPtr_"
     + typeNameRepresentation
     + " *> (" + receiverExpression + ".ptr ()))"
   case strictlyInherited :
-    outCppExpression = "GALGAS_bool ((" + receiverExpression
+    outCppExpression = "GGS_bool ((" + receiverExpression
       + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
       + typeNameRepresentation + ") && (nullptr != dynamic_cast <const cPtr_"
     + typeNameRepresentation
@@ -331,7 +331,7 @@ override method @castInExpressionForGeneration generateExpression
     ?let @string receiverExpression
   ]
 #---
-  ioGeneratedCode += "GALGAS_" + [self.mTypeName identifierRepresentation]
+  ioGeneratedCode += "GGS_" + [self.mTypeName identifierRepresentation]
   + " " + outCppExpression + " ;\n"
   + "if (" + receiverExpression + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
@@ -382,7 +382,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
     ?let @string receiverExpression
   ]
 #--- Generate code
-  outCppExpression = "GALGAS_" + [self.mResultType identifierRepresentation]
+  outCppExpression = "GGS_" + [self.mResultType identifierRepresentation]
   + "::extractObject (" + receiverExpression
   + ", " + compilerCppName ()
   + [self.mLocation commaSourceFile] + ")"

@@ -146,10 +146,10 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 //                         I N T R O S P E C T I O N
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
+GGS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
 %for (mTerminalName * * * * *) in TERMINAL_LIST
-  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
+  do %  result.addAssign_operation (GGS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
   end
 %  return result ;
 }

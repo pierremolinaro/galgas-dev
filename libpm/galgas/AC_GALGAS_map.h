@@ -29,14 +29,14 @@
 
 class cSharedMapRoot ;
 class cMapElement ;
-class GALGAS_lstring ;
-class GALGAS_string ;
-class GALGAS_stringset ;
-class GALGAS_lstringlist ;
-class GALGAS_stringlist ;
-class GALGAS_bool ;
-class GALGAS_uint ;
-class GALGAS_location ;
+class GGS_lstring ;
+class GGS_string ;
+class GGS_stringset ;
+class GGS_lstringlist ;
+class GGS_stringlist ;
+class GGS_bool ;
+class GGS_uint ;
+class GGS_location ;
 class LocationInSource ;
 class AC_GALGAS_map ;
 class capCollectionElement ;
@@ -93,33 +93,33 @@ class AC_GALGAS_map : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search for 'with' read only instruction
-  public: VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GALGAS_string & inKey) const ;
+  public: VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GGS_string & inKey) const ;
 
   public: VIRTUAL_IN_DEBUG cCollectionElement * readWriteAccessForWithInstructionWithErrorMessage (Compiler * inCompiler,
-                                                                                                    const GALGAS_lstring & inKey,
+                                                                                                    const GGS_lstring & inKey,
                                                                                                     const char * inSearchErrorMessage
                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
   protected: VIRTUAL_IN_DEBUG cMapNode * searchEntryInMap (const String & inKey) const ;
 
-  protected: VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GGS_lstring & inKey,
                                                                         Compiler * inCompiler,
                                                                         const char * inSearchErrorMessage
                                                                         COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GGS_string & inKey,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GALGAS_string & inKey) const ;
+  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GGS_string & inKey) const ;
 
-  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GGS_string & inKey,
                                                                           const bool inErrorOnUnknownKey,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GGS_lstring & inKey,
                                                                           Compiler * inCompiler,
                                                                           const char * inSearchErrorMessage
                                                                           COMMA_LOCATION_ARGS) ;
@@ -129,7 +129,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
                                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Remove
-  protected: VIRTUAL_IN_DEBUG void performRemove (GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG void performRemove (GGS_lstring & inKey,
                                                    capCollectionElement & outResult,
                                                    Compiler * inCompiler,
                                                    const char * inRemoveErrorMessage
@@ -137,24 +137,24 @@ class AC_GALGAS_map : public AC_GALGAS_root {
 
 
 //--------------------------------- Readers
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_levels (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_uint getter_levels (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKey (const GALGAS_string & inKey
+  public: VIRTUAL_IN_DEBUG GGS_bool getter_hasKey (const GGS_string & inKey
                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKeyAtLevel (const GALGAS_string & inKey,
-                                                             const GALGAS_uint & inLevel
+  public: VIRTUAL_IN_DEBUG GGS_bool getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                             const GGS_uint & inLevel
                                                              COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
+  public: VIRTUAL_IN_DEBUG GGS_location getter_locationForKey (const GGS_string & inKey,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_stringset getter_keySet (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_stringset getter_keySet (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_keyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_keyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_uint getter_count (LOCATION_ARGS) const ;
 
 //--------------------------------- Introspection
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const override = 0 ;

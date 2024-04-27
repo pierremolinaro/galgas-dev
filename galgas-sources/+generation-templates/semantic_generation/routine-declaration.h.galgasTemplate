@@ -7,13 +7,13 @@
 void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName mFormalArgumentCppName) in FORMAL_ARGUMENT_LIST do (IDX)
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      %const class GGS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      %class GGS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      %class GGS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      %class GGS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
     %,\n%!^
   end

@@ -11,11 +11,11 @@
 //--------------------------------------------------------------------------------------------------
 
 static bool gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]% = false ;
-static GALGAS_%!RETURN_TYPE_IDENTIFIER% gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% ;
+static GGS_%!RETURN_TYPE_IDENTIFIER% gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% ;
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%class Compiler * inCompiler
+GGS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%class Compiler * inCompiler
               %!^%COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]%) {
     gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% = onceFunction_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE) ;
@@ -51,19 +51,19 @@ static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifier
 
 %
 if [FORMAL_ARGUMENT_LIST count] == 0 then
-  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
+  %static GGS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
                                              !^%const cObjectArray & /* inEffectiveParameterArray */,\n%
-                                             !^%const GALGAS_location & /* inErrorLocation */\n%
+                                             !^%const GGS_location & /* inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE).getter_object (THERE) ;\n%
   %}\n%
 else
-  %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
+  %static GGS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%Compiler * inCompiler,\n%
                                              !^%const cObjectArray & inEffectiveParameterArray,\n%
-                                             !^%const GALGAS_location & /* inErrorLocation*/\n%
+                                             !^%const GGS_location & /* inErrorLocation*/\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)
-    %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler COMMA_THERE) ;\n%
+    %  const GGS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GGS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler COMMA_THERE) ;\n%
   end
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)

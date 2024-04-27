@@ -8,16 +8,16 @@ class cMapElement_%!TYPE_IDENTIFIER% : public cMapElement {
 //--- Map attributes
 %
     for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-      do %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+      do %  public: GGS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     end
 %
 //--- Constructors
-  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
+  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
              %!^%COMMA_LOCATION_ARGS) ;
  
-  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
+  public: cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_lstring & inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
-    do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;

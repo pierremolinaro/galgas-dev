@@ -354,7 +354,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName]
 #--- Index
   if [self.mIndexCppName count] > 0 then
-    ioGeneratedCode += "GALGAS_uint " + self.mIndexCppName + " (0) ;\n"
+    ioGeneratedCode += "GGS_uint " + self.mIndexCppName + " (0) ;\n"
   end
 #---
   ioGeneratedCode += "if (" + foreachVarCppName + ".isValid ()) {\n"

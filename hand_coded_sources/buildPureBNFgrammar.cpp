@@ -39,7 +39,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
+static void fixNewNonterminalSymbolsForList (const GGS_syntaxInstructionListForGrammarAnalysis & inList,
                                              GrammarVocabulary & ioVocabulary,
                                              const String & inSyntaxComponentName,
                                              int32_t & ioCount) {
@@ -365,7 +365,7 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
 //--------------------------------------------------------------------------------------------------
 
 void
-buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                      GrammarVocabulary & ioVocabulary,
                      cPureBNFproductionsList & ioProductions) {
 //--- Fix new non terminal symbols index and names

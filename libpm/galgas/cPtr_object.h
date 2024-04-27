@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_type ;
+class GGS_type ;
 class AC_GALGAS_root ;
 
 //--------------------------------------------------------------------------------------------------
@@ -51,8 +51,8 @@ class cPtr_object : public SharedObject {
   public: const AC_GALGAS_root * embeddedObjectPtr (void) const { return mEmbeddedObjectPtr ; }
 
 //--- Accessing embedded object types
-  public: GALGAS_type objectStaticType (void) const ;
-  public: GALGAS_type objectDynamicType (void) const ;
+  public: GGS_type objectStaticType (void) const ;
+  public: GGS_type objectDynamicType (void) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

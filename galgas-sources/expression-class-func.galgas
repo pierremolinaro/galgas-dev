@@ -334,7 +334,7 @@ refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
       ]
       parameterList += !parameter
     end
-    outCppExpression =  "GALGAS_"  + [self.classFuncType identifierRepresentation]
+    outCppExpression =  "GGS_"  + [self.classFuncType identifierRepresentation]
     outCppExpression += "::class_func_" + [self.classFuncName identifierRepresentation]
     outCppExpression += " ("
     for (mValue) in parameterList

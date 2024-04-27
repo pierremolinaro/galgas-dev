@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//   GALGAS_data : this class implements the GALGAS 'data' native type
+//   GGS_data : this class implements the GALGAS 'data' native type
 //
 //  This file is part of libpm library
 //
@@ -29,10 +29,10 @@
 #include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
-//   GALGAS_data
+//   GGS_data
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data::GALGAS_data (void) :
+GGS_data::GGS_data (void) :
 AC_GALGAS_root (),
 mIsValid (false),
 mData () {
@@ -40,7 +40,7 @@ mData () {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data::GALGAS_data (const U8Data & inData) :
+GGS_data::GGS_data (const U8Data & inData) :
 AC_GALGAS_root (),
 mIsValid (true),
 mData (inData) {
@@ -48,28 +48,28 @@ mData (inData) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data GALGAS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
-  return GALGAS_data (U8Data ()) ;
+GGS_data GGS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
+  return GGS_data (U8Data ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data GALGAS_data::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_data (U8Data ()) ;
+GGS_data GGS_data::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_data (U8Data ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_data GALGAS_data::class_func_dataWithContentsOfFile (const GALGAS_string & inFilePath,
+GGS_data GGS_data::class_func_dataWithContentsOfFile (const GGS_string & inFilePath,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_data result ;
+  GGS_data result ;
   if (inFilePath.isValid()){
     U8Data binaryData ;
     const bool ok = FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
     if (ok) {
 
-      result = GALGAS_data (binaryData) ;
+      result = GGS_data (binaryData) ;
     }else{
       String s = "cannot read binary file at path '" ;
       s.appendString (inFilePath.stringValue ()) ;
@@ -82,7 +82,7 @@ GALGAS_data GALGAS_data::class_func_dataWithContentsOfFile (const GALGAS_string 
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) const {
+ComparisonResult GGS_data::objectCompare (const GGS_data & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t r = mData.compareWithData (inOperand.mData) ;
@@ -99,7 +99,7 @@ ComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::description (String & ioString,
+void GGS_data::description (String & ioString,
                                const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@data:") ;
   if (isValid ()) {
@@ -113,18 +113,18 @@ void GALGAS_data::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_data::getter_count (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint GGS_data::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (uint32_t (mData.count ())) ;
+    result = GGS_uint (uint32_t (mData.count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GGS_string GGS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
   if (isValid ()) {
     String s ;
     s.appendUnsigned (mData (0 COMMA_HERE)) ;
@@ -135,14 +135,14 @@ GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) c
         s.appendCString ("\n") ;
       }
     }
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendByte (GALGAS_uint inArgument0,
+void GGS_data::setter_appendByte (GGS_uint inArgument0,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
@@ -157,7 +157,7 @@ void GALGAS_data::setter_appendByte (GALGAS_uint inArgument0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendShortBE (GALGAS_uint inArgument0,
+void GGS_data::setter_appendShortBE (GGS_uint inArgument0,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
@@ -173,7 +173,7 @@ void GALGAS_data::setter_appendShortBE (GALGAS_uint inArgument0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendShortLE (GALGAS_uint inArgument0,
+void GGS_data::setter_appendShortLE (GGS_uint inArgument0,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
@@ -189,7 +189,7 @@ void GALGAS_data::setter_appendShortLE (GALGAS_uint inArgument0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendUIntBE (GALGAS_uint inArgument0
+void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
@@ -202,7 +202,7 @@ void GALGAS_data::setter_appendUIntBE (GALGAS_uint inArgument0
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendUIntLE (GALGAS_uint inArgument0
+void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
@@ -215,7 +215,7 @@ void GALGAS_data::setter_appendUIntLE (GALGAS_uint inArgument0
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendUTF_38_String (GALGAS_string inString
+void GGS_data::setter_appendUTF_38_String (GGS_string inString
                                               COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
     const String s = inString.stringValue () ;
@@ -233,7 +233,7 @@ void GALGAS_data::setter_appendUTF_38_String (GALGAS_string inString
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::setter_appendData (GALGAS_data inData
+void GGS_data::setter_appendData (GGS_data inData
                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (inData.isValid ()) {
     mData.appendData (inData.mData) ;
@@ -242,8 +242,8 @@ void GALGAS_data::setter_appendData (GALGAS_data inData
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFilePath,
-                                                           GALGAS_bool & outFileWritten,
+void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
+                                                           GGS_bool & outFileWritten,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   outFileWritten.drop () ;
@@ -256,7 +256,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
       FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
       needToWrite = mData != binaryData ;
     }
-    outFileWritten = GALGAS_bool (needToWrite) ;
+    outFileWritten = GGS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
         const bool verboseOptionOn = verboseOutput () ;
@@ -292,7 +292,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
+void GGS_data::method_writeToFile (GGS_string inFilePath,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
@@ -333,7 +333,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
+void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
@@ -379,11 +379,11 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
 
 class cCollectionElement_data : public cCollectionElement {
 //--- Private member
-  protected: GALGAS_uint mProperty_data ;
-  public: inline GALGAS_uint attribute_data (void) const { return mProperty_data ; }
+  protected: GGS_uint mProperty_data ;
+  public: inline GGS_uint attribute_data (void) const { return mProperty_data ; }
 
 //--- Default constructor
-  public: cCollectionElement_data (const GALGAS_uint & inData
+  public: cCollectionElement_data (const GGS_uint & inData
                                    COMMA_LOCATION_ARGS) ;
 
 //--- No copy
@@ -405,7 +405,7 @@ class cCollectionElement_data : public cCollectionElement {
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_data::cCollectionElement_data (const GALGAS_uint & inData
+cCollectionElement_data::cCollectionElement_data (const GGS_uint & inData
                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mProperty_data (inData) {
@@ -451,12 +451,12 @@ void cCollectionElement_data::description (String & ioString, const int32_t inIn
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
+void GGS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   const int32_t count = mData.count () ;
   inEnumerationArray.setCapacity (uint32_t (count)) ;
   for (int32_t i=0 ; i<count ; i++) {
     cCollectionElement_data * p = nullptr ;
-    macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData (i COMMA_HERE)) COMMA_HERE)) ;
+    macroMyNew (p, cCollectionElement_data (GGS_uint (mData (i COMMA_HERE)) COMMA_HERE)) ;
     capCollectionElement object ;
     object.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -466,7 +466,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_data::cEnumerator_data (const GALGAS_data & inEnumeratedObject,
+cEnumerator_data::cEnumerator_data (const GGS_data & inEnumeratedObject,
                                     const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
@@ -474,7 +474,7 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
+GGS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
   const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
   macroValidSharedObject (p, cCollectionElement_data) ;
   return p->attribute_data () ;
@@ -482,7 +482,7 @@ GALGAS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint cEnumerator_data::current (LOCATION_ARGS) const {
+GGS_uint cEnumerator_data::current (LOCATION_ARGS) const {
   const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
   macroValidSharedObject (p, cCollectionElement_data) ;
   return p->attribute_data () ;

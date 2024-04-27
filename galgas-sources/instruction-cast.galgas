@@ -295,7 +295,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
     end
     if [mCastedVarCppName count] > 0 then
       ioGeneratedCode +=
-        "  GALGAS_" + [mType identifierRepresentation]
+        "  GGS_" + [mType identifierRepresentation]
       + " " + mCastedVarCppName + " ((cPtr_" + [mType identifierRepresentation]
       + " *) " + castCppVarName + ".ptr ()) ;\n"
     end

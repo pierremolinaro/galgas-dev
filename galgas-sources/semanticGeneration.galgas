@@ -305,13 +305,13 @@ proc generateProcedure
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode
     case argumentConstantIn :
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
+      outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation] + " "
     case argumentInOut :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentOut :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentVarIn :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " "
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
@@ -409,15 +409,15 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
   if inIsStatic then
     outGeneratedCode += "static "
   end
-  outGeneratedCode += "GALGAS_" + [inResultType identifierRepresentation] + " "
+  outGeneratedCode += "GGS_" + [inResultType identifierRepresentation] + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
   for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
     if mIsConstant then
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " &"
+      outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation] + " &"
     else
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation]
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation]
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
 #      outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
@@ -442,7 +442,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
   end
   outGeneratedCode += " {\n"
 #--- Declare returned variable
-  outGeneratedCode += "  GALGAS_" + [inResultType identifierRepresentation]
+  outGeneratedCode += "  GGS_" + [inResultType identifierRepresentation]
                    +  " " + inResultVariableCppName + " ; // Returned variable\n"
 #--- Generate routine body
   outGeneratedCode += routineBody
@@ -488,15 +488,15 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
   end
   [!?routineBody decIndentation !2]
 #--- Generate header
-  outGeneratedCode += "GALGAS_" + [inResultType identifierRepresentation] + " "
+  outGeneratedCode += "GGS_" + [inResultType identifierRepresentation] + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
   for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
     if mIsConstant then
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation]
+      outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation]
     else
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation]
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation]
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
@@ -517,7 +517,7 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS) const {\n"
 #--- Declare returned variable
-  outGeneratedCode += "  GALGAS_" + [inResultType identifierRepresentation]
+  outGeneratedCode += "  GGS_" + [inResultType identifierRepresentation]
                    +  " " + inResultVariableCppName + " ; // Returned variable\n"
 #--- Generate routine body
   outGeneratedCode += routineBody
@@ -583,13 +583,13 @@ proc generateExtensionSetter
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     switch mFormalArgumentPassingMode
     case argumentConstantIn :
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
+      outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation] + " "
     case argumentInOut :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentOut :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentVarIn :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " "
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
@@ -682,13 +682,13 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode
     case argumentConstantIn :
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
+      outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation] + " "
     case argumentInOut :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentOut :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " & "
     case argumentVarIn :
-      outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
+      outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation] + " "
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
@@ -768,11 +768,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
-
-#---------- Type alias
-#  template typeAliasTypeHeader1 "GALGAS_type_alias.h1.galgasTemplate"
-#    ?@string ALIAS_TYPE_IDENTIFIER
-#    ?@string REFERENCED_TYPE_IDENTIFIER
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1415,7 +1410,7 @@ refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
   #-----------------------------------------------------------------------------------------------
 
   override method appendPrimitiveTypePreDeclaration ?!@string ioHeader {
-    ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
+    ioHeader += "class GGS_" + self.mPredefinedTypeName + " ;\n"
   }
 
   #-----------------------------------------------------------------------------------------------

@@ -36,9 +36,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_location ;
-class GALGAS_string ;
-class GALGAS_lstring ;
+class GGS_location ;
+class GGS_string ;
+class GGS_lstring ;
 class C_galgas_type_descriptor ;
 
 //--------------------------------------------------------------------------------------------------
@@ -68,12 +68,12 @@ class Compiler : public SharedObject {
 //--- Sent string
   private: String mSentString ;
   private: bool mSentStringIsValid ;
-  public: GALGAS_string sentString (void) const ;
+  public: GGS_string sentString (void) const ;
 
 //--- Template String
   protected: String mTemplateString ;
   protected: LocationInSource mTemplateStringLocation ;
-  public: GALGAS_string retrieveAndResetTemplateString (void) ;
+  public: GGS_string retrieveAndResetTemplateString (void) ;
   public: void resetTemplateString (void) ;
 
 //--- Handling current character and its location
@@ -90,15 +90,15 @@ class Compiler : public SharedObject {
 //--- Handle 'here' in GALGAS
   protected: LocationInSource mStartLocationForHere ; // Set by lexique
   protected: LocationInSource mEndLocationForHere ; // Set by lexique
-  public: GALGAS_location here (void) const ;
+  public: GGS_location here (void) const ;
 
 //--- Handle 'separator' in GALGAS
-  public: GALGAS_location separator (void) const ;
+  public: GGS_location separator (void) const ;
 
 //--- Handle 'next' in GALGAS
   protected: LocationInSource mStartLocationForNext ; // Set by lexique
   protected: LocationInSource mEndLocationForNext ; // Set by lexique
-  public: GALGAS_location next (void) const ;
+  public: GGS_location next (void) const ;
 
 //--- Source file name
   public: String sourceFilePath (void) const ;
@@ -130,17 +130,17 @@ class Compiler : public SharedObject {
   public: void resetAndLoadSourceFromText (const SourceTextInString & inSourceText) ;
 
 //--- Print a message
-  public: void printMessage (const GALGAS_string & inMessage COMMA_LOCATION_ARGS) ;
+  public: void printMessage (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;
   public: void printMessage (const String & inMessage COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic error
-  public: void semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
+  public: void semanticErrorAtLocation (const GGS_location & inErrorLocation,
                                          const String & inErrorMessage,
                                          const TC_Array <FixItDescription> & inFixItArray
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic warning
-  public: void semanticWarningAtLocation (const GALGAS_location & inErrorLocation,
+  public: void semanticWarningAtLocation (const GGS_location & inErrorLocation,
                                            const String & inWarningMessage
                                            COMMA_LOCATION_ARGS) ;
 
@@ -154,33 +154,33 @@ class Compiler : public SharedObject {
   public: void onTheFlySemanticWarning (const String & inMessage COMMA_LOCATION_ARGS) ;
 
 //--- Emit a warning
-  public: void emitSemanticWarning (const GALGAS_location & inWarningLocation,
-                                     const GALGAS_string & inWarningMessage,
+  public: void emitSemanticWarning (const GGS_location & inWarningLocation,
+                                     const GGS_string & inWarningMessage,
                                      const TC_Array <FixItDescription> & inFixItArray
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error
-  public: void emitSemanticError (const GALGAS_location & inErrorLocation,
-                                   const GALGAS_string & inErrorMessage,
+  public: void emitSemanticError (const GGS_location & inErrorLocation,
+                                   const GGS_string & inErrorMessage,
                                    const TC_Array <FixItDescription> & inFixItArray
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error message with an error message that contains %K espace sequence
-  public: void semanticErrorWith_K_message (const GALGAS_lstring & inKey,
+  public: void semanticErrorWith_K_message (const GGS_lstring & inKey,
                                              TC_UniqueArray <String> & ioNearestKeyArray,
                                              const char * in_K_ErrorMessage
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error message with an error message that contains %K and %L espace sequences
-  public: void semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
+  public: void semanticErrorWith_K_L_message (const GGS_lstring & inKey,
                                                const char * in_K_L_ErrorMessage,
-                                               const GALGAS_location & inExistingKeyLocation
+                                               const GGS_location & inExistingKeyLocation
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Emit an warning message with an error message that contains %K and %L espace sequences
-  public: void semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
+  public: void semanticWarningWith_K_L_message (const GGS_lstring & inKey,
                                                  const char * in_K_L_ErrorMessage,
-                                                 const GALGAS_location & inExistingKeyLocation
+                                                 const GGS_location & inExistingKeyLocation
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Cast error

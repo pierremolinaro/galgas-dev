@@ -267,7 +267,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
     + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
   end
-  ioAssignementList += !cppName + " = GALGAS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;"
+  ioAssignementList += !cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -291,7 +291,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
     + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
   end
-  ioAssignementList += !"GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
+  ioAssignementList += !"GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -315,7 +315,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     : "the '" + self.mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
     + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
   end
-  ioAssignementList += !"const GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
+  ioAssignementList += !"const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

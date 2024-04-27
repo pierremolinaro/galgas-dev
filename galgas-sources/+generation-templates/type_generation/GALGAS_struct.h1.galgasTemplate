@@ -4,12 +4,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-  %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %  public: inline GALGAS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
+  %  public: GGS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %  public: inline GGS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
   %    return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %  }\n\n%
 end
@@ -18,24 +18,24 @@ end
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Property setters
 %
 for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
-  %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
   %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
 end%//--------------------------------- Virtual destructor
-  public: virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (%?^
+  public: GGS_%!TYPE_IDENTIFIER% (%?^
 for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
-  do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+  do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   between %,\n%!^
 end%) ;
 

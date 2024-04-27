@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
+cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
       %!^%COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE)%
 for (* mPropertyName * * *) in ATTRIBUTE_LIST
@@ -11,9 +11,9 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
+cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GGS_lstring & inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) :
@@ -73,52 +73,52 @@ ComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionEleme
 
 %end%//--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_map () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
+GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_emptyMap (LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%
-::readSubscript__3F_ (const class GALGAS_string & inKey,
+GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
+::readSubscript__3F_ (const class GGS_string & inKey,
                             Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
+  GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
   if (isValid () && inKey.isValid ()) {
     cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) searchForKey (inKey) ;
     if (nullptr == p) {
-      result = GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
+      result = GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
     }else{
-      GALGAS_%!ELEMENT_TYPE_IDENTIFIER% element ;
+      GGS_%!ELEMENT_TYPE_IDENTIFIER% element ;
       element.mProperty_lkey = p->mProperty_lkey ;
 %  for (* mPropertyName * * *) in ATTRIBUTE_LIST do
      %      element.mProperty_%![mPropertyName identifierRepresentation]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -131,25 +131,25 @@ GALGAS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
-                                                   %!^%COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_mapWithMapToOverride (%?^%const GGS_%!TYPE_IDENTIFIER% & inMapToOverride
+       %!^%COMMA_LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compiler * inCompiler\n%
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
+void GGS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) {
   cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;
@@ -164,9 +164,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::enterElement (%?^%const GALGAS_%!ELEMENT_TYPE_ID
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_lstring & inKey%
+void GGS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GGS_lstring & inKey%
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %,\n%!^%const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
+  do (IDX) %,\n%!^%const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
@@ -188,10 +188,10 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,\n%
    !^%Compiler * inCompiler%
    %\n %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = *this ;
+  GGS_%!TYPE_IDENTIFIER% result = *this ;
   cEnumerator_%!TYPE_IDENTIFIER% enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE)%
@@ -206,9 +206,9 @@ end
 
 %for (insertMethodName errorMessage shadowErrorMessage) in INSERT_METHOD_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
     for (propertyTypeEntry 4*) in ATTRIBUTE_LIST
-      do (IDX) %,\n%!^%GALGAS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+      do (IDX) %,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
     end
     %,\n %!^%Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
@@ -233,9 +233,9 @@ for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;\n\n%
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+    do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   %,\n %!^%Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) const {\n%
@@ -259,9 +259,9 @@ end
 
 for (mMethodName mErrorMessage) in REMOVE_METHOD_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GGS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+    do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
   %,\n %!^%Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) {\n%
@@ -285,9 +285,9 @@ end
 
 if HAS_INSERT_OR_REPLACE then
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GALGAS_lstring inKey%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GGS_lstring inKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-    do (IDX) %,\n%!^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+    do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
   end
   %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = nullptr ;\n%
@@ -305,12 +305,12 @@ end
 
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
-  %                                               %!^%Compiler * inCompiler\n%
-  %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
+  %GGS_%![mPropertyTypeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GGS_string & inKey,\n%
+  %            %!^%Compiler * inCompiler\n%
+  %            %!^%COMMA_LOCATION_ARGS) const {\n%
   %  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
-  %  GALGAS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
+  %  GGS_%![mPropertyTypeEntry identifierRepresentation]% result ;\n%
   %  if (nullptr != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
@@ -321,8 +321,8 @@ end
 
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
-  %                           %!^%GALGAS_string inKey,\n%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inAttributeValue,\n%
+  %                           %!^%GGS_string inKey,\n%
   %                           %!^%Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
   %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;\n%
@@ -336,8 +336,8 @@ end
 
 %//--------------------------------------------------------------------------------------------------
 
-cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction (%?^%Compiler * inCompiler,\n%
-             !^%const GALGAS_string & inKey\n%
+cMapElement_%!TYPE_IDENTIFIER% * GGS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction (%?^%Compiler * inCompiler,\n%
+             !^%const GGS_string & inKey\n%
              !^%COMMA_LOCATION_ARGS) {
   cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;
@@ -348,7 +348,7 @@ cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWi
 
 %//--------------------------------------------------------------------------------------------------
 
-cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                        %!^%const EnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
@@ -356,10 +356,10 @@ cGenericAbstractEnumerator (inOrder) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GGS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
-  return GALGAS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
+  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
   %, p->mProperty_%![mPropertyName identifierRepresentation]
 end
@@ -368,7 +368,7 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
+GGS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
@@ -376,7 +376,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
 
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %GALGAS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GGS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%

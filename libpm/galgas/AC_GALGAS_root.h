@@ -26,9 +26,9 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_object ;
-class GALGAS_type ;
-class GALGAS_string ;
+class GGS_object ;
+class GGS_type ;
+class GGS_string ;
 class String ;
 class C_galgas_type_descriptor ;
 
@@ -82,14 +82,14 @@ class AC_GALGAS_root {
                                     const int32_t inIndentation) const = 0 ;
 
 //--- Readers implemented in this class
-  public: VIRTUAL_IN_DEBUG GALGAS_string getter_description (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_string getter_description (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_type getter_staticType (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_type getter_staticType (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_type getter_dynamicType (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_type getter_dynamicType (LOCATION_ARGS) const ;
 
 //--- "object" reader
-  public: VIRTUAL_IN_DEBUG GALGAS_object getter_object (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_object getter_object (LOCATION_ARGS) const ;
   protected: virtual AC_GALGAS_root * clonedObject (void) const = 0 ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS

@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
   private: uint64_t mFlags ;
   private: bool mIsValid ;
@@ -14,8 +14,8 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Private constructor
-  private: GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) ;
+  private: GGS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) ;
 

@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_sint : public AC_GALGAS_root {
+class GGS_sint : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: int32_t mSIntValue ;
@@ -15,10 +15,10 @@ class GALGAS_sint : public AC_GALGAS_root {
   public: inline int32_t intValue (void) const { return mSIntValue ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_sint (void) ;
+  public: GGS_sint (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_sint (const int32_t inValue) ;
+  public: GGS_sint (const int32_t inValue) ;
 
 %
 

@@ -4,17 +4,17 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public: GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
-    do %,\n%!^%const class GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %,\n%!^%const class GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;

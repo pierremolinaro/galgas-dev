@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_range::cEnumerator_range (const GALGAS_range & inEnumeratedRange,
+cEnumerator_range::cEnumerator_range (const GGS_range & inEnumeratedRange,
                                       const EnumerationOrder inOrder) :
 mIsValid (inEnumeratedRange.isValid ()),
 mAscending (inOrder == EnumerationOrder::up),
@@ -82,8 +82,8 @@ void cEnumerator_range::gotoNextObject (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint cEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_uint (hasCurrentObject (), (uint32_t) (mCurrent)) ;
+GGS_uint cEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (hasCurrentObject (), (uint32_t) (mCurrent)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
+ComparisonResult GGS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GGS_%!WEAK_REF_TYPE_IDENTIFIER% & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     cPtr_weakReference_proxy * myPtr = mProxyPtr ;
@@ -20,16 +20,16 @@ ComparisonResult GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::objectCompare (const GALGAS
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
+GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (void) :
 %if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
   then %AC_GALGAS_weak_reference%
-  else %GALGAS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER%%
+  else %GGS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER%%
   end% () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
+GGS_%!WEAK_REF_TYPE_IDENTIFIER% & GGS_%!WEAK_REF_TYPE_IDENTIFIER%::operator = (const GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) {
   cPtr_weakReference_proxy * proxyPtr = nullptr ;
   acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
   if (p != nullptr) {
@@ -41,32 +41,32 @@ GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% & GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::operato
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% (const GALGAS_%!CLASS_TYPE_IDENTIFIER% & inSource) :
+GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) :
 % if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
   then %AC_GALGAS_weak_reference%
-  else %GALGAS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
+  else %GGS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
   end% (inSource) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::class_func_nil (LOCATION_ARGS) {
-  GALGAS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
+GGS_%!WEAK_REF_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::class_func_nil (LOCATION_ARGS) {
+  GGS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
   macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!CLASS_TYPE_IDENTIFIER% GALGAS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_%!CLASS_TYPE_IDENTIFIER% result ;
+GGS_%!CLASS_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_%!CLASS_TYPE_IDENTIFIER% result ;
   if (mProxyPtr != nullptr) {
     acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
       macroValidSharedObject (strongPtr, cPtr_%!CLASS_TYPE_IDENTIFIER%) ;
-      result = GALGAS_%!CLASS_TYPE_IDENTIFIER% ((cPtr_%!CLASS_TYPE_IDENTIFIER% *) strongPtr) ;
+      result = GGS_%!CLASS_TYPE_IDENTIFIER% ((cPtr_%!CLASS_TYPE_IDENTIFIER% *) strongPtr) ;
     }
   }
   return result ;

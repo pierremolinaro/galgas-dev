@@ -566,7 +566,7 @@ override method @ifInstructionForGeneration generateInstruction
         !?ioUnusedVariableCppNameSet
         ?let cppVarName
       ]
-      ioGeneratedCode += "GALGAS_" + targetTypeName + " " + targetVarCppName
+      ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
       ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
       ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
       ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
@@ -580,7 +580,7 @@ override method @ifInstructionForGeneration generateInstruction
         !?ioUnusedVariableCppNameSet
         ?let cppVarName
       ]
-      ioGeneratedCode += "const GALGAS_" + targetTypeName + " " + targetVarCppName
+      ioGeneratedCode += "const GGS_" + targetTypeName + " " + targetVarCppName
       ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
       ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
       ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"

@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_double : public AC_GALGAS_root {
+class GGS_double : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: double mDoubleValue ;
@@ -15,10 +15,10 @@ class GALGAS_double : public AC_GALGAS_root {
   public: inline double doubleValue (void) const { return mDoubleValue ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_double (void) ;
+  public: GGS_double (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_double (const double inValue) ;
+  public: GGS_double (const double inValue) ;
 
 %
 

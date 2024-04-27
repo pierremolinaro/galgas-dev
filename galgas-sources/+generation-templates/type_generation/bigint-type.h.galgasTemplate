@@ -3,8 +3,8 @@
 //   @bigint type
 //
 //--------------------------------------------------------------------------------------------------
-
-class GALGAS_bigint : public AC_GALGAS_root {
+ 
+class GGS_bigint : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
   private: BigSigned mValue ;
@@ -15,14 +15,14 @@ class GALGAS_bigint : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_bigint (void) ;
+  public: GGS_bigint (void) ;
 
 //--------------------------------- Constructor
-  public: GALGAS_bigint (const BigSigned & inValue) ;
-  public: GALGAS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: GGS_bigint (const BigSigned & inValue) ;
+  public: GGS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor
-  public: virtual ~ GALGAS_bigint (void) ;
+  public: virtual ~ GGS_bigint (void) ;
 
 %
 

@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  'GALGAS_location'
+//  'GGS_location'
 //
 //  This file is part of libpm library
 //
@@ -46,19 +46,19 @@ class InternalLocation final : public SharedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location::GALGAS_location (void) :
+GGS_location::GGS_location (void) :
 mInternalLocation (nullptr) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location::~ GALGAS_location (void) {
+GGS_location::~ GGS_location (void) {
   macroDetachSharedObject (mInternalLocation)
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location::GALGAS_location (const LocationInSource & inStartLocationInSource,
+GGS_location::GGS_location (const LocationInSource & inStartLocationInSource,
                                   const LocationInSource & inEndLocationInSource,
                                   const SourceTextInString & inSourceText) :
 AC_GALGAS_root (),
@@ -68,53 +68,53 @@ mInternalLocation (nullptr) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_location::drop (void) {
+void GGS_location::drop (void) {
   macroDetachSharedObject (mInternalLocation) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location & GALGAS_location::operator = (const GALGAS_location & inSource) {
+GGS_location & GGS_location::operator = (const GGS_location & inSource) {
   macroAssignSharedObject (mInternalLocation, inSource.mInternalLocation) ;
   return *this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location::GALGAS_location (const GALGAS_location & inSource) :
+GGS_location::GGS_location (const GGS_location & inSource) :
 mInternalLocation (nullptr) {
   macroAssignSharedObject (mInternalLocation, inSource.mInternalLocation) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-LocationInSource GALGAS_location::startLocation (void) const {
+LocationInSource GGS_location::startLocation (void) const {
   return (mInternalLocation == nullptr) ? LocationInSource () : mInternalLocation->mStartLocation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-LocationInSource GALGAS_location::endLocation (void) const {
+LocationInSource GGS_location::endLocation (void) const {
   return (mInternalLocation == nullptr) ? LocationInSource () : mInternalLocation->mEndLocation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-SourceTextInString GALGAS_location::sourceText (void) const {
+SourceTextInString GGS_location::sourceText (void) const {
   return (mInternalLocation == nullptr) ? SourceTextInString () : mInternalLocation->mSourceText ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::class_func_nowhere (UNUSED_LOCATION_ARGS) {
-  GALGAS_location result ;
+GGS_location GGS_location::class_func_nowhere (UNUSED_LOCATION_ARGS) {
+  GGS_location result ;
   macroMyNew (result.mInternalLocation, InternalLocation (SourceTextInString (), LocationInSource (), LocationInSource ()))
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_location::isValid (void) const {
+bool GGS_location::isValid (void) const {
   return mInternalLocation != nullptr ;
 }
 
@@ -122,44 +122,44 @@ bool GALGAS_location::isValid (void) const {
 //   CONSTRUCTORS
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::class_func_here (Compiler * inCompiler
+GGS_location GGS_location::class_func_here (Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->here () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::class_func_next (Compiler * inCompiler
+GGS_location GGS_location::class_func_next (Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->next () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::class_func_separator (Compiler * inCompiler
+GGS_location GGS_location::class_func_separator (Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separator () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_location::isValidAndNotNowhere (void) const {
+bool GGS_location::isValidAndNotNowhere (void) const {
   return (mInternalLocation != nullptr) && mInternalLocation->mSourceText.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_location::getter_isNowhere (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_location::getter_isNowhere (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (mInternalLocation != nullptr) {
-    result = GALGAS_bool (!mInternalLocation->mSourceText.isValid ()) ;
+    result = GGS_bool (!mInternalLocation->mSourceText.isValid ()) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inOperand) const {
+ComparisonResult GGS_location::objectCompare (const GGS_location & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     int32_t r = 0 ;
@@ -185,7 +185,7 @@ ComparisonResult GALGAS_location::objectCompare (const GALGAS_location & inOpera
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_location::description (String & ioString,
+void GGS_location::description (String & ioString,
                                    const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@location:") ;
   if (isValid ()) {
@@ -208,9 +208,9 @@ void GALGAS_location::description (String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
+GGS_string GGS_location::getter_startLocationString (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_string result ;
+  GGS_string result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
@@ -222,7 +222,7 @@ GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
       s.appendSigned (mInternalLocation->mStartLocation.lineNumber ()) ;
       s.appendCString (":") ;
       s.appendSigned (mInternalLocation->mStartLocation.columnNumber ()) ;
-      result = GALGAS_string (s) ;
+      result = GGS_string (s) ;
     }
   }
   return result ;
@@ -231,9 +231,9 @@ GALGAS_string GALGAS_location::getter_startLocationString (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
+GGS_string GGS_location::getter_endLocationString (Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_string result ;
+  GGS_string result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLocationString' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
@@ -244,7 +244,7 @@ GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
       s.appendSigned (mInternalLocation->mEndLocation.lineNumber ()) ;
       s.appendCString (":") ;
       s.appendSigned (mInternalLocation->mEndLocation.columnNumber ()) ;
-      result = GALGAS_string (s) ;
+      result = GGS_string (s) ;
     }
   }
   return result ;
@@ -253,14 +253,14 @@ GALGAS_string GALGAS_location::getter_endLocationString (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_location::getter_file (Compiler * inCompiler
+GGS_string GGS_location::getter_file (Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_string result ;
+  GGS_string result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'file' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_string (mInternalLocation->mSourceText.sourceFilePath ()) ;
+      result = GGS_string (mInternalLocation->mSourceText.sourceFilePath ()) ;
     }
   }
   return result ;
@@ -268,14 +268,14 @@ GALGAS_string GALGAS_location::getter_file (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_startLocationIndex (Compiler * inCompiler
+GGS_uint GGS_location::getter_startLocationIndex (Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startLocationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint ((uint32_t) mInternalLocation->mStartLocation.index ()) ;
+      result = GGS_uint ((uint32_t) mInternalLocation->mStartLocation.index ()) ;
     }
   }
   return result ;
@@ -283,14 +283,14 @@ GALGAS_uint GALGAS_location::getter_startLocationIndex (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_endLocationIndex (Compiler * inCompiler
+GGS_uint GGS_location::getter_endLocationIndex (Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLocationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint ((uint32_t) mInternalLocation->mEndLocation.index ()) ;
+      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.index ()) ;
     }
   }
   return result ;
@@ -298,14 +298,14 @@ GALGAS_uint GALGAS_location::getter_endLocationIndex (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_startColumn (Compiler * inCompiler
+GGS_uint GGS_location::getter_startColumn (Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startColumn' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint ((uint32_t) mInternalLocation->mStartLocation.columnNumber ()) ;
+      result = GGS_uint ((uint32_t) mInternalLocation->mStartLocation.columnNumber ()) ;
     }
   }
   return result ;
@@ -313,14 +313,14 @@ GALGAS_uint GALGAS_location::getter_startColumn (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_endColumn (Compiler * inCompiler
+GGS_uint GGS_location::getter_endColumn (Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endColumn' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint ((uint32_t) mInternalLocation->mEndLocation.columnNumber ()) ;
+      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.columnNumber ()) ;
     }
   }
   return result ;
@@ -328,14 +328,14 @@ GALGAS_uint GALGAS_location::getter_endColumn (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_startLine (Compiler * inCompiler
+GGS_uint GGS_location::getter_startLine (Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startLine' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
+      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
     }
   }
   return result ;
@@ -343,14 +343,14 @@ GALGAS_uint GALGAS_location::getter_startLine (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_location::getter_endLine (Compiler * inCompiler
+GGS_uint GGS_location::getter_endLine (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLine' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
+      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
     }
   }
   return result ;
@@ -358,10 +358,10 @@ GALGAS_uint GALGAS_location::getter_endLine (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_location::getter_union (const GALGAS_location & inOtherLocation,
+GGS_location GGS_location::getter_union (const GGS_location & inOtherLocation,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_location result ;
+  GGS_location result ;
   if (isValid () && inOtherLocation.isValid ()) {
     if (mInternalLocation->mSourceText != inOtherLocation.mInternalLocation->mSourceText) {
       inCompiler->onTheFlyRunTimeError ("'union' getter cannot be called on an @location object that is relative to an other source" COMMA_THERE) ;

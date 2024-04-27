@@ -58,8 +58,8 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
 
 //--- Readers
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_range getter_range (LOCATION_ARGS) const ;
 
 //--- Description
   public: VIRTUAL_IN_DEBUG void description (String & ioString, const int32_t inIndentation) const override ;
@@ -99,27 +99,27 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void appendList (const AC_GALGAS_list & inList) ;
 
   protected: VIRTUAL_IN_DEBUG void subListWithRange (AC_GALGAS_list & outList,
-                                                      const GALGAS_range & inRange,
+                                                      const GGS_range & inRange,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void subListFromIndex (AC_GALGAS_list & outList,
-                                                      const GALGAS_uint & inIndex,
+                                                      const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void subListToIndex (AC_GALGAS_list & outList,
-                                                    const GALGAS_uint & inIndex,
+                                                    const GGS_uint & inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG capCollectionElement readObjectAtIndex (const GALGAS_uint & inIndex,
+  protected: VIRTUAL_IN_DEBUG capCollectionElement readObjectAtIndex (const GGS_uint & inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
 
   protected: VIRTUAL_IN_DEBUG
-  cCollectionElement * uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
+  cCollectionElement * uniquelyReferencedPointerAtIndex (const GGS_uint & inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 } ;

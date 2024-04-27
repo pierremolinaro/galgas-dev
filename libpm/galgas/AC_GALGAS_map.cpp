@@ -60,7 +60,7 @@ class cSharedMapRoot : public SharedObject {
   protected: VIRTUAL_IN_DEBUG void copyCurrentAndOverridenMapsFrom (const cSharedMapRoot * inSource) ;
 
 //--------------------------------- Attribute read access
-  private: VIRTUAL_IN_DEBUG const cMapNode * findNodeForKeyInMapOrInOverridenMaps (const GALGAS_string & inKey,
+  private: VIRTUAL_IN_DEBUG const cMapNode * findNodeForKeyInMapOrInOverridenMaps (const GGS_string & inKey,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
@@ -85,51 +85,51 @@ class cSharedMapRoot : public SharedObject {
   public: VIRTUAL_IN_DEBUG void findNearestKey (const String & inKey,
                                                  TC_UniqueArray <String> & ioNearestKeyArray) const ;
 
-  protected: VIRTUAL_IN_DEBUG cMapNode * performSearch (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapNode * performSearch (const GGS_lstring & inKey,
                                                          Compiler * inCompiler,
                                                          const char * inSearchErrorMessage
                                                          COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GALGAS_string & inKey) const ;
+  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GGS_string & inKey) const ;
 
-  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GGS_string & inKey,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GGS_string & inKey,
                                                                           const bool inErrorOnUnknownKey,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GGS_lstring & inKey,
                                                                           Compiler * inCompiler,
                                                                           const char * inSearchErrorMessage
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Remove
-  protected: VIRTUAL_IN_DEBUG void performRemove (GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG void performRemove (GGS_lstring & inKey,
                                                    capCollectionElement & outResult,
                                                    Compiler * inCompiler,
                                                    const char * inRemoveErrorMessage
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Readers
-  protected: VIRTUAL_IN_DEBUG GALGAS_bool hasKey (const GALGAS_string & inKey
+  protected: VIRTUAL_IN_DEBUG GGS_bool hasKey (const GGS_string & inKey
                                                    COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG GALGAS_uint levels (UNUSED_LOCATION_ARGS) const ;
+  protected: VIRTUAL_IN_DEBUG GGS_uint levels (UNUSED_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_bool hasKeyAtLevel (const GALGAS_string & inKey,
-                                                       const GALGAS_uint & inLevel
+  public: VIRTUAL_IN_DEBUG GGS_bool hasKeyAtLevel (const GGS_string & inKey,
+                                                       const GGS_uint & inLevel
                                                        COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG GALGAS_location locationForKey (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG GGS_location locationForKey (const GGS_string & inKey,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG GALGAS_stringset keySet (LOCATION_ARGS) const ;
+  protected: VIRTUAL_IN_DEBUG GGS_stringset keySet (LOCATION_ARGS) const ;
 
-  protected: VIRTUAL_IN_DEBUG GALGAS_lstringlist keyList (LOCATION_ARGS) const ;
+  protected: VIRTUAL_IN_DEBUG GGS_lstringlist keyList (LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -428,7 +428,7 @@ cMapNode * cSharedMapRoot::findEntryInMap (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-const cMapNode * cSharedMapRoot::findNodeForKeyInMapOrInOverridenMaps (const GALGAS_string & inKey,
+const cMapNode * cSharedMapRoot::findNodeForKeyInMapOrInOverridenMaps (const GGS_string & inKey,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   const cMapNode * result = nullptr ;
@@ -464,7 +464,7 @@ cMapNode * AC_GALGAS_map::searchEntryInMap (const String & inKey) const {
 
 //--------------------------------------------------------------------------------------------------
 
-const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction (const GALGAS_string & inKey) const {
+const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction (const GGS_string & inKey) const {
   const cCollectionElement * result = nullptr ;
   if (isValid () && inKey.isValid ()) {
     cMapNode * node = mSharedMap->findEntryInMap (inKey.stringValue (), mSharedMap) ;
@@ -478,7 +478,7 @@ const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction (const GA
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement * AC_GALGAS_map::readWriteAccessForWithInstructionWithErrorMessage (Compiler * inCompiler,
-                                                                                       const GALGAS_lstring & inKey,
+                                                                                       const GGS_lstring & inKey,
                                                                                        const char * inSearchErrorMessage
                                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * result = nullptr ;
@@ -602,7 +602,7 @@ void cSharedMapRoot::performInsertOrReplace (const capCollectionElement & inAttr
   if (inAttributes.isValid ()) {
     const cMapElement * p = (cMapElement *) inAttributes.ptr () ;
     macroValidSharedObject (p, cMapElement) ;
-    const GALGAS_string string_key = p->mProperty_lkey.mProperty_string ;
+    const GGS_string string_key = p->mProperty_lkey.mProperty_string ;
     const String key = string_key.stringValue () ;
   //--- Insert or replace
     bool extension ; // Unused here
@@ -815,7 +815,7 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
             printf ("nullptr pointer in '%s', line %d\n", __FILE__, __LINE__) ;
             exit (1) ;
           }else{
-            const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
+            const GGS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
           //--- Emit error message
             if (p == nullptr) {
               printf ("nullptr pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -835,7 +835,7 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
         printf ("nullptr pointer in '%s', line %d\n", __FILE__, __LINE__) ;
         exit (1) ;
       }else{
-        const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
+        const GGS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
         inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
       }
     }
@@ -871,10 +871,10 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint AC_GALGAS_map::getter_count (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint AC_GALGAS_map::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mSharedMap->count ()) ;
+    result = GGS_uint (mSharedMap->count ()) ;
   }
   return result ;
 }
@@ -898,10 +898,10 @@ uint32_t AC_GALGAS_map::count (void) const {
 //--------------------------------------------------------------------------------------------------
 
 static void enterKeyInStringSet (const cMapNode * inNode,
-                                 GALGAS_stringset & ioResult) {
+                                 GGS_stringset & ioResult) {
   if (inNode != nullptr) {
     enterKeyInStringSet (inNode->mInfPtr, ioResult) ;
-    GALGAS_string object (inNode->mKey) ;
+    GGS_string object (inNode->mKey) ;
     ioResult.addAssign_operation (object COMMA_HERE) ;
     enterKeyInStringSet (inNode->mSupPtr, ioResult) ;
   }
@@ -909,16 +909,16 @@ static void enterKeyInStringSet (const cMapNode * inNode,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset cSharedMapRoot::keySet (LOCATION_ARGS) const {
-  GALGAS_stringset result = GALGAS_stringset::class_func_emptySet (THERE) ;
+GGS_stringset cSharedMapRoot::keySet (LOCATION_ARGS) const {
+  GGS_stringset result = GGS_stringset::class_func_emptySet (THERE) ;
   enterKeyInStringSet (mRoot, result) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringset AC_GALGAS_map::getter_keySet (LOCATION_ARGS) const {
-  GALGAS_stringset result ;
+GGS_stringset AC_GALGAS_map::getter_keySet (LOCATION_ARGS) const {
+  GGS_stringset result ;
   if (isValid ()) {
     result = mSharedMap->keySet (THERE) ;
   }
@@ -934,7 +934,7 @@ GALGAS_stringset AC_GALGAS_map::getter_keySet (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 static void enterKeyInLStringList (cMapNode * inNode,
-                                   GALGAS_lstringlist & ioResult) {
+                                   GGS_lstringlist & ioResult) {
   if (inNode != nullptr) {
     enterKeyInLStringList (inNode->mInfPtr, ioResult) ;
     cMapElement * p = (cMapElement *) inNode->mAttributes.ptr () ;
@@ -948,16 +948,16 @@ static void enterKeyInLStringList (cMapNode * inNode,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist cSharedMapRoot::keyList (LOCATION_ARGS) const {
-  GALGAS_lstringlist result = GALGAS_lstringlist::class_func_emptyList (THERE) ;
+GGS_lstringlist cSharedMapRoot::keyList (LOCATION_ARGS) const {
+  GGS_lstringlist result = GGS_lstringlist::class_func_emptyList (THERE) ;
   enterKeyInLStringList (mRoot, result) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist AC_GALGAS_map::getter_keyList (LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
+GGS_lstringlist AC_GALGAS_map::getter_keyList (LOCATION_ARGS) const {
+  GGS_lstringlist result ;
   if (isValid ()) {
     result = mSharedMap->keyList (THERE) ;
   }
@@ -972,10 +972,10 @@ GALGAS_lstringlist AC_GALGAS_map::getter_keyList (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
+GGS_location cSharedMapRoot::locationForKey (const GGS_string & inKey,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_location result ;
+  GGS_location result ;
   if (inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     cMapNode * node = findEntryInMap (key, this) ;
@@ -1000,10 +1000,10 @@ GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location AC_GALGAS_map::getter_locationForKey (const GALGAS_string & inKey,
+GGS_location AC_GALGAS_map::getter_locationForKey (const GGS_string & inKey,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_location result ;
+  GGS_location result ;
   if (isValid ()) {
     result = mSharedMap->locationForKey (inKey, inCompiler COMMA_THERE) ;
   }
@@ -1018,20 +1018,20 @@ GALGAS_location AC_GALGAS_map::getter_locationForKey (const GALGAS_string & inKe
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint cSharedMapRoot::levels (UNUSED_LOCATION_ARGS) const {
+GGS_uint cSharedMapRoot::levels (UNUSED_LOCATION_ARGS) const {
   uint32_t levelCount = 0 ;
   const cSharedMapRoot * currentMap = this ;
   while (nullptr != currentMap) {
     currentMap = currentMap->mOverridenMap ;
     levelCount ++ ;
   }
-  return GALGAS_uint (levelCount) ;
+  return GGS_uint (levelCount) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint AC_GALGAS_map::getter_levels (LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint AC_GALGAS_map::getter_levels (LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
     result = mSharedMap->levels (THERE) ;
   }
@@ -1046,24 +1046,24 @@ GALGAS_uint AC_GALGAS_map::getter_levels (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cSharedMapRoot::hasKeyAtLevel (const GALGAS_string & inKey,
-                                           const GALGAS_uint & inLevel
+GGS_bool cSharedMapRoot::hasKeyAtLevel (const GGS_string & inKey,
+                                           const GGS_uint & inLevel
                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (inKey.isValid () && inLevel.isValid ()) {
     const String key = inKey.stringValue () ;
     const cMapNode * node = findEntryInMapAtLevel (key, inLevel.uintValue (), this) ;
-    result = GALGAS_bool (nullptr != node) ;
+    result = GGS_bool (nullptr != node) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool AC_GALGAS_map::getter_hasKeyAtLevel (const GALGAS_string & inKey,
-                                                 const GALGAS_uint & inLevel
+GGS_bool AC_GALGAS_map::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                 const GGS_uint & inLevel
                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (isValid ()) {
     result = mSharedMap->hasKeyAtLevel (inKey, inLevel COMMA_THERE) ;
   }
@@ -1078,22 +1078,22 @@ GALGAS_bool AC_GALGAS_map::getter_hasKeyAtLevel (const GALGAS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool cSharedMapRoot::hasKey (const GALGAS_string & inKey
+GGS_bool cSharedMapRoot::hasKey (const GGS_string & inKey
                                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const cMapNode * node = findEntryInMap (key, this) ;
-    result = GALGAS_bool (nullptr != node) ;
+    result = GGS_bool (nullptr != node) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool AC_GALGAS_map::getter_hasKey (const GALGAS_string & inKey
+GGS_bool AC_GALGAS_map::getter_hasKey (const GGS_string & inKey
                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (isValid ()) {
     result = mSharedMap->hasKey (inKey COMMA_THERE) ;
   }
@@ -1142,7 +1142,7 @@ void cSharedMapRoot::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-cMapNode * cSharedMapRoot::performSearch (const GALGAS_lstring & inKey,
+cMapNode * cSharedMapRoot::performSearch (const GGS_lstring & inKey,
                                           Compiler * inCompiler,
                                           const char * inSearchErrorMessage
                                           COMMA_LOCATION_ARGS) const {
@@ -1161,7 +1161,7 @@ cMapNode * cSharedMapRoot::performSearch (const GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-const cCollectionElement * AC_GALGAS_map::performSearch (const GALGAS_lstring & inKey,
+const cCollectionElement * AC_GALGAS_map::performSearch (const GGS_lstring & inKey,
                                                          Compiler * inCompiler,
                                                          const char * inSearchErrorMessage
                                                          COMMA_LOCATION_ARGS) const {
@@ -1183,7 +1183,7 @@ const cCollectionElement * AC_GALGAS_map::performSearch (const GALGAS_lstring & 
 
 //--------------------------------------------------------------------------------------------------
 
-const cMapElement * cSharedMapRoot::searchForKey (const GALGAS_string & inKey) const {
+const cMapElement * cSharedMapRoot::searchForKey (const GGS_string & inKey) const {
   const cMapElement * result = nullptr ;
   if (inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -1198,7 +1198,7 @@ const cMapElement * cSharedMapRoot::searchForKey (const GALGAS_string & inKey) c
 
 //--------------------------------------------------------------------------------------------------
 
-const cMapElement * AC_GALGAS_map::searchForKey (const GALGAS_string & inKey) const {
+const cMapElement * AC_GALGAS_map::searchForKey (const GGS_string & inKey) const {
   const cMapElement * result = nullptr ;
   if (isValid ()) {
     result = mSharedMap->searchForKey (inKey) ;
@@ -1214,7 +1214,7 @@ const cMapElement * AC_GALGAS_map::searchForKey (const GALGAS_string & inKey) co
 
 //--------------------------------------------------------------------------------------------------
 
-const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GALGAS_string & inKey,
+const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GGS_string & inKey,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
   const cMapElement * result = nullptr ;
@@ -1238,7 +1238,7 @@ const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GALGAS_stri
 
 //--------------------------------------------------------------------------------------------------
 
-const cMapElement * AC_GALGAS_map::searchForReadingAttribute (const GALGAS_string & inKey,
+const cMapElement * AC_GALGAS_map::searchForReadingAttribute (const GGS_string & inKey,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   const cMapElement * result = nullptr ;
@@ -1256,7 +1256,7 @@ const cMapElement * AC_GALGAS_map::searchForReadingAttribute (const GALGAS_strin
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string & inKey,
+cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GGS_string & inKey,
                                                            const bool inErrorOnUnknownKey,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
@@ -1284,7 +1284,7 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string &
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GALGAS_string & inKey,
+cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GGS_string & inKey,
                                                           const bool inErrorOnUnknownKey,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -1306,7 +1306,7 @@ cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GALGAS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_lstring & inKey,
+cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GGS_lstring & inKey,
                                                            Compiler * inCompiler,
                                                            const char * inSearchErrorMessage
                                                            COMMA_LOCATION_ARGS) {
@@ -1331,7 +1331,7 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_lstring 
 
 //--------------------------------------------------------------------------------------------------
 
-cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GALGAS_lstring & inKey,
+cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GGS_lstring & inKey,
                                                           Compiler * inCompiler,
                                                           const char * inSearchErrorMessage
                                                           COMMA_LOCATION_ARGS) {
@@ -1474,7 +1474,7 @@ static cMapNode * internalRemoveEntry (const String & inKeyToRemove,
 
 //--------------------------------------------------------------------------------------------------
 
-void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
+void cSharedMapRoot::performRemove (GGS_lstring & inKey,
                                     capCollectionElement & outResult,
                                     Compiler * inCompiler,
                                     const char * inRemoveErrorMessage
@@ -1504,7 +1504,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
         }
       }
     //--- Emit error message
-      const GALGAS_location key_location = inKey.mProperty_location ;
+      const GGS_location key_location = inKey.mProperty_location ;
       inCompiler->semanticErrorAtLocation (key_location, message, TC_Array <FixItDescription> () COMMA_THERE) ;
     }else{ // Ok, found
       outResult = node->mAttributes ;
@@ -1519,7 +1519,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_map::performRemove (GALGAS_lstring & inKey,
+void AC_GALGAS_map::performRemove (GGS_lstring & inKey,
                                    capCollectionElement & outResult,
                                    Compiler * inCompiler,
                                    const char * inRemoveErrorMessage

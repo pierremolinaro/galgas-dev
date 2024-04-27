@@ -433,16 +433,16 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   let isStruct = [inReceiverType definition].typeKind == .structType
 #--- Generate routine body
   if isStruct then
-    outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
-       + " GALGAS_" + [className identifierRepresentation] 
+    outGeneratedCode = "GGS_" + [className identifierRepresentation]
+       + " GGS_" + [className identifierRepresentation] 
        + "::" + [inInitializerName identifierRepresentation] + " ("
     let @uint colRef = [outGeneratedCode currentColumn]
   #---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
-        outGeneratedCode += "const GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+        outGeneratedCode += "const GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
       else
-        outGeneratedCode += "GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+        outGeneratedCode += "GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
       end
       if [unusedVariableCppNameSet hasKey !formalArg.mFormalArgumentCppName] then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
@@ -457,22 +457,22 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
     outGeneratedCode += ") {\n"
-    outGeneratedCode += "  GALGAS_" + [className identifierRepresentation] + " result ;\n"
+    outGeneratedCode += "  GGS_" + [className identifierRepresentation] + " result ;\n"
     outGeneratedCode += "  result.setInitializedProperties (" + compilerCppName () + ") ;\n"
     outGeneratedCode += routineBody
     outGeneratedCode += "  return result ;\n"
     outGeneratedCode += "}"
   else # class
-    outGeneratedCode = "GALGAS_" + [className identifierRepresentation]
-       + " GALGAS_" + [className identifierRepresentation] 
+    outGeneratedCode = "GGS_" + [className identifierRepresentation]
+       + " GGS_" + [className identifierRepresentation] 
        + "::" + [inInitializerName identifierRepresentation] + " ("
     let @uint colRef = [outGeneratedCode currentColumn]
   #---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
-        outGeneratedCode += "const GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+        outGeneratedCode += "const GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
       else
-        outGeneratedCode += "GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+        outGeneratedCode += "GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
       end
       outGeneratedCode +=  formalArg.mFormalArgumentCppName
       outGeneratedCode += ",\n"
@@ -492,7 +492,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
       outGeneratedCode += ", "
     end
     outGeneratedCode += compilerCppName () + ") ;\n"
-    outGeneratedCode += "  const GALGAS_" + [className identifierRepresentation] + " result (object) ;\n"
+    outGeneratedCode += "  const GGS_" + [className identifierRepresentation] + " result (object) ;\n"
     outGeneratedCode += "  macroDetachSharedObject (object) ;\n"
     outGeneratedCode += "  return result ;\n"
     outGeneratedCode += "}\n\n"
@@ -503,7 +503,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
       if formalArg.mIsConstant then
         outGeneratedCode += "const "
       end
-      outGeneratedCode += "GALGAS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
       if [unusedVariableCppNameSet hasKey !formalArg.mFormalArgumentCppName] then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
       else

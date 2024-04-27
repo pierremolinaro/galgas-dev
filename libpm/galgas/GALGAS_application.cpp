@@ -26,92 +26,92 @@
 #include "cLexiqueIntrospection.h"
 
 //--------------------------------------------------------------------------------------------------
-//                     'GALGAS_application' class
+//                     'GGS_application' class
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_application::class_func_verboseOutput (UNUSED_LOCATION_ARGS) {
-  return GALGAS_bool (verboseOutput ()) ;
+GGS_bool GGS_application::class_func_verboseOutput (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (verboseOutput ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_system (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_application::class_func_system (UNUSED_LOCATION_ARGS) {
   #if COMPILE_FOR_WINDOWS == 1
-    return GALGAS_string ("windows") ;
+    return GGS_string ("windows") ;
   #else
-    return GALGAS_string ("unix") ;
+    return GGS_string ("unix") ;
   #endif
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS_application::class_func_boolOptionNameList (LOCATION_ARGS) {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
+GGS__32_stringlist GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {
+  GGS__32_stringlist result = GGS__32_stringlist::class_func_emptyList (THERE) ;
   TC_UniqueArray <String> array ;
   BoolCommandLineOption::getBoolOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssign_operation (GALGAS_string (array (i COMMA_THERE)), GALGAS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    result.addAssign_operation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_application::class_func_boolOptionInvocationCharacter (const GALGAS_string & inDomainName,
-                                                                           const GALGAS_string & inIdentifier
+GGS_char GGS_application::class_func_boolOptionInvocationCharacter (const GGS_string & inDomainName,
+                                                                           const GGS_string & inIdentifier
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_char result ;
+  GGS_char result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const utf32 c = BoolCommandLineOption::getBoolOptionInvocationLetter (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_char (c) ;
+    result = GGS_char (c) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_boolOptionInvocationString (const GALGAS_string & inDomainName,
-                                                                          const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_boolOptionInvocationString (const GGS_string & inDomainName,
+                                                                          const GGS_string & inIdentifier
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String s = BoolCommandLineOption::getBoolOptionInvocationString (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_boolOptionCommentString (const GALGAS_string & inDomainName,
-                                                                       const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_boolOptionCommentString (const GGS_string & inDomainName,
+                                                                       const GGS_string & inIdentifier
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String s = BoolCommandLineOption::getBoolOptionCommentString (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_application::class_func_boolOptionValue (const GALGAS_string & inDomainName,
-                                                             const GALGAS_string & inIdentifier
+GGS_bool GGS_application::class_func_boolOptionValue (const GGS_string & inDomainName,
+                                                             const GGS_string & inIdentifier
                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const bool v = BoolCommandLineOption::getBoolOptionValue (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_bool (v) ;
+    result = GGS_bool (v) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_application::class_method_setBoolOptionValue (GALGAS_string inDomainName,
-                                                          GALGAS_string inIdentifier,
-                                                          GALGAS_bool inValue
+void GGS_application::class_method_setBoolOptionValue (GGS_string inDomainName,
+                                                          GGS_string inIdentifier,
+                                                          GGS_bool inValue
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (inDomainName.isValid () && inIdentifier.isValid () && inValue.isValid ()) {
     BoolCommandLineOption::setBoolOptionValue (inDomainName.stringValue (),
@@ -124,12 +124,12 @@ void GALGAS_application::class_method_setBoolOptionValue (GALGAS_string inDomain
 //   @UINT options                                                                               
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS_application::class_func_uintOptionNameList (LOCATION_ARGS) {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
+GGS__32_stringlist GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {
+  GGS__32_stringlist result = GGS__32_stringlist::class_func_emptyList (THERE) ;
   TC_UniqueArray <String> array ;
   UIntCommandLineOption::getUIntOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssign_operation (GALGAS_string (array (i COMMA_THERE)), GALGAS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    result.addAssign_operation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
 }
@@ -137,61 +137,61 @@ GALGAS__32_stringlist GALGAS_application::class_func_uintOptionNameList (LOCATIO
 //--------------------------------------------------------------------------------------------------
 
 
-GALGAS_char GALGAS_application::class_func_uintOptionInvocationCharacter (const GALGAS_string & inDomainName,
-                                                                           const GALGAS_string & inIdentifier
+GGS_char GGS_application::class_func_uintOptionInvocationCharacter (const GGS_string & inDomainName,
+                                                                           const GGS_string & inIdentifier
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_char result ;
+  GGS_char result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const utf32 c = UIntCommandLineOption::getUIntOptionInvocationLetter (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_char (c) ;
+    result = GGS_char (c) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_uintOptionInvocationString (const GALGAS_string & inDomainName,
-                                                                          const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_uintOptionInvocationString (const GGS_string & inDomainName,
+                                                                          const GGS_string & inIdentifier
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String s = UIntCommandLineOption::getUIntOptionInvocationString (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_uintOptionCommentString (const GALGAS_string & inDomainName,
-                                                                       const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_uintOptionCommentString (const GGS_string & inDomainName,
+                                                                       const GGS_string & inIdentifier
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String s = UIntCommandLineOption::getUIntOptionCommentString (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_application::class_func_uintOptionValue (const GALGAS_string & inDomainName,
-                                                             const GALGAS_string & inIdentifier
+GGS_uint GGS_application::class_func_uintOptionValue (const GGS_string & inDomainName,
+                                                             const GGS_string & inIdentifier
                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint result ;
+  GGS_uint result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const uint32_t v = UIntCommandLineOption::getUIntOptionValue (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_uint (v) ;
+    result = GGS_uint (v) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_application::class_method_setUIntOptionValue (GALGAS_string inDomainName,
-                                                          GALGAS_string inIdentifier,
-                                                          GALGAS_uint inValue
+void GGS_application::class_method_setUIntOptionValue (GGS_string inDomainName,
+                                                          GGS_string inIdentifier,
+                                                          GGS_uint inValue
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (inDomainName.isValid () && inIdentifier.isValid () && inValue.isValid ()) {
     UIntCommandLineOption::setUIntOptionValue (inDomainName.stringValue (),
@@ -202,7 +202,7 @@ void GALGAS_application::class_method_setUIntOptionValue (GALGAS_string inDomain
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_application::class_method_exit (GALGAS_uint inValue
+void GGS_application::class_method_exit (GGS_uint inValue
                                             COMMA_UNUSED_LOCATION_ARGS) {
   if (inValue.isValid ()) {
     exit (int (inValue.uintValue ())) ;
@@ -215,73 +215,73 @@ void GALGAS_application::class_method_exit (GALGAS_uint inValue
 //   STRING OPTION                                                                               
 //--------------------------------------------------------------------------------------------------
 
-GALGAS__32_stringlist GALGAS_application::class_func_stringOptionNameList (LOCATION_ARGS) {
-  GALGAS__32_stringlist result = GALGAS__32_stringlist::class_func_emptyList (THERE) ;
+GGS__32_stringlist GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {
+  GGS__32_stringlist result = GGS__32_stringlist::class_func_emptyList (THERE) ;
   TC_UniqueArray <String> array ;
   StringCommandLineOption::getStringOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssign_operation (GALGAS_string (array (i COMMA_THERE)), GALGAS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    result.addAssign_operation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_char GALGAS_application::class_func_stringOptionInvocationCharacter (const GALGAS_string & inDomainName,
-                                                                             const GALGAS_string & inIdentifier
+GGS_char GGS_application::class_func_stringOptionInvocationCharacter (const GGS_string & inDomainName,
+                                                                             const GGS_string & inIdentifier
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_char result ;
+  GGS_char result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const utf32 c = StringCommandLineOption::getStringOptionInvocationLetter (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_char (c) ;
+    result = GGS_char (c) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_stringOptionInvocationString (const GALGAS_string & inDomainName,
-                                                                            const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_stringOptionInvocationString (const GGS_string & inDomainName,
+                                                                            const GGS_string & inIdentifier
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String s = StringCommandLineOption::getStringOptionInvocationString (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_stringOptionCommentString (const GALGAS_string & inDomainName,
-                                                                         const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_stringOptionCommentString (const GGS_string & inDomainName,
+                                                                         const GGS_string & inIdentifier
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String s = StringCommandLineOption::getStringOptionCommentString (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (s) ;
+    result = GGS_string (s) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_stringOptionValue (const GALGAS_string & inDomainName,
-                                                                 const GALGAS_string & inIdentifier
+GGS_string GGS_application::class_func_stringOptionValue (const GGS_string & inDomainName,
+                                                                 const GGS_string & inIdentifier
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inDomainName.isValid () && inIdentifier.isValid ()) {
     const String v = StringCommandLineOption::getStringOptionValue (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-    result = GALGAS_string (v) ;
+    result = GGS_string (v) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_application::class_method_setStringOptionValue (GALGAS_string inDomainName,
-                                                            GALGAS_string inIdentifier,
-                                                            GALGAS_string inValue
+void GGS_application::class_method_setStringOptionValue (GGS_string inDomainName,
+                                                            GGS_string inIdentifier,
+                                                            GGS_string inValue
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   if (inDomainName.isValid () && inIdentifier.isValid () && inValue.isValid ()) {
     StringCommandLineOption::setStringOptionValue (inDomainName.stringValue (),
@@ -294,34 +294,34 @@ void GALGAS_application::class_method_setStringOptionValue (GALGAS_string inDoma
 //  Version strings
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_projectVersionString (UNUSED_LOCATION_ARGS) {
-  return GALGAS_string (projectVersionString ()) ;
+GGS_string GGS_application::class_func_projectVersionString (UNUSED_LOCATION_ARGS) {
+  return GGS_string (projectVersionString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_galgasVersionString (UNUSED_LOCATION_ARGS) {
-  return GALGAS_string (galgasVersionString ()) ;
+GGS_string GGS_application::class_func_galgasVersionString (UNUSED_LOCATION_ARGS) {
+  return GGS_string (galgasVersionString ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //  Command line arguments
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_application::class_func_commandLineArgumentCount (UNUSED_LOCATION_ARGS) {
-  return GALGAS_uint (commandLineArgumentCount ()) ;
+GGS_uint GGS_application::class_func_commandLineArgumentCount (UNUSED_LOCATION_ARGS) {
+  return GGS_uint (commandLineArgumentCount ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_application::class_func_commandLineArgumentAtIndex (const GALGAS_uint & inIndex,
+GGS_string GGS_application::class_func_commandLineArgumentAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_string result ;
+  GGS_string result ;
   if (inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < commandLineArgumentCount ()) {
-      result = GALGAS_string (commandLineArgumentAtIndex (idx)) ;
+      result = GGS_string (commandLineArgumentAtIndex (idx)) ;
     }else{
       String message ;
       message.appendCString ("@application.commandLineArgumentAtIndex: index ") ;
@@ -336,28 +336,28 @@ GALGAS_string GALGAS_application::class_func_commandLineArgumentAtIndex (const G
 
 //--------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_application::class_func_keywordIdentifierSet (LOCATION_ARGS) {
-  GALGAS_stringset result = GALGAS_stringset::class_func_emptySet (THERE) ;
+GGS_stringset GGS_application::class_func_keywordIdentifierSet (LOCATION_ARGS) {
+  GGS_stringset result = GGS_stringset::class_func_emptySet (THERE) ;
   TC_UniqueArray <String> list ;
   cLexiqueIntrospection::getKeywordListNames (list) ;
   for (int32_t i=0 ; i < list.count () ; i++) {
-    result.addAssign_operation (GALGAS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+    result.addAssign_operation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_application::class_func_keywordListForIdentifier (const GALGAS_string & inIdentifier
+GGS_stringlist GGS_application::class_func_keywordListForIdentifier (const GGS_string & inIdentifier
                                                                             COMMA_LOCATION_ARGS) {
-  GALGAS_stringlist result ;
+  GGS_stringlist result ;
   if (inIdentifier.isValid ()) {
-    result = GALGAS_stringlist::class_func_emptyList (THERE) ;
+    result = GGS_stringlist::class_func_emptyList (THERE) ;
     TC_UniqueArray <String> list ;
     bool found = false ;
     cLexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;
     for (int32_t i=0 ; i < list.count () ; i++) {
-      result.addAssign_operation (GALGAS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+      result.addAssign_operation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;

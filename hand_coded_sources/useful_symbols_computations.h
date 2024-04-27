@@ -31,15 +31,15 @@ class cPureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class Compiler ;
-class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
+class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 class BinaryDecisionDiagramRelationSingleType ;
 class BinaryDecisionDiagramRelation ;
 
 //--------------------------------------------------------------------------------------------------
 
 void useful_symbols_computations (Compiler * inCompiler,
-                                  const GALGAS_location & inErrorLocation,
-                                  const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                                  const GGS_location & inErrorLocation,
+                                  const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const BinaryDecisionDiagramRelationSingleType & inVocabularyBDDType,
                                   const GrammarVocabulary & inVocabulary,

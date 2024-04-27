@@ -4,14 +4,14 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%Compiler * %
+GGS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%Compiler * %
   if [UNUSED_VAR_SET hasKey !compilerCppName ()] then
     %/* %!compilerCppName ()% */%
   else
     !compilerCppName ()
   end
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
-    %,\n%!^%const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
+    %,\n%!^%const GGS_%![mFormalArgumentType identifierRepresentation]% & %
     if [UNUSED_VAR_SET hasKey !mFormalArgumentCppName] then
       %/* %!mFormalArgumentCppName% */%
     else
@@ -27,6 +27,6 @@ GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%
  block 2 :
  !GENERATED_INSTRUCTION_STRING
  end
-%  return GALGAS_string (result) ;
+%  return GGS_string (result) ;
 }
 

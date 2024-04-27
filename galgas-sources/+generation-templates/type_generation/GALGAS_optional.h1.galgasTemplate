@@ -4,30 +4,30 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% mValue ;
+  private: GGS_%!UNWRAPPED_TYPE_IDENTIFIER% mValue ;
   private: OptionalState mState ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Dedicaced constructors
-  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% & inValue) ;
-  public: static GALGAS_%!TYPE_IDENTIFIER% init_nil (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!UNWRAPPED_TYPE_IDENTIFIER% & inValue) ;
+  public: static GGS_%!TYPE_IDENTIFIER% init_nil (void) ;
 
   public: bool isValuated (void) const ;
-  public: inline GALGAS_%!UNWRAPPED_TYPE_IDENTIFIER% unwrappedValue (void) const {
+  public: inline GGS_%!UNWRAPPED_TYPE_IDENTIFIER% unwrappedValue (void) const {
     return mValue ;
   }
 
 //--------------------------------- GALGAS read only properties
-  public: inline GALGAS_bool readProperty_isNil (void) const {
-    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
   }
 
-  public: inline GALGAS_bool readProperty_isSome (void) const {
-    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
   }
 
   

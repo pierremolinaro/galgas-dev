@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_timer                                                                                 
+//  GGS_timer                                                                                 
 //
 //  This file is part of libpm library                                                           
 //
@@ -23,7 +23,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_timer::GALGAS_timer (void) :
+GGS_timer::GGS_timer (void) :
 AC_GALGAS_root (),
 mIsValid (false),
 mTimer () {
@@ -31,7 +31,7 @@ mTimer () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_timer::description (String & ioString,
+void GGS_timer::description (String & ioString,
                                 const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@timer: ") ;
   if (!mIsValid) {
@@ -44,23 +44,23 @@ void GALGAS_timer::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_timer GALGAS_timer::class_func_start (UNUSED_LOCATION_ARGS) {
-  GALGAS_timer result ;
+GGS_timer GGS_timer::class_func_start (UNUSED_LOCATION_ARGS) {
+  GGS_timer result ;
   result.mIsValid = true ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_timer GALGAS_timer::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_timer result ;
+GGS_timer GGS_timer::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_timer result ;
   result.mIsValid = true ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_timer::setter_stop (UNUSED_LOCATION_ARGS) {
+void GGS_timer::setter_stop (UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mTimer.stopTimer () ;
   }
@@ -68,7 +68,7 @@ void GALGAS_timer::setter_stop (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_timer::setter_resume (UNUSED_LOCATION_ARGS) {
+void GGS_timer::setter_resume (UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mTimer = Timer () ;
   }
@@ -76,30 +76,30 @@ void GALGAS_timer::setter_resume (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_timer::getter_isRunning (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+GGS_bool GGS_timer::getter_isRunning (UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid ()) {
-    result = GALGAS_bool (mTimer.isRunning ()) ;
+    result = GGS_bool (mTimer.isRunning ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint GALGAS_timer::getter_msFromStart (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint GGS_timer::getter_msFromStart (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mTimer.msFromStart ()) ;
+    result = GGS_uint (mTimer.msFromStart ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_timer::getter_string (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GGS_string GGS_timer::getter_string (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
   if (isValid ()) {
-    result = GALGAS_string (mTimer.timeString ()) ;
+    result = GGS_string (mTimer.timeString ()) ;
   }
   return result ;
 }

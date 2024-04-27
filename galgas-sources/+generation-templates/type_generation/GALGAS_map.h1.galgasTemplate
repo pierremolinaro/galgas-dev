@@ -13,11 +13,11 @@ for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
 end
 %//--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_map {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-  public: GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
   

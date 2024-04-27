@@ -204,8 +204,8 @@ refclass @expressionCollectionForGeneration : @semanticExpressionForGeneration {
     outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
     ioTemporaryVariableIndex += 1
   #--- Declare variable and apply default constructor
-    ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
-    ioGeneratedCode += " = GALGAS_" +  [self.mResultType identifierRepresentation]
+    ioGeneratedCode += "GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
+    ioGeneratedCode += " = GGS_" +  [self.mResultType identifierRepresentation]
     ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   #--- Add Elements

@@ -8,18 +8,18 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+GGS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+      %const GGS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     else
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+      %GGS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
   %,\n%!^%Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
-  GALGAS_%![RETURN_TYPE identifierRepresentation]% result ;
+  GGS_%![RETURN_TYPE identifierRepresentation]% result ;
   if (nullptr != inObject) {
     result = inObject->getter_%![GETTER_NAME identifierRepresentation]% (%
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do

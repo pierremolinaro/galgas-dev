@@ -59,28 +59,28 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void makeNewEmptyGraph (LOCATION_ARGS) ;
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_bool getter_isNodeDefined (const GALGAS_string & inKey COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_stringlist getter_keyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_stringlist getter_keyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
+  public: VIRTUAL_IN_DEBUG GGS_location getter_locationForKey (const GGS_string & inKey,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_addEdge (const GALGAS_lstring & inSourceNodeKey,
-                                                 const GALGAS_lstring & inTargetNodeKey
+  public: VIRTUAL_IN_DEBUG void setter_addEdge (const GGS_lstring & inSourceNodeKey,
+                                                 const GGS_lstring & inTargetNodeKey
                                                  COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_removeEdgesToNode (const GALGAS_string & inNodeName,
+  public: VIRTUAL_IN_DEBUG void setter_removeEdgesToNode (const GGS_string & inNodeName,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
@@ -100,8 +100,8 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void subGraph (AC_GALGAS_graph & outResultingGraph,
-                                              const GALGAS_lstringlist & inStartNodes,
-                                              const GALGAS_stringset & inNodesToExclude,
+                                              const GGS_lstringlist & inStartNodes,
+                                              const GGS_stringset & inNodesToExclude,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
@@ -110,47 +110,47 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   private: VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG void internalAddNode (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG void internalAddNode (const GGS_lstring & inKey,
                                                      const char * inErrorMessage,
                                                      const capCollectionElement & inAttributes,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_noteNode (const GALGAS_lstring & inKey
+  public: VIRTUAL_IN_DEBUG void setter_noteNode (const GGS_lstring & inKey
                                                   COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalTopologicalSort (capCollectionElementArray & outSortedList,
-                                                             GALGAS_lstringlist & outSortedNodeKeyList,
+                                                             GGS_lstringlist & outSortedNodeKeyList,
                                                              capCollectionElementArray & outUnsortedList,
-                                                             GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                                             GGS_lstringlist & outUnsortedNodeKeyList,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalFindCircularities (capCollectionElementArray & outInfoList,
-                                                               GALGAS_lstringlist & outNodeKeyList
+                                                               GGS_lstringlist & outNodeKeyList
                                                                COMMA_UNUSED_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (capCollectionElementArray & outSortedList,
-                                                                    GALGAS_lstringlist & outSortedNodeKeyList
+                                                                    GGS_lstringlist & outSortedNodeKeyList
                                                                     COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (capCollectionElementArray & outSortedList,
-                                                                  GALGAS_lstringlist & outSortedNodeKeyList
+                                                                  GGS_lstringlist & outSortedNodeKeyList
                                                                   COMMA_LOCATION_ARGS) const ;
 
 
   protected: VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
-                                                                       GALGAS_lstringlist & outSortedNodeKeyList,
+                                                                       GGS_lstringlist & outSortedNodeKeyList,
                                                                        capCollectionElementArray & outUnsortedList,
-                                                                       GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                                                       GGS_lstringlist & outUnsortedNodeKeyList,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG GALGAS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GALGAS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
 
   friend class cSharedGraph ;
 } ;

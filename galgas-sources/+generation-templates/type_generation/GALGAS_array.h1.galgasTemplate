@@ -6,7 +6,7 @@
 
 class cEnumerator_%!TYPE_IDENTIFIER% final {
 //--- Constructor
-  public: cEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedRange,
+  public: cEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange,
       %!^%const EnumerationOrder inOrder) ;
 
 //--- No copy
@@ -29,26 +29,26 @@ class cEnumerator_%!TYPE_IDENTIFIER% final {
   }
 
 //--- Current element access
-  public: class GALGAS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
 
 //---- Properties
-  private: const TC_Array <GALGAS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: const TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
   private: int32_t mCurrent ;
   private: const EnumerationOrder mEnumerationOrder ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: TC_Array <GALGAS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
 
 //--------------------------------- Default constructor
-  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Handle copy
-  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-  public: GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;

@@ -160,7 +160,7 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  ioGeneratedCode += "GALGAS_" + [self.mTypeName.string identifierRepresentation]
+  ioGeneratedCode += "GGS_" + [self.mTypeName.string identifierRepresentation]
                   + "::class_method_" + [self.mMethodName.string identifierRepresentation] + " ("
   for (mValue) in parameterCppNameList
     do ioGeneratedCode += mValue

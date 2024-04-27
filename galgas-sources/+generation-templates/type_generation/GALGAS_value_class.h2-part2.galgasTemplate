@@ -1,13 +1,13 @@
 //--- Properties
 %
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
-    %  public: GALGAS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+    %  public: GGS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-    do %const GALGAS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+    do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [ALL_PROPERTY_LIST count] > 0 then
@@ -25,9 +25,9 @@
 %//--- Attribute accessors
 %
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
-    %  public: VIRTUAL_IN_DEBUG GALGAS_%![mPropertyTypeEntry identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+    %  public: VIRTUAL_IN_DEBUG GGS_%![mPropertyTypeEntry identifierRepresentation]% getter_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
     if mHasSetter then
-      %  public: VIRTUAL_IN_DEBUG void setter_set%![[mPropertyName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mPropertyTypeEntry identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
+      %  public: VIRTUAL_IN_DEBUG void setter_set%![[mPropertyName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
     end
   end
 

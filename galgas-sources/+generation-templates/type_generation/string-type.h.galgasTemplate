@@ -4,7 +4,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_string : public AC_GALGAS_root {
+class GGS_string : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: String mString ;
@@ -15,13 +15,13 @@ class GALGAS_string : public AC_GALGAS_root {
   public: inline String stringValue (void) const { return mString ; }
 
 //--------------------------------- Default constructor
-  public: GALGAS_string (void) ;
+  public: GGS_string (void) ;
 
 //--------------------------------- Constructor for making an empty string
-  public: static GALGAS_string makeEmptyString (void) ;
+  public: static GGS_string makeEmptyString (void) ;
 
 //--------------------------------- Native constructor
-  public: GALGAS_string (const String & inValue) ;
+  public: GGS_string (const String & inValue) ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const override ;

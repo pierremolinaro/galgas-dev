@@ -307,12 +307,12 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
 %
   for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
+    %GGS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
     %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
     %  macroValidSharedObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
-    %  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n%
-    %  GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% value (ptr->mLexicalAttribute_%![lkey identifierRepresentation]%) ;\n%
-    %  GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% result (value, currentLocation) ;\n%
+    %  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n%
+    %  GGS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% value (ptr->mLexicalAttribute_%![lkey identifierRepresentation]%) ;\n%
+    %  GGS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% result (value, currentLocation) ;\n%
     %  return result ;\n%
     %}\n\n%
   end
@@ -320,10 +320,10 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
 //                         I N T R O S P E C T I O N                                             
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::class_func_emptyList (THERE) ;
+GGS_stringlist Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
 %for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
+  do %  result.addAssign_operation (GGS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
   end
 %  return result ;
 }

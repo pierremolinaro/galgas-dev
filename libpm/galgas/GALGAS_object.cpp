@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  GALGAS_object : Base class for GALGAS object handling
+//  GGS_object : Base class for GALGAS object handling
 //
 //  This file is part of libpm library
 //
@@ -23,14 +23,14 @@
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object::GALGAS_object (void) :
+GGS_object::GGS_object (void) :
 AC_GALGAS_root (),
 mSharedObject (nullptr) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object::GALGAS_object (AC_GALGAS_root * inObjectPointer
+GGS_object::GGS_object (AC_GALGAS_root * inObjectPointer
                               COMMA_LOCATION_ARGS) :
 AC_GALGAS_root (),
 mSharedObject (nullptr) {
@@ -39,7 +39,7 @@ mSharedObject (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object::GALGAS_object (const GALGAS_object & inSource) :
+GGS_object::GGS_object (const GGS_object & inSource) :
 AC_GALGAS_root (),
 mSharedObject (nullptr) {
   macroAssignSharedObject (mSharedObject, inSource.mSharedObject) ;
@@ -47,26 +47,26 @@ mSharedObject (nullptr) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object & GALGAS_object::operator = (const GALGAS_object & inSource) {
+GGS_object & GGS_object::operator = (const GGS_object & inSource) {
   macroAssignSharedObject (mSharedObject, inSource.mSharedObject) ;
   return * this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_object::~ GALGAS_object (void) {
+GGS_object::~ GGS_object (void) {
   macroDetachSharedObject (mSharedObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_object::drop (void) {
+void GGS_object::drop (void) {
   macroDetachSharedObject (mSharedObject) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-const AC_GALGAS_root * GALGAS_object::embeddedObject (void) const {
+const AC_GALGAS_root * GGS_object::embeddedObject (void) const {
   const AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     result = mSharedObject->embeddedObjectPtr () ;
@@ -76,13 +76,13 @@ const AC_GALGAS_root * GALGAS_object::embeddedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_object::description (String & /* ioString */,
+void GGS_object::description (String & /* ioString */,
                                  const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_object::objectCompare (const GALGAS_object & inOperand) const {
+ComparisonResult GGS_object::objectCompare (const GGS_object & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const ptrdiff_t diff = mSharedObject - inOperand.mSharedObject ;
@@ -99,8 +99,8 @@ ComparisonResult GALGAS_object::objectCompare (const GALGAS_object & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type GALGAS_object::getter_objectStaticType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_type result ;
+GGS_type GGS_object::getter_objectStaticType (UNUSED_LOCATION_ARGS) const {
+  GGS_type result ;
   if (isValid ()) {
     result = mSharedObject->objectStaticType () ;
   }
@@ -109,8 +109,8 @@ GALGAS_type GALGAS_object::getter_objectStaticType (UNUSED_LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type GALGAS_object::getter_objectDynamicType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_type result ;
+GGS_type GGS_object::getter_objectDynamicType (UNUSED_LOCATION_ARGS) const {
+  GGS_type result ;
   if (isValid ()) {
     result = mSharedObject->objectDynamicType () ;
   }

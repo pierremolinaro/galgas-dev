@@ -4,12 +4,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%?^
+class GGS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%?^
   for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do (IDX)
     if mIsConstant then
-      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]%,\n%!^
+      %const class GGS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]%,\n%!^
     else
-      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]%,\n%!^
+      %class GGS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]%,\n%!^
     end
   end
   %class Compiler * inCompiler\n%

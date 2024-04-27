@@ -934,7 +934,7 @@ override method @forInstructionForGeneration generateInstruction
   if (([self.mBeforeInstructionList count] + [self.mAfterInstructionList count]) > 0) | not whileExpressionIsAllwaysTrue then
   #--- Index
     if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "GALGAS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
+      ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
     let boolVarCppName = "bool_" + [ioTemporaryVariableIndex string]
     ioTemporaryVariableIndex += 1
@@ -1031,7 +1031,7 @@ override method @forInstructionForGeneration generateInstruction
     ioGeneratedCode += "}\n"
   else #----- foreach instruction without 'before', 'after', while expression
     if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "GALGAS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
+      ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
     ioGeneratedCode += "while ("
     for (* * mEnumeratorCppName) in self.mEnumeratedObjectList

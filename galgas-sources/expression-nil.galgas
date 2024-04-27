@@ -99,7 +99,7 @@ refclass @nilExpressionForGeneration : @semanticExpressionForGeneration {
                                       ?!@uint unused ioTemporaryVariableIndex
                                       ?!@stringset unused ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
-    outCppExpression = "GALGAS_" + [self.mResultType identifierRepresentation] + "::init_nil ()"
+    outCppExpression = "GGS_" + [self.mResultType identifierRepresentation] + "::init_nil ()"
   }
 
   #·······························································································

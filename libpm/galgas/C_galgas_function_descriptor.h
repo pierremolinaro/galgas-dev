@@ -27,10 +27,10 @@
 //--------------------------------------------------------------------------------------------------
 
 class Compiler ;
-class GALGAS_location ;
-class GALGAS_object ;
+class GGS_location ;
+class GGS_object ;
 class C_galgas_type_descriptor ;
-class GALGAS_objectlist ;
+class GGS_objectlist ;
 class cObjectArray ;
 
 //--------------------------------------------------------------------------------------------------
@@ -39,9 +39,9 @@ class cObjectArray ;
 //
 //--------------------------------------------------------------------------------------------------
 
-typedef GALGAS_object (*functionPrototypeForIntrospection) (Compiler * inCompiler,
+typedef GGS_object (*functionPrototypeForIntrospection) (Compiler * inCompiler,
                                                             const cObjectArray & inEffectiveParameterArray,
-                                                            const GALGAS_location & inErrorLocation
+                                                            const GGS_location & inErrorLocation
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

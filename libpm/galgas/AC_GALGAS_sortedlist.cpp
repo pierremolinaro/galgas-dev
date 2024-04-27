@@ -792,10 +792,10 @@ void AC_GALGAS_sortedlist::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_uint AC_GALGAS_sortedlist::getter_count (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
+GGS_uint AC_GALGAS_sortedlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mSharedRoot->count ()) ;
+    result = GGS_uint (mSharedRoot->count ()) ;
   }
   return result ;
 }

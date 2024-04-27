@@ -46,8 +46,8 @@ cPtr_object::~cPtr_object (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type cPtr_object::objectStaticType (void) const {
-  GALGAS_type result ;
+GGS_type cPtr_object::objectStaticType (void) const {
+  GGS_type result ;
   if (nullptr != mEmbeddedObjectPtr) {
     result = mEmbeddedObjectPtr->getter_staticType (HERE) ;
   }
@@ -56,8 +56,8 @@ GALGAS_type cPtr_object::objectStaticType (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_type cPtr_object::objectDynamicType (void) const {
-  GALGAS_type result ;
+GGS_type cPtr_object::objectDynamicType (void) const {
+  GGS_type result ;
   if (nullptr != mEmbeddedObjectPtr) {
     result = mEmbeddedObjectPtr->getter_dynamicType (HERE) ;
   }

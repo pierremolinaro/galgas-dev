@@ -28,7 +28,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique_%!SUPER_LEXIQUE_IDENTIFIER%
                        COMMA_LOCATION_ARGS) ;
 
 //--- Instrospection
-  public: static GALGAS_stringlist symbols (LOCATION_ARGS) ;
+  public: static GGS_stringlist symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
 //    an error if a direct delete is performed; only the static method

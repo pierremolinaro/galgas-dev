@@ -136,10 +136,10 @@ void Compiler::writeIssueJSONFile (const String & inFile) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string Compiler::sentString (void) const {
-  GALGAS_string result ;
+GGS_string Compiler::sentString (void) const {
+  GGS_string result ;
   if (mSentStringIsValid) {
-   result = GALGAS_string (mSentString) ;
+   result = GGS_string (mSentString) ;
   }
   return result ;
 }
@@ -152,10 +152,10 @@ GALGAS_string Compiler::sentString (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string Compiler::retrieveAndResetTemplateString (void) {
+GGS_string Compiler::retrieveAndResetTemplateString (void) {
   const String s = mTemplateString ;
   mTemplateString.removeAllKeepingCapacity () ;
-  return GALGAS_string (s) ;
+  return GGS_string (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ void Compiler::onTheFlySemanticWarning (const String & inWarningMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::printMessage (const GALGAS_string & inMessage
+void Compiler::printMessage (const GGS_string & inMessage
                                COMMA_LOCATION_ARGS) {
   if (inMessage.isValid ()) {
     ggs_printMessage (inMessage.stringValue () COMMA_THERE) ;
@@ -285,7 +285,7 @@ void Compiler::castError (const String & inTargetTypeName,
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
+void Compiler::semanticErrorAtLocation (const GGS_location & inErrorLocation,
                                           const String & inErrorMessage,
                                           const TC_Array <FixItDescription> & inFixItArray
                                           COMMA_LOCATION_ARGS) {
@@ -304,8 +304,8 @@ void Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
-                                    const GALGAS_string & inErrorMessage,
+void Compiler::emitSemanticError (const GGS_location & inErrorLocation,
+                                    const GGS_string & inErrorMessage,
                                     const TC_Array <FixItDescription> & inFixItArray
                                     COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid () && inErrorMessage.isValid ()) {
@@ -324,7 +324,7 @@ void Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
+void Compiler::semanticErrorWith_K_message (const GGS_lstring & inKey,
                                               TC_UniqueArray <String> & ioNearestKeyArray,
                                               const char * in_K_ErrorMessage
                                               COMMA_LOCATION_ARGS) {
@@ -353,15 +353,15 @@ void Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
     fixItArray.appendObject (FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE))) ;
   }
 //--- Emit error message
-  const GALGAS_location key_location = inKey.mProperty_location ;
+  const GGS_location key_location = inKey.mProperty_location ;
   semanticErrorAtLocation (key_location, message, fixItArray COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
+void Compiler::semanticErrorWith_K_L_message (const GGS_lstring & inKey,
                                                 const char * in_K_L_ErrorMessage,
-                                                const GALGAS_location & inExistingKeyLocation
+                                                const GGS_location & inExistingKeyLocation
                                                 COMMA_LOCATION_ARGS) {
   const String key = inKey.mProperty_string.stringValue () ;
 //--- Build error message
@@ -391,15 +391,15 @@ void Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
     }
   }
 //--- Emit error message
-  const GALGAS_location key_location = inKey.mProperty_location ;
+  const GGS_location key_location = inKey.mProperty_location ;
   semanticErrorAtLocation (key_location, message, TC_Array <FixItDescription> () COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
+void Compiler::semanticWarningWith_K_L_message (const GGS_lstring & inKey,
                                                   const char * in_K_L_ErrorMessage,
-                                                  const GALGAS_location & inExistingKeyLocation
+                                                  const GGS_location & inExistingKeyLocation
                                                   COMMA_LOCATION_ARGS) {
   const String key = inKey.mProperty_string.stringValue () ;
 //--- Build error message
@@ -423,7 +423,7 @@ void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
     }
   }
 //--- Emit error message
-  const GALGAS_location key_location = inKey.mProperty_location ;
+  const GGS_location key_location = inKey.mProperty_location ;
   semanticWarningAtLocation (key_location, message COMMA_THERE) ;
 }
 
@@ -435,7 +435,7 @@ void Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocation,
+void Compiler::semanticWarningAtLocation (const GGS_location & inWarningLocation,
                                             const String & inWarningMessage
                                             COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid ()) { // No warning raised if not built
@@ -453,8 +453,8 @@ void Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLocat
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
-                                      const GALGAS_string & inWarningMessage,
+void Compiler::emitSemanticWarning (const GGS_location & inWarningLocation,
+                                      const GGS_string & inWarningMessage,
                                       const TC_Array <FixItDescription> & inFixItArray
                                       COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid () && inWarningMessage.isValid ()) {
@@ -492,20 +492,20 @@ void Compiler::onTheFlyRunTimeError (const String & inRunTimeErrorMessage
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location Compiler::here (void) const {
-  return GALGAS_location (mStartLocationForHere, mEndLocationForHere, mSourceText) ;
+GGS_location Compiler::here (void) const {
+  return GGS_location (mStartLocationForHere, mEndLocationForHere, mSourceText) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location Compiler::separator (void) const {
-  return GALGAS_location (mEndLocationForHere, mStartLocationForNext, mSourceText) ;
+GGS_location Compiler::separator (void) const {
+  return GGS_location (mEndLocationForHere, mStartLocationForNext, mSourceText) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_location Compiler::next (void) const {
-  return GALGAS_location (mStartLocationForNext, mEndLocationForNext, mSourceText) ;
+GGS_location Compiler::next (void) const {
+  return GGS_location (mStartLocationForNext, mEndLocationForNext, mSourceText) ;
 }
 
 //--------------------------------------------------------------------------------------------------

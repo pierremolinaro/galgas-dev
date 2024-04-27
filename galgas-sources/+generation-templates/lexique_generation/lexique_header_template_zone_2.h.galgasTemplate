@@ -69,7 +69,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
                        COMMA_LOCATION_ARGS) ;
 
 //--- Instrospection
-  public: static GALGAS_stringlist symbols (LOCATION_ARGS) ;
+  public: static GGS_stringlist symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
 //    an error if a direct delete is performed; only the static method
@@ -99,7 +99,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 //--- Assign from attribute
 %
   for (lkey mLexicalType) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalAttributeMap do
-    %  public: GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
+    %  public: GGS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
 

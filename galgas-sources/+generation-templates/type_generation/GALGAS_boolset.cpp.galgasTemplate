@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
 mFlags (0),
 mIsValid (false) {
@@ -8,7 +8,7 @@ mIsValid (false) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) :
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) :
 AC_GALGAS_root (),
 mFlags (inFlags),
 mIsValid (true) {
@@ -16,22 +16,22 @@ mIsValid (true) {
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER% (0) ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_%!TYPE_IDENTIFIER% (0) ;
 }
 
 %for (mValue) in SLOT_LIST do (idx)
 %//--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::class_func_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER% (uint64_t (1) << %![idx string]%) ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_%!TYPE_IDENTIFIER% (uint64_t (1) << %![idx string]%) ;
 }
 
 %end
 if EQUATABLE then
 %//--------------------------------------------------------------------------------------------------
 
-ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
    ComparisonResult result = ComparisonResult::invalid ;
    if (mIsValid && inOperand.mIsValid) {
      result = ComparisonResult::operandEqual ;
@@ -47,24 +47,24 @@ ComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_I
 %end
 %//--------------------------------------------------------------------------------------------------
 
-bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
+bool GGS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mIsValid ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand
             %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
+  GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GALGAS_bool ((mFlags & inOperand.mFlags) != 0) ;
+    result = GGS_bool ((mFlags & inOperand.mFlags) != 0) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::andAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::andAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
          %!^%class Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -74,7 +74,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::andAssign_operation (%?^%const GALGAS_%!TYPE_IDE
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::orAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::orAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
          %!^%class Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -84,7 +84,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::orAssign_operation (%?^%const GALGAS_%!TYPE_IDEN
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::xorAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::xorAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
          %!^%class Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -94,7 +94,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::xorAssign_operation (%?^%const GALGAS_%!TYPE_IDE
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::minusAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
+void GGS_%!TYPE_IDENTIFIER%::minusAssign_operation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
           %!^%class Compiler * /* inCompiler */
           %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
@@ -104,62 +104,62 @@ void GALGAS_%!TYPE_IDENTIFIER%::minusAssign_operation (%?^%const GALGAS_%!TYPE_I
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::operator_or (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid && inOperand.mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (mFlags | inOperand.mFlags) ;
+    result = GGS_%!TYPE_IDENTIFIER% (mFlags | inOperand.mFlags) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::operator_and (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid && inOperand.mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (mFlags & inOperand.mFlags) ;
+    result = GGS_%!TYPE_IDENTIFIER% (mFlags & inOperand.mFlags) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_xor (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::operator_xor (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid && inOperand.mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (mFlags ^ inOperand.mFlags) ;
+    result = GGS_%!TYPE_IDENTIFIER% (mFlags ^ inOperand.mFlags) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::substract_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,
                  %!^%Compiler * /* inCompiler */
                  %!^%COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+  GGS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid && inOperand.mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (mFlags & ~ inOperand.mFlags) ;
+    result = GGS_%!TYPE_IDENTIFIER% (mFlags & ~ inOperand.mFlags) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (uint64_t (%![FULL_SET hexString]%) ^ mFlags) ;
+    result = GGS_%!TYPE_IDENTIFIER% (uint64_t (%![FULL_SET hexString]%) ^ mFlags) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
                               %!^%const int32_t /* inIndentation */) const {
   ioString.appendCString ("<boolset @%!TYPE_NAME%:") ;
   if (! isValid ()) {
