@@ -62,6 +62,20 @@ func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ARRAY TYPE NAME UTILITIES
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeArrayTypeName ?let @string inTypeName -> @string {
+  result = "[" + inTypeName + "]"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func makeArrayTypeLName ?let @lstring inTypeName -> @lstring {
+  result = .init (makeArrayTypeName (!inTypeName), inTypeName)
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   WEAK TYPE NAME UTILITIES
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -227,7 +241,7 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> !?ioDeclarations ?outTypeName
     select
       let elementTypeName = outTypeName 
-      outTypeName = .init ("[" + elementTypeName.string + "]", elementTypeName.location)
+      outTypeName = makeArrayTypeLName (!elementTypeName)
       if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
         ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
         ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (

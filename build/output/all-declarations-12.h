@@ -848,6 +848,16 @@ class cParser_galgas_33_DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'makeArrayTypeLName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_makeArrayTypeLName (const class GGS_lstring & constinArgument0,
+                                               class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'makeEmbeddedTypeLName'
 //
 //--------------------------------------------------------------------------------------------------

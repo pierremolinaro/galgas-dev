@@ -874,6 +874,16 @@ class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'makeArrayTypeName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string function_makeArrayTypeName (const class GGS_string & constinArgument0,
+                                             class Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'makeWeakTypeName'
 //
 //--------------------------------------------------------------------------------------------------
