@@ -463,6 +463,7 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -471,7 +472,8 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -572,6 +574,592 @@ class GALGAS_abstractExtensionSetterAST_2D_weak : public GALGAS_semanticDeclarat
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//   enum equatableComparableExtension
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_equatableComparableExtension : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GALGAS_equatableComparableExtension (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_equatable,
+    enum_comparable
+  } ;
+  
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_equatableComparableExtension extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_equatableComparableExtension class_func_comparable (LOCATION_ARGS) ;
+
+  public: static class GALGAS_equatableComparableExtension class_func_equatable (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isComparable (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_bool getter_isEquatable (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_equatableComparableExtension class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableComparableExtension ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @equatableExtensionMap map
+//
+//--------------------------------------------------------------------------------------------------
+
+class cMapElement_equatableExtensionMap ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_equatableExtensionMap : public AC_GALGAS_map {
+//--------------------------------- Default constructor
+  public: GALGAS_equatableExtensionMap (void) ;
+
+//--------------------------------- Handle copy
+  public: GALGAS_equatableExtensionMap (const GALGAS_equatableExtensionMap & inSource) ;
+  public: GALGAS_equatableExtensionMap & operator = (const GALGAS_equatableExtensionMap & inSource) ;
+  
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_equatableExtensionMap init (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_equatableExtensionMap extractObject (const GALGAS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_equatableExtensionMap class_func_emptyMap (LOCATION_ARGS) ;
+
+  public: static class GALGAS_equatableExtensionMap class_func_mapWithMapToOverride (const class GALGAS_equatableExtensionMap & inOperand0
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                     const class GALGAS_equatableComparableExtension & inOperand1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_equatableExtensionMap add_operation (const GALGAS_equatableExtensionMap & inOperand,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
+                                                  class GALGAS_equatableComparableExtension constinArgument1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_removeKey (class GALGAS_lstring constinArgument0,
+                                                  class GALGAS_equatableComparableExtension & outArgument1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMExtensionForKey (class GALGAS_equatableComparableExtension constinArgument0,
+                                                            class GALGAS_string constinArgument1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GALGAS_equatableComparableExtension getter_mExtensionForKey (const class GALGAS_string & constinOperand0,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GALGAS_equatableExtensionMap getter_overriddenMap (Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: VIRTUAL_IN_DEBUG class GALGAS_equatableExtensionMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+  public: VIRTUAL_IN_DEBUG cMapElement_equatableExtensionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
+                                                                                                  const GALGAS_string & inKey
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_equatableExtensionMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+  friend class cEnumerator_equatableExtensionMap ;
+ 
+} ; // End of GALGAS_equatableExtensionMap class
+
+//--------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//--------------------------------------------------------------------------------------------------
+
+class cEnumerator_equatableExtensionMap : public cGenericAbstractEnumerator {
+  public: cEnumerator_equatableExtensionMap (const GALGAS_equatableExtensionMap & inEnumeratedObject,
+                                             const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GALGAS_equatableComparableExtension current_mExtension (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GALGAS_equatableExtensionMap_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@equatableExtensionMap' map
+//
+//--------------------------------------------------------------------------------------------------
+
+class cMapElement_equatableExtensionMap : public cMapElement {
+//--- Map attributes
+  public: GALGAS_equatableComparableExtension mProperty_mExtension ;
+
+//--- Constructors
+  public: cMapElement_equatableExtensionMap (const GALGAS_equatableExtensionMap_2D_element & inValue
+                                             COMMA_LOCATION_ARGS) ;
+ 
+  public: cMapElement_equatableExtensionMap (const GALGAS_lstring & inKey,
+                                             const GALGAS_equatableComparableExtension & in_mExtension
+                                             COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cMapElement * copy (void) ;
+
+//--- Description
+ public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @equatableExtensionMap_2D_element struct
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_equatableExtensionMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GALGAS_lstring mProperty_lkey ;
+  public: inline GALGAS_lstring readProperty_lkey (void) const {
+    return mProperty_lkey ;
+  }
+
+  public: GALGAS_equatableComparableExtension mProperty_mExtension ;
+  public: inline GALGAS_equatableComparableExtension readProperty_mExtension (void) const {
+    return mProperty_mExtension ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_equatableExtensionMap_2D_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setLkey (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lkey = inValue ;
+  }
+
+  public: inline void setter_setMExtension (const GALGAS_equatableComparableExtension & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mExtension = inValue ;
+  }
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GALGAS_equatableExtensionMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GALGAS_equatableExtensionMap_2D_element (const GALGAS_lstring & in_lkey,
+                                                   const GALGAS_equatableComparableExtension & in_mExtension) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_equatableExtensionMap_2D_element init_21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_equatableComparableExtension & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_equatableExtensionMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_equatableExtensionMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                               const class GALGAS_equatableComparableExtension & inOperand1,
+                                                                               class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_equatableExtensionMap_2D_element class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: equatableExtensionMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_equatableExtensionMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_equatableExtensionMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_equatableExtensionMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_equatableExtensionMap_2D_element_3F_ (const GALGAS_equatableExtensionMap_2D_element & inValue) ;
+  public: static GALGAS_equatableExtensionMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_equatableExtensionMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_equatableExtensionMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_equatableExtensionMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap_2D_element_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @equatableExtensionAST reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_equatableExtensionAST : public GALGAS_semanticDeclarationAST {
+//--------------------------------- Default constructor
+  public: GALGAS_equatableExtensionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_equatableExtensionAST (const class cPtr_equatableExtensionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GALGAS_lstring readProperty_mTypeName (void) const ;
+
+  public: class GALGAS_equatableComparableExtension readProperty_mExtension (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_equatableExtensionAST init_21_isPredefined_21__21_ (const class GALGAS_bool & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_equatableComparableExtension & inOperand2,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_equatableExtensionAST extractObject (const GALGAS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_equatableExtensionAST class_func_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_equatableComparableExtension & inOperand2
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_equatableExtensionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_equatableExtensionAST class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @equatableExtensionAST class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_equatableExtensionAST : public cPtr_semanticDeclarationAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void equatableExtensionAST_init_21_isPredefined_21__21_ (const class GALGAS_bool & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_equatableComparableExtension & inOperand2,
+                                                                   Compiler * inCompiler) ;
+
+
+//--- Extension getter keyRepresentation
+  public: virtual class GALGAS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension method enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GALGAS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GALGAS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+           const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
+           const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
+           const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           class GALGAS_semanticContext & arg_ioSemanticContext,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension method semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GALGAS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GALGAS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GALGAS_string arg_inProductDirectory,
+           const class GALGAS_semanticContext arg_inSemanticContext,
+           class GALGAS_unifiedTypeMap & arg_ioTypeMap,
+           const class GALGAS_predefinedTypes arg_inPredefinedTypes,
+           class GALGAS_semanticDeclarationListForGeneration & arg_ioSemanticDeclarationListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GALGAS_lstring mProperty_mTypeName ;
+  public: GALGAS_equatableComparableExtension mProperty_mExtension ;
+
+
+//--- Default constructor
+  public: cPtr_equatableExtensionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_equatableExtensionAST (const GALGAS_bool & in_isPredefined,
+                                      const GALGAS_lstring & in_mTypeName,
+                                      const GALGAS_equatableComparableExtension & in_mExtension
+                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @equatableExtensionAST_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_equatableExtensionAST_2D_weak : public GALGAS_semanticDeclarationAST_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_equatableExtensionAST_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_equatableExtensionAST_2D_weak (const class GALGAS_equatableExtensionAST & inSource) ;
+
+  public: GALGAS_equatableExtensionAST_2D_weak & operator = (const class GALGAS_equatableExtensionAST & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_equatableExtensionAST bang_equatableExtensionAST_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_equatableExtensionAST_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_equatableExtensionAST_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_equatableExtensionAST_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_equatableExtensionAST_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST_2D_weak ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1163,6 +1751,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -1171,7 +1760,8 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -1727,6 +2317,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -1735,7 +2326,8 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -1965,6 +2557,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -1973,7 +2566,8 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -2178,6 +2772,7 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -2186,7 +2781,8 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -2402,6 +2998,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -2410,7 +3007,8 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -2621,6 +3219,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -2629,7 +3228,8 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -2838,6 +3438,7 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -2846,7 +3447,8 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -3080,6 +3682,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -3088,7 +3691,8 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -3322,6 +3926,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -3330,7 +3935,8 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -3560,6 +4166,7 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -3568,7 +4175,8 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -12891,6 +13499,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -12899,7 +13508,8 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -13098,7 +13708,8 @@ class cPtr_procDeclarationAST : public cPtr_externProcedureDeclarationAST {
 
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,

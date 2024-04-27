@@ -1,0 +1,257 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func optionalTypeName ?forTypeNamed: let @lstring inTypeName -> @lstring {
+  result = inTypeName
+  result.string += "?"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
+  private let @lstring optionalTypeName %initArgLabel
+  private let @lstring unwrappedTypeName %initArgLabel
+  private let @bool isUsefull %initArgLabel
+  private let @bool equatable %initArgLabel
+
+  #·······························································································
+
+  override getter keyRepresentation -> @string {
+    result = "optional @" + self.optionalTypeName
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let selfKey = @lstring {!"@" + self.optionalTypeName !self.optionalTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !selfKey !self]
+    let unwrappedKey = @lstring {!"@" + self.unwrappedTypeName !self.unwrappedTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addEdge !selfKey !unwrappedKey]
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+    ?!@equatableExtensionMap ioEquatableExtensionMap
+    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext ioSemanticContext {
+  #--- Getters
+    commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+  #--- Properties
+    [!?ioTypeMap makeEntry !["bool" nowhere] ?let boolTypeEntry]
+    var @propertyMap propertyMap = ()
+    [!?propertyMap insertKey
+      !.init ("isSome", self.optionalTypeName)
+      !.publicAccess
+      !true
+      !boolTypeEntry
+    ]
+    [!?propertyMap insertKey
+      !.init ("isNil", self.optionalTypeName)
+      !.publicAccess
+      !true
+      !boolTypeEntry
+    ]
+  #--- Add extensions
+    var @instanceMethodMap instanceMethodMap = ()
+    var @setterMap setterMap = ()
+    var @initializerMap initializerMap = ()
+    addExtensions (
+      !inExtensionInitializerMapForBuildingContext
+      !inExtensionMethodMapForBuildingContext
+      !inExtensionGetterMapForBuildingContext
+      !inExtensionSetterMapForBuildingContext
+      !?ioSemanticContext
+      !?ioTypeMap
+      !self.optionalTypeName
+      !isClass: false
+      !?initializerMap
+      !?getterMap
+      !?setterMap
+      !?instanceMethodMap
+      !acceptSetters: true
+    )
+  #--- features
+    var features = @typeFeatures ()
+    if self.equatable then
+      features |= .equatable
+    end
+    handleEquatableComparableExtension (
+      !?ioEquatableExtensionMap
+      !self.optionalTypeName
+      !?features
+      !acceptEquatable: true
+      !acceptComparable: false
+    )
+  #--- unwrapped type index
+    [!?ioTypeMap makeEntry !self.unwrappedTypeName ?let unwrappedType]
+  #--- Enter in type map
+    let typeDefinition = @unifiedTypeDefinition {
+      !typeName: self.optionalTypeName
+      !isPredefined: self.isPredefined
+      !isConcrete: true # Concrete Type
+      !superType: .null
+      !typeKind: .listType
+      !supportCollectionValue: false 
+      !allTypedPropertyList: ()
+      !propertyMap: propertyMap
+      !currentTypedPropertyList: ()
+      !initializerMap: initializerMap
+      !classFunctionMap: ()
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
+      !classMethodMap: ()
+      !unwrappedType: unwrappedType
+      !readSubscriptMap: ()
+      !enumerationDescriptorList: ()
+      !features: features
+      !addAssignOperatorArguments: ()
+      !mapSearchMethodList: ()
+      !generateHeaderInSeparateFile: false
+      !typeForEnumeratedElement: .null
+      !headerFileName: "optional-" + [self.optionalTypeName fileNameRepresentation]
+      !headerKind: .oneHeader
+    }
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+  }
+
+  #·······························································································
+
+  override method addAssociatedElement ?!@galgasDeclarationAST unused ioDeclarations {
+  }
+
+  #·······························································································
+
+  override method semanticAnalysis
+    ?!@lstringlist ioUsefulnessRootEntities
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @string unused inProductDirectory
+    ?let @semanticContext unused inSemanticContext
+                                  ?!@unifiedTypeMap ioTypeMap
+    ?let @predefinedTypes unused inPredefinedTypes
+    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  {
+  #--- Useful entities graph
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.optionalTypeName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    let unwrappedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.unwrappedTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !unwrappedTypeNameForUsefulness]
+    if self.isUsefull then
+      ioUsefulnessRootEntities += !nameForUsefulness
+    end
+  #---
+    let optionalType = [ioTypeMap typeMapEntryForLKey !self.optionalTypeName]
+    let unwrappedType = [ioTypeMap typeMapEntryForLKey !self.unwrappedTypeName]
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "optional type " + self.optionalTypeName
+      !@optionalTypeForGeneration (optionalType, unwrappedType)
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
+  private let @unifiedTypeMapEntry unwrappedType
+
+  #·······························································································
+
+  override method appendDeclaration1 ?!@stringset ioInclusionSet
+                                     !@string outHeader {
+    [self.unwrappedType addHeaderFileName1 !?ioInclusionSet]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    outHeader = [filewrapper optionalTypeGenerationTemplate.optionalTypeHeader1
+      !selfTypeDefinition.typeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      ![self.unwrappedType identifierRepresentation]
+    ]
+    outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+      !selfTypeDefinition.typeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      !selfTypeDefinition.isConcrete
+      !selfTypeDefinition.initializerMap
+      !selfTypeDefinition.classFunctionMap
+      !selfTypeDefinition.getterMap
+      !selfTypeDefinition.setterMap
+      !selfTypeDefinition.instanceMethodMap
+      !selfTypeDefinition.classMethodMap
+      !selfTypeDefinition.readSubscriptMap
+      !selfTypeDefinition.enumerationDescriptorList
+      !selfTypeDefinition.features
+      !selfTypeDefinition.addAssignOperatorArguments
+      !selfTypeDefinition.typeForEnumeratedElement
+      !selfTypeDefinition.supportCollectionValue
+    ]
+  }
+
+  #·······························································································
+
+  override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
+                                          ?!@stringset ioInclusionSet
+                                          !@string outImplementation {
+    [self.unwrappedType addHeaderFileName !?ioInclusionSet]
+    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    outImplementation = [filewrapper optionalTypeGenerationTemplate.optionalTypeSpecificImplementation
+      !selfTypeDefinition.typeName.string
+      ![self.mSelfTypeEntry identifierRepresentation]
+      ![self.unwrappedType identifierRepresentation]
+      ![selfTypeDefinition.features generateCppObjectComparison]
+    ]
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+private filewrapper optionalTypeGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template optionalTypeHeader1 "GALGAS_optional.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string UNWRAPPED_TYPE_IDENTIFIER
+
+  template optionalTypeSpecificImplementation "GALGAS_optional.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string UNWRAPPED_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

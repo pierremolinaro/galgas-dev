@@ -4720,22 +4720,6 @@ class GALGAS_string callExtensionGetter_keyRepresentation (const class cPtr_sema
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticDeclarationAST * inObject,
-                                                            const class GALGAS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
-                                                            const class GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
-                                                            const class GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
-                                                            const class GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
-                                                            class GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                            class GALGAS_semanticContext & io_ioSemanticContext,
-                                                            class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @wrapperExtensionMap map
 //
 //--------------------------------------------------------------------------------------------------
@@ -5106,22 +5090,6 @@ class GALGAS_semanticTypePrecedenceGraph : public AC_GALGAS_graph {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypePrecedenceGraph ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension method '@semanticDeclarationAST enterDeclarationInGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclarationAST * inObject,
-                                                  class GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
-                                                  class GALGAS_extensionInitializerForBuildingContext & io_ioExtensionInitializerForBuildingContext,
-                                                  class GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
-                                                  class GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
-                                                  class GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
-                                                  class GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
-                                                  class Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

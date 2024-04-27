@@ -6379,16 +6379,16 @@ GALGAS_lstringlist extensionGetter_unsolvedEntryList (const GALGAS_unifiedTypeMa
   GALGAS_lstringlist result_result ; // Returned variable
   result_result = GALGAS_lstringlist::init (inCompiler COMMA_HERE) ;
   const GALGAS_unifiedTypeMap temp_0 = inObject ;
-  cEnumerator_unifiedTypeMap enumerator_1819 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_1819.hasCurrentObject ()) {
+  cEnumerator_unifiedTypeMap enumerator_1821 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_1821.hasCurrentObject ()) {
     enumGalgasBool test_1 = kBoolTrue ;
     if (kBoolTrue == test_1) {
-      test_1 = enumerator_1819.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 36)).boolEnum () ;
+      test_1 = enumerator_1821.current_mElement (HERE).readProperty_mDefinition ().getter_isUnsolved (SOURCE_FILE ("unified-type-map.galgas", 37)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        result_result.addAssign_operation (enumerator_1819.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 37)) ;
+        result_result.addAssign_operation (enumerator_1821.current_lkey (HERE)  COMMA_SOURCE_FILE ("unified-type-map.galgas", 38)) ;
       }
     }
-    enumerator_1819.gotoNextObject () ;
+    enumerator_1821.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -6589,15 +6589,15 @@ GALGAS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition 
   case GALGAS_typeDefinition::Enumeration::enum_unsolved:
     {
       TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 154)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 154)) ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 155)), GALGAS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 155)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GALGAS_typeDefinition::Enumeration::enum_solved:
     {
-      GALGAS_unifiedTypeDefinition extractedValue_6046_definition_0 ;
-      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_6046_definition_0) ;
-      result_result = extractedValue_6046_definition_0 ;
+      GALGAS_unifiedTypeDefinition extractedValue_6048_definition_0 ;
+      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_6048_definition_0) ;
+      result_result = extractedValue_6048_definition_0 ;
     }
     break ;
   }

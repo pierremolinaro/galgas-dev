@@ -1,0 +1,63 @@
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#  Copyright (C) 2007, ..., 2024 Pierre Molinaro.
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract refclass @semanticDeclarationAST {
+  protected let @bool isPredefined %initArgLabel
+
+  #·······························································································
+
+  abstract method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@equatableExtensionMap ioEquatableExtensionMap
+    ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+
+  #·······························································································
+
+  abstract method enterDeclarationInSemanticContext
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext unused ioSemanticContext
+
+  #·······························································································
+
+  abstract method semanticAnalysis
+    ?!@lstringlist ioUsefulnessRootEntities
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @string inProductDirectory
+    ?let @semanticContext unused inSemanticContext
+                                  ?!@unifiedTypeMap unused ioTypeMap
+    ?let @predefinedTypes unused inPredefinedTypes
+    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
+
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

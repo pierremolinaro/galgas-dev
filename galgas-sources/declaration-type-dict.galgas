@@ -1,0 +1,612 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @dictDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mDictTypeName
+  private let @lstring mKeyTypeName
+  private let @propertyInCollectionListAST mPropertyList
+  private let @bool equatable %initArgLabel
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @dictDeclarationAST keyRepresentation ->@string {
+  result = "dict @" + self.mDictTypeName
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $dict$
+  #--- Dict type name
+    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+    let @bool equatable
+    select
+      equatable = false
+    or
+      $%equatable$
+      equatable = true
+    end
+    $:$
+    <type_definition_ggs3> !?ioDeclarations ?let keyTypeName
+  #--- Map properties
+    ${$
+    var propertyList = @propertyInCollectionListAST ()
+    repeat
+    while
+      <property_declaration_ggs3> !?ioDeclarations !? propertyList
+    while
+      <method_declaration_ggs3> !mDictTypeName !?ioDeclarations
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !mDictTypeName
+      !keyTypeName
+      !propertyList
+      !equatable: equatable
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $dict$
+  #--- Dict type name
+    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+    let @bool equatable
+    select
+      equatable = false
+    or
+      $%equatable$
+      equatable = true
+    end
+    $:$
+    <type_definition> !?ioDeclarations ?let keyTypeName
+  #--- Map properties
+    ${$
+    var propertyList = @propertyInCollectionListAST ()
+    repeat
+    while
+      <property_declaration> !?ioDeclarations !? propertyList
+    while
+      <method_declaration> !mDictTypeName !?ioDeclarations
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !mDictTypeName
+      !keyTypeName
+      !propertyList
+      !equatable: equatable
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ASSOCIATED ELEMENT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+//--- Add element
+  var @propertyInCollectionListAST structAttributeList = ()
+  structAttributeList +=
+    !isConstant: true
+    !self.mKeyTypeName
+    !["key" nowhere]
+    !.publicAccess
+    !hasSelector: false
+    !initialization: .none
+  for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
+    structAttributeList +=
+      !isConstant: true
+      !qualifiedTypeAST
+      !mPropertyName
+      !.publicAccess
+      !hasSelector: hasSelector
+      !initialization: .none
+  end
+  let elementTypeName = @lstring (self.mDictTypeName.string + elementTypeNameSuffix (), self.mDictTypeName)
+  ioDeclarations.mDeclarationList += !@structDeclarationAST {
+    !isPredefined: self.isPredefined
+    !elementTypeName
+    !structAttributeList
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
+    !isUsefull: false
+  }
+//--- Add optional element
+  [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @dictDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+ {
+  let dictionary = @lstring {!"@" + self.mDictTypeName !self.mDictTypeName.location}
+  [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
+  [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
+  for (* typeName 4*) in self.mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + typeName !typeName}]
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @dictDeclarationAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap ioEquatableExtensionMap
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
+  ?!@semanticContext ioSemanticContext {
+#--- key type index
+  [!?ioTypeMap makeEntryFromString !self.mKeyTypeName ?let keyTypeIndex]
+#--- Enumeration description
+  var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
+#---
+  var @classFunctionMap classFunctionMap = ()
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
+  var @setterMap setterMap = ()
+  var @instanceMethodMap instanceMethodMap = ()
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
+    !?ioTypeMap
+    !name:"emptyDict"
+    !resultTypeName:self.mDictTypeName.string
+    !hasLexiqueArg:false
+  )
+#--- Getters
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName: "hasKey"
+    !argSelector: ""!argType: self.mKeyTypeName.string !argName: "inKey"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterBaseGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"count"
+    !obsoleteName: ""
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+#--- Handle properties
+  var @formalParameterSignature insertSetterFormalArgumentList = ()
+  var @typedPropertyList typedPropertyList = ()
+  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = ()
+  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key" !true
+  insertSetterFormalArgumentList +=
+    !["" nowhere]
+    !keyTypeIndex
+    !.argumentConstantIn
+    !"inKey"
+  var @formalParameterSignature removeMethodFormalArgumentList = ()
+  removeMethodFormalArgumentList +=
+    !["" nowhere]
+    !keyTypeIndex
+    !.argumentConstantIn
+    !"inKey"
+  var @optionalMethodSignature optionalMethodSignature = ()
+  optionalMethodSignature +=
+    !true
+    !["" nowhere]
+    !keyTypeIndex
+    !"inKey"
+  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList ()
+  for (* typeName mPropertyName 2* initExpression) in self.mPropertyList do
+    [!?ioTypeMap makeEntry !typeName ?let attributeTypeIndex]
+    let hasSetter = true
+    let hasSelector = false
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
+    typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: hasSetter !hasSelector: hasSelector
+    typesToIncludeInHeaderCompilation += !attributeTypeIndex
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
+    insertSetterFormalArgumentList +=
+      !["" nowhere]
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST.argumentConstantIn
+      !mPropertyName.string
+    removeMethodFormalArgumentList +=
+      !["" nowhere]
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST.argumentOut
+      !mPropertyName.string
+    optionalMethodSignature +=
+      !false
+      !["" nowhere]
+      !attributeTypeIndex
+      !mPropertyName.string
+  end
+#--- Handle insert setter
+  [!?setterMap insertOrReplace
+    !.init {!"insert" !self.mDictTypeName.location}
+    !@methodKind.definedAsMember
+    !insertSetterFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+#--- Handle remove setter
+  [!?setterMap insertOrReplace
+    !.init {!"removeKey" !self.mDictTypeName.location}
+    !@methodKind.definedAsMember
+    !removeMethodFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+#--- Handle search methods (methods if no state, setters if states)
+  [!?instanceMethodMap insertKey
+    !.init {!"searchKey" !self.mDictTypeName}
+    !@methodKind.definedAsMember
+    !removeMethodFormalArgumentList
+    !self.mDictTypeName.location
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+#--- Enter "attributeForKey" getters
+  for (* typeName mPropertyName 3*) in self.mPropertyList do
+    let accessorName = @lstring {!mPropertyName.string + "ForKey" !mPropertyName.location}
+    [!?ioTypeMap makeEntry  !typeName ?let attributeTypeIndex]
+    [!?getterMap insertOrReplace
+      !accessorName
+      !.definedAsMember
+      !@functionSignature §[.init (["" nowhere], keyTypeIndex, "inKey", true)]
+      !.here
+      !true
+      !attributeTypeIndex
+      !.isBasic
+      !"" # getter name is not obsolete, no replacement getter
+    ]
+  end
+#---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
+  for (* typeName mPropertyName 3*) in self.mPropertyList do
+    let accessorName = @lstring {
+      !"set" + [mPropertyName.string stringByCapitalizingFirstCharacter] + "ForKey"
+      !mPropertyName.location
+    }
+    [!?ioTypeMap makeEntry
+      !typeName
+      ?let @unifiedTypeMapEntry attributeTypeIndex
+    ]
+    var accessorFormalArgumentList = @formalParameterSignature ()
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
+    [!?setterMap insertOrReplace
+      !accessorName
+      !@methodKind.definedAsMember
+      !accessorFormalArgumentList
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+  end
+#--- Add initializer without argument
+  var @initializerMap initializerMap = ()
+  let @functionSignature emptyArgumentList = ()
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mDictTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
+  addExtensions (
+    !inExtensionInitializerMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !?ioTypeMap
+    !self.mDictTypeName
+    !isClass: false
+    !?initializerMap
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+    !acceptSetters: true
+  )
+#--- Element type index
+  let elementTypeName = @lstring (self.mDictTypeName.string + elementTypeNameSuffix (), self.mDictTypeName)
+  [!?ioTypeMap makeEntry
+    !elementTypeName
+    ?let @unifiedTypeMapEntry elementTypeEntry
+  ]
+#--- Features
+  var features = @typeFeatures.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+  if self.equatable then
+    features |= .equatable
+  end
+  handleEquatableComparableExtension (
+    !?ioEquatableExtensionMap
+    !self.mDictTypeName
+    !?features
+    !acceptEquatable: true
+    !acceptComparable: false
+  )
+#--- Optional Element type index
+  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  [!?ioTypeMap makeEntry
+    !optionalElementTypeName
+    ?let @unifiedTypeMapEntry optionalElementTypeEntry
+  ]
+#--- Read subscripts
+  var @subscriptMap readSubscriptMap = ()
+  let @functionSignature argumentTypeList = §[.init (["" nowhere], keyTypeIndex, "inKey", true)]
+  [!?readSubscriptMap insertKey
+    !.init ([argumentTypeList subcriptSignature], .nowhere)
+    !argumentTypeList
+    !optionalElementTypeEntry
+  ]
+#--- Enter in type map
+  let typeDefinition = @unifiedTypeDefinition {
+    !typeName: self.mDictTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .mapType
+    !supportCollectionValue: true
+    !allTypedPropertyList: ()
+    !propertyMap: ()
+    !currentTypedPropertyList: typedPropertyList
+    !initializerMap: initializerMap
+    !classFunctionMap: classFunctionMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
+    !classMethodMap: ()
+    !unwrappedType: .null
+    !readSubscriptMap: readSubscriptMap
+    !enumerationDescriptorList: enumerationDescriptor
+    !features: features
+    !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
+    !mapSearchMethodList: ()
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
+    !typeForEnumeratedElement: elementTypeEntry
+    !headerFileName: "dict-" + [self.mDictTypeName fileNameRepresentation]
+    !headerKind: .oneHeader
+  }
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc check_K_escapeCharacters ?let @lstring inString {  #--- Check escape sequences : only %K or %%
+  for components in [inString.string componentsSeparatedByString !"%%"] do
+    var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
+    [!?explodedArray popFirst ?*]
+    for (mValue) in explodedArray do
+      if [mValue count] > 0 then
+        let @char c = [mValue characterAtIndex !0]
+        if c != 'K' then
+          error inString: "only '%K' and '%%' escape sequences are allowed in this error message "
+        end
+      end
+    end
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc check_K_L_escapeCharacters ?let @lstring inString {  #--- Check escape sequences : only %K, %L or %%
+  for components in [inString.string componentsSeparatedByString !"%%"] do
+    var @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
+    [!?explodedArray popFirst ?*]
+    for (mValue) in explodedArray do
+      if [mValue count] > 0 then
+        let @char c = [mValue characterAtIndex !0]
+        if (c != 'K') & (c != 'L') then
+          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message "
+        end
+      end
+    end
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+func %once forbiddenKeysForMapAndDict () -> @stringset {
+  result = ()
+  result += !"key"
+  result += !"description"
+  result += !"object"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @dictDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Check key is comparable
+  let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
+  if not [[keyType definition].features contains !.comparable] then
+    error self.mKeyTypeName : "the @" + self.mKeyTypeName + " type is not comparable"
+  end
+#--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mDictTypeName.string + "-element" !self.mDictTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+#------ Enter attributes
+  var @typedPropertyList typedAttributeList = ()
+  var @propertyIndexMap attributeMap = ()
+  for (* typeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !typeName]
+    let hasSetter = true
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !initExpression
+      !hasSetter: hasSetter
+      !hasSelector: hasSelector
+    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
+      var @string m = "a property cannot be named:"
+      for s in forbiddenKeysForMapAndDict () do
+        m+= " " + s
+      end
+      m += "; theses names are reserved"
+      error mPropertyName: m
+    end
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#--- Optional Element type index
+  let elementTypeName = @lstring (self.mDictTypeName.string + elementTypeNameSuffix (), self.mDictTypeName)
+  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
+#--- Enter map declaration
+  ioSemanticDeclarationListForGeneration +=
+    !infoMessage: "dict " + self.mDictTypeName
+    !@dictTypeForGeneration {
+      ![ioTypeMap typeMapEntryForLKey !self.mDictTypeName]
+      ![ioTypeMap typeMapEntryForLKey !@lstring {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}]
+      !self.mDictTypeName
+      !typedAttributeList
+      !self.mKeyTypeName
+      !optionalElementTypeEntry
+    }
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @dictTypeForGeneration : @semanticTypeForGeneration {
+  private let @unifiedTypeMapEntry mElementTypeEntry
+  private let @lstring mDictTypeName
+  private let @typedPropertyList mTypedAttributeList
+  private let @lstring mKeyTypeName
+  private let @unifiedTypeMapEntry mOptionalElementTypeEntry
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @dictTypeForGeneration appendDeclaration1 ?!@stringset unused ioInclusionSet
+                          !@string outHeader {
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  outHeader = [filewrapper dictGenerationTemplate.dictTypeHeader1
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mTypedAttributeList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.readSubscriptMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @dictTypeForGeneration appendSpecificImplementation
+                                        ?let @unifiedTypeMap unused inTypeMap
+                                        ?!@stringset ioInclusionSet
+                                        !@string outImplementation {
+  [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper dictGenerationTemplate.dictTypeSpecificImplementation
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mTypedAttributeList
+    ![self.mKeyTypeName identifierRepresentation]
+    ![[self.mSelfTypeEntry definition].features generateCppObjectComparison]
+    ![self.mElementTypeEntry identifierRepresentation]
+    ![self.mOptionalElementTypeEntry identifierRepresentation]
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! Generation Filewrappers
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+private filewrapper dictGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+
+#---------- dict
+  template dictTypeHeader1 "GALGAS_dict.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+
+  template dictTypeSpecificImplementation "GALGAS_dict.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@string KEY_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

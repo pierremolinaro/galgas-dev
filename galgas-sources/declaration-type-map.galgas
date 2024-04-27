@@ -1,0 +1,891 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @insertMethodListAST {
+  public let @lstring mInsertMethodName
+  public let @lstring mErrorMessage
+  public let @lstring mShadowErrorMessage
+}
+
+#·······················································································································
+
+list @mapSearchMethodListAST {
+  public let @lstring mSearchMethodName
+  public let @lstring mErrorMessage
+}
+
+#·······················································································································
+
+list @mapRemoveMethodListAST {
+  public let @lstring mMethodName
+  public let @lstring mErrorMessage
+}
+
+#·······················································································································
+
+list @insertOrReplaceDeclarationListAST {
+  public let @location mInsertOrReplaceDeclarationLocation
+}
+
+#·······················································································································
+
+refclass @mapDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mMapTypeName
+  private let @propertyInCollectionListAST mPropertyList
+  private let @insertMethodListAST mInsertMethodList
+  private let @mapSearchMethodListAST mSearchMethodList
+  private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
+  private let @bool equatable %initArgLabel
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @mapDeclarationAST keyRepresentation ->@string result {
+  result = "map @" + self.mMapTypeName
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $map$
+    $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
+    ${$
+    var propertyList = @propertyInCollectionListAST ()
+    var mInsertMethodList = @insertMethodListAST ()
+    var @mapSearchMethodListAST mSearchMethodList = ()
+    var @mapRemoveMethodListAST mRemoveMethodList = ()
+    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = ()
+    repeat
+    while
+      <property_declaration_ggs3> !?ioDeclarations !? propertyList
+    while
+      <map_insert_setter_declaration> !? mInsertMethodList
+    while
+      <search_declaration> !?mSearchMethodList
+    while
+      <remove_declaration> !?mRemoveMethodList
+    while
+      <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
+    while
+      <method_declaration_ggs3> !mapTypeName !?ioDeclarations
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !mapTypeName
+      !propertyList
+      !mInsertMethodList
+      !mSearchMethodList
+      !mRemoveMethodList
+      !insertOrReplaceDeclarationListAST
+      !equatable: isEquatable
+    }
+  }
+
+  #·······························································································
+
+  rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+    $search$
+    $identifier$ ?let @lstring methodName
+    $error$ ; $message$
+    $"string"$ ?let @lstring errorMessage
+    ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
+  }
+
+  #·······························································································
+
+  rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
+    $remove$
+    $identifier$ ?let @lstring mMethodName
+    $error$
+    $message$
+    $"string"$ ?let @lstring mErrorMessage
+    ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
+  }
+
+  #·······························································································
+
+  rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
+    $insert$
+    $or$
+    $replace$
+    ioInsertOrReplaceDeclarationListAST += !@location.here
+  }
+
+  #·······························································································
+
+  rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
+    $insert$
+    $identifier$ ?let @lstring mMethodName
+    $error$
+    $message$
+    $"string"$ ?let @lstring mErrorMessage
+    let @lstring mShadowErrorMessage
+    select
+      mShadowErrorMessage = @lstring {!"" !@location.here}
+    or
+      $,$
+      $"string"$ ? mShadowErrorMessage
+    end
+    ioMapMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !mShadowErrorMessage
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $map$
+    $@type$ ?let @lstring mapTypeName indexing mapDefinition, structDefinition "-element"
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
+    ${$
+    var propertyList = @propertyInCollectionListAST ()
+    var mInsertMethodList = @insertMethodListAST ()
+    var @mapSearchMethodListAST mSearchMethodList = ()
+    var @mapRemoveMethodListAST mRemoveMethodList = ()
+    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = ()
+    repeat
+    while
+      <property_declaration> !?ioDeclarations !? propertyList
+    while
+      <map_insert_setter_declaration> !? mInsertMethodList
+    while
+      <search_declaration> !?mSearchMethodList
+    while
+      <remove_declaration> !?mRemoveMethodList
+    while
+      <insert_or_replace_declaration> !?insertOrReplaceDeclarationListAST
+    while
+      <method_declaration> !mapTypeName !?ioDeclarations
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@mapDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !mapTypeName
+      !propertyList
+      !mInsertMethodList
+      !mSearchMethodList
+      !mRemoveMethodList
+      !insertOrReplaceDeclarationListAST
+      !equatable: isEquatable
+    }
+  }
+
+  #·······························································································
+
+  rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+    $%searchMethod$
+    $identifier$ ?let @lstring methodName
+    $%errorMessage$
+    $"string"$ ?let @lstring errorMessage
+    ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
+  }
+
+  #·······························································································
+
+  rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
+    $%removeSetter$
+    $identifier$ ?let @lstring mMethodName
+    $%errorMessage$
+    $"string"$ ?let @lstring mErrorMessage
+    ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
+  }
+
+  #·······························································································
+
+  rule <insert_or_replace_declaration> ?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST {
+    $%insertOrReplaceSetter$
+    ioInsertOrReplaceDeclarationListAST += !@location.here
+  }
+
+  #·······························································································
+
+  rule <map_insert_setter_declaration> ?!@insertMethodListAST ioMapMethodList {
+    $%insertSetter$
+    $identifier$ ?let @lstring mMethodName
+    $%errorMessage$
+    $"string"$ ?let @lstring mErrorMessage
+    let @lstring mShadowErrorMessage
+    select
+      mShadowErrorMessage = @lstring {!"" !@location.here}
+    or
+      $,$
+      $"string"$ ? mShadowErrorMessage
+    end
+    ioMapMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !mShadowErrorMessage
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ASSOCIATED ELEMENT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapDeclarationAST addAssociatedElement
+  ?!@galgasDeclarationAST ioDeclarations {
+  var structAttributeList = @propertyInCollectionListAST ()
+  structAttributeList +=
+    !isConstant: false
+    !["lstring" nowhere]
+    !["lkey" nowhere]
+    !.publicAccess
+    !hasSelector: false
+    !initialization: .none
+  for (* qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
+    structAttributeList +=
+      !isConstant: false
+      !qualifiedTypeAST
+      !mPropertyName
+      !.publicAccess
+      !hasSelector: hasSelector
+      !initialization: initExpression
+  end
+  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  ioDeclarations.mDeclarationList += !@structDeclarationAST {
+    !isPredefined: self.isPredefined
+    !elementTypeName
+    !structAttributeList
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
+    !isUsefull: false
+  }
+//--- Add optional element
+  [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring {!"@" + self.mMapTypeName !self.mMapTypeName.location}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for (* propertyTypeName 4*) in self.mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + propertyTypeName !propertyTypeName.location}]
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapDeclarationAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap ioEquatableExtensionMap
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
+  ?!@semanticContext ioSemanticContext
+{
+#--- string type index
+  [!?ioTypeMap makeEntryFromString !"string" ?let stringTypeIndex]
+#--- lstring type index
+  [!?ioTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
+#--- Enumeration description
+  var @enumerationDescriptorList enumerationDescriptor = §[.init (lstringTypeIndex, "lkey")]
+#---
+  var @classFunctionMap classFunctionMap = ()
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+  var @setterMap setterMap = ()
+  var @instanceMethodMap instanceMethodMap = ()
+#--- Class functions
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
+    !?ioTypeMap
+    !name:"emptyMap"
+    !resultTypeName:self.mMapTypeName.string
+    !hasLexiqueArg:false
+  )
+  enterClassFunctionWithArgument (
+    !?classFunctionMap
+    !?ioTypeMap
+    !name:"mapWithMapToOverride"
+    !argTypeName:self.mMapTypeName.string
+    !argName:"inMap"
+    !resultTypeName:self.mMapTypeName.string
+    !hasLexiqueArg:false
+  )
+#--- Getters
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"levels"
+    !obsoleteName: ""
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWith2Arguments (
+    !?getterMap
+    !?ioTypeMap
+    !"hasKeyAtLevel"
+    !"string"
+    !"inKey"
+    !"uint"
+    !"inLevel"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"keySet"
+    !obsoleteName: ""
+    !returnedTypeName:"stringset"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"keyList"
+    !obsoleteName: ""
+    !returnedTypeName:"lstringlist"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"hasKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"locationForKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"location"
+    !hasCompilerArgument:true
+  )
+  enterBaseGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName: "overriddenMap"
+    !obsoleteName: ""
+    !returnedTypeName:self.mMapTypeName.string
+    !hasCompilerArgument:true
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"count"
+    !obsoleteName: ""
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+#--- Handle properties
+  var insertMethodFormalArgumentList = @formalParameterSignature ()
+  var typedPropertyList = @typedPropertyList ()
+  var @optionalMethodSignature optionalMethodSignature = ()
+  optionalMethodSignature +=
+    !true
+    ![""nowhere]
+    !stringTypeIndex
+    !"inKey"
+  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = ()
+  argumentTypeListForAddAssignWithFieldExpressionList +=
+    !["" nowhere]
+    !lstringTypeIndex
+    !"lkey"
+    !true
+  insertMethodFormalArgumentList +=
+    !["" nowhere]
+    !lstringTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inLKey"
+  var @formalParameterSignature removeMethodFormalArgumentList = ()
+  removeMethodFormalArgumentList +=
+    !["" nowhere]
+    !lstringTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inLKey"
+  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = ()
+  for (* propertyTypeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
+    if [initExpression isSome] then
+      error mPropertyName : "property initialization is not handled for a map"
+    end
+    [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
+    typedPropertyList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
+    typesToIncludeInHeaderCompilation += !attributeTypeIndex
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
+    insertMethodFormalArgumentList +=
+      !if hasSelector then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !.argumentConstantIn
+      !mPropertyName.string
+    removeMethodFormalArgumentList +=
+      !if hasSelector then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !.argumentOut
+      !mPropertyName.string
+    optionalMethodSignature +=
+      !false
+      !if hasSelector then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !mPropertyName.string
+  end
+#--- Handle insert setters
+  for (mInsertMethodName * *) in self.mInsertMethodList do
+    if [setterMap hasKey !mInsertMethodName.string] then
+      error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
+    else
+      [!?setterMap insertOrReplace
+        !mInsertMethodName
+        !@methodKind.definedAsMember
+        !insertMethodFormalArgumentList
+        !true
+        !@methodQualifier.isBasic
+        !""
+      ]
+    end
+  end
+#--- Handle remove setters
+  for (mMethodName *) in self.mRemoveMethodList do
+    if [setterMap hasKey !mMethodName.string] then
+      error mMethodName:"the '" + mMethodName + "' method is already declared as an insert setter or a remove setter"
+    else
+      [!?setterMap insertOrReplace
+        !mMethodName
+        !.definedAsMember
+        !removeMethodFormalArgumentList
+        !true
+        !.isBasic
+        !""
+      ]
+    end
+  end
+#--- Handle search methods (methods if no state, setters if states)
+  for (mSearchMethodName *) in self.mSearchMethodList do
+    [!?instanceMethodMap insertKey
+      !mSearchMethodName
+      !.definedAsMember
+      !removeMethodFormalArgumentList
+      !mSearchMethodName.location
+      !true
+      !.isBasic
+      !"" # No error message
+    ]
+  end
+#--- Enter "attributeForKey" getters
+  for property in self.mPropertyList do
+    let accessorName = @lstring {!property.name.string + "ForKey" !property.name.location}
+    [!?ioTypeMap makeEntry !property.typeName ?let attributeTypeIndex]
+    [!?getterMap insertOrReplace
+      !accessorName
+      !.definedAsMember
+      !@functionSignature §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
+      !.here
+      !true
+      !attributeTypeIndex
+      !.isBasic
+      !"" # getter name is not obsolete, no replacement getter
+    ]
+  end
+#---------- Handle "insertOrReplace" setter
+  if [self.mInsertOrReplaceDeclarationListAST count] >= 1 then
+    [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceLocation]
+    [!?setterMap insertOrReplace
+      !@lstring {!"insertOrReplace" !insertOrReplaceLocation}
+      !.definedAsMember
+      !insertMethodFormalArgumentList
+      !false
+      !.isBasic
+      !"" # No error message
+    ]
+  end
+#---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
+  for property in self.mPropertyList do
+    let accessorName = @lstring {
+      !"set" + [property.name.string stringByCapitalizingFirstCharacter] + "ForKey"
+      !property.name.location
+    }
+    [!?ioTypeMap makeEntry
+      !property.typeName
+      ?let @unifiedTypeMapEntry attributeTypeIndex
+    ]
+    var @formalParameterSignature accessorFormalArgumentList = ()
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !property.name.string
+    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
+    [!?setterMap insertOrReplace
+      !accessorName
+      !@methodKind.definedAsMember
+      !accessorFormalArgumentList
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+  end
+#--- Add initializer without argument
+  var @initializerMap initializerMap = ()
+  let @functionSignature emptyArgumentList = ()
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mMapTypeName}
+    !emptyArgumentList
+  ]
+#--- Features
+  var features = @typeFeatures.plusEqualOperatorWithFieldListNeedsCompilerArg
+           | .supportWithAccessor | .infixAddOperator | .doNotGenererateObjectCompare
+  if self.equatable then
+    features |= .equatable
+  end
+  handleEquatableComparableExtension (
+    !?ioEquatableExtensionMap
+    !self.mMapTypeName
+    !?features
+    !acceptEquatable: true
+    !acceptComparable: false
+  )
+#--- Add extensions
+  addExtensions (
+    !inExtensionInitializerMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !?ioTypeMap
+    !self.mMapTypeName
+    !isClass: false
+    !?initializerMap
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+    !acceptSetters: true
+  )
+#--- Element type index
+  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  [!?ioTypeMap makeEntry
+    !elementTypeName
+    ?let @unifiedTypeMapEntry elementTypeEntry
+  ]
+#--- Optional Element type index
+  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  [!?ioTypeMap makeEntry
+    !optionalElementTypeName
+    ?let @unifiedTypeMapEntry optionalElementTypeEntry
+  ]
+#--- Read subscripts
+  var @subscriptMap readSubscriptMap = ()
+  let @functionSignature argumentTypeList = §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
+  [!?readSubscriptMap insertKey
+    !.init ([argumentTypeList subcriptSignature], .nowhere)
+    !argumentTypeList
+    !optionalElementTypeEntry
+  ]
+#--- Enter in type map
+  let typeDefinition = @unifiedTypeDefinition {
+    !typeName: self.mMapTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .mapType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: ()
+    !propertyMap: ()
+    !currentTypedPropertyList: typedPropertyList
+    !initializerMap: initializerMap
+    !classFunctionMap: classFunctionMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
+    !classMethodMap: ()
+    !unwrappedType: .null
+    !readSubscriptMap: readSubscriptMap
+    !enumerationDescriptorList: enumerationDescriptor
+    !features: features
+    !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
+    !mapSearchMethodList: self.mSearchMethodList
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
+    !typeForEnumeratedElement: elementTypeEntry # Type for enumerated element for "for" instruction
+    !headerFileName: "map-" + [self.mMapTypeName fileNameRepresentation]
+    !headerKind: .twoHeaders
+  }
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @insertMethodMap {
+  insert insertKey error message "the '%K' insert setter is already declared"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @searchMethodMap {
+  insert insertKey error message "the '%K' search method is already declared"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext unused  inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mMapTypeName.string + "-element" !self.mMapTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+#------ Enter property
+  var @typedPropertyList typedAttributeList = ()
+  var @propertyIndexMap attributeMap = ()
+  for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
+    let hasSelector = false
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !initExpression
+      !hasSetter: true
+      !hasSelector: hasSelector
+    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
+      var @string m = "a property cannot be named:"
+      for s in forbiddenKeysForMapAndDict () do
+        m+= " " + s
+      end
+      m += "; theses names are reserved"
+      error mPropertyName: m
+    end
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#--- Enter insert setters
+  var @insertMethodMap insertMethodMap = ()
+  for (mInsertMethodName mErrorMessage mShadowErrorMessage) in self.mInsertMethodList do
+    [!?insertMethodMap insertKey !mInsertMethodName]
+    check_K_L_escapeCharacters (!mErrorMessage )
+    check_K_L_escapeCharacters (!mShadowErrorMessage )
+  end
+#--- Enter search methods
+  var @searchMethodMap searchMethodMap = ()
+  for (mSearchMethodName mErrorMessage) in self.mSearchMethodList do
+    [!?searchMethodMap insertKey !mSearchMethodName]
+    check_K_escapeCharacters (!mErrorMessage )
+  end
+#--- Enter remove methods
+  for (mMethodName mErrorMessage) in self.mRemoveMethodList do
+    [!?insertMethodMap insertKey !mMethodName]
+    check_K_escapeCharacters (!mErrorMessage )
+  end
+#--- Warn for duplicated declarations or 'insertOrReplace' setter
+  for (mInsertOrReplaceDeclarationLocation) in self.mInsertOrReplaceDeclarationListAST do(IDX)
+    if IDX > 0 then
+      warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' setter is already declared"
+    end
+  end
+  let @bool hasInsertOrReplaceModifier = [self.mInsertOrReplaceDeclarationListAST count] > 0
+  if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
+    [self.mInsertOrReplaceDeclarationListAST first ?let insertOrReplaceDeclarationLocation]
+    error insertOrReplaceDeclarationLocation
+      : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
+  end
+#--- Optional Element type index
+  let elementTypeName = @lstring (self.mMapTypeName.string + elementTypeNameSuffix (), self.mMapTypeName)
+  let elementTypeEntry = [ioTypeMap typeMapEntryForLKey !elementTypeName]
+  let optionalElementTypeName = optionalTypeName (!forTypeNamed: elementTypeName)
+  let optionalElementTypeEntry = [ioTypeMap typeMapEntryForLKey !optionalElementTypeName]
+#--- Enter map declaration
+  ioSemanticDeclarationListForGeneration +=
+    !infoMessage: "map " + self.mMapTypeName
+    !@mapTypeForGeneration {
+      ![ioTypeMap typeMapEntryForLKey !self.mMapTypeName]
+      !elementTypeEntry
+      !self.mMapTypeName
+      !typedAttributeList
+      !self.mInsertMethodList
+      !self.mSearchMethodList
+      !self.mRemoveMethodList
+      !hasInsertOrReplaceModifier
+      !optionalElementTypeEntry
+    }
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @mapTypeForGeneration : @semanticTypeForGeneration {
+  private let @unifiedTypeMapEntry mElementTypeEntry
+  private let @lstring mMapTypeName
+  private let @typedPropertyList mTypedAttributeList
+  private let @insertMethodListAST mInsertMethodList
+  private let @mapSearchMethodListAST mSearchMethodList
+  private let @mapRemoveMethodListAST mRemoveMethodList
+  private let @bool mHasInsertOrReplaceModifier
+  private let @unifiedTypeMapEntry mOptionalElementTypeEntry
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapTypeForGeneration appendDeclaration1
+                                      ?!@stringset unused ioInclusionSet
+                                      !@string outHeader {
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader1
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mTypedAttributeList
+    !self.mSearchMethodList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.readSubscriptMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapTypeForGeneration appendDeclaration2
+  ?let @string unused inOutputDirectory
+  ?!@stringset ioInclusionSet
+  !@string outHeader {
+  for (t 4*) in self.mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet]
+  end
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  outHeader = [filewrapper mapGenerationTemplate.mapTypeHeader2
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    !self.mTypedAttributeList
+    ![selfTypeDefinition.features generateCppObjectComparison]
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @mapTypeForGeneration appendSpecificImplementation
+                                          ?let @unifiedTypeMap unused inTypeMap
+                                          ?!@stringset ioInclusionSet
+                                          !@string outImplementation {
+  [self.mElementTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mOptionalElementTypeEntry addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  outImplementation = [filewrapper mapGenerationTemplate.mapTypeSpecificImplementation
+    ![selfTypeDefinition.typeName.string identifierRepresentation]
+    !self.mTypedAttributeList
+    ![self.mElementTypeEntry identifierRepresentation]
+    !self.mInsertMethodList
+    ![self.mOptionalElementTypeEntry identifierRepresentation]
+    !self.mSearchMethodList
+    !self.mRemoveMethodList
+    !self.mHasInsertOrReplaceModifier
+    ![selfTypeDefinition.features generateCppObjectComparison]
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! Generation Filewrappers
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+private filewrapper mapGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template mapTypeHeader1 "GALGAS_map.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+
+  template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@bool GENERATE_COMPARISON
+
+  template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@insertMethodListAST INSERT_METHOD_LIST
+    ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+    ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
+    ?@bool HAS_INSERT_OR_REPLACE
+    ?@bool GENERATE_COMPARISON
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

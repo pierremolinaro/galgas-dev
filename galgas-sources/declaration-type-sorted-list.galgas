@@ -1,0 +1,517 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @sortedListSortDescriptorListAST {
+  public let @lstring mSortedAttributeName
+  public let @bool mAscending
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @sortedListDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mSortedListTypeName
+  private let @propertyInCollectionListAST mPropertyList
+  private let @sortedListSortDescriptorListAST mSortDescriptorList
+  private let @bool equatable %initArgLabel
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $sortedlist$
+    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
+    ${$
+    var @propertyInCollectionListAST attributeList = ()
+    repeat
+    while
+      <property_declaration_ggs3> !?ioDeclarations !?attributeList
+    end
+    $}$
+    ${$
+    var @sortedListSortDescriptorListAST sortDescriptorList = ()
+    repeat
+      <sortedlist_sort_descriptor> !? sortDescriptorList
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !sortedListTypeName
+      !attributeList
+      !sortDescriptorList
+      !equatable: isEquatable
+    }
+  }
+
+  #·······························································································
+
+  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+    $identifier$ ?let @lstring mSortedAttributeName
+    let @bool mAscending
+    select
+      $<$
+      mAscending = true
+    or
+      $>$
+      mAscending = false
+    end
+    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $sortedlist$
+    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
+    ${$
+    var @propertyInCollectionListAST attributeList = ()
+    repeat
+    while
+      <property_declaration> !?ioDeclarations !? attributeList
+    end
+    $}$
+    ${$
+    var @sortedListSortDescriptorListAST sortDescriptorList = ()
+    repeat
+      <sortedlist_sort_descriptor> !? sortDescriptorList
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !sortedListTypeName
+      !attributeList
+      !sortDescriptorList
+      !equatable: isEquatable
+    }
+  }
+
+  #·······························································································
+
+  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+    $identifier$ ?let @lstring mSortedAttributeName
+    let @bool mAscending
+    select
+      $<$
+      mAscending = true
+    or
+      $>$
+      mAscending = false
+    end
+    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+  }
+
+  #·······························································································
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @sortedListDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring {!"@" + self.mSortedListTypeName !self.mSortedListTypeName.location}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  for (* propertyTypeName 4*) in self.mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + propertyTypeName !propertyTypeName.location}]
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @sortedListDeclarationAST addAssociatedElement
+  ?!@galgasDeclarationAST ioDeclarations {
+  var @propertyInCollectionListAST structAttributeList = ()
+  for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
+    structAttributeList +=
+      !isConstant: isConstant
+      !qualifiedTypeAST
+      !mPropertyName
+      !.publicAccess
+      !hasSelector: hasSelector
+      !initialization: initExpression
+  end
+  ioDeclarations.mDeclarationList += !@structDeclarationAST {
+    !isPredefined: self.isPredefined
+    !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
+    !structAttributeList
+    !enumeratedElementTypeName: ""
+    !comparison: if self.equatable then .equatable else .none end
+    !isUsefull: false
+  }
+}
+
+#·······················································································································
+
+override method @sortedListDeclarationAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap ioEquatableExtensionMap
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
+  ?!@semanticContext ioSemanticContext
+{
+#--- Type index
+  [!?ioTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
+#--- Element type index
+  [!?ioTypeMap makeEntry
+    !@lstring {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
+    ?let @unifiedTypeMapEntry listElementTypeIndex
+  ]
+#--- Enumeration description
+  var @enumerationDescriptorList enumerationDescriptor = ()
+  var @functionSignature constructorAttributeTypeList = ()
+  var @formalParameterSignature setterFormalOutputArgumentList = ()
+  var @formalParameterSignature setterFormalInputArgumentList = ()
+  var @typedPropertyList typedAttributeList = ()
+  for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
+    [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
+    let hasSelector = false
+    typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
+    enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string !true
+    setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
+    setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentVarIn !mPropertyName.string
+  end
+#--- Class functions
+  var @classFunctionMap classFunctionMap = ()
+  enterClassFunctionWithoutArgument (
+    !?classFunctionMap
+    !?ioTypeMap
+    !name:"emptySortedList"
+    !resultTypeName:self.mSortedListTypeName.string
+    !hasLexiqueArg:false
+  )
+  [!?classFunctionMap insertKey
+    !@lstring {!"sortedListWithValue" !@location.here}
+    !constructorAttributeTypeList
+    !false
+    !listTypeIndex
+  ]
+#--- Readers
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName:"count"
+    !obsoleteName: "length"
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+#--- Setters
+  var @setterMap setterMap = ()
+  [!?setterMap insertOrReplace
+    !@lstring {!"popGreatest" !@location.here}
+    !@methodKind.definedAsMember
+    !setterFormalOutputArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?setterMap insertOrReplace
+    !@lstring {!"popSmallest" !@location.here}
+    !@methodKind.definedAsMember
+    !setterFormalOutputArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?setterMap insertOrReplace
+    !@lstring {!"insert" !@location.here}
+    !@methodKind.definedAsMember
+    !setterFormalInputArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+#--- Instance methods
+  var @instanceMethodMap instanceMethodMap = ()
+  [!?instanceMethodMap insertKey
+    !@lstring {!"greatest" !@location.here}
+    !@methodKind.definedAsMember
+    !setterFormalOutputArgumentList
+    !@location.here
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?instanceMethodMap insertKey
+    !@lstring {!"smallest" !@location.here}
+    !@methodKind.definedAsMember
+    !setterFormalOutputArgumentList
+    !@location.here
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+#--- Add initializer without argument
+  var @initializerMap initializerMap = ()
+  let @functionSignature emptyArgumentList = ()
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mSortedListTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
+  addExtensions (
+    !inExtensionInitializerMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !?ioTypeMap
+    !self.mSortedListTypeName
+    !isClass: false
+    !?initializerMap
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+    !acceptSetters: true
+  )
+#--- features
+  var features = @typeFeatures.plusAssignOperatorWithExpression | .doNotGenererateObjectCompare
+  if self.equatable then
+    features |= .equatable
+  end
+  handleEquatableComparableExtension (
+    !?ioEquatableExtensionMap
+    !self.mSortedListTypeName
+    !?features
+    !acceptEquatable: true
+    !acceptComparable: false
+  )
+#--- Enter in type map
+  let typeDefinition = @unifiedTypeDefinition {
+    !typeName: self.mSortedListTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true # Concrete Type
+    !superType: .null
+    !typeKind: .sortedListType
+    !supportCollectionValue: true # Support collection value
+    !allTypedPropertyList: typedAttributeList
+    !propertyMap: ()
+    !currentTypedPropertyList: ()
+    !initializerMap: initializerMap
+    !classFunctionMap: classFunctionMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
+    !classMethodMap: ()
+    !unwrappedType: .null
+    !readSubscriptMap: ()
+    !enumerationDescriptorList: enumerationDescriptor
+    !features: features 
+    !addAssignOperatorArguments: constructorAttributeTypeList
+    !mapSearchMethodList: ()
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
+    !typeForEnumeratedElement: listElementTypeIndex
+    !headerFileName: "-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
+    !headerKind: .oneHeader
+  }
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @sortedListDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
+  [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.init{!self.mSortedListTypeName.string + "-element" !self.mSortedListTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
+#--- Attribute
+  var typedAttributeList = @typedPropertyList ()
+  var @propertyIndexMap attributeMap = ()
+  for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
+    let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
+    let hasSelector = true
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !initExpression
+      !hasSetter: true
+      !hasSelector: hasSelector
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#--- Sort descriptor
+  var @stringset attributesUsedForSorting = ()
+  var @sortDescriptorListForGeneration sortDescriptorList = ()
+  for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
+    [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMapEntry type]
+    sortDescriptorList += !type !mSortedAttributeName.string !mAscending
+    if [attributesUsedForSorting hasKey !mSortedAttributeName.string] then
+      error mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting"
+    end
+    attributesUsedForSorting += !mSortedAttributeName.string
+    if not [[type definition].features contains !.comparable] then
+      error mSortedAttributeName : "the @" + [type definition].typeName + " type is not comparable"
+    end
+  end
+#--- Generate type
+  ioSemanticDeclarationListForGeneration +=
+    !infoMessage: "sorted list " + self.mSortedListTypeName
+    !@sortedListTypeForGeneration {
+      ![ioTypeMap typeMapEntryForLKey !self.mSortedListTypeName]
+      ![ioTypeMap typeMapEntryForLKey !.init {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}]
+      !typedAttributeList
+      !sortDescriptorList
+    }
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @sortDescriptorListForGeneration {
+  public let @unifiedTypeMapEntry mAttributeTypeIndex
+  public let @string mAttributeName
+  public let @bool mAscendingOrder
+}
+
+#·······················································································································
+
+refclass @sortedListTypeForGeneration : @semanticTypeForGeneration {
+  private let @unifiedTypeMapEntry mListElementTypeIndex
+  private let @typedPropertyList mTypedAttributeList
+  private let @sortDescriptorListForGeneration mSortDescriptorList
+}
+
+#·······················································································································
+
+filewrapper sortedListGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+
+  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@bool GENERATE_COMPARISON
+}
+
+#·······················································································································
+
+override method @sortedListTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  outHeader = [filewrapper sortedListGenerationTemplate.sortedlistTypeHeader1
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mTypedAttributeList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.readSubscriptMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
+  ]
+ }
+
+#·······················································································································
+
+override method @sortedListTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  for (t 4*) in self.mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+  [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  let t = [self.mListElementTypeIndex definition]
+  outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mTypedAttributeList
+    !self.mSortDescriptorList
+    ![t.typeName identifierRepresentation]
+    ![t.features generateCppObjectComparison]
+  ]
+ }
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

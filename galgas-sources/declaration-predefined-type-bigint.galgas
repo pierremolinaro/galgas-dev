@@ -1,0 +1,326 @@
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Generate predefined types
+#
+#  Copyright (C) 2010, ..., 2023 Pierre Molinaro.
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @bigintPredefinedTypeAST : @predefinedTypeAST {
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter cppDeclarationString -> @string {
+    result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getClassFunctionMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@classFunctionMap outMap {
+    outMap = ()
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"zero"
+      !resultTypeName:"bigint"
+      !hasLexiqueArg:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getInstanceMethodMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@instanceMethodMap outInstanceMethodMap {
+    outInstanceMethodMap = ()
+  #--- divide, floorDivide, ceilDivide
+    [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
+    var @formalParameterSignature argList = ()
+    argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
+    argList += !["quotient" nowhere] !bigIntType !.argumentOut !"outQuotient"
+    argList += !["remainder" nowhere] !bigIntType !.argumentOut !"outRemainder"
+    [!?outInstanceMethodMap insertKey
+      !.init {!"divideBy" !.here}
+      !.definedAsMember
+      !argList
+      !.here
+      !true
+      !.isBasic
+      !"" # No error message
+    ]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getSetterMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@setterMap outSetterMap
+  {
+    outSetterMap = ()
+    enterModifierWith2InputArguments (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !arg1TypeName:"bool"
+      !arg1Name:"inBit"
+      !arg2TypeName:"uint"
+      !arg2Name:"inIndex"
+      !setterName:"setBitAtIndex"
+      !compilerArg:false
+    )
+    enterModifierWithInputArgument (
+      !?outSetterMap
+      !?ioUnifiedTypeMap
+      !argTypeName:"uint"
+      !argName:"inIndex"
+      !setterName:"complementBitAtIndex"
+      !compilerArg:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getGetterMap
+    ?!@unifiedTypeMap ioUnifiedTypeMap
+    !@getterMap outMap {
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInUInt"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInSInt"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInUInt64"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"fitsInSInt64"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"string"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"spacedString"
+      !"uint" !"inSeparation"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"hexString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWith2Arguments (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"hexStringSeparatedBy"
+      !"char"
+      !"inSeparator"
+      !"uint"
+      !"inGroupCount"
+      !returnedTypeName:"string"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"xString"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"bitCountForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"bitCountForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"uint"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"sint"
+      !obsoleteName: ""
+      !returnedTypeName:"sint"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"uint64"
+      !obsoleteName: ""
+      !returnedTypeName:"uint64"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"sint64"
+      !obsoleteName: ""
+      !returnedTypeName:"sint64"
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"abs"
+      !obsoleteName: ""
+      !returnedTypeName:"bigint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"bitAtIndex"
+      !"uint" !"inBitIndex"
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isZero"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"sign"
+      !obsoleteName: ""
+      !returnedTypeName:"sint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract8ForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract8ForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract32ForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract32ForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uintlist"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract64ForUnsignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint64list"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"extract64ForSignedRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"uint64list"
+      !hasCompilerArgument:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter getSupportedOperatorFlags -> @typeFeatures {
+    result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
+               .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
+               .infixShiftOperator | .infixModOperator |
+               .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
+               .incDecOperator | .comparable | .equatable |
+               .plusAssignOperatorWithExpression | .minusAssignOperatorWithExpression |
+               .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

@@ -128,6 +128,40 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
 
 //--------------------------------------------------------------------------------------------------
 //
+//Abstract extension method '@semanticDeclarationAST enterDeclarationInGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclarationAST * inObject,
+                                                  class GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
+                                                  class GALGAS_equatableExtensionMap & io_ioEquatableExtensionMap,
+                                                  class GALGAS_extensionInitializerForBuildingContext & io_ioExtensionInitializerForBuildingContext,
+                                                  class GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
+                                                  class GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
+                                                  class GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
+                                                  class GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
+                                                  class Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@semanticDeclarationAST enterDeclarationInSemanticContext'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticDeclarationAST * inObject,
+                                                            class GALGAS_equatableExtensionMap & io_ioEquatableExtensionMap,
+                                                            const class GALGAS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
+                                                            const class GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
+                                                            const class GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
+                                                            const class GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
+                                                            class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                            class GALGAS_semanticContext & io_ioSemanticContext,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Abstract extension method '@semanticDeclarationAST semanticAnalysis'
 //
 //--------------------------------------------------------------------------------------------------

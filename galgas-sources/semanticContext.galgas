@@ -6,20 +6,20 @@
 #
 #  MIT License
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
-# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all copies or substantial portions
-# of the Software.
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
 #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-# DEALINGS IN THE SOFTWARE.
-#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @location sourceFile -> @string {
@@ -553,16 +553,6 @@ proc addExtensions
 #! enterInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract method @semanticDeclarationAST enterDeclarationInSemanticContext
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext unused ioSemanticContext
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 func %once elementTypeNameSuffix -> @string {
   result = "-element"
 }
@@ -639,6 +629,7 @@ proc recursivelyEnumerateDirectories
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
@@ -716,6 +707,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externFunctionDeclarationAST enterDeclarationInSemanticContext # Handles also function declaration
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
@@ -742,6 +734,7 @@ override method @externFunctionDeclarationAST enterDeclarationInSemanticContext 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
@@ -757,6 +750,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
@@ -776,6 +770,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
@@ -826,18 +821,9 @@ graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract method @semanticDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionInitializerForBuildingContext ioExtensionInitializerForBuildingContext
-  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
@@ -854,6 +840,7 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
 
 override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
@@ -878,6 +865,7 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
 
 override method @externFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
@@ -890,6 +878,7 @@ override method @externFunctionDeclarationAST enterDeclarationInGraph
 
 override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
@@ -902,6 +891,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInGraph
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext

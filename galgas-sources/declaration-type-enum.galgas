@@ -1,0 +1,573 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $enum$
+    $@type$ ?let enumTypeName indexing enumDefinition
+    var @structComparison comparison = .none
+    repeat
+    while
+      $%comparable$
+      switch comparison
+      case none :
+        comparison = .comparable
+      case comparable :
+        error .here : "duplicated attribute"
+      case equatable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    while
+      $%equatable$
+      switch comparison
+      case none :
+        comparison = .equatable
+      case equatable :
+        error .here : "duplicated attribute"
+      case comparable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    end
+    ${$
+    var @enumConstantList constantList = ()
+    repeat
+    while
+      $case$
+      $identifier$ ?let constantName
+      var @2lstringlist associatedValueTypeList = ()
+      select
+      or
+        $($
+        repeat
+          <type_definition_ggs3> !?ioDeclarations ?let associatedValueType
+          $identifier$ ?let associatedValueName
+          associatedValueTypeList += !associatedValueType !associatedValueName
+        while
+        end
+        $)$
+      end
+      constantList += !constantName !associatedValueTypeList
+    while
+      <method_declaration_ggs3> !enumTypeName !?ioDeclarations
+    end
+    $}$
+    if [constantList count] == 0 then
+      error enumTypeName : "an enumerated type must define at least one case constant"
+    end
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !enumTypeName
+      !constantList
+      !comparison: comparison
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $enum$
+    $@type$ ?let enumTypeName indexing enumDefinition
+    var @structComparison comparison = .none
+    repeat
+    while
+      $%comparable$
+      switch comparison
+      case none :
+        comparison = .comparable
+      case comparable :
+        error .here : "duplicated attribute"
+      case equatable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    while
+      $%equatable$
+      switch comparison
+      case none :
+        comparison = .equatable
+      case equatable :
+        error .here : "duplicated attribute"
+      case comparable :
+        error .here : "%comparable and %equatable are mutually exclusive"
+      end
+    end
+    ${$
+    var @enumConstantList constantList = ()
+    repeat
+    while
+      $case$
+      $identifier$ ?let constantName
+      var @2lstringlist associatedValueTypeList = ()
+      select
+      or
+        $($
+        repeat
+          <type_definition> !?ioDeclarations ?let associatedValueType
+          $identifier$ ?let associatedValueName
+          associatedValueTypeList += !associatedValueType !associatedValueName
+        while
+          $,$
+        end
+        $)$
+      end
+      constantList += !constantName !associatedValueTypeList
+    while
+      <method_declaration> !enumTypeName !?ioDeclarations
+    end
+    $}$
+    if [constantList count] == 0 then
+      error enumTypeName : "an enumerated type must define at least one case constant"
+    end
+    ioDeclarations.mDeclarationList += !@enumDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !enumTypeName
+      !constantList
+      !comparison: comparison
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @enumConstantList {
+  public let @lstring name
+  public let @2lstringlist associatedValueTypeList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @enumDeclarationAST : @semanticDeclarationAST {
+  private let @lstring enumTypeName
+  private let @enumConstantList mConstantList
+  private let @structComparison comparison %initArgLabel
+
+  #·······························································································
+
+  override getter keyRepresentation -> @string {
+    result = "enum @" + self.enumTypeName
+  }
+
+  #·······························································································
+
+  override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
+    for constant in self.mConstantList do
+      if [constant.associatedValueTypeList count] > 0 then
+        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+        var @propertyInCollectionListAST propertyListAST = ()
+        for (typeName propertyName) in constant.associatedValueTypeList do
+          propertyListAST +=
+            !isConstant: true
+            !typeName
+            !propertyName
+            !.publicAccess
+            !hasSelector: false
+            !initialization: .none
+        end
+        let s = @structDeclarationAST (
+          !isPredefined: false,
+          associatedTypeName,
+          propertyListAST,
+          !enumeratedElementTypeName: "",
+          !comparison: self.comparison,
+          !isUsefull: true
+        )
+        ioDeclarations.mDeclarationList += !s
+        [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: associatedTypeName !isPredefined: false]
+      end
+    end
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInGraph
+        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+        ?!@equatableExtensionMap unused ioEquatableExtensionMap
+        ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+        ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+        ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring {!"@" + self.enumTypeName !self.enumTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  #--- There is a circular reference if all constants names current type in associated values
+    var circularReference = true
+    for constant in self.mConstantList while circularReference do
+      var namesCurrentType = false
+      for (mValue0 *) in constant.associatedValueTypeList while not namesCurrentType do
+        let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
+        if propertyKey.string == key.string then
+          namesCurrentType = true
+        end
+      end
+      if not namesCurrentType then
+        circularReference = false
+      end
+    end
+  #--- Enter dependances, and only when there is circular reference
+    if circularReference then
+      for constant in self.mConstantList do
+        for (mValue0 *) in constant.associatedValueTypeList do
+          let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
+          if (propertyKey.string != key.string) then
+            [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+          end
+        end
+      end
+    end
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+        ?!@equatableExtensionMap ioEquatableExtensionMap
+        ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+        ?!@unifiedTypeMap ioTypeMap
+        ?!@semanticContext ioSemanticContext {
+  #---
+    var @classFunctionMap classFunctionMap = ()
+    var @setterMap setterMap = ()
+  #--- currentType type index
+    [!?ioTypeMap makeEntry !self.enumTypeName ?let enumTypeEntry]
+  #--- Class functions
+    var @constantIndexMap constantMap = ()
+    var @bool hasAssociatedValues = false
+    for constant in self.mConstantList do
+      var @associatedValueDescriptorList associatedTypeList = ()
+      var @functionSignature argumentTypeList = ()
+      for (typeName selectorName) in constant.associatedValueTypeList do
+        [!?ioTypeMap makeEntry !typeName ?let associatedTypeEntry]
+        argumentTypeList += !selectorName !associatedTypeEntry !typeName.string !true
+        associatedTypeList += !associatedTypeEntry !selectorName
+        hasAssociatedValues = true
+      end
+      [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
+      [!?classFunctionMap insertOrReplace
+        !constant.name
+        !argumentTypeList
+        !false
+        !enumTypeEntry
+      ]
+    end
+  #--- Methods
+    var @instanceMethodMap instanceMethodMap = ()
+    for constant in self.mConstantList do
+      if [constant.associatedValueTypeList count] > 0 then
+        var @unifiedTypeMapEntryList associatedTypeList = ()
+        var @formalParameterSignature argumentTypeList = ()
+        for (typeName selectorName) in constant.associatedValueTypeList do
+          [!?ioTypeMap makeEntry  !typeName ?let associatedTypeEntry]
+          argumentTypeList += !selectorName !associatedTypeEntry !.argumentOut !typeName.string
+          associatedTypeList += !associatedTypeEntry
+          hasAssociatedValues = true
+        end
+        [!?instanceMethodMap insertKey
+          !.init ("extract" + [constant.name stringByCapitalizingFirstCharacter], constant.name)
+          !.definedAsMember
+          !argumentTypeList
+          !constant.name.location
+          !true
+          !.isBasicFinal
+          !""
+        ]
+      end
+    end
+  #--- getters
+    commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+    for constant in self.mConstantList do
+      if [constant.associatedValueTypeList count] > 0 then
+        let associatedTypeName = @lstring (
+          self.enumTypeName.string + "-" + constant.name,
+          self.enumTypeName
+        )
+        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
+        enterBaseGetterWithoutArgument (
+          !?getterMap
+          !?ioTypeMap
+          !getterName: "get" + [constant.name stringByCapitalizingFirstCharacter]
+          !obsoleteName: ""
+          !returnedTypeName: optionalTypeName
+          !hasCompilerArgument: false
+        )
+      end
+    end
+  #--- Add test getters
+    for constant in self.mConstantList do
+      enterBaseGetterWithoutArgument (
+        !?getterMap
+        !?ioTypeMap
+        !getterName: "is" + [constant.name stringByCapitalizingFirstCharacter]
+        !obsoleteName: ""
+        !returnedTypeName: "bool"
+        !hasCompilerArgument:false
+      )
+    end
+  #--- Add Extensions
+    var @initializerMap initializerMap = ()
+    addExtensions (
+      !inExtensionInitializerMapForBuildingContext
+      !inExtensionMethodMapForBuildingContext
+      !inExtensionGetterMapForBuildingContext
+      !inExtensionSetterMapForBuildingContext
+      !?ioSemanticContext
+      !?ioTypeMap
+      !self.enumTypeName
+      !isClass: false
+      !?initializerMap
+      !?getterMap
+      !?setterMap
+      !?instanceMethodMap
+      !acceptSetters: true
+    )
+  #--- Features
+    var features = @typeFeatures.generateDescriptionGetterUtilityMethod
+  #--- Comparison
+    switch self.comparison
+    case none :
+    case equatable :
+      features |= .equatable
+    case comparable :
+      features |= .comparable | .equatable
+    end  
+    handleEquatableComparableExtension (
+      !?ioEquatableExtensionMap
+      !self.enumTypeName
+      !?features
+      !acceptEquatable: true
+      !acceptComparable: true
+    )
+  #--- Enter type in type map
+    let typeDefinition = @unifiedTypeDefinition {
+      !typeName: self.enumTypeName
+      !isPredefined: self.isPredefined
+      !isConcrete: true
+      !superType: .null
+      !typeKind: .enumType {!constantMap: constantMap}
+      !supportCollectionValue: false # Does not support collection value
+      !allTypedPropertyList: ()
+      !propertyMap: ()
+      !currentTypedPropertyList: ()
+      !initializerMap: initializerMap
+      !classFunctionMap: classFunctionMap
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
+      !classMethodMap: ()
+      !unwrappedType: .null
+      !readSubscriptMap: ()
+      !enumerationDescriptorList: ()
+      !features: features
+      !addAssignOperatorArguments: ()
+      !mapSearchMethodList: ()
+      !generateHeaderInSeparateFile: false # Do not generate header in separate file
+      !typeForEnumeratedElement: .null
+      !headerFileName: "enum-" + [self.enumTypeName fileNameRepresentation]
+      !headerKind: .oneHeader
+    }
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+  }
+
+  #·······························································································
+
+  override method semanticAnalysis
+                    ?!@lstringlist unused ioUsefulnessRootEntities
+                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                    ?let @string unused inProductDirectory
+                    ?let @semanticContext unused inSemanticContext
+                    ?!@unifiedTypeMap ioTypeMap
+                    ?let @predefinedTypes unused inPredefinedTypes
+                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+  #--- Useful entities graph
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.enumTypeName)
+    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  #--- Constant list
+    var [@unifiedTypeMapEntry] associatedValuesTypes = ()
+    var constantList = @stringlist ()
+    var @enumConstantListForGeneration enumConstantListForGeneration = ()
+    var constantMap = @constantIndexMap ()
+    for constant in self.mConstantList do
+      if [constant.associatedValueTypeList count] > 0 then
+        let associatedTypeName = @lstring (self.enumTypeName.string + "-" + constant.name, self.enumTypeName)
+        let optionalTypeName = optionalTypeName (!forTypeNamed: associatedTypeName)
+        let associatedType = [ioTypeMap typeMapEntryForLKey !optionalTypeName]
+        [!?associatedValuesTypes append !associatedType]    
+      end
+      constantList += !constant.name.string
+      var @associatedValueDescriptorList associatedTypeList = ()
+      var @stringset associatedValueNameSet = ()
+      for (mValue0 mValue1) in constant.associatedValueTypeList do
+        let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
+        [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+        let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !mValue0]
+        associatedTypeList += !associatedTypeEntry !mValue1
+        if [associatedValueNameSet hasKey !mValue1.string] then
+          error mValue1 : "duplicated name"
+        end
+        associatedValueNameSet += !mValue1.string
+      #--- Comparison
+        switch self.comparison
+        case none :
+        case equatable :
+          let associatedType = [associatedTypeEntry definition]
+          if (not [associatedType.features contains !.comparable])
+            & not [associatedType.features contains !.equatable]
+            & not [associatedType.features contains !.referenceEquatable] then
+            error mValue0 : "the @" + mValue0 + " should be equatable"
+          end
+        case comparable :
+          let associatedType = [associatedTypeEntry definition]
+          if not [associatedType.features contains !.comparable] then
+            error mValue0 : "the @" + mValue0 + " should be comparable"
+          end
+        end  
+      end
+      [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
+      enumConstantListForGeneration += !constant.name.string !associatedTypeList
+    end
+  #---
+    let selfType = [ioTypeMap typeMapEntryForLKey !self.enumTypeName]
+    ioSemanticDeclarationListForGeneration +=
+      !infoMessage: "enum " + self.enumTypeName
+      !@enumTypeForGeneration {
+        !selfType
+        !enumConstantListForGeneration
+        !associatedValuesTypes
+      }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#!  CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @enumConstantListForGeneration {
+  public let @string name
+  public let @associatedValueDescriptorList associatedValueTypeList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @enumTypeForGeneration : @semanticTypeForGeneration {
+  private let @enumConstantListForGeneration constantList
+  private let [@unifiedTypeMapEntry] associatedValuesTypes
+
+  #·······························································································
+
+  override method appendDeclaration1 ?!@stringset unused ioInclusionSet
+                                     !@string outHeader {
+    var @bool hasAssociatedValues = false
+    for constant in self.constantList while not hasAssociatedValues do
+      hasAssociatedValues = [constant.associatedValueTypeList count] > 0
+    end
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    outHeader = [filewrapper enumGenerationTemplate.enumTypeHeader1
+      !selfTypeDefinition.typeName.string
+      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !self.constantList
+      !hasAssociatedValues
+    ]
+    outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+      !selfTypeDefinition.typeName.string
+      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !selfTypeDefinition.isConcrete
+      !selfTypeDefinition.initializerMap
+      !selfTypeDefinition.classFunctionMap
+      !selfTypeDefinition.getterMap
+      !selfTypeDefinition.setterMap
+      !selfTypeDefinition.instanceMethodMap
+      !selfTypeDefinition.classMethodMap
+      !selfTypeDefinition.readSubscriptMap
+      !selfTypeDefinition.enumerationDescriptorList
+      !selfTypeDefinition.features
+      !selfTypeDefinition.addAssignOperatorArguments
+      !selfTypeDefinition.typeForEnumeratedElement
+      !selfTypeDefinition.supportCollectionValue
+    ]
+  }
+
+  #·······························································································
+
+  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+                                                ?!@stringset ioInclusionSet
+                                                !@string outImplementation {
+    for type in self.associatedValuesTypes do
+      [type addHeaderFileName !?ioInclusionSet]
+    end
+    var @bool hasAssociatedValues = false
+    for constant in self.constantList while not hasAssociatedValues do
+      hasAssociatedValues = [constant.associatedValueTypeList count] > 0
+    end
+    [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    let selfTypeDefinition = [self.mSelfTypeEntry definition]
+    outImplementation = [filewrapper enumGenerationTemplate.enumTypeSpecificImplementation
+      !selfTypeDefinition.typeName.string
+      ![selfTypeDefinition.typeName.string identifierRepresentation]
+      !self.constantList
+      !hasAssociatedValues
+      ![selfTypeDefinition.features generateCppObjectComparison]
+    ]
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template enumTypeHeader1 "GALGAS_enum.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@enumConstantListForGeneration CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
+
+  template enumTypeSpecificImplementation "GALGAS_enum.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@enumConstantListForGeneration CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
+    ?@bool GENERATE_COMPARISON
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

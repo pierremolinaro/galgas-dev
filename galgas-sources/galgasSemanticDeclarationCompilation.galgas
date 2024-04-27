@@ -4,20 +4,20 @@
 #
 #  MIT License
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
-# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all copies or substantial portions
-# of the Software.
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
 #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-# TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-# DEALINGS IN THE SOFTWARE.
-#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
@@ -132,6 +132,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
 #  - a list map appears after its associated list
   var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph ()
   var @extensionInitializerForBuildingContext extensionInitializerForBuildingContext = ()
+  var @equatableExtensionMap equatableExtensionMap = ()
   var @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = ()
   var @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = ()
   var @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = ()
@@ -139,6 +140,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
   for declaration in semanticDeclarations.mDeclarationList do
     [declaration.mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
+      !?equatableExtensionMap
       !?extensionInitializerForBuildingContext
       !?extensionMethodMapForBuildingContext
       !?extensionGetterMapForBuildingContext
@@ -182,6 +184,7 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
     #--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
         [declaration.mSemanticDeclaration enterDeclarationInSemanticContext
+          !?equatableExtensionMap
           !extensionInitializerForBuildingContext
           !extensionMethodMapForBuildingContext
           !extensionGetterMapForBuildingContext
@@ -190,7 +193,6 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
           !?outSemanticContext
         ]
       end
-#      outTypeMap = outSemanticContext.mTypeMap
     end
   end
 }

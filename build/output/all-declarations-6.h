@@ -2099,6 +2099,7 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -2107,7 +2108,8 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -2527,6 +2529,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -2535,7 +2538,8 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -3880,6 +3884,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -3888,7 +3893,8 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -5382,6 +5388,7 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -5390,7 +5397,8 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,
@@ -5613,6 +5621,7 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension method enterDeclarationInGraph
   public: virtual void method_enterDeclarationInGraph (class GALGAS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
            class GALGAS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
            class GALGAS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GALGAS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
@@ -5621,7 +5630,8 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
+  public: virtual void method_enterDeclarationInSemanticContext (class GALGAS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           const class GALGAS_extensionInitializerForBuildingContext arg_inExtensionInitializerMapForBuildingContext,
            const class GALGAS_extensionMethodMapForBuildingContext arg_inExtensionMethodMapForBuildingContext,
            const class GALGAS_extensionGetterMapForBuildingContext arg_inExtensionGetterMapForBuildingContext,
            const class GALGAS_extensionSetterMapForBuildingContext arg_inExtensionSetterMapForBuildingContext,

@@ -1,0 +1,360 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $boolset$
+    $@type$ ?let @lstring boolsetTypeName indexing structDefinition
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
+    ${$
+    var @lstringlist slotList = ()
+    repeat
+    while
+      $case$
+      $identifier$ ?let slotName
+      slotList += !slotName
+    while
+      <method_declaration_ggs3> !boolsetTypeName !?ioDeclarations
+    end
+    $}$
+    if [slotList count] == 0 then
+      error boolsetTypeName : "a boolset type must define at least one case constant"
+    end
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !boolsetTypeName
+      !slotList
+      !isEquatable: isEquatable
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $boolset$
+    $@type$ ?let @lstring boolsetTypeName indexing structDefinition
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $%equatable$
+      isEquatable = true
+    end
+    ${$
+    var @lstringlist slotList = ()
+    repeat
+    while
+      $case$
+      $identifier$ ?let slotName
+      slotList += !slotName
+    while
+      <method_declaration> !boolsetTypeName !?ioDeclarations
+    end
+    $}$
+    if [slotList count] == 0 then
+      error boolsetTypeName : "a boolset type must define at least one case constant"
+    end
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !boolsetTypeName
+      !slotList
+      !isEquatable: isEquatable
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @boolsetDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mBoolsetTypeName
+  private let @lstringlist mFlagList
+  private let @bool isEquatable %initArgLabel
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   ENTER IN GRAPH
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @boolsetDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@equatableExtensionMap unused ioEquatableExtensionMap
+  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring {!"@" + self.mBoolsetTypeName !self.mBoolsetTypeName.location}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   KEY REPRESENTATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @boolsetDeclarationAST keyRepresentation -> @string {
+  result = "boolset @" + self.mBoolsetTypeName
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC CONTEXT
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @boolsetDeclarationAST enterDeclarationInSemanticContext
+  ?!@equatableExtensionMap ioEquatableExtensionMap
+  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@unifiedTypeMap ioTypeMap
+  ?!@semanticContext ioSemanticContext {
+#--- Check unicity of slot names
+  var @stringset slotNameSet = ()
+  for (slotName) in self.mFlagList do
+    if [slotNameSet hasKey !slotName] then
+      error slotName : "duplicated slot name"
+    end
+    slotNameSet += !slotName
+  end
+#--- boolset type index
+  [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
+#--- Getters
+  commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioTypeMap
+    !getterName: "contains"
+    !argSelector: ""
+    !argType: self.mBoolsetTypeName
+    !argName: "inOperand"
+    !returnedTypeName: "bool"
+    !hasCompilerArgument: false
+  )
+#--- class functions
+  var @classFunctionMap classFunctionMap = ()
+  for (slotName) in self.mFlagList do
+    if not [classFunctionMap hasKey !slotName] then
+      [!?classFunctionMap insertKey !slotName !() !false !boolsetTypeIndex]
+    end
+  end
+#--- Add initializer without argument
+  var @initializerMap initializerMap = ()
+  let @functionSignature emptyArgumentList = ()
+  [!?initializerMap insertKey
+    !.init {![emptyArgumentList initializerSignature] !self.mBoolsetTypeName}
+    !emptyArgumentList
+  ]
+#--- Add extensions
+  var @setterMap setterMap = ()
+  var @instanceMethodMap instanceMethodMap = ()
+  addExtensions (
+    !inExtensionInitializerMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !?ioTypeMap
+    !self.mBoolsetTypeName
+    !isClass: false
+    !?initializerMap
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+    !acceptSetters: true
+  )
+#--- Operators
+  var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
+    | .prefixTildeOperator
+    | .generateDescriptionGetterUtilityMethod | .infixSubOperator
+    | .andAssignOperatorWithExpression # var &= exp
+    | .orAssignOperatorWithExpression # var |= exp
+    | .xorAssignOperatorWithExpression # var ^= exp
+    | .minusAssignOperatorWithExpression # var -= exp
+  if self.isEquatable then
+    features |= .equatable
+  end
+  handleEquatableComparableExtension (
+    !?ioEquatableExtensionMap
+    !self.mBoolsetTypeName
+    !?features
+    !acceptEquatable: true
+    !acceptComparable: true
+  )
+#--- Enter in type map
+  let typeDefinition = @unifiedTypeDefinition {
+    !typeName: self.mBoolsetTypeName
+    !isPredefined: self.isPredefined
+    !isConcrete: true
+    !superType: .null
+    !typeKind: .boolsetType
+    !supportCollectionValue: false # Does not support collection value
+    !allTypedPropertyList: ()
+    !propertyMap: ()
+    !currentTypedPropertyList: ()
+    !initializerMap: initializerMap
+    !classFunctionMap: classFunctionMap
+    !getterMap: getterMap
+    !setterMap: setterMap
+    !instanceMethodMap: instanceMethodMap
+    !classMethodMap: ()
+    !unwrappedType: .null
+    !readSubscriptMap: ()
+    !enumerationDescriptorList: ()
+    !features: features
+    !addAssignOperatorArguments: ()
+    !mapSearchMethodList: ()
+    !generateHeaderInSeparateFile: false # Do not generate header in separate file
+    !typeForEnumeratedElement: .null
+    !headerFileName: "boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
+    !headerKind: .oneHeader
+  }
+  [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+}
+
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @boolsetDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Check flags count
+  if [self.mFlagList count] > 64 then
+    let @location s = [self.mFlagList mValueAtIndex !64]
+    error s : "max flags count is 64 (here: " + [self.mFlagList count] + ")"
+  end
+#--- Useful entities graph
+  let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
+  [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
+  ioSemanticDeclarationListForGeneration +=
+    !infoMessage: "boolset " + self.mBoolsetTypeName
+    !@boolsetTypeForGeneration {
+      ![ioTypeMap typeMapEntryForLKey !self.mBoolsetTypeName]
+      !self.mFlagList
+      !self.isEquatable
+    }
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @boolsetTypeForGeneration : @semanticTypeForGeneration {
+  private let @lstringlist mFlagList
+  private let @bool equatable
+}
+
+#·······················································································································
+
+filewrapper structGenerationTemplate in "+generation-templates/type_generation" {
+}{
+}{
+  template boolsetTypeHeader1 "GALGAS_boolset.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@lstringlist SLOT_LIST
+
+  template boolsetTypeSpecificImplementation "GALGAS_boolset.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@lstringlist SLOT_LIST
+    ?@bigint FULL_SET
+    ?@bool EQUATABLE
+}
+
+#·······················································································································
+
+override method @boolsetTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+{
+  let typeDefinition = [self.mSelfTypeEntry definition]
+  outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
+    !typeDefinition.typeName.string
+    ![typeDefinition.typeName.string identifierRepresentation]
+    !self.mFlagList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    !typeDefinition.typeName.string
+    ![typeDefinition.typeName.string identifierRepresentation]
+    !typeDefinition.isConcrete
+    !typeDefinition.initializerMap
+    !typeDefinition.classFunctionMap
+    !typeDefinition.getterMap
+    !typeDefinition.setterMap
+    !typeDefinition.instanceMethodMap
+    !typeDefinition.classMethodMap
+    !typeDefinition.readSubscriptMap
+    !typeDefinition.enumerationDescriptorList
+    !typeDefinition.features
+    !typeDefinition.addAssignOperatorArguments
+    !typeDefinition.typeForEnumeratedElement
+    !typeDefinition.supportCollectionValue
+  ]
+ }
+
+#·······················································································································
+
+override method @boolsetTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+{
+  [self.mSelfTypeEntry  addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
+    ![self.mSelfTypeEntry  definition].typeName.string
+    ![self.mSelfTypeEntry  identifierRepresentation]
+    !self.mFlagList
+    !(1 << [self.mFlagList count]) - 1
+    !self.equatable
+  ]
+ }
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

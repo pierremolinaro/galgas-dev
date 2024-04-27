@@ -5437,7 +5437,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration_2D_weak GALGAS_semanticDeclara
 GALGAS_typeKindEnum cPtr_predefinedTypeAST::getter_typeKind (Compiler */* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_typeKindEnum result_result ; // Returned variable
-  result_result = GALGAS_typeKindEnum::class_func_otherType (SOURCE_FILE ("predefinedTypeAST.galgas", 41)) ;
+  result_result = GALGAS_typeKindEnum::class_func_otherType (SOURCE_FILE ("declaration-predefined-type.galgas", 41)) ;
 //---
   return result_result ;
 }
@@ -8482,7 +8482,7 @@ GALGAS_string extensionGetter_initializerSignature (const GALGAS_typeNameFormalP
   const GALGAS_typeNameFormalParameterNameList temp_0 = inObject ;
   cEnumerator_typeNameFormalParameterNameList enumerator_11787 (temp_0, EnumerationOrder::up) ;
   while (enumerator_11787.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_11787.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("type-extern.galgas", 313)), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 313)) ;
+    result_result.plusAssign_operation(GALGAS_string ("!").add_operation (enumerator_11787.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 313)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 313)) ;
     enumerator_11787.gotoNextObject () ;
   }
 //---
@@ -15067,6 +15067,203 @@ GALGAS_abstractExtensionSetterForGeneration_2D_weak GALGAS_abstractExtensionSett
       result = *p ;
     }else{
       inCompiler->castError ("abstractExtensionSetterForGeneration-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @equatableExtensionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_equatableExtensionAST::cPtr_equatableExtensionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExtension () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_equatableExtensionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExtension.printNonNullClassInstanceProperties ("mExtension") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GALGAS_equatableExtensionAST::objectCompare (const GALGAS_equatableExtensionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_equatableExtensionAST::GALGAS_equatableExtensionAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GALGAS_equatableExtensionAST GALGAS_equatableExtensionAST::
+init_21_isPredefined_21__21_ (const GALGAS_bool & in_isPredefined,
+                              const GALGAS_lstring & in_mTypeName,
+                              const GALGAS_equatableComparableExtension & in_mExtension,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) {
+  cPtr_equatableExtensionAST * object = nullptr ;
+  macroMyNew (object, cPtr_equatableExtensionAST (inCompiler COMMA_THERE)) ;
+  object->equatableExtensionAST_init_21_isPredefined_21__21_ (in_isPredefined, in_mTypeName, in_mExtension, inCompiler) ;
+  const GALGAS_equatableExtensionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_equatableExtensionAST::
+equatableExtensionAST_init_21_isPredefined_21__21_ (const GALGAS_bool & in_isPredefined,
+                                                    const GALGAS_lstring & in_mTypeName,
+                                                    const GALGAS_equatableComparableExtension & in_mExtension,
+                                                    Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mExtension = in_mExtension ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_equatableExtensionAST::GALGAS_equatableExtensionAST (const cPtr_equatableExtensionAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_equatableExtensionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_equatableExtensionAST GALGAS_equatableExtensionAST::class_func_new (const GALGAS_bool & in_isPredefined,
+                                                                           const GALGAS_lstring & in_mTypeName,
+                                                                           const GALGAS_equatableComparableExtension & in_mExtension
+                                                                           COMMA_LOCATION_ARGS) {
+  GALGAS_equatableExtensionAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_equatableExtensionAST (in_isPredefined, in_mTypeName, in_mExtension COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_lstring GALGAS_equatableExtensionAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_lstring () ;
+  }else{
+    cPtr_equatableExtensionAST * p = (cPtr_equatableExtensionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_equatableExtensionAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_equatableComparableExtension GALGAS_equatableExtensionAST::readProperty_mExtension (void) const {
+  if (nullptr == mObjectPtr) {
+    return GALGAS_equatableComparableExtension () ;
+  }else{
+    cPtr_equatableExtensionAST * p = (cPtr_equatableExtensionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_equatableExtensionAST) ;
+    return p->mProperty_mExtension ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @equatableExtensionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_equatableExtensionAST::cPtr_equatableExtensionAST (const GALGAS_bool & in_isPredefined,
+                                                        const GALGAS_lstring & in_mTypeName,
+                                                        const GALGAS_equatableComparableExtension & in_mExtension
+                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExtension () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mExtension = in_mExtension ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_equatableExtensionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_equatableExtensionAST ;
+}
+
+void cPtr_equatableExtensionAST::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("[@equatableExtensionAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExtension.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_equatableExtensionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_equatableExtensionAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtension COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @equatableExtensionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST ("equatableExtensionAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_equatableExtensionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_equatableExtensionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_equatableExtensionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_equatableExtensionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_equatableExtensionAST GALGAS_equatableExtensionAST::extractObject (const GALGAS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_equatableExtensionAST result ;
+  const GALGAS_equatableExtensionAST * p = (const GALGAS_equatableExtensionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GALGAS_equatableExtensionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("equatableExtensionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

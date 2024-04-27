@@ -1,0 +1,581 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $extern$
+    $@type$ ?let @lstring externTypeName indexing externTypeDefinition
+    <externtype_cpp_predeclaration> ?let cppPredeclarationCode
+    <externtype_cpp_classdeclaration> ?let cppClassCode
+    ${$
+    var @externTypeConstructorList externTypeConstructorList =  ()
+    var @externTypeGetterList externTypeGetterList = ()
+    var @externTypeSetterList externTypeSetterList = ()
+    var @externTypeMethodList externTypeMethodList = ()
+    repeat
+    while
+      <externtype_constructor_ggs3> !?ioDeclarations !?externTypeConstructorList
+    while
+      <externtype_getter_ggs3> !?ioDeclarations !?externTypeGetterList
+    while
+      <externtype_setter_ggs3> !?ioDeclarations !?externTypeSetterList
+    while
+      <externtype_method_ggs3> !?ioDeclarations !?externTypeMethodList
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !externTypeName
+      !cppPredeclarationCode
+      !cppClassCode
+      !externTypeConstructorList
+      !externTypeGetterList
+      !externTypeSetterList
+      !externTypeMethodList
+    }
+  }
+
+  #·······························································································
+
+  rule <externtype_cpp_predeclaration> !@string outCppPredeclarationCode {
+    ${$
+    outCppPredeclarationCode = ""
+    repeat
+    while
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      outCppPredeclarationCode += cppPredeclarationCodeElement.string
+    end
+    $}$
+  }
+
+  #·······························································································
+
+  rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
+    ${$
+    outCppClassCode = ""
+    repeat
+    while
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      outCppClassCode += cppPredeclarationCodeElement.string
+    end
+    $}$
+  }
+
+  #·······························································································
+
+  rule <externtype_constructor_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                     ?!@externTypeConstructorList ioExternTypeConstructorList {
+    $init$
+    $($
+    var @typeNameFormalParameterNameList argumentTypeList = ()
+    repeat
+    while
+      $?selector:$ ?let selector
+      <type_definition_ggs3> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    while
+      $?$
+      let selector = ["" here]
+      <type_definition_ggs3> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $)$
+    ioExternTypeConstructorList += !argumentTypeList
+  }
+
+  #·······························································································
+
+  rule <externtype_getter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                ?!@externTypeGetterList ioExternTypeGetterList {
+    $getter$
+    $identifier$ ?let @lstring getterName
+    var @typeNameFormalParameterNameList argumentTypeList = ()
+    repeat
+    while
+      $?selector:$ ?let selector
+      <type_definition_ggs3> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    while
+      $?$
+      let selector = ["" here]
+      <type_definition_ggs3> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $->$
+    <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
+    ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
+  }
+
+  #·······························································································
+
+  rule <externtype_setter_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                ?!@externTypeSetterList ioExternTypeSetterList {
+    $setter$
+    $identifier$ ?let @lstring setterName
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
+    ioExternTypeSetterList += !setterName !formalParameterList
+  }
+
+  #·······························································································
+
+  rule <externtype_method_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                ?!@externTypeMethodList ioExternTypeMethodList {
+    $method$
+    $identifier$ ?let @lstring methodName
+    <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
+    ioExternTypeMethodList += !methodName !formalParameterList !.here
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $extern$
+    $@type$ ?let @lstring externTypeName indexing externTypeDefinition
+    <externtype_cpp_predeclaration> ?let cppPredeclarationCode
+    <externtype_cpp_classdeclaration> ?let cppClassCode
+    ${$
+    var @externTypeConstructorList externTypeConstructorList =  ()
+    var @externTypeGetterList externTypeGetterList = ()
+    var @externTypeSetterList externTypeSetterList = ()
+    var @externTypeMethodList externTypeMethodList = ()
+    repeat
+    while
+      <externtype_constructor> !?ioDeclarations !?externTypeConstructorList
+    while
+      <externtype_getter> !?ioDeclarations !?externTypeGetterList
+    while
+      <externtype_setter> !?ioDeclarations !?externTypeSetterList
+    while
+      <externtype_method> !?ioDeclarations !?externTypeMethodList
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
+      !isPredefined: false # Is not predefined
+      !externTypeName
+      !cppPredeclarationCode
+      !cppClassCode
+      !externTypeConstructorList
+      !externTypeGetterList
+      !externTypeSetterList
+      !externTypeMethodList
+    }
+  }
+
+  #·······························································································
+
+  rule <externtype_cpp_predeclaration>  !@string outCppPredeclarationCode {
+    ${$
+    outCppPredeclarationCode = ""
+    repeat
+    while
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      outCppPredeclarationCode += cppPredeclarationCodeElement.string
+    end
+    $}$
+  }
+
+  #·······························································································
+
+  rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
+    ${$
+    outCppClassCode = ""
+    repeat
+    while
+      $"string"$ ?let @lstring cppPredeclarationCodeElement
+      outCppClassCode += cppPredeclarationCodeElement.string
+    end
+    $}$
+  }
+
+  #·······························································································
+
+  rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
+                                ?!@externTypeConstructorList ioExternTypeConstructorList {
+    $init$
+    $($
+    var @typeNameFormalParameterNameList argumentTypeList = ()
+    select
+    or
+      repeat
+        select
+          $?selector:$ ?let selector
+          <type_definition> !?ioDeclarations ?let argumentTypeName
+          $identifier$ ?let argumentName
+          argumentTypeList += !selector !argumentTypeName !argumentName
+        or
+          $?$
+          let selector = ["" here]
+          <type_definition> !?ioDeclarations ?let argumentTypeName
+          $identifier$ ?let argumentName
+          argumentTypeList += !selector !argumentTypeName !argumentName
+        end
+      while
+        $,$
+      end
+    end
+    $)$
+    ioExternTypeConstructorList += !argumentTypeList
+  }
+
+  #·······························································································
+
+  rule <externtype_getter> ?!@galgasDeclarationAST ioDeclarations
+                           ?!@externTypeGetterList ioExternTypeGetterList {
+    $func$
+    $identifier$ ?let @lstring getterName
+    var @typeNameFormalParameterNameList argumentTypeList = ()
+    repeat
+    while
+      $?selector:$ ?let selector
+      <type_definition> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    while
+      $?$
+      let selector = ["" here]
+      <type_definition> !?ioDeclarations ?let argumentTypeName
+      $identifier$ ?let @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $->$
+    <type_definition> !?ioDeclarations ?let resultTypeName
+    ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
+  }
+
+  #·······························································································
+
+  rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations
+                                ?!@externTypeSetterList ioExternTypeSetterList {
+    $mutating$
+    $proc$
+    $identifier$ ?let @lstring setterName
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    ioExternTypeSetterList += !setterName !formalParameterList
+  }
+
+  #·······························································································
+
+  rule <externtype_method> ?!@galgasDeclarationAST ioDeclarations
+                           ?!@externTypeMethodList ioExternTypeMethodList {
+    $proc$
+    $identifier$ ?let @lstring methodName
+    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+    ioExternTypeMethodList += !methodName !formalParameterList !.here
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @typeNameFormalParameterNameList {
+  public let @lstring mFormalSelector
+  public let @lstring mFormalParameterTypeName
+  public let @lstring mFormalParameterName
+  
+  getter initializerSignature -> @string {
+    result = "init"
+    for formalArg in self do
+      result += "!" + formalArg.mFormalSelector
+    end
+  }
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @externTypeConstructorList {
+  public let @typeNameFormalParameterNameList mParameterList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @externTypeGetterList {
+  public let @lstring mGetterName
+  public let @lstring mResultTypeName
+  public let @typeNameFormalParameterNameList mParameterList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @externTypeSetterList {
+  public let @lstring mSetterName
+  public let @formalParameterListAST mFormalParameterList
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @externTypeMethodList {
+  public let @lstring mMethodName
+  public let @formalParameterListAST mFormalParameterList
+  public let @location mDeclarationLocation
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @externTypeDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mExternTypeName
+  private let @string mCppPreDeclarationCode
+  private let @string mCppClassCode
+  private let @externTypeConstructorList externTypeInitializerList
+  private let @externTypeGetterList mExternTypeGetterList
+  private let @externTypeSetterList mExternTypeSetterList
+  private let @externTypeMethodList mExternTypeMethodList
+
+  #·······························································································
+
+  override method enterDeclarationInGraph
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring {!"@" + self.mExternTypeName !self.mExternTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  }
+
+  #·······························································································
+
+  override getter keyRepresentation ->@string {
+    result = "extern @" + self.mExternTypeName
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+    ?!@equatableExtensionMap ioEquatableExtensionMap
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?!@semanticContext unused ioSemanticContext {
+  #---
+    commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
+#    var @classFunctionMap classFunctionMap = ()
+    var @setterMap setterMap = ()
+    var @instanceMethodMap instanceMethodMap = ()
+  #--- Class functions
+    var @initializerMap initializerMap = ()
+    for initializer in self.externTypeInitializerList do
+#      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
+    #---
+      var @functionSignature arguments = ()
+      for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in initializer.mParameterList do
+        [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
+        arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
+      end
+    #---
+      let initializerName = @lstring {![initializer.mParameterList initializerSignature] !self.mExternTypeName}
+      [!?initializerMap insertKey !initializerName !arguments]
+    end
+  #--- Getters
+    for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
+      [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
+    #---
+      var @functionSignature arguments = ()
+      for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
+        [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
+        arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
+      end
+    #---
+      [!?getterMap insertKey
+        !mGetterName
+        !@methodKind.definedAsMember
+        !arguments
+        !@location.here
+        !true #inHasLexiqueAndLocationArguments
+        !returnedTypeEntry
+        !@methodQualifier.isBasicFinal
+        !"" # getter name is not obsolete, no replacement getter
+      ]
+    end
+  #--- Modifiers
+    for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
+      var @formalParameterSignature routineSignature = ()
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
+        [!?ioTypeMap makeEntry
+          !mFormalArgumentTypeName
+          ?let @unifiedTypeMapEntry parameterTypeIndex
+        ]
+        routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+      end
+    #---
+      [!?setterMap insertKey
+        !mSetterName
+        !@methodKind.definedAsMember
+        !routineSignature
+        !true #inHasLexiqueAndLocationArguments
+        !@methodQualifier.isBasicFinal
+        !"" # No Error message
+      ]
+    end
+  #--- Methods
+    for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
+      var routineSignature = @formalParameterSignature ()
+      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
+        [!?ioTypeMap makeEntry
+          !mFormalArgumentTypeName
+          ?let parameterTypeIndex
+        ]
+        routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+      end
+    #---
+      [!?instanceMethodMap insertKey
+        !mMethodName
+        !@methodKind.definedAsMember
+        !routineSignature
+        !mDeclarationLocation
+        !true #inHasLexiqueAndLocationArguments
+        !@methodQualifier.isBasicFinal
+        !"" # No Error message
+      ]
+    end
+    var features = @typeFeatures ()
+    handleEquatableComparableExtension (
+      !?ioEquatableExtensionMap
+      !self.mExternTypeName
+      !?features
+      !acceptEquatable: false
+      !acceptComparable: false
+    )
+  #--- Enter type in type map
+    let typeDefinition = @unifiedTypeDefinition {
+      !typeName: self.mExternTypeName
+      !isPredefined: self.isPredefined
+      !isConcrete: true # Concrete Type
+      !superType: .null
+      !typeKind: .externType
+      !supportCollectionValue: false # Does not support collection value
+      !allTypedPropertyList: ()
+      !propertyMap: ()
+      !currentTypedPropertyList: ()
+      !initializerMap: initializerMap
+      !classFunctionMap: ()
+      !getterMap: getterMap
+      !setterMap: setterMap
+      !instanceMethodMap: instanceMethodMap
+      !classMethodMap: ()
+      !unwrappedType: .null
+      !readSubscriptMap: ()
+      !enumerationDescriptorList: ()
+      !features: features
+      !addAssignOperatorArguments: ()
+      !mapSearchMethodList: ()
+      !generateHeaderInSeparateFile: false # Do not generate header in separate file
+      !typeForEnumeratedElement: .null
+      !headerFileName: "externtype-" + [self.mExternTypeName fileNameRepresentation]
+      !headerKind: .oneHeader
+    }
+    [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SEMANTIC ANALYSIS
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @externTypeDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext unused inSemanticContext
+                                ?!@unifiedTypeMap ioTypeMap
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mExternTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !infoMessage: "extern type " + self.mExternTypeName
+    !@externTypeDeclarationForGeneration {
+      ![ioTypeMap typeMapEntryForLKey !self.mExternTypeName]
+      !self.mExternTypeName.string
+      !self.mCppPreDeclarationCode
+      !self.mCppClassCode
+    }
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   CODE GENERATION
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
+  private let @string mExternTypeName
+  private let @string mCppPreDeclarationCode
+  private let @string mCppClassCode
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @externTypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  let selfTypeDefinition = [self.mSelfTypeEntry definition]
+  outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !self.mCppPreDeclarationCode
+    !self.mCppClassCode
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    !selfTypeDefinition.typeName.string
+    ![self.mSelfTypeEntry identifierRepresentation]
+    !selfTypeDefinition.isConcrete
+    !selfTypeDefinition.initializerMap
+    !selfTypeDefinition.classFunctionMap
+    !selfTypeDefinition.getterMap
+    !selfTypeDefinition.setterMap
+    !selfTypeDefinition.instanceMethodMap
+    !selfTypeDefinition.classMethodMap
+    !selfTypeDefinition.readSubscriptMap
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.features
+    !selfTypeDefinition.addAssignOperatorArguments
+    !selfTypeDefinition.typeForEnumeratedElement
+    !selfTypeDefinition.supportCollectionValue
+  ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

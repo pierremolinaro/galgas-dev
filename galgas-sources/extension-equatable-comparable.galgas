@@ -1,0 +1,260 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+    $extension$
+    $@type$ ?let @lstring typeName indexing typeReferenceExtensionMethod
+    $:$
+    let @equatableComparableExtension theExtension
+    select
+      $%equatable$
+      theExtension = .equatable
+    or
+      $%comparable$
+      theExtension = .comparable
+    end
+    ioDeclarations.mDeclarationList += !@equatableExtensionAST {
+      !isPredefined: false
+      !typeName
+      !theExtension
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+  #·······························································································
+
+  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+    $extension$
+    <simple_type_definition> !?ioDeclarations ?let typeName
+    $:$
+    let @equatableComparableExtension theExtension
+    select
+      $%equatable$
+      theExtension = .equatable
+    or
+      $%comparable$
+      theExtension = .comparable
+    end
+    ioDeclarations.mDeclarationList += !@equatableExtensionAST {
+      !isPredefined: false
+      !typeName
+      !theExtension
+    }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc handleEquatableComparableExtension ?!@equatableExtensionMap ioEquatableExtensionMap
+                                        ?let @lstring inTypeName
+                                        ?!@typeFeatures ioFeatures
+                                        ?acceptEquatable: let @bool inAcceptEquatable
+                                        ?acceptComparable: let @bool inAcceptComparable {
+  if let node = ioEquatableExtensionMap §[inTypeName] then
+    let location = [ioEquatableExtensionMap locationForKey !inTypeName]
+    [!?ioEquatableExtensionMap removeKey !inTypeName ?*]
+    let currentlyEquatable = [ioFeatures contains !.equatable]
+    let currentlyComparable = [ioFeatures contains !.comparable]
+    switch node.mExtension 
+    case equatable :
+      if currentlyComparable then
+        error location : "useless extension, the type is already declared comparable"
+      elsif currentlyEquatable then
+        error location : "useless extension, the type is already declared equatable"
+      elsif inAcceptEquatable then
+        ioFeatures |= .equatable
+      else
+        error location : "useless extension, the type does not support %equatable"
+        error inTypeName : "type declaration is here"
+      end
+    case comparable :
+      if currentlyComparable then
+        error location : "useless extension, the type is already declared comparable"
+      elsif inAcceptComparable then
+        ioFeatures |= .comparable | .equatable
+      else
+        error location : "useless extension, the type does not support %comparable"
+        error inTypeName : "type declaration is here"
+      end
+    end
+  end
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @equatableComparableExtension {
+  case equatable
+  case comparable
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @equatableExtensionMap {
+  public let @equatableComparableExtension mExtension
+  insert insertKey error message "the '%K' type is already declared equatable or commarable in %L"
+  remove removeKey error message "internal error ('%K' type)"
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @equatableExtensionAST : @semanticDeclarationAST {
+  private let @lstring mTypeName
+  private let @equatableComparableExtension mExtension
+
+  #·······························································································
+
+  override getter keyRepresentation -> @string {
+    result = equatableNameForUsefulEntitiesGraph (self.mTypeName)
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInGraph
+          ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+          ?!@equatableExtensionMap ioEquatableExtensionMap
+          ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+          ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+          ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+          ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+          ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+    let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
+    [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init ("@" + self.mTypeName, self.mTypeName)]
+  #---
+    if let node = ioEquatableExtensionMap §[self.mTypeName] then
+      switch self.mExtension
+      case equatable :
+        switch node.mExtension
+        case equatable :
+          error self.mTypeName : "this type is already equatable"
+          error [ioEquatableExtensionMap locationForKey !self.mTypeName] : "equatable extension declaration is here"
+        case comparable :
+          error self.mTypeName : "useless declaration, this type is already comparable"
+          error [ioEquatableExtensionMap locationForKey !self.mTypeName] : "comparable extension declaration is here"
+        end
+      case comparable :
+        switch node.mExtension
+        case equatable :
+          error [ioEquatableExtensionMap locationForKey !self.mTypeName] : "useless declaration, this type is already comparable"
+          error self.mTypeName  : "comparable extension declaration is here"
+        case comparable :
+          error self.mTypeName : "this type is already comparable"
+          error [ioEquatableExtensionMap locationForKey !self.mTypeName] : "comparable extension declaration is here"
+        end
+      end
+    else
+      [!?ioEquatableExtensionMap insertKey !self.mTypeName !self.mExtension]
+    end
+  }
+
+  #·······························································································
+
+  override method enterDeclarationInSemanticContext
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+    ?!@unifiedTypeMap unused ioTypeMap
+    ?!@semanticContext unused ioSemanticContext {
+  }
+
+  #·······························································································
+
+  override method semanticAnalysis
+                ?!@lstringlist unused ioUsefulnessRootEntities
+                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+                ?let @string unused inProductDirectory
+                ?let @semanticContext unused inSemanticContext
+                ?!@unifiedTypeMap unused ioTypeMap
+                ?let @predefinedTypes unused inPredefinedTypes
+                ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration {
+#  #--- Useful entities graph
+#    let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
+#      !self.mTypeName
+#      ![self.mFormalParameterList initializerSignature]
+#    )
+#  #--- Self type
+#    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
+#    let @string selfObjectNameString
+#    let @string selfObjectAccessorString
+#  #--- Check self type is a class
+#    var isReferenceClass = false
+#    if let classType = [[selfType definition].typeKind getClassType] then
+#      isReferenceClass = classType.isReference
+#      selfObjectNameString = "<< this >>"
+#      selfObjectAccessorString = ""
+#    else
+#      selfObjectNameString = "result"
+#      selfObjectAccessorString = "result."
+#    end
+#  #--- Analyze instruction list
+#    let analysisContextNew = @analysisContext {
+#      !inSemanticContext
+#      !inPredefinedTypes
+#      !selfObjectCppName: selfObjectNameString
+#      !selfAvailability: .available {!type: selfType !selfMutability: .initializer}
+#      !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
+#      !requiresSelfForAccessingProperty: true
+#    }
+#    analyzeInitializerBody (
+#      !nameForUsefulness
+#      !?ioUsefulEntitiesGraph
+#      !analysisContextNew
+#      !?ioTypeMap
+#      !self.mFormalParameterList
+#      !self.mInstructionList
+#      !self.mEndOfInitializerLocation
+#      ?let semanticInstructionListForGeneration
+#      ?let formalParameterListForGeneration
+#    )
+#  #---
+#    let initializerName = [self.mFormalParameterList initializerSignature]
+#    ioSemanticDeclarationListForGeneration +=
+#      !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
+#      !@extensionInitializerForGeneration {
+#        !generateHeader: false # Generate Cpp header file
+#        !implementationCppFileName: "initializer-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [initializerName fileNameRepresentation]
+#        !selfType
+#        !initializerName
+#        !formalParameterListForGeneration
+#        ![selfType definition].allTypedPropertyList
+#        !semanticInstructionListForGeneration
+#      }
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————

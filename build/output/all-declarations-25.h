@@ -833,6 +833,20 @@ void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GALGAS_s
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'handleEquatableComparableExtension&?&?acceptEquatable?acceptComparable'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (class GALGAS_equatableExtensionMap & ioArgument0,
+                                                                                                    const class GALGAS_lstring constinArgument1,
+                                                                                                    class GALGAS_typeFeatures & ioArgument2,
+                                                                                                    const class GALGAS_bool constinArgument3,
+                                                                                                    const class GALGAS_bool constinArgument4,
+                                                                                                    class Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'arrayTypeGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -977,47 +991,4 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
                                                                                           const class GALGAS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
                                                                                           const class GALGAS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'structGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
-                                                                                              const class GALGAS_bigint & in_FULL_5F_SET,
-                                                                                              const class GALGAS_bool & in_EQUATABLE
-                                                                                              COMMA_LOCATION_ARGS) ;
 

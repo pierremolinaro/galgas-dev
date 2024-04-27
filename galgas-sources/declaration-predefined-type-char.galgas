@@ -1,0 +1,249 @@
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  Generate predefined types
+#
+#  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+refclass @charPredefinedTypeAST : @predefinedTypeAST {
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter getSupportedOperatorFlags -> @typeFeatures {
+    result = .generateDescriptionGetterUtilityMethod | .comparable | .equatable
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                               !@getterMap outMap {
+    commonGetterMapForAllTypes (!?ioUnifiedTypeMap ?outMap)
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"string"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"utf8Length"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"utf32CharConstantRepresentation"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"uint"
+      !obsoleteName: ""
+      !returnedTypeName:"uint"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isalnum"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isalpha"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"iscntrl"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isdigit"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"islower"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isupper"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isxdigit"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodeLetter"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodeMark"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodeNumber"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodeSeparator"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodeCommand"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodePunctuation"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"isUnicodeSymbol"
+      !obsoleteName: ""
+      !returnedTypeName:"bool"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"unicodeName"
+      !obsoleteName: ""
+      !returnedTypeName:"string"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"unicodeToLower"
+      !obsoleteName: ""
+      !returnedTypeName:"char"
+      !hasCompilerArgument:false
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !getterName:"unicodeToUpper"
+      !obsoleteName: ""
+      !returnedTypeName:"char"
+      !hasCompilerArgument:false
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
+                                      !@classFunctionMap outMap {
+    outMap = ()
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"replacementCharacter"
+      !resultTypeName:"char"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"unicodeCharacterWithUnsigned"
+      !argTypeName:"uint"
+      !argName:"inValue"
+      !resultTypeName:"char"
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap
+      !?ioUnifiedTypeMap
+      !name:"unicodeCharacterFromRawKeyboard"
+      !resultTypeName:"char"
+      !hasLexiqueArg:true
+    )
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+  override getter cppDeclarationString -> @string {
+    result = [filewrapper predefinedTypeGenerationTemplate.char_type]
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+

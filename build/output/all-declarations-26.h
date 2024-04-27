@@ -10,6 +10,49 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'structGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                  const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                  const class GALGAS_lstringlist & in_SLOT_5F_LIST
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                              const class GALGAS_lstringlist & in_SLOT_5F_LIST,
+                                                                                              const class GALGAS_bigint & in_FULL_5F_SET,
+                                                                                              const class GALGAS_bool & in_EQUATABLE
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'classGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -532,49 +575,6 @@ GALGAS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpe
                                                                                                      const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                                      const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                      const class GALGAS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GALGAS_bool & in_GENERATE_5F_COMPARISON
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'sortedListGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
-                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'sortedListGenerationTemplate sortedlistTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                                     const class GALGAS_sortDescriptorListForGeneration & in_SORT_5F_ATTRIBUTE_5F_LIST,
-                                                                                                     const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                                      const class GALGAS_bool & in_GENERATE_5F_COMPARISON
                                                                                                      COMMA_LOCATION_ARGS) ;
 

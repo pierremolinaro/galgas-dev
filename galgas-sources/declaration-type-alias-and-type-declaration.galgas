@@ -1,0 +1,374 @@
+#
+#  MIT License
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+# and associated documentation files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   SYNTAX
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·······························································································
+
+#  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
+#    $typealias$
+#    $@type$ ?let aliasTypeName indexing dictionaryDefinition
+#    $=$
+#    <type_definition_ggs3> !?ioDeclarations ?let @lstring definedTypeName
+#    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST {
+#      !isPredefined: false
+#      !aliasTypeName
+#      !definedTypeName
+#    }
+#  }
+
+  #·······························································································
+  # SIMPLE ALIAS
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                              !@lstring outTypeName {
+    $@type$ ?outTypeName
+    repeat
+    while
+      $.$
+      $@type$ ?let typeName
+      outTypeName = .init (outTypeName.string + "-" + typeName.string,
+                           [outTypeName.location union !typeName])
+    end
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
+    $[$
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    $:$
+    <type_definition_ggs3> !?ioDeclarations ?*
+    error .here : "Not handled yet"
+    $]$
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    $<$
+    repeat
+      <type_definition_ggs3> !?ioDeclarations ?let t
+      error t : "not handled yet"
+    while
+      $,$
+    end
+    $>$
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
+    <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    $?$
+    let unwrappedTypeName = outTypeName 
+    [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
+  }
+
+  #·······························································································
+
+  rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                              !@lstring outTypeName {
+    $($
+    repeat
+      <type_definition_ggs3> !?ioDeclarations ?outTypeName
+    while
+      $,$
+    end
+    error .here : "Not handled yet"
+    $)$
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas4DeclarationsSyntax {
+
+   #·······························································································
+
+#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+#    $typealias$
+#    $@type$ ?let aliasTypeName indexing dictionaryDefinition
+#    $=$
+#    <type_definition> !?ioDeclarations ?let @lstring definedTypeName
+#    ioDeclarations.mDeclarationList += !@typealiasDeclarationAST {
+#      !isPredefined: false # Is not predefined
+#      !aliasTypeName
+#      !definedTypeName
+#    }
+#  }
+
+  #·······························································································
+
+  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
+                         !@lstring outTypeName {
+    <simple_type_definition> !?ioDeclarations ?outTypeName
+    repeat
+    while
+      $.$
+      <simple_type_definition> !?ioDeclarations ?let typeName
+      outTypeName = .init (outTypeName.string + "-" + typeName.string,
+                           [outTypeName.location union !typeName])
+    while
+      $<$
+      repeat
+        <type_definition> !?ioDeclarations ?let t
+        error t : "not handled yet"
+      while
+        $,$
+      end
+      $>$
+    end
+  #--- Optional ?
+    select
+    or
+      $?$
+      let unwrappedTypeName = outTypeName 
+      [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
+    end
+  }
+
+  #·······························································································
+
+  rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
+                                !@lstring outTypeName {
+    $@type$ ?outTypeName
+  }
+  
+  #·······························································································
+
+  rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outTypeName {
+    $[$
+    <type_definition> !?ioDeclarations ?outTypeName
+    select
+      let elementTypeName = outTypeName 
+      outTypeName = .init ("[" + elementTypeName.string + "]", elementTypeName.location)
+      if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
+        ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
+        ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
+          !isPredefined: false,
+          outTypeName,
+          elementTypeName,
+          !isUsefull: true,
+          !equatable: false
+        )
+      end
+    or
+      $:$
+      <type_definition> !?ioDeclarations ?*
+      error .here : "Not handled yet"
+      end
+    $]$
+  }
+
+  #·······························································································
+
+#  rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
+#                                !@lstring outTypeName {
+#    $[$
+#    <type_definition> !?ioDeclarations ?let elementTypeName
+#    outTypeName = .init ("[" + elementTypeName.string + "]", elementTypeName.location)
+#    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
+#      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
+#      ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
+#        !isPredefined: false,
+#        outTypeName,
+#        elementTypeName,
+#        !isUsefull: true,
+#        !equatable: false
+#      )
+#    end
+#    $]$
+#  }
+
+  #·······························································································
+
+  rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
+                                !@lstring outTypeName {
+    $($
+    repeat
+      <type_definition> !?ioDeclarations ?outTypeName
+    while
+      $,$
+    end
+    error .here : "Not handled yet"
+    $)$
+  }
+
+  #·······························································································
+
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#   AST
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+#refclass @typealiasDeclarationAST : @semanticDeclarationAST {
+#  private let @lstring mAliasTypeName
+#  private let @lstring mDefinedTypeName
+#
+#  #·······························································································
+#
+#  override getter keyRepresentation -> @string {
+#    result = "typealias @" + self.mAliasTypeName
+#  }
+#
+#  #·······························································································
+#
+#  override method addAssociatedElement ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
+#  }
+#
+#  #·······························································································
+#
+#  override method enterDeclarationInGraph
+#    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+#    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext
+#    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+#    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+#    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+#    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+#    let aliasKey = @lstring {!"@" + self.mAliasTypeName !self.mAliasTypeName.location}
+#    [!?ioSemanticTypePrecedenceGraph addNode !aliasKey !self]
+#    let referenceKey = @lstring {!"@" + self.mDefinedTypeName !self.mDefinedTypeName.location}
+#    [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
+#  }
+#
+#  #·······························································································
+#
+#  override method enterDeclarationInSemanticContext
+#    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
+#    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+#    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+#    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+#    ?!@unifiedTypeMap ioTypeMap
+#    ?!@semanticContext unused ioSemanticContext {
+#    [!?ioTypeMap makeEntryFromString !self.mDefinedTypeName ?let definedTypeEntry]
+#    switch definedTypeEntry
+#    case null :
+#      error self.mDefinedTypeName : "Undefined type"
+#    case element (@unifiedTypeMapElementClass-weak weakElement) :
+#      switch weakElement.bang.mDefinition
+#      case unsolved :
+#        error self.mDefinedTypeName : "Undefined type"
+#      case solved (@unifiedTypeDefinition def) :
+#        let definition = @unifiedTypeDefinition {
+#          !typeName: def.typeName
+#          !isPredefined: false # Not predefined
+#          !isConcrete: def.isConcrete # false if abstract class
+#          !superType: def.superType
+#          !typeKind: def.typeKind
+#          !supportCollectionValue: def.supportCollectionValue
+#          !allTypedPropertyList: def.allTypedPropertyList
+#          !propertyMap: def.propertyMap # struct, class
+#          !currentTypedPropertyList: def.currentTypedPropertyList
+#          !initializerMap: def.initializerMap
+#          !classFunctionMap: def.classFunctionMap
+#          !getterMap: def.getterMap
+#          !setterMap: def.setterMap
+#          !instanceMethodMap: def.instanceMethodMap
+#          !classMethodMap: def.classMethodMap
+#          !optionalMethodMap: def.optionalMethodMap
+#          !enumerationDescriptorList: def.enumerationDescriptorList
+#          !features: def.features
+#          !addAssignOperatorArguments: def.addAssignOperatorArguments
+#          !mapSearchMethodList: def.mapSearchMethodList
+#          !generateHeaderInSeparateFile: def.generateHeaderInSeparateFile
+#          !typeForEnumeratedElement: def.typeForEnumeratedElement
+#          !headerFileName: "typealias-" + [self.mAliasTypeName fileNameRepresentation]
+#          !headerKind: .oneHeader
+#        }
+#        [!?ioTypeMap insertType !self.mAliasTypeName !definition]
+#      end
+#    end
+#  }
+#
+#  #·······························································································
+#
+#  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities
+#                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+#                                    ?let @string unused inProductDirectory
+#                                    ?let @semanticContext unused inSemanticContext
+#                                    ?!@unifiedTypeMap ioTypeMap
+#                                    ?let @predefinedTypes unused inPredefinedTypes
+#                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
+#  #--- Useful entities graph
+#    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAliasTypeName)
+#    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#    let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDefinedTypeName)
+#    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+#  #--- Enter type alias declaration
+#    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !self.mDefinedTypeName]
+#    ioSemanticDeclarationListForGeneration +=
+#      !infoMessage: "typealias " + self.mAliasTypeName
+#      !@aliasTypeForGeneration {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
+#  }
+#
+#  #·······························································································
+#
+#}
+#
+##—————————————————————————————————————————————————————————————————————————————————————————————————
+##   CODE GENERATION
+##—————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
+#  private let @string mAliasTypeName
+#  private let @unifiedTypeMapEntry mReferencedType
+#
+#  #·······························································································
+#
+#  override method appendDeclaration1 ?!@stringset ioInclusionSet
+#                                     !@string outHeader {
+#    [self.mReferencedType addHeaderFileName1 !?ioInclusionSet]
+#    outHeader = [filewrapper typeGenerationTemplate.typeAliasTypeHeader1
+#      ![self.mAliasTypeName identifierRepresentation]
+#      ![self.mReferencedType identifierRepresentation]
+#    ]
+#  }
+#
+#  #·······························································································
+#
+#  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
+#                                                ?!@stringset unused ioInclusionSet
+#                                                !@string outImplementation {
+#    outImplementation = ""
+#  }
+#
+#  #·······························································································
+#
+#  override getter appendTypeGenericImplementation -> @string {
+#    result = ""
+#  }
+#
+#  #·······························································································
+#
+#}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
