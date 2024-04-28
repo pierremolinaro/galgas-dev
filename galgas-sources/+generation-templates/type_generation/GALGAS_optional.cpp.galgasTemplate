@@ -56,7 +56,28 @@ void GGS_%!TYPE_IDENTIFIER%::drop (void) {
   mValue = GGS_%!UNWRAPPED_TYPE_IDENTIFIER% () ;
 }
 
-//--------------------------------------------------------------------------------------------------
+%
+if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mState < inOperand.mState) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mState > inOperand.mState) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else if (mState == OptionalState::valuated) {
+      result = mValue.objectCompare (inOperand.mValue) ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+%
+end
+%//--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
      %!^%const int32_t inIndentation) const {

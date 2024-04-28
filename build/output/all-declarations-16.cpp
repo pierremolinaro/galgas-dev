@@ -8,6 +8,172 @@
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
+// @lexicalUnsignedInputArgumentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mUnsigned () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalUnsignedInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mUnsigned.printNonNullClassInstanceProperties ("mUnsigned") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalUnsignedInputArgumentAST::objectCompare (const GGS_lexicalUnsignedInputArgumentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalUnsignedInputArgumentAST::GGS_lexicalUnsignedInputArgumentAST (void) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::
+init_21_ (const GGS_lbigint & in_mUnsigned,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalUnsignedInputArgumentAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalUnsignedInputArgumentAST (inCompiler COMMA_THERE)) ;
+  object->lexicalUnsignedInputArgumentAST_init_21_ (in_mUnsigned, inCompiler) ;
+  const GGS_lexicalUnsignedInputArgumentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalUnsignedInputArgumentAST::
+lexicalUnsignedInputArgumentAST_init_21_ (const GGS_lbigint & in_mUnsigned,
+                                          Compiler * /* inCompiler */) {
+  mProperty_mUnsigned = in_mUnsigned ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalUnsignedInputArgumentAST::GGS_lexicalUnsignedInputArgumentAST (const cPtr_lexicalUnsignedInputArgumentAST * inSourcePtr) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalUnsignedInputArgumentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::class_func_new (const GGS_lbigint & in_mUnsigned
+                                                                                         COMMA_LOCATION_ARGS) {
+  GGS_lexicalUnsignedInputArgumentAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalUnsignedInputArgumentAST (in_mUnsigned COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigint GGS_lexicalUnsignedInputArgumentAST::readProperty_mUnsigned (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lbigint () ;
+  }else{
+    cPtr_lexicalUnsignedInputArgumentAST * p = (cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalUnsignedInputArgumentAST) ;
+    return p->mProperty_mUnsigned ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalUnsignedInputArgumentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (const GGS_lbigint & in_mUnsigned
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (THERE),
+mProperty_mUnsigned () {
+  mProperty_mUnsigned = in_mUnsigned ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalUnsignedInputArgumentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
+}
+
+void cPtr_lexicalUnsignedInputArgumentAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalUnsignedInputArgumentAST:") ;
+  mProperty_mUnsigned.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalUnsignedInputArgumentAST (mProperty_mUnsigned COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalUnsignedInputArgumentAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ("lexicalUnsignedInputArgumentAST",
+                                                                                       & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalUnsignedInputArgumentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalUnsignedInputArgumentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalUnsignedInputArgumentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalUnsignedInputArgumentAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::extractObject (const GGS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_lexicalUnsignedInputArgumentAST result ;
+  const GGS_lexicalUnsignedInputArgumentAST * p = (const GGS_lexicalUnsignedInputArgumentAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalUnsignedInputArgumentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalUnsignedInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @lexicalFunctionInputArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -8450,8 +8616,7 @@ cPtr_optionalTypeDeclarationAST::cPtr_optionalTypeDeclarationAST (Compiler * inC
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_optionalTypeName (),
 mProperty_unwrappedTypeName (),
-mProperty_isUsefull (),
-mProperty_equatable () {
+mProperty_isUsefull () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8462,7 +8627,6 @@ mProperty_equatable () {
     mProperty_optionalTypeName.printNonNullClassInstanceProperties ("optionalTypeName") ;
     mProperty_unwrappedTypeName.printNonNullClassInstanceProperties ("unwrappedTypeName") ;
     mProperty_isUsefull.printNonNullClassInstanceProperties ("isUsefull") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
   }
 #endif
 
@@ -8493,16 +8657,15 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST::
-init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (const GGS_bool & in_isPredefined,
-                                                                                         const GGS_lstring & in_optionalTypeName,
-                                                                                         const GGS_lstring & in_unwrappedTypeName,
-                                                                                         const GGS_bool & in_isUsefull,
-                                                                                         const GGS_bool & in_equatable,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (const GGS_bool & in_isPredefined,
+                                                                            const GGS_lstring & in_optionalTypeName,
+                                                                            const GGS_lstring & in_unwrappedTypeName,
+                                                                            const GGS_bool & in_isUsefull,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
   cPtr_optionalTypeDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_optionalTypeDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (in_isPredefined, in_optionalTypeName, in_unwrappedTypeName, in_isUsefull, in_equatable, inCompiler) ;
+  object->optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (in_isPredefined, in_optionalTypeName, in_unwrappedTypeName, in_isUsefull, inCompiler) ;
   const GGS_optionalTypeDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -8511,17 +8674,15 @@ init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_eq
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeDeclarationAST::
-optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (const GGS_bool & in_isPredefined,
-                                                                                                                    const GGS_lstring & in_optionalTypeName,
-                                                                                                                    const GGS_lstring & in_unwrappedTypeName,
-                                                                                                                    const GGS_bool & in_isUsefull,
-                                                                                                                    const GGS_bool & in_equatable,
-                                                                                                                    Compiler * /* inCompiler */) {
+optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (const GGS_bool & in_isPredefined,
+                                                                                                       const GGS_lstring & in_optionalTypeName,
+                                                                                                       const GGS_lstring & in_unwrappedTypeName,
+                                                                                                       const GGS_bool & in_isUsefull,
+                                                                                                       Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_optionalTypeName = in_optionalTypeName ;
   mProperty_unwrappedTypeName = in_unwrappedTypeName ;
   mProperty_isUsefull = in_isUsefull ;
-  mProperty_equatable = in_equatable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8535,11 +8696,10 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                                const GGS_lstring & in_optionalTypeName,
                                                                                const GGS_lstring & in_unwrappedTypeName,
-                                                                               const GGS_bool & in_isUsefull,
-                                                                               const GGS_bool & in_equatable
+                                                                               const GGS_bool & in_isUsefull
                                                                                COMMA_LOCATION_ARGS) {
   GGS_optionalTypeDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_optionalTypeDeclarationAST (in_isPredefined, in_optionalTypeName, in_unwrappedTypeName, in_isUsefull, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_optionalTypeDeclarationAST (in_isPredefined, in_optionalTypeName, in_unwrappedTypeName, in_isUsefull COMMA_THERE)) ;
   return result ;
 }
 
@@ -8580,37 +8740,22 @@ GGS_bool GGS_optionalTypeDeclarationAST::readProperty_isUsefull (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_optionalTypeDeclarationAST::readProperty_equatable (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_optionalTypeDeclarationAST * p = (cPtr_optionalTypeDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionalTypeDeclarationAST) ;
-    return p->mProperty_equatable ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //Pointer class for @optionalTypeDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_optionalTypeDeclarationAST::cPtr_optionalTypeDeclarationAST (const GGS_bool & in_isPredefined,
                                                                   const GGS_lstring & in_optionalTypeName,
                                                                   const GGS_lstring & in_unwrappedTypeName,
-                                                                  const GGS_bool & in_isUsefull,
-                                                                  const GGS_bool & in_equatable
+                                                                  const GGS_bool & in_isUsefull
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_optionalTypeName (),
 mProperty_unwrappedTypeName (),
-mProperty_isUsefull (),
-mProperty_equatable () {
+mProperty_isUsefull () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_optionalTypeName = in_optionalTypeName ;
   mProperty_unwrappedTypeName = in_unwrappedTypeName ;
   mProperty_isUsefull = in_isUsefull ;
-  mProperty_equatable = in_equatable ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8629,8 +8774,6 @@ void cPtr_optionalTypeDeclarationAST::description (String & ioString,
   mProperty_unwrappedTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_isUsefull.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_equatable.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -8638,7 +8781,7 @@ void cPtr_optionalTypeDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_optionalTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionalTypeDeclarationAST (mProperty_isPredefined, mProperty_optionalTypeName, mProperty_unwrappedTypeName, mProperty_isUsefull, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionalTypeDeclarationAST (mProperty_isPredefined, mProperty_optionalTypeName, mProperty_unwrappedTypeName, mProperty_isUsefull COMMA_THERE)) ;
   return ptr ;
 }
 

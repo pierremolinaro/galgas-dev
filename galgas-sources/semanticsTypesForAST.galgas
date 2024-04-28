@@ -516,8 +516,7 @@ struct @galgasDeclarationAST {
         !isPredefined: inPredefined,
         !optionalTypeName: outOptionalTypeName,
         !unwrappedTypeName: inTypeName,
-        !isUsefull: true,
-        !equatable: false
+        !isUsefull: true
       )
     end
   }

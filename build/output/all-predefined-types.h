@@ -5421,6 +5421,8 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_bigint_3F_ & inOperand) const ;
 
 //--------------------------------- Setters
 

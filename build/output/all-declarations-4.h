@@ -8765,18 +8765,15 @@ class GGS_optionalTypeDeclarationAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_bool readProperty_isUsefull (void) const ;
 
-  public: class GGS_bool readProperty_equatable (void) const ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_optionalTypeDeclarationAST init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (const class GGS_bool & inOperand0,
-                                                                                                                                         const class GGS_lstring & inOperand1,
-                                                                                                                                         const class GGS_lstring & inOperand2,
-                                                                                                                                         const class GGS_bool & inOperand3,
-                                                                                                                                         const class GGS_bool & inOperand4,
-                                                                                                                                         Compiler * inCompiler
-                                                                                                                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_optionalTypeDeclarationAST init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (const class GGS_bool & inOperand0,
+                                                                                                                            const class GGS_lstring & inOperand1,
+                                                                                                                            const class GGS_lstring & inOperand2,
+                                                                                                                            const class GGS_bool & inOperand3,
+                                                                                                                            Compiler * inCompiler
+                                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -8790,8 +8787,7 @@ class GGS_optionalTypeDeclarationAST : public GGS_semanticDeclarationAST {
   public: static class GGS_optionalTypeDeclarationAST class_func_new (const class GGS_bool & inOperand0,
                                                                       const class GGS_lstring & inOperand1,
                                                                       const class GGS_lstring & inOperand2,
-                                                                      const class GGS_bool & inOperand3,
-                                                                      const class GGS_bool & inOperand4
+                                                                      const class GGS_bool & inOperand3
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8829,12 +8825,11 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull_21_equatable (const class GGS_bool & inOperand0,
-                                                                                                                                   const class GGS_lstring & inOperand1,
-                                                                                                                                   const class GGS_lstring & inOperand2,
-                                                                                                                                   const class GGS_bool & inOperand3,
-                                                                                                                                   const class GGS_bool & inOperand4,
-                                                                                                                                   Compiler * inCompiler) ;
+  public: void optionalTypeDeclarationAST_init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (const class GGS_bool & inOperand0,
+                                                                                                                      const class GGS_lstring & inOperand1,
+                                                                                                                      const class GGS_lstring & inOperand2,
+                                                                                                                      const class GGS_bool & inOperand3,
+                                                                                                                      Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -8878,7 +8873,6 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GGS_lstring mProperty_optionalTypeName ;
   public: GGS_lstring mProperty_unwrappedTypeName ;
   public: GGS_bool mProperty_isUsefull ;
-  public: GGS_bool mProperty_equatable ;
 
 
 //--- Default constructor
@@ -8888,8 +8882,7 @@ class cPtr_optionalTypeDeclarationAST : public cPtr_semanticDeclarationAST {
   public: cPtr_optionalTypeDeclarationAST (const GGS_bool & in_isPredefined,
                                            const GGS_lstring & in_optionalTypeName,
                                            const GGS_lstring & in_unwrappedTypeName,
-                                           const GGS_bool & in_isUsefull,
-                                           const GGS_bool & in_equatable
+                                           const GGS_bool & in_isUsefull
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

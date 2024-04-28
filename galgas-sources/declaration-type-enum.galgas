@@ -208,7 +208,11 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           !isUsefull: true
         )
         ioDeclarations.mDeclarationList += !s
-        [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: associatedTypeName !isPredefined: false]
+        [!?ioDeclarations getOptionalTypeName
+          ?*
+          !forTypeNamed: associatedTypeName
+          !isPredefined: false
+        ]
       end
     end
   }

@@ -345,7 +345,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    switch definedTypeEntry
 #    case null :
 #      error self.mDefinedTypeName : "Undefined type"
-#    case element (@unifiedTypeMapElementClass.@weak weakElement) :
+#    case element (weakElement) :
 #      switch weakElement.bang.mDefinition
 #      case unsolved :
 #        error self.mDefinedTypeName : "Undefined type"

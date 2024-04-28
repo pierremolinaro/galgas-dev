@@ -145,13 +145,7 @@ boolset @typeFeatures {
   #-----------------------------------------------------------------------------------------------
 
   getter generateCppObjectComparison -> @bool {
-    result = [self contains !.equatable]
-    if not result then
-      result = [self contains !.referenceEquatable]
-    end
-    if not result then
-      result = [self contains !.comparable]
-    end
+    result = [self contains ! .equatable | .referenceEquatable |.comparable]
   }
 
   #-----------------------------------------------------------------------------------------------

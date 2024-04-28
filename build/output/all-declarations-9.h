@@ -3181,6 +3181,8 @@ class GGS_selfAvailability_2E_available_3F_ : public AC_GALGAS_root {
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfAvailability_2E_available_3F_ & inOperand) const ;
 
 //--------------------------------- Setters
 
