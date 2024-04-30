@@ -96,6 +96,45 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   #·······························································································
 
+  rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+    <acces_control> ?let accessControl
+    $weak$
+    select
+      $var$
+    or
+      $let$
+      error .here : "a weak property is mutable, and should be declared with 'var'"
+    end
+    <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
+#    $?$
+    $identifier$ ?let propertyName
+    let @bool selectorAttribute
+    let @propertyInCollectionInitializationAST initialization
+    select
+      initialization = .none
+      selectorAttribute = false
+    or
+      $%initArgLabel$
+      initialization = .none
+      selectorAttribute = true
+    or
+      $=$
+      <expression_ggs3> !?ioDeclarations ?let expression
+      initialization = .some {!expression: expression}
+      selectorAttribute = false
+    end
+    ioAttributeInCollectionList +=
+      !isConstant: false
+      !propertyTypeName
+      !propertyName
+      !accessControl
+      !hasSelector: selectorAttribute
+      !initialization: initialization
+  }
+
+  #·······························································································
+
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     $@type$ ?let propertyTypeName // Ne pas utiliser <type_definition_ggs3>
@@ -281,7 +320,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
                          !@lstring outTypeName
 
   #·······························································································
-  #    A T T R I B U T E    I N    C O L L E C T I O N
+  #    PROPERTY DECLARATION
   #·······························································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
@@ -314,6 +353,43 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     end
     ioAttributeInCollectionList +=
       !isConstant: isConstant
+      !propertyTypeName
+      !propertyName
+      !accessControl
+      !hasSelector: selectorAttribute
+      !initialization: initialization
+  }
+
+  #·······························································································
+
+  rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
+                              ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+    <acces_control> ?let accessControl
+    $weak$
+    select
+      $var$
+    or
+      $let$
+      error .here : "a weak property is mutable, and should be declared with 'var'"
+    end
+    <type_definition> !?ioDeclarations ?let propertyTypeName
+    $identifier$ ?let propertyName
+    var selectorAttribute = false
+    repeat
+    while
+      $%initArgLabel$
+      selectorAttribute = true
+    end
+    let @propertyInCollectionInitializationAST initialization
+    select
+      initialization = .none
+    or
+      $=$
+      <expression> !?ioDeclarations ?let expression
+      initialization = .some {!expression: expression}
+    end
+    ioAttributeInCollectionList +=
+      !isConstant: false
       !propertyTypeName
       !propertyName
       !accessControl

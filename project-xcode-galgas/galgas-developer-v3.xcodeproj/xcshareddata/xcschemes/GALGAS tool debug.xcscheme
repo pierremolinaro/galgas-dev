@@ -34,9 +34,8 @@
       buildConfiguration = "Default"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
-      enableUBSanitizer = "YES"
+      disableMainThreadChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -57,7 +56,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "--output-html-grammar-file"
-            isEnabled = "YES">
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Volumes/dev-git/train-p2-m2/applis-cocoa/compilateurDescriptionReseauFerroviaire/descriptionReseauFerroviaire/+descriptionReseauFerroviaire.galgasProject"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/easy-bindings-dev/+easy-bindings.ggsproject"
@@ -65,7 +68,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-usefulness"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-big-int"
@@ -73,29 +76,17 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-file-generation"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/galgas-dev/+galgas.galgasProject"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/lpm-dev/+lpm.ggsproject"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
-            key = "MallocScribble"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Default"

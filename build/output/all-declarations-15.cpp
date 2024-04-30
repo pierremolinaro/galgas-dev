@@ -6718,7 +6718,7 @@ static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [193] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [194] = {
   false /* identifier */,
   false /* double.xxx */,
   false /* literalInt */,
@@ -6833,6 +6833,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [193] = {
   false /* valueclass */,
   false /* var */,
   false /* warning */,
+  false /* weak */,
   false /* while */,
   false /* with */,
   false /* %app-link */,
@@ -7089,6 +7090,7 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("valueclass") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("var") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("warning") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("weak") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("while") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("with") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%app-link") COMMA_HERE) ;

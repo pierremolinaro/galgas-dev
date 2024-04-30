@@ -191,6 +191,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "unused",
   "var",
   "warning",
+  "weak",
   "while",
   "with"
 }

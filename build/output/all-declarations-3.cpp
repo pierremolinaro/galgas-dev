@@ -6561,8 +6561,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 193)) {
-    static const char * syntaxErrorMessageArray [193] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 194)) {
+    static const char * syntaxErrorMessageArray [194] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -6666,6 +6666,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'unused' keyword",
         "the 'var' keyword",
         "the 'warning' keyword",
+        "the 'weak' keyword",
         "the 'while' keyword",
         "the 'with' keyword",
         "the '%app-link' keyword",
@@ -8478,6 +8479,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__warn
   TO_UNICODE ('g'),
 } ;
 
+//--- Unicode string for '$weak$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__weak = {
+  TO_UNICODE ('w'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('k'),
+} ;
+
 //--- Unicode string for '$while$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__while = {
   TO_UNICODE ('w'),
@@ -8644,7 +8653,7 @@ int32_t Lexique_galgasScanner_34_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 81 ;
+static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 82 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKeyWordList [ktable_size_galgasScanner_34__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__as, Lexique_galgasScanner_34_::kToken_as),
@@ -8680,6 +8689,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__send, Lexique_galgasScanner_34_::kToken_send),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__then, Lexique_galgasScanner_34_::kToken_then),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__true, Lexique_galgasScanner_34_::kToken_true),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__weak, Lexique_galgasScanner_34_::kToken_weak),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__with, Lexique_galgasScanner_34_::kToken_with),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__after, Lexique_galgasScanner_34_::kToken_after),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__block, Lexique_galgasScanner_34_::kToken_block),
@@ -9288,6 +9298,11 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_warning:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("warning") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken_weak:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("weak") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_while:
@@ -10817,6 +10832,7 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("unused") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("var") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("warning") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("weak") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("while") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("with") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%app-link") COMMA_HERE) ;
@@ -11052,6 +11068,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("send") ;
     ioList.appendObject ("then") ;
     ioList.appendObject ("true") ;
+    ioList.appendObject ("weak") ;
     ioList.appendObject ("with") ;
     ioList.appendObject ("after") ;
     ioList.appendObject ("block") ;
@@ -11115,7 +11132,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [193] = {0,
+  static const uint32_t kTerminalSymbolStyles [194] = {0,
     0 /* galgasScanner4_1_identifier */,
     8 /* galgasScanner4_1_double_2E_xxx */,
     7 /* galgasScanner4_1_literalInt */,
@@ -11219,6 +11236,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_unused */,
     1 /* galgasScanner4_1_var */,
     1 /* galgasScanner4_1_warning */,
+    1 /* galgasScanner4_1_weak */,
     1 /* galgasScanner4_1_while */,
     1 /* galgasScanner4_1_with */,
     12 /* galgasScanner4_1__25_app_2D_link */,
