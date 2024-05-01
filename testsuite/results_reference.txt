@@ -259,63 +259,63 @@ LOGGING r: <@uint:5>
 *************************************** begin of introspection test
 --- Type list (101 types)
   @2lstringlist
-  @2lstringlist-element
+  @2lstringlist.element
   @2stringlist
-  @2stringlist-element
+  @2stringlist.element
   @A_A
-  @A_A-weak
+  @A_A.weak
   @B_B
-  @B_B-weak
+  @B_B.weak
   @TestExtensionMethod
-  @TestExtensionMethod-weak
+  @TestExtensionMethod.weak
   @TestExtensionSetter
-  @TestExtensionSetter-weak
+  @TestExtensionSetter.weak
   @aMap
-  @aMap-element
-  @aMap-element?
+  @aMap.element
+  @aMap.element?
   @abstractOverridingTestExtensionSetter
-  @abstractOverridingTestExtensionSetter-weak
+  @abstractOverridingTestExtensionSetter.weak
   @abstractTestExtensionSetter
-  @abstractTestExtensionSetter-weak
+  @abstractTestExtensionSetter.weak
   @baseClassForTypeCastInSetterCall
-  @baseClassForTypeCastInSetterCall-weak
+  @baseClassForTypeCastInSetterCall.weak
   @bigint
   @bigint?
   @bigintlist
-  @bigintlist-element
+  @bigintlist.element
   @binaryset
   @bool
   @char
   @classeA
-  @classeA-weak
+  @classeA.weak
   @classeB
-  @classeB-weak
+  @classeB.weak
   @classeC
-  @classeC-weak
+  @classeC.weak
   @classeD
-  @classeD-weak
+  @classeD.weak
   @classeE
-  @classeE-weak
+  @classeE.weak
   @classeF
-  @classeF-weak
+  @classeF.weak
   @classeG
-  @classeG-weak
+  @classeG.weak
   @classeH
-  @classeH-weak
+  @classeH.weak
   @classeI
-  @classeI-weak
+  @classeI.weak
   @complex
   @data
   @double
   @filewrapper
   @function
   @functionlist
-  @functionlist-element
+  @functionlist.element
   @inheritedClassForTypeCastInSetterCall
-  @inheritedClassForTypeCastInSetterCall-weak
+  @inheritedClassForTypeCastInSetterCall.weak
   @lbigint
   @lbigintlist
-  @lbigintlist-element
+  @lbigintlist.element
   @lbool
   @lchar
   @ldouble
@@ -324,41 +324,41 @@ LOGGING r: <@uint:5>
   @lsint64
   @lstring
   @lstringlist
-  @lstringlist-element
+  @lstringlist.element
   @luint
   @luint64
   @luintlist
-  @luintlist-element
+  @luintlist.element
   @myList
-  @myList-element
+  @myList.element
   @myMap
-  @myMap-element
-  @myMap-element?
+  @myMap.element
+  @myMap.element?
   @mySortedList
-  @mySortedList-element
+  @mySortedList.element
   @object
   @objectlist
-  @objectlist-element
+  @objectlist.element
   @overridingTestExtensionSetter
-  @overridingTestExtensionSetter-weak
+  @overridingTestExtensionSetter.weak
   @range
   @sint
   @sint64
   @string
   @stringlist
-  @stringlist-element
+  @stringlist.element
   @stringset
   @structTest
   @timer
   @type
   @typelist
-  @typelist-element
+  @typelist.element
   @uint
   @uint64
   @uint64list
-  @uint64list-element
+  @uint64list.element
   @uintlist
-  @uintlist-element
+  @uintlist.element
 --- Function list (1 function)
 LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
 <@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
