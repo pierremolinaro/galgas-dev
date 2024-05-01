@@ -271,8 +271,16 @@ refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum @propertyMutability {
+  case constantProperty
+  case mutableProperty
+  case weakProperty
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 list @propertyInCollectionListAST {
-  public let @bool isConstant %initArgLabel
+  public let @propertyMutability mutability %initArgLabel
   public let @lstring typeName
   public let @lstring name
   public let @AccessControlAST accessControl

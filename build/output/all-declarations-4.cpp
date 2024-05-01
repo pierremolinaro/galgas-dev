@@ -1582,7 +1582,7 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
   public: GGS_propertyInCollectionListAST_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_propertyInCollectionListAST (const GGS_bool & in_isConstant,
+  public: cCollectionElement_propertyInCollectionListAST (const GGS_propertyMutability & in_mutability,
                                                           const GGS_lstring & in_typeName,
                                                           const GGS_lstring & in_name,
                                                           const GGS_AccessControlAST & in_accessControl,
@@ -1605,7 +1605,7 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GGS_bool & in_isConstant,
+cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GGS_propertyMutability & in_mutability,
                                                                                                 const GGS_lstring & in_typeName,
                                                                                                 const GGS_lstring & in_name,
                                                                                                 const GGS_AccessControlAST & in_accessControl,
@@ -1613,14 +1613,14 @@ cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCol
                                                                                                 const GGS_propertyInCollectionInitializationAST & in_initialization
                                                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_isConstant, in_typeName, in_name, in_accessControl, in_hasSelector, in_initialization) {
+mObject (in_mutability, in_typeName, in_name, in_accessControl, in_hasSelector, in_initialization) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GGS_propertyInCollectionListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_isConstant, inElement.mProperty_typeName, inElement.mProperty_name, inElement.mProperty_accessControl, inElement.mProperty_hasSelector, inElement.mProperty_initialization) {
+mObject (inElement.mProperty_mutability, inElement.mProperty_typeName, inElement.mProperty_name, inElement.mProperty_accessControl, inElement.mProperty_hasSelector, inElement.mProperty_initialization) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1633,7 +1633,7 @@ bool cCollectionElement_propertyInCollectionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void) {
   cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_isConstant, mObject.mProperty_typeName, mObject.mProperty_name, mObject.mProperty_accessControl, mObject.mProperty_hasSelector, mObject.mProperty_initialization COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_mutability, mObject.mProperty_typeName, mObject.mProperty_name, mObject.mProperty_accessControl, mObject.mProperty_hasSelector, mObject.mProperty_initialization COMMA_HERE)) ;
   return result ;
 }
 
@@ -1642,8 +1642,8 @@ cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void)
 void cCollectionElement_propertyInCollectionListAST::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("isConstant" ":") ;
-  mObject.mProperty_isConstant.description (ioString, inIndentation) ;
+  ioString.appendCString ("mutability" ":") ;
+  mObject.mProperty_mutability.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
   ioString.appendCString ("typeName" ":") ;
@@ -1705,7 +1705,7 @@ void GGS_propertyInCollectionListAST::enterElement (const GGS_propertyInCollecti
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_propertyInCollectionListAST GGS_propertyInCollectionListAST::class_func_listWithValue (const GGS_bool & inOperand0,
+GGS_propertyInCollectionListAST GGS_propertyInCollectionListAST::class_func_listWithValue (const GGS_propertyMutability & inOperand0,
                                                                                            const GGS_lstring & inOperand1,
                                                                                            const GGS_lstring & inOperand2,
                                                                                            const GGS_AccessControlAST & inOperand3,
@@ -1725,7 +1725,7 @@ GGS_propertyInCollectionListAST GGS_propertyInCollectionListAST::class_func_list
 //--------------------------------------------------------------------------------------------------
 
 void GGS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                 const GGS_bool & in_isConstant,
+                                                                 const GGS_propertyMutability & in_mutability,
                                                                  const GGS_lstring & in_typeName,
                                                                  const GGS_lstring & in_name,
                                                                  const GGS_AccessControlAST & in_accessControl,
@@ -1733,7 +1733,7 @@ void GGS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionEl
                                                                  const GGS_propertyInCollectionInitializationAST & in_initialization
                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement_propertyInCollectionListAST * p = nullptr ;
-  macroMyNew (p, cCollectionElement_propertyInCollectionListAST (in_isConstant,
+  macroMyNew (p, cCollectionElement_propertyInCollectionListAST (in_mutability,
                                                                  in_typeName,
                                                                  in_name,
                                                                  in_accessControl,
@@ -1745,7 +1745,7 @@ void GGS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionEl
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::addAssign_operation (const GGS_bool & inOperand0,
+void GGS_propertyInCollectionListAST::addAssign_operation (const GGS_propertyMutability & inOperand0,
                                                            const GGS_lstring & inOperand1,
                                                            const GGS_lstring & inOperand2,
                                                            const GGS_AccessControlAST & inOperand3,
@@ -1764,7 +1764,7 @@ void GGS_propertyInCollectionListAST::addAssign_operation (const GGS_bool & inOp
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::setter_append (const GGS_bool inOperand0,
+void GGS_propertyInCollectionListAST::setter_append (const GGS_propertyMutability inOperand0,
                                                      const GGS_lstring inOperand1,
                                                      const GGS_lstring inOperand2,
                                                      const GGS_AccessControlAST inOperand3,
@@ -1784,7 +1784,7 @@ void GGS_propertyInCollectionListAST::setter_append (const GGS_bool inOperand0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::setter_insertAtIndex (const GGS_bool inOperand0,
+void GGS_propertyInCollectionListAST::setter_insertAtIndex (const GGS_propertyMutability inOperand0,
                                                             const GGS_lstring inOperand1,
                                                             const GGS_lstring inOperand2,
                                                             const GGS_AccessControlAST inOperand3,
@@ -1805,7 +1805,7 @@ void GGS_propertyInCollectionListAST::setter_insertAtIndex (const GGS_bool inOpe
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::setter_removeAtIndex (GGS_bool & outOperand0,
+void GGS_propertyInCollectionListAST::setter_removeAtIndex (GGS_propertyMutability & outOperand0,
                                                             GGS_lstring & outOperand1,
                                                             GGS_lstring & outOperand2,
                                                             GGS_AccessControlAST & outOperand3,
@@ -1828,7 +1828,7 @@ void GGS_propertyInCollectionListAST::setter_removeAtIndex (GGS_bool & outOperan
       drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-      outOperand0 = p->mObject.mProperty_isConstant ;
+      outOperand0 = p->mObject.mProperty_mutability ;
       outOperand1 = p->mObject.mProperty_typeName ;
       outOperand2 = p->mObject.mProperty_name ;
       outOperand3 = p->mObject.mProperty_accessControl ;
@@ -1842,7 +1842,7 @@ void GGS_propertyInCollectionListAST::setter_removeAtIndex (GGS_bool & outOperan
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::setter_popFirst (GGS_bool & outOperand0,
+void GGS_propertyInCollectionListAST::setter_popFirst (GGS_propertyMutability & outOperand0,
                                                        GGS_lstring & outOperand1,
                                                        GGS_lstring & outOperand2,
                                                        GGS_AccessControlAST & outOperand3,
@@ -1862,7 +1862,7 @@ void GGS_propertyInCollectionListAST::setter_popFirst (GGS_bool & outOperand0,
     outOperand5.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    outOperand0 = p->mObject.mProperty_isConstant ;
+    outOperand0 = p->mObject.mProperty_mutability ;
     outOperand1 = p->mObject.mProperty_typeName ;
     outOperand2 = p->mObject.mProperty_name ;
     outOperand3 = p->mObject.mProperty_accessControl ;
@@ -1873,7 +1873,7 @@ void GGS_propertyInCollectionListAST::setter_popFirst (GGS_bool & outOperand0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::setter_popLast (GGS_bool & outOperand0,
+void GGS_propertyInCollectionListAST::setter_popLast (GGS_propertyMutability & outOperand0,
                                                       GGS_lstring & outOperand1,
                                                       GGS_lstring & outOperand2,
                                                       GGS_AccessControlAST & outOperand3,
@@ -1893,7 +1893,7 @@ void GGS_propertyInCollectionListAST::setter_popLast (GGS_bool & outOperand0,
     outOperand5.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    outOperand0 = p->mObject.mProperty_isConstant ;
+    outOperand0 = p->mObject.mProperty_mutability ;
     outOperand1 = p->mObject.mProperty_typeName ;
     outOperand2 = p->mObject.mProperty_name ;
     outOperand3 = p->mObject.mProperty_accessControl ;
@@ -1904,7 +1904,7 @@ void GGS_propertyInCollectionListAST::setter_popLast (GGS_bool & outOperand0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::method_first (GGS_bool & outOperand0,
+void GGS_propertyInCollectionListAST::method_first (GGS_propertyMutability & outOperand0,
                                                     GGS_lstring & outOperand1,
                                                     GGS_lstring & outOperand2,
                                                     GGS_AccessControlAST & outOperand3,
@@ -1924,7 +1924,7 @@ void GGS_propertyInCollectionListAST::method_first (GGS_bool & outOperand0,
     outOperand5.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    outOperand0 = p->mObject.mProperty_isConstant ;
+    outOperand0 = p->mObject.mProperty_mutability ;
     outOperand1 = p->mObject.mProperty_typeName ;
     outOperand2 = p->mObject.mProperty_name ;
     outOperand3 = p->mObject.mProperty_accessControl ;
@@ -1935,7 +1935,7 @@ void GGS_propertyInCollectionListAST::method_first (GGS_bool & outOperand0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::method_last (GGS_bool & outOperand0,
+void GGS_propertyInCollectionListAST::method_last (GGS_propertyMutability & outOperand0,
                                                    GGS_lstring & outOperand1,
                                                    GGS_lstring & outOperand2,
                                                    GGS_AccessControlAST & outOperand3,
@@ -1955,7 +1955,7 @@ void GGS_propertyInCollectionListAST::method_last (GGS_bool & outOperand0,
     outOperand5.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    outOperand0 = p->mObject.mProperty_isConstant ;
+    outOperand0 = p->mObject.mProperty_mutability ;
     outOperand1 = p->mObject.mProperty_typeName ;
     outOperand2 = p->mObject.mProperty_name ;
     outOperand3 = p->mObject.mProperty_accessControl ;
@@ -2017,7 +2017,7 @@ void GGS_propertyInCollectionListAST::plusAssign_operation (const GGS_propertyIn
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_propertyInCollectionListAST::setter_setIsConstantAtIndex (GGS_bool inOperand,
+void GGS_propertyInCollectionListAST::setter_setMutabilityAtIndex (GGS_propertyMutability inOperand,
                                                                    GGS_uint inIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
@@ -2025,21 +2025,21 @@ void GGS_propertyInCollectionListAST::setter_setIsConstantAtIndex (GGS_bool inOp
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_isConstant = inOperand ;
+    p->mObject.mProperty_mutability = inOperand ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_propertyInCollectionListAST::getter_isConstantAtIndex (const GGS_uint & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
+GGS_propertyMutability GGS_propertyInCollectionListAST::getter_mutabilityAtIndex (const GGS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
-  GGS_bool result ;
+  GGS_propertyMutability result ;
   if (nullptr != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_isConstant ;
+    result = p->mObject.mProperty_mutability ;
   }
   return result ;
 }
@@ -2210,10 +2210,10 @@ GGS_propertyInCollectionListAST_2E_element cEnumerator_propertyInCollectionListA
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool cEnumerator_propertyInCollectionListAST::current_isConstant (LOCATION_ARGS) const {
+GGS_propertyMutability cEnumerator_propertyInCollectionListAST::current_mutability (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_isConstant ;
+  return p->mObject.mProperty_mutability ;
 }
 
 //--------------------------------------------------------------------------------------------------

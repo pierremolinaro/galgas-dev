@@ -1324,7 +1324,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor
   public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GGS_bool & in_isConstant,
+                                                 const class GGS_propertyMutability & in_mutability,
                                                  const class GGS_lstring & in_typeName,
                                                  const class GGS_lstring & in_name,
                                                  const class GGS_AccessControlAST & in_accessControl,
@@ -1349,7 +1349,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- GALGAS class functions
   public: static class GGS_propertyInCollectionListAST class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GGS_propertyInCollectionListAST class_func_listWithValue (const class GGS_bool & inOperand0,
+  public: static class GGS_propertyInCollectionListAST class_func_listWithValue (const class GGS_propertyMutability & inOperand0,
                                                                                  const class GGS_lstring & inOperand1,
                                                                                  const class GGS_lstring & inOperand2,
                                                                                  const class GGS_AccessControlAST & inOperand3,
@@ -1363,7 +1363,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_bool & inOperand0,
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_propertyMutability & inOperand0,
                                                      const class GGS_lstring & inOperand1,
                                                      const class GGS_lstring & inOperand2,
                                                      const class GGS_AccessControlAST & inOperand3,
@@ -1377,7 +1377,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_bool constinArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_propertyMutability constinArgument0,
                                                class GGS_lstring constinArgument1,
                                                class GGS_lstring constinArgument2,
                                                class GGS_AccessControlAST constinArgument3,
@@ -1386,7 +1386,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_bool constinArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_propertyMutability constinArgument0,
                                                       class GGS_lstring constinArgument1,
                                                       class GGS_lstring constinArgument2,
                                                       class GGS_AccessControlAST constinArgument3,
@@ -1396,7 +1396,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_bool & outArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_propertyMutability & outArgument0,
                                                  class GGS_lstring & outArgument1,
                                                  class GGS_lstring & outArgument2,
                                                  class GGS_AccessControlAST & outArgument3,
@@ -1405,7 +1405,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_bool & outArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_propertyMutability & outArgument0,
                                                 class GGS_lstring & outArgument1,
                                                 class GGS_lstring & outArgument2,
                                                 class GGS_AccessControlAST & outArgument3,
@@ -1414,7 +1414,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_bool & outArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_propertyMutability & outArgument0,
                                                       class GGS_lstring & outArgument1,
                                                       class GGS_lstring & outArgument2,
                                                       class GGS_AccessControlAST & outArgument3,
@@ -1439,7 +1439,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_setIsConstantAtIndex (class GGS_bool constinArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_setMutabilityAtIndex (class GGS_propertyMutability constinArgument0,
                                                              class GGS_uint constinArgument1,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
@@ -1456,7 +1456,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
 
 
 //--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GGS_bool & outArgument0,
+  public: VIRTUAL_IN_DEBUG void method_first (class GGS_propertyMutability & outArgument0,
                                               class GGS_lstring & outArgument1,
                                               class GGS_lstring & outArgument2,
                                               class GGS_AccessControlAST & outArgument3,
@@ -1465,7 +1465,7 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG void method_last (class GGS_bool & outArgument0,
+  public: VIRTUAL_IN_DEBUG void method_last (class GGS_propertyMutability & outArgument0,
                                              class GGS_lstring & outArgument1,
                                              class GGS_lstring & outArgument2,
                                              class GGS_AccessControlAST & outArgument3,
@@ -1489,9 +1489,9 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isConstantAtIndex (const class GGS_uint & constinOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG class GGS_propertyMutability getter_mutabilityAtIndex (const class GGS_uint & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_lstring getter_nameAtIndex (const class GGS_uint & constinOperand0,
                                                                  Compiler * inCompiler
@@ -1538,7 +1538,7 @@ class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerato
                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
-  public: class GGS_bool current_isConstant (LOCATION_ARGS) const ;
+  public: class GGS_propertyMutability current_mutability (LOCATION_ARGS) const ;
   public: class GGS_lstring current_typeName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_name (LOCATION_ARGS) const ;
   public: class GGS_AccessControlAST current_accessControl (LOCATION_ARGS) const ;
@@ -1762,6 +1762,88 @@ class GGS_propertyInCollectionInitializationAST : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ;
 
 //--------------------------------------------------------------------------------------------------
+//   enum propertyMutability
+//--------------------------------------------------------------------------------------------------
+
+class GGS_propertyMutability : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GGS_propertyMutability (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_constantProperty,
+    enum_mutableProperty,
+    enum_weakProperty
+  } ;
+  
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_propertyMutability extractObject (const GGS_object & inObject,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_propertyMutability class_func_constantProperty (LOCATION_ARGS) ;
+
+  public: static class GGS_propertyMutability class_func_mutableProperty (LOCATION_ARGS) ;
+
+  public: static class GGS_propertyMutability class_func_weakProperty (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isConstantProperty (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isMutableProperty (LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isWeakProperty (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GGS_propertyMutability class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMutability ;
+
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 1: @propertyInCollectionListAST_2E_element struct
 //
@@ -1769,9 +1851,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectio
 
 class GGS_propertyInCollectionListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_bool mProperty_isConstant ;
-  public: inline GGS_bool readProperty_isConstant (void) const {
-    return mProperty_isConstant ;
+  public: GGS_propertyMutability mProperty_mutability ;
+  public: inline GGS_propertyMutability readProperty_mutability (void) const {
+    return mProperty_mutability ;
   }
 
   public: GGS_lstring mProperty_typeName ;
@@ -1807,8 +1889,8 @@ class GGS_propertyInCollectionListAST_2E_element : public AC_GALGAS_root {
   public: GGS_propertyInCollectionListAST_2E_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setIsConstant (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_isConstant = inValue ;
+  public: inline void setter_setMutability (const GGS_propertyMutability & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mutability = inValue ;
   }
 
   public: inline void setter_setTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -1838,7 +1920,7 @@ class GGS_propertyInCollectionListAST_2E_element : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_propertyInCollectionListAST_2E_element (const GGS_bool & in_isConstant,
+  public: GGS_propertyInCollectionListAST_2E_element (const GGS_propertyMutability & in_mutability,
                                                       const GGS_lstring & in_typeName,
                                                       const GGS_lstring & in_name,
                                                       const GGS_AccessControlAST & in_accessControl,
@@ -1848,7 +1930,7 @@ class GGS_propertyInCollectionListAST_2E_element : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_propertyInCollectionListAST_2E_element init_21_isConstant_21__21__21__21_hasSelector_21_initialization (const class GGS_bool & inOperand0,
+  public: static GGS_propertyInCollectionListAST_2E_element init_21_mutability_21__21__21__21_hasSelector_21_initialization (const class GGS_propertyMutability & inOperand0,
                                                                                                                              const class GGS_lstring & inOperand1,
                                                                                                                              const class GGS_lstring & inOperand2,
                                                                                                                              const class GGS_AccessControlAST & inOperand3,
@@ -1866,7 +1948,7 @@ class GGS_propertyInCollectionListAST_2E_element : public AC_GALGAS_root {
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_propertyInCollectionListAST_2E_element class_func_new (const class GGS_bool & inOperand0,
+  public: static class GGS_propertyInCollectionListAST_2E_element class_func_new (const class GGS_propertyMutability & inOperand0,
                                                                                   const class GGS_lstring & inOperand1,
                                                                                   const class GGS_lstring & inOperand2,
                                                                                   const class GGS_AccessControlAST & inOperand3,

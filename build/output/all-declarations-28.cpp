@@ -9,6 +9,49 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Overriding extension method '@filewrapperDeclarationForGeneration appendSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_filewrapperDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
+                                                                                    GGS_stringset & ioArgument_ioInclusionSet,
+                                                                                    GGS_string & outArgument_outImplementation,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_filewrapperDeclarationForGeneration temp_0 = this ;
+  ioArgument_ioInclusionSet.addAssign_operation (GGS_string ("filewrapper-").add_operation (temp_0.readProperty_mFilewrapperName (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1356))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1356)) ;
+  GGS_string var_filewrapperImplementation_55496 = GGS_string::makeEmptyString () ;
+  {
+  const GGS_filewrapperDeclarationForGeneration temp_1 = this ;
+  const GGS_filewrapperDeclarationForGeneration temp_2 = this ;
+  const GGS_filewrapperDeclarationForGeneration temp_3 = this ;
+  routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (temp_1.readProperty_mFilewrapperName (), GGS_string::makeEmptyString (), GGS_uint (uint32_t (0U)), temp_2.readProperty_mFilewrapperFileMap (), temp_3.readProperty_mFilewrapperDirectoryMap (), var_filewrapperImplementation_55496, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1358)) ;
+  }
+  const GGS_filewrapperDeclarationForGeneration temp_4 = this ;
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (inCompiler, temp_4.readProperty_mFilewrapperName (), var_filewrapperImplementation_55496 COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1366))) ;
+  const GGS_filewrapperDeclarationForGeneration temp_5 = this ;
+  cEnumerator_filewrapperTemplateListForGeneration enumerator_55956 (temp_5.readProperty_mFilewrapperTemplateListForGeneration (), EnumerationOrder::up) ;
+  while (enumerator_55956.hasCurrentObject ()) {
+    GGS_string var_generatedCodeForInstructionList_56109 = GGS_string::makeEmptyString () ;
+    GGS_uint var_temporaryVariableIndex_56160 = GGS_uint (uint32_t (0U)) ;
+    GGS_stringset var_unusedVariableCppNameSet_56206 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+    var_unusedVariableCppNameSet_56206.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1376))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1376)) ;
+    cEnumerator_formalInputParameterListForGeneration enumerator_56326 (enumerator_55956.current_mFilewrapperTemplateFormalInputParameters (HERE), EnumerationOrder::up) ;
+    while (enumerator_56326.hasCurrentObject ()) {
+      var_unusedVariableCppNameSet_56206.addAssign_operation (enumerator_56326.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1378)) ;
+      enumerator_56326.gotoNextObject () ;
+    }
+    GGS_bool var_useColumnMarker_56457 = GGS_bool (false) ;
+    {
+    routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (enumerator_55956.current_mTemplateInstructionListForGeneration (HERE), var_generatedCodeForInstructionList_56109, ioArgument_ioInclusionSet, var_temporaryVariableIndex_56160, var_unusedVariableCppNameSet_56206, var_useColumnMarker_56457, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1381)) ;
+    }
+    const GGS_filewrapperDeclarationForGeneration temp_6 = this ;
+    outArgument_outImplementation.plusAssign_operation(GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (inCompiler, temp_6.readProperty_mFilewrapperName (), enumerator_55956.current_mFilewrapperTemplateName (HERE), enumerator_55956.current_mFilewrapperTemplateFormalInputParameters (HERE), var_unusedVariableCppNameSet_56206, var_useColumnMarker_56457, var_generatedCodeForInstructionList_56109 COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1390))), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1390)) ;
+    enumerator_55956.gotoNextObject () ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
 //Overriding extension method '@primitiveTypeForGeneration appendPrimitiveTypePreDeclaration'
 //
 //--------------------------------------------------------------------------------------------------

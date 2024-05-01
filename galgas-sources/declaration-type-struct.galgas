@@ -179,12 +179,12 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !propertyTypeEntry
         !property.name
         !property.initialization
-        !hasSetter: not property.isConstant
+        !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
       [!?propertyMap insertKey
         !property.name
         ![property.accessControl accessControl !forDeclaringType: structTypeIndex]
-        !property.isConstant
+        ![property.mutability isConstantProperty]
         !propertyTypeEntry
       ]
     end
@@ -319,7 +319,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
           !t
           !property.name
           !property.initialization
-          !hasSetter: not property.isConstant
+          !hasSetter: not [property.mutability isConstantProperty]
           !hasSelector: property.hasSelector
       case some (*) :
       end
@@ -327,7 +327,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !t
         !property.name
         !property.initialization
-        !hasSetter: not property.isConstant
+        !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
     #--- Check comparison
       switch self.comparison

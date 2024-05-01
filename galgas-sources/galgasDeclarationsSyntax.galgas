@@ -59,14 +59,14 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
-    let @bool isConstant
+    let @propertyMutability mutability
     select
       $var$
-      isConstant = false
+      mutability = .mutableProperty
     or
       $let$
       [accessControl checkCompatibilityWithLet !.here]
-      isConstant = true
+      mutability = .constantProperty
     end
     <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
@@ -86,7 +86,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       selectorAttribute = false
     end
     ioAttributeInCollectionList +=
-      !isConstant: isConstant
+      !mutability: mutability
       !propertyTypeName
       !propertyName
       !accessControl
@@ -107,7 +107,6 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       error .here : "a weak property is mutable, and should be declared with 'var'"
     end
     <type_definition_ggs3> !?ioDeclarations ?let propertyTypeName
-#    $?$
     $identifier$ ?let propertyName
     let @bool selectorAttribute
     let @propertyInCollectionInitializationAST initialization
@@ -125,7 +124,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       selectorAttribute = false
     end
     ioAttributeInCollectionList +=
-      !isConstant: false
+      !mutability: .weakProperty
       !propertyTypeName
       !propertyName
       !accessControl
@@ -140,7 +139,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
     $@type$ ?let propertyTypeName // Ne pas utiliser <type_definition_ggs3>
     $identifier$ ?let propertyName
     ioAttributeInCollectionList +=
-      !isConstant: false
+      !mutability: .mutableProperty
       !propertyTypeName
       !propertyName
       !.publicAccess
@@ -326,14 +325,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
     <acces_control> ?let accessControl
-    let @bool isConstant
+    let @propertyMutability mutability
     select
       $var$
-      isConstant = false
+      mutability = .mutableProperty
     or
       $let$
       [accessControl checkCompatibilityWithLet !.here]
-      isConstant = true
+      mutability = .constantProperty
     end
     <type_definition> !?ioDeclarations ?let propertyTypeName
     $identifier$ ?let propertyName
@@ -352,7 +351,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
-      !isConstant: isConstant
+      !mutability: mutability
       !propertyTypeName
       !propertyName
       !accessControl
@@ -389,7 +388,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       initialization = .some {!expression: expression}
     end
     ioAttributeInCollectionList +=
-      !isConstant: false
+      !mutability: .weakProperty
       !propertyTypeName
       !propertyName
       !accessControl

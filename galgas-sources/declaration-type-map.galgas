@@ -273,11 +273,10 @@ syntax extension galgas4DeclarationsSyntax {
 #   ASSOCIATED ELEMENT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @mapDeclarationAST addAssociatedElement
-  ?!@galgasDeclarationAST ioDeclarations {
+override method @mapDeclarationAST addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
   var structAttributeList = @propertyInCollectionListAST ()
   structAttributeList +=
-    !isConstant: false
+    !mutability: .constantProperty
     !["lstring" nowhere]
     !["lkey" nowhere]
     !.publicAccess
@@ -285,7 +284,7 @@ override method @mapDeclarationAST addAssociatedElement
     !initialization: .none
   for (* qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
-      !isConstant: false
+      !mutability: .mutableProperty
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess

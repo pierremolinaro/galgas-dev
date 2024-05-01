@@ -250,7 +250,7 @@ private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclara
                                           ?!@lstringlist ioUsefulnessRootEntities {
   var @propertyInCollectionListAST attributeList = ()
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     !@lstring {!inElementTypeName !@location.here}
     !@lstring {!"mValue" !@location.here}
     !.publicAccess
@@ -272,14 +272,14 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
                                                 ?!@lstringlist ioUsefulnessRootEntities {
   var attributeList = @propertyInCollectionListAST ()
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     !@lstring {!"string" !@location.here}
     !@lstring {!"mValue0" !@location.here}
     !.publicAccess
     !hasSelector: false
     !initialization: .none
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     !@lstring {!"string" !@location.here}
     !@lstring {!"mValue1" !@location.here}
     !.publicAccess
@@ -303,14 +303,14 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
                                                 ?!@lstringlist ioUsefulnessRootEntities {
   var attributeList = @propertyInCollectionListAST ()
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     !@lstring {!inElementTypeName !@location.here}
     !@lstring {!inElementTypeName !@location.here}
     !.publicAccess
     !hasSelector: false
     !initialization: .none
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     !@lstring {!"location" !@location.here}
     !@lstring {!"location" !@location.here}
     !.publicAccess
@@ -333,14 +333,14 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
                                          ?!@lstringlist unused ioUsefulnessRootEntities {
   var @propertyInCollectionListAST attributeList = ()
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     !@lstring {!"uint" !@location.here}
     !@lstring {!"start" !@location.here}
     !.publicAccess
     !hasSelector: false
     !initialization: .none
   attributeList +=
-    !isConstant: false
+    !mutability: .mutableProperty
     ! @lstring {!"uint" !@location.here}
     !@lstring {!"length" !@location.here}
     !.publicAccess

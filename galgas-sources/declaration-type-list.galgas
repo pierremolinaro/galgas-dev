@@ -426,9 +426,9 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 override method @listDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
   var @propertyInCollectionListAST structAttributeList = ()
-  for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
+  for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
-      !isConstant: isConstant
+      !mutability: mutability
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess

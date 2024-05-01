@@ -326,7 +326,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       [!?attributeMap insertKey
         !property.name
         ![property.accessControl accessControl !forDeclaringType: classIndex]
-        !property.isConstant
+        ![property.mutability isConstantProperty]
         !attributeTypeIndex
       ]
       if [getterMap hasKey !property.name.string] then
@@ -353,13 +353,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !attributeTypeIndex
         !property.name
         !property.initialization
-        !hasSetter: not property.isConstant
+        !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
       allTypedAttributeList +=
         !attributeTypeIndex
         !property.name
         !property.initialization
-        !hasSetter: not property.isConstant
+        !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
     end
   #--- set...attribute setter
@@ -527,13 +527,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         !t
         !property.name
         !property.initialization
-        !hasSetter: not property.isConstant
+        !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
       allAttributeList +=
         !t
         !property.name
         !property.initialization
-        !hasSetter: not property.isConstant
+        !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
       [!?attributeMap insertKey !property.name !t]
     end

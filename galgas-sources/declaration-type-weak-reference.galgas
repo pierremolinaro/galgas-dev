@@ -54,10 +54,6 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
       !@lstring {!"@" + self.mSuperWeakReferenceTypeName !self.mSuperWeakReferenceTypeName.location}
     ]
   end
-#  [!?ioSemanticTypePrecedenceGraph addEdge
-#    !key
-#    !@lstring {!"@" + self.mClassTypeName !self.mClassTypeName.location}
-#  ]
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -225,19 +221,19 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = ()
   var @propertyIndexMap attributeMap = ()
-  for (isConstant propertyTypeName mPropertyName unused accessControl hasSelector initialization) in self.mPropertyList do
+  for (mutability propertyTypeName mPropertyName unused accessControl hasSelector initialization) in self.mPropertyList do
     let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
     typedAttributeList +=
       !t
       !mPropertyName
       !initialization
-      !hasSetter: not isConstant
+      !hasSetter: not [mutability isConstantProperty]
       !hasSelector: hasSelector
     allAttributeList +=
       !t
       !mPropertyName
       !initialization
-      !hasSetter: not isConstant
+      !hasSetter: not [mutability isConstantProperty]
       !hasSelector: hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end

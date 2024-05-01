@@ -11119,7 +11119,7 @@ GGS_actualInputParameterListAST_2E_element GGS_actualInputParameterListAST_2E_el
 //--------------------------------------------------------------------------------------------------
 
 GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (void) :
-mProperty_isConstant (),
+mProperty_mutability (),
 mProperty_typeName (),
 mProperty_name (),
 mProperty_accessControl (),
@@ -11134,7 +11134,7 @@ GGS_propertyInCollectionListAST_2E_element::~ GGS_propertyInCollectionListAST_2E
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::init_21_isConstant_21__21__21__21_hasSelector_21_initialization (const GGS_bool & in_isConstant,
+GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::init_21_mutability_21__21__21__21_hasSelector_21_initialization (const GGS_propertyMutability & in_mutability,
                                                                                                                                                         const GGS_lstring & in_typeName,
                                                                                                                                                         const GGS_lstring & in_name,
                                                                                                                                                         const GGS_AccessControlAST & in_accessControl,
@@ -11144,7 +11144,7 @@ GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_el
                                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_propertyInCollectionListAST_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_isConstant = in_isConstant ;
+  result.mProperty_mutability = in_mutability ;
   result.mProperty_typeName = in_typeName ;
   result.mProperty_name = in_name ;
   result.mProperty_accessControl = in_accessControl ;
@@ -11160,13 +11160,13 @@ void GGS_propertyInCollectionListAST_2E_element::setInitializedProperties (Compi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (const GGS_bool & inOperand0,
+GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (const GGS_propertyMutability & inOperand0,
                                                                                         const GGS_lstring & inOperand1,
                                                                                         const GGS_lstring & inOperand2,
                                                                                         const GGS_AccessControlAST & inOperand3,
                                                                                         const GGS_bool & inOperand4,
                                                                                         const GGS_propertyInCollectionInitializationAST & inOperand5) :
-mProperty_isConstant (inOperand0),
+mProperty_mutability (inOperand0),
 mProperty_typeName (inOperand1),
 mProperty_name (inOperand2),
 mProperty_accessControl (inOperand3),
@@ -11176,7 +11176,7 @@ mProperty_initialization (inOperand5) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::class_func_new (const GGS_bool & in_isConstant,
+GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::class_func_new (const GGS_propertyMutability & in_mutability,
                                                                                                        const GGS_lstring & in_typeName,
                                                                                                        const GGS_lstring & in_name,
                                                                                                        const GGS_AccessControlAST & in_accessControl,
@@ -11186,7 +11186,7 @@ GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_el
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_propertyInCollectionListAST_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_isConstant = in_isConstant ;
+  result.mProperty_mutability = in_mutability ;
   result.mProperty_typeName = in_typeName ;
   result.mProperty_name = in_name ;
   result.mProperty_accessControl = in_accessControl ;
@@ -11198,13 +11198,13 @@ GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_el
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_propertyInCollectionListAST_2E_element::isValid (void) const {
-  return mProperty_isConstant.isValid () && mProperty_typeName.isValid () && mProperty_name.isValid () && mProperty_accessControl.isValid () && mProperty_hasSelector.isValid () && mProperty_initialization.isValid () ;
+  return mProperty_mutability.isValid () && mProperty_typeName.isValid () && mProperty_name.isValid () && mProperty_accessControl.isValid () && mProperty_hasSelector.isValid () && mProperty_initialization.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_propertyInCollectionListAST_2E_element::drop (void) {
-  mProperty_isConstant.drop () ;
+  mProperty_mutability.drop () ;
   mProperty_typeName.drop () ;
   mProperty_name.drop () ;
   mProperty_accessControl.drop () ;
@@ -11220,7 +11220,7 @@ void GGS_propertyInCollectionListAST_2E_element::description (String & ioString,
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_isConstant.description (ioString, inIndentation+1) ;
+    mProperty_mutability.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_typeName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;

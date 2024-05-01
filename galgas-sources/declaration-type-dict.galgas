@@ -126,7 +126,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST
 //--- Add element
   var @propertyInCollectionListAST structAttributeList = ()
   structAttributeList +=
-    !isConstant: true
+    !mutability: .constantProperty
     !self.mKeyTypeName
     !["key" nowhere]
     !.publicAccess
@@ -134,7 +134,7 @@ override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST
     !initialization: .none
   for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
     structAttributeList +=
-      !isConstant: true
+      !mutability: .constantProperty
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess

@@ -9,6 +9,74 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'recursivelyEnumerateDirectories????!!&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (const GGS_string constinArgument_inAbsoluteSourcePath,
+                                                                              const GGS_string constinArgument_inPathInWrapper,
+                                                                              const GGS_wrapperExtensionMap constinArgument_inTextFileExtensionMap,
+                                                                              const GGS_wrapperExtensionMap constinArgument_inBinaryFileExtensionMap,
+                                                                              GGS_wrapperFileMap & outArgument_outWrapperFileMap,
+                                                                              GGS_wrapperDirectoryMap & outArgument_outWrapperDirectoryMap,
+                                                                              GGS_uint & ioArgument_ioWrapperFileIndex,
+                                                                              GGS_uint & ioArgument_ioWrapperDirectoryIndex,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outWrapperFileMap.drop () ; // Release 'out' argument
+  outArgument_outWrapperDirectoryMap.drop () ; // Release 'out' argument
+  GGS_uint var_currentDirectoryIndex_22767 = ioArgument_ioWrapperDirectoryIndex ;
+  ioArgument_ioWrapperDirectoryIndex.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 572)) ;
+  GGS_stringlist var_files_22894 = constinArgument_inAbsoluteSourcePath.getter_regularFiles (GGS_bool (false) COMMA_SOURCE_FILE ("semanticContext.galgas", 574)) ;
+  outArgument_outWrapperFileMap = GGS_wrapperFileMap::init (inCompiler COMMA_HERE) ;
+  cEnumerator_stringlist enumerator_22977 (var_files_22894, EnumerationOrder::up) ;
+  while (enumerator_22977.hasCurrentObject ()) {
+    enumGalgasBool test_0 = kBoolTrue ;
+    if (kBoolTrue == test_0) {
+      test_0 = constinArgument_inTextFileExtensionMap.getter_hasKey (enumerator_22977.current_mValue (HERE).getter_pathExtension (SOURCE_FILE ("semanticContext.galgas", 577)) COMMA_SOURCE_FILE ("semanticContext.galgas", 577)).boolEnum () ;
+      if (kBoolTrue == test_0) {
+        GGS_string var_absoluteFilePath_23083 = constinArgument_inAbsoluteSourcePath.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 578)).add_operation (enumerator_22977.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 578)) ;
+        {
+        outArgument_outWrapperFileMap.setter_insertKey (GGS_lstring::init_21__21_ (enumerator_22977.current_mValue (HERE), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 580)), inCompiler COMMA_HERE), var_absoluteFilePath_23083, GGS_bool (true), var_currentDirectoryIndex_22767, ioArgument_ioWrapperFileIndex, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 579)) ;
+        }
+        ioArgument_ioWrapperFileIndex.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 586)) ;
+      }
+    }
+    if (kBoolFalse == test_0) {
+      enumGalgasBool test_1 = kBoolTrue ;
+      if (kBoolTrue == test_1) {
+        test_1 = constinArgument_inBinaryFileExtensionMap.getter_hasKey (enumerator_22977.current_mValue (HERE).getter_pathExtension (SOURCE_FILE ("semanticContext.galgas", 587)) COMMA_SOURCE_FILE ("semanticContext.galgas", 587)).boolEnum () ;
+        if (kBoolTrue == test_1) {
+          GGS_string var_absoluteFilePath_23459 = constinArgument_inAbsoluteSourcePath.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 588)).add_operation (enumerator_22977.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 588)) ;
+          {
+          outArgument_outWrapperFileMap.setter_insertKey (GGS_lstring::init_21__21_ (enumerator_22977.current_mValue (HERE), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 590)), inCompiler COMMA_HERE), var_absoluteFilePath_23459, GGS_bool (false), var_currentDirectoryIndex_22767, ioArgument_ioWrapperFileIndex, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 589)) ;
+          }
+          ioArgument_ioWrapperFileIndex.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 596)) ;
+        }
+      }
+    }
+    enumerator_22977.gotoNextObject () ;
+  }
+  GGS_stringlist var_directories_23815 = constinArgument_inAbsoluteSourcePath.getter_directories (GGS_bool (false) COMMA_SOURCE_FILE ("semanticContext.galgas", 600)) ;
+  outArgument_outWrapperDirectoryMap = GGS_wrapperDirectoryMap::init (inCompiler COMMA_HERE) ;
+  cEnumerator_stringlist enumerator_23908 (var_directories_23815, EnumerationOrder::up) ;
+  while (enumerator_23908.hasCurrentObject ()) {
+    GGS_uint var_theDirectoryIndex_23948 = ioArgument_ioWrapperDirectoryIndex ;
+    GGS_wrapperFileMap var_internalWrapperFileMap_24184 ;
+    GGS_wrapperDirectoryMap var_internalWrapperDirectoryMap_24218 ;
+    {
+    routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (constinArgument_inAbsoluteSourcePath.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 605)).add_operation (enumerator_23908.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 605)), constinArgument_inPathInWrapper.add_operation (enumerator_23908.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 606)).add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 606)), constinArgument_inTextFileExtensionMap, constinArgument_inBinaryFileExtensionMap, var_internalWrapperFileMap_24184, var_internalWrapperDirectoryMap_24218, ioArgument_ioWrapperFileIndex, ioArgument_ioWrapperDirectoryIndex, inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 604)) ;
+    }
+    {
+    outArgument_outWrapperDirectoryMap.setter_insertKey (GGS_lstring::init_21__21_ (enumerator_23908.current_mValue (HERE), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 615)), inCompiler COMMA_HERE), var_internalWrapperFileMap_24184, var_internalWrapperDirectoryMap_24218, var_theDirectoryIndex_23948, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 614)) ;
+    }
+    enumerator_23908.gotoNextObject () ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
 //Overriding extension method '@filewrapperDeclarationAST enterDeclarationInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
@@ -9294,46 +9362,3 @@ void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const GGS_string c
 }
 
 
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@filewrapperDeclarationForGeneration appendSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_filewrapperDeclarationForGeneration::method_appendSpecificImplementation (const GGS_unifiedTypeMap /* constinArgument_inTypeMap */,
-                                                                                    GGS_stringset & ioArgument_ioInclusionSet,
-                                                                                    GGS_string & outArgument_outImplementation,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_filewrapperDeclarationForGeneration temp_0 = this ;
-  ioArgument_ioInclusionSet.addAssign_operation (GGS_string ("filewrapper-").add_operation (temp_0.readProperty_mFilewrapperName (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1356))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1356)) ;
-  GGS_string var_filewrapperImplementation_55496 = GGS_string::makeEmptyString () ;
-  {
-  const GGS_filewrapperDeclarationForGeneration temp_1 = this ;
-  const GGS_filewrapperDeclarationForGeneration temp_2 = this ;
-  const GGS_filewrapperDeclarationForGeneration temp_3 = this ;
-  routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (temp_1.readProperty_mFilewrapperName (), GGS_string::makeEmptyString (), GGS_uint (uint32_t (0U)), temp_2.readProperty_mFilewrapperFileMap (), temp_3.readProperty_mFilewrapperDirectoryMap (), var_filewrapperImplementation_55496, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1358)) ;
-  }
-  const GGS_filewrapperDeclarationForGeneration temp_4 = this ;
-  outArgument_outImplementation = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (inCompiler, temp_4.readProperty_mFilewrapperName (), var_filewrapperImplementation_55496 COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1366))) ;
-  const GGS_filewrapperDeclarationForGeneration temp_5 = this ;
-  cEnumerator_filewrapperTemplateListForGeneration enumerator_55956 (temp_5.readProperty_mFilewrapperTemplateListForGeneration (), EnumerationOrder::up) ;
-  while (enumerator_55956.hasCurrentObject ()) {
-    GGS_string var_generatedCodeForInstructionList_56109 = GGS_string::makeEmptyString () ;
-    GGS_uint var_temporaryVariableIndex_56160 = GGS_uint (uint32_t (0U)) ;
-    GGS_stringset var_unusedVariableCppNameSet_56206 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-    var_unusedVariableCppNameSet_56206.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1376))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1376)) ;
-    cEnumerator_formalInputParameterListForGeneration enumerator_56326 (enumerator_55956.current_mFilewrapperTemplateFormalInputParameters (HERE), EnumerationOrder::up) ;
-    while (enumerator_56326.hasCurrentObject ()) {
-      var_unusedVariableCppNameSet_56206.addAssign_operation (enumerator_56326.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1378)) ;
-      enumerator_56326.gotoNextObject () ;
-    }
-    GGS_bool var_useColumnMarker_56457 = GGS_bool (false) ;
-    {
-    routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (enumerator_55956.current_mTemplateInstructionListForGeneration (HERE), var_generatedCodeForInstructionList_56109, ioArgument_ioInclusionSet, var_temporaryVariableIndex_56160, var_unusedVariableCppNameSet_56206, var_useColumnMarker_56457, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1381)) ;
-    }
-    const GGS_filewrapperDeclarationForGeneration temp_6 = this ;
-    outArgument_outImplementation.plusAssign_operation(GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (inCompiler, temp_6.readProperty_mFilewrapperName (), enumerator_55956.current_mFilewrapperTemplateName (HERE), enumerator_55956.current_mFilewrapperTemplateFormalInputParameters (HERE), var_unusedVariableCppNameSet_56206, var_useColumnMarker_56457, var_generatedCodeForInstructionList_56109 COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1390))), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 1390)) ;
-    enumerator_55956.gotoNextObject () ;
-  }
-}

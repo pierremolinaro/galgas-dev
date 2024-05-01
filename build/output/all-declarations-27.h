@@ -10,6 +10,23 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'recursivelyEnumerateDirectories????!!&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (const class GGS_string constinArgument0,
+                                                                              const class GGS_string constinArgument1,
+                                                                              const class GGS_wrapperExtensionMap constinArgument2,
+                                                                              const class GGS_wrapperExtensionMap constinArgument3,
+                                                                              class GGS_wrapperFileMap & outArgument4,
+                                                                              class GGS_wrapperDirectoryMap & outArgument5,
+                                                                              class GGS_uint & ioArgument6,
+                                                                              class GGS_uint & ioArgument7,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'generateInstructionList&?&&?&'
 //
 //--------------------------------------------------------------------------------------------------
