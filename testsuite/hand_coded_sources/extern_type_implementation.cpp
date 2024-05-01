@@ -3,7 +3,7 @@
 
 //---------------------------------------------------------------------------*
 
-GALGAS_complex::GALGAS_complex (void) :
+GGS_complex::GGS_complex (void) :
 AC_GALGAS_root (),
 mIsValid (false),
 mReal (0.0),
@@ -13,19 +13,19 @@ mImaginary (0.0) {
 
 //---------------------------------------------------------------------------*
 
-bool GALGAS_complex::isValid (void) const {
+bool GGS_complex::isValid (void) const {
   return mIsValid ;
 }
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_complex::drop (void) {
+void GGS_complex::drop (void) {
   mIsValid = false ;
 }
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_complex::description (String & ioString,
+void GGS_complex::description (String & ioString,
                                   const int32_t /* inIndentation */) const {
   ioString.appendString ("<@complex:") ;
   if (mIsValid) {
@@ -40,7 +40,7 @@ void GALGAS_complex::description (String & ioString,
 
 //---------------------------------------------------------------------------*
 
-ComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOperand) const {
+/* ComparisonResult GGS_complex::objectCompare (const GGS_complex & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     if (mReal < inOperand.mReal) {
@@ -56,15 +56,15 @@ ComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOperand
     }
   }
   return result ;
-}
+} */
 
 //---------------------------------------------------------------------------*
 
-GALGAS_complex GALGAS_complex::init_21__21_ (const GALGAS_double & inReal,
-                                             const GALGAS_double & inImaginary,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_complex result ;
+GGS_complex GGS_complex::init_21__21_ (const GGS_double & inReal,
+                                       const GGS_double & inImaginary,
+                                       Compiler * /* inCompiler */
+                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_complex result ;
   if (inReal.isValid () && inImaginary.isValid ()) {
     result.mIsValid = true ;
     result.mReal = inReal.doubleValue () ;
@@ -75,22 +75,22 @@ GALGAS_complex GALGAS_complex::init_21__21_ (const GALGAS_double & inReal,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_complex::getter_real (Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_double result ;
+GGS_double GGS_complex::getter_real (Compiler * /* inCompiler */
+                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_double result ;
   if (isValid ()) {
-    result = GALGAS_double (mReal) ;
+    result = GGS_double (mReal) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-GALGAS_double GALGAS_complex::getter_imaginary (Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_double result ;
+GGS_double GGS_complex::getter_imaginary (Compiler * /* inCompiler */
+                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_double result ;
   if (isValid ()) {
-    result = GALGAS_double (mImaginary) ;
+    result = GGS_double (mImaginary) ;
   }
   return result ;
 }
