@@ -312,6 +312,20 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         m += "; theses names are reserved"
         error property.name : m
       end
+      if [property.mutability isWeakProperty] then
+        switch [t definition].unwrappedType
+        case null :
+          error property.name : "the weak property type should be an optional class"
+        case element (@unifiedTypeMapElementClass.@weak aWeakType) :
+          if let aType = aWeakType, let ref = [[aType definition].typeKind getClassType] then
+            if not [ref isReference] then
+              error property.name : "the weak property type should be an optional refclass"
+            end
+          else
+            error property.name : "the weak property type should be an optional class"
+          end
+        end
+      end
       [!?propertyMap insertKey !property.name !t]
       switch property.initialization
       case none :
