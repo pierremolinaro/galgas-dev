@@ -736,8 +736,41 @@ class GGS_templateInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_templateInstructionAST_2E_weak & operator = (const class GGS_templateInstructionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionAST_2E_weak init_nil (void) {
+    GGS_templateInstructionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionAST bang_templateInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionAST unwrappedValue (void) const {
+    GGS_templateInstructionAST result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionAST * p = (cPtr_templateInstructionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1104,8 +1137,41 @@ class GGS_templateExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_templateExpressionAST_2E_weak & operator = (const class GGS_templateExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateExpressionAST_2E_weak init_nil (void) {
+    GGS_templateExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateExpressionAST bang_templateExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateExpressionAST unwrappedValue (void) const {
+    GGS_templateExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateExpressionAST * p = (cPtr_templateExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1563,8 +1629,41 @@ class GGS_templateClassFunctionAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateClassFunctionAST_2E_weak & operator = (const class GGS_templateClassFunctionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateClassFunctionAST_2E_weak init_nil (void) {
+    GGS_templateClassFunctionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateClassFunctionAST bang_templateClassFunctionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateClassFunctionAST unwrappedValue (void) const {
+    GGS_templateClassFunctionAST result ;
+    if (isValid ()) {
+      const cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateClassFunctionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1738,8 +1837,41 @@ class GGS_templateFileWrapperTemplateCallAST_2E_weak : public GGS_templateExpres
 
   public: GGS_templateFileWrapperTemplateCallAST_2E_weak & operator = (const class GGS_templateFileWrapperTemplateCallAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateFileWrapperTemplateCallAST_2E_weak init_nil (void) {
+    GGS_templateFileWrapperTemplateCallAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateFileWrapperTemplateCallAST bang_templateFileWrapperTemplateCallAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateFileWrapperTemplateCallAST unwrappedValue (void) const {
+    GGS_templateFileWrapperTemplateCallAST result ;
+    if (isValid ()) {
+      const cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateFileWrapperTemplateCallAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1913,8 +2045,41 @@ class GGS_templateExtensionTemplateCallAST_2E_weak : public GGS_templateExpressi
 
   public: GGS_templateExtensionTemplateCallAST_2E_weak & operator = (const class GGS_templateExtensionTemplateCallAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateExtensionTemplateCallAST_2E_weak init_nil (void) {
+    GGS_templateExtensionTemplateCallAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateExtensionTemplateCallAST bang_templateExtensionTemplateCallAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateExtensionTemplateCallAST unwrappedValue (void) const {
+    GGS_templateExtensionTemplateCallAST result ;
+    if (isValid ()) {
+      const cPtr_templateExtensionTemplateCallAST * p = (cPtr_templateExtensionTemplateCallAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateExtensionTemplateCallAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2088,8 +2253,41 @@ class GGS_templateAndOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateAndOperationAST_2E_weak & operator = (const class GGS_templateAndOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateAndOperationAST_2E_weak init_nil (void) {
+    GGS_templateAndOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateAndOperationAST bang_templateAndOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateAndOperationAST unwrappedValue (void) const {
+    GGS_templateAndOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateAndOperationAST * p = (cPtr_templateAndOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateAndOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2263,8 +2461,41 @@ class GGS_templateOrOperationAST_2E_weak : public GGS_templateExpressionAST_2E_w
 
   public: GGS_templateOrOperationAST_2E_weak & operator = (const class GGS_templateOrOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateOrOperationAST_2E_weak init_nil (void) {
+    GGS_templateOrOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateOrOperationAST bang_templateOrOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateOrOperationAST unwrappedValue (void) const {
+    GGS_templateOrOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateOrOperationAST * p = (cPtr_templateOrOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateOrOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2438,8 +2669,41 @@ class GGS_templateXorOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateXorOperationAST_2E_weak & operator = (const class GGS_templateXorOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateXorOperationAST_2E_weak init_nil (void) {
+    GGS_templateXorOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateXorOperationAST bang_templateXorOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateXorOperationAST unwrappedValue (void) const {
+    GGS_templateXorOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateXorOperationAST * p = (cPtr_templateXorOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateXorOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2599,8 +2863,41 @@ class GGS_templateTrueBoolAST_2E_weak : public GGS_templateExpressionAST_2E_weak
 
   public: GGS_templateTrueBoolAST_2E_weak & operator = (const class GGS_templateTrueBoolAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateTrueBoolAST_2E_weak init_nil (void) {
+    GGS_templateTrueBoolAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateTrueBoolAST bang_templateTrueBoolAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateTrueBoolAST unwrappedValue (void) const {
+    GGS_templateTrueBoolAST result ;
+    if (isValid ()) {
+      const cPtr_templateTrueBoolAST * p = (cPtr_templateTrueBoolAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateTrueBoolAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2760,8 +3057,41 @@ class GGS_templateFalseBoolAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 
   public: GGS_templateFalseBoolAST_2E_weak & operator = (const class GGS_templateFalseBoolAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateFalseBoolAST_2E_weak init_nil (void) {
+    GGS_templateFalseBoolAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateFalseBoolAST bang_templateFalseBoolAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateFalseBoolAST unwrappedValue (void) const {
+    GGS_templateFalseBoolAST result ;
+    if (isValid ()) {
+      const cPtr_templateFalseBoolAST * p = (cPtr_templateFalseBoolAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateFalseBoolAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2928,8 +3258,41 @@ class GGS_templateLiteralStringExpressionAST_2E_weak : public GGS_templateExpres
 
   public: GGS_templateLiteralStringExpressionAST_2E_weak & operator = (const class GGS_templateLiteralStringExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateLiteralStringExpressionAST_2E_weak init_nil (void) {
+    GGS_templateLiteralStringExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateLiteralStringExpressionAST bang_templateLiteralStringExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateLiteralStringExpressionAST unwrappedValue (void) const {
+    GGS_templateLiteralStringExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateLiteralStringExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3089,8 +3452,41 @@ class GGS_templateLiteralUIntExpressionAST_2E_weak : public GGS_templateExpressi
 
   public: GGS_templateLiteralUIntExpressionAST_2E_weak & operator = (const class GGS_templateLiteralUIntExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateLiteralUIntExpressionAST_2E_weak init_nil (void) {
+    GGS_templateLiteralUIntExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateLiteralUIntExpressionAST bang_templateLiteralUIntExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateLiteralUIntExpressionAST unwrappedValue (void) const {
+    GGS_templateLiteralUIntExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateLiteralUIntExpressionAST * p = (cPtr_templateLiteralUIntExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateLiteralUIntExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3250,8 +3646,41 @@ class GGS_templateLiteralCharExpressionAST_2E_weak : public GGS_templateExpressi
 
   public: GGS_templateLiteralCharExpressionAST_2E_weak & operator = (const class GGS_templateLiteralCharExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateLiteralCharExpressionAST_2E_weak init_nil (void) {
+    GGS_templateLiteralCharExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateLiteralCharExpressionAST bang_templateLiteralCharExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateLiteralCharExpressionAST unwrappedValue (void) const {
+    GGS_templateLiteralCharExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateLiteralCharExpressionAST * p = (cPtr_templateLiteralCharExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateLiteralCharExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3411,8 +3840,41 @@ class GGS_templateLiteralDoubleExpressionAST_2E_weak : public GGS_templateExpres
 
   public: GGS_templateLiteralDoubleExpressionAST_2E_weak & operator = (const class GGS_templateLiteralDoubleExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateLiteralDoubleExpressionAST_2E_weak init_nil (void) {
+    GGS_templateLiteralDoubleExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateLiteralDoubleExpressionAST bang_templateLiteralDoubleExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateLiteralDoubleExpressionAST unwrappedValue (void) const {
+    GGS_templateLiteralDoubleExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateLiteralDoubleExpressionAST * p = (cPtr_templateLiteralDoubleExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateLiteralDoubleExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3586,8 +4048,41 @@ class GGS_structFieldAccessTemplateExpressionAST_2E_weak : public GGS_templateEx
 
   public: GGS_structFieldAccessTemplateExpressionAST_2E_weak & operator = (const class GGS_structFieldAccessTemplateExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_structFieldAccessTemplateExpressionAST_2E_weak init_nil (void) {
+    GGS_structFieldAccessTemplateExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_structFieldAccessTemplateExpressionAST bang_structFieldAccessTemplateExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_structFieldAccessTemplateExpressionAST unwrappedValue (void) const {
+    GGS_structFieldAccessTemplateExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_structFieldAccessTemplateExpressionAST * p = (cPtr_structFieldAccessTemplateExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_structFieldAccessTemplateExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3754,8 +4249,41 @@ class GGS_templateNotOperatorAST_2E_weak : public GGS_templateExpressionAST_2E_w
 
   public: GGS_templateNotOperatorAST_2E_weak & operator = (const class GGS_templateNotOperatorAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateNotOperatorAST_2E_weak init_nil (void) {
+    GGS_templateNotOperatorAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateNotOperatorAST bang_templateNotOperatorAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateNotOperatorAST unwrappedValue (void) const {
+    GGS_templateNotOperatorAST result ;
+    if (isValid ()) {
+      const cPtr_templateNotOperatorAST * p = (cPtr_templateNotOperatorAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateNotOperatorAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3922,8 +4450,41 @@ class GGS_templateLogicalNegateAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateLogicalNegateAST_2E_weak & operator = (const class GGS_templateLogicalNegateAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateLogicalNegateAST_2E_weak init_nil (void) {
+    GGS_templateLogicalNegateAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateLogicalNegateAST bang_templateLogicalNegateAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateLogicalNegateAST unwrappedValue (void) const {
+    GGS_templateLogicalNegateAST result ;
+    if (isValid ()) {
+      const cPtr_templateLogicalNegateAST * p = (cPtr_templateLogicalNegateAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateLogicalNegateAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4097,8 +4658,41 @@ class GGS_templateOptionAccessAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateOptionAccessAST_2E_weak & operator = (const class GGS_templateOptionAccessAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateOptionAccessAST_2E_weak init_nil (void) {
+    GGS_templateOptionAccessAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateOptionAccessAST bang_templateOptionAccessAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateOptionAccessAST unwrappedValue (void) const {
+    GGS_templateOptionAccessAST result ;
+    if (isValid ()) {
+      const cPtr_templateOptionAccessAST * p = (cPtr_templateOptionAccessAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateOptionAccessAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4361,8 +4955,41 @@ class GGS_templateTestDynamicClassAST_2E_weak : public GGS_templateExpressionAST
 
   public: GGS_templateTestDynamicClassAST_2E_weak & operator = (const class GGS_templateTestDynamicClassAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateTestDynamicClassAST_2E_weak init_nil (void) {
+    GGS_templateTestDynamicClassAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateTestDynamicClassAST bang_templateTestDynamicClassAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateTestDynamicClassAST unwrappedValue (void) const {
+    GGS_templateTestDynamicClassAST result ;
+    if (isValid ()) {
+      const cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateTestDynamicClassAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4529,8 +5156,41 @@ class GGS_templateFunctionCallAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateFunctionCallAST_2E_weak & operator = (const class GGS_templateFunctionCallAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateFunctionCallAST_2E_weak init_nil (void) {
+    GGS_templateFunctionCallAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateFunctionCallAST bang_templateFunctionCallAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateFunctionCallAST unwrappedValue (void) const {
+    GGS_templateFunctionCallAST result ;
+    if (isValid ()) {
+      const cPtr_templateFunctionCallAST * p = (cPtr_templateFunctionCallAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateFunctionCallAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4690,8 +5350,41 @@ class GGS_templateVarInExpressionAST_2E_weak : public GGS_templateExpressionAST_
 
   public: GGS_templateVarInExpressionAST_2E_weak & operator = (const class GGS_templateVarInExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateVarInExpressionAST_2E_weak init_nil (void) {
+    GGS_templateVarInExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateVarInExpressionAST bang_templateVarInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateVarInExpressionAST unwrappedValue (void) const {
+    GGS_templateVarInExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateVarInExpressionAST * p = (cPtr_templateVarInExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateVarInExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4865,8 +5558,41 @@ class GGS_templateAddOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateAddOperationAST_2E_weak & operator = (const class GGS_templateAddOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateAddOperationAST_2E_weak init_nil (void) {
+    GGS_templateAddOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateAddOperationAST bang_templateAddOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateAddOperationAST unwrappedValue (void) const {
+    GGS_templateAddOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateAddOperationAST * p = (cPtr_templateAddOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateAddOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5040,8 +5766,41 @@ class GGS_templateSubOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateSubOperationAST_2E_weak & operator = (const class GGS_templateSubOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateSubOperationAST_2E_weak init_nil (void) {
+    GGS_templateSubOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateSubOperationAST bang_templateSubOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateSubOperationAST unwrappedValue (void) const {
+    GGS_templateSubOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateSubOperationAST * p = (cPtr_templateSubOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateSubOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5215,8 +5974,41 @@ class GGS_templateMultiplyOperationAST_2E_weak : public GGS_templateExpressionAS
 
   public: GGS_templateMultiplyOperationAST_2E_weak & operator = (const class GGS_templateMultiplyOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateMultiplyOperationAST_2E_weak init_nil (void) {
+    GGS_templateMultiplyOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateMultiplyOperationAST bang_templateMultiplyOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateMultiplyOperationAST unwrappedValue (void) const {
+    GGS_templateMultiplyOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateMultiplyOperationAST * p = (cPtr_templateMultiplyOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateMultiplyOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5390,8 +6182,41 @@ class GGS_templateDivideOperationAST_2E_weak : public GGS_templateExpressionAST_
 
   public: GGS_templateDivideOperationAST_2E_weak & operator = (const class GGS_templateDivideOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateDivideOperationAST_2E_weak init_nil (void) {
+    GGS_templateDivideOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateDivideOperationAST bang_templateDivideOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateDivideOperationAST unwrappedValue (void) const {
+    GGS_templateDivideOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateDivideOperationAST * p = (cPtr_templateDivideOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateDivideOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5565,8 +6390,41 @@ class GGS_templateModuloOperationAST_2E_weak : public GGS_templateExpressionAST_
 
   public: GGS_templateModuloOperationAST_2E_weak & operator = (const class GGS_templateModuloOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateModuloOperationAST_2E_weak init_nil (void) {
+    GGS_templateModuloOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateModuloOperationAST bang_templateModuloOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateModuloOperationAST unwrappedValue (void) const {
+    GGS_templateModuloOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateModuloOperationAST * p = (cPtr_templateModuloOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateModuloOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5733,8 +6591,41 @@ class GGS_templateUnaryMinusOperationAST_2E_weak : public GGS_templateExpression
 
   public: GGS_templateUnaryMinusOperationAST_2E_weak & operator = (const class GGS_templateUnaryMinusOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateUnaryMinusOperationAST_2E_weak init_nil (void) {
+    GGS_templateUnaryMinusOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateUnaryMinusOperationAST bang_templateUnaryMinusOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateUnaryMinusOperationAST unwrappedValue (void) const {
+    GGS_templateUnaryMinusOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateUnaryMinusOperationAST * p = (cPtr_templateUnaryMinusOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateUnaryMinusOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5908,8 +6799,41 @@ class GGS_templateEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 
   public: GGS_templateEqualTestAST_2E_weak & operator = (const class GGS_templateEqualTestAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateEqualTestAST_2E_weak init_nil (void) {
+    GGS_templateEqualTestAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateEqualTestAST bang_templateEqualTestAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateEqualTestAST unwrappedValue (void) const {
+    GGS_templateEqualTestAST result ;
+    if (isValid ()) {
+      const cPtr_templateEqualTestAST * p = (cPtr_templateEqualTestAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateEqualTestAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6083,8 +7007,41 @@ class GGS_templateNonEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateNonEqualTestAST_2E_weak & operator = (const class GGS_templateNonEqualTestAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateNonEqualTestAST_2E_weak init_nil (void) {
+    GGS_templateNonEqualTestAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateNonEqualTestAST bang_templateNonEqualTestAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateNonEqualTestAST unwrappedValue (void) const {
+    GGS_templateNonEqualTestAST result ;
+    if (isValid ()) {
+      const cPtr_templateNonEqualTestAST * p = (cPtr_templateNonEqualTestAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateNonEqualTestAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6258,8 +7215,41 @@ class GGS_templateStrictInfTestAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateStrictInfTestAST_2E_weak & operator = (const class GGS_templateStrictInfTestAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateStrictInfTestAST_2E_weak init_nil (void) {
+    GGS_templateStrictInfTestAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateStrictInfTestAST bang_templateStrictInfTestAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateStrictInfTestAST unwrappedValue (void) const {
+    GGS_templateStrictInfTestAST result ;
+    if (isValid ()) {
+      const cPtr_templateStrictInfTestAST * p = (cPtr_templateStrictInfTestAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateStrictInfTestAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6433,8 +7423,41 @@ class GGS_templateInfOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
 
   public: GGS_templateInfOrEqualTestAST_2E_weak & operator = (const class GGS_templateInfOrEqualTestAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInfOrEqualTestAST_2E_weak init_nil (void) {
+    GGS_templateInfOrEqualTestAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInfOrEqualTestAST bang_templateInfOrEqualTestAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInfOrEqualTestAST unwrappedValue (void) const {
+    GGS_templateInfOrEqualTestAST result ;
+    if (isValid ()) {
+      const cPtr_templateInfOrEqualTestAST * p = (cPtr_templateInfOrEqualTestAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInfOrEqualTestAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6608,8 +7631,41 @@ class GGS_templateStrictSupTestAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateStrictSupTestAST_2E_weak & operator = (const class GGS_templateStrictSupTestAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateStrictSupTestAST_2E_weak init_nil (void) {
+    GGS_templateStrictSupTestAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateStrictSupTestAST bang_templateStrictSupTestAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateStrictSupTestAST unwrappedValue (void) const {
+    GGS_templateStrictSupTestAST result ;
+    if (isValid ()) {
+      const cPtr_templateStrictSupTestAST * p = (cPtr_templateStrictSupTestAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateStrictSupTestAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6783,8 +7839,41 @@ class GGS_templateSupOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
 
   public: GGS_templateSupOrEqualTestAST_2E_weak & operator = (const class GGS_templateSupOrEqualTestAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateSupOrEqualTestAST_2E_weak init_nil (void) {
+    GGS_templateSupOrEqualTestAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateSupOrEqualTestAST bang_templateSupOrEqualTestAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateSupOrEqualTestAST unwrappedValue (void) const {
+    GGS_templateSupOrEqualTestAST result ;
+    if (isValid ()) {
+      const cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateSupOrEqualTestAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6958,8 +8047,41 @@ class GGS_templateLeftShiftOperationAST_2E_weak : public GGS_templateExpressionA
 
   public: GGS_templateLeftShiftOperationAST_2E_weak & operator = (const class GGS_templateLeftShiftOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateLeftShiftOperationAST_2E_weak init_nil (void) {
+    GGS_templateLeftShiftOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateLeftShiftOperationAST bang_templateLeftShiftOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateLeftShiftOperationAST unwrappedValue (void) const {
+    GGS_templateLeftShiftOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateLeftShiftOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7133,8 +8255,41 @@ class GGS_templateRightShiftOperationAST_2E_weak : public GGS_templateExpression
 
   public: GGS_templateRightShiftOperationAST_2E_weak & operator = (const class GGS_templateRightShiftOperationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateRightShiftOperationAST_2E_weak init_nil (void) {
+    GGS_templateRightShiftOperationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateRightShiftOperationAST bang_templateRightShiftOperationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateRightShiftOperationAST unwrappedValue (void) const {
+    GGS_templateRightShiftOperationAST result ;
+    if (isValid ()) {
+      const cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateRightShiftOperationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7294,8 +8449,41 @@ class GGS_templateInstructionStringAST_2E_weak : public GGS_templateInstructionA
 
   public: GGS_templateInstructionStringAST_2E_weak & operator = (const class GGS_templateInstructionStringAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionStringAST_2E_weak init_nil (void) {
+    GGS_templateInstructionStringAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionStringAST bang_templateInstructionStringAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionStringAST unwrappedValue (void) const {
+    GGS_templateInstructionStringAST result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionStringAST * p = (cPtr_templateInstructionStringAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionStringAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7462,8 +8650,41 @@ class GGS_templateInstructionExpressionAST_2E_weak : public GGS_templateInstruct
 
   public: GGS_templateInstructionExpressionAST_2E_weak & operator = (const class GGS_templateInstructionExpressionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionExpressionAST_2E_weak init_nil (void) {
+    GGS_templateInstructionExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionExpressionAST bang_templateInstructionExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionExpressionAST unwrappedValue (void) const {
+    GGS_templateInstructionExpressionAST result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionExpressionAST * p = (cPtr_templateInstructionExpressionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionExpressionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7637,8 +8858,41 @@ class GGS_templateBlockInstructionAST_2E_weak : public GGS_templateInstructionAS
 
   public: GGS_templateBlockInstructionAST_2E_weak & operator = (const class GGS_templateBlockInstructionAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateBlockInstructionAST_2E_weak init_nil (void) {
+    GGS_templateBlockInstructionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateBlockInstructionAST bang_templateBlockInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateBlockInstructionAST unwrappedValue (void) const {
+    GGS_templateBlockInstructionAST result ;
+    if (isValid ()) {
+      const cPtr_templateBlockInstructionAST * p = (cPtr_templateBlockInstructionAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateBlockInstructionAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7791,8 +9045,41 @@ class GGS_templateInstructionGetColumnLocationAST_2E_weak : public GGS_templateI
 
   public: GGS_templateInstructionGetColumnLocationAST_2E_weak & operator = (const class GGS_templateInstructionGetColumnLocationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionGetColumnLocationAST_2E_weak init_nil (void) {
+    GGS_templateInstructionGetColumnLocationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionGetColumnLocationAST bang_templateInstructionGetColumnLocationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionGetColumnLocationAST unwrappedValue (void) const {
+    GGS_templateInstructionGetColumnLocationAST result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionGetColumnLocationAST * p = (cPtr_templateInstructionGetColumnLocationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionGetColumnLocationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7945,8 +9232,41 @@ class GGS_templateInstructionGotoColumnLocationAST_2E_weak : public GGS_template
 
   public: GGS_templateInstructionGotoColumnLocationAST_2E_weak & operator = (const class GGS_templateInstructionGotoColumnLocationAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionGotoColumnLocationAST_2E_weak init_nil (void) {
+    GGS_templateInstructionGotoColumnLocationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionGotoColumnLocationAST bang_templateInstructionGotoColumnLocationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionGotoColumnLocationAST unwrappedValue (void) const {
+    GGS_templateInstructionGotoColumnLocationAST result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionGotoColumnLocationAST * p = (cPtr_templateInstructionGotoColumnLocationAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionGotoColumnLocationAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -8365,8 +9685,41 @@ class GGS_templateInstructionIfAST_2E_weak : public GGS_templateInstructionAST_2
 
   public: GGS_templateInstructionIfAST_2E_weak & operator = (const class GGS_templateInstructionIfAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionIfAST_2E_weak init_nil (void) {
+    GGS_templateInstructionIfAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionIfAST bang_templateInstructionIfAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionIfAST unwrappedValue (void) const {
+    GGS_templateInstructionIfAST result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionIfAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -8513,8 +9866,41 @@ class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_refer
 
   public: GGS_templateInstructionForGeneration_2E_weak & operator = (const class GGS_templateInstructionForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_templateInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionForGeneration bang_templateInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionForGeneration unwrappedValue (void) const {
+    GGS_templateInstructionForGeneration result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionForGeneration * p = (cPtr_templateInstructionForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -8871,8 +10257,41 @@ class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templa
 
   public: GGS_templateInstructionExpressionForGeneration_2E_weak & operator = (const class GGS_templateInstructionExpressionForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionExpressionForGeneration_2E_weak init_nil (void) {
+    GGS_templateInstructionExpressionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionExpressionForGeneration bang_templateInstructionExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionExpressionForGeneration unwrappedValue (void) const {
+    GGS_templateInstructionExpressionForGeneration result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionExpressionForGeneration * p = (cPtr_templateInstructionExpressionForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionExpressionForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 

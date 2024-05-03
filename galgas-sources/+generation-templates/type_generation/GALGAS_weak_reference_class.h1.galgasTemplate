@@ -17,6 +17,39 @@ class GGS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
 
   public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GGS_%!CLASS_TYPE_IDENTIFIER% & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_%!WEAK_REF_TYPE_IDENTIFIER% init_nil (void) {
+    GGS_%!WEAK_REF_TYPE_IDENTIFIER% result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_%!CLASS_TYPE_IDENTIFIER% bang_%!WEAK_REF_TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_%!CLASS_TYPE_IDENTIFIER% unwrappedValue (void) const {
+    GGS_%!CLASS_TYPE_IDENTIFIER% result ;
+    if (isValid ()) {
+      const cPtr_%!CLASS_TYPE_IDENTIFIER% * p = (cPtr_%!CLASS_TYPE_IDENTIFIER% *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_%!CLASS_TYPE_IDENTIFIER% (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 

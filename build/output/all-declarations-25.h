@@ -205,33 +205,6 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeSpecifi
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'classGenerationTemplate weakReferenceClassTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_classGenerationTemplate_weakReferenceClassTypeHeader_31_ (class Compiler * inCompiler,
-                                                                                         const class GGS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
-                                                                                         const class GGS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
-                                                                                         const class GGS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'classGenerationTemplate weakReferenceClassTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_classGenerationTemplate_weakReferenceClassTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                                     const class GGS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GGS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GGS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
-                                                                                                     const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                                     const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
-                                                                                                     const class GGS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'generateClassGetterDeclaration'
 //
 //--------------------------------------------------------------------------------------------------
@@ -256,6 +229,49 @@ class GGS_string function_generateClassInstanceMethodDeclaration (const class GG
                                                                   const class GGS_methodQualifier & constinArgument3,
                                                                   class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'weakClassGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+extern const char * gWrapperFileContent_0_weakClassGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cRegularFileWrapper gWrapperFile_0_weakClassGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_weakClassGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'weakClassGenerationTemplate weakReferenceClassTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_weakClassGenerationTemplate_weakReferenceClassTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                             const class GGS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
+                                                                                             const class GGS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
+                                                                                             const class GGS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'weakClassGenerationTemplate weakReferenceClassTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_weakClassGenerationTemplate_weakReferenceClassTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                                         const class GGS_string & in_CLASS_5F_TYPE_5F_IDENTIFIER,
+                                                                                                         const class GGS_string & in_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER,
+                                                                                                         const class GGS_string & in_SUPER_5F_WEAK_5F_REF_5F_TYPE_5F_IDENTIFIER
+                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

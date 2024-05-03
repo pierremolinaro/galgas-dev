@@ -316,7 +316,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         switch [t definition].unwrappedType
         case null :
           error property.name : "the weak property type should be an optional class"
-        case element (@unifiedTypeMapElementClass.@weak aWeakType) :
+        case element (aWeakType) :
           if let aType = aWeakType, let ref = [[aType definition].typeKind getClassType] then
             if not [ref isReference] then
               error property.name : "the weak property type should be an optional refclass"

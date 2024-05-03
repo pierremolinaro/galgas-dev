@@ -132,8 +132,41 @@ class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak : public GGS_semant
 
   public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak & operator = (const class GGS_semanticDeclarationWithHeaderForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_semanticDeclarationWithHeaderForGeneration_2E_weak init_nil (void) {
+    GGS_semanticDeclarationWithHeaderForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_semanticDeclarationWithHeaderForGeneration unwrappedValue (void) const {
+    GGS_semanticDeclarationWithHeaderForGeneration result ;
+    if (isValid ()) {
+      const cPtr_semanticDeclarationWithHeaderForGeneration * p = (cPtr_semanticDeclarationWithHeaderForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_semanticDeclarationWithHeaderForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -181,6 +214,45 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 class GGS_typeKindEnum callExtensionGetter_typeKind (const cPtr_predefinedTypeAST * inObject,
                                                      class Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension method '@propertyInCollectionListAST buildPropertyInitializationCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_buildPropertyInitializationCode (const class GGS_propertyInCollectionListAST inObject,
+                                                      const class GGS_lstring constin_inTypeNameForUsefulness,
+                                                      const class GGS_semanticContext constin_inSemanticContext,
+                                                      const class GGS_predefinedTypes constin_inPredefinedTypes,
+                                                      class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                      class GGS_unifiedTypeMap & io_ioTypeMap,
+                                                      class GGS_stringset & out_outUnusedVariableCppNameSet,
+                                                      class GGS_string & out_outInitializationCode,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'compilerCppName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string function_compilerCppName (class Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkAssignmentTypeWithImplicitGetterCall???&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const class GGS_unifiedTypeMapEntry constinArgument0,
+                                                                        const class GGS_unifiedTypeMapEntry constinArgument1,
+                                                                        const class GGS_location constinArgument2,
+                                                                        class GGS_semanticExpressionForGeneration & ioArgument3,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -303,8 +375,41 @@ class GGS_semanticTypeForGeneration_2E_weak : public GGS_semanticDeclarationForG
 
   public: GGS_semanticTypeForGeneration_2E_weak & operator = (const class GGS_semanticTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_semanticTypeForGeneration_2E_weak init_nil (void) {
+    GGS_semanticTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_semanticTypeForGeneration bang_semanticTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_semanticTypeForGeneration unwrappedValue (void) const {
+    GGS_semanticTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_semanticTypeForGeneration * p = (cPtr_semanticTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_semanticTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -478,8 +583,41 @@ class GGS_boolsetTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneratio
 
   public: GGS_boolsetTypeForGeneration_2E_weak & operator = (const class GGS_boolsetTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_boolsetTypeForGeneration_2E_weak init_nil (void) {
+    GGS_boolsetTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_boolsetTypeForGeneration bang_boolsetTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_boolsetTypeForGeneration unwrappedValue (void) const {
+    GGS_boolsetTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_boolsetTypeForGeneration * p = (cPtr_boolsetTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_boolsetTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -729,8 +867,41 @@ class GGS_classTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
 
   public: GGS_classTypeForGeneration_2E_weak & operator = (const class GGS_classTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_classTypeForGeneration_2E_weak init_nil (void) {
+    GGS_classTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_classTypeForGeneration bang_classTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_classTypeForGeneration unwrappedValue (void) const {
+    GGS_classTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_classTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -787,23 +958,17 @@ class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration 
 
   public: class GGS_unifiedTypeMapEntry readProperty_mSuperClass (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_allTypedPropertyList (void) const ;
-
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
   public: class GGS_bool readProperty_generateHeaderInSeparateFile (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_weakReferenceTypeForGeneration init_21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                  const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                  const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                  const class GGS_typedPropertyList & inOperand3,
-                                                                                  const class GGS_typedPropertyList & inOperand4,
-                                                                                  const class GGS_bool & inOperand5,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS_weakReferenceTypeForGeneration init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                          const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                          const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                          const class GGS_bool & inOperand3,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -817,9 +982,7 @@ class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration 
   public: static class GGS_weakReferenceTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                           const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                          const class GGS_typedPropertyList & inOperand3,
-                                                                          const class GGS_typedPropertyList & inOperand4,
-                                                                          const class GGS_bool & inOperand5
+                                                                          const class GGS_bool & inOperand3
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -857,13 +1020,11 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   #endif
 
 //--------------------------------- Initializers
-  public: void weakReferenceTypeForGeneration_init_21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                            const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                            const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                            const class GGS_typedPropertyList & inOperand3,
-                                                                            const class GGS_typedPropertyList & inOperand4,
-                                                                            const class GGS_bool & inOperand5,
-                                                                            Compiler * inCompiler) ;
+  public: void weakReferenceTypeForGeneration_init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                    const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                    const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                    const class GGS_bool & inOperand3,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -880,8 +1041,6 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mReferenceClassType ;
   public: GGS_unifiedTypeMapEntry mProperty_mSuperClass ;
-  public: GGS_typedPropertyList mProperty_allTypedPropertyList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
   public: GGS_bool mProperty_generateHeaderInSeparateFile ;
 
 
@@ -892,8 +1051,6 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   public: cPtr_weakReferenceTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                               const GGS_typedPropertyList & in_allTypedPropertyList,
-                                               const GGS_typedPropertyList & in_mTypedAttributeList,
                                                const GGS_bool & in_generateHeaderInSeparateFile
                                                COMMA_LOCATION_ARGS) ;
 
@@ -925,8 +1082,41 @@ class GGS_weakReferenceTypeForGeneration_2E_weak : public GGS_semanticTypeForGen
 
   public: GGS_weakReferenceTypeForGeneration_2E_weak & operator = (const class GGS_weakReferenceTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_weakReferenceTypeForGeneration_2E_weak init_nil (void) {
+    GGS_weakReferenceTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_weakReferenceTypeForGeneration bang_weakReferenceTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_weakReferenceTypeForGeneration unwrappedValue (void) const {
+    GGS_weakReferenceTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_weakReferenceTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1100,8 +1290,41 @@ class GGS_enumTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
 
   public: GGS_enumTypeForGeneration_2E_weak & operator = (const class GGS_enumTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_enumTypeForGeneration_2E_weak init_nil (void) {
+    GGS_enumTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_enumTypeForGeneration bang_enumTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_enumTypeForGeneration unwrappedValue (void) const {
+    GGS_enumTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_enumTypeForGeneration * p = (cPtr_enumTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_enumTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1286,8 +1509,41 @@ class GGS_externTypeDeclarationForGeneration_2E_weak : public GGS_semanticTypeFo
 
   public: GGS_externTypeDeclarationForGeneration_2E_weak & operator = (const class GGS_externTypeDeclarationForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_externTypeDeclarationForGeneration_2E_weak init_nil (void) {
+    GGS_externTypeDeclarationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_externTypeDeclarationForGeneration bang_externTypeDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_externTypeDeclarationForGeneration unwrappedValue (void) const {
+    GGS_externTypeDeclarationForGeneration result ;
+    if (isValid ()) {
+      const cPtr_externTypeDeclarationForGeneration * p = (cPtr_externTypeDeclarationForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_externTypeDeclarationForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1468,8 +1724,41 @@ class GGS_graphDeclarationForGeneration_2E_weak : public GGS_semanticTypeForGene
 
   public: GGS_graphDeclarationForGeneration_2E_weak & operator = (const class GGS_graphDeclarationForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_graphDeclarationForGeneration_2E_weak init_nil (void) {
+    GGS_graphDeclarationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_graphDeclarationForGeneration bang_graphDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_graphDeclarationForGeneration unwrappedValue (void) const {
+    GGS_graphDeclarationForGeneration result ;
+    if (isValid ()) {
+      const cPtr_graphDeclarationForGeneration * p = (cPtr_graphDeclarationForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_graphDeclarationForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1643,8 +1932,41 @@ class GGS_listTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
 
   public: GGS_listTypeForGeneration_2E_weak & operator = (const class GGS_listTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_listTypeForGeneration_2E_weak init_nil (void) {
+    GGS_listTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_listTypeForGeneration bang_listTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_listTypeForGeneration unwrappedValue (void) const {
+    GGS_listTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_listTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1839,8 +2161,41 @@ class GGS_dictTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
 
   public: GGS_dictTypeForGeneration_2E_weak & operator = (const class GGS_dictTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_dictTypeForGeneration_2E_weak init_nil (void) {
+    GGS_dictTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_dictTypeForGeneration bang_dictTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_dictTypeForGeneration unwrappedValue (void) const {
+    GGS_dictTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_dictTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2062,8 +2417,41 @@ class GGS_mapTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E
 
   public: GGS_mapTypeForGeneration_2E_weak & operator = (const class GGS_mapTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_mapTypeForGeneration_2E_weak init_nil (void) {
+    GGS_mapTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_mapTypeForGeneration bang_mapTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_mapTypeForGeneration unwrappedValue (void) const {
+    GGS_mapTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_mapTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2230,8 +2618,41 @@ class GGS_optionalTypeForGeneration_2E_weak : public GGS_semanticTypeForGenerati
 
   public: GGS_optionalTypeForGeneration_2E_weak & operator = (const class GGS_optionalTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_optionalTypeForGeneration_2E_weak init_nil (void) {
+    GGS_optionalTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_optionalTypeForGeneration bang_optionalTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_optionalTypeForGeneration unwrappedValue (void) const {
+    GGS_optionalTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_optionalTypeForGeneration * p = (cPtr_optionalTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_optionalTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2412,8 +2833,41 @@ class GGS_sortedListTypeForGeneration_2E_weak : public GGS_semanticTypeForGenera
 
   public: GGS_sortedListTypeForGeneration_2E_weak & operator = (const class GGS_sortedListTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_sortedListTypeForGeneration_2E_weak init_nil (void) {
+    GGS_sortedListTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_sortedListTypeForGeneration bang_sortedListTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_sortedListTypeForGeneration unwrappedValue (void) const {
+    GGS_sortedListTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_sortedListTypeForGeneration * p = (cPtr_sortedListTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_sortedListTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2608,8 +3062,41 @@ class GGS_structTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration
 
   public: GGS_structTypeForGeneration_2E_weak & operator = (const class GGS_structTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_structTypeForGeneration_2E_weak init_nil (void) {
+    GGS_structTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_structTypeForGeneration bang_structTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_structTypeForGeneration unwrappedValue (void) const {
+    GGS_structTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_structTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2804,8 +3291,41 @@ class GGS_abstractExtensionGetterForGeneration_2E_weak : public GGS_semanticDecl
 
   public: GGS_abstractExtensionGetterForGeneration_2E_weak & operator = (const class GGS_abstractExtensionGetterForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_abstractExtensionGetterForGeneration_2E_weak init_nil (void) {
+    GGS_abstractExtensionGetterForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_abstractExtensionGetterForGeneration bang_abstractExtensionGetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_abstractExtensionGetterForGeneration unwrappedValue (void) const {
+    GGS_abstractExtensionGetterForGeneration result ;
+    if (isValid ()) {
+      const cPtr_abstractExtensionGetterForGeneration * p = (cPtr_abstractExtensionGetterForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_abstractExtensionGetterForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2993,8 +3513,41 @@ class GGS_abstractExtensionMethodForGeneration_2E_weak : public GGS_semanticDecl
 
   public: GGS_abstractExtensionMethodForGeneration_2E_weak & operator = (const class GGS_abstractExtensionMethodForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_abstractExtensionMethodForGeneration_2E_weak init_nil (void) {
+    GGS_abstractExtensionMethodForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_abstractExtensionMethodForGeneration bang_abstractExtensionMethodForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_abstractExtensionMethodForGeneration unwrappedValue (void) const {
+    GGS_abstractExtensionMethodForGeneration result ;
+    if (isValid ()) {
+      const cPtr_abstractExtensionMethodForGeneration * p = (cPtr_abstractExtensionMethodForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_abstractExtensionMethodForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3182,8 +3735,41 @@ class GGS_abstractExtensionSetterForGeneration_2E_weak : public GGS_semanticDecl
 
   public: GGS_abstractExtensionSetterForGeneration_2E_weak & operator = (const class GGS_abstractExtensionSetterForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_abstractExtensionSetterForGeneration_2E_weak init_nil (void) {
+    GGS_abstractExtensionSetterForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_abstractExtensionSetterForGeneration bang_abstractExtensionSetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_abstractExtensionSetterForGeneration unwrappedValue (void) const {
+    GGS_abstractExtensionSetterForGeneration result ;
+    if (isValid ()) {
+      const cPtr_abstractExtensionSetterForGeneration * p = (cPtr_abstractExtensionSetterForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_abstractExtensionSetterForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3406,8 +3992,41 @@ class GGS_extensionGetterForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_extensionGetterForGeneration_2E_weak & operator = (const class GGS_extensionGetterForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_extensionGetterForGeneration_2E_weak init_nil (void) {
+    GGS_extensionGetterForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_extensionGetterForGeneration bang_extensionGetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_extensionGetterForGeneration unwrappedValue (void) const {
+    GGS_extensionGetterForGeneration result ;
+    if (isValid ()) {
+      const cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_extensionGetterForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3616,8 +4235,41 @@ class GGS_extensionMethodForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_extensionMethodForGeneration_2E_weak & operator = (const class GGS_extensionMethodForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_extensionMethodForGeneration_2E_weak init_nil (void) {
+    GGS_extensionMethodForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_extensionMethodForGeneration bang_extensionMethodForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_extensionMethodForGeneration unwrappedValue (void) const {
+    GGS_extensionMethodForGeneration result ;
+    if (isValid ()) {
+      const cPtr_extensionMethodForGeneration * p = (cPtr_extensionMethodForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_extensionMethodForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3826,8 +4478,41 @@ class GGS_extensionSetterForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_extensionSetterForGeneration_2E_weak & operator = (const class GGS_extensionSetterForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_extensionSetterForGeneration_2E_weak init_nil (void) {
+    GGS_extensionSetterForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_extensionSetterForGeneration bang_extensionSetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_extensionSetterForGeneration unwrappedValue (void) const {
+    GGS_extensionSetterForGeneration result ;
+    if (isValid ()) {
+      const cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_extensionSetterForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4024,8 +4709,41 @@ class GGS_extensionInitializerForGeneration_2E_weak : public GGS_semanticDeclara
 
   public: GGS_extensionInitializerForGeneration_2E_weak & operator = (const class GGS_extensionInitializerForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_extensionInitializerForGeneration_2E_weak init_nil (void) {
+    GGS_extensionInitializerForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_extensionInitializerForGeneration bang_extensionInitializerForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_extensionInitializerForGeneration unwrappedValue (void) const {
+    GGS_extensionInitializerForGeneration result ;
+    if (isValid ()) {
+      const cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_extensionInitializerForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 

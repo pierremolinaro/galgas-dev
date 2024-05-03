@@ -187,8 +187,41 @@ class GGS_optionComponentForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_optionComponentForGeneration_2E_weak & operator = (const class GGS_optionComponentForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_optionComponentForGeneration_2E_weak init_nil (void) {
+    GGS_optionComponentForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_optionComponentForGeneration bang_optionComponentForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_optionComponentForGeneration unwrappedValue (void) const {
+    GGS_optionComponentForGeneration result ;
+    if (isValid ()) {
+      const cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_optionComponentForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -355,8 +388,41 @@ class GGS_arrayTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
 
   public: GGS_arrayTypeForGeneration_2E_weak & operator = (const class GGS_arrayTypeForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_arrayTypeForGeneration_2E_weak init_nil (void) {
+    GGS_arrayTypeForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_arrayTypeForGeneration bang_arrayTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_arrayTypeForGeneration unwrappedValue (void) const {
+    GGS_arrayTypeForGeneration result ;
+    if (isValid ()) {
+      const cPtr_arrayTypeForGeneration * p = (cPtr_arrayTypeForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_arrayTypeForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 

@@ -24,7 +24,6 @@ refclass @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @lstring mWeakReferenceTypeName
   private let @lstring mSuperWeakReferenceTypeName # Empty if no super class
   private let @bool mGenerateInSeparateFile
-  private let @propertyInCollectionListAST mPropertyList
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -61,14 +60,13 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
-  ?!@equatableExtensionMap ioEquatableExtensionMap
-  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?!@semanticContext ioSemanticContext
-{
+          ?!@equatableExtensionMap ioEquatableExtensionMap
+          ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext
+          ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+          ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+          ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+          ?!@unifiedTypeMap ioTypeMap
+          ?!@semanticContext ioSemanticContext {
 #--- Handle super class
   let @unifiedTypeMapEntry superClassIndex
   let @bool generateHeaderInSeparateFile
@@ -80,9 +78,10 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperWeakReferenceTypeName]
     generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
   #---
-    if not [superTypeDefinition.typeKind isWeakReferenceType] then
-      error self.mSuperWeakReferenceTypeName : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
-    end
+#    if not [superTypeDefinition.typeKind isWeakReferenceType] then
+#      error self.mSuperWeakReferenceTypeName
+#      : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
+#    end
   end
 #--- Current class Index
   [!?ioTypeMap makeEntry
@@ -117,14 +116,14 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-  for (lkey 7*) in getterMap do
-    error lkey : "a weak reference does not support extension"
+  for aGetter in getterMap do
+    error aGetter.lkey : "a weak reference does not support extension"
   end
-  for (lkey 5*) in setterMap do
-    error lkey : "a weak reference does not support extension"
+  for aGetter in setterMap do
+    error aGetter.lkey : "a weak reference does not support extension"
   end
-  for (lkey 6*) in instanceMethodMap do
-    error lkey : "a weak reference does not support extension"
+  for aGetter in instanceMethodMap do
+    error aGetter.lkey : "a weak reference does not support extension"
   end
   var features = @typeFeatures.referenceEquatable
   handleEquatableComparableExtension (
@@ -135,16 +134,16 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !acceptComparable: false
   )
 #--- Enter in type map
-  [!?ioTypeMap makeEntry  !self.mClassTypeName ?let classIndex]
+  [!?ioTypeMap makeEntry !self.mClassTypeName ?let classIndex]
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mWeakReferenceTypeName
     !isPredefined: self.isPredefined
     !isConcrete: true # Concrete Type
     !superType: superClassIndex
     !typeKind: .weakReferenceType {!referenceType: classIndex}
-    !supportCollectionValue: false # Does not support collection value
+    !supportCollectionValue: false
     !allTypedPropertyList: ()
-    !propertyMap: () # attributeMap
+    !propertyMap: ()
     !currentTypedPropertyList: ()
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
@@ -152,7 +151,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !setterMap: ()
     !instanceMethodMap: ()
     !classMethodMap: ()
-    !unwrappedType: .null
+    !unwrappedType: classIndex
     !readSubscriptMap: ()
     !enumerationDescriptorList: ()
     !features: features
@@ -193,50 +192,6 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     then @unifiedTypeMapEntry.null
     else [ioTypeMap typeMapEntryForLKey !self.mSuperWeakReferenceTypeName]
   end
-#------ Super type, and class features
-# A class that has a super may not have any feature
-# A class without a super class admits the 'generatedInSeparateFile' feature
-  var @typedPropertyList allAttributeList
-  if superClassEntry == .null then
-    allAttributeList = ()
-#    var @bool generatedInSeparateFileFeature = self.mGenerateInSeparateFile
-#    if [self.mClassFeatureList count] > 0 then
-#      for (mValue) in self.mClassFeatureList do
-#        if mValue.string == "generatedInSeparateFile" then
-#          if generatedInSeparateFileFeature then
-#            error mValue:"the 'generatedInSeparateFile' is already named"
-#          end
-#          generatedInSeparateFileFeature = true
-#        else
-#          error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
-#        end
-#      end
-#    end
-  else
-    allAttributeList = [superClassEntry definition].allTypedPropertyList
-    if self.mGenerateInSeparateFile then
-      error self.mClassTypeName:"a class that has a super class does not accept any feature"
-    end
-  end
-#------ Enter attributes
-  var @typedPropertyList typedAttributeList = ()
-  var @propertyIndexMap attributeMap = ()
-  for (mutability propertyTypeName mPropertyName unused accessControl hasSelector initialization) in self.mPropertyList do
-    let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
-    typedAttributeList +=
-      !t
-      !mPropertyName
-      !initialization
-      !hasSetter: not [mutability isConstantProperty]
-      !hasSelector: hasSelector
-    allAttributeList +=
-      !t
-      !mPropertyName
-      !initialization
-      !hasSetter: not [mutability isConstantProperty]
-      !hasSelector: hasSelector
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
 #------
   let @unifiedTypeMapEntry referenceClassType = [ioTypeMap typeMapEntryForLKey
     !self.mClassTypeName
@@ -247,8 +202,6 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       !selfType
       !referenceClassType
       !superClassEntry
-      !allAttributeList
-      !typedAttributeList
       ![selfType definition].generateHeaderInSeparateFile
     }
 }
@@ -260,8 +213,6 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
   private let @unifiedTypeMapEntry mSuperClass # Null if no super class
-  private let @typedPropertyList allTypedPropertyList # Inherited followed by current attributes
-  private let @typedPropertyList mTypedAttributeList
   private let @bool generateHeaderInSeparateFile # Significant only for classes
 }
 
@@ -274,7 +225,7 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
   end
   [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
   let typeDefinition = [self.mSelfTypeEntry definition]
-  outHeader = [filewrapper classGenerationTemplate.weakReferenceClassTypeHeader1
+  outHeader = [filewrapper weakClassGenerationTemplate.weakReferenceClassTypeHeader1
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
@@ -307,14 +258,32 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let typeDefinition = [self.mSelfTypeEntry definition]
-  outImplementation = [filewrapper classGenerationTemplate.weakReferenceClassTypeSpecificImplementation
+  outImplementation = [filewrapper weakClassGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
     ![typeDefinition.typeName.string identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
-    !self.mTypedAttributeList
-    !self.allTypedPropertyList
-    ![self.allTypedPropertyList subListWithRange !.init {!0 ![self.allTypedPropertyList count] - [self.mTypedAttributeList count]}]
   ]
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+#! Generation Filewrappers
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper weakClassGenerationTemplate in "+generation-templates/type_generation" {
+  "ggs"
+}{
+}{
+
+#---------- Value Class
+  template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"
+    ?@string CLASS_TYPE_IDENTIFIER
+    ?@string WEAK_REF_TYPE_IDENTIFIER
+    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
+
+  template weakReferenceClassTypeSpecificImplementation "GALGAS_weak_reference_class.cpp.galgasTemplate"
+    ?@string CLASS_TYPE_IDENTIFIER
+    ?@string WEAK_REF_TYPE_IDENTIFIER
+    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

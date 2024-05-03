@@ -2455,6 +2455,62 @@ GGS_typeKindEnum callExtensionGetter_typeKind (const cPtr_predefinedTypeAST * in
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension method '@propertyInCollectionListAST buildPropertyInitializationCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_buildPropertyInitializationCode (const GGS_propertyInCollectionListAST inObject,
+                                                      const GGS_lstring constinArgument_inTypeNameForUsefulness,
+                                                      const GGS_semanticContext constinArgument_inSemanticContext,
+                                                      const GGS_predefinedTypes constinArgument_inPredefinedTypes,
+                                                      GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                      GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                      GGS_stringset & outArgument_outUnusedVariableCppNameSet,
+                                                      GGS_string & outArgument_outInitializationCode,
+                                                      Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outUnusedVariableCppNameSet.drop () ; // Release 'out' argument
+  outArgument_outInitializationCode.drop () ; // Release 'out' argument
+  outArgument_outInitializationCode = GGS_string::makeEmptyString () ;
+  GGS_stringset var_inclusionSet_9524 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_uint var_temporaryVariableIndex_9567 = GGS_uint (uint32_t (0U)) ;
+  GGS_stringset temp_0 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)) ;
+  temp_0.enterElement (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)) ;
+  outArgument_outUnusedVariableCppNameSet = temp_0 ;
+  const GGS_propertyInCollectionListAST temp_1 = inObject ;
+  cEnumerator_propertyInCollectionListAST enumerator_9705 (temp_1, EnumerationOrder::up) ;
+  while (enumerator_9705.hasCurrentObject ()) {
+    switch (enumerator_9705.current_initialization (HERE).enumValue ()) {
+    case GGS_propertyInCollectionInitializationAST::Enumeration::invalid:
+      break ;
+    case GGS_propertyInCollectionInitializationAST::Enumeration::enum_none:
+      break ;
+    case GGS_propertyInCollectionInitializationAST::Enumeration::enum_some:
+      {
+        GGS_semanticExpressionAST extractedValue_9794_expressionAST_0 ;
+        enumerator_9705.current_initialization (HERE).getAssociatedValuesFor_some (extractedValue_9794_expressionAST_0) ;
+        GGS_localVarManager var_variableMap_9823 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
+        GGS_analysisContext var_analysisContext_9886 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty_21_requiresSelfForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("declaration-property.galgas", 270)), GGS_string::makeEmptyString (), GGS_bool (true), inCompiler COMMA_HERE) ;
+        GGS_unifiedTypeMapEntry var_propertyType_10165 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_9705.current_typeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 274)) ;
+        GGS_semanticExpressionForGeneration var_expression_10536 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_9794_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_10165, var_analysisContext_9886, ioArgument_ioTypeMap, var_variableMap_9823, var_expression_10536, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 275)) ;
+        {
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_10165, var_expression_10536.readProperty_mResultType (), enumerator_9705.current_name (HERE).readProperty_location (), var_expression_10536, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas", 285)) ;
+        }
+        GGS_string var_sourceVar_10968 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_10536.ptr (), outArgument_outInitializationCode, var_inclusionSet_9524, var_temporaryVariableIndex_9567, outArgument_outUnusedVariableCppNameSet, var_sourceVar_10968, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 291)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GGS_string ("  mProperty_").add_operation (enumerator_9705.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-property.galgas", 298)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 298)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas", 298)) ;
+        outArgument_outInitializationCode.plusAssign_operation(GGS_string (" = ").add_operation (var_sourceVar_10968, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 299)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 299)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas", 299)) ;
+      }
+      break ;
+    }
+    enumerator_9705.gotoNextObject () ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
 // @arrayTypeDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -4306,8 +4362,7 @@ cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_mClassTypeName (),
 mProperty_mWeakReferenceTypeName (),
 mProperty_mSuperWeakReferenceTypeName (),
-mProperty_mGenerateInSeparateFile (),
-mProperty_mPropertyList () {
+mProperty_mGenerateInSeparateFile () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4319,7 +4374,6 @@ mProperty_mPropertyList () {
     mProperty_mWeakReferenceTypeName.printNonNullClassInstanceProperties ("mWeakReferenceTypeName") ;
     mProperty_mSuperWeakReferenceTypeName.printNonNullClassInstanceProperties ("mSuperWeakReferenceTypeName") ;
     mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
   }
 #endif
 
@@ -4350,17 +4404,16 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_weakReferenceDeclarationAST GGS_weakReferenceDeclarationAST::
-init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                          const GGS_lstring & in_mClassTypeName,
-                                          const GGS_lstring & in_mWeakReferenceTypeName,
-                                          const GGS_lstring & in_mSuperWeakReferenceTypeName,
-                                          const GGS_bool & in_mGenerateInSeparateFile,
-                                          const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                      const GGS_lstring & in_mClassTypeName,
+                                      const GGS_lstring & in_mWeakReferenceTypeName,
+                                      const GGS_lstring & in_mSuperWeakReferenceTypeName,
+                                      const GGS_bool & in_mGenerateInSeparateFile,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
   cPtr_weakReferenceDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_weakReferenceDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->weakReferenceDeclarationAST_init_21_isPredefined_21__21__21__21__21_ (in_isPredefined, in_mClassTypeName, in_mWeakReferenceTypeName, in_mSuperWeakReferenceTypeName, in_mGenerateInSeparateFile, in_mPropertyList, inCompiler) ;
+  object->weakReferenceDeclarationAST_init_21_isPredefined_21__21__21__21_ (in_isPredefined, in_mClassTypeName, in_mWeakReferenceTypeName, in_mSuperWeakReferenceTypeName, in_mGenerateInSeparateFile, inCompiler) ;
   const GGS_weakReferenceDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4369,19 +4422,17 @@ init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceDeclarationAST::
-weakReferenceDeclarationAST_init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                      const GGS_lstring & in_mClassTypeName,
-                                                                      const GGS_lstring & in_mWeakReferenceTypeName,
-                                                                      const GGS_lstring & in_mSuperWeakReferenceTypeName,
-                                                                      const GGS_bool & in_mGenerateInSeparateFile,
-                                                                      const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                                      Compiler * /* inCompiler */) {
+weakReferenceDeclarationAST_init_21_isPredefined_21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                  const GGS_lstring & in_mClassTypeName,
+                                                                  const GGS_lstring & in_mWeakReferenceTypeName,
+                                                                  const GGS_lstring & in_mSuperWeakReferenceTypeName,
+                                                                  const GGS_bool & in_mGenerateInSeparateFile,
+                                                                  Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mClassTypeName = in_mClassTypeName ;
   mProperty_mWeakReferenceTypeName = in_mWeakReferenceTypeName ;
   mProperty_mSuperWeakReferenceTypeName = in_mSuperWeakReferenceTypeName ;
   mProperty_mGenerateInSeparateFile = in_mGenerateInSeparateFile ;
-  mProperty_mPropertyList = in_mPropertyList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4396,11 +4447,10 @@ GGS_weakReferenceDeclarationAST GGS_weakReferenceDeclarationAST::class_func_new 
                                                                                  const GGS_lstring & in_mClassTypeName,
                                                                                  const GGS_lstring & in_mWeakReferenceTypeName,
                                                                                  const GGS_lstring & in_mSuperWeakReferenceTypeName,
-                                                                                 const GGS_bool & in_mGenerateInSeparateFile,
-                                                                                 const GGS_propertyInCollectionListAST & in_mPropertyList
+                                                                                 const GGS_bool & in_mGenerateInSeparateFile
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_weakReferenceDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReferenceDeclarationAST (in_isPredefined, in_mClassTypeName, in_mWeakReferenceTypeName, in_mSuperWeakReferenceTypeName, in_mGenerateInSeparateFile, in_mPropertyList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReferenceDeclarationAST (in_isPredefined, in_mClassTypeName, in_mWeakReferenceTypeName, in_mSuperWeakReferenceTypeName, in_mGenerateInSeparateFile COMMA_THERE)) ;
   return result ;
 }
 
@@ -4453,18 +4503,6 @@ GGS_bool GGS_weakReferenceDeclarationAST::readProperty_mGenerateInSeparateFile (
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST GGS_weakReferenceDeclarationAST::readProperty_mPropertyList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_propertyInCollectionListAST () ;
-  }else{
-    cPtr_weakReferenceDeclarationAST * p = (cPtr_weakReferenceDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_weakReferenceDeclarationAST) ;
-    return p->mProperty_mPropertyList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //Pointer class for @weakReferenceDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
@@ -4472,21 +4510,18 @@ cPtr_weakReferenceDeclarationAST::cPtr_weakReferenceDeclarationAST (const GGS_bo
                                                                     const GGS_lstring & in_mClassTypeName,
                                                                     const GGS_lstring & in_mWeakReferenceTypeName,
                                                                     const GGS_lstring & in_mSuperWeakReferenceTypeName,
-                                                                    const GGS_bool & in_mGenerateInSeparateFile,
-                                                                    const GGS_propertyInCollectionListAST & in_mPropertyList
+                                                                    const GGS_bool & in_mGenerateInSeparateFile
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_mClassTypeName (),
 mProperty_mWeakReferenceTypeName (),
 mProperty_mSuperWeakReferenceTypeName (),
-mProperty_mGenerateInSeparateFile (),
-mProperty_mPropertyList () {
+mProperty_mGenerateInSeparateFile () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mClassTypeName = in_mClassTypeName ;
   mProperty_mWeakReferenceTypeName = in_mWeakReferenceTypeName ;
   mProperty_mSuperWeakReferenceTypeName = in_mSuperWeakReferenceTypeName ;
   mProperty_mGenerateInSeparateFile = in_mGenerateInSeparateFile ;
-  mProperty_mPropertyList = in_mPropertyList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4507,8 +4542,6 @@ void cPtr_weakReferenceDeclarationAST::description (String & ioString,
   mProperty_mSuperWeakReferenceTypeName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mGenerateInSeparateFile.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -4516,7 +4549,7 @@ void cPtr_weakReferenceDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_weakReferenceDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_isPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_isPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mGenerateInSeparateFile COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -4571,8 +4604,6 @@ cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (Compil
 cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
 mProperty_mReferenceClassType (),
 mProperty_mSuperClass (),
-mProperty_allTypedPropertyList (),
-mProperty_mTypedAttributeList (),
 mProperty_generateHeaderInSeparateFile () {
 }
 
@@ -4583,8 +4614,6 @@ mProperty_generateHeaderInSeparateFile () {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_mReferenceClassType.printNonNullClassInstanceProperties ("mReferenceClassType") ;
     mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
-    mProperty_allTypedPropertyList.printNonNullClassInstanceProperties ("allTypedPropertyList") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
     mProperty_generateHeaderInSeparateFile.printNonNullClassInstanceProperties ("generateHeaderInSeparateFile") ;
   }
 #endif
@@ -4616,17 +4645,15 @@ GGS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_weakReferenceTypeForGeneration GGS_weakReferenceTypeForGeneration::
-init_21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                              const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
-                              const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                              const GGS_typedPropertyList & in_allTypedPropertyList,
-                              const GGS_typedPropertyList & in_mTypedAttributeList,
-                              const GGS_bool & in_generateHeaderInSeparateFile,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) {
+init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                      const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
+                      const GGS_unifiedTypeMapEntry & in_mSuperClass,
+                      const GGS_bool & in_generateHeaderInSeparateFile,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
   cPtr_weakReferenceTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_weakReferenceTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->weakReferenceTypeForGeneration_init_21__21__21__21__21__21_ (in_mSelfTypeEntry, in_mReferenceClassType, in_mSuperClass, in_allTypedPropertyList, in_mTypedAttributeList, in_generateHeaderInSeparateFile, inCompiler) ;
+  object->weakReferenceTypeForGeneration_init_21__21__21__21_ (in_mSelfTypeEntry, in_mReferenceClassType, in_mSuperClass, in_generateHeaderInSeparateFile, inCompiler) ;
   const GGS_weakReferenceTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4635,18 +4662,14 @@ init_21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_weakReferenceTypeForGeneration::
-weakReferenceTypeForGeneration_init_21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                             const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
-                                                             const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                             const GGS_typedPropertyList & in_allTypedPropertyList,
-                                                             const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                             const GGS_bool & in_generateHeaderInSeparateFile,
-                                                             Compiler * /* inCompiler */) {
+weakReferenceTypeForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                     const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
+                                                     const GGS_unifiedTypeMapEntry & in_mSuperClass,
+                                                     const GGS_bool & in_generateHeaderInSeparateFile,
+                                                     Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mReferenceClassType = in_mReferenceClassType ;
   mProperty_mSuperClass = in_mSuperClass ;
-  mProperty_allTypedPropertyList = in_allTypedPropertyList ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
   mProperty_generateHeaderInSeparateFile = in_generateHeaderInSeparateFile ;
 }
 
@@ -4661,12 +4684,10 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 GGS_weakReferenceTypeForGeneration GGS_weakReferenceTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                        const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                                                        const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                                       const GGS_typedPropertyList & in_allTypedPropertyList,
-                                                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
                                                                                        const GGS_bool & in_generateHeaderInSeparateFile
                                                                                        COMMA_LOCATION_ARGS) {
   GGS_weakReferenceTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (in_mSelfTypeEntry, in_mReferenceClassType, in_mSuperClass, in_allTypedPropertyList, in_mTypedAttributeList, in_generateHeaderInSeparateFile COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (in_mSelfTypeEntry, in_mReferenceClassType, in_mSuperClass, in_generateHeaderInSeparateFile COMMA_THERE)) ;
   return result ;
 }
 
@@ -4696,30 +4717,6 @@ GGS_unifiedTypeMapEntry GGS_weakReferenceTypeForGeneration::readProperty_mSuperC
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_weakReferenceTypeForGeneration::readProperty_allTypedPropertyList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
-  }else{
-    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
-    return p->mProperty_allTypedPropertyList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList GGS_weakReferenceTypeForGeneration::readProperty_mTypedAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
-  }else{
-    cPtr_weakReferenceTypeForGeneration * p = (cPtr_weakReferenceTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_weakReferenceTypeForGeneration) ;
-    return p->mProperty_mTypedAttributeList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_bool GGS_weakReferenceTypeForGeneration::readProperty_generateHeaderInSeparateFile (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_bool () ;
@@ -4737,21 +4734,15 @@ GGS_bool GGS_weakReferenceTypeForGeneration::readProperty_generateHeaderInSepara
 cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                           const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                                           const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                          const GGS_typedPropertyList & in_allTypedPropertyList,
-                                                                          const GGS_typedPropertyList & in_mTypedAttributeList,
                                                                           const GGS_bool & in_generateHeaderInSeparateFile
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
 mProperty_mReferenceClassType (),
 mProperty_mSuperClass (),
-mProperty_allTypedPropertyList (),
-mProperty_mTypedAttributeList (),
 mProperty_generateHeaderInSeparateFile () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_mReferenceClassType = in_mReferenceClassType ;
   mProperty_mSuperClass = in_mSuperClass ;
-  mProperty_allTypedPropertyList = in_allTypedPropertyList ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
   mProperty_generateHeaderInSeparateFile = in_generateHeaderInSeparateFile ;
 }
 
@@ -4770,10 +4761,6 @@ void cPtr_weakReferenceTypeForGeneration::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mSuperClass.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_allTypedPropertyList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_generateHeaderInSeparateFile.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
@@ -4782,7 +4769,7 @@ void cPtr_weakReferenceTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_allTypedPropertyList, mProperty_mTypedAttributeList, mProperty_generateHeaderInSeparateFile COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_generateHeaderInSeparateFile COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -4934,6 +4921,137 @@ GGS_weakReferenceTypeForGeneration_2E_weak GGS_weakReferenceTypeForGeneration_2E
       result = *p ;
     }else{
       inCompiler->castError ("weakReferenceTypeForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_associatedValue::GGS_associatedValue (void) :
+mProperty_weakQualifier (),
+mProperty_typeName (),
+mProperty_valueName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_associatedValue::~ GGS_associatedValue (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_associatedValue GGS_associatedValue::init_21__21__21_ (const GGS_bool & in_weakQualifier,
+                                                           const GGS_lstring & in_typeName,
+                                                           const GGS_lstring & in_valueName,
+                                                           Compiler * inCompiler
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_associatedValue result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_weakQualifier = in_weakQualifier ;
+  result.mProperty_typeName = in_typeName ;
+  result.mProperty_valueName = in_valueName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_associatedValue::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_associatedValue::GGS_associatedValue (const GGS_bool & inOperand0,
+                                          const GGS_lstring & inOperand1,
+                                          const GGS_lstring & inOperand2) :
+mProperty_weakQualifier (inOperand0),
+mProperty_typeName (inOperand1),
+mProperty_valueName (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_associatedValue GGS_associatedValue::class_func_new (const GGS_bool & in_weakQualifier,
+                                                         const GGS_lstring & in_typeName,
+                                                         const GGS_lstring & in_valueName,
+                                                         Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_associatedValue result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_weakQualifier = in_weakQualifier ;
+  result.mProperty_typeName = in_typeName ;
+  result.mProperty_valueName = in_valueName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_associatedValue::isValid (void) const {
+  return mProperty_weakQualifier.isValid () && mProperty_typeName.isValid () && mProperty_valueName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_associatedValue::drop (void) {
+  mProperty_weakQualifier.drop () ;
+  mProperty_typeName.drop () ;
+  mProperty_valueName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_associatedValue::description (String & ioString,
+                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @associatedValue:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_weakQualifier.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_typeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_valueName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @associatedValue generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_associatedValue ("associatedValue",
+                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_associatedValue::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_associatedValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_associatedValue::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_associatedValue (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_associatedValue GGS_associatedValue::extractObject (const GGS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GGS_associatedValue result ;
+  const GGS_associatedValue * p = (const GGS_associatedValue *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_associatedValue *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("associatedValue", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

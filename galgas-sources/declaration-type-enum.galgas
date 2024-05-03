@@ -55,14 +55,21 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $case$
       $identifier$ ?let constantName
-      var @2lstringlist associatedValueTypeList = ()
+      var [@associatedValue] associatedValueTypeList = ()
       select
       or
         $($
         repeat
+          let @bool weakQualifier
+          select
+            weakQualifier = false
+          or
+            $weak$
+            weakQualifier = true
+          end
           <type_definition_ggs3> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
-          associatedValueTypeList += !associatedValueType !associatedValueName
+          [!?associatedValueTypeList append !.init (weakQualifier, associatedValueType, associatedValueName)]
         while
         end
         $)$
@@ -125,14 +132,21 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $case$
       $identifier$ ?let constantName
-      var @2lstringlist associatedValueTypeList = ()
+      var [@associatedValue] associatedValueTypeList = ()
       select
       or
         $($
         repeat
+          let @bool weakQualifier
+          select
+            weakQualifier = false
+          or
+            $weak$
+            weakQualifier = true
+          end
           <type_definition> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
-          associatedValueTypeList += !associatedValueType !associatedValueName
+          [!?associatedValueTypeList append !.init (weakQualifier, associatedValueType, associatedValueName)]
         while
           $,$
         end
@@ -162,9 +176,17 @@ syntax extension galgas4DeclarationsSyntax {
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+struct @associatedValue {
+  public let @bool weakQualifier
+  public let @lstring typeName
+  public let @lstring valueName
+}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 list @enumConstantList {
   public let @lstring name
-  public let @2lstringlist associatedValueTypeList
+  public let [@associatedValue] associatedValueTypeList
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -190,11 +212,15 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           constant.name
         )
         var @propertyInCollectionListAST propertyListAST = ()
-        for (typeName propertyName) in constant.associatedValueTypeList do
+        for associatedValue in constant.associatedValueTypeList do
+          let associatedValueTypeName = if associatedValue.weakQualifier
+            then makeWeakTypeLName (associatedValue.typeName)
+            else associatedValue.typeName
+          end
           propertyListAST +=
             !mutability: .constantProperty
-            !typeName
-            !propertyName
+            !associatedValueTypeName
+            !associatedValue.valueName
             !.publicAccess
             !hasSelector: false
             !initialization: .none
@@ -233,8 +259,8 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     var circularReference = true
     for constant in self.mConstantList while circularReference do
       var namesCurrentType = false
-      for (mValue0 *) in constant.associatedValueTypeList while not namesCurrentType do
-        let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
+      for associatedValue in constant.associatedValueTypeList while not namesCurrentType do
+        let propertyKey = @lstring {!"@" + associatedValue.typeName !associatedValue.typeName}
         if propertyKey.string == key.string then
           namesCurrentType = true
         end
@@ -246,8 +272,8 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #--- Enter dependances, and only when there is circular reference
     if circularReference then
       for constant in self.mConstantList do
-        for (mValue0 *) in constant.associatedValueTypeList do
-          let propertyKey = @lstring {!"@" + mValue0 !mValue0.location}
+        for associatedValue in constant.associatedValueTypeList do
+          let propertyKey = @lstring {!"@" + associatedValue.typeName !associatedValue.typeName}
           if (propertyKey.string != key.string) then
             [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
           end
@@ -277,10 +303,10 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
     for constant in self.mConstantList do
       var @associatedValueDescriptorList associatedTypeList = ()
       var @functionSignature argumentTypeList = ()
-      for (typeName selectorName) in constant.associatedValueTypeList do
-        [!?ioTypeMap makeEntry !typeName ?let associatedTypeEntry]
-        argumentTypeList += !selectorName !associatedTypeEntry !typeName.string !true
-        associatedTypeList += !associatedTypeEntry !selectorName
+      for associatedValue in constant.associatedValueTypeList do
+        [!?ioTypeMap makeEntry !associatedValue.typeName ?let associatedTypeEntry]
+        argumentTypeList += !associatedValue.valueName !associatedTypeEntry !associatedValue.typeName.string !true
+        associatedTypeList += !associatedTypeEntry !associatedValue.valueName
         hasAssociatedValues = true
       end
       [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
@@ -297,9 +323,9 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
       if [constant.associatedValueTypeList count] > 0 then
         var @unifiedTypeMapEntryList associatedTypeList = ()
         var @formalParameterSignature argumentTypeList = ()
-        for (typeName selectorName) in constant.associatedValueTypeList do
-          [!?ioTypeMap makeEntry  !typeName ?let associatedTypeEntry]
-          argumentTypeList += !selectorName !associatedTypeEntry !.argumentOut !typeName.string
+        for associatedValue in constant.associatedValueTypeList do
+          [!?ioTypeMap makeEntry !associatedValue.typeName ?let associatedTypeEntry]
+          argumentTypeList += !associatedValue.valueName !associatedTypeEntry !.argumentOut !associatedValue.typeName.string
           associatedTypeList += !associatedTypeEntry
           hasAssociatedValues = true
         end
@@ -434,15 +460,15 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
       constantList += !constant.name.string
       var @associatedValueDescriptorList associatedTypeList = ()
       var @stringset associatedValueNameSet = ()
-      for (mValue0 mValue1) in constant.associatedValueTypeList do
-        let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
+      for associatedValue in constant.associatedValueTypeList do
+        let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!associatedValue.typeName)
         [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-        let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !mValue0]
-        associatedTypeList += !associatedTypeEntry !mValue1
-        if [associatedValueNameSet hasKey !mValue1.string] then
-          error mValue1 : "duplicated name"
+        let associatedTypeEntry = [ioTypeMap typeMapEntryForLKey !associatedValue.typeName]
+        associatedTypeList += !associatedTypeEntry !associatedValue.valueName
+        if [associatedValueNameSet hasKey !associatedValue.valueName.string] then
+          error associatedValue.valueName : "duplicated name"
         end
-        associatedValueNameSet += !mValue1.string
+        associatedValueNameSet += !associatedValue.valueName.string
       #--- Comparison
         switch self.comparison
         case none :
@@ -451,12 +477,12 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           if (not [associatedType.features contains !.comparable])
             & not [associatedType.features contains !.equatable]
             & not [associatedType.features contains !.referenceEquatable] then
-            error mValue0 : "the @" + mValue0 + " should be equatable"
+            error associatedValue.typeName : "the @" + associatedValue.typeName + " should be equatable"
           end
         case comparable :
           let associatedType = [associatedTypeEntry definition]
           if not [associatedType.features contains !.comparable] then
-            error mValue0 : "the @" + mValue0 + " should be comparable"
+            error associatedValue.typeName : "the @" + associatedValue.typeName + " should be comparable"
           end
         end  
       end

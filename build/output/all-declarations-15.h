@@ -618,8 +618,41 @@ class GGS_templateInstructionStringForGeneration_2E_weak : public GGS_templateIn
 
   public: GGS_templateInstructionStringForGeneration_2E_weak & operator = (const class GGS_templateInstructionStringForGeneration & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionStringForGeneration_2E_weak init_nil (void) {
+    GGS_templateInstructionStringForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_templateInstructionStringForGeneration bang_templateInstructionStringForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionStringForGeneration unwrappedValue (void) const {
+    GGS_templateInstructionStringForGeneration result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionStringForGeneration * p = (cPtr_templateInstructionStringForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionStringForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -673,8 +706,41 @@ class GGS_lexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
 
   public: GGS_lexiqueComponentAST_2E_weak & operator = (const class GGS_lexiqueComponentAST & inSource) ;
 
+//--------------------------------- nil initializer
+  public: inline static GGS_lexiqueComponentAST_2E_weak init_nil (void) {
+    GGS_lexiqueComponentAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_lexiqueComponentAST bang_lexiqueComponentAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_lexiqueComponentAST unwrappedValue (void) const {
+    GGS_lexiqueComponentAST result ;
+    if (isValid ()) {
+      const cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_lexiqueComponentAST (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 

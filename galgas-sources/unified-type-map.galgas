@@ -166,8 +166,15 @@ refclass @unifiedTypeMapElementClass {
 #! @unifiedTypeMapEntry
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
+#struct @weakEntry %equatable {
+#  public weak var @unifiedTypeMapElementClass mWeakValue
+#}
+
+#—————————————————————————————————————————————————————————————————————————————————————————————————
+
 enum @unifiedTypeMapEntry %equatable {
   case null
+#  case element (@weakEntry weakElement)
   case element (@unifiedTypeMapElementClass.@weak weakElement)
 
   #-----------------------------------------------------------------------------------------------

@@ -94,7 +94,7 @@ syntax extension galgas3DeclarationsSyntax {
            else makeWeakTypeLName (!superClassName)
          end
         !generateInSeparateFile
-        !propertyList
+#        !propertyList
       }
     end
   }
@@ -170,7 +170,6 @@ syntax extension galgas4DeclarationsSyntax {
          else makeWeakTypeLName (!superClassName)
        end
       !generateInSeparateFile
-      !propertyList
     }
   }
 
@@ -1010,20 +1009,6 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@typedPropertyList INHERITED_INITIALIZER_ARGUMENT_LIST
     ?@initializerMap INITIALIZER_MAP
     ?@bool CLONABLE
-
-#---------- Weak Reference Class
-  template weakReferenceClassTypeHeader1 "GALGAS_weak_reference_class.h1.galgasTemplate"
-    ?@string CLASS_TYPE_IDENTIFIER
-    ?@string WEAK_REF_TYPE_IDENTIFIER
-    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
-
-  template weakReferenceClassTypeSpecificImplementation "GALGAS_weak_reference_class.cpp.galgasTemplate"
-    ?@string CLASS_TYPE_IDENTIFIER
-    ?@string WEAK_REF_TYPE_IDENTIFIER
-    ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
-    ?@typedPropertyList CURRENT_PROPERTY_LIST
-    ?@typedPropertyList ALL_PROPERTY_LIST
-    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

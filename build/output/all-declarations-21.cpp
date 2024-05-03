@@ -7731,6 +7731,167 @@ GGS_optionComponentMapForGeneration_2E_element_3F_ GGS_optionComponentMapForGene
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (void) :
+mProperty_mutability (),
+mProperty_typeName (),
+mProperty_name (),
+mProperty_accessControl (),
+mProperty_hasSelector (),
+mProperty_initialization () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionListAST_2E_element::~ GGS_propertyInCollectionListAST_2E_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::init_21_mutability_21__21__21__21_hasSelector_21_initialization (const GGS_propertyMutability & in_mutability,
+                                                                                                                                                        const GGS_lstring & in_typeName,
+                                                                                                                                                        const GGS_lstring & in_name,
+                                                                                                                                                        const GGS_AccessControlAST & in_accessControl,
+                                                                                                                                                        const GGS_bool & in_hasSelector,
+                                                                                                                                                        const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                                                                                        Compiler * inCompiler
+                                                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_propertyInCollectionListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mutability = in_mutability ;
+  result.mProperty_typeName = in_typeName ;
+  result.mProperty_name = in_name ;
+  result.mProperty_accessControl = in_accessControl ;
+  result.mProperty_hasSelector = in_hasSelector ;
+  result.mProperty_initialization = in_initialization ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyInCollectionListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (const GGS_propertyMutability & inOperand0,
+                                                                                        const GGS_lstring & inOperand1,
+                                                                                        const GGS_lstring & inOperand2,
+                                                                                        const GGS_AccessControlAST & inOperand3,
+                                                                                        const GGS_bool & inOperand4,
+                                                                                        const GGS_propertyInCollectionInitializationAST & inOperand5) :
+mProperty_mutability (inOperand0),
+mProperty_typeName (inOperand1),
+mProperty_name (inOperand2),
+mProperty_accessControl (inOperand3),
+mProperty_hasSelector (inOperand4),
+mProperty_initialization (inOperand5) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::class_func_new (const GGS_propertyMutability & in_mutability,
+                                                                                                       const GGS_lstring & in_typeName,
+                                                                                                       const GGS_lstring & in_name,
+                                                                                                       const GGS_AccessControlAST & in_accessControl,
+                                                                                                       const GGS_bool & in_hasSelector,
+                                                                                                       const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_propertyInCollectionListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mutability = in_mutability ;
+  result.mProperty_typeName = in_typeName ;
+  result.mProperty_name = in_name ;
+  result.mProperty_accessControl = in_accessControl ;
+  result.mProperty_hasSelector = in_hasSelector ;
+  result.mProperty_initialization = in_initialization ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyInCollectionListAST_2E_element::isValid (void) const {
+  return mProperty_mutability.isValid () && mProperty_typeName.isValid () && mProperty_name.isValid () && mProperty_accessControl.isValid () && mProperty_hasSelector.isValid () && mProperty_initialization.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyInCollectionListAST_2E_element::drop (void) {
+  mProperty_mutability.drop () ;
+  mProperty_typeName.drop () ;
+  mProperty_name.drop () ;
+  mProperty_accessControl.drop () ;
+  mProperty_hasSelector.drop () ;
+  mProperty_initialization.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyInCollectionListAST_2E_element::description (String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @propertyInCollectionListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mutability.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_typeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_name.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_accessControl.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_hasSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_initialization.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @propertyInCollectionListAST.element generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ("propertyInCollectionListAST.element",
+                                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_propertyInCollectionListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_propertyInCollectionListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_propertyInCollectionListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GGS_propertyInCollectionListAST_2E_element result ;
+  const GGS_propertyInCollectionListAST_2E_element * p = (const GGS_propertyInCollectionListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_propertyInCollectionListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("propertyInCollectionListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_enumConstantList_2E_element::GGS_enumConstantList_2E_element (void) :
 mProperty_name (),
 mProperty_associatedValueTypeList () {
@@ -7744,7 +7905,7 @@ GGS_enumConstantList_2E_element::~ GGS_enumConstantList_2E_element (void) {
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_enumConstantList_2E_element GGS_enumConstantList_2E_element::init_21__21_ (const GGS_lstring & in_name,
-                                                                               const GGS__32_lstringlist & in_associatedValueTypeList,
+                                                                               const GGS__5B_associatedValue_5D_ & in_associatedValueTypeList,
                                                                                Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GGS_enumConstantList_2E_element result ;
@@ -7762,7 +7923,7 @@ void GGS_enumConstantList_2E_element::setInitializedProperties (Compiler * /* in
 //--------------------------------------------------------------------------------------------------
 
 GGS_enumConstantList_2E_element::GGS_enumConstantList_2E_element (const GGS_lstring & inOperand0,
-                                                                  const GGS__32_lstringlist & inOperand1) :
+                                                                  const GGS__5B_associatedValue_5D_ & inOperand1) :
 mProperty_name (inOperand0),
 mProperty_associatedValueTypeList (inOperand1) {
 }
@@ -7770,7 +7931,7 @@ mProperty_associatedValueTypeList (inOperand1) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_enumConstantList_2E_element GGS_enumConstantList_2E_element::class_func_new (const GGS_lstring & in_name,
-                                                                                 const GGS__32_lstringlist & in_associatedValueTypeList,
+                                                                                 const GGS__5B_associatedValue_5D_ & in_associatedValueTypeList,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_enumConstantList_2E_element result ;
@@ -11111,167 +11272,6 @@ GGS_actualInputParameterListAST_2E_element GGS_actualInputParameterListAST_2E_el
       result = *p ;
     }else{
       inCompiler->castError ("actualInputParameterListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (void) :
-mProperty_mutability (),
-mProperty_typeName (),
-mProperty_name (),
-mProperty_accessControl (),
-mProperty_hasSelector (),
-mProperty_initialization () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST_2E_element::~ GGS_propertyInCollectionListAST_2E_element (void) {
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::init_21_mutability_21__21__21__21_hasSelector_21_initialization (const GGS_propertyMutability & in_mutability,
-                                                                                                                                                        const GGS_lstring & in_typeName,
-                                                                                                                                                        const GGS_lstring & in_name,
-                                                                                                                                                        const GGS_AccessControlAST & in_accessControl,
-                                                                                                                                                        const GGS_bool & in_hasSelector,
-                                                                                                                                                        const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                                                                                                        Compiler * inCompiler
-                                                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mutability = in_mutability ;
-  result.mProperty_typeName = in_typeName ;
-  result.mProperty_name = in_name ;
-  result.mProperty_accessControl = in_accessControl ;
-  result.mProperty_hasSelector = in_hasSelector ;
-  result.mProperty_initialization = in_initialization ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_propertyInCollectionListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST_2E_element::GGS_propertyInCollectionListAST_2E_element (const GGS_propertyMutability & inOperand0,
-                                                                                        const GGS_lstring & inOperand1,
-                                                                                        const GGS_lstring & inOperand2,
-                                                                                        const GGS_AccessControlAST & inOperand3,
-                                                                                        const GGS_bool & inOperand4,
-                                                                                        const GGS_propertyInCollectionInitializationAST & inOperand5) :
-mProperty_mutability (inOperand0),
-mProperty_typeName (inOperand1),
-mProperty_name (inOperand2),
-mProperty_accessControl (inOperand3),
-mProperty_hasSelector (inOperand4),
-mProperty_initialization (inOperand5) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::class_func_new (const GGS_propertyMutability & in_mutability,
-                                                                                                       const GGS_lstring & in_typeName,
-                                                                                                       const GGS_lstring & in_name,
-                                                                                                       const GGS_AccessControlAST & in_accessControl,
-                                                                                                       const GGS_bool & in_hasSelector,
-                                                                                                       const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mutability = in_mutability ;
-  result.mProperty_typeName = in_typeName ;
-  result.mProperty_name = in_name ;
-  result.mProperty_accessControl = in_accessControl ;
-  result.mProperty_hasSelector = in_hasSelector ;
-  result.mProperty_initialization = in_initialization ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_propertyInCollectionListAST_2E_element::isValid (void) const {
-  return mProperty_mutability.isValid () && mProperty_typeName.isValid () && mProperty_name.isValid () && mProperty_accessControl.isValid () && mProperty_hasSelector.isValid () && mProperty_initialization.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_propertyInCollectionListAST_2E_element::drop (void) {
-  mProperty_mutability.drop () ;
-  mProperty_typeName.drop () ;
-  mProperty_name.drop () ;
-  mProperty_accessControl.drop () ;
-  mProperty_hasSelector.drop () ;
-  mProperty_initialization.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_propertyInCollectionListAST_2E_element::description (String & ioString,
-                                                              const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @propertyInCollectionListAST.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mutability.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_typeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_name.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_accessControl.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_hasSelector.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_initialization.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @propertyInCollectionListAST.element generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ("propertyInCollectionListAST.element",
-                                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_propertyInCollectionListAST_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_propertyInCollectionListAST_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_propertyInCollectionListAST_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_propertyInCollectionListAST_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST_2E_element GGS_propertyInCollectionListAST_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST_2E_element result ;
-  const GGS_propertyInCollectionListAST_2E_element * p = (const GGS_propertyInCollectionListAST_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_propertyInCollectionListAST_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("propertyInCollectionListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
