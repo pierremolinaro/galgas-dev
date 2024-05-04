@@ -675,7 +675,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionComponentForGeneration_2E_weak GGS_optionComponentForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -959,7 +958,6 @@ GGS_arrayTypeForGeneration_2E_weak & GGS_arrayTypeForGeneration_2E_weak::operato
 GGS_arrayTypeForGeneration_2E_weak::GGS_arrayTypeForGeneration_2E_weak (const GGS_arrayTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

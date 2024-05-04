@@ -1413,7 +1413,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_overrideExtensionGetterForGeneration_2E_weak GGS_overrideExtensionGetterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2111,7 +2110,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionMethodForGeneration_2E_weak GGS_overridingExtensionMethodForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2807,7 +2805,6 @@ GGS_overridingExtensionSetterForGeneration_2E_weak & GGS_overridingExtensionSett
 GGS_overridingExtensionSetterForGeneration_2E_weak::GGS_overridingExtensionSetterForGeneration_2E_weak (const GGS_overridingExtensionSetterForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -6789,7 +6786,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_routinePrototypeDeclarationForGeneration_2E_weak GGS_routinePrototypeDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -7349,7 +7345,6 @@ GGS_routineImplementationForGeneration_2E_weak & GGS_routineImplementationForGen
 GGS_routineImplementationForGeneration_2E_weak::GGS_routineImplementationForGeneration_2E_weak (const GGS_routineImplementationForGeneration & inSource) :
 GGS_routinePrototypeDeclarationForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -11205,7 +11200,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexiqueDeclarationForGeneration_2E_weak GGS_lexiqueDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11543,7 +11537,6 @@ GGS_functionPrototypeDeclarationForGeneration_2E_weak & GGS_functionPrototypeDec
 GGS_functionPrototypeDeclarationForGeneration_2E_weak::GGS_functionPrototypeDeclarationForGeneration_2E_weak (const GGS_functionPrototypeDeclarationForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -11884,7 +11877,6 @@ GGS_functionImplementationForGeneration_2E_weak & GGS_functionImplementationForG
 GGS_functionImplementationForGeneration_2E_weak::GGS_functionImplementationForGeneration_2E_weak (const GGS_functionImplementationForGeneration & inSource) :
 GGS_functionPrototypeDeclarationForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -12247,7 +12239,6 @@ GGS_onceFunctionDeclarationForGeneration_2E_weak & GGS_onceFunctionDeclarationFo
 GGS_onceFunctionDeclarationForGeneration_2E_weak::GGS_onceFunctionDeclarationForGeneration_2E_weak (const GGS_onceFunctionDeclarationForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -12635,7 +12626,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_filewrapperDeclarationForGeneration_2E_weak GGS_filewrapperDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12950,7 +12940,6 @@ GGS_programComponentForGeneration_2E_weak & GGS_programComponentForGeneration_2E
 GGS_programComponentForGeneration_2E_weak::GGS_programComponentForGeneration_2E_weak (const GGS_programComponentForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13429,7 +13418,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarForGeneration_2E_weak GGS_grammarForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13759,7 +13747,6 @@ GGS_primitiveTypeForGeneration_2E_weak & GGS_primitiveTypeForGeneration_2E_weak:
 GGS_primitiveTypeForGeneration_2E_weak::GGS_primitiveTypeForGeneration_2E_weak (const GGS_primitiveTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

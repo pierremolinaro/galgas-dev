@@ -52,7 +52,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_equatableExtensionAST_2E_weak GGS_equatableExtensionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -571,7 +570,6 @@ GGS_extensionGetterAST_2E_weak & GGS_extensionGetterAST_2E_weak::operator = (con
 GGS_extensionGetterAST_2E_weak::GGS_extensionGetterAST_2E_weak (const GGS_extensionGetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1094,7 +1092,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMethodAST_2E_weak GGS_extensionMethodAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1204,7 +1201,6 @@ GGS_extensionSetterAST_2E_weak & GGS_extensionSetterAST_2E_weak::operator = (con
 GGS_extensionSetterAST_2E_weak::GGS_extensionSetterAST_2E_weak (const GGS_extensionSetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1318,7 +1314,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_initializerAST_2E_weak GGS_initializerAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1428,7 +1423,6 @@ GGS_overridingAbstractExtensionGetterAST_2E_weak & GGS_overridingAbstractExtensi
 GGS_overridingAbstractExtensionGetterAST_2E_weak::GGS_overridingAbstractExtensionGetterAST_2E_weak (const GGS_overridingAbstractExtensionGetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1542,7 +1536,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingAbstractExtensionMethodAST_2E_weak GGS_overridingAbstractExtensionMethodAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1652,7 +1645,6 @@ GGS_overridingAbstractExtensionSetterAST_2E_weak & GGS_overridingAbstractExtensi
 GGS_overridingAbstractExtensionSetterAST_2E_weak::GGS_overridingAbstractExtensionSetterAST_2E_weak (const GGS_overridingAbstractExtensionSetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1766,7 +1758,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionGetterAST_2E_weak GGS_overridingExtensionGetterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1878,7 +1869,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionMethodAST_2E_weak GGS_overridingExtensionMethodAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1988,7 +1978,6 @@ GGS_overridingExtensionSetterAST_2E_weak & GGS_overridingExtensionSetterAST_2E_w
 GGS_overridingExtensionSetterAST_2E_weak::GGS_overridingExtensionSetterAST_2E_weak (const GGS_overridingExtensionSetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -11770,7 +11759,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12660,7 +12648,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_actualParameterAST_2E_weak GGS_actualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12869,7 +12856,6 @@ GGS_actualParameterAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_outputActualParameterAST_2E_weak GGS_outputActualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12979,7 +12965,6 @@ GGS_outputInputActualParameterAST_2E_weak & GGS_outputInputActualParameterAST_2E
 GGS_outputInputActualParameterAST_2E_weak::GGS_outputInputActualParameterAST_2E_weak (const GGS_outputInputActualParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13093,7 +13078,6 @@ GGS_actualParameterAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_outputInputJokerParameterAST_2E_weak GGS_outputInputJokerParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13203,7 +13187,6 @@ GGS_outputInputSelfParameterAST_2E_weak & GGS_outputInputSelfParameterAST_2E_wea
 GGS_outputInputSelfParameterAST_2E_weak::GGS_outputInputSelfParameterAST_2E_weak (const GGS_outputInputSelfParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13317,7 +13300,6 @@ GGS_actualParameterAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputActualExistingVariableParameterAST_2E_weak GGS_inputActualExistingVariableParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13427,7 +13409,6 @@ GGS_inputActualSelfPropertyParameterAST_2E_weak & GGS_inputActualSelfPropertyPar
 GGS_inputActualSelfPropertyParameterAST_2E_weak::GGS_inputActualSelfPropertyParameterAST_2E_weak (const GGS_inputActualSelfPropertyParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13541,7 +13522,6 @@ GGS_actualParameterAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputActualSelfParameterAST_2E_weak GGS_inputActualSelfParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13651,7 +13631,6 @@ GGS_inputActualNewVariableParameterAST_2E_weak & GGS_inputActualNewVariableParam
 GGS_inputActualNewVariableParameterAST_2E_weak::GGS_inputActualNewVariableParameterAST_2E_weak (const GGS_inputActualNewVariableParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13765,7 +13744,6 @@ GGS_actualParameterAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputActualNewConstantParameterAST_2E_weak GGS_inputActualNewConstantParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13875,7 +13853,6 @@ GGS_inputSingleJokerActualParameterAST_2E_weak & GGS_inputSingleJokerActualParam
 GGS_inputSingleJokerActualParameterAST_2E_weak::GGS_inputSingleJokerActualParameterAST_2E_weak (const GGS_inputSingleJokerActualParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -14178,7 +14155,6 @@ GGS_actualParameterAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputJokerActualParameterAST_2E_weak GGS_inputJokerActualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14290,7 +14266,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_externProcedureDeclarationAST_2E_weak GGS_externProcedureDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14400,7 +14375,6 @@ GGS_procDeclarationAST_2E_weak & GGS_procDeclarationAST_2E_weak::operator = (con
 GGS_procDeclarationAST_2E_weak::GGS_procDeclarationAST_2E_weak (const GGS_procDeclarationAST & inSource) :
 GGS_externProcedureDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -16006,7 +15980,6 @@ GGS_semanticExpressionAST_2E_weak & GGS_semanticExpressionAST_2E_weak::operator 
 GGS_semanticExpressionAST_2E_weak::GGS_semanticExpressionAST_2E_weak (const GGS_semanticExpressionAST & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

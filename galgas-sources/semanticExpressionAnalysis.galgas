@@ -2,7 +2,7 @@
 #
 #  Semantic Analysis of expression
 #
-#  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+#  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
 #
 #  MIT License
 #
@@ -103,7 +103,9 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
                                                 ?let @unifiedTypeMapEntry inSourceType
                                                 ?let @location inErrorLocation
                                                 ?!@semanticExpressionForGeneration ioExpression {
-#--- Optional ?
+#  println (!"Target " + [inTargetType definition].typeName)
+#  println (!"Source " + [inSourceType definition].typeName)
+#--- Target is optional ?
   let targetTypeDef = [inTargetType definition]
   let targetTypeForBigIntAssignment = if not [targetTypeDef.unwrappedType isNull]
     then targetTypeDef.unwrappedType
@@ -157,6 +159,14 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       }
       handled = true
     end
+  end
+#--- Assignment between optional and weak ?
+  if not handled,
+        not [targetTypeDef.unwrappedType isNull],
+        not [[inSourceType definition].unwrappedType isNull] then
+    let targetUnwrappedType = targetTypeDef.unwrappedType
+    let sourceUnwrappedType = [inSourceType definition].unwrappedType
+    handled = [targetUnwrappedType typeName] == [sourceUnwrappedType typeName]
   end
 #---
   if not handled,

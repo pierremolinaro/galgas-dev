@@ -12879,7 +12879,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_predefinedTypeAST_2E_weak GGS_predefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13148,7 +13147,6 @@ GGS_applicationPredefinedTypeAST_2E_weak & GGS_applicationPredefinedTypeAST_2E_w
 GGS_applicationPredefinedTypeAST_2E_weak::GGS_applicationPredefinedTypeAST_2E_weak (const GGS_applicationPredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13421,7 +13419,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigintPredefinedTypeAST_2E_weak GGS_bigintPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13690,7 +13687,6 @@ GGS_binarysetPredefinedTypeAST_2E_weak & GGS_binarysetPredefinedTypeAST_2E_weak:
 GGS_binarysetPredefinedTypeAST_2E_weak::GGS_binarysetPredefinedTypeAST_2E_weak (const GGS_binarysetPredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13963,7 +13959,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_boolPredefinedTypeAST_2E_weak GGS_boolPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14232,7 +14227,6 @@ GGS_charPredefinedTypeAST_2E_weak & GGS_charPredefinedTypeAST_2E_weak::operator 
 GGS_charPredefinedTypeAST_2E_weak::GGS_charPredefinedTypeAST_2E_weak (const GGS_charPredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -14505,7 +14499,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_dataPredefinedTypeAST_2E_weak GGS_dataPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14774,7 +14767,6 @@ GGS_doublePredefinedTypeAST_2E_weak & GGS_doublePredefinedTypeAST_2E_weak::opera
 GGS_doublePredefinedTypeAST_2E_weak::GGS_doublePredefinedTypeAST_2E_weak (const GGS_doublePredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -15047,7 +15039,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_filewrapperPredefinedTypeAST_2E_weak GGS_filewrapperPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -15316,7 +15307,6 @@ GGS_functionPredefinedTypeAST_2E_weak & GGS_functionPredefinedTypeAST_2E_weak::o
 GGS_functionPredefinedTypeAST_2E_weak::GGS_functionPredefinedTypeAST_2E_weak (const GGS_functionPredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -15589,7 +15579,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_locationPredefinedTypeAST_2E_weak GGS_locationPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -15858,7 +15847,6 @@ GGS_objectPredefinedTypeAST_2E_weak & GGS_objectPredefinedTypeAST_2E_weak::opera
 GGS_objectPredefinedTypeAST_2E_weak::GGS_objectPredefinedTypeAST_2E_weak (const GGS_objectPredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -16131,7 +16119,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringsetPredefinedTypeAST_2E_weak GGS_stringsetPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -16402,7 +16389,6 @@ GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_sintPredefinedTypeAST_2E_weak GGS_sintPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -16671,7 +16657,6 @@ GGS_sint_36__34_PredefinedTypeAST_2E_weak & GGS_sint_36__34_PredefinedTypeAST_2E
 GGS_sint_36__34_PredefinedTypeAST_2E_weak::GGS_sint_36__34_PredefinedTypeAST_2E_weak (const GGS_sint_36__34_PredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

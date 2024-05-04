@@ -1302,7 +1302,6 @@ GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalInstructionForGrammarAnalysis_2E_weak GGS_nonTerminalInstructionForGrammarAnalysis_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2020,7 +2019,6 @@ GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_selectInstructionForGrammarAnalysis_2E_weak GGS_selectInstructionForGrammarAnalysis_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2327,7 +2325,6 @@ GGS_repeatInstructionForGrammarAnalysis_2E_weak & GGS_repeatInstructionForGramma
 GGS_repeatInstructionForGrammarAnalysis_2E_weak::GGS_repeatInstructionForGrammarAnalysis_2E_weak (const GGS_repeatInstructionForGrammarAnalysis & inSource) :
 GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

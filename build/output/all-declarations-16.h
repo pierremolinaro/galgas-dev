@@ -2535,13 +2535,16 @@ class GGS_optionalTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Property access
   public: class GGS_unifiedTypeMapEntry readProperty_unwrappedType (void) const ;
 
+  public: class GGS_unifiedTypeMapEntry readProperty_weakType (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_optionalTypeForGeneration init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                             const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS_optionalTypeForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                 const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                 const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2553,7 +2556,8 @@ class GGS_optionalTypeForGeneration : public GGS_semanticTypeForGeneration {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_optionalTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                     const class GGS_unifiedTypeMapEntry & inOperand1
+                                                                     const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                     const class GGS_unifiedTypeMapEntry & inOperand2
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2591,9 +2595,10 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
   #endif
 
 //--------------------------------- Initializers
-  public: void optionalTypeForGeneration_init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                       const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                       Compiler * inCompiler) ;
+  public: void optionalTypeForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                           const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                           Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -2609,6 +2614,7 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_unwrappedType ;
+  public: GGS_unifiedTypeMapEntry mProperty_weakType ;
 
 
 //--- Default constructor
@@ -2616,7 +2622,8 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Constructor
   public: cPtr_optionalTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                          const GGS_unifiedTypeMapEntry & in_unwrappedType
+                                          const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                                          const GGS_unifiedTypeMapEntry & in_weakType
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

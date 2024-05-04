@@ -4532,9 +4532,15 @@ class GGS_selfAvailability_2E_available_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_selfAvailability_2E_available_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_selfAvailability_2E_available_3F_ (const GGS_selfAvailability_2E_available & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_selfAvailability_2E_available_3F_ (const GGS_selfAvailability_2E_available & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_selfAvailability_2E_available_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_selfAvailability_2E_available unwrappedValue (void) const {
@@ -7866,9 +7872,15 @@ class GGS_fixitElementAST_2E_fixItInsertAfter_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_fixitElementAST_2E_fixItInsertAfter_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_fixitElementAST_2E_fixItInsertAfter_3F_ (const GGS_fixitElementAST_2E_fixItInsertAfter & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_fixitElementAST_2E_fixItInsertAfter_3F_ (const GGS_fixitElementAST_2E_fixItInsertAfter & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_fixitElementAST_2E_fixItInsertAfter_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_fixitElementAST_2E_fixItInsertAfter unwrappedValue (void) const {
@@ -8028,9 +8040,15 @@ class GGS_fixitElementAST_2E_fixItInsertBefore_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_fixitElementAST_2E_fixItInsertBefore_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_fixitElementAST_2E_fixItInsertBefore_3F_ (const GGS_fixitElementAST_2E_fixItInsertBefore & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_fixitElementAST_2E_fixItInsertBefore_3F_ (const GGS_fixitElementAST_2E_fixItInsertBefore & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_fixitElementAST_2E_fixItInsertBefore_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_fixitElementAST_2E_fixItInsertBefore unwrappedValue (void) const {
@@ -8190,9 +8208,15 @@ class GGS_fixitElementAST_2E_fixItReplace_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_fixitElementAST_2E_fixItReplace_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_fixitElementAST_2E_fixItReplace_3F_ (const GGS_fixitElementAST_2E_fixItReplace & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_fixitElementAST_2E_fixItReplace_3F_ (const GGS_fixitElementAST_2E_fixItReplace & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_fixitElementAST_2E_fixItReplace_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_fixitElementAST_2E_fixItReplace unwrappedValue (void) const {
@@ -8910,9 +8934,15 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ : public AC_GALGAS_r
 //--------------------------------- Default constructor
   public: GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ (const GGS_fixitElementForGeneration_2E_fixItInsertAfter & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_fixitElementForGeneration_2E_fixItInsertAfter unwrappedValue (void) const {
@@ -9060,9 +9090,15 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ : public AC_GALGAS_
 //--------------------------------- Default constructor
   public: GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ (const GGS_fixitElementForGeneration_2E_fixItInsertBefore & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_fixitElementForGeneration_2E_fixItInsertBefore unwrappedValue (void) const {
@@ -9210,9 +9246,15 @@ class GGS_fixitElementForGeneration_2E_fixItReplace_3F_ : public AC_GALGAS_root 
 //--------------------------------- Default constructor
   public: GGS_fixitElementForGeneration_2E_fixItReplace_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_fixitElementForGeneration_2E_fixItReplace_3F_ (const GGS_fixitElementForGeneration_2E_fixItReplace & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_fixitElementForGeneration_2E_fixItReplace_3F_ (const GGS_fixitElementForGeneration_2E_fixItReplace & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_fixitElementForGeneration_2E_fixItReplace_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_fixitElementForGeneration_2E_fixItReplace unwrappedValue (void) const {
@@ -15746,9 +15788,15 @@ class GGS_ifExpressionKind_2E_letExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifExpressionKind_2E_letExp_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_ifExpressionKind_2E_letExp_3F_ (const GGS_ifExpressionKind_2E_letExp & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_ifExpressionKind_2E_letExp_3F_ (const GGS_ifExpressionKind_2E_letExp & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_ifExpressionKind_2E_letExp_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_ifExpressionKind_2E_letExp unwrappedValue (void) const {
@@ -15908,9 +15956,15 @@ class GGS_ifExpressionKind_2E_regularExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifExpressionKind_2E_regularExp_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_ifExpressionKind_2E_regularExp_3F_ (const GGS_ifExpressionKind_2E_regularExp & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_ifExpressionKind_2E_regularExp_3F_ (const GGS_ifExpressionKind_2E_regularExp & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_ifExpressionKind_2E_regularExp_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_ifExpressionKind_2E_regularExp unwrappedValue (void) const {

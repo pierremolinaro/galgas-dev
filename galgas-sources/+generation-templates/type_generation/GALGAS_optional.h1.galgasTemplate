@@ -12,9 +12,18 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!UNWRAPPED_TYPE_IDENTIFIER% & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!UNWRAPPED_TYPE_IDENTIFIER% & inSource) ;
+
+//--------------------------------- Constructor from weak type
+%if WEAK_TYPE_IDENTIFIER != "" then
+%  public: GGS_%!TYPE_IDENTIFIER% (const class GGS_%!WEAK_TYPE_IDENTIFIER% & inSource) ;%
+end
+%
+//--------------------------------- nil initializer
   public: static GGS_%!TYPE_IDENTIFIER% init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_%!UNWRAPPED_TYPE_IDENTIFIER% unwrappedValue (void) const {

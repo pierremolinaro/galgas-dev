@@ -1335,9 +1335,15 @@ class GGS_templateVariableMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_templateVariableMap_2E_element_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_templateVariableMap_2E_element_3F_ (const GGS_templateVariableMap_2E_element & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_templateVariableMap_2E_element_3F_ (const GGS_templateVariableMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_templateVariableMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_templateVariableMap_2E_element unwrappedValue (void) const {
@@ -1766,9 +1772,15 @@ class GGS_unifiedTypeMapEntry_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_unifiedTypeMapEntry_2E_element_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_unifiedTypeMapEntry_2E_element_3F_ (const GGS_unifiedTypeMapEntry_2E_element & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_unifiedTypeMapEntry_2E_element_3F_ (const GGS_unifiedTypeMapEntry_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_unifiedTypeMapEntry_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_unifiedTypeMapEntry_2E_element unwrappedValue (void) const {
@@ -4489,9 +4501,15 @@ class GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ : public AC_GALGA
 //--------------------------------- Default constructor
   public: GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ (const GGS_templateInstructionForEnumerationAST_2E_explicit & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ (const GGS_templateInstructionForEnumerationAST_2E_explicit & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_templateInstructionForEnumerationAST_2E_explicit_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_templateInstructionForEnumerationAST_2E_explicit unwrappedValue (void) const {
@@ -4651,9 +4669,15 @@ class GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ : public AC_GALGA
 //--------------------------------- Default constructor
   public: GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ (const GGS_templateInstructionForEnumerationAST_2E_implicit & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ (const GGS_templateInstructionForEnumerationAST_2E_implicit & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_templateInstructionForEnumerationAST_2E_implicit_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_templateInstructionForEnumerationAST_2E_implicit unwrappedValue (void) const {

@@ -51,25 +51,25 @@ GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const GGS_%!CL
 %if OPTIONAL_CLASS_TYPE_IDENTIFIER != "" then%
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GGS_%!OPTIONAL_CLASS_TYPE_IDENTIFIER% & inSource) :
+GGS_%!WEAK_REF_TYPE_IDENTIFIER%::GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GGS_%!OPTIONAL_CLASS_TYPE_IDENTIFIER% & inSource) :
 % if SUPER_WEAK_REF_TYPE_IDENTIFIER == ""
   then %AC_GALGAS_weak_reference%
   else %GGS_%!SUPER_WEAK_REF_TYPE_IDENTIFIER
   end% () {
-  if (inSource.isNil ()) {
-    macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-  }else if (inSource.isSome ()) {
-    const GGS_%!CLASS_TYPE_IDENTIFIER% v = inSourceUnwrappedValue () ;
-    macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-    
-  
+  if (inSource.isValid ()) {
+    if (inSource.isNil ()) {
+      macroMyNew (mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    }else if (inSource.isValuated ()) {
+      const GGS_%!CLASS_TYPE_IDENTIFIER% v = inSource.unwrappedValue () ;
+      acStrongPtr_class * ptr = (acStrongPtr_class *) v.ptr () ;
+      if (ptr != nullptr) {
+        cPtr_weakReference_proxy * proxy = ptr->getProxy () ;
+        macroAssignSharedObject (mProxyPtr, proxy) ;
+      }
+    }
   }
-} */
-
-// public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GGS_%!OPTIONAL_CLASS_TYPE_IDENTIFIER% & inSource) ;
+}
 %end%
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!WEAK_REF_TYPE_IDENTIFIER% GGS_%!WEAK_REF_TYPE_IDENTIFIER%::class_func_nil (LOCATION_ARGS) {

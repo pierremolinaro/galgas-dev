@@ -2361,7 +2361,6 @@ GGS_semanticDeclarationForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak GGS_semanticDeclarationWithHeaderForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2914,7 +2913,6 @@ GGS_semanticDeclarationForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticTypeForGeneration_2E_weak GGS_semanticTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -3441,7 +3439,6 @@ GGS_boolsetTypeForGeneration_2E_weak & GGS_boolsetTypeForGeneration_2E_weak::ope
 GGS_boolsetTypeForGeneration_2E_weak::GGS_boolsetTypeForGeneration_2E_weak (const GGS_boolsetTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -4294,7 +4291,6 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_classTypeForGeneration_2E_weak GGS_classTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -4890,7 +4886,6 @@ GGS_weakReferenceTypeForGeneration_2E_weak & GGS_weakReferenceTypeForGeneration_
 GGS_weakReferenceTypeForGeneration_2E_weak::GGS_weakReferenceTypeForGeneration_2E_weak (const GGS_weakReferenceTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -5550,7 +5545,6 @@ GGS_enumTypeForGeneration_2E_weak & GGS_enumTypeForGeneration_2E_weak::operator 
 GGS_enumTypeForGeneration_2E_weak::GGS_enumTypeForGeneration_2E_weak (const GGS_enumTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -6220,7 +6214,6 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_externTypeDeclarationForGeneration_2E_weak GGS_externTypeDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6772,7 +6765,6 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_graphDeclarationForGeneration_2E_weak GGS_graphDeclarationForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -7322,7 +7314,6 @@ GGS_listTypeForGeneration_2E_weak & GGS_listTypeForGeneration_2E_weak::operator 
 GGS_listTypeForGeneration_2E_weak::GGS_listTypeForGeneration_2E_weak (const GGS_listTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -7943,7 +7934,6 @@ GGS_dictTypeForGeneration_2E_weak & GGS_dictTypeForGeneration_2E_weak::operator 
 GGS_dictTypeForGeneration_2E_weak::GGS_dictTypeForGeneration_2E_weak (const GGS_dictTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -8704,7 +8694,6 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_mapTypeForGeneration_2E_weak GGS_mapTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -8997,7 +8986,8 @@ GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST::extractObject (co
 
 cPtr_optionalTypeForGeneration::cPtr_optionalTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_unwrappedType () {
+mProperty_unwrappedType (),
+mProperty_weakType () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9006,6 +8996,7 @@ mProperty_unwrappedType () {
   void cPtr_optionalTypeForGeneration::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
     mProperty_unwrappedType.printNonNullClassInstanceProperties ("unwrappedType") ;
+    mProperty_weakType.printNonNullClassInstanceProperties ("weakType") ;
   }
 #endif
 
@@ -9036,13 +9027,14 @@ GGS_semanticTypeForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_optionalTypeForGeneration GGS_optionalTypeForGeneration::
-init_21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-              const GGS_unifiedTypeMapEntry & in_unwrappedType,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                  const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                  const GGS_unifiedTypeMapEntry & in_weakType,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
   cPtr_optionalTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_optionalTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->optionalTypeForGeneration_init_21__21_ (in_mSelfTypeEntry, in_unwrappedType, inCompiler) ;
+  object->optionalTypeForGeneration_init_21__21__21_ (in_mSelfTypeEntry, in_unwrappedType, in_weakType, inCompiler) ;
   const GGS_optionalTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -9051,11 +9043,13 @@ init_21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionalTypeForGeneration::
-optionalTypeForGeneration_init_21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                        const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                        Compiler * /* inCompiler */) {
+optionalTypeForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                            const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                                            const GGS_unifiedTypeMapEntry & in_weakType,
+                                            Compiler * /* inCompiler */) {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_unwrappedType = in_unwrappedType ;
+  mProperty_weakType = in_weakType ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9067,10 +9061,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_optionalTypeForGeneration GGS_optionalTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                             const GGS_unifiedTypeMapEntry & in_unwrappedType
+                                                                             const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                                                                             const GGS_unifiedTypeMapEntry & in_weakType
                                                                              COMMA_LOCATION_ARGS) {
   GGS_optionalTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_optionalTypeForGeneration (in_mSelfTypeEntry, in_unwrappedType COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_optionalTypeForGeneration (in_mSelfTypeEntry, in_unwrappedType, in_weakType COMMA_THERE)) ;
   return result ;
 }
 
@@ -9087,16 +9082,31 @@ GGS_unifiedTypeMapEntry GGS_optionalTypeForGeneration::readProperty_unwrappedTyp
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry GGS_optionalTypeForGeneration::readProperty_weakType (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_unifiedTypeMapEntry () ;
+  }else{
+    cPtr_optionalTypeForGeneration * p = (cPtr_optionalTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_optionalTypeForGeneration) ;
+    return p->mProperty_weakType ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @optionalTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
 cPtr_optionalTypeForGeneration::cPtr_optionalTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                const GGS_unifiedTypeMapEntry & in_unwrappedType
+                                                                const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                                                                const GGS_unifiedTypeMapEntry & in_weakType
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
-mProperty_unwrappedType () {
+mProperty_unwrappedType (),
+mProperty_weakType () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
   mProperty_unwrappedType = in_unwrappedType ;
+  mProperty_weakType = in_weakType ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9111,6 +9121,8 @@ void cPtr_optionalTypeForGeneration::description (String & ioString,
   mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_unwrappedType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_weakType.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -9118,7 +9130,7 @@ void cPtr_optionalTypeForGeneration::description (String & ioString,
 
 acPtr_class * cPtr_optionalTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionalTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_unwrappedType COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionalTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_unwrappedType, mProperty_weakType COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9208,7 +9220,6 @@ GGS_optionalTypeForGeneration_2E_weak & GGS_optionalTypeForGeneration_2E_weak::o
 GGS_optionalTypeForGeneration_2E_weak::GGS_optionalTypeForGeneration_2E_weak (const GGS_optionalTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -9783,7 +9794,6 @@ GGS_sortedListTypeForGeneration_2E_weak & GGS_sortedListTypeForGeneration_2E_wea
 GGS_sortedListTypeForGeneration_2E_weak::GGS_sortedListTypeForGeneration_2E_weak (const GGS_sortedListTypeForGeneration & inSource) :
 GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -10429,7 +10439,6 @@ GGS_semanticTypeForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_structTypeForGeneration_2E_weak GGS_structTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11035,7 +11044,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractExtensionGetterForGeneration_2E_weak GGS_abstractExtensionGetterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11595,7 +11603,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractExtensionMethodForGeneration_2E_weak GGS_abstractExtensionMethodForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12153,7 +12160,6 @@ GGS_abstractExtensionSetterForGeneration_2E_weak & GGS_abstractExtensionSetterFo
 GGS_abstractExtensionSetterForGeneration_2E_weak::GGS_abstractExtensionSetterForGeneration_2E_weak (const GGS_abstractExtensionSetterForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13142,7 +13148,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionGetterForGeneration_2E_weak GGS_extensionGetterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13838,7 +13843,6 @@ GGS_extensionMethodForGeneration_2E_weak & GGS_extensionMethodForGeneration_2E_w
 GGS_extensionMethodForGeneration_2E_weak::GGS_extensionMethodForGeneration_2E_weak (const GGS_extensionMethodForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -14538,7 +14542,6 @@ GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionSetterForGeneration_2E_weak GGS_extensionSetterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -15165,7 +15168,6 @@ GGS_extensionInitializerForGeneration_2E_weak & GGS_extensionInitializerForGener
 GGS_extensionInitializerForGeneration_2E_weak::GGS_extensionInitializerForGeneration_2E_weak (const GGS_extensionInitializerForGeneration & inSource) :
 GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

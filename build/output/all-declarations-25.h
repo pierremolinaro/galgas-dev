@@ -572,7 +572,8 @@ extern const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplat
 GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (class Compiler * inCompiler,
                                                                                       const class GGS_string & in_TYPE_5F_NAME,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER
+                                                                                      const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -585,6 +586,7 @@ GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecif
                                                                                                   const class GGS_string & in_TYPE_5F_NAME,
                                                                                                   const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                   const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
-                                                                                                  const class GGS_bool & in_GENERATE_5F_COMPARISON
+                                                                                                  const class GGS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                                  const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
                                                                                                   COMMA_LOCATION_ARGS) ;
 

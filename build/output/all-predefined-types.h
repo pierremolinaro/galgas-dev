@@ -5382,9 +5382,15 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_bigint_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_bigint_3F_ (const GGS_bigint & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_bigint_3F_ (const GGS_bigint & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_bigint_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_bigint unwrappedValue (void) const {

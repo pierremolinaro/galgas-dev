@@ -149,7 +149,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractInputParameter_2E_weak GGS_abstractInputParameter_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -404,7 +403,6 @@ GGS_abstractInputParameter_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputParameterAnonymousVariable_2E_weak GGS_inputParameterAnonymousVariable_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -514,7 +512,6 @@ GGS_inputParameterVariable_2E_weak & GGS_inputParameterVariable_2E_weak::operato
 GGS_inputParameterVariable_2E_weak::GGS_inputParameterVariable_2E_weak (const GGS_inputParameterVariable & inSource) :
 GGS_abstractInputParameter_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -628,7 +625,6 @@ GGS_abstractInputParameter_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputParameterDeclaredVariable_2E_weak GGS_inputParameterDeclaredVariable_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -738,7 +734,6 @@ GGS_inputParameterDeclaredConstant_2E_weak & GGS_inputParameterDeclaredConstant_
 GGS_inputParameterDeclaredConstant_2E_weak::GGS_inputParameterDeclaredConstant_2E_weak (const GGS_inputParameterDeclaredConstant & inSource) :
 GGS_abstractInputParameter_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1439,7 +1434,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_syntaxInstructionAST_2E_weak GGS_syntaxInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1648,7 +1642,6 @@ GGS_semanticInstructionAST_2E_weak & GGS_semanticInstructionAST_2E_weak::operato
 GGS_semanticInstructionAST_2E_weak::GGS_semanticInstructionAST_2E_weak (const GGS_semanticInstructionAST & inSource) :
 GGS_syntaxInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -2171,7 +2164,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_externFunctionDeclarationAST_2E_weak GGS_externFunctionDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2283,7 +2275,6 @@ GGS_externFunctionDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_functionDeclarationAST_2E_weak GGS_functionDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2393,7 +2384,6 @@ GGS_onceFunctionDeclarationAST_2E_weak & GGS_onceFunctionDeclarationAST_2E_weak:
 GGS_onceFunctionDeclarationAST_2E_weak::GGS_onceFunctionDeclarationAST_2E_weak (const GGS_onceFunctionDeclarationAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -3643,7 +3633,6 @@ GGS_filewrapperDeclarationAST_2E_weak & GGS_filewrapperDeclarationAST_2E_weak::o
 GGS_filewrapperDeclarationAST_2E_weak::GGS_filewrapperDeclarationAST_2E_weak (const GGS_filewrapperDeclarationAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -6787,7 +6776,6 @@ GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_galgas_33_SyntaxComponentAST_2E_weak GGS_galgas_33_SyntaxComponentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6897,7 +6885,6 @@ GGS_galgas_33_GrammarComponentAST_2E_weak & GGS_galgas_33_GrammarComponentAST_2E
 GGS_galgas_33_GrammarComponentAST_2E_weak::GGS_galgas_33_GrammarComponentAST_2E_weak (const GGS_galgas_33_GrammarComponentAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

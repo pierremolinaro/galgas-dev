@@ -278,6 +278,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
     optionalClassTypeNameRepresentation = ""
   case element (*) :
     optionalClassTypeNameRepresentation = [self.optionalClassTypeOrNull identifierRepresentation]
+    [self.optionalClassTypeOrNull addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper weakClassGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]

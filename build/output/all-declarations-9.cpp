@@ -52,7 +52,6 @@ GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_closedSliceExpressionForGeneration_2E_weak GGS_closedSliceExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -231,7 +230,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_structPropertyAccessExpressionAST_2E_weak GGS_structPropertyAccessExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -341,7 +339,6 @@ GGS_propertyAccessExpressionForGeneration_2E_weak & GGS_propertyAccessExpression
 GGS_propertyAccessExpressionForGeneration_2E_weak::GGS_propertyAccessExpressionForGeneration_2E_weak (const GGS_propertyAccessExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -665,7 +662,6 @@ GGS_subscriptReadAccessExpressionAST_2E_weak & GGS_subscriptReadAccessExpression
 GGS_subscriptReadAccessExpressionAST_2E_weak::GGS_subscriptReadAccessExpressionAST_2E_weak (const GGS_subscriptReadAccessExpressionAST & inSource) :
 GGS_semanticExpressionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1063,7 +1059,6 @@ GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_subscriptReadAccessExpressionForGeneration_2E_weak GGS_subscriptReadAccessExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1341,7 +1336,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_selfInExpressionAST_2E_weak GGS_selfInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1451,7 +1445,6 @@ GGS_selfInExpressionForGeneration_2E_weak & GGS_selfInExpressionForGeneration_2E
 GGS_selfInExpressionForGeneration_2E_weak::GGS_selfInExpressionForGeneration_2E_weak (const GGS_selfInExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -1754,7 +1747,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_tildeExpressionAST_2E_weak GGS_tildeExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1864,7 +1856,6 @@ GGS_tildeExpressionForGeneration_2E_weak & GGS_tildeExpressionForGeneration_2E_w
 GGS_tildeExpressionForGeneration_2E_weak::GGS_tildeExpressionForGeneration_2E_weak (const GGS_tildeExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -2144,7 +2135,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_trueExpressionAST_2E_weak GGS_trueExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2422,7 +2412,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_falseExpressionAST_2E_weak GGS_falseExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2534,7 +2523,6 @@ GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_trueExpressionForGeneration_2E_weak GGS_trueExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2644,7 +2632,6 @@ GGS_falseExpressionForGeneration_2E_weak & GGS_falseExpressionForGeneration_2E_w
 GGS_falseExpressionForGeneration_2E_weak::GGS_falseExpressionForGeneration_2E_weak (const GGS_falseExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -2947,7 +2934,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_unaryMinusExpressionAST_2E_weak GGS_unaryMinusExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -3057,7 +3043,6 @@ GGS_unaryMinusExpressionForGeneration_2E_weak & GGS_unaryMinusExpressionForGener
 GGS_unaryMinusExpressionForGeneration_2E_weak::GGS_unaryMinusExpressionForGeneration_2E_weak (const GGS_unaryMinusExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -3360,7 +3345,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_unaryPlusExpressionAST_2E_weak GGS_unaryPlusExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -3661,7 +3645,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_unaryWrappingMinusExpressionAST_2E_weak GGS_unaryWrappingMinusExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -3771,7 +3754,6 @@ GGS_unaryWrappingMinusExpressionForGeneration_2E_weak & GGS_unaryWrappingMinusEx
 GGS_unaryWrappingMinusExpressionForGeneration_2E_weak::GGS_unaryWrappingMinusExpressionForGeneration_2E_weak (const GGS_unaryWrappingMinusExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -3885,7 +3867,6 @@ GGS_semanticExpressionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_varInExpressionAST_2E_weak GGS_varInExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -3995,7 +3976,6 @@ GGS_varInExpressionForGeneration_2E_weak & GGS_varInExpressionForGeneration_2E_w
 GGS_varInExpressionForGeneration_2E_weak::GGS_varInExpressionForGeneration_2E_weak (const GGS_varInExpressionForGeneration & inSource) :
 GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -4489,7 +4469,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_assignmentInstructionAST_2E_weak GGS_assignmentInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -4601,7 +4580,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_selfPropertyAssignmentInstructionAST_2E_weak GGS_selfPropertyAssignmentInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -4711,7 +4689,6 @@ GGS_assignmentInstructionForGeneration_2E_weak & GGS_assignmentInstructionForGen
 GGS_assignmentInstructionForGeneration_2E_weak::GGS_assignmentInstructionForGeneration_2E_weak (const GGS_assignmentInstructionForGeneration & inSource) :
 GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -5733,7 +5710,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_structuredCastInstructionAST_2E_weak GGS_structuredCastInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6446,7 +6422,6 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_structuredCastInstructionForGeneration_2E_weak GGS_structuredCastInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6858,7 +6833,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_opAssignExpressionInstructionAST_2E_weak GGS_opAssignExpressionInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6968,7 +6942,6 @@ GGS_plusEqualElementsInstructionAST_2E_weak & GGS_plusEqualElementsInstructionAS
 GGS_plusEqualElementsInstructionAST_2E_weak::GGS_plusEqualElementsInstructionAST_2E_weak (const GGS_plusEqualElementsInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -7363,7 +7336,6 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_plusEqualnstructionForGeneration_2E_weak GGS_plusEqualnstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -7473,7 +7445,6 @@ GGS_opAssignInstructionForGeneration_2E_weak & GGS_opAssignInstructionForGenerat
 GGS_opAssignInstructionForGeneration_2E_weak::GGS_opAssignInstructionForGeneration_2E_weak (const GGS_opAssignInstructionForGeneration & inSource) :
 GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -7759,7 +7730,6 @@ GGS_dropInstructionAST_2E_weak & GGS_dropInstructionAST_2E_weak::operator = (con
 GGS_dropInstructionAST_2E_weak::GGS_dropInstructionAST_2E_weak (const GGS_dropInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -8797,7 +8767,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_errorInstructionAST_2E_weak GGS_errorInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -9683,7 +9652,6 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_errorInstructionForGeneration_2E_weak GGS_errorInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -10429,7 +10397,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractEnumeratedCollectionAST_2E_weak GGS_abstractEnumeratedCollectionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -10541,7 +10508,6 @@ GGS_abstractEnumeratedCollectionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak GGS_enumeratedCollectionImplicitVarInExpAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -10651,7 +10617,6 @@ GGS_enumeratedCollectionVarInExpAST_2E_weak & GGS_enumeratedCollectionVarInExpAS
 GGS_enumeratedCollectionVarInExpAST_2E_weak::GGS_enumeratedCollectionVarInExpAST_2E_weak (const GGS_enumeratedCollectionVarInExpAST & inSource) :
 GGS_abstractEnumeratedCollectionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -10998,7 +10963,6 @@ GGS_enumeratedCollectionCstListInExpAST_2E_weak & GGS_enumeratedCollectionCstLis
 GGS_enumeratedCollectionCstListInExpAST_2E_weak::GGS_enumeratedCollectionCstListInExpAST_2E_weak (const GGS_enumeratedCollectionCstListInExpAST & inSource) :
 GGS_abstractEnumeratedCollectionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -11583,7 +11547,6 @@ GGS_forInstructionAST_2E_weak & GGS_forInstructionAST_2E_weak::operator = (const
 GGS_forInstructionAST_2E_weak::GGS_forInstructionAST_2E_weak (const GGS_forInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -12277,7 +12240,6 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_forInstructionForGeneration_2E_weak GGS_forInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12387,7 +12349,6 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak & GGS_abst
 GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak::GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -12642,7 +12603,6 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak & GGS_grammarI
 GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak::GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak (const GGS_grammarInstructionSyntaxDirectedTranslationResultNone & inSource) :
 GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -12922,7 +12882,6 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource)
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13032,7 +12991,6 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak & GGS_grammar
 GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak::GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak (const GGS_grammarInstructionSyntaxDirectedTranslationResultInVar & inSource) :
 GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13146,7 +13104,6 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource)
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13256,7 +13213,6 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak & G
 GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak::GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak (const GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst & inSource) :
 GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13370,7 +13326,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInFileInstructionAST_2E_weak GGS_grammarInFileInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13480,7 +13435,6 @@ GGS_grammarInStringInstructionAST_2E_weak & GGS_grammarInStringInstructionAST_2E
 GGS_grammarInStringInstructionAST_2E_weak::GGS_grammarInStringInstructionAST_2E_weak (const GGS_grammarInStringInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13594,7 +13548,6 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_grammarInstructionWithSourceFileForGeneration_2E_weak GGS_grammarInstructionWithSourceFileForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13704,7 +13657,6 @@ GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak & GGS_grammarIns
 GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak::GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak (const GGS_grammarInstructionWithSourceExpressionForGeneration & inSource) :
 GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -13919,7 +13871,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_incDecInstructionAST_2E_weak GGS_incDecInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14029,7 +13980,6 @@ GGS_incDecNoOVFInstructionAST_2E_weak & GGS_incDecNoOVFInstructionAST_2E_weak::o
 GGS_incDecNoOVFInstructionAST_2E_weak::GGS_incDecNoOVFInstructionAST_2E_weak (const GGS_incDecNoOVFInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -14317,7 +14267,6 @@ GGS_semanticInstructionAST_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_selfIncDecInstructionAST_2E_weak GGS_selfIncDecInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14601,7 +14550,6 @@ GGS_selfIncDecNoOVFInstructionAST_2E_weak & GGS_selfIncDecNoOVFInstructionAST_2E
 GGS_selfIncDecNoOVFInstructionAST_2E_weak::GGS_selfIncDecNoOVFInstructionAST_2E_weak (const GGS_selfIncDecNoOVFInstructionAST & inSource) :
 GGS_semanticInstructionAST_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -14973,7 +14921,6 @@ GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_incDecInstructionForGeneration_2E_weak GGS_incDecInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -15341,7 +15288,6 @@ GGS_incDecNoOVFInstructionForGeneration_2E_weak & GGS_incDecNoOVFInstructionForG
 GGS_incDecNoOVFInstructionForGeneration_2E_weak::GGS_incDecNoOVFInstructionForGeneration_2E_weak (const GGS_incDecNoOVFInstructionForGeneration & inSource) :
 GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

@@ -6302,6 +6302,7 @@ mValue (inSource),
 mState (OptionalState::valuated) {
 }
 
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigint_3F_ GGS_bigint_3F_::init_nil (void) {

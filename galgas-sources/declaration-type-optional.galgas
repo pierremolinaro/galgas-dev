@@ -162,9 +162,11 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
   #---
     let optionalType = [ioTypeMap typeMapEntryForLKey !self.optionalTypeName]
     let unwrappedType = [ioTypeMap typeMapEntryForLKey !self.unwrappedTypeName]
+    let correspondingWeakTypeName = makeWeakTypeLName (![[unwrappedType definition] typeName])
+    let correspondingWeakTypeOrNull = [ioTypeMap typeMapEntryOrNullForLKey !correspondingWeakTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "optional type " + self.optionalTypeName
-      !@optionalTypeForGeneration (optionalType, unwrappedType)
+      !@optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull)
   }
 
   #·······························································································
@@ -177,6 +179,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
 refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry unwrappedType
+  private let @unifiedTypeMapEntry weakType // is null if no weak type
 
   #·······························································································
 
@@ -188,6 +191,7 @@ refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
       !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       ![self.unwrappedType identifierRepresentation]
+      !if [self.weakType isNull] then "" else [self.weakType identifierRepresentation] end
     ]
     outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
       !selfTypeDefinition.typeName.string
@@ -215,12 +219,16 @@ refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
                                           !@string outImplementation {
     [self.unwrappedType addHeaderFileName !?ioInclusionSet]
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
+    if not [self.weakType isNull] then
+      [self.weakType addHeaderFileName !?ioInclusionSet]
+    end
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     outImplementation = [filewrapper optionalTypeGenerationTemplate.optionalTypeSpecificImplementation
       !selfTypeDefinition.typeName.string
       ![self.mSelfTypeEntry identifierRepresentation]
       ![self.unwrappedType identifierRepresentation]
       ![selfTypeDefinition.features generateCppObjectComparison]
+      !if [self.weakType isNull] then "" else [self.weakType identifierRepresentation] end
     ]
   }
 
@@ -237,12 +245,14 @@ private filewrapper optionalTypeGenerationTemplate in "+generation-templates/typ
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string UNWRAPPED_TYPE_IDENTIFIER
+    ?@string WEAK_TYPE_IDENTIFIER // "" if no weak type
 
   template optionalTypeSpecificImplementation "GALGAS_optional.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string UNWRAPPED_TYPE_IDENTIFIER
     ?@bool GENERATE_COMPARISON
+    ?@string WEAK_TYPE_IDENTIFIER // "" if no weak type
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -4634,7 +4634,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticExpressionForGeneration_2E_weak GGS_semanticExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -5155,7 +5154,6 @@ GGS_semanticExpressionForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_castInExpressionForGeneration_2E_weak GGS_castInExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -5381,7 +5379,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_actualParameterForGeneration_2E_weak GGS_actualParameterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -5533,7 +5530,6 @@ GGS_outputActualParameterForGeneration_2E_weak & GGS_outputActualParameterForGen
 GGS_outputActualParameterForGeneration_2E_weak::GGS_outputActualParameterForGeneration_2E_weak (const GGS_outputActualParameterForGeneration & inSource) :
 GGS_actualParameterForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -6065,7 +6061,6 @@ GGS_actualParameterForGeneration_2E_weak (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_outputInputActualParameterForGeneration_2E_weak GGS_outputInputActualParameterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6175,7 +6170,6 @@ GGS_inputActualParameterForGeneration_2E_weak & GGS_inputActualParameterForGener
 GGS_inputActualParameterForGeneration_2E_weak::GGS_inputActualParameterForGeneration_2E_weak (const GGS_inputActualParameterForGeneration & inSource) :
 GGS_actualParameterForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -6484,7 +6478,6 @@ GGS_inputJokerParameterForGeneration_2E_weak & GGS_inputJokerParameterForGenerat
 GGS_inputJokerParameterForGeneration_2E_weak::GGS_inputJokerParameterForGeneration_2E_weak (const GGS_inputJokerParameterForGeneration & inSource) :
 GGS_actualParameterForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -7104,7 +7097,6 @@ AC_GALGAS_weak_reference (inSource) {
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticInstructionForGeneration_2E_weak GGS_semanticInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -7401,7 +7393,6 @@ GGS_semanticBlockInstructionForGeneration_2E_weak & GGS_semanticBlockInstruction
 GGS_semanticBlockInstructionForGeneration_2E_weak::GGS_semanticBlockInstructionForGeneration_2E_weak (const GGS_semanticBlockInstructionForGeneration & inSource) :
 GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -8083,7 +8074,6 @@ GGS_semanticDeclarationForGeneration_2E_weak & GGS_semanticDeclarationForGenerat
 GGS_semanticDeclarationForGeneration_2E_weak::GGS_semanticDeclarationForGeneration_2E_weak (const GGS_semanticDeclarationForGeneration & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------
@@ -11049,7 +11039,6 @@ GGS_syntaxInstructionForGeneration_2E_weak & GGS_syntaxInstructionForGeneration_
 GGS_syntaxInstructionForGeneration_2E_weak::GGS_syntaxInstructionForGeneration_2E_weak (const GGS_syntaxInstructionForGeneration & inSource) :
 GGS_semanticInstructionForGeneration_2E_weak (inSource) {
 }
-
 
 
 //--------------------------------------------------------------------------------------------------

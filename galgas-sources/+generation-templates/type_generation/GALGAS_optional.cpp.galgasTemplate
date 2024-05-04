@@ -18,6 +18,25 @@ mValue (inSource),
 mState (OptionalState::valuated) {
 }
 
+%if WEAK_TYPE_IDENTIFIER != "" then
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!WEAK_TYPE_IDENTIFIER% & inSource) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+  if (inSource.isValid ()) {
+    const acStrongPtr_class * p = inSource.ptr () ;
+    if (p == nullptr) {
+      mState = OptionalState::isNil ;
+    }else{
+      mValue = * ((GGS_%!UNWRAPPED_TYPE_IDENTIFIER% *) p) ;
+      mState = OptionalState::valuated ;
+    }
+  }
+}
+%end
+%
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init_nil (void) {

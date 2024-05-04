@@ -491,9 +491,15 @@ class GGS_ifTestForGeneration_2E_letExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifTestForGeneration_2E_letExp_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_ifTestForGeneration_2E_letExp_3F_ (const GGS_ifTestForGeneration_2E_letExp & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_ifTestForGeneration_2E_letExp_3F_ (const GGS_ifTestForGeneration_2E_letExp & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_ifTestForGeneration_2E_letExp_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_ifTestForGeneration_2E_letExp unwrappedValue (void) const {
@@ -665,9 +671,15 @@ class GGS_ifTestForGeneration_2E_optionalExp_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifTestForGeneration_2E_optionalExp_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_ifTestForGeneration_2E_optionalExp_3F_ (const GGS_ifTestForGeneration_2E_optionalExp & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_ifTestForGeneration_2E_optionalExp_3F_ (const GGS_ifTestForGeneration_2E_optionalExp & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_ifTestForGeneration_2E_optionalExp_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_ifTestForGeneration_2E_optionalExp unwrappedValue (void) const {
@@ -815,9 +827,15 @@ class GGS_ifTestForGeneration_2E_regular_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifTestForGeneration_2E_regular_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_ifTestForGeneration_2E_regular_3F_ (const GGS_ifTestForGeneration_2E_regular & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_ifTestForGeneration_2E_regular_3F_ (const GGS_ifTestForGeneration_2E_regular & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_ifTestForGeneration_2E_regular_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_ifTestForGeneration_2E_regular unwrappedValue (void) const {

@@ -20,8 +20,6 @@ class GGS_%!WEAK_REF_TYPE_IDENTIFIER% : public %
 //--------------------------------- Constructor and assignment from optional reference
 %if OPTIONAL_CLASS_TYPE_IDENTIFIER != "" then
 %  public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% (const class GGS_%!OPTIONAL_CLASS_TYPE_IDENTIFIER% & inSource) ;
-
- public: GGS_%!WEAK_REF_TYPE_IDENTIFIER% & operator = (const class GGS_%!OPTIONAL_CLASS_TYPE_IDENTIFIER% & inSource) ;
 %end%
 //--------------------------------- nil initializer
   public: inline static GGS_%!WEAK_REF_TYPE_IDENTIFIER% init_nil (void) {

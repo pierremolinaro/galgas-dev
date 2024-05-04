@@ -16,7 +16,7 @@ class @classeB {
 //-----------------------------------------------------------------------------------------------
 
 class @classeC {
-  private var @uint x = 7
+  public var @uint x = 7
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ class @classeG : @classeC {
 //-----------------------------------------------------------------------------------------------
 
 class @classeH : @classeA {
-  private let @uint y
+  public let @uint y
   
   init (?let @uint inX, ?let @uint inY) {
     self.y = inY
@@ -61,9 +61,10 @@ class @classeH : @classeA {
 //-----------------------------------------------------------------------------------------------
 
 class @classeI : @classeC {
-  private let @uint y
+  public let @uint y
+  public weak var @classeH z = nil
   
-  init (?let @uint inY) {
+  init (let @uint inY) {
     self.y = inY
     super.init ()
   }
@@ -72,8 +73,16 @@ class @classeI : @classeC {
 //-----------------------------------------------------------------------------------------------
 
 proc testsuite_reference_class () {
-//  let a = @classeA.new (5)
-//  print (a.x)
+  println ("*************************************** begin of reference classe test")
+  var a = @classeI (5)
+  println (a.x)
+  println (a.y)
+  a.z = @classeH (9, 11)
+  var @classeH? b = @classeH (13, 17)
+  a.z = b
+  a.z = nil
+  b = a.z 
+  println ("*************************************** end of reference classe test")
 }
 
 //-----------------------------------------------------------------------------------------------
