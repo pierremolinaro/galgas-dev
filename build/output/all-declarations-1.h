@@ -143,6 +143,8 @@ class GGS_templateBlockInstructionForGeneration_2E_weak : public GGS_templateIns
 
   public: GGS_templateBlockInstructionForGeneration_2E_weak & operator = (const class GGS_templateBlockInstructionForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateBlockInstructionForGeneration_2E_weak init_nil (void) {
     GGS_templateBlockInstructionForGeneration_2E_weak result ;
@@ -330,6 +332,8 @@ class GGS_templateInstructionGetColumnLocationForGeneration_2E_weak : public GGS
 
   public: GGS_templateInstructionGetColumnLocationForGeneration_2E_weak & operator = (const class GGS_templateInstructionGetColumnLocationForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionGetColumnLocationForGeneration_2E_weak init_nil (void) {
     GGS_templateInstructionGetColumnLocationForGeneration_2E_weak result ;
@@ -516,6 +520,8 @@ class GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak : public GG
   public: GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak (const class GGS_templateInstructionGotoColumnLocationForGeneration & inSource) ;
 
   public: GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak & operator = (const class GGS_templateInstructionGotoColumnLocationForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak init_nil (void) {
@@ -969,6 +975,8 @@ class GGS_templateInstructionIfForGeneration_2E_weak : public GGS_templateInstru
   public: GGS_templateInstructionIfForGeneration_2E_weak (const class GGS_templateInstructionIfForGeneration & inSource) ;
 
   public: GGS_templateInstructionIfForGeneration_2E_weak & operator = (const class GGS_templateInstructionIfForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionIfForGeneration_2E_weak init_nil (void) {
@@ -1589,6 +1597,8 @@ class GGS_unifiedTypeMapElementClass_2E_weak : public AC_GALGAS_weak_reference {
   public: GGS_unifiedTypeMapElementClass_2E_weak (const class GGS_unifiedTypeMapElementClass & inSource) ;
 
   public: GGS_unifiedTypeMapElementClass_2E_weak & operator = (const class GGS_unifiedTypeMapElementClass & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_unifiedTypeMapElementClass_2E_weak init_nil (void) {
@@ -4021,6 +4031,8 @@ class GGS_templateGetterCallInExpressionAST_2E_weak : public GGS_templateExpress
 
   public: GGS_templateGetterCallInExpressionAST_2E_weak & operator = (const class GGS_templateGetterCallInExpressionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateGetterCallInExpressionAST_2E_weak init_nil (void) {
     GGS_templateGetterCallInExpressionAST_2E_weak result ;
@@ -4868,6 +4880,8 @@ class GGS_templateInstructionForeachAST_2E_weak : public GGS_templateInstruction
 
   public: GGS_templateInstructionForeachAST_2E_weak & operator = (const class GGS_templateInstructionForeachAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionForeachAST_2E_weak init_nil (void) {
     GGS_templateInstructionForeachAST_2E_weak result ;
@@ -5110,6 +5124,8 @@ class GGS_templateInstructionForeachForGeneration_2E_weak : public GGS_templateI
   public: GGS_templateInstructionForeachForGeneration_2E_weak (const class GGS_templateInstructionForeachForGeneration & inSource) ;
 
   public: GGS_templateInstructionForeachForGeneration_2E_weak & operator = (const class GGS_templateInstructionForeachForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionForeachForGeneration_2E_weak init_nil (void) {
@@ -6068,6 +6084,8 @@ class GGS_templateInstructionSwitchAST_2E_weak : public GGS_templateInstructionA
 
   public: GGS_templateInstructionSwitchAST_2E_weak & operator = (const class GGS_templateInstructionSwitchAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionSwitchAST_2E_weak init_nil (void) {
     GGS_templateInstructionSwitchAST_2E_weak result ;
@@ -6875,6 +6893,8 @@ class GGS_templateInstructionSwitchForGeneration_2E_weak : public GGS_templateIn
   public: GGS_templateInstructionSwitchForGeneration_2E_weak (const class GGS_templateInstructionSwitchForGeneration & inSource) ;
 
   public: GGS_templateInstructionSwitchForGeneration_2E_weak & operator = (const class GGS_templateInstructionSwitchForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionSwitchForGeneration_2E_weak init_nil (void) {
@@ -10168,6 +10188,8 @@ class GGS_semanticDeclarationAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_semanticDeclarationAST_2E_weak & operator = (const class GGS_semanticDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_semanticDeclarationAST_2E_weak init_nil (void) {
     GGS_semanticDeclarationAST_2E_weak result ;
@@ -10412,6 +10434,8 @@ class GGS_templateLexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAS
 
   public: GGS_templateLexiqueComponentAST_2E_weak & operator = (const class GGS_templateLexiqueComponentAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateLexiqueComponentAST_2E_weak init_nil (void) {
     GGS_templateLexiqueComponentAST_2E_weak result ;
@@ -10600,6 +10624,8 @@ class GGS_lexicalExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
   public: GGS_lexicalExpressionAST_2E_weak (const class GGS_lexicalExpressionAST & inSource) ;
 
   public: GGS_lexicalExpressionAST_2E_weak & operator = (const class GGS_lexicalExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalExpressionAST_2E_weak init_nil (void) {
@@ -10796,6 +10822,8 @@ class GGS_lexicalInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
   public: GGS_lexicalInstructionAST_2E_weak (const class GGS_lexicalInstructionAST & inSource) ;
 
   public: GGS_lexicalInstructionAST_2E_weak & operator = (const class GGS_lexicalInstructionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalInstructionAST_2E_weak init_nil (void) {
@@ -11105,6 +11133,8 @@ class GGS_abstractLexicalRuleAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_abstractLexicalRuleAST_2E_weak & operator = (const class GGS_abstractLexicalRuleAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_abstractLexicalRuleAST_2E_weak init_nil (void) {
     GGS_abstractLexicalRuleAST_2E_weak result ;
@@ -11333,6 +11363,8 @@ class GGS_lexicalImplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_
 
   public: GGS_lexicalImplicitRuleAST_2E_weak & operator = (const class GGS_lexicalImplicitRuleAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalImplicitRuleAST_2E_weak init_nil (void) {
     GGS_lexicalImplicitRuleAST_2E_weak result ;
@@ -11547,6 +11579,8 @@ class GGS_lexicalExplicitRuleAST_2E_weak : public GGS_abstractLexicalRuleAST_2E_
   public: GGS_lexicalExplicitRuleAST_2E_weak (const class GGS_lexicalExplicitRuleAST & inSource) ;
 
   public: GGS_lexicalExplicitRuleAST_2E_weak & operator = (const class GGS_lexicalExplicitRuleAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalExplicitRuleAST_2E_weak init_nil (void) {
@@ -11959,6 +11993,8 @@ class GGS_lexicalOrExpressionAST_2E_weak : public GGS_lexicalExpressionAST_2E_we
 
   public: GGS_lexicalOrExpressionAST_2E_weak & operator = (const class GGS_lexicalOrExpressionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalOrExpressionAST_2E_weak init_nil (void) {
     GGS_lexicalOrExpressionAST_2E_weak result ;
@@ -12161,6 +12197,8 @@ class GGS_lexicalCharacterSetMatchAST_2E_weak : public GGS_lexicalExpressionAST_
 
   public: GGS_lexicalCharacterSetMatchAST_2E_weak & operator = (const class GGS_lexicalCharacterSetMatchAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalCharacterSetMatchAST_2E_weak init_nil (void) {
     GGS_lexicalCharacterSetMatchAST_2E_weak result ;
@@ -12362,6 +12400,8 @@ class GGS_lexicalCharacterMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_
   public: GGS_lexicalCharacterMatchAST_2E_weak (const class GGS_lexicalCharacterMatchAST & inSource) ;
 
   public: GGS_lexicalCharacterMatchAST_2E_weak & operator = (const class GGS_lexicalCharacterMatchAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalCharacterMatchAST_2E_weak init_nil (void) {
@@ -12572,6 +12612,8 @@ class GGS_lexicalCharacterIntervalMatchAST_2E_weak : public GGS_lexicalExpressio
 
   public: GGS_lexicalCharacterIntervalMatchAST_2E_weak & operator = (const class GGS_lexicalCharacterIntervalMatchAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalCharacterIntervalMatchAST_2E_weak init_nil (void) {
     GGS_lexicalCharacterIntervalMatchAST_2E_weak result ;
@@ -12773,6 +12815,8 @@ class GGS_lexicalStringMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_wea
   public: GGS_lexicalStringMatchAST_2E_weak (const class GGS_lexicalStringMatchAST & inSource) ;
 
   public: GGS_lexicalStringMatchAST_2E_weak & operator = (const class GGS_lexicalStringMatchAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalStringMatchAST_2E_weak init_nil (void) {
@@ -12982,6 +13026,8 @@ class GGS_lexicalStringNotMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_
   public: GGS_lexicalStringNotMatchAST_2E_weak (const class GGS_lexicalStringNotMatchAST & inSource) ;
 
   public: GGS_lexicalStringNotMatchAST_2E_weak & operator = (const class GGS_lexicalStringNotMatchAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexicalStringNotMatchAST_2E_weak init_nil (void) {

@@ -187,6 +187,8 @@ class GGS_optionComponentForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_optionComponentForGeneration_2E_weak & operator = (const class GGS_optionComponentForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_optionComponentForGeneration_2E_weak init_nil (void) {
     GGS_optionComponentForGeneration_2E_weak result ;
@@ -387,6 +389,8 @@ class GGS_arrayTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
   public: GGS_arrayTypeForGeneration_2E_weak (const class GGS_arrayTypeForGeneration & inSource) ;
 
   public: GGS_arrayTypeForGeneration_2E_weak & operator = (const class GGS_arrayTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_arrayTypeForGeneration_2E_weak init_nil (void) {

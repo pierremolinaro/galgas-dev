@@ -157,6 +157,8 @@ class GGS_stringPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak
 
   public: GGS_stringPredefinedTypeAST_2E_weak & operator = (const class GGS_stringPredefinedTypeAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_stringPredefinedTypeAST_2E_weak init_nil (void) {
     GGS_stringPredefinedTypeAST_2E_weak result ;
@@ -368,6 +370,8 @@ class GGS_timerPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak 
 
   public: GGS_timerPredefinedTypeAST_2E_weak & operator = (const class GGS_timerPredefinedTypeAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_timerPredefinedTypeAST_2E_weak init_nil (void) {
     GGS_timerPredefinedTypeAST_2E_weak result ;
@@ -570,6 +574,8 @@ class GGS_typePredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
   public: GGS_typePredefinedTypeAST_2E_weak (const class GGS_typePredefinedTypeAST & inSource) ;
 
   public: GGS_typePredefinedTypeAST_2E_weak & operator = (const class GGS_typePredefinedTypeAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_typePredefinedTypeAST_2E_weak init_nil (void) {
@@ -779,6 +785,8 @@ class GGS_uintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 
   public: GGS_uintPredefinedTypeAST_2E_weak & operator = (const class GGS_uintPredefinedTypeAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_uintPredefinedTypeAST_2E_weak init_nil (void) {
     GGS_uintPredefinedTypeAST_2E_weak result ;
@@ -981,6 +989,8 @@ class GGS_uint_36__34_PredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2
   public: GGS_uint_36__34_PredefinedTypeAST_2E_weak (const class GGS_uint_36__34_PredefinedTypeAST & inSource) ;
 
   public: GGS_uint_36__34_PredefinedTypeAST_2E_weak & operator = (const class GGS_uint_36__34_PredefinedTypeAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_uint_36__34_PredefinedTypeAST_2E_weak init_nil (void) {
@@ -2405,6 +2415,8 @@ class GGS_arrayTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E
 
   public: GGS_arrayTypeDeclarationAST_2E_weak & operator = (const class GGS_arrayTypeDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_arrayTypeDeclarationAST_2E_weak init_nil (void) {
     GGS_arrayTypeDeclarationAST_2E_weak result ;
@@ -2641,6 +2653,8 @@ class GGS_boolsetDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_w
   public: GGS_boolsetDeclarationAST_2E_weak (const class GGS_boolsetDeclarationAST & inSource) ;
 
   public: GGS_boolsetDeclarationAST_2E_weak & operator = (const class GGS_boolsetDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_boolsetDeclarationAST_2E_weak init_nil (void) {
@@ -2906,6 +2920,8 @@ class GGS_classDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
   public: GGS_classDeclarationAST_2E_weak (const class GGS_classDeclarationAST & inSource) ;
 
   public: GGS_classDeclarationAST_2E_weak & operator = (const class GGS_classDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_classDeclarationAST_2E_weak init_nil (void) {
@@ -3815,6 +3831,8 @@ class GGS_weakReferenceDeclarationAST_2E_weak : public GGS_semanticDeclarationAS
 
   public: GGS_weakReferenceDeclarationAST_2E_weak & operator = (const class GGS_weakReferenceDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_weakReferenceDeclarationAST_2E_weak init_nil (void) {
     GGS_weakReferenceDeclarationAST_2E_weak result ;
@@ -4639,6 +4657,8 @@ class GGS_enumDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
   public: GGS_enumDeclarationAST_2E_weak (const class GGS_enumDeclarationAST & inSource) ;
 
   public: GGS_enumDeclarationAST_2E_weak & operator = (const class GGS_enumDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_enumDeclarationAST_2E_weak init_nil (void) {
@@ -7172,6 +7192,8 @@ class GGS_externTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2
 
   public: GGS_externTypeDeclarationAST_2E_weak & operator = (const class GGS_externTypeDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_externTypeDeclarationAST_2E_weak init_nil (void) {
     GGS_externTypeDeclarationAST_2E_weak result ;
@@ -7661,6 +7683,8 @@ class GGS_graphDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
 
   public: GGS_graphDeclarationAST_2E_weak & operator = (const class GGS_graphDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_graphDeclarationAST_2E_weak init_nil (void) {
     GGS_graphDeclarationAST_2E_weak result ;
@@ -7909,6 +7933,8 @@ class GGS_listDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
   public: GGS_listDeclarationAST_2E_weak & operator = (const class GGS_listDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_listDeclarationAST_2E_weak init_nil (void) {
     GGS_listDeclarationAST_2E_weak result ;
@@ -8156,6 +8182,8 @@ class GGS_dictDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
   public: GGS_dictDeclarationAST_2E_weak (const class GGS_dictDeclarationAST & inSource) ;
 
   public: GGS_dictDeclarationAST_2E_weak & operator = (const class GGS_dictDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_dictDeclarationAST_2E_weak init_nil (void) {
@@ -9434,6 +9462,8 @@ class GGS_mapDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak 
 
   public: GGS_mapDeclarationAST_2E_weak & operator = (const class GGS_mapDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_mapDeclarationAST_2E_weak init_nil (void) {
     GGS_mapDeclarationAST_2E_weak result ;
@@ -10237,6 +10267,8 @@ class GGS_optionalTypeDeclarationAST_2E_weak : public GGS_semanticDeclarationAST
 
   public: GGS_optionalTypeDeclarationAST_2E_weak & operator = (const class GGS_optionalTypeDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_optionalTypeDeclarationAST_2E_weak init_nil (void) {
     GGS_optionalTypeDeclarationAST_2E_weak result ;
@@ -10736,6 +10768,8 @@ class GGS_sortedListDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2
   public: GGS_sortedListDeclarationAST_2E_weak (const class GGS_sortedListDeclarationAST & inSource) ;
 
   public: GGS_sortedListDeclarationAST_2E_weak & operator = (const class GGS_sortedListDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_sortedListDeclarationAST_2E_weak init_nil (void) {
@@ -11272,6 +11306,8 @@ class GGS_structDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_we
 
   public: GGS_structDeclarationAST_2E_weak & operator = (const class GGS_structDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_structDeclarationAST_2E_weak init_nil (void) {
     GGS_structDeclarationAST_2E_weak result ;
@@ -11530,6 +11566,8 @@ class GGS_abstractExtensionGetterAST_2E_weak : public GGS_semanticDeclarationAST
   public: GGS_abstractExtensionGetterAST_2E_weak (const class GGS_abstractExtensionGetterAST & inSource) ;
 
   public: GGS_abstractExtensionGetterAST_2E_weak & operator = (const class GGS_abstractExtensionGetterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_abstractExtensionGetterAST_2E_weak init_nil (void) {
@@ -12131,6 +12169,8 @@ class GGS_abstractExtensionMethodAST_2E_weak : public GGS_semanticDeclarationAST
 
   public: GGS_abstractExtensionMethodAST_2E_weak & operator = (const class GGS_abstractExtensionMethodAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_abstractExtensionMethodAST_2E_weak init_nil (void) {
     GGS_abstractExtensionMethodAST_2E_weak result ;
@@ -12730,6 +12770,8 @@ class GGS_abstractExtensionSetterAST_2E_weak : public GGS_semanticDeclarationAST
   public: GGS_abstractExtensionSetterAST_2E_weak (const class GGS_abstractExtensionSetterAST & inSource) ;
 
   public: GGS_abstractExtensionSetterAST_2E_weak & operator = (const class GGS_abstractExtensionSetterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_abstractExtensionSetterAST_2E_weak init_nil (void) {

@@ -51,6 +51,8 @@ GGS_equatableExtensionAST_2E_weak::GGS_equatableExtensionAST_2E_weak (const GGS_
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_equatableExtensionAST_2E_weak GGS_equatableExtensionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -569,6 +571,8 @@ GGS_extensionGetterAST_2E_weak & GGS_extensionGetterAST_2E_weak::operator = (con
 GGS_extensionGetterAST_2E_weak::GGS_extensionGetterAST_2E_weak (const GGS_extensionGetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1089,6 +1093,8 @@ GGS_extensionMethodAST_2E_weak::GGS_extensionMethodAST_2E_weak (const GGS_extens
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_extensionMethodAST_2E_weak GGS_extensionMethodAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1198,6 +1204,8 @@ GGS_extensionSetterAST_2E_weak & GGS_extensionSetterAST_2E_weak::operator = (con
 GGS_extensionSetterAST_2E_weak::GGS_extensionSetterAST_2E_weak (const GGS_extensionSetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1309,6 +1317,8 @@ GGS_initializerAST_2E_weak::GGS_initializerAST_2E_weak (const GGS_initializerAST
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_initializerAST_2E_weak GGS_initializerAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1418,6 +1428,8 @@ GGS_overridingAbstractExtensionGetterAST_2E_weak & GGS_overridingAbstractExtensi
 GGS_overridingAbstractExtensionGetterAST_2E_weak::GGS_overridingAbstractExtensionGetterAST_2E_weak (const GGS_overridingAbstractExtensionGetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1529,6 +1541,8 @@ GGS_overridingAbstractExtensionMethodAST_2E_weak::GGS_overridingAbstractExtensio
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingAbstractExtensionMethodAST_2E_weak GGS_overridingAbstractExtensionMethodAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1638,6 +1652,8 @@ GGS_overridingAbstractExtensionSetterAST_2E_weak & GGS_overridingAbstractExtensi
 GGS_overridingAbstractExtensionSetterAST_2E_weak::GGS_overridingAbstractExtensionSetterAST_2E_weak (const GGS_overridingAbstractExtensionSetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1749,6 +1765,8 @@ GGS_overridingExtensionGetterAST_2E_weak::GGS_overridingExtensionGetterAST_2E_we
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionGetterAST_2E_weak GGS_overridingExtensionGetterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1859,6 +1877,8 @@ GGS_overridingExtensionMethodAST_2E_weak::GGS_overridingExtensionMethodAST_2E_we
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_overridingExtensionMethodAST_2E_weak GGS_overridingExtensionMethodAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1968,6 +1988,8 @@ GGS_overridingExtensionSetterAST_2E_weak & GGS_overridingExtensionSetterAST_2E_w
 GGS_overridingExtensionSetterAST_2E_weak::GGS_overridingExtensionSetterAST_2E_weak (const GGS_overridingExtensionSetterAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11423,6 +11445,47 @@ GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GGS_unifiedTy
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension Getter '@unifiedTypeMap typeMapEntryOrNullForLKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const GGS_unifiedTypeMap & inObject,
+                                                                   const GGS_lstring & constinArgument_inLKey,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry result_result ; // Returned variable
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 87)) ;
+    }
+  }
+  if (kBoolFalse == test_0) {
+    enumGalgasBool test_1 = kBoolTrue ;
+    if (kBoolTrue == test_1) {
+      const GGS_unifiedTypeMap temp_2 = inObject ;
+      const GGS_unifiedTypeMap_2E_element var_node_3648 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+        test_1 = kBoolFalse ;
+      }
+      if (kBoolTrue == test_1) {
+        result_result = GGS_unifiedTypeMapEntry::class_func_element (var_node_3648.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 89)) ;
+      }
+    }
+    if (kBoolFalse == test_1) {
+      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas", 91)) ;
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension method '@unifiedTypeMap insertType'
 //
 //--------------------------------------------------------------------------------------------------
@@ -11435,35 +11498,35 @@ void extensionSetter_insertType (GGS_unifiedTypeMap & ioObject,
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GGS_unifiedTypeMap temp_1 = ioObject ;
-    const GGS_unifiedTypeMap_2E_element var_node_3602 = temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    const GGS_unifiedTypeMap_2E_element var_node_3975 = temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
     if (!temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_node_3602.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
+      switch (var_node_3975.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
       case GGS_typeDefinition::Enumeration::invalid:
         break ;
       case GGS_typeDefinition::Enumeration::enum_solved:
         {
-          GGS_unifiedTypeDefinition extractedValue_3691__0 ;
-          var_node_3602.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_3691__0) ;
+          GGS_unifiedTypeDefinition extractedValue_4064__0 ;
+          var_node_3975.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4064__0) ;
           TC_Array <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GGS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 89)) ;
+          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GGS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 101)) ;
         }
         break ;
       case GGS_typeDefinition::Enumeration::enum_unsolved:
         {
-          GGS_unifiedTypeMapElementClass var_e_3780 = var_node_3602.readProperty_mElement () ;
-          var_e_3780.setProperty_mDefinition (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 92))) ;
+          GGS_unifiedTypeMapElementClass var_e_4153 = var_node_3975.readProperty_mElement () ;
+          var_e_4153.setProperty_mDefinition (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 104))) ;
         }
         break ;
       }
     }
   }
   if (kBoolFalse == test_0) {
-    GGS_unifiedTypeMapElementClass var_newElement_3891 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 95)), inCompiler COMMA_HERE) ;
+    GGS_unifiedTypeMapElementClass var_newElement_4264 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas", 107)), inCompiler COMMA_HERE) ;
     {
-    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_3891, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 96)) ;
+    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_4264, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)) ;
     }
   }
 }
@@ -11483,25 +11546,25 @@ GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeM
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GGS_unifiedTypeMap temp_1 = inObject ;
-    const GGS_unifiedTypeMap_2E_element var_node_4229 = temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    const GGS_unifiedTypeMap_2E_element var_node_4602 = temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
     if (!temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_0 = kBoolFalse ;
     }
     if (kBoolTrue == test_0) {
-      switch (var_node_4229.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
+      switch (var_node_4602.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
       case GGS_typeDefinition::Enumeration::invalid:
         break ;
       case GGS_typeDefinition::Enumeration::enum_solved:
         {
-          GGS_unifiedTypeDefinition extractedValue_4314_definition_0 ;
-          var_node_4229.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4314_definition_0) ;
-          result_result = extractedValue_4314_definition_0 ;
+          GGS_unifiedTypeDefinition extractedValue_4687_definition_0 ;
+          var_node_4602.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4687_definition_0) ;
+          result_result = extractedValue_4687_definition_0 ;
         }
         break ;
       case GGS_typeDefinition::Enumeration::enum_unsolved:
         {
           TC_Array <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 108)) ;
+          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas", 120)) ;
           result_result.drop () ; // Release error dropped variable
         }
         break ;
@@ -11510,7 +11573,7 @@ GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeM
   }
   if (kBoolFalse == test_0) {
     TC_Array <FixItDescription> fixItArray3 ;
-    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 111)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 111)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 111)) ;
+    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 123)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 123)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 123)) ;
     result_result.drop () ; // Release error dropped variable
   }
 //---
@@ -11706,6 +11769,8 @@ GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11789,36 +11854,36 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
   case GGS_unifiedTypeMapEntry::Enumeration::enum_null:
     {
       TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 185)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 185)) ;
+      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 197)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas", 197)) ;
       result_result.drop () ; // Release error dropped variable
     }
     break ;
   case GGS_unifiedTypeMapEntry::Enumeration::enum_element:
     {
-      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_7019_weakElement_0 ;
-      temp_0.getAssociatedValuesFor_element (extractedValue_7019_weakElement_0) ;
+      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_7392_weakElement_0 ;
+      temp_0.getAssociatedValuesFor_element (extractedValue_7392_weakElement_0) ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        const GGS_unifiedTypeMapElementClass var_type_7047 = extractedValue_7019_weakElement_0.unwrappedValue () ;
-        if (!extractedValue_7019_weakElement_0.isValuated ()) {
+        const GGS_unifiedTypeMapElementClass var_type_7420 = extractedValue_7392_weakElement_0.unwrappedValue () ;
+        if (!extractedValue_7392_weakElement_0.isValuated ()) {
           test_2 = kBoolFalse ;
         }
         if (kBoolTrue == test_2) {
-          switch (var_type_7047.readProperty_mDefinition ().enumValue ()) {
+          switch (var_type_7420.readProperty_mDefinition ().enumValue ()) {
           case GGS_typeDefinition::Enumeration::invalid:
             break ;
           case GGS_typeDefinition::Enumeration::enum_unsolved:
             {
               TC_Array <FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 190)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 190)) ;
+              inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 202)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas", 202)) ;
               result_result.drop () ; // Release error dropped variable
             }
             break ;
           case GGS_typeDefinition::Enumeration::enum_solved:
             {
-              GGS_unifiedTypeDefinition extractedValue_7200_definition_0 ;
-              var_type_7047.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7200_definition_0) ;
-              result_result = extractedValue_7200_definition_0 ;
+              GGS_unifiedTypeDefinition extractedValue_7573_definition_0 ;
+              var_type_7420.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7573_definition_0) ;
+              result_result = extractedValue_7573_definition_0 ;
             }
             break ;
           }
@@ -11826,7 +11891,7 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
       }
       if (kBoolFalse == test_2) {
         TC_Array <FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 195)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 195)) ;
+        inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas", 207)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas", 207)) ;
         result_result.drop () ; // Release error dropped variable
       }
     }
@@ -11850,7 +11915,7 @@ GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEnt
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 203)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 203)) ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 215)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas", 215)) ;
 //---
   return result_result ;
 }
@@ -11869,7 +11934,7 @@ GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 209)).readProperty_typeName ().readProperty_string () ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 221)).readProperty_typeName ().readProperty_string () ;
 //---
   return result_result ;
 }
@@ -11889,14 +11954,14 @@ GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry 
   GGS_unifiedTypeMapEntry result_outBaseType ; // Returned variable
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  bool loop_7927 = true ;
-  while (loop_7927) {
-    loop_7927 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 216)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 216)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 216)).isValid () ;
-    if (loop_7927) {
-      loop_7927 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 216)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 216)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 216)).boolValue () ;
+  bool loop_8300 = true ;
+  while (loop_8300) {
+    loop_8300 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 228)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 228)).isValid () ;
+    if (loop_8300) {
+      loop_8300 = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 228)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas", 228)).operator_not (SOURCE_FILE ("unified-type-map.galgas", 228)).boolValue () ;
     }
-    if (loop_7927) {
-      result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 217)).readProperty_superType () ;
+    if (loop_8300) {
+      result_outBaseType = extensionGetter_definition (result_outBaseType, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 229)).readProperty_superType () ;
     }
   }
 //---
@@ -11917,12 +11982,12 @@ void extensionMethod_addHeaderFileName (const GGS_unifiedTypeMapEntry inObject,
                                         Compiler * inCompiler
                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  GGS_unifiedTypeDefinition var_typeDefinition_8220 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 224)) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_8593 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 236)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_typeDefinition_8220.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 225)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8220.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 225)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 225)).boolEnum () ;
+    test_1 = var_typeDefinition_8593.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 237)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8593.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas", 237)))) COMMA_SOURCE_FILE ("unified-type-map.galgas", 237)).boolEnum () ;
     if (kBoolTrue == test_1) {
-      ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8220.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 226)) ;
+      ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8593.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 238)) ;
     }
   }
 }
@@ -11939,24 +12004,24 @@ void extensionMethod_addHeaderFileName_31_ (const GGS_unifiedTypeMapEntry inObje
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  GGS_unifiedTypeDefinition var_typeDefinition_8574 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 233)) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_8947 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 245)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = var_typeDefinition_8574.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 234)).boolEnum () ;
+    test_1 = var_typeDefinition_8947.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas", 246)).boolEnum () ;
     if (kBoolTrue == test_1) {
-      switch (var_typeDefinition_8574.readProperty_headerKind ().enumValue ()) {
+      switch (var_typeDefinition_8947.readProperty_headerKind ().enumValue ()) {
       case GGS_headerKind::Enumeration::invalid:
         break ;
       case GGS_headerKind::Enumeration::enum_noHeader:
         break ;
       case GGS_headerKind::Enumeration::enum_oneHeader:
         {
-          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8574.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 238)) ;
+          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8947.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas", 250)) ;
         }
         break ;
       case GGS_headerKind::Enumeration::enum_twoHeaders:
         {
-          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8574.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 240))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 240)) ;
+          ioArgument_ioInclusions.addAssign_operation (var_typeDefinition_8947.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas", 252))  COMMA_SOURCE_FILE ("unified-type-map.galgas", 252)) ;
         }
         break ;
       }
@@ -12594,6 +12659,8 @@ GGS_actualParameterAST_2E_weak::GGS_actualParameterAST_2E_weak (const GGS_actual
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_actualParameterAST_2E_weak GGS_actualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12801,6 +12868,8 @@ GGS_outputActualParameterAST_2E_weak::GGS_outputActualParameterAST_2E_weak (cons
 GGS_actualParameterAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_outputActualParameterAST_2E_weak GGS_outputActualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12910,6 +12979,8 @@ GGS_outputInputActualParameterAST_2E_weak & GGS_outputInputActualParameterAST_2E
 GGS_outputInputActualParameterAST_2E_weak::GGS_outputInputActualParameterAST_2E_weak (const GGS_outputInputActualParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13021,6 +13092,8 @@ GGS_outputInputJokerParameterAST_2E_weak::GGS_outputInputJokerParameterAST_2E_we
 GGS_actualParameterAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_outputInputJokerParameterAST_2E_weak GGS_outputInputJokerParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13130,6 +13203,8 @@ GGS_outputInputSelfParameterAST_2E_weak & GGS_outputInputSelfParameterAST_2E_wea
 GGS_outputInputSelfParameterAST_2E_weak::GGS_outputInputSelfParameterAST_2E_weak (const GGS_outputInputSelfParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13241,6 +13316,8 @@ GGS_inputActualExistingVariableParameterAST_2E_weak::GGS_inputActualExistingVari
 GGS_actualParameterAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputActualExistingVariableParameterAST_2E_weak GGS_inputActualExistingVariableParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13350,6 +13427,8 @@ GGS_inputActualSelfPropertyParameterAST_2E_weak & GGS_inputActualSelfPropertyPar
 GGS_inputActualSelfPropertyParameterAST_2E_weak::GGS_inputActualSelfPropertyParameterAST_2E_weak (const GGS_inputActualSelfPropertyParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13461,6 +13540,8 @@ GGS_inputActualSelfParameterAST_2E_weak::GGS_inputActualSelfParameterAST_2E_weak
 GGS_actualParameterAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputActualSelfParameterAST_2E_weak GGS_inputActualSelfParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13570,6 +13651,8 @@ GGS_inputActualNewVariableParameterAST_2E_weak & GGS_inputActualNewVariableParam
 GGS_inputActualNewVariableParameterAST_2E_weak::GGS_inputActualNewVariableParameterAST_2E_weak (const GGS_inputActualNewVariableParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13681,6 +13764,8 @@ GGS_inputActualNewConstantParameterAST_2E_weak::GGS_inputActualNewConstantParame
 GGS_actualParameterAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputActualNewConstantParameterAST_2E_weak GGS_inputActualNewConstantParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13790,6 +13875,8 @@ GGS_inputSingleJokerActualParameterAST_2E_weak & GGS_inputSingleJokerActualParam
 GGS_inputSingleJokerActualParameterAST_2E_weak::GGS_inputSingleJokerActualParameterAST_2E_weak (const GGS_inputSingleJokerActualParameterAST & inSource) :
 GGS_actualParameterAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14090,6 +14177,8 @@ GGS_inputJokerActualParameterAST_2E_weak::GGS_inputJokerActualParameterAST_2E_we
 GGS_actualParameterAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_inputJokerActualParameterAST_2E_weak GGS_inputJokerActualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14200,6 +14289,8 @@ GGS_externProcedureDeclarationAST_2E_weak::GGS_externProcedureDeclarationAST_2E_
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_externProcedureDeclarationAST_2E_weak GGS_externProcedureDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14309,6 +14400,8 @@ GGS_procDeclarationAST_2E_weak & GGS_procDeclarationAST_2E_weak::operator = (con
 GGS_procDeclarationAST_2E_weak::GGS_procDeclarationAST_2E_weak (const GGS_procDeclarationAST & inSource) :
 GGS_externProcedureDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15914,6 +16007,8 @@ GGS_semanticExpressionAST_2E_weak::GGS_semanticExpressionAST_2E_weak (const GGS_
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_semanticExpressionAST_2E_weak GGS_semanticExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -16285,101 +16380,4 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
 
 
 
-
-//--------------------------------------------------------------------------------------------------
-// @abstractInputParameter reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractInputParameter::cPtr_abstractInputParameter (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractInputParameter::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_abstractInputParameter::objectCompare (const GGS_abstractInputParameter & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractInputParameter::GGS_abstractInputParameter (void) :
-AC_GALGAS_reference_class () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractInputParameter::GGS_abstractInputParameter (const cPtr_abstractInputParameter * inSourcePtr) :
-AC_GALGAS_reference_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractInputParameter) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @abstractInputParameter class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractInputParameter::cPtr_abstractInputParameter (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @abstractInputParameter generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParameter ("abstractInputParameter",
-                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_abstractInputParameter::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractInputParameter ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_abstractInputParameter::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_abstractInputParameter (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_abstractInputParameter GGS_abstractInputParameter::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_abstractInputParameter result ;
-  const GGS_abstractInputParameter * p = (const GGS_abstractInputParameter *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_abstractInputParameter *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("abstractInputParameter", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
 

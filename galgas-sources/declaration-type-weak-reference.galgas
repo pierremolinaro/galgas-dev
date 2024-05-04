@@ -192,9 +192,13 @@ override method @weakReferenceDeclarationAST semanticAnalysis
     then @unifiedTypeMapEntry.null
     else [ioTypeMap typeMapEntryForLKey !self.mSuperWeakReferenceTypeName]
   end
-#------
+#--- Class type
   let @unifiedTypeMapEntry referenceClassType = [ioTypeMap typeMapEntryForLKey
     !self.mClassTypeName
+  ]
+#--- Optional class type
+  let @unifiedTypeMapEntry optionalClassTypeOrNull = [ioTypeMap typeMapEntryOrNullForLKey
+    !makeOptionalTypeLName (!forTypeNamed: self.mClassTypeName)
   ]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "weak reference " + self.mWeakReferenceTypeName
@@ -203,6 +207,7 @@ override method @weakReferenceDeclarationAST semanticAnalysis
       !referenceClassType
       !superClassEntry
       ![selfType definition].generateHeaderInSeparateFile
+      !optionalClassTypeOrNull
     }
 }
 
@@ -214,6 +219,7 @@ refclass @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
   private let @unifiedTypeMapEntry mSuperClass # Null if no super class
   private let @bool generateHeaderInSeparateFile # Significant only for classes
+  private let @unifiedTypeMapEntry optionalClassTypeOrNull
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -225,10 +231,18 @@ override method @weakReferenceTypeForGeneration appendDeclaration1 ?!@stringset 
   end
   [self.mReferenceClassType addHeaderFileName !?ioInclusionSet]
   let typeDefinition = [self.mSelfTypeEntry definition]
+  let @string optionalClassTypeNameRepresentation
+  switch self.optionalClassTypeOrNull
+  case null :
+    optionalClassTypeNameRepresentation = ""
+  case element (*) :
+    optionalClassTypeNameRepresentation = [self.optionalClassTypeOrNull identifierRepresentation]
+  end
   outHeader = [filewrapper weakClassGenerationTemplate.weakReferenceClassTypeHeader1
     ![self.mReferenceClassType identifierRepresentation]
     ![self.mSelfTypeEntry identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+    !optionalClassTypeNameRepresentation
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !typeDefinition.typeName.string
@@ -258,10 +272,18 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
 {
   [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
   let typeDefinition = [self.mSelfTypeEntry definition]
+  let @string optionalClassTypeNameRepresentation
+  switch self.optionalClassTypeOrNull
+  case null :
+    optionalClassTypeNameRepresentation = ""
+  case element (*) :
+    optionalClassTypeNameRepresentation = [self.optionalClassTypeOrNull identifierRepresentation]
+  end
   outImplementation = [filewrapper weakClassGenerationTemplate.weakReferenceClassTypeSpecificImplementation
     ![self.mReferenceClassType identifierRepresentation]
     ![typeDefinition.typeName.string identifierRepresentation]
     !if [self.mSuperClass isNull] then "" else [self.mSuperClass identifierRepresentation] end
+    !optionalClassTypeNameRepresentation
   ]
 }
 
@@ -279,11 +301,13 @@ filewrapper weakClassGenerationTemplate in "+generation-templates/type_generatio
     ?@string CLASS_TYPE_IDENTIFIER
     ?@string WEAK_REF_TYPE_IDENTIFIER
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
+    ?@string OPTIONAL_CLASS_TYPE_IDENTIFIER
 
   template weakReferenceClassTypeSpecificImplementation "GALGAS_weak_reference_class.cpp.galgasTemplate"
     ?@string CLASS_TYPE_IDENTIFIER
     ?@string WEAK_REF_TYPE_IDENTIFIER
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER
+    ?@string OPTIONAL_CLASS_TYPE_IDENTIFIER
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

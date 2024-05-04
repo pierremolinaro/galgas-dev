@@ -51,6 +51,8 @@ GGS_lexicalSendDefaultActionAST_2E_weak::GGS_lexicalSendDefaultActionAST_2E_weak
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSendDefaultActionAST_2E_weak GGS_lexicalSendDefaultActionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -161,6 +163,8 @@ GGS_lexicalSendTerminalByDefaultAST_2E_weak::GGS_lexicalSendTerminalByDefaultAST
 GGS_lexicalSendDefaultActionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSendTerminalByDefaultAST_2E_weak GGS_lexicalSendTerminalByDefaultAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -270,6 +274,8 @@ GGS_lexicalErrorByDefaultAST_2E_weak & GGS_lexicalErrorByDefaultAST_2E_weak::ope
 GGS_lexicalErrorByDefaultAST_2E_weak::GGS_lexicalErrorByDefaultAST_2E_weak (const GGS_lexicalErrorByDefaultAST & inSource) :
 GGS_lexicalSendDefaultActionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1424,6 +1430,8 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::GGS_lexicalRoutineOr
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -1943,6 +1951,8 @@ GGS_lexicalAttributeInputArgumentAST_2E_weak::GGS_lexicalAttributeInputArgumentA
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeInputArgumentAST_2E_weak GGS_lexicalAttributeInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2053,6 +2063,8 @@ GGS_lexicalCharacterInputArgumentAST_2E_weak::GGS_lexicalCharacterInputArgumentA
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalCharacterInputArgumentAST_2E_weak GGS_lexicalCharacterInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2162,6 +2174,8 @@ GGS_lexicalUnsignedInputArgumentAST_2E_weak & GGS_lexicalUnsignedInputArgumentAS
 GGS_lexicalUnsignedInputArgumentAST_2E_weak::GGS_lexicalUnsignedInputArgumentAST_2E_weak (const GGS_lexicalUnsignedInputArgumentAST & inSource) :
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2439,6 +2453,8 @@ GGS_lexicalCurrentCharacterInputArgumentAST_2E_weak::GGS_lexicalCurrentCharacter
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalCurrentCharacterInputArgumentAST_2E_weak GGS_lexicalCurrentCharacterInputArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -2548,6 +2564,8 @@ GGS_lexicalFunctionInputArgumentAST_2E_weak & GGS_lexicalFunctionInputArgumentAS
 GGS_lexicalFunctionInputArgumentAST_2E_weak::GGS_lexicalFunctionInputArgumentAST_2E_weak (const GGS_lexicalFunctionInputArgumentAST & inSource) :
 GGS_lexicalRoutineOrFunctionFormalInputArgumentAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11226,6 +11244,8 @@ GGS_lexicalStructuredSendInstructionAST_2E_weak::GGS_lexicalStructuredSendInstru
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalStructuredSendInstructionAST_2E_weak GGS_lexicalStructuredSendInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11336,6 +11356,8 @@ GGS_lexicalDropInstructionAST_2E_weak::GGS_lexicalDropInstructionAST_2E_weak (co
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalDropInstructionAST_2E_weak GGS_lexicalDropInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11445,6 +11467,8 @@ GGS_lexicalErrorInstructionAST_2E_weak & GGS_lexicalErrorInstructionAST_2E_weak:
 GGS_lexicalErrorInstructionAST_2E_weak::GGS_lexicalErrorInstructionAST_2E_weak (const GGS_lexicalErrorInstructionAST & inSource) :
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11698,6 +11722,8 @@ GGS_lexicalLogInstructionAST_2E_weak & GGS_lexicalLogInstructionAST_2E_weak::ope
 GGS_lexicalLogInstructionAST_2E_weak::GGS_lexicalLogInstructionAST_2E_weak (const GGS_lexicalLogInstructionAST & inSource) :
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12021,6 +12047,8 @@ GGS_lexicalRepeatInstructionAST_2E_weak::GGS_lexicalRepeatInstructionAST_2E_weak
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRepeatInstructionAST_2E_weak GGS_lexicalRepeatInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12130,6 +12158,8 @@ GGS_lexicalRewindInstructionAST_2E_weak & GGS_lexicalRewindInstructionAST_2E_wea
 GGS_lexicalRewindInstructionAST_2E_weak::GGS_lexicalRewindInstructionAST_2E_weak (const GGS_lexicalRewindInstructionAST & inSource) :
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12355,6 +12385,8 @@ GGS_abstractLexicalRoutineActualArgumentAST_2E_weak::GGS_abstractLexicalRoutineA
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_abstractLexicalRoutineActualArgumentAST_2E_weak GGS_abstractLexicalRoutineActualArgumentAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12464,6 +12496,8 @@ GGS_lexicalAttributeInputOutputArgumentAST_2E_weak & GGS_lexicalAttributeInputOu
 GGS_lexicalAttributeInputOutputArgumentAST_2E_weak::GGS_lexicalAttributeInputOutputArgumentAST_2E_weak (const GGS_lexicalAttributeInputOutputArgumentAST & inSource) :
 GGS_abstractLexicalRoutineActualArgumentAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12748,6 +12782,8 @@ GGS_lexicalFormalInputArgumentAST_2E_weak & GGS_lexicalFormalInputArgumentAST_2E
 GGS_lexicalFormalInputArgumentAST_2E_weak::GGS_lexicalFormalInputArgumentAST_2E_weak (const GGS_lexicalFormalInputArgumentAST & inSource) :
 GGS_abstractLexicalRoutineActualArgumentAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13268,6 +13304,8 @@ GGS_lexicalRoutineCallInstructionAST_2E_weak::GGS_lexicalRoutineCallInstructionA
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRoutineCallInstructionAST_2E_weak GGS_lexicalRoutineCallInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13636,6 +13674,8 @@ GGS_lexicalSelectInstructionAST_2E_weak::GGS_lexicalSelectInstructionAST_2E_weak
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSelectInstructionAST_2E_weak GGS_lexicalSelectInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13745,6 +13785,8 @@ GGS_lexicalSimpleSendInstructionAST_2E_weak & GGS_lexicalSimpleSendInstructionAS
 GGS_lexicalSimpleSendInstructionAST_2E_weak::GGS_lexicalSimpleSendInstructionAST_2E_weak (const GGS_lexicalSimpleSendInstructionAST & inSource) :
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13856,6 +13898,8 @@ GGS_lexicalTagInstructionAST_2E_weak::GGS_lexicalTagInstructionAST_2E_weak (cons
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagInstructionAST_2E_weak GGS_lexicalTagInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13965,6 +14009,8 @@ GGS_lexicalWarningInstructionAST_2E_weak & GGS_lexicalWarningInstructionAST_2E_w
 GGS_lexicalWarningInstructionAST_2E_weak::GGS_lexicalWarningInstructionAST_2E_weak (const GGS_lexicalWarningInstructionAST & inSource) :
 GGS_lexicalInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15001,6 +15047,8 @@ GGS_optionComponentDeclarationAST_2E_weak & GGS_optionComponentDeclarationAST_2E
 GGS_optionComponentDeclarationAST_2E_weak::GGS_optionComponentDeclarationAST_2E_weak (const GGS_optionComponentDeclarationAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 

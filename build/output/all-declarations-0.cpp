@@ -5445,6 +5445,8 @@ GGS_templateInstructionAST_2E_weak::GGS_templateInstructionAST_2E_weak (const GG
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionAST_2E_weak GGS_templateInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6060,6 +6062,8 @@ GGS_templateExpressionAST_2E_weak & GGS_templateExpressionAST_2E_weak::operator 
 GGS_templateExpressionAST_2E_weak::GGS_templateExpressionAST_2E_weak (const GGS_templateExpressionAST & inSource) :
 AC_GALGAS_weak_reference (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6708,6 +6712,8 @@ GGS_templateClassFunctionAST_2E_weak::GGS_templateClassFunctionAST_2E_weak (cons
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateClassFunctionAST_2E_weak GGS_templateClassFunctionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6818,6 +6824,8 @@ GGS_templateFileWrapperTemplateCallAST_2E_weak::GGS_templateFileWrapperTemplateC
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateFileWrapperTemplateCallAST_2E_weak GGS_templateFileWrapperTemplateCallAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -6927,6 +6935,8 @@ GGS_templateExtensionTemplateCallAST_2E_weak & GGS_templateExtensionTemplateCall
 GGS_templateExtensionTemplateCallAST_2E_weak::GGS_templateExtensionTemplateCallAST_2E_weak (const GGS_templateExtensionTemplateCallAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7250,6 +7260,8 @@ GGS_templateAndOperationAST_2E_weak::GGS_templateAndOperationAST_2E_weak (const 
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateAndOperationAST_2E_weak GGS_templateAndOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -7571,6 +7583,8 @@ GGS_templateOrOperationAST_2E_weak & GGS_templateOrOperationAST_2E_weak::operato
 GGS_templateOrOperationAST_2E_weak::GGS_templateOrOperationAST_2E_weak (const GGS_templateOrOperationAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7894,6 +7908,8 @@ GGS_templateXorOperationAST_2E_weak::GGS_templateXorOperationAST_2E_weak (const 
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateXorOperationAST_2E_weak GGS_templateXorOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -8169,6 +8185,8 @@ GGS_templateTrueBoolAST_2E_weak & GGS_templateTrueBoolAST_2E_weak::operator = (c
 GGS_templateTrueBoolAST_2E_weak::GGS_templateTrueBoolAST_2E_weak (const GGS_templateTrueBoolAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8446,6 +8464,8 @@ GGS_templateFalseBoolAST_2E_weak::GGS_templateFalseBoolAST_2E_weak (const GGS_te
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateFalseBoolAST_2E_weak GGS_templateFalseBoolAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -8555,6 +8575,8 @@ GGS_templateLiteralStringExpressionAST_2E_weak & GGS_templateLiteralStringExpres
 GGS_templateLiteralStringExpressionAST_2E_weak::GGS_templateLiteralStringExpressionAST_2E_weak (const GGS_templateLiteralStringExpressionAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8666,6 +8688,8 @@ GGS_templateLiteralUIntExpressionAST_2E_weak::GGS_templateLiteralUIntExpressionA
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateLiteralUIntExpressionAST_2E_weak GGS_templateLiteralUIntExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -8775,6 +8799,8 @@ GGS_templateLiteralCharExpressionAST_2E_weak & GGS_templateLiteralCharExpression
 GGS_templateLiteralCharExpressionAST_2E_weak::GGS_templateLiteralCharExpressionAST_2E_weak (const GGS_templateLiteralCharExpressionAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8886,6 +8912,8 @@ GGS_templateLiteralDoubleExpressionAST_2E_weak::GGS_templateLiteralDoubleExpress
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateLiteralDoubleExpressionAST_2E_weak GGS_templateLiteralDoubleExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -8995,6 +9023,8 @@ GGS_structFieldAccessTemplateExpressionAST_2E_weak & GGS_structFieldAccessTempla
 GGS_structFieldAccessTemplateExpressionAST_2E_weak::GGS_structFieldAccessTemplateExpressionAST_2E_weak (const GGS_structFieldAccessTemplateExpressionAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9295,6 +9325,8 @@ GGS_templateNotOperatorAST_2E_weak::GGS_templateNotOperatorAST_2E_weak (const GG
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateNotOperatorAST_2E_weak GGS_templateNotOperatorAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -9594,6 +9626,8 @@ GGS_templateLogicalNegateAST_2E_weak::GGS_templateLogicalNegateAST_2E_weak (cons
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateLogicalNegateAST_2E_weak GGS_templateLogicalNegateAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -9703,6 +9737,8 @@ GGS_templateOptionAccessAST_2E_weak & GGS_templateOptionAccessAST_2E_weak::opera
 GGS_templateOptionAccessAST_2E_weak::GGS_templateOptionAccessAST_2E_weak (const GGS_templateOptionAccessAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9932,6 +9968,8 @@ GGS_templateTestDynamicClassAST_2E_weak::GGS_templateTestDynamicClassAST_2E_weak
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateTestDynamicClassAST_2E_weak GGS_templateTestDynamicClassAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -10042,6 +10080,8 @@ GGS_templateFunctionCallAST_2E_weak::GGS_templateFunctionCallAST_2E_weak (const 
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateFunctionCallAST_2E_weak GGS_templateFunctionCallAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -10151,6 +10191,8 @@ GGS_templateVarInExpressionAST_2E_weak & GGS_templateVarInExpressionAST_2E_weak:
 GGS_templateVarInExpressionAST_2E_weak::GGS_templateVarInExpressionAST_2E_weak (const GGS_templateVarInExpressionAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -10474,6 +10516,8 @@ GGS_templateAddOperationAST_2E_weak::GGS_templateAddOperationAST_2E_weak (const 
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateAddOperationAST_2E_weak GGS_templateAddOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -10795,6 +10839,8 @@ GGS_templateSubOperationAST_2E_weak & GGS_templateSubOperationAST_2E_weak::opera
 GGS_templateSubOperationAST_2E_weak::GGS_templateSubOperationAST_2E_weak (const GGS_templateSubOperationAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11118,6 +11164,8 @@ GGS_templateMultiplyOperationAST_2E_weak::GGS_templateMultiplyOperationAST_2E_we
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateMultiplyOperationAST_2E_weak GGS_templateMultiplyOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -11439,6 +11487,8 @@ GGS_templateDivideOperationAST_2E_weak & GGS_templateDivideOperationAST_2E_weak:
 GGS_templateDivideOperationAST_2E_weak::GGS_templateDivideOperationAST_2E_weak (const GGS_templateDivideOperationAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11762,6 +11812,8 @@ GGS_templateModuloOperationAST_2E_weak::GGS_templateModuloOperationAST_2E_weak (
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateModuloOperationAST_2E_weak GGS_templateModuloOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12060,6 +12112,8 @@ GGS_templateUnaryMinusOperationAST_2E_weak & GGS_templateUnaryMinusOperationAST_
 GGS_templateUnaryMinusOperationAST_2E_weak::GGS_templateUnaryMinusOperationAST_2E_weak (const GGS_templateUnaryMinusOperationAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12383,6 +12437,8 @@ GGS_templateEqualTestAST_2E_weak::GGS_templateEqualTestAST_2E_weak (const GGS_te
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateEqualTestAST_2E_weak GGS_templateEqualTestAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -12704,6 +12760,8 @@ GGS_templateNonEqualTestAST_2E_weak & GGS_templateNonEqualTestAST_2E_weak::opera
 GGS_templateNonEqualTestAST_2E_weak::GGS_templateNonEqualTestAST_2E_weak (const GGS_templateNonEqualTestAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13027,6 +13085,8 @@ GGS_templateStrictInfTestAST_2E_weak::GGS_templateStrictInfTestAST_2E_weak (cons
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateStrictInfTestAST_2E_weak GGS_templateStrictInfTestAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13348,6 +13408,8 @@ GGS_templateInfOrEqualTestAST_2E_weak & GGS_templateInfOrEqualTestAST_2E_weak::o
 GGS_templateInfOrEqualTestAST_2E_weak::GGS_templateInfOrEqualTestAST_2E_weak (const GGS_templateInfOrEqualTestAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13671,6 +13733,8 @@ GGS_templateStrictSupTestAST_2E_weak::GGS_templateStrictSupTestAST_2E_weak (cons
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateStrictSupTestAST_2E_weak GGS_templateStrictSupTestAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -13992,6 +14056,8 @@ GGS_templateSupOrEqualTestAST_2E_weak & GGS_templateSupOrEqualTestAST_2E_weak::o
 GGS_templateSupOrEqualTestAST_2E_weak::GGS_templateSupOrEqualTestAST_2E_weak (const GGS_templateSupOrEqualTestAST & inSource) :
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -14315,6 +14381,8 @@ GGS_templateLeftShiftOperationAST_2E_weak::GGS_templateLeftShiftOperationAST_2E_
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateLeftShiftOperationAST_2E_weak GGS_templateLeftShiftOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14637,6 +14705,8 @@ GGS_templateRightShiftOperationAST_2E_weak::GGS_templateRightShiftOperationAST_2
 GGS_templateExpressionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateRightShiftOperationAST_2E_weak GGS_templateRightShiftOperationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -14746,6 +14816,8 @@ GGS_templateInstructionStringAST_2E_weak & GGS_templateInstructionStringAST_2E_w
 GGS_templateInstructionStringAST_2E_weak::GGS_templateInstructionStringAST_2E_weak (const GGS_templateInstructionStringAST & inSource) :
 GGS_templateInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15045,6 +15117,8 @@ GGS_templateInstructionExpressionAST_2E_weak & GGS_templateInstructionExpression
 GGS_templateInstructionExpressionAST_2E_weak::GGS_templateInstructionExpressionAST_2E_weak (const GGS_templateInstructionExpressionAST & inSource) :
 GGS_templateInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15368,6 +15442,8 @@ GGS_templateBlockInstructionAST_2E_weak::GGS_templateBlockInstructionAST_2E_weak
 GGS_templateInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateBlockInstructionAST_2E_weak GGS_templateBlockInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -15621,6 +15697,8 @@ GGS_templateInstructionGetColumnLocationAST_2E_weak::GGS_templateInstructionGetC
 GGS_templateInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionGetColumnLocationAST_2E_weak GGS_templateInstructionGetColumnLocationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -15873,6 +15951,8 @@ GGS_templateInstructionGotoColumnLocationAST_2E_weak & GGS_templateInstructionGo
 GGS_templateInstructionGotoColumnLocationAST_2E_weak::GGS_templateInstructionGotoColumnLocationAST_2E_weak (const GGS_templateInstructionGotoColumnLocationAST & inSource) :
 GGS_templateInstructionAST_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 
@@ -16646,6 +16726,8 @@ GGS_templateInstructionIfAST_2E_weak::GGS_templateInstructionIfAST_2E_weak (cons
 GGS_templateInstructionAST_2E_weak (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionIfAST_2E_weak GGS_templateInstructionIfAST_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -16853,6 +16935,8 @@ GGS_templateInstructionForGeneration_2E_weak::GGS_templateInstructionForGenerati
 AC_GALGAS_weak_reference (inSource) {
 }
 
+
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionForGeneration_2E_weak GGS_templateInstructionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
@@ -16962,6 +17046,8 @@ GGS_templateInstructionExpressionForGeneration_2E_weak & GGS_templateInstruction
 GGS_templateInstructionExpressionForGeneration_2E_weak::GGS_templateInstructionExpressionForGeneration_2E_weak (const GGS_templateInstructionExpressionForGeneration & inSource) :
 GGS_templateInstructionForGeneration_2E_weak (inSource) {
 }
+
+
 
 //--------------------------------------------------------------------------------------------------
 

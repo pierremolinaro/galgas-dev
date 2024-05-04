@@ -736,6 +736,8 @@ class GGS_templateInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_templateInstructionAST_2E_weak & operator = (const class GGS_templateInstructionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionAST_2E_weak init_nil (void) {
     GGS_templateInstructionAST_2E_weak result ;
@@ -1136,6 +1138,8 @@ class GGS_templateExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
   public: GGS_templateExpressionAST_2E_weak (const class GGS_templateExpressionAST & inSource) ;
 
   public: GGS_templateExpressionAST_2E_weak & operator = (const class GGS_templateExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateExpressionAST_2E_weak init_nil (void) {
@@ -1629,6 +1633,8 @@ class GGS_templateClassFunctionAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateClassFunctionAST_2E_weak & operator = (const class GGS_templateClassFunctionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateClassFunctionAST_2E_weak init_nil (void) {
     GGS_templateClassFunctionAST_2E_weak result ;
@@ -1836,6 +1842,8 @@ class GGS_templateFileWrapperTemplateCallAST_2E_weak : public GGS_templateExpres
   public: GGS_templateFileWrapperTemplateCallAST_2E_weak (const class GGS_templateFileWrapperTemplateCallAST & inSource) ;
 
   public: GGS_templateFileWrapperTemplateCallAST_2E_weak & operator = (const class GGS_templateFileWrapperTemplateCallAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateFileWrapperTemplateCallAST_2E_weak init_nil (void) {
@@ -2045,6 +2053,8 @@ class GGS_templateExtensionTemplateCallAST_2E_weak : public GGS_templateExpressi
 
   public: GGS_templateExtensionTemplateCallAST_2E_weak & operator = (const class GGS_templateExtensionTemplateCallAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateExtensionTemplateCallAST_2E_weak init_nil (void) {
     GGS_templateExtensionTemplateCallAST_2E_weak result ;
@@ -2252,6 +2262,8 @@ class GGS_templateAndOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
   public: GGS_templateAndOperationAST_2E_weak (const class GGS_templateAndOperationAST & inSource) ;
 
   public: GGS_templateAndOperationAST_2E_weak & operator = (const class GGS_templateAndOperationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateAndOperationAST_2E_weak init_nil (void) {
@@ -2461,6 +2473,8 @@ class GGS_templateOrOperationAST_2E_weak : public GGS_templateExpressionAST_2E_w
 
   public: GGS_templateOrOperationAST_2E_weak & operator = (const class GGS_templateOrOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateOrOperationAST_2E_weak init_nil (void) {
     GGS_templateOrOperationAST_2E_weak result ;
@@ -2669,6 +2683,8 @@ class GGS_templateXorOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateXorOperationAST_2E_weak & operator = (const class GGS_templateXorOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateXorOperationAST_2E_weak init_nil (void) {
     GGS_templateXorOperationAST_2E_weak result ;
@@ -2863,6 +2879,8 @@ class GGS_templateTrueBoolAST_2E_weak : public GGS_templateExpressionAST_2E_weak
 
   public: GGS_templateTrueBoolAST_2E_weak & operator = (const class GGS_templateTrueBoolAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateTrueBoolAST_2E_weak init_nil (void) {
     GGS_templateTrueBoolAST_2E_weak result ;
@@ -3056,6 +3074,8 @@ class GGS_templateFalseBoolAST_2E_weak : public GGS_templateExpressionAST_2E_wea
   public: GGS_templateFalseBoolAST_2E_weak (const class GGS_templateFalseBoolAST & inSource) ;
 
   public: GGS_templateFalseBoolAST_2E_weak & operator = (const class GGS_templateFalseBoolAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateFalseBoolAST_2E_weak init_nil (void) {
@@ -3258,6 +3278,8 @@ class GGS_templateLiteralStringExpressionAST_2E_weak : public GGS_templateExpres
 
   public: GGS_templateLiteralStringExpressionAST_2E_weak & operator = (const class GGS_templateLiteralStringExpressionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateLiteralStringExpressionAST_2E_weak init_nil (void) {
     GGS_templateLiteralStringExpressionAST_2E_weak result ;
@@ -3451,6 +3473,8 @@ class GGS_templateLiteralUIntExpressionAST_2E_weak : public GGS_templateExpressi
   public: GGS_templateLiteralUIntExpressionAST_2E_weak (const class GGS_templateLiteralUIntExpressionAST & inSource) ;
 
   public: GGS_templateLiteralUIntExpressionAST_2E_weak & operator = (const class GGS_templateLiteralUIntExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateLiteralUIntExpressionAST_2E_weak init_nil (void) {
@@ -3646,6 +3670,8 @@ class GGS_templateLiteralCharExpressionAST_2E_weak : public GGS_templateExpressi
 
   public: GGS_templateLiteralCharExpressionAST_2E_weak & operator = (const class GGS_templateLiteralCharExpressionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateLiteralCharExpressionAST_2E_weak init_nil (void) {
     GGS_templateLiteralCharExpressionAST_2E_weak result ;
@@ -3839,6 +3865,8 @@ class GGS_templateLiteralDoubleExpressionAST_2E_weak : public GGS_templateExpres
   public: GGS_templateLiteralDoubleExpressionAST_2E_weak (const class GGS_templateLiteralDoubleExpressionAST & inSource) ;
 
   public: GGS_templateLiteralDoubleExpressionAST_2E_weak & operator = (const class GGS_templateLiteralDoubleExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateLiteralDoubleExpressionAST_2E_weak init_nil (void) {
@@ -4048,6 +4076,8 @@ class GGS_structFieldAccessTemplateExpressionAST_2E_weak : public GGS_templateEx
 
   public: GGS_structFieldAccessTemplateExpressionAST_2E_weak & operator = (const class GGS_structFieldAccessTemplateExpressionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_structFieldAccessTemplateExpressionAST_2E_weak init_nil (void) {
     GGS_structFieldAccessTemplateExpressionAST_2E_weak result ;
@@ -4249,6 +4279,8 @@ class GGS_templateNotOperatorAST_2E_weak : public GGS_templateExpressionAST_2E_w
 
   public: GGS_templateNotOperatorAST_2E_weak & operator = (const class GGS_templateNotOperatorAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateNotOperatorAST_2E_weak init_nil (void) {
     GGS_templateNotOperatorAST_2E_weak result ;
@@ -4449,6 +4481,8 @@ class GGS_templateLogicalNegateAST_2E_weak : public GGS_templateExpressionAST_2E
   public: GGS_templateLogicalNegateAST_2E_weak (const class GGS_templateLogicalNegateAST & inSource) ;
 
   public: GGS_templateLogicalNegateAST_2E_weak & operator = (const class GGS_templateLogicalNegateAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateLogicalNegateAST_2E_weak init_nil (void) {
@@ -4657,6 +4691,8 @@ class GGS_templateOptionAccessAST_2E_weak : public GGS_templateExpressionAST_2E_
   public: GGS_templateOptionAccessAST_2E_weak (const class GGS_templateOptionAccessAST & inSource) ;
 
   public: GGS_templateOptionAccessAST_2E_weak & operator = (const class GGS_templateOptionAccessAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateOptionAccessAST_2E_weak init_nil (void) {
@@ -4955,6 +4991,8 @@ class GGS_templateTestDynamicClassAST_2E_weak : public GGS_templateExpressionAST
 
   public: GGS_templateTestDynamicClassAST_2E_weak & operator = (const class GGS_templateTestDynamicClassAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateTestDynamicClassAST_2E_weak init_nil (void) {
     GGS_templateTestDynamicClassAST_2E_weak result ;
@@ -5156,6 +5194,8 @@ class GGS_templateFunctionCallAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateFunctionCallAST_2E_weak & operator = (const class GGS_templateFunctionCallAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateFunctionCallAST_2E_weak init_nil (void) {
     GGS_templateFunctionCallAST_2E_weak result ;
@@ -5349,6 +5389,8 @@ class GGS_templateVarInExpressionAST_2E_weak : public GGS_templateExpressionAST_
   public: GGS_templateVarInExpressionAST_2E_weak (const class GGS_templateVarInExpressionAST & inSource) ;
 
   public: GGS_templateVarInExpressionAST_2E_weak & operator = (const class GGS_templateVarInExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateVarInExpressionAST_2E_weak init_nil (void) {
@@ -5558,6 +5600,8 @@ class GGS_templateAddOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
   public: GGS_templateAddOperationAST_2E_weak & operator = (const class GGS_templateAddOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateAddOperationAST_2E_weak init_nil (void) {
     GGS_templateAddOperationAST_2E_weak result ;
@@ -5765,6 +5809,8 @@ class GGS_templateSubOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
   public: GGS_templateSubOperationAST_2E_weak (const class GGS_templateSubOperationAST & inSource) ;
 
   public: GGS_templateSubOperationAST_2E_weak & operator = (const class GGS_templateSubOperationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateSubOperationAST_2E_weak init_nil (void) {
@@ -5974,6 +6020,8 @@ class GGS_templateMultiplyOperationAST_2E_weak : public GGS_templateExpressionAS
 
   public: GGS_templateMultiplyOperationAST_2E_weak & operator = (const class GGS_templateMultiplyOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateMultiplyOperationAST_2E_weak init_nil (void) {
     GGS_templateMultiplyOperationAST_2E_weak result ;
@@ -6181,6 +6229,8 @@ class GGS_templateDivideOperationAST_2E_weak : public GGS_templateExpressionAST_
   public: GGS_templateDivideOperationAST_2E_weak (const class GGS_templateDivideOperationAST & inSource) ;
 
   public: GGS_templateDivideOperationAST_2E_weak & operator = (const class GGS_templateDivideOperationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateDivideOperationAST_2E_weak init_nil (void) {
@@ -6390,6 +6440,8 @@ class GGS_templateModuloOperationAST_2E_weak : public GGS_templateExpressionAST_
 
   public: GGS_templateModuloOperationAST_2E_weak & operator = (const class GGS_templateModuloOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateModuloOperationAST_2E_weak init_nil (void) {
     GGS_templateModuloOperationAST_2E_weak result ;
@@ -6590,6 +6642,8 @@ class GGS_templateUnaryMinusOperationAST_2E_weak : public GGS_templateExpression
   public: GGS_templateUnaryMinusOperationAST_2E_weak (const class GGS_templateUnaryMinusOperationAST & inSource) ;
 
   public: GGS_templateUnaryMinusOperationAST_2E_weak & operator = (const class GGS_templateUnaryMinusOperationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateUnaryMinusOperationAST_2E_weak init_nil (void) {
@@ -6799,6 +6853,8 @@ class GGS_templateEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 
   public: GGS_templateEqualTestAST_2E_weak & operator = (const class GGS_templateEqualTestAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateEqualTestAST_2E_weak init_nil (void) {
     GGS_templateEqualTestAST_2E_weak result ;
@@ -7006,6 +7062,8 @@ class GGS_templateNonEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_
   public: GGS_templateNonEqualTestAST_2E_weak (const class GGS_templateNonEqualTestAST & inSource) ;
 
   public: GGS_templateNonEqualTestAST_2E_weak & operator = (const class GGS_templateNonEqualTestAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateNonEqualTestAST_2E_weak init_nil (void) {
@@ -7215,6 +7273,8 @@ class GGS_templateStrictInfTestAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateStrictInfTestAST_2E_weak & operator = (const class GGS_templateStrictInfTestAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateStrictInfTestAST_2E_weak init_nil (void) {
     GGS_templateStrictInfTestAST_2E_weak result ;
@@ -7422,6 +7482,8 @@ class GGS_templateInfOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
   public: GGS_templateInfOrEqualTestAST_2E_weak (const class GGS_templateInfOrEqualTestAST & inSource) ;
 
   public: GGS_templateInfOrEqualTestAST_2E_weak & operator = (const class GGS_templateInfOrEqualTestAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInfOrEqualTestAST_2E_weak init_nil (void) {
@@ -7631,6 +7693,8 @@ class GGS_templateStrictSupTestAST_2E_weak : public GGS_templateExpressionAST_2E
 
   public: GGS_templateStrictSupTestAST_2E_weak & operator = (const class GGS_templateStrictSupTestAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateStrictSupTestAST_2E_weak init_nil (void) {
     GGS_templateStrictSupTestAST_2E_weak result ;
@@ -7838,6 +7902,8 @@ class GGS_templateSupOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
   public: GGS_templateSupOrEqualTestAST_2E_weak (const class GGS_templateSupOrEqualTestAST & inSource) ;
 
   public: GGS_templateSupOrEqualTestAST_2E_weak & operator = (const class GGS_templateSupOrEqualTestAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateSupOrEqualTestAST_2E_weak init_nil (void) {
@@ -8047,6 +8113,8 @@ class GGS_templateLeftShiftOperationAST_2E_weak : public GGS_templateExpressionA
 
   public: GGS_templateLeftShiftOperationAST_2E_weak & operator = (const class GGS_templateLeftShiftOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateLeftShiftOperationAST_2E_weak init_nil (void) {
     GGS_templateLeftShiftOperationAST_2E_weak result ;
@@ -8255,6 +8323,8 @@ class GGS_templateRightShiftOperationAST_2E_weak : public GGS_templateExpression
 
   public: GGS_templateRightShiftOperationAST_2E_weak & operator = (const class GGS_templateRightShiftOperationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateRightShiftOperationAST_2E_weak init_nil (void) {
     GGS_templateRightShiftOperationAST_2E_weak result ;
@@ -8448,6 +8518,8 @@ class GGS_templateInstructionStringAST_2E_weak : public GGS_templateInstructionA
   public: GGS_templateInstructionStringAST_2E_weak (const class GGS_templateInstructionStringAST & inSource) ;
 
   public: GGS_templateInstructionStringAST_2E_weak & operator = (const class GGS_templateInstructionStringAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionStringAST_2E_weak init_nil (void) {
@@ -8649,6 +8721,8 @@ class GGS_templateInstructionExpressionAST_2E_weak : public GGS_templateInstruct
   public: GGS_templateInstructionExpressionAST_2E_weak (const class GGS_templateInstructionExpressionAST & inSource) ;
 
   public: GGS_templateInstructionExpressionAST_2E_weak & operator = (const class GGS_templateInstructionExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionExpressionAST_2E_weak init_nil (void) {
@@ -8858,6 +8932,8 @@ class GGS_templateBlockInstructionAST_2E_weak : public GGS_templateInstructionAS
 
   public: GGS_templateBlockInstructionAST_2E_weak & operator = (const class GGS_templateBlockInstructionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateBlockInstructionAST_2E_weak init_nil (void) {
     GGS_templateBlockInstructionAST_2E_weak result ;
@@ -9045,6 +9121,8 @@ class GGS_templateInstructionGetColumnLocationAST_2E_weak : public GGS_templateI
 
   public: GGS_templateInstructionGetColumnLocationAST_2E_weak & operator = (const class GGS_templateInstructionGetColumnLocationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionGetColumnLocationAST_2E_weak init_nil (void) {
     GGS_templateInstructionGetColumnLocationAST_2E_weak result ;
@@ -9231,6 +9309,8 @@ class GGS_templateInstructionGotoColumnLocationAST_2E_weak : public GGS_template
   public: GGS_templateInstructionGotoColumnLocationAST_2E_weak (const class GGS_templateInstructionGotoColumnLocationAST & inSource) ;
 
   public: GGS_templateInstructionGotoColumnLocationAST_2E_weak & operator = (const class GGS_templateInstructionGotoColumnLocationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionGotoColumnLocationAST_2E_weak init_nil (void) {
@@ -9685,6 +9765,8 @@ class GGS_templateInstructionIfAST_2E_weak : public GGS_templateInstructionAST_2
 
   public: GGS_templateInstructionIfAST_2E_weak & operator = (const class GGS_templateInstructionIfAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionIfAST_2E_weak init_nil (void) {
     GGS_templateInstructionIfAST_2E_weak result ;
@@ -9865,6 +9947,8 @@ class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_refer
   public: GGS_templateInstructionForGeneration_2E_weak (const class GGS_templateInstructionForGeneration & inSource) ;
 
   public: GGS_templateInstructionForGeneration_2E_weak & operator = (const class GGS_templateInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionForGeneration_2E_weak init_nil (void) {
@@ -10256,6 +10340,8 @@ class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templa
   public: GGS_templateInstructionExpressionForGeneration_2E_weak (const class GGS_templateInstructionExpressionForGeneration & inSource) ;
 
   public: GGS_templateInstructionExpressionForGeneration_2E_weak & operator = (const class GGS_templateInstructionExpressionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionExpressionForGeneration_2E_weak init_nil (void) {

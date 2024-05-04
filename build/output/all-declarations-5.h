@@ -165,6 +165,8 @@ class GGS_equatableExtensionAST_2E_weak : public GGS_semanticDeclarationAST_2E_w
 
   public: GGS_equatableExtensionAST_2E_weak & operator = (const class GGS_equatableExtensionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_equatableExtensionAST_2E_weak init_nil (void) {
     GGS_equatableExtensionAST_2E_weak result ;
@@ -910,6 +912,8 @@ class GGS_extensionGetterAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
   public: GGS_extensionGetterAST_2E_weak & operator = (const class GGS_extensionGetterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_extensionGetterAST_2E_weak init_nil (void) {
     GGS_extensionGetterAST_2E_weak result ;
@@ -1505,6 +1509,8 @@ class GGS_extensionMethodAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
   public: GGS_extensionMethodAST_2E_weak & operator = (const class GGS_extensionMethodAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_extensionMethodAST_2E_weak init_nil (void) {
     GGS_extensionMethodAST_2E_weak result ;
@@ -1778,6 +1784,8 @@ class GGS_extensionSetterAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak
 
   public: GGS_extensionSetterAST_2E_weak & operator = (const class GGS_extensionSetterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_extensionSetterAST_2E_weak init_nil (void) {
     GGS_extensionSetterAST_2E_weak result ;
@@ -2021,6 +2029,8 @@ class GGS_initializerAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
   public: GGS_initializerAST_2E_weak (const class GGS_initializerAST & inSource) ;
 
   public: GGS_initializerAST_2E_weak & operator = (const class GGS_initializerAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_initializerAST_2E_weak init_nil (void) {
@@ -2281,6 +2291,8 @@ class GGS_overridingAbstractExtensionGetterAST_2E_weak : public GGS_semanticDecl
 
   public: GGS_overridingAbstractExtensionGetterAST_2E_weak & operator = (const class GGS_overridingAbstractExtensionGetterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_overridingAbstractExtensionGetterAST_2E_weak init_nil (void) {
     GGS_overridingAbstractExtensionGetterAST_2E_weak result ;
@@ -2533,6 +2545,8 @@ class GGS_overridingAbstractExtensionMethodAST_2E_weak : public GGS_semanticDecl
 
   public: GGS_overridingAbstractExtensionMethodAST_2E_weak & operator = (const class GGS_overridingAbstractExtensionMethodAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_overridingAbstractExtensionMethodAST_2E_weak init_nil (void) {
     GGS_overridingAbstractExtensionMethodAST_2E_weak result ;
@@ -2784,6 +2798,8 @@ class GGS_overridingAbstractExtensionSetterAST_2E_weak : public GGS_semanticDecl
   public: GGS_overridingAbstractExtensionSetterAST_2E_weak (const class GGS_overridingAbstractExtensionSetterAST & inSource) ;
 
   public: GGS_overridingAbstractExtensionSetterAST_2E_weak & operator = (const class GGS_overridingAbstractExtensionSetterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_overridingAbstractExtensionSetterAST_2E_weak init_nil (void) {
@@ -3072,6 +3088,8 @@ class GGS_overridingExtensionGetterAST_2E_weak : public GGS_semanticDeclarationA
 
   public: GGS_overridingExtensionGetterAST_2E_weak & operator = (const class GGS_overridingExtensionGetterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_overridingExtensionGetterAST_2E_weak init_nil (void) {
     GGS_overridingExtensionGetterAST_2E_weak result ;
@@ -3345,6 +3363,8 @@ class GGS_overridingExtensionMethodAST_2E_weak : public GGS_semanticDeclarationA
 
   public: GGS_overridingExtensionMethodAST_2E_weak & operator = (const class GGS_overridingExtensionMethodAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_overridingExtensionMethodAST_2E_weak init_nil (void) {
     GGS_overridingExtensionMethodAST_2E_weak result ;
@@ -3617,6 +3637,8 @@ class GGS_overridingExtensionSetterAST_2E_weak : public GGS_semanticDeclarationA
   public: GGS_overridingExtensionSetterAST_2E_weak (const class GGS_overridingExtensionSetterAST & inSource) ;
 
   public: GGS_overridingExtensionSetterAST_2E_weak & operator = (const class GGS_overridingExtensionSetterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_overridingExtensionSetterAST_2E_weak init_nil (void) {
@@ -8918,6 +8940,17 @@ class GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const class G
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension getter '@unifiedTypeMap typeMapEntryOrNullForLKey' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const class GGS_unifiedTypeMap & inObject,
+                                                                         const class GGS_lstring & constinArgument0,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension setter '@unifiedTypeMap insertType'
 //
 //--------------------------------------------------------------------------------------------------
@@ -10558,6 +10591,8 @@ class GGS_actualParameterAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_actualParameterAST_2E_weak & operator = (const class GGS_actualParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_actualParameterAST_2E_weak init_nil (void) {
     GGS_actualParameterAST_2E_weak result ;
@@ -10834,6 +10869,8 @@ class GGS_outputActualParameterAST_2E_weak : public GGS_actualParameterAST_2E_we
 
   public: GGS_outputActualParameterAST_2E_weak & operator = (const class GGS_outputActualParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_outputActualParameterAST_2E_weak init_nil (void) {
     GGS_outputActualParameterAST_2E_weak result ;
@@ -11061,6 +11098,8 @@ class GGS_outputInputActualParameterAST_2E_weak : public GGS_actualParameterAST_
 
   public: GGS_outputInputActualParameterAST_2E_weak & operator = (const class GGS_outputInputActualParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_outputInputActualParameterAST_2E_weak init_nil (void) {
     GGS_outputInputActualParameterAST_2E_weak result ;
@@ -11281,6 +11320,8 @@ class GGS_outputInputJokerParameterAST_2E_weak : public GGS_actualParameterAST_2
 
   public: GGS_outputInputJokerParameterAST_2E_weak & operator = (const class GGS_outputInputJokerParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_outputInputJokerParameterAST_2E_weak init_nil (void) {
     GGS_outputInputJokerParameterAST_2E_weak result ;
@@ -11493,6 +11534,8 @@ class GGS_outputInputSelfParameterAST_2E_weak : public GGS_actualParameterAST_2E
   public: GGS_outputInputSelfParameterAST_2E_weak (const class GGS_outputInputSelfParameterAST & inSource) ;
 
   public: GGS_outputInputSelfParameterAST_2E_weak & operator = (const class GGS_outputInputSelfParameterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_outputInputSelfParameterAST_2E_weak init_nil (void) {
@@ -11721,6 +11764,8 @@ class GGS_inputActualExistingVariableParameterAST_2E_weak : public GGS_actualPar
 
   public: GGS_inputActualExistingVariableParameterAST_2E_weak & operator = (const class GGS_inputActualExistingVariableParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_inputActualExistingVariableParameterAST_2E_weak init_nil (void) {
     GGS_inputActualExistingVariableParameterAST_2E_weak result ;
@@ -11948,6 +11993,8 @@ class GGS_inputActualSelfPropertyParameterAST_2E_weak : public GGS_actualParamet
 
   public: GGS_inputActualSelfPropertyParameterAST_2E_weak & operator = (const class GGS_inputActualSelfPropertyParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_inputActualSelfPropertyParameterAST_2E_weak init_nil (void) {
     GGS_inputActualSelfPropertyParameterAST_2E_weak result ;
@@ -12174,6 +12221,8 @@ class GGS_inputActualSelfParameterAST_2E_weak : public GGS_actualParameterAST_2E
   public: GGS_inputActualSelfParameterAST_2E_weak (const class GGS_inputActualSelfParameterAST & inSource) ;
 
   public: GGS_inputActualSelfParameterAST_2E_weak & operator = (const class GGS_inputActualSelfParameterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_inputActualSelfParameterAST_2E_weak init_nil (void) {
@@ -12408,6 +12457,8 @@ class GGS_inputActualNewVariableParameterAST_2E_weak : public GGS_actualParamete
   public: GGS_inputActualNewVariableParameterAST_2E_weak (const class GGS_inputActualNewVariableParameterAST & inSource) ;
 
   public: GGS_inputActualNewVariableParameterAST_2E_weak & operator = (const class GGS_inputActualNewVariableParameterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_inputActualNewVariableParameterAST_2E_weak init_nil (void) {
@@ -12650,6 +12701,8 @@ class GGS_inputActualNewConstantParameterAST_2E_weak : public GGS_actualParamete
 
   public: GGS_inputActualNewConstantParameterAST_2E_weak & operator = (const class GGS_inputActualNewConstantParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_inputActualNewConstantParameterAST_2E_weak init_nil (void) {
     GGS_inputActualNewConstantParameterAST_2E_weak result ;
@@ -12870,6 +12923,8 @@ class GGS_inputSingleJokerActualParameterAST_2E_weak : public GGS_actualParamete
 
   public: GGS_inputSingleJokerActualParameterAST_2E_weak & operator = (const class GGS_inputSingleJokerActualParameterAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_inputSingleJokerActualParameterAST_2E_weak init_nil (void) {
     GGS_inputSingleJokerActualParameterAST_2E_weak result ;
@@ -13089,6 +13144,8 @@ class GGS_inputJokerActualParameterAST_2E_weak : public GGS_actualParameterAST_2
   public: GGS_inputJokerActualParameterAST_2E_weak (const class GGS_inputJokerActualParameterAST & inSource) ;
 
   public: GGS_inputJokerActualParameterAST_2E_weak & operator = (const class GGS_inputJokerActualParameterAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_inputJokerActualParameterAST_2E_weak init_nil (void) {
@@ -13334,6 +13391,8 @@ class GGS_externProcedureDeclarationAST_2E_weak : public GGS_semanticDeclaration
 
   public: GGS_externProcedureDeclarationAST_2E_weak & operator = (const class GGS_externProcedureDeclarationAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_externProcedureDeclarationAST_2E_weak init_nil (void) {
     GGS_externProcedureDeclarationAST_2E_weak result ;
@@ -13566,6 +13625,8 @@ class GGS_procDeclarationAST_2E_weak : public GGS_externProcedureDeclarationAST_
   public: GGS_procDeclarationAST_2E_weak (const class GGS_procDeclarationAST & inSource) ;
 
   public: GGS_procDeclarationAST_2E_weak & operator = (const class GGS_procDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_procDeclarationAST_2E_weak init_nil (void) {
@@ -14653,6 +14714,8 @@ class GGS_semanticExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_semanticExpressionAST_2E_weak & operator = (const class GGS_semanticExpressionAST & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_semanticExpressionAST_2E_weak init_nil (void) {
     GGS_semanticExpressionAST_2E_weak result ;
@@ -14765,98 +14828,4 @@ class GGS_string extensionGetter_keyRepresentation (const class GGS_formalParame
 class GGS_string extensionGetter_initializerSignature (const class GGS_formalInputParameterListAST & inObject,
                                                        class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @abstractInputParameter reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_abstractInputParameter : public AC_GALGAS_reference_class {
-//--------------------------------- Default constructor
-  public: GGS_abstractInputParameter (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_abstractInputParameter (const class cPtr_abstractInputParameter * inSourcePtr) ;
-
-//--------------------------------- Property access
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_abstractInputParameter init (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_abstractInputParameter extractObject (const GGS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_abstractInputParameter & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_abstractInputParameter class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractInputParameter ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @abstractInputParameter class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_abstractInputParameter : public acStrongPtr_class {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void abstractInputParameter_init (Compiler * inCompiler) ;
-
-
-//--- Extension method analyzeInputParameter
-  public: virtual void method_analyzeInputParameter (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           const class GGS_lexicalTypeEnum arg_inRequiredLexicalType,
-           const class GGS_string arg_inLexicalAttributeName,
-           class GGS_terminalCheckAssignementList & arg_ioTerminalCheckAssignementList,
-           class GGS_localVarManager & arg_ioVariableMap,
-           Compiler * COMMA_LOCATION_ARGS) = 0 ;
-
-//--- Properties
-
-
-//--- Default constructor
-  public: cPtr_abstractInputParameter (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_abstractInputParameter (LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override = 0 ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
-
-} ;
 

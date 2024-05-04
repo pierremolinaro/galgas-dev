@@ -618,6 +618,8 @@ class GGS_templateInstructionStringForGeneration_2E_weak : public GGS_templateIn
 
   public: GGS_templateInstructionStringForGeneration_2E_weak & operator = (const class GGS_templateInstructionStringForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_templateInstructionStringForGeneration_2E_weak init_nil (void) {
     GGS_templateInstructionStringForGeneration_2E_weak result ;
@@ -705,6 +707,8 @@ class GGS_lexiqueComponentAST_2E_weak : public GGS_semanticDeclarationAST_2E_wea
   public: GGS_lexiqueComponentAST_2E_weak (const class GGS_lexiqueComponentAST & inSource) ;
 
   public: GGS_lexiqueComponentAST_2E_weak & operator = (const class GGS_lexiqueComponentAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_lexiqueComponentAST_2E_weak init_nil (void) {

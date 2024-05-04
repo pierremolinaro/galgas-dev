@@ -439,18 +439,3 @@ void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class
                                                                      class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateWrapperContents?????&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_string constinArgument0,
-                                                              const class GGS_string constinArgument1,
-                                                              const class GGS_uint constinArgument2,
-                                                              const class GGS_wrapperFileMap constinArgument3,
-                                                              const class GGS_wrapperDirectoryMap constinArgument4,
-                                                              class GGS_string & ioArgument5,
-                                                              class Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-

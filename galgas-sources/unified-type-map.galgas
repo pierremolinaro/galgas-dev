@@ -82,6 +82,18 @@ map @unifiedTypeMap {
 
   #-----------------------------------------------------------------------------------------------
 
+  getter typeMapEntryOrNullForLKey ?let @lstring inLKey -> @unifiedTypeMapEntry {
+    if inLKey.string == "" then
+      result = .null
+    elsif let node = self §[inLKey] then
+      result = .element {!weakElement: node.mElement}
+    else
+      result = .null
+    end
+  }
+
+  #-----------------------------------------------------------------------------------------------
+
   setter insertType ?let @lstring inTypeName ?let @unifiedTypeDefinition inTypeDefinition {
     if let node = self §[inTypeName] then
       switch node.mElement.mDefinition

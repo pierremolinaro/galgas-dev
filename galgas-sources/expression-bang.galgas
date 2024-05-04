@@ -107,9 +107,23 @@ override method @bangExpressionAST analyzeSemanticExpression
     }
   else
     error self.mOperatorLocation
-    : "operand type is '@" + [type definition].typeName.string + "' and does not support the '°' operator"
+    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'bang' operator"
     : outExpression
   end
+#---
+#  if let element = [[type definition].unwrappedType getElement] then
+#  //  let e = element.weakElement.mDefinition
+#    outExpression = @bangExpressionForGeneration {
+#      !element.weakElement // .init (element)
+#      !self.mOperatorLocation
+#      !expression
+#      ![type definition].typeName.string
+#    }
+#  else
+#    error self.mOperatorLocation
+#    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'bang' operator"
+#    : outExpression
+#  end
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

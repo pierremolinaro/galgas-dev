@@ -88,6 +88,8 @@ class GGS_terminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSyn
 
   public: GGS_terminalInstructionForGrammarAnalysis_2E_weak & operator = (const class GGS_terminalInstructionForGrammarAnalysis & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_terminalInstructionForGrammarAnalysis_2E_weak init_nil (void) {
     GGS_terminalInstructionForGrammarAnalysis_2E_weak result ;

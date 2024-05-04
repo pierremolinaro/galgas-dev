@@ -132,6 +132,8 @@ class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak : public GGS_semant
 
   public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak & operator = (const class GGS_semanticDeclarationWithHeaderForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_semanticDeclarationWithHeaderForGeneration_2E_weak init_nil (void) {
     GGS_semanticDeclarationWithHeaderForGeneration_2E_weak result ;
@@ -375,6 +377,8 @@ class GGS_semanticTypeForGeneration_2E_weak : public GGS_semanticDeclarationForG
 
   public: GGS_semanticTypeForGeneration_2E_weak & operator = (const class GGS_semanticTypeForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_semanticTypeForGeneration_2E_weak init_nil (void) {
     GGS_semanticTypeForGeneration_2E_weak result ;
@@ -582,6 +586,8 @@ class GGS_boolsetTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneratio
   public: GGS_boolsetTypeForGeneration_2E_weak (const class GGS_boolsetTypeForGeneration & inSource) ;
 
   public: GGS_boolsetTypeForGeneration_2E_weak & operator = (const class GGS_boolsetTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_boolsetTypeForGeneration_2E_weak init_nil (void) {
@@ -867,6 +873,8 @@ class GGS_classTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
 
   public: GGS_classTypeForGeneration_2E_weak & operator = (const class GGS_classTypeForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_classTypeForGeneration_2E_weak init_nil (void) {
     GGS_classTypeForGeneration_2E_weak result ;
@@ -960,15 +968,18 @@ class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration 
 
   public: class GGS_bool readProperty_generateHeaderInSeparateFile (void) const ;
 
+  public: class GGS_unifiedTypeMapEntry readProperty_optionalClassTypeOrNull (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_weakReferenceTypeForGeneration init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                          const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                          const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                          const class GGS_bool & inOperand3,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GGS_weakReferenceTypeForGeneration init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                              const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                              const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                              const class GGS_bool & inOperand3,
+                                                                              const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -982,7 +993,8 @@ class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration 
   public: static class GGS_weakReferenceTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                           const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                          const class GGS_bool & inOperand3
+                                                                          const class GGS_bool & inOperand3,
+                                                                          const class GGS_unifiedTypeMapEntry & inOperand4
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1020,11 +1032,12 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   #endif
 
 //--------------------------------- Initializers
-  public: void weakReferenceTypeForGeneration_init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                    const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                    const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                    const class GGS_bool & inOperand3,
-                                                                    Compiler * inCompiler) ;
+  public: void weakReferenceTypeForGeneration_init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                        const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                        const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                        const class GGS_bool & inOperand3,
+                                                                        const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                        Compiler * inCompiler) ;
 
 
 //--- Extension method appendDeclaration1
@@ -1042,6 +1055,7 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   public: GGS_unifiedTypeMapEntry mProperty_mReferenceClassType ;
   public: GGS_unifiedTypeMapEntry mProperty_mSuperClass ;
   public: GGS_bool mProperty_generateHeaderInSeparateFile ;
+  public: GGS_unifiedTypeMapEntry mProperty_optionalClassTypeOrNull ;
 
 
 //--- Default constructor
@@ -1051,7 +1065,8 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
   public: cPtr_weakReferenceTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                               const GGS_bool & in_generateHeaderInSeparateFile
+                                               const GGS_bool & in_generateHeaderInSeparateFile,
+                                               const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1081,6 +1096,8 @@ class GGS_weakReferenceTypeForGeneration_2E_weak : public GGS_semanticTypeForGen
   public: GGS_weakReferenceTypeForGeneration_2E_weak (const class GGS_weakReferenceTypeForGeneration & inSource) ;
 
   public: GGS_weakReferenceTypeForGeneration_2E_weak & operator = (const class GGS_weakReferenceTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_weakReferenceTypeForGeneration_2E_weak init_nil (void) {
@@ -1289,6 +1306,8 @@ class GGS_enumTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
   public: GGS_enumTypeForGeneration_2E_weak (const class GGS_enumTypeForGeneration & inSource) ;
 
   public: GGS_enumTypeForGeneration_2E_weak & operator = (const class GGS_enumTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_enumTypeForGeneration_2E_weak init_nil (void) {
@@ -1509,6 +1528,8 @@ class GGS_externTypeDeclarationForGeneration_2E_weak : public GGS_semanticTypeFo
 
   public: GGS_externTypeDeclarationForGeneration_2E_weak & operator = (const class GGS_externTypeDeclarationForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_externTypeDeclarationForGeneration_2E_weak init_nil (void) {
     GGS_externTypeDeclarationForGeneration_2E_weak result ;
@@ -1724,6 +1745,8 @@ class GGS_graphDeclarationForGeneration_2E_weak : public GGS_semanticTypeForGene
 
   public: GGS_graphDeclarationForGeneration_2E_weak & operator = (const class GGS_graphDeclarationForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_graphDeclarationForGeneration_2E_weak init_nil (void) {
     GGS_graphDeclarationForGeneration_2E_weak result ;
@@ -1931,6 +1954,8 @@ class GGS_listTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
   public: GGS_listTypeForGeneration_2E_weak (const class GGS_listTypeForGeneration & inSource) ;
 
   public: GGS_listTypeForGeneration_2E_weak & operator = (const class GGS_listTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_listTypeForGeneration_2E_weak init_nil (void) {
@@ -2160,6 +2185,8 @@ class GGS_dictTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2
   public: GGS_dictTypeForGeneration_2E_weak (const class GGS_dictTypeForGeneration & inSource) ;
 
   public: GGS_dictTypeForGeneration_2E_weak & operator = (const class GGS_dictTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_dictTypeForGeneration_2E_weak init_nil (void) {
@@ -2417,6 +2444,8 @@ class GGS_mapTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E
 
   public: GGS_mapTypeForGeneration_2E_weak & operator = (const class GGS_mapTypeForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_mapTypeForGeneration_2E_weak init_nil (void) {
     GGS_mapTypeForGeneration_2E_weak result ;
@@ -2617,6 +2646,8 @@ class GGS_optionalTypeForGeneration_2E_weak : public GGS_semanticTypeForGenerati
   public: GGS_optionalTypeForGeneration_2E_weak (const class GGS_optionalTypeForGeneration & inSource) ;
 
   public: GGS_optionalTypeForGeneration_2E_weak & operator = (const class GGS_optionalTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_optionalTypeForGeneration_2E_weak init_nil (void) {
@@ -2832,6 +2863,8 @@ class GGS_sortedListTypeForGeneration_2E_weak : public GGS_semanticTypeForGenera
   public: GGS_sortedListTypeForGeneration_2E_weak (const class GGS_sortedListTypeForGeneration & inSource) ;
 
   public: GGS_sortedListTypeForGeneration_2E_weak & operator = (const class GGS_sortedListTypeForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_sortedListTypeForGeneration_2E_weak init_nil (void) {
@@ -3062,6 +3095,8 @@ class GGS_structTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration
 
   public: GGS_structTypeForGeneration_2E_weak & operator = (const class GGS_structTypeForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_structTypeForGeneration_2E_weak init_nil (void) {
     GGS_structTypeForGeneration_2E_weak result ;
@@ -3291,6 +3326,8 @@ class GGS_abstractExtensionGetterForGeneration_2E_weak : public GGS_semanticDecl
 
   public: GGS_abstractExtensionGetterForGeneration_2E_weak & operator = (const class GGS_abstractExtensionGetterForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_abstractExtensionGetterForGeneration_2E_weak init_nil (void) {
     GGS_abstractExtensionGetterForGeneration_2E_weak result ;
@@ -3513,6 +3550,8 @@ class GGS_abstractExtensionMethodForGeneration_2E_weak : public GGS_semanticDecl
 
   public: GGS_abstractExtensionMethodForGeneration_2E_weak & operator = (const class GGS_abstractExtensionMethodForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_abstractExtensionMethodForGeneration_2E_weak init_nil (void) {
     GGS_abstractExtensionMethodForGeneration_2E_weak result ;
@@ -3734,6 +3773,8 @@ class GGS_abstractExtensionSetterForGeneration_2E_weak : public GGS_semanticDecl
   public: GGS_abstractExtensionSetterForGeneration_2E_weak (const class GGS_abstractExtensionSetterForGeneration & inSource) ;
 
   public: GGS_abstractExtensionSetterForGeneration_2E_weak & operator = (const class GGS_abstractExtensionSetterForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_abstractExtensionSetterForGeneration_2E_weak init_nil (void) {
@@ -3992,6 +4033,8 @@ class GGS_extensionGetterForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_extensionGetterForGeneration_2E_weak & operator = (const class GGS_extensionGetterForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_extensionGetterForGeneration_2E_weak init_nil (void) {
     GGS_extensionGetterForGeneration_2E_weak result ;
@@ -4234,6 +4277,8 @@ class GGS_extensionMethodForGeneration_2E_weak : public GGS_semanticDeclarationW
   public: GGS_extensionMethodForGeneration_2E_weak (const class GGS_extensionMethodForGeneration & inSource) ;
 
   public: GGS_extensionMethodForGeneration_2E_weak & operator = (const class GGS_extensionMethodForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_extensionMethodForGeneration_2E_weak init_nil (void) {
@@ -4478,6 +4523,8 @@ class GGS_extensionSetterForGeneration_2E_weak : public GGS_semanticDeclarationW
 
   public: GGS_extensionSetterForGeneration_2E_weak & operator = (const class GGS_extensionSetterForGeneration & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
 //--------------------------------- nil initializer
   public: inline static GGS_extensionSetterForGeneration_2E_weak init_nil (void) {
     GGS_extensionSetterForGeneration_2E_weak result ;
@@ -4708,6 +4755,8 @@ class GGS_extensionInitializerForGeneration_2E_weak : public GGS_semanticDeclara
   public: GGS_extensionInitializerForGeneration_2E_weak (const class GGS_extensionInitializerForGeneration & inSource) ;
 
   public: GGS_extensionInitializerForGeneration_2E_weak & operator = (const class GGS_extensionInitializerForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
   public: inline static GGS_extensionInitializerForGeneration_2E_weak init_nil (void) {
