@@ -275,7 +275,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   var usefulEntitiesGraph = @usefulEntitiesGraph ()
   let @string buildDirectoryName
   if inGalgas4 then
-    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"-"] + "-build"
+    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"+"] + "+BUILD"
   else
     buildDirectoryName = "build"
   end
