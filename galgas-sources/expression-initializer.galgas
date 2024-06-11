@@ -265,13 +265,13 @@ refclass @initializerCallAST : @semanticExpressionAST {
   #·······························································································
 
   override method analyzeSemanticExpression
-                            ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                            ?inferenceType: let @unifiedTypeMapEntry inType
-                            ?let @analysisContext inAnalysisContext
-                            ?!@unifiedTypeMap ioTypeMap
-                            ?!@localVarManager ioVariableMap
-                            !@semanticExpressionForGeneration outExpression {
+            ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+            ?inferenceType: let @unifiedTypeMapEntry inType
+            ?let @analysisContext inAnalysisContext
+            ?!@unifiedTypeMap ioTypeMap
+            ?!@localVarManager ioVariableMap
+            !@semanticExpressionForGeneration outExpression {
     analyzeInitializerInvocation (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -331,6 +331,12 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
       : "cannot instanciate an abstract class"
       : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName
     else
+    #--- Usefull entity graph
+      let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
+        !instanciedTypeDefinition.typeName
+        ![inInvocationArguments initializerSignature]
+      )
+      [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !nameForUsefulness]
     #--- Search initializer
       outInitializerName = .init {![inInvocationArguments initializerSignature] !inEndOfExpressions}
       let initializerMap = instanciedTypeDefinition.initializerMap

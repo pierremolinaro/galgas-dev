@@ -435,7 +435,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #·······························································································
 
   override method semanticAnalysis
-                    ?!@lstringlist unused ioUsefulnessRootEntities
+                    ?!@lstringlist ioUsefulnessRootEntities
                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                     ?let @string unused inProductDirectory
                     ?let @semanticContext unused inSemanticContext
@@ -445,6 +445,9 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
   #--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.enumTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    if self.isPredefined  then
+      ioUsefulnessRootEntities += !nameForUsefulness
+    end
   #--- Constant list
     var [@unifiedTypeMapEntry] associatedValuesTypes = ()
     var constantList = @stringlist ()

@@ -441,7 +441,7 @@ override method @listDeclarationAST addAssociatedElement
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
-    !isUsefull: false
+    !isUsefull: self.isPredefined
   }
 }
 
@@ -451,21 +451,33 @@ override method @listDeclarationAST addAssociatedElement
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST semanticAnalysis
-  ?!@lstringlist ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+          ?!@lstringlist ioUsefulnessRootEntities
+          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+          ?let @string unused inProductDirectory
+          ?let @semanticContext unused inSemanticContext
+          ?!@unifiedTypeMap ioTypeMap
+          ?let @predefinedTypes unused inPredefinedTypes
+          ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mListTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if self.usefullList || self.isPredefined  then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mListTypeName))
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
-  if self.usefullList then
-    ioUsefulnessRootEntities += !nameForUsefulness
+  if self.usefullList || self.isPredefined  then
+    ioUsefulnessRootEntities += !elementTypeNameForUsefulness
+  end
+#--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    !self.mListTypeName
+    ![@formalInputParameterListAST () initializerSignature]
+  )
+  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  if self.usefullList || self.isPredefined then
+    ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
 #---
   var @typedPropertyList typedAttributeList = ()

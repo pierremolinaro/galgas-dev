@@ -514,7 +514,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -525,8 +525,23 @@ override method @graphDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mGraphTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if self.isPredefined  then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
   let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
+  if self.isPredefined  then
+    ioUsefulnessRootEntities += !associatedTypeNameForUsefulness
+  end
+#--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    !self.mGraphTypeName
+    ![@formalInputParameterListAST () initializerSignature]
+  )
+  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  if self.isPredefined  then
+    ioUsefulnessRootEntities += !initializerNameForUsefulness
+  end
 #---
   let graphTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mGraphTypeName]
   let associatedListTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]

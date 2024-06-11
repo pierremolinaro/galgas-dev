@@ -322,10 +322,22 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
   #--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.arrayTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+    if self.isUsefull || self.isPredefined then
+      ioUsefulnessRootEntities += !nameForUsefulness
+    end
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.elementTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
-    if self.isUsefull then
-      ioUsefulnessRootEntities += !nameForUsefulness
+    if self.isUsefull || self.isPredefined then
+      ioUsefulnessRootEntities += !elementTypeNameForUsefulness
+    end
+  #--- Useful entities graph for initializer without any argument
+    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+      !self.arrayTypeName
+      ![@formalInputParameterListAST () initializerSignature]
+    )
+    [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+    if self.isUsefull || self.isPredefined then
+      ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
   #---
 #    var @typedPropertyList typedAttributeList = ()

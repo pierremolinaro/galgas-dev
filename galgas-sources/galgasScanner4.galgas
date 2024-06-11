@@ -303,14 +303,6 @@ rule '@' {
       enterCharacterIntoString (!?tokenString !* )
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     end
-#    select
-#    case '-' :
-#      repeat
-#        enterCharacterIntoString (!?tokenString !* )
-#      while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-#      end
-#    default
-#    end
   default
     error incorrectTypeNameError
   end

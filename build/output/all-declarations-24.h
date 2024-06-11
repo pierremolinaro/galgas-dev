@@ -204,6 +204,17 @@ void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'initializerNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_initializerNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                  const class GGS_string & constinArgument1,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'typeNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
@@ -268,6 +279,18 @@ void routine_appendStructASTForRangeType_26__26_ (class GGS_semanticDeclarationL
                                                   class GGS_lstringlist & ioArgument1,
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'insertPredefinedType&&?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_insertPredefinedType_26__26__3F_ (class GGS_semanticDeclarationListAST & ioArgument0,
+                                               class GGS_lstringlist & ioArgument1,
+                                               const class GGS_predefinedTypeAST constinArgument2,
+                                               class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -35,16 +35,14 @@ map @uselessEntityLocationMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-proc checkUsefulEntities
-  ?let @usefulEntitiesGraph inUsefulEntitiesGraph
-  ?let @lstringlist inRootEntities
-  ?let @string unused inProductDirectory
-{
+proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
+                        ?let @lstringlist inRootEntities
+                        ?let @string unused inProductDirectory {
   if [option galgas_cli_options.checkEntityUsefulness value], @uint.errorCount == 0 then
   #--- Undefined nodes
     let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
     if [undefinedNodeList count] > 0 then
-      var s = "usefulness computation, undefined nodes:"
+      var s = "usefulness computation, " + [undefinedNodeList count] + " undefined nodes:"
       for (name) in undefinedNodeList do
         s += "\n  - " + name
       end

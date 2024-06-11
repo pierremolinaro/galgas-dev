@@ -119,7 +119,7 @@ enum @structComparison {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 refclass @structDeclarationAST : @semanticDeclarationAST {
-  private let @lstring structTypeName
+  public let @lstring structTypeName
   private let @propertyInCollectionListAST mStructurePropertyListAST
   private let @string enumeratedElementTypeName %initArgLabel # Empty string if not enumerable
   private let @structComparison comparison %initArgLabel
@@ -287,12 +287,8 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
               ?!@unifiedTypeMap ioTypeMap
               ?let @predefinedTypes inPredefinedTypes
               ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #--- Useful entities graph
+    let structType = [ioTypeMap typeMapEntryForLKey !self.structTypeName]
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
-    [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
-    if self.isUsefull then
-      ioUsefulnessRootEntities += !structNameForUsefulness
-    end
   #---
     if [self.mStructurePropertyListAST count] == 0 then
       error self.structTypeName: "a structure cannot be empty: it must have at least one property"
@@ -373,7 +369,6 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
     ]
   #---
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
-    let structType = [ioTypeMap typeMapEntryForLKey !self.structTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "struct " + self.structTypeName
       !@structTypeForGeneration {
@@ -384,6 +379,22 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         !constructorNeedsCompilerVar
         ![[structType definition].features contains !.generateSynthetizedInitializer]
       }
+  #--- Useful entities graph
+    [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
+    if self.isUsefull || self.isPredefined then
+      ioUsefulnessRootEntities += !structNameForUsefulness
+    end
+  #--- Add synthetized initializer ?
+    if [[structType definition].features contains !.generateSynthetizedInitializer] then
+      let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
+        !self.structTypeName
+        ![constructorArgumentList initializerSignature]
+      )
+      [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
+      if self.isUsefull || self.isPredefined then
+        ioUsefulnessRootEntities += !initializerForUsefulness
+      end
+    end
   }
 
   #·······························································································

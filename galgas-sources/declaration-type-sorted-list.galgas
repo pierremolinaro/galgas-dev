@@ -372,7 +372,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -383,8 +383,22 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
   [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mSortedListTypeName))
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
+    !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)
+  )
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !sortedListNameForUsefulness
+  end
+#--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    !self.mSortedListTypeName
+    ![@formalInputParameterListAST () initializerSignature]
+  )
+  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !initializerNameForUsefulness
+  end
 #--- Attribute
   var typedAttributeList = @typedPropertyList ()
   var @propertyIndexMap attributeMap = ()

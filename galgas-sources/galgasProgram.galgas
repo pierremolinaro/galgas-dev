@@ -196,7 +196,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
   var @galgasDeclarationAST declarationAST = ()
 //--- Parse predefined type definitions
-#  var f = filewrapper  typeGenerationTemplate
   grammar galgas4Grammar (!?declarationAST) on
   [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-types.ggs"]
   : "GALGAS predefined types"

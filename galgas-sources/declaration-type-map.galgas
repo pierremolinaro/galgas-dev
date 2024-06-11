@@ -681,7 +681,7 @@ map @searchMethodMap {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused  inSemanticContext
@@ -692,8 +692,22 @@ override method @mapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mMapTypeName))
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
+    !makeEmbeddedElementTypeLName (!self.mMapTypeName)
+  )
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
+#--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    !self.mMapTypeName
+    ![@formalInputParameterListAST () initializerSignature]
+  )
+  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !initializerNameForUsefulness
+  end
 #------ Enter property
   var @typedPropertyList typedAttributeList = ()
   var @propertyIndexMap attributeMap = ()

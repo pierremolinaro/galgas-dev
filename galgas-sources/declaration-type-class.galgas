@@ -456,7 +456,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
 
   #·······························································································
 
-  override method semanticAnalysis ?!@lstringlist unused ioUsefulnessRootEntities
+  override method semanticAnalysis ?!@lstringlist ioUsefulnessRootEntities
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
                 ?let @string unused inProductDirectory
                 ?let @semanticContext inSemanticContext
@@ -466,6 +466,9 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
   #--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
     [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
+    if self.isPredefined  then
+      ioUsefulnessRootEntities += !classTypeNameForUsefulness
+    end
     if self.mSuperClassName.string != "" then
       let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
@@ -576,6 +579,17 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ![selfType definition].initializerMap
         !self.clonable
       }
+  #--- Add synthetized initializer ?
+    if [[selfType definition].features contains !.generateSynthetizedInitializer] then
+      let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
+        !self.mClassTypeName
+        ![synthetizedInitialzerArgumentList initializerSignature]
+      )
+      [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
+      if self.isPredefined  then
+        ioUsefulnessRootEntities += !initializerForUsefulness
+      end
+    end
   }
 
   #·······························································································

@@ -257,7 +257,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -273,6 +273,19 @@ override method @boolsetDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
   [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
+  if self.isPredefined  then
+    ioUsefulnessRootEntities += !boolsetNameForUsefulness
+  end
+#--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    !self.mBoolsetTypeName
+    ![@formalInputParameterListAST () initializerSignature]
+  )
+  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  if self.isPredefined  then
+    ioUsefulnessRootEntities += !initializerNameForUsefulness
+  end
+#---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration {

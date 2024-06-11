@@ -514,7 +514,7 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
+  ?!@lstringlist ioUsefulnessRootEntities
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -525,6 +525,9 @@ override method @externTypeDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mExternTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if self.isPredefined  then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
 #---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern type " + self.mExternTypeName

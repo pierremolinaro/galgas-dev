@@ -673,17 +673,6 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GG
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'initializerNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_initializerNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                                  const class GGS_string & constinArgument1,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'analyzeInitializerBody?&?&???!!'
 //
 //--------------------------------------------------------------------------------------------------
@@ -775,13 +764,4 @@ class GGS_lstring function_procedureNameForUsefulEntitiesGraph (const class GGS_
 
 class GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'syntaxDirectedTranslationResultVarName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
 

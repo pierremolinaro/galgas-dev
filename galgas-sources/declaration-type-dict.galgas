@@ -467,13 +467,13 @@ func %once forbiddenKeysForMapAndDict () -> @stringset {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext unused inSemanticContext
-                                ?!@unifiedTypeMap ioTypeMap
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+                ?!@lstringlist ioUsefulnessRootEntities
+                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                ?let @string unused inProductDirectory
+                ?let @semanticContext unused inSemanticContext
+                ?!@unifiedTypeMap ioTypeMap
+                ?let @predefinedTypes unused inPredefinedTypes
+                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Check key is comparable
   let keyType = [ioTypeMap typeMapEntryForLKey !self.mKeyTypeName]
@@ -483,8 +483,25 @@ override method @dictDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mDictTypeName))
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
+    !makeEmbeddedElementTypeLName (!self.mDictTypeName)
+  )
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !elementTypeNameForUsefulness
+  end
+#--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    !self.mDictTypeName
+    ![@formalInputParameterListAST () initializerSignature]
+  )
+  [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  if self.isPredefined then
+    ioUsefulnessRootEntities += !initializerNameForUsefulness
+  end
 #------ Enter attributes
   var @typedPropertyList typedAttributeList = ()
   var @propertyIndexMap attributeMap = ()
