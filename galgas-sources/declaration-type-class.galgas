@@ -94,7 +94,6 @@ syntax extension galgas3DeclarationsSyntax {
            else makeWeakTypeLName (!superClassName)
          end
         !generateInSeparateFile
-#        !propertyList
       }
     end
   }
@@ -476,6 +475,9 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
     if self.mIsReference then
       let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !weakRefTypeNameForUsefulness]
+      if self.isPredefined  then
+        ioUsefulnessRootEntities += !weakRefTypeNameForUsefulness
+      end
     end
   #------ Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mClassTypeName]
@@ -586,8 +588,13 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
         ![synthetizedInitialzerArgumentList initializerSignature]
       )
       [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
-      if self.isPredefined  then
+      if self.isPredefined then
         ioUsefulnessRootEntities += !initializerForUsefulness
+        [!?ioUsefulEntitiesGraph addEdge !initializerForUsefulness !classTypeNameForUsefulness]
+      elsif self.mIsAbstract then
+        ioUsefulnessRootEntities += !initializerForUsefulness
+      else
+        [!?ioUsefulEntitiesGraph addEdge !initializerForUsefulness !classTypeNameForUsefulness]
       end
     end
   }

@@ -334,7 +334,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
     !attributeList
     !enumeratedElementTypeName: ""
     !comparison: .equatable
-    !isUsefull: false
+    !isUsefullStruct: true
   }
   ioDeclarationListASTs += !type
 #  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"l" + inElementTypeName)
@@ -376,7 +376,7 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
     !attributeList
     !enumeratedElementTypeName: "uint"
     !comparison: .equatable
-    !isUsefull: true
+    !isUsefullStruct: true
   }
 }
 

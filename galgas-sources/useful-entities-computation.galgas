@@ -29,6 +29,7 @@ graph @usefulEntitiesGraph (@lstringlist) {
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @uselessEntityLocationMap {
+  public let @string mUnusedEntityName
   public let @location mLocation
   insert insertKey error message "--- %K INTERNAL ERROR ---"
 }
@@ -60,11 +61,12 @@ proc checkUsefulEntities ?let @usefulEntitiesGraph inUsefulEntitiesGraph
           warning .nowhere : "unused entity, '" + unusedEntity
             + "' (due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
         elsif not [uselessEntityLocationMap hasKey ![l startLocationString]] then
-          [!?uselessEntityLocationMap insertKey ![[l startLocationString] nowhere] !l]
+          [!?uselessEntityLocationMap insertKey ![[l startLocationString] nowhere] !unusedEntity !l]
         end
       end
-      for (* loc) in uselessEntityLocationMap do
-        warning loc : "unused entity, due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
+      for (* unusedEntityName loc) in uselessEntityLocationMap do
+        warning loc : "unused '" + unusedEntityName + "' entity, due to option --"
+         + [option galgas_cli_options.checkEntityUsefulness string] + ")"
       end
     end
   end

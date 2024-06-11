@@ -49,7 +49,7 @@ syntax extension galgas3DeclarationsSyntax {
       !propertyList
       !enumeratedElementTypeName: ""
       !comparison: comparison
-      !isUsefull: false
+      !isUsefullStruct: false
     }
   }
 
@@ -91,7 +91,7 @@ syntax extension galgas4DeclarationsSyntax {
       !propertyList
       !enumeratedElementTypeName: ""
       !comparison: comparison
-      !isUsefull: false
+      !isUsefullStruct: false
     }
   }
 
@@ -123,7 +123,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
   private let @propertyInCollectionListAST mStructurePropertyListAST
   private let @string enumeratedElementTypeName %initArgLabel # Empty string if not enumerable
   private let @structComparison comparison %initArgLabel
-  private let @bool isUsefull %initArgLabel
+  private let @bool isUsefullStruct %initArgLabel
 
   #·······························································································
 
@@ -381,7 +381,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
       }
   #--- Useful entities graph
     [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
-    if self.isUsefull || self.isPredefined then
+    if self.isUsefullStruct || self.isPredefined then
       ioUsefulnessRootEntities += !structNameForUsefulness
     end
   #--- Add synthetized initializer ?
@@ -391,7 +391,8 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
         ![constructorArgumentList initializerSignature]
       )
       [!?ioUsefulEntitiesGraph addNode !initializerForUsefulness !initializerForUsefulness]
-      if self.isUsefull || self.isPredefined then
+      [!?ioUsefulEntitiesGraph addEdge !initializerForUsefulness !structNameForUsefulness]
+      if self.isUsefullStruct || self.isPredefined then
         ioUsefulnessRootEntities += !initializerForUsefulness
       end
     end

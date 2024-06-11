@@ -6746,6 +6746,7 @@ GGS_ruleLabelImplementationList_2E_element GGS_ruleLabelImplementationList_2E_el
 
 GGS_uselessEntityLocationMap_2E_element::GGS_uselessEntityLocationMap_2E_element (void) :
 mProperty_lkey (),
+mProperty_mUnusedEntityName (),
 mProperty_mLocation () {
 }
 
@@ -6756,13 +6757,15 @@ GGS_uselessEntityLocationMap_2E_element::~ GGS_uselessEntityLocationMap_2E_eleme
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_uselessEntityLocationMap_2E_element GGS_uselessEntityLocationMap_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
-                                                                                               const GGS_location & in_mLocation,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+GGS_uselessEntityLocationMap_2E_element GGS_uselessEntityLocationMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                                   const GGS_string & in_mUnusedEntityName,
+                                                                                                   const GGS_location & in_mLocation,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uselessEntityLocationMap_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_lkey = in_lkey ;
+  result.mProperty_mUnusedEntityName = in_mUnusedEntityName ;
   result.mProperty_mLocation = in_mLocation ;
   return result ;
 }
@@ -6775,20 +6778,24 @@ void GGS_uselessEntityLocationMap_2E_element::setInitializedProperties (Compiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_uselessEntityLocationMap_2E_element::GGS_uselessEntityLocationMap_2E_element (const GGS_lstring & inOperand0,
-                                                                                  const GGS_location & inOperand1) :
+                                                                                  const GGS_string & inOperand1,
+                                                                                  const GGS_location & inOperand2) :
 mProperty_lkey (inOperand0),
-mProperty_mLocation (inOperand1) {
+mProperty_mUnusedEntityName (inOperand1),
+mProperty_mLocation (inOperand2) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uselessEntityLocationMap_2E_element GGS_uselessEntityLocationMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
+                                                                                                 const GGS_string & in_mUnusedEntityName,
                                                                                                  const GGS_location & in_mLocation,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uselessEntityLocationMap_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_lkey = in_lkey ;
+  result.mProperty_mUnusedEntityName = in_mUnusedEntityName ;
   result.mProperty_mLocation = in_mLocation ;
   return result ;
 }
@@ -6796,13 +6803,14 @@ GGS_uselessEntityLocationMap_2E_element GGS_uselessEntityLocationMap_2E_element:
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_uselessEntityLocationMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLocation.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mUnusedEntityName.isValid () && mProperty_mLocation.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uselessEntityLocationMap_2E_element::drop (void) {
   mProperty_lkey.drop () ;
+  mProperty_mUnusedEntityName.drop () ;
   mProperty_mLocation.drop () ;
 }
 
@@ -6815,6 +6823,8 @@ void GGS_uselessEntityLocationMap_2E_element::description (String & ioString,
     ioString.appendCString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mUnusedEntityName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mLocation.description (ioString, inIndentation+1) ;
   }

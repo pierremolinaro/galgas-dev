@@ -123,6 +123,8 @@ refclass @superInitInstructionAST : @semanticInstructionAST {
           end
         end
         [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
+     #--- Mark super initializer usefull (TODO)
+     
      #--- Analyze argument list
         var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do

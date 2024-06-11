@@ -231,7 +231,7 @@ refclass @enumDeclarationAST : @semanticDeclarationAST {
           propertyListAST,
           !enumeratedElementTypeName: "",
           !comparison: self.comparison,
-          !isUsefull: true
+          !isUsefullStruct: true
         )
         ioDeclarations.mDeclarationList += !s
         [!?ioDeclarations getOptionalTypeName

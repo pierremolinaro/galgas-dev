@@ -9872,7 +9872,7 @@ mProperty_structTypeName (),
 mProperty_mStructurePropertyListAST (),
 mProperty_enumeratedElementTypeName (),
 mProperty_comparison (),
-mProperty_isUsefull () {
+mProperty_isUsefullStruct () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9884,7 +9884,7 @@ mProperty_isUsefull () {
     mProperty_mStructurePropertyListAST.printNonNullClassInstanceProperties ("mStructurePropertyListAST") ;
     mProperty_enumeratedElementTypeName.printNonNullClassInstanceProperties ("enumeratedElementTypeName") ;
     mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
-    mProperty_isUsefull.printNonNullClassInstanceProperties ("isUsefull") ;
+    mProperty_isUsefullStruct.printNonNullClassInstanceProperties ("isUsefullStruct") ;
   }
 #endif
 
@@ -9915,17 +9915,17 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_structDeclarationAST GGS_structDeclarationAST::
-init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (const GGS_bool & in_isPredefined,
-                                                                                      const GGS_lstring & in_structTypeName,
-                                                                                      const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
-                                                                                      const GGS_string & in_enumeratedElementTypeName,
-                                                                                      const GGS_structComparison & in_comparison,
-                                                                                      const GGS_bool & in_isUsefull,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (const GGS_bool & in_isPredefined,
+                                                                                            const GGS_lstring & in_structTypeName,
+                                                                                            const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
+                                                                                            const GGS_string & in_enumeratedElementTypeName,
+                                                                                            const GGS_structComparison & in_comparison,
+                                                                                            const GGS_bool & in_isUsefullStruct,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
   cPtr_structDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_structDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefull, inCompiler) ;
+  object->structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefullStruct, inCompiler) ;
   const GGS_structDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -9934,19 +9934,19 @@ init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUse
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_structDeclarationAST::
-structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (const GGS_bool & in_isPredefined,
-                                                                                                           const GGS_lstring & in_structTypeName,
-                                                                                                           const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
-                                                                                                           const GGS_string & in_enumeratedElementTypeName,
-                                                                                                           const GGS_structComparison & in_comparison,
-                                                                                                           const GGS_bool & in_isUsefull,
-                                                                                                           Compiler * /* inCompiler */) {
+structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (const GGS_bool & in_isPredefined,
+                                                                                                                 const GGS_lstring & in_structTypeName,
+                                                                                                                 const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
+                                                                                                                 const GGS_string & in_enumeratedElementTypeName,
+                                                                                                                 const GGS_structComparison & in_comparison,
+                                                                                                                 const GGS_bool & in_isUsefullStruct,
+                                                                                                                 Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_structTypeName = in_structTypeName ;
   mProperty_mStructurePropertyListAST = in_mStructurePropertyListAST ;
   mProperty_enumeratedElementTypeName = in_enumeratedElementTypeName ;
   mProperty_comparison = in_comparison ;
-  mProperty_isUsefull = in_isUsefull ;
+  mProperty_isUsefullStruct = in_isUsefullStruct ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9962,10 +9962,10 @@ GGS_structDeclarationAST GGS_structDeclarationAST::class_func_new (const GGS_boo
                                                                    const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                                                    const GGS_string & in_enumeratedElementTypeName,
                                                                    const GGS_structComparison & in_comparison,
-                                                                   const GGS_bool & in_isUsefull
+                                                                   const GGS_bool & in_isUsefullStruct
                                                                    COMMA_LOCATION_ARGS) {
   GGS_structDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_structDeclarationAST (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefull COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_structDeclarationAST (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefullStruct COMMA_THERE)) ;
   return result ;
 }
 
@@ -10019,13 +10019,13 @@ GGS_structComparison GGS_structDeclarationAST::readProperty_comparison (void) co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_structDeclarationAST::readProperty_isUsefull (void) const {
+GGS_bool GGS_structDeclarationAST::readProperty_isUsefullStruct (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_bool () ;
   }else{
     cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_isUsefull ;
+    return p->mProperty_isUsefullStruct ;
   }
 }
 
@@ -10038,20 +10038,20 @@ cPtr_structDeclarationAST::cPtr_structDeclarationAST (const GGS_bool & in_isPred
                                                       const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                                       const GGS_string & in_enumeratedElementTypeName,
                                                       const GGS_structComparison & in_comparison,
-                                                      const GGS_bool & in_isUsefull
+                                                      const GGS_bool & in_isUsefullStruct
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
 mProperty_structTypeName (),
 mProperty_mStructurePropertyListAST (),
 mProperty_enumeratedElementTypeName (),
 mProperty_comparison (),
-mProperty_isUsefull () {
+mProperty_isUsefullStruct () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_structTypeName = in_structTypeName ;
   mProperty_mStructurePropertyListAST = in_mStructurePropertyListAST ;
   mProperty_enumeratedElementTypeName = in_enumeratedElementTypeName ;
   mProperty_comparison = in_comparison ;
-  mProperty_isUsefull = in_isUsefull ;
+  mProperty_isUsefullStruct = in_isUsefullStruct ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10073,7 +10073,7 @@ void cPtr_structDeclarationAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_comparison.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_isUsefull.description (ioString, inIndentation+1) ;
+  mProperty_isUsefullStruct.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -10081,7 +10081,7 @@ void cPtr_structDeclarationAST::description (String & ioString,
 
 acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_enumeratedElementTypeName, mProperty_comparison, mProperty_isUsefull COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_enumeratedElementTypeName, mProperty_comparison, mProperty_isUsefullStruct COMMA_THERE)) ;
   return ptr ;
 }
 

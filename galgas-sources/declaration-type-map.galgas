@@ -298,7 +298,7 @@ override method @mapDeclarationAST addAssociatedElement ?!@galgasDeclarationAST 
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
-    !isUsefull: false
+    !isUsefullStruct: true
   }
 //--- Add optional element
   [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
@@ -705,6 +705,7 @@ override method @mapDeclarationAST semanticAnalysis
     ![@formalInputParameterListAST () initializerSignature]
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

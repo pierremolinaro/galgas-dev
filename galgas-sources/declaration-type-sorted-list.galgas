@@ -193,7 +193,7 @@ override method @sortedListDeclarationAST addAssociatedElement
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
-    !isUsefull: false
+    !isUsefullStruct: true
   }
 }
 
@@ -396,6 +396,7 @@ override method @sortedListDeclarationAST semanticAnalysis
     ![@formalInputParameterListAST () initializerSignature]
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !sortedListNameForUsefulness]
   if self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

@@ -652,7 +652,8 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_location & inOperand1,
+                                                     const class GGS_string & inOperand1,
+                                                     const class GGS_location & inOperand2,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -663,7 +664,8 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
-                                                  class GGS_location constinArgument1,
+                                                  class GGS_string constinArgument1,
+                                                  class GGS_location constinArgument2,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -671,6 +673,11 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
                                                            class GGS_string constinArgument1,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMUnusedEntityNameForKey (class GGS_string constinArgument0,
+                                                                   class GGS_string constinArgument1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -680,6 +687,10 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
   public: VIRTUAL_IN_DEBUG class GGS_location getter_mLocationForKey (const class GGS_string & constinOperand0,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_string getter_mUnusedEntityNameForKey (const class GGS_string & constinOperand0,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG class GGS_uselessEntityLocationMap getter_overriddenMap (Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
@@ -718,6 +729,7 @@ class cEnumerator_uselessEntityLocationMap : public cGenericAbstractEnumerator {
 
 //--- Current element access
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_string current_mUnusedEntityName (LOCATION_ARGS) const ;
   public: class GGS_location current_mLocation (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_uselessEntityLocationMap_2E_element current (LOCATION_ARGS) const ;
@@ -735,6 +747,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocati
 
 class cMapElement_uselessEntityLocationMap : public cMapElement {
 //--- Map attributes
+  public: GGS_string mProperty_mUnusedEntityName ;
   public: GGS_location mProperty_mLocation ;
 
 //--- Constructors
@@ -742,6 +755,7 @@ class cMapElement_uselessEntityLocationMap : public cMapElement {
                                                 COMMA_LOCATION_ARGS) ;
  
   public: cMapElement_uselessEntityLocationMap (const GGS_lstring & inKey,
+                                                const GGS_string & in_mUnusedEntityName,
                                                 const GGS_location & in_mLocation
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -770,6 +784,11 @@ class GGS_uselessEntityLocationMap_2E_element : public AC_GALGAS_root {
     return mProperty_lkey ;
   }
 
+  public: GGS_string mProperty_mUnusedEntityName ;
+  public: inline GGS_string readProperty_mUnusedEntityName (void) const {
+    return mProperty_mUnusedEntityName ;
+  }
+
   public: GGS_location mProperty_mLocation ;
   public: inline GGS_location readProperty_mLocation (void) const {
     return mProperty_mLocation ;
@@ -787,6 +806,10 @@ class GGS_uselessEntityLocationMap_2E_element : public AC_GALGAS_root {
     mProperty_lkey = inValue ;
   }
 
+  public: inline void setter_setMUnusedEntityName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mUnusedEntityName = inValue ;
+  }
+
   public: inline void setter_setMLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mLocation = inValue ;
   }
@@ -799,15 +822,17 @@ class GGS_uselessEntityLocationMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GGS_uselessEntityLocationMap_2E_element (const GGS_lstring & in_lkey,
+                                                   const GGS_string & in_mUnusedEntityName,
                                                    const GGS_location & in_mLocation) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_uselessEntityLocationMap_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
-                                                                       const class GGS_location & inOperand1,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS_uselessEntityLocationMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                           const class GGS_string & inOperand1,
+                                                                           const class GGS_location & inOperand2,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -819,7 +844,8 @@ class GGS_uselessEntityLocationMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_uselessEntityLocationMap_2E_element class_func_new (const class GGS_lstring & inOperand0,
-                                                                               const class GGS_location & inOperand1,
+                                                                               const class GGS_string & inOperand1,
+                                                                               const class GGS_location & inOperand2,
                                                                                class Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 

@@ -1245,15 +1245,18 @@ GGS_usefulEntitiesGraph GGS_usefulEntitiesGraph::extractObject (const GGS_object
 cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GGS_uselessEntityLocationMap_2E_element & inValue
                                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mUnusedEntityName (inValue.mProperty_mUnusedEntityName),
 mProperty_mLocation (inValue.mProperty_mLocation) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GGS_lstring & inKey,
+                                                                            const GGS_string & in_mUnusedEntityName,
                                                                             const GGS_location & in_mLocation
                                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
+mProperty_mUnusedEntityName (in_mUnusedEntityName),
 mProperty_mLocation (in_mLocation) {
 }
 
@@ -1267,13 +1270,17 @@ bool cMapElement_uselessEntityLocationMap::isValid (void) const {
 
 cMapElement * cMapElement_uselessEntityLocationMap::copy (void) {
   cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_uselessEntityLocationMap (mProperty_lkey, mProperty_mLocation COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_uselessEntityLocationMap (mProperty_lkey, mProperty_mUnusedEntityName, mProperty_mLocation COMMA_HERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void cMapElement_uselessEntityLocationMap::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mUnusedEntityName" ":") ;
+  mProperty_mUnusedEntityName.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
   ioString.appendCString ("mLocation" ":") ;
@@ -1329,6 +1336,7 @@ GGS_uselessEntityLocationMap_2E_element_3F_ GGS_uselessEntityLocationMap
     }else{
       GGS_uselessEntityLocationMap_2E_element element ;
       element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mUnusedEntityName = p->mProperty_mUnusedEntityName ;
       element.mProperty_mLocation = p->mProperty_mLocation ;
       result = element ;
     }
@@ -1372,11 +1380,12 @@ void GGS_uselessEntityLocationMap::enterElement (const GGS_uselessEntityLocation
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uselessEntityLocationMap::addAssign_operation (const GGS_lstring & inKey,
-                                                        const GGS_location & inArgument0,
+                                                        const GGS_string & inArgument0,
+                                                        const GGS_location & inArgument1,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   cMapElement_uselessEntityLocationMap * p = nullptr ;
-  macroMyNew (p, cMapElement_uselessEntityLocationMap (inKey, inArgument0 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_uselessEntityLocationMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -1393,7 +1402,7 @@ GGS_uselessEntityLocationMap GGS_uselessEntityLocationMap::add_operation (const 
   GGS_uselessEntityLocationMap result = *this ;
   cEnumerator_uselessEntityLocationMap enumerator (inOperand, EnumerationOrder::up) ;
   while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mLocation (HERE), inCompiler COMMA_THERE) ;
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mUnusedEntityName (HERE), enumerator.current_mLocation (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
   }
   return result ;
@@ -1402,17 +1411,33 @@ GGS_uselessEntityLocationMap GGS_uselessEntityLocationMap::add_operation (const 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uselessEntityLocationMap::setter_insertKey (GGS_lstring inKey,
-                                                     GGS_location inArgument0,
+                                                     GGS_string inArgument0,
+                                                     GGS_location inArgument1,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   cMapElement_uselessEntityLocationMap * p = nullptr ;
-  macroMyNew (p, cMapElement_uselessEntityLocationMap (inKey, inArgument0 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_uselessEntityLocationMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
   const char * kInsertErrorMessage = "--- %K INTERNAL ERROR ---" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_uselessEntityLocationMap::getter_mUnusedEntityNameForKey (const GGS_string & inKey,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) attributes ;
+  GGS_string result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
+    result = p->mProperty_mUnusedEntityName ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1428,6 +1453,20 @@ GGS_location GGS_uselessEntityLocationMap::getter_mLocationForKey (const GGS_str
     result = p->mProperty_mLocation ;
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_uselessEntityLocationMap::setter_setMUnusedEntityNameForKey (GGS_string inAttributeValue,
+                                                                      GGS_string inKey,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_uselessEntityLocationMap * p = (cMapElement_uselessEntityLocationMap *) attributes ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
+    p->mProperty_mUnusedEntityName = inAttributeValue ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1467,7 +1506,7 @@ cGenericAbstractEnumerator (inOrder) {
 GGS_uselessEntityLocationMap_2E_element cEnumerator_uselessEntityLocationMap::current (LOCATION_ARGS) const {
   const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-  return GGS_uselessEntityLocationMap_2E_element (p->mProperty_lkey, p->mProperty_mLocation) ;
+  return GGS_uselessEntityLocationMap_2E_element (p->mProperty_lkey, p->mProperty_mUnusedEntityName, p->mProperty_mLocation) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1476,6 +1515,14 @@ GGS_lstring cEnumerator_uselessEntityLocationMap::current_lkey (LOCATION_ARGS) c
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cEnumerator_uselessEntityLocationMap::current_mUnusedEntityName (LOCATION_ARGS) const {
+  const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
+  return p->mProperty_mUnusedEntityName ;
 }
 
 //--------------------------------------------------------------------------------------------------

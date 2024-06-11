@@ -441,7 +441,7 @@ override method @listDeclarationAST addAssociatedElement
     !structAttributeList
     !enumeratedElementTypeName: ""
     !comparison: if self.equatable then .equatable else .none end
-    !isUsefull: self.isPredefined
+    !isUsefullStruct: true
   }
 }
 

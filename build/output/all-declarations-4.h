@@ -11186,19 +11186,19 @@ class GGS_structDeclarationAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_structComparison readProperty_comparison (void) const ;
 
-  public: class GGS_bool readProperty_isUsefull (void) const ;
+  public: class GGS_bool readProperty_isUsefullStruct (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_structDeclarationAST init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (const class GGS_bool & inOperand0,
-                                                                                                                                const class GGS_lstring & inOperand1,
-                                                                                                                                const class GGS_propertyInCollectionListAST & inOperand2,
-                                                                                                                                const class GGS_string & inOperand3,
-                                                                                                                                const class GGS_structComparison & inOperand4,
-                                                                                                                                const class GGS_bool & inOperand5,
-                                                                                                                                Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_structDeclarationAST init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (const class GGS_bool & inOperand0,
+                                                                                                                                      const class GGS_lstring & inOperand1,
+                                                                                                                                      const class GGS_propertyInCollectionListAST & inOperand2,
+                                                                                                                                      const class GGS_string & inOperand3,
+                                                                                                                                      const class GGS_structComparison & inOperand4,
+                                                                                                                                      const class GGS_bool & inOperand5,
+                                                                                                                                      Compiler * inCompiler
+                                                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -11252,13 +11252,13 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefull (const class GGS_bool & inOperand0,
-                                                                                                                          const class GGS_lstring & inOperand1,
-                                                                                                                          const class GGS_propertyInCollectionListAST & inOperand2,
-                                                                                                                          const class GGS_string & inOperand3,
-                                                                                                                          const class GGS_structComparison & inOperand4,
-                                                                                                                          const class GGS_bool & inOperand5,
-                                                                                                                          Compiler * inCompiler) ;
+  public: void structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (const class GGS_bool & inOperand0,
+                                                                                                                                const class GGS_lstring & inOperand1,
+                                                                                                                                const class GGS_propertyInCollectionListAST & inOperand2,
+                                                                                                                                const class GGS_string & inOperand3,
+                                                                                                                                const class GGS_structComparison & inOperand4,
+                                                                                                                                const class GGS_bool & inOperand5,
+                                                                                                                                Compiler * inCompiler) ;
 
 
 //--- Extension getter keyRepresentation
@@ -11299,7 +11299,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GGS_propertyInCollectionListAST mProperty_mStructurePropertyListAST ;
   public: GGS_string mProperty_enumeratedElementTypeName ;
   public: GGS_structComparison mProperty_comparison ;
-  public: GGS_bool mProperty_isUsefull ;
+  public: GGS_bool mProperty_isUsefullStruct ;
 
 
 //--- Default constructor
@@ -11311,7 +11311,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
                                      const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                      const GGS_string & in_enumeratedElementTypeName,
                                      const GGS_structComparison & in_comparison,
-                                     const GGS_bool & in_isUsefull
+                                     const GGS_bool & in_isUsefullStruct
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -606,58 +606,58 @@ void routine_checkUsefulEntities_3F__3F__3F_ (const GGS_usefulEntitiesGraph cons
   if (kBoolTrue == test_0) {
     test_0 = GGS_bool (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_value ()).boolEnum () ;
     if (kBoolTrue == test_0) {
-      test_0 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("useful-entities-computation.galgas", 41)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      test_0 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("useful-entities-computation.galgas", 42)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GGS_stringlist var_undefinedNodeList_2121 = constinArgument_inUsefulEntitiesGraph.getter_undefinedNodeKeyList (SOURCE_FILE ("useful-entities-computation.galgas", 43)) ;
+        GGS_stringlist var_undefinedNodeList_2160 = constinArgument_inUsefulEntitiesGraph.getter_undefinedNodeKeyList (SOURCE_FILE ("useful-entities-computation.galgas", 44)) ;
         enumGalgasBool test_1 = kBoolTrue ;
         if (kBoolTrue == test_1) {
-          test_1 = GGS_bool (ComparisonKind::greaterThan, var_undefinedNodeList_2121.getter_count (SOURCE_FILE ("useful-entities-computation.galgas", 44)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_1 = GGS_bool (ComparisonKind::greaterThan, var_undefinedNodeList_2160.getter_count (SOURCE_FILE ("useful-entities-computation.galgas", 45)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_1) {
-            GGS_string var_s_2238 = GGS_string ("usefulness computation, ").add_operation (var_undefinedNodeList_2121.getter_count (SOURCE_FILE ("useful-entities-computation.galgas", 45)).getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 45)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 45)).add_operation (GGS_string (" undefined nodes:"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 45)) ;
-            cEnumerator_stringlist enumerator_2330 (var_undefinedNodeList_2121, EnumerationOrder::up) ;
-            while (enumerator_2330.hasCurrentObject ()) {
-              var_s_2238.plusAssign_operation(GGS_string ("\n  - ").add_operation (enumerator_2330.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 47)), inCompiler  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 47)) ;
-              enumerator_2330.gotoNextObject () ;
+            GGS_string var_s_2277 = GGS_string ("usefulness computation, ").add_operation (var_undefinedNodeList_2160.getter_count (SOURCE_FILE ("useful-entities-computation.galgas", 46)).getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 46)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 46)).add_operation (GGS_string (" undefined nodes:"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 46)) ;
+            cEnumerator_stringlist enumerator_2369 (var_undefinedNodeList_2160, EnumerationOrder::up) ;
+            while (enumerator_2369.hasCurrentObject ()) {
+              var_s_2277.plusAssign_operation(GGS_string ("\n  - ").add_operation (enumerator_2369.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 48)), inCompiler  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 48)) ;
+              enumerator_2369.gotoNextObject () ;
             }
             TC_Array <FixItDescription> fixItArray2 ;
-            inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 49)), var_s_2238, fixItArray2  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 49)) ;
+            inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 50)), var_s_2277, fixItArray2  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 50)) ;
           }
         }
         if (kBoolFalse == test_1) {
-          GGS_lstringlist var_usefullEntityList_2496 = constinArgument_inUsefulEntitiesGraph.getter_accessibleNodesFrom (constinArgument_inRootEntities, GGS_stringset::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 52)) ;
-          GGS_stringset var_usefullEntitySet_2590 = GGS_stringset::class_func_setWithLStringList (var_usefullEntityList_2496  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 53)) ;
-          GGS_stringset var_allEntitySet_2670 = GGS_stringset::class_func_setWithStringList (constinArgument_inUsefulEntitiesGraph.getter_keyList (SOURCE_FILE ("useful-entities-computation.galgas", 54))  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 54)) ;
-          GGS_stringset var_unusedEntities_2759 = var_allEntitySet_2670.substract_operation (var_usefullEntitySet_2590, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 55)) ;
-          GGS_uselessEntityLocationMap var_uselessEntityLocationMap_2844 = GGS_uselessEntityLocationMap::init (inCompiler COMMA_HERE) ;
-          cEnumerator_stringset enumerator_2885 (var_unusedEntities_2759, EnumerationOrder::up) ;
-          while (enumerator_2885.hasCurrentObject ()) {
-            GGS_location var_l_2932 = constinArgument_inUsefulEntitiesGraph.getter_locationForKey (enumerator_2885.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 58)) ;
+          GGS_lstringlist var_usefullEntityList_2535 = constinArgument_inUsefulEntitiesGraph.getter_accessibleNodesFrom (constinArgument_inRootEntities, GGS_stringset::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 53)) ;
+          GGS_stringset var_usefullEntitySet_2629 = GGS_stringset::class_func_setWithLStringList (var_usefullEntityList_2535  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 54)) ;
+          GGS_stringset var_allEntitySet_2709 = GGS_stringset::class_func_setWithStringList (constinArgument_inUsefulEntitiesGraph.getter_keyList (SOURCE_FILE ("useful-entities-computation.galgas", 55))  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 55)) ;
+          GGS_stringset var_unusedEntities_2798 = var_allEntitySet_2709.substract_operation (var_usefullEntitySet_2629, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 56)) ;
+          GGS_uselessEntityLocationMap var_uselessEntityLocationMap_2883 = GGS_uselessEntityLocationMap::init (inCompiler COMMA_HERE) ;
+          cEnumerator_stringset enumerator_2924 (var_unusedEntities_2798, EnumerationOrder::up) ;
+          while (enumerator_2924.hasCurrentObject ()) {
+            GGS_location var_l_2971 = constinArgument_inUsefulEntitiesGraph.getter_locationForKey (enumerator_2924.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 59)) ;
             enumGalgasBool test_3 = kBoolTrue ;
             if (kBoolTrue == test_3) {
-              test_3 = GGS_bool (ComparisonKind::equal, var_l_2932.objectCompare (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 59)))).boolEnum () ;
+              test_3 = GGS_bool (ComparisonKind::equal, var_l_2971.objectCompare (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 60)))).boolEnum () ;
               if (kBoolTrue == test_3) {
                 TC_Array <FixItDescription> fixItArray4 ;
-                inCompiler->emitSemanticWarning (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 60)), GGS_string ("unused entity, '").add_operation (enumerator_2885.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 60)).add_operation (GGS_string ("' (due to option --"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 60)).add_operation (GGS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)), fixItArray4  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 60)) ;
+                inCompiler->emitSemanticWarning (GGS_location::class_func_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 61)), GGS_string ("unused entity, '").add_operation (enumerator_2924.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)).add_operation (GGS_string ("' (due to option --"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)).add_operation (GGS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)), fixItArray4  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 61)) ;
               }
             }
             if (kBoolFalse == test_3) {
               enumGalgasBool test_5 = kBoolTrue ;
               if (kBoolTrue == test_5) {
-                test_5 = var_uselessEntityLocationMap_2844.getter_hasKey (var_l_2932.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)) COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 62)).operator_not (SOURCE_FILE ("useful-entities-computation.galgas", 62)).boolEnum () ;
+                test_5 = var_uselessEntityLocationMap_2883.getter_hasKey (var_l_2971.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 63)) COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 63)).operator_not (SOURCE_FILE ("useful-entities-computation.galgas", 63)).boolEnum () ;
                 if (kBoolTrue == test_5) {
                   {
-                  var_uselessEntityLocationMap_2844.setter_insertKey (var_l_2932.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 63)).getter_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 63)), var_l_2932, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 63)) ;
+                  var_uselessEntityLocationMap_2883.setter_insertKey (var_l_2971.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 64)).getter_nowhere (SOURCE_FILE ("useful-entities-computation.galgas", 64)), enumerator_2924.current_key (HERE), var_l_2971, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 64)) ;
                   }
                 }
               }
             }
-            enumerator_2885.gotoNextObject () ;
+            enumerator_2924.gotoNextObject () ;
           }
-          cEnumerator_uselessEntityLocationMap enumerator_3387 (var_uselessEntityLocationMap_2844, EnumerationOrder::up) ;
-          while (enumerator_3387.hasCurrentObject ()) {
+          cEnumerator_uselessEntityLocationMap enumerator_3457 (var_uselessEntityLocationMap_2883, EnumerationOrder::up) ;
+          while (enumerator_3457.hasCurrentObject ()) {
             TC_Array <FixItDescription> fixItArray6 ;
-            inCompiler->emitSemanticWarning (enumerator_3387.current_mLocation (HERE), GGS_string ("unused entity, due to option --").add_operation (GGS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 67)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 67)), fixItArray6  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 67)) ;
-            enumerator_3387.gotoNextObject () ;
+            inCompiler->emitSemanticWarning (enumerator_3457.current_mLocation (HERE), GGS_string ("unused '").add_operation (enumerator_3457.current_mUnusedEntityName (HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)).add_operation (GGS_string ("' entity, due to option --"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)).add_operation (GGS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.readProperty_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 69)), fixItArray6  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 68)) ;
+            enumerator_3457.gotoNextObject () ;
           }
         }
       }
@@ -677,7 +677,7 @@ GGS_lstring function_getterNameForUsefulEntitiesGraph (const GGS_string & consti
                                                        Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("getter @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 76)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 76)).add_operation (constinArgument_inGetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 76)), constinArgument_inGetterName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("getter @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 78)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 78)).add_operation (constinArgument_inGetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 78)), constinArgument_inGetterName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -730,7 +730,7 @@ GGS_lstring function_setterNameForUsefulEntitiesGraph (const GGS_string & consti
                                                        Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("setter @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 82)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 82)).add_operation (constinArgument_inSetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 82)), constinArgument_inSetterName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("setter @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 84)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 84)).add_operation (constinArgument_inSetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 84)), constinArgument_inSetterName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -783,7 +783,7 @@ GGS_lstring function_methodNameForUsefulEntitiesGraph (const GGS_string & consti
                                                        Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("method @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 88)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 88)).add_operation (constinArgument_inMethodName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 88)), constinArgument_inMethodName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("method @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 90)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 90)).add_operation (constinArgument_inMethodName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 90)), constinArgument_inMethodName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -836,7 +836,7 @@ GGS_lstring function_initializerNameForUsefulEntitiesGraph (const GGS_lstring & 
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 95)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 95)).add_operation (constinArgument_inParameterSignature, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 95)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 97)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 97)).add_operation (constinArgument_inParameterSignature, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 97)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -888,7 +888,7 @@ GGS_lstring function_equatableNameForUsefulEntitiesGraph (const GGS_lstring & co
                                                           Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 101)).add_operation (GGS_string (" equatable"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 101)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 103)).add_operation (GGS_string (" equatable"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 103)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -935,7 +935,7 @@ GGS_lstring function_lexiqueNameForUsefulEntitiesGraph (const GGS_lstring & cons
                                                         Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("lexique ").add_operation (constinArgument_inLexiqueName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 107)), constinArgument_inLexiqueName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("lexique ").add_operation (constinArgument_inLexiqueName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 109)), constinArgument_inLexiqueName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -982,7 +982,7 @@ GGS_lstring function_grammarNameForUsefulEntitiesGraph (const GGS_lstring & cons
                                                         Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("grammar ").add_operation (constinArgument_inGrammarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 113)), constinArgument_inGrammarName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("grammar ").add_operation (constinArgument_inGrammarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 115)), constinArgument_inGrammarName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1029,7 +1029,7 @@ GGS_lstring function_syntaxNameForUsefulEntitiesGraph (const GGS_lstring & const
                                                        Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (constinArgument_inSyntaxName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 119)), constinArgument_inSyntaxName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (constinArgument_inSyntaxName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 121)), constinArgument_inSyntaxName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1076,7 +1076,7 @@ GGS_lstring function_optionNameForUsefulEntitiesGraph (const GGS_lstring & const
                                                        Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("option ").add_operation (constinArgument_inOptionName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 125)), constinArgument_inOptionName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("option ").add_operation (constinArgument_inOptionName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 127)), constinArgument_inOptionName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1123,7 +1123,7 @@ GGS_lstring function_filewrapperNameForUsefulEntitiesGraph (const GGS_lstring & 
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("filewrapper ").add_operation (constinArgument_inFilewrapperName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 131)), constinArgument_inFilewrapperName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("filewrapper ").add_operation (constinArgument_inFilewrapperName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 133)), constinArgument_inFilewrapperName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1171,7 +1171,7 @@ GGS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const GGS_ls
                                                                     Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("filewrapper template ").add_operation (constinArgument_inFilewrapperName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 138)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 138)).add_operation (constinArgument_inTemplateName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 138)), constinArgument_inTemplateName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("filewrapper template ").add_operation (constinArgument_inFilewrapperName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 140)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 140)).add_operation (constinArgument_inTemplateName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 140)), constinArgument_inTemplateName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1223,7 +1223,7 @@ GGS_lstring function_functionNameForUsefulEntitiesGraph (const GGS_lstring & con
                                                          Compiler * inCompiler
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("function ").add_operation (constinArgument_inFunctionName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 144)), constinArgument_inFunctionName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("function ").add_operation (constinArgument_inFunctionName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 146)), constinArgument_inFunctionName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1270,7 +1270,7 @@ GGS_lstring function_procedureNameForUsefulEntitiesGraph (const GGS_lstring & co
                                                           Compiler * inCompiler
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("procedure ").add_operation (constinArgument_inProcName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 150)), constinArgument_inProcName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("procedure ").add_operation (constinArgument_inProcName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 152)), constinArgument_inProcName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1317,7 +1317,7 @@ GGS_lstring function_typeNameForUsefulEntitiesGraph (const GGS_lstring & constin
                                                      Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("type @").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 156)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("type @").add_operation (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 158)), constinArgument_inTypeName.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -1458,7 +1458,7 @@ GGS_lstring function_rootRuleNameForUsefulEntitiesGraph (const GGS_lstring & con
                                                          Compiler * inCompiler
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
-  result_result = GGS_lstring::init_21__21_ (GGS_string ("rule .").add_operation (constinArgument_inFileExtension.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 174)), constinArgument_inFileExtension.readProperty_location (), inCompiler COMMA_HERE) ;
+  result_result = GGS_lstring::init_21__21_ (GGS_string ("rule .").add_operation (constinArgument_inFileExtension.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 176)), constinArgument_inFileExtension.readProperty_location (), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
