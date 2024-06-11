@@ -465,7 +465,9 @@ override method @listDeclarationAST semanticAnalysis
   if self.usefullList || self.isPredefined  then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeEmbeddedElementTypeLName (!self.mListTypeName))
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
+    !makeEmbeddedElementTypeLName (!self.mListTypeName)
+  )
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
   if self.usefullList || self.isPredefined  then
     ioUsefulnessRootEntities += !elementTypeNameForUsefulness
@@ -476,6 +478,7 @@ override method @listDeclarationAST semanticAnalysis
     ![@formalInputParameterListAST () initializerSignature]
   )
   [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+  [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
   if self.usefullList || self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end

@@ -143,6 +143,13 @@ refclass @collectionValueAST : @semanticExpressionAST {
       if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
         error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
       end
+    #--- Usefull entity graph
+      let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
+        ![targetType definition].typeName
+        ![emptyArgumentList initializerSignature]
+      )
+      [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !nameForUsefulness]
+    //---
       let elementType = [targetType definition].typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = ()
       for (expression location) in self.mExpressionList do
