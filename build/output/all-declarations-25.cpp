@@ -2532,19 +2532,24 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeHeader_
           const enumGalgasBool test_1 = enumerator_820.current_isConstant (HERE).boolEnum () ;
           switch (test_1) {
           case kBoolTrue : {
-            result.appendString ("const ") ;
+            result.appendString ("const class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_820.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 19)).stringValue ()) ;
+            result.appendString (" & inOperand") ;
+            result.appendString (index_820_IDX.getter_string (SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 19)).stringValue ()) ;
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
             } break ;
           case kBoolFalse : {
+            result.appendString ("class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_820.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 21)).stringValue ()) ;
+            result.appendString (" inOperand") ;
+            result.appendString (index_820_IDX.getter_string (SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 21)).stringValue ()) ;
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
             } break ;
           default :
             break ;
           }
-          result.appendString ("class GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_820.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 18)).stringValue ()) ;
-          result.appendString (" & inOperand") ;
-          result.appendString (index_820_IDX.getter_string (SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 18)).stringValue ()) ;
-          result.appendString (",\n") ;
-          result.appendSpacesUntilColumn (columnMarker) ;
           index_820_IDX.increment () ;
           enumerator_820.gotoNextObject () ;
         }
@@ -2555,31 +2560,31 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeHeader_
     }
   }
   result.appendString ("\n\n") ;
-  GGS_uint index_1124_ (0) ;
+  GGS_uint index_1239_ (0) ;
   if (in_GETTER_5F_MAP.isValid ()) {
-    cEnumerator_getterMap enumerator_1124 (in_GETTER_5F_MAP, EnumerationOrder::up) ;
-    while (enumerator_1124.hasCurrentObject ()) {
-      const enumGalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1124.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    cEnumerator_getterMap enumerator_1239 (in_GETTER_5F_MAP, EnumerationOrder::up) ;
+    while (enumerator_1239.hasCurrentObject ()) {
+      const enumGalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1239.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       switch (test_2) {
       case kBoolTrue : {
-        result.appendString (function_generateClassGetterDeclaration (enumerator_1124.current_lkey (HERE), enumerator_1124.current_mArgumentTypeList (HERE), enumerator_1124.current_mHasCompilerArgument (HERE), enumerator_1124.current_mReturnedType (HERE), enumerator_1124.current_mQualifier (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 26)).stringValue ()) ;
+        result.appendString (function_generateClassGetterDeclaration (enumerator_1239.current_lkey (HERE), enumerator_1239.current_mArgumentTypeList (HERE), enumerator_1239.current_mHasCompilerArgument (HERE), enumerator_1239.current_mReturnedType (HERE), enumerator_1239.current_mQualifier (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 30)).stringValue ()) ;
         } break ;
       case kBoolFalse : {
         } break ;
       default :
         break ;
       }
-      index_1124_.increment () ;
-      enumerator_1124.gotoNextObject () ;
+      index_1239_.increment () ;
+      enumerator_1239.gotoNextObject () ;
     }
   }
-  GGS_uint index_1366_ (0) ;
+  GGS_uint index_1481_ (0) ;
   if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
-    cEnumerator_instanceMethodMap enumerator_1366 (in_INSTANCE_5F_METHOD_5F_MAP, EnumerationOrder::up) ;
-    while (enumerator_1366.hasCurrentObject ()) {
-      result.appendString (function_generateClassInstanceMethodDeclaration (enumerator_1366.current_lkey (HERE), enumerator_1366.current_mParameterList (HERE), enumerator_1366.current_mHasCompilerArgument (HERE), enumerator_1366.current_mQualifier (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 30)).stringValue ()) ;
-      index_1366_.increment () ;
-      enumerator_1366.gotoNextObject () ;
+    cEnumerator_instanceMethodMap enumerator_1481 (in_INSTANCE_5F_METHOD_5F_MAP, EnumerationOrder::up) ;
+    while (enumerator_1481.hasCurrentObject ()) {
+      result.appendString (function_generateClassInstanceMethodDeclaration (enumerator_1481.current_lkey (HERE), enumerator_1481.current_mParameterList (HERE), enumerator_1481.current_mHasCompilerArgument (HERE), enumerator_1481.current_mQualifier (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_reference_class.h2-part1.galgasTemplate", 34)).stringValue ()) ;
+      index_1481_.increment () ;
+      enumerator_1481.gotoNextObject () ;
     }
   }
   return GGS_string (result) ;

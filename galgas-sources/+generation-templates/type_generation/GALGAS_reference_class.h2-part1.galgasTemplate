@@ -14,8 +14,12 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acS
 % for (lkey formalArgumentList) in INITIALIZER_MAP do
 %  public: void %!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% (%?^
     for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
-      if isConstant then %const % else end
-      %class GGS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
+      if isConstant
+      then
+        %const class GGS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]%,\n%!^
+      else
+        %class GGS_%![mFormalArgumentType identifierRepresentation]% inOperand%![IDX string]%,\n%!^
+      end
     end
     %Compiler * inCompiler) ;
 %end%

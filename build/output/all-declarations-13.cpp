@@ -9489,14 +9489,15 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 88)) ;
-  GGS_formalInputParameterListAST var_formalParameterList_3470 ;
-  nt_formal_5F_input_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_3470, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 90)) ;
-  GGS_semanticInstructionListAST var_routineInstructionList_3552 ;
-  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_routineInstructionList_3552, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 92)) ;
-  GGS_location var_endOfMethodLocation_3591 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-initializer.galgas", 93)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_initializerAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), var_typeName_3224, var_formalParameterList_3470, var_routineInstructionList_3552, var_endOfMethodLocation_3591, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-initializer.galgas", 94)) ;
+  GGS_location var_initLocation_3422 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-initializer.galgas", 89)) ;
+  GGS_formalInputParameterListAST var_formalParameterList_3508 ;
+  nt_formal_5F_input_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_3508, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 91)) ;
+  GGS_semanticInstructionListAST var_routineInstructionList_3590 ;
+  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_routineInstructionList_3590, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 93)) ;
+  GGS_location var_endOfMethodLocation_3629 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-initializer.galgas", 94)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_initializerAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), GGS_lstring::init_21__21_ (var_typeName_3224.readProperty_string (), var_initLocation_3422, inCompiler COMMA_HERE), var_formalParameterList_3508, var_routineInstructionList_3590, var_endOfMethodLocation_3629, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-initializer.galgas", 95)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -9516,9 +9517,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 88)) ;
   nt_formal_5F_input_5F_parameter_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 90)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 91)) ;
   nt_semantic_5F_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 92)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 93)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -9539,9 +9540,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 88)) ;
   nt_formal_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 90)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 91)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 92)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 93)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -9549,36 +9550,37 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_method_5F_declaration_i45_ (const GGS_lstring constinArgument_inTypeName,
                                                                                                          GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                          Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 107)) ;
-  GGS_formalInputParameterListAST var_formalParameterList_4133 ;
-  nt_formal_5F_input_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_4133, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 109)) ;
-  GGS_semanticInstructionListAST var_routineInstructionList_4215 ;
-  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_routineInstructionList_4215, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 111)) ;
-  GGS_location var_endOfMethodLocation_4254 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-initializer.galgas", 112)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_initializerAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), constinArgument_inTypeName, var_formalParameterList_4133, var_routineInstructionList_4215, var_endOfMethodLocation_4254, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-initializer.galgas", 113)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 108)) ;
+  GGS_location var_initLocation_4149 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-initializer.galgas", 109)) ;
+  GGS_formalInputParameterListAST var_formalParameterList_4235 ;
+  nt_formal_5F_input_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_4235, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 111)) ;
+  GGS_semanticInstructionListAST var_routineInstructionList_4317 ;
+  nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_routineInstructionList_4317, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 113)) ;
+  GGS_location var_endOfMethodLocation_4356 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-initializer.galgas", 114)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssign_operation (GGS_initializerAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), GGS_lstring::init_21__21_ (constinArgument_inTypeName.readProperty_string (), var_initLocation_4149, inCompiler COMMA_HERE), var_formalParameterList_4235, var_routineInstructionList_4317, var_endOfMethodLocation_4356, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-initializer.galgas", 115)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_method_5F_declaration_i45_parse (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 107)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 108)) ;
   nt_formal_5F_input_5F_parameter_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 109)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 111)) ;
   nt_semantic_5F_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 111)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 113)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_method_5F_declaration_i45_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 107)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_init COMMA_SOURCE_FILE ("extension-initializer.galgas", 108)) ;
   nt_formal_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 109)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 111)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 111)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("extension-initializer.galgas", 113)) ;
 }
 
 //------------------------------------------------------------------------------------------------

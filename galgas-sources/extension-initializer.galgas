@@ -86,6 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
       $.$
     end
     $init$
+    let initLocation = @location.here
     <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
@@ -93,7 +94,7 @@ syntax extension galgas4DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
-      !typeName
+      !@lstring (!typeName, initLocation)
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -105,6 +106,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
     $init$
+    let initLocation = @location.here
     <formal_input_parameter_list> !?ioDeclarations ?let formalParameterList
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let routineInstructionList
@@ -112,7 +114,7 @@ syntax extension galgas4DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     ioDeclarations.mDeclarationList += !@initializerAST {
       !isPredefined: false # Is not predefined
-      !inTypeName
+      !@lstring (!inTypeName, initLocation)
       !formalParameterList
       !routineInstructionList
       !endOfMethodLocation
@@ -329,27 +331,6 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-#override method @initializerAST buildExtensionListMaps
-#  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
-#  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap
-#  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
-#  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
-#  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-#  ?!@genericExtensionMethodListMap ioExtensionMethodListMap
-#  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-#  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-#  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-#  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-#  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-#  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
-#{
-#  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
-#}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -443,7 +424,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
       if formalArg.mIsConstant then
         outGeneratedCode += "const GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
       else
-        outGeneratedCode += "GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
+        outGeneratedCode += "GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " "
       end
       if [unusedVariableCppNameSet hasKey !formalArg.mFormalArgumentCppName] then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
