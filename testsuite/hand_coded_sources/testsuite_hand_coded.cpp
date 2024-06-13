@@ -1,7 +1,7 @@
 
 #include "all-declarations.h"
 
-//---------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------
 
 static void routine_test_dictionary (void) {
   const int32_t TEST_SIZE = 1000 ;
@@ -32,16 +32,16 @@ static void routine_test_dictionary (void) {
   printf ("Delete Test Done\n") ;
 }
 
-//---------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------
 
 void routine_testsuite_5F_hand_5F_coded (Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
   routine_test_dictionary () ;
 }
 
-//---------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------
 
-GGS_uint function_externTestFunction (GGS_uint inArg1,
+GGS_uint function_externTestFunction (const GGS_uint & inArg1,
                                       const GGS_uint & inArg2,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
@@ -49,4 +49,4 @@ GGS_uint function_externTestFunction (GGS_uint inArg1,
 }
 
 
-//---------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------

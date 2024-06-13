@@ -4,14 +4,14 @@ abstract class @A_A { }
 
 class @B_B : @A_A { }
 
-abstract func @A_A.aReader( ?@uint inA, ?let@string inB) -> @string
+abstract func @A_A.aReader( ?var @uint inA, ?let @string inB) -> @string
 
-override func @B_B.aReader( ?@uint inA, ?let@string inB) -> @string {
+override func @B_B.aReader( ?var @uint inA, ?let @string inB) -> @string {
   inA += 1
   result = inB + inA
 }
 
-func @B_B.otherReader( ?@uint inA, ?let @string inB) -> @string {
+func @B_B.otherReader( ?var @uint inA, ?let @string inB) -> @string {
   inA += 1
   result = inB + inA + self.aReader (inA, !inB) + self.aReader (inA, !inB)
 }

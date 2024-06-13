@@ -466,41 +466,57 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         let @formalArgumentPassingModeAST formalParameterPassingMode
         select
           $?selector:$ ?selector
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentVarIn
+          select
+            formalParameterPassingMode = .argumentConstantIn
+          or
+            $var$
+            formalParameterPassingMode = .argumentVarIn
+          or
+            $let$
+            formalParameterPassingMode = .argumentConstantIn
+          end
         or
           $?$
           selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentVarIn
-        or
-          selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentVarIn
-        or
-          $?$
-          selector = ["" here]
-          $let$
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
-        or
-          $?selector:$ ?selector
-          $let$
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+          select
+            formalParameterPassingMode = .argumentConstantIn
+          or
+            $var$
+            formalParameterPassingMode = .argumentVarIn
+          or
+            $let$
+            formalParameterPassingMode = .argumentConstantIn
+          end
         or
           $let$
           selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+          formalParameterPassingMode = .argumentConstantIn
+        or
+          selector = ["" here]
+          formalParameterPassingMode = .argumentVarIn
+#        or
+#          $?$
+#          selector = ["" here]
+#          $let$
+#          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+#        or
+#          $?selector:$ ?selector
+#          $let$
+#          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
         or
           $?!selector:$ ?selector
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+          formalParameterPassingMode = .argumentInOut
         or
           $?!$ 
           selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentInOut
+          formalParameterPassingMode = .argumentInOut
         or
           $!selector:$ ?selector
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
+          formalParameterPassingMode = .argumentOut
         or
           $!$
           selector = ["" here]
-          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentOut
+          formalParameterPassingMode = .argumentOut
         end
         <type_definition> !?ioDeclarations ?let formalParameterTypeName
         let @bool isUnused
@@ -750,9 +766,12 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         end
         let @bool isConstant
         select
+          $var$
           isConstant = false
         or
           $let$
+          isConstant = true
+        or // Implicit 'let'
           isConstant = true
         end
         <type_definition> !?ioDeclarations ?let formalParameterTypeName

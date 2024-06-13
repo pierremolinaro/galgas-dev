@@ -390,15 +390,15 @@ refclass @externTypeDeclarationAST : @semanticDeclarationAST {
 #    var @classFunctionMap classFunctionMap = ()
     var @setterMap setterMap = ()
     var @instanceMethodMap instanceMethodMap = ()
-  #--- Class functions
+  #--- Initializers
     var @initializerMap initializerMap = ()
     for initializer in self.externTypeInitializerList do
 #      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
     #---
       var @functionSignature arguments = ()
-      for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in initializer.mParameterList do
-        [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
-        arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
+      for parameter in initializer.mParameterList do
+        [!?ioTypeMap makeEntry !parameter.mFormalParameterTypeName ?let argumentTypeEntry]
+        arguments += !parameter.mFormalSelector !argumentTypeEntry !parameter.mFormalParameterName.string !true
       end
     #---
       let initializerName = @lstring {![initializer.mParameterList initializerSignature] !self.mExternTypeName}
@@ -527,6 +527,15 @@ override method @externTypeDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.isPredefined  then
     ioUsefulnessRootEntities += !nameForUsefulness
+  end
+#--- Initializers
+  for initializer in self.externTypeInitializerList do
+    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+      !self.mExternTypeName
+      ![initializer.mParameterList initializerSignature]
+    )
+    [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
+    [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
   end
 #---
   ioSemanticDeclarationListForGeneration +=
