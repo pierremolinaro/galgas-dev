@@ -38,7 +38,6 @@ class acStrongPtr_class : public acPtr_class {
   #endif
 
 //--- Default constructor
-  public: acStrongPtr_class (LOCATION_ARGS) ; // §§
   public: acStrongPtr_class (class Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Destructor

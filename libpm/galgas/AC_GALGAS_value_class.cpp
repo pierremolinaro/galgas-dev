@@ -92,16 +92,6 @@ void AC_GALGAS_value_class::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void AC_GALGAS_value_class::insulate (LOCATION_ARGS) {
-  if (isValid () && !mObjectPtr->isUniquelyReferenced ()) {
-    acPtr_class * p = mObjectPtr->duplicate (THERE) ;
-    macroAssignSharedObject (mObjectPtr, p) ;
-    macroDetachSharedObject (p) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void AC_GALGAS_value_class::insulate (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   if (isValid () && !mObjectPtr->isUniquelyReferenced ()) {
     acPtr_class * p = mObjectPtr->duplicate (inCompiler COMMA_THERE) ;

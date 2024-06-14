@@ -35,26 +35,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-acStrongPtr_class::acStrongPtr_class (LOCATION_ARGS) :
-acPtr_class (THERE),
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  mPreviousPtr (nullptr),
-  mNextPtr (nullptr),
-#endif
-mProxyPtr (nullptr) {
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    mPreviousPtr = gLastPtr ;
-    if (nullptr == gLastPtr) {
-      gFirstPtr = this ;
-    }else{
-      gLastPtr->mNextPtr = this ;
-    }
-    gLastPtr = this ;
-  #endif
-}
-
-//--------------------------------------------------------------------------------------------------
-
 acStrongPtr_class::acStrongPtr_class (Compiler * COMMA_LOCATION_ARGS) :
 acPtr_class (THERE),
 #ifndef DO_NOT_GENERATE_CHECKINGS

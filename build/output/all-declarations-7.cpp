@@ -5268,8 +5268,8 @@ GGS_unifiedTypeMapEntry GGS_actualParameterForGeneration::readProperty_mFormalAr
 //Pointer class for @actualParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (Compiler *  COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE),
+cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE),
 mProperty_mFormalArgumentType () {
 }
 
@@ -6385,13 +6385,6 @@ acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (Compiler * inCom
   return ptr ;
 }
 
-/* acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputJokerParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mInputActualCppName, mProperty_mPoisonedVarNameList, COMMA_THERE)) ;
-  return ptr ;
-}
-*/
-
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7307,13 +7300,6 @@ acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (Compiler * 
   macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mProperty_mInstructionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
-
-/* acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mProperty_mInstructionList, COMMA_THERE)) ;
-  return ptr ;
-}
-*/
 
 
 //--------------------------------------------------------------------------------------------------

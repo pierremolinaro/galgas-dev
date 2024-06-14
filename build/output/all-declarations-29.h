@@ -10,182 +10,77 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'recursivlyEnumerateRegularFile??&&&&'
+//Routine 'transformInstructionList?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class GGS_wrapperFileMap constinArgument0,
-                                                                     const class GGS_wrapperDirectoryMap constinArgument1,
-                                                                     class GGS_stringlist & ioArgument2,
-                                                                     class GGS_stringlist & ioArgument3,
-                                                                     class GGS_stringlist & ioArgument4,
-                                                                     class GGS_stringlist & ioArgument5,
-                                                                     class Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+void routine_transformInstructionList_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GGS_syntaxInstructionList constinArgument0,
+                                                                                                                class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
+                                                                                                                const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
+                                                                                                                class GGS_uint & ioArgument3,
+                                                                                                                class GGS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
+                                                                                                                class Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateWrapperContents?????&'
+//Function 'compareSyntaxSignature'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_string constinArgument0,
-                                                              const class GGS_string constinArgument1,
-                                                              const class GGS_uint constinArgument2,
-                                                              const class GGS_wrapperFileMap constinArgument3,
-                                                              const class GGS_wrapperDirectoryMap constinArgument4,
-                                                              class GGS_string & ioArgument5,
-                                                              class Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
+class GGS_bool function_compareSyntaxSignature (const class GGS_semanticInstructionListForGeneration & constinArgument0,
+                                                const class GGS_semanticInstructionListForGeneration & constinArgument1,
+                                                const class GGS_location & constinArgument2,
+                                                class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generatePredefinedTypeFiles??&&&'
+//Routine 'groupSyntaxComponentsGalgas3??&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GGS_string constinArgument0,
-                                                              const class GGS_semanticDeclarationListForGeneration constinArgument1,
-                                                              class GGS_stringlist & ioArgument2,
-                                                              class GGS_stringlist & ioArgument3,
-                                                              class GGS_stringset & ioArgument4,
-                                                              class Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
+void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GGS_galgas_33_SyntaxComponentListAST constinArgument0,
+                                                          const class GGS_syntaxExtensions constinArgument1,
+                                                          class GGS_semanticDeclarationListAST & ioArgument2,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'semanticFileGenerationTemplate'
+//Function 'transformLabelMap'
 //
 //--------------------------------------------------------------------------------------------------
 
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticFileGenerationTemplate semanticFileHeader'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (class Compiler * inCompiler,
-                                                                                  const class GGS_string & in_COMPONENT_5F_NAME,
-                                                                                  const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
+class GGS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GGS_nonTerminalLabelListAST & constinArgument0,
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticFileGenerationTemplate semanticFileImplementation'
+//Filewrapper 'grammarRulesInTexDocumentTemplate'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class Compiler * inCompiler,
-                                                                                          const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
-                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'checkUsefulEntities???'
+//Filewrapper template 'grammarRulesInTexDocumentTemplate document'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_checkUsefulEntities_3F__3F__3F_ (const class GGS_usefulEntitiesGraph constinArgument0,
-                                              const class GGS_lstringlist constinArgument1,
-                                              const class GGS_string constinArgument2,
-                                              class Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'afterNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_afterNameForUsefulEntitiesGraph (const class GGS_location & constinArgument0,
-                                                            class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'beforeNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_beforeNameForUsefulEntitiesGraph (const class GGS_location & constinArgument0,
-                                                             class Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'rootRuleNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_rootRuleNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                               class Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeConstructorInvocation?&??&&????!!!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F__21__21__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                                       class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                       const class GGS_unifiedTypeMapEntry constinArgument2,
-                                                                                                       const class GGS_analysisContext constinArgument3,
-                                                                                                       class GGS_unifiedTypeMap & ioArgument4,
-                                                                                                       class GGS_localVarManager & ioArgument5,
-                                                                                                       const class GGS_lstring constinArgument6,
-                                                                                                       const class GGS_lstring constinArgument7,
-                                                                                                       const class GGS_actualOutputArgumentList constinArgument8,
-                                                                                                       const class GGS_location constinArgument9,
-                                                                                                       class GGS_unifiedTypeMapEntry & outArgument10,
-                                                                                                       class GGS_unifiedTypeMapEntry & outArgument11,
-                                                                                                       class GGS_semanticExpressionListForGeneration & outArgument12,
-                                                                                                       class GGS_bool & outArgument13,
-                                                                                                       class GGS__5B_unifiedTypeMapEntry_5D_ & outArgument14,
-                                                                                                       class Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeInitializerInvocation?&??&&???!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                           class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                           const class GGS_unifiedTypeMapEntry constinArgument2,
-                                                                                           const class GGS_analysisContext constinArgument3,
-                                                                                           class GGS_unifiedTypeMap & ioArgument4,
-                                                                                           class GGS_localVarManager & ioArgument5,
-                                                                                           const class GGS_lstring constinArgument6,
-                                                                                           const class GGS_actualOutputArgumentList constinArgument7,
-                                                                                           const class GGS_location constinArgument8,
-                                                                                           class GGS_unifiedTypeMapEntry & outArgument9,
-                                                                                           class GGS_lstring & outArgument10,
-                                                                                           class GGS_semanticExpressionListForGeneration & outArgument11,
-                                                                                           class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkAssignmentTypes???'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkAssignmentTypes_3F__3F__3F_ (const class GGS_unifiedTypeMapEntry constinArgument0,
-                                               const class GGS_unifiedTypeMapEntry constinArgument1,
-                                               const class GGS_location constinArgument2,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class Compiler * inCompiler,
+                                                                           const class GGS_string & in_DOCUMENT_5F_NAME,
+                                                                           const class GGS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
+                                                                           COMMA_LOCATION_ARGS) ;
 

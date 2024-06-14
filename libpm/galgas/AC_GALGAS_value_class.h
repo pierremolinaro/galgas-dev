@@ -63,7 +63,6 @@ class AC_GALGAS_value_class : public AC_GALGAS_root { // AC_GALGAS_value_class e
                                      const int32_t inIndentation) const ;
 
 //--- Insulate
-  public: VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ; // §§
   public: VIRTUAL_IN_DEBUG void insulate (class Compiler * COMMA_LOCATION_ARGS) ;
 } ;
 
