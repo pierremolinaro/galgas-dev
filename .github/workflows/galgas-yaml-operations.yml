@@ -83,10 +83,7 @@ jobs:
     name: Check big integer on Ubuntu
     runs-on: ${{ 'ubuntu-latest' }}
     timeout-minutes: ${{ 360 }}
-    strategy:
-      matrix:
-        node : [ 20 ]
-
+ 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -97,13 +94,13 @@ jobs:
     name: Check big integer on Mac OS
     runs-on: ${{ 'macos-latest' }}
     timeout-minutes: ${{ 360 }}
-
+     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
+ 
     - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
-
+    
   RunDemoWindows:
     name: Check big integer on Windows
     runs-on: ${{ 'windows-latest' }}
