@@ -10,15 +10,10 @@
 # supported CodeQL languages.
 #
 name: "CodeQL"
-
+  
 on:
   push:
     branches: [ "master" ]
- # pull_request:
-    # The branches below must be a subset of the branches above
-  #  branches: [ "master" ]
-  # schedule:
-  #  - cron: '34 4 * * 0'
 
 jobs:
   analyze:
@@ -64,7 +59,7 @@ jobs:
     - run: ./makefile-unix/build+release.py
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze
+      uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
         upload: false
