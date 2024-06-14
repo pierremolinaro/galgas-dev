@@ -114,7 +114,5 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        node-version: 20
 
     - run: python3 ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug.exe --no-dialog --check-big-int
