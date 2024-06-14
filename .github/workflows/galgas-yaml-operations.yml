@@ -49,6 +49,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
+        node-version: 20
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
@@ -88,6 +89,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        node-version: 20
 
     - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
 
