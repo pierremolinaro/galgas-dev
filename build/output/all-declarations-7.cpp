@@ -5224,22 +5224,6 @@ GGS_castInExpressionForGeneration_2E_weak GGS_castInExpressionForGeneration_2E_w
 // @actualParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE),
-mProperty_mFormalArgumentType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties ("mFormalArgumentType") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_actualParameterForGeneration::objectCompare (const GGS_actualParameterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5284,13 +5268,30 @@ GGS_unifiedTypeMapEntry GGS_actualParameterForGeneration::readProperty_mFormalAr
 //Pointer class for @actualParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType
-                                                                      COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (Compiler *  COMMA_LOCATION_ARGS) :
 acStrongPtr_class (THERE),
+mProperty_mFormalArgumentType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE),
 mProperty_mFormalArgumentType () {
   mProperty_mFormalArgumentType = in_mFormalArgumentType ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+    mProperty_mFormalArgumentType.printNonNullClassInstanceProperties ("mFormalArgumentType") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6242,24 +6243,6 @@ GGS_inputActualParameterForGeneration_2E_weak GGS_inputActualParameterForGenerat
 // @inputJokerParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
-mProperty_mInputActualCppName (),
-mProperty_mPoisonedVarNameList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_inputJokerParameterForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInputActualCppName.printNonNullClassInstanceProperties ("mInputActualCppName") ;
-    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_inputJokerParameterForGeneration::objectCompare (const GGS_inputJokerParameterForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -6320,10 +6303,11 @@ GGS_actualParameterForGeneration (inSourcePtr) {
 
 GGS_inputJokerParameterForGeneration GGS_inputJokerParameterForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                                                            const GGS_string & in_mInputActualCppName,
-                                                                                           const GGS__32_stringlist & in_mPoisonedVarNameList
+                                                                                           const GGS__32_stringlist & in_mPoisonedVarNameList,
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   GGS_inputJokerParameterForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_inputJokerParameterForGeneration (in_mFormalArgumentType, in_mInputActualCppName, in_mPoisonedVarNameList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_inputJokerParameterForGeneration (in_mFormalArgumentType, in_mInputActualCppName, in_mPoisonedVarNameList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -6355,11 +6339,20 @@ GGS__32_stringlist GGS_inputJokerParameterForGeneration::readProperty_mPoisonedV
 //Pointer class for @inputJokerParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
+mProperty_mInputActualCppName (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                                               const GGS_string & in_mInputActualCppName,
-                                                                              const GGS__32_stringlist & in_mPoisonedVarNameList
+                                                                              const GGS__32_stringlist & in_mPoisonedVarNameList,
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) :
-cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
+cPtr_actualParameterForGeneration (in_mFormalArgumentType, inCompiler COMMA_THERE),
 mProperty_mInputActualCppName (),
 mProperty_mPoisonedVarNameList () {
   mProperty_mFormalArgumentType = in_mFormalArgumentType ;
@@ -6386,12 +6379,29 @@ void cPtr_inputJokerParameterForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_inputJokerParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mInputActualCppName, mProperty_mPoisonedVarNameList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_inputJokerParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mInputActualCppName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputJokerParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mInputActualCppName, mProperty_mPoisonedVarNameList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputJokerParameterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mInputActualCppName.printNonNullClassInstanceProperties ("mInputActualCppName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6959,20 +6969,6 @@ GGS_actualParameterListForGeneration GGS_actualParameterListForGeneration::extra
 // @semanticInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticInstructionForGeneration::cPtr_semanticInstructionForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_semanticInstructionForGeneration::objectCompare (const GGS_semanticInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7005,10 +7001,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @semanticInstructionForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticInstructionForGeneration::cPtr_semanticInstructionForGeneration (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticInstructionForGeneration::cPtr_semanticInstructionForGeneration (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7188,22 +7196,6 @@ void callExtensionMethod_generateInstruction (cPtr_semanticInstructionForGenerat
 // @semanticBlockInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticBlockInstructionForGeneration::cPtr_semanticBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mInstructionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticBlockInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionList.printNonNullClassInstanceProperties ("mInstructionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_semanticBlockInstructionForGeneration::objectCompare (const GGS_semanticBlockInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7256,10 +7248,11 @@ GGS_semanticInstructionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticBlockInstructionForGeneration GGS_semanticBlockInstructionForGeneration::class_func_new (const GGS_semanticInstructionListForGeneration & in_mInstructionList
+GGS_semanticBlockInstructionForGeneration GGS_semanticBlockInstructionForGeneration::class_func_new (const GGS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                                     Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) {
   GGS_semanticBlockInstructionForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_semanticBlockInstructionForGeneration (in_mInstructionList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_semanticBlockInstructionForGeneration (in_mInstructionList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -7279,9 +7272,17 @@ GGS_semanticInstructionListForGeneration GGS_semanticBlockInstructionForGenerati
 //Pointer class for @semanticBlockInstructionForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticBlockInstructionForGeneration::cPtr_semanticBlockInstructionForGeneration (const GGS_semanticInstructionListForGeneration & in_mInstructionList
+cPtr_semanticBlockInstructionForGeneration::cPtr_semanticBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticBlockInstructionForGeneration::cPtr_semanticBlockInstructionForGeneration (const GGS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (THERE),
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
 mProperty_mInstructionList () {
   mProperty_mInstructionList = in_mInstructionList ;
 }
@@ -7301,12 +7302,28 @@ void cPtr_semanticBlockInstructionForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mProperty_mInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mProperty_mInstructionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mProperty_mInstructionList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticBlockInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mInstructionList.printNonNullClassInstanceProperties ("mInstructionList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7938,20 +7955,6 @@ GGS_listOfSemanticInstructionListForGeneration GGS_listOfSemanticInstructionList
 // @semanticDeclarationForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticDeclarationForGeneration::cPtr_semanticDeclarationForGeneration (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_semanticDeclarationForGeneration::objectCompare (const GGS_semanticDeclarationForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7984,10 +7987,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @semanticDeclarationForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticDeclarationForGeneration::cPtr_semanticDeclarationForGeneration (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticDeclarationForGeneration::cPtr_semanticDeclarationForGeneration (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10886,22 +10901,6 @@ GGS_terminalCheckAssignementList GGS_terminalCheckAssignementList::extractObject
 // @syntaxInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_syntaxInstructionForGeneration::cPtr_syntaxInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mInstructionLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_syntaxInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mInstructionLocation.printNonNullClassInstanceProperties ("mInstructionLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_syntaxInstructionForGeneration::objectCompare (const GGS_syntaxInstructionForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10946,13 +10945,30 @@ GGS_location GGS_syntaxInstructionForGeneration::readProperty_mInstructionLocati
 //Pointer class for @syntaxInstructionForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_syntaxInstructionForGeneration::cPtr_syntaxInstructionForGeneration (const GGS_location & in_mInstructionLocation
+cPtr_syntaxInstructionForGeneration::cPtr_syntaxInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
+mProperty_mInstructionLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_syntaxInstructionForGeneration::cPtr_syntaxInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (THERE),
+cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
 mProperty_mInstructionLocation () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_syntaxInstructionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mInstructionLocation.printNonNullClassInstanceProperties ("mInstructionLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12986,20 +13002,6 @@ GGS_string extensionGetter_correspondingEffectiveParameterString (const GGS_form
 // @abstractGrammarInstructionSyntaxDirectedTranslationResult reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult::objectCompare (const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13032,10 +13034,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * inCompiler
+                                                                                                                                COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //

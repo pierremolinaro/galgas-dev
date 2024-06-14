@@ -705,11 +705,10 @@ class cPtr_templateInstructionAST : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_templateInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionAST (LOCATION_ARGS) ;
+  public: cPtr_templateInstructionAST (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description
@@ -1108,11 +1107,10 @@ class cPtr_templateExpressionAST : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_templateExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateExpressionAST (LOCATION_ARGS) ;
+  public: cPtr_templateExpressionAST (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description
@@ -1538,7 +1536,8 @@ class GGS_templateClassFunctionAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateClassFunctionAST class_func_new (const class GGS_lstring & inOperand0,
                                                                     const class GGS_lstring & inOperand1,
-                                                                    const class GGS_templateExpressionListAST & inOperand2
+                                                                    const class GGS_templateExpressionListAST & inOperand2,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1602,11 +1601,12 @@ class cPtr_templateClassFunctionAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateClassFunctionAST (const GGS_lstring & in_mTypeName,
                                          const GGS_lstring & in_mClassFunctionName,
-                                         const GGS_templateExpressionListAST & in_mExpressionList
+                                         const GGS_templateExpressionListAST & in_mExpressionList,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1748,7 +1748,8 @@ class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateFileWrapperTemplateCallAST class_func_new (const class GGS_lstring & inOperand0,
                                                                               const class GGS_lstring & inOperand1,
-                                                                              const class GGS_templateExpressionListAST & inOperand2
+                                                                              const class GGS_templateExpressionListAST & inOperand2,
+                                                                              class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1812,11 +1813,12 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
 //--- Constructor
   public: cPtr_templateFileWrapperTemplateCallAST (const GGS_lstring & in_mFileWrapperName,
                                                    const GGS_lstring & in_mTemplateName,
-                                                   const GGS_templateExpressionListAST & in_mOutExpressionList
+                                                   const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1958,7 +1960,8 @@ class GGS_templateExtensionTemplateCallAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateExtensionTemplateCallAST class_func_new (const class GGS_templateExpressionAST & inOperand0,
                                                                             const class GGS_lstring & inOperand1,
-                                                                            const class GGS_templateExpressionListAST & inOperand2
+                                                                            const class GGS_templateExpressionListAST & inOperand2,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2022,11 +2025,12 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
 //--- Constructor
   public: cPtr_templateExtensionTemplateCallAST (const GGS_templateExpressionAST & in_mExpressionValue,
                                                  const GGS_lstring & in_mTemplateName,
-                                                 const GGS_templateExpressionListAST & in_mOutExpressionList
+                                                 const GGS_templateExpressionListAST & in_mOutExpressionList,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2168,7 +2172,8 @@ class GGS_templateAndOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateAndOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                    const class GGS_templateExpressionAST & inOperand1,
-                                                                   const class GGS_templateExpressionAST & inOperand2
+                                                                   const class GGS_templateExpressionAST & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2232,11 +2237,12 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateAndOperationAST (const GGS_location & in_mOperatorLocation,
                                         const GGS_templateExpressionAST & in_mLeftExpression,
-                                        const GGS_templateExpressionAST & in_mRightExpression
+                                        const GGS_templateExpressionAST & in_mRightExpression,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2378,7 +2384,8 @@ class GGS_templateOrOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateOrOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                   const class GGS_templateExpressionAST & inOperand1,
-                                                                  const class GGS_templateExpressionAST & inOperand2
+                                                                  const class GGS_templateExpressionAST & inOperand2,
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2442,11 +2449,12 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateOrOperationAST (const GGS_location & in_mOperatorLocation,
                                        const GGS_templateExpressionAST & in_mLeftExpression,
-                                       const GGS_templateExpressionAST & in_mRightExpression
+                                       const GGS_templateExpressionAST & in_mRightExpression,
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2588,7 +2596,8 @@ class GGS_templateXorOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateXorOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                    const class GGS_templateExpressionAST & inOperand1,
-                                                                   const class GGS_templateExpressionAST & inOperand2
+                                                                   const class GGS_templateExpressionAST & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2652,11 +2661,12 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateXorOperationAST (const GGS_location & in_mOperatorLocation,
                                         const GGS_templateExpressionAST & in_mLeftExpression,
-                                        const GGS_templateExpressionAST & in_mRightExpression
+                                        const GGS_templateExpressionAST & in_mRightExpression,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2790,7 +2800,8 @@ class GGS_templateTrueBoolAST : public GGS_templateExpressionAST {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateTrueBoolAST class_func_new (const class GGS_location & inOperand0
+  public: static class GGS_templateTrueBoolAST class_func_new (const class GGS_location & inOperand0,
+                                                               class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2848,11 +2859,12 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
   public: cPtr_templateTrueBoolAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateTrueBoolAST (const GGS_location & in_mLocation
+  public: cPtr_templateTrueBoolAST (const GGS_location & in_mLocation,
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2986,7 +2998,8 @@ class GGS_templateFalseBoolAST : public GGS_templateExpressionAST {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateFalseBoolAST class_func_new (const class GGS_location & inOperand0
+  public: static class GGS_templateFalseBoolAST class_func_new (const class GGS_location & inOperand0,
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3044,11 +3057,12 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
   public: cPtr_templateFalseBoolAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateFalseBoolAST (const GGS_location & in_mLocation
+  public: cPtr_templateFalseBoolAST (const GGS_location & in_mLocation,
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3186,7 +3200,8 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateLiteralStringExpressionAST class_func_new (const class GGS_stringlist & inOperand0,
-                                                                              const class GGS_location & inOperand1
+                                                                              const class GGS_location & inOperand1,
+                                                                              class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3247,11 +3262,12 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
 
 //--- Constructor
   public: cPtr_templateLiteralStringExpressionAST (const GGS_stringlist & in_mLiteralStringList,
-                                                   const GGS_location & in_mLocation
+                                                   const GGS_location & in_mLocation,
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3385,7 +3401,8 @@ class GGS_templateLiteralUIntExpressionAST : public GGS_templateExpressionAST {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateLiteralUIntExpressionAST class_func_new (const class GGS_lbigint & inOperand0
+  public: static class GGS_templateLiteralUIntExpressionAST class_func_new (const class GGS_lbigint & inOperand0,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3443,11 +3460,12 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
   public: cPtr_templateLiteralUIntExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateLiteralUIntExpressionAST (const GGS_lbigint & in_mLiteralInt
+  public: cPtr_templateLiteralUIntExpressionAST (const GGS_lbigint & in_mLiteralInt,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3581,7 +3599,8 @@ class GGS_templateLiteralCharExpressionAST : public GGS_templateExpressionAST {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateLiteralCharExpressionAST class_func_new (const class GGS_lchar & inOperand0
+  public: static class GGS_templateLiteralCharExpressionAST class_func_new (const class GGS_lchar & inOperand0,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3639,11 +3658,12 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
   public: cPtr_templateLiteralCharExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateLiteralCharExpressionAST (const GGS_lchar & in_mLiteralChar
+  public: cPtr_templateLiteralCharExpressionAST (const GGS_lchar & in_mLiteralChar,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3777,7 +3797,8 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateLiteralDoubleExpressionAST class_func_new (const class GGS_ldouble & inOperand0
+  public: static class GGS_templateLiteralDoubleExpressionAST class_func_new (const class GGS_ldouble & inOperand0,
+                                                                              class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3835,11 +3856,12 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
   public: cPtr_templateLiteralDoubleExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateLiteralDoubleExpressionAST (const GGS_ldouble & in_mLiteralDouble
+  public: cPtr_templateLiteralDoubleExpressionAST (const GGS_ldouble & in_mLiteralDouble,
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3981,7 +4003,8 @@ class GGS_structFieldAccessTemplateExpressionAST : public GGS_templateExpression
 //--------------------------------- GALGAS class functions
   public: static class GGS_structFieldAccessTemplateExpressionAST class_func_new (const class GGS_location & inOperand0,
                                                                                   const class GGS_templateExpressionAST & inOperand1,
-                                                                                  const class GGS_lstring & inOperand2
+                                                                                  const class GGS_lstring & inOperand2,
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4045,11 +4068,12 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
 //--- Constructor
   public: cPtr_structFieldAccessTemplateExpressionAST (const GGS_location & in_mOperatorLocation,
                                                        const GGS_templateExpressionAST & in_mExpression,
-                                                       const GGS_lstring & in_mStructFieldName
+                                                       const GGS_lstring & in_mStructFieldName,
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4187,7 +4211,8 @@ class GGS_templateNotOperatorAST : public GGS_templateExpressionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateNotOperatorAST class_func_new (const class GGS_location & inOperand0,
-                                                                  const class GGS_templateExpressionAST & inOperand1
+                                                                  const class GGS_templateExpressionAST & inOperand1,
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4248,11 +4273,12 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
 
 //--- Constructor
   public: cPtr_templateNotOperatorAST (const GGS_location & in_mOperatorLocation,
-                                       const GGS_templateExpressionAST & in_mExpression
+                                       const GGS_templateExpressionAST & in_mExpression,
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4390,7 +4416,8 @@ class GGS_templateLogicalNegateAST : public GGS_templateExpressionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateLogicalNegateAST class_func_new (const class GGS_location & inOperand0,
-                                                                    const class GGS_templateExpressionAST & inOperand1
+                                                                    const class GGS_templateExpressionAST & inOperand1,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4451,11 +4478,12 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
 
 //--- Constructor
   public: cPtr_templateLogicalNegateAST (const GGS_location & in_mOperatorLocation,
-                                         const GGS_templateExpressionAST & in_mExpression
+                                         const GGS_templateExpressionAST & in_mExpression,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4597,7 +4625,8 @@ class GGS_templateOptionAccessAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateOptionAccessAST class_func_new (const class GGS_lstring & inOperand0,
                                                                    const class GGS_lstring & inOperand1,
-                                                                   const class GGS_lstring & inOperand2
+                                                                   const class GGS_lstring & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4661,11 +4690,12 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateOptionAccessAST (const GGS_lstring & in_mOptionComponentName,
                                         const GGS_lstring & in_mOptionName,
-                                        const GGS_lstring & in_mGetterName
+                                        const GGS_lstring & in_mGetterName,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4893,7 +4923,8 @@ class GGS_templateTestDynamicClassAST : public GGS_templateExpressionAST {
   public: static class GGS_templateTestDynamicClassAST class_func_new (const class GGS_templateExpressionAST & inOperand0,
                                                                        const class GGS_location & inOperand1,
                                                                        const class GGS_dynamicTypeComparisonKind & inOperand2,
-                                                                       const class GGS_lstring & inOperand3
+                                                                       const class GGS_lstring & inOperand3,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4960,11 +4991,12 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
   public: cPtr_templateTestDynamicClassAST (const GGS_templateExpressionAST & in_mReceiverExpression,
                                             const GGS_location & in_mEndOfReceiverExpression,
                                             const GGS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                            const GGS_lstring & in_mTypeName
+                                            const GGS_lstring & in_mTypeName,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5102,7 +5134,8 @@ class GGS_templateFunctionCallAST : public GGS_templateExpressionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateFunctionCallAST class_func_new (const class GGS_lstring & inOperand0,
-                                                                   const class GGS_templateExpressionListAST & inOperand1
+                                                                   const class GGS_templateExpressionListAST & inOperand1,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5163,11 +5196,12 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
 
 //--- Constructor
   public: cPtr_templateFunctionCallAST (const GGS_lstring & in_mFunctionName,
-                                        const GGS_templateExpressionListAST & in_mExpressionList
+                                        const GGS_templateExpressionListAST & in_mExpressionList,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5301,7 +5335,8 @@ class GGS_templateVarInExpressionAST : public GGS_templateExpressionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateVarInExpressionAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_templateVarInExpressionAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                      class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5359,11 +5394,12 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
   public: cPtr_templateVarInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateVarInExpressionAST (const GGS_lstring & in_mVarName
+  public: cPtr_templateVarInExpressionAST (const GGS_lstring & in_mVarName,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5505,7 +5541,8 @@ class GGS_templateAddOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateAddOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                    const class GGS_templateExpressionAST & inOperand1,
-                                                                   const class GGS_templateExpressionAST & inOperand2
+                                                                   const class GGS_templateExpressionAST & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5569,11 +5606,12 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateAddOperationAST (const GGS_location & in_mOperatorLocation,
                                         const GGS_templateExpressionAST & in_mLeftExpression,
-                                        const GGS_templateExpressionAST & in_mRightExpression
+                                        const GGS_templateExpressionAST & in_mRightExpression,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5715,7 +5753,8 @@ class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateSubOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                    const class GGS_templateExpressionAST & inOperand1,
-                                                                   const class GGS_templateExpressionAST & inOperand2
+                                                                   const class GGS_templateExpressionAST & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5779,11 +5818,12 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateSubOperationAST (const GGS_location & in_mOperatorLocation,
                                         const GGS_templateExpressionAST & in_mLeftExpression,
-                                        const GGS_templateExpressionAST & in_mRightExpression
+                                        const GGS_templateExpressionAST & in_mRightExpression,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5925,7 +5965,8 @@ class GGS_templateMultiplyOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateMultiplyOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                         const class GGS_templateExpressionAST & inOperand1,
-                                                                        const class GGS_templateExpressionAST & inOperand2
+                                                                        const class GGS_templateExpressionAST & inOperand2,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5989,11 +6030,12 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateMultiplyOperationAST (const GGS_location & in_mOperatorLocation,
                                              const GGS_templateExpressionAST & in_mLeftExpression,
-                                             const GGS_templateExpressionAST & in_mRightExpression
+                                             const GGS_templateExpressionAST & in_mRightExpression,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6135,7 +6177,8 @@ class GGS_templateDivideOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateDivideOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                       const class GGS_templateExpressionAST & inOperand1,
-                                                                      const class GGS_templateExpressionAST & inOperand2
+                                                                      const class GGS_templateExpressionAST & inOperand2,
+                                                                      class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6199,11 +6242,12 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateDivideOperationAST (const GGS_location & in_mOperatorLocation,
                                            const GGS_templateExpressionAST & in_mLeftExpression,
-                                           const GGS_templateExpressionAST & in_mRightExpression
+                                           const GGS_templateExpressionAST & in_mRightExpression,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6345,7 +6389,8 @@ class GGS_templateModuloOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateModuloOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                       const class GGS_templateExpressionAST & inOperand1,
-                                                                      const class GGS_templateExpressionAST & inOperand2
+                                                                      const class GGS_templateExpressionAST & inOperand2,
+                                                                      class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6409,11 +6454,12 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateModuloOperationAST (const GGS_location & in_mOperatorLocation,
                                            const GGS_templateExpressionAST & in_mLeftExpression,
-                                           const GGS_templateExpressionAST & in_mRightExpression
+                                           const GGS_templateExpressionAST & in_mRightExpression,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6551,7 +6597,8 @@ class GGS_templateUnaryMinusOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateUnaryMinusOperationAST class_func_new (const class GGS_location & inOperand0,
-                                                                          const class GGS_templateExpressionAST & inOperand1
+                                                                          const class GGS_templateExpressionAST & inOperand1,
+                                                                          class Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6612,11 +6659,12 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
 
 //--- Constructor
   public: cPtr_templateUnaryMinusOperationAST (const GGS_location & in_mOperatorLocation,
-                                               const GGS_templateExpressionAST & in_mExpression
+                                               const GGS_templateExpressionAST & in_mExpression,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6758,7 +6806,8 @@ class GGS_templateEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateEqualTestAST class_func_new (const class GGS_location & inOperand0,
                                                                 const class GGS_templateExpressionAST & inOperand1,
-                                                                const class GGS_templateExpressionAST & inOperand2
+                                                                const class GGS_templateExpressionAST & inOperand2,
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6822,11 +6871,12 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateEqualTestAST (const GGS_location & in_mOperatorLocation,
                                      const GGS_templateExpressionAST & in_mLeftExpression,
-                                     const GGS_templateExpressionAST & in_mRightExpression
+                                     const GGS_templateExpressionAST & in_mRightExpression,
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6968,7 +7018,8 @@ class GGS_templateNonEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateNonEqualTestAST class_func_new (const class GGS_location & inOperand0,
                                                                    const class GGS_templateExpressionAST & inOperand1,
-                                                                   const class GGS_templateExpressionAST & inOperand2
+                                                                   const class GGS_templateExpressionAST & inOperand2,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7032,11 +7083,12 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateNonEqualTestAST (const GGS_location & in_mOperatorLocation,
                                         const GGS_templateExpressionAST & in_mLeftExpression,
-                                        const GGS_templateExpressionAST & in_mRightExpression
+                                        const GGS_templateExpressionAST & in_mRightExpression,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -7178,7 +7230,8 @@ class GGS_templateStrictInfTestAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateStrictInfTestAST class_func_new (const class GGS_location & inOperand0,
                                                                     const class GGS_templateExpressionAST & inOperand1,
-                                                                    const class GGS_templateExpressionAST & inOperand2
+                                                                    const class GGS_templateExpressionAST & inOperand2,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7242,11 +7295,12 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateStrictInfTestAST (const GGS_location & in_mOperatorLocation,
                                          const GGS_templateExpressionAST & in_mLeftExpression,
-                                         const GGS_templateExpressionAST & in_mRightExpression
+                                         const GGS_templateExpressionAST & in_mRightExpression,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -7388,7 +7442,8 @@ class GGS_templateInfOrEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateInfOrEqualTestAST class_func_new (const class GGS_location & inOperand0,
                                                                      const class GGS_templateExpressionAST & inOperand1,
-                                                                     const class GGS_templateExpressionAST & inOperand2
+                                                                     const class GGS_templateExpressionAST & inOperand2,
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7452,11 +7507,12 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateInfOrEqualTestAST (const GGS_location & in_mOperatorLocation,
                                           const GGS_templateExpressionAST & in_mLeftExpression,
-                                          const GGS_templateExpressionAST & in_mRightExpression
+                                          const GGS_templateExpressionAST & in_mRightExpression,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -7598,7 +7654,8 @@ class GGS_templateStrictSupTestAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateStrictSupTestAST class_func_new (const class GGS_location & inOperand0,
                                                                     const class GGS_templateExpressionAST & inOperand1,
-                                                                    const class GGS_templateExpressionAST & inOperand2
+                                                                    const class GGS_templateExpressionAST & inOperand2,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7662,11 +7719,12 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateStrictSupTestAST (const GGS_location & in_mOperatorLocation,
                                          const GGS_templateExpressionAST & in_mLeftExpression,
-                                         const GGS_templateExpressionAST & in_mRightExpression
+                                         const GGS_templateExpressionAST & in_mRightExpression,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -7808,7 +7866,8 @@ class GGS_templateSupOrEqualTestAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateSupOrEqualTestAST class_func_new (const class GGS_location & inOperand0,
                                                                      const class GGS_templateExpressionAST & inOperand1,
-                                                                     const class GGS_templateExpressionAST & inOperand2
+                                                                     const class GGS_templateExpressionAST & inOperand2,
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7872,11 +7931,12 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateSupOrEqualTestAST (const GGS_location & in_mOperatorLocation,
                                           const GGS_templateExpressionAST & in_mLeftExpression,
-                                          const GGS_templateExpressionAST & in_mRightExpression
+                                          const GGS_templateExpressionAST & in_mRightExpression,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8018,7 +8078,8 @@ class GGS_templateLeftShiftOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateLeftShiftOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                          const class GGS_templateExpressionAST & inOperand1,
-                                                                         const class GGS_templateExpressionAST & inOperand2
+                                                                         const class GGS_templateExpressionAST & inOperand2,
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8082,11 +8143,12 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateLeftShiftOperationAST (const GGS_location & in_mOperatorLocation,
                                               const GGS_templateExpressionAST & in_mLeftExpression,
-                                              const GGS_templateExpressionAST & in_mRightExpression
+                                              const GGS_templateExpressionAST & in_mRightExpression,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8228,7 +8290,8 @@ class GGS_templateRightShiftOperationAST : public GGS_templateExpressionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateRightShiftOperationAST class_func_new (const class GGS_location & inOperand0,
                                                                           const class GGS_templateExpressionAST & inOperand1,
-                                                                          const class GGS_templateExpressionAST & inOperand2
+                                                                          const class GGS_templateExpressionAST & inOperand2,
+                                                                          class Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8292,11 +8355,12 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
 //--- Constructor
   public: cPtr_templateRightShiftOperationAST (const GGS_location & in_mOperatorLocation,
                                                const GGS_templateExpressionAST & in_mLeftExpression,
-                                               const GGS_templateExpressionAST & in_mRightExpression
+                                               const GGS_templateExpressionAST & in_mRightExpression,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8430,7 +8494,8 @@ class GGS_templateInstructionStringAST : public GGS_templateInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionStringAST class_func_new (const class GGS_string & inOperand0
+  public: static class GGS_templateInstructionStringAST class_func_new (const class GGS_string & inOperand0,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8488,11 +8553,12 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
   public: cPtr_templateInstructionStringAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionStringAST (const GGS_string & in_mTemplateString
+  public: cPtr_templateInstructionStringAST (const GGS_string & in_mTemplateString,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8630,7 +8696,8 @@ class GGS_templateInstructionExpressionAST : public GGS_templateInstructionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateInstructionExpressionAST class_func_new (const class GGS_templateExpressionAST & inOperand0,
-                                                                            const class GGS_location & inOperand1
+                                                                            const class GGS_location & inOperand1,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8691,11 +8758,12 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
 
 //--- Constructor
   public: cPtr_templateInstructionExpressionAST (const GGS_templateExpressionAST & in_mExpression,
-                                                 const GGS_location & in_mLocation
+                                                 const GGS_location & in_mLocation,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8837,7 +8905,8 @@ class GGS_templateBlockInstructionAST : public GGS_templateInstructionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateBlockInstructionAST class_func_new (const class GGS_templateExpressionAST & inOperand0,
                                                                        const class GGS_location & inOperand1,
-                                                                       const class GGS_templateInstructionListAST & inOperand2
+                                                                       const class GGS_templateInstructionListAST & inOperand2,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8901,11 +8970,12 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
 //--- Constructor
   public: cPtr_templateBlockInstructionAST (const GGS_templateExpressionAST & in_mExpression,
                                             const GGS_location & in_mLocation,
-                                            const GGS_templateInstructionListAST & in_mBlockInstructionList
+                                            const GGS_templateInstructionListAST & in_mBlockInstructionList,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9036,7 +9106,8 @@ class GGS_templateInstructionGetColumnLocationAST : public GGS_templateInstructi
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionGetColumnLocationAST class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_templateInstructionGetColumnLocationAST class_func_new (Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_templateInstructionGetColumnLocationAST & inOperand) const ;
@@ -9087,14 +9158,13 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_templateInstructionGetColumnLocationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionGetColumnLocationAST (LOCATION_ARGS) ;
+  public: cPtr_templateInstructionGetColumnLocationAST (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9225,7 +9295,8 @@ class GGS_templateInstructionGotoColumnLocationAST : public GGS_templateInstruct
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionGotoColumnLocationAST class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_templateInstructionGotoColumnLocationAST class_func_new (Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_templateInstructionGotoColumnLocationAST & inOperand) const ;
@@ -9276,14 +9347,13 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_templateInstructionGotoColumnLocationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionGotoColumnLocationAST (LOCATION_ARGS) ;
+  public: cPtr_templateInstructionGotoColumnLocationAST (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9673,7 +9743,8 @@ class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_templateInstructionIfAST class_func_new (const class GGS_templateInstructionIfBranchListAST & inOperand0,
-                                                                    const class GGS_templateInstructionListAST & inOperand1
+                                                                    const class GGS_templateInstructionListAST & inOperand1,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -9734,11 +9805,12 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
 
 //--- Constructor
   public: cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                         const GGS_templateInstructionListAST & in_mElseInstructionList
+                                         const GGS_templateInstructionListAST & in_mElseInstructionList,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9917,11 +9989,10 @@ class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionForGeneration (LOCATION_ARGS) ;
+  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description
@@ -10022,617 +10093,4 @@ class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_refer
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @semanticExpressionForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticExpressionForGeneration : public AC_GALGAS_reference_class {
-//--------------------------------- Default constructor
-  public: GGS_semanticExpressionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_semanticExpressionForGeneration (const class cPtr_semanticExpressionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
-
-  public: class GGS_location readProperty_mLocation (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_semanticExpressionForGeneration init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                   const class GGS_location & inOperand1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_semanticExpressionForGeneration extractObject (const GGS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_semanticExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_semanticExpressionForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//   enum unifiedTypeMapEntry
-//--------------------------------------------------------------------------------------------------
-
-class GGS_unifiedTypeMapEntry : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GGS_unifiedTypeMapEntry (void) ;
-
-//--------------------------------- Enumeration
-  public: enum class Enumeration {
-    invalid,
-    enum_null,
-    enum_element
-  } ;
-  
-//--------------------------------- Private properties
-  private: AC_GALGAS_enumerationAssociatedValues mAssociatedValues ;
-  private: Enumeration mEnum ;
-
-//--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_element (class GGS_unifiedTypeMapElementClass_2E_weak & out_weakElement) const ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return Enumeration::invalid != mEnum ;
-  }
-
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
-    mEnum = Enumeration::invalid ;
-    mAssociatedValues.drop () ;
-  }
-
-  public: inline Enumeration enumValue (void) const {
-    return mEnum ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_unifiedTypeMapEntry extractObject (const GGS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_unifiedTypeMapEntry class_func_element (const class GGS_unifiedTypeMapElementClass_2E_weak & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_unifiedTypeMapEntry class_func_null (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_unifiedTypeMapEntry & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_extractElement (class GGS_unifiedTypeMapElementClass_2E_weak & outArgument0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_unifiedTypeMapEntry_2E_element_3F_ getter_getElement (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isElement (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNull (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_unifiedTypeMapEntry class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @semanticExpressionForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_semanticExpressionForGeneration : public acStrongPtr_class {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void semanticExpressionForGeneration_init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                             const class GGS_location & inOperand1,
-                                                             Compiler * inCompiler) ;
-
-
-//--- Extension getter isTrueExpression
-  public: virtual class GGS_bool getter_isTrueExpression (Compiler * COMMA_LOCATION_ARGS) const ;
-
-//--- Extension method generateExpression
-  public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
-           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GGS_string & arg_outCppExpression,
-           Compiler * COMMA_LOCATION_ARGS) = 0 ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mResultType ;
-  public: GGS_location mProperty_mLocation ;
-
-
-//--- Default constructor
-  public: cPtr_semanticExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_semanticExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                const GGS_location & in_mLocation
-                                                COMMA_LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override = 0 ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionExpressionForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionExpressionForGeneration : public GGS_templateInstructionForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionExpressionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_templateInstructionExpressionForGeneration (const class cPtr_templateInstructionExpressionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_semanticExpressionForGeneration readProperty_mExpression (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionExpressionForGeneration init_21_ (const class GGS_semanticExpressionForGeneration & inOperand0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionExpressionForGeneration extractObject (const GGS_object & inObject,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionExpressionForGeneration class_func_new (const class GGS_semanticExpressionForGeneration & inOperand0
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_templateInstructionExpressionForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @templateInstructionExpressionForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInstructionForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void templateInstructionExpressionForGeneration_init_21_ (const class GGS_semanticExpressionForGeneration & inOperand0,
-                                                                    Compiler * inCompiler) ;
-
-
-//--- Extension method templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GGS_string & arg_ioGeneratedCode,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
-           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GGS_bool & arg_ioUseColumnMarker,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_semanticExpressionForGeneration mProperty_mExpression ;
-
-
-//--- Default constructor
-  public: cPtr_templateInstructionExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_templateInstructionExpressionForGeneration (const GGS_semanticExpressionForGeneration & in_mExpression
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionExpressionForGeneration_2E_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionExpressionForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_templateInstructionExpressionForGeneration_2E_weak (const class GGS_templateInstructionExpressionForGeneration & inSource) ;
-
-  public: GGS_templateInstructionExpressionForGeneration_2E_weak & operator = (const class GGS_templateInstructionExpressionForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_templateInstructionExpressionForGeneration_2E_weak init_nil (void) {
-    GGS_templateInstructionExpressionForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_templateInstructionExpressionForGeneration bang_templateInstructionExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_templateInstructionExpressionForGeneration unwrappedValue (void) const {
-    GGS_templateInstructionExpressionForGeneration result ;
-    if (isValid ()) {
-      const cPtr_templateInstructionExpressionForGeneration * p = (cPtr_templateInstructionExpressionForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_templateInstructionExpressionForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionExpressionForGeneration_2E_weak extractObject (const GGS_object & inObject,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionExpressionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionExpressionForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_templateInstructionExpressionForGeneration_2E_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration list
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionListForGeneration (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GGS_templateInstructionListForGeneration (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GGS_templateInstructionForGeneration & in_mInstruction
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionListForGeneration init (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionListForGeneration extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionListForGeneration class_func_emptyList (LOCATION_ARGS) ;
-
-  public: static class GGS_templateInstructionListForGeneration class_func_listWithValue (const class GGS_templateInstructionForGeneration & inOperand0
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_templateInstructionListForGeneration inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_templateInstructionForGeneration & inOperand0
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_templateInstructionListForGeneration add_operation (const GGS_templateInstructionListForGeneration & inOperand,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_templateInstructionForGeneration constinArgument0,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_templateInstructionForGeneration constinArgument0,
-                                                      class GGS_uint constinArgument1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_templateInstructionForGeneration & outArgument0,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_templateInstructionForGeneration & outArgument0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_templateInstructionForGeneration & outArgument0,
-                                                      class GGS_uint constinArgument1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GGS_templateInstructionForGeneration constinArgument0,
-                                                               class GGS_uint constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GGS_templateInstructionForGeneration & outArgument0,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GGS_templateInstructionForGeneration & outArgument0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionForGeneration getter_mInstructionAtIndex (const class GGS_uint & constinOperand0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_templateInstructionListForGeneration_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class cEnumerator_templateInstructionListForGeneration ;
- 
-} ; // End of GGS_templateInstructionListForGeneration class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_templateInstructionListForGeneration : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateInstructionListForGeneration (const GGS_templateInstructionListForGeneration & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GGS_templateInstructionForGeneration current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionListForGeneration_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration_2E_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionListForGeneration_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_templateInstructionForGeneration mProperty_mInstruction ;
-  public: inline GGS_templateInstructionForGeneration readProperty_mInstruction (void) const {
-    return mProperty_mInstruction ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInstruction (const GGS_templateInstructionForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstruction = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_templateInstructionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_templateInstructionListForGeneration_2E_element (const GGS_templateInstructionForGeneration & in_mInstruction) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionListForGeneration_2E_element init_21_ (const class GGS_templateInstructionForGeneration & inOperand0,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionListForGeneration_2E_element extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionListForGeneration_2E_element class_func_new (const class GGS_templateInstructionForGeneration & inOperand0,
-                                                                                           class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_templateInstructionListForGeneration_2E_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2E_element ;
 

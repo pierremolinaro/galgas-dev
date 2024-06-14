@@ -44,7 +44,8 @@ class acPtr_class : public SharedObject {
 
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
 
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const = 0 ;
+  public: virtual acPtr_class * duplicate (UNUSED_LOCATION_ARGS) const { return nullptr ; } // §§
+  public: virtual acPtr_class * duplicate (class Compiler * COMMA_UNUSED_LOCATION_ARGS) const { return nullptr ; }
 } ;
 
 //--------------------------------------------------------------------------------------------------

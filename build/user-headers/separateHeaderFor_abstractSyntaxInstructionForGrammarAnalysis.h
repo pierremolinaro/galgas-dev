@@ -62,7 +62,8 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acStrongPtr_clas
   public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation
+  public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors

@@ -54,3 +54,9 @@ acPtr_class * cPtr_weakReference_proxy::duplicate (UNUSED_LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_weakReference_proxy::duplicate (Compiler * COMMA_UNUSED_LOCATION_ARGS) const {
+  return nullptr ;
+}
+
+//--------------------------------------------------------------------------------------------------

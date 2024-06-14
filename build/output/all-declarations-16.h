@@ -104,7 +104,8 @@ class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDecl
 
 //--- Constructor
   public: cPtr_semanticDeclarationWithHeaderForGeneration (const GGS_bool & in_generateHeader,
-                                                           const GGS_string & in_implementationCppFileName
+                                                           const GGS_string & in_implementationCppFileName,
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
@@ -349,7 +350,8 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
   public: cPtr_semanticTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_semanticTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry
+  public: cPtr_semanticTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
@@ -490,7 +492,8 @@ class GGS_boolsetTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- GALGAS class functions
   public: static class GGS_boolsetTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                     const class GGS_lstringlist & inOperand1,
-                                                                    const class GGS_bool & inOperand2
+                                                                    const class GGS_bool & inOperand2,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -556,11 +559,12 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_boolsetTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                          const GGS_lstringlist & in_mFlagList,
-                                         const GGS_bool & in_equatable
+                                         const GGS_bool & in_equatable,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -740,7 +744,8 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                   const class GGS_typedPropertyList & inOperand9,
                                                                   const class GGS_typedPropertyList & inOperand10,
                                                                   const class GGS_initializerMap & inOperand11,
-                                                                  const class GGS_bool & inOperand12
+                                                                  const class GGS_bool & inOperand12,
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -842,11 +847,12 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                        const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
                                        const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
                                        const GGS_initializerMap & in_initializerMap,
-                                       const GGS_bool & in_clonable
+                                       const GGS_bool & in_clonable,
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -994,7 +1000,8 @@ class GGS_weakReferenceTypeForGeneration : public GGS_semanticTypeForGeneration 
                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                           const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                           const class GGS_bool & inOperand3,
-                                                                          const class GGS_unifiedTypeMapEntry & inOperand4
+                                                                          const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                          class Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1066,11 +1073,12 @@ class cPtr_weakReferenceTypeForGeneration : public cPtr_semanticTypeForGeneratio
                                                const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                const GGS_unifiedTypeMapEntry & in_mSuperClass,
                                                const GGS_bool & in_generateHeaderInSeparateFile,
-                                               const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull
+                                               const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1210,7 +1218,8 @@ class GGS_enumTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- GALGAS class functions
   public: static class GGS_enumTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                  const class GGS_enumConstantListForGeneration & inOperand1,
-                                                                 const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand2
+                                                                 const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand2,
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1276,11 +1285,12 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_enumTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GGS_enumConstantListForGeneration & in_constantList,
-                                      const GGS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
+                                      const GGS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1434,7 +1444,8 @@ class GGS_externTypeDeclarationForGeneration : public GGS_semanticTypeForGenerat
   public: static class GGS_externTypeDeclarationForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                               const class GGS_string & inOperand1,
                                                                               const class GGS_string & inOperand2,
-                                                                              const class GGS_string & inOperand3
+                                                                              const class GGS_string & inOperand3,
+                                                                              class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1497,11 +1508,12 @@ class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGener
   public: cPtr_externTypeDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                    const GGS_string & in_mExternTypeName,
                                                    const GGS_string & in_mCppPreDeclarationCode,
-                                                   const GGS_string & in_mCppClassCode
+                                                   const GGS_string & in_mCppClassCode,
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1645,7 +1657,8 @@ class GGS_graphDeclarationForGeneration : public GGS_semanticTypeForGeneration {
   public: static class GGS_graphDeclarationForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                          const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                          const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                         const class GGS_graphInsertModifierList & inOperand3
+                                                                         const class GGS_graphInsertModifierList & inOperand3,
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1714,11 +1727,12 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
   public: cPtr_graphDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                               const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
                                               const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                                              const GGS_graphInsertModifierList & in_mInsertModifierList
+                                              const GGS_graphInsertModifierList & in_mInsertModifierList,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1858,7 +1872,8 @@ class GGS_listTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- GALGAS class functions
   public: static class GGS_listTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                  const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                 const class GGS_typedPropertyList & inOperand2
+                                                                 const class GGS_typedPropertyList & inOperand2,
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1924,11 +1939,12 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_listTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                      const GGS_typedPropertyList & in_mTypedAttributeList
+                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2080,7 +2096,8 @@ class GGS_dictTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                  const class GGS_lstring & inOperand2,
                                                                  const class GGS_typedPropertyList & inOperand3,
                                                                  const class GGS_lstring & inOperand4,
-                                                                 const class GGS_unifiedTypeMapEntry & inOperand5
+                                                                 const class GGS_unifiedTypeMapEntry & inOperand5,
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2155,11 +2172,12 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                       const GGS_lstring & in_mDictTypeName,
                                       const GGS_typedPropertyList & in_mTypedAttributeList,
                                       const GGS_lstring & in_mKeyTypeName,
-                                      const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                      const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2323,7 +2341,8 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                 const class GGS_mapSearchMethodListAST & inOperand5,
                                                                 const class GGS_mapRemoveMethodListAST & inOperand6,
                                                                 const class GGS_bool & inOperand7,
-                                                                const class GGS_unifiedTypeMapEntry & inOperand8
+                                                                const class GGS_unifiedTypeMapEntry & inOperand8,
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2413,11 +2432,12 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GGS_mapSearchMethodListAST & in_mSearchMethodList,
                                      const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
                                      const GGS_bool & in_mHasInsertOrReplaceModifier,
-                                     const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                     const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2557,7 +2577,8 @@ class GGS_optionalTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- GALGAS class functions
   public: static class GGS_optionalTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                      const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                     const class GGS_unifiedTypeMapEntry & inOperand2
+                                                                     const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2623,11 +2644,12 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_optionalTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                           const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                          const GGS_unifiedTypeMapEntry & in_weakType
+                                          const GGS_unifiedTypeMapEntry & in_weakType,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2771,7 +2793,8 @@ class GGS_sortedListTypeForGeneration : public GGS_semanticTypeForGeneration {
   public: static class GGS_sortedListTypeForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                        const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                        const class GGS_typedPropertyList & inOperand2,
-                                                                       const class GGS_sortDescriptorListForGeneration & inOperand3
+                                                                       const class GGS_sortDescriptorListForGeneration & inOperand3,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2840,11 +2863,12 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: cPtr_sortedListTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                             const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
                                             const GGS_typedPropertyList & in_mTypedAttributeList,
-                                            const GGS_sortDescriptorListForGeneration & in_mSortDescriptorList
+                                            const GGS_sortDescriptorListForGeneration & in_mSortDescriptorList,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2996,7 +3020,8 @@ class GGS_structTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                    const class GGS_typedPropertyList & inOperand2,
                                                                    const class GGS_string & inOperand3,
                                                                    const class GGS_bool & inOperand4,
-                                                                   const class GGS_bool & inOperand5
+                                                                   const class GGS_bool & inOperand5,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3071,11 +3096,12 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                         const GGS_typedPropertyList & in_mConstructorArgumentList,
                                         const GGS_string & in_mConstructorInitializationCode,
                                         const GGS_bool & in_mConstructorNeedsCompilerVar,
-                                        const GGS_bool & in_synthetizeAnInitializer
+                                        const GGS_bool & in_synthetizeAnInitializer,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3225,7 +3251,8 @@ class GGS_abstractExtensionGetterForGeneration : public GGS_semanticDeclarationW
                                                                                 const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                 const class GGS_string & inOperand3,
                                                                                 const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                const class GGS_formalInputParameterListForGeneration & inOperand5
+                                                                                const class GGS_formalInputParameterListForGeneration & inOperand5,
+                                                                                class Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3302,11 +3329,12 @@ class cPtr_abstractExtensionGetterForGeneration : public cPtr_semanticDeclaratio
                                                      const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GGS_string & in_mAbstractExtensionGetterName,
                                                      const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                     const GGS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList
+                                                     const GGS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList,
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3452,7 +3480,8 @@ class GGS_abstractExtensionMethodForGeneration : public GGS_semanticDeclarationW
                                                                                 const class GGS_string & inOperand1,
                                                                                 const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                 const class GGS_string & inOperand3,
-                                                                                const class GGS_formalParameterListForGeneration & inOperand4
+                                                                                const class GGS_formalParameterListForGeneration & inOperand4,
+                                                                                class Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3526,11 +3555,12 @@ class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclaratio
                                                      const GGS_string & in_implementationCppFileName,
                                                      const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GGS_string & in_mAbstractExtensionMethodName,
-                                                     const GGS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList
+                                                     const GGS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList,
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3676,7 +3706,8 @@ class GGS_abstractExtensionSetterForGeneration : public GGS_semanticDeclarationW
                                                                                 const class GGS_string & inOperand1,
                                                                                 const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                 const class GGS_string & inOperand3,
-                                                                                const class GGS_formalParameterListForGeneration & inOperand4
+                                                                                const class GGS_formalParameterListForGeneration & inOperand4,
+                                                                                class Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3750,11 +3781,12 @@ class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclaratio
                                                      const GGS_string & in_implementationCppFileName,
                                                      const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                      const GGS_string & in_mAbstractExtensionSetterName,
-                                                     const GGS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList
+                                                     const GGS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList,
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -3920,7 +3952,8 @@ class GGS_extensionGetterForGeneration : public GGS_semanticDeclarationWithHeade
                                                                         const class GGS_string & inOperand6,
                                                                         const class GGS_formalInputParameterListForGeneration & inOperand7,
                                                                         const class GGS_typedPropertyList & inOperand8,
-                                                                        const class GGS_semanticInstructionListForGeneration & inOperand9
+                                                                        const class GGS_semanticInstructionListForGeneration & inOperand9,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4009,11 +4042,12 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GGS_string & in_mResultVarCppName,
                                              const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
                                              const GGS_typedPropertyList & in_mTypedAttributeList,
-                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4171,7 +4205,8 @@ class GGS_extensionMethodForGeneration : public GGS_semanticDeclarationWithHeade
                                                                         const class GGS_bool & inOperand4,
                                                                         const class GGS_formalParameterListForGeneration & inOperand5,
                                                                         const class GGS_typedPropertyList & inOperand6,
-                                                                        const class GGS_semanticInstructionListForGeneration & inOperand7
+                                                                        const class GGS_semanticInstructionListForGeneration & inOperand7,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4254,11 +4289,12 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GGS_bool & in_mImplementedAsFunction,
                                              const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
                                              const GGS_typedPropertyList & in_mTypedAttributeList,
-                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4416,7 +4452,8 @@ class GGS_extensionSetterForGeneration : public GGS_semanticDeclarationWithHeade
                                                                         const class GGS_bool & inOperand4,
                                                                         const class GGS_formalParameterListForGeneration & inOperand5,
                                                                         const class GGS_typedPropertyList & inOperand6,
-                                                                        const class GGS_semanticInstructionListForGeneration & inOperand7
+                                                                        const class GGS_semanticInstructionListForGeneration & inOperand7,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4499,11 +4536,12 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GGS_bool & in_mImplementedAsFunction,
                                              const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                              const GGS_typedPropertyList & in_mTypedAttributeList,
-                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4514,327 +4552,4 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
   public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @extensionSetterForGeneration_2E_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_extensionSetterForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_extensionSetterForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_extensionSetterForGeneration_2E_weak (const class GGS_extensionSetterForGeneration & inSource) ;
-
-  public: GGS_extensionSetterForGeneration_2E_weak & operator = (const class GGS_extensionSetterForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_extensionSetterForGeneration_2E_weak init_nil (void) {
-    GGS_extensionSetterForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_extensionSetterForGeneration bang_extensionSetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_extensionSetterForGeneration unwrappedValue (void) const {
-    GGS_extensionSetterForGeneration result ;
-    if (isValid ()) {
-      const cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_extensionSetterForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_extensionSetterForGeneration_2E_weak extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_extensionSetterForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_extensionSetterForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_extensionSetterForGeneration_2E_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @extensionInitializerForGeneration reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_extensionInitializerForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_extensionInitializerForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_extensionInitializerForGeneration (const class cPtr_extensionInitializerForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
-
-  public: class GGS_string readProperty_initializerName (void) const ;
-
-  public: class GGS_formalInputParameterListForGeneration readProperty_formalParameterList (void) const ;
-
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
-  public: class GGS_semanticInstructionListForGeneration readProperty_semanticInstructionListForGeneration (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_extensionInitializerForGeneration init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                                const class GGS_string & inOperand1,
-                                                                                                                                const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                                                                const class GGS_string & inOperand3,
-                                                                                                                                const class GGS_formalInputParameterListForGeneration & inOperand4,
-                                                                                                                                const class GGS_typedPropertyList & inOperand5,
-                                                                                                                                const class GGS_semanticInstructionListForGeneration & inOperand6,
-                                                                                                                                Compiler * inCompiler
-                                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_extensionInitializerForGeneration extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_extensionInitializerForGeneration class_func_new (const class GGS_bool & inOperand0,
-                                                                             const class GGS_string & inOperand1,
-                                                                             const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                             const class GGS_string & inOperand3,
-                                                                             const class GGS_formalInputParameterListForGeneration & inOperand4,
-                                                                             const class GGS_typedPropertyList & inOperand5,
-                                                                             const class GGS_semanticInstructionListForGeneration & inOperand6
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_extensionInitializerForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_extensionInitializerForGeneration class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: pointer class for @extensionInitializerForGeneration class
-//
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void extensionInitializerForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                          const class GGS_string & inOperand1,
-                                                                                                                          const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                                                          const class GGS_string & inOperand3,
-                                                                                                                          const class GGS_formalInputParameterListForGeneration & inOperand4,
-                                                                                                                          const class GGS_typedPropertyList & inOperand5,
-                                                                                                                          const class GGS_semanticInstructionListForGeneration & inOperand6,
-                                                                                                                          Compiler * inCompiler) ;
-
-
-//--- Extension getter headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension method appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
-  public: GGS_string mProperty_initializerName ;
-  public: GGS_formalInputParameterListForGeneration mProperty_formalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GGS_semanticInstructionListForGeneration mProperty_semanticInstructionListForGeneration ;
-
-
-//--- Default constructor
-  public: cPtr_extensionInitializerForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_extensionInitializerForGeneration (const GGS_bool & in_generateHeader,
-                                                  const GGS_string & in_implementationCppFileName,
-                                                  const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                  const GGS_string & in_initializerName,
-                                                  const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                  const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                  const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @extensionInitializerForGeneration_2E_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_extensionInitializerForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_extensionInitializerForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_extensionInitializerForGeneration_2E_weak (const class GGS_extensionInitializerForGeneration & inSource) ;
-
-  public: GGS_extensionInitializerForGeneration_2E_weak & operator = (const class GGS_extensionInitializerForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_extensionInitializerForGeneration_2E_weak init_nil (void) {
-    GGS_extensionInitializerForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_extensionInitializerForGeneration bang_extensionInitializerForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: inline GGS_extensionInitializerForGeneration unwrappedValue (void) const {
-    GGS_extensionInitializerForGeneration result ;
-    if (isValid ()) {
-      const cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) ptr () ;
-      if (nullptr != p) {
-        result = GGS_extensionInitializerForGeneration (p) ;
-      }
-    }
-    return result ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_extensionInitializerForGeneration_2E_weak extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_extensionInitializerForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_extensionInitializerForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_extensionInitializerForGeneration_2E_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ;
 

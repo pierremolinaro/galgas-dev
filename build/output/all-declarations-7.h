@@ -4156,7 +4156,8 @@ class GGS_castInExpressionForGeneration : public GGS_semanticExpressionForGenera
                                                                          const class GGS_location & inOperand1,
                                                                          const class GGS_semanticExpressionForGeneration & inOperand2,
                                                                          const class GGS_string & inOperand3,
-                                                                         const class GGS_unifiedTypeMapEntry & inOperand4
+                                                                         const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4224,11 +4225,12 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
                                               const GGS_location & in_mLocation,
                                               const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                                               const GGS_string & in_mTypeName,
-                                              const GGS_unifiedTypeMapEntry & in_mCastType
+                                              const GGS_unifiedTypeMapEntry & in_mCastType,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -4423,7 +4425,8 @@ class cPtr_actualParameterForGeneration : public acStrongPtr_class {
   public: cPtr_actualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_actualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType
+  public: cPtr_actualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
@@ -4589,7 +4592,8 @@ class GGS_outputActualParameterForGeneration : public GGS_actualParameterForGene
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_outputActualParameterForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                              const class GGS_semanticExpressionForGeneration & inOperand1
+                                                                              const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                              class Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4656,11 +4660,12 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
 
 //--- Constructor
   public: cPtr_outputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                   const GGS_semanticExpressionForGeneration & in_mOutputActualParameterExpression
+                                                   const GGS_semanticExpressionForGeneration & in_mOutputActualParameterExpression,
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5026,7 +5031,8 @@ class GGS_outputInputActualParameterForGeneration : public GGS_actualParameterFo
   public: static class GGS_outputInputActualParameterForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                                    const class GGS_string & inOperand1,
                                                                                    const class GGS_lstringlist & inOperand2,
-                                                                                   const class GGS_unifiedTypeMapEntryList & inOperand3
+                                                                                   const class GGS_unifiedTypeMapEntryList & inOperand3,
+                                                                                   class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5099,11 +5105,12 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
   public: cPtr_outputInputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                         const GGS_string & in_mOutputInputVariableCppName,
                                                         const GGS_lstringlist & in_mStructAttributeList,
-                                                        const GGS_unifiedTypeMapEntryList & in_mTypeList
+                                                        const GGS_unifiedTypeMapEntryList & in_mTypeList,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5243,7 +5250,8 @@ class GGS_inputActualParameterForGeneration : public GGS_actualParameterForGener
 //--------------------------------- GALGAS class functions
   public: static class GGS_inputActualParameterForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                              const class GGS_string & inOperand1,
-                                                                             const class GGS__32_stringlist & inOperand2
+                                                                             const class GGS__32_stringlist & inOperand2,
+                                                                             class Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5313,11 +5321,12 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 //--- Constructor
   public: cPtr_inputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                   const GGS_string & in_mInputActualCppName,
-                                                  const GGS__32_stringlist & in_mPoisonedVarNameList
+                                                  const GGS__32_stringlist & in_mPoisonedVarNameList,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5457,7 +5466,8 @@ class GGS_inputJokerParameterForGeneration : public GGS_actualParameterForGenera
 //--------------------------------- GALGAS class functions
   public: static class GGS_inputJokerParameterForGeneration class_func_new (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                             const class GGS_string & inOperand1,
-                                                                            const class GGS__32_stringlist & inOperand2
+                                                                            const class GGS__32_stringlist & inOperand2,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5527,11 +5537,12 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 //--- Constructor
   public: cPtr_inputJokerParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                  const GGS_string & in_mInputActualCppName,
-                                                 const GGS__32_stringlist & in_mPoisonedVarNameList
+                                                 const GGS__32_stringlist & in_mPoisonedVarNameList,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -5847,7 +5858,8 @@ class GGS_semanticBlockInstructionForGeneration : public GGS_semanticInstruction
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_semanticBlockInstructionForGeneration class_func_new (const class GGS_semanticInstructionListForGeneration & inOperand0
+  public: static class GGS_semanticBlockInstructionForGeneration class_func_new (const class GGS_semanticInstructionListForGeneration & inOperand0,
+                                                                                 class Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5905,11 +5917,12 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
   public: cPtr_semanticBlockInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_semanticBlockInstructionForGeneration (const GGS_semanticInstructionListForGeneration & in_mInstructionList
+  public: cPtr_semanticBlockInstructionForGeneration (const GGS_semanticInstructionListForGeneration & in_mInstructionList,
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -6377,11 +6390,10 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_semanticDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_semanticDeclarationForGeneration (LOCATION_ARGS) ;
+  public: cPtr_semanticDeclarationForGeneration (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description
@@ -8333,7 +8345,8 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
   public: cPtr_syntaxInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_syntaxInstructionForGeneration (const GGS_location & in_mInstructionLocation
+  public: cPtr_syntaxInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
@@ -9499,11 +9512,10 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public ac
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (LOCATION_ARGS) ;
+  public: cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult (Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description

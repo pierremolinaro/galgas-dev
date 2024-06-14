@@ -338,7 +338,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       [!?classFunctionMap insertKey
         !@lstring {!"new" !@location.here}
         !synthetizedInitializerArgumentList
-        !false
+        !true
         !classIndex
       ]
     end

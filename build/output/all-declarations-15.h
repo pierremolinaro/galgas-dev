@@ -529,7 +529,8 @@ class GGS_templateInstructionStringForGeneration : public GGS_templateInstructio
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionStringForGeneration class_func_new (const class GGS_string & inOperand0
+  public: static class GGS_templateInstructionStringForGeneration class_func_new (const class GGS_string & inOperand0,
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -587,11 +588,12 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
   public: cPtr_templateInstructionStringForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateInstructionStringForGeneration (const GGS_string & in_mTemplateString
+  public: cPtr_templateInstructionStringForGeneration (const GGS_string & in_mTemplateString,
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

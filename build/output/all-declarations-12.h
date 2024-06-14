@@ -1445,7 +1445,8 @@ class GGS_lexiqueComponentAST : public GGS_semanticDeclarationAST {
                                                                const class GGS_lexicalMessageDeclarationListAST & inOperand8,
                                                                const class GGS_lexicalListDeclarationListAST & inOperand9,
                                                                const class GGS_lexicalRuleListAST & inOperand10,
-                                                               const class GGS_indexingListAST & inOperand11
+                                                               const class GGS_indexingListAST & inOperand11,
+                                                               class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1560,11 +1561,12 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
                                     const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
                                     const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
                                     const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
-                                    const GGS_indexingListAST & in_mIndexingListAST
+                                    const GGS_indexingListAST & in_mIndexingListAST,
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

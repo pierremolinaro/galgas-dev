@@ -5,25 +5,20 @@
   end
 %
 
-//--- Default constructor
+%if [INITIALIZER_ARGUMENT_LIST count] > 0 then%//--- Default constructor
   public: cPtr_%!TYPE_IDENTIFIER% (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
+%end%
 //--- Constructor
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in INITIALIZER_ARGUMENT_LIST
     do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
-    between %,\n%!^
+       %,\n%!^
   end
-  if [INITIALIZER_ARGUMENT_LIST count] > 0 then
-    %\n%!^%COMMA_LOCATION_ARGS%
-  else
-    %LOCATION_ARGS%
-  end
-%) ;
+  %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) ;
 
 %if not IS_ABSTRACT then
 %//--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 %end
 %//--- Attribute accessors

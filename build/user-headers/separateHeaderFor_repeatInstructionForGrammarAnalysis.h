@@ -65,11 +65,12 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 //--- Constructor
   public: cPtr_repeatInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
                                                     const GGS_branchListForGrammarAnalysis & in_mRepeatBranchList,
-                                                    const GGS_uint & in_mAddedNonTerminalSymbolIndex
+                                                    const GGS_uint & in_mAddedNonTerminalSymbolIndex,
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

@@ -8,6 +8,574 @@
 #include "all-declarations-2.h"
 
 //--------------------------------------------------------------------------------------------------
+//
+//Class for element of '@lexicalSendSearchListAST' list
+//
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
+  public: GGS_lexicalSendSearchListAST_2E_element mObject ;
+
+//--- Class functions
+  public: cCollectionElement_lexicalSendSearchListAST (const GGS_lstring & in_mAttributeName,
+                                                       const GGS_lstring & in_mSearchListName
+                                                       COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_lexicalSendSearchListAST::cCollectionElement_lexicalSendSearchListAST (const GGS_lstring & in_mAttributeName,
+                                                                                          const GGS_lstring & in_mSearchListName
+                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mAttributeName, in_mSearchListName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_lexicalSendSearchListAST::cCollectionElement_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mAttributeName, inElement.mProperty_mSearchListName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_lexicalSendSearchListAST::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_lexicalSendSearchListAST::copy (void) {
+  cCollectionElement * result = nullptr ;
+  macroMyNew (result, cCollectionElement_lexicalSendSearchListAST (mObject.mProperty_mAttributeName, mObject.mProperty_mSearchListName COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_lexicalSendSearchListAST::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mAttributeName" ":") ;
+  mObject.mProperty_mAttributeName.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mSearchListName" ":") ;
+  mObject.mProperty_mSearchListName.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST::GGS_lexicalSendSearchListAST (void) :
+AC_GALGAS_list () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST::GGS_lexicalSendSearchListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GGS_lexicalSendSearchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_lexicalSendSearchListAST (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::enterElement (const GGS_lexicalSendSearchListAST_2E_element & inValue,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                                     const GGS_lstring & inOperand1
+                                                                                     COMMA_LOCATION_ARGS) {
+  GGS_lexicalSendSearchListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GGS_lexicalSendSearchListAST (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GGS_lexicalSendSearchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                              const GGS_lstring & in_mAttributeName,
+                                                              const GGS_lstring & in_mSearchListName
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalSendSearchListAST * p = nullptr ;
+  macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (in_mAttributeName,
+                                                              in_mSearchListName COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::addAssign_operation (const GGS_lstring & inOperand0,
+                                                        const GGS_lstring & inOperand1
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_append (const GGS_lstring inOperand0,
+                                                  const GGS_lstring inOperand1,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                         const GGS_lstring inOperand1,
+                                                         const GGS_uint inInsertionIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                         GGS_lstring & outOperand1,
+                                                         const GGS_uint inRemoveIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+      outOperand0 = p->mObject.mProperty_mAttributeName ;
+      outOperand1 = p->mObject.mProperty_mSearchListName ;
+    }
+  }else{
+    drop () ;    
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_popFirst (GGS_lstring & outOperand0,
+                                                    GGS_lstring & outOperand1,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mProperty_mAttributeName ;
+    outOperand1 = p->mObject.mProperty_mSearchListName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_popLast (GGS_lstring & outOperand0,
+                                                   GGS_lstring & outOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mProperty_mAttributeName ;
+    outOperand1 = p->mObject.mProperty_mSearchListName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::method_first (GGS_lstring & outOperand0,
+                                                 GGS_lstring & outOperand1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mProperty_mAttributeName ;
+    outOperand1 = p->mObject.mProperty_mSearchListName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::method_last (GGS_lstring & outOperand0,
+                                                GGS_lstring & outOperand1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mProperty_mAttributeName ;
+    outOperand1 = p->mObject.mProperty_mSearchListName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::add_operation (const GGS_lexicalSendSearchListAST & inOperand,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_lexicalSendSearchListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::getter_subListWithRange (const GGS_range & inRange,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_lexicalSendSearchListAST result = GGS_lexicalSendSearchListAST::class_func_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_lexicalSendSearchListAST result = GGS_lexicalSendSearchListAST::class_func_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_lexicalSendSearchListAST result = GGS_lexicalSendSearchListAST::class_func_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::plusAssign_operation (const GGS_lexicalSendSearchListAST inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_setMAttributeNameAtIndex (GGS_lstring inOperand,
+                                                                    GGS_uint inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mAttributeName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexicalSendSearchListAST::getter_mAttributeNameAtIndex (const GGS_uint & inIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    result = p->mObject.mProperty_mAttributeName ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalSendSearchListAST::setter_setMSearchListNameAtIndex (GGS_lstring inOperand,
+                                                                     GGS_uint inIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mSearchListName = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexicalSendSearchListAST::getter_mSearchListNameAtIndex (const GGS_uint & inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    result = p->mObject.mProperty_mSearchListName ;
+  }
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+cEnumerator_lexicalSendSearchListAST::cEnumerator_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST & inEnumeratedObject,
+                                                                            const EnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST_2E_element cEnumerator_lexicalSendSearchListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring cEnumerator_lexicalSendSearchListAST::current_mAttributeName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+  return p->mObject.mProperty_mAttributeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring cEnumerator_lexicalSendSearchListAST::current_mSearchListName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+  return p->mObject.mProperty_mSearchListName ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalSendSearchListAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST ("lexicalSendSearchListAST",
+                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalSendSearchListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSendSearchListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalSendSearchListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalSendSearchListAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendSearchListAST GGS_lexicalSendSearchListAST::extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GGS_lexicalSendSearchListAST result ;
+  const GGS_lexicalSendSearchListAST * p = (const GGS_lexicalSendSearchListAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalSendSearchListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSendSearchListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalSendDefaultActionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalSendDefaultActionAST::objectCompare (const GGS_lexicalSendDefaultActionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendDefaultActionAST::GGS_lexicalSendDefaultActionAST (void) :
+AC_GALGAS_reference_class () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendDefaultActionAST::GGS_lexicalSendDefaultActionAST (const cPtr_lexicalSendDefaultActionAST * inSourcePtr) :
+AC_GALGAS_reference_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSendDefaultActionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalSendDefaultActionAST class
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalSendDefaultActionAST::cPtr_lexicalSendDefaultActionAST (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalSendDefaultActionAST::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalSendDefaultActionAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST ("lexicalSendDefaultActionAST",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalSendDefaultActionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalSendDefaultActionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalSendDefaultActionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSendDefaultActionAST GGS_lexicalSendDefaultActionAST::extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GGS_lexicalSendDefaultActionAST result ;
+  const GGS_lexicalSendDefaultActionAST * p = (const GGS_lexicalSendDefaultActionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalSendDefaultActionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSendDefaultActionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalSendDefaultActionAST_2E_weak::objectCompare (const GGS_lexicalSendDefaultActionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -1290,20 +1858,6 @@ GGS_lexicalSelectBranchListAST GGS_lexicalSelectBranchListAST::extractObject (co
 // @lexicalRoutineOrFunctionFormalInputArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -1336,10 +1890,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @lexicalRoutineOrFunctionFormalInputArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2240,22 +2806,6 @@ GGS_lexicalUnsignedInputArgumentAST_2E_weak GGS_lexicalUnsignedInputArgumentAST_
 // @lexicalCurrentCharacterInputArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalCurrentCharacterInputArgumentAST::cPtr_lexicalCurrentCharacterInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalCurrentCharacterInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalCurrentCharacterInputArgumentAST::objectCompare (const GGS_lexicalCurrentCharacterInputArgumentAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2308,10 +2858,11 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalCurrentCharacterInputArgumentAST GGS_lexicalCurrentCharacterInputArgumentAST::class_func_new (const GGS_location & in_mLocation
+GGS_lexicalCurrentCharacterInputArgumentAST GGS_lexicalCurrentCharacterInputArgumentAST::class_func_new (const GGS_location & in_mLocation,
+                                                                                                         Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) {
   GGS_lexicalCurrentCharacterInputArgumentAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalCurrentCharacterInputArgumentAST (in_mLocation COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalCurrentCharacterInputArgumentAST (in_mLocation,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -2331,9 +2882,17 @@ GGS_location GGS_lexicalCurrentCharacterInputArgumentAST::readProperty_mLocation
 //Pointer class for @lexicalCurrentCharacterInputArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalCurrentCharacterInputArgumentAST::cPtr_lexicalCurrentCharacterInputArgumentAST (const GGS_location & in_mLocation
+cPtr_lexicalCurrentCharacterInputArgumentAST::cPtr_lexicalCurrentCharacterInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalCurrentCharacterInputArgumentAST::cPtr_lexicalCurrentCharacterInputArgumentAST (const GGS_location & in_mLocation,
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (THERE),
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
 mProperty_mLocation () {
   mProperty_mLocation = in_mLocation ;
 }
@@ -2353,12 +2912,28 @@ void cPtr_lexicalCurrentCharacterInputArgumentAST::description (String & ioStrin
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalCurrentCharacterInputArgumentAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalCurrentCharacterInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalCurrentCharacterInputArgumentAST (mProperty_mLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalCurrentCharacterInputArgumentAST (mProperty_mLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalCurrentCharacterInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalCurrentCharacterInputArgumentAST (mProperty_mLocation, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalCurrentCharacterInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11006,24 +11581,6 @@ void callExtensionMethod_checkLexicalRule (cPtr_abstractLexicalRuleAST * inObjec
 // @lexicalStructuredSendInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalStructuredSendInstructionAST::cPtr_lexicalStructuredSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLexicalSendSearchList (),
-mProperty_mLexicalSendDefaultAction () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalStructuredSendInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalSendSearchList.printNonNullClassInstanceProperties ("mLexicalSendSearchList") ;
-    mProperty_mLexicalSendDefaultAction.printNonNullClassInstanceProperties ("mLexicalSendDefaultAction") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalStructuredSendInstructionAST::objectCompare (const GGS_lexicalStructuredSendInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11080,10 +11637,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalStructuredSendInstructionAST GGS_lexicalStructuredSendInstructionAST::class_func_new (const GGS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
-                                                                                                 const GGS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction
+                                                                                                 const GGS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) {
   GGS_lexicalStructuredSendInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalStructuredSendInstructionAST (in_mLexicalSendSearchList, in_mLexicalSendDefaultAction COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalStructuredSendInstructionAST (in_mLexicalSendSearchList, in_mLexicalSendDefaultAction,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11115,10 +11673,19 @@ GGS_lexicalSendDefaultActionAST GGS_lexicalStructuredSendInstructionAST::readPro
 //Pointer class for @lexicalStructuredSendInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalStructuredSendInstructionAST::cPtr_lexicalStructuredSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mLexicalSendSearchList (),
+mProperty_mLexicalSendDefaultAction () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalStructuredSendInstructionAST::cPtr_lexicalStructuredSendInstructionAST (const GGS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
-                                                                                    const GGS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction
+                                                                                    const GGS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mLexicalSendSearchList (),
 mProperty_mLexicalSendDefaultAction () {
   mProperty_mLexicalSendSearchList = in_mLexicalSendSearchList ;
@@ -11142,12 +11709,29 @@ void cPtr_lexicalStructuredSendInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalStructuredSendInstructionAST (mProperty_mLexicalSendSearchList, mProperty_mLexicalSendDefaultAction COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalStructuredSendInstructionAST (mProperty_mLexicalSendSearchList, mProperty_mLexicalSendDefaultAction, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalStructuredSendInstructionAST (mProperty_mLexicalSendSearchList, mProperty_mLexicalSendDefaultAction, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalStructuredSendInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalSendSearchList.printNonNullClassInstanceProperties ("mLexicalSendSearchList") ;
+    mProperty_mLexicalSendDefaultAction.printNonNullClassInstanceProperties ("mLexicalSendDefaultAction") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11528,20 +12112,6 @@ GGS_lexicalErrorInstructionAST_2E_weak GGS_lexicalErrorInstructionAST_2E_weak::e
 // @lexicalLogInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalLogInstructionAST::cPtr_lexicalLogInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalLogInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalLogInstructionAST::objectCompare (const GGS_lexicalLogInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11591,9 +12161,9 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalLogInstructionAST GGS_lexicalLogInstructionAST::class_func_new (LOCATION_ARGS) {
+GGS_lexicalLogInstructionAST GGS_lexicalLogInstructionAST::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   GGS_lexicalLogInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalLogInstructionAST (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalLogInstructionAST (inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11601,8 +12171,12 @@ GGS_lexicalLogInstructionAST GGS_lexicalLogInstructionAST::class_func_new (LOCAT
 //Pointer class for @lexicalLogInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalLogInstructionAST::cPtr_lexicalLogInstructionAST (LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalLogInstructionAST::cPtr_lexicalLogInstructionAST (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11618,12 +12192,27 @@ void cPtr_lexicalLogInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalLogInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalLogInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalLogInstructionAST (THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalLogInstructionAST (inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalLogInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalLogInstructionAST (COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalLogInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11782,26 +12371,6 @@ GGS_lexicalLogInstructionAST_2E_weak GGS_lexicalLogInstructionAST_2E_weak::extra
 // @lexicalRepeatInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalRepeatInstructionAST::cPtr_lexicalRepeatInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mRepeatedInstructionList (),
-mProperty_mLexicalWhileBranchList (),
-mProperty_mLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalRepeatInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRepeatedInstructionList.printNonNullClassInstanceProperties ("mRepeatedInstructionList") ;
-    mProperty_mLexicalWhileBranchList.printNonNullClassInstanceProperties ("mLexicalWhileBranchList") ;
-    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalRepeatInstructionAST::objectCompare (const GGS_lexicalRepeatInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11862,10 +12431,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 
 GGS_lexicalRepeatInstructionAST GGS_lexicalRepeatInstructionAST::class_func_new (const GGS_lexicalInstructionListAST & in_mRepeatedInstructionList,
                                                                                  const GGS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
-                                                                                 const GGS_location & in_mLocation
+                                                                                 const GGS_location & in_mLocation,
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_lexicalRepeatInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalRepeatInstructionAST (in_mRepeatedInstructionList, in_mLexicalWhileBranchList, in_mLocation COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalRepeatInstructionAST (in_mRepeatedInstructionList, in_mLexicalWhileBranchList, in_mLocation,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11909,11 +12479,21 @@ GGS_location GGS_lexicalRepeatInstructionAST::readProperty_mLocation (void) cons
 //Pointer class for @lexicalRepeatInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalRepeatInstructionAST::cPtr_lexicalRepeatInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mRepeatedInstructionList (),
+mProperty_mLexicalWhileBranchList (),
+mProperty_mLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalRepeatInstructionAST::cPtr_lexicalRepeatInstructionAST (const GGS_lexicalInstructionListAST & in_mRepeatedInstructionList,
                                                                     const GGS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
-                                                                    const GGS_location & in_mLocation
+                                                                    const GGS_location & in_mLocation,
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mRepeatedInstructionList (),
 mProperty_mLexicalWhileBranchList (),
 mProperty_mLocation () {
@@ -11941,12 +12521,30 @@ void cPtr_lexicalRepeatInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalRepeatInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalRepeatInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalRepeatInstructionAST (mProperty_mRepeatedInstructionList, mProperty_mLexicalWhileBranchList, mProperty_mLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalRepeatInstructionAST (mProperty_mRepeatedInstructionList, mProperty_mLexicalWhileBranchList, mProperty_mLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalRepeatInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalRepeatInstructionAST (mProperty_mRepeatedInstructionList, mProperty_mLexicalWhileBranchList, mProperty_mLocation, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalRepeatInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mRepeatedInstructionList.printNonNullClassInstanceProperties ("mRepeatedInstructionList") ;
+    mProperty_mLexicalWhileBranchList.printNonNullClassInstanceProperties ("mLexicalWhileBranchList") ;
+    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12216,22 +12814,6 @@ GGS_lexicalRewindInstructionAST_2E_weak GGS_lexicalRewindInstructionAST_2E_weak:
 // @abstractLexicalRoutineActualArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractLexicalRoutineActualArgumentAST::cPtr_abstractLexicalRoutineActualArgumentAST (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE),
-mProperty_mActualPassingModeLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-    mProperty_mActualPassingModeLocation.printNonNullClassInstanceProperties ("mActualPassingModeLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_abstractLexicalRoutineActualArgumentAST::objectCompare (const GGS_abstractLexicalRoutineActualArgumentAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12276,13 +12858,30 @@ GGS_location GGS_abstractLexicalRoutineActualArgumentAST::readProperty_mActualPa
 //Pointer class for @abstractLexicalRoutineActualArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractLexicalRoutineActualArgumentAST::cPtr_abstractLexicalRoutineActualArgumentAST (const GGS_location & in_mActualPassingModeLocation
-                                                                                            COMMA_LOCATION_ARGS) :
+cPtr_abstractLexicalRoutineActualArgumentAST::cPtr_abstractLexicalRoutineActualArgumentAST (Compiler *  COMMA_LOCATION_ARGS) :
 acStrongPtr_class (THERE),
+mProperty_mActualPassingModeLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_abstractLexicalRoutineActualArgumentAST::cPtr_abstractLexicalRoutineActualArgumentAST (const GGS_location & in_mActualPassingModeLocation,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE),
 mProperty_mActualPassingModeLocation () {
   mProperty_mActualPassingModeLocation = in_mActualPassingModeLocation ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+    mProperty_mActualPassingModeLocation.printNonNullClassInstanceProperties ("mActualPassingModeLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12552,22 +13151,6 @@ GGS_lexicalAttributeInputOutputArgumentAST_2E_weak GGS_lexicalAttributeInputOutp
 // @lexicalFormalInputArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalFormalInputArgumentAST::cPtr_lexicalFormalInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_abstractLexicalRoutineActualArgumentAST (inCompiler COMMA_THERE),
-mProperty_mRoutineOrFunctionFormalInputArgument () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalFormalInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineOrFunctionFormalInputArgument.printNonNullClassInstanceProperties ("mRoutineOrFunctionFormalInputArgument") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalFormalInputArgumentAST::objectCompare (const GGS_lexicalFormalInputArgumentAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12624,10 +13207,11 @@ GGS_abstractLexicalRoutineActualArgumentAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFormalInputArgumentAST GGS_lexicalFormalInputArgumentAST::class_func_new (const GGS_location & in_mActualPassingModeLocation,
-                                                                                     const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument
+                                                                                     const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   GGS_lexicalFormalInputArgumentAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalFormalInputArgumentAST (in_mActualPassingModeLocation, in_mRoutineOrFunctionFormalInputArgument COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalFormalInputArgumentAST (in_mActualPassingModeLocation, in_mRoutineOrFunctionFormalInputArgument,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12647,10 +13231,18 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST GGS_lexicalFormalInputArgumen
 //Pointer class for @lexicalFormalInputArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalFormalInputArgumentAST::cPtr_lexicalFormalInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractLexicalRoutineActualArgumentAST (inCompiler COMMA_THERE),
+mProperty_mRoutineOrFunctionFormalInputArgument () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalFormalInputArgumentAST::cPtr_lexicalFormalInputArgumentAST (const GGS_location & in_mActualPassingModeLocation,
-                                                                        const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument
+                                                                        const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) :
-cPtr_abstractLexicalRoutineActualArgumentAST (in_mActualPassingModeLocation COMMA_THERE),
+cPtr_abstractLexicalRoutineActualArgumentAST (in_mActualPassingModeLocation, inCompiler COMMA_THERE),
 mProperty_mRoutineOrFunctionFormalInputArgument () {
   mProperty_mActualPassingModeLocation = in_mActualPassingModeLocation ;
   mProperty_mRoutineOrFunctionFormalInputArgument = in_mRoutineOrFunctionFormalInputArgument ;
@@ -12673,12 +13265,28 @@ void cPtr_lexicalFormalInputArgumentAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalFormalInputArgumentAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalFormalInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalFormalInputArgumentAST (mProperty_mActualPassingModeLocation, mProperty_mRoutineOrFunctionFormalInputArgument COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalFormalInputArgumentAST (mProperty_mActualPassingModeLocation, mProperty_mRoutineOrFunctionFormalInputArgument, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalFormalInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalFormalInputArgumentAST (mProperty_mActualPassingModeLocation, mProperty_mRoutineOrFunctionFormalInputArgument, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalFormalInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mRoutineOrFunctionFormalInputArgument.printNonNullClassInstanceProperties ("mRoutineOrFunctionFormalInputArgument") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13426,24 +14034,6 @@ GGS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLexic
 // @lexicalSelectInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalSelectInstructionAST::cPtr_lexicalSelectInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLexicalSelectBranchList (),
-mProperty_mDefaultInstructionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalSelectInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalSelectBranchList.printNonNullClassInstanceProperties ("mLexicalSelectBranchList") ;
-    mProperty_mDefaultInstructionList.printNonNullClassInstanceProperties ("mDefaultInstructionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalSelectInstructionAST::objectCompare (const GGS_lexicalSelectInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13500,10 +14090,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSelectInstructionAST GGS_lexicalSelectInstructionAST::class_func_new (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
-                                                                                 const GGS_lexicalInstructionListAST & in_mDefaultInstructionList
+                                                                                 const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_lexicalSelectInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalSelectInstructionAST (in_mLexicalSelectBranchList, in_mDefaultInstructionList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalSelectInstructionAST (in_mLexicalSelectBranchList, in_mDefaultInstructionList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13535,10 +14126,19 @@ GGS_lexicalInstructionListAST GGS_lexicalSelectInstructionAST::readProperty_mDef
 //Pointer class for @lexicalSelectInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalSelectInstructionAST::cPtr_lexicalSelectInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mLexicalSelectBranchList (),
+mProperty_mDefaultInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalSelectInstructionAST::cPtr_lexicalSelectInstructionAST (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
-                                                                    const GGS_lexicalInstructionListAST & in_mDefaultInstructionList
+                                                                    const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mLexicalSelectBranchList (),
 mProperty_mDefaultInstructionList () {
   mProperty_mLexicalSelectBranchList = in_mLexicalSelectBranchList ;
@@ -13562,12 +14162,29 @@ void cPtr_lexicalSelectInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalSelectInstructionAST (mProperty_mLexicalSelectBranchList, mProperty_mDefaultInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalSelectInstructionAST (mProperty_mLexicalSelectBranchList, mProperty_mDefaultInstructionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalSelectInstructionAST (mProperty_mLexicalSelectBranchList, mProperty_mDefaultInstructionList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalSelectInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalSelectBranchList.printNonNullClassInstanceProperties ("mLexicalSelectBranchList") ;
+    mProperty_mDefaultInstructionList.printNonNullClassInstanceProperties ("mDefaultInstructionList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -15506,466 +16123,6 @@ GGS_commandLineOptionSortedList GGS_commandLineOptionSortedList::extractObject (
       result = *p ;
     }else{
       inCompiler->castError ("commandLineOptionSortedList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_commandLineOptionMap::cMapElement_commandLineOptionMap (const GGS_commandLineOptionMap_2E_element & inValue
-                                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inValue.mProperty_lkey COMMA_THERE),
-mProperty_mOptionChar (inValue.mProperty_mOptionChar),
-mProperty_mOptionString (inValue.mProperty_mOptionString),
-mProperty_mComment (inValue.mProperty_mComment),
-mProperty_mDefaultValue (inValue.mProperty_mDefaultValue) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_commandLineOptionMap::cMapElement_commandLineOptionMap (const GGS_lstring & inKey,
-                                                                    const GGS_char & in_mOptionChar,
-                                                                    const GGS_string & in_mOptionString,
-                                                                    const GGS_string & in_mComment,
-                                                                    const GGS_string & in_mDefaultValue
-                                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mOptionChar (in_mOptionChar),
-mProperty_mOptionString (in_mOptionString),
-mProperty_mComment (in_mComment),
-mProperty_mDefaultValue (in_mDefaultValue) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cMapElement_commandLineOptionMap::isValid (void) const {
-  return mProperty_lkey.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement * cMapElement_commandLineOptionMap::copy (void) {
-  cMapElement * result = nullptr ;
-  macroMyNew (result, cMapElement_commandLineOptionMap (mProperty_lkey, mProperty_mOptionChar, mProperty_mOptionString, mProperty_mComment, mProperty_mDefaultValue COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cMapElement_commandLineOptionMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mOptionChar" ":") ;
-  mProperty_mOptionChar.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mOptionString" ":") ;
-  mProperty_mOptionString.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mComment" ":") ;
-  mProperty_mComment.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mDefaultValue" ":") ;
-  mProperty_mDefaultValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap::GGS_commandLineOptionMap (void) :
-AC_GALGAS_map () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap::GGS_commandLineOptionMap (const GGS_commandLineOptionMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap & GGS_commandLineOptionMap::operator = (const GGS_commandLineOptionMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_commandLineOptionMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_commandLineOptionMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_commandLineOptionMap::class_func_emptyMap (LOCATION_ARGS) {
-  GGS_commandLineOptionMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap_2E_element_3F_ GGS_commandLineOptionMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                            Compiler * /* inCompiler */
-                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_commandLineOptionMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) searchForKey (inKey) ;
-    if (nullptr == p) {
-      result = GGS_commandLineOptionMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_commandLineOptionMap_2E_element element ;
-      element.mProperty_lkey = p->mProperty_lkey ;
-      element.mProperty_mOptionChar = p->mProperty_mOptionChar ;
-      element.mProperty_mOptionString = p->mProperty_mOptionString ;
-      element.mProperty_mComment = p->mProperty_mComment ;
-      element.mProperty_mDefaultValue = p->mProperty_mDefaultValue ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_commandLineOptionMap::class_func_mapWithMapToOverride (const GGS_commandLineOptionMap & inMapToOverride
-                                                                                    COMMA_LOCATION_ARGS) {
-  GGS_commandLineOptionMap result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_commandLineOptionMap::getter_overriddenMap (Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GGS_commandLineOptionMap result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::enterElement (const GGS_commandLineOptionMap_2E_element & inValue,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  cMapElement_commandLineOptionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_commandLineOptionMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@commandLineOptionMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::addAssign_operation (const GGS_lstring & inKey,
-                                                    const GGS_char & inArgument0,
-                                                    const GGS_string & inArgument1,
-                                                    const GGS_string & inArgument2,
-                                                    const GGS_string & inArgument3,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_commandLineOptionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_commandLineOptionMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@commandLineOptionMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_commandLineOptionMap::add_operation (const GGS_commandLineOptionMap & inOperand,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_commandLineOptionMap result = *this ;
-  cEnumerator_commandLineOptionMap enumerator (inOperand, EnumerationOrder::up) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mOptionChar (HERE), enumerator.current_mOptionString (HERE), enumerator.current_mComment (HERE), enumerator.current_mDefaultValue (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::setter_insertKey (GGS_lstring inKey,
-                                                 GGS_char inArgument0,
-                                                 GGS_string inArgument1,
-                                                 GGS_string inArgument2,
-                                                 GGS_string inArgument3,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  cMapElement_commandLineOptionMap * p = nullptr ;
-  macroMyNew (p, cMapElement_commandLineOptionMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' command line option has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const char * kSearchErrorMessage_commandLineOptionMap_searchKey = "the '%K' command line option is not declared" ;
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::method_searchKey (GGS_lstring inKey,
-                                                 GGS_char & outArgument0,
-                                                 GGS_string & outArgument1,
-                                                 GGS_string & outArgument2,
-                                                 GGS_string & outArgument3,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) performSearch (inKey,
-                                                                                                         inCompiler,
-                                                                                                         kSearchErrorMessage_commandLineOptionMap_searchKey
-                                                                                                         COMMA_THERE) ;
-  if (nullptr == p) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-    outArgument3.drop () ;
-  }else{
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    outArgument0 = p->mProperty_mOptionChar ;
-    outArgument1 = p->mProperty_mOptionString ;
-    outArgument2 = p->mProperty_mComment ;
-    outArgument3 = p->mProperty_mDefaultValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_char GGS_commandLineOptionMap::getter_mOptionCharForKey (const GGS_string & inKey,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
-  GGS_char result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mOptionChar ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_commandLineOptionMap::getter_mOptionStringForKey (const GGS_string & inKey,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
-  GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mOptionString ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_commandLineOptionMap::getter_mCommentForKey (const GGS_string & inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
-  GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mComment ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_commandLineOptionMap::getter_mDefaultValueForKey (const GGS_string & inKey,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) attributes ;
-  GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    result = p->mProperty_mDefaultValue ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::setter_setMOptionCharForKey (GGS_char inAttributeValue,
-                                                            GGS_string inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mOptionChar = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::setter_setMOptionStringForKey (GGS_string inAttributeValue,
-                                                              GGS_string inKey,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mOptionString = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::setter_setMCommentForKey (GGS_string inAttributeValue,
-                                                         GGS_string inKey,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mComment = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_commandLineOptionMap::setter_setMDefaultValueForKey (GGS_string inAttributeValue,
-                                                              GGS_string inKey,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_commandLineOptionMap * p = (cMapElement_commandLineOptionMap *) attributes ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-    p->mProperty_mDefaultValue = inAttributeValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cMapElement_commandLineOptionMap * GGS_commandLineOptionMap::readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                const GGS_string & inKey
-                                                                                                COMMA_LOCATION_ARGS) {
-  cMapElement_commandLineOptionMap * result = (cMapElement_commandLineOptionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_commandLineOptionMap) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_commandLineOptionMap::cEnumerator_commandLineOptionMap (const GGS_commandLineOptionMap & inEnumeratedObject,
-                                                                    const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap_2E_element cEnumerator_commandLineOptionMap::current (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return GGS_commandLineOptionMap_2E_element (p->mProperty_lkey, p->mProperty_mOptionChar, p->mProperty_mOptionString, p->mProperty_mComment, p->mProperty_mDefaultValue) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring cEnumerator_commandLineOptionMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_char cEnumerator_commandLineOptionMap::current_mOptionChar (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mOptionChar ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_commandLineOptionMap::current_mOptionString (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mOptionString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_commandLineOptionMap::current_mComment (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mComment ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_commandLineOptionMap::current_mDefaultValue (LOCATION_ARGS) const {
-  const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_commandLineOptionMap) ;
-  return p->mProperty_mDefaultValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @commandLineOptionMap generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap ("commandLineOptionMap",
-                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_commandLineOptionMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_commandLineOptionMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_commandLineOptionMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_commandLineOptionMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_commandLineOptionMap::extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_commandLineOptionMap result ;
-  const GGS_commandLineOptionMap * p = (const GGS_commandLineOptionMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_commandLineOptionMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("commandLineOptionMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

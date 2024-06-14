@@ -125,7 +125,7 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROP
     %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
                   !^%COMMA_LOCATION_ARGS) {\n%
     %  if (nullptr != mObjectPtr) {\n%
-    %    insulate (THERE) ;\n%
+    %    insulate (inCompiler COMMA_THERE) ;\n%
     %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %    p->mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%

@@ -65,11 +65,12 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 //--- Constructor
   public: cPtr_nonTerminalInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
                                                          const GGS_lstring & in_mNonterminalSymbolName,
-                                                         const GGS_uint & in_mNonterminalSymbolIndex
+                                                         const GGS_uint & in_mNonterminalSymbolIndex,
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

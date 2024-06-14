@@ -10,6 +10,358 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @lexicalSendSearchListAST list
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSendSearchListAST : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public: GGS_lexicalSendSearchListAST (void) ;
+
+//--------------------------------- List constructor used by listmap
+  public: GGS_lexicalSendSearchListAST (const capCollectionElementArray & inSharedArray) ;
+
+//--------------------------------- Element constructor
+  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                 const class GGS_lstring & in_mAttributeName,
+                                                 const class GGS_lstring & in_mSearchListName
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSendSearchListAST init (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSendSearchListAST extractObject (const GGS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalSendSearchListAST class_func_emptyList (LOCATION_ARGS) ;
+
+  public: static class GGS_lexicalSendSearchListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
+                                                                              const class GGS_lstring & inOperand1
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_lexicalSendSearchListAST inOperand,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
+                                                     const class GGS_lstring & inOperand1
+                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GGS_lexicalSendSearchListAST add_operation (const GGS_lexicalSendSearchListAST & inOperand,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_lstring constinArgument0,
+                                               class GGS_lstring constinArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_lstring constinArgument0,
+                                                      class GGS_lstring constinArgument1,
+                                                      class GGS_uint constinArgument2,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_lstring & outArgument0,
+                                                 class GGS_lstring & outArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_lstring & outArgument0,
+                                                class GGS_lstring & outArgument1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_lstring & outArgument0,
+                                                      class GGS_lstring & outArgument1,
+                                                      class GGS_uint constinArgument2,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMAttributeNameAtIndex (class GGS_lstring constinArgument0,
+                                                                 class GGS_uint constinArgument1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMSearchListNameAtIndex (class GGS_lstring constinArgument0,
+                                                                  class GGS_uint constinArgument1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_first (class GGS_lstring & outArgument0,
+                                              class GGS_lstring & outArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_last (class GGS_lstring & outArgument0,
+                                             class GGS_lstring & outArgument1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mAttributeNameAtIndex (const class GGS_uint & constinOperand0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mSearchListNameAtIndex (const class GGS_uint & constinOperand0,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lexicalSendSearchListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lexicalSendSearchListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lexicalSendSearchListAST getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_lexicalSendSearchListAST_2E_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+  friend class cEnumerator_lexicalSendSearchListAST ;
+ 
+} ; // End of GGS_lexicalSendSearchListAST class
+
+//--------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//--------------------------------------------------------------------------------------------------
+
+class cEnumerator_lexicalSendSearchListAST : public cGenericAbstractEnumerator {
+  public: cEnumerator_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST & inEnumeratedObject,
+                                                const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  public: class GGS_lstring current_mAttributeName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSearchListName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalSendSearchListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lexicalSendSearchListAST_2E_element struct
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSendSearchListAST_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mAttributeName ;
+  public: inline GGS_lstring readProperty_mAttributeName (void) const {
+    return mProperty_mAttributeName ;
+  }
+
+  public: GGS_lstring mProperty_mSearchListName ;
+  public: inline GGS_lstring readProperty_mSearchListName (void) const {
+    return mProperty_mSearchListName ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lexicalSendSearchListAST_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMAttributeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mAttributeName = inValue ;
+  }
+
+  public: inline void setter_setMSearchListName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSearchListName = inValue ;
+  }
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_lexicalSendSearchListAST_2E_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lexicalSendSearchListAST_2E_element (const GGS_lstring & in_mAttributeName,
+                                                   const GGS_lstring & in_mSearchListName) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSendSearchListAST_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
+                                                                       const class GGS_lstring & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSendSearchListAST_2E_element extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalSendSearchListAST_2E_element class_func_new (const class GGS_lstring & inOperand0,
+                                                                               const class GGS_lstring & inOperand1,
+                                                                               class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GGS_lexicalSendSearchListAST_2E_element class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lexicalSendDefaultActionAST reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSendDefaultActionAST : public AC_GALGAS_reference_class {
+//--------------------------------- Default constructor
+  public: GGS_lexicalSendDefaultActionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_lexicalSendDefaultActionAST (const class cPtr_lexicalSendDefaultActionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSendDefaultActionAST init (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSendDefaultActionAST extractObject (const GGS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexicalSendDefaultActionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GGS_lexicalSendDefaultActionAST class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendDefaultActionAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @lexicalSendDefaultActionAST class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_lexicalSendDefaultActionAST : public acStrongPtr_class {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void lexicalSendDefaultActionAST_init (Compiler * inCompiler) ;
+
+
+//--- Extension getter generateDefaultSendCode
+  public: virtual class GGS_string getter_generateDefaultSendCode (const class GGS_string inScannerClassName,
+           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter generateObjcCocoaDefaultSendCode
+  public: virtual class GGS_string getter_generateObjcCocoaDefaultSendCode (const class GGS_string inScannerClassName,
+           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension getter generateSwiftCocoaDefaultSendCode
+  public: virtual class GGS_string getter_generateSwiftCocoaDefaultSendCode (const class GGS_string inScannerClassName,
+           Compiler * COMMA_LOCATION_ARGS) const = 0 ;
+
+//--- Extension method checkLexicalDefaultAction
+  public: virtual void method_checkLexicalDefaultAction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
+
+//--- Properties
+
+
+
+//--- Constructor
+  public: cPtr_lexicalSendDefaultActionAST (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override = 0 ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @lexicalSendDefaultActionAST_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -130,7 +482,8 @@ class GGS_lexicalSendTerminalByDefaultAST : public GGS_lexicalSendDefaultActionA
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalSendTerminalByDefaultAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalSendTerminalByDefaultAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                           class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -196,11 +549,12 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
   public: cPtr_lexicalSendTerminalByDefaultAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalSendTerminalByDefaultAST (const GGS_lstring & in_mDefaultSentTerminal
+  public: cPtr_lexicalSendTerminalByDefaultAST (const GGS_lstring & in_mDefaultSentTerminal,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -334,7 +688,8 @@ class GGS_lexicalErrorByDefaultAST : public GGS_lexicalSendDefaultActionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalErrorByDefaultAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalErrorByDefaultAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -400,11 +755,12 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
   public: cPtr_lexicalErrorByDefaultAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalErrorByDefaultAST (const GGS_lstring & in_mDefaultErrorMessageName
+  public: cPtr_lexicalErrorByDefaultAST (const GGS_lstring & in_mDefaultErrorMessageName,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1098,11 +1454,10 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (LOCATION_ARGS) ;
+  public: cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description
@@ -1456,7 +1811,8 @@ class GGS_lexicalAttributeInputArgumentAST : public GGS_lexicalRoutineOrFunction
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalAttributeInputArgumentAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalAttributeInputArgumentAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1525,11 +1881,12 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
   public: cPtr_lexicalAttributeInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalAttributeInputArgumentAST (const GGS_lstring & in_mAttributeName
+  public: cPtr_lexicalAttributeInputArgumentAST (const GGS_lstring & in_mAttributeName,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1663,7 +2020,8 @@ class GGS_lexicalCharacterInputArgumentAST : public GGS_lexicalRoutineOrFunction
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalCharacterInputArgumentAST class_func_new (const class GGS_lchar & inOperand0
+  public: static class GGS_lexicalCharacterInputArgumentAST class_func_new (const class GGS_lchar & inOperand0,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1732,11 +2090,12 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
   public: cPtr_lexicalCharacterInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalCharacterInputArgumentAST (const GGS_lchar & in_mCharacter
+  public: cPtr_lexicalCharacterInputArgumentAST (const GGS_lchar & in_mCharacter,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -1870,7 +2229,8 @@ class GGS_lexicalUnsignedInputArgumentAST : public GGS_lexicalRoutineOrFunctionF
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalUnsignedInputArgumentAST class_func_new (const class GGS_lbigint & inOperand0
+  public: static class GGS_lexicalUnsignedInputArgumentAST class_func_new (const class GGS_lbigint & inOperand0,
+                                                                           class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1939,11 +2299,12 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
   public: cPtr_lexicalUnsignedInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalUnsignedInputArgumentAST (const GGS_lbigint & in_mUnsigned
+  public: cPtr_lexicalUnsignedInputArgumentAST (const GGS_lbigint & in_mUnsigned,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2077,7 +2438,8 @@ class GGS_lexicalCurrentCharacterInputArgumentAST : public GGS_lexicalRoutineOrF
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalCurrentCharacterInputArgumentAST class_func_new (const class GGS_location & inOperand0
+  public: static class GGS_lexicalCurrentCharacterInputArgumentAST class_func_new (const class GGS_location & inOperand0,
+                                                                                   class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2146,11 +2508,12 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
   public: cPtr_lexicalCurrentCharacterInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalCurrentCharacterInputArgumentAST (const GGS_location & in_mLocation
+  public: cPtr_lexicalCurrentCharacterInputArgumentAST (const GGS_location & in_mLocation,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -2288,7 +2651,8 @@ class GGS_lexicalFunctionInputArgumentAST : public GGS_lexicalRoutineOrFunctionF
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalFunctionInputArgumentAST class_func_new (const class GGS_lstring & inOperand0,
-                                                                           const class GGS_lexicalFunctionCallActualArgumentListAST & inOperand1
+                                                                           const class GGS_lexicalFunctionCallActualArgumentListAST & inOperand1,
+                                                                           class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2360,11 +2724,12 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 
 //--- Constructor
   public: cPtr_lexicalFunctionInputArgumentAST (const GGS_lstring & in_mFunctionName,
-                                                const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList
+                                                const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8496,7 +8861,8 @@ class GGS_lexicalStructuredSendInstructionAST : public GGS_lexicalInstructionAST
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalStructuredSendInstructionAST class_func_new (const class GGS_lexicalSendSearchListAST & inOperand0,
-                                                                               const class GGS_lexicalSendDefaultActionAST & inOperand1
+                                                                               const class GGS_lexicalSendDefaultActionAST & inOperand1,
+                                                                               class Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8572,11 +8938,12 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
 
 //--- Constructor
   public: cPtr_lexicalStructuredSendInstructionAST (const GGS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
-                                                    const GGS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction
+                                                    const GGS_lexicalSendDefaultActionAST & in_mLexicalSendDefaultAction,
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8710,7 +9077,8 @@ class GGS_lexicalDropInstructionAST : public GGS_lexicalInstructionAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalDropInstructionAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalDropInstructionAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8783,11 +9151,12 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
   public: cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalDropInstructionAST (const GGS_lstring & in_mTerminalName
+  public: cPtr_lexicalDropInstructionAST (const GGS_lstring & in_mTerminalName,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -8921,7 +9290,8 @@ class GGS_lexicalErrorInstructionAST : public GGS_lexicalInstructionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalErrorInstructionAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalErrorInstructionAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                      class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8994,11 +9364,12 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
   public: cPtr_lexicalErrorInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalErrorInstructionAST (const GGS_lstring & in_mErrorMessageName
+  public: cPtr_lexicalErrorInstructionAST (const GGS_lstring & in_mErrorMessageName,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9129,7 +9500,8 @@ class GGS_lexicalLogInstructionAST : public GGS_lexicalInstructionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalLogInstructionAST class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_lexicalLogInstructionAST class_func_new (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_lexicalLogInstructionAST & inOperand) const ;
@@ -9195,14 +9567,13 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_lexicalLogInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalLogInstructionAST (LOCATION_ARGS) ;
+  public: cPtr_lexicalLogInstructionAST (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9344,7 +9715,8 @@ class GGS_lexicalRepeatInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalRepeatInstructionAST class_func_new (const class GGS_lexicalInstructionListAST & inOperand0,
                                                                        const class GGS_lexicalWhileBranchListAST & inOperand1,
-                                                                       const class GGS_location & inOperand2
+                                                                       const class GGS_location & inOperand2,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -9423,11 +9795,12 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Constructor
   public: cPtr_lexicalRepeatInstructionAST (const GGS_lexicalInstructionListAST & in_mRepeatedInstructionList,
                                             const GGS_lexicalWhileBranchListAST & in_mLexicalWhileBranchList,
-                                            const GGS_location & in_mLocation
+                                            const GGS_location & in_mLocation,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9565,7 +9938,8 @@ class GGS_lexicalRewindInstructionAST : public GGS_lexicalInstructionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalRewindInstructionAST class_func_new (const class GGS_lstring & inOperand0,
-                                                                       const class GGS_lstring & inOperand1
+                                                                       const class GGS_lstring & inOperand1,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -9641,11 +10015,12 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Constructor
   public: cPtr_lexicalRewindInstructionAST (const GGS_lstring & in_mLexicalTagName,
-                                            const GGS_lstring & in_mTerminalName
+                                            const GGS_lstring & in_mTerminalName,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -9842,7 +10217,8 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
   public: cPtr_abstractLexicalRoutineActualArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_abstractLexicalRoutineActualArgumentAST (const GGS_location & in_mActualPassingModeLocation
+  public: cPtr_abstractLexicalRoutineActualArgumentAST (const GGS_location & in_mActualPassingModeLocation,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
@@ -9979,7 +10355,8 @@ class GGS_lexicalAttributeInputOutputArgumentAST : public GGS_abstractLexicalRou
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalAttributeInputOutputArgumentAST class_func_new (const class GGS_location & inOperand0,
-                                                                                  const class GGS_lstring & inOperand1
+                                                                                  const class GGS_lstring & inOperand1,
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -10048,11 +10425,12 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
 
 //--- Constructor
   public: cPtr_lexicalAttributeInputOutputArgumentAST (const GGS_location & in_mActualPassingModeLocation,
-                                                       const GGS_lstring & in_mAttributeName
+                                                       const GGS_lstring & in_mAttributeName,
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -10188,7 +10566,8 @@ class GGS_lexicalFormalInputArgumentAST : public GGS_abstractLexicalRoutineActua
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalFormalInputArgumentAST class_func_new (const class GGS_location & inOperand0,
-                                                                         const class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand1
+                                                                         const class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand1,
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -10257,11 +10636,12 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 
 //--- Constructor
   public: cPtr_lexicalFormalInputArgumentAST (const GGS_location & in_mActualPassingModeLocation,
-                                              const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument
+                                              const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mRoutineOrFunctionFormalInputArgument,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -10623,7 +11003,8 @@ class GGS_lexicalRoutineCallInstructionAST : public GGS_lexicalInstructionAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalRoutineCallInstructionAST class_func_new (const class GGS_lstring & inOperand0,
                                                                             const class GGS_lexicalRoutineCallActualArgumentListAST & inOperand1,
-                                                                            const class GGS_lstringlist & inOperand2
+                                                                            const class GGS_lstringlist & inOperand2,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -10702,11 +11083,12 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
 //--- Constructor
   public: cPtr_lexicalRoutineCallInstructionAST (const GGS_lstring & in_mRoutineName,
                                                  const GGS_lexicalRoutineCallActualArgumentListAST & in_mActualArgumentList,
-                                                 const GGS_lstringlist & in_mErrorMessageList
+                                                 const GGS_lstringlist & in_mErrorMessageList,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -10889,7 +11271,8 @@ class GGS_lexicalSelectInstructionAST : public GGS_lexicalInstructionAST {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_lexicalSelectInstructionAST class_func_new (const class GGS_lexicalSelectBranchListAST & inOperand0,
-                                                                       const class GGS_lexicalInstructionListAST & inOperand1
+                                                                       const class GGS_lexicalInstructionListAST & inOperand1,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -10965,11 +11348,12 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 
 //--- Constructor
   public: cPtr_lexicalSelectInstructionAST (const GGS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
-                                            const GGS_lexicalInstructionListAST & in_mDefaultInstructionList
+                                            const GGS_lexicalInstructionListAST & in_mDefaultInstructionList,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -11103,7 +11487,8 @@ class GGS_lexicalSimpleSendInstructionAST : public GGS_lexicalInstructionAST {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalSimpleSendInstructionAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalSimpleSendInstructionAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                           class Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -11176,11 +11561,12 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
   public: cPtr_lexicalSimpleSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalSimpleSendInstructionAST (const GGS_lstring & in_mSentTerminal
+  public: cPtr_lexicalSimpleSendInstructionAST (const GGS_lstring & in_mSentTerminal,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -11314,7 +11700,8 @@ class GGS_lexicalTagInstructionAST : public GGS_lexicalInstructionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalTagInstructionAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalTagInstructionAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -11387,11 +11774,12 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
   public: cPtr_lexicalTagInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalTagInstructionAST (const GGS_lstring & in_mLexicalTagName
+  public: cPtr_lexicalTagInstructionAST (const GGS_lstring & in_mLexicalTagName,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -11525,7 +11913,8 @@ class GGS_lexicalWarningInstructionAST : public GGS_lexicalInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalWarningInstructionAST class_func_new (const class GGS_lstring & inOperand0
+  public: static class GGS_lexicalWarningInstructionAST class_func_new (const class GGS_lstring & inOperand0,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -11598,11 +11987,12 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
   public: cPtr_lexicalWarningInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_lexicalWarningInstructionAST (const GGS_lstring & in_mWarningMessageName
+  public: cPtr_lexicalWarningInstructionAST (const GGS_lstring & in_mWarningMessageName,
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -12238,7 +12628,8 @@ class GGS_optionComponentDeclarationAST : public GGS_semanticDeclarationAST {
 //--------------------------------- GALGAS class functions
   public: static class GGS_optionComponentDeclarationAST class_func_new (const class GGS_bool & inOperand0,
                                                                          const class GGS_lstring & inOperand1,
-                                                                         const class GGS_commandLineOptionListAST & inOperand2
+                                                                         const class GGS_commandLineOptionListAST & inOperand2,
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -12326,11 +12717,12 @@ class cPtr_optionComponentDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public: cPtr_optionComponentDeclarationAST (const GGS_bool & in_isPredefined,
                                               const GGS_lstring & in_mOptionComponentName,
-                                              const GGS_commandLineOptionListAST & in_mOptions
+                                              const GGS_commandLineOptionListAST & in_mOptions,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
@@ -12687,407 +13079,4 @@ class GGS_commandLineOptionSortedList_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionSortedList_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @commandLineOptionMap map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_commandLineOptionMap ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const char * kSearchErrorMessage_commandLineOptionMap_searchKey ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS_commandLineOptionMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public: GGS_commandLineOptionMap (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS_commandLineOptionMap (const GGS_commandLineOptionMap & inSource) ;
-  public: GGS_commandLineOptionMap & operator = (const GGS_commandLineOptionMap & inSource) ;
-  
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_commandLineOptionMap init (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_commandLineOptionMap extractObject (const GGS_object & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_commandLineOptionMap class_func_emptyMap (LOCATION_ARGS) ;
-
-  public: static class GGS_commandLineOptionMap class_func_mapWithMapToOverride (const class GGS_commandLineOptionMap & inOperand0
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
-                                                     const class GGS_char & inOperand1,
-                                                     const class GGS_string & inOperand2,
-                                                     const class GGS_string & inOperand3,
-                                                     const class GGS_string & inOperand4,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_commandLineOptionMap add_operation (const GGS_commandLineOptionMap & inOperand,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_insertKey (class GGS_lstring constinArgument0,
-                                                  class GGS_char constinArgument1,
-                                                  class GGS_string constinArgument2,
-                                                  class GGS_string constinArgument3,
-                                                  class GGS_string constinArgument4,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMCommentForKey (class GGS_string constinArgument0,
-                                                          class GGS_string constinArgument1,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMDefaultValueForKey (class GGS_string constinArgument0,
-                                                               class GGS_string constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMOptionCharForKey (class GGS_char constinArgument0,
-                                                             class GGS_string constinArgument1,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMOptionStringForKey (class GGS_string constinArgument0,
-                                                               class GGS_string constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_searchKey (class GGS_lstring constinArgument0,
-                                                  class GGS_char & outArgument1,
-                                                  class GGS_string & outArgument2,
-                                                  class GGS_string & outArgument3,
-                                                  class GGS_string & outArgument4,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_mCommentForKey (const class GGS_string & constinOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_mDefaultValueForKey (const class GGS_string & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_char getter_mOptionCharForKey (const class GGS_string & constinOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_string getter_mOptionStringForKey (const class GGS_string & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_commandLineOptionMap getter_overriddenMap (Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-  public: VIRTUAL_IN_DEBUG class GGS_commandLineOptionMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-  public: VIRTUAL_IN_DEBUG cMapElement_commandLineOptionMap * readWriteAccessForWithInstruction (Compiler * inCompiler,
-                                                                                                 const GGS_string & inKey
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_commandLineOptionMap_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class cEnumerator_commandLineOptionMap ;
- 
-} ; // End of GGS_commandLineOptionMap class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_commandLineOptionMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_commandLineOptionMap (const GGS_commandLineOptionMap & inEnumeratedObject,
-                                            const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_char current_mOptionChar (LOCATION_ARGS) const ;
-  public: class GGS_string current_mOptionString (LOCATION_ARGS) const ;
-  public: class GGS_string current_mComment (LOCATION_ARGS) const ;
-  public: class GGS_string current_mDefaultValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_commandLineOptionMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 2: class for element of '@commandLineOptionMap' map
-//
-//--------------------------------------------------------------------------------------------------
-
-class cMapElement_commandLineOptionMap : public cMapElement {
-//--- Map attributes
-  public: GGS_char mProperty_mOptionChar ;
-  public: GGS_string mProperty_mOptionString ;
-  public: GGS_string mProperty_mComment ;
-  public: GGS_string mProperty_mDefaultValue ;
-
-//--- Constructors
-  public: cMapElement_commandLineOptionMap (const GGS_commandLineOptionMap_2E_element & inValue
-                                            COMMA_LOCATION_ARGS) ;
- 
-  public: cMapElement_commandLineOptionMap (const GGS_lstring & inKey,
-                                            const GGS_char & in_mOptionChar,
-                                            const GGS_string & in_mOptionString,
-                                            const GGS_string & in_mComment,
-                                            const GGS_string & in_mDefaultValue
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cMapElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @commandLineOptionMap_2E_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_commandLineOptionMap_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_lkey ;
-  public: inline GGS_lstring readProperty_lkey (void) const {
-    return mProperty_lkey ;
-  }
-
-  public: GGS_char mProperty_mOptionChar ;
-  public: inline GGS_char readProperty_mOptionChar (void) const {
-    return mProperty_mOptionChar ;
-  }
-
-  public: GGS_string mProperty_mOptionString ;
-  public: inline GGS_string readProperty_mOptionString (void) const {
-    return mProperty_mOptionString ;
-  }
-
-  public: GGS_string mProperty_mComment ;
-  public: inline GGS_string readProperty_mComment (void) const {
-    return mProperty_mComment ;
-  }
-
-  public: GGS_string mProperty_mDefaultValue ;
-  public: inline GGS_string readProperty_mDefaultValue (void) const {
-    return mProperty_mDefaultValue ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_commandLineOptionMap_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_lkey = inValue ;
-  }
-
-  public: inline void setter_setMOptionChar (const GGS_char & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionChar = inValue ;
-  }
-
-  public: inline void setter_setMOptionString (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionString = inValue ;
-  }
-
-  public: inline void setter_setMComment (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mComment = inValue ;
-  }
-
-  public: inline void setter_setMDefaultValue (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultValue = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_commandLineOptionMap_2E_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_commandLineOptionMap_2E_element (const GGS_lstring & in_lkey,
-                                               const GGS_char & in_mOptionChar,
-                                               const GGS_string & in_mOptionString,
-                                               const GGS_string & in_mComment,
-                                               const GGS_string & in_mDefaultValue) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_commandLineOptionMap_2E_element init_21__21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                               const class GGS_char & inOperand1,
-                                                                               const class GGS_string & inOperand2,
-                                                                               const class GGS_string & inOperand3,
-                                                                               const class GGS_string & inOperand4,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_commandLineOptionMap_2E_element extractObject (const GGS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_commandLineOptionMap_2E_element class_func_new (const class GGS_lstring & inOperand0,
-                                                                           const class GGS_char & inOperand1,
-                                                                           const class GGS_string & inOperand2,
-                                                                           const class GGS_string & inOperand3,
-                                                                           const class GGS_string & inOperand4,
-                                                                           class Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_commandLineOptionMap_2E_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: commandLineOptionMap.element? optional
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_commandLineOptionMap_2E_element_3F_ : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GGS_commandLineOptionMap_2E_element mValue ;
-  private: OptionalState mState ;
-
-//--------------------------------- Default constructor
-  public: GGS_commandLineOptionMap_2E_element_3F_ (void) ;
-
-//--------------------------------- Constructor from unwrapped type
-  public: GGS_commandLineOptionMap_2E_element_3F_ (const GGS_commandLineOptionMap_2E_element & inSource) ;
-
-//--------------------------------- Constructor from weak type
-
-//--------------------------------- nil initializer
-  public: static GGS_commandLineOptionMap_2E_element_3F_ init_nil (void) ;
-
-  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
-
-  public: bool isValuated (void) const ;
-  public: inline GGS_commandLineOptionMap_2E_element unwrappedValue (void) const {
-    return mValue ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
-  }
-
-  
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
-  
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_commandLineOptionMap_2E_element_3F_ extractObject (const GGS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_commandLineOptionMap_2E_element_3F_ class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2E_element_3F_ ;
 

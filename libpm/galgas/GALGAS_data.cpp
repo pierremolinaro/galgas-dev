@@ -61,8 +61,8 @@ GGS_data GGS_data::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_data GGS_data::class_func_dataWithContentsOfFile (const GGS_string & inFilePath,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   GGS_data result ;
   if (inFilePath.isValid()){
     U8Data binaryData ;

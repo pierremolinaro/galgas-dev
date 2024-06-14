@@ -64,11 +64,12 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 //--- Constructor
   public: cPtr_terminalInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
                                                       const GGS_lstring & in_mTerminalSymbolName,
-                                                      const GGS_uint & in_mTerminalSymbolIndex
+                                                      const GGS_uint & in_mTerminalSymbolIndex,
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

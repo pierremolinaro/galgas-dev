@@ -8,8 +8,9 @@
   public: cPtr_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
     do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
-    between %,\n%!^
+       %,\n%!^
   end
+  %Compiler * inCompiler%
   if [ALL_PROPERTY_LIST count] > 0 then
     %\n%!^%COMMA_LOCATION_ARGS%
   else

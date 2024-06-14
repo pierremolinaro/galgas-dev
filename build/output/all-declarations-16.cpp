@@ -8,23 +8,357 @@
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
-// @lexicalUnsignedInputArgumentAST reference class
+// @lexicalAttributeInputArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mUnsigned () {
+ComparisonResult GGS_lexicalAttributeInputArgumentAST::objectCompare (const GGS_lexicalAttributeInputArgumentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_lexicalAttributeInputArgumentAST::GGS_lexicalAttributeInputArgumentAST (void) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalAttributeInputArgumentAST GGS_lexicalAttributeInputArgumentAST::
+init_21_ (const GGS_lstring & in_mAttributeName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalAttributeInputArgumentAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalAttributeInputArgumentAST (inCompiler COMMA_THERE)) ;
+  object->lexicalAttributeInputArgumentAST_init_21_ (in_mAttributeName, inCompiler) ;
+  const GGS_lexicalAttributeInputArgumentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalAttributeInputArgumentAST::
+lexicalAttributeInputArgumentAST_init_21_ (const GGS_lstring & in_mAttributeName,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mAttributeName = in_mAttributeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalAttributeInputArgumentAST::GGS_lexicalAttributeInputArgumentAST (const cPtr_lexicalAttributeInputArgumentAST * inSourcePtr) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalAttributeInputArgumentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalAttributeInputArgumentAST GGS_lexicalAttributeInputArgumentAST::class_func_new (const GGS_lstring & in_mAttributeName,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
+  GGS_lexicalAttributeInputArgumentAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalAttributeInputArgumentAST (in_mAttributeName,  inCompiler COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexicalAttributeInputArgumentAST::readProperty_mAttributeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_lexicalAttributeInputArgumentAST * p = (cPtr_lexicalAttributeInputArgumentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalAttributeInputArgumentAST) ;
+    return p->mProperty_mAttributeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalAttributeInputArgumentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalAttributeInputArgumentAST::cPtr_lexicalAttributeInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mAttributeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalAttributeInputArgumentAST::cPtr_lexicalAttributeInputArgumentAST (const GGS_lstring & in_mAttributeName,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mAttributeName () {
+  mProperty_mAttributeName = in_mAttributeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalAttributeInputArgumentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
+}
+
+void cPtr_lexicalAttributeInputArgumentAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalAttributeInputArgumentAST:") ;
+  mProperty_mAttributeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalAttributeInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalAttributeInputArgumentAST (mProperty_mAttributeName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+/* acPtr_class * cPtr_lexicalAttributeInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalAttributeInputArgumentAST (mProperty_mAttributeName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalUnsignedInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_lexicalAttributeInputArgumentAST::printNonNullClassInstanceProperties (void) const {
     cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mUnsigned.printNonNullClassInstanceProperties ("mUnsigned") ;
+    mProperty_mAttributeName.printNonNullClassInstanceProperties ("mAttributeName") ;
   }
 #endif
 
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalAttributeInputArgumentAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ("lexicalAttributeInputArgumentAST",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalAttributeInputArgumentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalAttributeInputArgumentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalAttributeInputArgumentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalAttributeInputArgumentAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalAttributeInputArgumentAST GGS_lexicalAttributeInputArgumentAST::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_lexicalAttributeInputArgumentAST result ;
+  const GGS_lexicalAttributeInputArgumentAST * p = (const GGS_lexicalAttributeInputArgumentAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalAttributeInputArgumentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalAttributeInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalCharacterInputArgumentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalCharacterInputArgumentAST::objectCompare (const GGS_lexicalCharacterInputArgumentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalCharacterInputArgumentAST::GGS_lexicalCharacterInputArgumentAST (void) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalCharacterInputArgumentAST GGS_lexicalCharacterInputArgumentAST::
+init_21_ (const GGS_lchar & in_mCharacter,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalCharacterInputArgumentAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalCharacterInputArgumentAST (inCompiler COMMA_THERE)) ;
+  object->lexicalCharacterInputArgumentAST_init_21_ (in_mCharacter, inCompiler) ;
+  const GGS_lexicalCharacterInputArgumentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalCharacterInputArgumentAST::
+lexicalCharacterInputArgumentAST_init_21_ (const GGS_lchar & in_mCharacter,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mCharacter = in_mCharacter ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalCharacterInputArgumentAST::GGS_lexicalCharacterInputArgumentAST (const cPtr_lexicalCharacterInputArgumentAST * inSourcePtr) :
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalCharacterInputArgumentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalCharacterInputArgumentAST GGS_lexicalCharacterInputArgumentAST::class_func_new (const GGS_lchar & in_mCharacter,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
+  GGS_lexicalCharacterInputArgumentAST result ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalCharacterInputArgumentAST (in_mCharacter,  inCompiler COMMA_THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar GGS_lexicalCharacterInputArgumentAST::readProperty_mCharacter (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lchar () ;
+  }else{
+    cPtr_lexicalCharacterInputArgumentAST * p = (cPtr_lexicalCharacterInputArgumentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalCharacterInputArgumentAST) ;
+    return p->mProperty_mCharacter ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalCharacterInputArgumentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalCharacterInputArgumentAST::cPtr_lexicalCharacterInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mCharacter () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalCharacterInputArgumentAST::cPtr_lexicalCharacterInputArgumentAST (const GGS_lchar & in_mCharacter,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mCharacter () {
+  mProperty_mCharacter = in_mCharacter ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_lexicalCharacterInputArgumentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ;
+}
+
+void cPtr_lexicalCharacterInputArgumentAST::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalCharacterInputArgumentAST:") ;
+  mProperty_mCharacter.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_lexicalCharacterInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalCharacterInputArgumentAST (mProperty_mCharacter, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+/* acPtr_class * cPtr_lexicalCharacterInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalCharacterInputArgumentAST (mProperty_mCharacter, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalCharacterInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mCharacter.printNonNullClassInstanceProperties ("mCharacter") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//
+//     @lexicalCharacterInputArgumentAST generic code implementation
+//
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ("lexicalCharacterInputArgumentAST",
+                                                                                        & kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_lexicalCharacterInputArgumentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalCharacterInputArgumentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalCharacterInputArgumentAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalCharacterInputArgumentAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalCharacterInputArgumentAST GGS_lexicalCharacterInputArgumentAST::extractObject (const GGS_object & inObject,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GGS_lexicalCharacterInputArgumentAST result ;
+  const GGS_lexicalCharacterInputArgumentAST * p = (const GGS_lexicalCharacterInputArgumentAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalCharacterInputArgumentAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalCharacterInputArgumentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalUnsignedInputArgumentAST reference class
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalUnsignedInputArgumentAST::objectCompare (const GGS_lexicalUnsignedInputArgumentAST & inOperand) const {
@@ -79,10 +413,11 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::class_func_new (const GGS_lbigint & in_mUnsigned
+GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::class_func_new (const GGS_lbigint & in_mUnsigned,
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   GGS_lexicalUnsignedInputArgumentAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalUnsignedInputArgumentAST (in_mUnsigned COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalUnsignedInputArgumentAST (in_mUnsigned,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -102,9 +437,17 @@ GGS_lbigint GGS_lexicalUnsignedInputArgumentAST::readProperty_mUnsigned (void) c
 //Pointer class for @lexicalUnsignedInputArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (const GGS_lbigint & in_mUnsigned
+cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mUnsigned () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalUnsignedInputArgumentAST::cPtr_lexicalUnsignedInputArgumentAST (const GGS_lbigint & in_mUnsigned,
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (THERE),
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
 mProperty_mUnsigned () {
   mProperty_mUnsigned = in_mUnsigned ;
 }
@@ -124,12 +467,28 @@ void cPtr_lexicalUnsignedInputArgumentAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalUnsignedInputArgumentAST (mProperty_mUnsigned COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalUnsignedInputArgumentAST (mProperty_mUnsigned, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalUnsignedInputArgumentAST (mProperty_mUnsigned, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalUnsignedInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mUnsigned.printNonNullClassInstanceProperties ("mUnsigned") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -175,24 +534,6 @@ GGS_lexicalUnsignedInputArgumentAST GGS_lexicalUnsignedInputArgumentAST::extract
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalFunctionInputArgumentAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
-mProperty_mFunctionName (),
-mProperty_mFunctionActualArgumentList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalFunctionInputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
-    mProperty_mFunctionActualArgumentList.printNonNullClassInstanceProperties ("mFunctionActualArgumentList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalFunctionInputArgumentAST::objectCompare (const GGS_lexicalFunctionInputArgumentAST & inOperand) const {
@@ -251,10 +592,11 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalFunctionInputArgumentAST GGS_lexicalFunctionInputArgumentAST::class_func_new (const GGS_lstring & in_mFunctionName,
-                                                                                         const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList
+                                                                                         const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   GGS_lexicalFunctionInputArgumentAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalFunctionInputArgumentAST (in_mFunctionName, in_mFunctionActualArgumentList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalFunctionInputArgumentAST (in_mFunctionName, in_mFunctionActualArgumentList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -286,10 +628,19 @@ GGS_lexicalFunctionCallActualArgumentListAST GGS_lexicalFunctionInputArgumentAST
 //Pointer class for @lexicalFunctionInputArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mFunctionActualArgumentList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalFunctionInputArgumentAST::cPtr_lexicalFunctionInputArgumentAST (const GGS_lstring & in_mFunctionName,
-                                                                            const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList
+                                                                            const GGS_lexicalFunctionCallActualArgumentListAST & in_mFunctionActualArgumentList,
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) :
-cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (THERE),
+cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (inCompiler COMMA_THERE),
 mProperty_mFunctionName (),
 mProperty_mFunctionActualArgumentList () {
   mProperty_mFunctionName = in_mFunctionName ;
@@ -313,12 +664,29 @@ void cPtr_lexicalFunctionInputArgumentAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalFunctionInputArgumentAST (mProperty_mFunctionName, mProperty_mFunctionActualArgumentList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalFunctionInputArgumentAST (mProperty_mFunctionName, mProperty_mFunctionActualArgumentList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalFunctionInputArgumentAST (mProperty_mFunctionName, mProperty_mFunctionActualArgumentList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalFunctionInputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mFunctionActualArgumentList.printNonNullClassInstanceProperties ("mFunctionActualArgumentList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -587,22 +955,6 @@ GGS_lexiqueAnalysisContext GGS_lexiqueAnalysisContext::extractObject (const GGS_
 // @lexicalDropInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTerminalName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_lexicalDropInstructionAST::objectCompare (const GGS_lexicalDropInstructionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -655,10 +1007,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::class_func_new (const GGS_lstring & in_mTerminalName
+GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::class_func_new (const GGS_lstring & in_mTerminalName,
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   GGS_lexicalDropInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalDropInstructionAST (in_mTerminalName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalDropInstructionAST (in_mTerminalName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -678,9 +1031,17 @@ GGS_lstring GGS_lexicalDropInstructionAST::readProperty_mTerminalName (void) con
 //Pointer class for @lexicalDropInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GGS_lstring & in_mTerminalName
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mTerminalName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GGS_lstring & in_mTerminalName,
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mTerminalName () {
   mProperty_mTerminalName = in_mTerminalName ;
 }
@@ -700,12 +1061,28 @@ void cPtr_lexicalDropInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalDropInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -751,22 +1128,6 @@ GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::extractObject (cons
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalErrorInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalErrorInstructionAST::cPtr_lexicalErrorInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mErrorMessageName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalErrorInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mErrorMessageName.printNonNullClassInstanceProperties ("mErrorMessageName") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalErrorInstructionAST::objectCompare (const GGS_lexicalErrorInstructionAST & inOperand) const {
@@ -821,10 +1182,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalErrorInstructionAST GGS_lexicalErrorInstructionAST::class_func_new (const GGS_lstring & in_mErrorMessageName
+GGS_lexicalErrorInstructionAST GGS_lexicalErrorInstructionAST::class_func_new (const GGS_lstring & in_mErrorMessageName,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_lexicalErrorInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalErrorInstructionAST (in_mErrorMessageName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalErrorInstructionAST (in_mErrorMessageName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -844,9 +1206,17 @@ GGS_lstring GGS_lexicalErrorInstructionAST::readProperty_mErrorMessageName (void
 //Pointer class for @lexicalErrorInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalErrorInstructionAST::cPtr_lexicalErrorInstructionAST (const GGS_lstring & in_mErrorMessageName
+cPtr_lexicalErrorInstructionAST::cPtr_lexicalErrorInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mErrorMessageName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalErrorInstructionAST::cPtr_lexicalErrorInstructionAST (const GGS_lstring & in_mErrorMessageName,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mErrorMessageName () {
   mProperty_mErrorMessageName = in_mErrorMessageName ;
 }
@@ -866,12 +1236,28 @@ void cPtr_lexicalErrorInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalErrorInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalErrorInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalErrorInstructionAST (mProperty_mErrorMessageName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalErrorInstructionAST (mProperty_mErrorMessageName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalErrorInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalErrorInstructionAST (mProperty_mErrorMessageName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalErrorInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mErrorMessageName.printNonNullClassInstanceProperties ("mErrorMessageName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -917,24 +1303,6 @@ GGS_lexicalErrorInstructionAST GGS_lexicalErrorInstructionAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalRewindInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalRewindInstructionAST::cPtr_lexicalRewindInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLexicalTagName (),
-mProperty_mTerminalName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalRewindInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalTagName.printNonNullClassInstanceProperties ("mLexicalTagName") ;
-    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalRewindInstructionAST::objectCompare (const GGS_lexicalRewindInstructionAST & inOperand) const {
@@ -993,10 +1361,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalRewindInstructionAST GGS_lexicalRewindInstructionAST::class_func_new (const GGS_lstring & in_mLexicalTagName,
-                                                                                 const GGS_lstring & in_mTerminalName
+                                                                                 const GGS_lstring & in_mTerminalName,
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_lexicalRewindInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalRewindInstructionAST (in_mLexicalTagName, in_mTerminalName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalRewindInstructionAST (in_mLexicalTagName, in_mTerminalName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1028,10 +1397,19 @@ GGS_lstring GGS_lexicalRewindInstructionAST::readProperty_mTerminalName (void) c
 //Pointer class for @lexicalRewindInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalRewindInstructionAST::cPtr_lexicalRewindInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mLexicalTagName (),
+mProperty_mTerminalName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalRewindInstructionAST::cPtr_lexicalRewindInstructionAST (const GGS_lstring & in_mLexicalTagName,
-                                                                    const GGS_lstring & in_mTerminalName
+                                                                    const GGS_lstring & in_mTerminalName,
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mLexicalTagName (),
 mProperty_mTerminalName () {
   mProperty_mLexicalTagName = in_mLexicalTagName ;
@@ -1055,12 +1433,29 @@ void cPtr_lexicalRewindInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalRewindInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalRewindInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalRewindInstructionAST (mProperty_mLexicalTagName, mProperty_mTerminalName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalRewindInstructionAST (mProperty_mLexicalTagName, mProperty_mTerminalName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalRewindInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalRewindInstructionAST (mProperty_mLexicalTagName, mProperty_mTerminalName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalRewindInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalTagName.printNonNullClassInstanceProperties ("mLexicalTagName") ;
+    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1106,22 +1501,6 @@ GGS_lexicalRewindInstructionAST GGS_lexicalRewindInstructionAST::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalAttributeInputOutputArgumentAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalAttributeInputOutputArgumentAST::cPtr_lexicalAttributeInputOutputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_abstractLexicalRoutineActualArgumentAST (inCompiler COMMA_THERE),
-mProperty_mAttributeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalAttributeInputOutputArgumentAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties () ;
-    mProperty_mAttributeName.printNonNullClassInstanceProperties ("mAttributeName") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalAttributeInputOutputArgumentAST::objectCompare (const GGS_lexicalAttributeInputOutputArgumentAST & inOperand) const {
@@ -1180,10 +1559,11 @@ GGS_abstractLexicalRoutineActualArgumentAST (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalAttributeInputOutputArgumentAST GGS_lexicalAttributeInputOutputArgumentAST::class_func_new (const GGS_location & in_mActualPassingModeLocation,
-                                                                                                       const GGS_lstring & in_mAttributeName
+                                                                                                       const GGS_lstring & in_mAttributeName,
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) {
   GGS_lexicalAttributeInputOutputArgumentAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalAttributeInputOutputArgumentAST (in_mActualPassingModeLocation, in_mAttributeName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalAttributeInputOutputArgumentAST (in_mActualPassingModeLocation, in_mAttributeName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1203,10 +1583,18 @@ GGS_lstring GGS_lexicalAttributeInputOutputArgumentAST::readProperty_mAttributeN
 //Pointer class for @lexicalAttributeInputOutputArgumentAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalAttributeInputOutputArgumentAST::cPtr_lexicalAttributeInputOutputArgumentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractLexicalRoutineActualArgumentAST (inCompiler COMMA_THERE),
+mProperty_mAttributeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalAttributeInputOutputArgumentAST::cPtr_lexicalAttributeInputOutputArgumentAST (const GGS_location & in_mActualPassingModeLocation,
-                                                                                          const GGS_lstring & in_mAttributeName
+                                                                                          const GGS_lstring & in_mAttributeName,
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) :
-cPtr_abstractLexicalRoutineActualArgumentAST (in_mActualPassingModeLocation COMMA_THERE),
+cPtr_abstractLexicalRoutineActualArgumentAST (in_mActualPassingModeLocation, inCompiler COMMA_THERE),
 mProperty_mAttributeName () {
   mProperty_mActualPassingModeLocation = in_mActualPassingModeLocation ;
   mProperty_mAttributeName = in_mAttributeName ;
@@ -1229,12 +1617,28 @@ void cPtr_lexicalAttributeInputOutputArgumentAST::description (String & ioString
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalAttributeInputOutputArgumentAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalAttributeInputOutputArgumentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalAttributeInputOutputArgumentAST (mProperty_mActualPassingModeLocation, mProperty_mAttributeName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalAttributeInputOutputArgumentAST (mProperty_mActualPassingModeLocation, mProperty_mAttributeName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalAttributeInputOutputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalAttributeInputOutputArgumentAST (mProperty_mActualPassingModeLocation, mProperty_mAttributeName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalAttributeInputOutputArgumentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractLexicalRoutineActualArgumentAST::printNonNullClassInstanceProperties () ;
+    mProperty_mAttributeName.printNonNullClassInstanceProperties ("mAttributeName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1280,26 +1684,6 @@ GGS_lexicalAttributeInputOutputArgumentAST GGS_lexicalAttributeInputOutputArgume
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalRoutineCallInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalRoutineCallInstructionAST::cPtr_lexicalRoutineCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mRoutineName (),
-mProperty_mActualArgumentList (),
-mProperty_mErrorMessageList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalRoutineCallInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
-    mProperty_mActualArgumentList.printNonNullClassInstanceProperties ("mActualArgumentList") ;
-    mProperty_mErrorMessageList.printNonNullClassInstanceProperties ("mErrorMessageList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalRoutineCallInstructionAST::objectCompare (const GGS_lexicalRoutineCallInstructionAST & inOperand) const {
@@ -1362,10 +1746,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 
 GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST::class_func_new (const GGS_lstring & in_mRoutineName,
                                                                                            const GGS_lexicalRoutineCallActualArgumentListAST & in_mActualArgumentList,
-                                                                                           const GGS_lstringlist & in_mErrorMessageList
+                                                                                           const GGS_lstringlist & in_mErrorMessageList,
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   GGS_lexicalRoutineCallInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalRoutineCallInstructionAST (in_mRoutineName, in_mActualArgumentList, in_mErrorMessageList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalRoutineCallInstructionAST (in_mRoutineName, in_mActualArgumentList, in_mErrorMessageList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1409,11 +1794,21 @@ GGS_lstringlist GGS_lexicalRoutineCallInstructionAST::readProperty_mErrorMessage
 //Pointer class for @lexicalRoutineCallInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_lexicalRoutineCallInstructionAST::cPtr_lexicalRoutineCallInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mRoutineName (),
+mProperty_mActualArgumentList (),
+mProperty_mErrorMessageList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_lexicalRoutineCallInstructionAST::cPtr_lexicalRoutineCallInstructionAST (const GGS_lstring & in_mRoutineName,
                                                                               const GGS_lexicalRoutineCallActualArgumentListAST & in_mActualArgumentList,
-                                                                              const GGS_lstringlist & in_mErrorMessageList
+                                                                              const GGS_lstringlist & in_mErrorMessageList,
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mRoutineName (),
 mProperty_mActualArgumentList (),
 mProperty_mErrorMessageList () {
@@ -1441,12 +1836,30 @@ void cPtr_lexicalRoutineCallInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalRoutineCallInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalRoutineCallInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalRoutineCallInstructionAST (mProperty_mRoutineName, mProperty_mActualArgumentList, mProperty_mErrorMessageList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalRoutineCallInstructionAST (mProperty_mRoutineName, mProperty_mActualArgumentList, mProperty_mErrorMessageList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalRoutineCallInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalRoutineCallInstructionAST (mProperty_mRoutineName, mProperty_mActualArgumentList, mProperty_mErrorMessageList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalRoutineCallInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mRoutineName.printNonNullClassInstanceProperties ("mRoutineName") ;
+    mProperty_mActualArgumentList.printNonNullClassInstanceProperties ("mActualArgumentList") ;
+    mProperty_mErrorMessageList.printNonNullClassInstanceProperties ("mErrorMessageList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1492,22 +1905,6 @@ GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST::extra
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalSimpleSendInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mSentTerminal () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalSimpleSendInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mSentTerminal.printNonNullClassInstanceProperties ("mSentTerminal") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalSimpleSendInstructionAST::objectCompare (const GGS_lexicalSimpleSendInstructionAST & inOperand) const {
@@ -1562,10 +1959,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalSimpleSendInstructionAST GGS_lexicalSimpleSendInstructionAST::class_func_new (const GGS_lstring & in_mSentTerminal
+GGS_lexicalSimpleSendInstructionAST GGS_lexicalSimpleSendInstructionAST::class_func_new (const GGS_lstring & in_mSentTerminal,
+                                                                                         Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) {
   GGS_lexicalSimpleSendInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalSimpleSendInstructionAST (in_mSentTerminal COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalSimpleSendInstructionAST (in_mSentTerminal,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1585,9 +1983,17 @@ GGS_lstring GGS_lexicalSimpleSendInstructionAST::readProperty_mSentTerminal (voi
 //Pointer class for @lexicalSimpleSendInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (const GGS_lstring & in_mSentTerminal
+cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mSentTerminal () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (const GGS_lstring & in_mSentTerminal,
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mSentTerminal () {
   mProperty_mSentTerminal = in_mSentTerminal ;
 }
@@ -1607,12 +2013,28 @@ void cPtr_lexicalSimpleSendInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalSimpleSendInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalSimpleSendInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalSimpleSendInstructionAST (mProperty_mSentTerminal COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalSimpleSendInstructionAST (mProperty_mSentTerminal, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalSimpleSendInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalSimpleSendInstructionAST (mProperty_mSentTerminal, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalSimpleSendInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mSentTerminal.printNonNullClassInstanceProperties ("mSentTerminal") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1658,22 +2080,6 @@ GGS_lexicalSimpleSendInstructionAST GGS_lexicalSimpleSendInstructionAST::extract
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalTagInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalTagInstructionAST::cPtr_lexicalTagInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mLexicalTagName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalTagInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mLexicalTagName.printNonNullClassInstanceProperties ("mLexicalTagName") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalTagInstructionAST::objectCompare (const GGS_lexicalTagInstructionAST & inOperand) const {
@@ -1728,10 +2134,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTagInstructionAST GGS_lexicalTagInstructionAST::class_func_new (const GGS_lstring & in_mLexicalTagName
+GGS_lexicalTagInstructionAST GGS_lexicalTagInstructionAST::class_func_new (const GGS_lstring & in_mLexicalTagName,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_lexicalTagInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalTagInstructionAST (in_mLexicalTagName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalTagInstructionAST (in_mLexicalTagName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1751,9 +2158,17 @@ GGS_lstring GGS_lexicalTagInstructionAST::readProperty_mLexicalTagName (void) co
 //Pointer class for @lexicalTagInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalTagInstructionAST::cPtr_lexicalTagInstructionAST (const GGS_lstring & in_mLexicalTagName
+cPtr_lexicalTagInstructionAST::cPtr_lexicalTagInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mLexicalTagName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalTagInstructionAST::cPtr_lexicalTagInstructionAST (const GGS_lstring & in_mLexicalTagName,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mLexicalTagName () {
   mProperty_mLexicalTagName = in_mLexicalTagName ;
 }
@@ -1773,12 +2188,28 @@ void cPtr_lexicalTagInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalTagInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalTagInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalTagInstructionAST (mProperty_mLexicalTagName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalTagInstructionAST (mProperty_mLexicalTagName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalTagInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalTagInstructionAST (mProperty_mLexicalTagName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalTagInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexicalTagName.printNonNullClassInstanceProperties ("mLexicalTagName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1824,22 +2255,6 @@ GGS_lexicalTagInstructionAST GGS_lexicalTagInstructionAST::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalWarningInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalWarningInstructionAST::cPtr_lexicalWarningInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mWarningMessageName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalWarningInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mWarningMessageName.printNonNullClassInstanceProperties ("mWarningMessageName") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalWarningInstructionAST::objectCompare (const GGS_lexicalWarningInstructionAST & inOperand) const {
@@ -1894,10 +2309,11 @@ GGS_lexicalInstructionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalWarningInstructionAST GGS_lexicalWarningInstructionAST::class_func_new (const GGS_lstring & in_mWarningMessageName
+GGS_lexicalWarningInstructionAST GGS_lexicalWarningInstructionAST::class_func_new (const GGS_lstring & in_mWarningMessageName,
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_lexicalWarningInstructionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_lexicalWarningInstructionAST (in_mWarningMessageName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_lexicalWarningInstructionAST (in_mWarningMessageName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -1917,9 +2333,17 @@ GGS_lstring GGS_lexicalWarningInstructionAST::readProperty_mWarningMessageName (
 //Pointer class for @lexicalWarningInstructionAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_lexicalWarningInstructionAST::cPtr_lexicalWarningInstructionAST (const GGS_lstring & in_mWarningMessageName
+cPtr_lexicalWarningInstructionAST::cPtr_lexicalWarningInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mWarningMessageName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalWarningInstructionAST::cPtr_lexicalWarningInstructionAST (const GGS_lstring & in_mWarningMessageName,
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
 mProperty_mWarningMessageName () {
   mProperty_mWarningMessageName = in_mWarningMessageName ;
 }
@@ -1939,12 +2363,28 @@ void cPtr_lexicalWarningInstructionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_lexicalWarningInstructionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_lexicalWarningInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalWarningInstructionAST (mProperty_mWarningMessageName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexicalWarningInstructionAST (mProperty_mWarningMessageName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_lexicalWarningInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalWarningInstructionAST (mProperty_mWarningMessageName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalWarningInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mWarningMessageName.printNonNullClassInstanceProperties ("mWarningMessageName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1990,24 +2430,6 @@ GGS_lexicalWarningInstructionAST GGS_lexicalWarningInstructionAST::extractObject
 
 //--------------------------------------------------------------------------------------------------
 // @optionComponentDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_optionComponentDeclarationAST::cPtr_optionComponentDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mOptionComponentName (),
-mProperty_mOptions () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_optionComponentDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
-    mProperty_mOptions.printNonNullClassInstanceProperties ("mOptions") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_optionComponentDeclarationAST::objectCompare (const GGS_optionComponentDeclarationAST & inOperand) const {
@@ -2070,10 +2492,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 
 GGS_optionComponentDeclarationAST GGS_optionComponentDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                                      const GGS_lstring & in_mOptionComponentName,
-                                                                                     const GGS_commandLineOptionListAST & in_mOptions
+                                                                                     const GGS_commandLineOptionListAST & in_mOptions,
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   GGS_optionComponentDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_optionComponentDeclarationAST (in_isPredefined, in_mOptionComponentName, in_mOptions COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_optionComponentDeclarationAST (in_isPredefined, in_mOptionComponentName, in_mOptions,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -2105,11 +2528,20 @@ GGS_commandLineOptionListAST GGS_optionComponentDeclarationAST::readProperty_mOp
 //Pointer class for @optionComponentDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_optionComponentDeclarationAST::cPtr_optionComponentDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mOptionComponentName (),
+mProperty_mOptions () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_optionComponentDeclarationAST::cPtr_optionComponentDeclarationAST (const GGS_bool & in_isPredefined,
                                                                         const GGS_lstring & in_mOptionComponentName,
-                                                                        const GGS_commandLineOptionListAST & in_mOptions
+                                                                        const GGS_commandLineOptionListAST & in_mOptions,
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mOptionComponentName (),
 mProperty_mOptions () {
   mProperty_isPredefined = in_isPredefined ;
@@ -2136,12 +2568,29 @@ void cPtr_optionComponentDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_optionComponentDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_optionComponentDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionComponentDeclarationAST (mProperty_isPredefined, mProperty_mOptionComponentName, mProperty_mOptions COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionComponentDeclarationAST (mProperty_isPredefined, mProperty_mOptionComponentName, mProperty_mOptions, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_optionComponentDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_optionComponentDeclarationAST (mProperty_isPredefined, mProperty_mOptionComponentName, mProperty_mOptions, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_optionComponentDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mOptionComponentName.printNonNullClassInstanceProperties ("mOptionComponentName") ;
+    mProperty_mOptions.printNonNullClassInstanceProperties ("mOptions") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2187,24 +2636,6 @@ GGS_optionComponentDeclarationAST GGS_optionComponentDeclarationAST::extractObje
 
 //--------------------------------------------------------------------------------------------------
 // @semanticDeclarationWithHeaderForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
-mProperty_generateHeader (),
-mProperty_implementationCppFileName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_generateHeader.printNonNullClassInstanceProperties ("generateHeader") ;
-    mProperty_implementationCppFileName.printNonNullClassInstanceProperties ("implementationCppFileName") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_semanticDeclarationWithHeaderForGeneration::objectCompare (const GGS_semanticDeclarationWithHeaderForGeneration & inOperand) const {
@@ -2263,16 +2694,35 @@ GGS_string GGS_semanticDeclarationWithHeaderForGeneration::readProperty_implemen
 //Pointer class for @semanticDeclarationWithHeaderForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
+mProperty_generateHeader (),
+mProperty_implementationCppFileName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (const GGS_bool & in_generateHeader,
-                                                                                                  const GGS_string & in_implementationCppFileName
+                                                                                                  const GGS_string & in_implementationCppFileName,
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationForGeneration (THERE),
+cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
 mProperty_generateHeader (),
 mProperty_implementationCppFileName () {
   mProperty_generateHeader = in_generateHeader ;
   mProperty_implementationCppFileName = in_implementationCppFileName ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_generateHeader.printNonNullClassInstanceProperties ("generateHeader") ;
+    mProperty_implementationCppFileName.printNonNullClassInstanceProperties ("implementationCppFileName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2515,28 +2965,6 @@ void extensionMethod_buildPropertyInitializationCode (const GGS_propertyInCollec
 // @arrayTypeDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_arrayTypeDeclarationAST::cPtr_arrayTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_arrayTypeName (),
-mProperty_elementTypeName (),
-mProperty_isUsefull (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_arrayTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_arrayTypeName.printNonNullClassInstanceProperties ("arrayTypeName") ;
-    mProperty_elementTypeName.printNonNullClassInstanceProperties ("elementTypeName") ;
-    mProperty_isUsefull.printNonNullClassInstanceProperties ("isUsefull") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_arrayTypeDeclarationAST::objectCompare (const GGS_arrayTypeDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2605,10 +3033,11 @@ GGS_arrayTypeDeclarationAST GGS_arrayTypeDeclarationAST::class_func_new (const G
                                                                          const GGS_lstring & in_arrayTypeName,
                                                                          const GGS_lstring & in_elementTypeName,
                                                                          const GGS_bool & in_isUsefull,
-                                                                         const GGS_bool & in_equatable
+                                                                         const GGS_bool & in_equatable,
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GGS_arrayTypeDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_arrayTypeDeclarationAST (in_isPredefined, in_arrayTypeName, in_elementTypeName, in_isUsefull, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_arrayTypeDeclarationAST (in_isPredefined, in_arrayTypeName, in_elementTypeName, in_isUsefull, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -2664,13 +3093,24 @@ GGS_bool GGS_arrayTypeDeclarationAST::readProperty_equatable (void) const {
 //Pointer class for @arrayTypeDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_arrayTypeDeclarationAST::cPtr_arrayTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_arrayTypeName (),
+mProperty_elementTypeName (),
+mProperty_isUsefull (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_arrayTypeDeclarationAST::cPtr_arrayTypeDeclarationAST (const GGS_bool & in_isPredefined,
                                                             const GGS_lstring & in_arrayTypeName,
                                                             const GGS_lstring & in_elementTypeName,
                                                             const GGS_bool & in_isUsefull,
-                                                            const GGS_bool & in_equatable
+                                                            const GGS_bool & in_equatable,
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_arrayTypeName (),
 mProperty_elementTypeName (),
 mProperty_isUsefull (),
@@ -2705,12 +3145,31 @@ void cPtr_arrayTypeDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_arrayTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_arrayTypeDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_arrayTypeDeclarationAST (mProperty_isPredefined, mProperty_arrayTypeName, mProperty_elementTypeName, mProperty_isUsefull, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_arrayTypeDeclarationAST (mProperty_isPredefined, mProperty_arrayTypeName, mProperty_elementTypeName, mProperty_isUsefull, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_arrayTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_arrayTypeDeclarationAST (mProperty_isPredefined, mProperty_arrayTypeName, mProperty_elementTypeName, mProperty_isUsefull, mProperty_equatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_arrayTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_arrayTypeName.printNonNullClassInstanceProperties ("arrayTypeName") ;
+    mProperty_elementTypeName.printNonNullClassInstanceProperties ("elementTypeName") ;
+    mProperty_isUsefull.printNonNullClassInstanceProperties ("isUsefull") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2758,22 +3217,6 @@ GGS_arrayTypeDeclarationAST GGS_arrayTypeDeclarationAST::extractObject (const GG
 // @semanticTypeForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticTypeForGeneration::cPtr_semanticTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
-mProperty_mSelfTypeEntry () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mSelfTypeEntry.printNonNullClassInstanceProperties ("mSelfTypeEntry") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_semanticTypeForGeneration::objectCompare (const GGS_semanticTypeForGeneration & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2818,13 +3261,30 @@ GGS_unifiedTypeMapEntry GGS_semanticTypeForGeneration::readProperty_mSelfTypeEnt
 //Pointer class for @semanticTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_semanticTypeForGeneration::cPtr_semanticTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry
+cPtr_semanticTypeForGeneration::cPtr_semanticTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
+mProperty_mSelfTypeEntry () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticTypeForGeneration::cPtr_semanticTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationForGeneration (THERE),
+cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
 mProperty_mSelfTypeEntry () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mSelfTypeEntry.printNonNullClassInstanceProperties ("mSelfTypeEntry") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -2983,26 +3443,6 @@ GGS_semanticTypeForGeneration_2E_weak GGS_semanticTypeForGeneration_2E_weak::ext
 // @boolsetDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mBoolsetTypeName (),
-mProperty_mFlagList (),
-mProperty_isEquatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_boolsetDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mBoolsetTypeName.printNonNullClassInstanceProperties ("mBoolsetTypeName") ;
-    mProperty_mFlagList.printNonNullClassInstanceProperties ("mFlagList") ;
-    mProperty_isEquatable.printNonNullClassInstanceProperties ("isEquatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_boolsetDeclarationAST::objectCompare (const GGS_boolsetDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3067,10 +3507,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_boolsetDeclarationAST GGS_boolsetDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                      const GGS_lstring & in_mBoolsetTypeName,
                                                                      const GGS_lstringlist & in_mFlagList,
-                                                                     const GGS_bool & in_isEquatable
+                                                                     const GGS_bool & in_isEquatable,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_boolsetDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_boolsetDeclarationAST (in_isPredefined, in_mBoolsetTypeName, in_mFlagList, in_isEquatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_boolsetDeclarationAST (in_isPredefined, in_mBoolsetTypeName, in_mFlagList, in_isEquatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3114,12 +3555,22 @@ GGS_bool GGS_boolsetDeclarationAST::readProperty_isEquatable (void) const {
 //Pointer class for @boolsetDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mBoolsetTypeName (),
+mProperty_mFlagList (),
+mProperty_isEquatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (const GGS_bool & in_isPredefined,
                                                         const GGS_lstring & in_mBoolsetTypeName,
                                                         const GGS_lstringlist & in_mFlagList,
-                                                        const GGS_bool & in_isEquatable
+                                                        const GGS_bool & in_isEquatable,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mBoolsetTypeName (),
 mProperty_mFlagList (),
 mProperty_isEquatable () {
@@ -3150,12 +3601,30 @@ void cPtr_boolsetDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_boolsetDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_boolsetDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_isPredefined, mProperty_mBoolsetTypeName, mProperty_mFlagList, mProperty_isEquatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_isPredefined, mProperty_mBoolsetTypeName, mProperty_mFlagList, mProperty_isEquatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_boolsetDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_isPredefined, mProperty_mBoolsetTypeName, mProperty_mFlagList, mProperty_isEquatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_boolsetDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mBoolsetTypeName.printNonNullClassInstanceProperties ("mBoolsetTypeName") ;
+    mProperty_mFlagList.printNonNullClassInstanceProperties ("mFlagList") ;
+    mProperty_isEquatable.printNonNullClassInstanceProperties ("isEquatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3201,24 +3670,6 @@ GGS_boolsetDeclarationAST GGS_boolsetDeclarationAST::extractObject (const GGS_ob
 
 //--------------------------------------------------------------------------------------------------
 // @boolsetTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mFlagList (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_boolsetTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mFlagList.printNonNullClassInstanceProperties ("mFlagList") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_boolsetTypeForGeneration::objectCompare (const GGS_boolsetTypeForGeneration & inOperand) const {
@@ -3281,10 +3732,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 
 GGS_boolsetTypeForGeneration GGS_boolsetTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                            const GGS_lstringlist & in_mFlagList,
-                                                                           const GGS_bool & in_equatable
+                                                                           const GGS_bool & in_equatable,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_boolsetTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (in_mSelfTypeEntry, in_mFlagList, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (in_mSelfTypeEntry, in_mFlagList, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3316,11 +3768,20 @@ GGS_bool GGS_boolsetTypeForGeneration::readProperty_equatable (void) const {
 //Pointer class for @boolsetTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mFlagList (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                               const GGS_lstringlist & in_mFlagList,
-                                                              const GGS_bool & in_equatable
+                                                              const GGS_bool & in_equatable,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mFlagList (),
 mProperty_equatable () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -3347,12 +3808,29 @@ void cPtr_boolsetTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_boolsetTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_boolsetTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mFlagList, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mFlagList, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_boolsetTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mFlagList, mProperty_equatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_boolsetTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mFlagList.printNonNullClassInstanceProperties ("mFlagList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3511,34 +3989,6 @@ GGS_boolsetTypeForGeneration_2E_weak GGS_boolsetTypeForGeneration_2E_weak::extra
 // @classDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_classDeclarationAST::cPtr_classDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mIsAbstract (),
-mProperty_mIsReference (),
-mProperty_mClassTypeName (),
-mProperty_mSuperClassName (),
-mProperty_mGenerateInSeparateFile (),
-mProperty_mPropertyList (),
-mProperty_clonable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_classDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
-    mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
-    mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
-    mProperty_mSuperClassName.printNonNullClassInstanceProperties ("mSuperClassName") ;
-    mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_clonable.printNonNullClassInstanceProperties ("clonable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_classDeclarationAST::objectCompare (const GGS_classDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3619,10 +4069,11 @@ GGS_classDeclarationAST GGS_classDeclarationAST::class_func_new (const GGS_bool 
                                                                  const GGS_lstring & in_mSuperClassName,
                                                                  const GGS_bool & in_mGenerateInSeparateFile,
                                                                  const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                                 const GGS_bool & in_clonable
+                                                                 const GGS_bool & in_clonable,
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   GGS_classDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (in_isPredefined, in_mIsAbstract, in_mIsReference, in_mClassTypeName, in_mSuperClassName, in_mGenerateInSeparateFile, in_mPropertyList, in_clonable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3714,6 +4165,19 @@ GGS_bool GGS_classDeclarationAST::readProperty_clonable (void) const {
 //Pointer class for @classDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_classDeclarationAST::cPtr_classDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mIsAbstract (),
+mProperty_mIsReference (),
+mProperty_mClassTypeName (),
+mProperty_mSuperClassName (),
+mProperty_mGenerateInSeparateFile (),
+mProperty_mPropertyList (),
+mProperty_clonable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GGS_bool & in_isPredefined,
                                                     const GGS_bool & in_mIsAbstract,
                                                     const GGS_bool & in_mIsReference,
@@ -3721,9 +4185,10 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GGS_bool & in_isPredef
                                                     const GGS_lstring & in_mSuperClassName,
                                                     const GGS_bool & in_mGenerateInSeparateFile,
                                                     const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                    const GGS_bool & in_clonable
+                                                    const GGS_bool & in_clonable,
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
 mProperty_mIsReference (),
 mProperty_mClassTypeName (),
@@ -3770,12 +4235,34 @@ void cPtr_classDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_classDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_isPredefined, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mGenerateInSeparateFile, mProperty_mPropertyList, mProperty_clonable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_classDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
+    mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
+    mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
+    mProperty_mSuperClassName.printNonNullClassInstanceProperties ("mSuperClassName") ;
+    mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_clonable.printNonNullClassInstanceProperties ("clonable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3821,44 +4308,6 @@ GGS_classDeclarationAST GGS_classDeclarationAST::extractObject (const GGS_object
 
 //--------------------------------------------------------------------------------------------------
 // @classTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mIsAbstract (),
-mProperty_mIsReference (),
-mProperty_mSuperClass (),
-mProperty_mAllTypedAttributeList (),
-mProperty_mCurrentTypedAttributeList (),
-mProperty_generateHeaderInSeparateFile (),
-mProperty_initializerNeedsCompilerVariable (),
-mProperty_propertyInitializationCode (),
-mProperty_synthetizedInitializerArgumentList (),
-mProperty_inheritedSynthetizedInitializerArgumentList (),
-mProperty_initializerMap (),
-mProperty_clonable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_classTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
-    mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
-    mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
-    mProperty_mAllTypedAttributeList.printNonNullClassInstanceProperties ("mAllTypedAttributeList") ;
-    mProperty_mCurrentTypedAttributeList.printNonNullClassInstanceProperties ("mCurrentTypedAttributeList") ;
-    mProperty_generateHeaderInSeparateFile.printNonNullClassInstanceProperties ("generateHeaderInSeparateFile") ;
-    mProperty_initializerNeedsCompilerVariable.printNonNullClassInstanceProperties ("initializerNeedsCompilerVariable") ;
-    mProperty_propertyInitializationCode.printNonNullClassInstanceProperties ("propertyInitializationCode") ;
-    mProperty_synthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("synthetizedInitializerArgumentList") ;
-    mProperty_inheritedSynthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("inheritedSynthetizedInitializerArgumentList") ;
-    mProperty_initializerMap.printNonNullClassInstanceProperties ("initializerMap") ;
-    mProperty_clonable.printNonNullClassInstanceProperties ("clonable") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_classTypeForGeneration::objectCompare (const GGS_classTypeForGeneration & inOperand) const {
@@ -3961,10 +4410,11 @@ GGS_classTypeForGeneration GGS_classTypeForGeneration::class_func_new (const GGS
                                                                        const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
                                                                        const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
                                                                        const GGS_initializerMap & in_initializerMap,
-                                                                       const GGS_bool & in_clonable
+                                                                       const GGS_bool & in_clonable,
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   GGS_classTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, in_clonable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (in_mSelfTypeEntry, in_mIsAbstract, in_mIsReference, in_mSuperClass, in_mAllTypedAttributeList, in_mCurrentTypedAttributeList, in_generateHeaderInSeparateFile, in_initializerNeedsCompilerVariable, in_propertyInitializationCode, in_synthetizedInitializerArgumentList, in_inheritedSynthetizedInitializerArgumentList, in_initializerMap, in_clonable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -4116,6 +4566,24 @@ GGS_bool GGS_classTypeForGeneration::readProperty_clonable (void) const {
 //Pointer class for @classTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mIsAbstract (),
+mProperty_mIsReference (),
+mProperty_mSuperClass (),
+mProperty_mAllTypedAttributeList (),
+mProperty_mCurrentTypedAttributeList (),
+mProperty_generateHeaderInSeparateFile (),
+mProperty_initializerNeedsCompilerVariable (),
+mProperty_propertyInitializationCode (),
+mProperty_synthetizedInitializerArgumentList (),
+mProperty_inheritedSynthetizedInitializerArgumentList (),
+mProperty_initializerMap (),
+mProperty_clonable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                           const GGS_bool & in_mIsAbstract,
                                                           const GGS_bool & in_mIsReference,
@@ -4128,9 +4596,10 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GGS_unifiedTypeM
                                                           const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
                                                           const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
                                                           const GGS_initializerMap & in_initializerMap,
-                                                          const GGS_bool & in_clonable
+                                                          const GGS_bool & in_clonable,
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mIsAbstract (),
 mProperty_mIsReference (),
 mProperty_mSuperClass (),
@@ -4197,12 +4666,39 @@ void cPtr_classTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_classTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap, mProperty_clonable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap, mProperty_clonable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mIsAbstract, mProperty_mIsReference, mProperty_mSuperClass, mProperty_mAllTypedAttributeList, mProperty_mCurrentTypedAttributeList, mProperty_generateHeaderInSeparateFile, mProperty_initializerNeedsCompilerVariable, mProperty_propertyInitializationCode, mProperty_synthetizedInitializerArgumentList, mProperty_inheritedSynthetizedInitializerArgumentList, mProperty_initializerMap, mProperty_clonable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_classTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mIsAbstract.printNonNullClassInstanceProperties ("mIsAbstract") ;
+    mProperty_mIsReference.printNonNullClassInstanceProperties ("mIsReference") ;
+    mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
+    mProperty_mAllTypedAttributeList.printNonNullClassInstanceProperties ("mAllTypedAttributeList") ;
+    mProperty_mCurrentTypedAttributeList.printNonNullClassInstanceProperties ("mCurrentTypedAttributeList") ;
+    mProperty_generateHeaderInSeparateFile.printNonNullClassInstanceProperties ("generateHeaderInSeparateFile") ;
+    mProperty_initializerNeedsCompilerVariable.printNonNullClassInstanceProperties ("initializerNeedsCompilerVariable") ;
+    mProperty_propertyInitializationCode.printNonNullClassInstanceProperties ("propertyInitializationCode") ;
+    mProperty_synthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("synthetizedInitializerArgumentList") ;
+    mProperty_inheritedSynthetizedInitializerArgumentList.printNonNullClassInstanceProperties ("inheritedSynthetizedInitializerArgumentList") ;
+    mProperty_initializerMap.printNonNullClassInstanceProperties ("initializerMap") ;
+    mProperty_clonable.printNonNullClassInstanceProperties ("clonable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4361,28 +4857,6 @@ GGS_classTypeForGeneration_2E_weak GGS_classTypeForGeneration_2E_weak::extractOb
 // @weakReferenceDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_weakReferenceDeclarationAST::cPtr_weakReferenceDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mClassTypeName (),
-mProperty_mWeakReferenceTypeName (),
-mProperty_mSuperWeakReferenceTypeName (),
-mProperty_mGenerateInSeparateFile () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_weakReferenceDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
-    mProperty_mWeakReferenceTypeName.printNonNullClassInstanceProperties ("mWeakReferenceTypeName") ;
-    mProperty_mSuperWeakReferenceTypeName.printNonNullClassInstanceProperties ("mSuperWeakReferenceTypeName") ;
-    mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_weakReferenceDeclarationAST::objectCompare (const GGS_weakReferenceDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4451,10 +4925,11 @@ GGS_weakReferenceDeclarationAST GGS_weakReferenceDeclarationAST::class_func_new 
                                                                                  const GGS_lstring & in_mClassTypeName,
                                                                                  const GGS_lstring & in_mWeakReferenceTypeName,
                                                                                  const GGS_lstring & in_mSuperWeakReferenceTypeName,
-                                                                                 const GGS_bool & in_mGenerateInSeparateFile
+                                                                                 const GGS_bool & in_mGenerateInSeparateFile,
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_weakReferenceDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReferenceDeclarationAST (in_isPredefined, in_mClassTypeName, in_mWeakReferenceTypeName, in_mSuperWeakReferenceTypeName, in_mGenerateInSeparateFile COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReferenceDeclarationAST (in_isPredefined, in_mClassTypeName, in_mWeakReferenceTypeName, in_mSuperWeakReferenceTypeName, in_mGenerateInSeparateFile,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -4510,13 +4985,24 @@ GGS_bool GGS_weakReferenceDeclarationAST::readProperty_mGenerateInSeparateFile (
 //Pointer class for @weakReferenceDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_weakReferenceDeclarationAST::cPtr_weakReferenceDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mClassTypeName (),
+mProperty_mWeakReferenceTypeName (),
+mProperty_mSuperWeakReferenceTypeName (),
+mProperty_mGenerateInSeparateFile () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_weakReferenceDeclarationAST::cPtr_weakReferenceDeclarationAST (const GGS_bool & in_isPredefined,
                                                                     const GGS_lstring & in_mClassTypeName,
                                                                     const GGS_lstring & in_mWeakReferenceTypeName,
                                                                     const GGS_lstring & in_mSuperWeakReferenceTypeName,
-                                                                    const GGS_bool & in_mGenerateInSeparateFile
+                                                                    const GGS_bool & in_mGenerateInSeparateFile,
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mClassTypeName (),
 mProperty_mWeakReferenceTypeName (),
 mProperty_mSuperWeakReferenceTypeName (),
@@ -4551,12 +5037,31 @@ void cPtr_weakReferenceDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_weakReferenceDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_weakReferenceDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_isPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mGenerateInSeparateFile COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_isPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mGenerateInSeparateFile, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_weakReferenceDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_weakReferenceDeclarationAST (mProperty_isPredefined, mProperty_mClassTypeName, mProperty_mWeakReferenceTypeName, mProperty_mSuperWeakReferenceTypeName, mProperty_mGenerateInSeparateFile, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_weakReferenceDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mClassTypeName.printNonNullClassInstanceProperties ("mClassTypeName") ;
+    mProperty_mWeakReferenceTypeName.printNonNullClassInstanceProperties ("mWeakReferenceTypeName") ;
+    mProperty_mSuperWeakReferenceTypeName.printNonNullClassInstanceProperties ("mSuperWeakReferenceTypeName") ;
+    mProperty_mGenerateInSeparateFile.printNonNullClassInstanceProperties ("mGenerateInSeparateFile") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4602,28 +5107,6 @@ GGS_weakReferenceDeclarationAST GGS_weakReferenceDeclarationAST::extractObject (
 
 //--------------------------------------------------------------------------------------------------
 // @weakReferenceTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mReferenceClassType (),
-mProperty_mSuperClass (),
-mProperty_generateHeaderInSeparateFile (),
-mProperty_optionalClassTypeOrNull () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_weakReferenceTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReferenceClassType.printNonNullClassInstanceProperties ("mReferenceClassType") ;
-    mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
-    mProperty_generateHeaderInSeparateFile.printNonNullClassInstanceProperties ("generateHeaderInSeparateFile") ;
-    mProperty_optionalClassTypeOrNull.printNonNullClassInstanceProperties ("optionalClassTypeOrNull") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_weakReferenceTypeForGeneration::objectCompare (const GGS_weakReferenceTypeForGeneration & inOperand) const {
@@ -4694,10 +5177,11 @@ GGS_weakReferenceTypeForGeneration GGS_weakReferenceTypeForGeneration::class_fun
                                                                                        const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                                                        const GGS_unifiedTypeMapEntry & in_mSuperClass,
                                                                                        const GGS_bool & in_generateHeaderInSeparateFile,
-                                                                                       const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull
+                                                                                       const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull,
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) {
   GGS_weakReferenceTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (in_mSelfTypeEntry, in_mReferenceClassType, in_mSuperClass, in_generateHeaderInSeparateFile, in_optionalClassTypeOrNull COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_weakReferenceTypeForGeneration (in_mSelfTypeEntry, in_mReferenceClassType, in_mSuperClass, in_generateHeaderInSeparateFile, in_optionalClassTypeOrNull,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -4753,13 +5237,24 @@ GGS_unifiedTypeMapEntry GGS_weakReferenceTypeForGeneration::readProperty_optiona
 //Pointer class for @weakReferenceTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mReferenceClassType (),
+mProperty_mSuperClass (),
+mProperty_generateHeaderInSeparateFile (),
+mProperty_optionalClassTypeOrNull () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_weakReferenceTypeForGeneration::cPtr_weakReferenceTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                           const GGS_unifiedTypeMapEntry & in_mReferenceClassType,
                                                                           const GGS_unifiedTypeMapEntry & in_mSuperClass,
                                                                           const GGS_bool & in_generateHeaderInSeparateFile,
-                                                                          const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull
+                                                                          const GGS_unifiedTypeMapEntry & in_optionalClassTypeOrNull,
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mReferenceClassType (),
 mProperty_mSuperClass (),
 mProperty_generateHeaderInSeparateFile (),
@@ -4794,12 +5289,31 @@ void cPtr_weakReferenceTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_generateHeaderInSeparateFile, mProperty_optionalClassTypeOrNull COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_generateHeaderInSeparateFile, mProperty_optionalClassTypeOrNull, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_weakReferenceTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_weakReferenceTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mReferenceClassType, mProperty_mSuperClass, mProperty_generateHeaderInSeparateFile, mProperty_optionalClassTypeOrNull, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_weakReferenceTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReferenceClassType.printNonNullClassInstanceProperties ("mReferenceClassType") ;
+    mProperty_mSuperClass.printNonNullClassInstanceProperties ("mSuperClass") ;
+    mProperty_generateHeaderInSeparateFile.printNonNullClassInstanceProperties ("generateHeaderInSeparateFile") ;
+    mProperty_optionalClassTypeOrNull.printNonNullClassInstanceProperties ("optionalClassTypeOrNull") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5089,26 +5603,6 @@ GGS_associatedValue GGS_associatedValue::extractObject (const GGS_object & inObj
 // @enumDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_enumDeclarationAST::cPtr_enumDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_enumTypeName (),
-mProperty_mConstantList (),
-mProperty_comparison () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_enumDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_enumTypeName.printNonNullClassInstanceProperties ("enumTypeName") ;
-    mProperty_mConstantList.printNonNullClassInstanceProperties ("mConstantList") ;
-    mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_enumDeclarationAST::objectCompare (const GGS_enumDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5173,10 +5667,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_enumDeclarationAST GGS_enumDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                const GGS_lstring & in_enumTypeName,
                                                                const GGS_enumConstantList & in_mConstantList,
-                                                               const GGS_structComparison & in_comparison
+                                                               const GGS_structComparison & in_comparison,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_enumDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_enumDeclarationAST (in_isPredefined, in_enumTypeName, in_mConstantList, in_comparison COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_enumDeclarationAST (in_isPredefined, in_enumTypeName, in_mConstantList, in_comparison,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -5220,12 +5715,22 @@ GGS_structComparison GGS_enumDeclarationAST::readProperty_comparison (void) cons
 //Pointer class for @enumDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_enumDeclarationAST::cPtr_enumDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_enumTypeName (),
+mProperty_mConstantList (),
+mProperty_comparison () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_enumDeclarationAST::cPtr_enumDeclarationAST (const GGS_bool & in_isPredefined,
                                                   const GGS_lstring & in_enumTypeName,
                                                   const GGS_enumConstantList & in_mConstantList,
-                                                  const GGS_structComparison & in_comparison
+                                                  const GGS_structComparison & in_comparison,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_enumTypeName (),
 mProperty_mConstantList (),
 mProperty_comparison () {
@@ -5256,12 +5761,30 @@ void cPtr_enumDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_enumDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_enumDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_isPredefined, mProperty_enumTypeName, mProperty_mConstantList, mProperty_comparison COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_isPredefined, mProperty_enumTypeName, mProperty_mConstantList, mProperty_comparison, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_enumDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_enumDeclarationAST (mProperty_isPredefined, mProperty_enumTypeName, mProperty_mConstantList, mProperty_comparison, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_enumDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_enumTypeName.printNonNullClassInstanceProperties ("enumTypeName") ;
+    mProperty_mConstantList.printNonNullClassInstanceProperties ("mConstantList") ;
+    mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5307,24 +5830,6 @@ GGS_enumDeclarationAST GGS_enumDeclarationAST::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @enumTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_enumTypeForGeneration::cPtr_enumTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_constantList (),
-mProperty_associatedValuesTypes () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_enumTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_constantList.printNonNullClassInstanceProperties ("constantList") ;
-    mProperty_associatedValuesTypes.printNonNullClassInstanceProperties ("associatedValuesTypes") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_enumTypeForGeneration::objectCompare (const GGS_enumTypeForGeneration & inOperand) const {
@@ -5387,10 +5892,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 
 GGS_enumTypeForGeneration GGS_enumTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                      const GGS_enumConstantListForGeneration & in_constantList,
-                                                                     const GGS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
+                                                                     const GGS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_enumTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_enumTypeForGeneration (in_mSelfTypeEntry, in_constantList, in_associatedValuesTypes COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_enumTypeForGeneration (in_mSelfTypeEntry, in_constantList, in_associatedValuesTypes,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -5422,11 +5928,20 @@ GGS__5B_unifiedTypeMapEntry_5D_ GGS_enumTypeForGeneration::readProperty_associat
 //Pointer class for @enumTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_enumTypeForGeneration::cPtr_enumTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_constantList (),
+mProperty_associatedValuesTypes () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_enumTypeForGeneration::cPtr_enumTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                         const GGS_enumConstantListForGeneration & in_constantList,
-                                                        const GGS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes
+                                                        const GGS__5B_unifiedTypeMapEntry_5D_ & in_associatedValuesTypes,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_constantList (),
 mProperty_associatedValuesTypes () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -5453,12 +5968,29 @@ void cPtr_enumTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_enumTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_enumTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_enumTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_constantList, mProperty_associatedValuesTypes COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_enumTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_constantList, mProperty_associatedValuesTypes, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_enumTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_enumTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_constantList, mProperty_associatedValuesTypes, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_enumTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_constantList.printNonNullClassInstanceProperties ("constantList") ;
+    mProperty_associatedValuesTypes.printNonNullClassInstanceProperties ("associatedValuesTypes") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5641,34 +6173,6 @@ GGS_string extensionGetter_initializerSignature (const GGS_typeNameFormalParamet
 // @externTypeDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mExternTypeName (),
-mProperty_mCppPreDeclarationCode (),
-mProperty_mCppClassCode (),
-mProperty_externTypeInitializerList (),
-mProperty_mExternTypeGetterList (),
-mProperty_mExternTypeSetterList (),
-mProperty_mExternTypeMethodList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_externTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
-    mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
-    mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
-    mProperty_externTypeInitializerList.printNonNullClassInstanceProperties ("externTypeInitializerList") ;
-    mProperty_mExternTypeGetterList.printNonNullClassInstanceProperties ("mExternTypeGetterList") ;
-    mProperty_mExternTypeSetterList.printNonNullClassInstanceProperties ("mExternTypeSetterList") ;
-    mProperty_mExternTypeMethodList.printNonNullClassInstanceProperties ("mExternTypeMethodList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_externTypeDeclarationAST::objectCompare (const GGS_externTypeDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5749,10 +6253,11 @@ GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST::class_func_new (const
                                                                            const GGS_externTypeConstructorList & in_externTypeInitializerList,
                                                                            const GGS_externTypeGetterList & in_mExternTypeGetterList,
                                                                            const GGS_externTypeSetterList & in_mExternTypeSetterList,
-                                                                           const GGS_externTypeMethodList & in_mExternTypeMethodList
+                                                                           const GGS_externTypeMethodList & in_mExternTypeMethodList,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_externTypeDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationAST (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_externTypeInitializerList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationAST (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_externTypeInitializerList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -5844,6 +6349,19 @@ GGS_externTypeMethodList GGS_externTypeDeclarationAST::readProperty_mExternTypeM
 //Pointer class for @externTypeDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mExternTypeName (),
+mProperty_mCppPreDeclarationCode (),
+mProperty_mCppClassCode (),
+mProperty_externTypeInitializerList (),
+mProperty_mExternTypeGetterList (),
+mProperty_mExternTypeSetterList (),
+mProperty_mExternTypeMethodList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (const GGS_bool & in_isPredefined,
                                                               const GGS_lstring & in_mExternTypeName,
                                                               const GGS_string & in_mCppPreDeclarationCode,
@@ -5851,9 +6369,10 @@ cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (const GGS_bool & i
                                                               const GGS_externTypeConstructorList & in_externTypeInitializerList,
                                                               const GGS_externTypeGetterList & in_mExternTypeGetterList,
                                                               const GGS_externTypeSetterList & in_mExternTypeSetterList,
-                                                              const GGS_externTypeMethodList & in_mExternTypeMethodList
+                                                              const GGS_externTypeMethodList & in_mExternTypeMethodList,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mExternTypeName (),
 mProperty_mCppPreDeclarationCode (),
 mProperty_mCppClassCode (),
@@ -5900,12 +6419,34 @@ void cPtr_externTypeDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_externTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_externTypeDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mProperty_isPredefined, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, mProperty_externTypeInitializerList, mProperty_mExternTypeGetterList, mProperty_mExternTypeSetterList, mProperty_mExternTypeMethodList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mProperty_isPredefined, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, mProperty_externTypeInitializerList, mProperty_mExternTypeGetterList, mProperty_mExternTypeSetterList, mProperty_mExternTypeMethodList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_externTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mProperty_isPredefined, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, mProperty_externTypeInitializerList, mProperty_mExternTypeGetterList, mProperty_mExternTypeSetterList, mProperty_mExternTypeMethodList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_externTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
+    mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
+    mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
+    mProperty_externTypeInitializerList.printNonNullClassInstanceProperties ("externTypeInitializerList") ;
+    mProperty_mExternTypeGetterList.printNonNullClassInstanceProperties ("mExternTypeGetterList") ;
+    mProperty_mExternTypeSetterList.printNonNullClassInstanceProperties ("mExternTypeSetterList") ;
+    mProperty_mExternTypeMethodList.printNonNullClassInstanceProperties ("mExternTypeMethodList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5951,26 +6492,6 @@ GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 // @externTypeDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_externTypeDeclarationForGeneration::cPtr_externTypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mExternTypeName (),
-mProperty_mCppPreDeclarationCode (),
-mProperty_mCppClassCode () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_externTypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
-    mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
-    mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_externTypeDeclarationForGeneration::objectCompare (const GGS_externTypeDeclarationForGeneration & inOperand) const {
@@ -6037,10 +6558,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 GGS_externTypeDeclarationForGeneration GGS_externTypeDeclarationForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                                const GGS_string & in_mExternTypeName,
                                                                                                const GGS_string & in_mCppPreDeclarationCode,
-                                                                                               const GGS_string & in_mCppClassCode
+                                                                                               const GGS_string & in_mCppClassCode,
+                                                                                               Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) {
   GGS_externTypeDeclarationForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationForGeneration (in_mSelfTypeEntry, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationForGeneration (in_mSelfTypeEntry, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -6084,12 +6606,22 @@ GGS_string GGS_externTypeDeclarationForGeneration::readProperty_mCppClassCode (v
 //Pointer class for @externTypeDeclarationForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_externTypeDeclarationForGeneration::cPtr_externTypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mExternTypeName (),
+mProperty_mCppPreDeclarationCode (),
+mProperty_mCppClassCode () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_externTypeDeclarationForGeneration::cPtr_externTypeDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                   const GGS_string & in_mExternTypeName,
                                                                                   const GGS_string & in_mCppPreDeclarationCode,
-                                                                                  const GGS_string & in_mCppClassCode
+                                                                                  const GGS_string & in_mCppClassCode,
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mExternTypeName (),
 mProperty_mCppPreDeclarationCode (),
 mProperty_mCppClassCode () {
@@ -6120,12 +6652,30 @@ void cPtr_externTypeDeclarationForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_externTypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_externTypeDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_externTypeDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_externTypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_externTypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
+    mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
+    mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6284,26 +6834,6 @@ GGS_externTypeDeclarationForGeneration_2E_weak GGS_externTypeDeclarationForGener
 // @graphDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_graphDeclarationAST::cPtr_graphDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mGraphTypeName (),
-mProperty_mAssociatedListTypeName (),
-mProperty_mInsertModifierList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_graphDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mGraphTypeName.printNonNullClassInstanceProperties ("mGraphTypeName") ;
-    mProperty_mAssociatedListTypeName.printNonNullClassInstanceProperties ("mAssociatedListTypeName") ;
-    mProperty_mInsertModifierList.printNonNullClassInstanceProperties ("mInsertModifierList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_graphDeclarationAST::objectCompare (const GGS_graphDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -6368,10 +6898,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_graphDeclarationAST GGS_graphDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                  const GGS_lstring & in_mGraphTypeName,
                                                                  const GGS_lstring & in_mAssociatedListTypeName,
-                                                                 const GGS_graphInsertModifierList & in_mInsertModifierList
+                                                                 const GGS_graphInsertModifierList & in_mInsertModifierList,
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   GGS_graphDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_graphDeclarationAST (in_isPredefined, in_mGraphTypeName, in_mAssociatedListTypeName, in_mInsertModifierList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_graphDeclarationAST (in_isPredefined, in_mGraphTypeName, in_mAssociatedListTypeName, in_mInsertModifierList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -6415,12 +6946,22 @@ GGS_graphInsertModifierList GGS_graphDeclarationAST::readProperty_mInsertModifie
 //Pointer class for @graphDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_graphDeclarationAST::cPtr_graphDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mGraphTypeName (),
+mProperty_mAssociatedListTypeName (),
+mProperty_mInsertModifierList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_graphDeclarationAST::cPtr_graphDeclarationAST (const GGS_bool & in_isPredefined,
                                                     const GGS_lstring & in_mGraphTypeName,
                                                     const GGS_lstring & in_mAssociatedListTypeName,
-                                                    const GGS_graphInsertModifierList & in_mInsertModifierList
+                                                    const GGS_graphInsertModifierList & in_mInsertModifierList,
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mGraphTypeName (),
 mProperty_mAssociatedListTypeName (),
 mProperty_mInsertModifierList () {
@@ -6451,12 +6992,30 @@ void cPtr_graphDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_graphDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_graphDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_graphDeclarationAST (mProperty_isPredefined, mProperty_mGraphTypeName, mProperty_mAssociatedListTypeName, mProperty_mInsertModifierList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_graphDeclarationAST (mProperty_isPredefined, mProperty_mGraphTypeName, mProperty_mAssociatedListTypeName, mProperty_mInsertModifierList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_graphDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_graphDeclarationAST (mProperty_isPredefined, mProperty_mGraphTypeName, mProperty_mAssociatedListTypeName, mProperty_mInsertModifierList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_graphDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mGraphTypeName.printNonNullClassInstanceProperties ("mGraphTypeName") ;
+    mProperty_mAssociatedListTypeName.printNonNullClassInstanceProperties ("mAssociatedListTypeName") ;
+    mProperty_mInsertModifierList.printNonNullClassInstanceProperties ("mInsertModifierList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6502,26 +7061,6 @@ GGS_graphDeclarationAST GGS_graphDeclarationAST::extractObject (const GGS_object
 
 //--------------------------------------------------------------------------------------------------
 // @graphDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_graphDeclarationForGeneration::cPtr_graphDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mAssociatedListTypeEntry (),
-mProperty_mAssociatedListElementTypeEntry (),
-mProperty_mInsertModifierList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_graphDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mAssociatedListTypeEntry.printNonNullClassInstanceProperties ("mAssociatedListTypeEntry") ;
-    mProperty_mAssociatedListElementTypeEntry.printNonNullClassInstanceProperties ("mAssociatedListElementTypeEntry") ;
-    mProperty_mInsertModifierList.printNonNullClassInstanceProperties ("mInsertModifierList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_graphDeclarationForGeneration::objectCompare (const GGS_graphDeclarationForGeneration & inOperand) const {
@@ -6588,10 +7127,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 GGS_graphDeclarationForGeneration GGS_graphDeclarationForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                      const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
                                                                                      const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                                                                                     const GGS_graphInsertModifierList & in_mInsertModifierList
+                                                                                     const GGS_graphInsertModifierList & in_mInsertModifierList,
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   GGS_graphDeclarationForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_graphDeclarationForGeneration (in_mSelfTypeEntry, in_mAssociatedListTypeEntry, in_mAssociatedListElementTypeEntry, in_mInsertModifierList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_graphDeclarationForGeneration (in_mSelfTypeEntry, in_mAssociatedListTypeEntry, in_mAssociatedListElementTypeEntry, in_mInsertModifierList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -6635,12 +7175,22 @@ GGS_graphInsertModifierList GGS_graphDeclarationForGeneration::readProperty_mIns
 //Pointer class for @graphDeclarationForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_graphDeclarationForGeneration::cPtr_graphDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mAssociatedListTypeEntry (),
+mProperty_mAssociatedListElementTypeEntry (),
+mProperty_mInsertModifierList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_graphDeclarationForGeneration::cPtr_graphDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                         const GGS_unifiedTypeMapEntry & in_mAssociatedListTypeEntry,
                                                                         const GGS_unifiedTypeMapEntry & in_mAssociatedListElementTypeEntry,
-                                                                        const GGS_graphInsertModifierList & in_mInsertModifierList
+                                                                        const GGS_graphInsertModifierList & in_mInsertModifierList,
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mAssociatedListTypeEntry (),
 mProperty_mAssociatedListElementTypeEntry (),
 mProperty_mInsertModifierList () {
@@ -6671,12 +7221,30 @@ void cPtr_graphDeclarationForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_graphDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mAssociatedListTypeEntry, mProperty_mAssociatedListElementTypeEntry, mProperty_mInsertModifierList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_graphDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mAssociatedListTypeEntry, mProperty_mAssociatedListElementTypeEntry, mProperty_mInsertModifierList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_graphDeclarationForGeneration (mProperty_mSelfTypeEntry, mProperty_mAssociatedListTypeEntry, mProperty_mAssociatedListElementTypeEntry, mProperty_mInsertModifierList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_graphDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mAssociatedListTypeEntry.printNonNullClassInstanceProperties ("mAssociatedListTypeEntry") ;
+    mProperty_mAssociatedListElementTypeEntry.printNonNullClassInstanceProperties ("mAssociatedListElementTypeEntry") ;
+    mProperty_mInsertModifierList.printNonNullClassInstanceProperties ("mInsertModifierList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -6835,28 +7403,6 @@ GGS_graphDeclarationForGeneration_2E_weak GGS_graphDeclarationForGeneration_2E_w
 // @listDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_listDeclarationAST::cPtr_listDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mListTypeName (),
-mProperty_mPropertyList (),
-mProperty_usefullList (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_listDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mListTypeName.printNonNullClassInstanceProperties ("mListTypeName") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_usefullList.printNonNullClassInstanceProperties ("usefullList") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_listDeclarationAST::objectCompare (const GGS_listDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -6925,10 +7471,11 @@ GGS_listDeclarationAST GGS_listDeclarationAST::class_func_new (const GGS_bool & 
                                                                const GGS_lstring & in_mListTypeName,
                                                                const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                                const GGS_bool & in_usefullList,
-                                                               const GGS_bool & in_equatable
+                                                               const GGS_bool & in_equatable,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_listDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_listDeclarationAST (in_isPredefined, in_mListTypeName, in_mPropertyList, in_usefullList, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_listDeclarationAST (in_isPredefined, in_mListTypeName, in_mPropertyList, in_usefullList, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -6984,13 +7531,24 @@ GGS_bool GGS_listDeclarationAST::readProperty_equatable (void) const {
 //Pointer class for @listDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_listDeclarationAST::cPtr_listDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mListTypeName (),
+mProperty_mPropertyList (),
+mProperty_usefullList (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_listDeclarationAST::cPtr_listDeclarationAST (const GGS_bool & in_isPredefined,
                                                   const GGS_lstring & in_mListTypeName,
                                                   const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                   const GGS_bool & in_usefullList,
-                                                  const GGS_bool & in_equatable
+                                                  const GGS_bool & in_equatable,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mListTypeName (),
 mProperty_mPropertyList (),
 mProperty_usefullList (),
@@ -7025,12 +7583,31 @@ void cPtr_listDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_listDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_isPredefined, mProperty_mListTypeName, mProperty_mPropertyList, mProperty_usefullList, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_isPredefined, mProperty_mListTypeName, mProperty_mPropertyList, mProperty_usefullList, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_isPredefined, mProperty_mListTypeName, mProperty_mPropertyList, mProperty_usefullList, mProperty_equatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_listDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mListTypeName.printNonNullClassInstanceProperties ("mListTypeName") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_usefullList.printNonNullClassInstanceProperties ("usefullList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7076,24 +7653,6 @@ GGS_listDeclarationAST GGS_listDeclarationAST::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @listTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mListElementTypeIndex (),
-mProperty_mTypedAttributeList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_listTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mListElementTypeIndex.printNonNullClassInstanceProperties ("mListElementTypeIndex") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_listTypeForGeneration::objectCompare (const GGS_listTypeForGeneration & inOperand) const {
@@ -7156,10 +7715,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 
 GGS_listTypeForGeneration GGS_listTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                      const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                                     const GGS_typedPropertyList & in_mTypedAttributeList
+                                                                     const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_listTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_listTypeForGeneration (in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_listTypeForGeneration (in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -7191,11 +7751,20 @@ GGS_typedPropertyList GGS_listTypeForGeneration::readProperty_mTypedAttributeLis
 //Pointer class for @listTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mListElementTypeIndex (),
+mProperty_mTypedAttributeList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                         const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                        const GGS_typedPropertyList & in_mTypedAttributeList
+                                                        const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mListElementTypeIndex (),
 mProperty_mTypedAttributeList () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -7222,12 +7791,29 @@ void cPtr_listTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_listTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_listTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_listTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_listTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_listTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_listTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_listTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mListElementTypeIndex.printNonNullClassInstanceProperties ("mListElementTypeIndex") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7386,28 +7972,6 @@ GGS_listTypeForGeneration_2E_weak GGS_listTypeForGeneration_2E_weak::extractObje
 // @dictDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_dictDeclarationAST::cPtr_dictDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mDictTypeName (),
-mProperty_mKeyTypeName (),
-mProperty_mPropertyList (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_dictDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
-    mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_dictDeclarationAST::objectCompare (const GGS_dictDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7476,10 +8040,11 @@ GGS_dictDeclarationAST GGS_dictDeclarationAST::class_func_new (const GGS_bool & 
                                                                const GGS_lstring & in_mDictTypeName,
                                                                const GGS_lstring & in_mKeyTypeName,
                                                                const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                               const GGS_bool & in_equatable
+                                                               const GGS_bool & in_equatable,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_dictDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_dictDeclarationAST (in_isPredefined, in_mDictTypeName, in_mKeyTypeName, in_mPropertyList, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_dictDeclarationAST (in_isPredefined, in_mDictTypeName, in_mKeyTypeName, in_mPropertyList, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -7535,13 +8100,24 @@ GGS_bool GGS_dictDeclarationAST::readProperty_equatable (void) const {
 //Pointer class for @dictDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_dictDeclarationAST::cPtr_dictDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mDictTypeName (),
+mProperty_mKeyTypeName (),
+mProperty_mPropertyList (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_dictDeclarationAST::cPtr_dictDeclarationAST (const GGS_bool & in_isPredefined,
                                                   const GGS_lstring & in_mDictTypeName,
                                                   const GGS_lstring & in_mKeyTypeName,
                                                   const GGS_propertyInCollectionListAST & in_mPropertyList,
-                                                  const GGS_bool & in_equatable
+                                                  const GGS_bool & in_equatable,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mDictTypeName (),
 mProperty_mKeyTypeName (),
 mProperty_mPropertyList (),
@@ -7576,12 +8152,31 @@ void cPtr_dictDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_dictDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_dictDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_dictDeclarationAST (mProperty_isPredefined, mProperty_mDictTypeName, mProperty_mKeyTypeName, mProperty_mPropertyList, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_dictDeclarationAST (mProperty_isPredefined, mProperty_mDictTypeName, mProperty_mKeyTypeName, mProperty_mPropertyList, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_dictDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_dictDeclarationAST (mProperty_isPredefined, mProperty_mDictTypeName, mProperty_mKeyTypeName, mProperty_mPropertyList, mProperty_equatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_dictDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
+    mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7627,30 +8222,6 @@ GGS_dictDeclarationAST GGS_dictDeclarationAST::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @dictTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_dictTypeForGeneration::cPtr_dictTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mElementTypeEntry (),
-mProperty_mDictTypeName (),
-mProperty_mTypedAttributeList (),
-mProperty_mKeyTypeName (),
-mProperty_mOptionalElementTypeEntry () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_dictTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
-    mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
-    mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_dictTypeForGeneration::objectCompare (const GGS_dictTypeForGeneration & inOperand) const {
@@ -7725,10 +8296,11 @@ GGS_dictTypeForGeneration GGS_dictTypeForGeneration::class_func_new (const GGS_u
                                                                      const GGS_lstring & in_mDictTypeName,
                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
                                                                      const GGS_lstring & in_mKeyTypeName,
-                                                                     const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                                                     const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_dictTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_dictTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mDictTypeName, in_mTypedAttributeList, in_mKeyTypeName, in_mOptionalElementTypeEntry COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_dictTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mDictTypeName, in_mTypedAttributeList, in_mKeyTypeName, in_mOptionalElementTypeEntry,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -7796,14 +8368,26 @@ GGS_unifiedTypeMapEntry GGS_dictTypeForGeneration::readProperty_mOptionalElement
 //Pointer class for @dictTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_dictTypeForGeneration::cPtr_dictTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mElementTypeEntry (),
+mProperty_mDictTypeName (),
+mProperty_mTypedAttributeList (),
+mProperty_mKeyTypeName (),
+mProperty_mOptionalElementTypeEntry () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_dictTypeForGeneration::cPtr_dictTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                         const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                         const GGS_lstring & in_mDictTypeName,
                                                         const GGS_typedPropertyList & in_mTypedAttributeList,
                                                         const GGS_lstring & in_mKeyTypeName,
-                                                        const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                                        const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mElementTypeEntry (),
 mProperty_mDictTypeName (),
 mProperty_mTypedAttributeList (),
@@ -7842,12 +8426,32 @@ void cPtr_dictTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_dictTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_dictTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_dictTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mDictTypeName, mProperty_mTypedAttributeList, mProperty_mKeyTypeName, mProperty_mOptionalElementTypeEntry COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_dictTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mDictTypeName, mProperty_mTypedAttributeList, mProperty_mKeyTypeName, mProperty_mOptionalElementTypeEntry, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_dictTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_dictTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mDictTypeName, mProperty_mTypedAttributeList, mProperty_mKeyTypeName, mProperty_mOptionalElementTypeEntry, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_dictTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
+    mProperty_mDictTypeName.printNonNullClassInstanceProperties ("mDictTypeName") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mKeyTypeName.printNonNullClassInstanceProperties ("mKeyTypeName") ;
+    mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8006,34 +8610,6 @@ GGS_dictTypeForGeneration_2E_weak GGS_dictTypeForGeneration_2E_weak::extractObje
 // @mapDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mMapTypeName (),
-mProperty_mPropertyList (),
-mProperty_mInsertMethodList (),
-mProperty_mSearchMethodList (),
-mProperty_mRemoveMethodList (),
-mProperty_mInsertOrReplaceDeclarationListAST (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_mapDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
-    mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
-    mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
-    mProperty_mInsertOrReplaceDeclarationListAST.printNonNullClassInstanceProperties ("mInsertOrReplaceDeclarationListAST") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_mapDeclarationAST::objectCompare (const GGS_mapDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8114,10 +8690,11 @@ GGS_mapDeclarationAST GGS_mapDeclarationAST::class_func_new (const GGS_bool & in
                                                              const GGS_mapSearchMethodListAST & in_mSearchMethodList,
                                                              const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
                                                              const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
-                                                             const GGS_bool & in_equatable
+                                                             const GGS_bool & in_equatable,
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GGS_mapDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mInsertOrReplaceDeclarationListAST, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mInsertOrReplaceDeclarationListAST, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8209,6 +8786,19 @@ GGS_bool GGS_mapDeclarationAST::readProperty_equatable (void) const {
 //Pointer class for @mapDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mMapTypeName (),
+mProperty_mPropertyList (),
+mProperty_mInsertMethodList (),
+mProperty_mSearchMethodList (),
+mProperty_mRemoveMethodList (),
+mProperty_mInsertOrReplaceDeclarationListAST (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined,
                                                 const GGS_lstring & in_mMapTypeName,
                                                 const GGS_propertyInCollectionListAST & in_mPropertyList,
@@ -8216,9 +8806,10 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined
                                                 const GGS_mapSearchMethodListAST & in_mSearchMethodList,
                                                 const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
                                                 const GGS_insertOrReplaceDeclarationListAST & in_mInsertOrReplaceDeclarationListAST,
-                                                const GGS_bool & in_equatable
+                                                const GGS_bool & in_equatable,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mMapTypeName (),
 mProperty_mPropertyList (),
 mProperty_mInsertMethodList (),
@@ -8265,12 +8856,34 @@ void cPtr_mapDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_mapDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_mapDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_mapDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_mapDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
+    mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
+    mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
+    mProperty_mInsertOrReplaceDeclarationListAST.printNonNullClassInstanceProperties ("mInsertOrReplaceDeclarationListAST") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8316,36 +8929,6 @@ GGS_mapDeclarationAST GGS_mapDeclarationAST::extractObject (const GGS_object & i
 
 //--------------------------------------------------------------------------------------------------
 // @mapTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mElementTypeEntry (),
-mProperty_mMapTypeName (),
-mProperty_mTypedAttributeList (),
-mProperty_mInsertMethodList (),
-mProperty_mSearchMethodList (),
-mProperty_mRemoveMethodList (),
-mProperty_mHasInsertOrReplaceModifier (),
-mProperty_mOptionalElementTypeEntry () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_mapTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
-    mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
-    mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
-    mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
-    mProperty_mHasInsertOrReplaceModifier.printNonNullClassInstanceProperties ("mHasInsertOrReplaceModifier") ;
-    mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_mapTypeForGeneration::objectCompare (const GGS_mapTypeForGeneration & inOperand) const {
@@ -8432,10 +9015,11 @@ GGS_mapTypeForGeneration GGS_mapTypeForGeneration::class_func_new (const GGS_uni
                                                                    const GGS_mapSearchMethodListAST & in_mSearchMethodList,
                                                                    const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
                                                                    const GGS_bool & in_mHasInsertOrReplaceModifier,
-                                                                   const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                                                   const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GGS_mapTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertMethodList, in_mSearchMethodList, in_mRemoveMethodList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8539,6 +9123,20 @@ GGS_unifiedTypeMapEntry GGS_mapTypeForGeneration::readProperty_mOptionalElementT
 //Pointer class for @mapTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mElementTypeEntry (),
+mProperty_mMapTypeName (),
+mProperty_mTypedAttributeList (),
+mProperty_mInsertMethodList (),
+mProperty_mSearchMethodList (),
+mProperty_mRemoveMethodList (),
+mProperty_mHasInsertOrReplaceModifier (),
+mProperty_mOptionalElementTypeEntry () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                       const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                       const GGS_lstring & in_mMapTypeName,
@@ -8547,9 +9145,10 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GGS_unifiedTypeMapEn
                                                       const GGS_mapSearchMethodListAST & in_mSearchMethodList,
                                                       const GGS_mapRemoveMethodListAST & in_mRemoveMethodList,
                                                       const GGS_bool & in_mHasInsertOrReplaceModifier,
-                                                      const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry
+                                                      const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mElementTypeEntry (),
 mProperty_mMapTypeName (),
 mProperty_mTypedAttributeList (),
@@ -8600,12 +9199,35 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_mapTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_mapTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mElementTypeEntry.printNonNullClassInstanceProperties ("mElementTypeEntry") ;
+    mProperty_mMapTypeName.printNonNullClassInstanceProperties ("mMapTypeName") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mInsertMethodList.printNonNullClassInstanceProperties ("mInsertMethodList") ;
+    mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
+    mProperty_mRemoveMethodList.printNonNullClassInstanceProperties ("mRemoveMethodList") ;
+    mProperty_mHasInsertOrReplaceModifier.printNonNullClassInstanceProperties ("mHasInsertOrReplaceModifier") ;
+    mProperty_mOptionalElementTypeEntry.printNonNullClassInstanceProperties ("mOptionalElementTypeEntry") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8764,26 +9386,6 @@ GGS_mapTypeForGeneration_2E_weak GGS_mapTypeForGeneration_2E_weak::extractObject
 // @optionalTypeDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_optionalTypeDeclarationAST::cPtr_optionalTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_optionalTypeName (),
-mProperty_unwrappedTypeName (),
-mProperty_isUsefull () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_optionalTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_optionalTypeName.printNonNullClassInstanceProperties ("optionalTypeName") ;
-    mProperty_unwrappedTypeName.printNonNullClassInstanceProperties ("unwrappedTypeName") ;
-    mProperty_isUsefull.printNonNullClassInstanceProperties ("isUsefull") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_optionalTypeDeclarationAST::objectCompare (const GGS_optionalTypeDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8848,10 +9450,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                                const GGS_lstring & in_optionalTypeName,
                                                                                const GGS_lstring & in_unwrappedTypeName,
-                                                                               const GGS_bool & in_isUsefull
+                                                                               const GGS_bool & in_isUsefull,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_optionalTypeDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_optionalTypeDeclarationAST (in_isPredefined, in_optionalTypeName, in_unwrappedTypeName, in_isUsefull COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_optionalTypeDeclarationAST (in_isPredefined, in_optionalTypeName, in_unwrappedTypeName, in_isUsefull,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8895,12 +9498,22 @@ GGS_bool GGS_optionalTypeDeclarationAST::readProperty_isUsefull (void) const {
 //Pointer class for @optionalTypeDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_optionalTypeDeclarationAST::cPtr_optionalTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_optionalTypeName (),
+mProperty_unwrappedTypeName (),
+mProperty_isUsefull () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_optionalTypeDeclarationAST::cPtr_optionalTypeDeclarationAST (const GGS_bool & in_isPredefined,
                                                                   const GGS_lstring & in_optionalTypeName,
                                                                   const GGS_lstring & in_unwrappedTypeName,
-                                                                  const GGS_bool & in_isUsefull
+                                                                  const GGS_bool & in_isUsefull,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_optionalTypeName (),
 mProperty_unwrappedTypeName (),
 mProperty_isUsefull () {
@@ -8931,12 +9544,30 @@ void cPtr_optionalTypeDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_optionalTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_optionalTypeDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionalTypeDeclarationAST (mProperty_isPredefined, mProperty_optionalTypeName, mProperty_unwrappedTypeName, mProperty_isUsefull COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionalTypeDeclarationAST (mProperty_isPredefined, mProperty_optionalTypeName, mProperty_unwrappedTypeName, mProperty_isUsefull, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_optionalTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_optionalTypeDeclarationAST (mProperty_isPredefined, mProperty_optionalTypeName, mProperty_unwrappedTypeName, mProperty_isUsefull, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_optionalTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_optionalTypeName.printNonNullClassInstanceProperties ("optionalTypeName") ;
+    mProperty_unwrappedTypeName.printNonNullClassInstanceProperties ("unwrappedTypeName") ;
+    mProperty_isUsefull.printNonNullClassInstanceProperties ("isUsefull") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8982,24 +9613,6 @@ GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 // @optionalTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_optionalTypeForGeneration::cPtr_optionalTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_unwrappedType (),
-mProperty_weakType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_optionalTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_unwrappedType.printNonNullClassInstanceProperties ("unwrappedType") ;
-    mProperty_weakType.printNonNullClassInstanceProperties ("weakType") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_optionalTypeForGeneration::objectCompare (const GGS_optionalTypeForGeneration & inOperand) const {
@@ -9062,10 +9675,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 
 GGS_optionalTypeForGeneration GGS_optionalTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                              const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                                                             const GGS_unifiedTypeMapEntry & in_weakType
+                                                                             const GGS_unifiedTypeMapEntry & in_weakType,
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   GGS_optionalTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_optionalTypeForGeneration (in_mSelfTypeEntry, in_unwrappedType, in_weakType COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_optionalTypeForGeneration (in_mSelfTypeEntry, in_unwrappedType, in_weakType,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9097,11 +9711,20 @@ GGS_unifiedTypeMapEntry GGS_optionalTypeForGeneration::readProperty_weakType (vo
 //Pointer class for @optionalTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_optionalTypeForGeneration::cPtr_optionalTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_unwrappedType (),
+mProperty_weakType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_optionalTypeForGeneration::cPtr_optionalTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                 const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                                                const GGS_unifiedTypeMapEntry & in_weakType
+                                                                const GGS_unifiedTypeMapEntry & in_weakType,
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_unwrappedType (),
 mProperty_weakType () {
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -9128,12 +9751,29 @@ void cPtr_optionalTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_optionalTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_optionalTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionalTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_unwrappedType, mProperty_weakType COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionalTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_unwrappedType, mProperty_weakType, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_optionalTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_optionalTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_unwrappedType, mProperty_weakType, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_optionalTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_unwrappedType.printNonNullClassInstanceProperties ("unwrappedType") ;
+    mProperty_weakType.printNonNullClassInstanceProperties ("weakType") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9292,28 +9932,6 @@ GGS_optionalTypeForGeneration_2E_weak GGS_optionalTypeForGeneration_2E_weak::ext
 // @sortedListDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_sortedListDeclarationAST::cPtr_sortedListDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mSortedListTypeName (),
-mProperty_mPropertyList (),
-mProperty_mSortDescriptorList (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_sortedListDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mSortedListTypeName.printNonNullClassInstanceProperties ("mSortedListTypeName") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_mSortDescriptorList.printNonNullClassInstanceProperties ("mSortDescriptorList") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_sortedListDeclarationAST::objectCompare (const GGS_sortedListDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9382,10 +10000,11 @@ GGS_sortedListDeclarationAST GGS_sortedListDeclarationAST::class_func_new (const
                                                                            const GGS_lstring & in_mSortedListTypeName,
                                                                            const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                                            const GGS_sortedListSortDescriptorListAST & in_mSortDescriptorList,
-                                                                           const GGS_bool & in_equatable
+                                                                           const GGS_bool & in_equatable,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_sortedListDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_sortedListDeclarationAST (in_isPredefined, in_mSortedListTypeName, in_mPropertyList, in_mSortDescriptorList, in_equatable COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_sortedListDeclarationAST (in_isPredefined, in_mSortedListTypeName, in_mPropertyList, in_mSortDescriptorList, in_equatable,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9441,13 +10060,24 @@ GGS_bool GGS_sortedListDeclarationAST::readProperty_equatable (void) const {
 //Pointer class for @sortedListDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_sortedListDeclarationAST::cPtr_sortedListDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mSortedListTypeName (),
+mProperty_mPropertyList (),
+mProperty_mSortDescriptorList (),
+mProperty_equatable () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_sortedListDeclarationAST::cPtr_sortedListDeclarationAST (const GGS_bool & in_isPredefined,
                                                               const GGS_lstring & in_mSortedListTypeName,
                                                               const GGS_propertyInCollectionListAST & in_mPropertyList,
                                                               const GGS_sortedListSortDescriptorListAST & in_mSortDescriptorList,
-                                                              const GGS_bool & in_equatable
+                                                              const GGS_bool & in_equatable,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mSortedListTypeName (),
 mProperty_mPropertyList (),
 mProperty_mSortDescriptorList (),
@@ -9482,12 +10112,31 @@ void cPtr_sortedListDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_sortedListDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_sortedListDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_sortedListDeclarationAST (mProperty_isPredefined, mProperty_mSortedListTypeName, mProperty_mPropertyList, mProperty_mSortDescriptorList, mProperty_equatable COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sortedListDeclarationAST (mProperty_isPredefined, mProperty_mSortedListTypeName, mProperty_mPropertyList, mProperty_mSortDescriptorList, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_sortedListDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_sortedListDeclarationAST (mProperty_isPredefined, mProperty_mSortedListTypeName, mProperty_mPropertyList, mProperty_mSortDescriptorList, mProperty_equatable, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_sortedListDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mSortedListTypeName.printNonNullClassInstanceProperties ("mSortedListTypeName") ;
+    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
+    mProperty_mSortDescriptorList.printNonNullClassInstanceProperties ("mSortDescriptorList") ;
+    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9533,26 +10182,6 @@ GGS_sortedListDeclarationAST GGS_sortedListDeclarationAST::extractObject (const 
 
 //--------------------------------------------------------------------------------------------------
 // @sortedListTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_sortedListTypeForGeneration::cPtr_sortedListTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mListElementTypeIndex (),
-mProperty_mTypedAttributeList (),
-mProperty_mSortDescriptorList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_sortedListTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mListElementTypeIndex.printNonNullClassInstanceProperties ("mListElementTypeIndex") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mSortDescriptorList.printNonNullClassInstanceProperties ("mSortDescriptorList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_sortedListTypeForGeneration::objectCompare (const GGS_sortedListTypeForGeneration & inOperand) const {
@@ -9619,10 +10248,11 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 GGS_sortedListTypeForGeneration GGS_sortedListTypeForGeneration::class_func_new (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                  const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
                                                                                  const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                 const GGS_sortDescriptorListForGeneration & in_mSortDescriptorList
+                                                                                 const GGS_sortDescriptorListForGeneration & in_mSortDescriptorList,
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_sortedListTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_sortedListTypeForGeneration (in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList, in_mSortDescriptorList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_sortedListTypeForGeneration (in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList, in_mSortDescriptorList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9666,12 +10296,22 @@ GGS_sortDescriptorListForGeneration GGS_sortedListTypeForGeneration::readPropert
 //Pointer class for @sortedListTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_sortedListTypeForGeneration::cPtr_sortedListTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mListElementTypeIndex (),
+mProperty_mTypedAttributeList (),
+mProperty_mSortDescriptorList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_sortedListTypeForGeneration::cPtr_sortedListTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                     const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
                                                                     const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                    const GGS_sortDescriptorListForGeneration & in_mSortDescriptorList
+                                                                    const GGS_sortDescriptorListForGeneration & in_mSortDescriptorList,
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mListElementTypeIndex (),
 mProperty_mTypedAttributeList (),
 mProperty_mSortDescriptorList () {
@@ -9702,12 +10342,30 @@ void cPtr_sortedListTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_sortedListTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_sortedListTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_sortedListTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList, mProperty_mSortDescriptorList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sortedListTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList, mProperty_mSortDescriptorList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_sortedListTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_sortedListTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList, mProperty_mSortDescriptorList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_sortedListTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mListElementTypeIndex.printNonNullClassInstanceProperties ("mListElementTypeIndex") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSortDescriptorList.printNonNullClassInstanceProperties ("mSortDescriptorList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9866,30 +10524,6 @@ GGS_sortedListTypeForGeneration_2E_weak GGS_sortedListTypeForGeneration_2E_weak:
 // @structDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_structDeclarationAST::cPtr_structDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_structTypeName (),
-mProperty_mStructurePropertyListAST (),
-mProperty_enumeratedElementTypeName (),
-mProperty_comparison (),
-mProperty_isUsefullStruct () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_structDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_structTypeName.printNonNullClassInstanceProperties ("structTypeName") ;
-    mProperty_mStructurePropertyListAST.printNonNullClassInstanceProperties ("mStructurePropertyListAST") ;
-    mProperty_enumeratedElementTypeName.printNonNullClassInstanceProperties ("enumeratedElementTypeName") ;
-    mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
-    mProperty_isUsefullStruct.printNonNullClassInstanceProperties ("isUsefullStruct") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_structDeclarationAST::objectCompare (const GGS_structDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9962,10 +10596,11 @@ GGS_structDeclarationAST GGS_structDeclarationAST::class_func_new (const GGS_boo
                                                                    const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                                                    const GGS_string & in_enumeratedElementTypeName,
                                                                    const GGS_structComparison & in_comparison,
-                                                                   const GGS_bool & in_isUsefullStruct
+                                                                   const GGS_bool & in_isUsefullStruct,
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GGS_structDeclarationAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_structDeclarationAST (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefullStruct COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_structDeclarationAST (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefullStruct,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10033,14 +10668,26 @@ GGS_bool GGS_structDeclarationAST::readProperty_isUsefullStruct (void) const {
 //Pointer class for @structDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_structDeclarationAST::cPtr_structDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_structTypeName (),
+mProperty_mStructurePropertyListAST (),
+mProperty_enumeratedElementTypeName (),
+mProperty_comparison (),
+mProperty_isUsefullStruct () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_structDeclarationAST::cPtr_structDeclarationAST (const GGS_bool & in_isPredefined,
                                                       const GGS_lstring & in_structTypeName,
                                                       const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
                                                       const GGS_string & in_enumeratedElementTypeName,
                                                       const GGS_structComparison & in_comparison,
-                                                      const GGS_bool & in_isUsefullStruct
+                                                      const GGS_bool & in_isUsefullStruct,
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_structTypeName (),
 mProperty_mStructurePropertyListAST (),
 mProperty_enumeratedElementTypeName (),
@@ -10079,12 +10726,32 @@ void cPtr_structDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_structDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_enumeratedElementTypeName, mProperty_comparison, mProperty_isUsefullStruct COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_enumeratedElementTypeName, mProperty_comparison, mProperty_isUsefullStruct, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_enumeratedElementTypeName, mProperty_comparison, mProperty_isUsefullStruct, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_structDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_structTypeName.printNonNullClassInstanceProperties ("structTypeName") ;
+    mProperty_mStructurePropertyListAST.printNonNullClassInstanceProperties ("mStructurePropertyListAST") ;
+    mProperty_enumeratedElementTypeName.printNonNullClassInstanceProperties ("enumeratedElementTypeName") ;
+    mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
+    mProperty_isUsefullStruct.printNonNullClassInstanceProperties ("isUsefullStruct") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10130,30 +10797,6 @@ GGS_structDeclarationAST GGS_structDeclarationAST::extractObject (const GGS_obje
 
 //--------------------------------------------------------------------------------------------------
 // @structTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mTypedPropertyList (),
-mProperty_mConstructorArgumentList (),
-mProperty_mConstructorInitializationCode (),
-mProperty_mConstructorNeedsCompilerVar (),
-mProperty_synthetizeAnInitializer () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_structTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mTypedPropertyList.printNonNullClassInstanceProperties ("mTypedPropertyList") ;
-    mProperty_mConstructorArgumentList.printNonNullClassInstanceProperties ("mConstructorArgumentList") ;
-    mProperty_mConstructorInitializationCode.printNonNullClassInstanceProperties ("mConstructorInitializationCode") ;
-    mProperty_mConstructorNeedsCompilerVar.printNonNullClassInstanceProperties ("mConstructorNeedsCompilerVar") ;
-    mProperty_synthetizeAnInitializer.printNonNullClassInstanceProperties ("synthetizeAnInitializer") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_structTypeForGeneration::objectCompare (const GGS_structTypeForGeneration & inOperand) const {
@@ -10228,10 +10871,11 @@ GGS_structTypeForGeneration GGS_structTypeForGeneration::class_func_new (const G
                                                                          const GGS_typedPropertyList & in_mConstructorArgumentList,
                                                                          const GGS_string & in_mConstructorInitializationCode,
                                                                          const GGS_bool & in_mConstructorNeedsCompilerVar,
-                                                                         const GGS_bool & in_synthetizeAnInitializer
+                                                                         const GGS_bool & in_synthetizeAnInitializer,
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GGS_structTypeForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_structTypeForGeneration (in_mSelfTypeEntry, in_mTypedPropertyList, in_mConstructorArgumentList, in_mConstructorInitializationCode, in_mConstructorNeedsCompilerVar, in_synthetizeAnInitializer COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_structTypeForGeneration (in_mSelfTypeEntry, in_mTypedPropertyList, in_mConstructorArgumentList, in_mConstructorInitializationCode, in_mConstructorNeedsCompilerVar, in_synthetizeAnInitializer,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10299,14 +10943,26 @@ GGS_bool GGS_structTypeForGeneration::readProperty_synthetizeAnInitializer (void
 //Pointer class for @structTypeForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mTypedPropertyList (),
+mProperty_mConstructorArgumentList (),
+mProperty_mConstructorInitializationCode (),
+mProperty_mConstructorNeedsCompilerVar (),
+mProperty_synthetizeAnInitializer () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                             const GGS_typedPropertyList & in_mTypedPropertyList,
                                                             const GGS_typedPropertyList & in_mConstructorArgumentList,
                                                             const GGS_string & in_mConstructorInitializationCode,
                                                             const GGS_bool & in_mConstructorNeedsCompilerVar,
-                                                            const GGS_bool & in_synthetizeAnInitializer
+                                                            const GGS_bool & in_synthetizeAnInitializer,
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_mSelfTypeEntry COMMA_THERE),
+cPtr_semanticTypeForGeneration (in_mSelfTypeEntry, inCompiler COMMA_THERE),
 mProperty_mTypedPropertyList (),
 mProperty_mConstructorArgumentList (),
 mProperty_mConstructorInitializationCode (),
@@ -10345,12 +11001,32 @@ void cPtr_structTypeForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_structTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_structTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mTypedPropertyList, mProperty_mConstructorArgumentList, mProperty_mConstructorInitializationCode, mProperty_mConstructorNeedsCompilerVar, mProperty_synthetizeAnInitializer COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mTypedPropertyList, mProperty_mConstructorArgumentList, mProperty_mConstructorInitializationCode, mProperty_mConstructorNeedsCompilerVar, mProperty_synthetizeAnInitializer, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_structTypeForGeneration (mProperty_mSelfTypeEntry, mProperty_mTypedPropertyList, mProperty_mConstructorArgumentList, mProperty_mConstructorInitializationCode, mProperty_mConstructorNeedsCompilerVar, mProperty_synthetizeAnInitializer, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_structTypeForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mTypedPropertyList.printNonNullClassInstanceProperties ("mTypedPropertyList") ;
+    mProperty_mConstructorArgumentList.printNonNullClassInstanceProperties ("mConstructorArgumentList") ;
+    mProperty_mConstructorInitializationCode.printNonNullClassInstanceProperties ("mConstructorInitializationCode") ;
+    mProperty_mConstructorNeedsCompilerVar.printNonNullClassInstanceProperties ("mConstructorNeedsCompilerVar") ;
+    mProperty_synthetizeAnInitializer.printNonNullClassInstanceProperties ("synthetizeAnInitializer") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10509,28 +11185,6 @@ GGS_structTypeForGeneration_2E_weak GGS_structTypeForGeneration_2E_weak::extract
 // @abstractExtensionGetterAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractExtensionGetterAST::cPtr_abstractExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mAbstractExtensionGetterName (),
-mProperty_mAbstractExtensionGetterFormalInputParameterList (),
-mProperty_mAbstractExtensionGetterReturnedTypeName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterName") ;
-    mProperty_mAbstractExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionGetterFormalInputParameterList") ;
-    mProperty_mAbstractExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterReturnedTypeName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_abstractExtensionGetterAST::objectCompare (const GGS_abstractExtensionGetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10599,10 +11253,11 @@ GGS_abstractExtensionGetterAST GGS_abstractExtensionGetterAST::class_func_new (c
                                                                                const GGS_lstring & in_mTypeName,
                                                                                const GGS_lstring & in_mAbstractExtensionGetterName,
                                                                                const GGS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                               const GGS_lstring & in_mAbstractExtensionGetterReturnedTypeName
+                                                                               const GGS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_abstractExtensionGetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionGetterAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionGetterName, in_mAbstractExtensionGetterFormalInputParameterList, in_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionGetterAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionGetterName, in_mAbstractExtensionGetterFormalInputParameterList, in_mAbstractExtensionGetterReturnedTypeName,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10658,13 +11313,24 @@ GGS_lstring GGS_abstractExtensionGetterAST::readProperty_mAbstractExtensionGette
 //Pointer class for @abstractExtensionGetterAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractExtensionGetterAST::cPtr_abstractExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mAbstractExtensionGetterName (),
+mProperty_mAbstractExtensionGetterFormalInputParameterList (),
+mProperty_mAbstractExtensionGetterReturnedTypeName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_abstractExtensionGetterAST::cPtr_abstractExtensionGetterAST (const GGS_bool & in_isPredefined,
                                                                   const GGS_lstring & in_mTypeName,
                                                                   const GGS_lstring & in_mAbstractExtensionGetterName,
                                                                   const GGS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
-                                                                  const GGS_lstring & in_mAbstractExtensionGetterReturnedTypeName
+                                                                  const GGS_lstring & in_mAbstractExtensionGetterReturnedTypeName,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mTypeName (),
 mProperty_mAbstractExtensionGetterName (),
 mProperty_mAbstractExtensionGetterFormalInputParameterList (),
@@ -10699,12 +11365,31 @@ void cPtr_abstractExtensionGetterAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_abstractExtensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionGetterName, mProperty_mAbstractExtensionGetterFormalInputParameterList, mProperty_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionGetterName, mProperty_mAbstractExtensionGetterFormalInputParameterList, mProperty_mAbstractExtensionGetterReturnedTypeName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_abstractExtensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionGetterName, mProperty_mAbstractExtensionGetterFormalInputParameterList, mProperty_mAbstractExtensionGetterReturnedTypeName, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractExtensionGetterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterName") ;
+    mProperty_mAbstractExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionGetterFormalInputParameterList") ;
+    mProperty_mAbstractExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterReturnedTypeName") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10750,28 +11435,6 @@ GGS_abstractExtensionGetterAST GGS_abstractExtensionGetterAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 // @abstractExtensionGetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractExtensionGetterForGeneration::cPtr_abstractExtensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mAbstractExtensionGetterName (),
-mProperty_mResultType (),
-mProperty_mAbstractExtensionGetterFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractExtensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterName") ;
-    mProperty_mResultType.printNonNullClassInstanceProperties ("mResultType") ;
-    mProperty_mAbstractExtensionGetterFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionGetterFormalParameterList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_abstractExtensionGetterForGeneration::objectCompare (const GGS_abstractExtensionGetterForGeneration & inOperand) const {
@@ -10846,10 +11509,11 @@ GGS_abstractExtensionGetterForGeneration GGS_abstractExtensionGetterForGeneratio
                                                                                                    const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                                    const GGS_string & in_mAbstractExtensionGetterName,
                                                                                                    const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                   const GGS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList
+                                                                                                   const GGS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList,
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) {
   GGS_abstractExtensionGetterForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionGetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mAbstractExtensionGetterName, in_mResultType, in_mAbstractExtensionGetterFormalParameterList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionGetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mAbstractExtensionGetterName, in_mResultType, in_mAbstractExtensionGetterFormalParameterList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10905,14 +11569,25 @@ GGS_formalInputParameterListForGeneration GGS_abstractExtensionGetterForGenerati
 //Pointer class for @abstractExtensionGetterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractExtensionGetterForGeneration::cPtr_abstractExtensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mAbstractExtensionGetterName (),
+mProperty_mResultType (),
+mProperty_mAbstractExtensionGetterFormalParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_abstractExtensionGetterForGeneration::cPtr_abstractExtensionGetterForGeneration (const GGS_bool & in_generateHeader,
                                                                                       const GGS_string & in_implementationCppFileName,
                                                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                       const GGS_string & in_mAbstractExtensionGetterName,
                                                                                       const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                      const GGS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList
+                                                                                      const GGS_formalInputParameterListForGeneration & in_mAbstractExtensionGetterFormalParameterList,
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
 mProperty_mReceiverType (),
 mProperty_mAbstractExtensionGetterName (),
 mProperty_mResultType (),
@@ -10950,12 +11625,31 @@ void cPtr_abstractExtensionGetterForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_abstractExtensionGetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionGetterName, mProperty_mResultType, mProperty_mAbstractExtensionGetterFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionGetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionGetterName, mProperty_mResultType, mProperty_mAbstractExtensionGetterFormalParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_abstractExtensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_abstractExtensionGetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionGetterName, mProperty_mResultType, mProperty_mAbstractExtensionGetterFormalParameterList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractExtensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mAbstractExtensionGetterName.printNonNullClassInstanceProperties ("mAbstractExtensionGetterName") ;
+    mProperty_mResultType.printNonNullClassInstanceProperties ("mResultType") ;
+    mProperty_mAbstractExtensionGetterFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionGetterFormalParameterList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11114,26 +11808,6 @@ GGS_abstractExtensionGetterForGeneration_2E_weak GGS_abstractExtensionGetterForG
 // @abstractExtensionMethodAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractExtensionMethodAST::cPtr_abstractExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mAbstractExtensionMethodName (),
-mProperty_mAbstractExtensionMethodFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mAbstractExtensionMethodName.printNonNullClassInstanceProperties ("mAbstractExtensionMethodName") ;
-    mProperty_mAbstractExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionMethodFormalParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_abstractExtensionMethodAST::objectCompare (const GGS_abstractExtensionMethodAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11198,10 +11872,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_abstractExtensionMethodAST GGS_abstractExtensionMethodAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                                const GGS_lstring & in_mTypeName,
                                                                                const GGS_lstring & in_mAbstractExtensionMethodName,
-                                                                               const GGS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList
+                                                                               const GGS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_abstractExtensionMethodAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionMethodAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionMethodName, in_mAbstractExtensionMethodFormalParameterList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionMethodAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionMethodName, in_mAbstractExtensionMethodFormalParameterList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11245,12 +11920,22 @@ GGS_formalParameterListAST GGS_abstractExtensionMethodAST::readProperty_mAbstrac
 //Pointer class for @abstractExtensionMethodAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractExtensionMethodAST::cPtr_abstractExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mAbstractExtensionMethodName (),
+mProperty_mAbstractExtensionMethodFormalParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_abstractExtensionMethodAST::cPtr_abstractExtensionMethodAST (const GGS_bool & in_isPredefined,
                                                                   const GGS_lstring & in_mTypeName,
                                                                   const GGS_lstring & in_mAbstractExtensionMethodName,
-                                                                  const GGS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList
+                                                                  const GGS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mTypeName (),
 mProperty_mAbstractExtensionMethodName (),
 mProperty_mAbstractExtensionMethodFormalParameterList () {
@@ -11281,12 +11966,30 @@ void cPtr_abstractExtensionMethodAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_abstractExtensionMethodAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionMethodName, mProperty_mAbstractExtensionMethodFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionMethodAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionMethodName, mProperty_mAbstractExtensionMethodFormalParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_abstractExtensionMethodAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionMethodName, mProperty_mAbstractExtensionMethodFormalParameterList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractExtensionMethodAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mAbstractExtensionMethodName.printNonNullClassInstanceProperties ("mAbstractExtensionMethodName") ;
+    mProperty_mAbstractExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionMethodFormalParameterList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11332,26 +12035,6 @@ GGS_abstractExtensionMethodAST GGS_abstractExtensionMethodAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 // @abstractExtensionMethodForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractExtensionMethodForGeneration::cPtr_abstractExtensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mAbstractExtensionMethodName (),
-mProperty_mAbstractExtensionMethodFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractExtensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mAbstractExtensionMethodName.printNonNullClassInstanceProperties ("mAbstractExtensionMethodName") ;
-    mProperty_mAbstractExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionMethodFormalParameterList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_abstractExtensionMethodForGeneration::objectCompare (const GGS_abstractExtensionMethodForGeneration & inOperand) const {
@@ -11422,10 +12105,11 @@ GGS_abstractExtensionMethodForGeneration GGS_abstractExtensionMethodForGeneratio
                                                                                                    const GGS_string & in_implementationCppFileName,
                                                                                                    const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                                    const GGS_string & in_mAbstractExtensionMethodName,
-                                                                                                   const GGS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList
+                                                                                                   const GGS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList,
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) {
   GGS_abstractExtensionMethodForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionMethodForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mAbstractExtensionMethodName, in_mAbstractExtensionMethodFormalParameterList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionMethodForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mAbstractExtensionMethodName, in_mAbstractExtensionMethodFormalParameterList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11469,13 +12153,23 @@ GGS_formalParameterListForGeneration GGS_abstractExtensionMethodForGeneration::r
 //Pointer class for @abstractExtensionMethodForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractExtensionMethodForGeneration::cPtr_abstractExtensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mAbstractExtensionMethodName (),
+mProperty_mAbstractExtensionMethodFormalParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_abstractExtensionMethodForGeneration::cPtr_abstractExtensionMethodForGeneration (const GGS_bool & in_generateHeader,
                                                                                       const GGS_string & in_implementationCppFileName,
                                                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                       const GGS_string & in_mAbstractExtensionMethodName,
-                                                                                      const GGS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList
+                                                                                      const GGS_formalParameterListForGeneration & in_mAbstractExtensionMethodFormalParameterList,
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
 mProperty_mReceiverType (),
 mProperty_mAbstractExtensionMethodName (),
 mProperty_mAbstractExtensionMethodFormalParameterList () {
@@ -11509,12 +12203,30 @@ void cPtr_abstractExtensionMethodForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_abstractExtensionMethodForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionMethodName, mProperty_mAbstractExtensionMethodFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionMethodForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionMethodName, mProperty_mAbstractExtensionMethodFormalParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_abstractExtensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_abstractExtensionMethodForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionMethodName, mProperty_mAbstractExtensionMethodFormalParameterList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractExtensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mAbstractExtensionMethodName.printNonNullClassInstanceProperties ("mAbstractExtensionMethodName") ;
+    mProperty_mAbstractExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionMethodFormalParameterList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11673,26 +12385,6 @@ GGS_abstractExtensionMethodForGeneration_2E_weak GGS_abstractExtensionMethodForG
 // @abstractExtensionSetterAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_abstractExtensionSetterAST::cPtr_abstractExtensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mAbstractExtensionSetterName (),
-mProperty_mAbstractExtensionSetterFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mAbstractExtensionSetterName.printNonNullClassInstanceProperties ("mAbstractExtensionSetterName") ;
-    mProperty_mAbstractExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionSetterFormalParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_abstractExtensionSetterAST::objectCompare (const GGS_abstractExtensionSetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11757,10 +12449,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 GGS_abstractExtensionSetterAST GGS_abstractExtensionSetterAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                                const GGS_lstring & in_mTypeName,
                                                                                const GGS_lstring & in_mAbstractExtensionSetterName,
-                                                                               const GGS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList
+                                                                               const GGS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_abstractExtensionSetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionSetterName, in_mAbstractExtensionSetterFormalParameterList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterAST (in_isPredefined, in_mTypeName, in_mAbstractExtensionSetterName, in_mAbstractExtensionSetterFormalParameterList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11804,12 +12497,22 @@ GGS_formalParameterListAST GGS_abstractExtensionSetterAST::readProperty_mAbstrac
 //Pointer class for @abstractExtensionSetterAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractExtensionSetterAST::cPtr_abstractExtensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mAbstractExtensionSetterName (),
+mProperty_mAbstractExtensionSetterFormalParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_abstractExtensionSetterAST::cPtr_abstractExtensionSetterAST (const GGS_bool & in_isPredefined,
                                                                   const GGS_lstring & in_mTypeName,
                                                                   const GGS_lstring & in_mAbstractExtensionSetterName,
-                                                                  const GGS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList
+                                                                  const GGS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mTypeName (),
 mProperty_mAbstractExtensionSetterName (),
 mProperty_mAbstractExtensionSetterFormalParameterList () {
@@ -11840,12 +12543,30 @@ void cPtr_abstractExtensionSetterAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_abstractExtensionSetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionSetterName, mProperty_mAbstractExtensionSetterFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionSetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionSetterName, mProperty_mAbstractExtensionSetterFormalParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_abstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_abstractExtensionSetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionSetterName, mProperty_mAbstractExtensionSetterFormalParameterList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractExtensionSetterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mAbstractExtensionSetterName.printNonNullClassInstanceProperties ("mAbstractExtensionSetterName") ;
+    mProperty_mAbstractExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionSetterFormalParameterList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11891,26 +12612,6 @@ GGS_abstractExtensionSetterAST GGS_abstractExtensionSetterAST::extractObject (co
 
 //--------------------------------------------------------------------------------------------------
 // @abstractExtensionSetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_abstractExtensionSetterForGeneration::cPtr_abstractExtensionSetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mAbstractExtensionSetterName (),
-mProperty_mAbstractExtensionSetterFormalParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_abstractExtensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mAbstractExtensionSetterName.printNonNullClassInstanceProperties ("mAbstractExtensionSetterName") ;
-    mProperty_mAbstractExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionSetterFormalParameterList") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_abstractExtensionSetterForGeneration::objectCompare (const GGS_abstractExtensionSetterForGeneration & inOperand) const {
@@ -11981,10 +12682,11 @@ GGS_abstractExtensionSetterForGeneration GGS_abstractExtensionSetterForGeneratio
                                                                                                    const GGS_string & in_implementationCppFileName,
                                                                                                    const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                                    const GGS_string & in_mAbstractExtensionSetterName,
-                                                                                                   const GGS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList
+                                                                                                   const GGS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList,
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) {
   GGS_abstractExtensionSetterForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mAbstractExtensionSetterName, in_mAbstractExtensionSetterFormalParameterList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mAbstractExtensionSetterName, in_mAbstractExtensionSetterFormalParameterList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12028,13 +12730,23 @@ GGS_formalParameterListForGeneration GGS_abstractExtensionSetterForGeneration::r
 //Pointer class for @abstractExtensionSetterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_abstractExtensionSetterForGeneration::cPtr_abstractExtensionSetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mAbstractExtensionSetterName (),
+mProperty_mAbstractExtensionSetterFormalParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_abstractExtensionSetterForGeneration::cPtr_abstractExtensionSetterForGeneration (const GGS_bool & in_generateHeader,
                                                                                       const GGS_string & in_implementationCppFileName,
                                                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                       const GGS_string & in_mAbstractExtensionSetterName,
-                                                                                      const GGS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList
+                                                                                      const GGS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList,
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
 mProperty_mReceiverType (),
 mProperty_mAbstractExtensionSetterName (),
 mProperty_mAbstractExtensionSetterFormalParameterList () {
@@ -12068,12 +12780,30 @@ void cPtr_abstractExtensionSetterForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_abstractExtensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionSetterName, mProperty_mAbstractExtensionSetterFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionSetterName, mProperty_mAbstractExtensionSetterFormalParameterList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_abstractExtensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mAbstractExtensionSetterName, mProperty_mAbstractExtensionSetterFormalParameterList, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractExtensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mAbstractExtensionSetterName.printNonNullClassInstanceProperties ("mAbstractExtensionSetterName") ;
+    mProperty_mAbstractExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mAbstractExtensionSetterFormalParameterList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12232,24 +12962,6 @@ GGS_abstractExtensionSetterForGeneration_2E_weak GGS_abstractExtensionSetterForG
 // @equatableExtensionAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_equatableExtensionAST::cPtr_equatableExtensionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExtension () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_equatableExtensionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExtension.printNonNullClassInstanceProperties ("mExtension") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_equatableExtensionAST::objectCompare (const GGS_equatableExtensionAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12310,10 +13022,11 @@ GGS_semanticDeclarationAST (inSourcePtr) {
 
 GGS_equatableExtensionAST GGS_equatableExtensionAST::class_func_new (const GGS_bool & in_isPredefined,
                                                                      const GGS_lstring & in_mTypeName,
-                                                                     const GGS_equatableComparableExtension & in_mExtension
+                                                                     const GGS_equatableComparableExtension & in_mExtension,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_equatableExtensionAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_equatableExtensionAST (in_isPredefined, in_mTypeName, in_mExtension COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_equatableExtensionAST (in_isPredefined, in_mTypeName, in_mExtension,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12345,11 +13058,20 @@ GGS_equatableComparableExtension GGS_equatableExtensionAST::readProperty_mExtens
 //Pointer class for @equatableExtensionAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_equatableExtensionAST::cPtr_equatableExtensionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExtension () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_equatableExtensionAST::cPtr_equatableExtensionAST (const GGS_bool & in_isPredefined,
                                                         const GGS_lstring & in_mTypeName,
-                                                        const GGS_equatableComparableExtension & in_mExtension
+                                                        const GGS_equatableComparableExtension & in_mExtension,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_mTypeName (),
 mProperty_mExtension () {
   mProperty_isPredefined = in_isPredefined ;
@@ -12376,12 +13098,29 @@ void cPtr_equatableExtensionAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_equatableExtensionAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_equatableExtensionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_equatableExtensionAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtension COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_equatableExtensionAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtension, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_equatableExtensionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_equatableExtensionAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtension, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_equatableExtensionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExtension.printNonNullClassInstanceProperties ("mExtension") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12427,36 +13166,6 @@ GGS_equatableExtensionAST GGS_equatableExtensionAST::extractObject (const GGS_ob
 
 //--------------------------------------------------------------------------------------------------
 // @extensionGetterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterAST::cPtr_extensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
-mProperty_mTypeName (),
-mProperty_mExtensionGetterName (),
-mProperty_mExtensionGetterFormalInputParameterList (),
-mProperty_mExtensionGetterReturnedTypeName (),
-mProperty_mExtensionGetterReturnedVariableName (),
-mProperty_mExtensionGetterInstructionList (),
-mProperty_mEndOfReaderLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionGetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
-    mProperty_mExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalInputParameterList") ;
-    mProperty_mExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedTypeName") ;
-    mProperty_mExtensionGetterReturnedVariableName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedVariableName") ;
-    mProperty_mExtensionGetterInstructionList.printNonNullClassInstanceProperties ("mExtensionGetterInstructionList") ;
-    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties ("mEndOfReaderLocation") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_extensionGetterAST::objectCompare (const GGS_extensionGetterAST & inOperand) const {
@@ -12543,10 +13252,11 @@ GGS_extensionGetterAST GGS_extensionGetterAST::class_func_new (const GGS_bool & 
                                                                const GGS_lstring & in_mExtensionGetterReturnedTypeName,
                                                                const GGS_lstring & in_mExtensionGetterReturnedVariableName,
                                                                const GGS_semanticInstructionListAST & in_mExtensionGetterInstructionList,
-                                                               const GGS_location & in_mEndOfReaderLocation
+                                                               const GGS_location & in_mEndOfReaderLocation,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_extensionGetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionGetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionGetterName, in_mExtensionGetterFormalInputParameterList, in_mExtensionGetterReturnedTypeName, in_mExtensionGetterReturnedVariableName, in_mExtensionGetterInstructionList, in_mEndOfReaderLocation COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionGetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionGetterName, in_mExtensionGetterFormalInputParameterList, in_mExtensionGetterReturnedTypeName, in_mExtensionGetterReturnedVariableName, in_mExtensionGetterInstructionList, in_mEndOfReaderLocation,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12650,6 +13360,20 @@ GGS_location GGS_extensionGetterAST::readProperty_mEndOfReaderLocation (void) co
 //Pointer class for @extensionGetterAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_extensionGetterAST::cPtr_extensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_requiresSelfForAccessingProperty (),
+mProperty_mTypeName (),
+mProperty_mExtensionGetterName (),
+mProperty_mExtensionGetterFormalInputParameterList (),
+mProperty_mExtensionGetterReturnedTypeName (),
+mProperty_mExtensionGetterReturnedVariableName (),
+mProperty_mExtensionGetterInstructionList (),
+mProperty_mEndOfReaderLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GGS_bool & in_isPredefined,
                                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                                   const GGS_lstring & in_mTypeName,
@@ -12658,9 +13382,10 @@ cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GGS_bool & in_isPredefin
                                                   const GGS_lstring & in_mExtensionGetterReturnedTypeName,
                                                   const GGS_lstring & in_mExtensionGetterReturnedVariableName,
                                                   const GGS_semanticInstructionListAST & in_mExtensionGetterInstructionList,
-                                                  const GGS_location & in_mEndOfReaderLocation
+                                                  const GGS_location & in_mEndOfReaderLocation,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionGetterName (),
@@ -12711,12 +13436,35 @@ void cPtr_extensionGetterAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionGetterAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionGetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionGetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionGetterName, mProperty_mExtensionGetterFormalInputParameterList, mProperty_mExtensionGetterReturnedTypeName, mProperty_mExtensionGetterReturnedVariableName, mProperty_mExtensionGetterInstructionList, mProperty_mEndOfReaderLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionGetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionGetterName, mProperty_mExtensionGetterFormalInputParameterList, mProperty_mExtensionGetterReturnedTypeName, mProperty_mExtensionGetterReturnedVariableName, mProperty_mExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_extensionGetterAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionGetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionGetterName, mProperty_mExtensionGetterFormalInputParameterList, mProperty_mExtensionGetterReturnedTypeName, mProperty_mExtensionGetterReturnedVariableName, mProperty_mExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionGetterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
+    mProperty_mExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalInputParameterList") ;
+    mProperty_mExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedTypeName") ;
+    mProperty_mExtensionGetterReturnedVariableName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedVariableName") ;
+    mProperty_mExtensionGetterInstructionList.printNonNullClassInstanceProperties ("mExtensionGetterInstructionList") ;
+    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties ("mEndOfReaderLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12762,36 +13510,6 @@ GGS_extensionGetterAST GGS_extensionGetterAST::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @extensionGetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mExtensionGetterName (),
-mProperty_mImplementedAsFunction (),
-mProperty_mResultType (),
-mProperty_mResultVarCppName (),
-mProperty_mExtensionGetterFormalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_mSemanticInstructionListForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
-    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
-    mProperty_mResultType.printNonNullClassInstanceProperties ("mResultType") ;
-    mProperty_mResultVarCppName.printNonNullClassInstanceProperties ("mResultVarCppName") ;
-    mProperty_mExtensionGetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalParameterList") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_extensionGetterForGeneration::objectCompare (const GGS_extensionGetterForGeneration & inOperand) const {
@@ -12882,10 +13600,11 @@ GGS_extensionGetterForGeneration GGS_extensionGetterForGeneration::class_func_ne
                                                                                    const GGS_string & in_mResultVarCppName,
                                                                                    const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
                                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                   const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                                   const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_extensionGetterForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionGetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionGetterName, in_mImplementedAsFunction, in_mResultType, in_mResultVarCppName, in_mExtensionGetterFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionGetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionGetterName, in_mImplementedAsFunction, in_mResultType, in_mResultVarCppName, in_mExtensionGetterFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12989,6 +13708,20 @@ GGS_semanticInstructionListForGeneration GGS_extensionGetterForGeneration::readP
 //Pointer class for @extensionGetterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mExtensionGetterName (),
+mProperty_mImplementedAsFunction (),
+mProperty_mResultType (),
+mProperty_mResultVarCppName (),
+mProperty_mExtensionGetterFormalParameterList (),
+mProperty_mTypedAttributeList (),
+mProperty_mSemanticInstructionListForGeneration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (const GGS_bool & in_generateHeader,
                                                                       const GGS_string & in_implementationCppFileName,
                                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
@@ -12998,9 +13731,10 @@ cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (const GGS_
                                                                       const GGS_string & in_mResultVarCppName,
                                                                       const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
                                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
 mProperty_mReceiverType (),
 mProperty_mExtensionGetterName (),
 mProperty_mImplementedAsFunction (),
@@ -13054,12 +13788,35 @@ void cPtr_extensionGetterForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionGetterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionGetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionGetterName, mProperty_mImplementedAsFunction, mProperty_mResultType, mProperty_mResultVarCppName, mProperty_mExtensionGetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionGetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionGetterName, mProperty_mImplementedAsFunction, mProperty_mResultType, mProperty_mResultVarCppName, mProperty_mExtensionGetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_extensionGetterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionGetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionGetterName, mProperty_mImplementedAsFunction, mProperty_mResultType, mProperty_mResultVarCppName, mProperty_mExtensionGetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionGetterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
+    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
+    mProperty_mResultType.printNonNullClassInstanceProperties ("mResultType") ;
+    mProperty_mResultVarCppName.printNonNullClassInstanceProperties ("mResultVarCppName") ;
+    mProperty_mExtensionGetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13218,32 +13975,6 @@ GGS_extensionGetterForGeneration_2E_weak GGS_extensionGetterForGeneration_2E_wea
 // @extensionMethodAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_extensionMethodAST::cPtr_extensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
-mProperty_mTypeName (),
-mProperty_mExtensionMethodName (),
-mProperty_mExtensionMethodFormalParameterList (),
-mProperty_mExtensionMethodInstructionList (),
-mProperty_mEndOfMethodLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionMethodAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExtensionMethodName.printNonNullClassInstanceProperties ("mExtensionMethodName") ;
-    mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mExtensionMethodFormalParameterList") ;
-    mProperty_mExtensionMethodInstructionList.printNonNullClassInstanceProperties ("mExtensionMethodInstructionList") ;
-    mProperty_mEndOfMethodLocation.printNonNullClassInstanceProperties ("mEndOfMethodLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_extensionMethodAST::objectCompare (const GGS_extensionMethodAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13320,10 +14051,11 @@ GGS_extensionMethodAST GGS_extensionMethodAST::class_func_new (const GGS_bool & 
                                                                const GGS_lstring & in_mExtensionMethodName,
                                                                const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
                                                                const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
-                                                               const GGS_location & in_mEndOfMethodLocation
+                                                               const GGS_location & in_mEndOfMethodLocation,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_extensionMethodAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionMethodAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionMethodName, in_mExtensionMethodFormalParameterList, in_mExtensionMethodInstructionList, in_mEndOfMethodLocation COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionMethodAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionMethodName, in_mExtensionMethodFormalParameterList, in_mExtensionMethodInstructionList, in_mEndOfMethodLocation,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13403,15 +14135,28 @@ GGS_location GGS_extensionMethodAST::readProperty_mEndOfMethodLocation (void) co
 //Pointer class for @extensionMethodAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_extensionMethodAST::cPtr_extensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_requiresSelfForAccessingProperty (),
+mProperty_mTypeName (),
+mProperty_mExtensionMethodName (),
+mProperty_mExtensionMethodFormalParameterList (),
+mProperty_mExtensionMethodInstructionList (),
+mProperty_mEndOfMethodLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_extensionMethodAST::cPtr_extensionMethodAST (const GGS_bool & in_isPredefined,
                                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                                   const GGS_lstring & in_mTypeName,
                                                   const GGS_lstring & in_mExtensionMethodName,
                                                   const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
                                                   const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
-                                                  const GGS_location & in_mEndOfMethodLocation
+                                                  const GGS_location & in_mEndOfMethodLocation,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionMethodName (),
@@ -13454,12 +14199,33 @@ void cPtr_extensionMethodAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionMethodAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionMethodAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionMethodAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionMethodName, mProperty_mExtensionMethodFormalParameterList, mProperty_mExtensionMethodInstructionList, mProperty_mEndOfMethodLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionMethodAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionMethodName, mProperty_mExtensionMethodFormalParameterList, mProperty_mExtensionMethodInstructionList, mProperty_mEndOfMethodLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_extensionMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionMethodAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionMethodName, mProperty_mExtensionMethodFormalParameterList, mProperty_mExtensionMethodInstructionList, mProperty_mEndOfMethodLocation, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionMethodAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExtensionMethodName.printNonNullClassInstanceProperties ("mExtensionMethodName") ;
+    mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mExtensionMethodFormalParameterList") ;
+    mProperty_mExtensionMethodInstructionList.printNonNullClassInstanceProperties ("mExtensionMethodInstructionList") ;
+    mProperty_mEndOfMethodLocation.printNonNullClassInstanceProperties ("mEndOfMethodLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13505,32 +14271,6 @@ GGS_extensionMethodAST GGS_extensionMethodAST::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @extensionMethodForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionMethodForGeneration::cPtr_extensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mExtensionMethodName (),
-mProperty_mImplementedAsFunction (),
-mProperty_mExtensionMethodFormalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_mSemanticInstructionListForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mExtensionMethodName.printNonNullClassInstanceProperties ("mExtensionMethodName") ;
-    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
-    mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mExtensionMethodFormalParameterList") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_extensionMethodForGeneration::objectCompare (const GGS_extensionMethodForGeneration & inOperand) const {
@@ -13613,10 +14353,11 @@ GGS_extensionMethodForGeneration GGS_extensionMethodForGeneration::class_func_ne
                                                                                    const GGS_bool & in_mImplementedAsFunction,
                                                                                    const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
                                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                   const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                                   const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_extensionMethodForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionMethodForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionMethodName, in_mImplementedAsFunction, in_mExtensionMethodFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionMethodForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionMethodName, in_mImplementedAsFunction, in_mExtensionMethodFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13696,6 +14437,18 @@ GGS_semanticInstructionListForGeneration GGS_extensionMethodForGeneration::readP
 //Pointer class for @extensionMethodForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_extensionMethodForGeneration::cPtr_extensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mExtensionMethodName (),
+mProperty_mImplementedAsFunction (),
+mProperty_mExtensionMethodFormalParameterList (),
+mProperty_mTypedAttributeList (),
+mProperty_mSemanticInstructionListForGeneration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_extensionMethodForGeneration::cPtr_extensionMethodForGeneration (const GGS_bool & in_generateHeader,
                                                                       const GGS_string & in_implementationCppFileName,
                                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
@@ -13703,9 +14456,10 @@ cPtr_extensionMethodForGeneration::cPtr_extensionMethodForGeneration (const GGS_
                                                                       const GGS_bool & in_mImplementedAsFunction,
                                                                       const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
                                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
 mProperty_mReceiverType (),
 mProperty_mExtensionMethodName (),
 mProperty_mImplementedAsFunction (),
@@ -13751,12 +14505,33 @@ void cPtr_extensionMethodForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionMethodForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionMethodForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionMethodName, mProperty_mImplementedAsFunction, mProperty_mExtensionMethodFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionMethodForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionMethodName, mProperty_mImplementedAsFunction, mProperty_mExtensionMethodFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_extensionMethodForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionMethodForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionMethodName, mProperty_mImplementedAsFunction, mProperty_mExtensionMethodFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionMethodForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mExtensionMethodName.printNonNullClassInstanceProperties ("mExtensionMethodName") ;
+    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
+    mProperty_mExtensionMethodFormalParameterList.printNonNullClassInstanceProperties ("mExtensionMethodFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13915,32 +14690,6 @@ GGS_extensionMethodForGeneration_2E_weak GGS_extensionMethodForGeneration_2E_wea
 // @extensionSetterAST reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_extensionSetterAST::cPtr_extensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_requiresSelfForAccessingProperty (),
-mProperty_mTypeName (),
-mProperty_mExtensionSetterName (),
-mProperty_mExtensionSetterFormalParameterList (),
-mProperty_mExtensionSetterInstructionList (),
-mProperty_mEndOfSetterDeclarationLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionSetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
-    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
-    mProperty_mExtensionSetterInstructionList.printNonNullClassInstanceProperties ("mExtensionSetterInstructionList") ;
-    mProperty_mEndOfSetterDeclarationLocation.printNonNullClassInstanceProperties ("mEndOfSetterDeclarationLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_extensionSetterAST::objectCompare (const GGS_extensionSetterAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14017,10 +14766,11 @@ GGS_extensionSetterAST GGS_extensionSetterAST::class_func_new (const GGS_bool & 
                                                                const GGS_lstring & in_mExtensionSetterName,
                                                                const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
                                                                const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
-                                                               const GGS_location & in_mEndOfSetterDeclarationLocation
+                                                               const GGS_location & in_mEndOfSetterDeclarationLocation,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_extensionSetterAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionSetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionSetterName, in_mExtensionSetterFormalParameterList, in_mExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionSetterAST (in_isPredefined, in_requiresSelfForAccessingProperty, in_mTypeName, in_mExtensionSetterName, in_mExtensionSetterFormalParameterList, in_mExtensionSetterInstructionList, in_mEndOfSetterDeclarationLocation,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -14100,15 +14850,28 @@ GGS_location GGS_extensionSetterAST::readProperty_mEndOfSetterDeclarationLocatio
 //Pointer class for @extensionSetterAST class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_extensionSetterAST::cPtr_extensionSetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_requiresSelfForAccessingProperty (),
+mProperty_mTypeName (),
+mProperty_mExtensionSetterName (),
+mProperty_mExtensionSetterFormalParameterList (),
+mProperty_mExtensionSetterInstructionList (),
+mProperty_mEndOfSetterDeclarationLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_extensionSetterAST::cPtr_extensionSetterAST (const GGS_bool & in_isPredefined,
                                                   const GGS_bool & in_requiresSelfForAccessingProperty,
                                                   const GGS_lstring & in_mTypeName,
                                                   const GGS_lstring & in_mExtensionSetterName,
                                                   const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
                                                   const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
-                                                  const GGS_location & in_mEndOfSetterDeclarationLocation
+                                                  const GGS_location & in_mEndOfSetterDeclarationLocation,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_requiresSelfForAccessingProperty (),
 mProperty_mTypeName (),
 mProperty_mExtensionSetterName (),
@@ -14151,12 +14914,33 @@ void cPtr_extensionSetterAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionSetterAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionSetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionSetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionSetterName, mProperty_mExtensionSetterFormalParameterList, mProperty_mExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionSetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionSetterName, mProperty_mExtensionSetterFormalParameterList, mProperty_mExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_extensionSetterAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionSetterAST (mProperty_isPredefined, mProperty_requiresSelfForAccessingProperty, mProperty_mTypeName, mProperty_mExtensionSetterName, mProperty_mExtensionSetterFormalParameterList, mProperty_mExtensionSetterInstructionList, mProperty_mEndOfSetterDeclarationLocation, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionSetterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_requiresSelfForAccessingProperty.printNonNullClassInstanceProperties ("requiresSelfForAccessingProperty") ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
+    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
+    mProperty_mExtensionSetterInstructionList.printNonNullClassInstanceProperties ("mExtensionSetterInstructionList") ;
+    mProperty_mEndOfSetterDeclarationLocation.printNonNullClassInstanceProperties ("mEndOfSetterDeclarationLocation") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -14202,32 +14986,6 @@ GGS_extensionSetterAST GGS_extensionSetterAST::extractObject (const GGS_object &
 
 //--------------------------------------------------------------------------------------------------
 // @extensionSetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_mExtensionSetterName (),
-mProperty_mImplementedAsFunction (),
-mProperty_mExtensionSetterFormalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_mSemanticInstructionListForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
-    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
-    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
-  }
-#endif
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_extensionSetterForGeneration::objectCompare (const GGS_extensionSetterForGeneration & inOperand) const {
@@ -14310,10 +15068,11 @@ GGS_extensionSetterForGeneration GGS_extensionSetterForGeneration::class_func_ne
                                                                                    const GGS_bool & in_mImplementedAsFunction,
                                                                                    const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                   const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                                   const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_extensionSetterForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionSetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionSetterName, in_mImplementedAsFunction, in_mExtensionSetterFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_extensionSetterForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_mExtensionSetterName, in_mImplementedAsFunction, in_mExtensionSetterFormalParameterList, in_mTypedAttributeList, in_mSemanticInstructionListForGeneration,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -14393,6 +15152,18 @@ GGS_semanticInstructionListForGeneration GGS_extensionSetterForGeneration::readP
 //Pointer class for @extensionSetterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
+mProperty_mReceiverType (),
+mProperty_mExtensionSetterName (),
+mProperty_mImplementedAsFunction (),
+mProperty_mExtensionSetterFormalParameterList (),
+mProperty_mTypedAttributeList (),
+mProperty_mSemanticInstructionListForGeneration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GGS_bool & in_generateHeader,
                                                                       const GGS_string & in_implementationCppFileName,
                                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
@@ -14400,9 +15171,10 @@ cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GGS_
                                                                       const GGS_bool & in_mImplementedAsFunction,
                                                                       const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
+                                                                      const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
 mProperty_mReceiverType (),
 mProperty_mExtensionSetterName (),
 mProperty_mImplementedAsFunction (),
@@ -14448,12 +15220,33 @@ void cPtr_extensionSetterForGeneration::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionSetterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionSetterName, mProperty_mImplementedAsFunction, mProperty_mExtensionSetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionSetterName, mProperty_mImplementedAsFunction, mProperty_mExtensionSetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+/* acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_mExtensionSetterName, mProperty_mImplementedAsFunction, mProperty_mExtensionSetterFormalParameterList, mProperty_mTypedAttributeList, mProperty_mSemanticInstructionListForGeneration, COMMA_THERE)) ;
+  return ptr ;
+}
+*/
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionSetterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
+    mProperty_mExtensionSetterName.printNonNullClassInstanceProperties ("mExtensionSetterName") ;
+    mProperty_mImplementedAsFunction.printNonNullClassInstanceProperties ("mImplementedAsFunction") ;
+    mProperty_mExtensionSetterFormalParameterList.printNonNullClassInstanceProperties ("mExtensionSetterFormalParameterList") ;
+    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
+    mProperty_mSemanticInstructionListForGeneration.printNonNullClassInstanceProperties ("mSemanticInstructionListForGeneration") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -14492,745 +15285,6 @@ GGS_extensionSetterForGeneration GGS_extensionSetterForGeneration::extractObject
       result = *p ;
     }else{
       inCompiler->castError ("extensionSetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_extensionSetterForGeneration_2E_weak::objectCompare (const GGS_extensionSetterForGeneration_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration_2E_weak::GGS_extensionSetterForGeneration_2E_weak (void) :
-GGS_semanticDeclarationWithHeaderForGeneration_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration_2E_weak & GGS_extensionSetterForGeneration_2E_weak::operator = (const GGS_extensionSetterForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration_2E_weak::GGS_extensionSetterForGeneration_2E_weak (const GGS_extensionSetterForGeneration & inSource) :
-GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration_2E_weak GGS_extensionSetterForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_extensionSetterForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration GGS_extensionSetterForGeneration_2E_weak::bang_extensionSetterForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_extensionSetterForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_extensionSetterForGeneration) ;
-      result = GGS_extensionSetterForGeneration ((cPtr_extensionSetterForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @extensionSetterForGeneration.weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ("extensionSetterForGeneration.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_extensionSetterForGeneration_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionSetterForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_extensionSetterForGeneration_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_extensionSetterForGeneration_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionSetterForGeneration_2E_weak GGS_extensionSetterForGeneration_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_extensionSetterForGeneration_2E_weak result ;
-  const GGS_extensionSetterForGeneration_2E_weak * p = (const GGS_extensionSetterForGeneration_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_extensionSetterForGeneration_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionSetterForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @initializerAST reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_initializerAST::cPtr_initializerAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mFormalParameterList (),
-mProperty_mInstructionList (),
-mProperty_mEndOfInitializerLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_initializerAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mFormalParameterList.printNonNullClassInstanceProperties ("mFormalParameterList") ;
-    mProperty_mInstructionList.printNonNullClassInstanceProperties ("mInstructionList") ;
-    mProperty_mEndOfInitializerLocation.printNonNullClassInstanceProperties ("mEndOfInitializerLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_initializerAST::objectCompare (const GGS_initializerAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerAST::GGS_initializerAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_initializerAST GGS_initializerAST::
-init_21_isPredefined_21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                      const GGS_lstring & in_mTypeName,
-                                      const GGS_formalInputParameterListAST & in_mFormalParameterList,
-                                      const GGS_semanticInstructionListAST & in_mInstructionList,
-                                      const GGS_location & in_mEndOfInitializerLocation,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cPtr_initializerAST * object = nullptr ;
-  macroMyNew (object, cPtr_initializerAST (inCompiler COMMA_THERE)) ;
-  object->initializerAST_init_21_isPredefined_21__21__21__21_ (in_isPredefined, in_mTypeName, in_mFormalParameterList, in_mInstructionList, in_mEndOfInitializerLocation, inCompiler) ;
-  const GGS_initializerAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_initializerAST::
-initializerAST_init_21_isPredefined_21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                     const GGS_lstring & in_mTypeName,
-                                                     const GGS_formalInputParameterListAST & in_mFormalParameterList,
-                                                     const GGS_semanticInstructionListAST & in_mInstructionList,
-                                                     const GGS_location & in_mEndOfInitializerLocation,
-                                                     Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mFormalParameterList = in_mFormalParameterList ;
-  mProperty_mInstructionList = in_mInstructionList ;
-  mProperty_mEndOfInitializerLocation = in_mEndOfInitializerLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerAST::GGS_initializerAST (const cPtr_initializerAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_initializerAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerAST GGS_initializerAST::class_func_new (const GGS_bool & in_isPredefined,
-                                                       const GGS_lstring & in_mTypeName,
-                                                       const GGS_formalInputParameterListAST & in_mFormalParameterList,
-                                                       const GGS_semanticInstructionListAST & in_mInstructionList,
-                                                       const GGS_location & in_mEndOfInitializerLocation
-                                                       COMMA_LOCATION_ARGS) {
-  GGS_initializerAST result ;
-  macroMyNew (result.mObjectPtr, cPtr_initializerAST (in_isPredefined, in_mTypeName, in_mFormalParameterList, in_mInstructionList, in_mEndOfInitializerLocation COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_initializerAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_initializerAST * p = (cPtr_initializerAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterListAST GGS_initializerAST::readProperty_mFormalParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_formalInputParameterListAST () ;
-  }else{
-    cPtr_initializerAST * p = (cPtr_initializerAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerAST) ;
-    return p->mProperty_mFormalParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListAST GGS_initializerAST::readProperty_mInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
-  }else{
-    cPtr_initializerAST * p = (cPtr_initializerAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerAST) ;
-    return p->mProperty_mInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_initializerAST::readProperty_mEndOfInitializerLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_initializerAST * p = (cPtr_initializerAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_initializerAST) ;
-    return p->mProperty_mEndOfInitializerLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @initializerAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_initializerAST::cPtr_initializerAST (const GGS_bool & in_isPredefined,
-                                          const GGS_lstring & in_mTypeName,
-                                          const GGS_formalInputParameterListAST & in_mFormalParameterList,
-                                          const GGS_semanticInstructionListAST & in_mInstructionList,
-                                          const GGS_location & in_mEndOfInitializerLocation
-                                          COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mFormalParameterList (),
-mProperty_mInstructionList (),
-mProperty_mEndOfInitializerLocation () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mFormalParameterList = in_mFormalParameterList ;
-  mProperty_mInstructionList = in_mInstructionList ;
-  mProperty_mEndOfInitializerLocation = in_mEndOfInitializerLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_initializerAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerAST ;
-}
-
-void cPtr_initializerAST::description (String & ioString,
-                                       const int32_t inIndentation) const {
-  ioString.appendCString ("[@initializerAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfInitializerLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_initializerAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_initializerAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mFormalParameterList, mProperty_mInstructionList, mProperty_mEndOfInitializerLocation COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @initializerAST generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerAST ("initializerAST",
-                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_initializerAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_initializerAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_initializerAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_initializerAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_initializerAST GGS_initializerAST::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS_initializerAST result ;
-  const GGS_initializerAST * p = (const GGS_initializerAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_initializerAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("initializerAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @extensionInitializerForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionInitializerForGeneration::cPtr_extensionInitializerForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (inCompiler COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_initializerName (),
-mProperty_formalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_semanticInstructionListForGeneration () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionInitializerForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mReceiverType.printNonNullClassInstanceProperties ("mReceiverType") ;
-    mProperty_initializerName.printNonNullClassInstanceProperties ("initializerName") ;
-    mProperty_formalParameterList.printNonNullClassInstanceProperties ("formalParameterList") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-    mProperty_semanticInstructionListForGeneration.printNonNullClassInstanceProperties ("semanticInstructionListForGeneration") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_extensionInitializerForGeneration::objectCompare (const GGS_extensionInitializerForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration::GGS_extensionInitializerForGeneration (void) :
-GGS_semanticDeclarationWithHeaderForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration GGS_extensionInitializerForGeneration::
-init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const GGS_bool & in_generateHeader,
-                                                                         const GGS_string & in_implementationCppFileName,
-                                                                         const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                         const GGS_string & in_initializerName,
-                                                                         const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                         const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                         const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  cPtr_extensionInitializerForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_extensionInitializerForGeneration (inCompiler COMMA_THERE)) ;
-  object->extensionInitializerForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_initializerName, in_formalParameterList, in_mTypedAttributeList, in_semanticInstructionListForGeneration, inCompiler) ;
-  const GGS_extensionInitializerForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_extensionInitializerForGeneration::
-extensionInitializerForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const GGS_bool & in_generateHeader,
-                                                                                                           const GGS_string & in_implementationCppFileName,
-                                                                                                           const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                                           const GGS_string & in_initializerName,
-                                                                                                           const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                                           const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                                           const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
-                                                                                                           Compiler * /* inCompiler */) {
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-  mProperty_mReceiverType = in_mReceiverType ;
-  mProperty_initializerName = in_initializerName ;
-  mProperty_formalParameterList = in_formalParameterList ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-  mProperty_semanticInstructionListForGeneration = in_semanticInstructionListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration::GGS_extensionInitializerForGeneration (const cPtr_extensionInitializerForGeneration * inSourcePtr) :
-GGS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionInitializerForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration GGS_extensionInitializerForGeneration::class_func_new (const GGS_bool & in_generateHeader,
-                                                                                             const GGS_string & in_implementationCppFileName,
-                                                                                             const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                             const GGS_string & in_initializerName,
-                                                                                             const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                             const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                             const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration
-                                                                                             COMMA_LOCATION_ARGS) {
-  GGS_extensionInitializerForGeneration result ;
-  macroMyNew (result.mObjectPtr, cPtr_extensionInitializerForGeneration (in_generateHeader, in_implementationCppFileName, in_mReceiverType, in_initializerName, in_formalParameterList, in_mTypedAttributeList, in_semanticInstructionListForGeneration COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_extensionInitializerForGeneration::readProperty_mReceiverType (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionInitializerForGeneration) ;
-    return p->mProperty_mReceiverType ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_extensionInitializerForGeneration::readProperty_initializerName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionInitializerForGeneration) ;
-    return p->mProperty_initializerName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterListForGeneration GGS_extensionInitializerForGeneration::readProperty_formalParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_formalInputParameterListForGeneration () ;
-  }else{
-    cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionInitializerForGeneration) ;
-    return p->mProperty_formalParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList GGS_extensionInitializerForGeneration::readProperty_mTypedAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
-  }else{
-    cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionInitializerForGeneration) ;
-    return p->mProperty_mTypedAttributeList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticInstructionListForGeneration GGS_extensionInitializerForGeneration::readProperty_semanticInstructionListForGeneration (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListForGeneration () ;
-  }else{
-    cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionInitializerForGeneration) ;
-    return p->mProperty_semanticInstructionListForGeneration ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @extensionInitializerForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionInitializerForGeneration::cPtr_extensionInitializerForGeneration (const GGS_bool & in_generateHeader,
-                                                                                const GGS_string & in_implementationCppFileName,
-                                                                                const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                                                const GGS_string & in_initializerName,
-                                                                                const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                                                const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration
-                                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_generateHeader, in_implementationCppFileName COMMA_THERE),
-mProperty_mReceiverType (),
-mProperty_initializerName (),
-mProperty_formalParameterList (),
-mProperty_mTypedAttributeList (),
-mProperty_semanticInstructionListForGeneration () {
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-  mProperty_mReceiverType = in_mReceiverType ;
-  mProperty_initializerName = in_initializerName ;
-  mProperty_formalParameterList = in_formalParameterList ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-  mProperty_semanticInstructionListForGeneration = in_semanticInstructionListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_extensionInitializerForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
-}
-
-void cPtr_extensionInitializerForGeneration::description (String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("[@extensionInitializerForGeneration:") ;
-  mProperty_generateHeader.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_implementationCppFileName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mReceiverType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_initializerName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_formalParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_semanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_extensionInitializerForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionInitializerForGeneration (mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mReceiverType, mProperty_initializerName, mProperty_formalParameterList, mProperty_mTypedAttributeList, mProperty_semanticInstructionListForGeneration COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @extensionInitializerForGeneration generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration ("extensionInitializerForGeneration",
-                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_extensionInitializerForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_extensionInitializerForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_extensionInitializerForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration GGS_extensionInitializerForGeneration::extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_extensionInitializerForGeneration result ;
-  const GGS_extensionInitializerForGeneration * p = (const GGS_extensionInitializerForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_extensionInitializerForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionInitializerForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_extensionInitializerForGeneration_2E_weak::objectCompare (const GGS_extensionInitializerForGeneration_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration_2E_weak::GGS_extensionInitializerForGeneration_2E_weak (void) :
-GGS_semanticDeclarationWithHeaderForGeneration_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration_2E_weak & GGS_extensionInitializerForGeneration_2E_weak::operator = (const GGS_extensionInitializerForGeneration & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration_2E_weak::GGS_extensionInitializerForGeneration_2E_weak (const GGS_extensionInitializerForGeneration & inSource) :
-GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration_2E_weak GGS_extensionInitializerForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_extensionInitializerForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration GGS_extensionInitializerForGeneration_2E_weak::bang_extensionInitializerForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_extensionInitializerForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_extensionInitializerForGeneration) ;
-      result = GGS_extensionInitializerForGeneration ((cPtr_extensionInitializerForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @extensionInitializerForGeneration.weak generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ("extensionInitializerForGeneration.weak",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_extensionInitializerForGeneration_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_extensionInitializerForGeneration_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_extensionInitializerForGeneration_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionInitializerForGeneration_2E_weak GGS_extensionInitializerForGeneration_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GGS_extensionInitializerForGeneration_2E_weak result ;
-  const GGS_extensionInitializerForGeneration_2E_weak * p = (const GGS_extensionInitializerForGeneration_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_extensionInitializerForGeneration_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionInitializerForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
