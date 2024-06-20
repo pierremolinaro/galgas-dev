@@ -14,11 +14,6 @@ name: "CodeQL"
 on:
   push:
     branches: [ "master" ]
- # pull_request:
-    # The branches below must be a subset of the branches above
-  #  branches: [ "master" ]
-  # schedule:
-  #  - cron: '34 4 * * 0'
 
 jobs:
   analyze:
@@ -47,6 +42,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        node-version: 20
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -62,7 +59,7 @@ jobs:
         queries: security-and-quality
 
     - run: ./makefile-unix/build+release.py
-
+        
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:
@@ -87,24 +84,24 @@ jobs:
     name: Check big integer on Ubuntu
     runs-on: ${{ 'ubuntu-latest' }}
     timeout-minutes: ${{ 360 }}
-
+ 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
+      
     - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
 
   RunDemoMac:
     name: Check big integer on Mac OS
     runs-on: ${{ 'macos-latest' }}
     timeout-minutes: ${{ 360 }}
-
+     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
+ 
     - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
-
+    
   RunDemoWindows:
     name: Check big integer on Windows
     runs-on: ${{ 'windows-latest' }}
