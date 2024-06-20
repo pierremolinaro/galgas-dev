@@ -6561,8 +6561,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 194)) {
-    static const char * syntaxErrorMessageArray [194] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 195)) {
+    static const char * syntaxErrorMessageArray [195] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
@@ -6616,6 +6616,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'func' keyword",
         "the 'grammar' keyword",
         "the 'graph' keyword",
+        "the 'guard' keyword",
         "the 'gui' keyword",
         "the 'if' keyword",
         "the 'in' keyword",
@@ -7555,6 +7556,15 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__grap
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
   TO_UNICODE ('h'),
+} ;
+
+//--- Unicode string for '$guard$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__guard = {
+  TO_UNICODE ('g'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
 } ;
 
 //--- Unicode string for '$gui$'
@@ -8653,7 +8663,7 @@ int32_t Lexique_galgasScanner_34_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 82 ;
+static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 83 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKeyWordList [ktable_size_galgasScanner_34__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__as, Lexique_galgasScanner_34_::kToken_as),
@@ -8700,6 +8710,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__final, Lexique_galgasScanner_34_::kToken_final),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__fixit, Lexique_galgasScanner_34_::kToken_fixit),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__graph, Lexique_galgasScanner_34_::kToken_graph),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__guard, Lexique_galgasScanner_34_::kToken_guard),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__label, Lexique_galgasScanner_34_::kToken_label),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__parse, Lexique_galgasScanner_34_::kToken_parse),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__spoil, Lexique_galgasScanner_34_::kToken_spoil),
@@ -9048,6 +9059,11 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_graph:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("graph") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken_guard:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("guard") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_gui:
@@ -10782,6 +10798,7 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("func") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("grammar") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("graph") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("guard") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("gui") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("if") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("in") COMMA_HERE) ;
@@ -11079,6 +11096,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("final") ;
     ioList.appendObject ("fixit") ;
     ioList.appendObject ("graph") ;
+    ioList.appendObject ("guard") ;
     ioList.appendObject ("label") ;
     ioList.appendObject ("parse") ;
     ioList.appendObject ("spoil") ;
@@ -11132,7 +11150,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [194] = {0,
+  static const uint32_t kTerminalSymbolStyles [195] = {0,
     0 /* galgasScanner4_1_identifier */,
     8 /* galgasScanner4_1_double_2E_xxx */,
     7 /* galgasScanner4_1_literalInt */,
@@ -11186,6 +11204,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_func */,
     1 /* galgasScanner4_1_grammar */,
     1 /* galgasScanner4_1_graph */,
+    1 /* galgasScanner4_1_guard */,
     1 /* galgasScanner4_1_gui */,
     1 /* galgasScanner4_1_if */,
     1 /* galgasScanner4_1_in */,

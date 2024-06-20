@@ -76,56 +76,56 @@ class cSharedMapRoot : public SharedObject {
 
 //--------------------------------- Search
   private: VIRTUAL_IN_DEBUG cMapNode * findEntryInMap (const String & inKey,
-                                                        const cSharedMapRoot * inFirstMap) const ;
+                                                       const cSharedMapRoot * inFirstMap) const ;
 
   private: VIRTUAL_IN_DEBUG cMapNode * findEntryInMapAtLevel (const String & inKey,
-                                                               const uint32_t inLevel,
-                                                               const cSharedMapRoot * inFirstMap) const ;
+                                                              const uint32_t inLevel,
+                                                              const cSharedMapRoot * inFirstMap) const ;
 
   public: VIRTUAL_IN_DEBUG void findNearestKey (const String & inKey,
-                                                 TC_UniqueArray <String> & ioNearestKeyArray) const ;
+                                                TC_UniqueArray <String> & ioNearestKeyArray) const ;
 
   protected: VIRTUAL_IN_DEBUG cMapNode * performSearch (const GGS_lstring & inKey,
-                                                         Compiler * inCompiler,
-                                                         const char * inSearchErrorMessage
-                                                         COMMA_LOCATION_ARGS) const ;
+                                                        Compiler * inCompiler,
+                                                        const char * inSearchErrorMessage
+                                                        COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GGS_string & inKey) const ;
 
   protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GGS_string & inKey,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GGS_string & inKey,
-                                                                          const bool inErrorOnUnknownKey,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+                                                                         const bool inErrorOnUnknownKey,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GGS_lstring & inKey,
-                                                                          Compiler * inCompiler,
-                                                                          const char * inSearchErrorMessage
-                                                                          COMMA_LOCATION_ARGS) ;
+                                                                         Compiler * inCompiler,
+                                                                         const char * inSearchErrorMessage
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Remove
   protected: VIRTUAL_IN_DEBUG void performRemove (GGS_lstring & inKey,
-                                                   capCollectionElement & outResult,
-                                                   Compiler * inCompiler,
-                                                   const char * inRemoveErrorMessage
-                                                   COMMA_LOCATION_ARGS) ;
+                                                  capCollectionElement & outResult,
+                                                  Compiler * inCompiler,
+                                                  const char * inRemoveErrorMessage
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Readers
   protected: VIRTUAL_IN_DEBUG GGS_bool hasKey (const GGS_string & inKey
-                                                   COMMA_LOCATION_ARGS) const ;
+                                               COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG GGS_uint levels (UNUSED_LOCATION_ARGS) const ;
 
   public: VIRTUAL_IN_DEBUG GGS_bool hasKeyAtLevel (const GGS_string & inKey,
-                                                       const GGS_uint & inLevel
-                                                       COMMA_LOCATION_ARGS) const ;
+                                                   const GGS_uint & inLevel
+                                                   COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG GGS_location locationForKey (const GGS_string & inKey,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG GGS_stringset keySet (LOCATION_ARGS) const ;
 
@@ -133,8 +133,8 @@ class cSharedMapRoot : public SharedObject {
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                              const int32_t inIndentation,
-                                              const uint32_t inLevel) const ;
+                                             const int32_t inIndentation,
+                                             const uint32_t inLevel) const ;
 
 //--------------------------------- Internal method for enumeration
   protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
@@ -534,10 +534,10 @@ static void rotateRight (cMapNode * & ioRootPtr) {
   if (b->mBalance > 0) {
     ioRootPtr->mBalance += -b->mBalance - 1 ;
   }else{
-    ioRootPtr->mBalance-- ;
+    ioRootPtr->mBalance -= 1 ;
   }
   if (ioRootPtr->mBalance >= 0) {
-    b->mBalance-- ;
+    b->mBalance -= 1 ;
   }else{
     b->mBalance += ioRootPtr->mBalance - 1 ;
   }
@@ -575,7 +575,7 @@ static bool internalInsertOrReplace (cMapNode * & ioRootPtr,
     }else if (comparaison < 0) {
       anObjectHasBeenAdded = internalInsertOrReplace (ioRootPtr->mSupPtr, inKey, ioAttributeArray, ioExtension) ;
       if (ioExtension) {
-        ioRootPtr->mBalance-- ;
+        ioRootPtr->mBalance -= 1 ;
         if (ioRootPtr->mBalance == 0) {
           ioExtension = false ;
         }else if (ioRootPtr->mBalance == -2) {
@@ -745,7 +745,7 @@ static cMapNode * internalInsert (cMapNode * & ioRootPtr,
     if (comparaison > 0) {
       matchingEntry = internalInsert (ioRootPtr->mInfPtr, inKey, inAttributes, outEntryAlreadyExists, ioExtension) ;
       if (ioExtension) {
-        ioRootPtr->mBalance ++ ;
+        ioRootPtr->mBalance += 1 ;
         if (ioRootPtr->mBalance == 0) {
           ioExtension = false;
         }else if (ioRootPtr->mBalance == 2) {
@@ -759,7 +759,7 @@ static cMapNode * internalInsert (cMapNode * & ioRootPtr,
     }else if (comparaison < 0) {
       matchingEntry = internalInsert (ioRootPtr->mSupPtr, inKey, inAttributes, outEntryAlreadyExists, ioExtension) ;
       if (ioExtension) {
-        ioRootPtr->mBalance-- ;
+        ioRootPtr->mBalance -= 1 ;
         if (ioRootPtr->mBalance == 0) {
           ioExtension = false ;
         }else if (ioRootPtr->mBalance == -2) {
@@ -1355,7 +1355,7 @@ cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GGS_lstring & in
 
 static void supBranchDecreased (cMapNode * & ioRoot,
                                 bool & ioBranchHasBeenRemoved) {
-  ioRoot->mBalance ++ ;
+  ioRoot->mBalance += 1 ;
   switch (ioRoot->mBalance) {
   case 0:
     break;

@@ -378,144 +378,145 @@ class Lexique_galgasScanner_33_ : public Lexique {
    kToken_getter /* 54 */ ,
    kToken_grammar /* 55 */ ,
    kToken_graph /* 56 */ ,
-   kToken_gui /* 57 */ ,
-   kToken_if /* 58 */ ,
-   kToken_in /* 59 */ ,
-   kToken_indexing /* 60 */ ,
-   kToken_init /* 61 */ ,
-   kToken_insert /* 62 */ ,
-   kToken_is /* 63 */ ,
-   kToken_label /* 64 */ ,
-   kToken_let /* 65 */ ,
-   kToken_lexique /* 66 */ ,
-   kToken_list /* 67 */ ,
-   kToken_log /* 68 */ ,
-   kToken_loop /* 69 */ ,
-   kToken_map /* 70 */ ,
-   kToken_message /* 71 */ ,
-   kToken_method /* 72 */ ,
-   kToken_mod /* 73 */ ,
-   kToken_mutating /* 74 */ ,
-   kToken_nil /* 75 */ ,
-   kToken_not /* 76 */ ,
-   kToken_on /* 77 */ ,
-   kToken_operator /* 78 */ ,
-   kToken_option /* 79 */ ,
-   kToken_or /* 80 */ ,
-   kToken_override /* 81 */ ,
-   kToken_parse /* 82 */ ,
-   kToken_public /* 83 */ ,
-   kToken_protected /* 84 */ ,
-   kToken_private /* 85 */ ,
-   kToken_proc /* 86 */ ,
-   kToken_project /* 87 */ ,
-   kToken_refclass /* 88 */ ,
-   kToken_remove /* 89 */ ,
-   kToken_repeat /* 90 */ ,
-   kToken_replace /* 91 */ ,
-   kToken_rewind /* 92 */ ,
-   kToken_rule /* 93 */ ,
-   kToken_search /* 94 */ ,
-   kToken_select /* 95 */ ,
-   kToken_self /* 96 */ ,
-   kToken_send /* 97 */ ,
-   kToken_setter /* 98 */ ,
-   kToken_sortedlist /* 99 */ ,
-   kToken_spoil /* 100 */ ,
-   kToken_struct /* 101 */ ,
-   kToken_style /* 102 */ ,
-   kToken_super /* 103 */ ,
-   kToken_switch /* 104 */ ,
-   kToken_syntax /* 105 */ ,
-   kToken_tag /* 106 */ ,
-   kToken_template /* 107 */ ,
-   kToken_then /* 108 */ ,
-   kToken_true /* 109 */ ,
-   kToken_typealias /* 110 */ ,
-   kToken_unused /* 111 */ ,
-   kToken_valueclass /* 112 */ ,
-   kToken_var /* 113 */ ,
-   kToken_warning /* 114 */ ,
-   kToken_weak /* 115 */ ,
-   kToken_while /* 116 */ ,
-   kToken_with /* 117 */ ,
-   kToken__25_app_2D_link /* 118 */ ,
-   kToken__25_app_2D_source /* 119 */ ,
-   kToken__25_applicationBundleBase /* 120 */ ,
-   kToken__25_clonable /* 121 */ ,
-   kToken__25_codeblocks_2D_linux_33__32_ /* 122 */ ,
-   kToken__25_codeblocks_2D_linux_36__34_ /* 123 */ ,
-   kToken__25_codeblocks_2D_windows /* 124 */ ,
-   kToken__25_comparable /* 125 */ ,
-   kToken__25_equatable /* 126 */ ,
-   kToken__25_from /* 127 */ ,
-   kToken__25_generatedInSeparateFile /* 128 */ ,
-   kToken__25_initArgLabel /* 129 */ ,
-   kToken__25_libpmAtPath /* 130 */ ,
-   kToken__25_MacOS /* 131 */ ,
-   kToken__25_MacOSDeployment /* 132 */ ,
-   kToken__25_macCodeSign /* 133 */ ,
-   kToken__25_makefile_2D_macosx /* 134 */ ,
-   kToken__25_makefile_2D_unix /* 135 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 136 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 137 */ ,
-   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 138 */ ,
-   kToken__25_nonAtomicSelection /* 139 */ ,
-   kToken__25_once /* 140 */ ,
-   kToken__25_preserved /* 141 */ ,
-   kToken__25_quietOutputByDefault /* 142 */ ,
-   kToken__25_templateEndMark /* 143 */ ,
-   kToken__25_tool_2D_source /* 144 */ ,
-   kToken__25_translate /* 145 */ ,
-   kToken__25_usefull /* 146 */ ,
-   kToken__2A_ /* 147 */ ,
-   kToken__2C_ /* 148 */ ,
-   kToken__2B_ /* 149 */ ,
-   kToken__26__2B_ /* 150 */ ,
-   kToken__26__2D_ /* 151 */ ,
-   kToken__26__2A_ /* 152 */ ,
-   kToken__26__2F_ /* 153 */ ,
-   kToken__3E_ /* 154 */ ,
-   kToken__3B_ /* 155 */ ,
-   kToken__3A_ /* 156 */ ,
-   kToken__3A__3E_ /* 157 */ ,
-   kToken__2D_ /* 158 */ ,
-   kToken__28_ /* 159 */ ,
-   kToken__29_ /* 160 */ ,
-   kToken__2D__3E_ /* 161 */ ,
-   kToken__3D__3D_ /* 162 */ ,
-   kToken__3D_ /* 163 */ ,
-   kToken__26__26_ /* 164 */ ,
-   kToken__5B_ /* 165 */ ,
-   kToken__5D_ /* 166 */ ,
-   kToken__2B__3D_ /* 167 */ ,
-   kToken__2D__3D_ /* 168 */ ,
-   kToken__2A__3D_ /* 169 */ ,
-   kToken__2F__3D_ /* 170 */ ,
-   kToken__26__3D_ /* 171 */ ,
-   kToken__7C__3D_ /* 172 */ ,
-   kToken__5E__3D_ /* 173 */ ,
-   kToken__2F_ /* 174 */ ,
-   kToken__21__3D_ /* 175 */ ,
-   kToken__3E__3D_ /* 176 */ ,
-   kToken__26_ /* 177 */ ,
-   kToken__7B_ /* 178 */ ,
-   kToken__7D_ /* 179 */ ,
-   kToken__60_ /* 180 */ ,
-   kToken__7C__7C_ /* 181 */ ,
-   kToken__7C_ /* 182 */ ,
-   kToken__5E_ /* 183 */ ,
-   kToken__3E__3E_ /* 184 */ ,
-   kToken__7E_ /* 185 */ ,
-   kToken__2D__2D_ /* 186 */ ,
-   kToken__2B__2B_ /* 187 */ ,
-   kToken__26__2D__2D_ /* 188 */ ,
-   kToken__26__2B__2B_ /* 189 */ ,
-   kToken__3D__3D__3D_ /* 190 */ ,
-   kToken__21__3D__3D_ /* 191 */ ,
-   kToken__3F__5E_ /* 192 */ ,
-   kToken__21__5E_ /* 193 */ ,
-   kToken__A7__5B_ /* 194 */ } ;
+   kToken_guard /* 57 */ ,
+   kToken_gui /* 58 */ ,
+   kToken_if /* 59 */ ,
+   kToken_in /* 60 */ ,
+   kToken_indexing /* 61 */ ,
+   kToken_init /* 62 */ ,
+   kToken_insert /* 63 */ ,
+   kToken_is /* 64 */ ,
+   kToken_label /* 65 */ ,
+   kToken_let /* 66 */ ,
+   kToken_lexique /* 67 */ ,
+   kToken_list /* 68 */ ,
+   kToken_log /* 69 */ ,
+   kToken_loop /* 70 */ ,
+   kToken_map /* 71 */ ,
+   kToken_message /* 72 */ ,
+   kToken_method /* 73 */ ,
+   kToken_mod /* 74 */ ,
+   kToken_mutating /* 75 */ ,
+   kToken_nil /* 76 */ ,
+   kToken_not /* 77 */ ,
+   kToken_on /* 78 */ ,
+   kToken_operator /* 79 */ ,
+   kToken_option /* 80 */ ,
+   kToken_or /* 81 */ ,
+   kToken_override /* 82 */ ,
+   kToken_parse /* 83 */ ,
+   kToken_public /* 84 */ ,
+   kToken_protected /* 85 */ ,
+   kToken_private /* 86 */ ,
+   kToken_proc /* 87 */ ,
+   kToken_project /* 88 */ ,
+   kToken_refclass /* 89 */ ,
+   kToken_remove /* 90 */ ,
+   kToken_repeat /* 91 */ ,
+   kToken_replace /* 92 */ ,
+   kToken_rewind /* 93 */ ,
+   kToken_rule /* 94 */ ,
+   kToken_search /* 95 */ ,
+   kToken_select /* 96 */ ,
+   kToken_self /* 97 */ ,
+   kToken_send /* 98 */ ,
+   kToken_setter /* 99 */ ,
+   kToken_sortedlist /* 100 */ ,
+   kToken_spoil /* 101 */ ,
+   kToken_struct /* 102 */ ,
+   kToken_style /* 103 */ ,
+   kToken_super /* 104 */ ,
+   kToken_switch /* 105 */ ,
+   kToken_syntax /* 106 */ ,
+   kToken_tag /* 107 */ ,
+   kToken_template /* 108 */ ,
+   kToken_then /* 109 */ ,
+   kToken_true /* 110 */ ,
+   kToken_typealias /* 111 */ ,
+   kToken_unused /* 112 */ ,
+   kToken_valueclass /* 113 */ ,
+   kToken_var /* 114 */ ,
+   kToken_warning /* 115 */ ,
+   kToken_weak /* 116 */ ,
+   kToken_while /* 117 */ ,
+   kToken_with /* 118 */ ,
+   kToken__25_app_2D_link /* 119 */ ,
+   kToken__25_app_2D_source /* 120 */ ,
+   kToken__25_applicationBundleBase /* 121 */ ,
+   kToken__25_clonable /* 122 */ ,
+   kToken__25_codeblocks_2D_linux_33__32_ /* 123 */ ,
+   kToken__25_codeblocks_2D_linux_36__34_ /* 124 */ ,
+   kToken__25_codeblocks_2D_windows /* 125 */ ,
+   kToken__25_comparable /* 126 */ ,
+   kToken__25_equatable /* 127 */ ,
+   kToken__25_from /* 128 */ ,
+   kToken__25_generatedInSeparateFile /* 129 */ ,
+   kToken__25_initArgLabel /* 130 */ ,
+   kToken__25_libpmAtPath /* 131 */ ,
+   kToken__25_MacOS /* 132 */ ,
+   kToken__25_MacOSDeployment /* 133 */ ,
+   kToken__25_macCodeSign /* 134 */ ,
+   kToken__25_makefile_2D_macosx /* 135 */ ,
+   kToken__25_makefile_2D_unix /* 136 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 137 */ ,
+   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 138 */ ,
+   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 139 */ ,
+   kToken__25_nonAtomicSelection /* 140 */ ,
+   kToken__25_once /* 141 */ ,
+   kToken__25_preserved /* 142 */ ,
+   kToken__25_quietOutputByDefault /* 143 */ ,
+   kToken__25_templateEndMark /* 144 */ ,
+   kToken__25_tool_2D_source /* 145 */ ,
+   kToken__25_translate /* 146 */ ,
+   kToken__25_usefull /* 147 */ ,
+   kToken__2A_ /* 148 */ ,
+   kToken__2C_ /* 149 */ ,
+   kToken__2B_ /* 150 */ ,
+   kToken__26__2B_ /* 151 */ ,
+   kToken__26__2D_ /* 152 */ ,
+   kToken__26__2A_ /* 153 */ ,
+   kToken__26__2F_ /* 154 */ ,
+   kToken__3E_ /* 155 */ ,
+   kToken__3B_ /* 156 */ ,
+   kToken__3A_ /* 157 */ ,
+   kToken__3A__3E_ /* 158 */ ,
+   kToken__2D_ /* 159 */ ,
+   kToken__28_ /* 160 */ ,
+   kToken__29_ /* 161 */ ,
+   kToken__2D__3E_ /* 162 */ ,
+   kToken__3D__3D_ /* 163 */ ,
+   kToken__3D_ /* 164 */ ,
+   kToken__26__26_ /* 165 */ ,
+   kToken__5B_ /* 166 */ ,
+   kToken__5D_ /* 167 */ ,
+   kToken__2B__3D_ /* 168 */ ,
+   kToken__2D__3D_ /* 169 */ ,
+   kToken__2A__3D_ /* 170 */ ,
+   kToken__2F__3D_ /* 171 */ ,
+   kToken__26__3D_ /* 172 */ ,
+   kToken__7C__3D_ /* 173 */ ,
+   kToken__5E__3D_ /* 174 */ ,
+   kToken__2F_ /* 175 */ ,
+   kToken__21__3D_ /* 176 */ ,
+   kToken__3E__3D_ /* 177 */ ,
+   kToken__26_ /* 178 */ ,
+   kToken__7B_ /* 179 */ ,
+   kToken__7D_ /* 180 */ ,
+   kToken__60_ /* 181 */ ,
+   kToken__7C__7C_ /* 182 */ ,
+   kToken__7C_ /* 183 */ ,
+   kToken__5E_ /* 184 */ ,
+   kToken__3E__3E_ /* 185 */ ,
+   kToken__7E_ /* 186 */ ,
+   kToken__2D__2D_ /* 187 */ ,
+   kToken__2B__2B_ /* 188 */ ,
+   kToken__26__2D__2D_ /* 189 */ ,
+   kToken__26__2B__2B_ /* 190 */ ,
+   kToken__3D__3D__3D_ /* 191 */ ,
+   kToken__21__3D__3D_ /* 192 */ ,
+   kToken__3F__5E_ /* 193 */ ,
+   kToken__21__5E_ /* 194 */ ,
+   kToken__A7__5B_ /* 195 */ } ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -615,7 +616,7 @@ class Lexique_galgasScanner_33_ : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 194 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 195 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -10489,224 +10490,4 @@ class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templa
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration list
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionListForGeneration (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GGS_templateInstructionListForGeneration (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GGS_templateInstructionForGeneration & in_mInstruction
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionListForGeneration init (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionListForGeneration extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionListForGeneration class_func_emptyList (LOCATION_ARGS) ;
-
-  public: static class GGS_templateInstructionListForGeneration class_func_listWithValue (const class GGS_templateInstructionForGeneration & inOperand0
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_templateInstructionListForGeneration inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_templateInstructionForGeneration & inOperand0
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_templateInstructionListForGeneration add_operation (const GGS_templateInstructionListForGeneration & inOperand,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_templateInstructionForGeneration constinArgument0,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_templateInstructionForGeneration constinArgument0,
-                                                      class GGS_uint constinArgument1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_templateInstructionForGeneration & outArgument0,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_templateInstructionForGeneration & outArgument0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_templateInstructionForGeneration & outArgument0,
-                                                      class GGS_uint constinArgument1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GGS_templateInstructionForGeneration constinArgument0,
-                                                               class GGS_uint constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GGS_templateInstructionForGeneration & outArgument0,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GGS_templateInstructionForGeneration & outArgument0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionForGeneration getter_mInstructionAtIndex (const class GGS_uint & constinOperand0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_templateInstructionListForGeneration_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class cEnumerator_templateInstructionListForGeneration ;
- 
-} ; // End of GGS_templateInstructionListForGeneration class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_templateInstructionListForGeneration : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateInstructionListForGeneration (const GGS_templateInstructionListForGeneration & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GGS_templateInstructionForGeneration current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionListForGeneration_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration_2E_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionListForGeneration_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_templateInstructionForGeneration mProperty_mInstruction ;
-  public: inline GGS_templateInstructionForGeneration readProperty_mInstruction (void) const {
-    return mProperty_mInstruction ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInstruction (const GGS_templateInstructionForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstruction = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_templateInstructionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_templateInstructionListForGeneration_2E_element (const GGS_templateInstructionForGeneration & in_mInstruction) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionListForGeneration_2E_element init_21_ (const class GGS_templateInstructionForGeneration & inOperand0,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionListForGeneration_2E_element extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionListForGeneration_2E_element class_func_new (const class GGS_templateInstructionForGeneration & inOperand0,
-                                                                                           class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_templateInstructionListForGeneration_2E_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2E_element ;
 

@@ -144,6 +144,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "getter",
   "grammar",
   "graph",
+  "guard",
   "gui",
   "if",
   "in",
