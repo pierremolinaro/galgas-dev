@@ -1677,6 +1677,83 @@ Ce message est alors similaire au message que l'on obtient lors que l'on analyse
 
 
 
+
+\sectionLabel{L'instruction \texttt{guard}}{instruction-guard}
+
+L'instruction \ggsq+guard+ est une variante syntaxique de l'instruction \ggsq+if+. Voici un exemple d'instruction \ggsq+if+, comment elle peut être re-écrite en instruction \ggsq+guard+ et l'avantage qui en résulte.
+
+\begin{galgas34box}
+if condition1 then
+  instructions1
+  if condition2 then
+    instructions2
+  else
+    erreur2
+  end
+else
+  erreur1
+end
+\end{galgas34box}
+
+On peut considérer que cette écriture présente plusieurs inconvénients~:
+\begin{itemize}
+  \item si \ggsq+instructions1+ et \ggsq+instructions2+ comportent de nombreuses lignes, les instructions des branches \ggsq+else+ sont loin du début de l'instruction \ggsq+if+ correspondante~;
+  \item à chaque instruction \ggsq+if+, l'indentation des instructions incluses augmente.
+\end{itemize}
+
+L'instruction \ggsq+guard+ permet d'exprimer la même sémantique sous une forme syntaxique différente~:
+
+\begin{galgas34box}
+guard condition1 else
+  erreur1
+end
+instructions1
+guard condition2 else
+  erreur2
+end
+instructions2
+\end{galgas34box}
+
+L'avantage que l'on peut y voir est :
+\begin{itemize}
+  \item la branche \ggsq+else+ est écrite en premier, ce qui permet d'évacuer rapidement les cas d'erreur~;
+  \item les \ggsq+instructions1+ et \ggsq+instructions2+ ne subissent plus d'indentation suppémentaire.
+\end{itemize}
+
+D'un point de vue sémantique, les instructions \ggsq+guard+ et \ggsq+if+ sont équivalentes, seules leurs syntaxes diffèrent (\refFigure{}{instructionsIFetGUARD}). La branche \ggsq+else+ d'une instruction \ggsq+guard+ est obligatoire (même si elle est vide), contrairement à celle d'une instruction \ggsq+if+ où elle peut être omise.
+
+
+\begin{figure}[ht]
+  \centering
+  \subfloat[Instruction \texttt{if}] {
+    \tt
+    \begin{tabular}{l}
+    \textbf{if} \emph{condition} \textbf{then}\\
+    ~~\emph{instructions\_then}\\
+    \textbf{else}\\
+    ~~\emph{instructions\_else}\\
+    \textbf{end}\\
+    \end{tabular}
+  }
+  \hspace{1cm}
+  \subfloat[Instruction \texttt{guard}] {
+    \tt
+    \begin{tabular}{l}
+    \textbf{guard} \emph{condition} \textbf{else}\\
+    ~~\emph{instructions\_else}\\
+    \textbf{end}\\
+    \emph{instructions\_then}\\
+    \end{tabular}
+  }
+  \caption{Instructions \texttt{if} et \texttt{guard}}
+  \labelFigure{instructionsIFetGUARD}
+\end{figure}
+
+
+
+
+
+
 \sectionLabel{L'instruction \texttt{log}}{instructionLog}
 
 L'instruction \ggst+log+ permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression~:

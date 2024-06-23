@@ -1,3 +1,1 @@
-for > i in 12 ..< 17 do
-  # i prend successivement les valeurs 16, 15, 14, 13, 12
-end
+if
