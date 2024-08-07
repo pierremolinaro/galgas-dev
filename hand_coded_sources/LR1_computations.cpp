@@ -1205,11 +1205,11 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
           ioCppFileContents.appendSigned (parameter) ;
           ioCppFileContents.appendCString (")") ;
         }else{ // Accept action
-          ioCppFileContents.appendCString ("BOTTOM_UP_ACCEPT ()") ;
+          ioCppFileContents.appendCString ("BOTTOM_UP_ACCEPT") ;
         }
       }
     }
-    ioCppFileContents.appendCString ("\n, BOTTOM_UP_END ()") ;
+    ioCppFileContents.appendCString ("\n, BOTTOM_UP_END") ;
     startIndex ++ ;
   }
   ioCppFileContents.appendCString ("} ;\n\n"
