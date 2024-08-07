@@ -84,12 +84,10 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 
 
 //--- Terminal symbols enumeration
-  public: enum {kToken_%
-    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
-      %,\n   kToken_%![mTerminalName.string identifierRepresentation]% /* %![idx + 1 string]% */ %
-    end
-  %} ;
-%
+  public: const static int32_t kToken_ = 0 ;\n%
+  for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+    %  public: static const int32_t kToken_%![mTerminalName.string identifierRepresentation]% = %![idx + 1 string]% ;\n%
+  end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in DELIMITOR_LIST_LIST do
     %\n//--- Key words table '%!mName.string%'\n%
     %  public: static int32_t search_into_%!mName.string% (const String & inSearchedString) ;\n%
@@ -112,11 +110,8 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 
 //--- indexing keys
 %
-  for (mIndexName mIndexComment) in INDEXING_LIST
-  before %  public: enum {%
-  do %\n    kIndexing_%![mIndexName identifierRepresentation]
-  between %,%
-  after %\n  } ;\n%
+  for (mIndexName mIndexComment) in INDEXING_LIST do (idx)
+    %public: static const uint32_t kIndexing_%![mIndexName identifierRepresentation]% = %![idx string]% ;\n%
   end
 %
 //--- Parse lexical token

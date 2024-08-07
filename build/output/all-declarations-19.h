@@ -1933,6 +1933,8 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_33_GrammarComponentSyntax_12 (Lexique_galgasScanner_33_ *) ;
 
+  public: virtual int32_t select_galgas_33_GrammarComponentSyntax_13 (Lexique_galgasScanner_33_ *) ;
+
   public: virtual int32_t select_galgas_33_ProgramDeclarations_0 (Lexique_galgasScanner_33_ *) ;
 
   public: virtual int32_t select_galgas_33_ProgramDeclarations_1 (Lexique_galgasScanner_33_ *) ;

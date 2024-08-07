@@ -321,202 +321,202 @@ class Lexique_galgasScanner_33_ : public Lexique {
 
 
 //--- Terminal symbols enumeration
-  public: enum {kToken_,
-   kToken_identifier /* 1 */ ,
-   kToken_double_2E_xxx /* 2 */ ,
-   kToken_literalInt /* 3 */ ,
-   kToken__2E_ /* 4 */ ,
-   kToken__2E__2E__2E_ /* 5 */ ,
-   kToken__2E__2E__3C_ /* 6 */ ,
-   kToken__40_type /* 7 */ ,
-   kToken__27_char_27_ /* 8 */ ,
-   kToken__24_terminal_24_ /* 9 */ ,
-   kToken_comment /* 10 */ ,
-   kToken_commentMark /* 11 */ ,
-   kToken__3F_selector_3A_ /* 12 */ ,
-   kToken__3F_ /* 13 */ ,
-   kToken__3F__21_selector_3A_ /* 14 */ ,
-   kToken__3F__21_ /* 15 */ ,
-   kToken__21_selector_3A_ /* 16 */ ,
-   kToken__21_ /* 17 */ ,
-   kToken__21__3F_selector_3A_ /* 18 */ ,
-   kToken__21__3F_ /* 19 */ ,
-   kToken__3C_ /* 20 */ ,
-   kToken__3C__3D_ /* 21 */ ,
-   kToken__3C__3C_ /* 22 */ ,
-   kToken__3C_non_5F_terminal_3E_ /* 23 */ ,
-   kToken__22_string_22_ /* 24 */ ,
-   kToken_abstract /* 25 */ ,
-   kToken_after /* 26 */ ,
-   kToken_as /* 27 */ ,
-   kToken_bang /* 28 */ ,
-   kToken_before /* 29 */ ,
-   kToken_between /* 30 */ ,
-   kToken_block /* 31 */ ,
-   kToken_boolset /* 32 */ ,
-   kToken_cast /* 33 */ ,
-   kToken_case /* 34 */ ,
-   kToken_class /* 35 */ ,
-   kToken_default /* 36 */ ,
-   kToken_dict /* 37 */ ,
-   kToken_do /* 38 */ ,
-   kToken_drop /* 39 */ ,
-   kToken_else /* 40 */ ,
-   kToken_elsif /* 41 */ ,
-   kToken_end /* 42 */ ,
-   kToken_enum /* 43 */ ,
-   kToken_error /* 44 */ ,
-   kToken_extension /* 45 */ ,
-   kToken_extern /* 46 */ ,
-   kToken_false /* 47 */ ,
-   kToken_fileprivate /* 48 */ ,
-   kToken_filewrapper /* 49 */ ,
-   kToken_for /* 50 */ ,
-   kToken_final /* 51 */ ,
-   kToken_fixit /* 52 */ ,
-   kToken_func /* 53 */ ,
-   kToken_getter /* 54 */ ,
-   kToken_grammar /* 55 */ ,
-   kToken_graph /* 56 */ ,
-   kToken_guard /* 57 */ ,
-   kToken_gui /* 58 */ ,
-   kToken_if /* 59 */ ,
-   kToken_in /* 60 */ ,
-   kToken_indexing /* 61 */ ,
-   kToken_init /* 62 */ ,
-   kToken_insert /* 63 */ ,
-   kToken_is /* 64 */ ,
-   kToken_label /* 65 */ ,
-   kToken_let /* 66 */ ,
-   kToken_lexique /* 67 */ ,
-   kToken_list /* 68 */ ,
-   kToken_log /* 69 */ ,
-   kToken_loop /* 70 */ ,
-   kToken_map /* 71 */ ,
-   kToken_message /* 72 */ ,
-   kToken_method /* 73 */ ,
-   kToken_mod /* 74 */ ,
-   kToken_mutating /* 75 */ ,
-   kToken_nil /* 76 */ ,
-   kToken_not /* 77 */ ,
-   kToken_on /* 78 */ ,
-   kToken_operator /* 79 */ ,
-   kToken_option /* 80 */ ,
-   kToken_or /* 81 */ ,
-   kToken_override /* 82 */ ,
-   kToken_parse /* 83 */ ,
-   kToken_public /* 84 */ ,
-   kToken_protected /* 85 */ ,
-   kToken_private /* 86 */ ,
-   kToken_proc /* 87 */ ,
-   kToken_project /* 88 */ ,
-   kToken_refclass /* 89 */ ,
-   kToken_remove /* 90 */ ,
-   kToken_repeat /* 91 */ ,
-   kToken_replace /* 92 */ ,
-   kToken_rewind /* 93 */ ,
-   kToken_rule /* 94 */ ,
-   kToken_search /* 95 */ ,
-   kToken_select /* 96 */ ,
-   kToken_self /* 97 */ ,
-   kToken_send /* 98 */ ,
-   kToken_setter /* 99 */ ,
-   kToken_sortedlist /* 100 */ ,
-   kToken_spoil /* 101 */ ,
-   kToken_struct /* 102 */ ,
-   kToken_style /* 103 */ ,
-   kToken_super /* 104 */ ,
-   kToken_switch /* 105 */ ,
-   kToken_syntax /* 106 */ ,
-   kToken_tag /* 107 */ ,
-   kToken_template /* 108 */ ,
-   kToken_then /* 109 */ ,
-   kToken_true /* 110 */ ,
-   kToken_typealias /* 111 */ ,
-   kToken_unused /* 112 */ ,
-   kToken_valueclass /* 113 */ ,
-   kToken_var /* 114 */ ,
-   kToken_warning /* 115 */ ,
-   kToken_weak /* 116 */ ,
-   kToken_while /* 117 */ ,
-   kToken_with /* 118 */ ,
-   kToken__25_app_2D_link /* 119 */ ,
-   kToken__25_app_2D_source /* 120 */ ,
-   kToken__25_applicationBundleBase /* 121 */ ,
-   kToken__25_clonable /* 122 */ ,
-   kToken__25_codeblocks_2D_linux_33__32_ /* 123 */ ,
-   kToken__25_codeblocks_2D_linux_36__34_ /* 124 */ ,
-   kToken__25_codeblocks_2D_windows /* 125 */ ,
-   kToken__25_comparable /* 126 */ ,
-   kToken__25_equatable /* 127 */ ,
-   kToken__25_from /* 128 */ ,
-   kToken__25_generatedInSeparateFile /* 129 */ ,
-   kToken__25_initArgLabel /* 130 */ ,
-   kToken__25_libpmAtPath /* 131 */ ,
-   kToken__25_MacOS /* 132 */ ,
-   kToken__25_MacOSDeployment /* 133 */ ,
-   kToken__25_macCodeSign /* 134 */ ,
-   kToken__25_makefile_2D_macosx /* 135 */ ,
-   kToken__25_makefile_2D_unix /* 136 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx /* 137 */ ,
-   kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx /* 138 */ ,
-   kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx /* 139 */ ,
-   kToken__25_nonAtomicSelection /* 140 */ ,
-   kToken__25_once /* 141 */ ,
-   kToken__25_preserved /* 142 */ ,
-   kToken__25_quietOutputByDefault /* 143 */ ,
-   kToken__25_templateEndMark /* 144 */ ,
-   kToken__25_tool_2D_source /* 145 */ ,
-   kToken__25_translate /* 146 */ ,
-   kToken__25_usefull /* 147 */ ,
-   kToken__2A_ /* 148 */ ,
-   kToken__2C_ /* 149 */ ,
-   kToken__2B_ /* 150 */ ,
-   kToken__26__2B_ /* 151 */ ,
-   kToken__26__2D_ /* 152 */ ,
-   kToken__26__2A_ /* 153 */ ,
-   kToken__26__2F_ /* 154 */ ,
-   kToken__3E_ /* 155 */ ,
-   kToken__3B_ /* 156 */ ,
-   kToken__3A_ /* 157 */ ,
-   kToken__3A__3E_ /* 158 */ ,
-   kToken__2D_ /* 159 */ ,
-   kToken__28_ /* 160 */ ,
-   kToken__29_ /* 161 */ ,
-   kToken__2D__3E_ /* 162 */ ,
-   kToken__3D__3D_ /* 163 */ ,
-   kToken__3D_ /* 164 */ ,
-   kToken__26__26_ /* 165 */ ,
-   kToken__5B_ /* 166 */ ,
-   kToken__5D_ /* 167 */ ,
-   kToken__2B__3D_ /* 168 */ ,
-   kToken__2D__3D_ /* 169 */ ,
-   kToken__2A__3D_ /* 170 */ ,
-   kToken__2F__3D_ /* 171 */ ,
-   kToken__26__3D_ /* 172 */ ,
-   kToken__7C__3D_ /* 173 */ ,
-   kToken__5E__3D_ /* 174 */ ,
-   kToken__2F_ /* 175 */ ,
-   kToken__21__3D_ /* 176 */ ,
-   kToken__3E__3D_ /* 177 */ ,
-   kToken__26_ /* 178 */ ,
-   kToken__7B_ /* 179 */ ,
-   kToken__7D_ /* 180 */ ,
-   kToken__60_ /* 181 */ ,
-   kToken__7C__7C_ /* 182 */ ,
-   kToken__7C_ /* 183 */ ,
-   kToken__5E_ /* 184 */ ,
-   kToken__3E__3E_ /* 185 */ ,
-   kToken__7E_ /* 186 */ ,
-   kToken__2D__2D_ /* 187 */ ,
-   kToken__2B__2B_ /* 188 */ ,
-   kToken__26__2D__2D_ /* 189 */ ,
-   kToken__26__2B__2B_ /* 190 */ ,
-   kToken__3D__3D__3D_ /* 191 */ ,
-   kToken__21__3D__3D_ /* 192 */ ,
-   kToken__3F__5E_ /* 193 */ ,
-   kToken__21__5E_ /* 194 */ ,
-   kToken__A7__5B_ /* 195 */ } ;
+  public: const static int32_t kToken_ = 0 ;
+  public: static const int32_t kToken_identifier = 1 ;
+  public: static const int32_t kToken_double_2E_xxx = 2 ;
+  public: static const int32_t kToken_literalInt = 3 ;
+  public: static const int32_t kToken__2E_ = 4 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 5 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 6 ;
+  public: static const int32_t kToken__40_type = 7 ;
+  public: static const int32_t kToken__27_char_27_ = 8 ;
+  public: static const int32_t kToken__24_terminal_24_ = 9 ;
+  public: static const int32_t kToken_comment = 10 ;
+  public: static const int32_t kToken_commentMark = 11 ;
+  public: static const int32_t kToken__3F_selector_3A_ = 12 ;
+  public: static const int32_t kToken__3F_ = 13 ;
+  public: static const int32_t kToken__3F__21_selector_3A_ = 14 ;
+  public: static const int32_t kToken__3F__21_ = 15 ;
+  public: static const int32_t kToken__21_selector_3A_ = 16 ;
+  public: static const int32_t kToken__21_ = 17 ;
+  public: static const int32_t kToken__21__3F_selector_3A_ = 18 ;
+  public: static const int32_t kToken__21__3F_ = 19 ;
+  public: static const int32_t kToken__3C_ = 20 ;
+  public: static const int32_t kToken__3C__3D_ = 21 ;
+  public: static const int32_t kToken__3C__3C_ = 22 ;
+  public: static const int32_t kToken__3C_non_5F_terminal_3E_ = 23 ;
+  public: static const int32_t kToken__22_string_22_ = 24 ;
+  public: static const int32_t kToken_abstract = 25 ;
+  public: static const int32_t kToken_after = 26 ;
+  public: static const int32_t kToken_as = 27 ;
+  public: static const int32_t kToken_bang = 28 ;
+  public: static const int32_t kToken_before = 29 ;
+  public: static const int32_t kToken_between = 30 ;
+  public: static const int32_t kToken_block = 31 ;
+  public: static const int32_t kToken_boolset = 32 ;
+  public: static const int32_t kToken_cast = 33 ;
+  public: static const int32_t kToken_case = 34 ;
+  public: static const int32_t kToken_class = 35 ;
+  public: static const int32_t kToken_default = 36 ;
+  public: static const int32_t kToken_dict = 37 ;
+  public: static const int32_t kToken_do = 38 ;
+  public: static const int32_t kToken_drop = 39 ;
+  public: static const int32_t kToken_else = 40 ;
+  public: static const int32_t kToken_elsif = 41 ;
+  public: static const int32_t kToken_end = 42 ;
+  public: static const int32_t kToken_enum = 43 ;
+  public: static const int32_t kToken_error = 44 ;
+  public: static const int32_t kToken_extension = 45 ;
+  public: static const int32_t kToken_extern = 46 ;
+  public: static const int32_t kToken_false = 47 ;
+  public: static const int32_t kToken_fileprivate = 48 ;
+  public: static const int32_t kToken_filewrapper = 49 ;
+  public: static const int32_t kToken_for = 50 ;
+  public: static const int32_t kToken_final = 51 ;
+  public: static const int32_t kToken_fixit = 52 ;
+  public: static const int32_t kToken_func = 53 ;
+  public: static const int32_t kToken_getter = 54 ;
+  public: static const int32_t kToken_grammar = 55 ;
+  public: static const int32_t kToken_graph = 56 ;
+  public: static const int32_t kToken_guard = 57 ;
+  public: static const int32_t kToken_gui = 58 ;
+  public: static const int32_t kToken_if = 59 ;
+  public: static const int32_t kToken_in = 60 ;
+  public: static const int32_t kToken_indexing = 61 ;
+  public: static const int32_t kToken_init = 62 ;
+  public: static const int32_t kToken_insert = 63 ;
+  public: static const int32_t kToken_is = 64 ;
+  public: static const int32_t kToken_label = 65 ;
+  public: static const int32_t kToken_let = 66 ;
+  public: static const int32_t kToken_lexique = 67 ;
+  public: static const int32_t kToken_list = 68 ;
+  public: static const int32_t kToken_log = 69 ;
+  public: static const int32_t kToken_loop = 70 ;
+  public: static const int32_t kToken_map = 71 ;
+  public: static const int32_t kToken_message = 72 ;
+  public: static const int32_t kToken_method = 73 ;
+  public: static const int32_t kToken_mod = 74 ;
+  public: static const int32_t kToken_mutating = 75 ;
+  public: static const int32_t kToken_nil = 76 ;
+  public: static const int32_t kToken_not = 77 ;
+  public: static const int32_t kToken_on = 78 ;
+  public: static const int32_t kToken_operator = 79 ;
+  public: static const int32_t kToken_option = 80 ;
+  public: static const int32_t kToken_or = 81 ;
+  public: static const int32_t kToken_override = 82 ;
+  public: static const int32_t kToken_parse = 83 ;
+  public: static const int32_t kToken_public = 84 ;
+  public: static const int32_t kToken_protected = 85 ;
+  public: static const int32_t kToken_private = 86 ;
+  public: static const int32_t kToken_proc = 87 ;
+  public: static const int32_t kToken_project = 88 ;
+  public: static const int32_t kToken_refclass = 89 ;
+  public: static const int32_t kToken_remove = 90 ;
+  public: static const int32_t kToken_repeat = 91 ;
+  public: static const int32_t kToken_replace = 92 ;
+  public: static const int32_t kToken_rewind = 93 ;
+  public: static const int32_t kToken_rule = 94 ;
+  public: static const int32_t kToken_search = 95 ;
+  public: static const int32_t kToken_select = 96 ;
+  public: static const int32_t kToken_self = 97 ;
+  public: static const int32_t kToken_send = 98 ;
+  public: static const int32_t kToken_setter = 99 ;
+  public: static const int32_t kToken_sortedlist = 100 ;
+  public: static const int32_t kToken_spoil = 101 ;
+  public: static const int32_t kToken_struct = 102 ;
+  public: static const int32_t kToken_style = 103 ;
+  public: static const int32_t kToken_super = 104 ;
+  public: static const int32_t kToken_switch = 105 ;
+  public: static const int32_t kToken_syntax = 106 ;
+  public: static const int32_t kToken_tag = 107 ;
+  public: static const int32_t kToken_template = 108 ;
+  public: static const int32_t kToken_then = 109 ;
+  public: static const int32_t kToken_true = 110 ;
+  public: static const int32_t kToken_typealias = 111 ;
+  public: static const int32_t kToken_unused = 112 ;
+  public: static const int32_t kToken_valueclass = 113 ;
+  public: static const int32_t kToken_var = 114 ;
+  public: static const int32_t kToken_warning = 115 ;
+  public: static const int32_t kToken_weak = 116 ;
+  public: static const int32_t kToken_while = 117 ;
+  public: static const int32_t kToken_with = 118 ;
+  public: static const int32_t kToken__25_app_2D_link = 119 ;
+  public: static const int32_t kToken__25_app_2D_source = 120 ;
+  public: static const int32_t kToken__25_applicationBundleBase = 121 ;
+  public: static const int32_t kToken__25_clonable = 122 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 123 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 124 ;
+  public: static const int32_t kToken__25_codeblocks_2D_windows = 125 ;
+  public: static const int32_t kToken__25_comparable = 126 ;
+  public: static const int32_t kToken__25_equatable = 127 ;
+  public: static const int32_t kToken__25_from = 128 ;
+  public: static const int32_t kToken__25_generatedInSeparateFile = 129 ;
+  public: static const int32_t kToken__25_initArgLabel = 130 ;
+  public: static const int32_t kToken__25_libpmAtPath = 131 ;
+  public: static const int32_t kToken__25_MacOS = 132 ;
+  public: static const int32_t kToken__25_MacOSDeployment = 133 ;
+  public: static const int32_t kToken__25_macCodeSign = 134 ;
+  public: static const int32_t kToken__25_makefile_2D_macosx = 135 ;
+  public: static const int32_t kToken__25_makefile_2D_unix = 136 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 137 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 138 ;
+  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 139 ;
+  public: static const int32_t kToken__25_nonAtomicSelection = 140 ;
+  public: static const int32_t kToken__25_once = 141 ;
+  public: static const int32_t kToken__25_preserved = 142 ;
+  public: static const int32_t kToken__25_quietOutputByDefault = 143 ;
+  public: static const int32_t kToken__25_templateEndMark = 144 ;
+  public: static const int32_t kToken__25_tool_2D_source = 145 ;
+  public: static const int32_t kToken__25_translate = 146 ;
+  public: static const int32_t kToken__25_usefull = 147 ;
+  public: static const int32_t kToken__2A_ = 148 ;
+  public: static const int32_t kToken__2C_ = 149 ;
+  public: static const int32_t kToken__2B_ = 150 ;
+  public: static const int32_t kToken__26__2B_ = 151 ;
+  public: static const int32_t kToken__26__2D_ = 152 ;
+  public: static const int32_t kToken__26__2A_ = 153 ;
+  public: static const int32_t kToken__26__2F_ = 154 ;
+  public: static const int32_t kToken__3E_ = 155 ;
+  public: static const int32_t kToken__3B_ = 156 ;
+  public: static const int32_t kToken__3A_ = 157 ;
+  public: static const int32_t kToken__3A__3E_ = 158 ;
+  public: static const int32_t kToken__2D_ = 159 ;
+  public: static const int32_t kToken__28_ = 160 ;
+  public: static const int32_t kToken__29_ = 161 ;
+  public: static const int32_t kToken__2D__3E_ = 162 ;
+  public: static const int32_t kToken__3D__3D_ = 163 ;
+  public: static const int32_t kToken__3D_ = 164 ;
+  public: static const int32_t kToken__26__26_ = 165 ;
+  public: static const int32_t kToken__5B_ = 166 ;
+  public: static const int32_t kToken__5D_ = 167 ;
+  public: static const int32_t kToken__2B__3D_ = 168 ;
+  public: static const int32_t kToken__2D__3D_ = 169 ;
+  public: static const int32_t kToken__2A__3D_ = 170 ;
+  public: static const int32_t kToken__2F__3D_ = 171 ;
+  public: static const int32_t kToken__26__3D_ = 172 ;
+  public: static const int32_t kToken__7C__3D_ = 173 ;
+  public: static const int32_t kToken__5E__3D_ = 174 ;
+  public: static const int32_t kToken__2F_ = 175 ;
+  public: static const int32_t kToken__21__3D_ = 176 ;
+  public: static const int32_t kToken__3E__3D_ = 177 ;
+  public: static const int32_t kToken__26_ = 178 ;
+  public: static const int32_t kToken__7B_ = 179 ;
+  public: static const int32_t kToken__7D_ = 180 ;
+  public: static const int32_t kToken__60_ = 181 ;
+  public: static const int32_t kToken__7C__7C_ = 182 ;
+  public: static const int32_t kToken__7C_ = 183 ;
+  public: static const int32_t kToken__5E_ = 184 ;
+  public: static const int32_t kToken__3E__3E_ = 185 ;
+  public: static const int32_t kToken__7E_ = 186 ;
+  public: static const int32_t kToken__2D__2D_ = 187 ;
+  public: static const int32_t kToken__2B__2B_ = 188 ;
+  public: static const int32_t kToken__26__2D__2D_ = 189 ;
+  public: static const int32_t kToken__26__2B__2B_ = 190 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 191 ;
+  public: static const int32_t kToken__21__3D__3D_ = 192 ;
+  public: static const int32_t kToken__3F__5E_ = 193 ;
+  public: static const int32_t kToken__21__5E_ = 194 ;
+  public: static const int32_t kToken__A7__5B_ = 195 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -553,60 +553,58 @@ class Lexique_galgasScanner_33_ : public Lexique {
 
 
 //--- indexing keys
-  public: enum {
-    kIndexing_classDefinition,
-    kIndexing_enumDefinition,
-    kIndexing_structDefinition,
-    kIndexing_listDefinition,
-    kIndexing_sortedListDefinition,
-    kIndexing_mapDefinition,
-    kIndexing_dictionaryDefinition,
-    kIndexing_externTypeDefinition,
-    kIndexing_filewrapperDefinition,
-    kIndexing_filewrapperReference,
-    kIndexing_graphDefinition,
-    kIndexing_classReferencedAsSuperClass,
-    kIndexing_typeReferenceInConstructor,
-    kIndexing_typeReferenceInTypeMethod,
-    kIndexing_routineDefinition,
-    kIndexing_routineCall,
-    kIndexing_functionDefinition,
-    kIndexing_functionCall,
-    kIndexing_terminalDeclaration,
-    kIndexing_terminalReference,
-    kIndexing_ruleDefinition,
-    kIndexing_ruleReference,
-    kIndexing_abstractExtensionSetterDefinition,
-    kIndexing_typeReferenceAbstractExtensionSetter,
-    kIndexing_overrideabstractExtensionSetterDefinition,
-    kIndexing_extensionSetterDefinition,
-    kIndexing_typeReferenceExtensionSetter,
-    kIndexing_overrideExtensionSetterDefinition,
-    kIndexing_typeReferenceOverrideExtensionSetterDefinition,
-    kIndexing_typeReferenceOverrideAbstractExtensionSetter,
-    kIndexing_abstractExtensionMethodDefinition,
-    kIndexing_typeReferenceAbstractExtensionMethod,
-    kIndexing_overrideAbstractExtensionMethodDefinition,
-    kIndexing_extensionMethodDefinition,
-    kIndexing_typeReferenceExtensionMethod,
-    kIndexing_overrideExtensionMethodDefinition,
-    kIndexing_typeReferenceOverrideExtensionMethodDefinition,
-    kIndexing_typeReferenceOverrideAbstractExtensionMethod,
-    kIndexing_abstractExtensionGetterDefinition,
-    kIndexing_typeReferenceAbstractExtensionGetter,
-    kIndexing_overrideAbstractExtensionGetterDefinition,
-    kIndexing_typeReferenceOverrideAbstractExtensionGetter,
-    kIndexing_extensionGetterDefinition,
-    kIndexing_typeReferenceExtensionGetter,
-    kIndexing_overrideExtensionGetterDefinition,
-    kIndexing_typeReferenceOverrideExtensionGetter,
-    kIndexing_optionComponentDefinition,
-    kIndexing_optionComponentReference,
-    kIndexing_grammarComponentDefinition,
-    kIndexing_grammarComponentReference,
-    kIndexing_indexingNameDefinition,
-    kIndexing_indexingNameReference
-  } ;
+public: static const uint32_t kIndexing_classDefinition = 0 ;
+public: static const uint32_t kIndexing_enumDefinition = 1 ;
+public: static const uint32_t kIndexing_structDefinition = 2 ;
+public: static const uint32_t kIndexing_listDefinition = 3 ;
+public: static const uint32_t kIndexing_sortedListDefinition = 4 ;
+public: static const uint32_t kIndexing_mapDefinition = 5 ;
+public: static const uint32_t kIndexing_dictionaryDefinition = 6 ;
+public: static const uint32_t kIndexing_externTypeDefinition = 7 ;
+public: static const uint32_t kIndexing_filewrapperDefinition = 8 ;
+public: static const uint32_t kIndexing_filewrapperReference = 9 ;
+public: static const uint32_t kIndexing_graphDefinition = 10 ;
+public: static const uint32_t kIndexing_classReferencedAsSuperClass = 11 ;
+public: static const uint32_t kIndexing_typeReferenceInConstructor = 12 ;
+public: static const uint32_t kIndexing_typeReferenceInTypeMethod = 13 ;
+public: static const uint32_t kIndexing_routineDefinition = 14 ;
+public: static const uint32_t kIndexing_routineCall = 15 ;
+public: static const uint32_t kIndexing_functionDefinition = 16 ;
+public: static const uint32_t kIndexing_functionCall = 17 ;
+public: static const uint32_t kIndexing_terminalDeclaration = 18 ;
+public: static const uint32_t kIndexing_terminalReference = 19 ;
+public: static const uint32_t kIndexing_ruleDefinition = 20 ;
+public: static const uint32_t kIndexing_ruleReference = 21 ;
+public: static const uint32_t kIndexing_abstractExtensionSetterDefinition = 22 ;
+public: static const uint32_t kIndexing_typeReferenceAbstractExtensionSetter = 23 ;
+public: static const uint32_t kIndexing_overrideabstractExtensionSetterDefinition = 24 ;
+public: static const uint32_t kIndexing_extensionSetterDefinition = 25 ;
+public: static const uint32_t kIndexing_typeReferenceExtensionSetter = 26 ;
+public: static const uint32_t kIndexing_overrideExtensionSetterDefinition = 27 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideExtensionSetterDefinition = 28 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionSetter = 29 ;
+public: static const uint32_t kIndexing_abstractExtensionMethodDefinition = 30 ;
+public: static const uint32_t kIndexing_typeReferenceAbstractExtensionMethod = 31 ;
+public: static const uint32_t kIndexing_overrideAbstractExtensionMethodDefinition = 32 ;
+public: static const uint32_t kIndexing_extensionMethodDefinition = 33 ;
+public: static const uint32_t kIndexing_typeReferenceExtensionMethod = 34 ;
+public: static const uint32_t kIndexing_overrideExtensionMethodDefinition = 35 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideExtensionMethodDefinition = 36 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionMethod = 37 ;
+public: static const uint32_t kIndexing_abstractExtensionGetterDefinition = 38 ;
+public: static const uint32_t kIndexing_typeReferenceAbstractExtensionGetter = 39 ;
+public: static const uint32_t kIndexing_overrideAbstractExtensionGetterDefinition = 40 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionGetter = 41 ;
+public: static const uint32_t kIndexing_extensionGetterDefinition = 42 ;
+public: static const uint32_t kIndexing_typeReferenceExtensionGetter = 43 ;
+public: static const uint32_t kIndexing_overrideExtensionGetterDefinition = 44 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideExtensionGetter = 45 ;
+public: static const uint32_t kIndexing_optionComponentDefinition = 46 ;
+public: static const uint32_t kIndexing_optionComponentReference = 47 ;
+public: static const uint32_t kIndexing_grammarComponentDefinition = 48 ;
+public: static const uint32_t kIndexing_grammarComponentReference = 49 ;
+public: static const uint32_t kIndexing_indexingNameDefinition = 50 ;
+public: static const uint32_t kIndexing_indexingNameReference = 51 ;
 
 //--- Parse lexical token
   protected: void internalParseLexicalToken (cTokenFor_galgasScanner_33_ & token) ;

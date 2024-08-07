@@ -1813,7 +1813,7 @@ class GGS_lstring function_makeOptionalTypeLName (const class GGS_lstring & cons
 
 void extensionMethod_searchKey (const class GGS_routineMap inObject,
                                 const class GGS_lstring constin_inRoutineName,
-                                class GGS_actualParameterListAST in_inActualParameterList,
+                                const class GGS_actualParameterListAST constin_inActualParameterList,
                                 class GGS_formalParameterSignature & out_outRoutineSignature,
                                 class GGS_bool & out_outIsFilePrivate,
                                 class GGS_lstring & out_outRoutineMangledName,

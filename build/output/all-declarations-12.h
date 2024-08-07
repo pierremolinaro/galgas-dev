@@ -899,7 +899,7 @@ class GGS_lstring function_makeWeakTypeLName (const class GGS_lstring & constinA
 
 void extensionSetter_getOptionalTypeName (class GGS_galgasDeclarationAST & ioObject,
                                           class GGS_lstring & out_outOptionalTypeName,
-                                          class GGS_lstring in_inTypeName,
+                                          const class GGS_lstring constin_inTypeName,
                                           const class GGS_bool constin_inPredefined,
                                           class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
@@ -2162,6 +2162,8 @@ class cParser_galgas_33_GrammarComponentSyntax {
   protected: virtual int32_t select_galgas_33_GrammarComponentSyntax_11 (Lexique_galgasScanner_33_ *) = 0 ;
 
   protected: virtual int32_t select_galgas_33_GrammarComponentSyntax_12 (Lexique_galgasScanner_33_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_33_GrammarComponentSyntax_13 (Lexique_galgasScanner_33_ *) = 0 ;
 
 
 } ;

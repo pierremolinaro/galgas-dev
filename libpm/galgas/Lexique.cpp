@@ -654,10 +654,10 @@ void Lexique::acceptTerminal (const int32_t IN_EXPECTED_TERMINAL
 void Lexique::enterIndexing (const uint32_t inIndexingKind,
                              const char * inIndexedKeyPosfix) {
   if ((nullptr != mIndexingDictionary) && (sourceText ().sourceFilePath ().length () > 0)) {
-    const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
-    const uint32_t tokenLine = (uint32_t) mCurrentTokenPtr->mStartLocation.lineNumber () ;
-    const uint32_t tokenLength  = ((uint32_t) mCurrentTokenPtr->mEndLocation.index ()) - tokenStartLocation + 1 ;
-    String indexedKey = sourceText ().sourceString ().subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) + inIndexedKeyPosfix ;
+    const uint32_t tokenStartLocation = uint32_t (mCurrentTokenPtr->mStartLocation.index ()) ;
+    const uint32_t tokenLine = uint32_t (mCurrentTokenPtr->mStartLocation.lineNumber ()) ;
+    const uint32_t tokenLength  = uint32_t (mCurrentTokenPtr->mEndLocation.index ()) - tokenStartLocation + 1 ;
+    const String indexedKey = sourceText ().sourceString ().subString (int32_t (tokenStartLocation), int32_t (tokenLength)) + inIndexedKeyPosfix ;
     mIndexingDictionary->addIndexedKey (inIndexingKind,
                                         indexedKey,
                                         sourceText ().sourceFilePath (),

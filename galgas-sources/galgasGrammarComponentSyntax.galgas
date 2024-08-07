@@ -121,6 +121,10 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       $?$
       selector = ["" here]
     end
+    select
+    or
+      $let$
+    end
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -129,7 +133,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !.argumentVarIn
+      !.argumentConstantIn
       !mTypeName
       !outArgumentName
       !false
@@ -147,7 +151,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       $?$
       selector = ["" here]
     end
-    $let$
+    $var$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -156,7 +160,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !@formalArgumentPassingModeAST. argumentConstantIn
+      !@formalArgumentPassingModeAST.argumentVarIn
       !mTypeName
       !outArgumentName
       !false
@@ -318,6 +322,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
                                 !@lstring outArgumentName
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
     $?selector:$ ?let selector
+    $var$
     <type_definition> !?ioDeclarations ?let @lstring mTypeName
     select
     or
@@ -347,7 +352,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !.argumentVarIn
+      !.argumentConstantIn
       !mTypeName
       !outArgumentName
       !false
@@ -368,7 +373,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $identifier$ ?outArgumentName
     ioStartSymbolLabelFormalParameterList +=
       !selector
-      !@formalArgumentPassingModeAST. argumentConstantIn
+      !.argumentConstantIn
       !mTypeName
       !outArgumentName
       !false

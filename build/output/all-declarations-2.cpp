@@ -11034,14 +11034,14 @@ void callExtensionMethod_checkLexicalExpression (cPtr_lexicalExpressionAST * inO
 
 void callExtensionMethod_checkLexicalFunctionCallArgument (cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                            GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                           GGS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                           const GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
-    inObject->method_checkLexicalFunctionCallArgument (io_ioLexiqueAnalysisContext, in_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
+    inObject->method_checkLexicalFunctionCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -11052,14 +11052,14 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (cPtr_lexicalRoutineOr
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                           GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          GGS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          const GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
-    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, in_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
+    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -13495,15 +13495,15 @@ GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const cPtr_abs
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                           GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          GGS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
-                                                          GGS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          const GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
+                                                          const GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
-    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, in_inLexicalRoutineFormalArgumentMode, in_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
+    inObject->method_checkLexicalRoutineCallArgument (io_ioLexiqueAnalysisContext, constin_inLexicalRoutineFormalArgumentMode, constin_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------

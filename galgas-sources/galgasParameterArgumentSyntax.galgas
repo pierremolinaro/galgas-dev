@@ -50,7 +50,10 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
             selector = ["" here]
           end
           select
+            $var$
             formalParameterPassingMode = .argumentVarIn
+          or
+            formalParameterPassingMode = .argumentConstantIn
           or
             $let$
             formalParameterPassingMode = .argumentConstantIn
@@ -105,7 +108,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
               selector = ["" here]
             end
             select
-              formalParameterPassingMode = .argumentVarIn
+              formalParameterPassingMode = .argumentConstantIn
             or
               $var$
               formalParameterPassingMode = .argumentVarIn
@@ -341,6 +344,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         selector = ["" here]
       end
       select
+        isConstant = true
+      or
+        $var$
         isConstant = false
       or
         $let$
@@ -386,6 +392,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         end
         let @bool isConstant
         select
+          isConstant = true
+        or
+          $var$
           isConstant = false
         or
           $let$
@@ -492,17 +501,12 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           selector = ["" here]
           formalParameterPassingMode = .argumentConstantIn
         or
+          $var$
           selector = ["" here]
           formalParameterPassingMode = .argumentVarIn
-#        or
-#          $?$
-#          selector = ["" here]
-#          $let$
-#          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
-#        or
-#          $?selector:$ ?selector
-#          $let$
-#          formalParameterPassingMode = @formalArgumentPassingModeAST.argumentConstantIn
+        or
+          selector = ["" here]
+          formalParameterPassingMode = .argumentConstantIn
         or
           $?!selector:$ ?selector
           formalParameterPassingMode = .argumentInOut
@@ -771,7 +775,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         or
           $let$
           isConstant = true
-        or // Implicit 'let'
+        or
           isConstant = true
         end
         <type_definition> !?ioDeclarations ?let formalParameterTypeName

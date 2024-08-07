@@ -80,8 +80,6 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       let instructionLocation = @location.here
       <if_expression_ggs3> !?ioDeclarations ?let testExpression
       $else$
-#      <error_instruction> !?ioDeclarations ?let errorInstruction
-#      let @semanticInstructionListAST else_instructionList = §[.init (errorInstruction)]
       <semantic_instruction_list_ggs3> !?ioDeclarations ?let else_instructionList
       let endOf_else_branch = @location.here
       $end$

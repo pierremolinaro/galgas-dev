@@ -10196,19 +10196,19 @@ GGS_galgas_33_GrammarComponentAST GGS_galgas_33_GrammarComponentAST::extractObje
 
 void extensionSetter_getOptionalTypeName (GGS_galgasDeclarationAST & ioObject,
                                           GGS_lstring & outArgument_outOptionalTypeName,
-                                          GGS_lstring inArgument_inTypeName,
+                                          const GGS_lstring constinArgument_inTypeName,
                                           const GGS_bool constinArgument_inPredefined,
                                           Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outOptionalTypeName.drop () ; // Release 'out' argument
-  outArgument_outOptionalTypeName = function_makeOptionalTypeLName (inArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 435)) ;
+  outArgument_outOptionalTypeName = function_makeOptionalTypeLName (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 435)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     const GGS_galgasDeclarationAST temp_1 = ioObject ;
     test_0 = temp_1.readProperty_implicitTypeDeclarationSet ().getter_hasKey (outArgument_outOptionalTypeName.readProperty_string () COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 436)).operator_not (SOURCE_FILE ("semanticsTypesForAST.galgas", 436)).boolEnum () ;
     if (kBoolTrue == test_0) {
       ioObject.mProperty_implicitTypeDeclarationSet.addAssign_operation (outArgument_outOptionalTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 437)) ;
-      ioObject.mProperty_mDeclarationList.addAssign_operation (GGS_optionalTypeDeclarationAST::init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (constinArgument_inPredefined, outArgument_outOptionalTypeName, inArgument_inTypeName, GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 438)) ;
+      ioObject.mProperty_mDeclarationList.addAssign_operation (GGS_optionalTypeDeclarationAST::init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (constinArgument_inPredefined, outArgument_outOptionalTypeName, constinArgument_inTypeName, GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 438)) ;
     }
   }
 }
@@ -10330,7 +10330,7 @@ GGS_routineMap GGS_routineMap::extractObject (const GGS_object & inObject,
 
 void extensionMethod_searchKey (const GGS_routineMap inObject,
                                 const GGS_lstring constinArgument_inRoutineName,
-                                GGS_actualParameterListAST inArgument_inActualParameterList,
+                                const GGS_actualParameterListAST constinArgument_inActualParameterList,
                                 GGS_formalParameterSignature & outArgument_outRoutineSignature,
                                 GGS_bool & outArgument_outIsFilePrivate,
                                 GGS_lstring & outArgument_outRoutineMangledName,
@@ -10358,9 +10358,9 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
       GGS_acceptableParameterList var_acceptableParameterList_4363 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
       cEnumerator_routineArgumentMap enumerator_4419 (var_routine_4054.readProperty_mArgumentMap (), EnumerationOrder::up) ;
       while (enumerator_4419.hasCurrentObject ()) {
-        GGS_bool var_accept_4447 = GGS_bool (ComparisonKind::equal, inArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4419.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
+        GGS_bool var_accept_4447 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4419.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
         cEnumerator_formalParameterSignature enumerator_4558 (enumerator_4419.current (HERE).readProperty_mRoutineSignature (), EnumerationOrder::up) ;
-        cEnumerator_actualParameterListAST enumerator_4578 (inArgument_inActualParameterList, EnumerationOrder::up) ;
+        cEnumerator_actualParameterListAST enumerator_4578 (constinArgument_inActualParameterList, EnumerationOrder::up) ;
         bool bool_2 = var_accept_4447.isValidAndTrue () ;
         if (enumerator_4558.hasCurrentObject () && enumerator_4578.hasCurrentObject () && bool_2) {
           while (enumerator_4558.hasCurrentObject () && enumerator_4578.hasCurrentObject () && bool_2) {

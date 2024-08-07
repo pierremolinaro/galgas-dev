@@ -1191,12 +1191,12 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acStrongPtr_c
 
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -1613,12 +1613,12 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1822,12 +1822,12 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
 
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2031,12 +2031,12 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2240,12 +2240,12 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
 
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -2454,12 +2454,12 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
 
 //--- Extension method checkLexicalFunctionCallArgument
   public: virtual void method_checkLexicalFunctionCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -8534,7 +8534,7 @@ void callExtensionMethod_checkLexicalExpression (class cPtr_lexicalExpressionAST
 
 void callExtensionMethod_checkLexicalFunctionCallArgument (class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                            class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                           class GGS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                           const class GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
                                                            class Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
@@ -8546,7 +8546,7 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (class cPtr_lexicalRou
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                           class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          class GGS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          const class GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
                                                           class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
@@ -9953,8 +9953,8 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acStrongPtr_class {
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalArgumentModeAST arg_inLexicalRoutineFormalArgumentMode,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalArgumentModeAST arg_inLexicalRoutineFormalArgumentMode,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Properties
@@ -10160,8 +10160,8 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalArgumentModeAST arg_inLexicalRoutineFormalArgumentMode,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalArgumentModeAST arg_inLexicalRoutineFormalArgumentMode,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10371,8 +10371,8 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 
 //--- Extension method checkLexicalRoutineCallArgument
   public: virtual void method_checkLexicalRoutineCallArgument (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
-           class GGS_lexicalArgumentModeAST arg_inLexicalRoutineFormalArgumentMode,
-           class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
+           const class GGS_lexicalArgumentModeAST arg_inLexicalRoutineFormalArgumentMode,
+           const class GGS_lexicalTypeEnum arg_inLexicalRoutineFormalArgumentType,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -10968,8 +10968,8 @@ class GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const cl
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                           class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          class GGS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
-                                                          class GGS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          const class GGS_lexicalArgumentModeAST constin_inLexicalRoutineFormalArgumentMode,
+                                                          const class GGS_lexicalTypeEnum constin_inLexicalRoutineFormalArgumentType,
                                                           class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
