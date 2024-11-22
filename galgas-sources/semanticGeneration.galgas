@@ -24,7 +24,7 @@
 #! Grammar
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mGrammarName
   public let @string mLexiqueName
   public let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
@@ -103,7 +103,7 @@ refclass @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
+class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   public let @string mSyntaxComponentName
   public let @string mLexiqueName
   public let @nonterminalMap mNonterminalDeclarationMap
@@ -1402,7 +1402,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 #    P R I M I T I V E    T Y P E
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @primitiveTypeForGeneration : @semanticTypeForGeneration {
+class @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mPredefinedTypeName
   public let @string mCppDeclarationString
   public let @bool isPackage %initArgLabel

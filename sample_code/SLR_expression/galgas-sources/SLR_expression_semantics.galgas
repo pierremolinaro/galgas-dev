@@ -1,13 +1,13 @@
 
 
-abstract refclass @cExpression {
+abstract class @cExpression {
 }
 
-refclass @cConst : @cExpression {
+class @cConst : @cExpression {
   public let @luint mValue
 }
   
-refclass @cAdd : @cExpression {
+class @cAdd : @cExpression {
   public let @cExpression mLeftExpression
   public let @cExpression mRightExpression
 }

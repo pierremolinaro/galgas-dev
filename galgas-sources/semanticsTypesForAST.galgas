@@ -66,7 +66,7 @@ struct @syntaxExtensions {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @semanticExpressionAST {
+abstract class @semanticExpressionAST {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -165,30 +165,30 @@ list @formalInputParameterListAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @abstractInputParameter {
+abstract class @abstractInputParameter {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputParameterAnonymousVariable : @abstractInputParameter {
+class @inputParameterAnonymousVariable : @abstractInputParameter {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputParameterVariable : @abstractInputParameter {
+class @inputParameterVariable : @abstractInputParameter {
   public let @lstring mActualParameterName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputParameterDeclaredVariable : @abstractInputParameter {
+class @inputParameterDeclaredVariable : @abstractInputParameter {
   public let @lstring mActualParameterTypeName
   public let @lstring mActualParameterName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputParameterDeclaredConstant : @abstractInputParameter {
+class @inputParameterDeclaredConstant : @abstractInputParameter {
   public let @lstring mActualParameterTypeName
   public let @lstring mActualParameterName
 }
@@ -202,13 +202,13 @@ list @actualInputParameterListAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @syntaxInstructionAST {
+abstract class @syntaxInstructionAST {
   public let @location mInstructionLocation
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @semanticInstructionAST : @syntaxInstructionAST {
+abstract class @semanticInstructionAST : @syntaxInstructionAST {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -229,7 +229,7 @@ list @semanticDeclarationListAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
+class @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @formalInputParameterListAST mFormalArgumentList
   public let @lstring mResultTypeName
@@ -242,7 +242,7 @@ refclass @externFunctionDeclarationAST : @semanticDeclarationAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @functionDeclarationAST : @externFunctionDeclarationAST {
+class @functionDeclarationAST : @externFunctionDeclarationAST {
   public let @lstring mResultVariableName
   public let @semanticInstructionListAST mFunctionInstructionList
   public let @location mEndOfFunctionInstructionList
@@ -255,7 +255,7 @@ refclass @functionDeclarationAST : @externFunctionDeclarationAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @onceFunctionDeclarationAST : @semanticDeclarationAST {
+class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @lstring mResultTypeName
   public let @lstring mResultVariableName
@@ -288,7 +288,7 @@ list @filewrapperTemplateListAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperDeclarationAST : @semanticDeclarationAST {
+class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsInternal
   public let @string mSourceFileAbsolutePath
   public let @lstring mFilewrapperName
@@ -357,7 +357,7 @@ list @listOfSyntaxInstructionList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
+class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let @lstring mSyntaxComponentName
   public let @lstring mLexiqueName
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
@@ -367,7 +367,7 @@ refclass @galgas3SyntaxComponentAST : @semanticDeclarationAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @galgas3GrammarComponentAST : @semanticDeclarationAST {
+class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   public let @lbool mHasIndexing
   public let @lstring mGrammarComponentName
   public let @lstring mGrammarClass

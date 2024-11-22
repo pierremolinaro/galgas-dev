@@ -19,7 +19,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @repeatInstruction : @syntaxInstructionAST {
+class @repeatInstruction : @syntaxInstructionAST {
   private let @syntaxInstructionList mRepeatedInstructionList
   private let @location mEndOf_repeated_instructions_branch
   private let @listOfSyntaxInstructionList mRepeatBranchList
@@ -217,7 +217,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
+class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mSyntaxComponentName
   private let @uint mChoiceIndex
   private let @semanticInstructionListForGeneration m_repeated_instructionList

@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @tildeExpressionAST : @semanticExpressionAST {
+class @tildeExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 
@@ -118,7 +118,7 @@ refclass @tildeExpressionAST : @semanticExpressionAST {
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @tildeExpressionForGeneration : @semanticExpressionForGeneration {
+class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 }
 

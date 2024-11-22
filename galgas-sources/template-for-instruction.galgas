@@ -27,7 +27,7 @@ enum @templateInstructionForEnumerationAST {
 
 #·······················································································································
 
-refclass @templateInstructionForeachAST : @templateInstructionAST {
+class @templateInstructionForeachAST : @templateInstructionAST {
   private let @bool mIsAscending
   private let @templateExpressionAST mExpression
   private let @templateInstructionForEnumerationAST mEnumeratedObjectProperties
@@ -331,7 +331,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
+class @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
   private let @bool mIsAscending
   private let @semanticExpressionForGeneration mExpression
   private let @string mEnumeratorCppName

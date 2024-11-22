@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @unaryPlusExpressionAST : @semanticExpressionAST {
+class @unaryPlusExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }

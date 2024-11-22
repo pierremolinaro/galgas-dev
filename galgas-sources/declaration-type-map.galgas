@@ -47,7 +47,7 @@ list @insertOrReplaceDeclarationListAST {
 
 #·······················································································································
 
-refclass @mapDeclarationAST : @semanticDeclarationAST {
+class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @insertMethodListAST mInsertMethodList
@@ -788,7 +788,7 @@ override method @mapDeclarationAST semanticAnalysis
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @mapTypeForGeneration : @semanticTypeForGeneration {
+class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
   private let @lstring mMapTypeName
   private let @typedPropertyList mTypedAttributeList

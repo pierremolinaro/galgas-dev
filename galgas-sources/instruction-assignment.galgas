@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @assignmentInstructionAST : @semanticInstructionAST {
+class @assignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetVariableName
   private let @lstring mOptionalProperty
   private let @semanticExpressionAST mSourceExpression
@@ -28,7 +28,7 @@ refclass @assignmentInstructionAST : @semanticInstructionAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
+class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetSelfPropertyName
   private let @lstring mOptionalProperty
   private let @semanticExpressionAST mSourceExpression
@@ -319,7 +319,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
 #! GENERATION TYPES
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
+class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetCppName

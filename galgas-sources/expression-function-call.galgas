@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @functionCallExpressionAST : @semanticExpressionAST {
+class @functionCallExpressionAST : @semanticExpressionAST {
   private let @lstring mFunctionName
   private let @actualOutputArgumentList mExpressionList
 }
@@ -186,7 +186,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
+class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mFunctionName
   private let @semanticExpressionListForGeneration mExpressions
 

@@ -100,7 +100,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @abstractExtensionSetterAST : @semanticDeclarationAST {
+class @abstractExtensionSetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mAbstractExtensionSetterName
   private let @formalParameterListAST mAbstractExtensionSetterFormalParameterList
@@ -225,7 +225,7 @@ refclass @abstractExtensionSetterAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @abstractExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mAbstractExtensionSetterName
   private let @formalParameterListForGeneration mAbstractExtensionSetterFormalParameterList

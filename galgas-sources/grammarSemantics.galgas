@@ -31,7 +31,7 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
+abstract class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
   public let @location mStartLocation
 }
 
@@ -86,7 +86,7 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mNonterminalSymbolName
   public let @uint mNonterminalSymbolIndex
 }
@@ -107,7 +107,7 @@ list @branchListForGrammarAnalysis {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @branchListForGrammarAnalysis mSelectBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }
@@ -118,7 +118,7 @@ refclass @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGra
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @branchListForGrammarAnalysis mRepeatBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }

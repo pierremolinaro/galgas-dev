@@ -19,31 +19,31 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
+class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @actualOutputArgumentList mExpressions
 }
 
 #·····················································································································*
 
-refclass @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
-refclass @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
-refclass @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
 #·····················································································································*
 
-refclass @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
+class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 

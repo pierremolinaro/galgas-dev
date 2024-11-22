@@ -26,7 +26,7 @@ enum @incDecKind {
 
 #·····················································································································*
 
-refclass @incDecInstructionAST : @semanticInstructionAST {
+class @incDecInstructionAST : @semanticInstructionAST {
   public let @bool mPrefixedBySelf
   public let @lstring mReceiverName
   public let @lstringlist mStructAttributeList
@@ -35,7 +35,7 @@ refclass @incDecInstructionAST : @semanticInstructionAST {
 
 #·····················································································································*
 
-refclass @incDecNoOVFInstructionAST : @semanticInstructionAST {
+class @incDecNoOVFInstructionAST : @semanticInstructionAST {
   public let @bool mPrefixedBySelf
   public let @lstring mReceiverName
   public let @lstringlist mStructAttributeList
@@ -44,13 +44,13 @@ refclass @incDecNoOVFInstructionAST : @semanticInstructionAST {
 
 #·····················································································································*
 
-refclass @selfIncDecInstructionAST : @semanticInstructionAST {
+class @selfIncDecInstructionAST : @semanticInstructionAST {
   public let @incDecKind mKind
 }
 
 #·····················································································································*
 
-refclass @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
+class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
   public let @incDecKind mKind
 }
 
@@ -366,7 +366,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @incDecInstructionForGeneration : @semanticInstructionForGeneration {
+class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
   public let @string mReceiverCppName
   public let @unifiedTypeMapEntry mReceiverType
@@ -376,7 +376,7 @@ refclass @incDecInstructionForGeneration : @semanticInstructionForGeneration {
 
 #·····················································································································*
 
-refclass @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
+class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
   public let @string mReceiverCppName
   public let @unifiedTypeMapEntry mReceiverType

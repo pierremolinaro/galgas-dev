@@ -124,7 +124,7 @@ syntax extension galgas4ExpressionSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @classFuncExpressionAST : @semanticExpressionAST {
+class @classFuncExpressionAST : @semanticExpressionAST {
   private let @lstring typeName
   private let @lstring classFuncName
   private let @actualOutputArgumentList expressions
@@ -305,7 +305,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
+class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry classFuncType
   private let @string classFuncName
   private let @semanticExpressionListForGeneration mEffectiveParameterList

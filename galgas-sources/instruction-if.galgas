@@ -226,7 +226,7 @@ list @ifExpressionList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @ifInstructionAST : @semanticInstructionAST {
+class @ifInstructionAST : @semanticInstructionAST {
   public let @ifExpressionList mExpressions
   public let @semanticInstructionListAST m_then_instructionList
   public let @location mEndOf_then_branch
@@ -522,7 +522,7 @@ list @ifTestListForGeneration {
 
 #·······················································································································
 
-refclass @ifInstructionForGeneration : @semanticInstructionForGeneration {
+class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
   public let @ifTestListForGeneration mExpressions
   public let @semanticInstructionListForGeneration m_then_instructionList

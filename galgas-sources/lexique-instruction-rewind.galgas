@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalRewindInstructionAST : @lexicalInstructionAST {
+class @lexicalRewindInstructionAST : @lexicalInstructionAST {
   private let @lstring mLexicalTagName
   private let @lstring mTerminalName
 }

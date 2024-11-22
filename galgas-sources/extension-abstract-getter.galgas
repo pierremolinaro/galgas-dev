@@ -140,7 +140,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @abstractExtensionGetterAST : @semanticDeclarationAST {
+class @abstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mAbstractExtensionGetterName
   private let @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
@@ -271,7 +271,7 @@ refclass @abstractExtensionGetterAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mAbstractExtensionGetterName
   private let @unifiedTypeMapEntry mResultType

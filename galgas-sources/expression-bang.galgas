@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @bangExpressionAST : @semanticExpressionAST {
+class @bangExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mExpression
 }
@@ -130,7 +130,7 @@ override method @bangExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @bangExpressionForGeneration : @semanticExpressionForGeneration {
+class @bangExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mExpression
   public let @string mReceiverTypeName
 }

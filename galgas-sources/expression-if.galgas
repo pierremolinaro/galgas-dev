@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @ifExpressionAST : @semanticExpressionAST {
+class @ifExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mIfExpression
   public let @semanticExpressionAST mThenExpression
@@ -183,7 +183,7 @@ override method @ifExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @ifExpressionForGeneration : @semanticExpressionForGeneration {
+class @ifExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mIfExpression
   public let @semanticExpressionForGeneration mThenExpression
   public let @semanticExpressionForGeneration mElseExpression

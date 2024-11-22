@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @rightShiftExpressionAST : @semanticExpressionAST {
+class @rightShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -27,7 +27,7 @@ refclass @rightShiftExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-refclass @leftShiftExpressionAST : @semanticExpressionAST {
+class @leftShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -35,7 +35,7 @@ refclass @leftShiftExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-refclass @addExpressionAST : @semanticExpressionAST {
+class @addExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -43,7 +43,7 @@ refclass @addExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-refclass @addExpressionNoOverflowAST : @semanticExpressionAST {
+class @addExpressionNoOverflowAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -51,7 +51,7 @@ refclass @addExpressionNoOverflowAST : @semanticExpressionAST {
 
 #·······················································································································
 
-refclass @subExpressionAST : @semanticExpressionAST {
+class @subExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -59,7 +59,7 @@ refclass @subExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-refclass @subExpressionNoOverflowAST : @semanticExpressionAST {
+class @subExpressionNoOverflowAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -608,7 +608,7 @@ enum @binaryOperator {
 
 #·····················································································································
 
-refclass @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
+class @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
   public let @binaryOperator mOperator
   public let @semanticExpressionForGeneration mRightExpression

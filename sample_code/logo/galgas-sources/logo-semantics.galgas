@@ -18,7 +18,7 @@ map @routineMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @instruction {
+abstract class @instruction {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -38,7 +38,7 @@ list @instructionList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @penUp : @instruction {
+class @penUp : @instruction {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ override method @penUp codeDisplay
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @penDown : @instruction {
+class @penDown : @instruction {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,7 +72,7 @@ override method @penDown codeDisplay
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @rotate : @instruction {
+class @rotate : @instruction {
   public let @luint mAngle
 }
 
@@ -90,7 +90,7 @@ override method @rotate codeDisplay
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @forward : @instruction {
+class @forward : @instruction {
   public let @luint mLength
 }
 

@@ -125,7 +125,7 @@ syntax extension galgas4ExpressionSyntax {
 #!   Property Access
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
+class @structPropertyAccessExpressionAST : @semanticExpressionAST {
   private let @location operatorLocation
   private let @semanticExpressionAST mExpression
   private let @lstring propertyName
@@ -218,7 +218,7 @@ refclass @structPropertyAccessExpressionAST : @semanticExpressionAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
+class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
   private let @string structFieldName
 
@@ -250,7 +250,7 @@ refclass @propertyAccessExpressionForGeneration : @semanticExpressionForGenerati
 #!   Subscript read Access
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
+class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mExpression
   private let @actualOutputArgumentList actualArgumentList
   private let @location endOfArgsLocation
@@ -336,7 +336,7 @@ refclass @subscriptReadAccessExpressionAST : @semanticExpressionAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
+class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
   private let @string subscriptInvocationName
   private let @semanticExpressionListForGeneration actualExpressionList

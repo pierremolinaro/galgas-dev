@@ -32,7 +32,7 @@ list @initializerSignatureList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @predefinedTypeAST : @semanticDeclarationAST {
+abstract class @predefinedTypeAST : @semanticDeclarationAST {
   public let @string mPredefinedTypeName
 
   #-----------------------------------------------------------------------------------------------

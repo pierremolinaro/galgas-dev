@@ -19,14 +19,14 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
+class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @lstring mVariableName
   private let @semanticExpressionAST mSourceExpression
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @localVariableDeclarationNoAssignmentAST : @semanticInstructionAST {
+class @localVariableDeclarationNoAssignmentAST : @semanticInstructionAST {
   private let @lstring mTypeName
   private let @lstring mVariableName
 }
@@ -252,7 +252,7 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
+class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mVariableType
   private let @string mCppVariableName
 }

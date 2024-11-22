@@ -19,7 +19,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @selfAssignmentInstructionAST : @semanticInstructionAST {
+class @selfAssignmentInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSourceExpression
 }
 

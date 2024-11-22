@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalSelectInstructionAST : @lexicalInstructionAST {
+class @lexicalSelectInstructionAST : @lexicalInstructionAST {
   private let @lexicalSelectBranchListAST mLexicalSelectBranchList
   private let @lexicalInstructionListAST mDefaultInstructionList
 }

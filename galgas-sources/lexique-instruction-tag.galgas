@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalTagInstructionAST : @lexicalInstructionAST {
+class @lexicalTagInstructionAST : @lexicalInstructionAST {
   private let @lstring mLexicalTagName
 }
 

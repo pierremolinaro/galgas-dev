@@ -56,7 +56,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
+class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring arrayTypeName
   private let @lstring elementTypeName
   private let @bool isUsefull %initArgLabel
@@ -375,7 +375,7 @@ refclass @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @arrayTypeForGeneration : @semanticTypeForGeneration {
+class @arrayTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry elementType
 
   #·······························································································

@@ -51,7 +51,6 @@ gui cocoa {
     label $sortedlist$, $@type$
     label $enum$, $@type$
     label $class$, $@type$
-    label $refclass$, $@type$
     label $extern$, $@type$
     label $struct$, $@type$
     label $rule$, $<non_terminal>$
@@ -84,7 +83,7 @@ gui cocoa {
 
 
     textMacro "Class" :
-      "refclass @aClassName : @superClassName {\n"
+      "class @aClassName : @superClassName {\n"
       "  public let @aType mProperty\n"
       "}\n"
 

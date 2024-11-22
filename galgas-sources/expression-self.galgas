@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @selfInExpressionAST : @semanticExpressionAST {
+class @selfInExpressionAST : @semanticExpressionAST {
   private let @location mSelfLocation
 }
 
@@ -89,7 +89,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @selfInExpressionForGeneration : @semanticExpressionForGeneration {
+class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mSelfCppName
 }
 

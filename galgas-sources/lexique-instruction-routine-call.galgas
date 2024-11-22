@@ -20,19 +20,19 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @abstractLexicalRoutineActualArgumentAST {
+abstract class @abstractLexicalRoutineActualArgumentAST {
   protected let @location mActualPassingModeLocation
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+class @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   private let @lstring mAttributeName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   private let @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
 }
 
@@ -44,7 +44,7 @@ list @lexicalRoutineCallActualArgumentListAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
+class @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
   private let @lstring mRoutineName
   private let @lexicalRoutineCallActualArgumentListAST mActualArgumentList
   private let @lstringlist mErrorMessageList

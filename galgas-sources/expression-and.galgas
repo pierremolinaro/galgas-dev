@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @andShortExpressionAST : @semanticExpressionAST {
+class @andShortExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression
@@ -27,7 +27,7 @@ refclass @andShortExpressionAST : @semanticExpressionAST {
 
 #·······················································································································
 
-refclass @andExpressionAST : @semanticExpressionAST {
+class @andExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
   public let @semanticExpressionAST mLeftExpression
   public let @semanticExpressionAST mRightExpression
@@ -211,7 +211,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @andShortExpressionForGeneration : @semanticExpressionForGeneration {
+class @andShortExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
   public let @semanticExpressionForGeneration mRightExpression
 }

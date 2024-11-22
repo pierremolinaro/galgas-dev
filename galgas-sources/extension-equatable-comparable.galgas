@@ -127,7 +127,7 @@ map @equatableExtensionMap {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @equatableExtensionAST : @semanticDeclarationAST {
+class @equatableExtensionAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @equatableComparableExtension mExtension
 

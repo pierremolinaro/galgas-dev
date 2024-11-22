@@ -19,7 +19,7 @@
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
+class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mAbstractExtensionGetterName
   private let @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList

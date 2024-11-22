@@ -384,7 +384,7 @@ enum @opAssignmentOperator {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @opAssignExpressionInstructionAST : @semanticInstructionAST {
+class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -486,7 +486,7 @@ refclass @opAssignExpressionInstructionAST : @semanticInstructionAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
+class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
   private let @lstringlist mStructAttributeList
@@ -607,7 +607,7 @@ refclass @plusEqualElementsInstructionAST : @semanticInstructionAST {
 #! GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
+class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mReceiverCppName
   private let @unifiedTypeMapEntry mTargetType
   private let @string mNameForCheckingFormalParameterUsing
@@ -662,7 +662,7 @@ refclass @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
+class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName

@@ -520,7 +520,7 @@ proc addExtensions
         !"" # No Error message
       ]
       if not inAcceptSetters then
-        error lkey : "a refclass does not accept any setter; use method instead"
+        error lkey : "a class does not accept any setter; use method instead"
       end
     end
   end

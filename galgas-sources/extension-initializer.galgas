@@ -129,7 +129,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @initializerAST : @semanticDeclarationAST {
+class @initializerAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @formalInputParameterListAST mFormalParameterList
   private let @semanticInstructionListAST mInstructionList
@@ -334,7 +334,7 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string initializerName
   private let @formalInputParameterListForGeneration formalParameterList

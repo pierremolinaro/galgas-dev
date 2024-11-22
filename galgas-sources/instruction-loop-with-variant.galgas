@@ -19,7 +19,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @loopInstructionWithVariantAST : @semanticInstructionAST {
+class @loopInstructionWithVariantAST : @semanticInstructionAST {
   public let @semanticExpressionAST mVariantExpression
   public let @location mEndOfVariantExpression
   public let @semanticInstructionListAST mFirstInstructions
@@ -222,7 +222,7 @@ override method @loopInstructionWithVariantAST analyzeSemanticInstruction
 #! GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @loopInstructionWithVariantForGeneration : @semanticInstructionForGeneration {
+class @loopInstructionWithVariantForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
   public let @semanticExpressionForGeneration mVariantExpression
   public let @semanticInstructionListForGeneration mFirstInstructions

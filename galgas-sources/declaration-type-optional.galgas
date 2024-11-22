@@ -17,7 +17,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
+class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring optionalTypeName %initArgLabel
   private let @lstring unwrappedTypeName %initArgLabel
   private let @bool isUsefull %initArgLabel
@@ -177,7 +177,7 @@ refclass @optionalTypeDeclarationAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @optionalTypeForGeneration : @semanticTypeForGeneration {
+class @optionalTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry unwrappedType
   private let @unifiedTypeMapEntry weakType // is null if no weak type
 

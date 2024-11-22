@@ -302,7 +302,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-#refclass @typealiasDeclarationAST : @semanticDeclarationAST {
+#class @typealiasDeclarationAST : @semanticDeclarationAST {
 #  private let @lstring mAliasTypeName
 #  private let @lstring mDefinedTypeName
 #
@@ -410,7 +410,7 @@ syntax extension galgas4DeclarationsSyntax {
 ##   CODE GENERATION
 ##—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#refclass @aliasTypeForGeneration : @semanticTypeForGeneration {
+#class @aliasTypeForGeneration : @semanticTypeForGeneration {
 #  private let @string mAliasTypeName
 #  private let @unifiedTypeMapEntry mReferencedType
 #

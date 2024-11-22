@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalDropInstructionAST : @lexicalInstructionAST {
+class @lexicalDropInstructionAST : @lexicalInstructionAST {
   private let @lstring mTerminalName
 }
 

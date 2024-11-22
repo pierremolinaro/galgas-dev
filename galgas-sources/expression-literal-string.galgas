@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalStringExpressionAST : @semanticExpressionAST {
+class @literalStringExpressionAST : @semanticExpressionAST {
   private let @location mLocation
   private let @stringlist mStringSequence
 }
@@ -99,7 +99,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mString
 }
 

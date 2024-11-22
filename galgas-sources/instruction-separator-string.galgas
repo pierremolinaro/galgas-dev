@@ -60,7 +60,7 @@
 #
 ##—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#refclass @SeparatorStringSyntaxInstruction : @syntaxInstructionAST {
+#class @SeparatorStringSyntaxInstruction : @syntaxInstructionAST {
 #
 #  #·······························································································
 #
@@ -163,7 +163,7 @@
 ##! GENERATION TYPES
 ##—————————————————————————————————————————————————————————————————————————————————————————————————
 #
-#refclass @SeparatorStringInstructionForGeneration : @syntaxInstructionForGeneration {
+#class @SeparatorStringInstructionForGeneration : @syntaxInstructionForGeneration {
 #  private let @string mNonterminalName
 #  private let @string mLabelName
 #  private let @actualParameterListForGeneration mActualParameterList

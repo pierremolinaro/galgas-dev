@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
+class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
   private let @lstring mLexiqueComponentName
   private let @lstring mLexiqueGetterName
 }
@@ -111,7 +111,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
+class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
   private let @string mLexiqueComponentName
   private let @string mLexiqueGetterName
 }

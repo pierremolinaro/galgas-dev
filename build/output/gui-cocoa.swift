@@ -94,10 +94,6 @@ fileprivate let gPopUpData_0_galgasScanner_33_ : [[UInt16]] = [
     galgasScanner3_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner3_1_refclass, 0,
-    galgasScanner3_1__40_type, 0
-  ],
-  [0, // Leading character count to strip
     galgasScanner3_1_extern, 0,
     galgasScanner3_1__40_type, 0
   ],
@@ -302,7 +298,7 @@ class SWIFT_Tokenizer_0_galgasScanner3 : SWIFT_Lexique_galgasScanner3, SWIFT_Tok
 
 - (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
   static NSString * kTextMacroContent [7] = {
-    @"refclass @aClassName : @superClassName {\n  public let @aType mProperty\n}\n",
+    @"class @aClassName : @superClassName {\n  public let @aType mProperty\n}\n",
     @"enum @aType {\n  constant1, constant2\n}\n",
     @"list @type {\n  public let @aType mProperty\n}\n",
     @"map @type {\n  public let @aType mProperty\n  insert insertKey error message\"the '%K' key is already declared in %L\"\n  search searchKey error message\"there is no '%K' key\"\n}\n",

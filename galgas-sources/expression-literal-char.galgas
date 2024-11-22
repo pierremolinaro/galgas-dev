@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalCharExpressionAST : @semanticExpressionAST {
+class @literalCharExpressionAST : @semanticExpressionAST {
   private let @lchar mCharacter
 }
 
@@ -88,7 +88,7 @@ override method @literalCharExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
   private let @char mCharacter
 }
 

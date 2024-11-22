@@ -148,7 +148,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @overridingExtensionMethodAST : @semanticDeclarationAST {
+class @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %initArgLabel
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionMethodName
@@ -267,9 +267,9 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !selfObjectCppPrefixForAccessingProperty: "this->"
     !requiresSelfForAccessingProperty: self.requiresSelfForAccessingProperty
   }
-  var isRefClass = false
+  var isclass = false
   if let classType = [[selfType definition].typeKind getClassType] then
-    isRefClass = classType.isReference
+    isclass = classType.isReference
   end
   var mutableProperties = @typedPropertyList ()
   var nonMutableProperties = @typedPropertyList ()
@@ -349,7 +349,7 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mBaseTypeName
   private let @string mExtensionMethodName

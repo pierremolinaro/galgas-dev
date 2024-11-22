@@ -91,7 +91,7 @@ syntax extension galgas4InstructionsSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
+class @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @bool isFilePrivate %initArgLabel
   public let @lstring mRoutineName
   public let @formalParameterListAST mFormalArgumentListAST
@@ -198,7 +198,7 @@ refclass @externProcedureDeclarationAST : @semanticDeclarationAST {
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string routineMangledName %initArgLabel
   public let @formalParameterListForGeneration mFormalArgumentList
 

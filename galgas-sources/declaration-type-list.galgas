@@ -19,7 +19,7 @@
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @listDeclarationAST : @semanticDeclarationAST {
+class @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @bool usefullList %initArgLabel
@@ -515,7 +515,7 @@ override method @listDeclarationAST semanticAnalysis
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @listTypeForGeneration : @semanticTypeForGeneration {
+class @listTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
   private let @typedPropertyList mTypedAttributeList
 }

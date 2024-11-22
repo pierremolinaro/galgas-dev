@@ -118,7 +118,7 @@ enum @structComparison {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @structDeclarationAST : @semanticDeclarationAST {
+class @structDeclarationAST : @semanticDeclarationAST {
   public let @lstring structTypeName
   private let @propertyInCollectionListAST mStructurePropertyListAST
   private let @string enumeratedElementTypeName %initArgLabel # Empty string if not enumerable
@@ -406,7 +406,7 @@ refclass @structDeclarationAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @structTypeForGeneration : @semanticTypeForGeneration {
+class @structTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedPropertyList
   private let @typedPropertyList mConstructorArgumentList
   private let @string mConstructorInitializationCode

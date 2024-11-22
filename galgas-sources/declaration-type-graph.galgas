@@ -26,7 +26,7 @@ list @graphInsertModifierList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @graphDeclarationAST : @semanticDeclarationAST {
+class @graphDeclarationAST : @semanticDeclarationAST {
   public let @lstring mGraphTypeName
   public let @lstring mAssociatedListTypeName
   public let @graphInsertModifierList mInsertModifierList
@@ -574,7 +574,7 @@ override method @graphDeclarationAST semanticAnalysis
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @graphDeclarationForGeneration : @semanticTypeForGeneration {
+class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   public let @unifiedTypeMapEntry mAssociatedListTypeEntry
   public let @unifiedTypeMapEntry mAssociatedListElementTypeEntry
   public let @graphInsertModifierList mInsertModifierList

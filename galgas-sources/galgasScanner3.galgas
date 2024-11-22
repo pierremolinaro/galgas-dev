@@ -177,7 +177,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "private",
   "proc",
   "project",
-  "refclass",
   "remove",
   "repeat",
   "replace",

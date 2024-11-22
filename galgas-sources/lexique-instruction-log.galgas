@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalLogInstructionAST : @lexicalInstructionAST {
+class @lexicalLogInstructionAST : @lexicalInstructionAST {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalTypeInExpressionAST : @semanticExpressionAST {
+class @literalTypeInExpressionAST : @semanticExpressionAST {
   private let @lstring mLiteralTypeName
 }
 
@@ -95,7 +95,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
+class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry mLiteralType
 }
 

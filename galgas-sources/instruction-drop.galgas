@@ -19,7 +19,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @dropInstructionAST : @semanticInstructionAST {
+class @dropInstructionAST : @semanticInstructionAST {
   private let @lstringlist mDropList
 }
 

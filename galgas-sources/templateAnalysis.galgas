@@ -59,7 +59,7 @@ abstract method @templateExpressionAST templateExpressionAnalysis
 #   G E T T E R    C A L L    O P E R A N D
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateGetterCallInExpressionAST : @templateExpressionAST {
+class @templateGetterCallInExpressionAST : @templateExpressionAST {
   private let @templateExpressionAST mReceiverExpression
   private let @lstring mGetterName
   private let @templateExpressionListAST mExpressionList

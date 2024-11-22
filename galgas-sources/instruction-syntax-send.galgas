@@ -61,7 +61,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @syntaxSendInstructionAST : @syntaxInstructionAST {
+class @syntaxSendInstructionAST : @syntaxInstructionAST {
   private let @semanticExpressionAST mExpression
 
   #·······························································································
@@ -122,7 +122,7 @@ refclass @syntaxSendInstructionAST : @syntaxInstructionAST {
 #! @syntaxSendInstructionForGeneration
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
+class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 
   #·······························································································

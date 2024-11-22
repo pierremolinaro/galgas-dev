@@ -101,7 +101,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @nonterminalCallInstruction : @syntaxInstructionAST {
+class @nonterminalCallInstruction : @syntaxInstructionAST {
   private let @lstring mNonterminalName
   private let @lstring mLabelName # No label : empty string
   private let @actualParameterListAST mActualParameterList
@@ -182,7 +182,7 @@ refclass @nonterminalCallInstruction : @syntaxInstructionAST {
 #! GENERATION TYPES
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
+class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mNonterminalName
   private let @string mLabelName
   private let @actualParameterListForGeneration mActualParameterList

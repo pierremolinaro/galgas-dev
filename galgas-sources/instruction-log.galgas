@@ -26,7 +26,7 @@ list @logListAST {
 
 #·····················································································································*
 
-refclass @logInstructionAST : @semanticInstructionAST {
+class @logInstructionAST : @semanticInstructionAST {
   public let @logListAST mLogList
 }
 
@@ -161,7 +161,7 @@ override method @logInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @logInstructionForGeneration : @semanticInstructionForGeneration {
+class @logInstructionForGeneration : @semanticInstructionForGeneration {
   public let @lstring mLogMessage
   public let @semanticExpressionForGeneration mLogExpression
 }

@@ -19,20 +19,20 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
+class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperInExpressionAST : @semanticExpressionAST {
+class @filewrapperInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
+class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperTemplateName
   public let @actualOutputArgumentList mExpressions
@@ -330,7 +330,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
+class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @string mFilewrapperPath
 }
@@ -349,7 +349,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
+class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @string mFilewrapperTemplateName
   public let @semanticExpressionListForGeneration mActualOutputParameterList
@@ -387,7 +387,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
+class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @uint mFilewrapperFileIndex
   public let @bool mIsTextFile

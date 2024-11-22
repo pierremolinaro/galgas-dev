@@ -45,9 +45,6 @@ syntax extension galgas3DeclarationsSyntax {
     or
       $valueclass$
       isReference = false
-    or
-      $refclass$
-      isReference = true
     end
     $@type$ ?let @lstring className indexing classDefinition
     let @lstring superClassName # Empty if no super class
@@ -180,7 +177,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @classDeclarationAST : @semanticDeclarationAST {
+class @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
   private let @bool mIsReference
   private let @lstring mClassTypeName
@@ -607,7 +604,7 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @classTypeForGeneration : @semanticTypeForGeneration {
+class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
   private let @bool mIsReference
   private let @unifiedTypeMapEntry mSuperClass # Null if no super class

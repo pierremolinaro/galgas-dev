@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalRepeatInstructionAST : @lexicalInstructionAST {
+class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   private let @lexicalInstructionListAST mRepeatedInstructionList
   private let @lexicalWhileBranchListAST mLexicalWhileBranchList
   private let @location mLocation

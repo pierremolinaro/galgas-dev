@@ -248,7 +248,7 @@ syntax extension galgas4ExpressionSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @initializerCallAST : @semanticExpressionAST {
+class @initializerCallAST : @semanticExpressionAST {
   private let @lstring mTypeName
   private let @actualOutputArgumentList mExpressions
   private let @location mEndOfExpressions
@@ -396,7 +396,7 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @initializerCallForGeneration : @semanticExpressionForGeneration {
+class @initializerCallForGeneration : @semanticExpressionForGeneration {
   private let @string initializerName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
 

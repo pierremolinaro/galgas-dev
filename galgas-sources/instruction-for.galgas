@@ -27,12 +27,12 @@ list @forInstructionEnumeratedObjectElementListAST {
 
 #·····················································································································*
 
-abstract refclass @abstractEnumeratedCollectionAST {
+abstract class @abstractEnumeratedCollectionAST {
 }
 
 #·····················································································································*
 
-refclass @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
+class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
   private let @lstring mPrefix
   private let @semanticExpressionAST mEnumeratedExpression
   private let @location mEndOfAnonymousEnumeration
@@ -40,7 +40,7 @@ refclass @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectio
 
 #·····················································································································*
 
-refclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
+class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
   private let @lstring mEnumerationOptionalTypeName # Empty string if implicit
   private let @lstring mEnumerationVariable  # Empty string if joker
   private let @semanticExpressionAST mEnumeratedExpression
@@ -49,7 +49,7 @@ refclass @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
 
 #·····················································································································*
 
-refclass @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
+class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   private let @forInstructionEnumeratedObjectElementListAST mElementList
   private let @bool mEndsWithEllipsis %initArgLabel
   private let @semanticExpressionAST mEnumeratedExpression
@@ -65,7 +65,7 @@ list @forInstructionEnumeratedObjectListAST {
 
 #·····················································································································*
 
-refclass @forInstructionAST : @semanticInstructionAST {
+class @forInstructionAST : @semanticInstructionAST {
   private let @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
   private let @lstring mIndexVariableName
   private let @semanticExpressionAST mWhileExpression
@@ -890,7 +890,7 @@ list @forInstructionEnumeratedObjectListForGeneration {
 
 #·····················································································································*
 
-refclass @forInstructionForGeneration : @semanticInstructionForGeneration {
+class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
   private let @string mIndexVariableCppName  # Empty string if no index

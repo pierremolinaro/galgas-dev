@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @boolsetDeclarationAST : @semanticDeclarationAST {
+class @boolsetDeclarationAST : @semanticDeclarationAST {
   private let @lstring mBoolsetTypeName
   private let @lstringlist mFlagList
   private let @bool isEquatable %initArgLabel
@@ -299,7 +299,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 #   CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @boolsetTypeForGeneration : @semanticTypeForGeneration {
+class @boolsetTypeForGeneration : @semanticTypeForGeneration {
   private let @lstringlist mFlagList
   private let @bool equatable
 }

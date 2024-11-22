@@ -29,7 +29,7 @@ list @castInstructionBranchListAST {
 
 #······················································································································
 
-refclass @structuredCastInstructionAST : @semanticInstructionAST {
+class @structuredCastInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mCastExpression
   private let @castInstructionBranchListAST mCastInstructionBranchList
   private let @semanticInstructionListAST mElseInstructionList
@@ -248,7 +248,7 @@ list @castInstructionBranchListForGeneration {
 
 #······················································································································
 
-refclass @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
+class @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
   private let @castInstructionBranchListForGeneration mCastBranchList
   private let @semanticInstructionListForGeneration mElseInstructionList

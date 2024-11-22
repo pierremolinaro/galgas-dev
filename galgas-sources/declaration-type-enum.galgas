@@ -191,7 +191,7 @@ list @enumConstantList {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @enumDeclarationAST : @semanticDeclarationAST {
+class @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
   private let @enumConstantList mConstantList
   private let @structComparison comparison %initArgLabel
@@ -518,7 +518,7 @@ list @enumConstantListForGeneration {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @enumTypeForGeneration : @semanticTypeForGeneration {
+class @enumTypeForGeneration : @semanticTypeForGeneration {
   private let @enumConstantListForGeneration constantList
   private let [@unifiedTypeMapEntry] associatedValuesTypes
 

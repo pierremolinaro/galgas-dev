@@ -19,7 +19,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @orExpressionAST : @semanticExpressionAST {
+class @orExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -27,7 +27,7 @@ refclass @orExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-refclass @orShortExpressionAST : @semanticExpressionAST {
+class @orShortExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -35,7 +35,7 @@ refclass @orShortExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-refclass @xorExpressionAST : @semanticExpressionAST {
+class @xorExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -43,7 +43,7 @@ refclass @xorExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-refclass @closedSliceExpressionAST : @semanticExpressionAST {
+class @closedSliceExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -51,7 +51,7 @@ refclass @closedSliceExpressionAST : @semanticExpressionAST {
 
 #·····················································································································
 
-refclass @openedSliceExpressionAST : @semanticExpressionAST {
+class @openedSliceExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mLeftExpression
   private let @semanticExpressionAST mRightExpression
@@ -454,21 +454,21 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @orShortExpressionForGeneration : @semanticExpressionForGeneration {
+class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mLeftExpression
   private let @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-refclass @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+class @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mLeftExpression
   private let @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-refclass @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+class @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mLeftExpression
   private let @semanticExpressionForGeneration mRightExpression
 }

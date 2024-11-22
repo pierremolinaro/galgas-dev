@@ -50,7 +50,7 @@ syntax extension galgas3ExpressionSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @getterCallExpressionAST : @semanticExpressionAST {
+class @getterCallExpressionAST : @semanticExpressionAST {
   private let @bool errorOnGetterCallInsteadOfPropertyRead %initArgLabel
   private let @semanticExpressionAST mReceiver
   private let @lstring mGetterName
@@ -260,7 +260,7 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
+class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @methodKind mKind
   public let @semanticExpressionForGeneration mReceiverExpression
   public let @stringlist mFieldList

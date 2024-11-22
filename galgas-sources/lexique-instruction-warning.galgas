@@ -20,7 +20,7 @@
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @lexicalWarningInstructionAST : @lexicalInstructionAST {
+class @lexicalWarningInstructionAST : @lexicalInstructionAST {
   private let @lstring mWarningMessageName
 }
 

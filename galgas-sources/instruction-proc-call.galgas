@@ -64,7 +64,7 @@ syntax extension galgas4InstructionsSyntax {
 #! Class
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @procCallInstructionAST : @semanticInstructionAST {
+class @procCallInstructionAST : @semanticInstructionAST {
   private let @lstring mRoutineName
   private let @actualParameterListAST mActualParameterList
 
@@ -130,7 +130,7 @@ refclass @procCallInstructionAST : @semanticInstructionAST {
 #! GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @procCallInstructionForGeneration : @semanticInstructionForGeneration {
+class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring routineMangledName %initArgLabel
   private let @actualParameterListForGeneration mActualParameterList
 

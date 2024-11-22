@@ -137,7 +137,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 #! @terminalCheckInstructionAST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
+class @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @lstring mTerminalName
   private let @actualInputParameterListAST mActualInputParameterList
   private let @2lstringlist mIndexingKeyList # Empty list if no index
@@ -246,7 +246,7 @@ refclass @terminalCheckInstructionAST : @syntaxInstructionAST {
 #! @terminalCheckInstructionForGeneration
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mTerminalSymbolName
   public let @uint mTerminalSymbolIndex
 
@@ -286,7 +286,7 @@ refclass @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForG
 #! @terminalCheckInstructionForGeneration
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
+class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @lstring mTerminalName
   private let @string mLexiqueIdentifier
   private let @terminalCheckAssignementList mTerminalCheckAssignementList

@@ -20,7 +20,7 @@
 #!   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @optionExpressionAST : @semanticExpressionAST {
+class @optionExpressionAST : @semanticExpressionAST {
   private let @lstring mOptionComponentName
   private let @lstring mOptionEntryName
   private let @lstring mOptionGetterName
@@ -197,7 +197,7 @@ override method @optionExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
+class @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
   private let @string mOptionComponentName
   private let @string mOptionEntryName
@@ -220,7 +220,7 @@ override method @optionValueExpressionForGeneration generateExpression
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
+class @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
   private let @string mOptionComponentName
   private let @string mOptionEntryName
@@ -243,7 +243,7 @@ override method @optionCharExpressionForGeneration generateExpression
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
+class @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
   private let @string mOptionComponentName
   private let @string mOptionEntryName
@@ -281,7 +281,7 @@ override method @optionCommentExpressionForGeneration generateExpression
 
 #·······················································································································
 
-refclass @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
+class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
   private let @string mOptionComponentName
   private let @string mOptionEntryName

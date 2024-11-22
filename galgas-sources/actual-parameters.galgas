@@ -68,7 +68,7 @@ list @actualParameterListAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract refclass @actualParameterAST {
+abstract class @actualParameterAST {
 
   #·······························································································
 
@@ -104,7 +104,7 @@ abstract refclass @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @outputActualParameterAST : @actualParameterAST {
+class @outputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @semanticExpressionAST mOutputActualParameterExpression
   public let @location mEndOfExpressionLocation
@@ -189,7 +189,7 @@ refclass @outputActualParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @outputInputActualParameterAST : @actualParameterAST {
+class @outputInputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mOutputInputActualParameterName
   public let @lstringlist mStructAttributeList
@@ -288,7 +288,7 @@ refclass @outputInputActualParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @outputInputJokerParameterAST : @actualParameterAST {
+class @outputInputJokerParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @semanticExpressionAST expression
 
@@ -376,7 +376,7 @@ refclass @outputInputJokerParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @outputInputSelfParameterAST : @actualParameterAST {
+class @outputInputSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
 
   #·······························································································
@@ -452,7 +452,7 @@ refclass @outputInputSelfParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
+class @inputActualExistingVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputActualParameterName
   public let @lstringlist mPoisonedVarNameList
@@ -543,7 +543,7 @@ refclass @inputActualExistingVariableParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
+class @inputActualSelfPropertyParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputActualSelfPropertyName
   public let @lstringlist mPoisonedVarNameList
@@ -635,7 +635,7 @@ refclass @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputActualSelfParameterAST : @actualParameterAST {
+class @inputActualSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @location mSelfLocation
   public let @lstringlist mPoisonedVarNameList
@@ -725,7 +725,7 @@ refclass @inputActualSelfParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputActualNewVariableParameterAST : @actualParameterAST {
+class @inputActualNewVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputOptionalActualTypeName
   public let @lstring mInputActualParameterName
@@ -830,7 +830,7 @@ refclass @inputActualNewVariableParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputActualNewConstantParameterAST : @actualParameterAST {
+class @inputActualNewConstantParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mInputOptionalActualTypeName
   public let @lstring mInputActualParameterName
@@ -944,7 +944,7 @@ refclass @inputActualNewConstantParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
+class @inputSingleJokerActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstringlist mPoisonedVarNameList
 
@@ -1018,7 +1018,7 @@ refclass @inputSingleJokerActualParameterAST : @actualParameterAST {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @inputJokerActualParameterAST : @actualParameterAST {
+class @inputJokerActualParameterAST : @actualParameterAST {
   public let @location mQualifierLocation
   public let @uint mJokerIndex
 

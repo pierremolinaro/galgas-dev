@@ -1,17 +1,17 @@
 
 
-abstract refclass @declarationAST {
+abstract class @declarationAST {
 }
 
 list @declarationListAST {
   public let @declarationAST mDeclaration
 }
 
-refclass @classWithoutSuperClassAST : @declarationAST {
+class @classWithoutSuperClassAST : @declarationAST {
   public let @lstring mClassName
 }
 
-refclass @classWithSuperClassAST : @declarationAST {
+class @classWithSuperClassAST : @declarationAST {
   public let @lstring mClassName
   public let @lstring mSuperClassName
 }

@@ -21,7 +21,7 @@
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-refclass @templateLexiqueComponentAST : @semanticDeclarationAST {
+class @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
   private let @lstring mLexiqueSuperComponentName
   private let @templateDelimitorListAST mTemplateDelimitorList
