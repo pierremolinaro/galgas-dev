@@ -74,16 +74,12 @@ end
 if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_new (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-    do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
-    between %,\n%!^
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
+    %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
+    %,\n%!^
   end
-  if [ALL_PROPERTY_LIST count] == 0 then
-    %LOCATION_ARGS%  
-  else
-    %\n%!^%COMMA_LOCATION_ARGS%
-  end
-  %) {
+  %Compiler * inCompiler%
+  %\n%!^%COMMA_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
   if (%
     for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
@@ -93,10 +89,9 @@ if (not IS_ABSTRACT) & ([ALL_PROPERTY_LIST count] > 0) then
   %) {
     macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (%
     for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-      do %inAttribute_%![mPropertyName identifierRepresentation]
-      between %, %
+      do %inAttribute_%![mPropertyName identifierRepresentation]%, %
     end
-    % COMMA_THERE)) ;\n%
+    %inCompiler COMMA_THERE)) ;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%
@@ -122,7 +117,8 @@ end
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST do
   if mHasSetter then
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
+    %void GGS_%!TYPE_IDENTIFIER%::setter_setProperty_5F_%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
+                  !^%Compiler * inCompiler\n%
                   !^%COMMA_LOCATION_ARGS) {\n%
     %  if (nullptr != mObjectPtr) {\n%
     %    insulate (inCompiler COMMA_THERE) ;\n%
@@ -132,7 +128,8 @@ for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROP
     %  }\n%
     %}\n\n%
     %//--------------------------------------------------------------------------------------------------\n\n%
-    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GGS_%![mPropertyTypeEntry identifierRepresentation]% inValue,\n%
+                          !^%Compiler * /* inCompiler */\n%
                           !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
     %  mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
     %}\n\n%
@@ -145,26 +142,23 @@ end
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-    do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
-    between %,\n%!^
+    do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]%,\n%!^
   end
-  if [ALL_PROPERTY_LIST count] > 0 then
-    %\n%!^%COMMA_LOCATION_ARGS%
+  %Compiler *%
+  if SUPER_TYPE_IDENTIFIER != "" then
+    % inCompiler%
+  end
+  %\n%!^%COMMA_LOCATION_ARGS) :
+%if SUPER_TYPE_IDENTIFIER == ""
+  then
+    %acPtr_class (THERE)%
   else
-    %LOCATION_ARGS%
+   %cPtr_%!SUPER_TYPE_IDENTIFIER% (%
+   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in INHERITED_ATTRIBUTE_LIST
+     do %in_%![mPropertyName identifierRepresentation] %, %
+   end
+   %inCompiler COMMA_THERE)%
   end
-%) :
-%if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end% (%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in INHERITED_ATTRIBUTE_LIST
-    do %in_%![mPropertyName identifierRepresentation]
-    between %, %
-  end
-  if [INHERITED_ATTRIBUTE_LIST count] > 0 then
-    % COMMA_THERE%
-  else
-    %THERE%
-  end
-%)%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in CURRENT_PROPERTY_LIST
     do %,\n% %mProperty_%![mPropertyName identifierRepresentation]% (in_%![mPropertyName identifierRepresentation]%)%
   end
@@ -198,16 +192,13 @@ end
 if not IS_ABSTRACT then
 %//--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
   macroMyNew (ptr, cPtr_%!TYPE_IDENTIFIER% (%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST
-  do  %mProperty_%![mPropertyName identifierRepresentation]
-  between %, %
-  after % COMMA_%
+  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ALL_PROPERTY_LIST do
+    %mProperty_%![mPropertyName identifierRepresentation] %, %
   end
-  
-  %THERE)) ;
+  %inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 

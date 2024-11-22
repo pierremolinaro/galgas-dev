@@ -189,25 +189,3 @@ void routine_checkAssignmentTypes_3F__3F__3F_ (const class GGS_unifiedTypeMapEnt
                                                class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeErrorOrWarningInstruction?&?&?????&!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F__26__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                                   class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                   const class GGS_analysisContext constinArgument2,
-                                                                                                   class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                   const class GGS_semanticExpressionAST constinArgument4,
-                                                                                                   const class GGS_semanticExpressionAST constinArgument5,
-                                                                                                   const class GGS_fixitListAST constinArgument6,
-                                                                                                   const class GGS_location constinArgument7,
-                                                                                                   const class GGS_string constinArgument8,
-                                                                                                   class GGS_localVarManager & ioArgument9,
-                                                                                                   class GGS_semanticExpressionForGeneration & outArgument10,
-                                                                                                   class GGS_semanticExpressionForGeneration & outArgument11,
-                                                                                                   class GGS_fixitListForGeneration & outArgument12,
-                                                                                                   class Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
-

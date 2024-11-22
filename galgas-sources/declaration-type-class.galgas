@@ -144,7 +144,7 @@ syntax extension galgas4DeclarationsSyntax {
     var @propertyInCollectionListAST propertyList = ()
     repeat
     while
-      <property_declaration> !?ioDeclarations !? propertyList
+      <property_declaration> !?ioDeclarations !?propertyList
     while
       <method_declaration> !className !?ioDeclarations
     end
@@ -365,10 +365,10 @@ refclass @classDeclarationAST : @semanticDeclarationAST {
       for property in currentClassTypedPropertyList do
         if property.hasSetter then
           [!?setterMap insertKey
-            !.init {!"set"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
+            !.init {!"setProperty_"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
             !§[.init (["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
-            !false # Compiler argument
+            !true # Compiler argument
             !.isBasicFinal
             !"" # No error message
           ]
