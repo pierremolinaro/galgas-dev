@@ -10,7 +10,7 @@ struct @structTest {
 
 proc testsuite_struct() {
   println ("*************************************** begin of struct logging")
-  let s = @structTest.init (!"az")
+  let s = @structTest (!"az")
   log s
 }
 

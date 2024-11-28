@@ -26,7 +26,7 @@ func @uint.carré () -> @uint {
 
 proc testsuite_extension_readers() {
   println ("*************************************** begin of extension reader test")
-  let @B_B b = .init
+  let @B_B b = .()
   let @string s = b.otherReader (!2, !"-")
   log s
   if false then

@@ -15,7 +15,7 @@ La syntaxe de définition d'un type ensemble est de la forme~:
 
 \begin{galgas34}
 boolset @MonEnsemble {
-  # Liste de déclaration d'éléments, par exemple :
+  // Liste de déclaration d'éléments, par exemple :
   case element0
   case element1
   case element2
@@ -61,7 +61,7 @@ var x = @MonEnsemble.element1
 Si on veut un ensemble contenant plusieurs éléments, on utilise l'opérateur \ggsq=|=, qui effectue l'union de ses opérandes~:
 \begin{galgas34}
 var x = @MonEnsemble.element1 | @MonEnsemble.element2
-log x # LOGGING x: <boolset @MonEnsemble: element1 element2>
+log x // LOGGING x: <boolset @MonEnsemble: element1 element2>
 \end{galgas34}
 
 L'inférence de type permet d'éliminer les annotations de type non nécessaires~:
@@ -206,7 +206,7 @@ On peut uniquement la rendre égalable (on peut alors tester l'égalité \ggsq!=
 
 \begin{galgas34}
 boolset @MonEnsemble %equatable {
-  # Liste de déclaration d'éléments, par exemple :
+  // Liste de déclaration d'éléments, par exemple :
   case element0
   case element1
   case element2

@@ -479,40 +479,40 @@ On peut utiliser une expression de type \ggsq!@range! avec l'instruction \ggsq!f
 
 \begin{galgas34}
 for i in @range (12, 5) do
-  # i prend successivement les valeurs 12, 13, 14, 15, 16
+  // i prend successivement les valeurs 12, 13, 14, 15, 16
 end
 \end{galgas34}
 
 Et, avec l'opérateur \ggsq!...!~:
 \begin{galgas34}
 for i in 12 ... 16 do
-  # i prend successivement les valeurs 12, 13, 14, 15, 16
+  // i prend successivement les valeurs 12, 13, 14, 15, 16
 end
 \end{galgas34}
 
 Et l'opérateur \ggsq!..<!~:
 \begin{galgas34}
 for i in 12 ..< 17 do
-  # i prend successivement les valeurs 12, 13, 14, 15, 16
+  // i prend successivement les valeurs 12, 13, 14, 15, 16
 end
 \end{galgas34}
 
 Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggsq!>! après le mot-clé \ggsq!for!~:
 \begin{galgas34}
 for > i in @range (12, 5) do
-  # i prend successivement les valeurs 16, 15, 14, 13, 12
+  // i prend successivement les valeurs 16, 15, 14, 13, 12
 end
 \end{galgas34}
 
 \begin{galgas34}
 for > i in 12 ... 16 do
-  # i prend successivement les valeurs 16, 15, 14, 13, 12
+  // i prend successivement les valeurs 16, 15, 14, 13, 12
 end
 \end{galgas34}
 
 \begin{galgas34}
 for > i in 12 ..< 17 do
-  # i prend successivement les valeurs 16, 15, 14, 13, 12
+  // i prend successivement les valeurs 16, 15, 14, 13, 12
 end
 \end{galgas34}
 

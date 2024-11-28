@@ -2,10 +2,100 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Options de la ligne de commande}\index{Options de la ligne de commande}
+\chapter{Aide-mémoire}
 %-------------------------------------------------------------
 
-\tableDesMatieresLocaleDeProfondeurRelative{1}
+\tableDesMatieresLocaleDeProfondeurRelative{2}
+
+\section{Appel d'un initialiseur}
+
+L'appel d'un initialiseur instancie et initialise complètement un objet.
+
+Par exemple, la déclaration de structure suivante provoque la définition implicite d'un initialiseur synthétisé~:
+\begin{galgas34}
+struct @maStructure {
+  public var @uint propriété1
+  public var @bool propriété2
+}
+\end{galgas34}
+
+La syntaxe la plus générale d'appel de l'initialisateur synthétisé est~:
+
+\begin{galgas34}
+var aVariable = @maStructure (123, true)
+\end{galgas34}
+\begin{galgas3}
+var aVariable = @maStructure {!123 !true}
+\end{galgas3}
+
+
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur, en utilisant en GALGAS 4 le délimiteur \ggsq=.(= ou en GALGAS 3 le délimiteur \ggst=.{=~:
+\begin{galgas34}
+var @maStructure aVariable = .(123, true)
+\end{galgas34}
+\begin{galgas3}
+var @maStructure aVariable = .{!123 !true}
+\end{galgas3}
+
+
+Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
+\begin{galgas3}
+struct @maStructure {
+  public var @uint propriété1 %initArgLabel
+  public var @bool propriété2
+}
+\end{galgas3}
+
+Alors l'appel de l'initialisateur synthétisé devient~:
+\begin{galgas4}
+var aVariable = @maStructure (!propriété1: 123, true)
+\end{galgas4}
+\begin{galgas3}
+var aVariable = @maStructure {!propriété1: 123 !true}
+\end{galgas3}
+
+Si la propriété est initialisée, alors l'attribut \ggsq=%initArgLabel= est invalide (déclenche une erreur de syntaxe).
+
+
+Si toutes les propriétés sont initialisées, alors l'initialisateur synthétisé n'a pas d'argument. Pour la structure~:
+\begin{galgas34}
+struct @maStructure {
+  public var @uint propriété1 = 1
+  public var @bool propriété2 = 2
+}
+\end{galgas34}
+
+On écrit donc~:
+\begin{galgas34}
+var aVariable = @maStructure ()
+// Ou :
+var @maStructure aVariable = .init ()
+// Ou :
+var @maStructure aVariable = .init
+// Ou :
+var @maStructure aVariable = ()
+\end{galgas34}
+\begin{galgas3}
+var aVariable = @maStructure.init {}
+// Ou :
+var aVariable = @maStructure.init
+// Ou :
+var aVariable = @maStructure {}
+// Ou :
+var @maStructure aVariable = .init {}
+// Ou :
+var @maStructure aVariable = .init
+\end{galgas3}
+
+
+
+
+
+
+
+
+
+\section{Options de la ligne de commande}\index{Options de la ligne de commande}
 
 GALGAS accepte un certain nombre d’options, qui sont détaillées dans les pages suivantes.
 
@@ -25,7 +115,7 @@ L’ordre des options et des fichiers sources est quelconque. La ligne de comman
 
 {\bf Note pour Windows.} L’outil GALGAS pour Windows propose par défaut un dialogue invitant à entrer les références d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). L'option \optionGGS{-{-}no-dialog}, spécifique à cette plate forme, permet d'inhiber l’apparition du dialogue.
 
-\sectionLabel{Options générales}{optionGenerales}
+\subsectionLabel{Options générales}{optionGenerales}
 
 \optionGGS{-{-}help} Affiche la liste des options.
 
@@ -36,7 +126,7 @@ L’ordre des options et des fichiers sources est quelconque. La ligne de comman
 \optionGGS{-{-}no-dialog} (\emph{uniquement sur Windows}) L’outil GALGAS pour Windows propose par défaut un dialogue invitant à entrer la référence d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). Cette option permet d'inhiber l’apparition du dialogue.
 
 
-\sectionLabel{Options \emph{quiet} et \emph{verbose}}{optionsQuietVerbose}
+\subsectionLabel{Options \emph{quiet} et \emph{verbose}}{optionsQuietVerbose}
 
 
 \optionGGS{-v}, \optionGGS{-{-}verbose} Affiche des messages complémentaires sur le terminal. Par défaut, quand toutes les étapes se déroulent correctement, aucun message n’est affiché.
@@ -54,7 +144,7 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\section{Option de création d'un projet}
+\subsection{Option de création d'un projet}
 
 
 \optionGGS{-{-}create-project=$nom$} Crée un nouveau projet GALGAS nommé $nom$ dans le répertoire courant.
@@ -62,7 +152,7 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\section{Options contrôlant le compilateur}
+\subsection{Options contrôlant le compilateur}
 
 
 
@@ -112,7 +202,7 @@ setter @maClasse incrémenter {
 
 
 
-\sectionLabel{Options contrôlant la génération de fichiers}{optionsGeneration}
+\subsectionLabel{Options contrôlant la génération de fichiers}{optionsGeneration}
 
 
 
@@ -139,7 +229,7 @@ setter @maClasse incrémenter {
 
 
 
-\section{Options de débogage du compilateur}
+\subsection{Options de débogage du compilateur}
 
 Ces options ne sont pas destinées à être utilisées lors de l'exploitation de GALGAS : elles permettent de déboguer le compilateur lui-même, et non pas le fichier source compilé.
 
@@ -157,7 +247,7 @@ Ces options ne sont pas destinées à être utilisées lors de l'exploitation de
 
 
 
-\section{Options de documentation}
+\subsection{Options de documentation}
 
 Ces options produisent des fichiers qui facilitent la documention \LaTeX~de votre compilateur.
 

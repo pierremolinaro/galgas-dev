@@ -15,7 +15,7 @@ proc @TestExtensionMethod.method2 (!@uint result) {
 
 proc testsuite_extension_methods () {
   println ("*************************************** begin of extension procs")
-  let c = @TestExtensionMethod.init
+  let c = @TestExtensionMethod ()
   c.method1 ()
   c.method2 (?let v)
   println (v.string)

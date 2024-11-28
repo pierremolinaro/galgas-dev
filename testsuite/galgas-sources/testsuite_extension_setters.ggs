@@ -2,12 +2,12 @@
 
 proc testsuite_extension_setters() {
   println ("*************************************** begin of extension setter test")
-  let v = @TestExtensionSetter.init (!1, !"Hello")
+  let v = @TestExtensionSetter (!1, !"Hello")
   var @uint u = 2
   let @string s = " World"
   v.setter2 (!?u, !s)
   log u, v
-  let w = @overridingTestExtensionSetter.init (!1, !"", !"", !2)
+  let w = @overridingTestExtensionSetter (!1, !"", !"", !2)
   w.m ()
 //--- Test type cast in setter call
   typeCastInSetterCall ()
@@ -59,7 +59,7 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc typeCastInSetterCall () {
-  let @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.init ()
+  let @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall ()
   let x = object as @inheritedClassForTypeCastInSetterCall ; x.unSetter ()
 
 }

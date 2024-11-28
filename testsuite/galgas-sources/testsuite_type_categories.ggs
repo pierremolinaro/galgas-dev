@@ -9,7 +9,7 @@ proc testsuite_type_categories() {
   !?aList.append (3)
   !?aList.append (4)
   log "Sum 1 + 2 + 3 + 4" : aList.sum
-  log "Hello !" : @lstring.init (!"Hello", !.here).op
+  log "Hello !" : @lstring (!"Hello", !.here).op
   let @uint64 v
   let cst = 7
   cst.uint64.square (?v)
@@ -18,14 +18,14 @@ proc testsuite_type_categories() {
   aList.sum (?u)
   log u
   let @string s
-  let strcst = @lstring.init (!"Hello", !.here) ; strcst.op (?s)
+  let strcst = @lstring (!"Hello", !.here) ; strcst.op (?s)
   log s
-  var ls = @lstring.init (!"Hello", !.here)
+  var ls = @lstring (!"Hello", !.here)
   !?ls.appendInt (!3)
   log ls
   !?aList.appendSquare (9)
   log aList
-  var aList64 = @uint64list [.init (7)]
+  var aList64 = @uint64list [.(7)]
   !?aList64.prependSquare (!5)
 }
 

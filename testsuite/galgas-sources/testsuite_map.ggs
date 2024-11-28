@@ -10,18 +10,18 @@ map @aMap {
 proc testsuite_map() {
   println ("*************************************** begin of map")
   var @aMap m = []
-  !?m.insertKey (.init (!"g", !.here), !37)
+  !?m.insertKey (.(!"g", !.here), !37)
   log m
   !?m.setValueForKey (!56, !"g")
   log m
   var mm = @aMap.mapWithMapToOverride (!m)
   log mm
   var @uint v
-  mm.searchKey (@lstring.init (!"g", !.here), ?v)
+  mm.searchKey (@lstring (!"g", !.here), ?v)
   log v // Displays 56
-  !?mm.insertKey (.init (!"g", !.here), !11)
+  !?mm.insertKey (.(!"g", !.here), !11)
   log mm
-  mm.searchKey (@lstring.init (!"g", !.here), ?v)
+  mm.searchKey (@lstring (!"g", !.here), ?v)
   log v // Displays 11
   m = mm.overriddenMap
   log m
@@ -29,56 +29,56 @@ proc testsuite_map() {
   log loc
 //---
   var @aMap otherMap = [
-    .init ("A".nowhere, 1),
-    .init ("B".nowhere, 2),
-    .init ("C".nowhere, 3),
-    .init ("D".nowhere, 4),
-    .init ("E".nowhere, 5),
-    .init ("F".nowhere, 6),
-    .init ("G".nowhere, 7),
-    .init ("H".nowhere, 8),
-    .init ("I".nowhere, 9),
-    .init ("K".nowhere, 10),
-    .init ("L".nowhere, 11),
-    .init ("M".nowhere, 12),
-    .init ("N".nowhere, 13),
-    .init ("O".nowhere, 14),
-    .init ("P".nowhere, 15),
-    .init ("R".nowhere, 16),
-    .init ("S".nowhere, 17),
-    .init ("T".nowhere, 18),
-    .init ("U".nowhere, 19),
-    .init ("V".nowhere, 20),
-    .init ("W".nowhere, 21),
-    .init ("X".nowhere, 22),
-    .init ("Y".nowhere, 23),
-    .init ("Z".nowhere, 24),
-    .init ("a".nowhere, 25),
-    .init ("b".nowhere, 26),
-    .init ("c".nowhere, 27),
-    .init ("d".nowhere, 28),
-    .init ("e".nowhere, 29),
-    .init ("f".nowhere, 30),
-    .init ("g".nowhere, 31),
-    .init ("h".nowhere, 32),
-    .init ("i".nowhere, 33),
-    .init ("j".nowhere, 34),
-    .init ("k".nowhere, 35),
-    .init ("l".nowhere, 36),
-    .init ("m".nowhere, 37),
-    .init ("n".nowhere, 38),
-    .init ("o".nowhere, 39),
-    .init ("p".nowhere, 40),
-    .init ("q".nowhere, 41),
-    .init ("r".nowhere, 42),
-    .init ("s".nowhere, 43),
-    .init ("t".nowhere, 44),
-    .init ("u".nowhere, 45),
-    .init ("v".nowhere, 46),
-    .init ("w".nowhere, 47),
-    .init ("x".nowhere, 48),
-    .init ("y".nowhere, 49),
-    .init ("z".nowhere, 50)
+    .("A".nowhere, 1),
+    .("B".nowhere, 2),
+    .("C".nowhere, 3),
+    .("D".nowhere, 4),
+    .("E".nowhere, 5),
+    .("F".nowhere, 6),
+    .("G".nowhere, 7),
+    .("H".nowhere, 8),
+    .("I".nowhere, 9),
+    .("K".nowhere, 10),
+    .("L".nowhere, 11),
+    .("M".nowhere, 12),
+    .("N".nowhere, 13),
+    .("O".nowhere, 14),
+    .("P".nowhere, 15),
+    .("R".nowhere, 16),
+    .("S".nowhere, 17),
+    .("T".nowhere, 18),
+    .("U".nowhere, 19),
+    .("V".nowhere, 20),
+    .("W".nowhere, 21),
+    .("X".nowhere, 22),
+    .("Y".nowhere, 23),
+    .("Z".nowhere, 24),
+    .("a".nowhere, 25),
+    .("b".nowhere, 26),
+    .("c".nowhere, 27),
+    .("d".nowhere, 28),
+    .("e".nowhere, 29),
+    .("f".nowhere, 30),
+    .("g".nowhere, 31),
+    .("h".nowhere, 32),
+    .("i".nowhere, 33),
+    .("j".nowhere, 34),
+    .("k".nowhere, 35),
+    .("l".nowhere, 36),
+    .("m".nowhere, 37),
+    .("n".nowhere, 38),
+    .("o".nowhere, 39),
+    .("p".nowhere, 40),
+    .("q".nowhere, 41),
+    .("r".nowhere, 42),
+    .("s".nowhere, 43),
+    .("t".nowhere, 44),
+    .("u".nowhere, 45),
+    .("v".nowhere, 46),
+    .("w".nowhere, 47),
+    .("x".nowhere, 48),
+    .("y".nowhere, 49),
+    .("z".nowhere, 50)
   ]
   for e in otherMap do
     println ("  key '" + e.lkey + "', value: " + e.value)

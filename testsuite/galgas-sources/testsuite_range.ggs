@@ -3,12 +3,12 @@
 proc testsuite_range() {
   println ("*************************************** begin of range test")
   var @string s = "Range [4, 3] enumeration:"
-  for i in @range.init (!4, !3) do
+  for i in @range (!4, !3) do
     s+= " " + i
   end
   log s
   s = "Range [4, 3] reverse enumeration:"
-  for > i in @range.init (!4, ! 3) do
+  for > i in @range (!4, ! 3) do
     s+= " " + i
   end
   log s
