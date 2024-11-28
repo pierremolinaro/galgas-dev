@@ -16,22 +16,22 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexicalRewindInstructionAST : @lexicalInstructionAST {
   private let @lstring mLexicalTagName
   private let @lstring mTerminalName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $rewind$
@@ -41,15 +41,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $rewind$
@@ -59,13 +59,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalRewindInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -74,9 +74,9 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
   [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRewindInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
@@ -86,7 +86,7 @@ override getter @lexicalRewindInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -96,9 +96,9 @@ override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode
   outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + "\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! C++ CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -117,5 +117,5 @@ override getter @lexicalRewindInstructionAST generateLexicalInstructionCode
   result += "enterToken (token) ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

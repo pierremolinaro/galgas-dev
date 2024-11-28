@@ -27,7 +27,7 @@ proc testsuite_map() {
   log m
   let @location loc = m.locationForKey (!"g")
   log loc
-#---
+//---
   var @aMap otherMap = [
     .init ("A".nowhere, 1),
     .init ("B".nowhere, 2),

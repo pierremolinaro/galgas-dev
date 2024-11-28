@@ -9,7 +9,7 @@ proc testsuite_extension_setters() {
   log u, v
   let w = @overridingTestExtensionSetter.init (!1, !"", !"", !2)
   w.m ()
-#--- Test type cast in setter call
+//--- Test type cast in setter call
   typeCastInSetterCall ()
 }
 
@@ -29,7 +29,7 @@ proc @TestExtensionSetter.setter3 (?let @uint inArg) {
 proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
   self.mInteger = self.mInteger + ioArg
   ioArg += 1
-#--- Ces instructions doivent engendrer une erreur de compilation
+//--- Ces instructions doivent engendrer une erreur de compilation
 #  self = @TestExtensionSetter.new (!1 !"")
 #  procédure1 (?self)
 #  procédure2 (!?self)
@@ -74,9 +74,9 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 #   self.nodes = tmp
 #}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   TYPE CAST IN SETTER CALL                
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc typeCastInSetterCall () {
   let @baseClassForTypeCastInSetterCall object = @inheritedClassForTypeCastInSetterCall.init ()
@@ -93,5 +93,5 @@ proc @inheritedClassForTypeCastInSetterCall.unSetter() {
 }
 
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

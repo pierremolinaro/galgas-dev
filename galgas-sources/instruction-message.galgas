@@ -15,21 +15,21 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @messageInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -39,17 +39,17 @@ syntax extension galgas3InstructionsSyntax {
     outInstruction = @messageInstructionAST {!instructionLocation !expression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
   # Replaced by print (...)
-  #·······························································································
+  //······························································································
 
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $message$
@@ -58,13 +58,13 @@ syntax extension galgas4InstructionsSyntax {
 #    outInstruction = @messageInstructionAST {!instructionLocation !expression}
 #  }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @messageInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -72,9 +72,9 @@ override method @messageInstructionAST enterInstructionInSemanticContext
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @messageInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -83,7 +83,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
-#--- Analyze source expression
+//--- Analyze source expression
   [self.mExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -93,20 +93,20 @@ override method @messageInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let expression
   ]
-#--- Check message type is @string
+//--- Check message type is @string
   if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mInstructionLocation
     :"the expression has the '@" + [expression.mResultType definition].typeName.string + "' type, but the 'message' instruction requires an '@string' expression"
   end
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@messageInstructionForGeneration {
     !expression
     !self.mInstructionLocation}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @messageInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -122,7 +122,7 @@ override method @messageInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-#--- Message expression
+//--- Message expression
   [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -130,10 +130,10 @@ override method @messageInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string messageCppVarName
   ]
-#--- Invoke 'printMessage' method of Compiler
+//--- Invoke 'printMessage' method of Compiler
   ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
   ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

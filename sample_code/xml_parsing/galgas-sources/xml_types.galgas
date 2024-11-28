@@ -1,12 +1,12 @@
 
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 
 enum @xmlNodeType {
   case element  case text  case comment
 }
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 
 map @xmlAttributeMap {
   public let @lstring value
@@ -14,7 +14,7 @@ map @xmlAttributeMap {
   search searchKey error message "the '%K' attribute is not declared"
 }
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 
 class @xmlNode {
   public let @xmlNodeType mType
@@ -23,13 +23,13 @@ class @xmlNode {
   public let @xmlNodeList nodeList
 }
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 
 list @xmlNodeList {
   public let @xmlNode node
 }
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 
 proc internal_logXMLNodes
   ?let @xmlNodeList inNodeList
@@ -61,7 +61,7 @@ proc internal_logXMLNodes
   end
 }
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 
 proc logXMLNodes ?let @xmlNodeList inNodeList {
   var @string s = ""
@@ -69,5 +69,5 @@ proc logXMLNodes ?let @xmlNodeList inNodeList {
   print (!s)
 }
 
-#------------------------------------------------------------*
+//-----------------------------------------------------------*
 

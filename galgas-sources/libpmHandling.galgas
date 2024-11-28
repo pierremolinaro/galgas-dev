@@ -15,7 +15,7 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper libpmFileWrapper in "../libpm" {
  "h", "cpp", "c", "m", "mak", "py" # Text files
@@ -24,17 +24,17 @@ filewrapper libpmFileWrapper in "../libpm" {
 }{
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc updateLIBPMatPath ?let @string inLIBPMPath {
 #  message "LIBPM path: '" . inLIBPMPath . "'\n" ;
   let @filewrapper fw = [filewrapper libpmFileWrapper]
-#--- Create directories
+//--- Create directories
   for (path) in [fw allDirectoryPathes] do
     let @string actualDirectory = inLIBPMPath + path
     [actualDirectory makeDirectory]
   end
-#--- Update text files
+//--- Update text files
   var @stringset allNeededFileSet = ()
   for (path) in [fw allTextFilePathes] do
     let contents = [fw textFileContentsAtPath !path]
@@ -46,14 +46,14 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     end
     allNeededFileSet += !path
   end
-#--- Update binary files
+//--- Update binary files
   for (mValue) in [fw allBinaryFilePathes] do
     let contents = [fw binaryFileContentsAtPath !mValue]
     let actualFilePath = inLIBPMPath + mValue
     [contents writeToFileWhenDifferentContents !actualFilePath ?*]
     allNeededFileSet += !mValue
   end
-#--- Remove useless files
+//--- Remove useless files
   var @stringset allActualFileSet = ()
   for (mValue) in [inLIBPMPath regularFiles !true] do
     allActualFileSet += !"/" + mValue
@@ -64,5 +64,5 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

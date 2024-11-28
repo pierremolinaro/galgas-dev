@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -36,15 +36,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $identifier$ ?let mRoutineName indexing routineCall
@@ -56,19 +56,19 @@ syntax extension galgas4InstructionsSyntax {
 #    }
 #  }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Class
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @procCallInstructionAST : @semanticInstructionAST {
   private let @lstring mRoutineName
   private let @actualParameterListAST mActualParameterList
 
-  #·······························································································
+  //······························································································
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (mActualParameter) in self.mActualParameterList do
@@ -76,7 +76,7 @@ class @procCallInstructionAST : @semanticInstructionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction  ?let @lstring inUsefulnessCallerEntityName
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -84,7 +84,7 @@ class @procCallInstructionAST : @semanticInstructionAST {
                                               ?!@unifiedTypeMap ioTypeMap
                                               ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                               ?!@localVarManager ioVariableMap  {
-   #--- Get routine signature
+   //--- Get routine signature
     [inAnalysisContext.semanticContext.routineMap searchKey
        !self.mRoutineName
        !actualParameters: self.mActualParameterList
@@ -92,17 +92,17 @@ class @procCallInstructionAST : @semanticInstructionAST {
        ?isFilePrivate: let @bool isFilePrivate
        ?routineMangledName: let routineMangledName
      ]
-  #--- Usefulness
+  //--- Usefulness
     let usefulnessName = procedureNameForUsefulEntitiesGraph (!routineMangledName)
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-  #--- Check internal
+  //--- Check internal
     if isFilePrivate then
       let procDeclarationLocation = [inAnalysisContext.semanticContext.routineMap locationForKey !self.mRoutineName.string]
       if [self.mRoutineName.location file] != [procDeclarationLocation file] then
         error self.mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
       end
     end
-  #--- Check effective parameters
+  //--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -115,26 +115,26 @@ class @procCallInstructionAST : @semanticInstructionAST {
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
-  #--- Generate instruction
+  //--- Generate instruction
     ioInstructionListForGeneration += !@procCallInstructionForGeneration {
       !routineMangledName: routineMangledName # self.mRoutineName
       !actualParameterListForGeneration
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring routineMangledName %initArgLabel
   private let @actualParameterListForGeneration mActualParameterList
 
-  #·······························································································
+  //······························································································
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -143,7 +143,7 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
                                       ?!@string ioGeneratedCode {
     ioInclusionSet += !"proc-" + [self.routineMangledName fileNameRepresentation]
     ioGeneratedCode += "{\n"
-  #--- Parameters
+  //--- Parameters
     var @stringlist parameterCppNameList = ()
     var @stringlist jokerParametersToReleaseList = ()
     var @stringlist inputVariableList = ()
@@ -159,7 +159,7 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
       ]
       parameterCppNameList += !parameterCppName
     end
-  #--- Generate method call
+  //--- Generate method call
     ioGeneratedCode += "routine_" + [self.routineMangledName.string identifierRepresentation] + " ("
     for (mValue) in parameterCppNameList do
       ioGeneratedCode += mValue + ", "
@@ -167,7 +167,7 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     ioGeneratedCode += compilerCppName () + " " + [self.routineMangledName.location commaSourceFile] + ") ;\n"
     ioGeneratedCode += "}\n"
-  #--- Generate poisoned variables
+  //--- Generate poisoned variables
     for (actualParameter) in self.mActualParameterList do
       [actualParameter generatePoisonedVariables
         !?ioGeneratedCode
@@ -176,8 +176,8 @@ class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

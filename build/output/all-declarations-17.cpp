@@ -4128,39 +4128,39 @@ void extensionSetter_closeBranch (GGS_localVarManager & ioObject,
     const GGS_localVarManager temp_1 = ioObject ;
     test_0 = GGS_bool (ComparisonKind::greaterThan, temp_1.readProperty_mOverridenManagers ().getter_count (SOURCE_FILE ("variable-manager.galgas", 324)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GGS_overrideKind var_savedManager_14558 ;
+      GGS_overrideKind var_savedManager_14559 ;
       {
-      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14558, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 325)) ;
+      ioObject.mProperty_mOverridenManagers.setter_popLast (var_savedManager_14559, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 325)) ;
       }
-      switch (var_savedManager_14558.enumValue ()) {
+      switch (var_savedManager_14559.enumValue ()) {
       case GGS_overrideKind::Enumeration::invalid:
         break ;
       case GGS_overrideKind::Enumeration::enum_selectOverrideFirstBranch:
         {
-          GGS_currentVarManager extractedValue_14651_savedManager_0 ;
-          var_savedManager_14558.getAssociatedValuesFor_selectOverrideFirstBranch (extractedValue_14651_savedManager_0) ;
+          GGS_currentVarManager extractedValue_14652_savedManager_0 ;
+          var_savedManager_14559.getAssociatedValuesFor_selectOverrideFirstBranch (extractedValue_14652_savedManager_0) ;
           const GGS_localVarManager temp_2 = ioObject ;
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14651_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14651_savedManager_0 ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14652_savedManager_0, temp_2.readProperty_mCurrentManager ()  COMMA_SOURCE_FILE ("variable-manager.galgas", 328))  COMMA_SOURCE_FILE ("variable-manager.galgas", 328)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14652_savedManager_0 ;
         }
         break ;
       case GGS_overrideKind::Enumeration::enum_selectOverrideNextBranches:
         {
-          GGS_currentVarManager extractedValue_14897_savedManager_0 ;
-          GGS_currentVarManager extractedValue_14929_referenceManager_1 ;
-          var_savedManager_14558.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_14897_savedManager_0, extractedValue_14929_referenceManager_1) ;
+          GGS_currentVarManager extractedValue_14898_savedManager_0 ;
+          GGS_currentVarManager extractedValue_14930_referenceManager_1 ;
+          var_savedManager_14559.getAssociatedValuesFor_selectOverrideNextBranches (extractedValue_14898_savedManager_0, extractedValue_14930_referenceManager_1) ;
           const GGS_localVarManager temp_3 = ioObject ;
-          GGS_currentVarManager var_newReferenceManager_14959 = temp_3.readProperty_mCurrentManager () ;
+          GGS_currentVarManager var_newReferenceManager_14960 = temp_3.readProperty_mCurrentManager () ;
           {
-          extensionSetter_combineManagerWith (var_newReferenceManager_14959, extractedValue_14929_referenceManager_1, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 332)) ;
+          extensionSetter_combineManagerWith (var_newReferenceManager_14960, extractedValue_14930_referenceManager_1, constinArgument_inEndOfBranchLocation, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 332)) ;
           }
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14897_savedManager_0, var_newReferenceManager_14959  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
-          ioObject.mProperty_mCurrentManager = extractedValue_14897_savedManager_0 ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (GGS_overrideKind::class_func_selectOverrideNextBranches (extractedValue_14898_savedManager_0, var_newReferenceManager_14960  COMMA_SOURCE_FILE ("variable-manager.galgas", 333))  COMMA_SOURCE_FILE ("variable-manager.galgas", 333)) ;
+          ioObject.mProperty_mCurrentManager = extractedValue_14898_savedManager_0 ;
         }
         break ;
       case GGS_overrideKind::Enumeration::enum_repeatOverride:
         {
-          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_14558  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
+          ioObject.mProperty_mOverridenManagers.addAssign_operation (var_savedManager_14559  COMMA_SOURCE_FILE ("variable-manager.galgas", 336)) ;
         }
         break ;
       }

@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!  SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
@@ -90,15 +90,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $enum$
@@ -168,13 +168,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @associatedValue {
   public let @bool weakQualifier
@@ -182,27 +182,27 @@ struct @associatedValue {
   public let @lstring valueName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantList {
   public let @lstring name
   public let [@associatedValue] associatedValueTypeList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
   private let @enumConstantList mConstantList
   private let @structComparison comparison %initArgLabel
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation -> @string {
     result = "enum @" + self.enumTypeName
   }
 
-  #·······························································································
+  //······························································································
 
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
     for constant in self.mConstantList do
@@ -243,7 +243,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
         ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -255,7 +255,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {!"@" + self.enumTypeName !self.enumTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  #--- There is a circular reference if all constants names current type in associated values
+  //--- There is a circular reference if all constants names current type in associated values
     var circularReference = true
     for constant in self.mConstantList while circularReference do
       var namesCurrentType = false
@@ -269,7 +269,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         circularReference = false
       end
     end
-  #--- Enter dependances, and only when there is circular reference
+  //--- Enter dependances, and only when there is circular reference
     if circularReference then
       for constant in self.mConstantList do
         for associatedValue in constant.associatedValueTypeList do
@@ -282,7 +282,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
         ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -292,12 +292,12 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
         ?!@unifiedTypeMap ioTypeMap
         ?!@semanticContext ioSemanticContext {
-  #---
+  //---
     var @classFunctionMap classFunctionMap = ()
     var @setterMap setterMap = ()
-  #--- currentType type index
+  //--- currentType type index
     [!?ioTypeMap makeEntry !self.enumTypeName ?let enumTypeEntry]
-  #--- Class functions
+  //--- Class functions
     var @constantIndexMap constantMap = ()
     var @bool hasAssociatedValues = false
     for constant in self.mConstantList do
@@ -317,7 +317,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         !enumTypeEntry
       ]
     end
-  #--- Methods
+  //--- Methods
     var @instanceMethodMap instanceMethodMap = ()
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
@@ -340,7 +340,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         ]
       end
     end
-  #--- getters
+  //--- getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
@@ -356,7 +356,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         )
       end
     end
-  #--- Add test getters
+  //--- Add test getters
     for constant in self.mConstantList do
       enterBaseGetterWithoutArgument (
         !?getterMap
@@ -367,7 +367,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         !hasCompilerArgument:false
       )
     end
-  #--- Add Extensions
+  //--- Add Extensions
     var @initializerMap initializerMap = ()
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
@@ -384,9 +384,9 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: true
     )
-  #--- Features
+  //--- Features
     var features = @typeFeatures.generateDescriptionGetterUtilityMethod
-  #--- Comparison
+  //--- Comparison
     switch self.comparison
     case none :
     case equatable :
@@ -401,7 +401,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       !acceptEquatable: true
       !acceptComparable: true
     )
-  #--- Enter type in type map
+  //--- Enter type in type map
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.enumTypeName
       !isPredefined: self.isPredefined
@@ -432,7 +432,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis
                     ?!@lstringlist ioUsefulnessRootEntities
@@ -442,13 +442,13 @@ class @enumDeclarationAST : @semanticDeclarationAST {
                     ?!@unifiedTypeMap ioTypeMap
                     ?let @predefinedTypes unused inPredefinedTypes
                     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #--- Useful entities graph
+  //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.enumTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     if self.isPredefined  then
       ioUsefulnessRootEntities += !nameForUsefulness
     end
-  #--- Constant list
+  //--- Constant list
     var [@unifiedTypeMapEntry] associatedValuesTypes = ()
     var constantList = @stringlist ()
     var @enumConstantListForGeneration enumConstantListForGeneration = ()
@@ -472,7 +472,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
           error associatedValue.valueName : "duplicated name"
         end
         associatedValueNameSet += !associatedValue.valueName.string
-      #--- Comparison
+      //--- Comparison
         switch self.comparison
         case none :
         case equatable :
@@ -492,7 +492,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       [!?constantMap insertKey !constant.name ![constantMap count] !associatedTypeList]
       enumConstantListForGeneration += !constant.name.string !associatedTypeList
     end
-  #---
+  //---
     let selfType = [ioTypeMap typeMapEntryForLKey !self.enumTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "enum " + self.enumTypeName
@@ -503,26 +503,26 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!  CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantListForGeneration {
   public let @string name
   public let @associatedValueDescriptorList associatedValueTypeList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @enumTypeForGeneration : @semanticTypeForGeneration {
   private let @enumConstantListForGeneration constantList
   private let [@unifiedTypeMapEntry] associatedValuesTypes
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
@@ -556,7 +556,7 @@ class @enumTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
@@ -579,11 +579,11 @@ class @enumTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -602,5 +602,5 @@ filewrapper enumGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool GENERATE_COMPARISON
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

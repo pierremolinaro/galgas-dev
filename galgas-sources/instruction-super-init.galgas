@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
 #  rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
 #                                   !@semanticInstructionAST outInstruction {
@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
 #    }
 #  }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -52,15 +52,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -77,16 +77,16 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @superInitInstructionAST : @semanticInstructionAST {
   private let @actualOutputArgumentList mActualParameterList
 
-  #·······························································································
+  //······························································································
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for expression in self.mActualParameterList do
@@ -94,7 +94,7 @@ class @superInitInstructionAST : @semanticInstructionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -102,18 +102,18 @@ class @superInitInstructionAST : @semanticInstructionAST {
                           ?!@unifiedTypeMap ioTypeMap
                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                           ?!@localVarManager ioVariableMap {
-  #--- Check the call occurs in an class initializer
+  //--- Check the call occurs in an class initializer
    if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable],
         selfAvailable.selfMutability == .initializer,
         [[selfAvailable.type definition].typeKind isClassType] then
       switch [selfAvailable.type definition].superType
       case element (superType) :
         let superTypeDefinition = [superType.bang definition]
-      #--- Check super initializer is defined
+      //--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
         let signature = @lstring {![self.mActualParameterList initializerSignature] !self.mInstructionLocation}
         [superClassInitializerMap searchKey !signature ?let formalSignature]
-      #--- Mark all super properties are defined
+      //--- Mark all super properties are defined
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
             [!?ioVariableMap searchForWriteAccess 
@@ -123,9 +123,9 @@ class @superInitInstructionAST : @semanticInstructionAST {
           end
         end
         [ioVariableMap checkSelfObjectIsFullyInitialized !self.mInstructionLocation]
-     #--- Mark super initializer usefull (TODO)
+     //--- Mark super initializer usefull (TODO)
      
-     #--- Analyze argument list
+     //--- Analyze argument list
         var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do
           [actualArg.mExpression analyzeSemanticExpression
@@ -153,7 +153,7 @@ class @superInitInstructionAST : @semanticInstructionAST {
           end
           actualParameterListForGeneration += !expression
         end
-      #--- Generate instructions
+      //--- Generate instructions
         ioInstructionListForGeneration += !@superInitInstructionForGeneration {
           !self.mInstructionLocation
           ![formalSignature initializerSignature]
@@ -168,13 +168,13 @@ class @superInitInstructionAST : @semanticInstructionAST {
    end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -182,7 +182,7 @@ class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionListForGeneration mActualParameterList
   private let @string mSuperTypeName
 
-  #·······························································································
+  //······························································································
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -210,8 +210,8 @@ class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
     ioGeneratedCode += compilerCppName () + ") ; \n" 
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

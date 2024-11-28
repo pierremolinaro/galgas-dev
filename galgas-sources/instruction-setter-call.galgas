@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @setterCallInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -35,13 +35,13 @@ class @selfSetterCallInstructionAST : @semanticInstructionAST {
   private let @actualParameterListAST mActualParameterList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -85,7 +85,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -103,15 +103,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $[$
@@ -150,7 +150,7 @@ syntax extension galgas4InstructionsSyntax {
 #    $]$
 #  }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -198,13 +198,13 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -224,9 +224,9 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST analyzeSemanticInstruction
                         ?let @lstring inUsefulnessCallerEntityName
@@ -240,7 +240,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
     if let selfAvailability = [inAnalysisContext.selfAvailability getAvailable] then
-    #--- Check self is not inkoed before full initialization
+    //--- Check self is not inkoed before full initialization
       if let classTypeKind = [[selfAvailability.type definition].typeKind getClassType], classTypeKind.isReference then
       elsif not [selfAvailability.selfMutability selfIsMutable] then
         error self.mSetterName : "'self' not mutable in this context"
@@ -266,7 +266,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
        ?nameForCheckingFormalParameterUsing
     ]
   end
-#--- Get target variable type
+//--- Get target variable type
   var ok = true
   var errorLocation = self.mReceiverName.location
   for (value) in self.mReceiverStructProperties while ok do
@@ -283,7 +283,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       end
     end
   end
-#--- Type cast ?
+//--- Type cast ?
   let @unifiedTypeMapEntry castType
   if self.mTypeNameForCasting.string != "" then
     castType = [ioTypeMap typeMapEntryForLKey !self.mTypeNameForCasting]
@@ -291,7 +291,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   else
     castType = receiverType
   end
-#--- Get setter signature
+//--- Get setter signature
   [[castType definition].setterMap searchKey
     !self.mSetterName
     ?let kind
@@ -303,7 +303,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   if setterErrorMessage != "" then
     error self.mSetterName : setterErrorMessage
   end
-#--- Check effective parameters
+//--- Check effective parameters
   [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -316,7 +316,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
-#--- Search base type that declares the method
+//--- Search base type that declares the method
   var baseType = castType
   var searching = true
   if @uint.errorCount == 0 then
@@ -332,7 +332,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       end
     end
   end
-#--- Generate instructions
+//--- Generate instructions
   ioInstructionListForGeneration += !@setterCallInstructionForGeneration {
     !self.mReceiverName.location
     !targetVariableCppName
@@ -357,16 +357,16 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
-#--- Analyze "self", as receiver expression
+//--- Analyze "self", as receiver expression
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     if not [selfAvailable.selfMutability selfIsMutable] then
       error self.mSetterName : "'self' not mutable in this context"
     end
-  #--- Check self is not invoked before full initialization
+  //--- Check self is not invoked before full initialization
     [ioVariableMap checkSelfObjectIsFullyInitialized !self.mSetterName.location]
-  #--- Get setter signature
+  //--- Get setter signature
     [[selfAvailable.type definition].setterMap searchKey !self.mSetterName ?let kind ?let routineSignature ?let hasCompilerArgument ?* ?*]
-  #--- Check effective parameters
+  //--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -379,7 +379,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
-  #--- Generate instructions
+  //--- Generate instructions
     ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration {
       !inAnalysisContext.selfObjectCppName
       !selfAvailable.type
@@ -393,9 +393,9 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -436,7 +436,7 @@ override method @setterCallInstructionForGeneration generateInstruction
     receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverBaseName]
-#--- Parameters
+//--- Parameters
   var @stringlist parameterCppNameList = ()
   var @stringlist jokerParametersToReleaseList = ()
   var @stringlist inputVariableList = ()
@@ -452,7 +452,7 @@ override method @setterCallInstructionForGeneration generateInstruction
     ]
     parameterCppNameList += !parameterCppName
   end
-#--- Generate method call
+//--- Generate method call
   switch self.mKind
   case definedAsExtension :
     ioInclusionSet += !"setter-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
@@ -512,7 +512,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
   ioGeneratedCode += "{\n"
   [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
-#--- Parameters
+//--- Parameters
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
@@ -527,7 +527,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
       ?let @string parameterCppName]
     parameterCppNameList += !parameterCppName
   end
-#--- Generate setter call
+//--- Generate setter call
   switch self.mKind
   case definedAsExtension :
     ioInclusionSet += !"setter-" + [[self.mReceiverType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
@@ -561,4 +561,4 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,23 +20,23 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.filewrapper_type]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
@@ -51,7 +51,7 @@ class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -153,9 +153,9 @@ class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

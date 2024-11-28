@@ -15,11 +15,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -32,15 +32,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -53,18 +53,18 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @syntaxSendInstructionAST : @syntaxInstructionAST {
   private let @semanticExpressionAST mExpression
 
-  #·······························································································
+  //······························································································
 
   override method transformInstruction
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -73,7 +73,7 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
     ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSyntaxInstruction
                                   ?let @lstring inUsefulnessCallerEntityName
@@ -93,7 +93,7 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
       error self.mInstructionLocation 
       : "'send' instruction is only allowed when syntax componant has 'translate' feature"
     end
-  #--- Analyze source expression
+  //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -103,29 +103,29 @@ class @syntaxSendInstructionAST : @syntaxInstructionAST {
       !?ioVariableMap
       ?let @semanticExpressionForGeneration expression
     ]
-  #--- Check expression type
+  //--- Check expression type
     if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType  then
       error self.mInstructionLocation: "'send' expresion should be an @string expression"
     end
-  #---
+  //---
     ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration {
       !self.mInstructionLocation
       !expression
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! @syntaxSendInstructionForGeneration
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
 
-  #·······························································································
+  //······························································································
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
@@ -139,7 +139,7 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
       !?ioUnusedVariableCppNameSet
       ?let @string sourceVar
     ]
-  #---
+  //---
     [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
     ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
     ioGeneratedCode += "  " + syntaxDirectedTranslationResultVarName ()
@@ -147,8 +147,8 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
     ioGeneratedCode += "}\n"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

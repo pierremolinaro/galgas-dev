@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $boolset$
@@ -55,15 +55,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $boolset$
@@ -97,13 +97,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @boolsetDeclarationAST : @semanticDeclarationAST {
   private let @lstring mBoolsetTypeName
@@ -111,9 +111,9 @@ class @boolsetDeclarationAST : @semanticDeclarationAST {
   private let @bool isEquatable %initArgLabel
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -128,17 +128,17 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @boolsetDeclarationAST keyRepresentation -> @string {
   result = "boolset @" + self.mBoolsetTypeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -148,7 +148,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
-#--- Check unicity of slot names
+//--- Check unicity of slot names
   var @stringset slotNameSet = ()
   for (slotName) in self.mFlagList do
     if [slotNameSet hasKey !slotName] then
@@ -156,9 +156,9 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     end
     slotNameSet += !slotName
   end
-#--- boolset type index
+//--- boolset type index
   [!?ioTypeMap makeEntry !self.mBoolsetTypeName ?let boolsetTypeIndex]
-#--- Getters
+//--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   enterBaseGetterWithArgument (
     !?getterMap
@@ -170,21 +170,21 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName: "bool"
     !hasCompilerArgument: false
   )
-#--- class functions
+//--- class functions
   var @classFunctionMap classFunctionMap = ()
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
       [!?classFunctionMap insertKey !slotName !() !false !boolsetTypeIndex]
     end
   end
-#--- Add initializer without argument
+//--- Add initializer without argument
   var @initializerMap initializerMap = ()
   let @functionSignature emptyArgumentList = ()
   [!?initializerMap insertKey
     !.init {![emptyArgumentList initializerSignature] !self.mBoolsetTypeName}
     !emptyArgumentList
   ]
-#--- Add extensions
+//--- Add extensions
   var @setterMap setterMap = ()
   var @instanceMethodMap instanceMethodMap = ()
   addExtensions (
@@ -202,7 +202,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-#--- Operators
+//--- Operators
   var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator
@@ -220,7 +220,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !acceptEquatable: true
     !acceptComparable: true
   )
-#--- Enter in type map
+//--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mBoolsetTypeName
     !isPredefined: self.isPredefined
@@ -252,9 +252,9 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
 }
 
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -265,18 +265,18 @@ override method @boolsetDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Check flags count
+//--- Check flags count
   if [self.mFlagList count] > 64 then
     let @location s = [self.mFlagList mValueAtIndex !64]
     error s : "max flags count is 64 (here: " + [self.mFlagList count] + ")"
   end
-#--- Useful entities graph
+//--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
   [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
   if self.isPredefined  then
     ioUsefulnessRootEntities += !boolsetNameForUsefulness
   end
-#--- Useful entities graph for initializer without any argument
+//--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mBoolsetTypeName
     ![@formalInputParameterListAST () initializerSignature]
@@ -285,7 +285,7 @@ override method @boolsetDeclarationAST semanticAnalysis
   if self.isPredefined  then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration {
@@ -295,9 +295,9 @@ override method @boolsetDeclarationAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @boolsetTypeForGeneration : @semanticTypeForGeneration {
   private let @lstringlist mFlagList
@@ -370,4 +370,4 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

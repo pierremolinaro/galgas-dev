@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Semantic Analysis of expression
 #
@@ -20,11 +20,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    A N A L Y S I S    C O N T E X T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @selfMutability %equatable {
   case none
@@ -32,7 +32,7 @@ enum @selfMutability %equatable {
   case selfAndPropertiesAreMutable
   case initializer
   
-  #·······························································································
+  //······························································································
 
   getter propertiesAreMutable -> @bool {
     switch self
@@ -41,7 +41,7 @@ enum @selfMutability %equatable {
     end
   }
 
-  #·······························································································
+  //······························································································
   
   getter selfIsMutable -> @bool {
     switch self
@@ -50,18 +50,18 @@ enum @selfMutability %equatable {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @selfAvailability %equatable {
   case none
   case available (@unifiedTypeMapEntry type @selfMutability selfMutability)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {
   public let @semanticContext semanticContext
@@ -72,7 +72,7 @@ struct @analysisContext {
   public let @bool requiresSelfForAccessingProperty %initArgLabel
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
                           ?let @unifiedTypeMapEntry inSourceType
@@ -97,7 +97,7 @@ proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTargetType
                                                 ?let @unifiedTypeMapEntry inSourceType
@@ -105,13 +105,13 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
                                                 ?!@semanticExpressionForGeneration ioExpression {
 #  println (!"Target " + [inTargetType definition].typeName)
 #  println (!"Source " + [inSourceType definition].typeName)
-#--- Target is optional ?
+//--- Target is optional ?
   let targetTypeDef = [inTargetType definition]
   let targetTypeForBigIntAssignment = if not [targetTypeDef.unwrappedType isNull]
     then targetTypeDef.unwrappedType
     else inTargetType
   end
-#--- Assignment from a @bigint ?
+//--- Assignment from a @bigint ?
   var handled = false
   if let bigIntSource = ioExpression as @literalBigIntExpressionForGeneration then
     if "uint" == targetTypeForBigIntAssignment.typeName then
@@ -160,7 +160,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       handled = true
     end
   end
-#--- Assignment between optional and weak ?
+//--- Assignment between optional and weak ?
   if not handled,
         not [targetTypeDef.unwrappedType isNull],
         not [[inSourceType definition].unwrappedType isNull] then
@@ -168,13 +168,13 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
     let sourceUnwrappedType = [inSourceType definition].unwrappedType
     handled = [targetUnwrappedType typeName] == [sourceUnwrappedType typeName]
   end
-#---
+//---
   if not handled,
         not [[inTargetType definition].unwrappedType isNull],
         [[inTargetType definition].unwrappedType typeName] == [inSourceType typeName] then
     handled = true
   end
-#---
+//---
   if not handled then
     var sourceType = inSourceType
     var ok = [inTargetType typeName] == [inSourceType typeName]
@@ -190,7 +190,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         ok = [targetWeakRef.referenceType typeName] == [sourceType typeName]
       end
     end
-  #--- Check for a direct property access or for a conversion getter
+  //--- Check for a direct property access or for a conversion getter
     if not ok, let prop = [inSourceType definition].propertyMap §[targetTypeDef.typeName.string] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
@@ -212,7 +212,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         ?2*
       ]
       ok = ([argumentTypeList count] == 0) & (returnedType == inTargetType)
-   #--- Add conversion expression
+   //--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration {
         !inTargetType
         !inErrorLocation
@@ -237,7 +237,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
                           ?let @string inOperatorNameForErrorMessage
@@ -258,7 +258,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
       rightType = [rightType definition].superType
       ok = leftResultType == rightType
     end
-  #---- convert right bigint ?
+  //--- convert right bigint ?
     if not ok, let bigIntSource = ioRightExpression as @literalBigIntExpressionForGeneration then
       if "uint" == [leftResultType definition].typeName then
         let bigIntValue = bigIntSource.mValue
@@ -290,7 +290,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         ok = true
       end
     end
-  #---- convert left bigint ?
+  //--- convert left bigint ?
     if not ok, let bigIntSource = ioLeftExpression as @literalBigIntExpressionForGeneration then
       if "uint" == [rightType definition].typeName then
         let bigIntValue = bigIntSource.mValue
@@ -322,7 +322,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         ok = true
       end
     end
-  #--- Check for a direct property access or for a conversion getter
+  //--- Check for a direct property access or for a conversion getter
     if not ok, let prop = [rightType definition].propertyMap §[[leftResultType definition].typeName] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
@@ -344,7 +344,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         ?2*
       ]
       ok = ([argumentTypeList count] == 0) & (returnedType == leftResultType)
-   #--- Add conversion expression
+   //--- Add conversion expression
       let conversionExpression = @getterCallExpressionForGeneration {
         !leftResultType
         !inErrorLocation
@@ -367,11 +367,11 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLocationType
@@ -398,11 +398,11 @@ struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLStringListType
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    E X P R E S S I O N    A N A L Y S I S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -413,4 +413,4 @@ abstract method @semanticExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Extensions
 #
@@ -20,11 +20,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #        M U L T I - M E T H O D   L I S T M A P
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 //listmap @genericExtensionMethodListMap (@lstringlist)
 
@@ -66,11 +66,11 @@ struct @genericExtensionMethodListMap {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  B U I L D    M U L T I - M E T H O D S    L I S M A P S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -87,11 +87,11 @@ method @semanticDeclarationAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    D E S C E N D A N T    C L A S S    L I S T M A P
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @unifiedTypeMapEntryList %equatable {
   public var @unifiedTypeMapEntry mEntry
@@ -135,40 +135,40 @@ struct @descendantClassListMap {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  E X T E N S I O N    M E T H O D    M A P
 #
 # Used for checking a extension-method is defined once for a type
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForGlobalCheckings {
   insert insertKey error message "the '%K' extension method is already declared in %L"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  E X T E N S I O N    S E T T E R    M A P
 #
 # Used for checking a extension-setter is defined once for a type
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForGlobalCheckings {
   insert insertKey error message "the '%K' extension setter is already declared in %L"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  E X T E N S I O N    G E T T E R    M A P
 #
 # Used for checking a extension-method is defined once for a type
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForGlobalCheckings {
   insert insertKey error message "the '%K' extension getter is already declared in %L"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkextensionSetterDefinitionForClass
   ?let @string inClassNameForErrorSignaling
@@ -205,7 +205,7 @@ proc checkextensionSetterDefinitionForClass
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkExtensionMethodDefinitionForClass
   ?let @string inClassNameForErrorSignaling
@@ -242,7 +242,7 @@ proc checkExtensionMethodDefinitionForClass
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkExtensionGetterDefinitionForClass
   ?let @string inClassNameForErrorSignaling
@@ -279,7 +279,7 @@ proc checkExtensionGetterDefinitionForClass
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc performGalgas3ProjectGlobalCheckings
   ?!@unifiedTypeMap ioTypeMap
@@ -288,7 +288,7 @@ proc performGalgas3ProjectGlobalCheckings
   if @application.verboseOutput then
     println (!"*** Perform global checkings")
   end
-#------ Build descendant type list map
+//----- Build descendant type list map
 # For every type, a list of its directed descendants is associated
   var @descendantClassListMap descendantClassListMap = ()
   for (lkey element) in ioTypeMap do
@@ -300,7 +300,7 @@ proc performGalgas3ProjectGlobalCheckings
        ]
      end
   end
-#--- Build Extension method listmaps
+//--- Build Extension method listmaps
   var @genericExtensionMethodListMap abstractExtensionMethodListMap = ()
   var @genericExtensionMethodListMap extensionMethodListMap = ()
   var @genericExtensionMethodListMap overridingExtensionMethodListMap = ()
@@ -329,37 +329,37 @@ proc performGalgas3ProjectGlobalCheckings
       !?overridingAbstractExtensionGetterListMap
     ]
   end
-#------ Check Extension
+//----- Check Extension
   if @uint.errorCount == 0 then
-  #--- A given abstract extension setter is defined only once for a class
+  //--- A given abstract extension setter is defined only once for a class
     for (* mList) in abstractExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
-  #--- A given base extension setter is defined only once for a class
+  //--- A given base extension setter is defined only once for a class
     for (* mList) in extensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
-  #--- A given overriding extension setter is defined only once for a class
+  //--- A given overriding extension setter is defined only once for a class
     for (* mList) in overridingExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
-  #--- A given overriding abstract extension setter is defined only once for a class
+  //--- A given overriding abstract extension setter is defined only once for a class
     for (* mList) in overridingAbstractExtensionMethodListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = ()
       for (mValue) in mList do
         [!?extensionSetterMap insertKey !mValue]
       end
     end
-  #------ Check that for every abstract extension setter, an overridden extension setter defined in an concrete subclass
+  //----- Check that for every abstract extension setter, an overridden extension setter defined in an concrete subclass
     for (key mList) in abstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
@@ -372,7 +372,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #------ Check that for every overriding abstract extension setter, an overridden extension setter defined in an concrete subclass
+  //----- Check that for every overriding abstract extension setter, an overridden extension setter defined in an concrete subclass
     for (key mList) in overridingAbstractExtensionSetterListMap.dictionary do
       for (mValue) in mList do
         checkextensionSetterDefinitionForClass (
@@ -385,35 +385,35 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #--- A given abstract extension method is defined only once for a class
+  //--- A given abstract extension method is defined only once for a class
     for (* mList) in abstractExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  #--- A given base extension method is defined only once for a class
+  //--- A given base extension method is defined only once for a class
     for (* mList) in extensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  #--- A given overriding extension method is defined only once for a class
+  //--- A given overriding extension method is defined only once for a class
     for (* mList) in overridingExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  #--- A given overriding abstract extension method is defined only once for a class
+  //--- A given overriding abstract extension method is defined only once for a class
     for (* mList) in overridingAbstractExtensionMethodListMap.dictionary do
       var @extensionMethodMapForGlobalCheckings extensionMethodMap = ()
       for (mValue) in mList do
         [!?extensionMethodMap insertKey !mValue]
       end
     end
-  #------ Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
+  //----- Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
     for (key mList) in abstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
@@ -426,7 +426,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #------ Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
+  //----- Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
     for (key mList) in overridingAbstractExtensionMethodListMap.dictionary do
       for (mValue) in mList do
         checkExtensionMethodDefinitionForClass (
@@ -439,30 +439,30 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #------ Check Extension getters
-##--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
-  #--- A given abstract extension getter is defined only once for a class
+  //----- Check Extension getters
+#//--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
+  //--- A given abstract extension getter is defined only once for a class
     for (* mList) in abstractExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = ()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
-  #--- A given base extension getter is defined only once for a class
+  //--- A given base extension getter is defined only once for a class
     for (* mList) in extensionReaderListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = ()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
-  #--- A given overriding extension getter is defined only once for a class
+  //--- A given overriding extension getter is defined only once for a class
     for (* mList) in overridingExtensionGetterListMap.dictionary do
       var @extensionGetterMapForGlobalCheckings ExtensionGetterMap = ()
       for (mValue) in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end
-  #--- Check every abstract extension getter is implemented by every inherited concrete type
+  //--- Check every abstract extension getter is implemented by every inherited concrete type
     for (key mList) in abstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
@@ -475,7 +475,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #--- Check every abstract extension getter is implemented by every inherited concrete type
+  //--- Check every abstract extension getter is implemented by every inherited concrete type
     for (key mList) in overridingAbstractExtensionGetterListMap.dictionary do
       for (mValue) in mList do
         checkExtensionGetterDefinitionForClass (
@@ -491,5 +491,5 @@ proc performGalgas3ProjectGlobalCheckings
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

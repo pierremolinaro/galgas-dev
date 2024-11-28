@@ -15,17 +15,17 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    E X T E R N    R O U T I N E    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -50,17 +50,17 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
   #    E X T E R N    R O U T I N E    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -85,11 +85,11 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @bool isFilePrivate %initArgLabel
@@ -97,7 +97,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @formalParameterListAST mFormalArgumentListAST
   public let @bool usefullProcedure %initArgLabel
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -110,13 +110,13 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ioExtensionOverrideDefinitionList += !self
   }
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation -> @string {
     result = "routine " + self.mRoutineName + [self.mFormalArgumentListAST keyRepresentation] // "("
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -126,7 +126,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext {
-  #--- Build signature
+  //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
       [!?ioTypeMap makeEntry !argument.mFormalArgumentTypeName ?let parameterTypeIndex]
@@ -136,7 +136,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
         !argument.mFormalArgumentPassingMode
         !argument.mFormalArgumentName.string
     end
-  #--- Enter routine in routine map
+  //--- Enter routine in routine map
     [!?ioSemanticContext.routineMap insertKey
       !self.mRoutineName
       !routineSignature
@@ -144,7 +144,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -153,7 +153,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?let @predefinedTypes unused inPredefinedTypes
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #---
+  //---
     var formalArgumentList = @formalParameterListForGeneration ()
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
@@ -171,13 +171,13 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
         !argument.mFormalArgumentName.string
     end
     let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
-  #--- Useful entities graph
+  //--- Useful entities graph
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     if self.usefullProcedure then
       ioUsefulnessRootEntities += !nameForUsefulness
     end
-  #---
+  //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "proc " + mangledName
       !@routinePrototypeDeclarationForGeneration {
@@ -188,27 +188,27 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
        }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    R O U T I N E    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string routineMangledName %initArgLabel
   public let @formalParameterListForGeneration mFormalArgumentList
 
-  #·······························································································
+  //······························································································
 
   override getter headerKind -> @headerKind {
     result = .oneHeader
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
@@ -218,9 +218,9 @@ class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeader
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

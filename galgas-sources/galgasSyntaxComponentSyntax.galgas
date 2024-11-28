@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #
@@ -18,13 +18,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
   #          Rules prototypes
-  #·······························································································
+  //······························································································
 
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression
@@ -38,14 +38,14 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@actualParameterListAST outActualParameterList
 
-  #·······························································································
+  //······························································································
   #      S Y N T A X    C O M P O N E N T
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
-  #--- Imported lexique
+  //--- Imported lexique
     let @lstring importedLexiqueReference
     select
       importedLexiqueReference = ["" nowhere]
@@ -54,7 +54,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       $identifier$ ?importedLexiqueReference
       $)$
     end
-  #--- Feature 'translate'
+  //--- Feature 'translate'
     let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
@@ -63,7 +63,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       hasTranslateFeature = true
     end
     ${$
-  #--- Loop on declarations
+  //--- Loop on declarations
     var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
     var ruleList = @syntaxRuleListAST ()
     repeat
@@ -72,7 +72,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     while
       <syntax_rule_declaration> !?ioDeclarations !? ruleList
     end
-  #--- end
+  //--- end
     $}$
     ioDeclarations.mSyntaxComponentList +=
       !syntaxComponentName
@@ -82,16 +82,16 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !hasTranslateFeature
   }
 
-  #·······························································································
+  //······························································································
   #      S Y N T A X    E X T E N S I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $extension$
     $identifier$ ?let @lstring syntaxComponentName
     ${$
-  #--- Loop on declarations
+  //--- Loop on declarations
     var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
     var ruleList = @syntaxRuleListAST ()
     repeat
@@ -100,7 +100,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     while
       <syntax_rule_declaration> !?ioDeclarations !?ruleList
     end
-  #--- end
+  //--- end
     $}$
     [!?ioDeclarations.mSyntaxExtensions insertKey
       !syntaxComponentName.string
@@ -115,9 +115,9 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 #      !ruleList
   }
 
-  #·······························································································
+  //······························································································
   #      N O N T E R M I N A L    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <nonterminal_declaration> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
@@ -136,9 +136,9 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     ioNonterminalDeclarationList += !mNonterminalName !labels
   }
 
-  #·······························································································
+  //······························································································
   #      S Y N T A X    R U L E    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
                            ?let @lstring inLabelName
@@ -156,7 +156,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     $}$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_rule_declaration> ?!@galgasDeclarationAST ioDeclarations ?!@syntaxRuleListAST ioRuleList {
     $rule$
@@ -174,9 +174,9 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !mLabelList
   }
 
-  #·······························································································
+  //······························································································
   #   S Y N T A X    I N S T R U C T I O N    L I S T
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                       !@syntaxInstructionList outSyntaxInstructionList {
@@ -204,29 +204,29 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #   T E R M I N A L    C H E C K    I N S T R U C T I O N
-  #·······························································································
+  //······························································································
 
   rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@actualInputParameterListAST outActualInputParameterList
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
   #          Rules prototypes
-  #·······························································································
+  //······························································································
 
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
                     !@semanticExpressionAST outExpression
@@ -240,14 +240,14 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
                                                   !@actualParameterListAST outActualParameterList
 
-  #·······························································································
+  //······························································································
   #      S Y N T A X    C O M P O N E N T
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $identifier$ ?let @lstring syntaxComponentName
-  #--- Imported lexique
+  //--- Imported lexique
     let @lstring importedLexiqueReference
     select
       importedLexiqueReference = ["" nowhere]
@@ -256,7 +256,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       $identifier$ ?importedLexiqueReference
       $)$
     end
-  #--- Feature 'translate'
+  //--- Feature 'translate'
     let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
@@ -265,7 +265,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       hasTranslateFeature = true
     end
     ${$
-  #--- Loop on declarations
+  //--- Loop on declarations
     var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
     var ruleList = @syntaxRuleListAST ()
     repeat
@@ -274,7 +274,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     while
       <syntax_rule_declaration> !?ioDeclarations !? ruleList
     end
-  #--- end
+  //--- end
     $}$
     ioDeclarations.mSyntaxComponentList +=
       !syntaxComponentName
@@ -284,16 +284,16 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       !hasTranslateFeature
   }
 
-  #·······························································································
+  //······························································································
   #      S Y N T A X    E X T E N S I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $syntax$
     $extension$
     $identifier$ ?let @lstring syntaxComponentName
     ${$
-  #--- Loop on declarations
+  //--- Loop on declarations
     var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
     var ruleList = @syntaxRuleListAST ()
     repeat
@@ -302,7 +302,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     while
       <syntax_rule_declaration> !?ioDeclarations !? ruleList
     end
-  #--- end
+  //--- end
     $}$
     [!?ioDeclarations.mSyntaxExtensions insertKey
       !syntaxComponentName.string
@@ -317,9 +317,9 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 #      !ruleList
   }
 
-  #·······························································································
+  //······························································································
   #      N O N T E R M I N A L    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <nonterminal_declaration> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
@@ -338,9 +338,9 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     ioNonterminalDeclarationList += !mNonterminalName !labels
   }
 
-  #·······························································································
+  //······························································································
   #      S Y N T A X    R U L E    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
                            ?let @lstring inLabelName ?!@syntaxRuleLabelListAST ioLabelList {
@@ -357,7 +357,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $}$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_rule_declaration> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@syntaxRuleListAST ioRuleList {
@@ -376,9 +376,9 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       !mLabelList
   }
 
-  #·······························································································
+  //······························································································
   #   S Y N T A X    I N S T R U C T I O N    L I S T
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_list> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionList outSyntaxInstructionList {
@@ -406,20 +406,20 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #   T E R M I N A L    C H E C K    I N S T R U C T I O N
-  #·······························································································
+  //······························································································
 
   rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                      !@actualInputParameterListAST outActualInputParameterList
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

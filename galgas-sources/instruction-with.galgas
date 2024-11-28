@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @readAccessWithInstructionAST : @semanticInstructionAST {
   public let @lstring mPrefix
@@ -49,13 +49,13 @@ class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
   public let @location mEndOf_else_instructions
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
    }
 
-  #·······························································································
+  //······························································································
 
   rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                 ?let @location inInstructionLocation
@@ -121,7 +121,7 @@ syntax extension galgas3InstructionsSyntax {
     }
  }
 
-  #·······························································································
+  //······························································································
 
   rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations                          
                                 ?let @location inInstructionLocation
@@ -198,15 +198,15 @@ syntax extension galgas3InstructionsSyntax {
     }
  }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -226,7 +226,7 @@ syntax extension galgas4InstructionsSyntax {
     $end$
    }
 
-  #·······························································································
+  //······························································································
 
   rule <with_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                 ?let @location inInstructionLocation
@@ -271,7 +271,7 @@ syntax extension galgas4InstructionsSyntax {
     }
  }
 
-  #·······························································································
+  //······························································································
 
   rule <with_instruction_core>
     ?!@galgasDeclarationAST ioDeclarations
@@ -349,13 +349,13 @@ syntax extension galgas4InstructionsSyntax {
     }
  }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readAccessWithInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -376,9 +376,9 @@ override method @readWriteAccessWithInstructionAST enterInstructionInSemanticCon
   [self.m_else_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -387,7 +387,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
-#--- Analyze receiver expression
+//--- Analyze receiver expression
   [self.mReceiverExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -398,7 +398,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration receiverExpression
   ]
   let receiverType = receiverExpression.mResultType
-#--- Check search method
+//--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
     for (mSearchMethodName *) in [receiverType definition].mapSearchMethodList while not found do
@@ -409,7 +409,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
           + "' search method declared in the '@" + [receiverType definition].typeName.string + "' map"
     end
   end
-#--- Analyze key expression
+//--- Analyze key expression
   [self.mKeyExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -419,7 +419,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
   ]
-#--- Check key is an @lstring or @string object
+//--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
     if [keyExpression.mResultType definition].typeName.string != "string" then
       error self.mEndOfKeyExpression
@@ -429,17 +429,17 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     error self.mEndOfKeyExpression
     : "the key type is '@" + [keyExpression.mResultType definition].typeName.string + "', it should be @lstring"
   end
-#--- Object Array cpp name
+//--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
-#--- Check this type handle 'with' access
+//--- Check this type handle 'with' access
   if not [[receiverType definition].features contains !.supportWithAccessor] then
     error self.mEndOfReceiverExpression
     : "the '@"+ [receiverType definition].typeName.string
     + "' type cannot be used in a 'with' instruction"
   end
-#--- Enter in a select block
+//--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
-#--- 'do' branch : add attributes as constant
+//--- 'do' branch : add attributes as constant
   var localConstantList = @localConstantList ()
   for (mPropertyTypeEntry mPropertyName 3*) in [receiverType definition].currentTypedPropertyList do
     localConstantList +=
@@ -448,7 +448,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
       !true # Do not warn if unused
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
-#--- Add lkey as @lstring constant
+//--- Add lkey as @lstring constant
   localConstantList +=
     ![ioTypeMap typeMapEntryForLKey !["lstring" nowhere]]
     !@lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
@@ -467,7 +467,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticInstructionListForGeneration do_instructionList
   )
-#--- else branch
+//--- else branch
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -482,7 +482,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     ?let @semanticInstructionListForGeneration else_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_else_instructions]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration {
     !self.mInstructionLocation
     !receiverExpression
@@ -503,7 +503,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
                                 ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                                 ?!@localVarManager ioVariableMap {
-#--- Analyze source expression
+//--- Analyze source expression
   [self.mKeyExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -513,7 +513,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
   ]
-#--- Check key is an @lstring or @string object
+//--- Check key is an @lstring or @string object
   if self.mSearchMethodNameForErrorSignaling.string == "" then
     if [keyExpression.mResultType definition].typeName.string != "string" then
       error self.mEndOfKeyExpression
@@ -523,9 +523,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     error self.mEndOfKeyExpression
     : "the key type is '@" + [keyExpression.mResultType definition].typeName.string + "', it should be @lstring"
   end
-#--- Object Array cpp name
+//--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [self.mInstructionLocation startLocationIndex]
-#--- Read/write access to receiver variable
+//--- Read/write access to receiver variable
   var @unifiedTypeMapEntry targetType
   let @string receiverVariableCppName
   if self.mReceiverIsPrefixedBySelf then
@@ -563,11 +563,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       error value: "a constant property cannot be modified"
     end
   end
-#--- Check this type handle 'with' access
+//--- Check this type handle 'with' access
   if not [[targetType definition].features contains !.supportWithAccessor] then
     error self.mEndOfReceiverExpression : "the '@"+ [targetType definition].typeName.string + "' type cannot be used in a 'with' instruction"
   end
-#--- Check search method
+//--- Check search method
   if self.mSearchMethodNameForErrorSignaling.string != "" then
     var @bool found = false
     for (mSearchMethodName *) in [targetType definition].mapSearchMethodList while not found do
@@ -577,9 +577,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       error self.mSearchMethodNameForErrorSignaling : "there is no '" + self.mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [targetType definition].typeName.string + "' map"
     end
   end
-#--- Enter in a select block
+//--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
-#--- 'do' branch
+//--- 'do' branch
   var @localInitializedVariableList localInitializedVariableList = ()
   for (mPropertyTypeEntry mPropertyName 3*) in [targetType definition].currentTypedPropertyList do
     localInitializedVariableList +=
@@ -606,7 +606,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticInstructionListForGeneration do_instructionList
   )
-#--- else branch
+//--- else branch
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -621,7 +621,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ?let else_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_else_instructions]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration {
     !self.mInstructionLocation
     !receiverVariableCppName
@@ -635,9 +635,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -663,9 +663,9 @@ class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration
   public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -673,7 +673,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -682,7 +682,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     ?let @string receiverVarCppName
   ]
   let receiverType = self.mReceiverExpression.mResultType
-#--- key expression
+//--- key expression
   [self.mKeyExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -690,7 +690,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string keyVarCppName
   ]
-#---
+//---
   ioGeneratedCode += "const cMapElement_" + [receiverType identifierRepresentation]
                   + " * " + self.mObjectArrayCppName
                   + " = (const cMapElement_" + [receiverType identifierRepresentation]
@@ -743,7 +743,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   for (mValue) in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [mValue.string identifierRepresentation]
   end
-#--- key expression
+//--- key expression
   [self.mKeyExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -751,7 +751,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string keyVarCppName
   ]
-#---
+//---
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverVariableCppName]
   [self.mReceiverType addHeaderFileName !?ioInclusionSet]
@@ -789,4 +789,4 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

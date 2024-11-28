@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @orExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -57,13 +57,13 @@ class @openedSliceExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <expression_or_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@semanticExpressionAST outExpression {
@@ -102,15 +102,15 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <expression_or> ?!@galgasDeclarationAST ioDeclarations
                        !@semanticExpressionAST outExpression {
@@ -149,13 +149,13 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -174,7 +174,7 @@ override method @orExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -184,7 +184,7 @@ override method @orExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -194,7 +194,7 @@ override method @orExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixOrOperator]
     !"|"
@@ -211,7 +211,7 @@ override method @orExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orShortExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -230,7 +230,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -240,7 +240,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -250,7 +250,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixOrOperator]
     !"|"
@@ -258,7 +258,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @orShortExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -266,7 +266,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @xorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -285,7 +285,7 @@ override method @xorExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -295,7 +295,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -305,7 +305,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixXorOperator]
     !"^"
@@ -313,7 +313,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -323,7 +323,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @closedSliceExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -343,7 +343,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -353,7 +353,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -363,7 +363,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   if [leftType definition].typeName.string != "uint" then
     error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
@@ -372,7 +372,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   if [rightType definition].typeName.string != "uint" then
     error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
   end
-#--- Generate expression
+//--- Generate expression
   outExpression = @closedSliceExpressionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !.init {!"range" !leftExpression.mLocation}]
     !self.mOperatorLocation
@@ -381,7 +381,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @openedSliceExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -400,7 +400,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
                                               ?!@localVarManager ioVariableMap
                                               !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -410,7 +410,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -420,7 +420,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkAssignmentTypeWithImplicitGetterCall (
     !inAnalysisContext.predefinedTypes.mUIntType
     !leftExpression.mResultType
@@ -441,7 +441,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #  if [rightType definition].mTypeName.string != "uint" then
 #    error rightExpression.mLocation : "the right expression of '..<' operator should an @uint"
 #  end
-#--- Generate expression
+//--- Generate expression
   outExpression = @openedSliceExpressionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !.init {!"range" !leftExpression.mLocation}]
     !self.mOperatorLocation
@@ -450,9 +450,9 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mLeftExpression
@@ -482,7 +482,7 @@ override method @orShortExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Left operand
+//--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -490,12 +490,12 @@ override method @orShortExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let @string leftTemporaryOperand
   ]
-#--- Generate Comparison
+//--- Generate Comparison
   let testVar = "test_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (kBoolTrue != " + testVar + ".boolEnum ()) {\n"
-#--- Right operand
+//--- Right operand
   [!?ioGeneratedCode incIndentation !2]
   [self.mRightExpression generateExpression
     !?ioGeneratedCode
@@ -519,7 +519,7 @@ override method @closedSliceExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Left operand
+//--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -527,7 +527,7 @@ override method @closedSliceExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let leftTemporaryOperand
   ]
-#--- Right operand
+//--- Right operand
   [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -535,7 +535,7 @@ override method @closedSliceExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let rightTemporaryOperand
   ]
-#--- Generate Comparison
+//--- Generate Comparison
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ").add_operation (GGS_uint (1), " + compilerCppName () + [self.mLocation commaSourceFile] + "))"
@@ -551,7 +551,7 @@ override method @openedSliceExpressionForGeneration generateExpression
   !@string outCppExpression
 {
   [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Left operand
+//--- Left operand
   [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -559,7 +559,7 @@ override method @openedSliceExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let leftTemporaryOperand
   ]
-#--- Right operand
+//--- Right operand
   [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -567,7 +567,7 @@ override method @openedSliceExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let rightTemporaryOperand
   ]
-#--- Generate Comparison
+//--- Generate Comparison
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
@@ -575,4 +575,4 @@ override method @openedSliceExpressionForGeneration generateExpression
    + [self.mLocation commaSourceFile] + "))"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

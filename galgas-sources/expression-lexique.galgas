@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
   private let @lstring mLexiqueComponentName
   private let @lstring mLexiqueGetterName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -43,15 +43,15 @@ syntax extension galgas3ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -64,13 +64,13 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -90,16 +90,16 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 {
  let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#--- Check  lexique is declared
+//--- Check  lexique is declared
   [inAnalysisContext.semanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !self.mLexiqueComponentName
     ?7*
   ]
-#--- Check getter name
+//--- Check getter name
   if self.mLexiqueGetterName.string != "symbols" then
     error self.mLexiqueGetterName:"unknown getter"
   end
-#---
+//---
   outExpression = @lexiqueIntrospectionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !["stringlist" nowhere]]
     !self.mLexiqueComponentName.location
@@ -107,9 +107,9 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     !self.mLexiqueGetterName.string}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
   private let @string mLexiqueComponentName
@@ -124,11 +124,11 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-#---
+//---
   ioInclusionSet += !"lexique-" + [self.mLexiqueComponentName fileNameRepresentation]
   outCppExpression = "Lexique_" + [self.mLexiqueComponentName identifierRepresentation] + "::"
   + [self.mLexiqueGetterName identifierRepresentation]
   + "(" + [self.mLocation sourceFile] + ")"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

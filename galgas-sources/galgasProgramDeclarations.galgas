@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  'program' component parser, as model builder
 #
@@ -20,18 +20,18 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3ProgramDeclarations (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                         !@semanticInstructionListAST outInstructionsList
 
-  #·······························································································
+  //······························································································
   #   P R O L O G U E
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $before$
@@ -44,9 +44,9 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       !endOfPrologue
   }
 
-  #·······························································································
+  //······························································································
   #   E P I L O G U E
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $after$
@@ -59,9 +59,9 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       !endOfPrologue
   }
 
-  #·······························································································
+  //······························································································
   #   S O U R C E    R U L E
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3>
    ?!@galgasDeclarationAST ioDeclarations {
@@ -70,7 +70,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     $"string"$ ?let @lstring mSourceFileExtension
     $message$
     $"string"$ ?let @lstring mSourceFileHelp
-  #--- Reference grammar
+  //--- Reference grammar
     let @lstring referenceGrammar
     select
       referenceGrammar = ["" nowhere]
@@ -78,7 +78,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       $grammar$
       $identifier$ ?referenceGrammar
     end
-  #--- Source file
+  //--- Source file
     $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
       error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
@@ -98,7 +98,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       isUnused = true
     end
     $identifier$ ?let @lstring mSourceFileVariableName
-  #---
+  //---
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST mInstructionList
     let endOfInstructionList = @location.here
@@ -113,22 +113,22 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       !endOfInstructionList
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4ProgramDeclarations (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST unused ioDeclarations
                                    !@semanticInstructionListAST outInstructionsList
 
-  #·······························································································
+  //······························································································
   #   P R O L O G U E
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $before$
@@ -141,9 +141,9 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       !endOfPrologue
   }
 
-  #·······························································································
+  //······························································································
   #   E P I L O G U E
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $after$
@@ -156,9 +156,9 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       !endOfPrologue
   }
 
-  #·······························································································
+  //······························································································
   #   S O U R C E    R U L E
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $case$
@@ -166,7 +166,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     $"string"$ ?let @lstring mSourceFileExtension
     $%errorMessage$
     $"string"$ ?let @lstring mSourceFileHelp
-  #--- Reference grammar
+  //--- Reference grammar
     let @lstring referenceGrammar
     select
       referenceGrammar = ["" nowhere]
@@ -174,7 +174,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       $grammar$
       $identifier$ ?referenceGrammar
     end
-  #--- Source file
+  //--- Source file
     $?selector:$ ?let selector
     if selector.string != "sourceFilePath" then
       error selector : "the selector should be '?sourceFilePath:'" fixit { replace "?sourceFilePath:" }
@@ -194,7 +194,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       isUnused = true
     end
     $identifier$ ?let @lstring mSourceFileVariableName
-  #---
+  //---
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST mInstructionList
     let endOfInstructionList = @location.here
@@ -209,8 +209,8 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
       !endOfInstructionList
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

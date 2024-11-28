@@ -1,6 +1,6 @@
 syntax testsuite_syntax (testsuite_lexique) {
 
-# ADD YOUR CODE HERE
+// ADD YOUR CODE HERE
 
 rule <start_symbol>()
 

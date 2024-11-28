@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #
@@ -18,13 +18,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
   #    PROPERTY IN COLLECTION
-  #·······························································································
+  //······························································································
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -64,7 +64,7 @@ syntax extension galgas3DeclarationsSyntax {
       !initialization: initialization
   }
 
-  #·······························································································
+  //······························································································
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -107,7 +107,7 @@ syntax extension galgas3DeclarationsSyntax {
       !initialization: initialization
   }
 
-  #·······························································································
+  //······························································································
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -127,11 +127,11 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @propertyMutability {
   case constantProperty
@@ -139,20 +139,20 @@ enum @propertyMutability {
   case weakProperty
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @propertyInCollectionInitializationAST %equatable {
   case none
   case some (@semanticExpressionAST expression)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
   #    PROPERTY DECLARATION
-  #·······························································································
+  //······························································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -191,7 +191,7 @@ syntax extension galgas4DeclarationsSyntax {
       !initialization: initialization
   }
 
-  #·······························································································
+  //······························································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
                               ?!@propertyInCollectionListAST ioAttributeInCollectionList {
@@ -233,11 +233,11 @@ syntax extension galgas4DeclarationsSyntax {
       !initialization: initialization
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @propertyInCollectionListAST {
   public let @propertyMutability mutability %initArgLabel
@@ -281,7 +281,7 @@ list @propertyInCollectionListAST {
           !?variableMap
           ?var @semanticExpressionForGeneration expression
         ]
-      #--- Check assignment type compatibility
+      //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
           !propertyType
           !expression.mResultType
@@ -303,4 +303,4 @@ list @propertyInCollectionListAST {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

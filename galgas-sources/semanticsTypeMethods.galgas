@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  semantics definitions for semantics component
 #
@@ -20,7 +20,7 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassMethodWithInputArgument
   ?!@classMethodMap ioClassMethodMap
@@ -40,7 +40,7 @@ proc enterClassMethodWithInputArgument
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassMethodWith3InputArguments
   ?!@classMethodMap ioClassMethodMap
@@ -55,20 +55,20 @@ proc enterClassMethodWith3InputArguments
   ?compilerArgument:let @bool inHasCompilerArgument
 {
   var @formalParameterSignature argList = ()
-#--- Argument 1
+//--- Argument 1
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName1 ?let argumentTypeIndex1]
   argList += !["" nowhere] !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
-#--- Argument 2
+//--- Argument 2
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName2 ?let argumentTypeIndex2]
   argList += !["" nowhere] !argumentTypeIndex2 !.argumentConstantIn !inArgumentName2
-#--- Argument 3
+//--- Argument 3
   [!?ioUnifiedTypeMap makeEntryFromString !inArgumentTypeName3 ?let argumentTypeIndex3]
   argList += !["" nowhere] !argumentTypeIndex3 !.argumentConstantIn !inArgumentName3
-#---
+//---
   [!?ioClassMethodMap insertOrReplace !.init {!inClassMethodName !.here} !argList !inHasCompilerArgument]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
@@ -87,5 +87,5 @@ proc enterClassMethodWithStringInputArgument
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @unaryMinusExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -40,15 +40,15 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @unaryMinusExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -58,13 +58,13 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @unaryMinusExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryMinusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -83,7 +83,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-#--- Expression analysis
+//--- Expression analysis
   [self.mExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -93,7 +93,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]
-#--- Check operator availability
+//--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if let exp = expression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration {
@@ -106,7 +106,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
     :outExpression
   else
-  #--- Generate expression
+  //--- Generate expression
     outExpression = @unaryMinusExpressionForGeneration {
       !type
       !self.mOperatorLocation
@@ -115,9 +115,9 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @unaryMinusExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -131,7 +131,7 @@ override method @unaryMinusExpressionForGeneration generateExpression ?!@string 
                                                                       ?!@stringset ioUnusedVariableCppNameSet
                                                                       !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Operand
+//--- Operand
   [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -139,9 +139,9 @@ override method @unaryMinusExpressionForGeneration generateExpression ?!@string 
     !?ioUnusedVariableCppNameSet
     ?let operand
   ]
-#--- Generate Comparison
+//--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

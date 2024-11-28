@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @repeatInstruction : @syntaxInstructionAST {
   private let @syntaxInstructionList mRepeatedInstructionList
@@ -26,13 +26,13 @@ class @repeatInstruction : @syntaxInstructionAST {
   private let @location mEndOf_repeat_instruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -58,15 +58,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -92,13 +92,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -137,9 +137,9 @@ override method @repeatInstruction transformInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -158,9 +158,9 @@ override method @repeatInstruction analyzeSyntaxInstruction
 {
   let @uint choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
-#--- Begin block
+//--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
-#--- Repeated instructions
+//--- Repeated instructions
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -178,7 +178,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !?ioSelectMethodCount
     ?let repeated_instructionList
   )
-#--- 'while' blocks
+//--- 'while' blocks
   var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = ()
   for (mSyntaxInstructionList mEndOf_instructions) in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
@@ -200,9 +200,9 @@ override method @repeatInstruction analyzeSyntaxInstruction
     )
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
-#--- End block
+//--- End block
   [!?ioVariableMap closeOverride !self.mEndOf_repeat_instruction]
-#---
+//---
   ioInstructionListForGeneration += !@repeatInstructionForGeneration {
     !self.mInstructionLocation
     !inComponentName
@@ -213,9 +213,9 @@ override method @repeatInstruction analyzeSyntaxInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mSyntaxComponentName
@@ -225,9 +225,9 @@ class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -240,7 +240,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
   end
-#---
+//---
   ioInstructionListForGeneration += !@repeatInstructionForGeneration {
     !self.mInstructionLocation
     !self.mSyntaxComponentName
@@ -251,9 +251,9 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMPARE SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @repeatInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction ->@bool {
@@ -287,9 +287,9 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -350,4 +350,4 @@ override method @repeatInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -42,19 +42,19 @@ syntax extension galgas3DeclarationsSyntax {
   }
 
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring arrayTypeName
@@ -62,13 +62,13 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @bool isUsefull %initArgLabel
   private let @bool equatable %initArgLabel
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation->@string {
     result = "array [@" + self.arrayTypeName + "]"
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -83,7 +83,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring {!"@" + self.elementTypeName !self.elementTypeName}]
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -93,18 +93,18 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext {
-  #--- uint type index
+  //--- uint type index
     [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
-  #--- Element type index
+  //--- Element type index
     [!?ioTypeMap makeEntry !self.elementTypeName ?let elementType]
-  #--- Setter argument list
+  //--- Setter argument list
     var @formalParameterSignature setterInputFormalArgumentList = §[
       .init (["" nowhere], elementType, .argumentConstantIn, "inElement")
     ]
     var @formalParameterSignature setterOutputFormalArgumentList = §[
       .init (["" nowhere], elementType, .argumentOut, "outElement")
     ]
-  #--- Getters
+  //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
     enterBaseGetterWithoutArgument (
       !?getterMap
@@ -146,7 +146,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #      !returnedTypeName:self.arrayTypeName.string
 #      !hasCompilerArgument:true
 #    )
-  #------------------------- Instance methods
+  //------------------------ Instance methods
     var @instanceMethodMap instanceMethodMap = ()
     [!?instanceMethodMap insertKey
       !@lstring {!"first" !@location.here}
@@ -166,7 +166,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic
       !""
     ]
-  #----------------------------------------- Setters
+  //---------------------------------------- Setters
     var @setterMap setterMap = ()
     [!?setterMap insertKey
       !@lstring {!"append" !.here}
@@ -201,7 +201,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic
       !""
     ]
-  #--- setter 'insertAtIndex'
+  //--- setter 'insertAtIndex'
     setterInputFormalArgumentList += !["" nowhere] !uintType !.argumentConstantIn !"inInsertionIndex"
     [!?setterMap insertKey
       !@lstring {!"insertAtIndex" !@location.here}
@@ -211,14 +211,14 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic
       !"" # No error message
     ]
-  #--- Add initializer without argument
+  //--- Add initializer without argument
     var @initializerMap initializerMap = ()
     let @functionSignature emptyArgumentList = ()
     [!?initializerMap insertKey
       !.init {![emptyArgumentList initializerSignature] !self.arrayTypeName}
       !emptyArgumentList
     ]
-  #--- Read subscripts
+  //--- Read subscripts
     var @subscriptMap readSubscriptMap = ()
     let @functionSignature argumentTypeList = §[.init (["" nowhere], uintType, "inIndex", true)]
     [!?readSubscriptMap insertKey
@@ -226,7 +226,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !argumentTypeList
       !elementType
     ]
-  #--- Add extensions
+  //--- Add extensions
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -242,7 +242,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: true
     )
-  #--- features
+  //--- features
     var features = @typeFeatures.infixAddOperator | .plusAssignOperatorWithExpression
     if self.equatable then
       features |= .equatable
@@ -254,7 +254,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !acceptEquatable: true
       !acceptComparable: false
     )
-  #--- Enter in type map
+  //--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.arrayTypeName
       !isPredefined: self.isPredefined
@@ -285,7 +285,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  #·······························································································
+  //······························································································
 
   override method addAssociatedElement
     ?!@galgasDeclarationAST unused ioDeclarations {
@@ -308,7 +308,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #    }
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis
     ?!@lstringlist ioUsefulnessRootEntities
@@ -319,7 +319,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   {
-  #--- Useful entities graph
+  //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.arrayTypeName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     if self.isUsefull || self.isPredefined then
@@ -330,7 +330,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     if self.isUsefull || self.isPredefined then
       ioUsefulnessRootEntities += !elementTypeNameForUsefulness
     end
-  #--- Useful entities graph for initializer without any argument
+  //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.arrayTypeName
       ![@formalInputParameterListAST () initializerSignature]
@@ -339,7 +339,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     if self.isUsefull || self.isPredefined then
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
-  #---
+  //---
 #    var @typedPropertyList typedAttributeList = ()
 #    var @propertyIndexMap attributeMap = ()
 #    for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
@@ -357,7 +357,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #        !hasSelector: hasSelector
 #      [!?attributeMap insertKey !propertyName !t]
 #    end
-  #---
+  //---
     let selfType = [ioTypeMap typeMapEntryForLKey !self.arrayTypeName]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "array type " + self.arrayTypeName
@@ -367,18 +367,18 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @arrayTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry elementType
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1 ?!@stringset unused ioInclusionSet
                                      !@string outHeader {
@@ -407,7 +407,7 @@ class @arrayTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation  ?let @unifiedTypeMap unused inTypeMap
                                           ?!@stringset ioInclusionSet
@@ -423,11 +423,11 @@ class @arrayTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper arrayTypeGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -444,5 +444,5 @@ filewrapper arrayTypeGenerationTemplate in "+generation-templates/type_generatio
     ?@bool GENERATE_COMPARISON
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Syntax component compilation
 #
@@ -20,14 +20,14 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc groupSyntaxComponentsGalgas3
   ?let @galgas3SyntaxComponentListAST inAllSyntaxComponents
   ?let @syntaxExtensions inSyntaxExtensions
   ?!@semanticDeclarationListAST ioDeclarationList
 {
-#--- Add extensions to syntax list
+//--- Add extensions to syntax list
   var @stringset componentNameSet = ()
   for component in inAllSyntaxComponents do
     componentNameSet += !component.mSyntaxComponentName.string
@@ -45,7 +45,7 @@ proc groupSyntaxComponentsGalgas3
       !ruleList
       !component.mHasTranslateFeature}
   end
-#--- Check all extensions are handled
+//--- Check all extensions are handled
   for (key theLists) in inSyntaxExtensions.dictionary do
     if not [componentNameSet hasKey !key] then
       for (mSyntaxComponentName * *) in theLists do
@@ -55,5 +55,5 @@ proc groupSyntaxComponentsGalgas3
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

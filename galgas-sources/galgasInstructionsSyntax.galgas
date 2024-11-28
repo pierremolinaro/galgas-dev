@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
 #
@@ -18,13 +18,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3InstructionsSyntax (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
   #          Rules prototypes
-  #·······························································································
+  //······························································································
 
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression
@@ -50,9 +50,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   rule <output_expression_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                       !@actualOutputArgumentList outExpressionList
 
-  #·······························································································
+  //······························································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                         !@semanticInstructionListAST outInstructionsList {
@@ -97,9 +97,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #    F U N C T I O N    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $func$
@@ -123,7 +123,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     <function_declaration_ggs3> !once: isOnce !usefull: isUsefull !private: false !functionName !?ioDeclarations
   }
    
-   #·······························································································
+   //······························································································
 
   rule <function_declaration_ggs3> ?once: let @bool inIsOnce
                                    ?usefull: let @bool inIsUsefull
@@ -172,7 +172,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <function_declaration_ggs3> ?once: let @bool inIsOnce
                                    ?usefull: let @bool inIsUsefull
@@ -216,7 +216,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -241,9 +241,9 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     <function_declaration_ggs3> !once: isOnce !usefull: isUsefull !private: true !functionName !?ioDeclarations
   }
 
-  #·······························································································
+  //······························································································
   #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -270,14 +270,14 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     }
   }
 
-  #·······························································································
+  //······························································································
   #    M E T H O D    C A L L    I N S T R U C T I O N
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@actualParameterListAST outActualParameterList
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_directed_translation_result>
           ?!@galgasDeclarationAST ioDeclarations
@@ -301,7 +301,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@actualInputParameterListAST outActualInputParameterList {
@@ -349,17 +349,17 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4InstructionsSyntax (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
   #          Rules prototypes
-  #·······························································································
+  //······························································································
 
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
                     !@semanticExpressionAST outExpression
@@ -382,9 +382,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   rule <output_expression_list> ?!@galgasDeclarationAST ioDeclarations
                                 !@actualOutputArgumentList outExpressionList
 
-  #·······························································································
+  //······························································································
   #    S E M A N T I C    I N S T R U C T I O N    L I S T
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionListAST outInstructionsList {
@@ -430,9 +430,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #    F U N C T I O N    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $func$
@@ -495,7 +495,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -559,9 +559,9 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -588,14 +588,14 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     }
   }
 
-  #·······························································································
+  //······························································································
   #    M E T H O D    C A L L    I N S T R U C T I O N
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
                                                   !@actualParameterListAST outActualParameterList
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_directed_translation_result> ?!@galgasDeclarationAST ioDeclarations
                                             !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
@@ -620,7 +620,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                      !@actualInputParameterListAST outActualInputParameterList {
@@ -709,8 +709,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

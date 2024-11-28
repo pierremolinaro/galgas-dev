@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @testDynamicClassInExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mReceiverExpression
@@ -43,13 +43,13 @@ class @castInExpressionAST : @semanticExpressionAST {
   private let @lstring mTypeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression {
@@ -92,15 +92,15 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
                     !@semanticExpressionAST outExpression {
@@ -130,13 +130,13 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @testDynamicClassInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -155,7 +155,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-#--- Receiver expression analysis
+//--- Receiver expression analysis
   [self.mReceiverExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -165,11 +165,11 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let expression
   ]
-#--- Get type information
+//--- Get type information
    let castType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- This type is either a class
+//--- This type is either a class
   if [[expression.mResultType definition].typeKind isClassType] then
-  #--- Check expression type is a descendant of named type
+  //--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = castType
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
@@ -185,7 +185,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     error expression.mLocation: "expression should be a class instance: it is an @"
      +  [expression.mResultType definition].typeName.string + " instance"
   end
-#--- Generate expression
+//--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mBoolType
     !self.mTypeName.location
@@ -202,7 +202,7 @@ override method @castInExpressionAST enterExpressionInSemanticContext
   [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -213,7 +213,7 @@ override method @castInExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-#--- Receiver expression analysis
+//--- Receiver expression analysis
   [self.mReceiverExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -223,11 +223,11 @@ override method @castInExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
    ]
-#--- Get type information
+//--- Get type information
    let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- This type is an @object type
+//--- This type is an @object type
   if [[expression.mResultType definition].typeKind isClassType]then
-  #--- Check expression type is a descendant of named type
+  //--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == expression.mResultType
     loop ([ioTypeMap count] + 1)
@@ -245,7 +245,7 @@ override method @castInExpressionAST analyzeSemanticExpression
       "cast expression should be a class instance or an @object instance: it is an @"
      +  [expression.mResultType definition].typeName.string + " instance"
   end
-#--- Generate expression
+//--- Generate expression
   if [expression.mResultType definition].typeName.string == "object" then
     outExpression = @extractObjectInExpressionForGeneration {
       !type
@@ -263,9 +263,9 @@ override method @castInExpressionAST analyzeSemanticExpression
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
@@ -282,7 +282,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   let typeNameRepresentation = [[self.mCastType definition].typeName.string identifierRepresentation]
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -290,7 +290,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let @string receiverExpression
   ]
-#--- Generated test
+//--- Generated test
   [self.mCastType addHeaderFileName !?ioInclusionSet]
   switch self.mTypeComparisonKind
   case equal :
@@ -310,7 +310,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -322,7 +322,7 @@ override method @castInExpressionForGeneration generateExpression
   [self.mCastType addHeaderFileName !?ioInclusionSet]
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -330,12 +330,12 @@ override method @castInExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let @string receiverExpression
   ]
-#---
+//---
   ioGeneratedCode += "GGS_" + [self.mTypeName identifierRepresentation]
   + " " + outCppExpression + " ;\n"
   + "if (" + receiverExpression + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-#---
+//---
   ioGeneratedCode +=
     "if (nullptr != dynamic_cast <const cPtr_"
   + [self.mTypeName identifierRepresentation]
@@ -356,7 +356,7 @@ override method @castInExpressionForGeneration generateExpression
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mReceiverExpression
@@ -373,7 +373,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
   !@string outCppExpression {
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -381,7 +381,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let @string receiverExpression
   ]
-#--- Generate code
+//--- Generate code
   outCppExpression = "GGS_" + [self.mResultType identifierRepresentation]
   + "::extractObject (" + receiverExpression
   + ", " + compilerCppName ()
@@ -389,4 +389,4 @@ override method @extractObjectInExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

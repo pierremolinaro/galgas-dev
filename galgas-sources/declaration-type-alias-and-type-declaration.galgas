@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   EMBEDDED TYPE NAME UTILITIES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
                           ?inner: let @lstring inInnerTypeName -> @lstring {
@@ -25,77 +25,77 @@ func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
                   [inOuterTypeName.location union !inInnerTypeName])
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedTypeName ?outer: let @string inOuterTypeName
                           ?inner: let @string inInnerTypeName -> @string {
   result = inOuterTypeName + "." + inInnerTypeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   OPTIONAL TYPE NAME UTILITIES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeOptionalTypeName ?forTypeNamed: let @string inTypeName -> @string {
   result = inTypeName + "?"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeOptionalTypeLName ?forTypeNamed: let @lstring inTypeName -> @lstring {
   result = inTypeName
   result.string += "?"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   EMBEDDED ELEMENT TYPE NAME UTILITIES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedElementTypeName ?let @string inTypeName -> @string {
   result = makeEmbeddedTypeName (!outer: inTypeName !inner: "element")
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
   result = .init (makeEmbeddedElementTypeName (!inTypeName), inTypeName)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ARRAY TYPE NAME UTILITIES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeArrayTypeName ?let @string inTypeName -> @string {
   result = "[" + inTypeName + "]"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeArrayTypeLName ?let @lstring inTypeName -> @lstring {
   result = .init (makeArrayTypeName (!inTypeName), inTypeName)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   WEAK TYPE NAME UTILITIES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeWeakTypeName ?let @string inTypeName -> @string {
   result = makeEmbeddedTypeName (!outer: inTypeName !inner: "weak")
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeWeakTypeLName ?let @lstring inTypeName -> @lstring {
   result = .init (makeWeakTypeName (!inTypeName), inTypeName)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
 #  rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
 #    $typealias$
@@ -109,9 +109,9 @@ syntax extension galgas3DeclarationsSyntax {
 #    }
 #  }
 
-  #·······························································································
+  //······························································································
   # SIMPLE ALIAS
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                               !@lstring outTypeName {
@@ -124,7 +124,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -136,7 +136,7 @@ syntax extension galgas3DeclarationsSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -151,7 +151,7 @@ syntax extension galgas3DeclarationsSyntax {
     $>$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -161,7 +161,7 @@ syntax extension galgas3DeclarationsSyntax {
     [!?ioDeclarations getOptionalTypeName ?outTypeName !forTypeNamed: unwrappedTypeName !isPredefined: false]
   }
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName {
@@ -175,15 +175,15 @@ syntax extension galgas3DeclarationsSyntax {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-   #·······························································································
+   //······························································································
 
 #  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
 #    $typealias$
@@ -197,7 +197,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    }
 #  }
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName {
@@ -217,7 +217,7 @@ syntax extension galgas4DeclarationsSyntax {
       end
       $>$
     end
-  #--- Optional ?
+  //--- Optional ?
     select
     or
       $?$
@@ -226,14 +226,14 @@ syntax extension galgas4DeclarationsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
                                 !@lstring outTypeName {
     $@type$ ?outTypeName
   }
   
-  #·······························································································
+  //······························································································
 
   rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outTypeName {
@@ -260,7 +260,7 @@ syntax extension galgas4DeclarationsSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 #  rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
 #                                !@lstring outTypeName {
@@ -280,7 +280,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    $]$
 #  }
 
-  #·······························································································
+  //······························································································
 
   rule <simple_type_definition> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outTypeName {
@@ -294,30 +294,30 @@ syntax extension galgas4DeclarationsSyntax {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 #class @typealiasDeclarationAST : @semanticDeclarationAST {
 #  private let @lstring mAliasTypeName
 #  private let @lstring mDefinedTypeName
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override getter keyRepresentation -> @string {
 #    result = "typealias @" + self.mAliasTypeName
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method addAssociatedElement ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method enterDeclarationInGraph
 #    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -332,7 +332,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    [!?ioSemanticTypePrecedenceGraph addEdge !aliasKey !referenceKey]
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method enterDeclarationInSemanticContext
 #    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
@@ -381,7 +381,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    end
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method semanticAnalysis  ?!@lstringlist unused ioUsefulnessRootEntities
 #                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -390,31 +390,31 @@ syntax extension galgas4DeclarationsSyntax {
 #                                    ?!@unifiedTypeMap ioTypeMap
 #                                    ?let @predefinedTypes unused inPredefinedTypes
 #                                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-#  #--- Useful entities graph
+#  //--- Useful entities graph
 #    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAliasTypeName)
 #    [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #    let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDefinedTypeName)
 #    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
-#  #--- Enter type alias declaration
+#  //--- Enter type alias declaration
 #    let @unifiedTypeMapEntry t = [ioTypeMap typeMapEntryForLKey !self.mDefinedTypeName]
 #    ioSemanticDeclarationListForGeneration +=
 #      !infoMessage: "typealias " + self.mAliasTypeName
 #      !@aliasTypeForGeneration {![ioTypeMap typeMapEntryForLKey !self.mAliasTypeName] !self.mAliasTypeName !t}
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #}
 #
-##—————————————————————————————————————————————————————————————————————————————————————————————————
+#//————————————————————————————————————————————————————————————————————————————————————————————————
 ##   CODE GENERATION
-##—————————————————————————————————————————————————————————————————————————————————————————————————
+#//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #class @aliasTypeForGeneration : @semanticTypeForGeneration {
 #  private let @string mAliasTypeName
 #  private let @unifiedTypeMapEntry mReferencedType
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method appendDeclaration1 ?!@stringset ioInclusionSet
 #                                     !@string outHeader {
@@ -425,7 +425,7 @@ syntax extension galgas4DeclarationsSyntax {
 #    ]
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
 #                                                ?!@stringset unused ioInclusionSet
@@ -433,14 +433,14 @@ syntax extension galgas4DeclarationsSyntax {
 #    outImplementation = ""
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override getter appendTypeGenericImplementation -> @string {
 #    result = ""
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListAST {
   public let [@lstring] constantList
@@ -34,20 +34,20 @@ class @templateInstructionSwitchAST : @templateInstructionAST {
   private let @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension templateSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
     $switch$
-  #--- Switch expression
+  //--- Switch expression
     <expression_tpl> ?let switchExpression
     let @location endOfSwitchExpression = .here
-  #--- Loop on "case" clauses
+  //--- Loop on "case" clauses
     var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = ()
     repeat
     while
@@ -65,7 +65,7 @@ syntax extension templateSyntax {
       templateInstructionSwitchBranchList += !constantNameList !associatedValuesExtraction !instructionList !.here
     end
     $end$
-  #---
+  //---
     ioResultingInstructionList += !@templateInstructionSwitchAST {
       !switchExpression
       !endOfSwitchExpression
@@ -73,7 +73,7 @@ syntax extension templateSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <switch_case> ![@lstring] outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
@@ -121,13 +121,13 @@ syntax extension templateSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?let @lstring inUsefulnessCallerEntityName
@@ -135,7 +135,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
                                 ?let @templateAnalysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
                                 ?!@templateInstructionListForGeneration ioInstructionList {
-#---
+//---
   [self.mSwitchExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -145,7 +145,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   ]
   if let enumType = [[switchExpression.mResultType definition].typeKind getEnumType] then
     var @stringset constantsNamedInSwitchInstruction = ()
-  #--- Analyze branches
+  //--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = ()
     for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.templateInstructionSwitchBranchList do
       var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = ()
@@ -211,7 +211,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
         ![mEndOfBranch startLocationIndex]
         !instructionList
     end
-  #--- Check all constants have been named
+  //--- Check all constants have been named
     let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
     if [forgottenConstants count] > 0 then
       var @string s = ""
@@ -221,7 +221,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       error self.switchExpressionEndLocation
       : "the switch instruction should name all enumeration constants; missing constants are:" + s
     end
-  #---
+  //---
     ioInstructionList += !@templateInstructionSwitchForGeneration {
       !switchExpression.mResultType
       !switchExpression
@@ -233,9 +233,9 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @templateInstructionSwitchBranchListForGeneration {
   public let [@lstring] mConstantList
@@ -261,7 +261,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
 {
-#--- Expression
+//--- Expression
   [self.switchExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -269,13 +269,13 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
     !?ioUnusedVariableCppNameSet
     ?let switchVarCppName
   ]
-#---
+//---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
   ioGeneratedCode += "case GGS_"
   ioGeneratedCode += [self.switchExpression.mResultType identifierRepresentation]
   ioGeneratedCode += "::Enumeration::invalid :\n"
   ioGeneratedCode += "  break ;\n"
-#---
+//---
   for branch in self.templateInstructionSwitchBranchList do
     for constantName in branch.mConstantList do
       ioGeneratedCode += "case GGS_"
@@ -315,10 +315,10 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
     ioGeneratedCode += "break ;\n"
     [!?ioGeneratedCode decIndentation !2]
   end
-#---
+//---
   ioGeneratedCode += "}\n"
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -15,16 +15,16 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
   public let @lstring mSortedAttributeName
   public let @bool mAscending
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
@@ -33,13 +33,13 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @bool equatable %initArgLabel
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $sortedlist$
@@ -75,7 +75,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?let @lstring mSortedAttributeName
@@ -90,15 +90,15 @@ syntax extension galgas3DeclarationsSyntax {
     ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $sortedlist$
@@ -134,7 +134,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
     $identifier$ ?let @lstring mSortedAttributeName
@@ -149,12 +149,12 @@ syntax extension galgas4DeclarationsSyntax {
     ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
   }
 
-  #·······························································································
+  //······························································································
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -171,9 +171,9 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
@@ -208,14 +208,14 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
-#--- Type index
+//--- Type index
   [!?ioTypeMap makeEntry  !self.mSortedListTypeName ?let listTypeIndex]
-#--- Element type index
+//--- Element type index
   [!?ioTypeMap makeEntry
     !makeEmbeddedElementTypeLName (!self.mSortedListTypeName)
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
-#--- Enumeration description
+//--- Enumeration description
   var @enumerationDescriptorList enumerationDescriptor = ()
   var @functionSignature constructorAttributeTypeList = ()
   var @formalParameterSignature setterFormalOutputArgumentList = ()
@@ -230,7 +230,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     setterFormalOutputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentOut !mPropertyName.string
     setterFormalInputArgumentList += !["" nowhere] !attributeTypeIndex !.argumentVarIn !mPropertyName.string
   end
-#--- Class functions
+//--- Class functions
   var @classFunctionMap classFunctionMap = ()
   enterClassFunctionWithoutArgument (
     !?classFunctionMap
@@ -245,7 +245,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !false
     !listTypeIndex
   ]
-#--- Readers
+//--- Readers
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -255,7 +255,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
-#--- Setters
+//--- Setters
   var @setterMap setterMap = ()
   [!?setterMap insertOrReplace
     !@lstring {!"popGreatest" !@location.here}
@@ -281,7 +281,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- Instance methods
+//--- Instance methods
   var @instanceMethodMap instanceMethodMap = ()
   [!?instanceMethodMap insertKey
     !@lstring {!"greatest" !@location.here}
@@ -301,14 +301,14 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- Add initializer without argument
+//--- Add initializer without argument
   var @initializerMap initializerMap = ()
   let @functionSignature emptyArgumentList = ()
   [!?initializerMap insertKey
     !.init {![emptyArgumentList initializerSignature] !self.mSortedListTypeName}
     !emptyArgumentList
   ]
-#--- Add extensions
+//--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -324,7 +324,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-#--- features
+//--- features
   var features = @typeFeatures.plusAssignOperatorWithExpression | .doNotGenererateObjectCompare
   if self.equatable then
     features |= .equatable
@@ -336,7 +336,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !acceptEquatable: true
     !acceptComparable: false
   )
-#--- Enter in type map
+//--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mSortedListTypeName
     !isPredefined: self.isPredefined
@@ -367,9 +367,9 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -380,7 +380,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
   [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
@@ -390,7 +390,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   if self.isPredefined then
     ioUsefulnessRootEntities += !sortedListNameForUsefulness
   end
-#--- Useful entities graph for initializer without any argument
+//--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mSortedListTypeName
     ![@formalInputParameterListAST () initializerSignature]
@@ -400,7 +400,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   if self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
-#--- Attribute
+//--- Attribute
   var typedAttributeList = @typedPropertyList ()
   var @propertyIndexMap attributeMap = ()
   for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
@@ -416,7 +416,7 @@ override method @sortedListDeclarationAST semanticAnalysis
       !hasSelector: hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
-#--- Sort descriptor
+//--- Sort descriptor
   var @stringset attributesUsedForSorting = ()
   var @sortDescriptorListForGeneration sortDescriptorList = ()
   for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
@@ -430,7 +430,7 @@ override method @sortedListDeclarationAST semanticAnalysis
       error mSortedAttributeName : "the @" + [type definition].typeName + " type is not comparable"
     end
   end
-#--- Generate type
+//--- Generate type
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "sorted list " + self.mSortedListTypeName
     !@sortedListTypeForGeneration {
@@ -441,9 +441,9 @@ override method @sortedListDeclarationAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
   public let @unifiedTypeMapEntry mAttributeTypeIndex
@@ -510,7 +510,7 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper sortedListGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -528,5 +528,5 @@ filewrapper sortedListGenerationTemplate in "+generation-templates/type_generati
     ?@bool GENERATE_COMPARISON
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

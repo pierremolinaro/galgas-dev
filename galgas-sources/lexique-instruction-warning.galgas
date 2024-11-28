@@ -16,21 +16,21 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexicalWarningInstructionAST : @lexicalInstructionAST {
   private let @lstring mWarningMessageName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $warning$
@@ -38,15 +38,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalWarningInstructionAST {!warningMessageName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $warning$
@@ -54,13 +54,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalWarningInstructionAST {!warningMessageName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -68,9 +68,9 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mWarningMessageName.string]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalWarningInstructionAST generateObjcCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -79,7 +79,7 @@ override getter @lexicalWarningInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode = "" # No generated code
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -88,9 +88,9 @@ override getter @lexicalWarningInstructionAST generateSwiftCocoaInstructionCode
   outGeneratedCode = "" # No generated code
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! C++ CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalWarningInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -105,5 +105,5 @@ override getter @lexicalWarningInstructionAST generateLexicalInstructionCode
   result = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

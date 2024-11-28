@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,9 +20,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Grammar
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mGrammarName
@@ -34,7 +34,7 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mHasTranslateFeature
   public let @string mCppFileContents
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -52,7 +52,7 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
      ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap inUnifiedTypeMap
                                                 ?!@stringset ioInclusionSet
@@ -73,35 +73,35 @@ class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
     outImplementation = self.mCppFileContents
   }
 
-  #·······························································································
+  //······························································································
 
   override getter getImplementationCppFileName -> @string {
     result = "grammar-" + [self.mGrammarName fileNameRepresentation]
   }
 
-  #·······························································································
+  //······························································································
 
   override getter hasCppHeaderFile -> @bool {
     result = false
   }
 
-  #·······························································································
+  //······························································································
 
   override getter headerKind -> @headerKind {
     result = @headerKind.oneHeader
   }
 
-  #·······························································································
+  //······························································································
 
   override getter isPredefined -> @bool {
     result = false
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   public let @string mSyntaxComponentName
@@ -112,31 +112,31 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
 
-  #·······························································································
+  //······························································································
 
   override getter getImplementationCppFileName -> @string {
     result = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
   }
 
-  #·······························································································
+  //······························································································
 
   override getter hasCppHeaderFile -> @bool {
     result = false
   }
 
-  #·······························································································
+  //······························································································
 
   override getter headerKind -> @headerKind {
     result = .oneHeader
   }
 
-  #·······························································································
+  //······························································································
 
   override getter isPredefined -> @bool {
     result = false
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -159,7 +159,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                               ?!@stringset ioInclusionSet
@@ -168,10 +168,10 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
     outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
       !()
     ]
-  #---
+  //---
     let lexiqueCppName = "Lexique_" + [self.mLexiqueName identifierRepresentation]
     for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
-    #--- Generate rule label implementation
+    //--- Generate rule label implementation
       for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
         let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
           + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
@@ -193,7 +193,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
         )
         outImplementation += code
       end
-    #--- Generate "parse" label
+    //--- Generate "parse" label
       [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
       let @string parseRuleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
       + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
@@ -214,7 +214,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
         ?let @string parseCode
       )
       outImplementation += parseCode
-    #--- Generate indexing code
+    //--- Generate indexing code
       if self.mHasIndexing then
         [mLabelImplementationList first ?* ?* ?* ?* ?let instructionList]
         let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
@@ -240,15 +240,15 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # P R O C E D U R E    I M P L E M E N T A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateProcedure
   ?static:let @bool inGenerateStatic
@@ -263,7 +263,7 @@ proc generateProcedure
   ?let @bool inGenerateSyntaxDirectedTranslationString
   !@string outGeneratedCode
 {
-#--- Build unused variable set
+//--- Build unused variable set
   var @stringset unusedVariableCppNameSet = ()
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName ()
@@ -276,7 +276,7 @@ proc generateProcedure
       unusedVariableCppNameSet += !mFormalArgumentCppName
     end
   end
-#--- Generate body
+//--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
   [!?routineBody incIndentation !2]
@@ -290,18 +290,18 @@ proc generateProcedure
     ]
   end
   [!?routineBody decIndentation !2]
-#--- Generate inclusions
+//--- Generate inclusions
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-#--- Generate header
+//--- Generate header
   outGeneratedCode = ""
   if inGenerateStatic then
     outGeneratedCode += "static "
   end
   outGeneratedCode += "void " + inProcedureMangledName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
-#---
+//---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode
     case argumentConstantIn :
@@ -321,7 +321,7 @@ proc generateProcedure
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
-#--- Syntax directed argument ?
+//--- Syntax directed argument ?
   if inGenerateSyntaxDirectedTranslationString then
     if [unusedVariableCppNameSet hasKey !syntaxDirectedTranslationResultVarName ()] then
       outGeneratedCode += "String & /* " + syntaxDirectedTranslationResultVarName () + " */,\n"
@@ -330,7 +330,7 @@ proc generateProcedure
     end
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
-#--- Compiler argument
+//--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " * "
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -347,7 +347,7 @@ proc generateProcedure
     outGeneratedCode += " const"
   end
   outGeneratedCode += " {\n"
-#--- Release 'out' arguments
+//--- Release 'out' arguments
   for (* mFormalArgumentPassingMode * * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode
     case argumentOut :
@@ -355,21 +355,21 @@ proc generateProcedure
     case argumentConstantIn, argumentVarIn, argumentInOut :
     end
   end
-#--- Generate routine body
+//--- Generate routine body
   outGeneratedCode += routineBody
-#---
+//---
   if inGenerateResetTemplateString then
     outGeneratedCode += "  " + compilerCppName () + "->resetTemplateString () ;\n"
   end
-#---
+//---
   outGeneratedCode += "}\n\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # F U N C T I O N    I M P L E M E N A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateFunction ?let @string inFunctionCppRepresentationName
                       ?!@stringset ioInclusionSet
@@ -383,15 +383,15 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
                       !@string outGeneratedCode {
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
-#--- Build unused variable set
+//--- Build unused variable set
   var @stringset unusedVariableCppNameSet = ()
   unusedVariableCppNameSet += !compilerCppName ()
-#--- Release 'in' and 'const in' arguments at the end of the routine
+//--- Release 'in' and 'const in' arguments at the end of the routine
   for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
-#--- Generate body
+//--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   [!?routineBody incIndentation !2]
@@ -405,14 +405,14 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
     ]
   end
   [!?routineBody decIndentation !2]
-#--- Generate header
+//--- Generate header
   if inIsStatic then
     outGeneratedCode += "static "
   end
   outGeneratedCode += "GGS_" + [inResultType identifierRepresentation] + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
-#---
+//---
   for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
     if mIsConstant then
       outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation] + " &"
@@ -427,7 +427,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
-#--- Compiler argument
+//--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
 #    outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -441,19 +441,19 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
     outGeneratedCode += " const"
   end
   outGeneratedCode += " {\n"
-#--- Declare returned variable
+//--- Declare returned variable
   outGeneratedCode += "  GGS_" + [inResultType identifierRepresentation]
                    +  " " + inResultVariableCppName + " ; // Returned variable\n"
-#--- Generate routine body
+//--- Generate routine body
   outGeneratedCode += routineBody
-#--- Generate return instruction
+//--- Generate return instruction
   outGeneratedCode += "//---\n"
   outGeneratedCode += "  return " + inResultVariableCppName + " ;\n"
-#---
+//---
   outGeneratedCode += "}\n\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
                                 ?!@stringset ioInclusionSet
@@ -465,15 +465,15 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
                                 !@string outGeneratedCode {
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
-#--- Build unused variable set
+//--- Build unused variable set
   var @stringset unusedVariableCppNameSet = ()
   unusedVariableCppNameSet += !compilerCppName ()
-#--- Release 'in' and 'const in' arguments at the end of the routine
+//--- Release 'in' and 'const in' arguments at the end of the routine
   for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
-#--- Generate body
+//--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   [!?routineBody incIndentation !2]
@@ -487,11 +487,11 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
     ]
   end
   [!?routineBody decIndentation !2]
-#--- Generate header
+//--- Generate header
   outGeneratedCode += "GGS_" + [inResultType identifierRepresentation] + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
-#---
+//---
   for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
     if mIsConstant then
       outGeneratedCode += "const GGS_" + [mFormalArgumentType identifierRepresentation]
@@ -506,7 +506,7 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
-#--- Compiler argument
+//--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -516,23 +516,23 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
   outGeneratedCode += "\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS) const {\n"
-#--- Declare returned variable
+//--- Declare returned variable
   outGeneratedCode += "  GGS_" + [inResultType identifierRepresentation]
                    +  " " + inResultVariableCppName + " ; // Returned variable\n"
-#--- Generate routine body
+//--- Generate routine body
   outGeneratedCode += routineBody
-#--- Generate return instruction
+//--- Generate return instruction
   outGeneratedCode += "//---\n"
   outGeneratedCode += "  return " + inResultVariableCppName + " ;\n"
-#---
+//---
   outGeneratedCode += "}\n\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 # E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionSetter
   ?let @string inClassName
@@ -542,14 +542,14 @@ proc generateExtensionSetter
   ?let @formalParameterListForGeneration inFormalArgumentList
   ?let @semanticInstructionListForGeneration inInstructionList
   !@string outGeneratedCode {
-#--- Build unused variable set
+//--- Build unused variable set
   var @stringset unusedVariableCppNameSet = ()
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
-#--- Generate body
+//--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
   [!?routineBody incIndentation !2]
@@ -563,7 +563,7 @@ proc generateExtensionSetter
     ]
   end
   [!?routineBody decIndentation !2]
-#--- Generate header
+//--- Generate header
   outGeneratedCode = "static void extensionSetter_" + [inClassName identifierRepresentation] + "_" + [inMethodName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
   if inBaseClassName == "" then
@@ -577,7 +577,7 @@ proc generateExtensionSetter
   else
     outGeneratedCode += "inObject"
   end
-#---
+//---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
@@ -597,7 +597,7 @@ proc generateExtensionSetter
       outGeneratedCode += mFormalArgumentCppName
     end
   end
-#--- Compiler argument
+//--- Compiler argument
   outGeneratedCode += ",\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "Compiler * "
@@ -610,7 +610,7 @@ proc generateExtensionSetter
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
-#--- Generate routine body
+//--- Generate routine body
   if not currentObjectIsUnused then
     if inBaseClassName == "" then
       outGeneratedCode += "  cPtr_" + [inClassName identifierRepresentation] + " * object = inObject ;\n"
@@ -620,13 +620,13 @@ proc generateExtensionSetter
     outGeneratedCode += "  macroValidSharedObject (object, cPtr_" + [inClassName identifierRepresentation] + ") ;\n"
   end
   outGeneratedCode += routineBody
-#---
+//---
   outGeneratedCode += "}"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 # E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
                                 ?!@stringset ioInclusionSet
@@ -635,14 +635,14 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
                                 ?let @semanticInstructionListForGeneration inInstructionList
                                 !@string outGeneratedCode {
   let className = [inReceiverType definition].typeName.string
-#--- Build unused variable set
+//--- Build unused variable set
   var @stringset unusedVariableCppNameSet = ()
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
-#--- Generate body
+//--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   [!?routineBody incIndentation !2]
@@ -656,7 +656,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
     ]
   end
   [!?routineBody decIndentation !2]
-#--- Generate inclusions
+//--- Generate inclusions
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
@@ -675,10 +675,10 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   for (* * mFormalArgumentType * *) in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-#--- Generate header
+//--- Generate header
   outGeneratedCode = "void cPtr_" + [className identifierRepresentation] + "::method_" + [inMethodName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
-#---
+//---
   for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
     switch mFormalArgumentPassingMode
     case argumentConstantIn :
@@ -698,7 +698,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   end
-#--- Compiler argument
+//--- Compiler argument
   outGeneratedCode += "Compiler * "
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -709,15 +709,15 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
-#--- Generate routine body
+//--- Generate routine body
   outGeneratedCode += routineBody
-#---
+//---
   outGeneratedCode += "}"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation Filewrappers
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
   "ggs"
@@ -751,14 +751,14 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapEntry SUPER_TYPE_INDEX
 
-#---------- Extern Type
+//--------- Extern Type
   template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string PRE_DECLARATION
     ?@string CODE
 
-#---------- Graph
+//--------- Graph
   template graphTypeHeader1 "GALGAS_graph.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -770,23 +770,23 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
 }{
-#------------ initializer
+//----------- initializer
   template initializerImplementation "initializer.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string INITIALIZER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string INITIALIZER_IMPLEMENTATION
 
-#------------ Extension getter
+//----------- Extension getter
   template abstractExtensionGetterDeclaration "abstract-extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
@@ -818,7 +818,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GETTER_IMPLEMENTATION
     ?@unifiedTypeMapEntry RETURN_TYPE
 
-#------------ Extension setter
+//----------- Extension setter
   template abstractExtensionSetterDeclaration "abstract-extension-setter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
@@ -846,7 +846,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string MODIFIER_IMPLEMENTATION
 
 
-#------------ Extension method
+//----------- Extension method
   template abstractExtensionMethodDeclaration "abstract-extension-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
@@ -884,7 +884,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string FILEWRAPPER_NAME
     ?@string FILEWRAPPER_IMPLEMENTATION
 
-#--- Extension getter implemented as function
+//--- Extension getter implemented as function
   template extensionGetterAsFunctionDeclaration "extension-getter-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
@@ -896,7 +896,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
 
-#--- Extension method implemented as function
+//--- Extension method implemented as function
   template extensionMethodAsFunctionDeclaration "extension-method-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
@@ -908,13 +908,13 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string METHOD_IMPLEMENTATION
 
 
-#--- Extension setter implemented as function
+//--- Extension setter implemented as function
   template extensionSetterAsFunctionDeclaration "extension-setter-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-#--- Function
+//--- Function
   template functionDeclaration "function-declaration.h.galgasTemplate"
     ?@string FUNCTION_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -926,7 +926,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-#--- Routine
+//--- Routine
   template routineDeclaration "routine-declaration.h.galgasTemplate"
     ?@string ROUTINE_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -956,15 +956,15 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string GENERATED_INSTRUCTION_STRING
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! func
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -976,13 +976,13 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -994,9 +994,9 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Semantic Type
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
   let selfTypeDefinition = [self.mSelfTypeEntry definition]
@@ -1011,9 +1011,9 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @s
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Sub programs
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1040,7 +1040,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1068,15 +1068,15 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Lexique
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1087,7 +1087,7 @@ override method @lexiqueDeclarationForGeneration appendDeclaration1
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1097,13 +1097,13 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   outHeader = self.mCppContents
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioCocoaProductFileList {
-#--- Generate cocoa header file
+//--- Generate cocoa header file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
@@ -1116,7 +1116,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !generatedZone3:"\n"
     !makeExecutable:false
   ]
-#--- Generate Objc Cocoa implementation file
+//--- Generate Objc Cocoa implementation file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
   ioCocoaProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
   [@string generateFileWithPattern
@@ -1130,7 +1130,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !generatedZone3:"\n\n" # Zone 3
     !makeExecutable:false
   ]
-#--- Generate Swift Cocoa implementation file
+//--- Generate Swift Cocoa implementation file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
@@ -1145,15 +1145,15 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Program
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @programComponentForGeneration headerKind ->@headerKind {
   result = @headerKind.noHeader
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @programComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1163,17 +1163,17 @@ override method @programComponentForGeneration appendSpecificImplementation
   outImplementation = self.mImplementationString
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! Filewrapper
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc recursivlyEnumerateRegularFile
   ?let @wrapperFileMap inFilewrapperFileMap
@@ -1203,7 +1203,7 @@ proc recursivlyEnumerateRegularFile
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1227,7 +1227,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
     !regularBinaryContentIndexStringList
     !self.mFilewrapperName
   ]
-#--- template generation
+//--- template generation
   for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters *) in self.mFilewrapperTemplateListForGeneration do
     outHeader += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
       !self.mFilewrapperName
@@ -1237,7 +1237,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateWrapperContents
   ?let @string inFilewrapperName
@@ -1246,7 +1246,7 @@ proc generateWrapperContents
   ?let @wrapperFileMap inFilewrapperRegularFileMap
   ?let @wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@string ioImplementation {
-#--- Generate regular files
+//--- Generate regular files
   for (lkey mAbsoluteFilePath mIsTextFile * mWrapperFileIndex) in inFilewrapperRegularFileMap do
     if mIsTextFile then
       let contents = @string.stringWithContentsOfFile {!mAbsoluteFilePath}
@@ -1304,7 +1304,7 @@ proc generateWrapperContents
       + ") ;\n\n"
     end
   end
-#--- Generate sub-directories
+//--- Generate sub-directories
   for (lkey mRegularFileMap mDirectoryMap mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
     generateWrapperContents (
       !inFilewrapperName
@@ -1315,7 +1315,7 @@ proc generateWrapperContents
       !?ioImplementation
     )
   end
-#--- Generate all Filewrapper list
+//--- Generate all Filewrapper list
   ioImplementation += "//--- All files of '" + inFilewrapperDirectory + "' directory\n\n"
   + "static const cRegularFileWrapper * gWrapperAllFiles_"
   + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string]
@@ -1325,7 +1325,7 @@ proc generateWrapperContents
   end
   ioImplementation += "  nullptr\n"
   +"} ;\n\n"
-#--- Generate all directory wrapper list
+//--- Generate all directory wrapper list
   ioImplementation += "//--- All sub-directories of '" + inFilewrapperDirectory + "' directory\n\n"
   + "static const cDirectoryWrapper * gWrapperAllDirectories_"
   + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string]
@@ -1335,7 +1335,7 @@ proc generateWrapperContents
   end
   ioImplementation += "  nullptr\n"
   + "} ;\n\n"
-#--- Generate directory wrapper
+//--- Generate directory wrapper
   ioImplementation += "//--- Directory '" + inFilewrapperDirectory + "'\n\n"
   + "const cDirectoryWrapper gWrapperDirectory_" + [inFilewrapperDirectoryIndex string] + "_"
   + [inFilewrapperName identifierRepresentation] + " (\n"
@@ -1347,7 +1347,7 @@ proc generateWrapperContents
   + ") ;\n\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1367,9 +1367,9 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
     !self.mFilewrapperName
     !filewrapperImplementation
   ]
-#--- template generation
+//--- template generation
   for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters mTemplateInstructionListForGeneration) in self.mFilewrapperTemplateListForGeneration do
-  #--- Build generated code for instruction list
+  //--- Build generated code for instruction list
     var @string generatedCodeForInstructionList = ""
     var @uint temporaryVariableIndex = 0
     var @stringset unusedVariableCppNameSet = ()
@@ -1386,7 +1386,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
       !?unusedVariableCppNameSet
       !?useColumnMarker
     )
-  #---
+  //---
     outImplementation += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateImplementation
       !self.mFilewrapperName
       !mFilewrapperTemplateName
@@ -1398,22 +1398,22 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #    P R I M I T I V E    T Y P E
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mPredefinedTypeName
   public let @string mCppDeclarationString
   public let @bool isPackage %initArgLabel
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method appendPrimitiveTypePreDeclaration ?!@string ioHeader {
     ioHeader += "class GGS_" + self.mPredefinedTypeName + " ;\n"
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter appendPrimitiveTypeDeclaration -> @string {
     result = self.mCppDeclarationString
@@ -1446,13 +1446,13 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
     end
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generate Predefined types
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generatePredefinedTypeFiles
   ?let @string inDirectory
@@ -1461,7 +1461,7 @@ proc generatePredefinedTypeFiles
   ?!@stringlist ioToolCppFileList
   ?!@stringset ioAllProductFileSet
 {
-#------------------------------------------------------------------ Generate header file
+//----------------------------------------------------------------- Generate header file
   var generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue]
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
@@ -1502,7 +1502,7 @@ proc generatePredefinedTypeFiles
       !makeExecutable:false
     ]
   end
-#------------------------------------------------------------------ Generate implementation file
+//----------------------------------------------------------------- Generate implementation file
   generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
@@ -1528,11 +1528,11 @@ proc generatePredefinedTypeFiles
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
@@ -1545,4 +1545,4 @@ filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_ge
     ?@stringlist IMPORTED_COMPONENT_LIST
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

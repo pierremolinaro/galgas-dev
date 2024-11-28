@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @typeMethodCallInstructionAST : @semanticInstructionAST {
   private let @lstring mTypeName
@@ -25,13 +25,13 @@ class @typeMethodCallInstructionAST : @semanticInstructionAST {
   private let @actualParameterListAST mActualParameterList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -49,15 +49,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -74,13 +74,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @typeMethodCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (mActualParameter) in self.mActualParameterList do
@@ -88,9 +88,9 @@ override method @typeMethodCallInstructionAST enterInstructionInSemanticContext 
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -99,11 +99,11 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
-#--- Get type method map for the named type
+//--- Get type method map for the named type
   let type = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- Get type method signature
+//--- Get type method signature
   [[type definition].classMethodMap searchKey !self.mMethodName ?let routineSignature ?let hasCompilerArgument]
-#--- Check effective parameters
+//--- Check effective parameters
   [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -116,7 +116,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
-#--- Generate instructions
+//--- Generate instructions
   ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration {
     !self.mTypeName
     !self.mMethodName
@@ -124,9 +124,9 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !hasCompilerArgument}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring mTypeName
@@ -144,7 +144,7 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   ioGeneratedCode += "{\n"
-#--- Parameters
+//--- Parameters
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
@@ -159,7 +159,7 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
       ?let @string parameterCppName]
     parameterCppNameList += !parameterCppName
   end
-#--- Generate method call
+//--- Generate method call
   ioGeneratedCode += "GGS_" + [self.mTypeName.string identifierRepresentation]
                   + "::class_method_" + [self.mMethodName.string identifierRepresentation] + " ("
   for (mValue) in parameterCppNameList
@@ -180,4 +180,4 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

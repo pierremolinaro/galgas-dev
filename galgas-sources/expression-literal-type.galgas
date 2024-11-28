@@ -15,21 +15,21 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @literalTypeInExpressionAST : @semanticExpressionAST {
   private let @lstring mLiteralTypeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -38,15 +38,15 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @literalTypeInExpressionAST {!typeName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -55,13 +55,13 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @literalTypeInExpressionAST {!typeName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalTypeInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -82,7 +82,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 {
   let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#---
+//---
   let type = [ioTypeMap typeMapEntryForLKey !self.mLiteralTypeName]
   outExpression = @literalTypeInExpressionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !.init {!"type" !.here}]
@@ -91,9 +91,9 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry mLiteralType
@@ -113,4 +113,4 @@ override method @literalTypeInExpressionForGeneration generateExpression
                   + [[self.mLiteralType definition].typeName.string identifierRepresentation] + ")"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -16,22 +16,22 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @parseRewindInstruction : @syntaxInstructionAST {
   public let @listOfSyntaxInstructionList mParseRewindBranchList
   public let @location mEndOfParseDoInstruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -56,15 +56,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -89,13 +89,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseRewindInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -114,9 +114,9 @@ override method @parseRewindInstruction transformInstruction
   )
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseRewindInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -133,7 +133,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount
 {
-#--- 'Rewind' blocks
+//--- 'Rewind' blocks
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   let @uint referenceSelectMethodCount = ioSelectMethodCount
   for (mSyntaxInstructionList mEndOf_instructions) in self.mParseRewindBranchList do
@@ -158,7 +158,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     end
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
-#--- Check syntax signature of branches
+//--- Check syntax signature of branches
   var @listOfSemanticInstructionListForGeneration tempListOfBranches = listOfSemanticInstructionListForGeneration
   [!?tempListOfBranches popFirst ?let instructionList ?*]
   let @semanticInstructionListForGeneration referenceSignature = syntaxSignatureOfInstructionList (!"parse" !instructionList)
@@ -170,24 +170,24 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
       !mEndOfInstructionList
     )
   end
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@parseRewindInstructionForGeneration {
     !self.mInstructionLocation
     !listOfSemanticInstructionListForGeneration
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseRewindInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -197,9 +197,9 @@ override method @parseRewindInstructionForGeneration appendSyntaxSignature
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !instructionList)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseRewindInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -227,4 +227,4 @@ override method @parseRewindInstructionForGeneration generateInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

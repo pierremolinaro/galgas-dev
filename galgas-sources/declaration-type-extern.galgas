@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -56,7 +56,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_cpp_predeclaration> !@string outCppPredeclarationCode {
     ${$
@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
     ${$
@@ -82,7 +82,7 @@ syntax extension galgas3DeclarationsSyntax {
     $}$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_constructor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      ?!@externTypeConstructorList ioExternTypeConstructorList {
@@ -106,7 +106,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeConstructorList += !argumentTypeList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_getter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeGetterList ioExternTypeGetterList {
@@ -131,7 +131,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_setter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeSetterList ioExternTypeSetterList {
@@ -141,7 +141,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_method_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeMethodList ioExternTypeMethodList {
@@ -151,15 +151,15 @@ syntax extension galgas3DeclarationsSyntax {
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extern$
@@ -194,7 +194,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_cpp_predeclaration>  !@string outCppPredeclarationCode {
     ${$
@@ -207,7 +207,7 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_cpp_classdeclaration> !@string outCppClassCode {
     ${$
@@ -220,7 +220,7 @@ syntax extension galgas4DeclarationsSyntax {
     $}$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_constructor> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeConstructorList ioExternTypeConstructorList {
@@ -250,7 +250,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeConstructorList += !argumentTypeList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_getter> ?!@galgasDeclarationAST ioDeclarations
                            ?!@externTypeGetterList ioExternTypeGetterList {
@@ -275,7 +275,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeGetterList += !getterName !resultTypeName !argumentTypeList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_setter> ?!@galgasDeclarationAST ioDeclarations
                                 ?!@externTypeSetterList ioExternTypeSetterList {
@@ -286,7 +286,7 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeSetterList += !setterName !formalParameterList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <externtype_method> ?!@galgasDeclarationAST ioDeclarations
                            ?!@externTypeMethodList ioExternTypeMethodList {
@@ -296,11 +296,11 @@ syntax extension galgas4DeclarationsSyntax {
     ioExternTypeMethodList += !methodName !formalParameterList !.here
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typeNameFormalParameterNameList {
   public let @lstring mFormalSelector
@@ -315,13 +315,13 @@ list @typeNameFormalParameterNameList {
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeConstructorList {
   public let @typeNameFormalParameterNameList mParameterList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeGetterList {
   public let @lstring mGetterName
@@ -329,14 +329,14 @@ list @externTypeGetterList {
   public let @typeNameFormalParameterNameList mParameterList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeSetterList {
   public let @lstring mSetterName
   public let @formalParameterListAST mFormalParameterList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @externTypeMethodList {
   public let @lstring mMethodName
@@ -344,7 +344,7 @@ list @externTypeMethodList {
   public let @location mDeclarationLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @externTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring mExternTypeName
@@ -355,7 +355,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
   private let @externTypeSetterList mExternTypeSetterList
   private let @externTypeMethodList mExternTypeMethodList
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -369,13 +369,13 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation ->@string {
     result = "extern @" + self.mExternTypeName
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -385,35 +385,35 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext unused ioSemanticContext {
-  #---
+  //---
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
 #    var @classFunctionMap classFunctionMap = ()
     var @setterMap setterMap = ()
     var @instanceMethodMap instanceMethodMap = ()
-  #--- Initializers
+  //--- Initializers
     var @initializerMap initializerMap = ()
     for initializer in self.externTypeInitializerList do
 #      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
-    #---
+    //---
       var @functionSignature arguments = ()
       for parameter in initializer.mParameterList do
         [!?ioTypeMap makeEntry !parameter.mFormalParameterTypeName ?let argumentTypeEntry]
         arguments += !parameter.mFormalSelector !argumentTypeEntry !parameter.mFormalParameterName.string !true
       end
-    #---
+    //---
       let initializerName = @lstring {![initializer.mParameterList initializerSignature] !self.mExternTypeName}
       [!?initializerMap insertKey !initializerName !arguments]
     end
-  #--- Getters
+  //--- Getters
     for (mGetterName mResultTypeName mParameterList) in self.mExternTypeGetterList do
       [!?ioTypeMap makeEntry !mResultTypeName ?let returnedTypeEntry]
-    #---
+    //---
       var @functionSignature arguments = ()
       for (mFormalSelector mFormalParameterTypeName mFormalParameterName) in mParameterList do
         [!?ioTypeMap makeEntry !mFormalParameterTypeName ?let argumentTypeEntry]
         arguments += !mFormalSelector !argumentTypeEntry !mFormalParameterName.string !true
       end
-    #---
+    //---
       [!?getterMap insertKey
         !mGetterName
         !@methodKind.definedAsMember
@@ -425,7 +425,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         !"" # getter name is not obsolete, no replacement getter
       ]
     end
-  #--- Modifiers
+  //--- Modifiers
     for (mSetterName mFormalParameterList) in self.mExternTypeSetterList do
       var @formalParameterSignature routineSignature = ()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
@@ -435,7 +435,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         ]
         routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
-    #---
+    //---
       [!?setterMap insertKey
         !mSetterName
         !@methodKind.definedAsMember
@@ -445,7 +445,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         !"" # No Error message
       ]
     end
-  #--- Methods
+  //--- Methods
     for (mMethodName mFormalParameterList mDeclarationLocation) in self.mExternTypeMethodList do
       var routineSignature = @formalParameterSignature ()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalParameterList do
@@ -455,7 +455,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         ]
         routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
-    #---
+    //---
       [!?instanceMethodMap insertKey
         !mMethodName
         !@methodKind.definedAsMember
@@ -474,7 +474,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
       !acceptEquatable: false
       !acceptComparable: false
     )
-  #--- Enter type in type map
+  //--- Enter type in type map
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mExternTypeName
       !isPredefined: self.isPredefined
@@ -505,13 +505,13 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -522,13 +522,13 @@ override method @externTypeDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mExternTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.isPredefined  then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
-#--- Initializers
+//--- Initializers
   for initializer in self.externTypeInitializerList do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mExternTypeName
@@ -537,7 +537,7 @@ override method @externTypeDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
     [!?ioUsefulEntitiesGraph addEdge !initializerNameForUsefulness !nameForUsefulness]
   end
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern type " + self.mExternTypeName
     !@externTypeDeclarationForGeneration {
@@ -548,9 +548,9 @@ override method @externTypeDeclarationAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
   private let @string mExternTypeName
@@ -558,7 +558,7 @@ class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
   private let @string mCppClassCode
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -589,5 +589,5 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

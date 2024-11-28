@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Galgas 3 'project' syntax
 #
@@ -21,14 +21,14 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3QualifiedFeatureList {
   public let @lstring mFeatureName
   public let @lstring mFeatureValue
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @galgas3ProjectComponentAST {
   public let @lstringlist mProjectSourceList
@@ -41,7 +41,7 @@ struct @galgas3ProjectComponentAST {
   public let @location mEndOfSourceFile
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 indexing grammar galgas3ProjectGrammar "LL1" {
   syntax galgas3ProjectSyntax
@@ -50,7 +50,7 @@ indexing grammar galgas3ProjectGrammar "LL1" {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3ProjectSyntax (galgasScanner3) {
 
@@ -67,7 +67,7 @@ rule <project_header> !@lbigint majorVersion !@lbigint minorVersion !@lbigint re
   $"string"$ ?targetName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectComponentAST {
   <project_header>
@@ -162,6 +162,6 @@ rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectCom
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 }

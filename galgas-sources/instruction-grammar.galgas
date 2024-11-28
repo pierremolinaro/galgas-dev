@@ -15,34 +15,34 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
   abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInstructionSyntaxDirectedTranslationResultNone :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInstructionSyntaxDirectedTranslationDropResult :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     private let @location mLocation
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInstructionSyntaxDirectedTranslationResultInVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     private let @lstring mActualParameterName
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -50,7 +50,7 @@
     private let @lstring mActualParameterName
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
@@ -58,7 +58,7 @@
     private let @lstring mActualParameterName
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInFileInstructionAST : @semanticInstructionAST {
     private let @lstring mGrammarComponentName
@@ -69,7 +69,7 @@
     private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
-  #·······························································································
+  //······························································································
 
   class @grammarInStringInstructionAST : @semanticInstructionAST {
     private let @lstring mGrammarComponentName
@@ -82,15 +82,15 @@
     private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
   }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
   # NEW GRAMMAR INSTRUCTION, COMPATIBLE WITH GALGAS 4
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -110,7 +110,7 @@ syntax extension galgas3InstructionsSyntax {
     <grammar_instruction_core> !?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -121,7 +121,7 @@ syntax extension galgas3InstructionsSyntax {
     $in$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -140,7 +140,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -154,7 +154,7 @@ syntax extension galgas3InstructionsSyntax {
     $:$
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -175,9 +175,9 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
   # OBSOLETE GRAMMAR INSTRUCTION, NOT COMPATIBLE WITH GALGAS 4
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction { #obsolete
@@ -194,7 +194,7 @@ syntax extension galgas3InstructionsSyntax {
     <grammar_instruction_core_obsolete> !?ioDeclarations !instructionLocation !grammarComponentName !labelName ?outInstruction
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
                                            ?let @location inInstructionLocation
@@ -205,7 +205,7 @@ syntax extension galgas3InstructionsSyntax {
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST mSourceExpression
     let endOfSourceExpression = @location.here
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -224,7 +224,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_instruction_core_obsolete> ?!@galgasDeclarationAST ioDeclarations
                                            ?let @location inInstructionLocation
@@ -240,7 +240,7 @@ syntax extension galgas3InstructionsSyntax {
     let @location endOfNameExpression = .here
     $)$
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST actualParameterList
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -261,15 +261,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -287,7 +287,7 @@ syntax extension galgas4InstructionsSyntax {
     <grammar_instruction_core> !?ioDeclarations !instructionLocation !actualParameterList !grammarComponentName !labelName ?outInstruction
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -298,7 +298,7 @@ syntax extension galgas4InstructionsSyntax {
     $in$
     <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
     let endOfSourceExpression = @location.here
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -317,7 +317,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                                   ?let @location inInstructionLocation
@@ -331,7 +331,7 @@ syntax extension galgas4InstructionsSyntax {
     $:$
     <expression> !?ioDeclarations ?let @semanticExpressionAST nameExpression
     let @location endOfNameExpression = .here
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -352,13 +352,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
   override method @grammarInFileInstructionAST enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
@@ -369,7 +369,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method @grammarInStringInstructionAST enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap
@@ -380,9 +380,9 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -394,19 +394,19 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
 {
   let usefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#--- Search grammar in grammar map
+//--- Search grammar in grammar map
   [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
     ?let @grammarLabelMap grammarLabelMap
     ?*
     ?let @bool hasTranslateFeature
   ]
-#--- Search label
+//--- Search label
   [grammarLabelMap searchKey
     !self.mLabelName
     ?let @formalParameterSignature labelSignature
   ]
-#--- Check actual parameters
+//--- Check actual parameters
   [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -419,7 +419,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
-#--- Parse source expression
+//--- Parse source expression
   [self.mSourceExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -429,13 +429,13 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
   ]
-#--- Check source expression type: @lstring for file, @string for source string itself
+//--- Check source expression type: @lstring for file, @string for source string itself
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mLStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source file path and its type should be '@lstring', but it is '@"
      + [sourceExpression.mResultType definition].typeName.string + "'"
   end
-#--- Check syntax directed translation result parameter
+//--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location startLocationIndex]
   var assignementList = @stringlist ()
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
@@ -446,7 +446,7 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     !?assignementList
     !?ioVariableMap
   ]
-#--- Generate instructions
+//--- Generate instructions
   ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration {
     !self.mInstructionLocation
     !self.mGrammarComponentName.string
@@ -471,19 +471,19 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 {
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !grammarUsefulnessName]
-#--- Search grammar in grammar map
+//--- Search grammar in grammar map
   [inAnalysisContext.semanticContext.grammarMap searchKey
     !self.mGrammarComponentName
     ?let @grammarLabelMap grammarLabelMap
     ?*
     ?let @bool hasTranslateFeature
   ]
-#--- Search label
+//--- Search label
   [grammarLabelMap searchKey
     !self.mLabelName
     ?let @formalParameterSignature labelSignature
   ]
-#--- Check actual parameters
+//--- Check actual parameters
   [self.mActualParameterList analyzeRoutineArguments
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -496,7 +496,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   ]
-#--- Parse source expression
+//--- Parse source expression
   [self.mSourceExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -506,13 +506,13 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration sourceExpression
   ]
-#--- Check source expression type: @string
+//--- Check source expression type: @string
   if sourceExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mEndOfSourceExpression
     :"this expression is the source string and its type should be '@string', but it is '@"
      + [sourceExpression.mResultType definition].typeName.string + "'"
   end
-#--- Parse name expression
+//--- Parse name expression
   [self.mNameExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -522,13 +522,13 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let @semanticExpressionForGeneration nameExpression
   ]
-#--- Check name expression type: @string
+//--- Check name expression type: @string
   if nameExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error self.mEndOfNameExpression
     :"this expression is the name string and its type should be '@string', but it is '@"
      + [sourceExpression.mResultType definition].typeName.string + "'"
   end
-#--- Check syntax directed translation result parameter
+//--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [self.mGrammarComponentName.location startLocationIndex]
   var assignementList = @stringlist ()
   [self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
@@ -539,7 +539,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     !?assignementList
     !?ioVariableMap
   ]
-#--- Generate instructions
+//--- Generate instructions
   ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration {
     !self.mInstructionLocation
     !self.mGrammarComponentName.string
@@ -553,9 +553,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION (source file)
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
   class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
@@ -568,7 +568,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
-  #·······························································································
+  //······························································································
 
   override method @grammarInstructionWithSourceFileForGeneration generateInstruction
     ?!@stringset ioInclusionSet
@@ -578,7 +578,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?!@string ioGeneratedCode
   {
     ioInclusionSet += !"grammar-" + [self.mGrammarName fileNameRepresentation]
-  #--- Source string
+  //--- Source string
     [self.mSourceFileExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -586,7 +586,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       !?ioUnusedVariableCppNameSet
       ?let @string sourceVar
     ]
-  #--- Parameters
+  //--- Parameters
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
@@ -624,9 +624,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     end
   }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION (source string)
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
   class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
     private let @location mInstructionLocation
@@ -640,7 +640,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
-  #·······························································································
+  //······························································································
 
   override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
     ?!@stringset ioInclusionSet
@@ -649,7 +649,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?let @bool unused inGenerateSyntaxDirectedTranslationString
     ?!@string ioGeneratedCode {
     ioInclusionSet += !"grammar-" + [self.mGrammarName fileNameRepresentation]
-  #--- Source string
+  //--- Source string
     [self.mSourceStringExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -657,7 +657,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       !?ioUnusedVariableCppNameSet
       ?let @string sourceVar
     ]
-  #--- Name string
+  //--- Name string
     [self.mNameStringExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -665,7 +665,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
       !?ioUnusedVariableCppNameSet
       ?let @string nameVar
     ]
-  #--- Parameters
+  //--- Parameters
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
@@ -703,4 +703,4 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     end
   }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

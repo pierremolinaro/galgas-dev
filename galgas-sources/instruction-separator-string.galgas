@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 #syntax extension galgas3SyntaxComponentSyntax {
 #
-#  #·······························································································
+#  //······························································································
 #
 #  rule <syntax_instruction_ggs3> !@syntaxInstructionAST outInstruction {
 #    $separator-string$
@@ -43,30 +43,30 @@
 #    end
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #}
 #
-##—————————————————————————————————————————————————————————————————————————————————————————————————
+#//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #syntax extension galgas4SyntaxComponentSyntax {
 #
-#  #·······························································································
+#  //······························································································
 #
 #
-#  #·······························································································
+#  //······························································································
 #
 #}
 #
-##—————————————————————————————————————————————————————————————————————————————————————————————————
+#//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #class @SeparatorStringSyntaxInstruction : @syntaxInstructionAST {
 #
-#  #·······························································································
+#  //······························································································
 #
 #  private let @abstractInputParameter mInputParameter
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method transformInstruction
 #    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -81,7 +81,7 @@
 #  #  }
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method analyzeSyntaxInstruction
 #    ?let @lstring unused inUsefulnessCallerEntityName
@@ -106,7 +106,7 @@
 #      !?* # ioTerminalCheckAssignementList
 #      !?ioVariableMap
 #    ]
-#  ##--- Generate instructions
+#  #//--- Generate instructions
 #  #  ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration {
 #  #    !self.mInstructionLocation
 #  #    !self.mNonterminalName.string
@@ -116,7 +116,7 @@
 #  #  }
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #}
 #
@@ -128,7 +128,7 @@
 ##  else
 ##    [labelMap searchKey !self.mLabelName ?* ?signature ?*]
 ##  end
-###--- call arguments
+##//--- call arguments
 ##  analyzeRoutineArguments (
 ##    !inUsefulnessCallerEntityName
 ##    !?ioUsefulEntitiesGraph
@@ -142,14 +142,14 @@
 ##    !?ioInstructionListForGeneration
 ##    ?let @actualParameterListForGeneration actualParameterListForGeneration
 ##  )
-###--- Check syntax directed translation destination variable
+##//--- Check syntax directed translation destination variable
 ##  [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
 ##    !inAnalysisContext
 ##    !?ioTypeMap
 ##    !inHasTranslateFeature
 ##    !?ioVariableMap
 ##  ]
-###--- Generate instructions
+##//--- Generate instructions
 ##  ioInstructionListForGeneration += !@SeparatorStringInstructionForGeneration {
 ##    !self.mInstructionLocation
 ##    !self.mNonterminalName.string
@@ -159,9 +159,9 @@
 ##  }
 ##}
 #
-##—————————————————————————————————————————————————————————————————————————————————————————————————
+#//————————————————————————————————————————————————————————————————————————————————————————————————
 ##! GENERATION TYPES
-##—————————————————————————————————————————————————————————————————————————————————————————————————
+#//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #class @SeparatorStringInstructionForGeneration : @syntaxInstructionForGeneration {
 #  private let @string mNonterminalName
@@ -169,7 +169,7 @@
 #  private let @actualParameterListForGeneration mActualParameterList
 #  private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method appendSyntaxSignature
 #    ?let @string unused inPosfix
@@ -184,7 +184,7 @@
 ##    }
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override getter compareInstructionSyntaxSignature
 #    ?let @semanticInstructionForGeneration inTestedInstruction
@@ -209,7 +209,7 @@
 #    end
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #  override method generateInstruction
 #    ?!@stringset ioInclusionSet
@@ -218,7 +218,7 @@
 #    ?let @bool inGenerateSyntaxDirectedTranslationString
 #    ?!@string ioGeneratedCode
 #  {
-#  #--- Parameters
+#  //--- Parameters
 #    var parameterCppNameList = @stringlist ()
 #    var jokerParametersToReleaseList = @stringlist ()
 #    var inputVariableList = @stringlist ()
@@ -234,7 +234,7 @@
 #      ]
 #      parameterCppNameList += !parameterCppName
 #    end
-#  #--- Generate method call
+#  //--- Generate method call
 #    let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation locationIndex]
 #    if inGenerateSyntaxDirectedTranslationString then
 #      ioGeneratedCode += "String " + sdtResultVarName + " ;\n"
@@ -254,14 +254,14 @@
 #      !?ioUnusedVariableCppNameSet
 #      !?ioGeneratedCode
 #    ]
-#  #--- Release temporary variables
+#  //--- Release temporary variables
 #    for (mValue) in jokerParametersToReleaseList do
 #      ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
 #    end
 #  }
 #
-#  #·······························································································
+#  //······························································································
 #
 #}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

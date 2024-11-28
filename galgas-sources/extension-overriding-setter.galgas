@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingExtensionSetterAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %initArgLabel
@@ -28,13 +28,13 @@ class @overridingExtensionSetterAST : @semanticDeclarationAST {
   private let @location mEndOfSetterDeclarationLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inTypeName
                                  ?!@galgasDeclarationAST ioDeclarations {
@@ -93,13 +93,13 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -113,17 +113,17 @@ override method @overridingExtensionSetterAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingExtensionSetterAST keyRepresentation -> @string {
   result = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -136,9 +136,9 @@ override method @overridingExtensionSetterAST enterDeclarationInSemanticContext
 {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -148,18 +148,18 @@ override method @overridingExtensionSetterAST semanticAnalysis
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionSetterName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
-#--- Self type
+//--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- Check self type is a class
+//--- Check self type is a class
   if not [[selfType definition].typeKind isClassType] then
     error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType definition].typeName.string + "' is not a class"
   end
-#--- Find base type name
+//--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
   var inheritedSignature = @formalParameterSignature ()
@@ -177,7 +177,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
   if baseTypeName == "" then
     error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
   end
-#--- Analyze instruction list
+//--- Analyze instruction list
   let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
@@ -199,7 +199,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     ?let semanticInstructionListForGeneration
     ?let formalParameterListForGeneration
   )
-#--- Check Signature
+//--- Check Signature
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
@@ -208,7 +208,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
       !inheritedDeclarationLocation
     )
   end
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: " overriding extension setter " + self.mOverridingExtensionSetterName
     !@overridingExtensionSetterForGeneration {
@@ -223,9 +223,9 @@ override method @overridingExtensionSetterAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -250,9 +250,9 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -306,5 +306,5 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

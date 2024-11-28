@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
@@ -38,13 +38,13 @@ class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
   public let @actualOutputArgumentList mExpressions
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -76,15 +76,15 @@ syntax extension galgas3ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -115,13 +115,13 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -141,21 +141,21 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
 {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#--- Search for filewrapper name in filewrapper map
+//--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
     ?let @lstring filewrapperPath
     ?4*
     ?let @bool isInternal
   ]
-#--- Check internal
+//--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
     if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
       error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
     end
   end
-#---
+//---
   outExpression = @filewrapperInExpressionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !@lstring {!"filewrapper" !self.mFilewrapperName.location}]
     !self.mFilewrapperName.location
@@ -163,7 +163,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
     !filewrapperPath.string}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -186,23 +186,23 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
 {
   let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName !self.mFilewrapperTemplateName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#---
+//---
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
      !self.mFilewrapperName
      ?4*
      ?let @filewrapperTemplateMap filewrapperTemplateMap
      ?let @bool isInternal
    ]
-#--- Check internal
+//--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
     if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
       error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
     end
   end
-#---
+//---
   [filewrapperTemplateMap searchKey !self.mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
-#--- Analysis arguments
+//--- Analysis arguments
   var @semanticExpressionListForGeneration effectiveParameterList
   if [self.mExpressions count] != [templateSignature count] then
     error self.mFilewrapperTemplateName
@@ -230,7 +230,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
       effectiveParameterList += !exp
     end
   end
-#---
+//---
   outExpression = @filewrapperTemplateInExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mStringType
     !self.mFilewrapperName.location
@@ -239,7 +239,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     !effectiveParameterList}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -259,7 +259,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 {
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#--- Parse filewrapper path
+//--- Parse filewrapper path
   var @stringlist directoryList
   let @string fileName
   if [self.mFilewrapperPath count] == 0 then
@@ -270,7 +270,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     directoryList = [self.mFilewrapperPath componentsSeparatedByString !"/"]
     [!?directoryList popLast ?fileName]
   end
-#--- Get filewrapper features
+//--- Get filewrapper features
   [inAnalysisContext.semanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
     ?*
@@ -280,14 +280,14 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     ?*
     ?let @bool isInternal
   ]
-#--- Check internal
+//--- Check internal
   if isInternal then
     let filewrapperDeclarationLocation = [inAnalysisContext.semanticContext.mFilewrapperMap locationForKey !self.mFilewrapperName.string]
     if [self.mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
       error self.mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
     end
   end
-#--- Search for file
+//--- Search for file
   var @string builtPath = ""
   loop ([filewrapperDirectoryMap count] + 1)
   while [directoryList count] > 0 do
@@ -314,7 +314,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
     : fileIndex, isTextFile
   end
-#---
+//---
   outExpression = @filewrapperStaticPathInExpressionForGeneration {
     !if isTextFile
       then inAnalysisContext.predefinedTypes.mStringType
@@ -326,9 +326,9 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     !isTextFile}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -347,7 +347,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -363,7 +363,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-#---
+//---
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
   var parameterList = @stringlist ()
   for (mExpression) in self.mActualOutputParameterList do
@@ -385,7 +385,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   outCppExpression += [self.mLocation commaSourceFile] + "))"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
@@ -401,10 +401,10 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-#---
+//---
   ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
   outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end
   outCppExpression += " (gWrapperFileContent_" + [self.mFilewrapperFileIndex string] + "_" + [self.mFilewrapperName identifierRepresentation] + ")"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

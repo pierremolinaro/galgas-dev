@@ -15,16 +15,16 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @graphInsertModifierList {
   public let @lstring mInsertModifierName
   public let @lstring mInsertErrorMessage
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @graphDeclarationAST : @semanticDeclarationAST {
   public let @lstring mGraphTypeName
@@ -32,13 +32,13 @@ class @graphDeclarationAST : @semanticDeclarationAST {
   public let @graphInsertModifierList mInsertModifierList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $graph$
@@ -65,15 +65,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $graph$
@@ -100,13 +100,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -122,9 +122,9 @@ override method @graphDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -134,37 +134,37 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
-#--- string type Entry
+//--- string type Entry
   [!?ioTypeMap makeEntryFromString
     !"string"
     ?let @unifiedTypeMapEntry stringTypeEntry
   ]
-#--- lstring type Entry
+//--- lstring type Entry
   [!?ioTypeMap makeEntryFromString
     !"lstring"
     ?let @unifiedTypeMapEntry lstringTypeEntry
   ]
-#--- Graph type Entry
+//--- Graph type Entry
   [!?ioTypeMap makeEntry
     !self.mGraphTypeName
     ?let @unifiedTypeMapEntry graphTypeEntry
   ]
-#--- Associated list type Entry
+//--- Associated list type Entry
   [!?ioTypeMap makeEntry
     !self.mAssociatedListTypeName
     ?let @unifiedTypeMapEntry associatedListTypeEntry
   ]
-#--- @lstringlist type Entry
+//--- @lstringlist type Entry
   [!?ioTypeMap makeEntryFromString
     !"lstringlist"
     ?let @unifiedTypeMapEntry lstringListTypeEntry
   ]
-#---
+//---
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   var @classFunctionMap classFunctionMap = ()
   var @setterMap setterMap = ()
   var @instanceMethodMap instanceMethodMap = ()
-#--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
+//--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   var formalParameterList = @formalParameterSignature ()
   formalParameterList +=
     !["" nowhere]
@@ -205,7 +205,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #  drop formalParameterList
-#--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
+//--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
   formalParameterList = ()
   formalParameterList +=
     !["" nowhere]
@@ -245,7 +245,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #  drop formalParameterList
-#--- Getter 'nodeList'
+//--- Getter 'nodeList'
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -254,7 +254,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName: self.mAssociatedListTypeName
     !hasCompilerArgument: false # No compiler argument
   )
-#--- Getter 'reversedGraph'
+//--- Getter 'reversedGraph'
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -263,7 +263,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName: self.mGraphTypeName.string
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'undefinedNodeCount'
+//--- Getter 'undefinedNodeCount'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -272,7 +272,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"uint"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'undefinedNodeKeyList'
+//--- Getter 'undefinedNodeKeyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -281,7 +281,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'undefinedNodeReferenceList'
+//--- Getter 'undefinedNodeReferenceList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -290,7 +290,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'graphviz'
+//--- Getter 'graphviz'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -299,7 +299,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"string"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'isNodeDefined'
+//--- Getter 'isNodeDefined'
   enterInheritedGetterWithArgument (
     !?getterMap
     !?ioTypeMap
@@ -309,7 +309,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"bool"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'locationForKey'
+//--- Getter 'locationForKey'
   enterInheritedGetterWithArgument (
     !?getterMap
     !?ioTypeMap
@@ -319,7 +319,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"location"
     !hasCompilerArgument:true # Compiler argument
   )
-#--- Getter 'keyList'
+//--- Getter 'keyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -328,7 +328,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'lkeyList'
+//--- Getter 'lkeyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -337,7 +337,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'egdes'
+//--- Getter 'egdes'
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioTypeMap
@@ -346,7 +346,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"2stringlist"
     !hasCompilerArgument:false # No compiler argument
   )
-#--- Getter 'subgraphFromNodes'
+//--- Getter 'subgraphFromNodes'
   enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioTypeMap
@@ -360,7 +360,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName: self.mGraphTypeName.string
     !hasCompilerArgument:true # has compiler argument
   )
-#--- Getter 'accessibleNodesFrom'
+//--- Getter 'accessibleNodesFrom'
   enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioTypeMap
@@ -370,14 +370,14 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !returnedTypeName:"lstringlist"
     !hasCompilerArgument:true # has compiler argument
   )
-#--- Constructor 'emptyGraph'
+//--- Constructor 'emptyGraph'
   [!?classFunctionMap insertKey
     !@lstring {!"emptyGraph" !@location.here}
     !()
     !false # No compiler argument
     !graphTypeEntry
   ]
-#--- setter 'enterNode'
+//--- setter 'enterNode'
   formalParameterList = ()
   formalParameterList +=
     !["" nowhere]
@@ -402,7 +402,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 #  drop formalParameterList
-#--- setter 'removeEdgeToDominators'
+//--- setter 'removeEdgeToDominators'
   [!?setterMap insertKey
     !@lstring {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
@@ -411,7 +411,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier. isInherited
     !"" # No error message
   ]
-#--- setter 'removeEdgesToNode'
+//--- setter 'removeEdgesToNode'
   formalParameterList = @formalParameterSignature ()
   formalParameterList += !["" nowhere] !stringTypeEntry !.argumentVarIn !"inNodeName"
   [!?setterMap insertKey
@@ -423,7 +423,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #  drop formalParameterList
-#--- setter 'addEdge'
+//--- setter 'addEdge'
   formalParameterList = @formalParameterSignature ()
   formalParameterList += !["" nowhere] !lstringTypeEntry !.argumentVarIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeEntry !.argumentVarIn !"inTargetNodeLKey"
@@ -436,7 +436,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 #  drop formalParameterList
-#--- setter 'noteNode'
+//--- setter 'noteNode'
   formalParameterList = @formalParameterSignature ()
   formalParameterList += !["" nowhere] !lstringTypeEntry !@formalArgumentPassingModeAST.argumentVarIn !"inNodeLKey"
   [!?setterMap insertKey
@@ -447,14 +447,14 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier. isInherited
     !"" # No error message
   ]
-#--- Add initializer without argument
+//--- Add initializer without argument
   var @initializerMap initializerMap = ()
   let @functionSignature constructorPropertyTypeList = ()
   [!?initializerMap insertKey
     !.init {![constructorPropertyTypeList initializerSignature] !self.mGraphTypeName}
     !constructorPropertyTypeList
   ]
-#--- Add Extensions
+//--- Add Extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -478,7 +478,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !acceptEquatable: false
     !acceptComparable: false
   )
-#--- Enter type in type map
+//--- Enter type in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mGraphTypeName
     !isPredefined: self.isPredefined
@@ -509,9 +509,9 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -522,7 +522,7 @@ override method @graphDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mGraphTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.isPredefined  then
@@ -533,7 +533,7 @@ override method @graphDeclarationAST semanticAnalysis
   if self.isPredefined  then
     ioUsefulnessRootEntities += !associatedTypeNameForUsefulness
   end
-#--- Useful entities graph for initializer without any argument
+//--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mGraphTypeName
     ![@formalInputParameterListAST () initializerSignature]
@@ -542,7 +542,7 @@ override method @graphDeclarationAST semanticAnalysis
   if self.isPredefined  then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
-#---
+//---
   let graphTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mGraphTypeName]
   let associatedListTypeEntry = [ioTypeMap typeMapEntryForLKey !self.mAssociatedListTypeName]
   let associatedListElementTypeEntry = [ioTypeMap typeMapEntryForLKey
@@ -551,7 +551,7 @@ override method @graphDeclarationAST semanticAnalysis
   if [associatedListTypeEntry definition].typeKind != .listType then
     error self.mAssociatedListTypeName: "the '@" + self.mAssociatedListTypeName + "' type should be a list"
   end
-#--- Analyze insert methods
+//--- Analyze insert methods
   let @stringset reservedModifierNames = §["noteNode", "addArc"]
   for (mInsertModifierName mInsertErrorMessage) in self.mInsertModifierList do
     if [reservedModifierNames hasKey !mInsertModifierName.string] then
@@ -559,7 +559,7 @@ override method @graphDeclarationAST semanticAnalysis
     end
     check_K_L_escapeCharacters (!mInsertErrorMessage )
   end
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "graph " + self.mGraphTypeName
     !@graphDeclarationForGeneration {
@@ -570,9 +570,9 @@ override method @graphDeclarationAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   public let @unifiedTypeMapEntry mAssociatedListTypeEntry
@@ -580,7 +580,7 @@ class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   public let @graphInsertModifierList mInsertModifierList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -609,7 +609,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
   ]
  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @graphDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -626,5 +626,5 @@ override method @graphDeclarationForGeneration appendSpecificImplementation
   ]
  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

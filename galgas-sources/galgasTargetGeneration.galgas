@@ -15,7 +15,7 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates/target_generation" {
  "bat", "rtf", "py"
@@ -92,7 +92,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?@string VERSION_STRING
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksWindowsTarget
   ?let @string inProjectDirectory
@@ -120,7 +120,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 #private proc generateGalgasCodeBlocksMacTarget
 #  ?let @string inProjectDirectory
@@ -148,7 +148,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
 #  [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 #}
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksLinuxI686Target
   ?let @string inProjectDirectory
@@ -176,7 +176,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksLinuxX86_64Target
   ?let @string inProjectDirectory
@@ -204,7 +204,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3MinGWOnMacOSXTarget
   ?let @string inProjectDirectory
@@ -224,7 +224,7 @@ private proc generateGalgas3MinGWOnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3MakefileUnixTarget
   ?let @string inProjectDirectory
@@ -242,7 +242,7 @@ private proc generateGalgas3MakefileUnixTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3MakefileMacTarget
   ?let @string inProjectDirectory
@@ -260,7 +260,7 @@ private proc generateGalgas3MakefileMacTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3Linux32OnMacOSXTarget
   ?let @string inProjectDirectory
@@ -277,7 +277,7 @@ private proc generateGalgas3Linux32OnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3Linux64OnMacOSXTarget
   ?let @string inProjectDirectory
@@ -294,7 +294,7 @@ private proc generateGalgas3Linux64OnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc updateGalgasTargets
   ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
@@ -319,20 +319,20 @@ proc updateGalgasTargets
   ?let @stringlist inHandCodedLinkToolFileList
 {
   let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
-#--- Update project header
+//--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
     !inAbsoluteBuildDirectory + "/output/project_header.h"
     ?*
   ]
   ioAllProductFileSet += !"project_header.h"
-#----------------------------------------------------------- %quietOutputByDefault
+//---------------------------------------------------------- %quietOutputByDefault
   var toolCppFileList = inToolCppFileList
   if inQuietOutputByDefault then
     toolCppFileList += !"C_galgas_verbose_option.cpp"
   else
     toolCppFileList += !"C_galgas_quiet_option.cpp"
   end
-#----------------------------------------------------------- macCodeSign
+//---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
   with "macCodeSign" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
@@ -343,7 +343,7 @@ proc updateGalgasTargets
   else
     macCodeSign = ["" nowhere]
   end
-#----------------------------------------------------------- MacOSDeployment
+//---------------------------------------------------------- MacOSDeployment
   let @string MACOSX_DEPLOYMENT_TARGET
   with "MacOSDeployment" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
@@ -354,7 +354,7 @@ proc updateGalgasTargets
   else
     MACOSX_DEPLOYMENT_TARGET = ["10.13" nowhere]
   end
-#----------------------------------------------------------- LIBPM path
+//---------------------------------------------------------- LIBPM path
   let @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
@@ -366,8 +366,8 @@ proc updateGalgasTargets
     updateLIBPMatPath (!inAbsoluteBuildDirectory + "/libpm" )
     libpmPath = "../" + inBuildDirectoryName + "/libpm"
   end
-#---------------------------------------- Check target names, file base name uniqueness, and build target file list
-#--- Parse features
+//--------------------------------------- Check target names, file base name uniqueness, and build target file list
+//--- Parse features
   var @stringset availableGenerationFeatures = ()
   availableGenerationFeatures += !"quietOutputByDefault"
   availableGenerationFeatures += !"codeblocks-windows"
@@ -380,14 +380,14 @@ proc updateGalgasTargets
   availableGenerationFeatures += !"makefile-win32-on-macosx"
   availableGenerationFeatures += !"MacOS"
   var @stringset generationFeatures = ()
-#--- Check xcode target architectures
+//--- Check xcode target architectures
   var @string SDK = ""
   for (value) in inTargetFeatureList do
     if [availableGenerationFeatures hasKey !value.string] then
       if [generationFeatures hasKey !value.string] then
         error value: "duplicate '" + value + "' feature"
       end
-   #--- MacOS
+   //--- MacOS
       if value.string == "MacOS" then
         if (SDK != "") then
           error value: "duplicated setting"
@@ -404,20 +404,20 @@ proc updateGalgasTargets
       error value: "unknown '" + value + "' feature" fixit { replace s }
     end
   end
-#--- Codesign without selecting OSX ?
+//--- Codesign without selecting OSX ?
   if (macCodeSign.string != "") && (SDK == "") then
     error macCodeSign
     : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacOS\""
   end
-#--- Generation of Xcode project given by command line option ?
+//--- Generation of Xcode project given by command line option ?
 #  if [option galgas_cli_options.macosxSDK value] != 0 then
 #    SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
 #  end
-#--- Check Cocoa features
+//--- Check Cocoa features
   if SDK != "", not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
     warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
-#--- Generation
+//--- Generation
   if [generationFeatures hasKey !"makefile-macosx"] then
     generateGalgas3MakefileMacTarget (!projectDirectory !buildDirName: inBuildDirectoryName !inTargetName )
   end
@@ -469,7 +469,7 @@ proc updateGalgasTargets
       !inQuietOutputByDefault
     )
   end
-#--- Frameworks to link with tool
+//--- Frameworks to link with tool
   var @stringlist linkOptionForLinkingFrameworkWithTool = ()
   if [inFrameworkToolFileList count] > 0 then
     if SDK != "macosx" then
@@ -481,7 +481,7 @@ proc updateGalgasTargets
       linkOptionForLinkingFrameworkWithTool += ![s stringByDeletingPathExtension]
     end
   end
-#--- Update json file list
+//--- Update json file list
   var @stringlist handCodedSourceToolFileList = ()
   for (f) in inHandCodedSourceToolFileList do
     if [f pathExtension] != "h" then
@@ -499,11 +499,11 @@ proc updateGalgasTargets
   let jsonFileListPath = inAbsoluteBuildDirectory + "/output/file-list.json"
   [jsonFileListContents writeToFileWhenDifferentContents !jsonFileListPath ?*]
   ioAllProductFileSet += !"file-list.json"
-#---------------------- update Xcode project
+//--------------------- update Xcode project
   if SDK != "" then
     let dir = projectDirectory + "/xcode-project"
     [dir makeDirectory]
-  #--- Info.plist
+  //--- Info.plist
     let @string applicationBundleBase
     with "applicationBundleBase" in inProjectQualifiedFeatureMap  do
       applicationBundleBase = mFeatureValue.string
@@ -518,7 +518,7 @@ proc updateGalgasTargets
       !MACOSX_DEPLOYMENT_TARGET
     ]
     [InfoPlistContents writeToFileWhenDifferentContents !dir +"/Info.plist" ?*]
-  #--- Build.command
+  //--- Build.command
     if not [dir + "/build.command" fileExists] then
       [[filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode] writeToExecutableFile !dir +"/build.command"]
     end
@@ -530,15 +530,15 @@ proc updateGalgasTargets
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGalgas3GenerationFileWrapper."project-xcode-objc/Base.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
-  #--- Enumerate icons files in "userResources" directory
+  //--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
     let @stringlist extensionList =§[.init ("icns")]
     let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
-  #--- Build pathes
+  //--- Build pathes
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet += !"file-list-for-xcode-project.txt"
-  #-------------------------------------------------------- New Xcode project generation
+  //------------------------------------------------------- New Xcode project generation
     var xcodeProject = @XcodeProjectDescriptor {}
     xcodeProject.mApplicationBundleName = applicationBundleBase
     xcodeProject.mProjectName = inTargetName
@@ -550,7 +550,7 @@ proc updateGalgasTargets
       headerSearchPaths += ", \"" + directory + "\""
     end
     headerSearchPaths += ")"
-  #--- Default build configuration
+  //--- Default build configuration
     var @stringlist xcodeSettingList = §[
       .init ("ALWAYS_SEARCH_USER_PATHS = NO"),
       .init ("CLANG_CXX_LANGUAGE_STANDARD = \"c++17\""),
@@ -614,7 +614,7 @@ proc updateGalgasTargets
       xcodeSettingList += !"MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\""
     end
     [!?xcodeProject addSettingsToDefaultConfiguration !settingList:xcodeSettingList]
-  #--- Add "Hand coded sources (App)" group
+  //--- Add "Hand coded sources (App)" group
     var @stringlist m_HandCodedSourceFileRefForAppList = ()
     var @stringlist m_HandCodedResourceFileRefForAppList = ()
     if [inHandCodedSourceAppFileList count] > 0 then
@@ -632,7 +632,7 @@ proc updateGalgasTargets
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
-  #--- Add "Frameworks for App" group
+  //--- Add "Frameworks for App" group
     var @stringlist appFrameworksFileRefList = ()
     if [inHandCodedLinkAppFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -649,14 +649,14 @@ proc updateGalgasTargets
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
     end
-  #--- Mach O target
+  //--- Mach O target
     var @stringlist buildCFileRefListForTool = ()
     var @stringlist buildCppFileRefListForTool = ()
     var @stringlist m_FileRefList = ()
     var @stringlist mm_FileRefList = ()
     var @stringlist frameworksFileRefList = ()
     var @stringlist resourceFileBuildRefs = ()
-  #--- Add "Hand coded sources (Tool)" group
+  //--- Add "Hand coded sources (Tool)" group
     if [inHandCodedSourceToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (Tool)"
@@ -672,7 +672,7 @@ proc updateGalgasTargets
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     end
-  #--- Add "Frameworks for tool" group
+  //--- Add "Frameworks for tool" group
     var @stringlist toolFrameworksFileRefList = ()
     if [inFrameworkToolFileList count] > 0 then
       [!?xcodeProject addGroupWithFiles
@@ -689,7 +689,7 @@ proc updateGalgasTargets
       ]
       [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
     end
-  #--- Add "Generated by GALGAS" group
+  //--- Add "Generated by GALGAS" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generated by GALGAS"
       !groupPath:"../" + inBuildDirectoryName + "/output"
@@ -704,7 +704,7 @@ proc updateGalgasTargets
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef]
     var @stringlist libpmReferenceGroupList = ()
-  #--- Add "BDD" group
+  //--- Add "BDD" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Binary Decision Diagrams"
       !groupPath:"bdd"
@@ -728,7 +728,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Big Integers" group
+  //--- Add "Big Integers" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Big Integers"
       !groupPath:"big-integers"
@@ -780,7 +780,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Cocoa Utilities" group
+  //--- Add "Cocoa Utilities" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Utilities"
       !groupPath:"cocoa_utilities"
@@ -800,7 +800,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Cocoa GALGAS" group
+  //--- Add "Cocoa GALGAS" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Cocoa Objc GALGAS"
       !groupPath:"cocoa_objc_galgas"
@@ -866,7 +866,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "collection" group
+  //--- Add "collection" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generic Arraies"
       !groupPath:"generic-arraies"
@@ -884,7 +884,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Command line Interface" group
+  //--- Add "Command line Interface" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Command line Interface"
       !groupPath:"command_line_interface"
@@ -915,7 +915,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "File" group
+  //--- Add "File" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"File"
       !groupPath:"files"
@@ -940,7 +940,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Galgas 2" group
+  //--- Add "Galgas 2" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Galgas"
       !groupPath:"galgas"
@@ -1054,7 +1054,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Streams" group
+  //--- Add "Streams" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Streams"
       !groupPath:"streams"
@@ -1075,7 +1075,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "String" group
+  //--- Add "String" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Strings"
       !groupPath:"strings"
@@ -1103,7 +1103,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Time" group
+  //--- Add "Time" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Time"
       !groupPath:"time"
@@ -1122,7 +1122,7 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "Utilities" group
+  //--- Add "Utilities" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Utilities"
       !groupPath:"utilities"
@@ -1169,10 +1169,10 @@ proc updateGalgasTargets
       ?groupRef:groupRef
     ]
     libpmReferenceGroupList += !groupRef
-  #--- Add "LIBPM" group
+  //--- Add "LIBPM" group
     [!?xcodeProject addGroup !groupName:"libpm" !groupPath:"../" + inBuildDirectoryName + "/libpm" !childrenRefs:libpmReferenceGroupList ?groupRef:let @string libpmGroupRef]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:libpmGroupRef]
-  #--- Add "Resources" group
+  //--- Add "Resources" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Resources"
       !groupPath:"."
@@ -1186,7 +1186,7 @@ proc updateGalgasTargets
       ?groupRef:let @string resourcesGroupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:resourcesGroupRef]
-  #--- Add "User Resources" group
+  //--- Add "User Resources" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"User Resources"
       !groupPath:"userResources"
@@ -1200,7 +1200,7 @@ proc updateGalgasTargets
       ?groupRef:let @string userResourcesGroupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:userResourcesGroupRef]
-  #--- Add "Frameworks for App" group
+  //--- Add "Frameworks for App" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Frameworks for App"
       !groupPath:"/System/Library/Frameworks"
@@ -1217,7 +1217,7 @@ proc updateGalgasTargets
       ?groupRef:let @string frameworkGroupRef
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
-  #--- Code signing identity
+  //--- Code signing identity
     let @stringlist codeSigningSettingList
     if macCodeSign.string == "" then
       codeSigningSettingList = §[.init ("CODE_SIGN_IDENTITY = \"-\"")]
@@ -1236,7 +1236,7 @@ proc updateGalgasTargets
         error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" : codeSigningSettingList
       end
     end
-  #--- Add Mach O release target
+  //--- Add Mach O release target
     var @stringlist settingList = §[
       .init ("GCC_OPTIMIZATION_LEVEL = 2"),
       .init ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"),
@@ -1261,7 +1261,7 @@ proc updateGalgasTargets
       ?targetRef:let releaseTargetRef
       ?productFileRef:let releaseProductFileRef
     ]
-  #--- Add Mach O debug target
+  //--- Add Mach O debug target
     settingList = §[
       .init ("GCC_OPTIMIZATION_LEVEL = 0"),
       .init ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
@@ -1287,7 +1287,7 @@ proc updateGalgasTargets
       ?targetRef:let debugTargetRef
       ?productFileRef:let debugProductFileRef
     ]
-  #--- Add Cocoa target
+  //--- Add Cocoa target
     let @stringlist cocoaConfigurationSettingList = §[
       .init ("GCC_OPTIMIZATION_LEVEL = 0"),
       .init (!"GCC_PREPROCESSOR_DEFINITIONS = ()")
@@ -1303,7 +1303,7 @@ proc updateGalgasTargets
       !productCopyList: §[.init (releaseProductFileRef, inTargetName), .init (debugProductFileRef, inTargetName + "-debug")]
       ?productFileRef:*
     ]
-  #--- Generate project
+  //--- Generate project
     [xcodeProject generateAtPath
       !xcodeprojPath:dir + "/" + inTargetName + ".xcodeproj"
       !cacheFilePath:newIntermediateFilePath
@@ -1311,4 +1311,4 @@ proc updateGalgasTargets
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

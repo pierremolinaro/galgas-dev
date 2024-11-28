@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      ![@lstring] outConstantNameList
@@ -101,15 +101,15 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -140,7 +140,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      ![@lstring] outConstantNameList
@@ -190,13 +190,13 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @switchExtractedValuesListAST {
   public let @lstring mExtractedValueTypeName
@@ -204,7 +204,7 @@ list @switchExtractedValuesListAST {
   public let @bool mMarkedAsUnused
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @switchBranchesAST {
   public let [@lstring] mSwitchConstantList
@@ -213,7 +213,7 @@ list @switchBranchesAST {
   public let @location mEndOfBranch
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @switchInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSwitchExpression
@@ -221,7 +221,7 @@ class @switchInstructionAST : @semanticInstructionAST {
   private let @switchBranchesAST mBranches
   private let @location mEndOf_switch_instruction
 
-  #·······························································································
+  //······························································································
 
   override method enterInstructionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap {
@@ -231,7 +231,7 @@ class @switchInstructionAST : @semanticInstructionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction ?let @lstring inUsefulnessCallerEntityName
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -239,7 +239,7 @@ class @switchInstructionAST : @semanticInstructionAST {
                             ?!@unifiedTypeMap ioTypeMap
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                             ?!@localVarManager ioVariableMap {
-  #--- Analyze switch expression
+  //--- Analyze switch expression
     [self.mSwitchExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -249,11 +249,11 @@ class @switchInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       ?let switchExpression
     ]
-  #--- Check switch expression type is and enum instance
+  //--- Check switch expression type is and enum instance
     if let enumType = [[switchExpression.mResultType definition].typeKind getEnumType] then
-    #--- Enum constant map
+    //--- Enum constant map
       var @stringset constantsNamedInSwitchInstruction = ()
-    #--- Analyze branches
+    //--- Analyze branches
       [!?ioVariableMap openOverrideForSelectBlock]
       var @switchBranchesForGeneration switchBranchesForGeneration = ()
       for branch in self.mBranches do
@@ -339,7 +339,7 @@ class @switchInstructionAST : @semanticInstructionAST {
           !instructionList
       end
       [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]
-    #--- Check all constants have been named
+    //--- Check all constants have been named
       let forgottenConstants = [enumType.constantMap keySet] - constantsNamedInSwitchInstruction
       if [forgottenConstants count] > 0 then
         var @string s = ""
@@ -349,7 +349,7 @@ class @switchInstructionAST : @semanticInstructionAST {
         error self.mEndOf_switch_instruction
         : "the switch instruction should name all enumeration constants; missing constants are:" + s
       end
-    #--- Generate instruction
+    //--- Generate instruction
       ioInstructionListForGeneration += !@switchInstructionForGeneration {
         !switchExpression.mResultType
         !switchExpression
@@ -363,13 +363,13 @@ class @switchInstructionAST : @semanticInstructionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @extractedAssociatedValuesForGeneration {
   public let @unifiedTypeMapEntry mType
@@ -378,7 +378,7 @@ list @extractedAssociatedValuesForGeneration {
   public let @string name
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @switchBranchesForGeneration {
   public let [@lstring] mSwitchConstantList
@@ -387,21 +387,21 @@ list @switchBranchesForGeneration {
   public let @semanticInstructionListForGeneration mInstructions
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mEnumType
   private let @semanticExpressionForGeneration mSwitchExpression
   private let @switchBranchesForGeneration mBranches
 
-  #·······························································································
+  //······························································································
 
   override method generateInstruction ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool inGenerateSyntaxDirectedTranslationString
                                       ?!@string ioGeneratedCode {
-  #--- Switch expression
+  //--- Switch expression
     [self.mSwitchExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -455,8 +455,8 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
     ioGeneratedCode += "}\n"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

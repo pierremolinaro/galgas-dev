@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  GALGAS main program definition
 #
@@ -20,40 +20,40 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
-before { #--- Generate project
+before { //--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation (!creationProjectName)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
-before { #--- Print predefined lexical action
+before { //--- Print predefined lexical action
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ()
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
-before { #--- Extract LIBPM
+before { //--- Extract LIBPM
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
     updateLIBPMatPath (![option galgas_cli_options.extractLIBPMOption value] )
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern proc checkBigInteger
 
-before { #--- Extract LIBPM
+before { //--- Extract LIBPM
   if [option galgas_cli_options.check_big_int value] then
     checkBigInteger ()
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern proc displayUnicodeLexicalTestFunctions
 
@@ -63,17 +63,17 @@ before {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #          galgas
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgas"
 message "a GALGAS 3 source file"
 grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
-#--- Search for a project file in parent directory
+//--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[.init ("galgasProject")]]
   if [candidateProjectFiles count] == 0 then
@@ -90,16 +90,16 @@ grammar galgas3Grammar
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #          ggs
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggs"
 message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
-#--- Search for a project file in parent directory
+//--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[.init ("ggsProject")]]
   if [candidateProjectFiles count] == 0 then
@@ -116,11 +116,11 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #          Template
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasTemplate"
 message "a GALGAS Template source file"
@@ -129,11 +129,11 @@ grammar templateGrammar
   grammar templateGrammar (?*) in inSourceFile
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #          galgasProject
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "galgasProject"
 message "a GALGAS project source file"
@@ -142,7 +142,7 @@ grammar galgas3ProjectGrammar
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 case . "ggsproject"
 message "a GALGAS project source file"
@@ -151,11 +151,11 @@ grammar galgas3ProjectGrammar
   parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #          compileProject
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
                                     ?galgas4: let @bool inGalgas4
@@ -166,7 +166,7 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
   grammar galgas3ProjectGrammar (?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFile
   if [option.mode value] == "" then
     compileProject (!inProjectSourceFile !inSourceToAnalyze !galgas4: inGalgas4 !projectComponentAST)
-  #--- C++ compilation
+  //--- C++ compilation
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
       if cppCompilationTarget != "" then
@@ -188,7 +188,7 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
@@ -211,7 +211,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
     end
   end
-#---------------------------------- Hand coded source files
+//--------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = ()
   var @stringlist handCodedLinkAppFileList = ()
   var @stringlist handCodedSourceAppFileList = ()
@@ -255,7 +255,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       error featureName : "unknown feature"
     end
   end
-#---------------------------------- Display result
+//--------------------------------- Display result
 #  if @uint.errorCount == 0 then
 #    message "  Declarations: " + [declarationAST.mDeclarationList count] + "\n"
 #    message "  Syntax components: " + [declarationAST.mSyntaxComponentList count] + "\n" ;
@@ -264,13 +264,13 @@ private proc compileProject ?let @lstring inProjectSourceFile
 #    message "  Prologue procs: " + [declarationAST.mPrologueDeclarationList count] + "\n"
 #    message "  Epilogue procs: " + [declarationAST.mEpilogueDeclarationList count] + "\n"
 #  end
-#---------------------------------- Group syntax components and their extensions
+//--------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3 (
     !declarationAST.mSyntaxComponentList
     !declarationAST.mSyntaxExtensions
     !?declarationAST.mDeclarationList
   )
-#---------------------------------- Compile semantic declarations
+//--------------------------------- Compile semantic declarations
   var usefulEntitiesGraph = @usefulEntitiesGraph ()
   let @string buildDirectoryName
   if inGalgas4 then
@@ -302,7 +302,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     semanticContext = @semanticContext {!galgas4: inGalgas4}
     typeMap = ()
   end
-#---------------------------------- Compile GUI components
+//--------------------------------- Compile GUI components
   let @optionComponentMapForGeneration optionComponentMapForGeneration
   if @uint.errorCount == 0 then
     compileAllGuiComponentFromASTGalgas3 (
@@ -313,7 +313,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   else
     optionComponentMapForGeneration = ()
   end
-#---------------------------------- Compile program declarations
+//--------------------------------- Compile program declarations
   if @uint.errorCount == 0 then
     let projectVersionString = [inProjectComponentAST.mMajorVersion.bigint string]
       + "." + inProjectComponentAST.mMinorVersion.bigint
@@ -331,9 +331,9 @@ private proc compileProject ?let @lstring inProjectSourceFile
     )
     semanticDeclarationSortedListForGeneration += !infoMessage: "zprogram" !programComponentForGeneration
   end
-#------------------------------------ Check entity usefulness
+//----------------------------------- Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
-#------------------------------------ Build an HTML file that contains all declared types
+//----------------------------------- Build an HTML file that contains all declared types
   let typeDumpFilePath = productDirectory + "/../helpers/" + [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var @stringset firstLetterSet = ()
@@ -360,14 +360,14 @@ private proc compileProject ?let @lstring inProjectSourceFile
   else
     [@string deleteFileIfExists !typeDumpFilePath]
   end
-#---------------------------------- Perform global checkings
+//--------------------------------- Perform global checkings
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     performGalgas3ProjectGlobalCheckings (
       !?typeMap
       !declarationAST.mDeclarationList
     )
   end
-#---------------------------------- File generation
+//--------------------------------- File generation
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     projectGeneration (
       !typeMap
@@ -389,11 +389,11 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #          projectGeneration
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc projectGeneration
   ?let @unifiedTypeMap inTypeMap
@@ -413,17 +413,17 @@ private proc projectGeneration
   ?let @stringlist inHandCodedLinkToolFileList
 {
   var appProductFileList = inAppProductFileList
-#---------------------------------- File generation
+//--------------------------------- File generation
   if @application.verboseOutput then
     println (!"*** Generating files")
   end
   var @stringset allProductFileSet = ()
-#---------------------------------- Create build/user-headers if does not exist
+//--------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   [userHeadersDir makeDirectory]
-#---------------------------------- %quietOutputByDefault
+//--------------------------------- %quietOutputByDefault
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
-#---------------------------------- Generate GUI components
+//--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
 #  let cacheDirectory = inBuildDirectory + "/md5-cache"
 #  [cacheDirectory makeDirectory]
@@ -437,7 +437,7 @@ private proc projectGeneration
       !?allProductFileSet
     )
   end
-#---------------------------------- Generate semantic files
+//--------------------------------- Generate semantic files
 #  message "*** Generate semantic\n" ;
   var @stringlist toolCppFileList = ()
   var @stringlist toolHeaderFileList = ()
@@ -457,14 +457,14 @@ private proc projectGeneration
     !?toolHeaderFileList
     !?allProductFileSet
   )
-#---------------------------------- Update targets
+//--------------------------------- Update targets
 #  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
     var @stringset handledExtensionSet = ()
     for (mSourceFileExtension * * * * * *) in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
     end
-  #--- Build qualified feature map
+  //--- Build qualified feature map
     var @stringset ignoredFeatureSet = ()
     ignoredFeatureSet += !"tool-framework"
     ignoredFeatureSet += !"tool-source"
@@ -502,7 +502,7 @@ private proc projectGeneration
       !inHandCodedLinkToolFileList
     )
   end
-#---------------------------------- Remove useless files
+//--------------------------------- Remove useless files
   if 0 == @uint.errorCount then
     var @stringset allActualFileSet = ()
     for (mValue) in [productDirectory regularFiles !false] do
@@ -515,11 +515,11 @@ private proc projectGeneration
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {
 }{
@@ -531,10 +531,10 @@ filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generati
     ?@string TABLE_OF_TYPES_STRING
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func linkForType ?let @string inTypeName -> @string {
   result = "<a class=\"header_link\" href=\"#" + inTypeName + "\">@" + inTypeName + "</a>"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -16,21 +16,21 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexicalTagInstructionAST : @lexicalInstructionAST {
   private let @lstring mLexicalTagName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $tag$
@@ -38,15 +38,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioInstructionList += !@lexicalTagInstructionAST {!tagName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $tag$
@@ -54,13 +54,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioInstructionList += !@lexicalTagInstructionAST {!tagName}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalTagInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -68,9 +68,9 @@ override method @lexicalTagInstructionAST checkLexicalInstruction
   [!?ioTagMap insertKey !self.mLexicalTagName]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalTagInstructionAST generateObjcCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -80,7 +80,7 @@ override getter @lexicalTagInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode += "[self saveScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalTagInstructionAST generateSwiftCocoaInstructionCode
   ?let @string unused inScannerClassName
@@ -89,9 +89,9 @@ override getter @lexicalTagInstructionAST generateSwiftCocoaInstructionCode
   outGeneratedCode = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! C++ CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalTagInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -108,5 +108,5 @@ override getter @lexicalTagInstructionAST generateLexicalInstructionCode
                     + "const utf32 currentCharForTag_" + self.mLexicalTagName + " = mCurrentChar ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

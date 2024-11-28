@@ -1,14 +1,14 @@
 
 
 
-#--- Prologue routine
+//--- Prologue routine
 before {
   if [option xml_parsing_options.dumpUnicode value] then
     listUnicodeCharacterProperties ( )
   end
 }
 
-#--- 'when' clauses
+//--- 'when' clauses
 case . "XMLParsing"
 message "an XML text file with the .XMLParsing extension"
 ?sourceFilePath:@lstring inSourceFile {
@@ -22,7 +22,7 @@ message "an XML text file with the .XMLParsing extension"
   logXMLNodes (!rootNodes )
 }
 
-#--- Epilogue routine
+//--- Epilogue routine
 after {
 #  message "'" . ['\&Aacute;' string] . "'\n" ;
 #  message "'" . ['ж' string] . "'\n" ;

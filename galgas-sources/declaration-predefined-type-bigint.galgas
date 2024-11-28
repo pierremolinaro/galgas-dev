@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,17 +20,17 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @bigintPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bigint_type]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -45,13 +45,13 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getInstanceMethodMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
     !@instanceMethodMap outInstanceMethodMap {
     outInstanceMethodMap = ()
-  #--- divide, floorDivide, ceilDivide
+  //--- divide, floorDivide, ceilDivide
     [!?ioUnifiedTypeMap makeEntryFromString !"bigint" ?let bigIntType]
     var @formalParameterSignature argList = ()
     argList += !["" nowhere] !bigIntType !.argumentConstantIn !"inDivisor"
@@ -68,7 +68,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     ]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getSetterMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -95,7 +95,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getGetterMap
     ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -306,7 +306,7 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod | .prefixPlusOperator | .prefixMinusOperator |
@@ -318,9 +318,9 @@ class @bigintPredefinedTypeAST : @predefinedTypeAST {
                .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -7,20 +7,20 @@ case . "classSampleLanguage"
 message "an '.class_sample_language' source file"
 grammar class_sample_language_grammar
 ?sourceFilePath:@lstring inSourceFile {
-#--- Build Abstract Syntax Tree
+//--- Build Abstract Syntax Tree
   grammar class_sample_language_grammar (?let declarationListAST) in inSourceFile
-#--- Build dependence graph
+//--- Build dependence graph
   var inheritanceGraph = @inheritanceGraph ()
   for (mDeclaration) in  declarationListAST do
     [mDeclaration buildGraph !?inheritanceGraph]
   end
-#--- Undefined classes ?
+//--- Undefined classes ?
   if [inheritanceGraph undefinedNodeCount] > 0 then
     for (mValue) in  [inheritanceGraph undefinedNodeReferenceList] do
       error mValue : "the '" + mValue + "' class is not declared"
     end
   else
-  #--- Topologic sort
+  //--- Topologic sort
     [inheritanceGraph topologicalSort
       ?let @declarationListAST sortedDeclarationListAST
       ?*
@@ -32,7 +32,7 @@ grammar class_sample_language_grammar
         error mValue : "the '" + mValue + "' class is involved in a circular definition"
       end
     else
-    #--- Generate code
+    //--- Generate code
       var @string codeToGenerate = ""
       for (mDeclaration) in  sortedDeclarationListAST do
         [mDeclaration generateCode !?codeToGenerate]

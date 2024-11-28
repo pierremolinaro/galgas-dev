@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2016, ..., 2020 Pierre Molinaro.
 #
@@ -18,7 +18,7 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -32,10 +32,10 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   if @application.verboseOutput then
     println (!"*** Building semantic context")
   end
-#------ Add predefined types to semantics declarations
+//----- Add predefined types to semantics declarations
   var semanticDeclarations = inSemanticDeclarations
   appendPredefinedTypesASTs (!?semanticDeclarations.mDeclarationList !?ioUsefulnessRootEntities)
-#---- Add predefined option component
+//--- Add predefined option component
   var @commandLineOptionListAST options = ()
   for name in @application.boolOptionNameList do
     options +=
@@ -74,7 +74,7 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   }
   let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph (!["galgas_builtin_options" nowhere])
   ioUsefulnessRootEntities += !galgas_builtin_optionsUsefulnessName
-#------ Build semantic context
+//----- Build semantic context
   buildGalgasSemanticContext (
     !semanticDeclarations
     !inEndOfProjectSourceFile
@@ -83,15 +83,15 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
     ?outTypeMap
     ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
   )
-#---
+//---
   if @application.verboseOutput then
     println (!"*** Semantic analysis")
   end
-#------ Check there is no undefined types
+//----- Check there is no undefined types
   for entry in [outTypeMap unsolvedEntryList] do
     error entry.mValue : "the '@" + entry.mValue + "' type is undefined"
   end
-#------ Semantic Analysis
+//----- Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = ()
   if @uint.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (outTypeMap)
@@ -109,11 +109,11 @@ proc compileSemanticDeclarationsGalgas ?!@lstringlist ioUsefulnessRootEntities
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    B U I L D    S E M A N T I C    C O N T E X T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclarations
                                         ?let @location inEndOfProjectSourceFile
@@ -121,12 +121,12 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
                                         !@semanticContext outSemanticContext
                                         !@unifiedTypeMap outTypeMap
                                         !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
-#------ Create associated types for lists, maps, ...
+//----- Create associated types for lists, maps, ...
   var @galgasDeclarationAST semanticDeclarations = inDeclarations
   for declaration in inDeclarations.mDeclarationList do
     [declaration.mSemanticDeclaration addAssociatedElement !?semanticDeclarations]
   end
-#------ Build ordered types list, so that
+//----- Build ordered types list, so that
 #  - a class appears after its super class
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
@@ -148,13 +148,13 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
       !?extensionOverrideDefinitionList
     ]
   end
-#--- Add optional declarations
+//--- Add optional declarations
   for node in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
     if [node.mValue lastCharacter] == '?' then
       println (!"Optional '" + node.mValue + "'")
     end
   end
-#---
+//---
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
     for node in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
       error node.mValue : "the '" + node.mValue + "' type is not defined"
@@ -176,12 +176,12 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
       end
       error inEndOfProjectSourceFile : s : outSemanticContext, outTypeMap
     else
-    #--- Add extension override
+    //--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
-    #--- Build initial semantic context
+    //--- Build initial semantic context
       outTypeMap =  ()
       outSemanticContext = @semanticContext {!galgas4: inGalgas4}
-    #--- Loop throught all declarations
+    //--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
         [declaration.mSemanticDeclaration enterDeclarationInSemanticContext
           !?equatableExtensionMap
@@ -197,9 +197,9 @@ private proc buildGalgasSemanticContext ?let @galgasDeclarationAST inDeclaration
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -210,7 +210,7 @@ proc generateSemanticDeclarationsGalgas3
   ?!@stringlist ioToolHeaderFileList
   ?!@stringset ioAllProductFileSet
 {
-#--- Generate specific files
+//--- Generate specific files
   for declaration in inSemanticDeclarationSortedListForGeneration do
     [declaration.mDeclaration appendSpecificFiles
       !inProductDirectory
@@ -218,7 +218,7 @@ proc generateSemanticDeclarationsGalgas3
       !?ioCocoaProductFileList
     ]
   end
-#---
+//---
   if @uint.errorCount == 0 then
     if [option galgas_cli_options.generateOneHeader value] & [option galgas_cli_options.generateManyFiles value] then
        generateOneBigHeader (
@@ -289,7 +289,7 @@ proc generateSemanticDeclarationsGalgas3
    end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateManyHeaders
   ?let @string inProductDirectory
@@ -297,7 +297,7 @@ private proc generateManyHeaders
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList
 {
-#--- Header files
+//--- Header files
   var @stringlist headerInclusionList1 = ()
   var @stringlist headerInclusionList2 = ()
   for declaration in inSemanticDeclarationSortedListForGeneration do
@@ -322,7 +322,7 @@ private proc generateManyHeaders
         headerIncludes2 += "#include \"" + s + ".h\"\n"
       end
       headerIncludes2 += headerDef2
-    #---
+    //---
       switch [declaration.mDeclaration headerKind]
       case noHeader :
         if headerIncludes1 != "" then
@@ -352,7 +352,7 @@ private proc generateManyHeaders
           : "'twoHeaders' setting for the '" + declaration.infoMessage + "' declaration, and 'headerIncludes2' string is empty"
         end
       end
-    #--- Header 1
+    //--- Header 1
       if [declaration.mDeclaration headerKind] != @headerKind.noHeader then
         var headerString = "#pragma once\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
@@ -372,7 +372,7 @@ private proc generateManyHeaders
           !headerString
         ]
       end
-    #--- Header 2
+    //--- Header 2
       if [declaration.mDeclaration headerKind] == @headerKind.twoHeaders then
         var headerString = "#ifndef " + [[declaration.mDeclaration getImplementationCppFileName] identifierRepresentation] + "_DEFINED\n"
         headerString += "#define " + [[declaration.mDeclaration getImplementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
@@ -394,7 +394,7 @@ private proc generateManyHeaders
       end
     end
   end
-#-------------------------------------- all-declarations.h
+//------------------------------------- all-declarations.h
   let headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !headerInclusionList1 + headerInclusionList2
@@ -408,7 +408,7 @@ private proc generateManyHeaders
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateOneBigHeader
   ?let @string inProductDirectory
@@ -419,14 +419,14 @@ private proc generateOneBigHeader
     !"all-declarations"
     !()
   ]
-#--- Declaration 1
+//--- Declaration 1
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendDeclaration1 !? %from () ?let @string headerString1]
       headerString += headerString1
     end
   end
-#--- Declaration 2
+//--- Declaration 2
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not [declaration.mDeclaration isPredefined] then
       [declaration.mDeclaration appendDeclaration2 !inProductDirectory !? %from () ?let @string headerString2]
@@ -442,7 +442,7 @@ private proc generateOneBigHeader
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerCompositionMap {
   public let @stringset mInclusion
@@ -451,7 +451,7 @@ map @headerCompositionMap {
   search searchKey error message "there is no '%K' key"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @headerRepartitionMap {
   public let @string mHeaderFileName
@@ -459,7 +459,7 @@ map @headerRepartitionMap {
   search searchKey error message "there is no '%K' key"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc buildHeader
   ?let @headerCompositionMap inHeaderCompositionMap
@@ -467,7 +467,7 @@ private proc buildHeader
   ?let @string inDeclarationName
   ?!@headerRepartitionMap ioHeaderRepartitionMap
   ?!@string ioHeaderString {
-#---
+//---
   if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
     [!?ioHeaderRepartitionMap insertKey ![inDeclarationName nowhere] !inHeaderFileName]
     if [inHeaderCompositionMap hasKey !inDeclarationName] then
@@ -493,13 +493,13 @@ private proc buildHeader
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func %once definitionGroupAmount -> @uint {
   result = 50
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -509,7 +509,7 @@ private proc generateFewImplementationFiles
   ?!@stringset ioAllProductFileSet
 {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
-#------------- all-declarations.cpp
+//------------ all-declarations.cpp
   var n = 0
   var fileIdx = 0
   var implementationString = ""
@@ -545,7 +545,7 @@ private proc generateFewImplementationFiles
       end
     end
   end
-#--- Last file
+//--- Last file
   if implementationString != "" then
     if useOneHugeHeader then
       inclusionSet = §["all-declarations"]
@@ -564,7 +564,7 @@ private proc generateFewImplementationFiles
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -632,7 +632,7 @@ private proc generateFewImplementationFilesWithFewHeaders
           !fileName
           !cppHeader + implementationString
         ]
-      #---
+      //---
         ioAllProductFileSet += !headerFileName + ".h"
         ioToolHeaderFileList += !headerFileName + ".h"
         let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
@@ -644,7 +644,7 @@ private proc generateFewImplementationFilesWithFewHeaders
           !headerFileName + ".h"
           !startOfHeader + headerString
         ]
-      #---
+      //---
         fileIdx += 1
         implementationString = ""
         headerString = ""
@@ -653,7 +653,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
     end
   end
-#--- Last file
+//--- Last file
   if implementationString != "" then
     let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !§[.init ("all-declarations-" + fileIdx)]
@@ -666,7 +666,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       !fileName
       !header + implementationString
     ]
-  #---
+  //---
     ioAllProductFileSet += !headerFileName + ".h"
     ioToolHeaderFileList += !headerFileName + ".h"
     let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
@@ -679,7 +679,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       !startOfHeader + headerString
     ]
   end
-#--- all declarations header
+//--- all declarations header
   ioAllProductFileSet += !"all-declarations.h"
   ioToolHeaderFileList += !"all-declarations.h"
   let startOfAllDeclarationsHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
@@ -693,7 +693,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -703,7 +703,7 @@ private proc generateManyImplementationFiles
   ?!@stringset ioAllProductFileSet
 {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
-#--- Generation
+//--- Generation
   for declaration in inSemanticDeclarationSortedListForGeneration do
     var @stringset inclusionSet = ()
     if not [declaration.mDeclaration isPredefined] then
@@ -730,5 +730,5 @@ private proc generateManyImplementationFiles
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

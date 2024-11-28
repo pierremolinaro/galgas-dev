@@ -1,13 +1,13 @@
 lexique dangling_else_solution_lexique {
 
-#--- Key words
+//--- Key words
 list keyWordList error message "the '%K' key word"{
  "I", # IF EXPR THEN
  "E", # ELSE
  "O" } # OTHER
 rule list keyWordList
 
-#--- Identifiers
+//--- Identifiers
 $id$error message "an identifier"
 
 @string identifierString
@@ -17,12 +17,12 @@ rule 'a'->'z' | 'A'->'Z' {
   send search identifierString in keyWordList default $id$
 }
 
-#--- Delimitors
+//--- Delimitors
 list delimitorsList error message "the '%K' delimitor"{
   "+" , "*", "(", ")" }
 rule list delimitorsList
 
-# --------------------- separators -----------------------------------------
+// -------------------- separators -----------------------------------------
 rule '\u0001' -> ' ' {
 }
 

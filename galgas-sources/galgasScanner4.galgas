@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  GALGAS scanner definition
 #
@@ -20,10 +20,10 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 lexique galgasScanner4 {
-#--- indexing keys
+//--- indexing keys
 indexing classDefinition : "Class Definition"
 indexing enumDefinition : "Enum Definition"
 indexing structDefinition : "Struct Definition"
@@ -82,7 +82,7 @@ indexing grammarComponentReference : "Grammar Component Reference"
 indexing indexingNameDefinition : "Indexing Name Definition"
 indexing indexingNameReference : "Indexing Name Reference"
 
-#--- Scanner attributes
+//--- Scanner attributes
 @string identifierString
 @uint uint32value
 @sint sint32value
@@ -105,7 +105,7 @@ style typeNameStyle -> "Type Names (@...)"
 style attributeStyle -> "Attributes (%...)"
 style commentStyle -> "Comments"
 
-# -------------------------- identifier or key word --------------------
+// ------------------------- identifier or key word --------------------
 # keywords can be written in lower or upper case
 # for identifiers, case is significant
 
@@ -206,7 +206,7 @@ rule isUnicodeLetter {
   send search identifierString in galgasKeyWordList default $identifier$
 }
 
-#------------------------------- Integer, floating Point Constant ------------------
+//------------------------------ Integer, floating Point Constant ------------------
 @double floatValue
 @bigint bigintValue
 $double.xxx$ !floatValue !tokenString style floatStyle error message "a float number"
@@ -259,12 +259,12 @@ rule '0'->'9' {
 }
 
 
-#------------------------------- Floating point Number ------------------
+//------------------------------ Floating point Number ------------------
 $.$ style delimitersStyle error message "the '.' delimitor"
 $...$ style delimitersStyle error message "the '...' delimitor"
 $..<$ style delimitersStyle error message "the '..<' delimitor"
 
-#--- Floating Point constant begining with a dot
+//--- Floating Point constant begining with a dot
 rule '.' {
   select
   case '0'->'9' :
@@ -291,7 +291,7 @@ rule '.' {
 }
 
 
-# -------------------------- Type Name -----------------------------
+// ------------------------- Type Name -----------------------------
 
 $@type$ ! tokenString style typeNameStyle error message "a type name (@...)"
 
@@ -310,7 +310,7 @@ rule '@' {
   send $@type$
 }
 
-# -------------------------- Attribute -----------------------------
+// ------------------------- Attribute -----------------------------
 
 message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
 
@@ -372,7 +372,7 @@ rule '%' {
   send search tokenString in attributeKeyWordList default error undefinedAttribute
 }
 
-#--------------------------------- Character constant ------------------------------------
+//-------------------------------- Character constant ------------------------------------
 $'char'$ ! charValue style characterStyle error message "a character constant"
 
 message incorrectCharConstant : "incorrect literal character"
@@ -495,7 +495,7 @@ rule '\'' {
   end
 }
 
-#----------------------- Grammar terminal symbol ---------------------------
+//---------------------- Grammar terminal symbol ---------------------------
 $\$terminal\$$ ! tokenString style terminalStyle error message "a terminal symbol ($...$)"
 
 message incorrect_terminal_start : "incorrect terminal start"
@@ -545,7 +545,7 @@ rule '$' {
   send $\$terminal\$$
 }
 
-# ------------------------------------ Comment ----------------------------
+// ----------------------------------- Comment ----------------------------
 $comment$ style commentStyle %nonAtomicSelection error message "a comment"
 $commentMark$ style commentStyle %nonAtomicSelection error message "a comment"
 
@@ -579,13 +579,13 @@ rule "//" {
   end
 }
 
-# ----------------------------- Delimitors ---------------------------------------
+// ---------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList style delimitersStyle error message "the '%K' delimitor" {
   "*",    ",",   "+",  "&+", "&-", "&*", "&/",
   ">",    ";",   ":",  ":>",
   "-",    "(",   ")",  "->",
   "==",   "=",   "&&",
-  "[",    "]",
+  "[",    "]", // ".(",
   "+=",   "-=", "*=", "/=", "&=", "|=", "^=",
   "/",    "!=",  ">=", "&",
   "{",    "}",   "`",  "||", "|",
@@ -596,7 +596,7 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
 
 rule list galgasDelimitorsList
 
-# --------- Special formal arguments, actual parameters --------------------------
+// -------- Special formal arguments, actual parameters --------------------------
 $?selector:$ ! tokenString style selectorStyle error message "the '\?selector:' delimitor"
 $?$ style delimitersStyle error message "the '?' delimitor"
 
@@ -689,7 +689,7 @@ rule '!' {
   end
 }
 
-# --------- Special delimitors / non terminal symbol --------------------------
+// -------- Special delimitors / non terminal symbol --------------------------
 $<$ style delimitersStyle error message "the '<' delimitor"
 $<=$ style delimitersStyle error message "the '<=' delimitor"
 $<<$ style delimitersStyle error message "the '<<' delimitor"
@@ -718,7 +718,7 @@ rule '<' {
   end
 }
 
-# -------------------- Characters string --------------------------------------
+// ------------------- Characters string --------------------------------------
 $"string"$ ! tokenString style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
 
 message incorrectStringEnd : "string does not end with '\"'"
@@ -837,7 +837,7 @@ rule '"' {
   end
 }
 
-# --------------------- separators -----------------------------------------
+// -------------------- separators -----------------------------------------
 rule '\u0001' -> ' ' {
 }
 

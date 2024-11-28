@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,38 +20,38 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  A S T   C L A S S    F O R    P R E D E F I N E D   T Y P E S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @initializerSignatureList {
   public let @formalInputParameterListAST initializer
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @predefinedTypeAST : @semanticDeclarationAST {
   public let @string mPredefinedTypeName
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   getter typeKind -> @typeKindEnum {
     result = .otherType
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   abstract getter cppDeclarationString -> @string
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   getter initializers -> @initializerSignatureList {
     result = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInGraph
        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -65,7 +65,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method enterDeclarationInSemanticContext
         ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -87,14 +87,14 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?let @string enumeratedTypeName
     ]
     [!?ioTypeMap makeEntryFromString !self.mPredefinedTypeName ?*]
-  #--- Enumeration
+  //--- Enumeration
     let @unifiedTypeMapEntry enumeratedTypeEntry
     if enumeratedTypeName == "" then
       enumeratedTypeEntry = @unifiedTypeMapEntry.null
     else
       [!?ioTypeMap makeEntryFromString !enumeratedTypeName ?enumeratedTypeEntry]
     end
-  #--- Add Extensions
+  //--- Add Extensions
     var @initializerMap initializerMap = ()
     for (initializer) in [self initializers] do
       var @functionSignature formalParameterList = ()
@@ -122,7 +122,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: true
     )
-  #---
+  //---
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: @lstring {!self.mPredefinedTypeName !.nowhere}
       !isPredefined: self.isPredefined
@@ -153,7 +153,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method semanticAnalysis
       ?!@lstringlist ioUsefulnessRootEntities
@@ -164,11 +164,11 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?let @predefinedTypes unused inPredefinedTypes
       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
    let selfType = [ioTypeMap typeMapEntryForLKey !.init {!self.mPredefinedTypeName !.here}]
-  #--- Useful entities graph
+  //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.init {!self.mPredefinedTypeName !.here})
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     ioUsefulnessRootEntities += !nameForUsefulness
-  #--- Useful entities graph for initializer without any argument
+  //--- Useful entities graph for initializer without any argument
     for initializer in selfType.definition.initializerMap do
       let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
         !.init {!self.mPredefinedTypeName !.here}
@@ -177,7 +177,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
-  #---
+  //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "Predefined type " + self.mPredefinedTypeName
       !@primitiveTypeForGeneration {
@@ -188,61 +188,61 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       }
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                              !@classFunctionMap outClassFunctionMap {
     outClassFunctionMap = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@getterMap outGetterMap {
     outGetterMap = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@setterMap outSetterMap {
     outSetterMap = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                               !@instanceMethodMap outInstanceMethodMap {
     outInstanceMethodMap = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
     outClassMethodMap = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   getter getSupportedOperatorFlags -> @typeFeatures outFlags {
     outFlags = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   getter supportsCollectionValue -> @bool {
     result = false # Does not support collection value
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                   !@functionSignature outAddAssignArgumentList {
     outAddAssignArgumentList = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@enumerationDescriptorList outEnumerationList
@@ -251,11 +251,11 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     outEnumeratedType = "" # Enumeration is not supported
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                           ?let @string inElementTypeName
@@ -278,7 +278,7 @@ private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclara
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !inElementTypeName + "list")
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?!@lstringlist ioUsefulnessRootEntities {
@@ -308,7 +308,7 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2stringlist")
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?let @string inElementTypeName
@@ -351,7 +351,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
 #  end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclarationListASTs
                                          ?!@lstringlist unused ioUsefulnessRootEntities {
@@ -380,7 +380,7 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc insertInUsefulnessEntities 
          ?!@lstringlist ioUsefulnessRootEntities
@@ -389,7 +389,7 @@ private proc insertInUsefulnessEntities
   ioUsefulnessRootEntities += !typeUsefulnessName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc insertPredefinedType 
          ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -412,7 +412,7 @@ private proc insertPredefinedType
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListASTs
                                ?!@lstringlist ioUsefulnessRootEntities {
@@ -538,7 +538,7 @@ proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListAS
   appendStructASTForRangeType (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -588,5 +588,5 @@ filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_gene
   template timer_type "timer-type.h.galgasTemplate"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

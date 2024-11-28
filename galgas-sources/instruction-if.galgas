@@ -15,18 +15,18 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <expression_or_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@semanticExpressionAST outExpression
 
-  #·······························································································
+  //······························································································
 
   rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                              !@semanticInstructionAST outInstruction {
@@ -56,7 +56,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -65,7 +65,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@ifExpressionList outExpressionList {
@@ -109,20 +109,20 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <expression_or> ?!@galgasDeclarationAST ioDeclarations
                        !@semanticExpressionAST outExpression
 
-  #·······························································································
+  //······························································································
 
   rule <if_instruction_core> ?!@galgasDeclarationAST ioDeclarations
                              !@semanticInstructionAST outInstruction {
@@ -152,7 +152,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -161,7 +161,7 @@ syntax extension galgas4InstructionsSyntax {
     $end$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
                        !@ifExpressionList outExpressionList {
@@ -205,26 +205,26 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifExpressionKind {
   case regularExp (@semanticExpressionAST exp @location endOfExp)
   case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ifExpressionList {
   public let @ifExpressionKind mExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @ifInstructionAST : @semanticInstructionAST {
   public let @ifExpressionList mExpressions
@@ -233,7 +233,7 @@ class @ifInstructionAST : @semanticInstructionAST {
   public let @semanticInstructionListAST m_else_instructionList
   public let @location mEndOf_if_instruction
 
-  #·······························································································
+  //······························································································
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (expression) in self.mExpressions do
@@ -249,9 +249,9 @@ class @ifInstructionAST : @semanticInstructionAST {
     [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
   #! SEMANTICS
-  #·······························································································
+  //······························································································
   # l'expression a peut être de la forme let varA = exp as @T ; idem pour b
   #
   # L'instruction : IF a, b THEN X ELSE Y END est analysée par :
@@ -273,7 +273,7 @@ class @ifInstructionAST : @semanticInstructionAST {
   #    closeBranch
   #  closeOverride
   #
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction
                           ?let @lstring inUsefulnessCallerEntityName
@@ -282,7 +282,7 @@ class @ifInstructionAST : @semanticInstructionAST {
                           ?!@unifiedTypeMap ioTypeMap
                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                           ?!@localVarManager ioVariableMap {
-  #--- Test expression
+  //--- Test expression
     var @ifTestListForGeneration testListForGeneration = ()
     for (expression) in self.mExpressions do
       switch expression
@@ -317,7 +317,7 @@ class @ifInstructionAST : @semanticInstructionAST {
         ]
         var castType = @unifiedTypeMapEntry.null
         var testType = @unifiedTypeMapEntry.null
-      #--- Check this is an optional
+      //--- Check this is an optional
         let unwrappedType = [analyzedExpression.mResultType definition].unwrappedType 
         if not [unwrappedType isNull] then
           [!?ioVariableMap openOverrideForSelectBlock]
@@ -339,14 +339,14 @@ class @ifInstructionAST : @semanticInstructionAST {
             !exp: analyzedExpression
             !targetType: unwrappedType
           }
-      #--- Check this is a class
+      //--- Check this is a class
         elsif [[analyzedExpression.mResultType definition].typeKind isClassType] then
           if typeName.string == "" then
             error typeName.location : "on a class object, the 'as' clause is required" : castType, testType
           else
             castType = [ioTypeMap typeMapEntryForLKey !typeName]
             testType = castType
-          #--- Check expression type is a descendant of named type
+          //--- Check expression type is a descendant of named type
             var @unifiedTypeMapEntry t = castType
             var @bool found = t == analyzedExpression.mResultType
             loop ([ioTypeMap count] + 1)
@@ -434,7 +434,7 @@ class @ifInstructionAST : @semanticInstructionAST {
         end
       end
     end
-  #--- Then branch
+  //--- Then branch
     analyzeSemanticInstructionListWithoutBranch (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -454,7 +454,7 @@ class @ifInstructionAST : @semanticInstructionAST {
       [!?ioVariableMap closeOverride !self.mEndOf_then_branch]
     end
     [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
-  #--- else branch
+  //--- else branch
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -469,7 +469,7 @@ class @ifInstructionAST : @semanticInstructionAST {
       ?let else_instructionList
     )
     [!?ioVariableMap closeOverride !self.mEndOf_if_instruction]
-  #--- Generate instruction
+  //--- Generate instruction
     ioInstructionListForGeneration += !@ifInstructionForGeneration {
       !self.mEndOf_then_branch
       !testListForGeneration
@@ -478,13 +478,13 @@ class @ifInstructionAST : @semanticInstructionAST {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 # L'instruction : IF a, b THEN X ELSE Y END est traduite en :
 #
 #  enumGalgasBool testResult = kBoolTrue ;
@@ -501,7 +501,7 @@ class @ifInstructionAST : @semanticInstructionAST {
 #    Y
 #  }
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifTestForGeneration {
   case regular (@semanticExpressionForGeneration exp)
@@ -537,7 +537,7 @@ override method @ifInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-#--- Generate test expression
+//--- Generate test expression
   let testVar = "test_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "enumGalgasBool " + testVar + " = kBoolTrue ;\n"
@@ -587,7 +587,7 @@ override method @ifInstructionForGeneration generateInstruction
       ioGeneratedCode += "}\n"
     end
   end
-#--- Then branch
+//--- Then branch
   ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
   generateInstructionList (
     !?ioInclusionSet
@@ -602,7 +602,7 @@ override method @ifInstructionForGeneration generateInstruction
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end
-#--- else branch
+//--- else branch
   if [self.m_else_instructionList count] > 0 then
     ioGeneratedCode += "if (kBoolFalse == " + testVar + ") {\n"
     generateInstructionList (
@@ -617,4 +617,4 @@ override method @ifInstructionForGeneration generateInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

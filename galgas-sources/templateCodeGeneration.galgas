@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Semantic decorated types for template generation
 #
@@ -21,7 +21,7 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @templateInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -30,7 +30,7 @@ abstract method @templateInstructionForGeneration templateCodeGeneration
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc templateCodeGenerationForListInstruction ?let @templateInstructionListForGeneration inInstructionList
                                               ?!@string ioGeneratedCode
@@ -49,7 +49,7 @@ proc templateCodeGenerationForListInstruction ?let @templateInstructionListForGe
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionStringForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -60,7 +60,7 @@ override method @templateInstructionStringForGeneration templateCodeGeneration
   ioGeneratedCode += "result.appendString (" + [self.mTemplateString utf8RepresentationEscapingQuestionMark] + ") ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionExpressionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -68,12 +68,12 @@ override method @templateInstructionExpressionForGeneration templateCodeGenerati
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker {
-#--- Expression
+//--- Expression
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let cppName]
   ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -81,7 +81,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
-#--- Expression
+//--- Expression
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let indendationVarCppName]
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
   ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
@@ -99,7 +99,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionGetColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -111,7 +111,7 @@ override method @templateInstructionGetColumnLocationForGeneration templateCodeG
   ioGeneratedCode += "columnMarker = result.currentColumn () ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionGotoColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
@@ -123,7 +123,7 @@ override method @templateInstructionGotoColumnLocationForGeneration templateCode
   ioGeneratedCode += "result.appendSpacesUntilColumn (columnMarker) ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionIfForGeneration templateCodeGeneration
                                                         ?!@string ioGeneratedCode
@@ -132,7 +132,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
                                                         ?!@stringset ioUnusedVariableCppNameSet
                                                         ?!@bool ioUseColumnMarker {
   for (expression instructionList) in self.mTemplateInstructionIfBranchList do
-  #--- IF expression
+  //--- IF expression
     [expression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -159,7 +159,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
     ioGeneratedCode += "case kBoolFalse : {\n"
     [!?ioGeneratedCode incIndentation !2]
   end
-#--- else instructions
+//--- else instructions
   templateCodeGenerationForListInstruction (
     !self.mElseInstructionList
     !?ioGeneratedCode
@@ -177,5 +177,5 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

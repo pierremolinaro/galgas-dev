@@ -15,11 +15,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -39,15 +39,15 @@ syntax extension galgas3ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -67,7 +67,7 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_beginning_by_type> ?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
@@ -87,25 +87,25 @@ syntax extension galgas4ExpressionSyntax {
     $]$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementList {
   public let @semanticExpressionAST mExpression
   public let @location location
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @collectionValueAST : @semanticExpressionAST {
   public let @lstring mTypeName # Empty string if infered
   public let @collectionValueElementList mExpressionList
   public let @location mEndOfCollectionValue
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for (expression *) in self.mExpressionList do
@@ -113,7 +113,7 @@ class @collectionValueAST : @semanticExpressionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
         ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -123,14 +123,14 @@ class @collectionValueAST : @semanticExpressionAST {
         ?!@unifiedTypeMap ioTypeMap
         ?!@localVarManager ioVariableMap
         !@semanticExpressionForGeneration outExpression {
-  #--- Type
+  //--- Type
     let @unifiedTypeMapEntry targetType
     if self.mTypeName.string == "" then
       targetType = inType
     else
       targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
     end
-  #---
+  //---
     if targetType == .null then
       error self.mTypeName : "Cannot infer type" : outExpression
     elsif not [targetType definition].supportCollectionValue then
@@ -143,7 +143,7 @@ class @collectionValueAST : @semanticExpressionAST {
       if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
         error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
       end
-    #--- Usefull entity graph
+    //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
         ![targetType definition].typeName
         ![emptyArgumentList initializerSignature]
@@ -162,7 +162,7 @@ class @collectionValueAST : @semanticExpressionAST {
           !?ioVariableMap
           ?var expressionForGeneration
         ]
-      #--- Check assignment type compatibility
+      //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
           !elementType
           !expressionForGeneration.mResultType
@@ -176,46 +176,46 @@ class @collectionValueAST : @semanticExpressionAST {
         !self.mEndOfCollectionValue
         !expressionListForGeneration
       }
-    #--- Usefull entity graph
+    //--- Usefull entity graph
       let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([targetType definition].typeName)
       [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementListForGeneration {
   public let @semanticExpressionForGeneration expression
   public let @location location
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   public let @collectionValueElementListForGeneration expressionList
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
-  #---
+  //---
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-  #--- Create temporary variable variable
+  //--- Create temporary variable variable
     outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
     ioTemporaryVariableIndex += 1
-  #--- Declare variable and apply default constructor
+  //--- Declare variable and apply default constructor
     ioGeneratedCode += "GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
     ioGeneratedCode += " = GGS_" +  [self.mResultType identifierRepresentation]
     ioGeneratedCode += "::init (" + compilerCppName () + [self.mLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  #--- Add Elements
+  //--- Add Elements
     for (expression location) in self.expressionList do
       [expression generateExpression
         !?ioGeneratedCode
@@ -230,8 +230,8 @@ class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

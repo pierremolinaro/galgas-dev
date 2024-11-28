@@ -16,9 +16,9 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @optionDefaultValueEnumAST %equatable {
   case noDefaultValue
@@ -26,7 +26,7 @@ enum @optionDefaultValueEnumAST %equatable {
   case stringDefaultValue
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @commandLineOptionListAST {
   public let @lstring mOptionTypeName
@@ -38,21 +38,21 @@ list @commandLineOptionListAST {
   public let @optionDefaultValueEnumAST mOptionDefaultValueKind
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @optionComponentDeclarationAST : @semanticDeclarationAST {
   public let @lstring mOptionComponentName
   public let @commandLineOptionListAST mOptions
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 syntax galgas3OptionComponentSyntax (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $option$
@@ -71,7 +71,7 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
@@ -107,15 +107,15 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
       !optionDefaultValueKind
   }
 
-  #·······························································································
+  //······························································································
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $option$
@@ -134,7 +134,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <option_declaration_ggs3> ?!@commandLineOptionListAST ioCommandLineOptionList {
     $@type$ ?let @lstring mOptionTypeName
@@ -170,12 +170,12 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       !optionDefaultValueKind
   }
 
-  #·······························································································
+  //······························································································
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -189,9 +189,9 @@ override method @optionComponentDeclarationAST enterDeclarationInGraph
   ioExtensionOverrideDefinitionList += !self
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! ENTER IN CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -259,7 +259,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
     end
     optionNameSet += !mOptionInternalName.string
   end
-#--- Insert option
+//--- Insert option
   [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
     !self.mOptionComponentName
     !self.isPredefined
@@ -270,9 +270,9 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -283,10 +283,10 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#---
+//---
   [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !self.mOptionComponentName
     ?let @bool optionIsPredefined
@@ -295,7 +295,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
   ]
-#---- Sort options
+//--- Sort options
   var @commandLineOptionSortedList boolOptionSortedList = ()
   for anOption in boolOptionMap do
     boolOptionSortedList +=
@@ -332,7 +332,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !anOption.mComment
       !anOption.mDefaultValue
   end
-#---- Enter filewrapper in generated list
+//--- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "option " + self.mOptionComponentName
     !@optionComponentForGeneration {
@@ -347,9 +347,9 @@ override method @optionComponentDeclarationAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mIsPredefined
@@ -360,19 +360,19 @@ class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneratio
   public let @commandLineOptionSortedList mStringListSortedList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentForGeneration isPredefined -> @bool {
   result = self.mIsPredefined
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentForGeneration headerKind -> @headerKind {
   result = if self.mIsPredefined then .noHeader else .oneHeader end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -391,7 +391,7 @@ override method @optionComponentForGeneration appendDeclaration1
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -412,14 +412,14 @@ override method @optionComponentForGeneration appendSpecificImplementation
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentForGeneration appendSpecificFiles
   ?let @string inProductDirectory
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioCocoaProductFileList
 {
-#--- Generate Cocoa header
+//--- Generate Cocoa header
   if @uint.errorCount == 0 && not self.mIsPredefined then
     ioAllProductFileSet += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
     [@string generateFileWithPattern
@@ -437,7 +437,7 @@ override method @optionComponentForGeneration appendSpecificFiles
       ]
       !makeExecutable:false
     ]
-  #--- Generate Cocoa Implementation
+  //--- Generate Cocoa Implementation
     ioAllProductFileSet += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
     ioCocoaProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
     [@string generateFileWithPattern
@@ -458,7 +458,7 @@ override method @optionComponentForGeneration appendSpecificFiles
       !generatedZone3:"\n\n" # User Zone 3
       !makeExecutable:false
     ]
-  #--- Generate Swift Cocoa Implementation
+  //--- Generate Swift Cocoa Implementation
     ioAllProductFileSet += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
     ioCocoaProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
     [@string generateFileWithPattern
@@ -482,7 +482,7 @@ override method @optionComponentForGeneration appendSpecificFiles
  end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @commandLineOptionMap { # the key is the option identifier
   public let @char mOptionChar
@@ -493,7 +493,7 @@ map @commandLineOptionMap { # the key is the option identifier
   search searchKey error message "the '%K' command line option is not declared"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 sortedlist @commandLineOptionSortedList {
   public let @string mOptionIdentifier
@@ -505,9 +505,9 @@ sortedlist @commandLineOptionSortedList {
   mComment <
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {
 }{
@@ -549,5 +549,5 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

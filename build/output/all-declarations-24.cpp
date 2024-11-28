@@ -499,16 +499,16 @@ void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalFunctionCallArgum
                                                                                      const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum var_attributeLexicalType_11794 ;
+  GGS_lexicalTypeEnum var_attributeLexicalType_11795 ;
   const GGS_lexicalAttributeInputArgumentAST temp_0 = this ;
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_11794, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 277)) ;
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_11795, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 277)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_11794.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_11795.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GGS_lexicalAttributeInputArgumentAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_11794, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 284)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 283)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 284)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 285)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 286)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 283)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_11795, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 284)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 283)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 284)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 285)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 286)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 283)) ;
     }
   }
 }
@@ -582,48 +582,48 @@ void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalFunctionCallArgume
                                                                                     const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_14440 ;
-  GGS_lexicalTypeEnum var_returnedLexicalFormalType_14471 ;
-  GGS_string var_replacementFunctionName_14506 ;
+  GGS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_14446 ;
+  GGS_lexicalTypeEnum var_returnedLexicalFormalType_14477 ;
+  GGS_string var_replacementFunctionName_14512 ;
   const GGS_lexicalFunctionInputArgumentAST temp_0 = this ;
-  GGS_bool joker_14534 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalFunctionMap ().method_searchKey (temp_0.readProperty_mFunctionName (), var_lexicalFormalTypeList_14440, var_returnedLexicalFormalType_14471, var_replacementFunctionName_14506, joker_14534, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 339)) ;
+  GGS_bool joker_14540 ; // Joker input parameter
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalFunctionMap ().method_searchKey (temp_0.readProperty_mFunctionName (), var_lexicalFormalTypeList_14446, var_returnedLexicalFormalType_14477, var_replacementFunctionName_14512, joker_14540, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 339)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_replacementFunctionName_14506.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_replacementFunctionName_14512.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GGS_lexicalFunctionInputArgumentAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticWarning (temp_2.readProperty_mFunctionName ().readProperty_location (), GGS_string ("obsolete lexical function, replaced by '").add_operation (var_replacementFunctionName_14506, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 348)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 348)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 348)) ;
+      inCompiler->emitSemanticWarning (temp_2.readProperty_mFunctionName ().readProperty_location (), GGS_string ("obsolete lexical function, replaced by '").add_operation (var_replacementFunctionName_14512, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 348)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 348)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 348)) ;
     }
   }
   enumGalgasBool test_4 = kBoolTrue ;
   if (kBoolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::notEqual, var_returnedLexicalFormalType_14471.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
+    test_4 = GGS_bool (ComparisonKind::notEqual, var_returnedLexicalFormalType_14477.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
     if (kBoolTrue == test_4) {
       const GGS_lexicalFunctionInputArgumentAST temp_5 = this ;
       TC_Array <FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (temp_5.readProperty_mFunctionName ().readProperty_location (), GGS_string ("type error, the function returns an @").add_operation (extensionGetter_lexicalTypeBaseName (var_returnedLexicalFormalType_14471, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 353)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 352)).add_operation (GGS_string (" value, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 353)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 355)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 354)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 355)), fixItArray6  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 352)) ;
+      inCompiler->emitSemanticError (temp_5.readProperty_mFunctionName ().readProperty_location (), GGS_string ("type error, the function returns an @").add_operation (extensionGetter_lexicalTypeBaseName (var_returnedLexicalFormalType_14477, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 353)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 352)).add_operation (GGS_string (" value, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 353)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 355)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 354)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 355)), fixItArray6  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 352)) ;
     }
   }
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     const GGS_lexicalFunctionInputArgumentAST temp_8 = this ;
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_lexicalFormalTypeList_14440.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 359)).objectCompare (temp_8.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 359)))).boolEnum () ;
+    test_7 = GGS_bool (ComparisonKind::notEqual, var_lexicalFormalTypeList_14446.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 359)).objectCompare (temp_8.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 359)))).boolEnum () ;
     if (kBoolTrue == test_7) {
       const GGS_lexicalFunctionInputArgumentAST temp_9 = this ;
       const GGS_lexicalFunctionInputArgumentAST temp_10 = this ;
       TC_Array <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_9.readProperty_mFunctionName ().readProperty_location (), GGS_string ("this lexical function names ").add_operation (temp_10.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 361)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 361)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 360)).add_operation (GGS_string (" actual argument(s), but the prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 361)).add_operation (var_lexicalFormalTypeList_14440.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 363)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 363)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 362)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 363)), fixItArray11  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 360)) ;
+      inCompiler->emitSemanticError (temp_9.readProperty_mFunctionName ().readProperty_location (), GGS_string ("this lexical function names ").add_operation (temp_10.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 361)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 361)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 360)).add_operation (GGS_string (" actual argument(s), but the prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 361)).add_operation (var_lexicalFormalTypeList_14446.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 363)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 363)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 362)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 363)), fixItArray11  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 360)) ;
     }
   }
   const GGS_lexicalFunctionInputArgumentAST temp_12 = this ;
-  cEnumerator_lexicalFunctionFormalArgumentList enumerator_15523 (var_lexicalFormalTypeList_14440, EnumerationOrder::up) ;
-  cEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_15553 (temp_12.readProperty_mFunctionActualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_15523.hasCurrentObject () && enumerator_15553.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalFunctionCallArgument ((cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_15553.current_mLexicalActualInputArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_15523.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 367)) ;
-    enumerator_15523.gotoNextObject () ;
-    enumerator_15553.gotoNextObject () ;
+  cEnumerator_lexicalFunctionFormalArgumentList enumerator_15533 (var_lexicalFormalTypeList_14446, EnumerationOrder::up) ;
+  cEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_15563 (temp_12.readProperty_mFunctionActualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_15533.hasCurrentObject () && enumerator_15563.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalFunctionCallArgument ((cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_15563.current_mLexicalActualInputArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_15533.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 367)) ;
+    enumerator_15533.gotoNextObject () ;
+    enumerator_15563.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -636,16 +636,16 @@ void cPtr_lexicalAttributeInputArgumentAST::method_checkLexicalRoutineCallArgume
                                                                                     const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum var_attributeLexicalType_16646 ;
+  GGS_lexicalTypeEnum var_attributeLexicalType_16657 ;
   const GGS_lexicalAttributeInputArgumentAST temp_0 = this ;
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_16646, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 388)) ;
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_16657, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 388)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_16646.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_16657.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GGS_lexicalAttributeInputArgumentAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_16646, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 397)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 396)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 397)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_16657, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 397)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 396)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 397)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)) ;
     }
   }
 }
@@ -719,48 +719,48 @@ void cPtr_lexicalFunctionInputArgumentAST::method_checkLexicalRoutineCallArgumen
                                                                                    const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_19295 ;
-  GGS_lexicalTypeEnum var_returnedLexicalFormalType_19326 ;
-  GGS_string var_replacementFunctionName_19361 ;
+  GGS_lexicalFunctionFormalArgumentList var_lexicalFormalTypeList_19311 ;
+  GGS_lexicalTypeEnum var_returnedLexicalFormalType_19342 ;
+  GGS_string var_replacementFunctionName_19377 ;
   const GGS_lexicalFunctionInputArgumentAST temp_0 = this ;
-  GGS_bool joker_19389 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalFunctionMap ().method_searchKey (temp_0.readProperty_mFunctionName (), var_lexicalFormalTypeList_19295, var_returnedLexicalFormalType_19326, var_replacementFunctionName_19361, joker_19389, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 450)) ;
+  GGS_bool joker_19405 ; // Joker input parameter
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalFunctionMap ().method_searchKey (temp_0.readProperty_mFunctionName (), var_lexicalFormalTypeList_19311, var_returnedLexicalFormalType_19342, var_replacementFunctionName_19377, joker_19405, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 450)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_replacementFunctionName_19361.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_replacementFunctionName_19377.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GGS_lexicalFunctionInputArgumentAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticWarning (temp_2.readProperty_mFunctionName ().readProperty_location (), GGS_string ("obsolete lexical function, replaced by '").add_operation (var_replacementFunctionName_19361, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)) ;
+      inCompiler->emitSemanticWarning (temp_2.readProperty_mFunctionName ().readProperty_location (), GGS_string ("obsolete lexical function, replaced by '").add_operation (var_replacementFunctionName_19377, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)), fixItArray3  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 459)) ;
     }
   }
   enumGalgasBool test_4 = kBoolTrue ;
   if (kBoolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::notEqual, var_returnedLexicalFormalType_19326.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
+    test_4 = GGS_bool (ComparisonKind::notEqual, var_returnedLexicalFormalType_19342.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
     if (kBoolTrue == test_4) {
       const GGS_lexicalFunctionInputArgumentAST temp_5 = this ;
       TC_Array <FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (temp_5.readProperty_mFunctionName ().readProperty_location (), GGS_string ("type error, the function returns an @").add_operation (extensionGetter_lexicalTypeBaseName (var_returnedLexicalFormalType_19326, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 464)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 463)).add_operation (GGS_string (" value, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 464)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 465)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 466)), fixItArray6  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 463)) ;
+      inCompiler->emitSemanticError (temp_5.readProperty_mFunctionName ().readProperty_location (), GGS_string ("type error, the function returns an @").add_operation (extensionGetter_lexicalTypeBaseName (var_returnedLexicalFormalType_19342, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 464)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 463)).add_operation (GGS_string (" value, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 464)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 465)).add_operation (GGS_string (" value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 466)), fixItArray6  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 463)) ;
     }
   }
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     const GGS_lexicalFunctionInputArgumentAST temp_8 = this ;
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_lexicalFormalTypeList_19295.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 470)).objectCompare (temp_8.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 470)))).boolEnum () ;
+    test_7 = GGS_bool (ComparisonKind::notEqual, var_lexicalFormalTypeList_19311.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 470)).objectCompare (temp_8.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 470)))).boolEnum () ;
     if (kBoolTrue == test_7) {
       const GGS_lexicalFunctionInputArgumentAST temp_9 = this ;
       const GGS_lexicalFunctionInputArgumentAST temp_10 = this ;
       TC_Array <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_9.readProperty_mFunctionName ().readProperty_location (), GGS_string ("this lexical function names ").add_operation (temp_10.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 472)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 471)).add_operation (GGS_string (" actual argument(s), but the prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 472)).add_operation (var_lexicalFormalTypeList_19295.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 474)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 474)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 473)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 474)), fixItArray11  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 471)) ;
+      inCompiler->emitSemanticError (temp_9.readProperty_mFunctionName ().readProperty_location (), GGS_string ("this lexical function names ").add_operation (temp_10.readProperty_mFunctionActualArgumentList ().getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 472)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 471)).add_operation (GGS_string (" actual argument(s), but the prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 472)).add_operation (var_lexicalFormalTypeList_19311.getter_count (SOURCE_FILE ("lexiqueCompilation.galgas", 474)).getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 474)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 473)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 474)), fixItArray11  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 471)) ;
     }
   }
   const GGS_lexicalFunctionInputArgumentAST temp_12 = this ;
-  cEnumerator_lexicalFunctionFormalArgumentList enumerator_20378 (var_lexicalFormalTypeList_19295, EnumerationOrder::up) ;
-  cEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_20408 (temp_12.readProperty_mFunctionActualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_20378.hasCurrentObject () && enumerator_20408.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalFunctionCallArgument ((cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_20408.current_mLexicalActualInputArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_20378.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 478)) ;
-    enumerator_20378.gotoNextObject () ;
-    enumerator_20408.gotoNextObject () ;
+  cEnumerator_lexicalFunctionFormalArgumentList enumerator_20398 (var_lexicalFormalTypeList_19311, EnumerationOrder::up) ;
+  cEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_20428 (temp_12.readProperty_mFunctionActualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_20398.hasCurrentObject () && enumerator_20428.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalFunctionCallArgument ((cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_20428.current_mLexicalActualInputArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_20398.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 478)) ;
+    enumerator_20398.gotoNextObject () ;
+    enumerator_20428.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -773,10 +773,10 @@ void cPtr_lexicalImplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisCo
                                                            Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_lexicalImplicitRuleAST temp_0 = this ;
-  GGS_lexicalExplicitTokenListMap joker_21663 ; // Joker input parameter
-  GGS_tokenSortedlist joker_21666 ; // Joker input parameter
-  GGS_bool joker_21669 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_21663, joker_21666, joker_21669, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 504)) ;
+  GGS_lexicalExplicitTokenListMap joker_21683 ; // Joker input parameter
+  GGS_tokenSortedlist joker_21686 ; // Joker input parameter
+  GGS_bool joker_21689 ; // Joker input parameter
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_21683, joker_21686, joker_21689, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 504)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -789,12 +789,12 @@ void cPtr_lexicalExplicitRuleAST::method_checkLexicalRule (GGS_lexiqueAnalysisCo
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_lexicalExplicitRuleAST temp_0 = this ;
   callExtensionMethod_checkLexicalExpression ((cPtr_lexicalExpressionAST *) temp_0.readProperty_mLexicalRuleExpression ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 511)) ;
-  GGS_lexicalTagMap var_tagMap_21991 = GGS_lexicalTagMap::init (inCompiler COMMA_HERE) ;
+  GGS_lexicalTagMap var_tagMap_22011 = GGS_lexicalTagMap::init (inCompiler COMMA_HERE) ;
   const GGS_lexicalExplicitRuleAST temp_1 = this ;
-  cEnumerator_lexicalInstructionListAST enumerator_22010 (temp_1.readProperty_mInstructionList (), EnumerationOrder::up) ;
-  while (enumerator_22010.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalInstruction ((cPtr_lexicalInstructionAST *) enumerator_22010.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap_21991, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 514)) ;
-    enumerator_22010.gotoNextObject () ;
+  cEnumerator_lexicalInstructionListAST enumerator_22030 (temp_1.readProperty_mInstructionList (), EnumerationOrder::up) ;
+  while (enumerator_22030.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalInstruction ((cPtr_lexicalInstructionAST *) enumerator_22030.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap_22011, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 514)) ;
+    enumerator_22030.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -1216,32 +1216,32 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateObjcCocoaInstruction
   result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 124)) ;
   }
   const GGS_lexicalRepeatInstructionAST temp_1 = this ;
-  cEnumerator_lexicalInstructionListAST enumerator_5170 (temp_1.readProperty_mRepeatedInstructionList (), EnumerationOrder::up) ;
-  while (enumerator_5170.hasCurrentObject ()) {
-    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_5170.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 127)) ;
-    enumerator_5170.gotoNextObject () ;
+  cEnumerator_lexicalInstructionListAST enumerator_5171 (temp_1.readProperty_mRepeatedInstructionList (), EnumerationOrder::up) ;
+  while (enumerator_5171.hasCurrentObject ()) {
+    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_5171.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 127)) ;
+    enumerator_5171.gotoNextObject () ;
   }
   const GGS_lexicalRepeatInstructionAST temp_2 = this ;
-  cEnumerator_lexicalWhileBranchListAST enumerator_5373 (temp_2.readProperty_mLexicalWhileBranchList (), EnumerationOrder::up) ;
-  while (enumerator_5373.hasCurrentObject ()) {
+  cEnumerator_lexicalWhileBranchListAST enumerator_5375 (temp_2.readProperty_mLexicalWhileBranchList (), EnumerationOrder::up) ;
+  while (enumerator_5375.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssign_operation(GGS_string ("if (scanningOk && ("), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 132)) ;
-    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_5373.current_mWhileExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 133)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 133)) ;
+    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_5375.current_mWhileExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 133)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 133)) ;
     result_outGeneratedCode.plusAssign_operation(GGS_string (")) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 134)) ;
     {
     result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 135)) ;
     }
-    cEnumerator_lexicalInstructionListAST enumerator_5664 (enumerator_5373.current_mWhileInstructionList (HERE), EnumerationOrder::up) ;
-    while (enumerator_5664.hasCurrentObject ()) {
-      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_5664.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 137)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 137)) ;
-      enumerator_5664.gotoNextObject () ;
+    cEnumerator_lexicalInstructionListAST enumerator_5666 (enumerator_5375.current_mWhileInstructionList (HERE), EnumerationOrder::up) ;
+    while (enumerator_5666.hasCurrentObject ()) {
+      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_5666.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 137)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 137)) ;
+      enumerator_5666.gotoNextObject () ;
     }
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 139)) ;
     }
-    if (enumerator_5373.hasNextObject ()) {
+    if (enumerator_5375.hasNextObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 141)) ;
     }
-    enumerator_5373.gotoNextObject () ;
+    enumerator_5375.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string ("}else{\n  ").add_operation (var_loopVarName_4950, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 144)).add_operation (GGS_string (" = NO ;\n}\n"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 144)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 143)) ;
   {
@@ -1269,32 +1269,32 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateSwiftCocoaInstructio
   result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 158)) ;
   }
   const GGS_lexicalRepeatInstructionAST temp_0 = this ;
-  cEnumerator_lexicalInstructionListAST enumerator_6627 (temp_0.readProperty_mRepeatedInstructionList (), EnumerationOrder::up) ;
-  while (enumerator_6627.hasCurrentObject ()) {
-    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_6627.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 161)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 161)) ;
-    enumerator_6627.gotoNextObject () ;
+  cEnumerator_lexicalInstructionListAST enumerator_6630 (temp_0.readProperty_mRepeatedInstructionList (), EnumerationOrder::up) ;
+  while (enumerator_6630.hasCurrentObject ()) {
+    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_6630.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 161)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 161)) ;
+    enumerator_6630.gotoNextObject () ;
   }
   const GGS_lexicalRepeatInstructionAST temp_1 = this ;
-  cEnumerator_lexicalWhileBranchListAST enumerator_6831 (temp_1.readProperty_mLexicalWhileBranchList (), EnumerationOrder::up) ;
-  while (enumerator_6831.hasCurrentObject ()) {
+  cEnumerator_lexicalWhileBranchListAST enumerator_6835 (temp_1.readProperty_mLexicalWhileBranchList (), EnumerationOrder::up) ;
+  while (enumerator_6835.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssign_operation(GGS_string ("if scanningOk && ("), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 166)) ;
-    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_6831.current_mWhileExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 167)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 167)) ;
+    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_6835.current_mWhileExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 167)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 167)) ;
     result_outGeneratedCode.plusAssign_operation(GGS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 168)) ;
     {
     result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 169)) ;
     }
-    cEnumerator_lexicalInstructionListAST enumerator_7121 (enumerator_6831.current_mWhileInstructionList (HERE), EnumerationOrder::up) ;
-    while (enumerator_7121.hasCurrentObject ()) {
-      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_7121.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 171)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 171)) ;
-      enumerator_7121.gotoNextObject () ;
+    cEnumerator_lexicalInstructionListAST enumerator_7125 (enumerator_6835.current_mWhileInstructionList (HERE), EnumerationOrder::up) ;
+    while (enumerator_7125.hasCurrentObject ()) {
+      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_7125.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 171)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 171)) ;
+      enumerator_7125.gotoNextObject () ;
     }
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 173)) ;
     }
-    if (enumerator_6831.hasNextObject ()) {
+    if (enumerator_6835.hasNextObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 175)) ;
     }
-    enumerator_6831.gotoNextObject () ;
+    enumerator_6835.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string ("}else{\n  loop = false\n}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 177)) ;
   {
@@ -1337,32 +1337,32 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateLexicalInstructionCo
   result_result.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 200)) ;
   }
   const GGS_lexicalRepeatInstructionAST temp_0 = this ;
-  cEnumerator_lexicalInstructionListAST enumerator_8319 (temp_0.readProperty_mRepeatedInstructionList (), EnumerationOrder::up) ;
-  while (enumerator_8319.hasCurrentObject ()) {
-    result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_8319.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 203)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 203)) ;
-    enumerator_8319.gotoNextObject () ;
+  cEnumerator_lexicalInstructionListAST enumerator_8324 (temp_0.readProperty_mRepeatedInstructionList (), EnumerationOrder::up) ;
+  while (enumerator_8324.hasCurrentObject ()) {
+    result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_8324.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 203)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 203)) ;
+    enumerator_8324.gotoNextObject () ;
   }
   const GGS_lexicalRepeatInstructionAST temp_1 = this ;
-  cEnumerator_lexicalWhileBranchListAST enumerator_8510 (temp_1.readProperty_mLexicalWhileBranchList (), EnumerationOrder::up) ;
-  while (enumerator_8510.hasCurrentObject ()) {
+  cEnumerator_lexicalWhileBranchListAST enumerator_8516 (temp_1.readProperty_mLexicalWhileBranchList (), EnumerationOrder::up) ;
+  while (enumerator_8516.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("if ("), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 208)) ;
-    result_result.plusAssign_operation(callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_8510.current_mWhileExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 209)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 209)) ;
+    result_result.plusAssign_operation(callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_8516.current_mWhileExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 209)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 209)) ;
     result_result.plusAssign_operation(GGS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 210)) ;
     {
     result_result.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 211)) ;
     }
-    cEnumerator_lexicalInstructionListAST enumerator_8744 (enumerator_8510.current_mWhileInstructionList (HERE), EnumerationOrder::up) ;
-    while (enumerator_8744.hasCurrentObject ()) {
-      result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_8744.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 213)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 213)) ;
-      enumerator_8744.gotoNextObject () ;
+    cEnumerator_lexicalInstructionListAST enumerator_8750 (enumerator_8516.current_mWhileInstructionList (HERE), EnumerationOrder::up) ;
+    while (enumerator_8750.hasCurrentObject ()) {
+      result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_8750.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 213)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 213)) ;
+      enumerator_8750.gotoNextObject () ;
     }
     {
     result_result.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 215)) ;
     }
-    if (enumerator_8510.hasNextObject ()) {
+    if (enumerator_8516.hasNextObject ()) {
       result_result.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 217)) ;
     }
-    enumerator_8510.gotoNextObject () ;
+    enumerator_8516.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GGS_string ("}else{\n  loop = false ;\n}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 219)) ;
   {
@@ -1560,16 +1560,16 @@ void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCall
                                                                                           const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum var_attributeLexicalType_8890 ;
+  GGS_lexicalTypeEnum var_attributeLexicalType_8891 ;
   const GGS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_8890, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 217)) ;
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_8891, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 217)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_8890.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_8891.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GGS_lexicalAttributeInputOutputArgumentAST temp_2 = this ;
       TC_Array <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_8890, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 223)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 224)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 226)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 225)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 226)), fixItArray3  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 223)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_8891, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 224)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 223)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 224)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 226)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 225)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 226)), fixItArray3  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 223)) ;
     }
   }
   enumGalgasBool test_4 = kBoolTrue ;
@@ -1615,50 +1615,50 @@ void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GGS_
                                                                             GGS_lexicalTagMap & /* ioArgument_ioTagMap */,
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalRoutineFormalArgumentList var_lexicalRoutineFormalArgumentList_10612 ;
-  GGS_stringlist var_routineErrorMessageList_10654 ;
+  GGS_lexicalRoutineFormalArgumentList var_lexicalRoutineFormalArgumentList_10617 ;
+  GGS_stringlist var_routineErrorMessageList_10659 ;
   const GGS_lexicalRoutineCallInstructionAST temp_0 = this ;
-  GGS_bool joker_10682 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalRoutineMessageMap ().method_searchKey (temp_0.readProperty_mRoutineName (), var_lexicalRoutineFormalArgumentList_10612, var_routineErrorMessageList_10654, joker_10682, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 257)) ;
+  GGS_bool joker_10687 ; // Joker input parameter
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalRoutineMessageMap ().method_searchKey (temp_0.readProperty_mRoutineName (), var_lexicalRoutineFormalArgumentList_10617, var_routineErrorMessageList_10659, joker_10687, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 257)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
     const GGS_lexicalRoutineCallInstructionAST temp_2 = this ;
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_lexicalRoutineFormalArgumentList_10612.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 264)).objectCompare (temp_2.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 264)))).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_lexicalRoutineFormalArgumentList_10617.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 264)).objectCompare (temp_2.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 264)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GGS_lexicalRoutineCallInstructionAST temp_3 = this ;
       const GGS_lexicalRoutineCallInstructionAST temp_4 = this ;
       TC_Array <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_4.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 266)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 265)).add_operation (GGS_string (" actual argument(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 266)).add_operation (var_lexicalRoutineFormalArgumentList_10612.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 268)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 267)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 268)), fixItArray5  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 265)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_4.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 266)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 265)).add_operation (GGS_string (" actual argument(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 266)).add_operation (var_lexicalRoutineFormalArgumentList_10617.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 268)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 267)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 268)), fixItArray5  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 265)) ;
     }
   }
   const GGS_lexicalRoutineCallInstructionAST temp_6 = this ;
-  cEnumerator_lexicalRoutineFormalArgumentList enumerator_11186 (var_lexicalRoutineFormalArgumentList_10612, EnumerationOrder::up) ;
-  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_11227 (temp_6.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_11186.hasCurrentObject () && enumerator_11227.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalRoutineCallArgument ((cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_11227.current_mLexicalRoutineActualArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_11186.current_mLexicalFormalArgumentMode (HERE), enumerator_11186.current_mLexicalFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 272)) ;
-    enumerator_11186.gotoNextObject () ;
-    enumerator_11227.gotoNextObject () ;
+  cEnumerator_lexicalRoutineFormalArgumentList enumerator_11193 (var_lexicalRoutineFormalArgumentList_10617, EnumerationOrder::up) ;
+  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_11234 (temp_6.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_11193.hasCurrentObject () && enumerator_11234.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalRoutineCallArgument ((cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_11234.current_mLexicalRoutineActualArgument (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_11193.current_mLexicalFormalArgumentMode (HERE), enumerator_11193.current_mLexicalFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 272)) ;
+    enumerator_11193.gotoNextObject () ;
+    enumerator_11234.gotoNextObject () ;
   }
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     const GGS_lexicalRoutineCallInstructionAST temp_8 = this ;
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_routineErrorMessageList_10654.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 279)).objectCompare (temp_8.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 279)))).boolEnum () ;
+    test_7 = GGS_bool (ComparisonKind::notEqual, var_routineErrorMessageList_10659.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 279)).objectCompare (temp_8.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 279)))).boolEnum () ;
     if (kBoolTrue == test_7) {
       const GGS_lexicalRoutineCallInstructionAST temp_9 = this ;
       const GGS_lexicalRoutineCallInstructionAST temp_10 = this ;
       TC_Array <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_9.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_10.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 281)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 281)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 280)).add_operation (GGS_string (" error message(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 281)).add_operation (var_routineErrorMessageList_10654.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 283)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 283)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 282)).add_operation (GGS_string (" error message(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 283)), fixItArray11  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 280)) ;
+      inCompiler->emitSemanticError (temp_9.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_10.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 281)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 281)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 280)).add_operation (GGS_string (" error message(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 281)).add_operation (var_routineErrorMessageList_10659.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 283)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas", 283)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 282)).add_operation (GGS_string (" error message(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 283)), fixItArray11  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 280)) ;
     }
   }
   const GGS_lexicalRoutineCallInstructionAST temp_12 = this ;
-  cEnumerator_lstringlist enumerator_11886 (temp_12.readProperty_mErrorMessageList (), EnumerationOrder::up) ;
-  while (enumerator_11886.hasCurrentObject ()) {
-    cMapElement_lexicalMessageMap * objectArray_11927 = (cMapElement_lexicalMessageMap *) ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, enumerator_11886.current_mValue (HERE), kSearchErrorMessage_lexicalMessageMap_searchKey  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 287)) ;
-    if (nullptr != objectArray_11927) {
-      macroValidSharedObject (objectArray_11927, cMapElement_lexicalMessageMap) ;
-      objectArray_11927->mProperty_mMessageIsUsed = GGS_bool (true) ;
+  cEnumerator_lstringlist enumerator_11895 (temp_12.readProperty_mErrorMessageList (), EnumerationOrder::up) ;
+  while (enumerator_11895.hasCurrentObject ()) {
+    cMapElement_lexicalMessageMap * objectArray_11936 = (cMapElement_lexicalMessageMap *) ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, enumerator_11895.current_mValue (HERE), kSearchErrorMessage_lexicalMessageMap_searchKey  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 287)) ;
+    if (nullptr != objectArray_11936) {
+      macroValidSharedObject (objectArray_11936, cMapElement_lexicalMessageMap) ;
+      objectArray_11936->mProperty_mMessageIsUsed = GGS_bool (true) ;
     }
-    enumerator_11886.gotoNextObject () ;
+    enumerator_11895.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -1675,10 +1675,10 @@ GGS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateObjcCocoaInstru
   const GGS_lexicalRoutineCallInstructionAST temp_0 = this ;
   result_outGeneratedCode = GGS_string ("scanner_cocoa_routine_").add_operation (temp_0.readProperty_mRoutineName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 301)).add_operation (GGS_string (" (& scanningOk"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 301)) ;
   const GGS_lexicalRoutineCallInstructionAST temp_1 = this ;
-  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_12584 (temp_1.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_12584.hasCurrentObject ()) {
-    result_outGeneratedCode.plusAssign_operation(GGS_string (", ").add_operation (callExtensionGetter_generateObjcCocoaRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_12584.current_mLexicalRoutineActualArgument (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 303)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 303)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 303)) ;
-    enumerator_12584.gotoNextObject () ;
+  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_12593 (temp_1.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_12593.hasCurrentObject ()) {
+    result_outGeneratedCode.plusAssign_operation(GGS_string (", ").add_operation (callExtensionGetter_generateObjcCocoaRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_12593.current_mLexicalRoutineActualArgument (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 303)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 303)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 303)) ;
+    enumerator_12593.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string (") ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 305)) ;
 //---
@@ -1700,10 +1700,10 @@ GGS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateSwiftCocoaInstr
   const GGS_lexicalRoutineCallInstructionAST temp_0 = this ;
   result_outGeneratedCode = GGS_string ("scanner_cocoa_routine_").add_operation (temp_0.readProperty_mRoutineName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 314)).add_operation (GGS_string (" (&scanningOk"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 314)) ;
   const GGS_lexicalRoutineCallInstructionAST temp_1 = this ;
-  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_13211 (temp_1.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_13211.hasCurrentObject ()) {
-    result_outGeneratedCode.plusAssign_operation(GGS_string (", ").add_operation (callExtensionGetter_generateSwiftCocoaRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_13211.current_mLexicalRoutineActualArgument (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 316)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 316)) ;
-    enumerator_13211.gotoNextObject () ;
+  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_13220 (temp_1.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_13220.hasCurrentObject ()) {
+    result_outGeneratedCode.plusAssign_operation(GGS_string (", ").add_operation (callExtensionGetter_generateSwiftCocoaRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_13220.current_mLexicalRoutineActualArgument (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 316)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 316)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 316)) ;
+    enumerator_13220.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string (")\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 318)) ;
 //---
@@ -1772,16 +1772,16 @@ GGS_string cPtr_lexicalRoutineCallInstructionAST::getter_generateLexicalInstruct
   const GGS_lexicalRoutineCallInstructionAST temp_0 = this ;
   result_result = GGS_string ("::scanner_routine_").add_operation (temp_0.readProperty_mRoutineName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 354)).add_operation (GGS_string (" (*this"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 354)) ;
   const GGS_lexicalRoutineCallInstructionAST temp_1 = this ;
-  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_14983 (temp_1.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_14983.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string (", ").add_operation (callExtensionGetter_generateRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_14983.current_mLexicalRoutineActualArgument (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 356)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 356)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 356)) ;
-    enumerator_14983.gotoNextObject () ;
+  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_14992 (temp_1.readProperty_mActualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_14992.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GGS_string (", ").add_operation (callExtensionGetter_generateRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_14992.current_mLexicalRoutineActualArgument (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 356)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 356)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 356)) ;
+    enumerator_14992.gotoNextObject () ;
   }
   const GGS_lexicalRoutineCallInstructionAST temp_2 = this ;
-  cEnumerator_lstringlist enumerator_15135 (temp_2.readProperty_mErrorMessageList (), EnumerationOrder::up) ;
-  while (enumerator_15135.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string (", gLexicalMessage_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)).add_operation (enumerator_15135.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)) ;
-    enumerator_15135.gotoNextObject () ;
+  cEnumerator_lstringlist enumerator_15144 (temp_2.readProperty_mErrorMessageList (), EnumerationOrder::up) ;
+  while (enumerator_15144.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GGS_string (", gLexicalMessage_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)).add_operation (enumerator_15144.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 359)) ;
+    enumerator_15144.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GGS_string (") ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas", 361)) ;
 //---
@@ -1832,26 +1832,26 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateObjcCocoaInstruction
   GGS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GGS_string::makeEmptyString () ;
   const GGS_lexicalSelectInstructionAST temp_0 = this ;
-  cEnumerator_lexicalSelectBranchListAST enumerator_5320 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
-  while (enumerator_5320.hasCurrentObject ()) {
+  cEnumerator_lexicalSelectBranchListAST enumerator_5321 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
+  while (enumerator_5321.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssign_operation(GGS_string ("if (scanningOk && ("), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 138)) ;
-    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_5320.current_mSelectExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 139)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 139)) ;
+    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_5321.current_mSelectExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 139)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 139)) ;
     result_outGeneratedCode.plusAssign_operation(GGS_string (")) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 140)) ;
     {
     result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 141)) ;
     }
-    cEnumerator_lexicalInstructionListAST enumerator_5614 (enumerator_5320.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
-    while (enumerator_5614.hasCurrentObject ()) {
-      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_5614.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 143)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 143)) ;
-      enumerator_5614.gotoNextObject () ;
+    cEnumerator_lexicalInstructionListAST enumerator_5615 (enumerator_5321.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
+    while (enumerator_5615.hasCurrentObject ()) {
+      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_5615.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 143)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 143)) ;
+      enumerator_5615.gotoNextObject () ;
     }
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 145)) ;
     }
-    if (enumerator_5320.hasNextObject ()) {
+    if (enumerator_5321.hasNextObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 147)) ;
     }
-    enumerator_5320.gotoNextObject () ;
+    enumerator_5321.gotoNextObject () ;
   }
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
@@ -1863,10 +1863,10 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateObjcCocoaInstruction
       result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 152)) ;
       }
       const GGS_lexicalSelectInstructionAST temp_3 = this ;
-      cEnumerator_lexicalInstructionListAST enumerator_6035 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
-      while (enumerator_6035.hasCurrentObject ()) {
-        result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_6035.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 154)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 154)) ;
-        enumerator_6035.gotoNextObject () ;
+      cEnumerator_lexicalInstructionListAST enumerator_6037 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
+      while (enumerator_6037.hasCurrentObject ()) {
+        result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_6037.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 154)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 154)) ;
+        enumerator_6037.gotoNextObject () ;
       }
       {
       result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 156)) ;
@@ -1892,26 +1892,26 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateSwiftCocoaInstructio
   GGS_string result_outGeneratedCode ; // Returned variable
   result_outGeneratedCode = GGS_string::makeEmptyString () ;
   const GGS_lexicalSelectInstructionAST temp_0 = this ;
-  cEnumerator_lexicalSelectBranchListAST enumerator_6647 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
-  while (enumerator_6647.hasCurrentObject ()) {
+  cEnumerator_lexicalSelectBranchListAST enumerator_6650 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
+  while (enumerator_6650.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssign_operation(GGS_string ("if scanningOk && ("), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 171)) ;
-    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_6647.current_mSelectExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 172)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 172)) ;
+    result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_6650.current_mSelectExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 172)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 172)) ;
     result_outGeneratedCode.plusAssign_operation(GGS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 173)) ;
     {
     result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 174)) ;
     }
-    cEnumerator_lexicalInstructionListAST enumerator_6940 (enumerator_6647.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
-    while (enumerator_6940.hasCurrentObject ()) {
-      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_6940.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 176)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 176)) ;
-      enumerator_6940.gotoNextObject () ;
+    cEnumerator_lexicalInstructionListAST enumerator_6943 (enumerator_6650.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
+    while (enumerator_6943.hasCurrentObject ()) {
+      result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_6943.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 176)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 176)) ;
+      enumerator_6943.gotoNextObject () ;
     }
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 178)) ;
     }
-    if (enumerator_6647.hasNextObject ()) {
+    if (enumerator_6650.hasNextObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 180)) ;
     }
-    enumerator_6647.gotoNextObject () ;
+    enumerator_6650.gotoNextObject () ;
   }
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
@@ -1923,10 +1923,10 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateSwiftCocoaInstructio
       result_outGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 185)) ;
       }
       const GGS_lexicalSelectInstructionAST temp_3 = this ;
-      cEnumerator_lexicalInstructionListAST enumerator_7362 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
-      while (enumerator_7362.hasCurrentObject ()) {
-        result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_7362.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 187)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 187)) ;
-        enumerator_7362.gotoNextObject () ;
+      cEnumerator_lexicalInstructionListAST enumerator_7366 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
+      while (enumerator_7366.hasCurrentObject ()) {
+        result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_7366.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 187)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 187)) ;
+        enumerator_7366.gotoNextObject () ;
       }
       {
       result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 189)) ;
@@ -1950,35 +1950,35 @@ GGS_bool cPtr_lexicalSelectInstructionAST::getter_lexicalInstructionUsesLoopLoca
   GGS_bool result_result ; // Returned variable
   result_result = GGS_bool (false) ;
   const GGS_lexicalSelectInstructionAST temp_0 = this ;
-  cEnumerator_lexicalSelectBranchListAST enumerator_7964 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
+  cEnumerator_lexicalSelectBranchListAST enumerator_7968 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
   bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexique-instruction-select.galgas", 200)).isValidAndTrue () ;
-  if (enumerator_7964.hasCurrentObject () && bool_1) {
-    while (enumerator_7964.hasCurrentObject () && bool_1) {
-      cEnumerator_lexicalInstructionListAST enumerator_8049 (enumerator_7964.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
+  if (enumerator_7968.hasCurrentObject () && bool_1) {
+    while (enumerator_7968.hasCurrentObject () && bool_1) {
+      cEnumerator_lexicalInstructionListAST enumerator_8053 (enumerator_7968.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
       bool bool_2 = result_result.operator_not (SOURCE_FILE ("lexique-instruction-select.galgas", 201)).isValidAndTrue () ;
-      if (enumerator_8049.hasCurrentObject () && bool_2) {
-        while (enumerator_8049.hasCurrentObject () && bool_2) {
-          result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_8049.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 202)) ;
-          enumerator_8049.gotoNextObject () ;
-          if (enumerator_8049.hasCurrentObject ()) {
+      if (enumerator_8053.hasCurrentObject () && bool_2) {
+        while (enumerator_8053.hasCurrentObject () && bool_2) {
+          result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_8053.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 202)) ;
+          enumerator_8053.gotoNextObject () ;
+          if (enumerator_8053.hasCurrentObject ()) {
             bool_2 = result_result.operator_not (SOURCE_FILE ("lexique-instruction-select.galgas", 201)).isValidAndTrue () ;
           }
         }
       }
-      enumerator_7964.gotoNextObject () ;
-      if (enumerator_7964.hasCurrentObject ()) {
+      enumerator_7968.gotoNextObject () ;
+      if (enumerator_7968.hasCurrentObject ()) {
         bool_1 = result_result.operator_not (SOURCE_FILE ("lexique-instruction-select.galgas", 200)).isValidAndTrue () ;
       }
     }
   }
   const GGS_lexicalSelectInstructionAST temp_3 = this ;
-  cEnumerator_lexicalInstructionListAST enumerator_8197 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
+  cEnumerator_lexicalInstructionListAST enumerator_8201 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
   bool bool_4 = result_result.operator_not (SOURCE_FILE ("lexique-instruction-select.galgas", 205)).isValidAndTrue () ;
-  if (enumerator_8197.hasCurrentObject () && bool_4) {
-    while (enumerator_8197.hasCurrentObject () && bool_4) {
-      result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_8197.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 206)) ;
-      enumerator_8197.gotoNextObject () ;
-      if (enumerator_8197.hasCurrentObject ()) {
+  if (enumerator_8201.hasCurrentObject () && bool_4) {
+    while (enumerator_8201.hasCurrentObject () && bool_4) {
+      result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_8201.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 206)) ;
+      enumerator_8201.gotoNextObject () ;
+      if (enumerator_8201.hasCurrentObject ()) {
         bool_4 = result_result.operator_not (SOURCE_FILE ("lexique-instruction-select.galgas", 205)).isValidAndTrue () ;
       }
     }
@@ -2001,26 +2001,26 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateLexicalInstructionCo
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS_lexicalSelectInstructionAST temp_0 = this ;
-  cEnumerator_lexicalSelectBranchListAST enumerator_8684 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
-  while (enumerator_8684.hasCurrentObject ()) {
+  cEnumerator_lexicalSelectBranchListAST enumerator_8689 (temp_0.readProperty_mLexicalSelectBranchList (), EnumerationOrder::up) ;
+  while (enumerator_8689.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("if ("), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 220)) ;
-    result_result.plusAssign_operation(callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_8684.current_mSelectExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 221)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 221)) ;
+    result_result.plusAssign_operation(callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_8689.current_mSelectExpression (HERE).ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 221)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 221)) ;
     result_result.plusAssign_operation(GGS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 222)) ;
     {
     result_result.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 223)) ;
     }
-    cEnumerator_lexicalInstructionListAST enumerator_8921 (enumerator_8684.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
-    while (enumerator_8921.hasCurrentObject ()) {
-      result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_8921.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 225)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 225)) ;
-      enumerator_8921.gotoNextObject () ;
+    cEnumerator_lexicalInstructionListAST enumerator_8926 (enumerator_8689.current_mSelectInstructionList (HERE), EnumerationOrder::up) ;
+    while (enumerator_8926.hasCurrentObject ()) {
+      result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_8926.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 225)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 225)) ;
+      enumerator_8926.gotoNextObject () ;
     }
     {
     result_result.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 227)) ;
     }
-    if (enumerator_8684.hasNextObject ()) {
+    if (enumerator_8689.hasNextObject ()) {
       result_result.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 229)) ;
     }
-    enumerator_8684.gotoNextObject () ;
+    enumerator_8689.gotoNextObject () ;
   }
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
@@ -2032,10 +2032,10 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateLexicalInstructionCo
       result_result.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 234)) ;
       }
       const GGS_lexicalSelectInstructionAST temp_3 = this ;
-      cEnumerator_lexicalInstructionListAST enumerator_9290 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
-      while (enumerator_9290.hasCurrentObject ()) {
-        result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_9290.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 236)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 236)) ;
-        enumerator_9290.gotoNextObject () ;
+      cEnumerator_lexicalInstructionListAST enumerator_9296 (temp_3.readProperty_mDefaultInstructionList (), EnumerationOrder::up) ;
+      while (enumerator_9296.hasCurrentObject ()) {
+        result_result.plusAssign_operation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_9296.current_mInstruction (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 236)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 236)) ;
+        enumerator_9296.gotoNextObject () ;
       }
       {
       result_result.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 238)) ;
@@ -2463,45 +2463,45 @@ void cPtr_optionComponentDeclarationAST::method_semanticAnalysis (GGS_lstringlis
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_optionComponentDeclarationAST temp_0 = this ;
-  GGS_lstring var_nameForUsefulness_11431 = function_optionNameForUsefulEntitiesGraph (temp_0.readProperty_mOptionComponentName (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 287)) ;
+  GGS_lstring var_nameForUsefulness_11433 = function_optionNameForUsefulEntitiesGraph (temp_0.readProperty_mOptionComponentName (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 287)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_11431, var_nameForUsefulness_11431, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 288)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_11433, var_nameForUsefulness_11433, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 288)) ;
   }
-  GGS_bool var_optionIsPredefined_11708 ;
-  GGS_commandLineOptionMap var_boolOptionMap_11758 ;
-  GGS_commandLineOptionMap var_uintOptionMap_11803 ;
-  GGS_commandLineOptionMap var_stringOptionMap_11848 ;
-  GGS_commandLineOptionMap var_stringListOptionMap_11895 ;
+  GGS_bool var_optionIsPredefined_11711 ;
+  GGS_commandLineOptionMap var_boolOptionMap_11761 ;
+  GGS_commandLineOptionMap var_uintOptionMap_11806 ;
+  GGS_commandLineOptionMap var_stringOptionMap_11851 ;
+  GGS_commandLineOptionMap var_stringListOptionMap_11898 ;
   const GGS_optionComponentDeclarationAST temp_1 = this ;
-  constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mOptionComponentName (), var_optionIsPredefined_11708, var_boolOptionMap_11758, var_uintOptionMap_11803, var_stringOptionMap_11848, var_stringListOptionMap_11895, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 290)) ;
-  GGS_commandLineOptionSortedList var_boolOptionSortedList_11973 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
-  cEnumerator_commandLineOptionMap enumerator_12017 (var_boolOptionMap_11758, EnumerationOrder::up) ;
-  while (enumerator_12017.hasCurrentObject ()) {
-    var_boolOptionSortedList_11973.addAssign_operation (enumerator_12017.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12017.current (HERE).readProperty_mOptionChar (), enumerator_12017.current (HERE).readProperty_mOptionString (), enumerator_12017.current (HERE).readProperty_mComment (), enumerator_12017.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 301)) ;
-    enumerator_12017.gotoNextObject () ;
+  constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mOptionComponentName (), var_optionIsPredefined_11711, var_boolOptionMap_11761, var_uintOptionMap_11806, var_stringOptionMap_11851, var_stringListOptionMap_11898, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 290)) ;
+  GGS_commandLineOptionSortedList var_boolOptionSortedList_11976 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
+  cEnumerator_commandLineOptionMap enumerator_12020 (var_boolOptionMap_11761, EnumerationOrder::up) ;
+  while (enumerator_12020.hasCurrentObject ()) {
+    var_boolOptionSortedList_11976.addAssign_operation (enumerator_12020.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12020.current (HERE).readProperty_mOptionChar (), enumerator_12020.current (HERE).readProperty_mOptionString (), enumerator_12020.current (HERE).readProperty_mComment (), enumerator_12020.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 301)) ;
+    enumerator_12020.gotoNextObject () ;
   }
-  GGS_commandLineOptionSortedList var_uintOptionSortedList_12244 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
-  cEnumerator_commandLineOptionMap enumerator_12288 (var_uintOptionMap_11803, EnumerationOrder::up) ;
-  while (enumerator_12288.hasCurrentObject ()) {
-    var_uintOptionSortedList_12244.addAssign_operation (enumerator_12288.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12288.current (HERE).readProperty_mOptionChar (), enumerator_12288.current (HERE).readProperty_mOptionString (), enumerator_12288.current (HERE).readProperty_mComment (), enumerator_12288.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 310)) ;
-    enumerator_12288.gotoNextObject () ;
+  GGS_commandLineOptionSortedList var_uintOptionSortedList_12247 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
+  cEnumerator_commandLineOptionMap enumerator_12291 (var_uintOptionMap_11806, EnumerationOrder::up) ;
+  while (enumerator_12291.hasCurrentObject ()) {
+    var_uintOptionSortedList_12247.addAssign_operation (enumerator_12291.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12291.current (HERE).readProperty_mOptionChar (), enumerator_12291.current (HERE).readProperty_mOptionString (), enumerator_12291.current (HERE).readProperty_mComment (), enumerator_12291.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 310)) ;
+    enumerator_12291.gotoNextObject () ;
   }
-  GGS_commandLineOptionSortedList var_stringOptionSortedList_12515 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
-  cEnumerator_commandLineOptionMap enumerator_12561 (var_stringOptionMap_11848, EnumerationOrder::up) ;
-  while (enumerator_12561.hasCurrentObject ()) {
-    var_stringOptionSortedList_12515.addAssign_operation (enumerator_12561.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12561.current (HERE).readProperty_mOptionChar (), enumerator_12561.current (HERE).readProperty_mOptionString (), enumerator_12561.current (HERE).readProperty_mComment (), enumerator_12561.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 319)) ;
-    enumerator_12561.gotoNextObject () ;
+  GGS_commandLineOptionSortedList var_stringOptionSortedList_12518 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
+  cEnumerator_commandLineOptionMap enumerator_12564 (var_stringOptionMap_11851, EnumerationOrder::up) ;
+  while (enumerator_12564.hasCurrentObject ()) {
+    var_stringOptionSortedList_12518.addAssign_operation (enumerator_12564.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12564.current (HERE).readProperty_mOptionChar (), enumerator_12564.current (HERE).readProperty_mOptionString (), enumerator_12564.current (HERE).readProperty_mComment (), enumerator_12564.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 319)) ;
+    enumerator_12564.gotoNextObject () ;
   }
-  GGS_commandLineOptionSortedList var_stringListOptionSortedList_12792 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
-  cEnumerator_commandLineOptionMap enumerator_12842 (var_stringListOptionMap_11895, EnumerationOrder::up) ;
-  while (enumerator_12842.hasCurrentObject ()) {
-    var_stringListOptionSortedList_12792.addAssign_operation (enumerator_12842.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12842.current (HERE).readProperty_mOptionChar (), enumerator_12842.current (HERE).readProperty_mOptionString (), enumerator_12842.current (HERE).readProperty_mComment (), enumerator_12842.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 328)) ;
-    enumerator_12842.gotoNextObject () ;
+  GGS_commandLineOptionSortedList var_stringListOptionSortedList_12795 = GGS_commandLineOptionSortedList::init (inCompiler COMMA_HERE) ;
+  cEnumerator_commandLineOptionMap enumerator_12845 (var_stringListOptionMap_11898, EnumerationOrder::up) ;
+  while (enumerator_12845.hasCurrentObject ()) {
+    var_stringListOptionSortedList_12795.addAssign_operation (enumerator_12845.current (HERE).readProperty_lkey ().readProperty_string (), enumerator_12845.current (HERE).readProperty_mOptionChar (), enumerator_12845.current (HERE).readProperty_mOptionString (), enumerator_12845.current (HERE).readProperty_mComment (), enumerator_12845.current (HERE).readProperty_mDefaultValue ()  COMMA_SOURCE_FILE ("optionCompilation.galgas", 328)) ;
+    enumerator_12845.gotoNextObject () ;
   }
   const GGS_optionComponentDeclarationAST temp_2 = this ;
   const GGS_optionComponentDeclarationAST temp_3 = this ;
   const GGS_optionComponentDeclarationAST temp_4 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("option ").add_operation (temp_2.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 337)), GGS_optionComponentForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (GGS_bool (true), GGS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 340)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 340)), var_optionIsPredefined_11708, temp_4.readProperty_mOptionComponentName ().readProperty_string (), var_boolOptionSortedList_11973, var_uintOptionSortedList_12244, var_stringOptionSortedList_12515, var_stringListOptionSortedList_12792, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("optionCompilation.galgas", 336)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("option ").add_operation (temp_2.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 337)), GGS_optionComponentForGeneration::init_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (GGS_bool (true), GGS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 340)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 340)), var_optionIsPredefined_11711, temp_4.readProperty_mOptionComponentName ().readProperty_string (), var_boolOptionSortedList_11976, var_uintOptionSortedList_12247, var_stringOptionSortedList_12518, var_stringListOptionSortedList_12795, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("optionCompilation.galgas", 336)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3211,12 +3211,12 @@ void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const GGS_galg
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outOptionComponentMapForGeneration.drop () ; // Release 'out' argument
   outArgument_outOptionComponentMapForGeneration = GGS_optionComponentMapForGeneration::init (inCompiler COMMA_HERE) ;
-  cEnumerator_galgasGUIComponentListAST enumerator_13770 (constinArgument_inGuiComponentListAST, EnumerationOrder::up) ;
-  while (enumerator_13770.hasCurrentObject ()) {
+  cEnumerator_galgasGUIComponentListAST enumerator_13772 (constinArgument_inGuiComponentListAST, EnumerationOrder::up) ;
+  while (enumerator_13772.hasCurrentObject ()) {
     {
-    routine_guiComponentSemanticAnalysis_3F__3F__26_ (enumerator_13770.current (HERE), constinArgument_inSemanticContext, outArgument_outOptionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 416)) ;
+    routine_guiComponentSemanticAnalysis_3F__3F__26_ (enumerator_13772.current (HERE), constinArgument_inSemanticContext, outArgument_outOptionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 416)) ;
     }
-    enumerator_13770.gotoNextObject () ;
+    enumerator_13772.gotoNextObject () ;
   }
 }
 
@@ -3240,46 +3240,46 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
       inCompiler->emitSemanticError (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName ().readProperty_location (), GGS_string ("the gui name should be 'cocoa'"), fixItArray1  COMMA_SOURCE_FILE ("guiCompilation.galgas", 430)) ;
     }
   }
-  GGS_guiAnalysisContext var_context_14505 = GGS_guiAnalysisContext::init (inCompiler COMMA_HERE) ;
-  var_context_14505.mProperty_mProjectIndexingDescriptorList = constinArgument_inGUIComponentAST.readProperty_mProjectIndexingDescriptorList () ;
-  cEnumerator_lstringlist enumerator_14662 (constinArgument_inGUIComponentAST.readProperty_mImportedOptionList (), EnumerationOrder::up) ;
-  while (enumerator_14662.hasCurrentObject ()) {
-    GGS_bool joker_14806_5 ; // Joker input parameter
-    GGS_commandLineOptionMap joker_14806_4 ; // Joker input parameter
-    GGS_commandLineOptionMap joker_14806_3 ; // Joker input parameter
-    GGS_commandLineOptionMap joker_14806_2 ; // Joker input parameter
-    GGS_commandLineOptionMap joker_14806_1 ; // Joker input parameter
-    constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (enumerator_14662.current_mValue (HERE), joker_14806_5, joker_14806_4, joker_14806_3, joker_14806_2, joker_14806_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 437)) ;
-    var_context_14505.mProperty_mImportedOptionComponentList.addAssign_operation (enumerator_14662.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 441)) ;
-    enumerator_14662.gotoNextObject () ;
+  GGS_guiAnalysisContext var_context_14508 = GGS_guiAnalysisContext::init (inCompiler COMMA_HERE) ;
+  var_context_14508.mProperty_mProjectIndexingDescriptorList = constinArgument_inGUIComponentAST.readProperty_mProjectIndexingDescriptorList () ;
+  cEnumerator_lstringlist enumerator_14666 (constinArgument_inGUIComponentAST.readProperty_mImportedOptionList (), EnumerationOrder::up) ;
+  while (enumerator_14666.hasCurrentObject ()) {
+    GGS_bool joker_14810_5 ; // Joker input parameter
+    GGS_commandLineOptionMap joker_14810_4 ; // Joker input parameter
+    GGS_commandLineOptionMap joker_14810_3 ; // Joker input parameter
+    GGS_commandLineOptionMap joker_14810_2 ; // Joker input parameter
+    GGS_commandLineOptionMap joker_14810_1 ; // Joker input parameter
+    constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (enumerator_14666.current_mValue (HERE), joker_14810_5, joker_14810_4, joker_14810_3, joker_14810_2, joker_14810_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 437)) ;
+    var_context_14508.mProperty_mImportedOptionComponentList.addAssign_operation (enumerator_14666.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 441)) ;
+    enumerator_14666.gotoNextObject () ;
   }
-  GGS_bool var_runOptionDefined_14913 = GGS_bool (false) ;
-  cEnumerator_guiSimpleAttributeListAST enumerator_14950 (constinArgument_inGUIComponentAST.readProperty_mGlobalSimpleAttributeList (), EnumerationOrder::up) ;
-  while (enumerator_14950.hasCurrentObject ()) {
+  GGS_bool var_runOptionDefined_14918 = GGS_bool (false) ;
+  cEnumerator_guiSimpleAttributeListAST enumerator_14955 (constinArgument_inGUIComponentAST.readProperty_mGlobalSimpleAttributeList (), EnumerationOrder::up) ;
+  while (enumerator_14955.hasCurrentObject ()) {
     enumGalgasBool test_2 = kBoolTrue ;
     if (kBoolTrue == test_2) {
-      test_2 = GGS_bool (ComparisonKind::equal, enumerator_14950.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("run"))).boolEnum () ;
+      test_2 = GGS_bool (ComparisonKind::equal, enumerator_14955.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("run"))).boolEnum () ;
       if (kBoolTrue == test_2) {
         enumGalgasBool test_3 = kBoolTrue ;
         if (kBoolTrue == test_3) {
-          test_3 = var_runOptionDefined_14913.boolEnum () ;
+          test_3 = var_runOptionDefined_14918.boolEnum () ;
           if (kBoolTrue == test_3) {
             TC_Array <FixItDescription> fixItArray4 ;
-            inCompiler->emitSemanticError (enumerator_14950.current_mKey (HERE).readProperty_location (), GGS_string ("option already defined"), fixItArray4  COMMA_SOURCE_FILE ("guiCompilation.galgas", 448)) ;
+            inCompiler->emitSemanticError (enumerator_14955.current_mKey (HERE).readProperty_location (), GGS_string ("option already defined"), fixItArray4  COMMA_SOURCE_FILE ("guiCompilation.galgas", 448)) ;
           }
         }
         if (kBoolFalse == test_3) {
           enumGalgasBool test_5 = kBoolTrue ;
           if (kBoolTrue == test_5) {
-            test_5 = GGS_bool (ComparisonKind::equal, enumerator_14950.current_mValue (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+            test_5 = GGS_bool (ComparisonKind::equal, enumerator_14955.current_mValue (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_5) {
               TC_Array <FixItDescription> fixItArray6 ;
-              inCompiler->emitSemanticError (enumerator_14950.current_mValue (HERE).readProperty_location (), GGS_string ("run option string should not be empty"), fixItArray6  COMMA_SOURCE_FILE ("guiCompilation.galgas", 450)) ;
+              inCompiler->emitSemanticError (enumerator_14955.current_mValue (HERE).readProperty_location (), GGS_string ("run option string should not be empty"), fixItArray6  COMMA_SOURCE_FILE ("guiCompilation.galgas", 450)) ;
             }
           }
           if (kBoolFalse == test_5) {
-            var_context_14505.mProperty_mBuildRunOption = enumerator_14950.current_mValue (HERE).readProperty_string () ;
-            var_runOptionDefined_14913 = GGS_bool (true) ;
+            var_context_14508.mProperty_mBuildRunOption = enumerator_14955.current_mValue (HERE).readProperty_string () ;
+            var_runOptionDefined_14918 = GGS_bool (true) ;
           }
         }
       }
@@ -3287,147 +3287,147 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
     if (kBoolFalse == test_2) {
       enumGalgasBool test_7 = kBoolTrue ;
       if (kBoolTrue == test_7) {
-        test_7 = GGS_bool (ComparisonKind::equal, enumerator_14950.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("nibAndMainClass"))).boolEnum () ;
+        test_7 = GGS_bool (ComparisonKind::equal, enumerator_14955.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("nibAndMainClass"))).boolEnum () ;
         if (kBoolTrue == test_7) {
-          cEnumerator_stringlist enumerator_15438 (enumerator_14950.current_mValue (HERE).readProperty_string ().getter_componentsSeparatedByString (GGS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 456)), EnumerationOrder::up) ;
-          while (enumerator_15438.hasCurrentObject ()) {
-            var_context_14505.mProperty_mNibAndClassList.addAssign_operation (enumerator_15438.current (HERE).readProperty_mValue ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 457)) ;
-            enumerator_15438.gotoNextObject () ;
+          cEnumerator_stringlist enumerator_15443 (enumerator_14955.current_mValue (HERE).readProperty_string ().getter_componentsSeparatedByString (GGS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 456)), EnumerationOrder::up) ;
+          while (enumerator_15443.hasCurrentObject ()) {
+            var_context_14508.mProperty_mNibAndClassList.addAssign_operation (enumerator_15443.current (HERE).readProperty_mValue ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 457)) ;
+            enumerator_15443.gotoNextObject () ;
           }
         }
       }
       if (kBoolFalse == test_7) {
         TC_Array <FixItDescription> fixItArray8 ;
-        inCompiler->emitSemanticWarning (enumerator_14950.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_14950.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)).add_operation (GGS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)), fixItArray8  COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)) ;
+        inCompiler->emitSemanticWarning (enumerator_14955.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_14955.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)).add_operation (GGS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)), fixItArray8  COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)) ;
       }
     }
-    enumerator_14950.gotoNextObject () ;
+    enumerator_14955.gotoNextObject () ;
   }
-  cEnumerator_withLexiqueListAST enumerator_15689 (constinArgument_inGUIComponentAST.readProperty_mWithLexiqueList (), EnumerationOrder::up) ;
-  GGS_uint index_15644 (uint32_t (0)) ;
-  while (enumerator_15689.hasCurrentObject ()) {
-    GGS_terminalMap var_terminalMap_15906 ;
-    GGS_lexicalStyleListAST var_lexicalStyleListAST_15939 ;
-    GGS_bool joker_15879 ; // Joker input parameter
-    GGS_indexingListAST joker_15924_3 ; // Joker input parameter
-    GGS_terminalDeclarationListAST joker_15924_2 ; // Joker input parameter
-    GGS_lexicalAttributeListAST joker_15924_1 ; // Joker input parameter
-    GGS_lexicalListDeclarationListAST joker_15965 ; // Joker input parameter
-    constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (enumerator_15689.current_mLexiqueFileName (HERE), joker_15879, var_terminalMap_15906, joker_15924_3, joker_15924_2, joker_15924_1, var_lexicalStyleListAST_15939, joker_15965, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 466)) ;
-    GGS_stringset var_terminalSymbolSet_16015 = var_terminalMap_15906.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 475)) ;
-    cEnumerator_guiLabelListAST enumerator_16101 (enumerator_15689.current_mLabels (HERE), EnumerationOrder::up) ;
-    while (enumerator_16101.hasCurrentObject ()) {
-      cEnumerator_terminalLabelListAST enumerator_16138 (enumerator_16101.current_mTerminalList (HERE), EnumerationOrder::up) ;
-      while (enumerator_16138.hasCurrentObject ()) {
+  cEnumerator_withLexiqueListAST enumerator_15695 (constinArgument_inGUIComponentAST.readProperty_mWithLexiqueList (), EnumerationOrder::up) ;
+  GGS_uint index_15650 (uint32_t (0)) ;
+  while (enumerator_15695.hasCurrentObject ()) {
+    GGS_terminalMap var_terminalMap_15913 ;
+    GGS_lexicalStyleListAST var_lexicalStyleListAST_15946 ;
+    GGS_bool joker_15886 ; // Joker input parameter
+    GGS_indexingListAST joker_15931_3 ; // Joker input parameter
+    GGS_terminalDeclarationListAST joker_15931_2 ; // Joker input parameter
+    GGS_lexicalAttributeListAST joker_15931_1 ; // Joker input parameter
+    GGS_lexicalListDeclarationListAST joker_15972 ; // Joker input parameter
+    constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (enumerator_15695.current_mLexiqueFileName (HERE), joker_15886, var_terminalMap_15913, joker_15931_3, joker_15931_2, joker_15931_1, var_lexicalStyleListAST_15946, joker_15972, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 466)) ;
+    GGS_stringset var_terminalSymbolSet_16023 = var_terminalMap_15913.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 475)) ;
+    cEnumerator_guiLabelListAST enumerator_16110 (enumerator_15695.current_mLabels (HERE), EnumerationOrder::up) ;
+    while (enumerator_16110.hasCurrentObject ()) {
+      cEnumerator_terminalLabelListAST enumerator_16147 (enumerator_16110.current_mTerminalList (HERE), EnumerationOrder::up) ;
+      while (enumerator_16147.hasCurrentObject ()) {
         enumGalgasBool test_9 = kBoolTrue ;
         if (kBoolTrue == test_9) {
-          test_9 = var_terminalSymbolSet_16015.getter_hasKey (enumerator_16138.current_mTerminal (HERE).readProperty_string () COMMA_SOURCE_FILE ("guiCompilation.galgas", 479)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 479)).boolEnum () ;
+          test_9 = var_terminalSymbolSet_16023.getter_hasKey (enumerator_16147.current_mTerminal (HERE).readProperty_string () COMMA_SOURCE_FILE ("guiCompilation.galgas", 479)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 479)).boolEnum () ;
           if (kBoolTrue == test_9) {
             TC_Array <FixItDescription> fixItArray10 ;
-            inCompiler->emitSemanticError (enumerator_16138.current_mTerminal (HERE).readProperty_location (), GGS_string ("the '$").add_operation (enumerator_16138.current_mTerminal (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)).add_operation (GGS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 481)).add_operation (enumerator_15689.current_mLexiqueFileName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 482)).add_operation (GGS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 483)), fixItArray10  COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)) ;
+            inCompiler->emitSemanticError (enumerator_16147.current_mTerminal (HERE).readProperty_location (), GGS_string ("the '$").add_operation (enumerator_16147.current_mTerminal (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)).add_operation (GGS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 481)).add_operation (enumerator_15695.current_mLexiqueFileName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 482)).add_operation (GGS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 483)), fixItArray10  COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)) ;
           }
         }
-        enumerator_16138.gotoNextObject () ;
+        enumerator_16147.gotoNextObject () ;
       }
-      enumerator_16101.gotoNextObject () ;
+      enumerator_16110.gotoNextObject () ;
     }
-    GGS_textMacroList var_textMacroList_16482 = GGS_textMacroList::init (inCompiler COMMA_HERE) ;
-    cEnumerator_guiCompoundAttributeListAST enumerator_16530 (enumerator_15689.current_mCompoundAttributes (HERE), EnumerationOrder::up) ;
-    while (enumerator_16530.hasCurrentObject ()) {
+    GGS_textMacroList var_textMacroList_16492 = GGS_textMacroList::init (inCompiler COMMA_HERE) ;
+    cEnumerator_guiCompoundAttributeListAST enumerator_16540 (enumerator_15695.current_mCompoundAttributes (HERE), EnumerationOrder::up) ;
+    while (enumerator_16540.hasCurrentObject ()) {
       enumGalgasBool test_11 = kBoolTrue ;
       if (kBoolTrue == test_11) {
-        test_11 = GGS_bool (ComparisonKind::notEqual, enumerator_16530.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("textMacro"))).boolEnum () ;
+        test_11 = GGS_bool (ComparisonKind::notEqual, enumerator_16540.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("textMacro"))).boolEnum () ;
         if (kBoolTrue == test_11) {
           TC_Array <FixItDescription> fixItArray12 ;
-          inCompiler->emitSemanticError (enumerator_16530.current_mKey (HERE).readProperty_location (), GGS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray12  COMMA_SOURCE_FILE ("guiCompilation.galgas", 492)) ;
+          inCompiler->emitSemanticError (enumerator_16540.current_mKey (HERE).readProperty_location (), GGS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray12  COMMA_SOURCE_FILE ("guiCompilation.galgas", 492)) ;
         }
       }
       if (kBoolFalse == test_11) {
-        var_textMacroList_16482.addAssign_operation (enumerator_16530.current_mAttributeName (HERE).readProperty_string (), enumerator_16530.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 494)) ;
+        var_textMacroList_16492.addAssign_operation (enumerator_16540.current_mAttributeName (HERE).readProperty_string (), enumerator_16540.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 494)) ;
       }
-      enumerator_16530.gotoNextObject () ;
+      enumerator_16540.gotoNextObject () ;
     }
-    GGS_bool var_hasAssociatedExtension_16817 = GGS_bool (false) ;
-    GGS_bool var_hasTabViewTitle_16862 = GGS_bool (false) ;
-    GGS_bool var_hasBlockComment_16900 = GGS_bool (false) ;
-    GGS_string var_tabViewTitle_16940 = GGS_string::makeEmptyString () ;
-    GGS_string var_blockComment_16974 = GGS_string::makeEmptyString () ;
-    cEnumerator_guiSimpleAttributeListAST enumerator_17006 (enumerator_15689.current_mSimpleAttributes (HERE), EnumerationOrder::up) ;
-    while (enumerator_17006.hasCurrentObject ()) {
+    GGS_bool var_hasAssociatedExtension_16828 = GGS_bool (false) ;
+    GGS_bool var_hasTabViewTitle_16873 = GGS_bool (false) ;
+    GGS_bool var_hasBlockComment_16911 = GGS_bool (false) ;
+    GGS_string var_tabViewTitle_16951 = GGS_string::makeEmptyString () ;
+    GGS_string var_blockComment_16985 = GGS_string::makeEmptyString () ;
+    cEnumerator_guiSimpleAttributeListAST enumerator_17017 (enumerator_15695.current_mSimpleAttributes (HERE), EnumerationOrder::up) ;
+    while (enumerator_17017.hasCurrentObject ()) {
       enumGalgasBool test_13 = kBoolTrue ;
       if (kBoolTrue == test_13) {
-        test_13 = GGS_bool (ComparisonKind::equal, enumerator_17006.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("fileExtension"))).boolEnum () ;
+        test_13 = GGS_bool (ComparisonKind::equal, enumerator_17017.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("fileExtension"))).boolEnum () ;
         if (kBoolTrue == test_13) {
           {
-          var_context_14505.mProperty_mExtensionMap.setter_insertKey (enumerator_17006.current_mValue (HERE), enumerator_15689.current_mLexiqueFileName (HERE).readProperty_string (), index_15644, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 505)) ;
+          var_context_14508.mProperty_mExtensionMap.setter_insertKey (enumerator_17017.current_mValue (HERE), enumerator_15695.current_mLexiqueFileName (HERE).readProperty_string (), index_15650, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 505)) ;
           }
-          var_hasAssociatedExtension_16817 = GGS_bool (true) ;
+          var_hasAssociatedExtension_16828 = GGS_bool (true) ;
         }
       }
       if (kBoolFalse == test_13) {
         enumGalgasBool test_14 = kBoolTrue ;
         if (kBoolTrue == test_14) {
-          test_14 = GGS_bool (ComparisonKind::equal, enumerator_17006.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("title"))).boolEnum () ;
+          test_14 = GGS_bool (ComparisonKind::equal, enumerator_17017.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("title"))).boolEnum () ;
           if (kBoolTrue == test_14) {
             enumGalgasBool test_15 = kBoolTrue ;
             if (kBoolTrue == test_15) {
-              test_15 = var_hasTabViewTitle_16862.boolEnum () ;
+              test_15 = var_hasTabViewTitle_16873.boolEnum () ;
               if (kBoolTrue == test_15) {
                 TC_Array <FixItDescription> fixItArray16 ;
-                inCompiler->emitSemanticError (enumerator_17006.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17006.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)), fixItArray16  COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)) ;
+                inCompiler->emitSemanticError (enumerator_17017.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17017.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)), fixItArray16  COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)) ;
               }
             }
-            var_hasTabViewTitle_16862 = GGS_bool (true) ;
-            var_tabViewTitle_16940 = enumerator_17006.current_mValue (HERE).readProperty_string () ;
+            var_hasTabViewTitle_16873 = GGS_bool (true) ;
+            var_tabViewTitle_16951 = enumerator_17017.current_mValue (HERE).readProperty_string () ;
           }
         }
         if (kBoolFalse == test_14) {
           enumGalgasBool test_17 = kBoolTrue ;
           if (kBoolTrue == test_17) {
-            test_17 = GGS_bool (ComparisonKind::equal, enumerator_17006.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("blockComment"))).boolEnum () ;
+            test_17 = GGS_bool (ComparisonKind::equal, enumerator_17017.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("blockComment"))).boolEnum () ;
             if (kBoolTrue == test_17) {
               enumGalgasBool test_18 = kBoolTrue ;
               if (kBoolTrue == test_18) {
-                test_18 = var_hasBlockComment_16900.boolEnum () ;
+                test_18 = var_hasBlockComment_16911.boolEnum () ;
                 if (kBoolTrue == test_18) {
                   TC_Array <FixItDescription> fixItArray19 ;
-                  inCompiler->emitSemanticError (enumerator_17006.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17006.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)) ;
+                  inCompiler->emitSemanticError (enumerator_17017.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17017.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)) ;
                 }
               }
-              var_hasBlockComment_16900 = GGS_bool (true) ;
-              var_blockComment_16974 = enumerator_17006.current_mValue (HERE).readProperty_string () ;
+              var_hasBlockComment_16911 = GGS_bool (true) ;
+              var_blockComment_16985 = enumerator_17017.current_mValue (HERE).readProperty_string () ;
             }
           }
           if (kBoolFalse == test_17) {
             TC_Array <FixItDescription> fixItArray20 ;
-            inCompiler->emitSemanticError (enumerator_17006.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17006.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)).add_operation (GGS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)), fixItArray20  COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)) ;
+            inCompiler->emitSemanticError (enumerator_17017.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17017.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)).add_operation (GGS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)), fixItArray20  COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)) ;
           }
         }
       }
-      enumerator_17006.gotoNextObject () ;
+      enumerator_17017.gotoNextObject () ;
     }
     enumGalgasBool test_21 = kBoolTrue ;
     if (kBoolTrue == test_21) {
-      test_21 = var_hasAssociatedExtension_16817.operator_not (SOURCE_FILE ("guiCompilation.galgas", 524)).boolEnum () ;
+      test_21 = var_hasAssociatedExtension_16828.operator_not (SOURCE_FILE ("guiCompilation.galgas", 524)).boolEnum () ;
       if (kBoolTrue == test_21) {
         TC_Array <FixItDescription> fixItArray22 ;
-        inCompiler->emitSemanticError (enumerator_15689.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray22  COMMA_SOURCE_FILE ("guiCompilation.galgas", 525)) ;
+        inCompiler->emitSemanticError (enumerator_15695.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray22  COMMA_SOURCE_FILE ("guiCompilation.galgas", 525)) ;
       }
     }
     enumGalgasBool test_23 = kBoolTrue ;
     if (kBoolTrue == test_23) {
-      test_23 = var_hasTabViewTitle_16862.operator_not (SOURCE_FILE ("guiCompilation.galgas", 528)).boolEnum () ;
+      test_23 = var_hasTabViewTitle_16873.operator_not (SOURCE_FILE ("guiCompilation.galgas", 528)).boolEnum () ;
       if (kBoolTrue == test_23) {
         TC_Array <FixItDescription> fixItArray24 ;
-        inCompiler->emitSemanticError (enumerator_15689.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray24  COMMA_SOURCE_FILE ("guiCompilation.galgas", 529)) ;
+        inCompiler->emitSemanticError (enumerator_15695.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray24  COMMA_SOURCE_FILE ("guiCompilation.galgas", 529)) ;
       }
     }
-    var_context_14505.mProperty_mWithLexiqueList.addAssign_operation (enumerator_15689.current_mLexiqueFileName (HERE).readProperty_string (), index_15644, var_blockComment_16974, var_tabViewTitle_16940, var_textMacroList_16482, enumerator_15689.current_mLabels (HERE), var_lexicalStyleListAST_15939  COMMA_SOURCE_FILE ("guiCompilation.galgas", 532)) ;
-    enumerator_15689.gotoNextObject () ;
-    index_15644.increment_operation (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 464)) ;
+    var_context_14508.mProperty_mWithLexiqueList.addAssign_operation (enumerator_15695.current_mLexiqueFileName (HERE).readProperty_string (), index_15650, var_blockComment_16985, var_tabViewTitle_16951, var_textMacroList_16492, enumerator_15695.current_mLabels (HERE), var_lexicalStyleListAST_15946  COMMA_SOURCE_FILE ("guiCompilation.galgas", 532)) ;
+    enumerator_15695.gotoNextObject () ;
+    index_15650.increment_operation (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 464)) ;
   }
   {
-  ioArgument_ioOptionComponentMapForGeneration.setter_insertKey (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName (), var_context_14505, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 542)) ;
+  ioArgument_ioOptionComponentMapForGeneration.setter_insertKey (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName (), var_context_14508, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 542)) ;
   }
 }
 
@@ -3445,23 +3445,23 @@ void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26__26_ (const GGS_o
                                                                      GGS_stringset & ioArgument_ioAllProductFileSet,
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_optionComponentMapForGeneration enumerator_19078 (constinArgument_inOptionComponentMapForGeneration, EnumerationOrder::up) ;
-  while (enumerator_19078.hasCurrentObject ()) {
-    GGS_string var_swiftFileName_19147 = GGS_string ("gui-").add_operation (enumerator_19078.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)).add_operation (GGS_string (".swift"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)) ;
-    ioArgument_ioApplicationSourceSet.addAssign_operation (var_swiftFileName_19147  COMMA_SOURCE_FILE ("guiCompilation.galgas", 559)) ;
-    ioArgument_ioAllProductFileSet.addAssign_operation (var_swiftFileName_19147  COMMA_SOURCE_FILE ("guiCompilation.galgas", 560)) ;
-    GGS_string var_swift_5F_string_19291 = GGS_string (filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (inCompiler, enumerator_19078.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 561))) ;
+  cEnumerator_optionComponentMapForGeneration enumerator_19093 (constinArgument_inOptionComponentMapForGeneration, EnumerationOrder::up) ;
+  while (enumerator_19093.hasCurrentObject ()) {
+    GGS_string var_swiftFileName_19162 = GGS_string ("gui-").add_operation (enumerator_19093.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)).add_operation (GGS_string (".swift"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)) ;
+    ioArgument_ioApplicationSourceSet.addAssign_operation (var_swiftFileName_19162  COMMA_SOURCE_FILE ("guiCompilation.galgas", 559)) ;
+    ioArgument_ioAllProductFileSet.addAssign_operation (var_swiftFileName_19162  COMMA_SOURCE_FILE ("guiCompilation.galgas", 560)) ;
+    GGS_string var_swift_5F_string_19306 = GGS_string (filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (inCompiler, enumerator_19093.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 561))) ;
     {
-    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_swiftFileName_19147, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_swift_5F_string_19291, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 565)) ;
+    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_swiftFileName_19162, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_swift_5F_string_19306, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 565)) ;
     }
-    GGS_string var_objcFileName_19801 = GGS_string ("gui-").add_operation (enumerator_19078.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)).add_operation (GGS_string (".m"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)) ;
-    ioArgument_ioApplicationSourceSet.addAssign_operation (var_objcFileName_19801  COMMA_SOURCE_FILE ("guiCompilation.galgas", 577)) ;
-    ioArgument_ioAllProductFileSet.addAssign_operation (var_objcFileName_19801  COMMA_SOURCE_FILE ("guiCompilation.galgas", 578)) ;
-    GGS_string var_objc_5F_string_19938 = GGS_string (filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (inCompiler, enumerator_19078.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 579))) ;
+    GGS_string var_objcFileName_19816 = GGS_string ("gui-").add_operation (enumerator_19093.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)).add_operation (GGS_string (".m"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)) ;
+    ioArgument_ioApplicationSourceSet.addAssign_operation (var_objcFileName_19816  COMMA_SOURCE_FILE ("guiCompilation.galgas", 577)) ;
+    ioArgument_ioAllProductFileSet.addAssign_operation (var_objcFileName_19816  COMMA_SOURCE_FILE ("guiCompilation.galgas", 578)) ;
+    GGS_string var_objc_5F_string_19953 = GGS_string (filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (inCompiler, enumerator_19093.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 579))) ;
     {
-    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_objcFileName_19801, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_objc_5F_string_19938, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 583)) ;
+    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_objcFileName_19816, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_objc_5F_string_19953, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 583)) ;
     }
-    enumerator_19078.gotoNextObject () ;
+    enumerator_19093.gotoNextObject () ;
   }
 }
 
@@ -4110,46 +4110,46 @@ void cPtr_predefinedTypeAST::method_enterDeclarationInSemanticContext (GGS_equat
   GGS_unifiedTypeMapEntry joker_4497 ; // Joker input parameter
   extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, temp_7.readProperty_mPredefinedTypeName (), joker_4497, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 89)) ;
   }
-  GGS_unifiedTypeMapEntry var_enumeratedTypeEntry_4549 ;
+  GGS_unifiedTypeMapEntry var_enumeratedTypeEntry_4550 ;
   enumGalgasBool test_8 = kBoolTrue ;
   if (kBoolTrue == test_8) {
     test_8 = GGS_bool (ComparisonKind::equal, var_enumeratedTypeName_4409.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_8) {
-      var_enumeratedTypeEntry_4549 = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type.galgas", 93)) ;
+      var_enumeratedTypeEntry_4550 = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type.galgas", 93)) ;
     }
   }
   if (kBoolFalse == test_8) {
     {
-    extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, var_enumeratedTypeName_4409, var_enumeratedTypeEntry_4549, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 95)) ;
+    extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, var_enumeratedTypeName_4409, var_enumeratedTypeEntry_4550, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 95)) ;
     }
   }
-  GGS_initializerMap var_initializerMap_4804 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_initializerMap var_initializerMap_4806 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
   const GGS_predefinedTypeAST temp_9 = this ;
-  cEnumerator_initializerSignatureList enumerator_4833 (callExtensionGetter_initializers ((const cPtr_predefinedTypeAST *) temp_9.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 99)), EnumerationOrder::up) ;
-  while (enumerator_4833.hasCurrentObject ()) {
-    GGS_functionSignature var_formalParameterList_4901 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-    cEnumerator_formalInputParameterListAST enumerator_4999 (enumerator_4833.current_initializer (HERE), EnumerationOrder::up) ;
-    while (enumerator_4999.hasCurrentObject ()) {
-      var_formalParameterList_4901.addAssign_operation (enumerator_4999.current_mFormalSelector (HERE), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_4999.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 104)), enumerator_4999.current_mFormalArgumentName (HERE).readProperty_string (), enumerator_4999.current_mIsConstant (HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 102)) ;
-      enumerator_4999.gotoNextObject () ;
+  cEnumerator_initializerSignatureList enumerator_4835 (callExtensionGetter_initializers ((const cPtr_predefinedTypeAST *) temp_9.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 99)), EnumerationOrder::up) ;
+  while (enumerator_4835.hasCurrentObject ()) {
+    GGS_functionSignature var_formalParameterList_4903 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+    cEnumerator_formalInputParameterListAST enumerator_5001 (enumerator_4835.current_initializer (HERE), EnumerationOrder::up) ;
+    while (enumerator_5001.hasCurrentObject ()) {
+      var_formalParameterList_4903.addAssign_operation (enumerator_5001.current_mFormalSelector (HERE), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_5001.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 104)), enumerator_5001.current_mFormalArgumentName (HERE).readProperty_string (), enumerator_5001.current_mIsConstant (HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 102)) ;
+      enumerator_5001.gotoNextObject () ;
     }
     {
-    var_initializerMap_4804.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (enumerator_4833.current_initializer (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 108)), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 108)), inCompiler COMMA_HERE), var_formalParameterList_4901, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 108)) ;
+    var_initializerMap_4806.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (enumerator_4835.current_initializer (HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 108)), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 108)), inCompiler COMMA_HERE), var_formalParameterList_4903, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 108)) ;
     }
-    enumerator_4833.gotoNextObject () ;
+    enumerator_4835.gotoNextObject () ;
   }
   {
   const GGS_predefinedTypeAST temp_10 = this ;
-  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (temp_10.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 117)), inCompiler COMMA_HERE), GGS_bool (false), var_initializerMap_4804, var_getterMap_3959, var_setterMap_4021, var_instanceMethodMap_4099, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 110)) ;
+  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (temp_10.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 117)), inCompiler COMMA_HERE), GGS_bool (false), var_initializerMap_4806, var_getterMap_3959, var_setterMap_4021, var_instanceMethodMap_4099, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 110)) ;
   }
   const GGS_predefinedTypeAST temp_11 = this ;
   const GGS_predefinedTypeAST temp_12 = this ;
   const GGS_predefinedTypeAST temp_13 = this ;
   const GGS_predefinedTypeAST temp_14 = this ;
   const GGS_predefinedTypeAST temp_15 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_5813 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (GGS_lstring::init_21__21_ (temp_11.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 127)), inCompiler COMMA_HERE), temp_12.readProperty_isPredefined (), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type.galgas", 130)), callExtensionGetter_typeKind ((const cPtr_predefinedTypeAST *) temp_13.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 131)), callExtensionGetter_supportsCollectionValue ((const cPtr_predefinedTypeAST *) temp_14.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 132)), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_4804, var_constructorMap_3892, var_getterMap_3959, var_setterMap_4021, var_instanceMethodMap_4099, var_classMethodMap_4179, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type.galgas", 142)), GGS_subscriptMap::init (inCompiler COMMA_HERE), var_enumerationList_4374, callExtensionGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_15.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 145)), var_addAssignArgumentList_4266, GGS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GGS_bool (false), var_enumeratedTypeEntry_4549, GGS_string ("predefined-types"), GGS_headerKind::class_func_twoHeaders (SOURCE_FILE ("declaration-predefined-type.galgas", 151)), inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_5816 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (GGS_lstring::init_21__21_ (temp_11.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 127)), inCompiler COMMA_HERE), temp_12.readProperty_isPredefined (), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type.galgas", 130)), callExtensionGetter_typeKind ((const cPtr_predefinedTypeAST *) temp_13.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 131)), callExtensionGetter_supportsCollectionValue ((const cPtr_predefinedTypeAST *) temp_14.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 132)), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_4806, var_constructorMap_3892, var_getterMap_3959, var_setterMap_4021, var_instanceMethodMap_4099, var_classMethodMap_4179, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type.galgas", 142)), GGS_subscriptMap::init (inCompiler COMMA_HERE), var_enumerationList_4374, callExtensionGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_15.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 145)), var_addAssignArgumentList_4266, GGS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GGS_bool (false), var_enumeratedTypeEntry_4550, GGS_string ("predefined-types"), GGS_headerKind::class_func_twoHeaders (SOURCE_FILE ("declaration-predefined-type.galgas", 151)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_5813.readProperty_typeName (), var_typeDefinition_5813, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 153)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_5816.readProperty_typeName (), var_typeDefinition_5816, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 153)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -4168,28 +4168,28 @@ void cPtr_predefinedTypeAST::method_semanticAnalysis (GGS_lstringlist & ioArgume
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_predefinedTypeAST temp_0 = this ;
-  GGS_unifiedTypeMapEntry var_selfType_7471 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (temp_0.readProperty_mPredefinedTypeName (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 166)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 166)) ;
+  GGS_unifiedTypeMapEntry var_selfType_7474 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (temp_0.readProperty_mPredefinedTypeName (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 166)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 166)) ;
   const GGS_predefinedTypeAST temp_1 = this ;
-  GGS_lstring var_nameForUsefulness_7593 = function_typeNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (temp_1.readProperty_mPredefinedTypeName (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 168)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 168)) ;
+  GGS_lstring var_nameForUsefulness_7597 = function_typeNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (temp_1.readProperty_mPredefinedTypeName (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 168)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 168)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_7593, var_nameForUsefulness_7593, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 169)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_7597, var_nameForUsefulness_7597, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 169)) ;
   }
-  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_nameForUsefulness_7593  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 170)) ;
-  cEnumerator_initializerMap enumerator_7924 (extensionGetter_definition (var_selfType_7471, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 172)).readProperty_initializerMap (), EnumerationOrder::up) ;
-  while (enumerator_7924.hasCurrentObject ()) {
+  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_nameForUsefulness_7597  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 170)) ;
+  cEnumerator_initializerMap enumerator_7929 (extensionGetter_definition (var_selfType_7474, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 172)).readProperty_initializerMap (), EnumerationOrder::up) ;
+  while (enumerator_7929.hasCurrentObject ()) {
     const GGS_predefinedTypeAST temp_2 = this ;
-    GGS_lstring var_initializerNameForUsefulness_7952 = function_initializerNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (temp_2.readProperty_mPredefinedTypeName (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 174)), inCompiler COMMA_HERE), extensionGetter_initializerSignature (enumerator_7924.current (HERE).readProperty_mArgumentTypeList (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 173)) ;
+    GGS_lstring var_initializerNameForUsefulness_7957 = function_initializerNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (temp_2.readProperty_mPredefinedTypeName (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 174)), inCompiler COMMA_HERE), extensionGetter_initializerSignature (enumerator_7929.current (HERE).readProperty_mArgumentTypeList (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 173)) ;
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_7952, var_initializerNameForUsefulness_7952, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 177)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_7957, var_initializerNameForUsefulness_7957, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 177)) ;
     }
-    ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_initializerNameForUsefulness_7952  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 178)) ;
-    enumerator_7924.gotoNextObject () ;
+    ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_initializerNameForUsefulness_7957  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 178)) ;
+    enumerator_7929.gotoNextObject () ;
   }
   const GGS_predefinedTypeAST temp_3 = this ;
   const GGS_predefinedTypeAST temp_4 = this ;
   const GGS_predefinedTypeAST temp_5 = this ;
   const GGS_predefinedTypeAST temp_6 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("Predefined type ").add_operation (temp_3.readProperty_mPredefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 182)), GGS_primitiveTypeForGeneration::init_21__21__21__21_isPackage (var_selfType_7471, temp_4.readProperty_mPredefinedTypeName (), callExtensionGetter_cppDeclarationString ((const cPtr_predefinedTypeAST *) temp_5.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 186)), GGS_bool (ComparisonKind::equal, callExtensionGetter_typeKind ((const cPtr_predefinedTypeAST *) temp_6.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 187)).objectCompare (GGS_typeKindEnum::class_func_packageType (SOURCE_FILE ("declaration-predefined-type.galgas", 187)))), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 181)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("Predefined type ").add_operation (temp_3.readProperty_mPredefinedTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 182)), GGS_primitiveTypeForGeneration::init_21__21__21__21_isPackage (var_selfType_7474, temp_4.readProperty_mPredefinedTypeName (), callExtensionGetter_cppDeclarationString ((const cPtr_predefinedTypeAST *) temp_5.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 186)), GGS_bool (ComparisonKind::equal, callExtensionGetter_typeKind ((const cPtr_predefinedTypeAST *) temp_6.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 187)).objectCompare (GGS_typeKindEnum::class_func_packageType (SOURCE_FILE ("declaration-predefined-type.galgas", 187)))), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 181)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -4202,9 +4202,9 @@ void routine_appendPredefinedListTypeAST_26__3F__26_ (GGS_semanticDeclarationLis
                                                       GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST var_attributeList_11525 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
-  var_attributeList_11525.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 265)), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 266)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("mValue"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 267)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 268)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 270))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 264)) ;
-  ioArgument_ioDeclarationListASTs.addAssign_operation (GGS_listDeclarationAST::init_21_isPredefined_21__21__21_usefullList_21_equatable (GGS_bool (true), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName.add_operation (GGS_string ("list"), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 273)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 273)), inCompiler COMMA_HERE), var_attributeList_11525, GGS_bool (true), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 271)) ;
+  GGS_propertyInCollectionListAST var_attributeList_11531 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+  var_attributeList_11531.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 265)), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 266)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("mValue"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 267)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 268)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 270))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 264)) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (GGS_listDeclarationAST::init_21_isPredefined_21__21__21_usefullList_21_equatable (GGS_bool (true), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName.add_operation (GGS_string ("list"), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 273)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 273)), inCompiler COMMA_HERE), var_attributeList_11531, GGS_bool (true), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 271)) ;
   {
   routine_insertInUsefulnessEntities_26__3F_ (ioArgument_ioUsefulnessRootEntities, constinArgument_inElementTypeName.add_operation (GGS_string ("list"), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 278)), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 278)) ;
   }
@@ -4221,10 +4221,10 @@ void routine_appendPredefined_32_StringListTypeAST_26__26_ (GGS_semanticDeclarat
                                                             GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST var_attributeList_12362 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
-  var_attributeList_12362.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 287)), GGS_lstring::init_21__21_ (GGS_string ("string"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 288)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("mValue0"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 289)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 290)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 292))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 286)) ;
-  var_attributeList_12362.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 294)), GGS_lstring::init_21__21_ (GGS_string ("string"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 295)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("mValue1"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 296)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 297)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 299))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 293)) ;
-  ioArgument_ioDeclarationListASTs.addAssign_operation (GGS_listDeclarationAST::init_21_isPredefined_21__21__21_usefullList_21_equatable (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("2stringlist"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 303)), inCompiler COMMA_HERE), var_attributeList_12362, GGS_bool (true), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 301)) ;
+  GGS_propertyInCollectionListAST var_attributeList_12368 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+  var_attributeList_12368.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 287)), GGS_lstring::init_21__21_ (GGS_string ("string"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 288)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("mValue0"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 289)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 290)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 292))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 286)) ;
+  var_attributeList_12368.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 294)), GGS_lstring::init_21__21_ (GGS_string ("string"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 295)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("mValue1"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 296)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 297)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 299))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 293)) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (GGS_listDeclarationAST::init_21_isPredefined_21__21__21_usefullList_21_equatable (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("2stringlist"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 303)), inCompiler COMMA_HERE), var_attributeList_12368, GGS_bool (true), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 301)) ;
   {
   routine_insertInUsefulnessEntities_26__3F_ (ioArgument_ioUsefulnessRootEntities, GGS_string ("2stringlist"), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 308)) ;
   }
@@ -4242,13 +4242,13 @@ void routine_appendStructASTForTypeWithLocation_26__3F__26_ (GGS_semanticDeclara
                                                              GGS_lstringlist & ioArgument_ioUsefulnessRootEntities,
                                                              Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST var_attributeList_13482 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
-  var_attributeList_13482.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 318)), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 319)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 320)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 321)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 323))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 317)) ;
-  var_attributeList_13482.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 325)), GGS_lstring::init_21__21_ (GGS_string ("location"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 326)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("location"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 327)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 328)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 330))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 324)) ;
-  GGS_structDeclarationAST var_type_13972 = GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("l").add_operation (constinArgument_inElementTypeName, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 333)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 333)), inCompiler COMMA_HERE), var_attributeList_13482, GGS_string::makeEmptyString (), GGS_structComparison::class_func_equatable (SOURCE_FILE ("declaration-predefined-type.galgas", 336)), GGS_bool (true), inCompiler COMMA_HERE) ;
-  ioArgument_ioDeclarationListASTs.addAssign_operation (var_type_13972  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 339)) ;
-  GGS_lstring var_typeUsefulnessName_14359 = function_typeNameForUsefulEntitiesGraph (var_type_13972.readProperty_structTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 342)) ;
-  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_typeUsefulnessName_14359  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 343)) ;
+  GGS_propertyInCollectionListAST var_attributeList_13488 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+  var_attributeList_13488.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 318)), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 319)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 320)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 321)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 323))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 317)) ;
+  var_attributeList_13488.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 325)), GGS_lstring::init_21__21_ (GGS_string ("location"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 326)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("location"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 327)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 328)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 330))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 324)) ;
+  GGS_structDeclarationAST var_type_13978 = GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("l").add_operation (constinArgument_inElementTypeName, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 333)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 333)), inCompiler COMMA_HERE), var_attributeList_13488, GGS_string::makeEmptyString (), GGS_structComparison::class_func_equatable (SOURCE_FILE ("declaration-predefined-type.galgas", 336)), GGS_bool (true), inCompiler COMMA_HERE) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (var_type_13978  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 339)) ;
+  GGS_lstring var_typeUsefulnessName_14365 = function_typeNameForUsefulEntitiesGraph (var_type_13978.readProperty_structTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 342)) ;
+  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_typeUsefulnessName_14365  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 343)) ;
 }
 
 
@@ -4262,10 +4262,10 @@ void routine_appendStructASTForRangeType_26__26_ (GGS_semanticDeclarationListAST
                                                   GGS_lstringlist & /* ioArgument_ioUsefulnessRootEntities */,
                                                   Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_propertyInCollectionListAST var_attributeList_15127 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
-  var_attributeList_15127.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 360)), GGS_lstring::init_21__21_ (GGS_string ("uint"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 361)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("start"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 362)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 363)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 365))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 359)) ;
-  var_attributeList_15127.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 367)), GGS_lstring::init_21__21_ (GGS_string ("uint"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 368)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("length"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 369)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 370)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 372))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 366)) ;
-  ioArgument_ioDeclarationListASTs.addAssign_operation (GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("range"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 375)), inCompiler COMMA_HERE), var_attributeList_15127, GGS_string ("uint"), GGS_structComparison::class_func_equatable (SOURCE_FILE ("declaration-predefined-type.galgas", 378)), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 373)) ;
+  GGS_propertyInCollectionListAST var_attributeList_15133 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+  var_attributeList_15133.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 360)), GGS_lstring::init_21__21_ (GGS_string ("uint"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 361)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("start"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 362)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 363)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 365))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 359)) ;
+  var_attributeList_15133.addAssign_operation (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("declaration-predefined-type.galgas", 367)), GGS_lstring::init_21__21_ (GGS_string ("uint"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 368)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("length"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 369)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-predefined-type.galgas", 370)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("declaration-predefined-type.galgas", 372))  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 366)) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("range"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 375)), inCompiler COMMA_HERE), var_attributeList_15133, GGS_string ("uint"), GGS_structComparison::class_func_equatable (SOURCE_FILE ("declaration-predefined-type.galgas", 378)), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 373)) ;
 }
 
 
@@ -4279,8 +4279,8 @@ void routine_insertInUsefulnessEntities_26__3F_ (GGS_lstringlist & ioArgument_io
                                                  const GGS_string constinArgument_inTypeName,
                                                  Compiler * inCompiler
                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring var_typeUsefulnessName_16038 = function_typeNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (constinArgument_inTypeName, GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 388)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 388)) ;
-  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_typeUsefulnessName_16038  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 389)) ;
+  GGS_lstring var_typeUsefulnessName_16044 = function_typeNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (constinArgument_inTypeName, GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 388)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 388)) ;
+  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_typeUsefulnessName_16044  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 389)) ;
 }
 
 
@@ -4296,13 +4296,13 @@ void routine_insertPredefinedType_26__26__3F_ (GGS_semanticDeclarationListAST & 
                                                Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioDeclarationListASTs.addAssign_operation (constinArgument_inPredefinedTypeAST  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 399)) ;
-  GGS_lstring var_typeUsefulnessName_16548 = function_typeNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (constinArgument_inPredefinedTypeAST.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 401)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 400)) ;
-  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_typeUsefulnessName_16548  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 404)) ;
-  cEnumerator_initializerSignatureList enumerator_16824 (callExtensionGetter_initializers ((const cPtr_predefinedTypeAST *) constinArgument_inPredefinedTypeAST.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 406)), EnumerationOrder::up) ;
-  while (enumerator_16824.hasCurrentObject ()) {
-    GGS_lstring var_initializerNameForUsefulness_16848 = function_initializerNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (constinArgument_inPredefinedTypeAST.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 408)), inCompiler COMMA_HERE), extensionGetter_initializerSignature (enumerator_16824.current (HERE).readProperty_initializer (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 409)), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 407)) ;
-    ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_initializerNameForUsefulness_16848  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 411)) ;
-    enumerator_16824.gotoNextObject () ;
+  GGS_lstring var_typeUsefulnessName_16554 = function_typeNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (constinArgument_inPredefinedTypeAST.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 401)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 400)) ;
+  ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_typeUsefulnessName_16554  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 404)) ;
+  cEnumerator_initializerSignatureList enumerator_16830 (callExtensionGetter_initializers ((const cPtr_predefinedTypeAST *) constinArgument_inPredefinedTypeAST.ptr (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 406)), EnumerationOrder::up) ;
+  while (enumerator_16830.hasCurrentObject ()) {
+    GGS_lstring var_initializerNameForUsefulness_16854 = function_initializerNameForUsefulEntitiesGraph (GGS_lstring::init_21__21_ (constinArgument_inPredefinedTypeAST.readProperty_mPredefinedTypeName (), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-predefined-type.galgas", 408)), inCompiler COMMA_HERE), extensionGetter_initializerSignature (enumerator_16830.current (HERE).readProperty_initializer (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 409)), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 407)) ;
+    ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_initializerNameForUsefulness_16854  COMMA_SOURCE_FILE ("declaration-predefined-type.galgas", 411)) ;
+    enumerator_16830.gotoNextObject () ;
   }
 }
 
@@ -4950,16 +4950,16 @@ void cPtr_bigintPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeM
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstanceMethodMap = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
-  GGS_unifiedTypeMapEntry var_bigIntType_2380 ;
+  GGS_unifiedTypeMapEntry var_bigIntType_2381 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bigint"), var_bigIntType_2380, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 55)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bigint"), var_bigIntType_2381, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 55)) ;
   }
-  GGS_formalParameterSignature var_argList_2426 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  var_argList_2426.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 57)), var_bigIntType_2380, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 57)), GGS_string ("inDivisor")  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 57)) ;
-  var_argList_2426.addAssign_operation (GGS_string ("quotient").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 58)), var_bigIntType_2380, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 58)), GGS_string ("outQuotient")  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 58)) ;
-  var_argList_2426.addAssign_operation (GGS_string ("remainder").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 59)), var_bigIntType_2380, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 59)), GGS_string ("outRemainder")  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 59)) ;
+  GGS_formalParameterSignature var_argList_2427 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  var_argList_2427.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 57)), var_bigIntType_2381, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 57)), GGS_string ("inDivisor")  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 57)) ;
+  var_argList_2427.addAssign_operation (GGS_string ("quotient").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 58)), var_bigIntType_2381, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 58)), GGS_string ("outQuotient")  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 58)) ;
+  var_argList_2427.addAssign_operation (GGS_string ("remainder").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 59)), var_bigIntType_2381, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 59)), GGS_string ("outRemainder")  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 59)) ;
   {
-  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("divideBy"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 61)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 62)), var_argList_2426, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 64)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 66)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 60)) ;
+  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("divideBy"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 61)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 62)), var_argList_2427, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 64)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 66)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-bigint.galgas", 60)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6645,25 +6645,25 @@ void cPtr_stringPredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeMap 
   {
   extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bool"), var_boolType_7306, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 233)) ;
   }
-  GGS_formalParameterSignature var_argList_7371 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  var_argList_7371.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 236)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 236)), GGS_string ("inStartPath")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 236)) ;
-  var_argList_7371.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 237)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 237)), GGS_string ("inFileName")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 237)) ;
-  var_argList_7371.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 238)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 238)), GGS_string ("inContents")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 238)) ;
+  GGS_formalParameterSignature var_argList_7372 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  var_argList_7372.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 236)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 236)), GGS_string ("inStartPath")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 236)) ;
+  var_argList_7372.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 237)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 237)), GGS_string ("inFileName")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 237)) ;
+  var_argList_7372.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 238)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 238)), GGS_string ("inContents")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 238)) ;
   {
-  outArgument_outClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("generateFile"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 240)), inCompiler COMMA_HERE), var_argList_7371, GGS_bool (true) COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 239)) ;
+  outArgument_outClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("generateFile"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 240)), inCompiler COMMA_HERE), var_argList_7372, GGS_bool (true) COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 239)) ;
   }
-  var_argList_7371 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  var_argList_7371.addAssign_operation (GGS_string ("startPath").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 246)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 246)), GGS_string ("inStartPath")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 246)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("fileName").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 247)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 247)), GGS_string ("inFileName")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 247)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("lineComment").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 248)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 248)), GGS_string ("inLineCommentPrefix")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 248)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("header").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 249)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 249)), GGS_string ("inHeader")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 249)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("defaultUserZone1").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 250)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 250)), GGS_string ("inDefaultUserZone1")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 250)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("generatedZone2").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 251)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 251)), GGS_string ("inGeneratedZone2")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 251)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("defaultUserZone2").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 252)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 252)), GGS_string ("inDefaultUserZone2")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 252)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("generatedZone3").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 253)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 253)), GGS_string ("inGeneratedZone3")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 253)) ;
-  var_argList_7371.addAssign_operation (GGS_string ("makeExecutable").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 254)), var_boolType_7306, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 254)), GGS_string ("inMakeExecutable")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 254)) ;
+  var_argList_7372 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  var_argList_7372.addAssign_operation (GGS_string ("startPath").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 246)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 246)), GGS_string ("inStartPath")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 246)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("fileName").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 247)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 247)), GGS_string ("inFileName")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 247)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("lineComment").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 248)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 248)), GGS_string ("inLineCommentPrefix")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 248)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("header").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 249)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 249)), GGS_string ("inHeader")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 249)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("defaultUserZone1").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 250)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 250)), GGS_string ("inDefaultUserZone1")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 250)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("generatedZone2").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 251)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 251)), GGS_string ("inGeneratedZone2")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 251)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("defaultUserZone2").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 252)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 252)), GGS_string ("inDefaultUserZone2")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 252)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("generatedZone3").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 253)), var_stringType_7216, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 253)), GGS_string ("inGeneratedZone3")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 253)) ;
+  var_argList_7372.addAssign_operation (GGS_string ("makeExecutable").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 254)), var_boolType_7306, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 254)), GGS_string ("inMakeExecutable")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 254)) ;
   {
-  outArgument_outClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("generateFileWithPattern"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 256)), inCompiler COMMA_HERE), var_argList_7371, GGS_bool (true) COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 255)) ;
+  outArgument_outClassMethodMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("generateFileWithPattern"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 256)), inCompiler COMMA_HERE), var_argList_7372, GGS_bool (true) COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 255)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6695,21 +6695,21 @@ void cPtr_stringPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeM
   {
   routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (outArgument_outInstanceMethodMap, GGS_string ("makeDirectory"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 307)) ;
   }
-  GGS_formalParameterSignature var_argList_10494 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  GGS_unifiedTypeMapEntry var_t_10583 ;
+  GGS_formalParameterSignature var_argList_10497 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeMapEntry var_t_10586 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_t_10583, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 314)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_t_10586, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 314)) ;
   }
-  var_argList_10494.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 315)), var_t_10583, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 315)), GGS_string ("inFilePath")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 315)) ;
+  var_argList_10497.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 315)), var_t_10586, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-string.galgas", 315)), GGS_string ("inFilePath")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 315)) ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bool"), var_t_10583, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 316)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bool"), var_t_10586, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 316)) ;
   }
-  var_argList_10494.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 317)), var_t_10583, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-string.galgas", 317)), GGS_string ("outFileModified")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 317)) ;
+  var_argList_10497.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-string.galgas", 317)), var_t_10586, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-string.galgas", 317)), GGS_string ("outFileModified")  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 317)) ;
   {
-  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 319)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-string.galgas", 320)), var_argList_10494, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 322)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-string.galgas", 324)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 318)) ;
+  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 319)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-string.galgas", 320)), var_argList_10497, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 322)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-string.galgas", 324)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 318)) ;
   }
   {
-  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToExecutableFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 328)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-string.galgas", 329)), var_argList_10494, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 331)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-string.galgas", 333)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 327)) ;
+  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToExecutableFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 328)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-string.galgas", 329)), var_argList_10497, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 331)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-string.galgas", 333)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas", 327)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -7992,91 +7992,91 @@ void cPtr_arrayTypeDeclarationAST::method_enterDeclarationInSemanticContext (GGS
                                                                              GGS_semanticContext & ioArgument_ioSemanticContext,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_uintType_4603 ;
+  GGS_unifiedTypeMapEntry var_uintType_4604 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, GGS_string ("uint"), var_uintType_4603, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 97)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioTypeMap, GGS_string ("uint"), var_uintType_4604, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 97)) ;
   }
-  GGS_unifiedTypeMapEntry var_elementType_4693 ;
+  GGS_unifiedTypeMapEntry var_elementType_4695 ;
   {
   const GGS_arrayTypeDeclarationAST temp_0 = this ;
-  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_elementTypeName (), var_elementType_4693, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 99)) ;
+  extensionSetter_makeEntry (ioArgument_ioTypeMap, temp_0.readProperty_elementTypeName (), var_elementType_4695, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 99)) ;
   }
   GGS_formalParameterSignature temp_1 = GGS_formalParameterSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 102)) ;
-  temp_1.enterElement (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 102)), var_elementType_4693, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 102)), GGS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 102)) ;
-  GGS_formalParameterSignature var_setterInputFormalArgumentList_4768 = temp_1 ;
+  temp_1.enterElement (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 102)), var_elementType_4695, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 102)), GGS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 102)) ;
+  GGS_formalParameterSignature var_setterInputFormalArgumentList_4771 = temp_1 ;
   GGS_formalParameterSignature temp_2 = GGS_formalParameterSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 105)) ;
-  temp_2.enterElement (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 105)), var_elementType_4693, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-type-array.galgas", 105)), GGS_string ("outElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 105)) ;
-  GGS_formalParameterSignature var_setterOutputFormalArgumentList_4917 = temp_2 ;
-  GGS_getterMap var_getterMap_5102 ;
+  temp_2.enterElement (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 105)), var_elementType_4695, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-type-array.galgas", 105)), GGS_string ("outElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 105)) ;
+  GGS_formalParameterSignature var_setterOutputFormalArgumentList_4920 = temp_2 ;
+  GGS_getterMap var_getterMap_5106 ;
   {
-  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_5102, inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 108)) ;
+  routine_commonGetterMapForAllTypes_26__21_ (ioArgument_ioTypeMap, var_getterMap_5106, inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 108)) ;
   }
   {
-  routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5102, ioArgument_ioTypeMap, GGS_string ("count"), GGS_string::makeEmptyString (), GGS_string ("uint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 109)) ;
+  routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_5106, ioArgument_ioTypeMap, GGS_string ("count"), GGS_string::makeEmptyString (), GGS_string ("uint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 109)) ;
   }
-  GGS_instanceMethodMap var_instanceMethodMap_6383 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  GGS_instanceMethodMap var_instanceMethodMap_6387 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
   {
-  var_instanceMethodMap_6383.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("first"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 152)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 153)), var_setterOutputFormalArgumentList_4917, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 155)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 157)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 151)) ;
+  var_instanceMethodMap_6387.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("first"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 152)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 153)), var_setterOutputFormalArgumentList_4920, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 155)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 157)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 151)) ;
   }
   {
-  var_instanceMethodMap_6383.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("last"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 161)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 162)), var_setterOutputFormalArgumentList_4917, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 164)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 166)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 160)) ;
+  var_instanceMethodMap_6387.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("last"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 161)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 162)), var_setterOutputFormalArgumentList_4920, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 164)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 166)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 160)) ;
   }
-  GGS_setterMap var_setterMap_6943 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
+  GGS_setterMap var_setterMap_6947 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
   {
   GGS_formalParameterSignature temp_3 = GGS_formalParameterSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 174)) ;
-  temp_3.enterElement (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 174)), var_elementType_4693, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 174)), GGS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 174)) ;
-  var_setterMap_6943.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("append"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 172)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 173)), temp_3, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 176)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 171)) ;
+  temp_3.enterElement (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 174)), var_elementType_4695, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 174)), GGS_string ("inElement"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 174)) ;
+  var_setterMap_6947.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("append"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 172)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 173)), temp_3, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 176)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 171)) ;
   }
   {
-  var_setterMap_6943.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("popFirst"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 180)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 181)), var_setterOutputFormalArgumentList_4917, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 184)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 179)) ;
+  var_setterMap_6947.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("popFirst"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 180)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 181)), var_setterOutputFormalArgumentList_4920, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 184)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 179)) ;
   }
   {
-  var_setterMap_6943.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("popLast"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 188)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 189)), var_setterOutputFormalArgumentList_4917, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 192)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 187)) ;
+  var_setterMap_6947.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("popLast"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 188)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 189)), var_setterOutputFormalArgumentList_4920, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 192)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 187)) ;
   }
-  var_setterOutputFormalArgumentList_4917.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 195)), var_uintType_4603, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 195)), GGS_string ("inIndex")  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 195)) ;
+  var_setterOutputFormalArgumentList_4920.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 195)), var_uintType_4604, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 195)), GGS_string ("inIndex")  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 195)) ;
   {
-  var_setterMap_6943.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("removeAtIndex"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 197)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 198)), var_setterOutputFormalArgumentList_4917, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 201)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 196)) ;
+  var_setterMap_6947.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("removeAtIndex"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 197)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 198)), var_setterOutputFormalArgumentList_4920, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 201)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 196)) ;
   }
-  var_setterInputFormalArgumentList_4768.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 205)), var_uintType_4603, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 205)), GGS_string ("inInsertionIndex")  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 205)) ;
+  var_setterInputFormalArgumentList_4771.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 205)), var_uintType_4604, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-type-array.galgas", 205)), GGS_string ("inInsertionIndex")  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 205)) ;
   {
-  var_setterMap_6943.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("insertAtIndex"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 207)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 208)), var_setterInputFormalArgumentList_4768, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 211)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 206)) ;
+  var_setterMap_6947.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("insertAtIndex"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 207)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-array.galgas", 208)), var_setterInputFormalArgumentList_4771, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-array.galgas", 211)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 206)) ;
   }
-  GGS_initializerMap var_initializerMap_8323 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
-  GGS_functionSignature var_emptyArgumentList_8370 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+  GGS_initializerMap var_initializerMap_8329 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_functionSignature var_emptyArgumentList_8376 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
   {
   const GGS_arrayTypeDeclarationAST temp_4 = this ;
-  var_initializerMap_8323.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_emptyArgumentList_8370, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 218)), temp_4.readProperty_arrayTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_emptyArgumentList_8370, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 217)) ;
+  var_initializerMap_8329.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_emptyArgumentList_8376, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 218)), temp_4.readProperty_arrayTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_emptyArgumentList_8376, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 217)) ;
   }
-  GGS_subscriptMap var_readSubscriptMap_8578 = GGS_subscriptMap::init (inCompiler COMMA_HERE) ;
+  GGS_subscriptMap var_readSubscriptMap_8585 = GGS_subscriptMap::init (inCompiler COMMA_HERE) ;
   GGS_functionSignature temp_5 = GGS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 223)) ;
-  temp_5.enterElement (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 223)), var_uintType_4603, GGS_string ("inIndex"), GGS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 223)) ;
-  GGS_functionSignature var_argumentTypeList_8627 = temp_5 ;
+  temp_5.enterElement (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 223)), var_uintType_4604, GGS_string ("inIndex"), GGS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 223)) ;
+  GGS_functionSignature var_argumentTypeList_8634 = temp_5 ;
   {
-  var_readSubscriptMap_8578.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_subcriptSignature (var_argumentTypeList_8627, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 225)), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 225)), inCompiler COMMA_HERE), var_argumentTypeList_8627, var_elementType_4693, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 224)) ;
+  var_readSubscriptMap_8585.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_subcriptSignature (var_argumentTypeList_8634, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 225)), GGS_location::class_func_nowhere (SOURCE_FILE ("declaration-type-array.galgas", 225)), inCompiler COMMA_HERE), var_argumentTypeList_8634, var_elementType_4695, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 224)) ;
   }
   {
   const GGS_arrayTypeDeclarationAST temp_6 = this ;
-  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_6.readProperty_arrayTypeName (), GGS_bool (false), var_initializerMap_8323, var_getterMap_5102, var_setterMap_6943, var_instanceMethodMap_6383, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 230)) ;
+  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_6.readProperty_arrayTypeName (), GGS_bool (false), var_initializerMap_8329, var_getterMap_5106, var_setterMap_6947, var_instanceMethodMap_6387, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 230)) ;
   }
-  GGS_typeFeatures var_features_9307 = GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("declaration-type-array.galgas", 246)).operator_or (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("declaration-type-array.galgas", 246)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 246)) ;
+  GGS_typeFeatures var_features_9316 = GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("declaration-type-array.galgas", 246)).operator_or (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("declaration-type-array.galgas", 246)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 246)) ;
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
     const GGS_arrayTypeDeclarationAST temp_8 = this ;
     test_7 = temp_8.readProperty_equatable ().boolEnum () ;
     if (kBoolTrue == test_7) {
-      var_features_9307.orAssign_operation(GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-type-array.galgas", 248)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 248)) ;
+      var_features_9316.orAssign_operation(GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-type-array.galgas", 248)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 248)) ;
     }
   }
   {
   const GGS_arrayTypeDeclarationAST temp_9 = this ;
-  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_9.readProperty_arrayTypeName (), var_features_9307, GGS_bool (true), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 250)) ;
+  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_9.readProperty_arrayTypeName (), var_features_9316, GGS_bool (true), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 250)) ;
   }
   const GGS_arrayTypeDeclarationAST temp_10 = this ;
   const GGS_arrayTypeDeclarationAST temp_11 = this ;
   const GGS_arrayTypeDeclarationAST temp_12 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_9664 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_10.readProperty_arrayTypeName (), temp_11.readProperty_isPredefined (), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-array.galgas", 262)), GGS_typeKindEnum::class_func_listType (SOURCE_FILE ("declaration-type-array.galgas", 263)), GGS_bool (true), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_8323, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_5102, var_setterMap_6943, var_instanceMethodMap_6383, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-array.galgas", 274)), var_readSubscriptMap_8578, GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_9307, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GGS_bool (false), var_elementType_4693, GGS_string ("array-").add_operation (temp_12.readProperty_arrayTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-array.galgas", 282)), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 282)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-array.galgas", 283)), inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_9674 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_mapSearchMethodList_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_10.readProperty_arrayTypeName (), temp_11.readProperty_isPredefined (), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-array.galgas", 262)), GGS_typeKindEnum::class_func_listType (SOURCE_FILE ("declaration-type-array.galgas", 263)), GGS_bool (true), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_8329, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_5106, var_setterMap_6947, var_instanceMethodMap_6387, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-array.galgas", 274)), var_readSubscriptMap_8585, GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_9316, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_mapSearchMethodListAST::init (inCompiler COMMA_HERE), GGS_bool (false), var_elementType_4695, GGS_string ("array-").add_operation (temp_12.readProperty_arrayTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-array.galgas", 282)), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 282)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-array.galgas", 283)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_9664.readProperty_typeName (), var_typeDefinition_9664, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 285)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_9674.readProperty_typeName (), var_typeDefinition_9674, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 285)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -8105,9 +8105,9 @@ void cPtr_arrayTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & io
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_arrayTypeDeclarationAST temp_0 = this ;
-  GGS_lstring var_nameForUsefulness_12159 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_arrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 323)) ;
+  GGS_lstring var_nameForUsefulness_12170 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_arrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 323)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_12159, var_nameForUsefulness_12159, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 324)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_12170, var_nameForUsefulness_12170, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 324)) ;
   }
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
@@ -8119,13 +8119,13 @@ void cPtr_arrayTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & io
     }
     test_1 = test_3.boolEnum () ;
     if (kBoolTrue == test_1) {
-      ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_nameForUsefulness_12159  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 326)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_nameForUsefulness_12170  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 326)) ;
     }
   }
   const GGS_arrayTypeDeclarationAST temp_5 = this ;
-  GGS_lstring var_elementTypeNameForUsefulness_12425 = function_typeNameForUsefulEntitiesGraph (temp_5.readProperty_elementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 328)) ;
+  GGS_lstring var_elementTypeNameForUsefulness_12436 = function_typeNameForUsefulEntitiesGraph (temp_5.readProperty_elementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 328)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_12159, var_elementTypeNameForUsefulness_12425 COMMA_SOURCE_FILE ("declaration-type-array.galgas", 329)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_12170, var_elementTypeNameForUsefulness_12436 COMMA_SOURCE_FILE ("declaration-type-array.galgas", 329)) ;
   }
   enumGalgasBool test_6 = kBoolTrue ;
   if (kBoolTrue == test_6) {
@@ -8137,13 +8137,13 @@ void cPtr_arrayTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & io
     }
     test_6 = test_8.boolEnum () ;
     if (kBoolTrue == test_6) {
-      ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_elementTypeNameForUsefulness_12425  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 331)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_elementTypeNameForUsefulness_12436  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 331)) ;
     }
   }
   const GGS_arrayTypeDeclarationAST temp_10 = this ;
-  GGS_lstring var_initializerNameForUsefulness_12792 = function_initializerNameForUsefulEntitiesGraph (temp_10.readProperty_arrayTypeName (), extensionGetter_initializerSignature (GGS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 336)), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 334)) ;
+  GGS_lstring var_initializerNameForUsefulness_12804 = function_initializerNameForUsefulEntitiesGraph (temp_10.readProperty_arrayTypeName (), extensionGetter_initializerSignature (GGS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 336)), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 334)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_12792, var_initializerNameForUsefulness_12792, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 338)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_12804, var_initializerNameForUsefulness_12804, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 338)) ;
   }
   enumGalgasBool test_11 = kBoolTrue ;
   if (kBoolTrue == test_11) {
@@ -8155,14 +8155,14 @@ void cPtr_arrayTypeDeclarationAST::method_semanticAnalysis (GGS_lstringlist & io
     }
     test_11 = test_13.boolEnum () ;
     if (kBoolTrue == test_11) {
-      ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_initializerNameForUsefulness_12792  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 340)) ;
+      ioArgument_ioUsefulnessRootEntities.addAssign_operation (var_initializerNameForUsefulness_12804  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 340)) ;
     }
   }
   const GGS_arrayTypeDeclarationAST temp_15 = this ;
-  GGS_unifiedTypeMapEntry var_selfType_14019 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_15.readProperty_arrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 361)) ;
+  GGS_unifiedTypeMapEntry var_selfType_14033 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_15.readProperty_arrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 361)) ;
   const GGS_arrayTypeDeclarationAST temp_16 = this ;
   const GGS_arrayTypeDeclarationAST temp_17 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("array type ").add_operation (temp_16.readProperty_arrayTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 363)), GGS_arrayTypeForGeneration::init_21__21_ (var_selfType_14019, extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_17.readProperty_elementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 366)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 362)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GGS_string ("array type ").add_operation (temp_16.readProperty_arrayTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 363)), GGS_arrayTypeForGeneration::init_21__21_ (var_selfType_14033, extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_17.readProperty_elementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 366)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 362)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -8175,11 +8175,11 @@ void cPtr_arrayTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & 
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_arrayTypeForGeneration temp_0 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_14979 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 385)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_14993 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 385)) ;
   const GGS_arrayTypeForGeneration temp_1 = this ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeHeader_31_ (inCompiler, var_selfTypeDefinition_14979.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 388)), extensionGetter_identifierRepresentation (var_selfTypeDefinition_14979.readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 389)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 386))) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeHeader_31_ (inCompiler, var_selfTypeDefinition_14993.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 388)), extensionGetter_identifierRepresentation (var_selfTypeDefinition_14993.readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 389)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 386))) ;
   const GGS_arrayTypeForGeneration temp_2 = this ;
-  outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_14979.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 393)), var_selfTypeDefinition_14979.readProperty_isConcrete (), var_selfTypeDefinition_14979.readProperty_initializerMap (), var_selfTypeDefinition_14979.readProperty_classFunctionMap (), var_selfTypeDefinition_14979.readProperty_getterMap (), var_selfTypeDefinition_14979.readProperty_setterMap (), var_selfTypeDefinition_14979.readProperty_instanceMethodMap (), var_selfTypeDefinition_14979.readProperty_classMethodMap (), var_selfTypeDefinition_14979.readProperty_readSubscriptMap (), var_selfTypeDefinition_14979.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_14979.readProperty_features (), var_selfTypeDefinition_14979.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_14979.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_14979.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-array.galgas", 391))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 391)) ;
+  outArgument_outHeader.plusAssign_operation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_14993.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 393)), var_selfTypeDefinition_14993.readProperty_isConcrete (), var_selfTypeDefinition_14993.readProperty_initializerMap (), var_selfTypeDefinition_14993.readProperty_classFunctionMap (), var_selfTypeDefinition_14993.readProperty_getterMap (), var_selfTypeDefinition_14993.readProperty_setterMap (), var_selfTypeDefinition_14993.readProperty_instanceMethodMap (), var_selfTypeDefinition_14993.readProperty_classMethodMap (), var_selfTypeDefinition_14993.readProperty_readSubscriptMap (), var_selfTypeDefinition_14993.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_14993.readProperty_features (), var_selfTypeDefinition_14993.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_14993.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_14993.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-array.galgas", 391))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-array.galgas", 391)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -8197,9 +8197,9 @@ void cPtr_arrayTypeForGeneration::method_appendSpecificImplementation (const GGS
   const GGS_arrayTypeForGeneration temp_1 = this ;
   extensionMethod_addHeaderFileName (temp_1.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 416)) ;
   const GGS_arrayTypeForGeneration temp_2 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_16486 = extensionGetter_definition (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 417)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_16500 = extensionGetter_definition (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 417)) ;
   const GGS_arrayTypeForGeneration temp_3 = this ;
-  outArgument_outImplementation = GGS_string (filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_16486.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 420)), extensionGetter_identifierRepresentation (var_selfTypeDefinition_16486.readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 421)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_16486.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 422)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 418))) ;
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_16500.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_3.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 420)), extensionGetter_identifierRepresentation (var_selfTypeDefinition_16500.readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 421)), extensionGetter_generateCppObjectComparison (var_selfTypeDefinition_16500.readProperty_features (), inCompiler COMMA_SOURCE_FILE ("declaration-type-array.galgas", 422)) COMMA_SOURCE_FILE ("declaration-type-array.galgas", 418))) ;
 }
 //--------------------------------------------------------------------------------------------------
 //

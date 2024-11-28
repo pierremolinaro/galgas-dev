@@ -15,20 +15,20 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
                                                         ?prefixedBySelf: let @bool inHasSelfPrefix
@@ -142,7 +142,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <non_empty_output_expression_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                                !@actualOutputArgumentList outExpressionList {
@@ -163,18 +163,18 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
   
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_beginning_with_identifier> !?ioDeclarations !prefixedBySelf: true ?outInstruction
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_beginning_with_identifier> ?!@galgasDeclarationAST ioDeclarations
                                                         ?prefixedBySelf: let @bool inHasSelfPrefix
@@ -197,7 +197,7 @@ syntax extension galgas4InstructionsSyntax {
       $identifier$ ?let attributeName
       propertyList += !attributeName
     end
-  #---
+  //---
     select
       $-=$
       <expression> !?ioDeclarations ?let @semanticExpressionAST expression
@@ -321,11 +321,11 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @opAssignmentOperator {
   case andAssign // &=
@@ -336,7 +336,7 @@ enum @opAssignmentOperator {
   case mulAssign // *=
   case divAssign // /=
 
-  #·······························································································
+  //······························································································
   
   getter features -> @typeFeatures {
     switch self
@@ -350,7 +350,7 @@ enum @opAssignmentOperator {
     end
   }
 
-  #·······························································································
+  //······························································································
   
   getter string -> @string {
     switch self
@@ -364,7 +364,7 @@ enum @opAssignmentOperator {
     end
   }
 
-  #·······························································································
+  //······························································································
   
   getter cppFunctionName -> @string {
     switch self
@@ -378,11 +378,11 @@ enum @opAssignmentOperator {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -391,13 +391,13 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @opAssignmentOperator mOperator
   private let @semanticExpressionAST mExpression
 
-  #·······························································································
+  //······························································································
   
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction
                     ?let @lstring inUsefulnessCallerEntityName
@@ -406,7 +406,7 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
                     ?!@unifiedTypeMap ioTypeMap
                     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                     ?!@localVarManager ioVariableMap {
-  #--- Check target variable, or self.property
+  //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
     let @string targetVariableCppName
     let @string nameForCheckingFormalParameterUsing
@@ -441,7 +441,7 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         ?nameForCheckingFormalParameterUsing
       ]
     end
-  #--- Check target variable
+  //--- Check target variable
     for (value) in self.mStructAttributeList do
       let propertyMap = [targetType definition].propertyMap
       [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
@@ -450,13 +450,13 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         error self.mReceiverName : "a constant property cannot be modified"
       end
     end
-  #--- Check target variable type support 'X= exp' operator
+  //--- Check target variable type support 'X= exp' operator
     if not [[targetType definition].features contains ![self.mOperator features]] then
       error self.mInstructionLocation
       :"the target object has the '@" + [targetType definition].typeName.string
       + "' type, but this type does not support the '" + [self.mOperator string] + "' operator"
     end
-  #--- Analyze source expression
+  //--- Analyze source expression
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -466,9 +466,9 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       ?@semanticExpressionForGeneration expression
     ]
-  #--- Check assignment type compatibility
+  //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
-  #--- Generate instruction
+  //--- Generate instruction
     ioInstructionListForGeneration += !@opAssignInstructionForGeneration {
       !self.mInstructionLocation
       !targetType
@@ -480,11 +480,11 @@ class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     }
 }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
@@ -492,13 +492,13 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   private let @lstringlist mStructAttributeList
   private let @actualOutputArgumentList mExpressions
 
-  #·······························································································
+  //······························································································
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction
                             ?let @lstring inUsefulnessCallerEntityName
@@ -507,7 +507,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
                             ?!@unifiedTypeMap ioTypeMap
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                             ?!@localVarManager ioVariableMap {
-  #--- Check target variable, or self.property
+  //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
     let @string targetVariableCppName
     let @string nameForCheckingFormalParameterUsing
@@ -536,7 +536,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         ?nameForCheckingFormalParameterUsing
       ]
     end
-  #--- Check target variable
+  //--- Check target variable
     for (value) in self.mStructAttributeList do
       let propertyMap = [targetType definition].propertyMap
   #    let previousTargetType = targetType
@@ -556,12 +556,12 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         error value : "a constant property cannot be modified"
       end
     end
-  #--- Check target variable type support '+=' operator
+  //--- Check target variable type support '+=' operator
     let addAssignOperatorArguments= [targetType definition].addAssignOperatorArguments # Empty list if += operator is not supported
     if [addAssignOperatorArguments count] == 0 then
       error self.mInstructionLocation
       :"the target object has the '@" + [targetType definition].typeName.string + "' type, but this type does not support the '+=' operator"
-  #--- Analyze source expressions
+  //--- Analyze source expressions
     elsif [self.mExpressions count] != [addAssignOperatorArguments count] then
       error self.mInstructionLocation
       : "calling the '+=' operator on an '@" + [targetType definition].typeName.string + "' object requires "
@@ -588,7 +588,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
         checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType !expression.mResultType !mEndOfExpressionLocation !?expression)
         effectiveParameterList += !expression
       end
-    #--- Generate instruction
+    //--- Generate instruction
       ioInstructionListForGeneration += !@plusEqualnstructionForGeneration {
         !targetVariableCppName
         !targetType
@@ -599,13 +599,13 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mReceiverCppName
@@ -615,7 +615,7 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstringlist mStructAttributeList
   private let @semanticExpressionListForGeneration mExpressionList
 
-  #·······························································································
+  //······························································································
 
   override method generateInstruction
     ?!@stringset ioInclusionSet
@@ -623,7 +623,7 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
     ?!@stringset ioUnusedVariableCppNameSet
     ?let @bool unused inGenerateSyntaxDirectedTranslationString
     ?!@string ioGeneratedCode {
-  #--- Parameters
+  //--- Parameters
     [self.mTargetType addHeaderFileName !?ioInclusionSet]
     var parameterList = @stringlist ()
     for (mExpression) in self.mExpressionList do
@@ -636,13 +636,13 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
       ]
       parameterList += !parameter
     end
-  #--- Receiver
+  //--- Receiver
     [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
     ioGeneratedCode += self.mReceiverCppName
     for (mValue) in self.mStructAttributeList do
       ioGeneratedCode += ".mProperty_" + [mValue.string identifierRepresentation]
     end
-  #--- Call add assign (+=) operator
+  //--- Call add assign (+=) operator
     ioGeneratedCode += ".addAssign_operation ("
     [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
     for (mValue) in parameterList
@@ -656,11 +656,11 @@ class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
     ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -671,7 +671,7 @@ class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticExpressionForGeneration mSourceExpression
   private let @string mGeneratedMethod
 
-  #·······························································································
+  //······························································································
 
   override method generateInstruction
     ?!@stringset ioInclusionSet
@@ -699,8 +699,8 @@ class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
     [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

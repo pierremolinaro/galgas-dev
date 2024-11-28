@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  MIT License
 #
@@ -16,13 +16,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <optional_type_ggs3> !@lstring outTypeName {
     select
@@ -32,17 +32,17 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
-  #--- Type name
+  //--- Type name
     <optional_type_ggs3> ?let @lstring typeName
     $.$
     let startOfExpression = @location.here
-  #--- Constructor name
+  //--- Constructor name
     $identifier$ ?let classFuncName
-  #--- Actual arguments
+  //--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
       expressionList = ()
@@ -60,21 +60,21 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
                                   !@semanticExpressionAST outExpression {
-  #--- Constructor name
+  //--- Constructor name
     $identifier$ ?let @lstring classFuncName
-  #--- Actual arguments
+  //--- Actual arguments
     let startOfExpression = @location.here
     let @actualOutputArgumentList expressionList
     select
@@ -93,13 +93,13 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_beginning_by_type_dot_name> ?let @lstring inTypeName
                                        ?let @lstring inClassFunctionName
                                        ?!@galgasDeclarationAST ioDeclarations
                                        !@semanticExpressionAST outExpression {
-  #--- Actual arguments
+  //--- Actual arguments
     let @actualOutputArgumentList expressionList
     let startOfExpression = @location.here
     select
@@ -118,11 +118,11 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classFuncExpressionAST : @semanticExpressionAST {
   private let @lstring typeName
@@ -130,7 +130,7 @@ class @classFuncExpressionAST : @semanticExpressionAST {
   private let @actualOutputArgumentList expressions
   private let @location locationForOldStyleCollectionInitializerError
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     if self.typeName.string != "" then
@@ -139,7 +139,7 @@ class @classFuncExpressionAST : @semanticExpressionAST {
     [self.expressions enterInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
                           ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -170,7 +170,7 @@ class @classFuncExpressionAST : @semanticExpressionAST {
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
     let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![returnedType definition].typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
-  #---
+  //---
     outExpression = @classFuncExpressionForGeneration {
       !returnedType
       !self.classFuncName.location
@@ -182,11 +182,11 @@ class @classFuncExpressionAST : @semanticExpressionAST {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntityName
                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -213,9 +213,9 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
     : "cannot infer type"
     : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
-  #--- Get constructor map from type map
+  //--- Get constructor map from type map
     let @classFunctionMap classFunctionMap = [outConstructorType definition].classFunctionMap
-  #--- Search initializer
+  //--- Search initializer
     if (inConstructorName.string == "new") && ([outConstructorType definition].typeKind == .structType) then
       let initializerSignature = [inInitializerEffectiveParameterExpressions initializerSignature]
       let initializerMap = [outConstructorType definition].initializerMap
@@ -225,7 +225,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
         + "." + initializerSignature + " does not exist"
       end
     end
-  #--- Search contructor
+  //--- Search contructor
     let @functionSignature constructorFormalArgumentTypeList
     with inConstructorName.string in classFunctionMap  do
       constructorFormalArgumentTypeList = mArgumentTypeList
@@ -245,7 +245,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
         fixit { replace [classFunctionMap keyList] }
       end
     end
-  #--- Analysis arguments
+  //--- Analysis arguments
     if [inInitializerEffectiveParameterExpressions count] != [constructorFormalArgumentTypeList count] then
       error inConstructorName
       : "calling the '" + inConstructorName + "' constructor of '@"
@@ -283,7 +283,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       end
     end
   end
-#---
+//---
   if [option galgas_cli_options.errorOldStyleCollectionInitializer value] && 
      ([inInitializerEffectiveParameterExpressions count] == 0) then
     let oldCollectionInitializers = @stringset §["emptyList", "emptyMap", "emptySortedList", "emptyDict"]
@@ -301,9 +301,9 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry classFuncType
@@ -312,7 +312,7 @@ class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mHasCompilerArgument
   private let [@unifiedTypeMapEntry] requiredTypes
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -357,8 +357,8 @@ class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Program component compilation
 #
@@ -20,17 +20,17 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @programListForGeneration {
   public let @semanticDeclarationForGeneration mDeclaration
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {
 }{
@@ -43,11 +43,11 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
     ?@string PROJECT_VERSION_STRING
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           C O M P I L E    ' B E F O R E '
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileBeforeClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -60,7 +60,7 @@ proc compileBeforeClauseGalgas3
   let usefulnessName = beforeNameForUsefulEntitiesGraph (!.here)
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
-#--- Compile 'before' routines
+//--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in inPrologueList do
     analyzeRoutineBody (
@@ -79,7 +79,7 @@ proc compileBeforeClauseGalgas3
     semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {
       !blockSemanticInstructionListForGeneration}
   end
-#---
+//---
   ioDecoratedDeclarationListForGeneration +=
     !@routineImplementationForGeneration {
       !generateHeader: false # Has no header
@@ -91,11 +91,11 @@ proc compileBeforeClauseGalgas3
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           C O M P I L E    P R O G R A M    R U L E S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc compileProgramRulesGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -139,11 +139,11 @@ private proc compileProgramRulesGalgas3
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           C O M P I L E    ' A F T E R '
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileAfterClauseGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -156,7 +156,7 @@ proc compileAfterClauseGalgas3
   let usefulnessName = afterNameForUsefulEntitiesGraph (!.here)
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
-#--- Compile 'after' routines
+//--- Compile 'after' routines
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration = ()
   for (mInstructionList mEndOfInstructionList) in inEpilogueList do
     analyzeRoutineBody (
@@ -175,7 +175,7 @@ proc compileAfterClauseGalgas3
     )
     semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration {!blockSemanticInstructionListForGeneration}
   end
-#---
+//---
   ioDecoratedDeclarationListForGeneration += !@routineImplementationForGeneration {
     !generateHeader: false # Has no header
     !implementationCppFileName: "proc-after"
@@ -186,11 +186,11 @@ proc compileAfterClauseGalgas3
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           C O M P I L E    P R O G R A M    C O M P O N E N T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileProgramComponentGalgas3
   ?!@lstringlist ioUsefulnessRootEntities
@@ -203,7 +203,7 @@ proc compileProgramComponentGalgas3
   ?let @string inProjectVersionString
   !@programComponentForGeneration outProgramComponentForGeneration
 {
-#--- Analysis context
+//--- Analysis context
   let analysisContext = @analysisContext {
     !inSemanticContext
     !buildPredefinedTypes (ioTypeMap)
@@ -212,7 +212,7 @@ proc compileProgramComponentGalgas3
     !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
   }
-#--- Analyse 'before' instructions
+//--- Analyse 'before' instructions
   var @programListForGeneration decoratedDeclarationListForGeneration = ()
   compileBeforeClauseGalgas3 (
     !?ioUsefulnessRootEntities
@@ -222,7 +222,7 @@ proc compileProgramComponentGalgas3
     !inPrologueList
     !?decoratedDeclarationListForGeneration
   )
-#--- Analyse 'after' instructions
+//--- Analyse 'after' instructions
   compileAfterClauseGalgas3 (
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
@@ -231,7 +231,7 @@ proc compileProgramComponentGalgas3
     !inEpilogueList
     !?decoratedDeclarationListForGeneration
   )
-#--- Analyse program rules
+//--- Analyse program rules
   compileProgramRulesGalgas3 (
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
@@ -240,7 +240,7 @@ proc compileProgramComponentGalgas3
     !inProgramRules
     !?decoratedDeclarationListForGeneration
   )
-#------------ Build Implementation File
+//----------- Build Implementation File
   var @stringset inclusionSet = ()
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
@@ -260,7 +260,7 @@ proc compileProgramComponentGalgas3
     !inProgramRules
     !inProjectVersionString
   ]
-#---
+//---
   outProgramComponentForGeneration = @programComponentForGeneration {
     !generateHeader: false # No header
     !implementationCppFileName: "program"
@@ -269,5 +269,5 @@ proc compileProgramComponentGalgas3
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

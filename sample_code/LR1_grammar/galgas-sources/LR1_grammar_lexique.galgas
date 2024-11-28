@@ -1,6 +1,6 @@
 lexique LR1_grammar_lexique {
 
-#--- Key words
+//--- Key words
 $c$ error message "'c' keyword"
 $d$ error message "'d' keyword"
 
@@ -12,7 +12,7 @@ rule 'd' {
   send $d$
 }
 
-# --------------------- separators
+// -------------------- separators
 rule '\u0001' -> ' ' {
 }
 

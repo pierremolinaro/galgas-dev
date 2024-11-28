@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @unaryWrappingMinusExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -40,15 +40,15 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @unaryWrappingMinusExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -58,13 +58,13 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @unaryWrappingMinusExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryWrappingMinusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -82,7 +82,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Expression analysis
+//--- Expression analysis
   [self.mExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -92,14 +92,14 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let expression
   ]
-#--- Check operator availability
+//--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if not [[type definition].features contains !.prefixMinusOperatorNoOVF] then
     error self.mOperatorLocation
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the prefix minus operator"
     :outExpression
   else
-  #--- Generate expression
+  //--- Generate expression
     outExpression = @unaryWrappingMinusExpressionForGeneration {
       !type
       !self.mOperatorLocation
@@ -107,9 +107,9 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -124,7 +124,7 @@ override method @unaryWrappingMinusExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Left operand
+//--- Left operand
   [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -132,8 +132,8 @@ override method @unaryWrappingMinusExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let @string operand
   ]
-#--- Generate Comparison
+//--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus_no_ovf ()"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -16,22 +16,22 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
   private let @lexicalSendSearchListAST mLexicalSendSearchList
   private let @lexicalSendDefaultActionAST mLexicalSendDefaultAction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
     var @lexicalSendSearchListAST lexicalSendSearchList = ()
@@ -60,15 +60,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
     var @lexicalSendSearchListAST lexicalSendSearchList = ()
@@ -97,13 +97,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -115,9 +115,9 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   [self.mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalStructuredSendInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
@@ -135,7 +135,7 @@ override getter @lexicalStructuredSendInstructionAST generateObjcCocoaInstructio
   outGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -153,9 +153,9 @@ override getter @lexicalStructuredSendInstructionAST generateSwiftCocoaInstructi
   outGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalStructuredSendInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -179,5 +179,5 @@ override getter @lexicalStructuredSendInstructionAST generateLexicalInstructionC
   result += "enterToken (token) ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

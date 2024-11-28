@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListAST {
   public let @lstring mTypeName
@@ -36,13 +36,13 @@ class @structuredCastInstructionAST : @semanticInstructionAST {
   private let @location mEndOfCastInstruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <cast_instruction_branch> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@castInstructionBranchListAST ioCastInstructionBranchList {
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
       !@location.here
   }
 
-  #·······························································································
+  //······························································································
 
   rule <cast_else_or_default> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionListAST outElseOrDefault {
@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -126,13 +126,13 @@ syntax extension galgas3InstructionsSyntax {
       !endOfInstructionLocation}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structuredCastInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap {
@@ -143,9 +143,9 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -154,7 +154,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
-#--- Expression
+//--- Expression
   [self.mCastExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -164,14 +164,14 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let castExpression
   ]
-#--- Begin override for analyze loop instruction list
+//--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForSelectBlock]
-#--- Branches
+//--- Branches
   var castBranchList = @castInstructionBranchListForGeneration ()
   for (mTypeName mConstantVarName mInstructionList mTypeComparisonKind mEndOfInstructions) in self.mCastInstructionBranchList do
-  #--- Get named type
+  //--- Get named type
     let type = [ioTypeMap typeMapEntryForLKey !mTypeName]
-  #--- Check named type is a descendant of receiver type
+  //--- Check named type is a descendant of receiver type
     var @unifiedTypeMapEntry t = type
     var @bool found = t == castExpression.mResultType
     loop ([ioTypeMap count] + 1)
@@ -183,7 +183,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       error mTypeName
       :"the '@" + mTypeName + "' is not a descendant of the '@" + [castExpression.mResultType definition].typeName.string + "' type of the cast expression"
     end
-  #--- Declare a local constant ?
+  //--- Declare a local constant ?
     let @string localConstantName
     var localConstantList = @localConstantList ()
     if [mConstantVarName count] > 0 then
@@ -196,7 +196,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     else
       localConstantName = "" # No constant
     end
-  #--- Analyze instruction list
+  //--- Analyze instruction list
     analyzeSemanticInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -212,7 +212,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     )
     castBranchList += !mTypeComparisonKind !type !localConstantName !instructionList
   end
-#--- else or default branch
+//--- else or default branch
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -226,18 +226,18 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let else_instructionList
   )
-#--- End override
+//--- End override
   [!?ioVariableMap closeOverride !self.mEndOfCastInstruction]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@structuredCastInstructionForGeneration {
     !castExpression
     !castBranchList
     !else_instructionList}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @castInstructionBranchListForGeneration {
   public let @dynamicTypeComparisonKind mTypeComparisonKind
@@ -254,9 +254,9 @@ class @structuredCastInstructionForGeneration : @semanticInstructionForGeneratio
   private let @semanticInstructionListForGeneration mElseInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structuredCastInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -264,7 +264,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-#--- Cast expression
+//--- Cast expression
   [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -272,7 +272,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let @string castCppVarName
   ]
-#---
+//---
   ioGeneratedCode += "if (" + castCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
   for (mTypeComparisonKind mType mCastedVarCppName mInstructionList) in self.mCastBranchList do
@@ -309,7 +309,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
     )
   between ioGeneratedCode += "}else "
   end
-#--- 'else' branch
+//--- 'else' branch
   if [self.mElseInstructionList count] > 0 then
     ioGeneratedCode += "}else{\n"
     generateInstructionList (
@@ -321,10 +321,10 @@ override method @structuredCastInstructionForGeneration generateInstruction
       !?ioGeneratedCode
     )
   end
-#---
+//---
   ioGeneratedCode += "}\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

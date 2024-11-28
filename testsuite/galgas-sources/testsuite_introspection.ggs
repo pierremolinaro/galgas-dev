@@ -1,21 +1,21 @@
 
 
-#-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 
 #class @A ()
 #class @B : @A ()
 
-#-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 
 proc testsuite_introspection() {
 println ("*************************************** begin of introspection test")
-#--- List of types
+//--- List of types
   let @typelist typeList = @type.typeList
   println ("--- Type list (" + typeList.length.string + " types)")
   for (mValue) in typeList do
     println ("  @" + mValue.name + "")
   end
-#--- List of functions
+//--- List of functions
   let @functionlist functionList = @function.functionList
   println ("--- Function list (" + functionList.length.string
   + " function" + if functionList.length > 1 then "s" else "" end + ")")
@@ -32,19 +32,19 @@ println ("*************************************** begin of introspection test")
   let b2 = @function.isFunctionDefined (!"functionTest")
   println ("Function 'foo' exists:" + b1.cString + "")
   println ("Function 'functionTest' exists:" + b2.cString + "")
-#--- Introspection of an @uint
+//--- Introspection of an @uint
   let @uint x = 2
   let @object object = x.object
   log object
   let @uint y =  (object as @uint)
   log y
-#--- Type
+//--- Type
 #  @type t := [x dynamicType] ;
 #  log t ;
 #  @A a := [@B new] ;
 #  t := [a dynamicType] ;
 #  log t ;
-#--- Function invocation
+//--- Function invocation
   let @function f = @function.functionWithName (!"functionTest")
   var arguments = @objectlist []
   !?arguments.append (2 .uint.object)
@@ -53,5 +53,5 @@ println ("*************************************** begin of introspection test")
   log result
 }
 
-#-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 

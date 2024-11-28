@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @multiplicationExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
@@ -57,13 +57,13 @@ class @moduloExpressionAST : @semanticExpressionAST {
   public let @semanticExpressionAST mRightExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <term_ggs3> ?!@galgasDeclarationAST ioDeclarations
                    !@semanticExpressionAST outExpression {
@@ -102,15 +102,15 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <term> ?!@galgasDeclarationAST ioDeclarations
               !@semanticExpressionAST outExpression {
@@ -149,13 +149,13 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -174,7 +174,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -184,7 +184,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -194,7 +194,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains ! .infixMulOperatorNoOVF]
     !"&*"
@@ -202,7 +202,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -212,7 +212,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 override method @multiplicationExpressionAST enterExpressionInSemanticContext
@@ -232,7 +232,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -242,7 +242,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -252,7 +252,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixMulOperator]
     !"*"
@@ -260,7 +260,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -270,7 +270,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -289,7 +289,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -299,7 +299,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -309,7 +309,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixDivOperatorNoOVF]
     !"&/"
@@ -317,7 +317,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -327,7 +327,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -346,7 +346,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -356,7 +356,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -366,7 +366,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixDivOperator]
     !"/"
@@ -374,7 +374,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -384,7 +384,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @moduloExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -403,7 +403,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -413,7 +413,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -423,7 +423,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
   ]
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: [[leftExpression.mResultType definition].features contains !.infixModOperator]
     !"mod"
@@ -431,7 +431,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration {
     !leftExpression.mResultType
     !self.mOperatorLocation
@@ -441,4 +441,4 @@ override method @moduloExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

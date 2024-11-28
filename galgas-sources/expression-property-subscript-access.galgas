@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -65,15 +65,15 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -99,7 +99,7 @@ syntax extension galgas4ExpressionSyntax {
           !outExpression
           !structFieldName
         }
-      or #--- Getter call ?
+      or //--- Getter call ?
         let getterName = structFieldName
         let startLocation = @location.next
         $($
@@ -117,25 +117,25 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   Property Access
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @structPropertyAccessExpressionAST : @semanticExpressionAST {
   private let @location operatorLocation
   private let @semanticExpressionAST mExpression
   private let @lstring propertyName
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
                                   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -145,7 +145,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?!@localVarManager ioVariableMap
                                   !@semanticExpressionForGeneration outExpression {
-  #--- Expression analysis
+  //--- Expression analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -155,7 +155,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       !?ioVariableMap
       ?let @semanticExpressionForGeneration expression
     ]
-  #--- Check field access availability
+  //--- Check field access availability
     let @unifiedTypeMapEntry expressionType = expression.mResultType
     let propertyMap = [expressionType definition].propertyMap
     if let prop = propertyMap §[self.propertyName] then
@@ -170,7 +170,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
         ]
       end
       [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
-    #--- Generate expression
+    //--- Generate expression
       outExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
         !self.operatorLocation
@@ -212,17 +212,17 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
   private let @string structFieldName
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -230,7 +230,7 @@ class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration 
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-  #--- Operand
+  //--- Operand
     [self.expression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -238,24 +238,24 @@ class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration 
       !?ioUnusedVariableCppNameSet
       ?let @string operand
     ]
-  #--- Generate
+  //--- Generate
     outCppExpression = operand + ".readProperty_" + [self.structFieldName identifierRepresentation] + " ()"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   Subscript read Access
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mExpression
   private let @actualOutputArgumentList actualArgumentList
   private let @location endOfArgsLocation
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     for expression in self.actualArgumentList do
@@ -263,7 +263,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
                                   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -273,7 +273,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?!@localVarManager ioVariableMap
                                   !@semanticExpressionForGeneration outExpression {
-  #--- Receiver analysis
+  //--- Receiver analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -284,12 +284,12 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
       ?let @semanticExpressionForGeneration expression
     ]
     let @unifiedTypeMapEntry expressionType = expression.mResultType
-  #--- subscript invocation signature
+  //--- subscript invocation signature
     let invocationSignature = [self.actualArgumentList subscriptSignature]
-  #--- Check subscript availability
+  //--- Check subscript availability
     let subscriptMap = [expressionType definition].readSubscriptMap
     if let aSubscript = subscriptMap §[invocationSignature] then
-    #--- Check effective argument list
+    //--- Check effective argument list
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
       for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do
         [actualArg.mExpression analyzeSemanticExpression
@@ -317,7 +317,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
         end
         semanticExpressionListForGeneration += !expression
       end 
-    #--- Generate expression
+    //--- Generate expression
       outExpression = @subscriptReadAccessExpressionForGeneration (
         aSubscript.valueType,
         self.endOfArgsLocation,
@@ -330,18 +330,18 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
   private let @string subscriptInvocationName
   private let @semanticExpressionListForGeneration actualExpressionList
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
@@ -349,7 +349,7 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-  #--- Operand
+  //--- Operand
     [self.expression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -357,7 +357,7 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
       !?ioUnusedVariableCppNameSet
       ?let @string operand
     ]
-  #--- subscript arments
+  //--- subscript arments
     var [@string] subscriptArgumentList = ()
     for actualArg in self.actualExpressionList do
       [actualArg.mExpression generateExpression
@@ -369,7 +369,7 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
       ]
       [!?subscriptArgumentList append !actualArgOperand]
     end
-  #--- Generate
+  //--- Generate
     outCppExpression = operand + ".readSubscript_" + [self.subscriptInvocationName identifierRepresentation]
     outCppExpression += " ("
     for operand in subscriptArgumentList do
@@ -379,8 +379,8 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
     outCppExpression += compilerCppName () + " COMMA_HERE)"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

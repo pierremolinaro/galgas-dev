@@ -15,16 +15,16 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiSimpleAttributeListAST {
   public let @lstring mKey
   public let @lstring mValue
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiCompoundAttributeListAST {
   public let @lstring mKey
@@ -32,14 +32,14 @@ list @guiCompoundAttributeListAST {
   public let @lstring mValue
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalLabelListAST {
   public let @lstring mTerminal
   public let @uint mDisplayFlags
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiLabelListAST {
   public let @uint mLeadingCharacterStrippedCount
@@ -47,7 +47,7 @@ list @guiLabelListAST {
   public let @location mLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @withLexiqueListAST {
   public let @lstring mLexiqueFileName
@@ -55,7 +55,7 @@ list @withLexiqueListAST {
   public let @guiSimpleAttributeListAST mSimpleAttributes
   public let @guiCompoundAttributeListAST mCompoundAttributes
 }
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiCommandLineOptionList {
   public let @string mOptionComponent
@@ -65,7 +65,7 @@ list @guiCommandLineOptionList {
   public let @string mComment
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMap {
   public let @string mLexiqueName
@@ -73,14 +73,14 @@ map @extensionMap {
   insert insertKey error message "the '%K' extension is already declared in %L"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @textMacroList {
   public let @string mKey
   public let @string mContents
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @importedLexiqueList {
   public let @string mLexiqueClassName
@@ -92,14 +92,14 @@ list @importedLexiqueList {
   public let @lexicalStyleListAST mLexicalStyleList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @projectIndexingDescriptorList {
   let @lstring mProjectFileExtension
   let @lstring indexingPathSuffix
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgasGUIComponentListAST {
   public let @lstring mGUIComponentName
@@ -109,13 +109,13 @@ list @galgasGUIComponentListAST {
   public let @projectIndexingDescriptorList mProjectIndexingDescriptorList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3GuiComponentSyntax (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
@@ -140,7 +140,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     while
       <gui_with_lexique_declaration> !?withLexiqueList
     end
-  #---
+  //---
     $}$
     ioDeclarations.mGUIComponentList +=
       !mGUIName
@@ -150,7 +150,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
       !projectExtensionList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
@@ -219,7 +219,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
   }
 
-  #·······························································································
+  //······························································································
 
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
@@ -228,7 +228,7 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioImportedOptionList += !optionReference
   }
 
-  #·······························································································
+  //······························································································
 
   rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
     $identifier$ ?let @lstring mKey
@@ -242,15 +242,15 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
     ioSimpleGlobalAttributes += !mKey !mValue
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $gui$
@@ -275,7 +275,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     while
       <gui_with_lexique_declaration> !?withLexiqueList
     end
-  #---
+  //---
     $}$
     ioDeclarations.mGUIComponentList +=
       !mGUIName
@@ -285,7 +285,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       !projectExtensionList
   }
 
-  #·······························································································
+  //······························································································
 
   rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
     $with$
@@ -354,7 +354,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
   }
 
-  #·······························································································
+  //······························································································
 
   rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
     $with$
@@ -363,7 +363,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioImportedOptionList += !optionReference
   }
 
-  #·······························································································
+  //······························································································
 
   rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
     $identifier$ ?let @lstring mKey
@@ -377,13 +377,13 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     ioSimpleGlobalAttributes += !mKey !mValue
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @guiAnalysisContext {
   public var @stringlist mImportedOptionComponentList = ()
@@ -397,14 +397,14 @@ struct @guiAnalysisContext {
   public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = ()
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForGeneration {
   public let @guiAnalysisContext mGuiComponentContext
   insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc compileAllGuiComponentFromASTGalgas3
   ?let @galgasGUIComponentListAST inGuiComponentListAST
@@ -421,7 +421,7 @@ proc compileAllGuiComponentFromASTGalgas3
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@element inGUIComponentAST
                                           ?let @semanticContext inSemanticContext
@@ -429,10 +429,10 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
-#---
+//---
   var @guiAnalysisContext context = .init {}
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
-#--- Check imported options components
+//--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
       !mValue
@@ -440,7 +440,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
     ]
     context.mImportedOptionComponentList += !mValue.string
   end
-#--- Nib and main classes
+//--- Nib and main classes
   var runOptionDefined = false
   for (mKey mValue) in inGUIComponentAST.mGlobalSimpleAttributeList do
     if mKey.string == "run" then
@@ -460,9 +460,9 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
       warning mKey:"the '" + mKey + "' key is invalid and has no effect"
     end
   end
-#--- 'with lexique' construct analysis
+//--- 'with lexique' construct analysis
   for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
-  #--- Check lexique
+  //--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
       !lexiqueFileName
       ?*
@@ -471,9 +471,9 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
       ?let lexicalStyleListAST
       ?*
     ]
-  #--- Build terminal symbol set
+  //--- Build terminal symbol set
     let terminalSymbolSet = [terminalMap keySet]
-  #--- Check labels
+  //--- Check labels
     for (* mTerminalList *) in labels do
       for (mTerminal *) in mTerminalList do
         if not [terminalSymbolSet hasKey !mTerminal.string] then
@@ -485,7 +485,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
         end
       end
     end
-  #--- Compound attributes
+  //--- Compound attributes
     var @textMacroList textMacroList = ()
     for (mKey mAttributeName mValue) in compoundAttributes do
       if mKey.string != "textMacro" then
@@ -494,7 +494,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
         textMacroList += !mAttributeName.string !mValue.string
       end
     end
-  #--- Simple attributes
+  //--- Simple attributes
     var @bool hasAssociatedExtension = false
     var @bool hasTabViewTitle = false
     var @bool hasBlockComment = false
@@ -520,15 +520,15 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
         error mKey: "the '" + mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"
       end
     end
-  #--- has an extension ?
+  //--- has an extension ?
     if not hasAssociatedExtension then
       error lexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")"
     end
-  #--- has title ?
+  //--- has title ?
     if not hasTabViewTitle then
       error lexiqueFileName:"the 'title' key should be defined once (it is not defined)"
     end
-  #---
+  //---
     context.mWithLexiqueList +=
       !lexiqueFileName.string
       !idx
@@ -538,16 +538,16 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
       !labels
       !lexicalStyleListAST
   end
-#--- Generation
+//--- Generation
   [!?ioOptionComponentMapForGeneration insertKey
     !inGUIComponentAST.mGUIComponentName
     !context
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
                                       ?let @string inOutputDirectory
@@ -594,9 +594,9 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
@@ -610,4 +610,4 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
     ?@bool QUIET_OUTPUT_BY_DEFAULT
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

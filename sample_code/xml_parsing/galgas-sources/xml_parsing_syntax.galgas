@@ -1,6 +1,6 @@
 syntax xml_parsing_syntax (xml_parsing_lexique) {
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <start_symbol>
   !@xmlNodeList outRootNodes
@@ -21,7 +21,7 @@ rule <element>
   ?let @bool inPrintDuringParsing
   ?let @string inIndendation
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <start_symbol>
   !@xmlNodeList outRootNodes
@@ -32,7 +32,7 @@ rule <start_symbol>
   if [s count] > 0 then
     error @location.here: "No character is allowed before XML header"
   end
-#--- XML header
+//--- XML header
   $<?$
   $name$ ?* # let @lstring name
   repeat
@@ -42,7 +42,7 @@ rule <start_symbol>
     $value$ ?* # let @lstring attributeValue
   end
   $?>$
-#--- Element list
+//--- Element list
   outRootNodes = ()
   <element_list>
     !?outRootNodes
@@ -52,7 +52,7 @@ rule <start_symbol>
     !""
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <element_list>
   ?!@xmlNodeList ioNodes
@@ -77,7 +77,7 @@ rule <element_list>
   end
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <element>
   ?!@xmlNodeList ioNodes
@@ -110,7 +110,7 @@ rule <element>
   end
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <element>
   ?!@xmlNodeList ioNodes
@@ -183,11 +183,11 @@ rule <element>
   ioNodes += !node
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 proc addText
   ?!@xmlNodeList ioNodes

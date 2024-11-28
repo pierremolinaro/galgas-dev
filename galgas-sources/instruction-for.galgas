@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectElementListAST {
   public let @lstring mOptionalTypeName # Empty string if joker
@@ -81,13 +81,13 @@ class @forInstructionAST : @semanticInstructionAST {
   private let @location mEndOf_foreach_instruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -103,7 +103,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -129,7 +129,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -163,7 +163,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -190,7 +190,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -213,7 +213,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -296,15 +296,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@galgasDeclarationAST unused ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -320,7 +320,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@galgasDeclarationAST ioDeclarations
                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
@@ -346,7 +346,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -369,7 +369,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -396,7 +396,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> ?!@galgasDeclarationAST ioDeclarations
                                            !@abstractEnumeratedCollectionAST outEnumeratedObject {
@@ -419,7 +419,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -502,13 +502,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @forInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mWhileExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -544,9 +544,9 @@ override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifi
 }
 
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
@@ -579,13 +579,13 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     !?ioVariableMap
     ?outEnumerationExpression
   ]
-#--- Check object can be enumerated
+//--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfAnonymousEnumeration startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
   if [enumerationDescriptorList count] == 0 then
     error self.mEndOfAnonymousEnumeration : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   end
-#--- Declare implicit constants
+//--- Declare implicit constants
   var suggestion = "("
   for (mEnumeratedType mEnumerationName) in enumerationDescriptorList
   do
@@ -627,13 +627,13 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
     !?ioVariableMap
     ?outEnumerationExpression
   ]
-#--- Check object can be enumerated
+//--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumerationDescriptorList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
   if [enumerationDescriptorList count] == 0 then
     error self.mEndOfEnumerationExpression : "an '@" + [outEnumerationExpression.mResultType definition].typeName.string + "' object cannot be enumerated"
   else
-#--- Arguments
+//--- Arguments
     if ([self.mElementList count] == 0) & not self.mEndsWithEllipsis then
       let currentTypedAttributeList = [outEnumerationExpression.mResultType definition].enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
@@ -705,7 +705,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
     !?ioVariableMap
     ?outEnumerationExpression
   ]
-#--- Check object can be enumerated
+//--- Check object can be enumerated
   outEnumeratorCppName = "enumerator_" + [self.mEndOfEnumerationExpression startLocationIndex]
   let enumeratedElementType = [outEnumerationExpression.mResultType definition].typeForEnumeratedElement
   if [enumeratedElementType isNull] then
@@ -713,14 +713,14 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   elsif self.mEnumerationVariable.string != "" then
     ioLocalConstantListForDoBranch += !enumeratedElementType !self.mEnumerationVariable !false !outEnumeratorCppName + ".current (HERE)"
   end
-#--- Check enumeration type
+//--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
     let explicitType = [ioTypeMap typeMapEntryForLKey !self.mEnumerationOptionalTypeName]
     if [enumeratedElementType definition].typeName.string != [explicitType definition].typeName.string then
       error self.mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType definition].typeName.string + "' type is expected here"
     end
   end
-#---
+//---
 }
 
 #·····················································································································*
@@ -733,10 +733,10 @@ override method @forInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
-#--- Begin override for foreach defined constants
+//--- Begin override for foreach defined constants
   [!?ioVariableMap openOverrideForSelectBlock]
   [!?ioVariableMap openBranch]
-#--- 'before' branch
+//--- 'before' branch
   [!?ioVariableMap openOverrideForRepeatBlock]
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -752,7 +752,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     ?let before_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_before_branch]
-#--- 'between' branch
+//--- 'between' branch
   [!?ioVariableMap openOverrideForRepeatBlock]
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -768,7 +768,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     ?let between_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_between_branch]
-#--- 'after' branch
+//--- 'after' branch
   [!?ioVariableMap openOverrideForRepeatBlock]
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -784,7 +784,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     ?let @semanticInstructionListForGeneration after_instructionList
   )
   [!?ioVariableMap closeOverride !self.mEndOf_after_branch]
-#--- Analyze enumerated objects
+//--- Analyze enumerated objects
   var @localConstantList localConstantListForDoBranch = ()
   var @forInstructionEnumeratedObjectListForGeneration enumerationList = ()
   for (mAscending mEnumeratedCollection) in self.mEnumeratedObjectList do
@@ -798,16 +798,16 @@ override method @forInstructionAST analyzeSemanticInstruction
       ?let @string enumeratorCppName
       ?let @semanticExpressionForGeneration enumerationExpression
     ]
-  #---
+  //---
     enumerationList +=
       !if mAscending then "up" else "down" end
       !enumerationExpression
       !enumeratorCppName
   end
-#--- While expression
+//--- While expression
   [!?ioVariableMap openOverrideForRepeatBlock]
   [!?ioVariableMap openBranch]
-#--- Declare local constants
+//--- Declare local constants
   for localConstant in localConstantListForDoBranch do
    [!?ioVariableMap insertUsedLocalConstant
      !localConstant.mName
@@ -816,7 +816,7 @@ override method @forInstructionAST analyzeSemanticInstruction
      !localConstant.mCppName
    ]
   end
-#---
+//---
   [self.mWhileExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -832,10 +832,10 @@ override method @forInstructionAST analyzeSemanticInstruction
     !uncheckedWhileExpression
     ?let @semanticExpressionForGeneration whileExpression
   )
-#---
+//---
   [!?ioVariableMap closeBranch !self.mEndOf_while_expression]
   [!?ioVariableMap closeOverride !self.mEndOf_while_expression]
-#--- Handle index
+//--- Handle index
   [!?ioVariableMap openOverrideForRepeatBlock]
   var @string indexCppName = ""
   if self.mIndexVariableName.string != "" then
@@ -846,7 +846,7 @@ override method @forInstructionAST analyzeSemanticInstruction
       !false # Warns if unused
       !indexCppName
   end
-#--- 'do' branch
+//--- 'do' branch
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -860,12 +860,12 @@ override method @forInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let do_instructionList
   )
-#--- End override
+//--- End override
   [!?ioVariableMap closeOverride !self.mEndOf_foreach_instruction]
-#--- End override for foreach defined constants
+//--- End override for foreach defined constants
   [!?ioVariableMap closeBranch !self.mEndOf_foreach_instruction]
   [!?ioVariableMap closeOverride !self.mEndOf_foreach_instruction]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@forInstructionForGeneration {
     !self.mInstructionLocation
     !enumerationList
@@ -878,9 +878,9 @@ override method @forInstructionAST analyzeSemanticInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectListForGeneration {
   public let @string mEnumerationOrder
@@ -901,9 +901,9 @@ class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @semanticInstructionListForGeneration mAfterInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @forInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -928,11 +928,11 @@ override method @forInstructionForGeneration generateInstruction
       + " " + mEnumeratorCppName + " (" + mValue
       + ", EnumerationOrder::" + mEnumerationOrder + ") ;\n"
   end
-#--- Analyse 'while' expression
+//--- Analyse 'while' expression
   let whileExpressionIsAllwaysTrue = [self.mWhileExpression isTrueExpression]
-#--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
+//--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
   if (([self.mBeforeInstructionList count] + [self.mAfterInstructionList count]) > 0) | not whileExpressionIsAllwaysTrue then
-  #--- Index
+  //--- Index
     if self.mIndexVariableCppName != "" then
       ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
@@ -963,7 +963,7 @@ override method @forInstructionForGeneration generateInstruction
       ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
     end
     ioGeneratedCode += boolVarCppName + ") {\n"
-  #--- Generate 'do' instruction
+  //--- Generate 'do' instruction
     generateInstructionList (
       !?ioInclusionSet
       !self.mDoInstructionList
@@ -972,14 +972,14 @@ override method @forInstructionForGeneration generateInstruction
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-  #--- Goto next object
+  //--- Goto next object
     for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
       ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
     end
     if self.mIndexVariableCppName != "" then
       ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment () ;\n"
     end
-  #--- Compute 'while' expression
+  //--- Compute 'while' expression
     if not whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "  if ("
       for (* * mEnumeratorCppName) in self.mEnumeratedObjectList
@@ -997,7 +997,7 @@ override method @forInstructionForGeneration generateInstruction
       ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
       ioGeneratedCode += "  }\n"
     end
-  #--- Generate 'between' instruction
+  //--- Generate 'between' instruction
     if [self.mBetweenInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
@@ -1016,9 +1016,9 @@ override method @forInstructionForGeneration generateInstruction
       ioGeneratedCode += "}\n"
       [!?ioGeneratedCode decIndentation !2]
     end
-  #--- End of foreach instruction
+  //--- End of foreach instruction
     ioGeneratedCode += "}\n"
-  #--- Generate 'after' instruction
+  //--- Generate 'after' instruction
     [!?ioGeneratedCode decIndentation !2]
     generateInstructionList (
       !?ioInclusionSet
@@ -1029,7 +1029,7 @@ override method @forInstructionForGeneration generateInstruction
       !?ioGeneratedCode
     )
     ioGeneratedCode += "}\n"
-  else #----- foreach instruction without 'before', 'after', while expression
+  else //---- foreach instruction without 'before', 'after', while expression
     if self.mIndexVariableCppName != "" then
       ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
@@ -1039,7 +1039,7 @@ override method @forInstructionForGeneration generateInstruction
       between ioGeneratedCode += " && "
     end
     ioGeneratedCode += ") {\n"
-  #--- Generate 'do' instruction
+  //--- Generate 'do' instruction
     generateInstructionList (
       !?ioInclusionSet
       !self.mDoInstructionList
@@ -1048,7 +1048,7 @@ override method @forInstructionForGeneration generateInstruction
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-  #--- Generate 'between' instruction
+  //--- Generate 'between' instruction
     if [self.mBetweenInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
@@ -1068,7 +1068,7 @@ override method @forInstructionForGeneration generateInstruction
       ioGeneratedCode += "}\n"
       [!?ioGeneratedCode decIndentation !2]
     end
-  #--- End of foreach instruction
+  //--- End of foreach instruction
     for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
       ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
     end
@@ -1081,4 +1081,4 @@ override method @forInstructionForGeneration generateInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

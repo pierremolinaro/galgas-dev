@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @selectInstruction : @syntaxInstructionAST {
   public let @listOfSyntaxInstructionList mSelectBranchList
   public let @location mEndOf_select_instruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -54,15 +54,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -86,13 +86,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -122,9 +122,9 @@ override method @selectInstruction transformInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -142,9 +142,9 @@ override method @selectInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
   let @uint choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
-#--- Begin block
+//--- Begin block
   [!?ioVariableMap openOverrideForSelectBlock]
-#--- 'or' blocks
+//--- 'or' blocks
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
     analyzeSyntaxInstructionList (
@@ -166,7 +166,7 @@ override method @selectInstruction analyzeSyntaxInstruction
     )
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
-#--- End block
+//--- End block
   [!?ioVariableMap closeOverride !self.mEndOf_select_instruction]
   ioInstructionListForGeneration += !@selectInstructionForGeneration {
     !self.mInstructionLocation
@@ -176,9 +176,9 @@ override method @selectInstruction analyzeSyntaxInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @string mSyntaxComponentName
@@ -186,9 +186,9 @@ class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -207,9 +207,9 @@ override method @selectInstructionForGeneration appendSyntaxSignature
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMPARE SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @selectInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
@@ -243,9 +243,9 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstructionForGeneration generateInstruction
                           ?!@stringset ioInclusionSet
@@ -273,4 +273,4 @@ override method @selectInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

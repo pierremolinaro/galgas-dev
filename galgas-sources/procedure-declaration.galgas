@@ -15,17 +15,17 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    R O U T I N E    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
   #    R O U T I N E    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
@@ -55,7 +55,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -86,17 +86,17 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
   #    R O U T I N E    D E C L A R A T I O N
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $proc$
@@ -126,7 +126,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $private$
@@ -157,17 +157,17 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @procDeclarationAST : @externProcedureDeclarationAST {
   public let @semanticInstructionListAST mRoutineInstructionList
   public let @location mEndOfRoutineInstructionList
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -177,7 +177,7 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
     ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
     ?!@unifiedTypeMap ioTypeMap
     ?!@semanticContext ioSemanticContext {
-  #--- Build signature
+  //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
       [!?ioTypeMap makeEntry !argument.mFormalArgumentTypeName ?let parameterTypeIndex]
@@ -187,9 +187,9 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
         !argument.mFormalArgumentPassingMode
         !argument.mFormalArgumentName.string
     end
-  #--- Enter types for instruction list
+  //--- Enter types for instruction list
     [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  #--- Enter routine in routine map
+  //--- Enter routine in routine map
     [!?ioSemanticContext.routineMap insertKey
       !self.mRoutineName
       !routineSignature
@@ -197,7 +197,7 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis?!@lstringlist ioUsefulnessRootEntities
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -206,7 +206,7 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
                                   ?!@unifiedTypeMap ioTypeMap
                                   ?let @predefinedTypes inPredefinedTypes
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #---
+  //---
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
       let parameterType = [ioTypeMap typeMapEntryForLKey !argument.mFormalArgumentTypeName]
@@ -217,13 +217,13 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
         !argument.mFormalArgumentName.string
     end
     let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
-  #--- Useful entities graph
+  //--- Useful entities graph
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     if self.usefullProcedure then
       ioUsefulnessRootEntities += !nameForUsefulness
     end
-  #--- Instruction list
+  //--- Instruction list
     let analysisContext = @analysisContext {
       !inSemanticContext
       !inPredefinedTypes
@@ -257,21 +257,21 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
       }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    R O U T I N E    I M P L E M E N T A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
   public let @bool mGenerateStatic
   public let @semanticInstructionListForGeneration mRoutineInstructionList
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation
     ?let @unifiedTypeMap unused inTypeMap
@@ -300,8 +300,8 @@ class @routineImplementationForGeneration : @routinePrototypeDeclarationForGener
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2007, ..., 2023 Pierre Molinaro.
 #
@@ -18,11 +18,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    C H E C K    M E T H O D    S I G N A T U R E
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkMethodSignatures
   ?let @formalParameterListForGeneration inTestedSignature
@@ -66,11 +66,11 @@ proc checkMethodSignatures
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    C H E C K    G E T T E R    S I G N A T U R E
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkGetterSignatures
   ?let @formalInputParameterListForGeneration inTestedSignature
@@ -108,7 +108,7 @@ proc checkGetterSignatures
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyIndexMap {
   public let @unifiedTypeMapEntry mPropertyTypeIndex
@@ -116,9 +116,9 @@ map @propertyIndexMap {
   search searchKey error message "the '%K' attribute is not declared"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #         M A P
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticContext
                                        ?!@unifiedTypeMap ioTypeMap
@@ -198,7 +198,7 @@ proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticCo
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -212,7 +212,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalParameterListForGeneration outRoutineSignature {
   var variableMap = @localVarManager.init {}
-#--- Enter non mutable instance properties
+//--- Enter non mutable instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for property in inNonMutableTypedAttributeList do
       [!?variableMap insertNonMutableProperty
@@ -224,7 +224,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       ]
     end
   end
-#--- Enter mutable instance properties
+//--- Enter mutable instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for property in inMutableTypedAttributeList do
       [!?variableMap insertMutableProperty
@@ -236,7 +236,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       ]
     end
   end
-#--- Enter properties that should be explicitly initialized
+//--- Enter properties that should be explicitly initialized
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     for property in [selfAvailable.type definition].allTypedPropertyList do
       let initialized = if selfAvailable.selfMutability == .initializer
@@ -253,7 +253,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       ]
     end
   end
-#--- Enter formal arguments
+//--- Enter formal arguments
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.semanticContext
     !?ioTypeMap
@@ -261,7 +261,7 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
     !?variableMap
     ?outRoutineSignature
   )
-#---  Analyze instruction list
+//---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
     [mInstruction analyzeSemanticInstruction
@@ -273,11 +273,11 @@ proc analyzeRoutineBody ?let @lstring inUsefulnessCallerEntityName
       !?variableMap
     ]
    end
-#---
+//---
   [variableMap checkAutomatonStates !inEndOfMethodLocation]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externFunctionDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -288,13 +288,13 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.usefullFunc then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
-#---
+//---
   var formalArgumentList = @formalInputParameterListForGeneration ()
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
     formalArgumentList +=
@@ -315,7 +315,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
    }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeFunctionBody
   ?let @lstring inUsefulnessCallerEntityName
@@ -335,7 +335,7 @@ proc analyzeFunctionBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 {
   var variableMap = @localVarManager {}
-#--- Enter instance properties
+//--- Enter instance properties
   if not inAnalysisContext.requiresSelfForAccessingProperty then
     for (typeEntry name 3*) in inTypedAttributeList do
       [!?variableMap insertNonMutableProperty
@@ -346,7 +346,7 @@ proc analyzeFunctionBody
       ]
     end
   end
-#--- Enter formal parameters
+//--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration ()
   for formalArg in inFunctionSignature do
     let parameterType = [ioTypeMap typeMapEntryForLKey !formalArg.mFormalArgumentTypeName]
@@ -378,11 +378,11 @@ proc analyzeFunctionBody
       end
     end
   end
-#--- Enter return variable
+//--- Enter return variable
   outReturnedType = [ioTypeMap typeMapEntryForLKey !inResultTypeName]
   outResultVariableCppName = "result_" + [inReturnVariableName identifierRepresentation]
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
-#--- Enter properties that should be explicitly initialized
+//--- Enter properties that should be explicitly initialized
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     for property in [selfAvailable.type definition].allTypedPropertyList do
       [!?variableMap insertInitializerSelfProperty
@@ -395,7 +395,7 @@ proc analyzeFunctionBody
       ]
     end
   end
-#---  Analyze instruction list
+//---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
     [mInstruction analyzeSemanticInstruction
@@ -407,11 +407,11 @@ proc analyzeFunctionBody
       !?variableMap
     ]
    end
-#---
+//---
   [variableMap checkAutomatonStates !inEndOfFunctionLocation]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -422,13 +422,13 @@ override method @functionDeclarationAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.usefullFunc then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
-#--- Analyse function body
+//--- Analyse function body
   let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
@@ -454,7 +454,7 @@ override method @functionDeclarationAST semanticAnalysis
     ?let resultVariableCppName
     ?let semanticInstructionListForGeneration
   )
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "function " + self.mFunctionName
     !@functionImplementationForGeneration {
@@ -467,7 +467,7 @@ override method @functionDeclarationAST semanticAnalysis
       !semanticInstructionListForGeneration}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @onceFunctionDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -478,13 +478,13 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.mIsUsefull then
     ioUsefulnessRootEntities += !nameForUsefulness
   end
-#--- Analyse function body
+//--- Analyse function body
   let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
@@ -510,7 +510,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     ?let resultVariableCppName
     ?let semanticInstructionListForGeneration
   )
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "once function " + self.mFunctionName
     !@onceFunctionDeclarationForGeneration {
@@ -522,11 +522,11 @@ override method @onceFunctionDeclarationAST semanticAnalysis
       !semanticInstructionListForGeneration}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #     F I L E W R A P P E R    A N A L Y S I S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -537,10 +537,10 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let filewrapperNameForUsefulness = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
   [!?ioUsefulEntitiesGraph addNode !filewrapperNameForUsefulness !filewrapperNameForUsefulness]
-#--- Get filewrapper features
+//--- Get filewrapper features
   [inSemanticContext.mFilewrapperMap searchKey
     !self.mFilewrapperName
     ?*
@@ -549,7 +549,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     ?let @wrapperDirectoryMap wrapperDirectoryMap
     ?2*
   ]
-#--- Build absolute path
+//--- Build absolute path
   let @string absoluteSourcePath
   if [self.mFilewrapperPath.string firstCharacterOrNul] == '/' then
     absoluteSourcePath = self.mFilewrapperPath.string
@@ -559,7 +559,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   if not [absoluteSourcePath directoryExists] then
     error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
   else
-  #---- Analyze filewrapper templates
+  //--- Analyze filewrapper templates
     var @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = ()
     for (mFilewrapperTemplateName mFilewrapperTemplatePath mFilewrapperTemplateFormalInputParameters) in self.mFilewrapperTemplateList do
       let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
@@ -573,10 +573,10 @@ override method @filewrapperDeclarationAST semanticAnalysis
          : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
       end
       let absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
-    #--- Parse template
+    //--- Parse template
       grammar templateGrammar (?let @templateInstructionListAST resultingInstructionList)
          in @lstring {!absoluteTemplatePath !mFilewrapperTemplatePath.location}
-    #--- Build template variable map
+    //--- Build template variable map
       var @templateVariableMap templateVariableMap = ()
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = ()
       for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in mFilewrapperTemplateFormalInputParameters do
@@ -585,7 +585,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
       end
-    #--- Analyze template
+    //--- Analyze template
       var templateInstructionListForGeneration = @templateInstructionListForGeneration ()
       let templateAnalysisContext = @templateAnalysisContext {
         !inSemanticContext
@@ -600,13 +600,13 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !resultingInstructionList
         !?templateInstructionListForGeneration
       )
-    #--- Enter in generation list
+    //--- Enter in generation list
       filewrapperTemplateListForGeneration +=
         !mFilewrapperTemplateName.string
         !filewrapperTemplateFormalInputParameters
         !templateInstructionListForGeneration
     end
-  #---- Enter filewrapper in generated list
+  //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "filewrapper " + self.mFilewrapperName
       !@filewrapperDeclarationForGeneration {
@@ -621,7 +621,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3SyntaxComponentAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -632,10 +632,10 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = syntaxNameForUsefulEntitiesGraph (!self.mSyntaxComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#--------------------------------------- Build terminal map
+//-------------------------------------- Build terminal map
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !self.mLexiqueName
     ?*
@@ -644,13 +644,13 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
 #    ?let @lstring indexingDirectory
     ?4*
   ]
-#--------------------------------------- Build "indexing" set
+//-------------------------------------- Build "indexing" set
   var @stringset indexNameSet = ()
   for (mIndexName *) in indexingListAST do
     indexNameSet += !mIndexName.string
   end
   let @bool hasIndexing = true # not [indexingDirectory isNowhere]
-#--- Build semantic context from rule headers and non terminal declaration
+//--- Build semantic context from rule headers and non terminal declaration
   if @uint. errorCount == 0 then
     let lexiqueName = self.mLexiqueName.string
     semanticAnalysisOfSyntaxComponent (
@@ -676,7 +676,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @galgas3GrammarComponentAST semanticAnalysis
                                 ?!@lstringlist unused ioUsefulnessRootEntities
@@ -689,10 +689,10 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   if @application.verboseOutput then
     println (!"*** Analyzing '" + self.mGrammarComponentName + "' grammar")
   end
-#--- Useful entities graph
+//--- Useful entities graph
   let grammarNameForUsefulness = grammarNameForUsefulEntitiesGraph (!self.mGrammarComponentName)
   [!?ioUsefulEntitiesGraph addNode !grammarNameForUsefulness !grammarNameForUsefulness]
-#---------------------------------------------------------- Parse syntax components
+//--------------------------------------------------------- Parse syntax components
   var @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = ()
   var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis =()
   var @lstring lexiqueComponentName =  ["" nowhere] # Empty string means unknown
@@ -712,13 +712,13 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     ]
     let lexiqueNameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!lexiqueName)
     [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefulness !lexiqueNameForUsefulness]
-  #--- Check translate feature
+  //--- Check translate feature
     if self.mHasTranslateFeature & not hasTranslateFeature then
       error syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
     elsif hasTranslateFeature & not self.mHasTranslateFeature then
       error self.mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so"
     end
-  #--- Handle lexique component
+  //--- Handle lexique component
     if lexiqueComponentName.string == "" then
       lexiqueComponentName = lexiqueName
     elsif lexiqueName.string != lexiqueComponentName.string then
@@ -726,17 +726,17 @@ override method @galgas3GrammarComponentAST semanticAnalysis
         + lexiqueName + "' lexique component, but the first syntax component uses the '"
         + lexiqueComponentName + "' lexique component (they should be the same)"
     end
-  #--- Handle non terminal declarations
+  //--- Handle non terminal declarations
     handleNonTerminalDeclarations (
       !?nonTerminalMapForGrammarAnalysis
       !nonterminalDeclarationList
     )
-  #--- Enter non terminal definition from rule list
+  //--- Enter non terminal definition from rule list
     handleNonTerminalDeclarationsFromRuleList (
       !?nonTerminalMapForGrammarAnalysis
       !ruleList
     )
-  #--- Handle syntax rules
+  //--- Handle syntax rules
     buildRuleList (
       !nonTerminalMapForGrammarAnalysis
       !syntaxComponentName
@@ -751,7 +751,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       i += 1
     end
   end
-#------------------------ Get lexique component, for knowing if there are "indexing" declaration
+//----------------------- Get lexique component, for knowing if there are "indexing" declaration
 #  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
 #    !lexiqueComponentName
 #    ?*
@@ -766,32 +766,32 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #  elsif (not hasIndexing) & self.mHasIndexing.bool then
 #    error self.mHasIndexing : "the grammar enables indexing, but the '" + lexiqueComponentName + "' does not"
 #  end
-#---------------------------------------------------------- Start symbol
-#--- Search start symbol in non terminal map
+//--------------------------------------------------------- Start symbol
+//--- Search start symbol in non terminal map
   [nonTerminalMapForGrammarAnalysis searchKey
     !self.mStartSymbolName
     ?let @uint startSymbolIndex
     ?let @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap
   ]
-#--- Check signatures
+//--- Check signatures
   checkLabelMap (
     !self.mStartSymbolName.location
     !self.mStartSymbolLabelList
     ![nonTerminalMapForGrammarAnalysis locationForKey !self.mStartSymbolName.string]
     !startSymbolAltMap
   )
-#---------------------------------------------------------- Unused Non Terminal Symbols
+//--------------------------------------------------------- Unused Non Terminal Symbols
   var @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = ()
   for (mValue) in self.mUnusedNonterminalList do
     [nonTerminalMapForGrammarAnalysis searchKey !mValue ?let @uint nonterminalIndex ?*]
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex]
   end
-#---------------------------------------------------------- Non terminal symbols, sorted by index
+//--------------------------------------------------------- Non terminal symbols, sorted by index
   var @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = ()
   for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
   end
-#---------------------------------------------------------- Print an tex file for grammar rule list
+//--------------------------------------------------------- Print an tex file for grammar rule list
   if [option galgas_cli_options.emitSyntaxDiagrams value] then
     emitProductionRulesInTexFile (
       !inProductDirectory
@@ -801,7 +801,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !self.mStartSymbolName
     )
   end
-#---------------------------------------------------------- Emit class graph
+//--------------------------------------------------------- Emit class graph
   let dotDocumentFilePath = inProductDirectory + "/../graph-class/graph-class.dot"
   if [option galgas_cli_options.emitClassGraph value] then
     emitClassGraphFile (
@@ -811,7 +811,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   else
     [@string deleteFileIfExists !dotDocumentFilePath]
   end
-  #---------------------------------------------------------- Header of implementation file
+  //--------------------------------------------------------- Header of implementation file
 #  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
 # for these arguments, we need to include the corresponding type declaration.
   var @stringset implementationFileHeader = ()
@@ -830,7 +830,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   if [option galgas_cli_options.generateOneHeader value] then
     implementationFileHeader = ()
   end
-#---------------------------------------------------------- Analyze grammar
+//--------------------------------------------------------- Analyze grammar
   let HTMLFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".html"
   grammarAnalysisAndGeneration (
     !self.mGrammarComponentName
@@ -846,14 +846,14 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     ?let @string grammarCppFile
     ?let @string grammarHTMLHelperContents
   )
-#---------------------------------------------------------- Generate HTML grammer helper file
+//--------------------------------------------------------- Generate HTML grammer helper file
   if [option galgas_cli_options.outputHTMLgrammarFile value] then
     [[HTMLFilePath stringByDeletingLastPathComponent] makeDirectory]
     [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
   else
     [@string deleteFileIfExists !HTMLFilePath]
   end
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: ""
     !@grammarForGeneration {
@@ -871,11 +871,11 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 }
 
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    P R E D E F I N E D    T Y P E S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
   result = .init {
@@ -904,11 +904,11 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    S Y N T A X    D E C L A R A T I O N S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalLabelMap {
   public let @formalParameterListForGeneration mSignatureForGeneration
@@ -918,7 +918,7 @@ map @nonterminalLabelMap {
   search searchKey error message "the '%K' nonterminal label is not declared"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalMap {
   public let @nonterminalLabelMap mLabelMap
@@ -926,7 +926,7 @@ map @nonterminalMap {
   search searchKey error message "the '%K' nonterminal is not declared"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ruleLabelImplementationList {
   public let @lstring mLabelName
@@ -936,7 +936,7 @@ list @ruleLabelImplementationList {
   public let @semanticInstructionListForGeneration mInstructionListForGeneration
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @ruleDeclarationList {
   public let @string mNonterminalName
@@ -944,11 +944,11 @@ list @ruleDeclarationList {
   public let @ruleLabelImplementationList mLabelImplementationList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           G E N E R A T I O N    F I L E W R A P P E R S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_generation" {
 }{
@@ -966,11 +966,11 @@ filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_genera
     ?@bool HAS_TRANSLATE_FEATURE
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           B U I L D    N O N T E R M I N A L    M A P
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterNonterminalNonTerminalInMapAndCheck
   ?let @lstring inNonTerminalName
@@ -1016,7 +1016,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildNonterminalDeclarationsMap
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
@@ -1024,7 +1024,7 @@ proc buildNonterminalDeclarationsMap
                                 ?!@unifiedTypeMap ioTypeMap
   !@nonterminalMap outNonterminalDeclarationMap {
   outNonterminalDeclarationMap = @nonterminalMap ()
-#--- Nonterminal declaration list
+//--- Nonterminal declaration list
   for (mNonterminalName mLabels) in inNonterminalDeclarationList do
     var nonterminalLabelMap = @nonterminalLabelMap ()
     for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in mLabels do
@@ -1041,11 +1041,11 @@ proc buildNonterminalDeclarationsMap
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -1062,7 +1062,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -1089,7 +1089,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractInputParameter analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -1099,7 +1099,7 @@ abstract method @abstractInputParameter analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputParameterAnonymousVariable analyzeInputParameter
   ?let @analysisContext unused inAnalysisContext
@@ -1110,7 +1110,7 @@ override method @inputParameterAnonymousVariable analyzeInputParameter
   ?!@localVarManager unused ioVariableMap {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputParameterVariable analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -1142,7 +1142,7 @@ override method @inputParameterVariable analyzeInputParameter
     !inLexicalAttributeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputParameterDeclaredVariable analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -1151,7 +1151,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
-#--- Expected type
+//--- Expected type
   let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.predefinedTypes.mLStringType
@@ -1163,7 +1163,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   case lexicalType_double : expectedType = inAnalysisContext.predefinedTypes.mLDoubleType
   case lexicalType_bigint : expectedType = inAnalysisContext.predefinedTypes.mLBigIntType
   end
-#--- Type is named, or should be infered ?
+//--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
     let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
@@ -1172,7 +1172,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
       + ", bit an '@" + [expectedType definition].typeName.string + "' parameter is required here"
     end
   end
-#--- Create local variable
+//--- Create local variable
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mActualParameterName
@@ -1187,7 +1187,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
     !inLexicalAttributeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputParameterDeclaredConstant analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -1196,7 +1196,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   ?let @string inLexicalAttributeName
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@localVarManager ioVariableMap {
-#--- Expected type
+//--- Expected type
   let @unifiedTypeMapEntry expectedType
   switch inRequiredLexicalType
   case lexicalType_string : expectedType = inAnalysisContext.predefinedTypes.mLStringType
@@ -1208,7 +1208,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   case lexicalType_double : expectedType = inAnalysisContext.predefinedTypes.mLDoubleType
   case lexicalType_bigint : expectedType = inAnalysisContext.predefinedTypes.mLBigIntType
   end
-#--- Type is named, or should be infered ?
+//--- Type is named, or should be infered ?
   if self.mActualParameterTypeName.string != "" then
     let type = [ioTypeMap typeMapEntryForLKey !self.mActualParameterTypeName]
     if expectedType != type then
@@ -1217,17 +1217,17 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
       + ", bit an '@" + [expectedType definition].typeName.string + "' parameter is required here"
     end
   end
-#--- Create local constant
+//--- Create local constant
   let cppName = "var_" + [self.mActualParameterName identifierRepresentation] + "_" + [self.mActualParameterName.location startLocationIndex]
   [!?ioVariableMap insertInitializedLocalConstant !self.mActualParameterName !expectedType !cppName !cppName]
-#---
+//---
   ioTerminalCheckAssignementList +=
     ![expectedType definition].typeName.string
     !cppName
     !inLexicalAttributeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -1235,7 +1235,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
   ?let @bool inHasTranslateFeature
   ?!@localVarManager ioVariableMap
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
   ?let @analysisContext unused inAnalysisContext
@@ -1244,7 +1244,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSD
   ?!@localVarManager unused ioVariableMap {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
   ?let @analysisContext unused inAnalysisContext
@@ -1256,7 +1256,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeS
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -1275,7 +1275,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -1302,7 +1302,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -1323,7 +1323,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
   ?let @bool inGenerateSyntaxDirectedTranslationString
@@ -1331,7 +1331,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult gener
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
   ?let @bool inGenerateSyntaxDirectedTranslationString
@@ -1344,7 +1344,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone generateC
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -1353,7 +1353,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  generate
   ?!@string unused ioGeneratedCode {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -1364,7 +1364,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ioGeneratedCode += cppName + " = GGS_string (" + inAccessMethodName + ") ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -1375,7 +1375,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ioGeneratedCode += "GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -1386,7 +1386,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ioGeneratedCode += "const GGS_string " + cppName + " (" + inAccessMethodName + ") ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeSyntaxInstructionList
   ?let @lstring inUsefulnessCallerEntityName
@@ -1405,9 +1405,9 @@ proc analyzeSyntaxInstructionList
   ?!@uint ioSelectMethodCount
   !@semanticInstructionListForGeneration outInstructionListForGeneration {
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
-#--- Begin branch
+//--- Begin branch
   [!?ioVariableMap openBranch]
-#--- Instruction list
+//--- Instruction list
   for (mInstruction) in inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
       !inUsefulnessCallerEntityName
@@ -1425,15 +1425,15 @@ proc analyzeSyntaxInstructionList
       !?ioSelectMethodCount
     ]
   end
-#--- Branch end
+//--- Branch end
   [!?ioVariableMap closeBranch !inEndOfBranchLocation]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           B U I L D    C O N T E X T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc semanticAnalysisOfRuleLabel
   ?let @lstring inUsefulnessCallerEntityName
@@ -1462,12 +1462,12 @@ proc semanticAnalysisOfRuleLabel
     !?variableMap
     ?outSignatureForGeneration
   )
-#---
+//---
   outSignature = @formalParameterSignature ()
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in outSignatureForGeneration do
     outSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
-#--- Semantic analysis of instruction list
+//--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
 #  var localVariableCppNameList = @stringlist ()
   for (mInstruction) in inSyntaxInstructionList do
@@ -1487,15 +1487,15 @@ proc semanticAnalysisOfRuleLabel
       !?ioSelectMethodCount
     ]
   end
-#---
+//---
   [variableMap checkAutomatonStates !inEndOfInstructionList]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #           S E M A N T I C    A N A L Y S I S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc semanticAnalysisOfSyntaxComponent
   ?let @lstring inSyntaxComponentUsefulnessName
@@ -1513,14 +1513,14 @@ private proc semanticAnalysisOfSyntaxComponent
   ?let @bool inHasTranslateFeature
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 {
-#------------ Build nonterminal map
+//----------- Build nonterminal map
   buildNonterminalDeclarationsMap (
     !inNonterminalDeclarationList
     !inSemanticContext
     !?ioTypeMap
     ?var @nonterminalMap nonterminalMap
   )
-#------------ Build nonterminal map from rule headers
+//----------- Build nonterminal map from rule headers
   for (mNonterminalName mLabelList) in inRuleList do
     var @nonterminalLabelMap nonterminalLabelMap = ()
     for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
@@ -1540,7 +1540,7 @@ private proc semanticAnalysisOfSyntaxComponent
     end
       enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName !nonterminalLabelMap !?nonterminalMap )
   end
-#--- Analysis context
+//--- Analysis context
   let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
@@ -1549,12 +1549,12 @@ private proc semanticAnalysisOfSyntaxComponent
     !selfObjectCppPrefixForAccessingProperty: ""
     !requiresSelfForAccessingProperty: false
   }
-#--- Rule list
+//--- Rule list
   var @uint selectMethodCount = 0
   var @ruleDeclarationList ruleDeclarationList = ()
   var @uint newRuleIndex = 0
   for (mNonterminalName mLabelList) in inRuleList do
-  #---
+  //---
     var @ruleLabelImplementationList ruleLabelImplementationList = ()
     var @uint localSelectMethodCount = selectMethodCount
     [nonterminalMap searchKey !mNonterminalName ?*]
@@ -1594,7 +1594,7 @@ private proc semanticAnalysisOfSyntaxComponent
       !ruleLabelImplementationList
     newRuleIndex += 1
   end
-#---
+//---
   outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration {
     !inSyntaxComponentName
     !inLexiqueName
@@ -1605,7 +1605,7 @@ private proc semanticAnalysisOfSyntaxComponent
     !inHasTranslateFeature}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc emitClassGraphFile ?let @string inDotDocumentFilePath
                                 ?let @unifiedTypeMap inTypeMap {
@@ -1635,5 +1635,5 @@ private proc emitClassGraphFile ?let @string inDotDocumentFilePath
   [document writeToFileWhenDifferentContents !inDotDocumentFilePath ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

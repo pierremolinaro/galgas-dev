@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,31 +20,31 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @boolPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixNotOperator
       | .generateDescriptionGetterUtilityMethod | .equatable | .comparable
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.bool_type]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
     outMap = ()
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -107,9 +107,9 @@ class @boolPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

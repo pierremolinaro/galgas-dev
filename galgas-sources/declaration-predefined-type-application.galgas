@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,29 +20,29 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @applicationPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter typeKind -> @typeKindEnum {
     result = .packageType
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.application_type]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .generateDescriptionGetterUtilityMethod
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -91,7 +91,7 @@ class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:true
     )
-  #--- Class functions for "bool" options
+  //--- Class functions for "bool" options
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -143,7 +143,7 @@ class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"bool"
       !hasLexiqueArg:false
     )
-  #--- Class functions for "uint" options
+  //--- Class functions for "uint" options
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -195,7 +195,7 @@ class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"uint"
       !hasLexiqueArg:false
     )
-  #--- Class functions for "string" options
+  //--- Class functions for "string" options
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -247,7 +247,7 @@ class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string"
       !hasLexiqueArg:false
     )
-  #--- Class functions for lexical keyword lists
+  //--- Class functions for lexical keyword lists
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -266,7 +266,7 @@ class @applicationPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                     !@classMethodMap outClassMethodMap {
@@ -317,9 +317,9 @@ class @applicationPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

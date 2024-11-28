@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Project Creation
 #
@@ -21,16 +21,16 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  F I L E W R A P P E R     T E M P L A T E S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper projectCreationFileWrapper in "+generation-templates/project_creation" {
 }{
 }{
-#--- Project
+//--- Project
   template PROJECT_project "+PROJECT.galgasProject.galgasTemplate" ?@string PROJECT_NAME
   template PROJECT_cocoa "PROJECT-cocoa.galgas.galgasTemplate" ?@string PROJECT_NAME
   template PROJECT_grammar "PROJECT-grammar.galgas.galgasTemplate" ?@string PROJECT_NAME
@@ -41,11 +41,11 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
   template PROJECT_syntax "PROJECT-syntax.galgas.galgasTemplate" ?@string PROJECT_NAME
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc performProjectCreation ?let @string inProjectPath {
   let @string projectName = [inProjectPath lastPathComponent]
-#--- galgas_sources
+//--- galgas_sources
   let @string galgas_sources_DIR = inProjectPath + "/galgas-sources"
   [galgas_sources_DIR makeDirectory]
   [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath +"/+" +projectName +".galgasProject"]
@@ -56,16 +56,16 @@ proc performProjectCreation ?let @string inProjectPath {
   [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-program.galgas"]
   [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-semantics.galgas"]
   [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR +"/" +projectName +"-syntax.galgas"]
-#---
+//---
    println (!"*** DONE ***")
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc projectCreation ?let @string inProjectPath {
   if [inProjectPath count] > 0 then
     println (!"*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
-  #--- First check the project name is correct (not empty, only letters, digits and '_')
+  //--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = [inProjectPath lastPathComponent]
     var @bool ok = [[projectName characterAtIndex !0] isalpha]
     var @uint idx = 1
@@ -92,5 +92,5 @@ proc projectCreation ?let @string inProjectPath {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

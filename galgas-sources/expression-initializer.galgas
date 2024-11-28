@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  MIT License
 #
@@ -17,13 +17,13 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -51,7 +51,7 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -66,7 +66,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -80,7 +80,7 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -98,17 +98,17 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
   #  Primary beginning with a type
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -129,12 +129,12 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
   
-  #·······························································································
+  //······························································································
 
   rule <simple_type_followed_by_dot_type> ?let @lstring inTypeName 
                                           ?!@galgasDeclarationAST ioDeclarations
                                           !@semanticExpressionAST outExpression {
-  #--- Type name
+  //--- Type name
     <simple_type_definition> !?ioDeclarations ?let t
     let typeName = makeEmbeddedTypeLName (!outer: inTypeName !inner: t)
     select
@@ -153,9 +153,27 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
   
-  #·······························································································
+  //······························································································
+  #  Primary beginning with .(
+  //······························································································
+
+#  rule <primary> ?!@galgasDeclarationAST ioDeclarations
+#                 !@semanticExpressionAST outExpression {
+#    $.($
+#    let initLocation = @location.here
+#    <output_expression_list> !?ioDeclarations ?let expressionList
+#    let endOfExpression = @location.here
+#    $)$
+#    outExpression = @initializerCallAST {
+#      !.init ("", initLocation)
+#      !expressionList
+#      !endOfExpression
+#    }
+#  }
+  
+  //······························································································
   #  Primary beginning with a dot
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -163,7 +181,7 @@ syntax extension galgas4ExpressionSyntax {
     <primary_beginning_by_dot> !?ioDeclarations ?outExpression
   }
   
-  #·······························································································
+  //······························································································
 
   rule <primary_beginning_by_dot> ?!@galgasDeclarationAST ioDeclarations
                                   !@semanticExpressionAST outExpression {
@@ -188,7 +206,7 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_beginning_by_type_dot_init> ?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
@@ -212,7 +230,7 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary_beginning_by_type> ?let @lstring inTypeName
                                    ?!@galgasDeclarationAST ioDeclarations
@@ -228,7 +246,7 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -242,18 +260,18 @@ syntax extension galgas4ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @initializerCallAST : @semanticExpressionAST {
   private let @lstring mTypeName
   private let @actualOutputArgumentList mExpressions
   private let @location mEndOfExpressions
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     if self.mTypeName.string != "" then
@@ -262,7 +280,7 @@ class @initializerCallAST : @semanticExpressionAST {
     [self.mExpressions enterInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
             ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -286,10 +304,10 @@ class @initializerCallAST : @semanticExpressionAST {
       ?let @lstring initializerName
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     )
-  #--- Usefull entity graph
+  //--- Usefull entity graph
     let typeUsefulnessName = typeNameForUsefulEntitiesGraph ([instanciedType definition].typeName)
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !typeUsefulnessName]
-  #---
+  //---
     outExpression = @initializerCallForGeneration {
       !instanciedType
       !self.mEndOfExpressions
@@ -298,11 +316,11 @@ class @initializerCallAST : @semanticExpressionAST {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntityName
                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -331,13 +349,13 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
       : "cannot instanciate an abstract class"
       : outInstanciedType, outConstructorEffectiveParameterList, outInitializerName
     else
-    #--- Usefull entity graph
+    //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
         !instanciedTypeDefinition.typeName
         ![inInvocationArguments initializerSignature]
       )
       [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !nameForUsefulness]
-    #--- Search initializer
+    //--- Search initializer
       outInitializerName = .init {![inInvocationArguments initializerSignature] !inEndOfExpressions}
       let initializerMap = instanciedTypeDefinition.initializerMap
       let @functionSignature formalSignature
@@ -359,7 +377,7 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
         "the " + s + " initializer is not declared"
         : formalSignature
       end
-    #--- Analysis arguments
+    //--- Analysis arguments
       outConstructorEffectiveParameterList = ()
       for effectiveParameter in inInvocationArguments,
           formalArg in formalSignature do
@@ -392,15 +410,15 @@ private proc analyzeInitializerInvocation ?let @lstring inUsefulnessCallerEntity
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @initializerCallForGeneration : @semanticExpressionForGeneration {
   private let @string initializerName
   private let @semanticExpressionListForGeneration mEffectiveParameterList
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression ?!@string ioGeneratedCode
                                     ?!@stringset ioInclusionSet
@@ -430,8 +448,8 @@ class @initializerCallForGeneration : @semanticExpressionForGeneration {
     outCppExpression += " COMMA_HERE)"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

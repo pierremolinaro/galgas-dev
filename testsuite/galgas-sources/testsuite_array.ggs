@@ -43,7 +43,7 @@
 #      end
 #    end
 #  end
-##--- Copy
+#//--- Copy
 #  var @stringArray p2 = p
 #  [!?p2 setValueAtIndex !"Ciao" !0 !1 !2]
 #  log "" : [p valueAtIndex !0 !1 !2]

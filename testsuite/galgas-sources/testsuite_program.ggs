@@ -1,6 +1,6 @@
 
 
-#--- Prologue routine
+//--- Prologue routine
 before {
   testsuite_hand_coded ()
   testsuite_foreach_instruction ()
@@ -25,13 +25,13 @@ before {
   bugMap ()
 }
 
-#--- 'when' clauses
+//--- 'when' clauses
 case ."testsuite"
 %errorMessage "a source text file with the .testsuite extension"
 ?sourceFilePath:@lstring inSourceFile {
   grammar testsuite_grammar () in inSourceFile
 }
 
-#--- Epilogue routine
+//--- Epilogue routine
 after {
 }

@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @functionCallExpressionAST : @semanticExpressionAST {
   private let @lstring mFunctionName
   private let @actualOutputArgumentList mExpressionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
@@ -76,15 +76,15 @@ syntax extension galgas3ExpressionSyntax {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary> ?!@galgasDeclarationAST ioDeclarations
                  !@semanticExpressionAST outExpression {
@@ -95,13 +95,13 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @functionCallExpressionAST {!functionName !expressionList}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -124,21 +124,21 @@ override method @functionCallExpressionAST analyzeSemanticExpression
 {
   let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#--- Retrieve function features
+//--- Retrieve function features
   [inAnalysisContext.semanticContext.mFunctionMap searchKey
     !self.mFunctionName
     ?let @functionSignature functionSignature
     ?let @unifiedTypeMapEntry resultType
     ?let @bool isInternal
   ]
-#--- Check internal
+//--- Check internal
   if isInternal then
     let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
     if [self.mFunctionName.location file] != [procDeclarationLocation file] then
       error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
     end
   end
-#--- Analyze effective parameters
+//--- Analyze effective parameters
   if [functionSignature count] != [self.mExpressionList count] then
     error self.mFunctionName
     :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature count] string]
@@ -182,26 +182,26 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mFunctionName
   private let @semanticExpressionListForGeneration mExpressions
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression ?!@string ioGeneratedCode
                                       ?!@stringset ioInclusionSet
                                       ?!@uint ioTemporaryVariableIndex
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       !@string outCppExpression {
-  #--- Add return type header
+  //--- Add return type header
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-  #--- Add function header
+  //--- Add function header
     ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
-  #---
+  //---
     var parameterList = @stringlist ()
     for (mExpression) in self.mExpressions do
       [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let parameter]
@@ -216,8 +216,8 @@ class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
     outCppExpression += [self.mLocation commaSourceFile] + ")"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

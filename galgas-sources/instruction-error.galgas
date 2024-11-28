@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @fixitElementAST {
   case fixItRemove
@@ -26,13 +26,13 @@ enum @fixitElementAST {
   case fixItInsertBefore (@semanticExpressionAST exp @location errorLocation)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListAST {
   public let @fixitElementAST mElement
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @errorInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mLocationExpression
@@ -41,13 +41,13 @@ class @errorInstructionAST : @semanticInstructionAST {
   private let @fixitListAST mFixitListAST
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
                      !@fixitListAST outFixitListAST {
@@ -86,7 +86,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -116,15 +116,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
                      !@fixitListAST outFixitListAST {
@@ -166,7 +166,7 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -198,13 +198,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -212,7 +212,7 @@ override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifie
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (element) in self do
@@ -228,9 +228,9 @@ method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @fixitElementForGeneration {
   case fixItRemove
@@ -239,13 +239,13 @@ enum @fixitElementForGeneration {
   case fixItInsertAfter (@semanticExpressionForGeneration exp)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @fixitListForGeneration {
   private let @fixitElementForGeneration mElement
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeErrorOrWarningInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -262,7 +262,7 @@ proc analyzeErrorOrWarningInstruction
   !@semanticExpressionForGeneration outMessageExpression
   !@fixitListForGeneration outFixitListForGeneration
 {
-#--- Analyze location expression
+//--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -272,14 +272,14 @@ proc analyzeErrorOrWarningInstruction
     !?ioVariableMap
     ?outLocationExpression
   ]
-#--- Check type
+//--- Check type
   checkAssignmentTypeWithImplicitGetterCall (
     !inAnalysisContext.predefinedTypes.mLocationType
     !outLocationExpression.mResultType
     !inErrorLocation
     !?outLocationExpression
   )
-#--- Analyze message expression
+//--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -289,7 +289,7 @@ proc analyzeErrorOrWarningInstruction
     !?ioVariableMap
     ?outMessageExpression
   ]
-#--- Analyze fixit expressions
+//--- Analyze fixit expressions
   outFixitListForGeneration = ()
   for (element) in inFixitListAST do
     switch element
@@ -351,7 +351,7 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
     end
   end
-#--- Check message expression type is @string
+//--- Check message expression type is @string
   if outMessageExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
     error inErrorLocation
     :"the " + inErrorOrWarningString + " message expression type is '@" + [outMessageExpression.mResultType definition].typeName.string
@@ -369,7 +369,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
-#---
+//---
   analyzeErrorOrWarningInstruction (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -385,13 +385,13 @@ override method @errorInstructionAST analyzeSemanticInstruction
     ?let messageExpression
     ?let fixitListForGeneration
   )
-#--- Handle dropped variables
+//--- Handle dropped variables
   var builtVariableCppNameList = @stringlist ()
   for (mValue) in self.mBuiltVariableList do
     [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
     builtVariableCppNameList += !varCppName
   end
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@errorInstructionForGeneration {
     !self.mInstructionLocation
     !locationExpression
@@ -401,9 +401,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @fixitListForGeneration generateFixIt
   ?!@stringset ioInclusionSet
@@ -451,7 +451,7 @@ method @fixitListForGeneration generateFixIt
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @errorInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -470,7 +470,7 @@ override method @errorInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -478,7 +478,7 @@ override method @errorInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let receiverCppVarName
   ]
-#--- Receiver expression
+//--- Receiver expression
   [self.mErrorExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -486,7 +486,7 @@ override method @errorInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let messageCppVarName
   ]
-#--- Fix It array
+//--- Fix It array
   [self.mFixitListForGeneration generateFixIt
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -495,18 +495,18 @@ override method @errorInstructionForGeneration generateInstruction
     !?ioGeneratedCode
     ?let @string fixItArrayCppName
   ]
-#--- Generate error instruction
+//--- Generate error instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->emitSemanticError ("
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
     + fixItArrayCppName + " "
     + [self.mInstructionLocation commaSourceFile] + ") ;\n"
-#--- Release dropped variables
+//--- Release dropped variables
   for (mValue) in self.mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue]
     ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

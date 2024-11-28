@@ -17,7 +17,7 @@ style textStyle -> "Text"
 
 @string tokenString
 
-#-------------------------- comment  --------------------
+//------------------------- comment  --------------------
 
 $comment$ ! tokenString  style commentStyle %templateEndMark error message "a comment"
 
@@ -43,7 +43,7 @@ rule "<!--" {
   send $comment$
 }
 
-# ----------------------------- Delimiters ---------------------------------------
+// ---------------------------- Delimiters ---------------------------------------
 list xmlDelimitorsList style delimitersStyle error message "the '%K' delimitor"{
   "<",
   "<?",
@@ -55,7 +55,7 @@ list xmlDelimitorsList style delimitersStyle error message "the '%K' delimitor"{
 
 rule list xmlDelimitorsList
 
-#-------------------------- name  --------------------
+//------------------------- name  --------------------
 
 $name$ ! tokenString  style nameStyle error message "a name"
 
@@ -67,7 +67,7 @@ rule isUnicodeLetter {
   send $name$
 }
 
-#-------------------------- Attribute value  --------------------
+//------------------------- Attribute value  --------------------
 
 $value$ ! tokenString  style attributeValue error message "an attribute value"
 
@@ -109,10 +109,10 @@ rule ''' {
   send $value$
 }
 
-# --------------------- separators -----------------------------------------
+// -------------------- separators -----------------------------------------
 rule '\u0001' -> ' ' {
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 }

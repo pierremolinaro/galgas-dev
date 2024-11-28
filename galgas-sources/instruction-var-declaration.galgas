@@ -15,29 +15,29 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @lstring mVariableName
   private let @semanticExpressionAST mSourceExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @localVariableDeclarationNoAssignmentAST : @semanticInstructionAST {
   private let @lstring mTypeName
   private let @lstring mVariableName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -51,7 +51,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -66,7 +66,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -92,7 +92,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -113,15 +113,15 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -136,7 +136,7 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -158,13 +158,13 @@ syntax extension galgas4InstructionsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -172,9 +172,9 @@ override method @localVariableDeclarationWithAssignmentAST enterInstructionInSem
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -184,7 +184,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
-#--- Analyze source expression
+//--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -194,7 +194,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     !?ioVariableMap
     ?let @semanticExpressionForGeneration expression
   ]
-#--- Check target variable
+//--- Check target variable
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
   [!?ioVariableMap insertInitializedLocalVariable
     !self.mVariableName
@@ -203,7 +203,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     !targetVariableCppName
     !targetVariableCppName
   ]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
     !expression.mResultType
     !false
@@ -212,17 +212,17 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationNoAssignmentAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [!?ioTypeMap makeEntry !self.mTypeName ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -232,7 +232,7 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
 {
-#--- Check target variable
+//--- Check target variable
   let targetType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location startLocationIndex]
   [!?ioVariableMap insertDeclaredLocalVariable
@@ -241,16 +241,16 @@ override method @localVariableDeclarationNoAssignmentAST analyzeSemanticInstruct
     !targetVariableCppName
     !targetVariableCppName
   ]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration {
     !targetType
     !targetVariableCppName
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mVariableType
@@ -270,4 +270,4 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ioGeneratedCode += "GGS_" + [self.mVariableType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

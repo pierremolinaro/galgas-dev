@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @comparison {
   case equal # ==
@@ -30,7 +30,7 @@ enum @comparison {
   case differentInstances # !==
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @comparisonExpressionAST : @semanticExpressionAST {
   public let @location mOperatorLocation
@@ -39,13 +39,13 @@ class @comparisonExpressionAST : @semanticExpressionAST {
   public let @semanticExpressionAST mRightExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <relation_factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticExpressionAST outExpression {
@@ -102,15 +102,15 @@ syntax extension galgas3ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <relation_factor> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpression {
@@ -167,13 +167,13 @@ syntax extension galgas4ExpressionSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @comparisonExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -193,7 +193,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-#--- Left expression analysis
+//--- Left expression analysis
   [self.mLeftExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -203,7 +203,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration leftExpression
   ]
-#--- Right expression analysis
+//--- Right expression analysis
   [self.mRightExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -213,7 +213,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?var @semanticExpressionForGeneration rightExpression
   ]
-#--- Operator name
+//--- Operator name
   let isEquatable = [[leftExpression.mResultType definition].features contains !.equatable]
   let isComparable = [[leftExpression.mResultType definition].features contains !.comparable]
   let isReferenceEquatable = [[leftExpression.mResultType definition].features contains !.referenceEquatable]
@@ -245,7 +245,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     operatorName = "!=="
     operatorIsAvailable = isReferenceEquatable
   end
-#--- Check operator availability
+//--- Check operator availability
   checkDiadicOperator (
     !operatorIsHandled: operatorIsAvailable
     !operatorName
@@ -253,7 +253,7 @@ override method @comparisonExpressionAST analyzeSemanticExpression
     !?leftExpression
     !?rightExpression
   )
-#--- Generate expression
+//--- Generate expression
   outExpression = @comparisonExpressionForGeneration {
     !inAnalysisContext.predefinedTypes.mBoolType
     !self.mOperatorLocation
@@ -263,9 +263,9 @@ override method @comparisonExpressionAST analyzeSemanticExpression
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
@@ -283,7 +283,7 @@ override method @comparisonExpressionForGeneration generateExpression
   !@string outCppExpression
 {
   [self.mLeftExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Left operand
+//--- Left operand
   [self.mLeftExpression  generateExpression
      !?ioGeneratedCode
      !?ioInclusionSet
@@ -291,7 +291,7 @@ override method @comparisonExpressionForGeneration generateExpression
      !?ioUnusedVariableCppNameSet
      ?let leftTemporaryOperand
    ]
-#--- Right operand
+//--- Right operand
   [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -299,7 +299,7 @@ override method @comparisonExpressionForGeneration generateExpression
     !?ioUnusedVariableCppNameSet
     ?let rightTemporaryOperand
   ]
-#--- Operator name
+//--- Operator name
   let @string operatorName
   switch self.mComparison
   case equal, sameInstance : operatorName = "ComparisonKind::equal"
@@ -309,8 +309,8 @@ override method @comparisonExpressionForGeneration generateExpression
   case greaterOrEqual : operatorName = "ComparisonKind::greaterOrEqual"
   case greaterThan : operatorName = "ComparisonKind::greaterThan"
   end
-#--- Generate Comparison
+//--- Generate Comparison
   outCppExpression = "GGS_bool (" + operatorName + ", " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

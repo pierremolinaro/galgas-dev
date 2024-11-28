@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
@@ -43,7 +43,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
@@ -65,15 +65,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $abstract$
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
@@ -112,20 +112,20 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @abstractExtensionMethodAST : @semanticDeclarationAST {
   public let @lstring mTypeName
   public let @lstring mAbstractExtensionMethodName
   public let @formalParameterListAST mAbstractExtensionMethodFormalParameterList
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -141,7 +141,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring {!"@" + self.mTypeName !self.mTypeName.location}]
-  #---
+  //---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey
         !self.mTypeName
@@ -157,13 +157,13 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation -> @string {
     result = "abstract extension method @" + self.mTypeName + " " + self.mAbstractExtensionMethodName
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -175,7 +175,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@semanticContext unused ioSemanticContext {
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis
     ?!@lstringlist unused ioUsefulnessRootEntities
@@ -186,18 +186,18 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   {
-  #--- Useful entities graph
+  //--- Useful entities graph
   #  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionMethodName)
   #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  #--- Self type
+  //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-  #--- Check self type is an abstract class
+  //--- Check self type is an abstract class
     if not [[selfType definition].typeKind isClassType]then
       error self.mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
     elsif [selfType definition].isConcrete then
       error self.mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType definition].typeName.string + "' is not an abstract class"
     end
-  #--- Compute method signature
+  //--- Compute method signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
       formalParameterListForGeneration +=
@@ -207,7 +207,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
         !mFormalArgumentName
         !mFormalArgumentName.string
     end
-  #---
+  //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "abstract extension method " + self.mAbstractExtensionMethodName
       !@abstractExtensionMethodForGeneration {
@@ -219,7 +219,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
       }
   }
 
-  #·······························································································
+  //······························································································
 
   override method buildExtensionListMaps
     ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -243,20 +243,20 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @unifiedTypeMapEntry mReceiverType
   public let @string mAbstractExtensionMethodName
   public let @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1
     ?!@stringset unused ioInclusionSet
@@ -268,13 +268,13 @@ class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForG
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override getter headerKind -> @headerKind {
     result = @headerKind.oneHeader
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
@@ -293,9 +293,9 @@ class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForG
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

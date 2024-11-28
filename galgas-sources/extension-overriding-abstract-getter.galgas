@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -26,13 +26,13 @@ class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -94,15 +94,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -129,7 +129,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
@@ -149,21 +149,21 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @string {
   result = "overriding extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
       ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -174,7 +174,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
       ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
       ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
   ioExtensionOverrideDefinitionList += !self
-#---
+//---
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !self.mTypeName
@@ -191,9 +191,9 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
    end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -206,9 +206,9 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInSemantic
 {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -219,20 +219,20 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
 #  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#--- Self type
+//--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- Return type
+//--- Return type
   let returnType = [ioTypeMap typeMapEntryForLKey !self.mAbstractExtensionGetterReturnedTypeName]
-#--- Check type is an abstract class
+//--- Check type is an abstract class
   if not [[selfType definition].typeKind isClassType] then
     error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType definition].typeName.string + "' is not a class"
   elsif [selfType definition].isConcrete then
     error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType definition].typeName.string + "' is not an abstract class"
   end
-#--- Find base type name
+//--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
   var @functionSignature inheritedSignature = ()
@@ -260,7 +260,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   if baseTypeName == "" then
     error self.mAbstractExtensionGetterName:"this getter is not declared by a super class"
   end
-#--- Check Signature
+//--- Check Signature
   if baseTypeName != "" then
     var formalParameterListForGeneration = @formalInputParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
@@ -282,9 +282,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -308,4 +308,4 @@ override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

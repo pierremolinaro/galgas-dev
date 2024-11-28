@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
@@ -26,13 +26,13 @@ class @listDeclarationAST : @semanticDeclarationAST {
   private let @bool equatable %initArgLabel
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $list$
@@ -74,15 +74,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $list$
@@ -121,20 +121,20 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listDeclarationAST keyRepresentation
   ->@string {
   result = "list @" + self.mListTypeName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -151,9 +151,9 @@ override method @listDeclarationAST enterDeclarationInGraph
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -164,7 +164,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext
 {
-#--- Handle attributes
+//--- Handle attributes
   var @typedPropertyList typedAttributeList = ()
   for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
@@ -173,16 +173,16 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     [!?ioTypeMap makeEntry !propertyTypeName ?let attributeTypeIndex]
     typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
   end
-#--- uint type index
+//--- uint type index
   [!?ioTypeMap makeEntryFromString !"uint" ?let uintType]
-#--- List type index
+//--- List type index
   [!?ioTypeMap makeEntry !self.mListTypeName ?let listTypeIndex]
-#--- Element type index
+//--- Element type index
   [!?ioTypeMap makeEntry
     !makeEmbeddedElementTypeLName (!self.mListTypeName)
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
-#--- Property description
+//--- Property description
   var @enumerationDescriptorList enumerationDescriptor = ()
   var @functionSignature constructorAttributeTypeList = ()
   var @formalParameterSignature setterOutputFormalArgumentList = ()
@@ -206,7 +206,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !.argumentConstantIn
       !mPropertyName.string
   end
-#--- Class functions
+//--- Class functions
   var @classFunctionMap classFunctionMap = ()
   enterClassFunctionWithoutArgument (
     !?classFunctionMap
@@ -221,7 +221,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !false
     !listTypeIndex
   ]
-#--- Getters
+//--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -275,7 +275,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !"" # getter name is not obsolete, no replacement getter
     ]
   end
-#------------------------- Instance methods
+//------------------------ Instance methods
   var @instanceMethodMap instanceMethodMap = ()
   [!?instanceMethodMap insertKey
     !@lstring {!"first" !@location.here}
@@ -295,7 +295,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !""
   ]
-#----------------------------------------- Modifiers
+//---------------------------------------- Modifiers
   var @setterMap setterMap = ()
   [!?setterMap insertOrReplace
     !@lstring {!"append" !@location.here}
@@ -345,7 +345,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       ]
     end
   end
-#--- setter 'insertAtIndex'
+//--- setter 'insertAtIndex'
   setterInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
   [!?setterMap insertOrReplace
     !@lstring {!"insertAtIndex" !@location.here}
@@ -355,14 +355,14 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- Add initializer without argument
+//--- Add initializer without argument
   var @initializerMap initializerMap = ()
   let @functionSignature emptyArgumentList = ()
   [!?initializerMap insertKey
     !.init {![emptyArgumentList initializerSignature] !self.mListTypeName}
     !emptyArgumentList
   ]
-#--- Add extensions
+//--- Add extensions
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -378,7 +378,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !?instanceMethodMap
     !acceptSetters: true
   )
-#--- features
+//--- features
   var features = @typeFeatures.plusAssignOperatorWithExpression | .infixAddOperator | .doNotGenererateObjectCompare
   if self.equatable then
     features |= .equatable
@@ -390,7 +390,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !acceptEquatable: true
     !acceptComparable: false
   )
-#--- Enter in type map
+//--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mListTypeName
     !isPredefined: self.isPredefined
@@ -446,9 +446,9 @@ override method @listDeclarationAST addAssociatedElement
 }
 
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST semanticAnalysis
           ?!@lstringlist ioUsefulnessRootEntities
@@ -459,7 +459,7 @@ override method @listDeclarationAST semanticAnalysis
           ?let @predefinedTypes unused inPredefinedTypes
           ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mListTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   if self.usefullList || self.isPredefined  then
@@ -472,7 +472,7 @@ override method @listDeclarationAST semanticAnalysis
   if self.usefullList || self.isPredefined  then
     ioUsefulnessRootEntities += !elementTypeNameForUsefulness
   end
-#--- Useful entities graph for initializer without any argument
+//--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     !self.mListTypeName
     ![@formalInputParameterListAST () initializerSignature]
@@ -482,7 +482,7 @@ override method @listDeclarationAST semanticAnalysis
   if self.usefullList || self.isPredefined then
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
-#---
+//---
   var @typedPropertyList typedAttributeList = ()
   var @propertyIndexMap attributeMap = ()
   for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
@@ -500,7 +500,7 @@ override method @listDeclarationAST semanticAnalysis
       !hasSelector: hasSelector
     [!?attributeMap insertKey !propertyName !t]
   end
-#---
+//---
   let selfType = [ioTypeMap typeMapEntryForLKey !self.mListTypeName]
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list type " + self.mListTypeName
@@ -511,9 +511,9 @@ override method @listDeclarationAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @listTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
@@ -590,5 +590,5 @@ override method @listTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

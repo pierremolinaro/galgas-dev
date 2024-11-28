@@ -15,23 +15,23 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
     $[$
-  #--- Get source identity characteristics
+  //--- Get source identity characteristics
     let startLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST receiverExpression
-  #--- Get getter name
+  //--- Get getter name
     $identifier$ ?let @lstring getterName
-  #--- Actual parameters
+  //--- Actual parameters
     <output_expression_list_ggs3> !?ioDeclarations ?let @actualOutputArgumentList expressionList
     $]$
     let endLocation = @location.here
@@ -44,11 +44,11 @@ syntax extension galgas3ExpressionSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @getterCallExpressionAST : @semanticExpressionAST {
   private let @bool errorOnGetterCallInsteadOfPropertyRead %initArgLabel
@@ -57,14 +57,14 @@ class @getterCallExpressionAST : @semanticExpressionAST {
   private let @actualOutputArgumentList mActualArgumentList
   private let @location mExpressionLocation
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
     [self.mActualArgumentList enterInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
                           ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -74,11 +74,11 @@ class @getterCallExpressionAST : @semanticExpressionAST {
                           ?!@unifiedTypeMap ioTypeMap
                           ?!@localVarManager ioVariableMap
                           !@semanticExpressionForGeneration outExpression {
-  #--- Check self is not inkoed before full initialization
+  //--- Check self is not inkoed before full initialization
     if self.mReceiver is @selfInExpressionAST then
       [ioVariableMap checkSelfObjectIsFullyInitialized !self.mGetterName.location]
     end
-  #--------------------------------------- Expression analysis
+  //-------------------------------------- Expression analysis
     [self.mReceiver analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -89,7 +89,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
       ?@semanticExpressionForGeneration receiverExpression
     ]
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
-  #--------------------------------------- Search getter
+  //-------------------------------------- Search getter
     if let aGetter = [receiverType definition].getterMap §[self.mGetterName] then
       if (aGetter.mGetterNameThatObsoletesInvokationName != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
         error self.mGetterName : "obsolete getter" fixit {
@@ -101,7 +101,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
         && ([self.mActualArgumentList count] == 0) then
         error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
       end
-    #--- Analysis arguments
+    //--- Analysis arguments
       if [self.mActualArgumentList count] != [aGetter.mArgumentTypeList count] then
         error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
         + [aGetter.mArgumentTypeList count] + " parameter(s), while this call has "
@@ -142,7 +142,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
           error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
         end
       end
-  #--------------------------------------- The getter does not exist, it is a property ?
+  //-------------------------------------- The getter does not exist, it is a property ?
     elsif [self.mActualArgumentList count] == 0, let prop = [receiverType definition].propertyMap §[self.mGetterName] then
       [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
       outExpression = @propertyAccessExpressionForGeneration {
@@ -154,7 +154,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
       if self.errorOnGetterCallInsteadOfPropertyRead then # [option galgas_cli_options.errorPropertyGetterCall value] then
         error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
       end
-  #--------------------------------------- not found, old style search
+  //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
       if [receiverType definition].typeKind == .structType then
@@ -200,7 +200,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
           + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
           : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         end
-      #--- Analysis arguments
+      //--- Analysis arguments
         if [self.mActualArgumentList count] != [getterFormalArgumentTypeList count] then
           error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
           + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
@@ -252,13 +252,13 @@ class @getterCallExpressionAST : @semanticExpressionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @methodKind mKind
@@ -268,7 +268,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionListForGeneration mActualArgumentList
   public let @bool mHasCompilerArgument
 
-  #·······························································································
+  //······························································································
 
   override method generateExpression
     ?!@string ioGeneratedCode
@@ -277,9 +277,9 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
     ?!@stringset ioUnusedVariableCppNameSet
     !@string outCppExpression
   {
-  #--- Add return type header
+  //--- Add return type header
     [self.mResultType addHeaderFileName !?ioInclusionSet]
-  #--- Receiver expression
+  //--- Receiver expression
     [self.mReceiverExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -287,7 +287,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
       !?ioUnusedVariableCppNameSet
       ?let @string receiverCppName
     ]
-  #--- Reader operands
+  //--- Reader operands
     var @stringlist getterArgumentCppNameList = ()
     for (mExpression) in self.mActualArgumentList do
       [mExpression generateExpression
@@ -299,7 +299,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
       ]
       getterArgumentCppNameList += !argumentCppName
     end
-  #--- Generate Reader call
+  //--- Generate Reader call
     switch self.mKind
     case definedAsExtension :
       var @unifiedTypeMapEntry baseType = self.mReceiverExpression.mResultType
@@ -351,8 +351,8 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
     outCppExpression += [self.mLocation sourceFile] + ")"
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

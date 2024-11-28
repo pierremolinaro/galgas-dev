@@ -16,9 +16,9 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @templateInstructionForEnumerationAST {
   case implicit (@string prefix @location remplacementRange)
@@ -38,13 +38,13 @@ class @templateInstructionForeachAST : @templateInstructionAST {
   private let @templateInstructionListAST mAfterInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension templateSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@lstringlist ioElementList {
     $literalInt$ ?let count
@@ -59,21 +59,21 @@ syntax extension templateSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@lstringlist ioElementList {
     $*$
     ioElementList += !["" nowhere]
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_element> ?!@lstringlist ioElementList {
     $identifier$ ?let constantName
     ioElementList += !constantName
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
                                            !@templateExpressionAST outExpression {
@@ -94,7 +94,7 @@ syntax extension templateSyntax {
     outEnumeratedObject = .implicit {!prefix: foreachPrefix !remplacementRange: [start union !endLocation]}
   }
 
-  #·······························································································
+  //······························································································
 
   rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
                                            !@templateExpressionAST outExpression {
@@ -119,7 +119,7 @@ syntax extension templateSyntax {
     outEnumeratedObject = .explicit {!enumeration: enumeration !endOfProperties: endOfProperties}
   }
 
-  #·······························································································
+  //······························································································
 
   rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
     $for$
@@ -134,7 +134,7 @@ syntax extension templateSyntax {
       ascending = false
     end
     <for_instruction_enumerated_object> ?let enumeratedProperties ?let expression
-  #--- before block
+  //--- before block
     var @templateInstructionListAST beforeInstructionList = ()
     select
     or
@@ -145,7 +145,7 @@ syntax extension templateSyntax {
         <template_instruction> !?beforeInstructionList
       end
     end
-  #--- Do block
+  //--- Do block
     $do$
     let @lstring indexIdentifier
     select
@@ -161,7 +161,7 @@ syntax extension templateSyntax {
     while
       <template_instruction> !?doInstructionList
     end
-  #--- between block
+  //--- between block
     var @templateInstructionListAST betweenInstructionList = ()
     select
     or
@@ -172,7 +172,7 @@ syntax extension templateSyntax {
         <template_instruction> !?betweenInstructionList
       end
     end
-  #--- after block
+  //--- after block
     var @templateInstructionListAST afterInstructionList = ()
     select
     or
@@ -183,7 +183,7 @@ syntax extension templateSyntax {
         <template_instruction> !?beforeInstructionList
       end
     end
-  #---
+  //---
     $end$
     ioResultingInstructionList += !@templateInstructionForeachAST {
       !ascending
@@ -197,13 +197,13 @@ syntax extension templateSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateInstructionForeachAST templateInstructionAnalysis
   ?let @lstring inUsefulnessCallerEntityName
@@ -212,7 +212,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@templateInstructionListForGeneration ioInstructionList
 {
-#--- Foreach expression
+//--- Foreach expression
   [self.mExpression templateExpressionAnalysis
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -220,12 +220,12 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !?ioTypeMap
     ?let expression
   ]
-#--- Check expression is enumerable (empty List if cannot be enumerated)
+//--- Check expression is enumerable (empty List if cannot be enumerated)
   let @enumerationDescriptorList enumerationDescriptor = [expression.mResultType definition].enumerationDescriptorList
   if [enumerationDescriptor count] == 0 then
     error expression.mLocation : "expression of '@" + [expression.mResultType definition].typeName.string + "' cannot be enumerated"
   end
-#--- Before instructions
+//--- Before instructions
   var beforeInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
@@ -235,7 +235,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !self.mBeforeInstructionList
     !?beforeInstructionList
   )
-#--- Do instructions
+//--- Do instructions
   let enumeratorCppName = "enumerator_" + [[self.mIndexIdentifier.location startLocationIndex] string]
   var doVariableMap = inAnalysisContext.mTemplateVariableMap
   let cppIndexVarName = "index_" + [[self.mIndexIdentifier.location startLocationIndex] string]
@@ -294,7 +294,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !self.mDoInstructionList
     !?doInstructionList
   )
-#--- Between instructions
+//--- Between instructions
   var betweenInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
@@ -304,7 +304,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !self.mBetweenInstructionList
     !?betweenInstructionList
   )
-#--- After instructions
+//--- After instructions
   var afterInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
     !inUsefulnessCallerEntityName
@@ -314,7 +314,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !self.mAfterInstructionList
     !?afterInstructionList
   )
-#---
+//---
   ioInstructionList += !@templateInstructionForeachForGeneration {
     !self.mIsAscending
     !expression
@@ -327,9 +327,9 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
   private let @bool mIsAscending
@@ -350,18 +350,18 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
-#---
+//---
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let foreachVarCppName]
-#--- Index
+//--- Index
   if [self.mIndexCppName count] > 0 then
     ioGeneratedCode += "GGS_uint " + self.mIndexCppName + " (0) ;\n"
   end
-#---
+//---
   ioGeneratedCode += "if (" + foreachVarCppName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += "cEnumerator_" + [self.mExpression.mResultType identifierRepresentation] + " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ", "
                   + if self.mIsAscending then "EnumerationOrder::up" else "EnumerationOrder::down" end + ") ;\n"
-#--- Before
+//--- Before
   if ([self.mBeforeInstructionList count] + [self.mAfterInstructionList count]) > 0 then
     ioGeneratedCode += "const bool nonEmpty_" + self.mEnumeratorCppName + " = " + self.mEnumeratorCppName + ".hasCurrentObject () ;\n"
   end
@@ -381,7 +381,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   end
   ioGeneratedCode += "while (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-#--- Do
+//--- Do
   templateCodeGenerationForListInstruction (
     !self.mDoInstructionList
     !?ioGeneratedCode
@@ -390,7 +390,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
   )
-#--- Between
+//--- Between
   if [self.mBetweenInstructionList count] > 0 then
     ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasNextObject ()) {\n"
     [!?ioGeneratedCode incIndentation !2]
@@ -405,15 +405,15 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end
-#--- Index
+//--- Index
   if [self.mIndexCppName count] > 0 then
     ioGeneratedCode += self.mIndexCppName + ".increment () ;\n"
   end
-#---
+//---
   ioGeneratedCode += self.mEnumeratorCppName + ".gotoNextObject () ;\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
-#--- After
+//--- After
   if [self.mAfterInstructionList count] > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
@@ -428,10 +428,10 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end
-#---
+//---
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

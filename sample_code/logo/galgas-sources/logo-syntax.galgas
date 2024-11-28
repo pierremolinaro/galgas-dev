@@ -1,6 +1,6 @@
 syntax logo_syntax (logo_lexique) {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
   
   rule <pen_direction> ?!@instructionList il {
     select
@@ -14,7 +14,7 @@ syntax logo_syntax (logo_lexique) {
     end
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   rule <instruction> ?!@routineMap ioTableRoutines ?!@instructionList il {
     select
@@ -44,7 +44,7 @@ syntax logo_syntax (logo_lexique) {
     end
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   rule <instruction_list> ?!@routineMap ioTableRoutines ?!@instructionList il {
     repeat
@@ -53,7 +53,7 @@ syntax logo_syntax (logo_lexique) {
     end
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   rule <routine_definition> ?!@routineMap ioTableRoutines {
     $ROUTINE$
@@ -62,14 +62,14 @@ syntax logo_syntax (logo_lexique) {
     var @instructionList il = ()
     <instruction_list> !? ioTableRoutines !? il
     $END$
-  #--- Insertion dans la table
+  //--- Insertion dans la table
     [!?ioTableRoutines insertKey !routineName !il]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   rule <start_symbol> {
-  #-- Définition des routines
+  //-- Définition des routines
     $PROGRAM$
     var @routineMap tableRoutines = ()
     var @instructionList instructions = ()
@@ -77,12 +77,12 @@ syntax logo_syntax (logo_lexique) {
     while
       <routine_definition> !? tableRoutines
     end
-  #--- Programme principal
+  //--- Programme principal
     $BEGIN$
     <instruction_list> !? tableRoutines !? instructions
     $END$
     $.$
-  #--- Compute SVG instructions
+  //--- Compute SVG instructions
     var @bool pendown = false
     var @double x = 0.0
     var @double y = 0.0
@@ -91,7 +91,7 @@ syntax logo_syntax (logo_lexique) {
     for i in instructions do
       [i.mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]
     end
-  #--- Output file
+  //--- Output file
     let @string sourceFilePath = @string.stringWithSourceFilePath
     let @string code = [filewrapper generationTemplate.svg
       ![sourceFilePath lastPathComponent]
@@ -100,9 +100,9 @@ syntax logo_syntax (logo_lexique) {
     [code writeToFile ![sourceFilePath stringByDeletingPathExtension] + ".svg"]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

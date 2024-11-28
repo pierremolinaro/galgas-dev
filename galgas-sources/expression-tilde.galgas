@@ -15,11 +15,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -29,15 +29,15 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -47,26 +47,26 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @tildeExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @tildeExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 
-  #·······························································································
+  //······························································································
 
   override method enterExpressionInSemanticContext
     ?!@unifiedTypeMap ioTypeMap {
     [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticExpression
     ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -77,7 +77,7 @@ class @tildeExpressionAST : @semanticExpressionAST {
     ?!@localVarManager ioVariableMap
     !@semanticExpressionForGeneration outExpression
   {
-  #--- Expression analysis
+  //--- Expression analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -87,7 +87,7 @@ class @tildeExpressionAST : @semanticExpressionAST {
       !?ioVariableMap
       ?let @semanticExpressionForGeneration expression
     ]
-  #--- Check operator availability
+  //--- Check operator availability
     let @unifiedTypeMapEntry type = expression.mResultType
     if let exp = expression as @literalBigIntExpressionForGeneration then
       outExpression = @literalBigIntExpressionForGeneration {
@@ -101,7 +101,7 @@ class @tildeExpressionAST : @semanticExpressionAST {
       + "' and does not support the '~' operator"
       : outExpression
     else
-    #--- Generate expression
+    //--- Generate expression
       outExpression = @tildeExpressionForGeneration {
         !type
         !self.mOperatorLocation
@@ -110,13 +110,13 @@ class @tildeExpressionAST : @semanticExpressionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -131,10 +131,10 @@ override method @tildeExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Operand
+//--- Operand
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]
-#--- Generate
+//--- Generate
   outCppExpression = operand + ".operator_tilde (" + [self.mLocation sourceFile] + ")"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,11 +20,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @sint64PredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator
@@ -37,7 +37,7 @@ class @sint64PredefinedTypeAST : @predefinedTypeAST {
       | .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -58,7 +58,7 @@ class @sint64PredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -169,15 +169,15 @@ class @sint64PredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.sint64_type]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

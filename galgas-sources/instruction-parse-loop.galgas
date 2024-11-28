@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @parseLoopInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mVariantExpression
@@ -28,13 +28,13 @@ class @parseLoopInstruction : @syntaxInstructionAST {
   private let @location mEndOfInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -61,15 +61,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -95,13 +95,13 @@ syntax extension galgas4SyntaxComponentSyntax {
       !endOfInstructionList}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -117,9 +117,9 @@ override method @parseLoopInstruction transformInstruction
   )
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -135,7 +135,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap
   ?!@uint ioSelectMethodCount {
-#--- Variant expression
+//--- Variant expression
   [self.mVariantExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -150,7 +150,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     :"the variant expression type is '@" + [variant_expression.mResultType definition].typeName.string
     + "', but it should be '@" + [inAnalysisContext.predefinedTypes.mUIntType definition].typeName.string + "' type"
   end
-#--- While expression
+//--- While expression
   [self.mWhileExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -165,10 +165,10 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     :"the variant expression type is '@" + [variant_expression.mResultType definition].typeName.string
     + "', but it should be '@" + [inAnalysisContext.predefinedTypes.mBoolType definition].typeName.string + "' type"
   end
-#--- 'do' instructions
-#--- Begin block
+//--- 'do' instructions
+//--- Begin block
   [!?ioVariableMap openOverrideForRepeatBlock]
-#--- 'or' blocks
+//--- 'or' blocks
   analyzeSyntaxInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -186,9 +186,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioSelectMethodCount
     ?let instructionList
   )
-#--- End block
+//--- End block
   [!?ioVariableMap closeOverride !self.mEndOfInstructionList]
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@parseLoopInstructionForGeneration {
     !self.mInstructionLocation
     !variant_expression
@@ -197,9 +197,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mVariantExpression
@@ -207,9 +207,9 @@ class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticInstructionListForGeneration mInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -217,9 +217,9 @@ override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @parseLoopInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -229,15 +229,15 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-#--- Variant
+//--- Variant
   [self.mVariantExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let variantVarCppName]
-#--- Loop variable
+//--- Loop variable
   ioGeneratedCode += "if (" + variantVarCppName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
   let @string variantVar = "variant_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "uint32_t " + variantVar + " = " + variantVarCppName + ".uintValue () ;\n"
-#--- loop
+//--- loop
   let @string loopVar = "loop_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
@@ -265,7 +265,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
-#--- Execute 'parse' part
+//--- Execute 'parse' part
   ioGeneratedCode += "//--- 'parse'\n"
   generateInstructionList (
     !?ioInclusionSet
@@ -278,4 +278,4 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += compilerCppName () + "->resetTemplateString () ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

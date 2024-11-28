@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Template parser
 #
@@ -21,15 +21,15 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax templateSyntax (galgasTemplateScanner) {
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   E X P R E S S I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <expression_tpl>
   !@templateExpressionAST outExpression {
@@ -52,11 +52,11 @@ rule <expression_tpl>
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   R E L A T I O N    T E R M
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <relation_term_tpl>
   !@templateExpressionAST outExpression {
@@ -72,11 +72,11 @@ rule <relation_term_tpl>
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   R E L A T I O N    F A C T O R
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <relation_factor_tpl>
   !@templateExpressionAST outExpression {
@@ -127,11 +127,11 @@ rule <relation_factor_tpl>
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   S I M P L E    E X P R E S S I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <simple_expression_tpl> !@templateExpressionAST outExpression {
   <term_tpl> ?outExpression
@@ -167,11 +167,11 @@ rule <simple_expression_tpl> !@templateExpressionAST outExpression {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   T E R M
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <term_tpl>
   !@templateExpressionAST outExpression {
@@ -201,11 +201,11 @@ rule <term_tpl>
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   F A C T O R    :    struct field access
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl> !@templateExpressionAST outExpression {
   <primary_tpl> ?outExpression
@@ -221,11 +221,11 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   F A C T O R    :    - factor
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl> !@templateExpressionAST outExpression {
   let @location operatorLocation = @location.here
@@ -235,11 +235,11 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
   outExpression = @templateUnaryMinusOperationAST {!operatorLocation !expression}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   F A C T O R    :    not FACTOR
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl> !@templateExpressionAST outExpression {
   let @location operatorLocation = @location.here
@@ -249,11 +249,11 @@ rule <factor_tpl> !@templateExpressionAST outExpression {
   outExpression = @templateNotOperatorAST {!operatorLocation !ifCondition}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   F A C T O R    :    ~ FACTOR
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <factor_tpl>
   !@templateExpressionAST outExpression {
@@ -264,22 +264,22 @@ rule <factor_tpl>
   outExpression = @templateLogicalNegateAST {!operatorLocation !ifCondition}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    <var>
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $identifier$ ?let @lstring identifier
   outExpression = @templateVarInExpressionAST {!identifier}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    ( EXPRESSION )
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $($
@@ -287,44 +287,44 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   $)$
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    true
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $true$
   outExpression = @templateTrueBoolAST {!@location.here}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    false
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $false$
   outExpression = @templateFalseBoolAST {!@location.here}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    a literal integer value
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $literalInt$ ?let literalInt
   outExpression = @templateLiteralUIntExpressionAST {!literalInt}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    a double value
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   let @ldouble literalDouble
@@ -332,22 +332,22 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   outExpression = @templateLiteralDoubleExpressionAST {!literalDouble}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    a literal character value
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $'char'$ ?let @lchar literalChar
   outExpression = @templateLiteralCharExpressionAST {!literalChar}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   P R I M A R Y  :    a literal character value
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   var @stringlist literalStringList = ()
@@ -359,7 +359,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   outExpression = @templateLiteralStringExpressionAST {!literalStringList !@location.here}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #                         F A C T O R
 #   description          :   [expression description]
@@ -369,12 +369,12 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
 #   filewrapper template :   [filewrapper fw.template_name !...]
 #   extension template   :   [template expression template_name !...]
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $[$
   select
-  #--------------------------------- Template
+  //-------------------------------- Template
     $template$
     let @templateExpressionAST receiverExpression
     <expression_tpl> ?receiverExpression
@@ -387,7 +387,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
       !expressionList
     }
     $]$
-  or #------------ Constructor call
+  or //----------- Constructor call
     $@type$ ?let @lstring typeName
     $identifier$ ?let @lstring constructorName
     <output_expression_list_tpl> ?let @templateExpressionListAST expressionList
@@ -397,7 +397,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
       !expressionList
     }
     $]$
-  or #--------------------------------- Filewrapper
+  or //-------------------------------- Filewrapper
     $filewrapper$
     $identifier$ ?let @lstring filewrapperName
     $.$
@@ -406,7 +406,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
     <output_expression_list_tpl> ?expressionList
     $]$
     outExpression = @templateFileWrapperTemplateCallAST {!filewrapperName !templateName !expressionList}
-  or #--------------------------------- Getter call
+  or //-------------------------------- Getter call
     let startLocation = @location.here
     let @templateExpressionAST receiverExpression
     <expression_tpl> ?receiverExpression
@@ -439,12 +439,12 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #                         F A C T O R
 #   function call        :   function_name (!... )
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   $identifier$ ?let @lstring functionName
@@ -454,7 +454,7 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   outExpression = @templateFunctionCallAST {!functionName !expressionList}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <primary_tpl> !@templateExpressionAST outExpression {
   <primary_tpl> ?outExpression
@@ -480,11 +480,11 @@ rule <primary_tpl> !@templateExpressionAST outExpression {
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   O U T P U T    E X P R E S S I O N    L I S T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList {
   outExpressionList = ()
@@ -501,11 +501,11 @@ rule <output_expression_list_tpl> !@templateExpressionListAST outExpressionList 
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    I N S T R U C T I O N S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $!$
@@ -513,34 +513,34 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   ioResultingInstructionList += !@templateInstructionExpressionAST {!expression !@location.here}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $?^$
   ioResultingInstructionList += !@templateInstructionGetColumnLocationAST {}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $!^$
   ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST {}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $block$
   <expression_tpl> ?let @templateExpressionAST expression
   $:$
-#--- Instruction list
+//--- Instruction list
   var blockInstructionList = @templateInstructionListAST ()
   repeat
     enterTemplateString (!?blockInstructionList)
   while
     <template_instruction> !?blockInstructionList
   end
-#---
+//---
   $end$
   ioResultingInstructionList += !@templateBlockInstructionAST {
    !expression
@@ -548,7 +548,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
    !blockInstructionList}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $if$
@@ -566,7 +566,7 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
   while
     $elsif$
   end
-#--- else
+//--- else
   var @templateInstructionListAST elseInstructionList = ()
   select
   or
@@ -577,14 +577,14 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
       <template_instruction> !?elseInstructionList
     end
   end
-#---
+//---
   $end$
   ioResultingInstructionList += !@templateInstructionIfAST {
     !templateInstructionIfBranchList
     !elseInstructionList}
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <template_parser_start_symbol> !@templateInstructionListAST outResultingInstructionList {
   outResultingInstructionList = ()
@@ -595,11 +595,11 @@ rule <template_parser_start_symbol> !@templateInstructionListAST outResultingIns
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
   let @string s = @string.retrieveAndResetTemplateString
@@ -608,4 +608,4 @@ proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionLi
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

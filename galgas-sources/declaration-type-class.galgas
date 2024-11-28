@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
@@ -62,7 +62,7 @@ syntax extension galgas3DeclarationsSyntax {
       generateInSeparateFile = true
     end
     ${$
-  #--- Class properties
+  //--- Class properties
     var @propertyInCollectionListAST propertyList = ()
     repeat
     while
@@ -95,15 +95,15 @@ syntax extension galgas3DeclarationsSyntax {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @bool isAbstract
@@ -137,7 +137,7 @@ syntax extension galgas4DeclarationsSyntax {
       generateInSeparateFile = true
     end
     ${$
-  #--- Class properties
+  //--- Class properties
     var @propertyInCollectionListAST propertyList = ()
     repeat
     while
@@ -156,7 +156,7 @@ syntax extension galgas4DeclarationsSyntax {
       !propertyList
       !clonable
     }
-  #--- Associated Weak Type
+  //--- Associated Weak Type
     ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
       !isPredefined: false # Is not predefined
       !className
@@ -169,13 +169,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
@@ -186,13 +186,13 @@ class @classDeclarationAST : @semanticDeclarationAST {
   private let @propertyInCollectionListAST mPropertyList
   private let @bool clonable
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation -> @string {
     result = "class @" + self.mClassTypeName
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
             ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -204,14 +204,14 @@ class @classDeclarationAST : @semanticDeclarationAST {
             ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {!"@" + self.mClassTypeName !self.mClassTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  #--- Add edge from super class
+  //--- Add edge from super class
     if self.mSuperClassName.string != "" then
       [!?ioSemanticTypePrecedenceGraph addEdge
         !key
         !.init {!"@" + self.mSuperClassName !self.mSuperClassName.location}
       ]
     end
-  #--- Add edge from property types
+  //--- Add edge from property types
     for (* propertyTypeName 4*) in self.mPropertyList do
       [!?ioSemanticTypePrecedenceGraph addEdge
         !key
@@ -220,7 +220,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -235,7 +235,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     var @instanceMethodMap instanceMethodMap
     let @typedPropertyList inheritedTypedPropertyList
     var @propertyMap attributeMap = ()
-  #--- Handle super class
+  //--- Handle super class
     let @unifiedTypeMapEntry superClassIndex
     let @bool generateHeaderInSeparateFile
     if self.mSuperClassName.string == "" then
@@ -252,11 +252,11 @@ class @classDeclarationAST : @semanticDeclarationAST {
       inheritedTypedPropertyList = superTypeDefinition.allTypedPropertyList
       attributeMap = superTypeDefinition.propertyMap
       generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
-    #---
+    //---
       if not [superTypeDefinition.typeKind isClassType] then
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
       end
-    #--- Mark all setters as inherited
+    //--- Mark all setters as inherited
       setterMap = ()
       for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.setterMap do
         [!?setterMap insertKey
@@ -268,7 +268,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
           !"" # No error message
         ]
       end
-    #--- Mark all getters as inherited
+    //--- Mark all getters as inherited
       getterMap = ()
       for theGetter in superTypeDefinition.getterMap do
         [!?getterMap insertKey
@@ -282,7 +282,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
           !theGetter.mGetterNameThatObsoletesInvokationName
         ]
       end
-    #--- Mark all methods as inherited
+    //--- Mark all methods as inherited
       instanceMethodMap = ()
       for instanceMethod in superTypeDefinition.instanceMethodMap do
         [!?instanceMethodMap insertKey
@@ -296,9 +296,9 @@ class @classDeclarationAST : @semanticDeclarationAST {
         ]
       end
     end
-  #--- Current class Index
+  //--- Current class Index
     [!?ioTypeMap makeEntry !self.mClassTypeName ?let @unifiedTypeMapEntry classIndex]
-  #--- Build attribute Map and constructor argument list
+  //--- Build attribute Map and constructor argument list
     var @functionSignature synthetizedInitializerArgumentList = ()
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
@@ -329,7 +329,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         : "'" + property.name + "' is the name of a prefefined or a user defined getter"
       end
     end
-  #--- Class functions
+  //--- Class functions
     var @classFunctionMap classFunctionMap = ()
     if not self.mIsAbstract then
       [!?classFunctionMap insertKey
@@ -339,7 +339,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         !classIndex
       ]
     end
-  #--- Typed attribute list
+  //--- Typed attribute list
     var @typedPropertyList currentClassTypedPropertyList = ()
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
     for property in self.mPropertyList do
@@ -357,7 +357,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         !hasSetter: not [property.mutability isConstantProperty]
         !hasSelector: property.hasSelector
     end
-  #--- set...attribute setter
+  //--- set...attribute setter
     if not self.mIsReference then
       for property in currentClassTypedPropertyList do
         if property.hasSetter then
@@ -372,7 +372,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         end
       end
     end
-  #--- Clonable ?
+  //--- Clonable ?
     var @initializerMap initializerMap = ()
     var @typeFeatures features = if self.mIsReference then .referenceEquatable else .comparable end
     if self.clonable then
@@ -388,7 +388,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         !cloneInitializerArgumentList
       ]
     end
-  #--- Add Extensions
+  //--- Add Extensions
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -404,7 +404,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap
       !acceptSetters: not self.mIsReference
     )
-  #--- Synthetize an initializer, if the structure defines none
+  //--- Synthetize an initializer, if the structure defines none
     if [initializerMap count] == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
@@ -419,7 +419,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       !acceptEquatable: false
       !acceptComparable: false
     )
-  #--- Enter in type map
+  //--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mClassTypeName
       !isPredefined: self.isPredefined
@@ -450,7 +450,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis ?!@lstringlist ioUsefulnessRootEntities
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -459,7 +459,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
                 ?!@unifiedTypeMap ioTypeMap
                 ?let @predefinedTypes inPredefinedTypes
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #--- Useful entities graph
+  //--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
     [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
     if self.isPredefined  then
@@ -476,14 +476,14 @@ class @classDeclarationAST : @semanticDeclarationAST {
         ioUsefulnessRootEntities += !weakRefTypeNameForUsefulness
       end
     end
-  #------ Self type
+  //----- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mClassTypeName]
-  #--- Super class type
+  //--- Super class type
     let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
       then @unifiedTypeMapEntry.null
       else [ioTypeMap typeMapEntryForLKey !self.mSuperClassName]
     end
-  #------ check "reference" status:
+  //----- check "reference" status:
   # a base class can be freely declared as shared or not
   # a class should the same 'reference' status as its super class
     if superClassEntry != .null then
@@ -494,7 +494,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         error self.mClassTypeName : "this class should be declared by 'valueclass', as its super class"
       end
     end
-  #------ Super type, and class features
+  //----- Super type, and class features
   # A class that has a super may not have any feature
   # A class without a super class admits the 'generatedInSeparateFile' feature
     var @typedPropertyList allAttributeList
@@ -517,7 +517,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
           !hasSelector: property.hasSelector
       end
     end
-  #------ Enter properties
+  //----- Enter properties
     var @typedPropertyList typedAttributeList = ()
     var @propertyIndexMap attributeMap = ()
     for property in self.mPropertyList do
@@ -538,7 +538,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         !hasSelector: property.hasSelector
       [!?attributeMap insertKey !property.name !t]
     end
-  #--- Build property initialization code
+  //--- Build property initialization code
     var @typedPropertyList synthetizedInitialzerArgumentList = ()
     for property in [selfType definition].allTypedPropertyList do
     if property.initialization == .none then
@@ -559,7 +559,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       ?let unusedVariableCppNameSet
       ?let initializationCode
     ]
-  #------
+  //-----
     let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey !compilerCppName ()]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "class " + self.mClassTypeName
@@ -578,7 +578,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         ![selfType definition].initializerMap
         !self.clonable
       }
-  #--- Add synthetized initializer ?
+  //--- Add synthetized initializer ?
     if [[selfType definition].features contains !.generateSynthetizedInitializer] then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
         !self.mClassTypeName
@@ -596,13 +596,13 @@ class @classDeclarationAST : @semanticDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
@@ -618,7 +618,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @initializerMap initializerMap
   private let @bool clonable
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration1 ?!@stringset ioInclusionSet
                                      !@string outHeader {
@@ -662,7 +662,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     ]
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendDeclaration2 ?let @string inOutputDirectory
                                      ?!@stringset ioInclusionSet
@@ -784,7 +784,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                ?!@stringset ioInclusionSet
@@ -824,11 +824,11 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func generateClassGetterDeclaration ?let @lstring inGetterName
                                     ?let @functionSignature inArgumentTypeList
@@ -837,7 +837,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
                                     ?let @methodQualifier inQualifier -> @string {
   var generateMethodDeclaration = true
   var suffix = ""
-#---
+//---
   switch inQualifier
   case isVirtualAbstract :
     suffix = " = 0"
@@ -851,7 +851,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
   case isVirtualOverridingAbstract :
     suffix = " override = 0"
   end
-#---
+//---
   result = ""
   if generateMethodDeclaration then
     result = "//--- Extension getter " + inGetterName + "\n"
@@ -880,7 +880,7 @@ func generateClassGetterDeclaration ?let @lstring inGetterName
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
                                             ?let @formalParameterSignature inArgumentTypeList
@@ -888,7 +888,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
                                             ?let @methodQualifier inQualifier -> @string {
   var generateMethodDeclaration = true
   var suffix = ""
-#---
+//---
   switch inQualifier
   case isVirtualAbstract :
     suffix = " = 0"
@@ -902,7 +902,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
   case isVirtualOverridingAbstract :
     suffix = " override = 0"
   end
-#---
+//---
   result = ""
   if generateMethodDeclaration then
     result += "//--- Extension method " + inMethodName + "\n"
@@ -939,16 +939,16 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! Generation Filewrappers
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
   "ggs"
 }{
 }{
 
-#---------- Value Class
+//--------- Value Class
   template valueClassTypeHeader1 "GALGAS_value_class.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -984,7 +984,7 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool IS_ABSTRACT
 
 
-#---------- Reference Class
+//--------- Reference Class
   template referenceClassTypeHeader1 "GALGAS_reference_class.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -1029,5 +1029,5 @@ filewrapper classGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool CLONABLE
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

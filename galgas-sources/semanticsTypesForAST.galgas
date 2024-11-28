@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2007, ..., 2015 Pierre Molinaro.
 #
@@ -20,7 +20,7 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 //listmap @syntaxExtensions (@galgas3SyntaxExtensionListAST)
 
@@ -64,16 +64,16 @@ struct @syntaxExtensions {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @semanticExpressionAST {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @formalArgumentPassingModeAST %equatable {
   case argumentVarIn
@@ -82,7 +82,7 @@ enum @formalArgumentPassingModeAST %equatable {
   case argumentConstantIn
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @formalArgumentPassingModeAST string -> @string {
   switch self
@@ -93,7 +93,7 @@ getter @formalArgumentPassingModeAST string -> @string {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
   switch self
@@ -104,11 +104,11 @@ getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  F O R M A L    P A R A M E T E R    L I S T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListAST {
   public let @lstring mFormalSelector
@@ -138,11 +138,11 @@ list @formalParameterListAST {
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  F O R M A L    I N P U T    P A R A M E T E R    L I S T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListAST {
   public let @lstring mFormalSelector
@@ -159,75 +159,75 @@ list @formalInputParameterListAST {
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  A C T U A L    I N P U T    P A R A M E T E R    L I S T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @abstractInputParameter {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @inputParameterAnonymousVariable : @abstractInputParameter {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @inputParameterVariable : @abstractInputParameter {
   public let @lstring mActualParameterName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @inputParameterDeclaredVariable : @abstractInputParameter {
   public let @lstring mActualParameterTypeName
   public let @lstring mActualParameterName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @inputParameterDeclaredConstant : @abstractInputParameter {
   public let @lstring mActualParameterTypeName
   public let @lstring mActualParameterName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualInputParameterListAST {
   public let @lstring mActualSelector
   public let @abstractInputParameter mInputParameter
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @syntaxInstructionAST {
   public let @location mInstructionLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @semanticInstructionAST : @syntaxInstructionAST {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticInstructionListAST {
   public let @semanticInstructionAST mInstruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticDeclarationListAST {
   public let @semanticDeclarationAST mSemanticDeclaration
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
@@ -236,11 +236,11 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @bool usefullFunc %initArgLabel
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    F U N C T I O N    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @functionDeclarationAST : @externFunctionDeclarationAST {
   public let @lstring mResultVariableName
@@ -249,11 +249,11 @@ class @functionDeclarationAST : @externFunctionDeclarationAST {
   public let @bool mIsInternal
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    O N C E    F U N C T I O N    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
@@ -265,11 +265,11 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsUsefull
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    F I L E W R A P P E R    D E C L A R A T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalTemplateInputParameterListAST {
   public let @lstring mFormalTemplateSelector
@@ -278,7 +278,7 @@ list @formalTemplateInputParameterListAST {
   public let @bool mIsUnused
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListAST {
   public let @lstring mFilewrapperTemplateName
@@ -286,7 +286,7 @@ list @filewrapperTemplateListAST {
   public let @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsInternal
@@ -298,13 +298,13 @@ class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @filewrapperTemplateListAST mFilewrapperTemplateList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionList {
   public let @syntaxInstructionAST mInstruction
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonTerminalLabelListAST {
   public let @lstring mLabelName
@@ -312,14 +312,14 @@ list @nonTerminalLabelListAST {
   public let @location mEndOfArgumentLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonterminalDeclarationListAST {
   public let @lstring mNonterminalName
   public let @nonTerminalLabelListAST mLabels
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxRuleLabelListAST {
   public let @lstring mLabelName
@@ -329,33 +329,33 @@ list @syntaxRuleLabelListAST {
   public let @location mEndOfInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxRuleListAST {
   public let @lstring mNonterminalName
   public let @syntaxRuleLabelListAST mLabelList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   R E P E A T    I N S T R U C T I O N
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @listOfSyntaxInstructionList {
   public let @syntaxInstructionList mSyntaxInstructionList
   public let @location mEndOf_instructions
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #   S Y N T A X    C O M P O N E N T    A S T
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 #! GALGAS 3 AST
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let @lstring mSyntaxComponentName
@@ -365,7 +365,7 @@ class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let @bool mHasTranslateFeature
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   public let @lbool mHasIndexing
@@ -378,7 +378,7 @@ class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   public let @bool mHasTranslateFeature
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3SyntaxComponentListAST {
   public let @lstring mSyntaxComponentName
@@ -388,7 +388,7 @@ list @galgas3SyntaxComponentListAST {
   public let @bool mHasTranslateFeature
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @galgas3SyntaxExtensionListAST {
   public let @lstring mSyntaxComponentName
@@ -396,14 +396,14 @@ list @galgas3SyntaxExtensionListAST {
   public let @syntaxRuleListAST mRuleList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @prologueEpilogueList {
   public let @semanticInstructionListAST mInstructionList
   public let @location mEndOfInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @programRuleList {
   public let @lstring mSourceFileExtension
@@ -415,7 +415,7 @@ list @programRuleList {
   public let @location mEndOfInstructionList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @galgasDeclarationAST {
   public var @semanticDeclarationListAST mDeclarationList = ()
@@ -427,7 +427,7 @@ struct @galgasDeclarationAST {
   public var @programRuleList mSourceRuleList = ()
   public var @prologueEpilogueList mEpilogueDeclarationList = ()
   
-  #·······························································································
+  //······························································································
 
   setter getOptionalTypeName !@lstring outOptionalTypeName
                              ?forTypeNamed: @lstring inTypeName
@@ -444,9 +444,9 @@ struct @galgasDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

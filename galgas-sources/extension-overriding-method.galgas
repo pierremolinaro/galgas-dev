@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -50,7 +50,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inTypeName ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -79,15 +79,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $override$
@@ -117,7 +117,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
@@ -140,13 +140,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @bool requiresSelfForAccessingProperty %initArgLabel
@@ -157,17 +157,17 @@ class @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @location mEndOfMethodLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingExtensionMethodAST keyRepresentation -> @string {
   result = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -179,7 +179,7 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
 {
   ioExtensionOverrideDefinitionList += !self
-#---
+//---
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       ! self.mTypeName
@@ -195,9 +195,9 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -209,9 +209,9 @@ override method @overridingExtensionMethodAST enterDeclarationInSemanticContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   SEMANTIC ANALYSIS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -221,18 +221,18 @@ override method @overridingExtensionMethodAST semanticAnalysis
                                 ?!@unifiedTypeMap ioTypeMap
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Useful entities graph
+//--- Useful entities graph
   let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionMethodName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
-#--- Self type
+//--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
-#--- Check self type is a class
+//--- Check self type is a class
   if not [[selfType definition].typeKind isClassType] then
     error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType definition].typeName.string + "' is not a class"
   end
-#--- Find base type name
+//--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
   var inheritedSignature = @formalParameterSignature ()
@@ -258,7 +258,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
   if baseTypeName == "" then
     error self.mOverridingExtensionMethodName:"this method is not declared by a super class"
   end
-#--- Analyze instruction list
+//--- Analyze instruction list
   let analysisContext = @analysisContext {
     !inSemanticContext
     !inPredefinedTypes
@@ -295,7 +295,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     ?let semanticInstructionListForGeneration
     ?let formalParameterListForGeneration
   )
-#--- Check Signature
+//--- Check Signature
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
@@ -304,7 +304,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
       !inheritedDeclarationLocation
     )
   end
-#---
+//---
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "override extension method " + self.mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration {
@@ -319,9 +319,9 @@ override method @overridingExtensionMethodAST semanticAnalysis
     }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   EXTENSION LIST MAP
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -345,9 +345,9 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -385,5 +385,5 @@ override method @overridingExtensionMethodForGeneration appendSpecificImplementa
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

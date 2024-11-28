@@ -16,9 +16,9 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   private let @lexicalInstructionListAST mRepeatedInstructionList
@@ -26,13 +26,13 @@ class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   private let @location mLocation
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
@@ -55,15 +55,15 @@ syntax extension galgas3LexiqueComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $repeat$
@@ -86,13 +86,13 @@ syntax extension galgas4LexiqueComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -110,9 +110,9 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COCOA GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
                                       ?let @string inScannerClassName
@@ -122,11 +122,11 @@ override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode = "BOOL " + loopVarName + " = YES ;\n"
   outGeneratedCode += "do {\n"
   [!?outGeneratedCode incIndentation !2]
-#--- Repeated instruction
+//--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
     outGeneratedCode += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
-#---
+//---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
   do
     outGeneratedCode += "if (scanningOk && ("
@@ -148,7 +148,7 @@ override getter @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
 //                      "loop = YES ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -156,11 +156,11 @@ override getter @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
   -> @string outGeneratedCode {
   outGeneratedCode = "while (loop && scanningOk) {\n"
   [!?outGeneratedCode incIndentation !2]
-#--- Repeated instruction
+//--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
     outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
-#---
+//---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
   do
     outGeneratedCode += "if scanningOk && ("
@@ -182,9 +182,9 @@ override getter @lexicalRepeatInstructionAST generateSwiftCocoaInstructionCode
                       "loop = true\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! C++ CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRepeatInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = true
@@ -198,11 +198,11 @@ override getter @lexicalRepeatInstructionAST generateLexicalInstructionCode
   -> @string {
   result = "do {\n"
   [!?result incIndentation !2]
-#--- Repeated instruction
+//--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
     result += [mInstruction generateLexicalInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
-#---
+//---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
   do
     result += "if ("
@@ -224,5 +224,5 @@ override getter @lexicalRepeatInstructionAST generateLexicalInstructionCode
                       "loop = true ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

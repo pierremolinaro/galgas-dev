@@ -15,22 +15,22 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #!   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @notExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
   private let @semanticExpressionAST mExpression
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor_ggs3> ?!@galgasDeclarationAST ioDeclarations
                      !@semanticExpressionAST outExpression {
@@ -40,15 +40,15 @@ syntax extension galgas3ExpressionSyntax {
     outExpression = @notExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4ExpressionSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <factor> ?!@galgasDeclarationAST ioDeclarations
                 !@semanticExpressionAST outExpression {
@@ -58,13 +58,13 @@ syntax extension galgas4ExpressionSyntax {
     outExpression = @notExpressionAST {!operatorLocation !outExpression}
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @notExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -82,7 +82,7 @@ override method @notExpressionAST analyzeSemanticExpression
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-#--- Expression analysis
+//--- Expression analysis
   [self.mExpression analyzeSemanticExpression
     !usefulnessCallerEntityName: inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -92,7 +92,7 @@ override method @notExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let expression
   ]
-#--- Check operator availability
+//--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if expression is == @trueExpressionForGeneration then
     outExpression = @falseExpressionForGeneration {!inAnalysisContext.predefinedTypes.mBoolType !self.mOperatorLocation}
@@ -103,7 +103,7 @@ override method @notExpressionAST analyzeSemanticExpression
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'not' operator"
     :outExpression
   else
-  #--- Generate expression
+  //--- Generate expression
     outExpression = @notExpressionForGeneration {
       !type
       !self.mOperatorLocation
@@ -112,9 +112,9 @@ override method @notExpressionAST analyzeSemanticExpression
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @notExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mExpression
@@ -129,10 +129,10 @@ override method @notExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   [self.mExpression.mResultType addHeaderFileName !?ioInclusionSet]
-#--- Operand
+//--- Operand
   [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let operand]
-#--- Generate
+//--- Generate
   outCppExpression = operand + ".operator_not (" + [self.mLocation sourceFile] + ")"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2016, ..., 2016 Pierre Molinaro.
 #
@@ -18,11 +18,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #    O U T P U T    P R O D U C T I O N    R U L E S    I N    T E X
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_generation" {
 }{
@@ -32,7 +32,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
     ?@string TEX_ESCAPED_DOCUMENT_NAME
  }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func escapeForTex (let @string inString) -> @string {
   result = ""
@@ -64,7 +64,7 @@ private func escapeForTex (let @string inString) -> @string {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc emitProductionRulesInTexFile
   ?let @string inProductDirectory
@@ -73,7 +73,7 @@ proc emitProductionRulesInTexFile
   ?let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis
   ?let @lstring inStartSymbol
 {
-#---------------------------------------------------------- Print an tex file for grammar rule list
+//--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
   [[texDocumentFilePath stringByDeletingLastPathComponent] makeDirectory]
   let document = [filewrapper grammarRulesInTexDocumentTemplate.document
@@ -108,7 +108,7 @@ proc emitProductionRulesInTexFile
   [s writeToFileWhenDifferentContents !texFilePath ?*]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @productionRuleListForGrammarAnalysis.@element displayRule
   ?let @string inSyntaxComponentName
@@ -132,10 +132,10 @@ method @productionRuleListForGrammarAnalysis.@element displayRule
       !debug:false
     ]
   end
-#--- Add a final arrow
+//--- Add a final arrow
   [!?rowArray appendRow !nodeDefinition:"[lastPoint] ()" !row:0 !column:column ?nodeName:let lastNodeName]
   arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
-#--- Write tex file
+//--- Write tex file
   let loc = self.mLeftNonterminalSymbol.location
   ioGeneratedCode += "\\ruleSubsection{"
     + escapeForTex (!inSyntaxComponentName)
@@ -157,12 +157,12 @@ method @productionRuleListForGrammarAnalysis.@element displayRule
     ioGeneratedCode += "\\\\\n"
   end
   ioGeneratedCode += "  };\n"
-#--- Arrows
+//--- Arrows
   ioGeneratedCode += arrows
   ioGeneratedCode += "\\end{tikzpicture}\n\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   ?let @string inSyntaxComponentName
@@ -192,10 +192,10 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
       !debug:false
     ]
   end
-#--- Add a final arrow
+//--- Add a final arrow
   [!?rowArray appendRow !nodeDefinition:"[lastPoint] ()" !row:row !column:2 ?nodeName:let lastNodeName]
   arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
-#--- Write tex file
+//--- Write tex file
   let loc = self.mLeftNonterminalSymbol.location
   ioGeneratedCode += "\\ruleSubsection{"
     + escapeForTex (!inSyntaxComponentName)
@@ -217,14 +217,14 @@ method @productionRuleListForGrammarAnalysis.@element displayRuleVertically
     ioGeneratedCode += "\\\\\n"
   end
   ioGeneratedCode += "  };\n"
-#--- Arrows
+//--- Arrows
   ioGeneratedCode += arrows
   ioGeneratedCode += "\\end{tikzpicture}\n\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! tikzNodeForSyntaxInstruction
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -263,13 +263,13 @@ method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @rowList {
   public let @2stringlist columns # Node name, node definition
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @rowList appendRow
   ?nodeDefinition:let @string inNodeDefinition
@@ -277,29 +277,29 @@ setter @rowList appendRow
   ?column:let @uint inColumn
   !nodeName:@string outNodeName
 {
-#--- Add rows ?
+//--- Add rows ?
   let length = [self count]
   if length <= inRow then
     for * in length ... inRow do
       self += !()
     end
   end
-#--- Get row
+//--- Get row
   var cols = [self columnsAtIndex !inRow]
-#--- add column pads in row
+//--- add column pads in row
   if [cols count] <= inColumn then
     for * in [cols count] ... inColumn do
       cols += !"" !""
     end
   end
-#--- Add node
+//--- Add node
   outNodeName = "p" + inRow + "-" + [cols count]
   cols += !outNodeName !inNodeDefinition
-#--- Set new row
+//--- Set new row
   [!?self setColumnsAtIndex !cols !inRow]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -311,7 +311,7 @@ abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxIn
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -337,7 +337,7 @@ override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstr
   ioColumn += 1
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -349,7 +349,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 {
-#--- Trace ?
+//--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
       !nodeDefinition:"[nonterminal] {SS" + [self.mSelectBranchList count] + "}"
@@ -362,10 +362,10 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     ioArrowShape = "--"
     ioColumn += 1
   end
-#--- Enter start point
+//--- Enter start point
   [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn += 1
-#--- Enter branch zero
+//--- Enter branch zero
   var branches = self.mSelectBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var branchZeroColumn = ioColumn
@@ -381,7 +381,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     !debug:inDebug
   ]
   var endColumn = branchZeroColumn
-#--- Enter following branches
+//--- Enter following branches
   var @stringlist endingNodes = ()
   for branch in branches do
     maxUsedRowIndex += 1
@@ -407,17 +407,17 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   if ioMaxUsedRowIndex < maxUsedRowIndex then
     ioMaxUsedRowIndex = maxUsedRowIndex
   end
-#--- Enter end point
+//--- Enter end point
   [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let endNodeName]
   ioColumn += 1
   ioArrowShape = "--"
   ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + endNodeName + ") ;\n"
   ioCurrentNode = endNodeName
-#--- Add ending nodes
+//--- Add ending nodes
   for (node) in endingNodes do
     ioArrows += "  \\draw[->] (" + node + ") -| (" + endNodeName + ") ;\n"
   end
-#--- Trace ?
+//--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
       !nodeDefinition:"[nonterminal] {SE" + [self.mSelectBranchList count] + "}"
@@ -431,7 +431,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
   ?!@rowList ioRowList
@@ -443,7 +443,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   ?!@uint ioMaxUsedRowIndex
   ?debug:let @bool inDebug
 {
-#--- Trace ?
+//--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
       !nodeDefinition:"[nonterminal] {RS" + [self.mRepeatBranchList count] + "}"
@@ -456,10 +456,10 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     ioArrowShape = "--"
     ioColumn += 1
   end
-#--- Enter return point
+//--- Enter return point
   [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let returnNodeName]
   ioColumn += 1
-#--- Enter branch zero
+//--- Enter branch zero
   var branches = self.mRepeatBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var maxUsedRowIndex = inRow
@@ -474,16 +474,16 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     !debug:inDebug
   ]
   var endColumn = ioColumn
-#--- Enter start point
+//--- Enter start point
   [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn += 1
-#--- Enter following branches; particular case: one empty branch
+//--- Enter following branches; particular case: one empty branch
   var oneEmptyBranch = [branches count] == 1
   if oneEmptyBranch then
     [branches first ?let firstBranch]
     oneEmptyBranch = [firstBranch count] == 0
   end
-#--- Enter branches
+//--- Enter branches
   var @stringlist endingNodes = ()
   if oneEmptyBranch then
     endingNodes += !startNodeName
@@ -510,22 +510,22 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
       end
     end
     ioColumn = endColumn
-  #--- Compute row of return node
+  //--- Compute row of return node
     ioMaxUsedRowIndex = nextBranchUsedRowIndex
   end
   if ioMaxUsedRowIndex < maxUsedRowIndex then
     ioMaxUsedRowIndex = maxUsedRowIndex
   end
   ioMaxUsedRowIndex += 1
-#--- Enter upper return node, and draw back arrow
+//--- Enter upper return node, and draw back arrow
   [!?ioRowList appendRow !nodeDefinition:"[point] ()" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName]
   ioColumn += 1
   ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
-#--- Add ending arrows
+//--- Add ending arrows
   for (node) in endingNodes do
     ioArrows += "  \\draw[->] (" + node + ") -| (" + returnUpperNodeName + ") ;\n"
   end
-#--- Trace ?
+//--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
       !nodeDefinition:"[nonterminal] {RE" + [self.mRepeatBranchList count] + "}"
@@ -539,9 +539,9 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! isLinear
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   result = [self count] > 4
@@ -550,28 +550,28 @@ getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @nonTerminalInstructionForGrammarAnalysis isLinear -> @bool {
   result = true
 }
 
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @selectInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @repeatInstructionForGrammarAnalysis isLinear -> @bool {
   result = false
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

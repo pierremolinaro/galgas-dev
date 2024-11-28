@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  semantics definitions for semantics component
 #
@@ -20,7 +20,7 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterModifierWithInputArgument
   ?!@setterMap ioSetterMap
@@ -43,7 +43,7 @@ proc enterModifierWithInputArgument
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterModifierWithOutputAndInputArguments
   ?!@setterMap ioSetterMap
@@ -70,7 +70,7 @@ proc enterModifierWithOutputAndInputArguments
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterModifierWith2InputArguments
   ?!@setterMap ioSetterMap
@@ -97,7 +97,7 @@ proc enterModifierWith2InputArguments
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterModifierWithoutArgument
   ?!@setterMap ioSetterMap
@@ -114,5 +114,5 @@ proc enterModifierWithoutArgument
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 

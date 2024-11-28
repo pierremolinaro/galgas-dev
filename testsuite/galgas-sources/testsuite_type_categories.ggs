@@ -29,7 +29,7 @@ proc testsuite_type_categories() {
   !?aList64.prependSquare (!5)
 }
 
-#----------- Extension readers
+//---------- Extension readers
 func @uint64.square() -> @uint64 {
   result = self * self
 }
@@ -45,7 +45,7 @@ func @lstring.op() -> @string {
   result = self.string + " !"
 }
 
-#------------ Extension methods
+//----------- Extension methods
 proc @uint64.square (!@uint64 outResult) {
   outResult = self * self
 }
@@ -61,7 +61,7 @@ proc @lstring.op (!@string outResult) {
   outResult = self.string + " !"
 }
 
-#------------ Extension setters
+//----------- Extension setters
 mutating proc @lstring.appendInt (?let@uint inValue) {
   self.string += inValue.string
 }
@@ -84,7 +84,7 @@ mutating proc @uint64.increment() {
   self += 1
 }
 
-#----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 #abstract class @toto { }
 #class @toto1 : @toto { }

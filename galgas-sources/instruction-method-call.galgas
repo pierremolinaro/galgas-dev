@@ -15,13 +15,13 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -39,15 +39,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $[$
@@ -63,7 +63,7 @@ syntax extension galgas4InstructionsSyntax {
 #    }
 #  }
 
-  #·······························································································
+  //······························································································
 
 #  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #    $($
@@ -81,18 +81,18 @@ syntax extension galgas4InstructionsSyntax {
 #    }
 #  }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @methodCallInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mReceiverExpression
   private let @lstring mMethodName
   private let @actualParameterListAST mActualParameterList
 
-  #·······························································································
+  //······························································································
 
   override method enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
     [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -101,7 +101,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSemanticInstruction
     ?let @lstring inUsefulnessCallerEntityName
@@ -111,11 +111,11 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
     ?!@localVarManager ioVariableMap
   {
-  #--- Check self is not inkoed before full initialization
+  //--- Check self is not inkoed before full initialization
     if self.mReceiverExpression is @selfInExpressionAST then
       [ioVariableMap checkSelfObjectIsFullyInitialized !self.mMethodName.location]
     end
-  #--- Analyze receiver expression
+  //--- Analyze receiver expression
     [self.mReceiverExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -125,7 +125,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
       !?ioVariableMap
       ?let @semanticExpressionForGeneration receiverExpression
     ]
-  #--- Get type method signature
+  //--- Get type method signature
     [[receiverExpression.mResultType definition].instanceMethodMap searchKey
       !self.mMethodName
       ?let kind
@@ -138,7 +138,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     if errorMessage != "" then
       error self.mMethodName : errorMessage
     end
-  #--- Check effective parameters
+  //--- Check effective parameters
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -151,7 +151,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
-  #--- Search base type that declares the method
+  //--- Search base type that declares the method
     var baseType = receiverExpression.mResultType
     var searching = true
     if @uint.errorCount == 0 then
@@ -167,7 +167,7 @@ class @methodCallInstructionAST : @semanticInstructionAST {
         end
       end
     end
-  #--- Generate instructions
+  //--- Generate instructions
     ioInstructionListForGeneration += !@methodCallInstructionForGeneration {
       !self.mInstructionLocation
       !receiverExpression.mResultType
@@ -180,13 +180,13 @@ class @methodCallInstructionAST : @semanticInstructionAST {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -207,10 +207,10 @@ override method @methodCallInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
   [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
-#---
+//---
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
@@ -218,7 +218,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?let parameterCppName]
     parameterCppNameList += !parameterCppName
   end
-#--- Generate method call
+//--- Generate method call
   switch self.mKind
   case definedAsExtension :
     ioInclusionSet += !"method-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
@@ -251,7 +251,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioGeneratedCode += " COMMA_"
   end
   ioGeneratedCode += [self.mInstructionLocation sourceFile] + ") ;\n"
-#--- Generate poisoned variables
+//--- Generate poisoned variables
   for (actualParameter) in self.mActualParameterList do
     [actualParameter generatePoisonedVariables
       !?ioGeneratedCode
@@ -260,4 +260,4 @@ override method @methodCallInstructionForGeneration generateInstruction
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

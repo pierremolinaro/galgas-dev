@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Generate predefined types
 #
@@ -20,29 +20,29 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter supportsCollectionValue -> @bool {
     result = true # Support collection value
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
     result = §[.init (@formalInputParameterListAST ())]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter cppDeclarationString -> @string {
     result = [filewrapper predefinedTypeGenerationTemplate.stringset_type]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
     result = .infixSubOperator
@@ -52,7 +52,7 @@ class @stringsetPredefinedTypeAST : @predefinedTypeAST {
       | .generateCopyConstructorAndAssignmentOperator
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
@@ -93,7 +93,7 @@ class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
@@ -117,7 +117,7 @@ class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getEnumerationList ?!@unifiedTypeMap ioUnifiedTypeMap
                                      !@enumerationDescriptorList outEnumerationList
@@ -128,7 +128,7 @@ class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     outEnumeratedType = "string"
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getAddAssignArgumentList ?!@unifiedTypeMap ioUnifiedTypeMap
                                            !@functionSignature outAddAssignArgumentList {
@@ -136,7 +136,7 @@ class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     outAddAssignArgumentList = §[.init (["" nowhere], stringTypeIndex, "inString", true)]
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
   override method getGetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@getterMap outMap {
@@ -174,8 +174,8 @@ class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     )
   }
 
-  #-----------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

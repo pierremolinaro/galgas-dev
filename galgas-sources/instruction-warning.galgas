@@ -15,9 +15,9 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @warningInstructionAST : @semanticInstructionAST {
   public let @semanticExpressionAST mLocationExpression
@@ -25,13 +25,13 @@ class @warningInstructionAST : @semanticInstructionAST {
   public let @fixitListAST mFixitListAST
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -49,15 +49,15 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4InstructionsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionAST outInstruction {
@@ -75,13 +75,13 @@ syntax extension galgas4InstructionsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @warningInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -89,9 +89,9 @@ override method @warningInstructionAST enterInstructionInSemanticContext ?!@unif
   [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @warningInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -100,7 +100,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@localVarManager ioVariableMap {
-#---
+//---
   analyzeErrorOrWarningInstruction (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -116,7 +116,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
     ?let messageExpression
     ?let fixitListForGeneration
   )
-#--- Generate instruction
+//--- Generate instruction
   ioInstructionListForGeneration += !@warningInstructionForGeneration {
     !self.mInstructionLocation
     !locationExpression
@@ -125,9 +125,9 @@ override method @warningInstructionAST analyzeSemanticInstruction
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @warningInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -145,9 +145,9 @@ override method @warningInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
  {
-#--- Receiver expression
+//--- Receiver expression
   [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let receiverCppVarName]
-#--- Receiver expression
+//--- Receiver expression
   [self.mWarningExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
@@ -155,7 +155,7 @@ override method @warningInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let messageCppVarName
   ]
-#--- Fix It array
+//--- Fix It array
   [self.mFixitListForGeneration generateFixIt
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -164,7 +164,7 @@ override method @warningInstructionForGeneration generateInstruction
     !?ioGeneratedCode
     ?let fixItArrayCppName
   ]
-#--- Generate warning instruction
+//--- Generate warning instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->emitSemanticWarning ("
     + receiverCppVarName + ", "
@@ -173,4 +173,4 @@ override method @warningInstructionForGeneration generateInstruction
     + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

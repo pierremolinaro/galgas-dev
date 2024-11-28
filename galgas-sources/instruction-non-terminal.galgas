@@ -15,11 +15,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                  !@syntaxInstructionAST outInstruction {
@@ -35,7 +35,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list_ggs3> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -52,15 +52,15 @@ syntax extension galgas3SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4SyntaxComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
                             !@syntaxInstructionAST outInstruction {
@@ -76,7 +76,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     end
     $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
-  #--- Get syntax directed translation result string
+  //--- Get syntax directed translation result string
     let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
       grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone {}
@@ -93,13 +93,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @nonterminalCallInstruction : @syntaxInstructionAST {
   private let @lstring mNonterminalName
@@ -107,7 +107,7 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
   private let @actualParameterListAST mActualParameterList
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 
-  #·······························································································
+  //······························································································
 
   override method transformInstruction
                     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -122,7 +122,7 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   override method analyzeSyntaxInstruction ?let @lstring inUsefulnessCallerEntityName
                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -144,7 +144,7 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
     else
       [labelMap searchKey !self.mLabelName ?* ?signature ?*]
     end
-  #--- call arguments
+  //--- call arguments
     [self.mActualParameterList analyzeRoutineArguments
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -157,14 +157,14 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
       !?ioInstructionListForGeneration
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     ]
-  #--- Check syntax directed translation destination variable
+  //--- Check syntax directed translation destination variable
     [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
       !inAnalysisContext
       !?ioTypeMap
       !inHasTranslateFeature
       !?ioVariableMap
     ]
-  #--- Generate instructions
+  //--- Generate instructions
     ioInstructionListForGeneration += !@nonterminalInstructionForGeneration {
       !self.mInstructionLocation
       !self.mNonterminalName.string
@@ -174,13 +174,13 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION TYPES
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mNonterminalName
@@ -189,9 +189,9 @@ class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @nonterminalInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -206,9 +206,9 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
   }
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! COMPARE SYNTAX SIGNATURE
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction
@@ -233,9 +233,9 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #! CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @nonterminalInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -244,7 +244,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-#--- Parameters
+//--- Parameters
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
@@ -260,7 +260,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     ]
     parameterCppNameList += !parameterCppName
   end
-#--- Generate method call
+//--- Generate method call
   let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation startLocationIndex]
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += "String " + sdtResultVarName + " ;\n"
@@ -280,10 +280,10 @@ override method @nonterminalInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
   ]
-#--- Release temporary variables
+//--- Release temporary variables
   for (mValue) in jokerParametersToReleaseList do
     ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
 #
@@ -19,7 +19,7 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
@@ -28,7 +28,7 @@ class @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @templateReplacementListAST mTemplateReplacementList
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3LexiqueComponentSyntax {
 
@@ -37,11 +37,11 @@ syntax extension galgas3LexiqueComponentSyntax {
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $template$
     $lexique$
-  #--- Lexique Component Name
+  //--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
     $:$
     $identifier$ ?let @lstring lexiqueSuperComponentName
-  #--- Parse lexique body
+  //--- Parse lexique body
     ${$
     var @templateDelimitorListAST templateDelimitorList = ()
     var @templateReplacementListAST templateReplacementList = ()
@@ -61,7 +61,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <template_delimitor_ggs3> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
@@ -99,7 +99,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       !endString
   }
 
-  #·······························································································
+  //······························································································
 
   rule <template_replacement_ggs3> ?!@templateReplacementListAST ioTemplateReplacement {
     $replace$
@@ -119,24 +119,24 @@ syntax extension galgas3LexiqueComponentSyntax {
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4LexiqueComponentSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $template$
     $lexique$
-  #--- Lexique Component Name
+  //--- Lexique Component Name
     $identifier$ ?let @lstring lexiqueComponentName
     $:$
     $identifier$ ?let @lstring lexiqueSuperComponentName
-  #--- Parse lexique body
+  //--- Parse lexique body
     ${$
     var @templateDelimitorListAST templateDelimitorList = ()
     var @templateReplacementListAST templateReplacementList = ()
@@ -156,7 +156,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <template_delimitor> ?!@templateDelimitorListAST ioTemplateDelimitorList {
     $template$
@@ -194,7 +194,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       !endString
   }
 
-  #·······························································································
+  //······························································································
 
   rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
     $%templateReplacement$
@@ -214,17 +214,17 @@ syntax extension galgas4LexiqueComponentSyntax {
     ioTemplateReplacement += !matchString !replacementString !replacementFunction
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @templateLexiqueComponentAST keyRepresentation -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -240,7 +240,7 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addEdge !key !superKey]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -250,7 +250,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@unifiedTypeMap unused ioTypeMap
   ?!@semanticContext ioSemanticContext {
-#--------------------------------------- Get super lexique features
+//-------------------------------------- Get super lexique features
   [ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
      !self.mLexiqueSuperComponentName
      ?let superLexiqueIsTemplate
@@ -264,7 +264,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   if superLexiqueIsTemplate then
     error self.mLexiqueSuperComponentName : "cannot inherit from a template lexique"
   end
-#---
+//---
   [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
      !self.mLexiqueComponentName
      !true
@@ -277,7 +277,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @templateLexiqueComponentAST semanticAnalysis
                                   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -287,10 +287,10 @@ override method @templateLexiqueComponentAST semanticAnalysis
                                   ?!@unifiedTypeMap unused ioTypeMap
                                   ?let @predefinedTypes unused inPredefinedTypes
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-#--------------------------------------- Useful entities graph
+//-------------------------------------- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#--------------------------------------- Get super lexique features
+//-------------------------------------- Get super lexique features
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
      !self.mLexiqueSuperComponentName
      ?* #let superLexiqueIsTemplate
@@ -301,15 +301,15 @@ override method @templateLexiqueComponentAST semanticAnalysis
      ?let lexicalStyleListAST
      ?let lexicalListDeclarationListAST
   ]
-#--------------------------------------- Lexical attribute type name map
+//-------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
-#--------------------------------------- Build lexical routine map
+//-------------------------------------- Build lexical routine map
   buildLexicalRoutineMap (?let lexicalRoutineMap)
-#--------------------------------------- Build lexical function map
+//-------------------------------------- Build lexical function map
   buildLexicalFunctionMap (?let lexicalFunctionMap)
-#--------------------------------------- Unicode test functions
+//-------------------------------------- Unicode test functions
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
-#---------------------------------------
+//--------------------------------------
   var @lexiqueAnalysisContext lexiqueAnalysisContext = .init {
     !self.mLexiqueComponentName.string
     !lexicalRoutineMap
@@ -324,19 +324,19 @@ override method @templateLexiqueComponentAST semanticAnalysis
     !@styleMap ()
     !unicodeTestFunctions
   }
-#--------------------------------------- Build style map
+//-------------------------------------- Build style map
   var styleIndex = 1
   for (mName mComment) in lexicalStyleListAST do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
     styleIndex += 1
   end
-#--------------------------------------- Build lexical attribute map
+//-------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
    !lexicalTypeMap
    !lexicalAttributeListAST
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
-#--------------------------------------- Build terminal map
+//-------------------------------------- Build terminal map
   var @terminalList terminalList = ()
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
@@ -378,7 +378,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
         !terminalStyleIndex
     end
   end
-#--------------------------------------- Template delimiters
+//-------------------------------------- Template delimiters
   var @stringset unicodeStringToGenerate = ()
   var @templateDelimitorList templateDelimitorList = ()
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
@@ -386,20 +386,20 @@ override method @templateLexiqueComponentAST semanticAnalysis
    unicodeStringToGenerate += !mEndString.string
    templateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
   end
-#--------------------------------------- Template replacements
+//-------------------------------------- Template replacements
   for (mMatchString mReplacementString *) in self.mTemplateReplacementList do
     unicodeStringToGenerate += !mMatchString.string
     unicodeStringToGenerate += !mReplacementString.string
    # § TODO Check replacement function
   end
-#--------------------------------------- Build header and Cpp contents
+//-------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
-  #--- Header
+  //--- Header
     let headerContents = [filewrapper templateLexiqueGenerationTemplates.cppHeader
        ![self.mLexiqueComponentName.string identifierRepresentation]
        ![self.mLexiqueSuperComponentName.string identifierRepresentation]
     ]
-  #--- Cpp
+  //--- Cpp
     let cppContents =  [filewrapper templateLexiqueGenerationTemplates.cppImplementation
       ![self.mLexiqueComponentName.string identifierRepresentation]
       ![self.mLexiqueSuperComponentName.string identifierRepresentation]
@@ -410,13 +410,13 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !self.mLexiqueComponentName.string
       !self.mTemplateReplacementList
     ]
-  #--- Objc Cocoa header
+  //--- Objc Cocoa header
     let objcCocoaHeader = [filewrapper templateLexiqueGenerationTemplates.objcCocoaHeaderZone
       !self.mLexiqueComponentName.string
       !self.mLexiqueSuperComponentName.string
       !"lexique-" + [self.mLexiqueSuperComponentName.string fileNameRepresentation] + "-cocoa"
     ]
-  #--- Objc Cocoa implementation
+  //--- Objc Cocoa implementation
     let objcCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.objcCocoaImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
       !self.mLexiqueComponentName.string
@@ -424,7 +424,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !templateDelimitorList
       !self.mTemplateReplacementList
     ]
-  #--- Swift Cocoa implementation
+  //--- Swift Cocoa implementation
     let swiftCocoaImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftCocoaImplementationZone
       !"lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation] + "-cocoa"
       !self.mLexiqueComponentName.string
@@ -433,7 +433,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
       !templateDelimitorList
       !self.mTemplateReplacementList
     ]
-  #---
+  //---
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
       !@lexiqueDeclarationForGeneration {
@@ -450,9 +450,9 @@ override method @templateLexiqueComponentAST semanticAnalysis
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper templateLexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
 }{
@@ -492,4 +492,4 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

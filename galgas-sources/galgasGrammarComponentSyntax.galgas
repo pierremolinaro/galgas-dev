@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
 #
@@ -18,18 +18,18 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3GrammarComponentSyntax (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName
 
-  #·······························································································
+  //······························································································
   #   G R A M M A R    C O M P O N E N T
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
@@ -42,7 +42,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     $grammar$
     $identifier$ ?let @lstring mGrammarName indexing grammarComponentDefinition
     $"string"$ ?let @lstring mGrammarClass
-  #--- Feature translate
+  //--- Feature translate
     let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
@@ -51,7 +51,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       hasTranslateFeature = true
     end
     ${$
-  #--- Imports
+  //--- Imports
     var @lstringlist syntaxComponents = ()
     repeat
       $syntax$
@@ -59,7 +59,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       syntaxComponents += !syntaxComponent
     while
     end
-  #--- Root symbol
+  //--- Root symbol
     $<non_terminal>$ ?let @lstring  mStartSymbol indexing ruleReference
     var mLabelList = @nonTerminalLabelListAST ()
     <grammar_start_symbol_label_ggs3> !?ioDeclarations !@lstring {!"" !@location.here} !?mLabelList
@@ -69,7 +69,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       $identifier$ ?let @lstring labelName
       <grammar_start_symbol_label_ggs3> !?ioDeclarations !labelName !?mLabelList
      end
-  #--- Unused non terminal symbols
+  //--- Unused non terminal symbols
     var mUnusedNonterminalList = @lstringlist ()
     repeat
     while
@@ -77,7 +77,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       $<non_terminal>$ ?let @lstring nonterminalSymbolName
       mUnusedNonterminalList += ! nonterminalSymbolName
     end
-  #---
+  //---
     $}$
     ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST {
       !isPredefined: false # Is not predefined
@@ -91,7 +91,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !hasTranslateFeature}
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_start_symbol_label_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                          ?let @lstring inLabelName
@@ -109,7 +109,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     ioLabelList += !inLabelName !mFormalParameterList !.here
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
@@ -139,7 +139,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
@@ -166,7 +166,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
@@ -192,7 +192,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                      !@lstring outArgumentName
@@ -214,23 +214,23 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
 
   rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
                          !@lstring outTypeName
 
 
-  #·······························································································
+  //······························································································
   #   G R A M M A R    C O M P O N E N T
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     let @lbool hasIndexing
@@ -243,7 +243,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $grammar$
     $identifier$ ?let @lstring mGrammarName indexing grammarComponentDefinition
     $"string"$ ?let @lstring mGrammarClass
-  #--- Feature translate
+  //--- Feature translate
     let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
@@ -252,7 +252,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       hasTranslateFeature = true
     end
     ${$
-  #--- Imports
+  //--- Imports
     var @lstringlist syntaxComponents = ()
     repeat
       $syntax$
@@ -260,7 +260,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       syntaxComponents += !syntaxComponent
     while
     end
-  #--- Root symbol
+  //--- Root symbol
     $<non_terminal>$ ?let @lstring startSymbol indexing ruleReference
     var mLabelList = @nonTerminalLabelListAST ()
     <grammar_start_symbol_label> !?ioDeclarations !@lstring {!"" !@location.here} !?mLabelList
@@ -270,7 +270,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       $identifier$ ?let @lstring labelName
       <grammar_start_symbol_label> !?ioDeclarations !labelName !?mLabelList
      end
-  #--- Unused non terminal symbols
+  //--- Unused non terminal symbols
     var mUnusedNonterminalList = @lstringlist ()
     repeat
     while
@@ -278,7 +278,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       $<non_terminal>$ ?let @lstring nonterminalSymbolName
       mUnusedNonterminalList += ! nonterminalSymbolName
     end
-  #---
+  //---
     $}$
     ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST {
       !isPredefined: false # Is not predefined
@@ -292,7 +292,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !hasTranslateFeature}
   }
 
-  #·······························································································
+  //······························································································
 
   rule <grammar_start_symbol_label> ?!@galgasDeclarationAST ioDeclarations
                                     ?let @lstring inLabelName
@@ -316,7 +316,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     ioLabelList += !inLabelName !formalParameterList !.here
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -337,7 +337,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -358,7 +358,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -379,7 +379,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -401,7 +401,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -421,7 +421,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -442,7 +442,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -458,7 +458,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
   rule <label_formal_parameter> ?!@galgasDeclarationAST ioDeclarations
                                 !@lstring outArgumentName
@@ -475,8 +475,8 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       !false
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

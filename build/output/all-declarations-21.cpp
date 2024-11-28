@@ -678,178 +678,178 @@ void extensionSetter_addGroupWithFiles (GGS_XcodeProjectDescriptor & ioObject,
   {
   extensionSetter_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 246)) ;
   }
-  GGS_stringlist var_childrenRefs_9496 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  cEnumerator_stringset enumerator_9521 (constinArgument_inFileNames, EnumerationOrder::up) ;
-  while (enumerator_9521.hasCurrentObject ()) {
+  GGS_stringlist var_childrenRefs_9497 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  cEnumerator_stringset enumerator_9522 (constinArgument_inFileNames, EnumerationOrder::up) ;
+  while (enumerator_9522.hasCurrentObject ()) {
     enumGalgasBool test_6 = kBoolTrue ;
     if (kBoolTrue == test_6) {
-      test_6 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 250)).objectCompare (GGS_string ("c"))).boolEnum () ;
+      test_6 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 250)).objectCompare (GGS_string ("c"))).boolEnum () ;
       if (kBoolTrue == test_6) {
-        GGS_string var_cFileRef_9635 ;
+        GGS_string var_cFileRef_9636 ;
         {
-        extensionSetter_addCFile (ioObject, enumerator_9521.current_key (HERE), var_cFileRef_9635, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 251)) ;
+        extensionSetter_addCFile (ioObject, enumerator_9522.current_key (HERE), var_cFileRef_9636, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 251)) ;
         }
-        var_childrenRefs_9496.addAssign_operation (var_cFileRef_9635  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 252)) ;
-        GGS_string var_buildRef_9756 ;
+        var_childrenRefs_9497.addAssign_operation (var_cFileRef_9636  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 252)) ;
+        GGS_string var_buildRef_9757 ;
         {
-        extensionSetter_addBuildFile (ioObject, var_cFileRef_9635, enumerator_9521.current_key (HERE), var_buildRef_9756, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 253)) ;
+        extensionSetter_addBuildFile (ioObject, var_cFileRef_9636, enumerator_9522.current_key (HERE), var_buildRef_9757, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 253)) ;
         }
-        ioArgument_ioCFileBuildRefs.addAssign_operation (var_buildRef_9756  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 254)) ;
+        ioArgument_ioCFileBuildRefs.addAssign_operation (var_buildRef_9757  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 254)) ;
       }
     }
     if (kBoolFalse == test_6) {
       enumGalgasBool test_7 = kBoolTrue ;
       if (kBoolTrue == test_7) {
-        test_7 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 255)).objectCompare (GGS_string ("cpp"))).boolEnum () ;
+        test_7 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 255)).objectCompare (GGS_string ("cpp"))).boolEnum () ;
         if (kBoolTrue == test_7) {
-          GGS_string var_cppFileRef_9902 ;
+          GGS_string var_cppFileRef_9903 ;
           {
-          extensionSetter_addCppFile (ioObject, enumerator_9521.current_key (HERE), var_cppFileRef_9902, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 256)) ;
+          extensionSetter_addCppFile (ioObject, enumerator_9522.current_key (HERE), var_cppFileRef_9903, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 256)) ;
           }
-          var_childrenRefs_9496.addAssign_operation (var_cppFileRef_9902  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 257)) ;
-          GGS_string var_buildRef_10029 ;
+          var_childrenRefs_9497.addAssign_operation (var_cppFileRef_9903  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 257)) ;
+          GGS_string var_buildRef_10030 ;
           {
-          extensionSetter_addBuildFile (ioObject, var_cppFileRef_9902, enumerator_9521.current_key (HERE), var_buildRef_10029, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 258)) ;
+          extensionSetter_addBuildFile (ioObject, var_cppFileRef_9903, enumerator_9522.current_key (HERE), var_buildRef_10030, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 258)) ;
           }
-          ioArgument_ioCppFileBuildRefs.addAssign_operation (var_buildRef_10029  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 259)) ;
+          ioArgument_ioCppFileBuildRefs.addAssign_operation (var_buildRef_10030  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 259)) ;
         }
       }
       if (kBoolFalse == test_7) {
         enumGalgasBool test_8 = kBoolTrue ;
         if (kBoolTrue == test_8) {
-          test_8 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 260)).objectCompare (GGS_string ("h"))).boolEnum () ;
+          test_8 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 260)).objectCompare (GGS_string ("h"))).boolEnum () ;
           if (kBoolTrue == test_8) {
-            GGS_string var_headerFileRef_10178 ;
+            GGS_string var_headerFileRef_10179 ;
             {
-            extensionSetter_addHeaderFile (ioObject, enumerator_9521.current_key (HERE), var_headerFileRef_10178, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 261)) ;
+            extensionSetter_addHeaderFile (ioObject, enumerator_9522.current_key (HERE), var_headerFileRef_10179, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 261)) ;
             }
-            var_childrenRefs_9496.addAssign_operation (var_headerFileRef_10178  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 262)) ;
+            var_childrenRefs_9497.addAssign_operation (var_headerFileRef_10179  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 262)) ;
           }
         }
         if (kBoolFalse == test_8) {
           enumGalgasBool test_9 = kBoolTrue ;
           if (kBoolTrue == test_9) {
-            test_9 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 263)).objectCompare (GGS_string ("m"))).boolEnum () ;
+            test_9 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 263)).objectCompare (GGS_string ("m"))).boolEnum () ;
             if (kBoolTrue == test_9) {
-              GGS_string var_m_5F_FileRef_10326 ;
+              GGS_string var_m_5F_FileRef_10327 ;
               {
-              extensionSetter_addMFile (ioObject, enumerator_9521.current_key (HERE), var_m_5F_FileRef_10326, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 264)) ;
+              extensionSetter_addMFile (ioObject, enumerator_9522.current_key (HERE), var_m_5F_FileRef_10327, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 264)) ;
               }
-              GGS_string var_buildRef_10417 ;
+              GGS_string var_buildRef_10418 ;
               {
-              extensionSetter_addBuildFile (ioObject, var_m_5F_FileRef_10326, enumerator_9521.current_key (HERE), var_buildRef_10417, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 265)) ;
+              extensionSetter_addBuildFile (ioObject, var_m_5F_FileRef_10327, enumerator_9522.current_key (HERE), var_buildRef_10418, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 265)) ;
               }
-              var_childrenRefs_9496.addAssign_operation (var_m_5F_FileRef_10326  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 266)) ;
-              ioArgument_ioMFileBuildRefs.addAssign_operation (var_buildRef_10417  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 267)) ;
+              var_childrenRefs_9497.addAssign_operation (var_m_5F_FileRef_10327  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 266)) ;
+              ioArgument_ioMFileBuildRefs.addAssign_operation (var_buildRef_10418  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 267)) ;
             }
           }
           if (kBoolFalse == test_9) {
             enumGalgasBool test_10 = kBoolTrue ;
             if (kBoolTrue == test_10) {
-              test_10 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 268)).objectCompare (GGS_string ("mm"))).boolEnum () ;
+              test_10 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 268)).objectCompare (GGS_string ("mm"))).boolEnum () ;
               if (kBoolTrue == test_10) {
-                GGS_string var_m_5F_FileRef_10594 ;
+                GGS_string var_m_5F_FileRef_10595 ;
                 {
-                extensionSetter_addMMFile (ioObject, enumerator_9521.current_key (HERE), var_m_5F_FileRef_10594, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 269)) ;
+                extensionSetter_addMMFile (ioObject, enumerator_9522.current_key (HERE), var_m_5F_FileRef_10595, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 269)) ;
                 }
-                GGS_string var_buildRef_10685 ;
+                GGS_string var_buildRef_10686 ;
                 {
-                extensionSetter_addBuildFile (ioObject, var_m_5F_FileRef_10594, enumerator_9521.current_key (HERE), var_buildRef_10685, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 270)) ;
+                extensionSetter_addBuildFile (ioObject, var_m_5F_FileRef_10595, enumerator_9522.current_key (HERE), var_buildRef_10686, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 270)) ;
                 }
-                var_childrenRefs_9496.addAssign_operation (var_m_5F_FileRef_10594  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 271)) ;
-                ioArgument_ioMMFileBuildRefs.addAssign_operation (var_buildRef_10685  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 272)) ;
+                var_childrenRefs_9497.addAssign_operation (var_m_5F_FileRef_10595  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 271)) ;
+                ioArgument_ioMMFileBuildRefs.addAssign_operation (var_buildRef_10686  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 272)) ;
               }
             }
             if (kBoolFalse == test_10) {
               enumGalgasBool test_11 = kBoolTrue ;
               if (kBoolTrue == test_11) {
-                test_11 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 273)).objectCompare (GGS_string ("framework"))).boolEnum () ;
+                test_11 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 273)).objectCompare (GGS_string ("framework"))).boolEnum () ;
                 if (kBoolTrue == test_11) {
-                  GGS_string var_framework_5F_FileRef_10877 ;
+                  GGS_string var_framework_5F_FileRef_10878 ;
                   {
-                  extensionSetter_addFrameworkFile (ioObject, enumerator_9521.current_key (HERE), var_framework_5F_FileRef_10877, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 274)) ;
+                  extensionSetter_addFrameworkFile (ioObject, enumerator_9522.current_key (HERE), var_framework_5F_FileRef_10878, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 274)) ;
                   }
-                  GGS_string var_buildRef_10984 ;
+                  GGS_string var_buildRef_10985 ;
                   {
-                  extensionSetter_addBuildFile (ioObject, var_framework_5F_FileRef_10877, enumerator_9521.current_key (HERE), var_buildRef_10984, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 275)) ;
+                  extensionSetter_addBuildFile (ioObject, var_framework_5F_FileRef_10878, enumerator_9522.current_key (HERE), var_buildRef_10985, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 275)) ;
                   }
-                  var_childrenRefs_9496.addAssign_operation (var_framework_5F_FileRef_10877  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 276)) ;
-                  ioArgument_ioFrameWorkFileBuildRefs.addAssign_operation (var_buildRef_10984  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 277)) ;
+                  var_childrenRefs_9497.addAssign_operation (var_framework_5F_FileRef_10878  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 276)) ;
+                  ioArgument_ioFrameWorkFileBuildRefs.addAssign_operation (var_buildRef_10985  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 277)) ;
                 }
               }
               if (kBoolFalse == test_11) {
                 enumGalgasBool test_12 = kBoolTrue ;
                 if (kBoolTrue == test_12) {
-                  test_12 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 278)).objectCompare (GGS_string ("plist"))).boolEnum () ;
+                  test_12 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 278)).objectCompare (GGS_string ("plist"))).boolEnum () ;
                   if (kBoolTrue == test_12) {
-                    GGS_string var_resource_5F_FileRef_11187 ;
+                    GGS_string var_resource_5F_FileRef_11188 ;
                     {
-                    extensionSetter_addInfoPlistFile (ioObject, enumerator_9521.current_key (HERE), var_resource_5F_FileRef_11187, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 279)) ;
+                    extensionSetter_addInfoPlistFile (ioObject, enumerator_9522.current_key (HERE), var_resource_5F_FileRef_11188, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 279)) ;
                     }
-                    var_childrenRefs_9496.addAssign_operation (var_resource_5F_FileRef_11187  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 280)) ;
+                    var_childrenRefs_9497.addAssign_operation (var_resource_5F_FileRef_11188  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 280)) ;
                   }
                 }
                 if (kBoolFalse == test_12) {
                   enumGalgasBool test_13 = kBoolTrue ;
                   if (kBoolTrue == test_13) {
-                    test_13 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 281)).objectCompare (GGS_string ("xib"))).boolEnum () ;
+                    test_13 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 281)).objectCompare (GGS_string ("xib"))).boolEnum () ;
                     if (kBoolTrue == test_13) {
-                      GGS_string var_resource_5F_FileRef_11345 ;
+                      GGS_string var_resource_5F_FileRef_11346 ;
                       {
-                      extensionSetter_addXIBFile (ioObject, enumerator_9521.current_key (HERE), var_resource_5F_FileRef_11345, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 282)) ;
+                      extensionSetter_addXIBFile (ioObject, enumerator_9522.current_key (HERE), var_resource_5F_FileRef_11346, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 282)) ;
                       }
-                      var_childrenRefs_9496.addAssign_operation (var_resource_5F_FileRef_11345  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 283)) ;
-                      GGS_string var_buildRef_11490 ;
+                      var_childrenRefs_9497.addAssign_operation (var_resource_5F_FileRef_11346  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 283)) ;
+                      GGS_string var_buildRef_11491 ;
                       {
-                      extensionSetter_addBuildFile (ioObject, var_resource_5F_FileRef_11345, enumerator_9521.current_key (HERE), var_buildRef_11490, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 284)) ;
+                      extensionSetter_addBuildFile (ioObject, var_resource_5F_FileRef_11346, enumerator_9522.current_key (HERE), var_buildRef_11491, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 284)) ;
                       }
-                      ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef_11490  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 285)) ;
+                      ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef_11491  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 285)) ;
                     }
                   }
                   if (kBoolFalse == test_13) {
                     enumGalgasBool test_14 = kBoolTrue ;
                     if (kBoolTrue == test_14) {
-                      test_14 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 286)).objectCompare (GGS_string ("tiff"))).boolEnum () ;
+                      test_14 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 286)).objectCompare (GGS_string ("tiff"))).boolEnum () ;
                       if (kBoolTrue == test_14) {
-                        GGS_string var_resource_5F_FileRef_11646 ;
+                        GGS_string var_resource_5F_FileRef_11647 ;
                         {
-                        extensionSetter_addTIFF_5F_file (ioObject, enumerator_9521.current_key (HERE), var_resource_5F_FileRef_11646, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 287)) ;
+                        extensionSetter_addTIFF_5F_file (ioObject, enumerator_9522.current_key (HERE), var_resource_5F_FileRef_11647, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 287)) ;
                         }
-                        var_childrenRefs_9496.addAssign_operation (var_resource_5F_FileRef_11646  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)) ;
-                        GGS_string var_buildRef_11791 ;
+                        var_childrenRefs_9497.addAssign_operation (var_resource_5F_FileRef_11647  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 288)) ;
+                        GGS_string var_buildRef_11792 ;
                         {
-                        extensionSetter_addBuildFile (ioObject, var_resource_5F_FileRef_11646, enumerator_9521.current_key (HERE), var_buildRef_11791, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 289)) ;
+                        extensionSetter_addBuildFile (ioObject, var_resource_5F_FileRef_11647, enumerator_9522.current_key (HERE), var_buildRef_11792, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 289)) ;
                         }
-                        ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef_11791  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 290)) ;
+                        ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef_11792  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 290)) ;
                       }
                     }
                     if (kBoolFalse == test_14) {
                       enumGalgasBool test_15 = kBoolTrue ;
                       if (kBoolTrue == test_15) {
-                        test_15 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 291)).objectCompare (GGS_string ("icns"))).boolEnum () ;
+                        test_15 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 291)).objectCompare (GGS_string ("icns"))).boolEnum () ;
                         if (kBoolTrue == test_15) {
-                          GGS_string var_resource_5F_FileRef_11947 ;
+                          GGS_string var_resource_5F_FileRef_11948 ;
                           {
-                          extensionSetter_addICNS_5F_file (ioObject, enumerator_9521.current_key (HERE), var_resource_5F_FileRef_11947, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 292)) ;
+                          extensionSetter_addICNS_5F_file (ioObject, enumerator_9522.current_key (HERE), var_resource_5F_FileRef_11948, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 292)) ;
                           }
-                          var_childrenRefs_9496.addAssign_operation (var_resource_5F_FileRef_11947  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 293)) ;
-                          GGS_string var_buildRef_12092 ;
+                          var_childrenRefs_9497.addAssign_operation (var_resource_5F_FileRef_11948  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 293)) ;
+                          GGS_string var_buildRef_12093 ;
                           {
-                          extensionSetter_addBuildFile (ioObject, var_resource_5F_FileRef_11947, enumerator_9521.current_key (HERE), var_buildRef_12092, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 294)) ;
+                          extensionSetter_addBuildFile (ioObject, var_resource_5F_FileRef_11948, enumerator_9522.current_key (HERE), var_buildRef_12093, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 294)) ;
                           }
-                          ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef_12092  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 295)) ;
+                          ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef_12093  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 295)) ;
                         }
                       }
                       if (kBoolFalse == test_15) {
                         enumGalgasBool test_16 = kBoolTrue ;
                         if (kBoolTrue == test_16) {
-                          test_16 = GGS_bool (ComparisonKind::equal, enumerator_9521.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 296)).objectCompare (GGS_string ("swift"))).boolEnum () ;
+                          test_16 = GGS_bool (ComparisonKind::equal, enumerator_9522.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 296)).objectCompare (GGS_string ("swift"))).boolEnum () ;
                           if (kBoolTrue == test_16) {
                           }
                         }
                         if (kBoolFalse == test_16) {
                           TC_Array <FixItDescription> fixItArray17 ;
-                          inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)), GGS_string ("unhandled extension for file '").add_operation (enumerator_9521.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)), fixItArray17  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)) ;
+                          inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)), GGS_string ("unhandled extension for file '").add_operation (enumerator_9522.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)), fixItArray17  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 299)) ;
                         }
                       }
                     }
@@ -861,9 +861,9 @@ void extensionSetter_addGroupWithFiles (GGS_XcodeProjectDescriptor & ioObject,
         }
       }
     }
-    enumerator_9521.gotoNextObject () ;
+    enumerator_9522.gotoNextObject () ;
   }
-  ioObject.mProperty_mGroupList.addAssign_operation (outArgument_outGroupRef, constinArgument_inGroupName, constinArgument_inGroupPath, var_childrenRefs_9496  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 302)) ;
+  ioObject.mProperty_mGroupList.addAssign_operation (outArgument_outGroupRef, constinArgument_inGroupName, constinArgument_inGroupPath, var_childrenRefs_9497  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 302)) ;
 }
 
 
@@ -955,23 +955,23 @@ void extensionMethod_generateAtPath (const GGS_XcodeProjectDescriptor inObject,
   const GGS_XcodeProjectDescriptor temp_19 = inObject ;
   const GGS_XcodeProjectDescriptor temp_20 = inObject ;
   const GGS_XcodeProjectDescriptor temp_21 = inObject ;
-  GGS_string var_contents_17756 = GGS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_M_5F_FileList (), temp_9.readProperty_m_5F_MM_5F_FileList (), temp_10.readProperty_mFrameworkFileList (), temp_11.readProperty_mHeaderFileList (), temp_12.readProperty_mInfoPlistFileList (), temp_13.readProperty_mTIFF_5F_fileList (), temp_14.readProperty_mICNS_5F_fileList (), temp_15.readProperty_mXIB_5F_fileList (), temp_16.readProperty_mBuildFileList (), temp_17.readProperty_mDefaultConfigurationRef (), temp_18.readProperty_mDefaultConfigurationSettingList (), temp_19.readProperty_mProjectBuildConfigurationRef (), temp_20.readProperty_mApplicationBundleName (), temp_21.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 449))) ;
-  GGS_string var_projectCoreFile_18451 = constinArgument_inPath.add_operation (GGS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 473)) ;
+  GGS_string var_contents_17760 = GGS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, temp_0.readProperty_mProjectObjectReference (), temp_1.readProperty_mMainGroupReference (), temp_2.readProperty_mGroupList (), temp_3.readProperty_mMainGroupChildrenRefs (), temp_4.readProperty_mToolTargetList (), temp_5.readProperty_mAppTargetList (), temp_6.readProperty_mCFileList (), temp_7.readProperty_mCppFileList (), temp_8.readProperty_m_5F_M_5F_FileList (), temp_9.readProperty_m_5F_MM_5F_FileList (), temp_10.readProperty_mFrameworkFileList (), temp_11.readProperty_mHeaderFileList (), temp_12.readProperty_mInfoPlistFileList (), temp_13.readProperty_mTIFF_5F_fileList (), temp_14.readProperty_mICNS_5F_fileList (), temp_15.readProperty_mXIB_5F_fileList (), temp_16.readProperty_mBuildFileList (), temp_17.readProperty_mDefaultConfigurationRef (), temp_18.readProperty_mDefaultConfigurationSettingList (), temp_19.readProperty_mProjectBuildConfigurationRef (), temp_20.readProperty_mApplicationBundleName (), temp_21.readProperty_mProjectName () COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 449))) ;
+  GGS_string var_projectCoreFile_18455 = constinArgument_inPath.add_operation (GGS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 473)) ;
   enumGalgasBool test_22 = kBoolTrue ;
   if (kBoolTrue == test_22) {
-    GGS_bool test_23 = var_projectCoreFile_18451.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)) ;
+    GGS_bool test_23 = var_projectCoreFile_18455.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)) ;
     if (kBoolTrue != test_23.boolEnum ()) {
       test_23 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)) ;
     }
     GGS_bool test_24 = test_23 ;
     if (kBoolTrue != test_24.boolEnum ()) {
-      test_24 = GGS_bool (ComparisonKind::notEqual, GGS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)).objectCompare (var_contents_17756)) ;
+      test_24 = GGS_bool (ComparisonKind::notEqual, GGS_string::class_func_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 474)).objectCompare (var_contents_17760)) ;
     }
     test_22 = test_24.boolEnum () ;
     if (kBoolTrue == test_22) {
-      GGS_bool joker_18714 ; // Joker input parameter
-      var_contents_17756.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18714, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 475)) ;
-      var_contents_17756.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18451, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 476)) ;
+      GGS_bool joker_18718 ; // Joker input parameter
+      var_contents_17760.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_18718, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 475)) ;
+      var_contents_17760.method_makeDirectoryAndWriteToFile (var_projectCoreFile_18455, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 476)) ;
     }
   }
 }

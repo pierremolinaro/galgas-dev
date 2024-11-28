@@ -1,4 +1,4 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #
 #  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
 #
@@ -18,11 +18,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
-  #·······························································································
+  //······························································································
 
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                          !@semanticExpressionAST outExpressionAST
@@ -30,9 +30,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   rule <type_definition_ggs3> ?!@galgasDeclarationAST ioDeclarations
                               !@lstring outTypeName
 
-  #·······························································································
+  //······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
-  #·······························································································
+  //······························································································
 
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList {
@@ -156,9 +156,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #  A C T U A L    P A R A M E T E R    L I S T
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@actualParameterListAST outActualParameterList {
@@ -326,9 +326,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #  F O R M A L    I N P U T    P A R A M E T E R S
-  #·······························································································
+  //······························································································
 
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@formalInputParameterListAST outFormalInputParameterList {
@@ -370,9 +370,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
   #  F O R M A L    I N P U T    P A R A M E T E R S
-  #·······························································································
+  //······························································································
 
   rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                      !@formalInputParameterListAST outFormalInputParameterList {
@@ -422,13 +422,13 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = ()
   }
 
-  #·······························································································
+  //······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = ()
@@ -441,15 +441,15 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     end
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
-  #·······························································································
+  //······························································································
 
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
                     !@semanticExpressionAST outExpressionAST
@@ -460,9 +460,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   rule <simple_type_definition> ?!@galgasDeclarationAST unused ioDeclarations
                                 !@lstring outTypeName
 
-  #·······························································································
+  //······························································································
   #          F O R M A L    P A R A M E T E R    L I S T
-  #·······························································································
+  //······························································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                !@formalParameterListAST outFormalParameterList {
@@ -544,9 +544,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $)$
   }
 
-  #·······························································································
+  //······························································································
   #  A C T U A L    P A R A M E T E R    L I S T
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
                                                   !@actualParameterListAST outActualParameterList {
@@ -563,9 +563,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $)$
   }
 
-  #·······························································································
+  //······························································································
   # Actual input argument
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
@@ -675,9 +675,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
   # Actual output / input argument
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
@@ -712,9 +712,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     end
   }
 
-  #·······························································································
+  //······························································································
   # Actual output argument
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
@@ -734,7 +734,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
                           ?!@actualParameterListAST ioActualParameterList {
@@ -748,9 +748,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     }
   }
 
-  #·······························································································
+  //······························································································
   #  F O R M A L    I N P U T    P A R A M E T E R S
-  #·······························································································
+  //······························································································
 
   rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                      !@formalInputParameterListAST outFormalInputParameterList {
@@ -800,13 +800,13 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
   rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = ()
   }
 
-  #·······························································································
+  //······························································································
 
   rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
     outPoisonedVarNameList = ()
@@ -821,8 +821,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $)$
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

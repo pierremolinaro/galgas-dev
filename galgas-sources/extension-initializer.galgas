@@ -15,11 +15,11 @@
 # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $extension$
@@ -46,7 +46,7 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration_ggs3> ?let @lstring inClassName
                                  ?!@galgasDeclarationAST ioDeclarations {
@@ -65,15 +65,15 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas4DeclarationsSyntax {
 
-  #·······························································································
+  //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
     $extension$
@@ -101,7 +101,7 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
   rule <method_declaration> ?let @lstring inTypeName
                             ?!@galgasDeclarationAST ioDeclarations {
@@ -121,13 +121,13 @@ syntax extension galgas4DeclarationsSyntax {
     }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @initializerAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -135,7 +135,7 @@ class @initializerAST : @semanticDeclarationAST {
   private let @semanticInstructionListAST mInstructionList
   private let @location mEndOfInitializerLocation
 
-  #·······························································································
+  //······························································································
 
   override getter keyRepresentation -> @string {
     result = initializerNameForUsefulEntitiesGraph (
@@ -144,7 +144,7 @@ class @initializerAST : @semanticDeclarationAST {
     )
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInGraph
           ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -157,7 +157,7 @@ class @initializerAST : @semanticDeclarationAST {
     let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !key !.init ("@" + self.mTypeName, self.mTypeName)]
-  #---
+  //---
     if not [ioExtensionInitializerForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionInitializerForBuildingContext insertKey
         !self.mTypeName
@@ -172,7 +172,7 @@ class @initializerAST : @semanticDeclarationAST {
     end
   }
 
-  #·······························································································
+  //······························································································
 
   override method enterDeclarationInSemanticContext
     ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -184,7 +184,7 @@ class @initializerAST : @semanticDeclarationAST {
     ?!@semanticContext unused ioSemanticContext {
   }
 
-  #·······························································································
+  //······························································································
 
   override method semanticAnalysis
                 ?!@lstringlist unused ioUsefulnessRootEntities
@@ -194,17 +194,17 @@ class @initializerAST : @semanticDeclarationAST {
                 ?!@unifiedTypeMap ioTypeMap
                 ?let @predefinedTypes inPredefinedTypes
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-  #--- Useful entities graph
+  //--- Useful entities graph
     let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
       !self.mTypeName
       ![self.mFormalParameterList initializerSignature]
     )
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  #--- Self type
+  //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
     let @string selfObjectNameString
     let @string selfObjectAccessorString
-  #--- Check self type is a class
+  //--- Check self type is a class
     var isReferenceClass = false
     if let classType = [[selfType definition].typeKind getClassType] then
       isReferenceClass = classType.isReference
@@ -214,7 +214,7 @@ class @initializerAST : @semanticDeclarationAST {
       selfObjectNameString = "result"
       selfObjectAccessorString = "result."
     end
-  #--- Analyze instruction list
+  //--- Analyze instruction list
     let analysisContextNew = @analysisContext {
       !inSemanticContext
       !inPredefinedTypes
@@ -234,7 +234,7 @@ class @initializerAST : @semanticDeclarationAST {
       ?let semanticInstructionListForGeneration
       ?let formalParameterListForGeneration
     )
-  #---
+  //---
     let initializerName = [self.mFormalParameterList initializerSignature]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
@@ -249,11 +249,11 @@ class @initializerAST : @semanticDeclarationAST {
       }
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -265,7 +265,7 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
                         !@formalInputParameterListForGeneration outSignatureForGeneration {
   var variableMap = @localVarManager {}
-#--- Enter properties that should be explicitly initialized
+//--- Enter properties that should be explicitly initialized
   if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
     for property in [selfAvailable.type definition].allTypedPropertyList do
       let initialized = if selfAvailable.selfMutability == .initializer
@@ -282,7 +282,7 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
       ]
     end
   end
-#--- Enter formal parameters
+//--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration ()
   for formalArg in inFormalArgumentListAST do
     let parameterType = [ioTypeMap typeMapEntryForLKey !formalArg.mFormalArgumentTypeName]
@@ -314,7 +314,7 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
       end
     end
   end
-#---  Analyze instruction list
+//---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
     [mInstruction analyzeSemanticInstruction
@@ -326,13 +326,13 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
       !?variableMap
     ]
    end
-#---
+//---
   [variableMap checkAutomatonStates !inEndOfMethodLocation]
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 #   CODE GENERATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -341,13 +341,13 @@ class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGene
   private let @typedPropertyList mTypedAttributeList
   private let @semanticInstructionListForGeneration semanticInstructionListForGeneration
 
-  #·······························································································
+  //······························································································
 
   override getter headerKind -> @headerKind {
     result = .noHeader
   }
 
-  #·······························································································
+  //······························································································
 
   override method appendSpecificImplementation ?let @unifiedTypeMap unused inTypeMap
                                                 ?!@stringset ioInclusionSet
@@ -371,13 +371,13 @@ class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGene
     ]
   }
 
-  #·······························································································
+  //······························································································
 
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 # INITIALIZER IMPLEMENTATION
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
                          ?let @string inInitializerName
@@ -386,13 +386,13 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
                          ?let @semanticInstructionListForGeneration inInstructionList
                          !@string outGeneratedCode {
   let className = [inReceiverType definition].typeName.string
-#--- Build unused variable set
+//--- Build unused variable set
   var @stringset unusedVariableCppNameSet = ()
   unusedVariableCppNameSet += !compilerCppName ()
   for formalArg in inFormalArgumentList do
     unusedVariableCppNameSet += !formalArg.mFormalArgumentCppName
   end
-#--- Generate body
+//--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   [!?routineBody incIndentation !2]
@@ -406,20 +406,20 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
     ]
   end
   [!?routineBody decIndentation !2]
-#--- Generate inclusions
+//--- Generate inclusions
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for formalArg in inFormalArgumentList do
     [formalArg.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-#--- Generate header
+//--- Generate header
   let isStruct = [inReceiverType definition].typeKind == .structType
-#--- Generate routine body
+//--- Generate routine body
   if isStruct then
     outGeneratedCode = "GGS_" + [className identifierRepresentation]
        + " GGS_" + [className identifierRepresentation] 
        + "::" + [inInitializerName identifierRepresentation] + " ("
     let @uint colRef = [outGeneratedCode currentColumn]
-  #---
+  //---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
         outGeneratedCode += "const GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
@@ -434,7 +434,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
       outGeneratedCode += ",\n"
       [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     end
-  #--- Compiler argument
+  //--- Compiler argument
     outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
@@ -449,7 +449,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
        + " GGS_" + [className identifierRepresentation] 
        + "::" + [inInitializerName identifierRepresentation] + " ("
     let @uint colRef = [outGeneratedCode currentColumn]
-  #---
+  //---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
         outGeneratedCode += "const GGS_" + [formalArg.mFormalArgumentType identifierRepresentation] + " & "
@@ -460,7 +460,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
       outGeneratedCode += ",\n"
       [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     end
-  #--- Compiler argument
+  //--- Compiler argument
     outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     outGeneratedCode += "COMMA_LOCATION_ARGS) {\n"
@@ -494,7 +494,7 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
       outGeneratedCode += ",\n"
       [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     end
-  #--- Compiler argument
+  //--- Compiler argument
     outGeneratedCode += "Compiler * "
     if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
       outGeneratedCode += "/* " + compilerCppName () + " */"
@@ -507,5 +507,5 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   end
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
