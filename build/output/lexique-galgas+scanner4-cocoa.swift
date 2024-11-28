@@ -1193,26 +1193,6 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
         scanningOk = false
       }
       tokenCode = galgasScanner4_1__24_terminal_24_
-    }else if scanningOk && (self.testForInputChar (35)) {
-      if scanningOk && (self.testForInputChar (33)) {
-        while (loop && scanningOk) {
-          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:65533)) {
-          }else{
-            loop = false
-          }
-        }
-        loop = true
-        tokenCode = galgasScanner4_1_commentMark
-      }else{
-        while (loop && scanningOk) {
-          if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:1114111)) {
-          }else{
-            loop = false
-          }
-        }
-        loop = true
-        tokenCode = galgasScanner4_1_comment
-      }
     }else if scanningOk && (self.testForInputString ("//", advance: true)) {
       if scanningOk && (self.testForInputChar (33)) {
         while (loop && scanningOk) {

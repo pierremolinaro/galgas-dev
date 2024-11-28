@@ -10089,26 +10089,6 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       }
       token.mTokenCode = kToken__24_terminal_24_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
-      if (testForInputUTF32Char (TO_UNICODE ('!'))) {
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (65533))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        enterDroppedTerminal (kToken_commentMark) ;
-      }else{
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32Char (TO_UNICODE ('\v')) || testForInputUTF32Char (TO_UNICODE ('\f')) || testForInputUTF32CharRange (TO_UNICODE (14), TO_UNICODE (1114111))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        enterDroppedTerminal (kToken_comment) ;
-      }
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___2F__2F_, true)) {
       if (testForInputUTF32Char (TO_UNICODE ('!'))) {
         do {
