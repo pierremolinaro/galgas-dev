@@ -24,7 +24,6 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_type_categories.ggs"
   "galgas-sources/testsuite_strings.ggs"
   "galgas-sources/testsuite_range.ggs"
-  "galgas-sources/testsuite_array.ggs"
   "galgas-sources/testsuite_bigint.ggs"
   "galgas-sources/testsuite_bugMap.ggs"
 

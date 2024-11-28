@@ -549,21 +549,6 @@ rule '$' {
 $comment$ style commentStyle %nonAtomicSelection error message "a comment"
 $commentMark$ style commentStyle %nonAtomicSelection error message "a comment"
 
-#rule '#' {
-#  select
-#  case '!' :
-#    repeat
-#    while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
-#    end
-#    drop $commentMark$
-#  default
-#    repeat
-#    while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\U0010FFFF' :
-#    end
-#    drop $comment$
-#  end
-#}
-
 rule "//" {
   select
   case '!' :

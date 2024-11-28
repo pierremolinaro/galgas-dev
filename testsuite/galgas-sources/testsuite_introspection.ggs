@@ -2,11 +2,6 @@
 
 //----------------------------------------------------------------------------
 
-#class @A ()
-#class @B : @A ()
-
-//----------------------------------------------------------------------------
-
 proc testsuite_introspection() {
 println ("*************************************** begin of introspection test")
 //--- List of types
@@ -38,12 +33,6 @@ println ("*************************************** begin of introspection test")
   log object
   let @uint y =  (object as @uint)
   log y
-//--- Type
-#  @type t := [x dynamicType] ;
-#  log t ;
-#  @A a := [@B new] ;
-#  t := [a dynamicType] ;
-#  log t ;
 //--- Function invocation
   let @function f = @function.functionWithName (!"functionTest")
   var arguments = @objectlist []

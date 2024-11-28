@@ -16,10 +16,6 @@ func @B_B.otherReader( ?var @uint inA, ?let @string inB) -> @string {
   result = inB + inA + self.aReader (inA, !inB) + self.aReader (inA, !inB)
 }
 
-#abstract class @C_C : @B_B ()
-#
-#override abstract func @C_C.aReader( ?@uint inA ?let@string inB) -> @string
-
 abstract func @A_A.location() -> @location
 
 override func @B_B.location() -> @location outLocation { outLocation = .here}

@@ -30,17 +30,7 @@ proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
   self.mInteger = self.mInteger + ioArg
   ioArg += 1
 //--- Ces instructions doivent engendrer une erreur de compilation
-#  self = @TestExtensionSetter.new (!1 !"")
-#  procédure1 (?self)
-#  procédure2 (!?self)
 }
-
-#private proc procédure1 (!@TestExtensionSetter outValue) {
-#  outValue = @TestExtensionSetter.new (!1 !"")
-#}
-
-#private proc procédure2 (?!@TestExtensionSetter unused ioValue) {
-#}
 
 class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
   public let @uint mOtherInteger
@@ -64,18 +54,8 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
   public let @string mOtherString
 }
 
-#class @adjMat{
-#   public let @uint dim
-#   public let @stringlist nodes
-#}
-#
-#proc @adjMat.addNode() {
-#   let tmp = @stringlist ()
-#   self.nodes = tmp
-#}
-
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   TYPE CAST IN SETTER CALL                
+//   TYPE CAST IN SETTER CALL                
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc typeCastInSetterCall () {

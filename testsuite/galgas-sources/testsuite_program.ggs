@@ -18,7 +18,7 @@ before {
   testsuite_type_categories ()
   testsuite_strings ()
   testsuite_range ()
-#  testsuite_array ()
+//  testsuite_array ()
   testsuite_extern_type ()
   testsuite_bigint_type ()
   testsuite_reference_class ()

@@ -86,15 +86,3 @@ mutating proc @uint64.increment() {
 
 //---------------------------------------------------------------------------*
 
-#abstract class @toto { }
-#class @toto1 : @toto { }
-#abstract class @toto2 : @toto1 { }
-#class @toto3 : @toto2 { }
-#
-#override abstract func @toto2.r() -> @uint
-#override func @toto3.r() -> @uint result { result = 0 }
-#override func @toto1.r() -> @uint result { result = 0 }
-#func @toto1.rr() -> @uint result { result = 0 }
-#abstract func @toto.r() -> @uint
-
-
