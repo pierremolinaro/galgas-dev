@@ -119,7 +119,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring {!"@" + self.mGraphTypeName !self.mGraphTypeName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@{!"@" + self.mAssociatedListTypeName !self.mAssociatedListTypeName.location}]
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
@@ -161,9 +161,9 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 //---
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-  var @classFunctionMap classFunctionMap = ()
-  var @setterMap setterMap = ()
-  var @instanceMethodMap instanceMethodMap = ()
+  var @classFunctionMap classFunctionMap = @()
+  var @setterMap setterMap = @()
+  var @instanceMethodMap instanceMethodMap = @()
 //--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   var formalParameterList = @formalParameterSignature ()
   formalParameterList +=
@@ -206,7 +206,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   ]
 #  drop formalParameterList
 //--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
-  formalParameterList = ()
+  formalParameterList = @()
   formalParameterList +=
     !["" nowhere]
     !associatedListTypeEntry
@@ -373,12 +373,12 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
 //--- Constructor 'emptyGraph'
   [!?classFunctionMap insertKey
     !@lstring {!"emptyGraph" !@location.here}
-    !()
+    !@()
     !false # No compiler argument
     !graphTypeEntry
   ]
 //--- setter 'enterNode'
-  formalParameterList = ()
+  formalParameterList = @()
   formalParameterList +=
     !["" nowhere]
     !lstringTypeEntry
@@ -406,7 +406,7 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
   [!?setterMap insertKey
     !@lstring {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
-    !()
+    !@()
     !false # No compiler argument
     !@methodQualifier. isInherited
     !"" # No error message
@@ -448,10 +448,10 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 //--- Add initializer without argument
-  var @initializerMap initializerMap = ()
-  let @functionSignature constructorPropertyTypeList = ()
+  var @initializerMap initializerMap = @()
+  let @functionSignature constructorPropertyTypeList = @()
   [!?initializerMap insertKey
-    !.init {![constructorPropertyTypeList initializerSignature] !self.mGraphTypeName}
+    !@{![constructorPropertyTypeList initializerSignature] !self.mGraphTypeName}
     !constructorPropertyTypeList
   ]
 //--- Add Extensions
@@ -486,21 +486,21 @@ override method @graphDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .graphType
     !supportCollectionValue: false # Does not support collection value
-    !allTypedPropertyList: ()
-    !propertyMap: ()
-    !currentTypedPropertyList: ()
+    !allTypedPropertyList: @()
+    !propertyMap: @()
+    !currentTypedPropertyList: @()
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: ()
+    !classMethodMap: @()
     !unwrappedType: .null
-    !readSubscriptMap: ()
-    !enumerationDescriptorList: ()
+    !readSubscriptMap: @()
+    !enumerationDescriptorList: @()
     !features: features
-    !addAssignOperatorArguments: ()
-    !mapSearchMethodList: ()
+    !addAssignOperatorArguments: @()
+    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !typeForEnumeratedElement: .null # Type for enumerated element for "for" instruction
     !headerFileName: "graph-" + [self.mGraphTypeName fileNameRepresentation]

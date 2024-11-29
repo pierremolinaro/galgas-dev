@@ -58,23 +58,23 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
   //--- Properties
     [!?ioTypeMap makeEntry !["bool" nowhere] ?let boolTypeEntry]
-    var @propertyMap propertyMap = ()
+    var @propertyMap propertyMap = @()
     [!?propertyMap insertKey
-      !.init ("isSome", self.optionalTypeName)
+      !@("isSome", self.optionalTypeName)
       !.publicAccess
       !true
       !boolTypeEntry
     ]
     [!?propertyMap insertKey
-      !.init ("isNil", self.optionalTypeName)
+      !@("isNil", self.optionalTypeName)
       !.publicAccess
       !true
       !boolTypeEntry
     ]
   //--- Add extensions
-    var @instanceMethodMap instanceMethodMap = ()
-    var @setterMap setterMap = ()
-    var @initializerMap initializerMap = ()
+    var @instanceMethodMap instanceMethodMap = @()
+    var @setterMap setterMap = @()
+    var @initializerMap initializerMap = @()
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -112,21 +112,21 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !superType: .null
       !typeKind: .listType
       !supportCollectionValue: false 
-      !allTypedPropertyList: ()
+      !allTypedPropertyList: @()
       !propertyMap: propertyMap
-      !currentTypedPropertyList: ()
+      !currentTypedPropertyList: @()
       !initializerMap: initializerMap
-      !classFunctionMap: ()
+      !classFunctionMap: @()
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
-      !classMethodMap: ()
+      !classMethodMap: @()
       !unwrappedType: unwrappedType
-      !readSubscriptMap: ()
-      !enumerationDescriptorList: ()
+      !readSubscriptMap: @()
+      !enumerationDescriptorList: @()
       !features: features
-      !addAssignOperatorArguments: ()
-      !mapSearchMethodList: ()
+      !addAssignOperatorArguments: @()
+      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: .null
       !headerFileName: "optional-" + [self.optionalTypeName fileNameRepresentation]

@@ -12,7 +12,7 @@ for (mFileReference mFileName mBuildReference) in BUILD_FILE_LIST do
 %  %!mBuildReference% /* %!mFileName% */ = {\n%
 %    isa = PBXBuildFile;\n%
 %    fileRef = %!mFileReference% ;\n%
-%    settings = {ATTRIBUTES = (); };\n%
+%    settings = {ATTRIBUTES = @(); };\n%
 %  };\n\n%
 end
 %  /*------------------------------------------------------------------ PBXFileReference */

@@ -98,7 +98,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
-      mElseBranchInstructions = ()
+      mElseBranchInstructions = @()
     or
       $else$
       if searchMethodNameForErrorSignaling.string != "" then
@@ -172,7 +172,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
-      mElseBranchInstructions = ()
+      mElseBranchInstructions = @()
     or
       $else$
       if searchMethodNameForErrorSignaling.string != "" then
@@ -248,7 +248,7 @@ syntax extension galgas4InstructionsSyntax {
     let endOfDoInstructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
-      mElseBranchInstructions = ()
+      mElseBranchInstructions = @()
     or
       $else$
       if searchMethodNameForErrorSignaling.string != "" then
@@ -323,7 +323,7 @@ syntax extension galgas4InstructionsSyntax {
     let endOf_do_instructions = @location.here
     let @semanticInstructionListAST mElseBranchInstructions
     select
-      mElseBranchInstructions = ()
+      mElseBranchInstructions = @()
     or
       $else$
       if searchMethodNameForErrorSignaling.string != "" then
@@ -460,8 +460,8 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !?ioTypeMap
     !localConstantList: localConstantList
-    !localInitializedVariableListWarnsIfNotMutated: ()
-    !localInitializedVariableListNoWarnsIfNotMutated: ()
+    !localInitializedVariableListWarnsIfNotMutated: @()
+    !localInitializedVariableListNoWarnsIfNotMutated: @()
     !self.mDoBranchInstructions
     !self.mEndOf_do_instructions
     !?ioVariableMap
@@ -473,9 +473,9 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: ()
-    !localInitializedVariableListWarnsIfNotMutated: ()
-    !localInitializedVariableListNoWarnsIfNotMutated: ()
+    !localConstantList: @()
+    !localInitializedVariableListWarnsIfNotMutated: @()
+    !localInitializedVariableListNoWarnsIfNotMutated: @()
     !self.mElseBranchInstructions
     !self.mEndOf_else_instructions
     !?ioVariableMap
@@ -580,14 +580,14 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 //--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 //--- 'do' branch
-  var @localInitializedVariableList localInitializedVariableList = ()
+  var @localInitializedVariableList localInitializedVariableList = @()
   for (mPropertyTypeEntry mPropertyName 3*) in [targetType definition].currentTypedPropertyList do
     localInitializedVariableList +=
       !mPropertyTypeEntry
       !@lstring {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
-  let localConstantList = @localConstantList §[.init (
+  let localConstantList = @localConstantList §[@(
     [ioTypeMap typeMapEntryForLKey !["lstring" nowhere]],
     @lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression},
     true, # Do not warn if unused
@@ -599,7 +599,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !?ioTypeMap
     !localConstantList: localConstantList
-    !localInitializedVariableListWarnsIfNotMutated: ()
+    !localInitializedVariableListWarnsIfNotMutated: @()
     !localInitializedVariableListNoWarnsIfNotMutated: localInitializedVariableList
     !self.m_do_Instructions
     !self.mEndOf_do_instructions
@@ -612,9 +612,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: ()
-    !localInitializedVariableListWarnsIfNotMutated: ()
-    !localInitializedVariableListNoWarnsIfNotMutated: ()
+    !localConstantList: @()
+    !localInitializedVariableListWarnsIfNotMutated: @()
+    !localInitializedVariableListNoWarnsIfNotMutated: @()
     !self.m_else_Instructions
     !self.mEndOf_else_instructions
     !?ioVariableMap

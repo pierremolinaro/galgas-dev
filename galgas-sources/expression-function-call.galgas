@@ -36,7 +36,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression {
     $identifier$ ?let @lstring functionName indexing functionCall
     $($
-    var @actualOutputArgumentList expressionList = ()
+    var @actualOutputArgumentList expressionList = @()
     select
       let selector = ["" here]
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST expression

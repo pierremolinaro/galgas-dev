@@ -114,7 +114,7 @@ override method @bangExpressionAST analyzeSemanticExpression
 #  if let element = [[type definition].unwrappedType getElement] then
 #  //  let e = element.weakElement.mDefinition
 #    outExpression = @bangExpressionForGeneration {
-#      !element.weakElement // .init (element)
+#      !element.weakElement // init  (element)
 #      !self.mOperatorLocation
 #      !expression
 #      ![type definition].typeName.string

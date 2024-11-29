@@ -384,7 +384,7 @@ map @lexicalTypeMap {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once buildLexicalTypeMap () -> @lexicalTypeMap {
-  result = ()
+  result = @()
   [!?result insertKey !@lstring {!"string" !@location.here} !.lexicalType_string]
   [!?result insertKey !@lstring {!"char"   !@location.here} !.lexicalType_char]
   [!?result insertKey !@lstring {!"uint"   !@location.here} !.lexicalType_uint]

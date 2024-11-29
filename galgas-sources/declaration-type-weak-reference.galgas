@@ -89,18 +89,18 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
      ?let @unifiedTypeMapEntry weakReferenceIndex
   ]
 //--- Class functions
-  var @classFunctionMap classFunctionMap = ()
+  var @classFunctionMap classFunctionMap = @()
   [!?classFunctionMap insertKey
     !@lstring {!"nil" !self.mWeakReferenceTypeName.location}
-    !()
+    !@()
     !false
     !weakReferenceIndex
   ]
 //--- Add Extensions
-  var @getterMap getterMap = ()
-  var @setterMap setterMap = ()
-  var @instanceMethodMap instanceMethodMap = ()
-  var @initializerMap initializerMap = ()
+  var @getterMap getterMap = @()
+  var @setterMap setterMap = @()
+  var @instanceMethodMap instanceMethodMap = @()
+  var @initializerMap initializerMap = @()
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -142,21 +142,21 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     !superType: superClassIndex
     !typeKind: .weakReferenceType {!referenceType: classIndex}
     !supportCollectionValue: false
-    !allTypedPropertyList: ()
-    !propertyMap: ()
-    !currentTypedPropertyList: ()
+    !allTypedPropertyList: @()
+    !propertyMap: @()
+    !currentTypedPropertyList: @()
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
-    !getterMap: ()
-    !setterMap: ()
-    !instanceMethodMap: ()
-    !classMethodMap: ()
+    !getterMap: @()
+    !setterMap: @()
+    !instanceMethodMap: @()
+    !classMethodMap: @()
     !unwrappedType: classIndex
-    !readSubscriptMap: ()
-    !enumerationDescriptorList: ()
+    !readSubscriptMap: @()
+    !enumerationDescriptorList: @()
     !features: features
-    !addAssignOperatorArguments: ()
-    !mapSearchMethodList: ()
+    !addAssignOperatorArguments: @()
+    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: generateHeaderInSeparateFile
     !typeForEnumeratedElement: .null
     !headerFileName: "weak-reference-" + [self.mWeakReferenceTypeName fileNameRepresentation]

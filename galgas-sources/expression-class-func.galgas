@@ -26,7 +26,7 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <optional_type_ggs3> !@lstring outTypeName {
     select
-      outTypeName = .init {!"" !.here}
+      outTypeName = @{!"" !.here}
     or
       $@type$ ?outTypeName indexing typeReferenceInConstructor
     end
@@ -45,7 +45,7 @@ syntax extension galgas3ExpressionSyntax {
   //--- Actual arguments
     let @actualOutputArgumentList expressionList
     select
-      expressionList = ()
+      expressionList = @()
     or
       ${$
       <output_expression_list_ggs3> !?ioDeclarations ?expressionList
@@ -78,7 +78,7 @@ syntax extension galgas4ExpressionSyntax {
     let startOfExpression = @location.here
     let @actualOutputArgumentList expressionList
     select
-      expressionList = ()
+      expressionList = @()
     or
       $($
       <output_expression_list> !?ioDeclarations ?expressionList
@@ -86,7 +86,7 @@ syntax extension galgas4ExpressionSyntax {
     end
     let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST {
-      !.init ("", startOfExpression)
+      !@("", startOfExpression)
       !classFuncName
       !expressionList
       ![startOfExpression union !endOfExpression]
@@ -103,7 +103,7 @@ syntax extension galgas4ExpressionSyntax {
     let @actualOutputArgumentList expressionList
     let startOfExpression = @location.here
     select
-      expressionList = ()
+      expressionList = @()
     or
       $($
       <output_expression_list> !?ioDeclarations ?expressionList
@@ -166,9 +166,9 @@ class @classFuncExpressionAST : @semanticExpressionAST {
       ?let @bool hasCompilerArgument
       ?let [@unifiedTypeMapEntry] requiredTypes
     )
-    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![classFuncType definition].typeName.string !self.typeName})
+    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{![classFuncType definition].typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{![returnedType definition].typeName.string !self.typeName})
+    let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{![returnedType definition].typeName.string !self.typeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
   //---
     outExpression = @classFuncExpressionForGeneration {
@@ -204,7 +204,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
                       !@bool outHasCompilerArgument
                       ![@unifiedTypeMapEntry] outRequiredTypes {
   outConstructorType = inType
-  outRequiredTypes = ()
+  outRequiredTypes = @()
   if inTypeName.string != "" then
     outConstructorType = [ioTypeMap typeMapEntryForLKey !inTypeName]
   end
@@ -253,7 +253,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
       + [[constructorFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[inInitializerEffectiveParameterExpressions count] string] + " parameter(s)"
     end
-    outConstructorEffectiveParameterList = ()
+    outConstructorEffectiveParameterList = @()
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
         formalArg in constructorFormalArgumentTypeList do
       [!?outRequiredTypes append !formalArg.mFormalArgumentType]
@@ -296,7 +296,7 @@ private proc analyzeConstructorInvocation ?let @lstring inUsefulnessCallerEntity
   if [option galgas_cli_options.errorUsingNewInsteadOfInit value] then
     let oldInitializers = @stringset §["emptyGraph", "new"]
     if [oldInitializers hasKey !inConstructorName.string]  then
-      error inConstructorName : "old style constructor, use initializer '.init (...)'"
+      error inConstructorName : "old style constructor, use initializer '@(...)'"
     end
   end
 }
@@ -323,7 +323,7 @@ class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
     for type in self.requiredTypes do
       [type addHeaderFileName !?ioInclusionSet]
     end
-    var @stringlist parameterList = ()
+    var @stringlist parameterList = @()
     for (mExpression) in self.mEffectiveParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode

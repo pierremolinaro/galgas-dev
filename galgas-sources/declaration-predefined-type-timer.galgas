@@ -27,7 +27,7 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {
   //----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
-    result = §[.init (@formalInputParameterListAST ())]
+    result = §[@(@formalInputParameterListAST ())]
   }
 
   //----------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   override method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                !@setterMap outSetterMap {
-    outSetterMap = ()
+    outSetterMap = @()
     enterModifierWithoutArgument (
       !?outSetterMap
       !"stop"
@@ -88,7 +88,7 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = ()
+    outMap = @()
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap

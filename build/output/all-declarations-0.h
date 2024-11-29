@@ -325,197 +325,199 @@ class Lexique_galgasScanner_33_ : public Lexique {
   public: static const int32_t kToken_identifier = 1 ;
   public: static const int32_t kToken_double_2E_xxx = 2 ;
   public: static const int32_t kToken_literalInt = 3 ;
-  public: static const int32_t kToken__2E_ = 4 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 5 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 6 ;
-  public: static const int32_t kToken__40_type = 7 ;
-  public: static const int32_t kToken__27_char_27_ = 8 ;
-  public: static const int32_t kToken__24_terminal_24_ = 9 ;
-  public: static const int32_t kToken_comment = 10 ;
-  public: static const int32_t kToken_commentMark = 11 ;
-  public: static const int32_t kToken__3F_selector_3A_ = 12 ;
-  public: static const int32_t kToken__3F_ = 13 ;
-  public: static const int32_t kToken__3F__21_selector_3A_ = 14 ;
-  public: static const int32_t kToken__3F__21_ = 15 ;
-  public: static const int32_t kToken__21_selector_3A_ = 16 ;
-  public: static const int32_t kToken__21_ = 17 ;
-  public: static const int32_t kToken__21__3F_selector_3A_ = 18 ;
-  public: static const int32_t kToken__21__3F_ = 19 ;
-  public: static const int32_t kToken__3C_ = 20 ;
-  public: static const int32_t kToken__3C__3D_ = 21 ;
-  public: static const int32_t kToken__3C__3C_ = 22 ;
-  public: static const int32_t kToken__3C_non_5F_terminal_3E_ = 23 ;
-  public: static const int32_t kToken__22_string_22_ = 24 ;
-  public: static const int32_t kToken_abstract = 25 ;
-  public: static const int32_t kToken_after = 26 ;
-  public: static const int32_t kToken_as = 27 ;
-  public: static const int32_t kToken_bang = 28 ;
-  public: static const int32_t kToken_before = 29 ;
-  public: static const int32_t kToken_between = 30 ;
-  public: static const int32_t kToken_block = 31 ;
-  public: static const int32_t kToken_boolset = 32 ;
-  public: static const int32_t kToken_cast = 33 ;
-  public: static const int32_t kToken_case = 34 ;
-  public: static const int32_t kToken_class = 35 ;
-  public: static const int32_t kToken_default = 36 ;
-  public: static const int32_t kToken_dict = 37 ;
-  public: static const int32_t kToken_do = 38 ;
-  public: static const int32_t kToken_drop = 39 ;
-  public: static const int32_t kToken_else = 40 ;
-  public: static const int32_t kToken_elsif = 41 ;
-  public: static const int32_t kToken_end = 42 ;
-  public: static const int32_t kToken_enum = 43 ;
-  public: static const int32_t kToken_error = 44 ;
-  public: static const int32_t kToken_extension = 45 ;
-  public: static const int32_t kToken_extern = 46 ;
-  public: static const int32_t kToken_false = 47 ;
-  public: static const int32_t kToken_fileprivate = 48 ;
-  public: static const int32_t kToken_filewrapper = 49 ;
-  public: static const int32_t kToken_for = 50 ;
-  public: static const int32_t kToken_final = 51 ;
-  public: static const int32_t kToken_fixit = 52 ;
-  public: static const int32_t kToken_func = 53 ;
-  public: static const int32_t kToken_getter = 54 ;
-  public: static const int32_t kToken_grammar = 55 ;
-  public: static const int32_t kToken_graph = 56 ;
-  public: static const int32_t kToken_guard = 57 ;
-  public: static const int32_t kToken_gui = 58 ;
-  public: static const int32_t kToken_if = 59 ;
-  public: static const int32_t kToken_in = 60 ;
-  public: static const int32_t kToken_indexing = 61 ;
-  public: static const int32_t kToken_init = 62 ;
-  public: static const int32_t kToken_insert = 63 ;
-  public: static const int32_t kToken_is = 64 ;
-  public: static const int32_t kToken_label = 65 ;
-  public: static const int32_t kToken_let = 66 ;
-  public: static const int32_t kToken_lexique = 67 ;
-  public: static const int32_t kToken_list = 68 ;
-  public: static const int32_t kToken_log = 69 ;
-  public: static const int32_t kToken_loop = 70 ;
-  public: static const int32_t kToken_map = 71 ;
-  public: static const int32_t kToken_message = 72 ;
-  public: static const int32_t kToken_method = 73 ;
-  public: static const int32_t kToken_mod = 74 ;
-  public: static const int32_t kToken_mutating = 75 ;
-  public: static const int32_t kToken_nil = 76 ;
-  public: static const int32_t kToken_not = 77 ;
-  public: static const int32_t kToken_on = 78 ;
-  public: static const int32_t kToken_operator = 79 ;
-  public: static const int32_t kToken_option = 80 ;
-  public: static const int32_t kToken_or = 81 ;
-  public: static const int32_t kToken_override = 82 ;
-  public: static const int32_t kToken_parse = 83 ;
-  public: static const int32_t kToken_public = 84 ;
-  public: static const int32_t kToken_protected = 85 ;
-  public: static const int32_t kToken_private = 86 ;
-  public: static const int32_t kToken_proc = 87 ;
-  public: static const int32_t kToken_project = 88 ;
-  public: static const int32_t kToken_remove = 89 ;
-  public: static const int32_t kToken_repeat = 90 ;
-  public: static const int32_t kToken_replace = 91 ;
-  public: static const int32_t kToken_rewind = 92 ;
-  public: static const int32_t kToken_rule = 93 ;
-  public: static const int32_t kToken_search = 94 ;
-  public: static const int32_t kToken_select = 95 ;
-  public: static const int32_t kToken_self = 96 ;
-  public: static const int32_t kToken_send = 97 ;
-  public: static const int32_t kToken_setter = 98 ;
-  public: static const int32_t kToken_sortedlist = 99 ;
-  public: static const int32_t kToken_spoil = 100 ;
-  public: static const int32_t kToken_struct = 101 ;
-  public: static const int32_t kToken_style = 102 ;
-  public: static const int32_t kToken_super = 103 ;
-  public: static const int32_t kToken_switch = 104 ;
-  public: static const int32_t kToken_syntax = 105 ;
-  public: static const int32_t kToken_tag = 106 ;
-  public: static const int32_t kToken_template = 107 ;
-  public: static const int32_t kToken_then = 108 ;
-  public: static const int32_t kToken_true = 109 ;
-  public: static const int32_t kToken_typealias = 110 ;
-  public: static const int32_t kToken_unused = 111 ;
-  public: static const int32_t kToken_valueclass = 112 ;
-  public: static const int32_t kToken_var = 113 ;
-  public: static const int32_t kToken_warning = 114 ;
-  public: static const int32_t kToken_weak = 115 ;
-  public: static const int32_t kToken_while = 116 ;
-  public: static const int32_t kToken_with = 117 ;
-  public: static const int32_t kToken__25_app_2D_link = 118 ;
-  public: static const int32_t kToken__25_app_2D_source = 119 ;
-  public: static const int32_t kToken__25_applicationBundleBase = 120 ;
-  public: static const int32_t kToken__25_clonable = 121 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 122 ;
-  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 123 ;
-  public: static const int32_t kToken__25_codeblocks_2D_windows = 124 ;
-  public: static const int32_t kToken__25_comparable = 125 ;
-  public: static const int32_t kToken__25_equatable = 126 ;
-  public: static const int32_t kToken__25_from = 127 ;
-  public: static const int32_t kToken__25_generatedInSeparateFile = 128 ;
-  public: static const int32_t kToken__25_initArgLabel = 129 ;
-  public: static const int32_t kToken__25_libpmAtPath = 130 ;
-  public: static const int32_t kToken__25_MacOS = 131 ;
-  public: static const int32_t kToken__25_MacOSDeployment = 132 ;
-  public: static const int32_t kToken__25_macCodeSign = 133 ;
-  public: static const int32_t kToken__25_makefile_2D_macosx = 134 ;
-  public: static const int32_t kToken__25_makefile_2D_unix = 135 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 136 ;
-  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 137 ;
-  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 138 ;
-  public: static const int32_t kToken__25_nonAtomicSelection = 139 ;
-  public: static const int32_t kToken__25_once = 140 ;
-  public: static const int32_t kToken__25_preserved = 141 ;
-  public: static const int32_t kToken__25_quietOutputByDefault = 142 ;
-  public: static const int32_t kToken__25_templateEndMark = 143 ;
-  public: static const int32_t kToken__25_tool_2D_source = 144 ;
-  public: static const int32_t kToken__25_translate = 145 ;
-  public: static const int32_t kToken__25_usefull = 146 ;
-  public: static const int32_t kToken__2A_ = 147 ;
-  public: static const int32_t kToken__2C_ = 148 ;
-  public: static const int32_t kToken__2B_ = 149 ;
-  public: static const int32_t kToken__26__2B_ = 150 ;
-  public: static const int32_t kToken__26__2D_ = 151 ;
-  public: static const int32_t kToken__26__2A_ = 152 ;
-  public: static const int32_t kToken__26__2F_ = 153 ;
-  public: static const int32_t kToken__3E_ = 154 ;
-  public: static const int32_t kToken__3B_ = 155 ;
-  public: static const int32_t kToken__3A_ = 156 ;
-  public: static const int32_t kToken__3A__3E_ = 157 ;
-  public: static const int32_t kToken__2D_ = 158 ;
-  public: static const int32_t kToken__28_ = 159 ;
-  public: static const int32_t kToken__29_ = 160 ;
-  public: static const int32_t kToken__2D__3E_ = 161 ;
-  public: static const int32_t kToken__3D__3D_ = 162 ;
-  public: static const int32_t kToken__3D_ = 163 ;
-  public: static const int32_t kToken__26__26_ = 164 ;
-  public: static const int32_t kToken__5B_ = 165 ;
-  public: static const int32_t kToken__5D_ = 166 ;
-  public: static const int32_t kToken__2B__3D_ = 167 ;
-  public: static const int32_t kToken__2D__3D_ = 168 ;
-  public: static const int32_t kToken__2A__3D_ = 169 ;
-  public: static const int32_t kToken__2F__3D_ = 170 ;
-  public: static const int32_t kToken__26__3D_ = 171 ;
-  public: static const int32_t kToken__7C__3D_ = 172 ;
-  public: static const int32_t kToken__5E__3D_ = 173 ;
-  public: static const int32_t kToken__2F_ = 174 ;
-  public: static const int32_t kToken__21__3D_ = 175 ;
-  public: static const int32_t kToken__3E__3D_ = 176 ;
-  public: static const int32_t kToken__26_ = 177 ;
-  public: static const int32_t kToken__7B_ = 178 ;
-  public: static const int32_t kToken__7D_ = 179 ;
-  public: static const int32_t kToken__60_ = 180 ;
-  public: static const int32_t kToken__7C__7C_ = 181 ;
-  public: static const int32_t kToken__7C_ = 182 ;
-  public: static const int32_t kToken__5E_ = 183 ;
-  public: static const int32_t kToken__3E__3E_ = 184 ;
-  public: static const int32_t kToken__7E_ = 185 ;
-  public: static const int32_t kToken__2D__2D_ = 186 ;
-  public: static const int32_t kToken__2B__2B_ = 187 ;
-  public: static const int32_t kToken__26__2D__2D_ = 188 ;
-  public: static const int32_t kToken__26__2B__2B_ = 189 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 190 ;
-  public: static const int32_t kToken__21__3D__3D_ = 191 ;
-  public: static const int32_t kToken__3F__5E_ = 192 ;
-  public: static const int32_t kToken__21__5E_ = 193 ;
-  public: static const int32_t kToken__A7__5B_ = 194 ;
+  public: static const int32_t kToken__27_char_27_ = 4 ;
+  public: static const int32_t kToken__24_terminal_24_ = 5 ;
+  public: static const int32_t kToken_comment = 6 ;
+  public: static const int32_t kToken_commentMark = 7 ;
+  public: static const int32_t kToken__40_type = 8 ;
+  public: static const int32_t kToken__3F_selector_3A_ = 9 ;
+  public: static const int32_t kToken__3F_ = 10 ;
+  public: static const int32_t kToken__3F__21_selector_3A_ = 11 ;
+  public: static const int32_t kToken__3F__21_ = 12 ;
+  public: static const int32_t kToken__21_selector_3A_ = 13 ;
+  public: static const int32_t kToken__21_ = 14 ;
+  public: static const int32_t kToken__21__3F_selector_3A_ = 15 ;
+  public: static const int32_t kToken__21__3F_ = 16 ;
+  public: static const int32_t kToken__3C_ = 17 ;
+  public: static const int32_t kToken__3C__3D_ = 18 ;
+  public: static const int32_t kToken__3C__3C_ = 19 ;
+  public: static const int32_t kToken__3C_non_5F_terminal_3E_ = 20 ;
+  public: static const int32_t kToken__22_string_22_ = 21 ;
+  public: static const int32_t kToken_abstract = 22 ;
+  public: static const int32_t kToken_after = 23 ;
+  public: static const int32_t kToken_as = 24 ;
+  public: static const int32_t kToken_bang = 25 ;
+  public: static const int32_t kToken_before = 26 ;
+  public: static const int32_t kToken_between = 27 ;
+  public: static const int32_t kToken_block = 28 ;
+  public: static const int32_t kToken_boolset = 29 ;
+  public: static const int32_t kToken_cast = 30 ;
+  public: static const int32_t kToken_case = 31 ;
+  public: static const int32_t kToken_class = 32 ;
+  public: static const int32_t kToken_default = 33 ;
+  public: static const int32_t kToken_dict = 34 ;
+  public: static const int32_t kToken_do = 35 ;
+  public: static const int32_t kToken_drop = 36 ;
+  public: static const int32_t kToken_else = 37 ;
+  public: static const int32_t kToken_elsif = 38 ;
+  public: static const int32_t kToken_end = 39 ;
+  public: static const int32_t kToken_enum = 40 ;
+  public: static const int32_t kToken_error = 41 ;
+  public: static const int32_t kToken_extension = 42 ;
+  public: static const int32_t kToken_extern = 43 ;
+  public: static const int32_t kToken_false = 44 ;
+  public: static const int32_t kToken_fileprivate = 45 ;
+  public: static const int32_t kToken_filewrapper = 46 ;
+  public: static const int32_t kToken_for = 47 ;
+  public: static const int32_t kToken_final = 48 ;
+  public: static const int32_t kToken_fixit = 49 ;
+  public: static const int32_t kToken_func = 50 ;
+  public: static const int32_t kToken_getter = 51 ;
+  public: static const int32_t kToken_grammar = 52 ;
+  public: static const int32_t kToken_graph = 53 ;
+  public: static const int32_t kToken_guard = 54 ;
+  public: static const int32_t kToken_gui = 55 ;
+  public: static const int32_t kToken_if = 56 ;
+  public: static const int32_t kToken_in = 57 ;
+  public: static const int32_t kToken_indexing = 58 ;
+  public: static const int32_t kToken_init = 59 ;
+  public: static const int32_t kToken_insert = 60 ;
+  public: static const int32_t kToken_is = 61 ;
+  public: static const int32_t kToken_label = 62 ;
+  public: static const int32_t kToken_let = 63 ;
+  public: static const int32_t kToken_lexique = 64 ;
+  public: static const int32_t kToken_list = 65 ;
+  public: static const int32_t kToken_log = 66 ;
+  public: static const int32_t kToken_loop = 67 ;
+  public: static const int32_t kToken_map = 68 ;
+  public: static const int32_t kToken_message = 69 ;
+  public: static const int32_t kToken_method = 70 ;
+  public: static const int32_t kToken_mod = 71 ;
+  public: static const int32_t kToken_mutating = 72 ;
+  public: static const int32_t kToken_nil = 73 ;
+  public: static const int32_t kToken_not = 74 ;
+  public: static const int32_t kToken_on = 75 ;
+  public: static const int32_t kToken_operator = 76 ;
+  public: static const int32_t kToken_option = 77 ;
+  public: static const int32_t kToken_or = 78 ;
+  public: static const int32_t kToken_override = 79 ;
+  public: static const int32_t kToken_parse = 80 ;
+  public: static const int32_t kToken_public = 81 ;
+  public: static const int32_t kToken_protected = 82 ;
+  public: static const int32_t kToken_private = 83 ;
+  public: static const int32_t kToken_proc = 84 ;
+  public: static const int32_t kToken_project = 85 ;
+  public: static const int32_t kToken_remove = 86 ;
+  public: static const int32_t kToken_repeat = 87 ;
+  public: static const int32_t kToken_replace = 88 ;
+  public: static const int32_t kToken_rewind = 89 ;
+  public: static const int32_t kToken_rule = 90 ;
+  public: static const int32_t kToken_search = 91 ;
+  public: static const int32_t kToken_select = 92 ;
+  public: static const int32_t kToken_self = 93 ;
+  public: static const int32_t kToken_send = 94 ;
+  public: static const int32_t kToken_setter = 95 ;
+  public: static const int32_t kToken_sortedlist = 96 ;
+  public: static const int32_t kToken_spoil = 97 ;
+  public: static const int32_t kToken_struct = 98 ;
+  public: static const int32_t kToken_style = 99 ;
+  public: static const int32_t kToken_super = 100 ;
+  public: static const int32_t kToken_switch = 101 ;
+  public: static const int32_t kToken_syntax = 102 ;
+  public: static const int32_t kToken_tag = 103 ;
+  public: static const int32_t kToken_template = 104 ;
+  public: static const int32_t kToken_then = 105 ;
+  public: static const int32_t kToken_true = 106 ;
+  public: static const int32_t kToken_typealias = 107 ;
+  public: static const int32_t kToken_unused = 108 ;
+  public: static const int32_t kToken_valueclass = 109 ;
+  public: static const int32_t kToken_var = 110 ;
+  public: static const int32_t kToken_warning = 111 ;
+  public: static const int32_t kToken_weak = 112 ;
+  public: static const int32_t kToken_while = 113 ;
+  public: static const int32_t kToken_with = 114 ;
+  public: static const int32_t kToken__25_app_2D_link = 115 ;
+  public: static const int32_t kToken__25_app_2D_source = 116 ;
+  public: static const int32_t kToken__25_applicationBundleBase = 117 ;
+  public: static const int32_t kToken__25_clonable = 118 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_33__32_ = 119 ;
+  public: static const int32_t kToken__25_codeblocks_2D_linux_36__34_ = 120 ;
+  public: static const int32_t kToken__25_codeblocks_2D_windows = 121 ;
+  public: static const int32_t kToken__25_comparable = 122 ;
+  public: static const int32_t kToken__25_equatable = 123 ;
+  public: static const int32_t kToken__25_from = 124 ;
+  public: static const int32_t kToken__25_generatedInSeparateFile = 125 ;
+  public: static const int32_t kToken__25_initArgLabel = 126 ;
+  public: static const int32_t kToken__25_libpmAtPath = 127 ;
+  public: static const int32_t kToken__25_MacOS = 128 ;
+  public: static const int32_t kToken__25_MacOSDeployment = 129 ;
+  public: static const int32_t kToken__25_macCodeSign = 130 ;
+  public: static const int32_t kToken__25_makefile_2D_macosx = 131 ;
+  public: static const int32_t kToken__25_makefile_2D_unix = 132 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 133 ;
+  public: static const int32_t kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 134 ;
+  public: static const int32_t kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx = 135 ;
+  public: static const int32_t kToken__25_nonAtomicSelection = 136 ;
+  public: static const int32_t kToken__25_once = 137 ;
+  public: static const int32_t kToken__25_preserved = 138 ;
+  public: static const int32_t kToken__25_quietOutputByDefault = 139 ;
+  public: static const int32_t kToken__25_templateEndMark = 140 ;
+  public: static const int32_t kToken__25_tool_2D_source = 141 ;
+  public: static const int32_t kToken__25_translate = 142 ;
+  public: static const int32_t kToken__25_usefull = 143 ;
+  public: static const int32_t kToken__2A_ = 144 ;
+  public: static const int32_t kToken__2C_ = 145 ;
+  public: static const int32_t kToken__2B_ = 146 ;
+  public: static const int32_t kToken__26__2B_ = 147 ;
+  public: static const int32_t kToken__26__2D_ = 148 ;
+  public: static const int32_t kToken__26__2A_ = 149 ;
+  public: static const int32_t kToken__26__2F_ = 150 ;
+  public: static const int32_t kToken__3E_ = 151 ;
+  public: static const int32_t kToken__3B_ = 152 ;
+  public: static const int32_t kToken__3A_ = 153 ;
+  public: static const int32_t kToken__3A__3E_ = 154 ;
+  public: static const int32_t kToken__2D_ = 155 ;
+  public: static const int32_t kToken__28_ = 156 ;
+  public: static const int32_t kToken__29_ = 157 ;
+  public: static const int32_t kToken__2D__3E_ = 158 ;
+  public: static const int32_t kToken__3D__3D_ = 159 ;
+  public: static const int32_t kToken__3D_ = 160 ;
+  public: static const int32_t kToken__26__26_ = 161 ;
+  public: static const int32_t kToken__5B_ = 162 ;
+  public: static const int32_t kToken__5D_ = 163 ;
+  public: static const int32_t kToken__2E_ = 164 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 165 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 166 ;
+  public: static const int32_t kToken__40__7B_ = 167 ;
+  public: static const int32_t kToken__40__28_ = 168 ;
+  public: static const int32_t kToken__2B__3D_ = 169 ;
+  public: static const int32_t kToken__2D__3D_ = 170 ;
+  public: static const int32_t kToken__2A__3D_ = 171 ;
+  public: static const int32_t kToken__2F__3D_ = 172 ;
+  public: static const int32_t kToken__26__3D_ = 173 ;
+  public: static const int32_t kToken__7C__3D_ = 174 ;
+  public: static const int32_t kToken__5E__3D_ = 175 ;
+  public: static const int32_t kToken__2F_ = 176 ;
+  public: static const int32_t kToken__21__3D_ = 177 ;
+  public: static const int32_t kToken__3E__3D_ = 178 ;
+  public: static const int32_t kToken__26_ = 179 ;
+  public: static const int32_t kToken__7B_ = 180 ;
+  public: static const int32_t kToken__7D_ = 181 ;
+  public: static const int32_t kToken__60_ = 182 ;
+  public: static const int32_t kToken__7C__7C_ = 183 ;
+  public: static const int32_t kToken__7C_ = 184 ;
+  public: static const int32_t kToken__5E_ = 185 ;
+  public: static const int32_t kToken__3E__3E_ = 186 ;
+  public: static const int32_t kToken__7E_ = 187 ;
+  public: static const int32_t kToken__2D__2D_ = 188 ;
+  public: static const int32_t kToken__2B__2B_ = 189 ;
+  public: static const int32_t kToken__26__2D__2D_ = 190 ;
+  public: static const int32_t kToken__26__2B__2B_ = 191 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 192 ;
+  public: static const int32_t kToken__21__3D__3D_ = 193 ;
+  public: static const int32_t kToken__3F__5E_ = 194 ;
+  public: static const int32_t kToken__21__5E_ = 195 ;
+  public: static const int32_t kToken__A7__5B_ = 196 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -613,7 +615,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 51 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 194 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 196 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -10487,224 +10489,4 @@ class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templa
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration list
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionListForGeneration (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GGS_templateInstructionListForGeneration (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GGS_templateInstructionForGeneration & in_mInstruction
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionListForGeneration init (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionListForGeneration extractObject (const GGS_object & inObject,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionListForGeneration class_func_emptyList (LOCATION_ARGS) ;
-
-  public: static class GGS_templateInstructionListForGeneration class_func_listWithValue (const class GGS_templateInstructionForGeneration & inOperand0
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_templateInstructionListForGeneration inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_templateInstructionForGeneration & inOperand0
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GGS_templateInstructionListForGeneration add_operation (const GGS_templateInstructionListForGeneration & inOperand,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_templateInstructionForGeneration constinArgument0,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_templateInstructionForGeneration constinArgument0,
-                                                      class GGS_uint constinArgument1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_templateInstructionForGeneration & outArgument0,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_templateInstructionForGeneration & outArgument0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_templateInstructionForGeneration & outArgument0,
-                                                      class GGS_uint constinArgument1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMInstructionAtIndex (class GGS_templateInstructionForGeneration constinArgument0,
-                                                               class GGS_uint constinArgument1,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GGS_templateInstructionForGeneration & outArgument0,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GGS_templateInstructionForGeneration & outArgument0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionForGeneration getter_mInstructionAtIndex (const class GGS_uint & constinOperand0,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GGS_templateInstructionListForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-
-//--- Append element
-  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_templateInstructionListForGeneration_2E_element & inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-  friend class cEnumerator_templateInstructionListForGeneration ;
- 
-} ; // End of GGS_templateInstructionListForGeneration class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_templateInstructionListForGeneration : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateInstructionListForGeneration (const GGS_templateInstructionListForGeneration & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GGS_templateInstructionForGeneration current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionListForGeneration_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @templateInstructionListForGeneration_2E_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionListForGeneration_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_templateInstructionForGeneration mProperty_mInstruction ;
-  public: inline GGS_templateInstructionForGeneration readProperty_mInstruction (void) const {
-    return mProperty_mInstruction ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInstruction (const GGS_templateInstructionForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstruction = inValue ;
-  }
-
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_templateInstructionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_templateInstructionListForGeneration_2E_element (const GGS_templateInstructionForGeneration & in_mInstruction) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionListForGeneration_2E_element init_21_ (const class GGS_templateInstructionForGeneration & inOperand0,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_templateInstructionListForGeneration_2E_element extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionListForGeneration_2E_element class_func_new (const class GGS_templateInstructionForGeneration & inOperand0,
-                                                                                           class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_templateInstructionListForGeneration_2E_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2E_element ;
 

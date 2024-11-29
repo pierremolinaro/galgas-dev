@@ -48,7 +48,7 @@ syntax extension templateSyntax {
     <expression_tpl> ?let switchExpression
     let @location endOfSwitchExpression = .here
   //--- Loop on "case" clauses
-    var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = ()
+    var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = @()
     repeat
     while
       $case$
@@ -56,7 +56,7 @@ syntax extension templateSyntax {
         ?let [@lstring] constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
-      var @templateInstructionListAST instructionList = ()
+      var @templateInstructionListAST instructionList = @()
       repeat
         enterTemplateString (!?instructionList)
       while
@@ -77,14 +77,14 @@ syntax extension templateSyntax {
 
   rule <switch_case> ![@lstring] outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
-    outConstantNameList = ()
+    outConstantNameList = @()
     repeat
       $identifier$ ?let @lstring constantName
       [!?outConstantNameList append !constantName]
     while
       $,$
     end
-    outAssociatedValuesExtraction = ()
+    outAssociatedValuesExtraction = @()
     select
     or
       $($
@@ -144,11 +144,11 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     ?let switchExpression
   ]
   if let enumType = [[switchExpression.mResultType definition].typeKind getEnumType] then
-    var @stringset constantsNamedInSwitchInstruction = ()
+    var @stringset constantsNamedInSwitchInstruction = @()
   //--- Analyze branches
-    var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = ()
+    var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = @()
     for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.templateInstructionSwitchBranchList do
-      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = ()
+      var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
       var analysisContext = inAnalysisContext
       for constantName in mConstantList do
         if [enumType.constantMap hasKey !constantName.string] then
@@ -196,7 +196,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
           + [switchExpression.mResultType definition].typeName.string + "' enumeration type"
         end
       end
-      var @templateInstructionListForGeneration instructionList = ()
+      var @templateInstructionListForGeneration instructionList = @()
       templateInstructionListAnalysis (
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph

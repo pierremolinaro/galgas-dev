@@ -21,7 +21,7 @@
 
 func makeEmbeddedTypeLName ?outer: let @lstring inOuterTypeName
                           ?inner: let @lstring inInnerTypeName -> @lstring {
-  result = .init (makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
+  result = @(makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
                   [inOuterTypeName.location union !inInnerTypeName])
 }
 
@@ -58,7 +58,7 @@ func makeEmbeddedElementTypeName ?let @string inTypeName -> @string {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeEmbeddedElementTypeLName ?let @lstring inTypeName -> @lstring {
-  result = .init (makeEmbeddedElementTypeName (!inTypeName), inTypeName)
+  result = @(makeEmbeddedElementTypeName (!inTypeName), inTypeName)
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,7 +72,7 @@ func makeArrayTypeName ?let @string inTypeName -> @string {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeArrayTypeLName ?let @lstring inTypeName -> @lstring {
-  result = .init (makeArrayTypeName (!inTypeName), inTypeName)
+  result = @(makeArrayTypeName (!inTypeName), inTypeName)
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,7 +86,7 @@ func makeWeakTypeName ?let @string inTypeName -> @string {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeWeakTypeLName ?let @lstring inTypeName -> @lstring {
-  result = .init (makeWeakTypeName (!inTypeName), inTypeName)
+  result = @(makeWeakTypeName (!inTypeName), inTypeName)
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
@@ -266,7 +266,7 @@ syntax extension galgas4DeclarationsSyntax {
 #                                !@lstring outTypeName {
 #    $[$
 #    <type_definition> !?ioDeclarations ?let elementTypeName
-#    outTypeName = .init ("[" + elementTypeName.string + "]", elementTypeName.location)
+#    outTypeName = @("[" + elementTypeName.string + "]", elementTypeName.location)
 #    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !outTypeName.string] then
 #      ioDeclarations.implicitTypeDeclarationSet += !outTypeName.string
 #      ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
@@ -360,7 +360,7 @@ syntax extension galgas4DeclarationsSyntax {
 #          !allTypedPropertyList: def.allTypedPropertyList
 #          !propertyMap: def.propertyMap # struct, class
 #          !currentTypedPropertyList: def.currentTypedPropertyList
-#          !initializerMap: def.initializerMap
+#          !initializerMap: definit ializerMap
 #          !classFunctionMap: def.classFunctionMap
 #          !getterMap: def.getterMap
 #          !setterMap: def.setterMap

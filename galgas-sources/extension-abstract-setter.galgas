@@ -123,7 +123,7 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
     if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionSetterMapForBuildingContext insertKey
         !self.mTypeName
-        !()
+        !@()
       ]
     end
     with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do

@@ -156,7 +156,7 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
   if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       ! self.mTypeName
-      !()
+      !@()
     ]
   end
   with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do

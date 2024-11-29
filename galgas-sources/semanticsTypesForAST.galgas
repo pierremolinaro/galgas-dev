@@ -33,7 +33,7 @@ dict @syntaxExtensionsDictionary : @string {
 //——————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @syntaxExtensions {
-  private(set) var @syntaxExtensionsDictionary dictionary = ()
+  private(set) var @syntaxExtensionsDictionary dictionary = @()
 
   //·····························································································
 
@@ -46,7 +46,7 @@ struct @syntaxExtensions {
       [!?aList append !inSyntaxComponentName !inNonterminalDeclarationList !inRuleList]
       self.dictionary += !inKey !aList
     else
-      self.dictionary += !inKey !§[.init (inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
+      self.dictionary += !inKey !§[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
     end
   }
 
@@ -56,7 +56,7 @@ struct @syntaxExtensions {
     if [self.dictionary hasKey !inKey] then
       [self.dictionary searchKey !inKey ?result]
    else
-      result = ()
+      result = @()
     end
   }
 
@@ -418,14 +418,14 @@ list @programRuleList {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @galgasDeclarationAST {
-  public var @semanticDeclarationListAST mDeclarationList = ()
-  public var @stringset implicitTypeDeclarationSet = ()
-  public var @galgas3SyntaxComponentListAST mSyntaxComponentList = ()
-  public var @syntaxExtensions mSyntaxExtensions = ()
-  public var @galgasGUIComponentListAST mGUIComponentList = ()
-  public var @prologueEpilogueList mPrologueDeclarationList = ()
-  public var @programRuleList mSourceRuleList = ()
-  public var @prologueEpilogueList mEpilogueDeclarationList = ()
+  public var @semanticDeclarationListAST mDeclarationList = @()
+  public var @stringset implicitTypeDeclarationSet = @()
+  public var @galgas3SyntaxComponentListAST mSyntaxComponentList = @()
+  public var @syntaxExtensions mSyntaxExtensions = @()
+  public var @galgasGUIComponentListAST mGUIComponentList = @()
+  public var @prologueEpilogueList mPrologueDeclarationList = @()
+  public var @programRuleList mSourceRuleList = @()
+  public var @prologueEpilogueList mEpilogueDeclarationList = @()
   
   //······························································································
 

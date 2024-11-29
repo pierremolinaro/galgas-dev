@@ -60,7 +60,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $identifier$ ?let @lstring actionName
-    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = ()
+    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
     $($
     repeat
     while
@@ -75,7 +75,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       let arg = @lexicalAttributeInputOutputArgumentAST {!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
-    var @lstringlist errorMessageList = ()
+    var @lstringlist errorMessageList = @()
     select
     or
       $error$
@@ -105,7 +105,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     $identifier$ ?let @lstring actionName
-    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = ()
+    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
     $($
     repeat
     while
@@ -120,7 +120,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       let arg = @lexicalAttributeInputOutputArgumentAST {!passingModeLocation !attributeName}
       actualArgumentList += !arg
     end
-    var @lstringlist errorMessageList = ()
+    var @lstringlist errorMessageList = @()
     select
     or
       $error$

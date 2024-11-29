@@ -7,7 +7,7 @@ map @myMap {
 // Version après 3.2.13 : pas de bug, « log a » affiche "Hello"
 proc bugMap() {
   var @myMap a = []
-  !?a.put (!.(!"var", !.here), !"Hello")
+  !?a.put (!@(!"var", !.here), !"Hello")
   let @myMap b = a
   var @myMap c = @myMap.mapWithMapToOverride(!b)
   !?c.setValueForKey (!"World", !@lstring (!"var", !.here))

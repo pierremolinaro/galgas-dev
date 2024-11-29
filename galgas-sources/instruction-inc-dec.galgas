@@ -322,7 +322,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
       !selfAvailable.type
-      !()
+      !@()
       !self.mKind
     }
   else
@@ -354,7 +354,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
       !self.mInstructionLocation
       !inAnalysisContext.selfObjectCppName
       !selfAvailable.type
-      !()
+      !@()
       !self.mKind
      }
   else

@@ -170,12 +170,12 @@ class @extensionMethodAST : @semanticDeclarationAST {
       !self.mExtensionMethodName.location
     }
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionMethodMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionMethodMapForBuildingContext insertKey
         ! self.mTypeName
-        !()
+        !@()
       ]
     end
     with self.mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do

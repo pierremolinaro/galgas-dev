@@ -41,7 +41,7 @@ class @boolPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = ()
+    outMap = @()
   }
 
   //----------------------------------------------------------------------------------------------

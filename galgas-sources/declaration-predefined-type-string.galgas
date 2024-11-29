@@ -27,14 +27,14 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
   //----------------------------------------------------------------------------------------------
 
   override method addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
-    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: .init ("bigint", .nowhere) !isPredefined: true]
+    [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: @("bigint", .nowhere) !isPredefined: true]
   }
 
   //----------------------------------------------------------------------------------------------
 
   override method getClassFunctionMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                       !@classFunctionMap outMap {
-    outMap = ()
+    outMap = @()
     enterClassFunctionWithoutArgument (
       !?outMap
       !?ioUnifiedTypeMap
@@ -200,7 +200,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
 
   override method getClassMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                     !@classMethodMap outClassMethodMap {
-    outClassMethodMap = ()
+    outClassMethodMap = @()
     enterClassMethodWithStringInputArgument (
       !?outClassMethodMap
       !?ioUnifiedTypeMap
@@ -232,17 +232,17 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?let @unifiedTypeMapEntry stringType]
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?let @unifiedTypeMapEntry boolType]
   //--- Generate file
-    var @formalParameterSignature argList = ()
+    var @formalParameterSignature argList = @()
     argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
     argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
     argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
     [!?outClassMethodMap insertOrReplace
-      !.init {!"generateFile" !.here}
+      !@{!"generateFile" !.here}
       !argList
       !true
     ]
   //--- Generate file with pattern
-    argList = ()
+    argList = @()
     argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
     argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
     argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
@@ -263,7 +263,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
 
   override method getInstanceMethodMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                        !@instanceMethodMap outInstanceMethodMap {
-    outInstanceMethodMap = ()
+    outInstanceMethodMap = @()
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap
       !?ioUnifiedTypeMap
@@ -310,7 +310,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
       !true
     )
   //--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
-    var @formalParameterSignature argList = ()
+    var @formalParameterSignature argList = @()
     [!?ioUnifiedTypeMap makeEntryFromString !"string" ?@unifiedTypeMapEntry t]
     argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
     [!?ioUnifiedTypeMap makeEntryFromString !"bool" ?t]
@@ -325,7 +325,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
       !"" # No error message
     ]
     [!?outInstanceMethodMap insertKey
-      !.init {!"writeToExecutableFileWhenDifferentContents" !.here}
+      !@{!"writeToExecutableFileWhenDifferentContents" !.here}
       !@methodKind.definedAsMember
       !argList
       !@location.here
@@ -339,7 +339,7 @@ class @stringPredefinedTypeAST : @predefinedTypeAST {
 
   override method getSetterMap ?!@unifiedTypeMap ioUnifiedTypeMap
                                !@setterMap outSetterMap {
-    outSetterMap = ()
+    outSetterMap = @()
     enterModifierWithInputArgument (
       !?outSetterMap
       !?ioUnifiedTypeMap

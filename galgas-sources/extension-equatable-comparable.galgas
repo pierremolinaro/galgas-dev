@@ -149,7 +149,7 @@ class @equatableExtensionAST : @semanticDeclarationAST {
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {![self keyRepresentation] !self.mTypeName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init ("@" + self.mTypeName, self.mTypeName)]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@("@" + self.mTypeName, self.mTypeName)]
   //---
     if let node = ioEquatableExtensionMap §[self.mTypeName] then
       switch self.mExtension

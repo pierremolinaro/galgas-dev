@@ -1,30 +1,30 @@
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#                                           
-#  Compile all galgas sources               
-#                                           
-#  Copyright (C) 1997, ..., 2024 Pierre Molinaro.                                                                     
-#                                           
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————
+//                                           
+//  Compile all galgas sources               
+//                                           
+//  Copyright (C) 1997, ..., 2024 Pierre Molinaro.                                                                     
+//                                           
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//————————————————————————————————————————————————————————————————————————————————————————————————
 
 project (3:8:0) -> "galgas" {
   %libpmAtPath : "../libpm"
-#--- Targets
+//--- Targets
   %makefile-macosx
   %makefile-unix
   %makefile-x86linux32-on-macosx
@@ -34,19 +34,19 @@ project (3:8:0) -> "galgas" {
   %codeblocks-linux32
   %codeblocks-linux64
 
-#--- JSON Parser
-#  "galgas-sources/json.galgas"
+//--- JSON Parser
+//  "galgas-sources/json.galgas"
 
-#--- Command Line Options
+//--- Command Line Options
   "galgas-sources/galgasCommandLineOptions.galgas"
 
-#--- Cocoa Interface
+//--- Cocoa Interface
   "galgas-sources/cocoaGalgas.galgas"
 
-#--- Project Creation
+//--- Project Creation
   "galgas-sources/projectCreation.galgas"
 
-#--- Template
+//--- Template
   "galgas-sources/galgasTemplateScanner.galgas"
   "galgas-sources/templateTypesForAST.galgas"
   "galgas-sources/templateSyntax.galgas"
@@ -57,7 +57,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/template-for-instruction.galgas"
   "galgas-sources/template-switch-instruction.galgas"
 
-#--- Lexique Component
+//--- Lexique Component
   "galgas-sources/lexique-component.galgas"
   "galgas-sources/template-lexique-component.galgas"
   "galgas-sources/lexiqueTypesForAST.galgas"
@@ -79,18 +79,18 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/lexique-instruction-tag.galgas"
   "galgas-sources/lexique-instruction-warning.galgas"
 
-#--- Option Component
+//--- Option Component
   "galgas-sources/optionCompilation.galgas"
 
-#--- GUI component
+//--- GUI component
   "galgas-sources/guiCompilation.galgas"
 
-#--- Scanners
+//--- Scanners
   "galgas-sources/galgasScanner3.galgas"
   "galgas-sources/galgasScanner4.galgas"
 
 
-#--- Predefined types
+//--- Predefined types
   "galgas-sources/declaration-predefined-type.galgas"
   "galgas-sources/declaration-predefined-type-application.galgas"
   "galgas-sources/declaration-predefined-type-bigint.galgas"
@@ -112,7 +112,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/declaration-predefined-type-uint.galgas"
   "galgas-sources/declaration-predefined-type-uint64.galgas"
 
-#--- Type declaration
+//--- Type declaration
   "galgas-sources/declaration-property.galgas"
   "galgas-sources/declaration-type-alias-and-type-declaration.galgas"
   "galgas-sources/declaration-type-array.galgas"
@@ -129,7 +129,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/declaration-type-sorted-list.galgas"
   "galgas-sources/declaration-type-struct.galgas"
 
-#--- Extensions
+//--- Extensions
   "galgas-sources/extension-abstract-getter.galgas"
   "galgas-sources/extension-abstract-method.galgas"
   "galgas-sources/extension-abstract-setter.galgas"
@@ -145,7 +145,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/extension-overriding-method.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
 
-#--- Semantics Component
+//--- Semantics Component
   "galgas-sources/unified-type-definition.galgas"
   "galgas-sources/variable-manager.galgas"
   "galgas-sources/unified-type-map.galgas"
@@ -169,7 +169,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/useful-entities-computation.galgas"
 
-#--- Expressions
+//--- Expressions
   "galgas-sources/expression-additive.galgas"
   "galgas-sources/expression-and.galgas"
   "galgas-sources/expression-bang.galgas"
@@ -206,7 +206,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/galgasExpressionSyntax.galgas"
   "galgas-sources/semanticExpressionAnalysis.galgas"
 
-#--- Instructions
+//--- Instructions
   "galgas-sources/instruction-assignment.galgas"
   "galgas-sources/instruction-cast.galgas"
   "galgas-sources/instruction-concat.galgas"
@@ -233,7 +233,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/instruction-warning.galgas"
   "galgas-sources/instruction-with.galgas"
 
-#--- Syntax instructions
+//--- Syntax instructions
   "galgas-sources/instruction-non-terminal.galgas"
   "galgas-sources/instruction-repeat.galgas"
   "galgas-sources/instruction-select.galgas"
@@ -244,29 +244,29 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/instruction-syntax-send.galgas"
   "galgas-sources/instruction-separator-string.galgas"
 
-#--- Syntax Component
+//--- Syntax Component
   "galgas-sources/syntaxSignature.galgas"
   "galgas-sources/syntaxCompilation.galgas"
 
-#--- Grammar component
+//--- Grammar component
   "galgas-sources/grammarSemantics.galgas"
   "galgas-sources/grammarCompilation.galgas"
   "galgas-sources/production-rules-in-tex.galgas"
 
-#--- Program component
+//--- Program component
   "galgas-sources/programComponentCompilation.galgas"
 
-#--- Main program
+//--- Main program
   "galgas-sources/galgasProgram.galgas"
 
-#--- Project component
+//--- Project component
   "galgas-sources/projectGlobalCheckings.galgas"
   "galgas-sources/libpmHandling.galgas"
 
-#--- GALGAS Project
+//--- GALGAS Project
   "galgas-sources/galgasProject.galgas"
 
-#--- GALGAS File
+//--- GALGAS File
   "galgas-sources/accessControl.galgas"
   "galgas-sources/galgasParameterArgumentSyntax.galgas"
   "galgas-sources/galgasInstructionsSyntax.galgas"
@@ -281,7 +281,7 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/XcodeProjectNewGeneration.galgas"
   "galgas-sources/galgasTargetGeneration.galgas"
 
-#--- Hand coded sources
+//--- Hand coded sources
   %tool-source : "hand_coded_sources/cDecisionTableElement.cpp"
   %tool-source : "hand_coded_sources/GrammarVocabulary.cpp"
   %tool-source : "hand_coded_sources/buildPureBNFgrammar.cpp"
@@ -299,4 +299,4 @@ project (3:8:0) -> "galgas" {
   %tool-source : "hand_coded_sources/displayUnicodeLexicalTestFunctions.cpp"
 }
 
-#—————————————————————————————————————————————————————————————————————————————————————————————————
+//————————————————————————————————————————————————————————————————————————————————————————————————

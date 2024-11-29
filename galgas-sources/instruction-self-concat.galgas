@@ -338,7 +338,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
       !""
-      !()
+      !@()
       !expression
       !"plusAssign_operation"
     }
@@ -384,7 +384,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
       !""
-      !()
+      !@()
       !expression
       !"minusAssign_operation"
     }
@@ -430,7 +430,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
       !""
-      !()
+      !@()
       !expression
       !"mulAssign_operation"
     }
@@ -476,7 +476,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
       !selfAvailable.type
       !inAnalysisContext.selfObjectCppName
       !""
-      !()
+      !@()
       !expression
       !"divAssign_operation"
     }

@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $elsif$
       <if_instruction_core> !?ioDeclarations ?let instruction
-      else_instructionList = §[.init (instruction)]
+      else_instructionList = §[@(instruction)]
     end
     outInstruction = @ifInstructionAST {
       !instructionLocation
@@ -69,7 +69,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
                             !@ifExpressionList outExpressionList {
-    outExpressionList = ()
+    outExpressionList = @()
     repeat
       select
         $let$
@@ -133,14 +133,14 @@ syntax extension galgas4InstructionsSyntax {
     let endOf_then_branchLocation = @location.here
     let @semanticInstructionListAST else_instructionList
     select
-      else_instructionList = ()
+      else_instructionList = @()
     or
       $else$
       <semantic_instruction_list> !?ioDeclarations ?else_instructionList
     or
       $elsif$
       <if_instruction_core> !?ioDeclarations ?let instruction
-      else_instructionList = §[.init (instruction)]
+      else_instructionList = §[@(instruction)]
     end
     outInstruction = @ifInstructionAST {
       !instructionLocation
@@ -165,7 +165,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
                        !@ifExpressionList outExpressionList {
-    outExpressionList = ()
+    outExpressionList = @()
     repeat
       select
         $let$
@@ -283,7 +283,7 @@ class @ifInstructionAST : @semanticInstructionAST {
                           ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
                           ?!@localVarManager ioVariableMap {
   //--- Test expression
-    var @ifTestListForGeneration testListForGeneration = ()
+    var @ifTestListForGeneration testListForGeneration = @()
     for (expression) in self.mExpressions do
       switch expression
       case regularExp (exp endOfExpression) :
@@ -440,9 +440,9 @@ class @ifInstructionAST : @semanticInstructionAST {
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
-      !localConstantList: ()
-      !localInitializedVariableListWarnsIfNotMutated: ()
-      !localInitializedVariableListNoWarnsIfNotMutated: ()
+      !localConstantList: @()
+      !localInitializedVariableListWarnsIfNotMutated: @()
+      !localInitializedVariableListNoWarnsIfNotMutated: @()
       !self.m_then_instructionList
       !?ioVariableMap
       ?let then_instructionList
@@ -460,9 +460,9 @@ class @ifInstructionAST : @semanticInstructionAST {
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioTypeMap
-      !localConstantList: ()
-      !localInitializedVariableListWarnsIfNotMutated: ()
-      !localInitializedVariableListNoWarnsIfNotMutated: ()
+      !localConstantList: @()
+      !localInitializedVariableListWarnsIfNotMutated: @()
+      !localInitializedVariableListNoWarnsIfNotMutated: @()
       !self.m_else_instructionList
       !self.mEndOf_if_instruction
       !?ioVariableMap

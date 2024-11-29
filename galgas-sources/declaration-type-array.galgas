@@ -99,10 +99,10 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?ioTypeMap makeEntry !self.elementTypeName ?let elementType]
   //--- Setter argument list
     var @formalParameterSignature setterInputFormalArgumentList = §[
-      .init (["" nowhere], elementType, .argumentConstantIn, "inElement")
+      @(["" nowhere], elementType, .argumentConstantIn, "inElement")
     ]
     var @formalParameterSignature setterOutputFormalArgumentList = §[
-      .init (["" nowhere], elementType, .argumentOut, "outElement")
+      @(["" nowhere], elementType, .argumentOut, "outElement")
     ]
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
@@ -147,7 +147,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #      !hasCompilerArgument:true
 #    )
   //------------------------ Instance methods
-    var @instanceMethodMap instanceMethodMap = ()
+    var @instanceMethodMap instanceMethodMap = @()
     [!?instanceMethodMap insertKey
       !@lstring {!"first" !@location.here}
       !@methodKind.definedAsMember
@@ -167,11 +167,11 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !""
     ]
   //---------------------------------------- Setters
-    var @setterMap setterMap = ()
+    var @setterMap setterMap = @()
     [!?setterMap insertKey
       !@lstring {!"append" !.here}
       !.definedAsMember
-      !§[.init (["" nowhere], elementType, .argumentConstantIn, "inElement")]
+      !§[@(["" nowhere], elementType, .argumentConstantIn, "inElement")]
       !true
       !@methodQualifier.isBasic
       !""
@@ -212,17 +212,17 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !"" # No error message
     ]
   //--- Add initializer without argument
-    var @initializerMap initializerMap = ()
-    let @functionSignature emptyArgumentList = ()
+    var @initializerMap initializerMap = @()
+    let @functionSignature emptyArgumentList = @()
     [!?initializerMap insertKey
-      !.init {![emptyArgumentList initializerSignature] !self.arrayTypeName}
+      !@{![emptyArgumentList initializerSignature] !self.arrayTypeName}
       !emptyArgumentList
     ]
   //--- Read subscripts
-    var @subscriptMap readSubscriptMap = ()
-    let @functionSignature argumentTypeList = §[.init (["" nowhere], uintType, "inIndex", true)]
+    var @subscriptMap readSubscriptMap = @()
+    let @functionSignature argumentTypeList = §[@(["" nowhere], uintType, "inIndex", true)]
     [!?readSubscriptMap insertKey
-      !.init ([argumentTypeList subcriptSignature], .nowhere)
+      !@([argumentTypeList subcriptSignature], .nowhere)
       !argumentTypeList
       !elementType
     ]
@@ -262,21 +262,21 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !superType: .null
       !typeKind: .listType
       !supportCollectionValue: true 
-      !allTypedPropertyList: ()
-      !propertyMap: ()
-      !currentTypedPropertyList: ()
+      !allTypedPropertyList: @()
+      !propertyMap: @()
+      !currentTypedPropertyList: @()
       !initializerMap: initializerMap
-      !classFunctionMap: ()
+      !classFunctionMap: @()
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
-      !classMethodMap: ()
+      !classMethodMap: @()
       !unwrappedType: .null
       !readSubscriptMap: readSubscriptMap
-      !enumerationDescriptorList: ()
+      !enumerationDescriptorList: @()
       !features: features
-      !addAssignOperatorArguments: ()
-      !mapSearchMethodList: ()
+      !addAssignOperatorArguments: @()
+      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false
       !typeForEnumeratedElement: elementType
       !headerFileName: "array-" + [self.arrayTypeName fileNameRepresentation]
@@ -289,7 +289,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   override method addAssociatedElement
     ?!@galgasDeclarationAST unused ioDeclarations {
-#    var @propertyInCollectionListAST structAttributeList = ()
+#    var @propertyInCollectionListAST structAttributeList = @()
 #    for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
 #      structAttributeList +=
 #        !isConstant: isConstant
@@ -301,7 +301,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 #    end
 #    ioSemanticDeclarationList += !@structDeclarationAST {
 #      !isPredefined: self.isPredefined
-#      !.init {!self.arrayTypeName.string + elementTypeNameSuffix () !self.arrayTypeName.location}
+#      !@{!self.arrayTypeName.string + elementTypeNameSuffix () !self.arrayTypeName.location}
 #      !structAttributeList
 #      !enumeratedElementTypeName: ""
 #      !comparison: if self.equatable then .equatable else .none end
@@ -340,8 +340,8 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
   //---
-#    var @typedPropertyList typedAttributeList = ()
-#    var @propertyIndexMap attributeMap = ()
+#    var @typedPropertyList typedAttributeList = @()
+#    var @propertyIndexMap attributeMap = @()
 #    for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
 #      if [initExpression isSome] then
 #        error propertyName : "property initialization is not handled for a list"

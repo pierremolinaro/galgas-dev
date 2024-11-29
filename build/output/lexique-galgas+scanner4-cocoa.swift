@@ -104,11 +104,11 @@ let galgasScanner4_1_ : UInt16 = 0
 let galgasScanner4_1_identifier : UInt16 = 1
 let galgasScanner4_1_double_2E_xxx : UInt16 = 2
 let galgasScanner4_1_literalInt : UInt16 = 3
-let galgasScanner4_1__40_type : UInt16 = 4
-let galgasScanner4_1__27_char_27_ : UInt16 = 5
-let galgasScanner4_1__24_terminal_24_ : UInt16 = 6
-let galgasScanner4_1_comment : UInt16 = 7
-let galgasScanner4_1_commentMark : UInt16 = 8
+let galgasScanner4_1__27_char_27_ : UInt16 = 4
+let galgasScanner4_1__24_terminal_24_ : UInt16 = 5
+let galgasScanner4_1_comment : UInt16 = 6
+let galgasScanner4_1_commentMark : UInt16 = 7
+let galgasScanner4_1__40_type : UInt16 = 8
 let galgasScanner4_1__3F_selector_3A_ : UInt16 = 9
 let galgasScanner4_1__3F_ : UInt16 = 10
 let galgasScanner4_1__3F__21_selector_3A_ : UInt16 = 11
@@ -266,7 +266,7 @@ let galgasScanner4_1__26__26_ : UInt16 = 162
 let galgasScanner4_1__5B_ : UInt16 = 163
 let galgasScanner4_1__5D_ : UInt16 = 164
 let galgasScanner4_1__2E_ : UInt16 = 165
-let galgasScanner4_1__2E__28_ : UInt16 = 166
+let galgasScanner4_1__40__28_ : UInt16 = 166
 let galgasScanner4_1__2E__2E__2E_ : UInt16 = 167
 let galgasScanner4_1__2E__2E__3C_ : UInt16 = 168
 let galgasScanner4_1__2B__3D_ : UInt16 = 169
@@ -423,11 +423,11 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       0, // 1 : galgasScanner4_1_identifier
       8, // 2 : galgasScanner4_1_double_2E_xxx
       7, // 3 : galgasScanner4_1_literalInt
-      11, // 4 : galgasScanner4_1__40_type
-      9, // 5 : galgasScanner4_1__27_char_27_
-      4, // 6 : galgasScanner4_1__24_terminal_24_
-      13, // 7 : galgasScanner4_1_comment
-      13, // 8 : galgasScanner4_1_commentMark
+      9, // 4 : galgasScanner4_1__27_char_27_
+      4, // 5 : galgasScanner4_1__24_terminal_24_
+      13, // 6 : galgasScanner4_1_comment
+      13, // 7 : galgasScanner4_1_commentMark
+      11, // 8 : galgasScanner4_1__40_type
       3, // 9 : galgasScanner4_1__3F_selector_3A_
       2, // 10 : galgasScanner4_1__3F_
       3, // 11 : galgasScanner4_1__3F__21_selector_3A_
@@ -585,7 +585,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       2, // 163 : galgasScanner4_1__5B_
       2, // 164 : galgasScanner4_1__5D_
       2, // 165 : galgasScanner4_1__2E_
-      2, // 166 : galgasScanner4_1__2E__28_
+      2, // 166 : galgasScanner4_1__40__28_
       2, // 167 : galgasScanner4_1__2E__2E__2E_
       2, // 168 : galgasScanner4_1__2E__2E__3C_
       2, // 169 : galgasScanner4_1__2B__3D_
@@ -629,11 +629,11 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       true, // 1 : galgasScanner4_1_identifier
       true, // 2 : galgasScanner4_1_double_2E_xxx
       true, // 3 : galgasScanner4_1_literalInt
-      true, // 4 : galgasScanner4_1__40_type
-      true, // 5 : galgasScanner4_1__27_char_27_
-      true, // 6 : galgasScanner4_1__24_terminal_24_
-      false, // 7 : galgasScanner4_1_comment
-      false, // 8 : galgasScanner4_1_commentMark
+      true, // 4 : galgasScanner4_1__27_char_27_
+      true, // 5 : galgasScanner4_1__24_terminal_24_
+      false, // 6 : galgasScanner4_1_comment
+      false, // 7 : galgasScanner4_1_commentMark
+      true, // 8 : galgasScanner4_1__40_type
       true, // 9 : galgasScanner4_1__3F_selector_3A_
       true, // 10 : galgasScanner4_1__3F_
       true, // 11 : galgasScanner4_1__3F__21_selector_3A_
@@ -791,7 +791,7 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       true, // 163 : galgasScanner4_1__5B_
       true, // 164 : galgasScanner4_1__5D_
       true, // 165 : galgasScanner4_1__2E_
-      true, // 166 : galgasScanner4_1__2E__28_
+      true, // 166 : galgasScanner4_1__40__28_
       true, // 167 : galgasScanner4_1__2E__2E__2E_
       true, // 168 : galgasScanner4_1__2E__2E__3C_
       true, // 169 : galgasScanner4_1__2B__3D_
@@ -992,20 +992,6 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
         scanner_cocoa_routine_convertDecimalStringIntoBigInt (&scanningOk, mLexicalAttribute_tokenString, &self.mLexicalAttribute_bigintValue)
         tokenCode = galgasScanner4_1_literalInt
       }
-    }else if scanningOk && (self.testForInputChar (64)) {
-      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
-        while (loop && scanningOk) {
-          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
-          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
-          }else{
-            loop = false
-          }
-        }
-        loop = true
-      }else{
-        scanningOk = false
-      }
-      tokenCode = galgasScanner4_1__40_type
     }else if scanningOk && (self.testForInputChar (37)) {
       if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
@@ -1209,6 +1195,8 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       tokenCode = galgasScanner4_1__7C__3D_
     }else if scanningOk && self.testForInputString ("^=", advance: true) {
       tokenCode = galgasScanner4_1__5E__3D_
+    }else if scanningOk && self.testForInputString ("@(", advance: true) {
+      tokenCode = galgasScanner4_1__40__28_
     }else if scanningOk && self.testForInputString ("\?^", advance: true) {
       tokenCode = galgasScanner4_1__3F__5E_
     }else if scanningOk && self.testForInputString (">>", advance: true) {
@@ -1221,8 +1209,6 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       tokenCode = galgasScanner4_1__3A__3E_
     }else if scanningOk && self.testForInputString ("/=", advance: true) {
       tokenCode = galgasScanner4_1__2F__3D_
-    }else if scanningOk && self.testForInputString (".(", advance: true) {
-      tokenCode = galgasScanner4_1__2E__28_
     }else if scanningOk && self.testForInputString ("->", advance: true) {
       tokenCode = galgasScanner4_1__2D__3E_
     }else if scanningOk && self.testForInputString ("-=", advance: true) {
@@ -1293,6 +1279,20 @@ class SWIFT_Lexique_galgasScanner4 : SWIFT_Lexique {
       tokenCode = galgasScanner4_1__28_
     }else if scanningOk && self.testForInputString ("&", advance: true) {
       tokenCode = galgasScanner4_1__26_
+    }else if scanningOk && (self.testForInputChar (64)) {
+      if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+        while (loop && scanningOk) {
+          scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
+          if scanningOk && (self.testForInputFromChar (97, toChar:122) || self.testForInputFromChar (65, toChar:90) || self.testForInputChar (95) || self.testForInputFromChar (48, toChar:57)) {
+          }else{
+            loop = false
+          }
+        }
+        loop = true
+      }else{
+        scanningOk = false
+      }
+      tokenCode = galgasScanner4_1__40_type
     }else if scanningOk && (self.testForInputString ("\?!", advance: true)) {
       let locationForTag_onlyInterrogationExclamationMark = self.savedScanningPoint ()
       if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {

@@ -50,7 +50,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   //······························································································
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
-    outIndexNameList = ()
+    outIndexNameList = @()
     select
     or
       $indexing$
@@ -108,7 +108,7 @@ syntax extension galgas4SyntaxComponentSyntax {
   //······························································································
 
   rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
-    outIndexNameList = ()
+    outIndexNameList = @()
     select
     or
       $indexing$

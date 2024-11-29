@@ -80,7 +80,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <cast_else_or_default> ?!@galgasDeclarationAST ioDeclarations
                               !@semanticInstructionListAST outElseOrDefault {
     select
-      outElseOrDefault = ()
+      outElseOrDefault = @()
     or
       $else$
       <semantic_instruction_list_ggs3> !?ioDeclarations ?outElseOrDefault
@@ -89,13 +89,13 @@ syntax extension galgas3InstructionsSyntax {
       let instructionLocation = @location.here
       $error$
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST errorLocationExpression
-      outElseOrDefault = ()
+      outElseOrDefault = @()
       outElseOrDefault += !@errorInstructionAST {
         !instructionLocation
         !errorLocationExpression
-        !@literalStringExpressionAST (instructionLocation, §[.init ("cast instruction run-time error")])
-        !()
-        !()
+        !@literalStringExpressionAST (instructionLocation, §[@("cast instruction run-time error")])
+        !@()
+        !@()
       }
     end
   }
@@ -203,8 +203,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !inAnalysisContext
       !?ioTypeMap
       !localConstantList: localConstantList
-      !localInitializedVariableListWarnsIfNotMutated: ()
-      !localInitializedVariableListNoWarnsIfNotMutated: ()
+      !localInitializedVariableListWarnsIfNotMutated: @()
+      !localInitializedVariableListNoWarnsIfNotMutated: @()
       !mInstructionList
       !mEndOfInstructions
       !?ioVariableMap
@@ -218,9 +218,9 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: ()
-    !localInitializedVariableListWarnsIfNotMutated: ()
-    !localInitializedVariableListNoWarnsIfNotMutated: ()
+    !localConstantList: @()
+    !localInitializedVariableListWarnsIfNotMutated: @()
+    !localInitializedVariableListNoWarnsIfNotMutated: @()
     !self.mElseInstructionList
     !self.mEndOfCastInstruction
     !?ioVariableMap

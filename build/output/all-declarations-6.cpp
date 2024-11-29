@@ -253,9 +253,9 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
   const GGS_formalParameterListAST temp_0 = inObject ;
-  cEnumerator_formalParameterListAST enumerator_4863 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_4863.hasCurrentObject ()) {
-    switch (enumerator_4863.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  cEnumerator_formalParameterListAST enumerator_4860 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_4860.hasCurrentObject ()) {
+    switch (enumerator_4860.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
@@ -275,11 +275,11 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
       }
       break ;
     }
-    result_result.plusAssign_operation(enumerator_4863.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
-    if (enumerator_4863.hasNextObject ()) {
+    result_result.plusAssign_operation(enumerator_4860.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
+    if (enumerator_4860.hasNextObject ()) {
       result_result.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 134)) ;
     }
-    enumerator_4863.gotoNextObject () ;
+    enumerator_4860.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 136)) ;
 //---
@@ -301,10 +301,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_formalInputParameterListAST temp_0 = inObject ;
-  cEnumerator_formalInputParameterListAST enumerator_5777 (temp_0, EnumerationOrder::up) ;
-  while (enumerator_5777.hasCurrentObject ()) {
-    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_5777.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
-    enumerator_5777.gotoNextObject () ;
+  cEnumerator_formalInputParameterListAST enumerator_5774 (temp_0, EnumerationOrder::up) ;
+  while (enumerator_5774.hasCurrentObject ()) {
+    result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_5774.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
+    enumerator_5774.gotoNextObject () ;
   }
 //---
   return result_result ;

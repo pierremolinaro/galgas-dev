@@ -179,7 +179,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     ?let repeated_instructionList
   )
 //--- 'while' blocks
-  var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = ()
+  var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = @()
   for (mSyntaxInstructionList mEndOf_instructions) in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName

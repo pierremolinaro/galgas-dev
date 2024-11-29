@@ -85,7 +85,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 //---
   let type = [ioTypeMap typeMapEntryForLKey !self.mLiteralTypeName]
   outExpression = @literalTypeInExpressionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !.init {!"type" !.here}]
+    ![ioTypeMap typeMapEntryForLKey !@{!"type" !.here}]
     !self.mLiteralTypeName.location
     !type
   }

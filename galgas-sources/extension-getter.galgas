@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -81,7 +81,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -128,7 +128,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -163,7 +163,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> !?ioDeclarations ?let formalInputParameterList
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
-    let @lstring resultVariableName = .init {!"result" !.here}
+    let @lstring resultVariableName = @{!"result" !.here}
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
@@ -217,12 +217,12 @@ class @extensionGetterAST : @semanticDeclarationAST {
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
     let key = @lstring {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName !self.mExtensionGetterName.location}
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !.init {!"@" + self.mTypeName !self.mTypeName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@{!"@" + self.mTypeName !self.mTypeName.location}]
   //---
     if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
       [!?ioExtensionGetterMapForBuildingContext insertKey
         !self.mTypeName
-        !()
+        !@()
       ]
     end
     with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do

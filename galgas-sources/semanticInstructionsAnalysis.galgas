@@ -99,7 +99,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   ?!@localVarManager ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
-  outInstructionListForGeneration = ()
+  outInstructionListForGeneration = @()
 //--- Declare local constants
   for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
     if mNoWarningIfUnused then
@@ -192,9 +192,9 @@ proc checkExpressionIsBoolean
           !inErrorLocation
           !mKind
           !inExpression
-          !()
+          !@()
           !"bool"
-          !()
+          !@()
           !mHasCompilerArgument
         }
       end

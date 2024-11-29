@@ -211,7 +211,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     + [[self.mExpressions count] string] + " parameter(s)"
     : effectiveParameterList
   else
-    effectiveParameterList = ()
+    effectiveParameterList = @()
     for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressions, (mFormalSelector mFormalArgumentType 2*) in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end

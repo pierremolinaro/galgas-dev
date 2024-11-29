@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     ${$
   //--- Class properties
-    var @propertyInCollectionListAST propertyList = ()
+    var @propertyInCollectionListAST propertyList = @()
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !? propertyList
@@ -138,7 +138,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ${$
   //--- Class properties
-    var @propertyInCollectionListAST propertyList = ()
+    var @propertyInCollectionListAST propertyList = @()
     repeat
     while
       <property_declaration> !?ioDeclarations !?propertyList
@@ -208,7 +208,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     if self.mSuperClassName.string != "" then
       [!?ioSemanticTypePrecedenceGraph addEdge
         !key
-        !.init {!"@" + self.mSuperClassName !self.mSuperClassName.location}
+        !@{!"@" + self.mSuperClassName !self.mSuperClassName.location}
       ]
     end
   //--- Add edge from property types
@@ -234,17 +234,17 @@ class @classDeclarationAST : @semanticDeclarationAST {
     var @setterMap setterMap
     var @instanceMethodMap instanceMethodMap
     let @typedPropertyList inheritedTypedPropertyList
-    var @propertyMap attributeMap = ()
+    var @propertyMap attributeMap = @()
   //--- Handle super class
     let @unifiedTypeMapEntry superClassIndex
     let @bool generateHeaderInSeparateFile
     if self.mSuperClassName.string == "" then
       superClassIndex = .null
       commonGetterMapForAllTypes (!?ioTypeMap ?getterMap)
-      setterMap = ()
-      instanceMethodMap = ()
-      inheritedTypedPropertyList = ()
-      attributeMap = ()
+      setterMap = @()
+      instanceMethodMap = @()
+      inheritedTypedPropertyList = @()
+      attributeMap = @()
       generateHeaderInSeparateFile = self.mGenerateInSeparateFile
     else
       [!?ioTypeMap makeEntry !self.mSuperClassName ?superClassIndex]
@@ -257,7 +257,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         error self.mSuperClassName : "the @" + self.mSuperClassName + " should be a class type"
       end
     //--- Mark all setters as inherited
-      setterMap = ()
+      setterMap = @()
       for (lkey mKind mParameterList mHasCompilerArgument * *) in superTypeDefinition.setterMap do
         [!?setterMap insertKey
           !lkey
@@ -269,7 +269,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         ]
       end
     //--- Mark all getters as inherited
-      getterMap = ()
+      getterMap = @()
       for theGetter in superTypeDefinition.getterMap do
         [!?getterMap insertKey
           !theGetter.lkey
@@ -283,7 +283,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
         ]
       end
     //--- Mark all methods as inherited
-      instanceMethodMap = ()
+      instanceMethodMap = @()
       for instanceMethod in superTypeDefinition.instanceMethodMap do
         [!?instanceMethodMap insertKey
           !instanceMethod.lkey
@@ -299,7 +299,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
   //--- Current class Index
     [!?ioTypeMap makeEntry !self.mClassTypeName ?let @unifiedTypeMapEntry classIndex]
   //--- Build attribute Map and constructor argument list
-    var @functionSignature synthetizedInitializerArgumentList = ()
+    var @functionSignature synthetizedInitializerArgumentList = @()
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
         synthetizedInitializerArgumentList +=
@@ -330,7 +330,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Class functions
-    var @classFunctionMap classFunctionMap = ()
+    var @classFunctionMap classFunctionMap = @()
     if not self.mIsAbstract then
       [!?classFunctionMap insertKey
         !@lstring {!"new" !@location.here}
@@ -340,7 +340,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       ]
     end
   //--- Typed attribute list
-    var @typedPropertyList currentClassTypedPropertyList = ()
+    var @typedPropertyList currentClassTypedPropertyList = @()
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
     for property in self.mPropertyList do
       [!?ioTypeMap makeEntry !property.typeName ?let attributeTypeIndex]
@@ -362,9 +362,9 @@ class @classDeclarationAST : @semanticDeclarationAST {
       for property in currentClassTypedPropertyList do
         if property.hasSetter then
           [!?setterMap insertKey
-            !.init {!"setProperty_"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
+            !@{!"setProperty_"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
-            !§[.init (["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
+            !§[@(["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
             !true # Compiler argument
             !.isBasicFinal
             !"" # No error message
@@ -373,18 +373,18 @@ class @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Clonable ?
-    var @initializerMap initializerMap = ()
+    var @initializerMap initializerMap = @()
     var @typeFeatures features = if self.mIsReference then .referenceEquatable else .comparable end
     if self.clonable then
       features |= .clonable
-      var @functionSignature cloneInitializerArgumentList = ()
+      var @functionSignature cloneInitializerArgumentList = @()
       cloneInitializerArgumentList +=
         !["cloned" nowhere]
         !classIndex
         !"inObject"
         !true
       [!?initializerMap insertKey
-        !.init {![cloneInitializerArgumentList initializerSignature] !self.mClassTypeName}
+        !@{![cloneInitializerArgumentList initializerSignature] !self.mClassTypeName}
         !cloneInitializerArgumentList
       ]
     end
@@ -408,7 +408,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
     if [initializerMap count] == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
       [!?initializerMap insertKey
-        !.init {![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
+        !@{![synthetizedInitializerArgumentList initializerSignature] !self.mClassTypeName}
         !synthetizedInitializerArgumentList
       ]
     end
@@ -435,13 +435,13 @@ class @classDeclarationAST : @semanticDeclarationAST {
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
-      !classMethodMap: ()
+      !classMethodMap: @()
       !unwrappedType: .null
-      !readSubscriptMap: ()
-      !enumerationDescriptorList: ()
+      !readSubscriptMap: @()
+      !enumerationDescriptorList: @()
       !features: features
-      !addAssignOperatorArguments: ()
-      !mapSearchMethodList: ()
+      !addAssignOperatorArguments: @()
+      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: generateHeaderInSeparateFile
       !typeForEnumeratedElement: .null
       !headerFileName: "class-" + [self.mClassTypeName fileNameRepresentation]
@@ -499,14 +499,14 @@ class @classDeclarationAST : @semanticDeclarationAST {
   # A class without a super class admits the 'generatedInSeparateFile' feature
     var @typedPropertyList allAttributeList
     if superClassEntry == .null then
-      allAttributeList = ()
+      allAttributeList = @()
     else
       allAttributeList = [superClassEntry definition].allTypedPropertyList
       if self.mGenerateInSeparateFile then
         error self.mClassTypeName : "a class that has a super class does not accept any feature"
       end
     end
-    var @typedPropertyList synthetizedInheritedInitializerArgumentList = ()
+    var @typedPropertyList synthetizedInheritedInitializerArgumentList = @()
     for property in allAttributeList do
       if property.initialization == .none then
         synthetizedInheritedInitializerArgumentList +=
@@ -518,8 +518,8 @@ class @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   //----- Enter properties
-    var @typedPropertyList typedAttributeList = ()
-    var @propertyIndexMap attributeMap = ()
+    var @typedPropertyList typedAttributeList = @()
+    var @propertyIndexMap attributeMap = @()
     for property in self.mPropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
       [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
@@ -539,7 +539,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
       [!?attributeMap insertKey !property.name !t]
     end
   //--- Build property initialization code
-    var @typedPropertyList synthetizedInitialzerArgumentList = ()
+    var @typedPropertyList synthetizedInitialzerArgumentList = @()
     for property in [selfType definition].allTypedPropertyList do
     if property.initialization == .none then
       synthetizedInitialzerArgumentList +=
@@ -792,7 +792,7 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
     [self.mSelfTypeEntry addHeaderFileName !?ioInclusionSet]
     let selfTypeDefinition = [self.mSelfTypeEntry definition]
     let at = [self.mAllTypedAttributeList subListWithRange
-      !.init {!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
+      !@{!0 ![self.mAllTypedAttributeList count] - [self.mCurrentTypedAttributeList count]}
     ]
     if self.mIsReference then
       outImplementation = [filewrapper classGenerationTemplate.referenceClassTypeSpecificImplementation

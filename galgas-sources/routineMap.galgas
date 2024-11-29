@@ -34,7 +34,7 @@ func routineMangledName ?let @lstring inRoutineName
     end
     str += parameter.mFormalSelector
   end
-  result = .init {!str !inRoutineName.location}
+  result = @{!str !inRoutineName.location}
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
@@ -61,7 +61,7 @@ private func routineArgumentFromFormalParameters ?let @formalParameterSignature 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @routineMap {
-  private var @internalRoutineMap mInternalRoutineMap = ()
+  private var @internalRoutineMap mInternalRoutineMap = @()
 
   //······························································································
 
@@ -72,14 +72,14 @@ struct @routineMap {
     if [self.mInternalRoutineMap hasKey !inRoutineName] then
       [self.mInternalRoutineMap searchKey !inRoutineName ?routineArgumentMap]
     else
-      routineArgumentMap = ()
+      routineArgumentMap = @()
     end
     let routineArguments = routineArgumentFromFormalParameters (!inRoutineSignature)
     if [routineArgumentMap hasKey !routineArguments] then
       error inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine"
     else
      [!?routineArgumentMap insertKey
-       !.init {!routineArguments !inRoutineName.location}
+       !@{!routineArguments !inRoutineName.location}
        !inRoutineSignature
        !inIsFilePrivate
      ]
@@ -96,12 +96,12 @@ struct @routineMap {
                    !routineMangledName: @lstring outRoutineMangledName {
     if let routine = self.mInternalRoutineMap §[inRoutineName] then
       outIsFilePrivate = false
-      outRoutineSignature = ()
+      outRoutineSignature = @()
       for entry in routine.mArgumentMap do
         outIsFilePrivate = entry.mIsFilePrivate
         outRoutineSignature = entry.mRoutineSignature
       end
-      var @acceptableParameterList acceptableParameterList = ()
+      var @acceptableParameterList acceptableParameterList = @()
       for entry in routine.mArgumentMap do
         var accept = [inActualParameterList count] == [entry.mRoutineSignature count]
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do

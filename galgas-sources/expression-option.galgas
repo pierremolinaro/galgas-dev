@@ -55,7 +55,7 @@ syntax extension galgas3ExpressionSyntax {
     $.$
     $identifier$ ?let optionName
     $identifier$ ?let getterName
-    outExpression = @optionExpressionAST {!.init {!"galgas_builtin_options" !.here} !optionName !getterName}
+    outExpression = @optionExpressionAST {!@{!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
   }
 
@@ -90,7 +90,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ ?let optionName
     $.$
     $identifier$ ?let getterName
-    outExpression = @optionExpressionAST {!.init {!"galgas_builtin_options" !.here} !optionName !getterName}
+    outExpression = @optionExpressionAST {!@{!"galgas_builtin_options" !.here} !optionName !getterName}
     $]$
   }
 
@@ -176,7 +176,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    var @stringlist s = ()
+    var @stringlist s = @()
     for (lkey * * * *) in boolOptionMap do
       s += !lkey
     end

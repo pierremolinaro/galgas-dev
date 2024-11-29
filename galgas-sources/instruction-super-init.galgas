@@ -45,7 +45,9 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $.$
     $init$
+    $($
     <output_expression_list_ggs34> !?ioDeclarations ?let actualParameterList
+    $)$
     outInstruction = @superInitInstructionAST {
       !instructionLocation
       !actualParameterList
@@ -117,7 +119,7 @@ class @superInitInstructionAST : @semanticInstructionAST {
         for superProperty in superTypeDefinition.allTypedPropertyList do
           if superProperty.initialization == .none then
             [!?ioVariableMap searchForWriteAccess 
-              !.init {!"self." + superProperty.name !self.mInstructionLocation}
+              !@{!"self." + superProperty.name !self.mInstructionLocation}
               ?3*
             ]
           end
@@ -161,10 +163,10 @@ class @superInitInstructionAST : @semanticInstructionAST {
           !superTypeDefinition.typeName
         }
      case null :
-       error self.mInstructionLocation : "super.init is not available, current class has no super class"
+       error self.mInstructionLocation : "superinit  is not available, current class has no super class"
      end
    else
-     error self.mInstructionLocation : "super.init should be call in a class initializer"
+     error self.mInstructionLocation : "superinit  should be call in a class initializer"
    end
   }
 
@@ -189,7 +191,7 @@ class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
                                       ?!@stringset ioUnusedVariableCppNameSet
                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString
                                       ?!@string ioGeneratedCode {
-    var @stringlist getterArgumentCppNameList = ()
+    var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualParameterList do
       [mExpression generateExpression
         !?ioGeneratedCode

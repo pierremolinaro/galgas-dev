@@ -6566,11 +6566,11 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "an identifier",
         "a float number",
         "a big integer number",
-        "a type name (@...)",
         "a character constant",
         "a terminal symbol ($...$)",
         "a comment",
         "a comment",
+        "a type name (@...)",
         "the '\?selector:' delimitor",
         "the '\?' delimitor",
         "the '\?!selector:' delimitor",
@@ -6728,7 +6728,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the '[' delimitor",
         "the ']' delimitor",
         "the '.' delimitor",
-        "the '.(' delimitor",
+        "the '@(' delimitor",
         "the '...' delimitor",
         "the '..<' delimitor",
         "the '+=' delimitor",
@@ -6919,12 +6919,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E_
   TO_UNICODE ('.'),
 } ;
 
-//--- Unicode string for '$.($'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__28_ = {
-  TO_UNICODE ('.'),
-  TO_UNICODE ('('),
-} ;
-
 //--- Unicode string for '$...$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__2E_ = {
   TO_UNICODE ('.'),
@@ -7023,6 +7017,12 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F_
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__5E_ = {
   TO_UNICODE ('\?'),
   TO_UNICODE ('^'),
+} ;
+
+//--- Unicode string for '$@($'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___40__28_ = {
+  TO_UNICODE ('@'),
+  TO_UNICODE ('('),
 } ;
 
 //--- Unicode string for '$MacOS$'
@@ -8655,13 +8655,13 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___2D__2D_, Lexique_galgasScanner_34_::kToken__2D__2D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___2D__3D_, Lexique_galgasScanner_34_::kToken__2D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___2D__3E_, Lexique_galgasScanner_34_::kToken__2D__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___2E__28_, Lexique_galgasScanner_34_::kToken__2E__28_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___2F__3D_, Lexique_galgasScanner_34_::kToken__2F__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___3A__3E_, Lexique_galgasScanner_34_::kToken__3A__3E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___3D__3D_, Lexique_galgasScanner_34_::kToken__3D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___3E__3D_, Lexique_galgasScanner_34_::kToken__3E__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___3E__3E_, Lexique_galgasScanner_34_::kToken__3E__3E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___3F__5E_, Lexique_galgasScanner_34_::kToken__3F__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___40__28_, Lexique_galgasScanner_34_::kToken__40__28_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___5E__3D_, Lexique_galgasScanner_34_::kToken__5E__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___7C__3D_, Lexique_galgasScanner_34_::kToken__7C__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___7C__7C_, Lexique_galgasScanner_34_::kToken__7C__7C_),
@@ -8811,13 +8811,6 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
       break ;
-    case kToken__40_type:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("@type") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendChar (TO_UNICODE (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
     case kToken__27_char_27_:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("'char'") ;
@@ -8841,6 +8834,13 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("commentMark") ;
       s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__40_type:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("@type") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__3F_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
@@ -9639,9 +9639,9 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString (".") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
-    case kToken__2E__28_:
+    case kToken__40__28_:
       s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString (".(") ;
+      s.appendCString ("@(") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2E__2E__2E_:
@@ -9900,21 +9900,6 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken_literalInt ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('@'))) {
-      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-        do {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-      }else{
-        lexicalError (gLexicalMessage_galgasScanner_34__incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-      token.mTokenCode = kToken__40_type ;
-      enterToken (token) ;
     }else if (testForInputUTF32Char (TO_UNICODE ('%'))) {
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
@@ -10130,6 +10115,9 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___5E__3D_, true)) {
       token.mTokenCode = kToken__5E__3D_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___40__28_, true)) {
+      token.mTokenCode = kToken__40__28_ ;
+      enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___3F__5E_, true)) {
       token.mTokenCode = kToken__3F__5E_ ;
       enterToken (token) ;
@@ -10147,9 +10135,6 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___2F__3D_, true)) {
       token.mTokenCode = kToken__2F__3D_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___2E__28_, true)) {
-      token.mTokenCode = kToken__2E__28_ ;
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___2D__3E_, true)) {
       token.mTokenCode = kToken__2D__3E_ ;
@@ -10255,6 +10240,21 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___26_, true)) {
       token.mTokenCode = kToken__26_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (TO_UNICODE ('@'))) {
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        do {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+      }else{
+        lexicalError (gLexicalMessage_galgasScanner_34__incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+      token.mTokenCode = kToken__40_type ;
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___3F__21_, true)) {
       const LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
@@ -10734,11 +10734,11 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("identifier") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("double.xxx") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("literalInt") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("@type") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("'char'") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("$terminal$") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("comment") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("commentMark") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("@type") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?selector:") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?!selector:") COMMA_HERE) ;
@@ -10896,7 +10896,7 @@ GGS_stringlist Lexique_galgasScanner_34_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("[") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("]") COMMA_HERE) ;
   result.addAssign_operation (GGS_string (".") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (".(") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("@(") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("...") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("..<") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("+=") COMMA_HERE) ;
@@ -11023,13 +11023,13 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("--") ;
     ioList.appendObject ("-=") ;
     ioList.appendObject ("->") ;
-    ioList.appendObject (".(") ;
     ioList.appendObject ("/=") ;
     ioList.appendObject (":>") ;
     ioList.appendObject ("==") ;
     ioList.appendObject (">=") ;
     ioList.appendObject (">>") ;
     ioList.appendObject ("\?^") ;
+    ioList.appendObject ("@(") ;
     ioList.appendObject ("^=") ;
     ioList.appendObject ("|=") ;
     ioList.appendObject ("||") ;
@@ -11145,11 +11145,11 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     0 /* galgasScanner4_1_identifier */,
     8 /* galgasScanner4_1_double_2E_xxx */,
     7 /* galgasScanner4_1_literalInt */,
-    11 /* galgasScanner4_1__40_type */,
     9 /* galgasScanner4_1__27_char_27_ */,
     4 /* galgasScanner4_1__24_terminal_24_ */,
     13 /* galgasScanner4_1_comment */,
     13 /* galgasScanner4_1_commentMark */,
+    11 /* galgasScanner4_1__40_type */,
     3 /* galgasScanner4_1__3F_selector_3A_ */,
     2 /* galgasScanner4_1__3F_ */,
     3 /* galgasScanner4_1__3F__21_selector_3A_ */,
@@ -11307,7 +11307,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     2 /* galgasScanner4_1__5B_ */,
     2 /* galgasScanner4_1__5D_ */,
     2 /* galgasScanner4_1__2E_ */,
-    2 /* galgasScanner4_1__2E__28_ */,
+    2 /* galgasScanner4_1__40__28_ */,
     2 /* galgasScanner4_1__2E__2E__2E_ */,
     2 /* galgasScanner4_1__2E__2E__3C_ */,
     2 /* galgasScanner4_1__2B__3D_ */,

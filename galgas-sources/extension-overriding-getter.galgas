@@ -61,7 +61,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let routineInstructionList
@@ -105,7 +105,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -153,7 +153,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -186,7 +186,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
@@ -227,7 +227,7 @@ override method @overridingExtensionGetterAST enterDeclarationInGraph
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !self.mTypeName
-      !()
+      !@()
     ]
   end
   with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
@@ -289,7 +289,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
 //--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
-  var @functionSignature inheritedSignature = ()
+  var @functionSignature inheritedSignature = @()
   var inheritedReturnType = @unifiedTypeMapEntry.null
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)
@@ -331,7 +331,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !self.mOverridingExtensionGetterFormalInputParameterList
     !if [[selfType definition].typeKind isClassType] | ([selfType definition].typeKind == .structType)
        then [selfType definition].allTypedPropertyList
-       else ()
+       else @()
      end
     !"this->"
     !self.mOverridingExtensionGetterInstructionList

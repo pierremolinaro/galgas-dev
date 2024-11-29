@@ -166,7 +166,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
                                               !@string outImplementation {
     ioInclusionSet += !"syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
     outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
-      !()
+      !@()
     ]
   //---
     let lexiqueCppName = "Lexique_" + [self.mLexiqueName identifierRepresentation]
@@ -264,7 +264,7 @@ proc generateProcedure
   !@string outGeneratedCode
 {
 //--- Build unused variable set
-  var @stringset unusedVariableCppNameSet = ()
+  var @stringset unusedVariableCppNameSet = @()
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName ()
   end
@@ -384,7 +384,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
 //--- Build unused variable set
-  var @stringset unusedVariableCppNameSet = ()
+  var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet += !compilerCppName ()
 //--- Release 'in' and 'const in' arguments at the end of the routine
   for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
@@ -466,7 +466,7 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
 //--- Build unused variable set
-  var @stringset unusedVariableCppNameSet = ()
+  var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet += !compilerCppName ()
 //--- Release 'in' and 'const in' arguments at the end of the routine
   for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
@@ -543,7 +543,7 @@ proc generateExtensionSetter
   ?let @semanticInstructionListForGeneration inInstructionList
   !@string outGeneratedCode {
 //--- Build unused variable set
-  var @stringset unusedVariableCppNameSet = ()
+  var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
@@ -636,7 +636,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
                                 !@string outGeneratedCode {
   let className = [inReceiverType definition].typeName.string
 //--- Build unused variable set
-  var @stringset unusedVariableCppNameSet = ()
+  var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
@@ -1372,7 +1372,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   //--- Build generated code for instruction list
     var @string generatedCodeForInstructionList = ""
     var @uint temporaryVariableIndex = 0
-    var @stringset unusedVariableCppNameSet = ()
+    var @stringset unusedVariableCppNameSet = @()
     unusedVariableCppNameSet += !compilerCppName ()
     for (* * mFormalArgumentCppName * *) in mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet += !mFormalArgumentCppName
@@ -1476,14 +1476,14 @@ proc generatePredefinedTypeFiles
   end
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
-      [mDeclaration appendDeclaration1 !? %from () ?let @string code]
+      [mDeclaration appendDeclaration1 !? %from @() ?let @string code]
       generatedCode += code
     end
   end
   generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
-      [mDeclaration appendDeclaration2 !inDirectory !? %from () ?let @string headerString2]
+      [mDeclaration appendDeclaration2 !inDirectory !? %from @() ?let @string headerString2]
       generatedCode += headerString2
     end
   end
@@ -1507,7 +1507,7 @@ proc generatePredefinedTypeFiles
   for (* mDeclaration) in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
-      [mDeclaration appendSpecificImplementation ! () !? %from () ?let @string code]
+      [mDeclaration appendSpecificImplementation ! @() !? %from @() ?let @string code]
       generatedCode += code
     end
   end

@@ -25,7 +25,7 @@ syntax extension galgas3ExpressionSyntax {
                       !@semanticExpressionAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
     $§[$
-    var @collectionValueElementList expressionList = ()
+    var @collectionValueElementList expressionList = @()
     select
     or
       repeat
@@ -53,7 +53,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression {
     let startLocation = @location.here
     $[$
-    var @collectionValueElementList expressionList = ()
+    var @collectionValueElementList expressionList = @()
     select
     or
       repeat
@@ -63,7 +63,7 @@ syntax extension galgas4ExpressionSyntax {
         $,$
       end
     end
-    outExpression = @collectionValueAST (.init ("", startLocation), expressionList, .here)
+    outExpression = @collectionValueAST (@("", startLocation), expressionList, .here)
     $]$
   }
 
@@ -73,7 +73,7 @@ syntax extension galgas4ExpressionSyntax {
                                    ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticExpressionAST outExpression {
     $[$
-    var @collectionValueElementList expressionList = ()
+    var @collectionValueElementList expressionList = @()
     select
     or
       repeat
@@ -139,9 +139,9 @@ class @collectionValueAST : @semanticExpressionAST {
       + " type does not support collection value" : outExpression
     else
       let initializerMap = [targetType definition].initializerMap
-      let @functionSignature emptyArgumentList = ()
+      let @functionSignature emptyArgumentList = @()
       if not [initializerMap hasKey ![emptyArgumentList initializerSignature]] then
-        error self.mTypeName : "the @" + self.mTypeName + " has no init () initializer"
+        error self.mTypeName : "the @" + self.mTypeName + " has no @() initializer"
       end
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -151,7 +151,7 @@ class @collectionValueAST : @semanticExpressionAST {
       [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !nameForUsefulness]
     //---
       let elementType = [targetType definition].typeForEnumeratedElement
-      var @collectionValueElementListForGeneration expressionListForGeneration = ()
+      var @collectionValueElementListForGeneration expressionListForGeneration = @()
       for (expression location) in self.mExpressionList do
         [expression analyzeSemanticExpression
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName

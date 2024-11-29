@@ -54,7 +54,7 @@ syntax extension galgas3DeclarationsSyntax {
       isUsefull = true
     end
     ${$
-    var @propertyInCollectionListAST propertyList = ()
+    var @propertyInCollectionListAST propertyList = @()
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !?propertyList
@@ -104,7 +104,7 @@ syntax extension galgas4DeclarationsSyntax {
       isUsefull = true
     end
     ${$
-    var @propertyInCollectionListAST propertyList = ()
+    var @propertyInCollectionListAST propertyList = @()
     repeat
     while
       <property_declaration> !?ioDeclarations !?propertyList
@@ -165,7 +165,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 //--- Handle attributes
-  var @typedPropertyList typedAttributeList = ()
+  var @typedPropertyList typedAttributeList = @()
   for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a list"
@@ -183,10 +183,10 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     ?let @unifiedTypeMapEntry listElementTypeIndex
   ]
 //--- Property description
-  var @enumerationDescriptorList enumerationDescriptor = ()
-  var @functionSignature constructorAttributeTypeList = ()
-  var @formalParameterSignature setterOutputFormalArgumentList = ()
-  var @formalParameterSignature setterInputFormalArgumentList = ()
+  var @enumerationDescriptorList enumerationDescriptor = @()
+  var @functionSignature constructorAttributeTypeList = @()
+  var @formalParameterSignature setterOutputFormalArgumentList = @()
+  var @formalParameterSignature setterInputFormalArgumentList = @()
   for (mPropertyTypeEntry mPropertyName * * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
     enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
@@ -207,7 +207,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !mPropertyName.string
   end
 //--- Class functions
-  var @classFunctionMap classFunctionMap = ()
+  var @classFunctionMap classFunctionMap = @()
   enterClassFunctionWithoutArgument (
     !?classFunctionMap
     !?ioTypeMap
@@ -267,7 +267,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !@lstring {!mPropertyName.string + "AtIndex" !mPropertyName.location}
       !@methodKind.definedAsMember
-      !@functionSignature §[.init (["" nowhere], uintType, "inIndex", true)]
+      !@functionSignature §[@(["" nowhere], uintType, "inIndex", true)]
       !@location.here
       !true
       !mPropertyTypeEntry
@@ -276,7 +276,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 //------------------------ Instance methods
-  var @instanceMethodMap instanceMethodMap = ()
+  var @instanceMethodMap instanceMethodMap = @()
   [!?instanceMethodMap insertKey
     !@lstring {!"first" !@location.here}
     !@methodKind.definedAsMember
@@ -296,7 +296,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !""
   ]
 //---------------------------------------- Modifiers
-  var @setterMap setterMap = ()
+  var @setterMap setterMap = @()
   [!?setterMap insertOrReplace
     !@lstring {!"append" !@location.here}
     !@methodKind.definedAsMember
@@ -356,10 +356,10 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !"" # No error message
   ]
 //--- Add initializer without argument
-  var @initializerMap initializerMap = ()
-  let @functionSignature emptyArgumentList = ()
+  var @initializerMap initializerMap = @()
+  let @functionSignature emptyArgumentList = @()
   [!?initializerMap insertKey
-    !.init {![emptyArgumentList initializerSignature] !self.mListTypeName}
+    !@{![emptyArgumentList initializerSignature] !self.mListTypeName}
     !emptyArgumentList
   ]
 //--- Add extensions
@@ -399,20 +399,20 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !typeKind: .listType
     !supportCollectionValue: true # Support collection value
     !allTypedPropertyList: typedAttributeList
-    !propertyMap: ()
-    !currentTypedPropertyList: ()
+    !propertyMap: @()
+    !currentTypedPropertyList: @()
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: ()
+    !classMethodMap: @()
     !unwrappedType: .null
-    !readSubscriptMap: ()
+    !readSubscriptMap: @()
     !enumerationDescriptorList: enumerationDescriptor
     !features: features
     !addAssignOperatorArguments: constructorAttributeTypeList
-    !mapSearchMethodList: ()
+    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false
     !typeForEnumeratedElement: listElementTypeIndex
     !headerFileName: "list-" + [self.mListTypeName fileNameRepresentation]
@@ -425,7 +425,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
 
 override method @listDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
-  var @propertyInCollectionListAST structAttributeList = ()
+  var @propertyInCollectionListAST structAttributeList = @()
   for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
     structAttributeList +=
       !mutability: mutability
@@ -483,8 +483,8 @@ override method @listDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
 //---
-  var @typedPropertyList typedAttributeList = ()
-  var @propertyIndexMap attributeMap = ()
+  var @typedPropertyList typedAttributeList = @()
+  var @propertyIndexMap attributeMap = @()
   for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error propertyName : "property initialization is not handled for a list"

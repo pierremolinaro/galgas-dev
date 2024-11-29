@@ -48,7 +48,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   //----------------------------------------------------------------------------------------------
 
   getter initializers -> @initializerSignatureList {
-    result = ()
+    result = @()
   }
 
   //----------------------------------------------------------------------------------------------
@@ -95,9 +95,9 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       [!?ioTypeMap makeEntryFromString !enumeratedTypeName ?enumeratedTypeEntry]
     end
   //--- Add Extensions
-    var @initializerMap initializerMap = ()
+    var @initializerMap initializerMap = @()
     for (initializer) in [self initializers] do
-      var @functionSignature formalParameterList = ()
+      var @functionSignature formalParameterList = @()
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in initializer do
         formalParameterList +=
           !mFormalSelector
@@ -105,7 +105,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
           !mFormalArgumentName.string
           !mIsConstant
       end      
-      [!?initializerMap insertKey !.init ([initializer initializerSignature], .nowhere) !formalParameterList]
+      [!?initializerMap insertKey !@([initializer initializerSignature], .nowhere) !formalParameterList]
     end
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
@@ -130,9 +130,9 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !superType: .null
       !typeKind: [self typeKind]
       !supportCollectionValue: [self supportsCollectionValue]
-      !allTypedPropertyList: ()
-      !propertyMap: ()
-      !currentTypedPropertyList: ()
+      !allTypedPropertyList: @()
+      !propertyMap: @()
+      !currentTypedPropertyList: @()
       !initializerMap: initializerMap
       !classFunctionMap: constructorMap
       !getterMap: getterMap
@@ -140,11 +140,11 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap
       !classMethodMap: classMethodMap
       !unwrappedType: .null
-      !readSubscriptMap: ()
+      !readSubscriptMap: @()
       !enumerationDescriptorList: enumerationList
       !features: [self getSupportedOperatorFlags]
       !addAssignOperatorArguments: addAssignArgumentList
-      !mapSearchMethodList: ()
+      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !typeForEnumeratedElement: enumeratedTypeEntry
       !headerFileName: "predefined-types"
@@ -163,15 +163,15 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?!@unifiedTypeMap ioTypeMap
       ?let @predefinedTypes unused inPredefinedTypes
       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
-   let selfType = [ioTypeMap typeMapEntryForLKey !.init {!self.mPredefinedTypeName !.here}]
+   let selfType = [ioTypeMap typeMapEntryForLKey !@{!self.mPredefinedTypeName !.here}]
   //--- Useful entities graph
-    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.init {!self.mPredefinedTypeName !.here})
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!@{!self.mPredefinedTypeName !.here})
     [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
     ioUsefulnessRootEntities += !nameForUsefulness
   //--- Useful entities graph for initializer without any argument
     for initializer in selfType.definition.initializerMap do
       let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !.init {!self.mPredefinedTypeName !.here}
+        !@{!self.mPredefinedTypeName !.here}
         ![initializer.mArgumentTypeList initializerSignature]
       )
       [!?ioUsefulEntitiesGraph addNode !initializerNameForUsefulness !initializerNameForUsefulness]
@@ -192,41 +192,41 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   method getClassFunctionMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                              !@classFunctionMap outClassFunctionMap {
-    outClassFunctionMap = ()
+    outClassFunctionMap = @()
   }
 
   //----------------------------------------------------------------------------------------------
 
   method getGetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@getterMap outGetterMap {
-    outGetterMap = ()
+    outGetterMap = @()
   }
 
   //----------------------------------------------------------------------------------------------
 
   method getSetterMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                       !@setterMap outSetterMap {
-    outSetterMap = ()
+    outSetterMap = @()
   }
 
   //----------------------------------------------------------------------------------------------
 
   method getInstanceMethodMap ?!@unifiedTypeMap unused ioUnifiedTypeMap
                               !@instanceMethodMap outInstanceMethodMap {
-    outInstanceMethodMap = ()
+    outInstanceMethodMap = @()
   }
 
   //----------------------------------------------------------------------------------------------
 
   method getClassMethodMap  ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@classMethodMap outClassMethodMap {
-    outClassMethodMap = ()
+    outClassMethodMap = @()
   }
 
   //----------------------------------------------------------------------------------------------
 
   getter getSupportedOperatorFlags -> @typeFeatures outFlags {
-    outFlags = ()
+    outFlags = @()
   }
 
   //----------------------------------------------------------------------------------------------
@@ -239,7 +239,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   method getAddAssignArgumentList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                                   !@functionSignature outAddAssignArgumentList {
-    outAddAssignArgumentList = ()
+    outAddAssignArgumentList = @()
   }
 
   //----------------------------------------------------------------------------------------------
@@ -247,7 +247,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   method getEnumerationList ?!@unifiedTypeMap unused ioUnifiedTypeMap
                             !@enumerationDescriptorList outEnumerationList
                             !@string outEnumeratedType {
-    outEnumerationList = () # Enumeration is not supported
+    outEnumerationList = @() # Enumeration is not supported
     outEnumeratedType = "" # Enumeration is not supported
   }
 
@@ -260,7 +260,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                           ?let @string inElementTypeName
                                           ?!@lstringlist ioUsefulnessRootEntities {
-  var @propertyInCollectionListAST attributeList = ()
+  var @propertyInCollectionListAST attributeList = @()
   attributeList +=
     !mutability: .mutableProperty
     !@lstring {!inElementTypeName !@location.here}
@@ -342,10 +342,10 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!type.structTypeName)
   ioUsefulnessRootEntities += !typeUsefulnessName
 //--- Mark its initializers as usefull
-#  for initializer in type.initializers do
+#  for initializer in typeinit ializers do
 #    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
 #      !type.structTypeName
-#      ![initializer.initializer initializerSignature]
+#      ![initializerinit ializer initializerSignature]
 #    )
 #    ioUsefulnessRootEntities += !initializerNameForUsefulness
 #  end
@@ -355,7 +355,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
 
 private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclarationListASTs
                                          ?!@lstringlist unused ioUsefulnessRootEntities {
-  var @propertyInCollectionListAST attributeList = ()
+  var @propertyInCollectionListAST attributeList = @()
   attributeList +=
     !mutability: .mutableProperty
     !@lstring {!"uint" !@location.here}
@@ -385,7 +385,7 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
 private proc insertInUsefulnessEntities 
          ?!@lstringlist ioUsefulnessRootEntities
          ?let @string inTypeName {
-  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!.init{!inTypeName !.nowhere})
+  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!@{!inTypeName !.nowhere})
   ioUsefulnessRootEntities += !typeUsefulnessName
 }
 
@@ -398,14 +398,14 @@ private proc insertPredefinedType
 //--- Declare type
   ioDeclarationListASTs += !inPredefinedTypeAST
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (
-    !.init{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
+    !@{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
   )
 //--- Mark it as usefull
   ioUsefulnessRootEntities += !typeUsefulnessName
 //--- Mark its initializers as usefull
   for initializer in inPredefinedTypeAST.initializers do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !.init{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
+      !@{!inPredefinedTypeAST.mPredefinedTypeName !.nowhere}
       ![initializer.initializer initializerSignature]
     )
     ioUsefulnessRootEntities += !initializerNameForUsefulness

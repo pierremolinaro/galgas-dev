@@ -101,7 +101,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   //······························································································
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
-    outFilewrapperTextFileExtensionList = ()
+    outFilewrapperTextFileExtensionList = @()
     ${$
     select
     or
@@ -118,7 +118,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   //······························································································
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
-    outFilewrapperBinaryFileExtensionList = ()
+    outFilewrapperBinaryFileExtensionList = @()
     ${$
     select
     or
@@ -137,13 +137,13 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
                                !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
-    outFilewrapperTemplateList = ()
+    outFilewrapperTemplateList = @()
     repeat
     while
       $template$
       $identifier$ ?let mFilewrapperTemplateName
       $"string"$ ?let mFilewrapperTemplatePath
-      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = ()
+      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
       repeat
       while
         $?selector:$ ?let selector
@@ -266,7 +266,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   //······························································································
 
   rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
-    outFilewrapperTextFileExtensionList = ()
+    outFilewrapperTextFileExtensionList = @()
     ${$
     select
     or
@@ -283,7 +283,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   //······························································································
 
   rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
-    outFilewrapperBinaryFileExtensionList = ()
+    outFilewrapperBinaryFileExtensionList = @()
     ${$
     select
     or
@@ -302,14 +302,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <filewrapper_templates> ?!@galgasDeclarationAST ioDeclarations
                                !@filewrapperTemplateListAST outFilewrapperTemplateList {
     ${$
-    outFilewrapperTemplateList = ()
+    outFilewrapperTemplateList = @()
     repeat
     while
       $template$
       $identifier$ ?let mFilewrapperTemplateName
       $:$
       $"string"$ ?let mFilewrapperTemplatePath
-      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = ()
+      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
       $($
       select
       or

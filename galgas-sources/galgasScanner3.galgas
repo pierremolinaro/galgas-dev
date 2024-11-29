@@ -1,25 +1,25 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  GALGAS scanner definition
-#
-#  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  GALGAS scanner definition
+//
+//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 lexique galgasScanner3 {
@@ -106,8 +106,8 @@ style attributeStyle -> "Attributes (%...)"
 style commentStyle -> "Comments"
 
 // ------------------------- identifier or key word --------------------
-# keywords can be written in lower or upper case
-# for identifiers, case is significant
+// keywords can be written in lower or upper case
+// for identifiers, case is significant
 
 $identifier$ ! tokenString error message "an identifier"
 
@@ -170,7 +170,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "option",
   "or",
   "override",
-#  "package",
+//  "package",
   "parse",
   "public",
   "protected",
@@ -267,66 +267,6 @@ rule '0'->'9' {
     convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
     send $literalInt$
   end
-}
-
-
-//------------------------------ Floating point Number ------------------
-$.$ style delimitersStyle error message "the '.' delimitor"
-$...$ style delimitersStyle error message "the '...' delimitor"
-$..<$ style delimitersStyle error message "the '..<' delimitor"
-
-//--- Floating Point constant begining with a dot
-rule '.' {
-  select
-  case '0'->'9' :
-    enterCharacterIntoString (!?tokenString !'0')
-    enterCharacterIntoString (!?tokenString !'.')
-    enterCharacterIntoString (!?tokenString !* )
-    repeat
-    while '0'->'9' :
-      enterCharacterIntoString (!?tokenString !* )
-    while '_' :
-    end
-    convertStringToDouble (!tokenString !?floatValue error floatNumberConversionError )
-    send $double.xxx$
-  default
-    select
-    case ".." :
-      send $...$
-    case ".<" :
-      send $..<$
-    default
-      send $.$
-    end
-  end
-}
-
-
-// ------------------------- Type Name -----------------------------
-
-$@type$ ! tokenString style typeNameStyle error message "a type name (@...)"
-
-message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
-
-rule '@' {
-  select
-  case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    repeat
-      enterCharacterIntoString (!?tokenString !* )
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end
-#    select
-#    case '-' :
-#      repeat
-#        enterCharacterIntoString (!?tokenString !* )
-#      while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-#      end
-#    default
-#    end
-  default
-    error incorrectTypeNameError
-  end
-  send $@type$
 }
 
 // ------------------------- Attribute -----------------------------
@@ -587,6 +527,9 @@ rule "//" {
   end
 }
 
+
+
+
 // ---------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList style delimitersStyle error message "the '%K' delimitor" {
   "*",    ",",   "+",  "&+", "&-", "&*", "&/",
@@ -594,6 +537,7 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   "-",    "(",   ")",  "->",
   "==",   "=",   "&&",
   "[",    "]",
+  ".",    "...", "..<", "@{", "@(",
   "+=",   "-=",   "*=", "/=", "&=", "|=", "^=",
   "/",    "!=",  ">=", "&",
   "{",    "}",   "`",  "||", "|",
@@ -605,7 +549,25 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
 
 rule list galgasDelimitorsList
 
-// -------- Special formal arguments, actual parameters --------------------------
+// ------------------------- Type Name -----------------------------
+
+$@type$ ! tokenString style typeNameStyle error message "a type name (@...)"
+
+message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
+
+rule '@' {
+  select
+  case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    repeat
+      enterCharacterIntoString (!?tokenString !* )
+    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end
+    send $@type$
+  default
+    error incorrectTypeNameError
+  end
+}
+
 // -------- Special formal arguments, actual parameters --------------------------
 $?selector:$ ! tokenString style selectorStyle error message "the '\?selector:' delimitor"
 $?$ style delimitersStyle error message "the '?' delimitor"
@@ -755,20 +717,6 @@ rule '"' {
       enterCharacterIntoString (!?tokenString !'\'')
     case '?' :
       enterCharacterIntoString (!?tokenString !'?')
-#    case '&' :
-#      repeat
-#      while ~ ";" error incorrectHTMLescapeSequence :
-#        enterCharacterIntoString (!?identifierString !* )
-#      end
-#      convertHTMLSequenceToUnicodeCharacter (!?identifierString !?charValue error unknownHTMLescapeSequence )
-#      enterCharacterIntoString (!?tokenString !charValue )
-#    case '0' -> '9' :
-#      warning obsoleteStringConstruction
-#      repeat
-#        enterHexDigitIntoASCIIcharacter (!?charValue !* error ASCIIcodeTooLargeError, internalError )
-#      while '0' -> '9' :
-#      end
-#      enterCharacterIntoString (!?tokenString !charValue )
     case 'u' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :

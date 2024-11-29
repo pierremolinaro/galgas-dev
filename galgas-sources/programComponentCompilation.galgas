@@ -111,7 +111,7 @@ private proc compileProgramRulesGalgas3
     [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
     ioUsefulnessRootEntities += !usefulnessName
     let @formalParameterListAST argumentList = §[
-      .init (["" nowhere], .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
+      @(["" nowhere], .argumentConstantIn, @lstring {!"lstring" !@location.here}, mSourceFileVariableName, mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
       !usefulnessName
@@ -157,7 +157,7 @@ proc compileAfterClauseGalgas3
   [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
   ioUsefulnessRootEntities += !usefulnessName
 //--- Compile 'after' routines
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration = ()
+  var @semanticInstructionListForGeneration semanticInstructionListForGeneration = @()
   for (mInstructionList mEndOfInstructionList) in inEpilogueList do
     analyzeRoutineBody (
       !usefulnessName
@@ -213,7 +213,7 @@ proc compileProgramComponentGalgas3
     !requiresSelfForAccessingProperty: false # self.requiresSelfForAccessingProperty
   }
 //--- Analyse 'before' instructions
-  var @programListForGeneration decoratedDeclarationListForGeneration = ()
+  var @programListForGeneration decoratedDeclarationListForGeneration = @()
   compileBeforeClauseGalgas3 (
     !?ioUsefulnessRootEntities
     !?ioUsefulEntitiesGraph
@@ -241,7 +241,7 @@ proc compileProgramComponentGalgas3
     !?decoratedDeclarationListForGeneration
   )
 //----------- Build Implementation File
-  var @stringset inclusionSet = ()
+  var @stringset inclusionSet = @()
   var beforeAfterRulesString = ""
   for (mDeclaration) in decoratedDeclarationListForGeneration do
     beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation]
@@ -255,7 +255,7 @@ proc compileProgramComponentGalgas3
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation
     !"program"
-    !() # [inclusionSet stringList]
+    !@() # [inclusionSet stringList]
     !beforeAfterRulesString
     !inProgramRules
     !inProjectVersionString

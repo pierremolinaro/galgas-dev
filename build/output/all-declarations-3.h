@@ -3881,11 +3881,11 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: static const int32_t kToken_identifier = 1 ;
   public: static const int32_t kToken_double_2E_xxx = 2 ;
   public: static const int32_t kToken_literalInt = 3 ;
-  public: static const int32_t kToken__40_type = 4 ;
-  public: static const int32_t kToken__27_char_27_ = 5 ;
-  public: static const int32_t kToken__24_terminal_24_ = 6 ;
-  public: static const int32_t kToken_comment = 7 ;
-  public: static const int32_t kToken_commentMark = 8 ;
+  public: static const int32_t kToken__27_char_27_ = 4 ;
+  public: static const int32_t kToken__24_terminal_24_ = 5 ;
+  public: static const int32_t kToken_comment = 6 ;
+  public: static const int32_t kToken_commentMark = 7 ;
+  public: static const int32_t kToken__40_type = 8 ;
   public: static const int32_t kToken__3F_selector_3A_ = 9 ;
   public: static const int32_t kToken__3F_ = 10 ;
   public: static const int32_t kToken__3F__21_selector_3A_ = 11 ;
@@ -4043,7 +4043,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: static const int32_t kToken__5B_ = 163 ;
   public: static const int32_t kToken__5D_ = 164 ;
   public: static const int32_t kToken__2E_ = 165 ;
-  public: static const int32_t kToken__2E__28_ = 166 ;
+  public: static const int32_t kToken__40__28_ = 166 ;
   public: static const int32_t kToken__2E__2E__2E_ = 167 ;
   public: static const int32_t kToken__2E__2E__3C_ = 168 ;
   public: static const int32_t kToken__2B__3D_ = 169 ;

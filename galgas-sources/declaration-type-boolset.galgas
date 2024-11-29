@@ -34,7 +34,7 @@ syntax extension galgas3DeclarationsSyntax {
       isEquatable = true
     end
     ${$
-    var @lstringlist slotList = ()
+    var @lstringlist slotList = @()
     repeat
     while
       $case$
@@ -76,7 +76,7 @@ syntax extension galgas4DeclarationsSyntax {
       isEquatable = true
     end
     ${$
-    var @lstringlist slotList = ()
+    var @lstringlist slotList = @()
     repeat
     while
       $case$
@@ -149,7 +149,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
   ?!@semanticContext ioSemanticContext {
 //--- Check unicity of slot names
-  var @stringset slotNameSet = ()
+  var @stringset slotNameSet = @()
   for (slotName) in self.mFlagList do
     if [slotNameSet hasKey !slotName] then
       error slotName : "duplicated slot name"
@@ -171,22 +171,22 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !hasCompilerArgument: false
   )
 //--- class functions
-  var @classFunctionMap classFunctionMap = ()
+  var @classFunctionMap classFunctionMap = @()
   for (slotName) in self.mFlagList do
     if not [classFunctionMap hasKey !slotName] then
-      [!?classFunctionMap insertKey !slotName !() !false !boolsetTypeIndex]
+      [!?classFunctionMap insertKey !slotName !@() !false !boolsetTypeIndex]
     end
   end
 //--- Add initializer without argument
-  var @initializerMap initializerMap = ()
-  let @functionSignature emptyArgumentList = ()
+  var @initializerMap initializerMap = @()
+  let @functionSignature emptyArgumentList = @()
   [!?initializerMap insertKey
-    !.init {![emptyArgumentList initializerSignature] !self.mBoolsetTypeName}
+    !@{![emptyArgumentList initializerSignature] !self.mBoolsetTypeName}
     !emptyArgumentList
   ]
 //--- Add extensions
-  var @setterMap setterMap = ()
-  var @instanceMethodMap instanceMethodMap = ()
+  var @setterMap setterMap = @()
+  var @instanceMethodMap instanceMethodMap = @()
   addExtensions (
     !inExtensionInitializerMapForBuildingContext
     !inExtensionMethodMapForBuildingContext
@@ -228,21 +228,21 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .boolsetType
     !supportCollectionValue: false # Does not support collection value
-    !allTypedPropertyList: ()
-    !propertyMap: ()
-    !currentTypedPropertyList: ()
+    !allTypedPropertyList: @()
+    !propertyMap: @()
+    !currentTypedPropertyList: @()
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: ()
+    !classMethodMap: @()
     !unwrappedType: .null
-    !readSubscriptMap: ()
-    !enumerationDescriptorList: ()
+    !readSubscriptMap: @()
+    !enumerationDescriptorList: @()
     !features: features
-    !addAssignOperatorArguments: ()
-    !mapSearchMethodList: ()
+    !addAssignOperatorArguments: @()
+    !mapSearchMethodList: @()
     !generateHeaderInSeparateFile: false # Do not generate header in separate file
     !typeForEnumeratedElement: .null
     !headerFileName: "boolset-" + [self.mBoolsetTypeName fileNameRepresentation]

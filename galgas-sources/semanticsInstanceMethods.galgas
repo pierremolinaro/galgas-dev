@@ -30,7 +30,7 @@ proc enterInstanceMethodWithoutArgument
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]
     !@methodKind.definedAsMember
-    !()
+    !@()
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
@@ -47,7 +47,7 @@ proc enterInstanceMethodWithInputArgument ?!@instanceMethodMap ioInstanceMethodM
                                           ?methodName:let @string inInstanceMethodName
                                           ?let @bool inHasCompilerArgument {
   [!?ioUnifiedTypeMap makeEntryFromString !inInputArgumentTypeName ?let argumentTypeIndex]
-  var @formalParameterSignature argList = ()
+  var @formalParameterSignature argList = @()
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]

@@ -557,19 +557,16 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 195)) {
-    static const char * syntaxErrorMessageArray [195] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 197)) {
+    static const char * syntaxErrorMessageArray [197] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a big integer number",
-        "the '.' delimitor",
-        "the '...' delimitor",
-        "the '..<' delimitor",
-        "a type name (@...)",
         "a character constant",
         "a terminal symbol ($...$)",
         "a comment",
         "a comment",
+        "a type name (@...)",
         "the '\?selector:' delimitor",
         "the '\?' delimitor",
         "the '\?!selector:' delimitor",
@@ -725,6 +722,11 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '&&' delimitor",
         "the '[' delimitor",
         "the ']' delimitor",
+        "the '.' delimitor",
+        "the '...' delimitor",
+        "the '..<' delimitor",
+        "the '@{' delimitor",
+        "the '@(' delimitor",
         "the '+=' delimitor",
         "the '-=' delimitor",
         "the '*=' delimitor",
@@ -909,14 +911,21 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2D_
   TO_UNICODE ('>'),
 } ;
 
-//--- Unicode string for '$..$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E__2E_ = {
+//--- Unicode string for '$.$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E_ = {
+  TO_UNICODE ('.'),
+} ;
+
+//--- Unicode string for '$...$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E__2E__2E_ = {
+  TO_UNICODE ('.'),
   TO_UNICODE ('.'),
   TO_UNICODE ('.'),
 } ;
 
-//--- Unicode string for '$.<$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E__3C_ = {
+//--- Unicode string for '$..<$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___2E__2E__3C_ = {
+  TO_UNICODE ('.'),
   TO_UNICODE ('.'),
   TO_UNICODE ('<'),
 } ;
@@ -1005,6 +1014,18 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3F_
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___3F__5E_ = {
   TO_UNICODE ('\?'),
   TO_UNICODE ('^'),
+} ;
+
+//--- Unicode string for '$@($'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___40__28_ = {
+  TO_UNICODE ('@'),
+  TO_UNICODE ('('),
+} ;
+
+//--- Unicode string for '$@{$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___40__7B_ = {
+  TO_UNICODE ('@'),
+  TO_UNICODE ('{'),
 } ;
 
 //--- Unicode string for '$MacOS$'
@@ -2513,7 +2534,7 @@ int32_t Lexique_galgasScanner_33_::search_into_attributeKeyWordList (const Strin
 //             Key words table 'galgasDelimitorsList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__galgasDelimitorsList = 48 ;
+static const int32_t ktable_size_galgasScanner_33__galgasDelimitorsList = 53 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDelimitorsList [ktable_size_galgasScanner_33__galgasDelimitorsList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26_, Lexique_galgasScanner_33_::kToken__26_),
@@ -2523,6 +2544,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2B_, Lexique_galgasScanner_33_::kToken__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2C_, Lexique_galgasScanner_33_::kToken__2C_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2D_, Lexique_galgasScanner_33_::kToken__2D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2E_, Lexique_galgasScanner_33_::kToken__2E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2F_, Lexique_galgasScanner_33_::kToken__2F_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3A_, Lexique_galgasScanner_33_::kToken__3A_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3B_, Lexique_galgasScanner_33_::kToken__3B_),
@@ -2556,6 +2578,8 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3E__3D_, Lexique_galgasScanner_33_::kToken__3E__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3E__3E_, Lexique_galgasScanner_33_::kToken__3E__3E_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3F__5E_, Lexique_galgasScanner_33_::kToken__3F__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___40__28_, Lexique_galgasScanner_33_::kToken__40__28_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___40__7B_, Lexique_galgasScanner_33_::kToken__40__7B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___5E__3D_, Lexique_galgasScanner_33_::kToken__5E__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___7C__3D_, Lexique_galgasScanner_33_::kToken__7C__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___7C__7C_, Lexique_galgasScanner_33_::kToken__7C__7C_),
@@ -2563,6 +2587,8 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__galgasDe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___21__3D__3D_, Lexique_galgasScanner_33_::kToken__21__3D__3D_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26__2B__2B_, Lexique_galgasScanner_33_::kToken__26__2B__2B_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___26__2D__2D_, Lexique_galgasScanner_33_::kToken__26__2D__2D_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2E__2E__2E_, Lexique_galgasScanner_33_::kToken__2E__2E__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___2E__2E__3C_, Lexique_galgasScanner_33_::kToken__2E__2E__3C_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33___3D__3D__3D_, Lexique_galgasScanner_33_::kToken__3D__3D__3D_)
 } ;
 
@@ -2714,28 +2740,6 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
       break ;
-    case kToken__2E_:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString (".") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken__2E__2E__2E_:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("...") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken__2E__2E__3C_:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("..<") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      break ;
-    case kToken__40_type:
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendCString ("@type") ;
-      s.appendChar (TO_UNICODE ('$')) ;
-      s.appendChar (TO_UNICODE (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
     case kToken__27_char_27_:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("'char'") ;
@@ -2759,6 +2763,13 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("commentMark") ;
       s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__40_type:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("@type") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
       break ;
     case kToken__3F_selector_3A_:
       s.appendChar (TO_UNICODE ('$')) ;
@@ -3547,6 +3558,31 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("]") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
+    case kToken__2E_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (".") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__2E__2E__2E_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("...") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__2E__2E__3C_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("..<") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__40__7B_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("@{") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__40__28_:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("@(") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
     case kToken__2B__3D_:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("+=") ;
@@ -3798,50 +3834,6 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
         token.mTokenCode = kToken_literalInt ;
         enterToken (token) ;
       }
-    }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
-      if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('0')) ;
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('.')) ;
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        ::scanner_routine_convertStringToDouble (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_floatValue, gLexicalMessage_galgasScanner_33__floatNumberConversionError) ;
-        token.mTokenCode = kToken_double_2E_xxx ;
-        enterToken (token) ;
-      }else{
-        if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2E__2E_, true)) {
-          token.mTokenCode = kToken__2E__2E__2E_ ;
-          enterToken (token) ;
-        }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2E__3C_, true)) {
-          token.mTokenCode = kToken__2E__2E__3C_ ;
-          enterToken (token) ;
-        }else{
-          token.mTokenCode = kToken__2E_ ;
-          enterToken (token) ;
-        }
-      }
-    }else if (testForInputUTF32Char (TO_UNICODE ('@'))) {
-      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-        do {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-      }else{
-        lexicalError (gLexicalMessage_galgasScanner_33__incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-      token.mTokenCode = kToken__40_type ;
-      enterToken (token) ;
     }else if (testForInputUTF32Char (TO_UNICODE ('%'))) {
       if (testForCharWithFunction (isUnicodeLetter)) {
         do {
@@ -4053,6 +4045,12 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___3D__3D__3D_, true)) {
       token.mTokenCode = kToken__3D__3D__3D_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2E__2E__3C_, true)) {
+      token.mTokenCode = kToken__2E__2E__3C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2E__2E__2E_, true)) {
+      token.mTokenCode = kToken__2E__2E__2E_ ;
+      enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___26__2D__2D_, true)) {
       token.mTokenCode = kToken__26__2D__2D_ ;
       enterToken (token) ;
@@ -4073,6 +4071,12 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___5E__3D_, true)) {
       token.mTokenCode = kToken__5E__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___40__7B_, true)) {
+      token.mTokenCode = kToken__40__7B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___40__28_, true)) {
+      token.mTokenCode = kToken__40__28_ ;
       enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___3F__5E_, true)) {
       token.mTokenCode = kToken__3F__5E_ ;
@@ -4173,6 +4177,9 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2F_, true)) {
       token.mTokenCode = kToken__2F_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2E_, true)) {
+      token.mTokenCode = kToken__2E_ ;
+      enterToken (token) ;
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___2D_, true)) {
       token.mTokenCode = kToken__2D_ ;
       enterToken (token) ;
@@ -4194,6 +4201,21 @@ void Lexique_galgasScanner_33_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___26_, true)) {
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32Char (TO_UNICODE ('@'))) {
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        do {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        token.mTokenCode = kToken__40_type ;
+        enterToken (token) ;
+      }else{
+        lexicalError (gLexicalMessage_galgasScanner_33__incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
+      }
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_33___3F__21_, true)) {
       const LocationInSource currentLocationForTag_onlyInterrogationExclamationMark = mCurrentLocation ;
       const LocationInSource endLocationForTag_onlyInterrogationExclamationMark = mTokenEndLocation ;
@@ -4672,14 +4694,11 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("identifier") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("double.xxx") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("literalInt") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (".") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("...") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("..<") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("@type") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("'char'") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("$terminal$") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("comment") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("commentMark") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("@type") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?selector:") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?!selector:") COMMA_HERE) ;
@@ -4835,6 +4854,11 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("&&") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("[") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("]") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string (".") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("...") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("..<") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("@{") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("@(") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("+=") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("-=") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("*=") COMMA_HERE) ;
@@ -4921,6 +4945,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("+") ;
     ioList.appendObject (",") ;
     ioList.appendObject ("-") ;
+    ioList.appendObject (".") ;
     ioList.appendObject ("/") ;
     ioList.appendObject (":") ;
     ioList.appendObject (";") ;
@@ -4954,6 +4979,8 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject (">=") ;
     ioList.appendObject (">>") ;
     ioList.appendObject ("\?^") ;
+    ioList.appendObject ("@(") ;
+    ioList.appendObject ("@{") ;
     ioList.appendObject ("^=") ;
     ioList.appendObject ("|=") ;
     ioList.appendObject ("||") ;
@@ -4961,6 +4988,8 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("!==") ;
     ioList.appendObject ("&++") ;
     ioList.appendObject ("&--") ;
+    ioList.appendObject ("...") ;
+    ioList.appendObject ("..<") ;
     ioList.appendObject ("===") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
@@ -5074,18 +5103,15 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [195] = {0,
+  static const uint32_t kTerminalSymbolStyles [197] = {0,
     0 /* galgasScanner3_1_identifier */,
     8 /* galgasScanner3_1_double_2E_xxx */,
     7 /* galgasScanner3_1_literalInt */,
-    2 /* galgasScanner3_1__2E_ */,
-    2 /* galgasScanner3_1__2E__2E__2E_ */,
-    2 /* galgasScanner3_1__2E__2E__3C_ */,
-    11 /* galgasScanner3_1__40_type */,
     9 /* galgasScanner3_1__27_char_27_ */,
     4 /* galgasScanner3_1__24_terminal_24_ */,
     13 /* galgasScanner3_1_comment */,
     13 /* galgasScanner3_1_commentMark */,
+    11 /* galgasScanner3_1__40_type */,
     3 /* galgasScanner3_1__3F_selector_3A_ */,
     2 /* galgasScanner3_1__3F_ */,
     3 /* galgasScanner3_1__3F__21_selector_3A_ */,
@@ -5241,6 +5267,11 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     2 /* galgasScanner3_1__26__26_ */,
     2 /* galgasScanner3_1__5B_ */,
     2 /* galgasScanner3_1__5D_ */,
+    2 /* galgasScanner3_1__2E_ */,
+    2 /* galgasScanner3_1__2E__2E__2E_ */,
+    2 /* galgasScanner3_1__2E__2E__3C_ */,
+    2 /* galgasScanner3_1__40__7B_ */,
+    2 /* galgasScanner3_1__40__28_ */,
     2 /* galgasScanner3_1__2B__3D_ */,
     2 /* galgasScanner3_1__2D__3D_ */,
     2 /* galgasScanner3_1__2A__3D_ */,
@@ -17102,415 +17133,6 @@ GGS_templateInstructionExpressionForGeneration_2E_weak GGS_templateInstructionEx
       result = *p ;
     }else{
       inCompiler->castError ("templateInstructionExpressionForGeneration.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Class for element of '@templateInstructionListForGeneration' list
-//
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_templateInstructionListForGeneration : public cCollectionElement {
-  public: GGS_templateInstructionListForGeneration_2E_element mObject ;
-
-//--- Class functions
-  public: cCollectionElement_templateInstructionListForGeneration (const GGS_templateInstructionForGeneration & in_mInstruction
-                                                                   COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_templateInstructionListForGeneration (const GGS_templateInstructionListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_templateInstructionListForGeneration::cCollectionElement_templateInstructionListForGeneration (const GGS_templateInstructionForGeneration & in_mInstruction
-                                                                                                                  COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mInstruction) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_templateInstructionListForGeneration::cCollectionElement_templateInstructionListForGeneration (const GGS_templateInstructionListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mInstruction) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_templateInstructionListForGeneration::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_templateInstructionListForGeneration::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_templateInstructionListForGeneration (mObject.mProperty_mInstruction COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_templateInstructionListForGeneration::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mInstruction" ":") ;
-  mObject.mProperty_mInstruction.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration::GGS_templateInstructionListForGeneration (void) :
-AC_GALGAS_list () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration::GGS_templateInstructionListForGeneration (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_templateInstructionListForGeneration (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_templateInstructionListForGeneration (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::enterElement (const GGS_templateInstructionListForGeneration_2E_element & inValue,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::class_func_listWithValue (const GGS_templateInstructionForGeneration & inOperand0
-                                                                                                             COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionListForGeneration result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_templateInstructionListForGeneration (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_templateInstructionListForGeneration::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                          const GGS_templateInstructionForGeneration & in_mInstruction
-                                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement_templateInstructionListForGeneration * p = nullptr ;
-  macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (in_mInstruction COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::addAssign_operation (const GGS_templateInstructionForGeneration & inOperand0
-                                                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::setter_append (const GGS_templateInstructionForGeneration inOperand0,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::setter_insertAtIndex (const GGS_templateInstructionForGeneration inOperand0,
-                                                                     const GGS_uint inInsertionIndex,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_templateInstructionListForGeneration (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::setter_removeAtIndex (GGS_templateInstructionForGeneration & outOperand0,
-                                                                     const GGS_uint inRemoveIndex,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-      outOperand0 = p->mObject.mProperty_mInstruction ;
-    }
-  }else{
-    drop () ;    
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::setter_popFirst (GGS_templateInstructionForGeneration & outOperand0,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mInstruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::setter_popLast (GGS_templateInstructionForGeneration & outOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mInstruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::method_first (GGS_templateInstructionForGeneration & outOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mInstruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::method_last (GGS_templateInstructionForGeneration & outOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mProperty_mInstruction ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::add_operation (const GGS_templateInstructionListForGeneration & inOperand,
-                                                                                                  Compiler * /* inCompiler */
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_templateInstructionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::getter_subListWithRange (const GGS_range & inRange,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionListForGeneration result = GGS_templateInstructionListForGeneration::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionListForGeneration result = GGS_templateInstructionListForGeneration::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                                                          Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionListForGeneration result = GGS_templateInstructionListForGeneration::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::plusAssign_operation (const GGS_templateInstructionListForGeneration inOperand,
-                                                                     Compiler * /* inCompiler */
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionListForGeneration::setter_setMInstructionAtIndex (GGS_templateInstructionForGeneration inOperand,
-                                                                              GGS_uint inIndex,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mInstruction = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration GGS_templateInstructionListForGeneration::getter_mInstructionAtIndex (const GGS_uint & inIndex,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_templateInstructionListForGeneration * p = (cCollectionElement_templateInstructionListForGeneration *) attributes.ptr () ;
-  GGS_templateInstructionForGeneration result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    result = p->mObject.mProperty_mInstruction ;
-  }
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_templateInstructionListForGeneration::cEnumerator_templateInstructionListForGeneration (const GGS_templateInstructionListForGeneration & inEnumeratedObject,
-                                                                                                    const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration_2E_element cEnumerator_templateInstructionListForGeneration::current (LOCATION_ARGS) const {
-  const cCollectionElement_templateInstructionListForGeneration * p = (const cCollectionElement_templateInstructionListForGeneration *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-  return p->mObject ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionForGeneration cEnumerator_templateInstructionListForGeneration::current_mInstruction (LOCATION_ARGS) const {
-  const cCollectionElement_templateInstructionListForGeneration * p = (const cCollectionElement_templateInstructionListForGeneration *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-  return p->mObject.mProperty_mInstruction ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @templateInstructionListForGeneration generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ("templateInstructionListForGeneration",
-                                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_templateInstructionListForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_templateInstructionListForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_templateInstructionListForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionListForGeneration::extractObject (const GGS_object & inObject,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_templateInstructionListForGeneration result ;
-  const GGS_templateInstructionListForGeneration * p = (const GGS_templateInstructionListForGeneration *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_templateInstructionListForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("templateInstructionListForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

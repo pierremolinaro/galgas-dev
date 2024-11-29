@@ -51,7 +51,7 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
                      !@fixitListAST outFixitListAST {
-    outFixitListAST = ()
+    outFixitListAST = @()
     select
     or
       $fixit$
@@ -128,7 +128,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <issue_fixit> ?!@galgasDeclarationAST ioDeclarations
                      !@fixitListAST outFixitListAST {
-    outFixitListAST = ()
+    outFixitListAST = @()
     select
     or
       $fixit$
@@ -290,7 +290,7 @@ proc analyzeErrorOrWarningInstruction
     ?outMessageExpression
   ]
 //--- Analyze fixit expressions
-  outFixitListForGeneration = ()
+  outFixitListForGeneration = @()
   for (element) in inFixitListAST do
     switch element
     case fixItRemove :

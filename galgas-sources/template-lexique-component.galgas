@@ -43,8 +43,8 @@ syntax extension galgas3LexiqueComponentSyntax {
     $identifier$ ?let @lstring lexiqueSuperComponentName
   //--- Parse lexique body
     ${$
-    var @templateDelimitorListAST templateDelimitorList = ()
-    var @templateReplacementListAST templateReplacementList = ()
+    var @templateDelimitorListAST templateDelimitorList = @()
+    var @templateReplacementListAST templateReplacementList = @()
     repeat
     while
       <template_delimitor_ggs3> !? templateDelimitorList
@@ -138,8 +138,8 @@ syntax extension galgas4LexiqueComponentSyntax {
     $identifier$ ?let @lstring lexiqueSuperComponentName
   //--- Parse lexique body
     ${$
-    var @templateDelimitorListAST templateDelimitorList = ()
-    var @templateReplacementListAST templateReplacementList = ()
+    var @templateDelimitorListAST templateDelimitorList = @()
+    var @templateReplacementListAST templateReplacementList = @()
     repeat
     while
       <template_delimitor> !? templateDelimitorList
@@ -310,7 +310,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
 //-------------------------------------- Unicode test functions
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 //--------------------------------------
-  var @lexiqueAnalysisContext lexiqueAnalysisContext = .init {
+  var @lexiqueAnalysisContext lexiqueAnalysisContext = @{
     !self.mLexiqueComponentName.string
     !lexicalRoutineMap
     !lexicalFunctionMap
@@ -319,7 +319,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
     !@terminalList ()
     !@lexicalAttributeMap ()
     !@lexicalExplicitTokenListMapMap ()
-    !()
+    !@()
     !@templateDelimitorList ()
     !@styleMap ()
     !unicodeTestFunctions
@@ -337,7 +337,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 //-------------------------------------- Build terminal map
-  var @terminalList terminalList = ()
+  var @terminalList terminalList = @()
   for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
     var @uint terminalStyleIndex = 0
     if [mStyle.string count] > 0 then
@@ -379,8 +379,8 @@ override method @templateLexiqueComponentAST semanticAnalysis
     end
   end
 //-------------------------------------- Template delimiters
-  var @stringset unicodeStringToGenerate = ()
-  var @templateDelimitorList templateDelimitorList = ()
+  var @stringset unicodeStringToGenerate = @()
+  var @templateDelimitorList templateDelimitorList = @()
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
    unicodeStringToGenerate += !mStartString.string
    unicodeStringToGenerate += !mEndString.string

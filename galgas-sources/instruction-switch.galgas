@@ -29,7 +29,7 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     <expression_ggs3> !?ioDeclarations ?let switchExpression
     let endOfSwitchExpression = @location.here
-    var @switchBranchesAST switchBranches = ()
+    var @switchBranchesAST switchBranches = @()
     repeat
       $case$
       <switch_case>
@@ -57,14 +57,14 @@ syntax extension galgas3InstructionsSyntax {
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      ![@lstring] outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction  {
-    outConstantNameList = ()
+    outConstantNameList = @()
     repeat
       $identifier$ ?let @lstring constantName
       [!?outConstantNameList append !constantName]
     while
       $,$
     end
-    outAssociatedValuesExtraction = ()
+    outAssociatedValuesExtraction = @()
     select
     or
       $($
@@ -117,7 +117,7 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     <expression> !?ioDeclarations ?let switchExpression
     let endOfSwitchExpression = @location.here
-    var @switchBranchesAST switchBranches = ()
+    var @switchBranchesAST switchBranches = @()
     repeat
       $case$
       <switch_case>
@@ -145,14 +145,14 @@ syntax extension galgas4InstructionsSyntax {
   rule <switch_case> ?!@galgasDeclarationAST ioDeclarations
                      ![@lstring] outConstantNameList
                      !@switchExtractedValuesListAST outAssociatedValuesExtraction {
-    outConstantNameList = ()
+    outConstantNameList = @()
     repeat
       $identifier$ ?let @lstring constantName
       [!?outConstantNameList append !constantName]
     while
       $,$
     end
-    outAssociatedValuesExtraction = ()
+    outAssociatedValuesExtraction = @()
     select
     or
       $($
@@ -252,13 +252,13 @@ class @switchInstructionAST : @semanticInstructionAST {
   //--- Check switch expression type is and enum instance
     if let enumType = [[switchExpression.mResultType definition].typeKind getEnumType] then
     //--- Enum constant map
-      var @stringset constantsNamedInSwitchInstruction = ()
+      var @stringset constantsNamedInSwitchInstruction = @()
     //--- Analyze branches
       [!?ioVariableMap openOverrideForSelectBlock]
-      var @switchBranchesForGeneration switchBranchesForGeneration = ()
+      var @switchBranchesForGeneration switchBranchesForGeneration = @()
       for branch in self.mBranches do
         [!?ioVariableMap openBranch]
-        var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = ()
+        var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
         for constantName in branch.mSwitchConstantList do
           if [enumType.constantMap hasKey !constantName.string] then
             if [constantsNamedInSwitchInstruction hasKey !constantName.string] then
@@ -324,9 +324,9 @@ class @switchInstructionAST : @semanticInstructionAST {
           !?ioUsefulEntitiesGraph
           !inAnalysisContext
           !?ioTypeMap
-          !localConstantList: ()
-          !localInitializedVariableListWarnsIfNotMutated: ()
-          !localInitializedVariableListNoWarnsIfNotMutated: ()
+          !localConstantList: @()
+          !localInitializedVariableListWarnsIfNotMutated: @()
+          !localInitializedVariableListNoWarnsIfNotMutated: @()
           !branch.mInstructions
           !?ioVariableMap
           ?let @semanticInstructionListForGeneration instructionList

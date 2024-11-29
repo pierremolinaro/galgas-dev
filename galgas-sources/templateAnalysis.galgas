@@ -130,7 +130,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     else
       var @uint matchingReaderCount = 0
       if [receiverType definition].typeKind == @typeKindEnum.structType then
-        getterFormalArgumentTypeList =()
+        getterFormalArgumentTypeList = @()
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
@@ -181,7 +181,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
       + [[self.mExpressionList count] string] + " parameter(s)" : outExpression
     else
-      var @semanticExpressionListForGeneration constructorEffectiveParameterList = ()
+      var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
       for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
           (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
         if mFormalSelector.string != mActualSelector.string then
@@ -250,7 +250,7 @@ override method @templateClassFunctionAST templateExpressionAnalysis
     end
   end
 //--- Analysis arguments
-  var [@unifiedTypeMapEntry] requiredTypes = ()
+  var [@unifiedTypeMapEntry] requiredTypes = @()
   var @semanticExpressionListForGeneration classFunctionEffectiveParameterList
   if [self.mExpressionList count] != [classFuncFormalArgumentTypeList count] then
     error self.mClassFunctionName
@@ -743,7 +743,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    var @stringset s = ()
+    var @stringset s = @()
     for (lkey * * * *) in boolOptionMap do
       s += !lkey
     end
@@ -1599,9 +1599,9 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
       !expression.mLocation
       !.definedAsMember
       !expression
-      !()
+      !@()
       !"uint"
-      !()
+      !@()
       !true
     }
     expression = conversionExpression

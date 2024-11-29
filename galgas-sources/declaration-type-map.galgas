@@ -84,9 +84,9 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     var propertyList = @propertyInCollectionListAST ()
     var mInsertMethodList = @insertMethodListAST ()
-    var @mapSearchMethodListAST mSearchMethodList = ()
-    var @mapRemoveMethodListAST mRemoveMethodList = ()
-    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = ()
+    var @mapSearchMethodListAST mSearchMethodList = @()
+    var @mapRemoveMethodListAST mRemoveMethodList = @()
+    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
     repeat
     while
       <property_declaration_ggs3> !?ioDeclarations !? propertyList
@@ -188,9 +188,9 @@ syntax extension galgas4DeclarationsSyntax {
     ${$
     var propertyList = @propertyInCollectionListAST ()
     var mInsertMethodList = @insertMethodListAST ()
-    var @mapSearchMethodListAST mSearchMethodList = ()
-    var @mapRemoveMethodListAST mRemoveMethodList = ()
-    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = ()
+    var @mapSearchMethodListAST mSearchMethodList = @()
+    var @mapRemoveMethodListAST mRemoveMethodList = @()
+    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
     repeat
     while
       <property_declaration> !?ioDeclarations !? propertyList
@@ -341,12 +341,12 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 //--- lstring type index
   [!?ioTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 //--- Enumeration description
-  var @enumerationDescriptorList enumerationDescriptor = §[.init (lstringTypeIndex, "lkey")]
+  var @enumerationDescriptorList enumerationDescriptor = §[@(lstringTypeIndex, "lkey")]
 //---
-  var @classFunctionMap classFunctionMap = ()
+  var @classFunctionMap classFunctionMap = @()
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
-  var @setterMap setterMap = ()
-  var @instanceMethodMap instanceMethodMap = ()
+  var @setterMap setterMap = @()
+  var @instanceMethodMap instanceMethodMap = @()
 //--- Class functions
   enterClassFunctionWithoutArgument (
     !?classFunctionMap
@@ -437,13 +437,13 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 //--- Handle properties
   var insertMethodFormalArgumentList = @formalParameterSignature ()
   var typedPropertyList = @typedPropertyList ()
-  var @optionalMethodSignature optionalMethodSignature = ()
+  var @optionalMethodSignature optionalMethodSignature = @()
   optionalMethodSignature +=
     !true
     ![""nowhere]
     !stringTypeIndex
     !"inKey"
-  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = ()
+  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
   argumentTypeListForAddAssignWithFieldExpressionList +=
     !["" nowhere]
     !lstringTypeIndex
@@ -454,13 +454,13 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var @formalParameterSignature removeMethodFormalArgumentList = ()
+  var @formalParameterSignature removeMethodFormalArgumentList = @()
   removeMethodFormalArgumentList +=
     !["" nowhere]
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = ()
+  var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
   for (* propertyTypeName mPropertyName * hasSelector initExpression) in self.mPropertyList do
     if [initExpression isSome] then
       error mPropertyName : "property initialization is not handled for a map"
@@ -535,7 +535,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
+      !@functionSignature §[@(["" nowhere], stringTypeIndex, "inKey", true)]
       !.here
       !true
       !attributeTypeIndex
@@ -565,7 +565,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !property.typeName
       ?let @unifiedTypeMapEntry attributeTypeIndex
     ]
-    var @formalParameterSignature accessorFormalArgumentList = ()
+    var @formalParameterSignature accessorFormalArgumentList = @()
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !property.name.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
@@ -578,10 +578,10 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ]
   end
 //--- Add initializer without argument
-  var @initializerMap initializerMap = ()
-  let @functionSignature emptyArgumentList = ()
+  var @initializerMap initializerMap = @()
+  let @functionSignature emptyArgumentList = @()
   [!?initializerMap insertKey
-    !.init {![emptyArgumentList initializerSignature] !self.mMapTypeName}
+    !@{![emptyArgumentList initializerSignature] !self.mMapTypeName}
     !emptyArgumentList
   ]
 //--- Features
@@ -626,10 +626,10 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     ?let @unifiedTypeMapEntry optionalElementTypeEntry
   ]
 //--- Read subscripts
-  var @subscriptMap readSubscriptMap = ()
-  let @functionSignature argumentTypeList = §[.init (["" nowhere], stringTypeIndex, "inKey", true)]
+  var @subscriptMap readSubscriptMap = @()
+  let @functionSignature argumentTypeList = §[@(["" nowhere], stringTypeIndex, "inKey", true)]
   [!?readSubscriptMap insertKey
-    !.init ([argumentTypeList subcriptSignature], .nowhere)
+    !@([argumentTypeList subcriptSignature], .nowhere)
     !argumentTypeList
     !optionalElementTypeEntry
   ]
@@ -641,15 +641,15 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !superType: .null
     !typeKind: .mapType
     !supportCollectionValue: true # Support collection value
-    !allTypedPropertyList: ()
-    !propertyMap: ()
+    !allTypedPropertyList: @()
+    !propertyMap: @()
     !currentTypedPropertyList: typedPropertyList
     !initializerMap: initializerMap
     !classFunctionMap: classFunctionMap
     !getterMap: getterMap
     !setterMap: setterMap
     !instanceMethodMap: instanceMethodMap
-    !classMethodMap: ()
+    !classMethodMap: @()
     !unwrappedType: .null
     !readSubscriptMap: readSubscriptMap
     !enumerationDescriptorList: enumerationDescriptor
@@ -710,8 +710,8 @@ override method @mapDeclarationAST semanticAnalysis
     ioUsefulnessRootEntities += !initializerNameForUsefulness
   end
 //----- Enter property
-  var @typedPropertyList typedAttributeList = ()
-  var @propertyIndexMap attributeMap = ()
+  var @typedPropertyList typedAttributeList = @()
+  var @propertyIndexMap attributeMap = @()
   for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
@@ -734,14 +734,14 @@ override method @mapDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 //--- Enter insert setters
-  var @insertMethodMap insertMethodMap = ()
+  var @insertMethodMap insertMethodMap = @()
   for (mInsertMethodName mErrorMessage mShadowErrorMessage) in self.mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters (!mErrorMessage )
     check_K_L_escapeCharacters (!mShadowErrorMessage )
   end
 //--- Enter search methods
-  var @searchMethodMap searchMethodMap = ()
+  var @searchMethodMap searchMethodMap = @()
   for (mSearchMethodName mErrorMessage) in self.mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters (!mErrorMessage )

@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
 #    or
 #      $elsif$
 #      <if_instruction_core> !?ioDeclarations ?let instruction
-#      else_instructionList = §[.init (instruction)]
+#      else_instructionList = §[init  (instruction)]
 #    end
 #    outInstruction = @ifInstructionAST {
 #      !instructionLocation
@@ -69,7 +69,7 @@ syntax extension galgas3InstructionsSyntax {
 #
 #  rule <if_expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
 #                            !@ifExpressionList outExpressionList {
-#    outExpressionList = ()
+#    outExpressionList = @()
 #    repeat
 #      select
 #        $let$
@@ -138,14 +138,14 @@ syntax extension galgas4InstructionsSyntax {
 #    let endOf_then_branchLocation = @location.here
 #    let @semanticInstructionListAST else_instructionList
 #    select
-#      else_instructionList = ()
+#      else_instructionList = @()
 #    or
 #      $else$
 #      <semantic_instruction_list> !?ioDeclarations ?else_instructionList
 #    or
 #      $elsif$
 #      <if_instruction_core> !?ioDeclarations ?let instruction
-#      else_instructionList = §[.init (instruction)]
+#      else_instructionList = §[init  (instruction)]
 #    end
 #    outInstruction = @ifInstructionAST {
 #      !instructionLocation
@@ -170,7 +170,7 @@ syntax extension galgas4InstructionsSyntax {
 
 #  rule <if_expression> ?!@galgasDeclarationAST ioDeclarations
 #                       !@ifExpressionList outExpressionList {
-#    outExpressionList = ()
+#    outExpressionList = @()
 #    repeat
 #      select
 #        $let$

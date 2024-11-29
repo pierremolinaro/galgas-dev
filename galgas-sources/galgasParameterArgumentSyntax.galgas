@@ -36,7 +36,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                     !@formalParameterListAST outFormalParameterList {
-    outFormalParameterList = ()
+    outFormalParameterList = @()
     select // GGS3
       repeat
       while
@@ -162,7 +162,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                     !@actualParameterListAST outActualParameterList {
-    outActualParameterList = ()
+    outActualParameterList = @()
     repeat
     while
       let @lstring selector
@@ -332,7 +332,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                           !@formalInputParameterListAST outFormalInputParameterList {
-    outFormalInputParameterList = ()
+    outFormalInputParameterList = @()
     repeat
     while
       let @bool isConstant
@@ -376,7 +376,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
 
   rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
                                      !@formalInputParameterListAST outFormalInputParameterList {
-    outFormalInputParameterList = ()
+    outFormalInputParameterList = @()
     $($
     select
     or
@@ -425,13 +425,13 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   //······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
-    outPoisonedVarNameList = ()
+    outPoisonedVarNameList = @()
   }
 
   //······························································································
 
   rule <poisoned_var_list_ggs3> !@lstringlist outPoisonedVarNameList {
-    outPoisonedVarNameList = ()
+    outPoisonedVarNameList = @()
     $spoil$
     repeat
        $identifier$ ?let varName
@@ -466,7 +466,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                !@formalParameterListAST outFormalParameterList {
-    outFormalParameterList = ()
+    outFormalParameterList = @()
     $($
     select
     or
@@ -551,7 +551,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
                                                   !@actualParameterListAST outActualParameterList {
     $($
-    outActualParameterList = ()
+    outActualParameterList = @()
     select
     or
       repeat
@@ -754,7 +754,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations
                                      !@formalInputParameterListAST outFormalInputParameterList {
-    outFormalInputParameterList = ()
+    outFormalInputParameterList = @()
     $($
     select
     or
@@ -803,13 +803,13 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   //······························································································
 
   rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
-    outPoisonedVarNameList = ()
+    outPoisonedVarNameList = @()
   }
 
   //······························································································
 
   rule <poisoned_var_list> !@lstringlist outPoisonedVarNameList {
-    outPoisonedVarNameList = ()
+    outPoisonedVarNameList = @()
     $spoil$
     $($
     repeat

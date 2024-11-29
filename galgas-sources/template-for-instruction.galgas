@@ -135,7 +135,7 @@ syntax extension templateSyntax {
     end
     <for_instruction_enumerated_object> ?let enumeratedProperties ?let expression
   //--- before block
-    var @templateInstructionListAST beforeInstructionList = ()
+    var @templateInstructionListAST beforeInstructionList = @()
     select
     or
       $before$
@@ -155,14 +155,14 @@ syntax extension templateSyntax {
       $identifier$ ? indexIdentifier
       $)$
     end
-    var @templateInstructionListAST doInstructionList = ()
+    var @templateInstructionListAST doInstructionList = @()
     repeat
       enterTemplateString (!?doInstructionList)
     while
       <template_instruction> !?doInstructionList
     end
   //--- between block
-    var @templateInstructionListAST betweenInstructionList = ()
+    var @templateInstructionListAST betweenInstructionList = @()
     select
     or
       $between$
@@ -173,7 +173,7 @@ syntax extension templateSyntax {
       end
     end
   //--- after block
-    var @templateInstructionListAST afterInstructionList = ()
+    var @templateInstructionListAST afterInstructionList = @()
     select
     or
       $after$

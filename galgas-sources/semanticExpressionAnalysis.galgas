@@ -218,9 +218,9 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
         !inErrorLocation
         !kind
         !ioExpression
-        !()
+        !@()
         !targetTypeDef.typeName.string
-        !()
+        !@()
         !hasCompilerArgument
       }
       ioExpression = conversionExpression
@@ -350,9 +350,9 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
         !inErrorLocation
         !kind
         !ioRightExpression
-        !()
+        !@()
         ![leftResultType definition].typeName.string
-        !()
+        !@()
         !hasCompilerArgument
       }
       ioRightExpression = conversionExpression

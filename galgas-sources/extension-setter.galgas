@@ -185,7 +185,7 @@ override method @extensionSetterAST enterDeclarationInGraph
   if not [ioExtensionSetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
       !self.mTypeName
-      !()
+      !@()
     ]
   end
   with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
@@ -258,7 +258,7 @@ override method @extensionSetterAST semanticAnalysis
     !analysisContext
     !?ioTypeMap
     !self.mExtensionSetterFormalParameterList
-    !nonMutablePropertyList: ()
+    !nonMutablePropertyList: @()
     !mutablePropertyList: [selfType definition].allTypedPropertyList
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation

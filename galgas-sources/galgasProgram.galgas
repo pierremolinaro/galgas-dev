@@ -75,7 +75,7 @@ grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[.init ("galgasProject")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[@("galgasProject")]]
   if [candidateProjectFiles count] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
   elsif [candidateProjectFiles count] > 1 then
@@ -86,7 +86,7 @@ grammar galgas3Grammar
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.init {!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
+    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
   end
 }
 
@@ -101,7 +101,7 @@ message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[.init ("ggsProject")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[@("ggsProject")]]
   if [candidateProjectFiles count] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
   elsif [candidateProjectFiles count] > 1 then
@@ -112,7 +112,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.init {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
+    parseAndAnalyzeProject (!@{!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
   end
 }
 
@@ -194,7 +194,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
                             ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
-  var @galgasDeclarationAST declarationAST = ()
+  var @galgasDeclarationAST declarationAST = @()
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
   [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-types.ggs"]
@@ -212,12 +212,12 @@ private proc compileProject ?let @lstring inProjectSourceFile
     end
   end
 //--------------------------------- Hand coded source files
-  var @stringlist handCodedLinkToolFileList = ()
-  var @stringlist handCodedLinkAppFileList = ()
-  var @stringlist handCodedSourceAppFileList = ()
-  var @stringlist handCodedSourceToolFileList = ()
-  var @stringlist frameworkToolFileList = ()
-  var @stringset handCodedSourceDirectorySet = ()
+  var @stringlist handCodedLinkToolFileList = @()
+  var @stringlist handCodedLinkAppFileList = @()
+  var @stringlist handCodedSourceAppFileList = @()
+  var @stringlist handCodedSourceToolFileList = @()
+  var @stringlist frameworkToolFileList = @()
+  var @stringset handCodedSourceDirectorySet = @()
   for (featureName featureValue) in inProjectComponentAST.mQualifiedFeatureList do
     if "tool-source" == featureName then
       handCodedSourceToolFileList += !featureValue.string
@@ -280,11 +280,11 @@ private proc compileProject ?let @lstring inProjectSourceFile
   end
   let absoluteBuildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
-  let @stringlist appProductFileList = ()
+  let @stringlist appProductFileList = @()
   let @semanticContext semanticContext
   var @unifiedTypeMap typeMap
   var @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
-  var @lstringlist usefulnessRootEntities = ()
+  var @lstringlist usefulnessRootEntities = @()
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas (
       !?usefulnessRootEntities
@@ -298,9 +298,9 @@ private proc compileProject ?let @lstring inProjectSourceFile
       ?semanticDeclarationSortedListForGeneration
     )
   else
-    semanticDeclarationSortedListForGeneration = ()
+    semanticDeclarationSortedListForGeneration = @()
     semanticContext = @semanticContext {!galgas4: inGalgas4}
-    typeMap = ()
+    typeMap = @()
   end
 //--------------------------------- Compile GUI components
   let @optionComponentMapForGeneration optionComponentMapForGeneration
@@ -311,7 +311,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
       ?optionComponentMapForGeneration
     )
   else
-    optionComponentMapForGeneration = ()
+    optionComponentMapForGeneration = @()
   end
 //--------------------------------- Compile program declarations
   if @uint.errorCount == 0 then
@@ -336,7 +336,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
 //----------------------------------- Build an HTML file that contains all declared types
   let typeDumpFilePath = productDirectory + "/../helpers/" + [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
-    var @stringset firstLetterSet = ()
+    var @stringset firstLetterSet = @()
     for (lkey *) in typeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
@@ -417,7 +417,7 @@ private proc projectGeneration
   if @application.verboseOutput then
     println (!"*** Generating files")
   end
-  var @stringset allProductFileSet = ()
+  var @stringset allProductFileSet = @()
 //--------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   [userHeadersDir makeDirectory]
@@ -439,8 +439,8 @@ private proc projectGeneration
   end
 //--------------------------------- Generate semantic files
 #  message "*** Generate semantic\n" ;
-  var @stringlist toolCppFileList = ()
-  var @stringlist toolHeaderFileList = ()
+  var @stringlist toolCppFileList = @()
+  var @stringlist toolHeaderFileList = @()
   generatePredefinedTypeFiles (
     !productDirectory
     !inSemanticDeclarationSortedListForGeneration
@@ -460,17 +460,17 @@ private proc projectGeneration
 //--------------------------------- Update targets
 #  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
-    var @stringset handledExtensionSet = ()
+    var @stringset handledExtensionSet = @()
     for (mSourceFileExtension * * * * * *) in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
     end
   //--- Build qualified feature map
-    var @stringset ignoredFeatureSet = ()
+    var @stringset ignoredFeatureSet = @()
     ignoredFeatureSet += !"tool-framework"
     ignoredFeatureSet += !"tool-source"
     ignoredFeatureSet += !"tool-link"
     ignoredFeatureSet += !"app-source"
-    var @projectQualifiedFeatureMap projectQualifiedFeatureMap = ()
+    var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for (mFeatureName mFeatureValue) in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName.string] then
         [!?projectQualifiedFeatureMap insertKey
@@ -504,7 +504,7 @@ private proc projectGeneration
   end
 //--------------------------------- Remove useless files
   if 0 == @uint.errorCount then
-    var @stringset allActualFileSet = ()
+    var @stringset allActualFileSet = @()
     for (mValue) in [productDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end

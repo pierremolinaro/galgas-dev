@@ -178,7 +178,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
   if not [ioExtensionGetterMapForBuildingContext hasKey !self.mTypeName.string] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !self.mTypeName
-      !()
+      !@()
     ]
   end
   with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
@@ -235,7 +235,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 //--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = [selfType definition].superType
-  var @functionSignature inheritedSignature = ()
+  var @functionSignature inheritedSignature = @()
   var @unifiedTypeMapEntry inheritedReturnType = .null
   var @location inheritedDeclarationLocation = @location.here
   loop ([ioTypeMap count] + 1)

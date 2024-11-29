@@ -165,7 +165,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
 #      end
       if expression is @selfInExpressionForGeneration then
         [!?ioVariableMap searchForReadAccess 
-          !.init ("self." + self.propertyName, self.propertyName)
+          !@("self." + self.propertyName, self.propertyName)
           ?3*
         ]
       end
@@ -191,9 +191,9 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
             !self.propertyName.location
             !theGetter.mKind
             !expression
-            !()
+            !@()
             !if theGetter.mGetterNameThatObsoletesInvokationName == "" then self.propertyName.string else theGetter.mGetterNameThatObsoletesInvokationName end
-            !()
+            !@()
             !theGetter.mHasCompilerArgument
           }
         end
@@ -358,7 +358,7 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
       ?let @string operand
     ]
   //--- subscript arments
-    var [@string] subscriptArgumentList = ()
+    var [@string] subscriptArgumentList = @()
     for actualArg in self.actualExpressionList do
       [actualArg.mExpression generateExpression
         !?ioGeneratedCode

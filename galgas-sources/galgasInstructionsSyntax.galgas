@@ -140,7 +140,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list_ggs3> !?ioDeclarations ?let functionInstructionList
@@ -412,7 +412,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       <if_expression> !?ioDeclarations ?let testExpression
       $else$
 #      <error_instruction> !?ioDeclarations ?let errorInstruction
-#      let @semanticInstructionListAST else_instructionList = §[.init (errorInstruction)]
+#      let @semanticInstructionListAST else_instructionList = §[init  (errorInstruction)]
       <semantic_instruction_list> !?ioDeclarations ?let else_instructionList
       let endOf_else_branch = @location.here
       $end$
@@ -463,7 +463,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList
@@ -527,7 +527,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     select
       $identifier$ ?resultVariableName
     or
-      resultVariableName = .init {!"result" !.here}
+      resultVariableName = @{!"result" !.here}
     end
     ${$
     <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST functionInstructionList

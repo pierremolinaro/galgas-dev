@@ -52,7 +52,7 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
     end
     ${$
   //--- Imports
-    var @lstringlist syntaxComponents = ()
+    var @lstringlist syntaxComponents = @()
     repeat
       $syntax$
       $identifier$ ?let @lstring syntaxComponent
@@ -96,8 +96,8 @@ syntax galgas3GrammarComponentSyntax (galgasScanner3) {
   rule <grammar_start_symbol_label_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                          ?let @lstring inLabelName
                                          ?!@nonTerminalLabelListAST ioLabelList {
-    var @stringset argumentNameSet = ()
-    var @formalParameterListAST mFormalParameterList = ()
+    var @stringset argumentNameSet = @()
+    var @formalParameterListAST mFormalParameterList = @()
     repeat
     while
       <label_formal_parameter_ggs3> !?ioDeclarations ?let argumentName !?mFormalParameterList
@@ -253,7 +253,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     ${$
   //--- Imports
-    var @lstringlist syntaxComponents = ()
+    var @lstringlist syntaxComponents = @()
     repeat
       $syntax$
       $identifier$ ?let @lstring syntaxComponent
@@ -297,8 +297,8 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <grammar_start_symbol_label> ?!@galgasDeclarationAST ioDeclarations
                                     ?let @lstring inLabelName
                                     ?!@nonTerminalLabelListAST ioLabelList {
-    var @stringset argumentNameSet = ()
-    var @formalParameterListAST formalParameterList = ()
+    var @stringset argumentNameSet = @()
+    var @formalParameterListAST formalParameterList = @()
     $($
     select
     or

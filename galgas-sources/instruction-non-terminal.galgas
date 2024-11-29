@@ -140,7 +140,7 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
     [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
     let @formalParameterSignature signature
     if self.mLabelName.string == "parse" then
-      signature = ()
+      signature = @()
     else
       [labelMap searchKey !self.mLabelName ?* ?signature ?*]
     end

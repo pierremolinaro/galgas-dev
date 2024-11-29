@@ -32,7 +32,7 @@ map @unifiedTypeMap {
   //----------------------------------------------------------------------------------------------
 
   getter unsolvedEntryList -> @lstringlist {
-    result = ()
+    result = @()
     for (lkey element) in self do
       if [element.mDefinition isUnsolved] then
         result += !lkey
@@ -63,7 +63,7 @@ map @unifiedTypeMap {
       outEntry = .element {!weakElement: node.mElement}
     else
       let newElement = @unifiedTypeMapElementClass {!.unsolved}
-      [!?self internalInsertKey !.init {!inKey !.nowhere} !newElement]
+      [!?self internalInsertKey !@{!inKey !.nowhere} !newElement]
       outEntry = .element {!weakElement: newElement}
     end
   }

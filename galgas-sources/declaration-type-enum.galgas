@@ -50,12 +50,12 @@ syntax extension galgas3DeclarationsSyntax {
       end
     end
     ${$
-    var @enumConstantList constantList = ()
+    var @enumConstantList constantList = @()
     repeat
     while
       $case$
       $identifier$ ?let constantName
-      var [@associatedValue] associatedValueTypeList = ()
+      var [@associatedValue] associatedValueTypeList = @()
       select
       or
         $($
@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
           end
           <type_definition_ggs3> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
-          [!?associatedValueTypeList append !.init (weakQualifier, associatedValueType, associatedValueName)]
+          [!?associatedValueTypeList append !@(weakQualifier, associatedValueType, associatedValueName)]
         while
         end
         $)$
@@ -127,12 +127,12 @@ syntax extension galgas4DeclarationsSyntax {
       end
     end
     ${$
-    var @enumConstantList constantList = ()
+    var @enumConstantList constantList = @()
     repeat
     while
       $case$
       $identifier$ ?let constantName
-      var [@associatedValue] associatedValueTypeList = ()
+      var [@associatedValue] associatedValueTypeList = @()
       select
       or
         $($
@@ -146,7 +146,7 @@ syntax extension galgas4DeclarationsSyntax {
           end
           <type_definition> !?ioDeclarations ?let associatedValueType
           $identifier$ ?let associatedValueName
-          [!?associatedValueTypeList append !.init (weakQualifier, associatedValueType, associatedValueName)]
+          [!?associatedValueTypeList append !@(weakQualifier, associatedValueType, associatedValueName)]
         while
           $,$
         end
@@ -211,7 +211,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
           makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name),
           constant.name
         )
-        var @propertyInCollectionListAST propertyListAST = ()
+        var @propertyInCollectionListAST propertyListAST = @()
         for associatedValue in constant.associatedValueTypeList do
           let associatedValueTypeName = if associatedValue.weakQualifier
             then makeWeakTypeLName (associatedValue.typeName)
@@ -293,16 +293,16 @@ class @enumDeclarationAST : @semanticDeclarationAST {
         ?!@unifiedTypeMap ioTypeMap
         ?!@semanticContext ioSemanticContext {
   //---
-    var @classFunctionMap classFunctionMap = ()
-    var @setterMap setterMap = ()
+    var @classFunctionMap classFunctionMap = @()
+    var @setterMap setterMap = @()
   //--- currentType type index
     [!?ioTypeMap makeEntry !self.enumTypeName ?let enumTypeEntry]
   //--- Class functions
-    var @constantIndexMap constantMap = ()
+    var @constantIndexMap constantMap = @()
     var @bool hasAssociatedValues = false
     for constant in self.mConstantList do
-      var @associatedValueDescriptorList associatedTypeList = ()
-      var @functionSignature argumentTypeList = ()
+      var @associatedValueDescriptorList associatedTypeList = @()
+      var @functionSignature argumentTypeList = @()
       for associatedValue in constant.associatedValueTypeList do
         [!?ioTypeMap makeEntry !associatedValue.typeName ?let associatedTypeEntry]
         argumentTypeList += !associatedValue.valueName !associatedTypeEntry !associatedValue.typeName.string !true
@@ -318,11 +318,11 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       ]
     end
   //--- Methods
-    var @instanceMethodMap instanceMethodMap = ()
+    var @instanceMethodMap instanceMethodMap = @()
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
-        var @unifiedTypeMapEntryList associatedTypeList = ()
-        var @formalParameterSignature argumentTypeList = ()
+        var @unifiedTypeMapEntryList associatedTypeList = @()
+        var @formalParameterSignature argumentTypeList = @()
         for associatedValue in constant.associatedValueTypeList do
           [!?ioTypeMap makeEntry !associatedValue.typeName ?let associatedTypeEntry]
           argumentTypeList += !associatedValue.valueName !associatedTypeEntry !.argumentOut !associatedValue.typeName.string
@@ -330,7 +330,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
           hasAssociatedValues = true
         end
         [!?instanceMethodMap insertKey
-          !.init ("extract" + [constant.name stringByCapitalizingFirstCharacter], constant.name)
+          !@("extract" + [constant.name stringByCapitalizingFirstCharacter], constant.name)
           !.definedAsMember
           !argumentTypeList
           !constant.name.location
@@ -368,7 +368,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       )
     end
   //--- Add Extensions
-    var @initializerMap initializerMap = ()
+    var @initializerMap initializerMap = @()
     addExtensions (
       !inExtensionInitializerMapForBuildingContext
       !inExtensionMethodMapForBuildingContext
@@ -409,21 +409,21 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       !superType: .null
       !typeKind: .enumType {!constantMap: constantMap}
       !supportCollectionValue: false # Does not support collection value
-      !allTypedPropertyList: ()
-      !propertyMap: ()
-      !currentTypedPropertyList: ()
+      !allTypedPropertyList: @()
+      !propertyMap: @()
+      !currentTypedPropertyList: @()
       !initializerMap: initializerMap
       !classFunctionMap: classFunctionMap
       !getterMap: getterMap
       !setterMap: setterMap
       !instanceMethodMap: instanceMethodMap
-      !classMethodMap: ()
+      !classMethodMap: @()
       !unwrappedType: .null
-      !readSubscriptMap: ()
-      !enumerationDescriptorList: ()
+      !readSubscriptMap: @()
+      !enumerationDescriptorList: @()
       !features: features
-      !addAssignOperatorArguments: ()
-      !mapSearchMethodList: ()
+      !addAssignOperatorArguments: @()
+      !mapSearchMethodList: @()
       !generateHeaderInSeparateFile: false # Do not generate header in separate file
       !typeForEnumeratedElement: .null
       !headerFileName: "enum-" + [self.enumTypeName fileNameRepresentation]
@@ -449,20 +449,20 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !nameForUsefulness
     end
   //--- Constant list
-    var [@unifiedTypeMapEntry] associatedValuesTypes = ()
+    var [@unifiedTypeMapEntry] associatedValuesTypes = @()
     var constantList = @stringlist ()
-    var @enumConstantListForGeneration enumConstantListForGeneration = ()
+    var @enumConstantListForGeneration enumConstantListForGeneration = @()
     var constantMap = @constantIndexMap ()
     for constant in self.mConstantList do
       if [constant.associatedValueTypeList count] > 0 then
         let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
-        let associatedType = [ioTypeMap typeMapEntryForLKey !.init (optionalTypeName, constant.name)]
+        let associatedType = [ioTypeMap typeMapEntryForLKey !@(optionalTypeName, constant.name)]
         [!?associatedValuesTypes append !associatedType]    
       end
       constantList += !constant.name.string
-      var @associatedValueDescriptorList associatedTypeList = ()
-      var @stringset associatedValueNameSet = ()
+      var @associatedValueDescriptorList associatedTypeList = @()
+      var @stringset associatedValueNameSet = @()
       for associatedValue in constant.associatedValueTypeList do
         let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!associatedValue.typeName)
         [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]

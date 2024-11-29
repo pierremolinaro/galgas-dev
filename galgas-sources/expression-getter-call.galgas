@@ -107,7 +107,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
         + [aGetter.mArgumentTypeList count] + " parameter(s), while this call has "
         + [self.mActualArgumentList count] + " parameter(s)" : outExpression
       else
-        var @semanticExpressionListForGeneration constructorEffectiveParameterList = ()
+        var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
         for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
             (mFormalSelector mFormalArgumentType 2*) in aGetter.mArgumentTypeList do
           [mExpression analyzeSemanticExpression
@@ -131,7 +131,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
           !self.mGetterName.location
           !aGetter.mKind
           !receiverExpression
-          !()
+          !@()
           !if aGetter.mGetterNameThatObsoletesInvokationName == "" then self.mGetterName.string else aGetter.mGetterNameThatObsoletesInvokationName end
           !constructorEffectiveParameterList
           !aGetter.mHasCompilerArgument
@@ -158,14 +158,14 @@ class @getterCallExpressionAST : @semanticExpressionAST {
     else
       var @uint matchingReaderCount = 0
       if [receiverType definition].typeKind == .structType then
-        var @functionSignature getterFormalArgumentTypeList = ()
+        var @functionSignature getterFormalArgumentTypeList = @()
         var hasCompilerArgument = true
         var returnedType = @unifiedTypeMapEntry.null
         var kind = @methodKind.definedAsExtension
-        let @stringlist fieldList = ()
+        let @stringlist fieldList = @()
         var obsoletedByGetter = ""
         for (propertyTypeEntry propertyName 3*) in [receiverType definition].currentTypedPropertyList do
-          let propertyType = [ioTypeMap typeMapEntryForLKey !.init {![propertyTypeEntry definition].typeName.string !.here}]
+          let propertyType = [ioTypeMap typeMapEntryForLKey !@{![propertyTypeEntry definition].typeName.string !.here}]
           let aMap = [propertyType definition].getterMap
           with self.mGetterName.string in aMap do
             if [propertyType definition].typeName.string == propertyName.string then
@@ -206,7 +206,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
           + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
           + [[self.mActualArgumentList count] string] + " parameter(s)" : outExpression
         else
-          var @semanticExpressionListForGeneration constructorEffectiveParameterList = ()
+          var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
           for (mActualSelector mExpression mEndOfExpressionLocation) in self.mActualArgumentList,
               (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
             [mExpression analyzeSemanticExpression
@@ -288,7 +288,7 @@ class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
       ?let @string receiverCppName
     ]
   //--- Reader operands
-    var @stringlist getterArgumentCppNameList = ()
+    var @stringlist getterArgumentCppNameList = @()
     for (mExpression) in self.mActualArgumentList do
       [mExpression generateExpression
         !?ioGeneratedCode

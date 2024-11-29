@@ -258,25 +258,6 @@ rule '0'->'9' {
   end
 }
 
-// ------------------------- Type Name -----------------------------
-
-$@type$ !tokenString style typeNameStyle error message "a type name (@...)"
-
-message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
-
-rule '@' {
-  select
-  case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    repeat
-      enterCharacterIntoString (!?tokenString !* )
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end
-  default
-    error incorrectTypeNameError
-  end
-  send $@type$
-}
-
 // ------------------------- Attribute -----------------------------
 
 message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
@@ -538,7 +519,7 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
   "-",    "(",   ")",  "->",
   "==",   "=",   "&&",
   "[",    "]",
-  ".",    ".(", "...", "..<",
+  ".",    "@(", "...", "..<",
   "+=",   "-=", "*=", "/=", "&=", "|=", "^=",
   "/",    "!=",  ">=", "&",
   "{",    "}",   "`",  "||", "|",
@@ -548,6 +529,25 @@ list galgasDelimitorsList style delimitersStyle error message "the '%K' delimito
 }
 
 rule list galgasDelimitorsList
+
+// ------------------------- Type Name -----------------------------
+
+$@type$ !tokenString style typeNameStyle error message "a type name (@...)"
+
+message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
+
+rule '@' {
+  select
+  case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    repeat
+      enterCharacterIntoString (!?tokenString !* )
+    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end
+  default
+    error incorrectTypeNameError
+  end
+  send $@type$
+}
 
 // -------- Special formal arguments, actual parameters --------------------------
 $?selector:$ ! tokenString style selectorStyle error message "the '\?selector:' delimitor"

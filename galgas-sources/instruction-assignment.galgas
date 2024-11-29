@@ -296,7 +296,7 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     ]
   //---
     [!?ioVariableMap searchForWriteAccess 
-      !.init {!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
+      !@{!"self." + self.mTargetSelfPropertyName !self.mTargetSelfPropertyName} ?3*
     ]
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType !expression.mResultType !self.mInstructionLocation !?expression)
