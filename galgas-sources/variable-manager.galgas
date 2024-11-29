@@ -1,27 +1,27 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Variable New Manager.
-#
-#  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Variable New Manager.
+//
+//  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! LOCAL VARIABLE
+//! LOCAL VARIABLE
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertDeclaredLocalVariable ?let @lstring inVarName
@@ -56,7 +56,7 @@ setter @localVarManager insertInitializedLocalVariable ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! LOCAL CONSTANT
+//! LOCAL CONSTANT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertUsedLocalConstant ?let @lstring inVarName
@@ -106,7 +106,7 @@ setter @localVarManager insertDeclaredLocalConstant ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! INPUT FORMAL ARGUMENT
+//! INPUT FORMAL ARGUMENT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
@@ -172,7 +172,7 @@ setter @localVarManager insertConstantInputFormalArgument ?let @lstring inVarNam
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! OUTPUT FORMAL ARGUMENT
+//! OUTPUT FORMAL ARGUMENT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
@@ -190,7 +190,7 @@ setter @localVarManager insertOutputFormalArgument ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! INPUT OUTPUT FORMAL ARGUMENT
+//! INPUT OUTPUT FORMAL ARGUMENT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInputOutputFormalArgumentDeclaredAsUnused ?let @lstring inVarName
@@ -225,7 +225,7 @@ setter @localVarManager insertInputOutputFormalArgument ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! PROPERTY
+//! PROPERTY
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertNonMutableProperty ?let @lstring inVarName
@@ -260,7 +260,7 @@ setter @localVarManager insertMutableProperty ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! PROPERTY IN INITIALIZER
+//! PROPERTY IN INITIALIZER
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager insertInitializerSelfProperty
@@ -283,7 +283,7 @@ setter @localVarManager insertInitializerSelfProperty
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! OVERRIDES AND BRANCHES
+//! OVERRIDES AND BRANCHES
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager openOverrideForSelectBlock {
@@ -339,7 +339,7 @@ setter @localVarManager closeBranch ?let @location inEndOfBranchLocation {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! TYPES
+//! TYPES
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 boolset @localVariableAttributes {
@@ -355,10 +355,10 @@ boolset @localVariableAttributes {
 
 enum @localVarValuation %equatable {
   case invalid //--- Error state, for disabled further error messages
-  case declared (@bool usedInSubscope) # The variable has no value
-  case initialized # The variable has been written once
-  case read # The variable has been written, and read
-  case mutated # The variable has been rewritten
+  case declared (@bool usedInSubscope) // The variable has no value
+  case initialized // The variable has been written once
+  case read // The variable has been written, and read
+  case mutated // The variable has been rewritten
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
@@ -409,7 +409,7 @@ struct @currentVarManager {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! checkSelfObjectIsFullyInitialized
+//! checkSelfObjectIsFullyInitialized
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarManager checkSelfObjectIsFullyInitialized ?let @location inErrorLocation {
@@ -432,7 +432,7 @@ method @currentVarManager checkSelfObjectIsFullyInitialized ?let @location inErr
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! NEUTRAL ACCESS
+//! NEUTRAL ACCESS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager neutralAccess ?let @lstring inVarName
@@ -454,7 +454,7 @@ setter @currentVarManager neutralAccess ?let @lstring inVarName
                                         !@string outCppName
                                         !@string outNameForCheckingFormalParameterUsing {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-#  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
+//  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
     outType = varDescriptor.mType
     outCppName = varDescriptor.mCppName
     outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
@@ -482,7 +482,7 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
   else
     let localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
-#    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
+//    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
@@ -493,7 +493,7 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! DROP ACCESS
+//! DROP ACCESS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForDropAccess ?let @lstring inVarName {
@@ -504,11 +504,11 @@ setter @localVarManager searchForDropAccess ?let @lstring inVarName {
 
 setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-#  if let [self.mLocalVarMap searchKey
-#                !inVarName
-#                ?3*
-#                ?let attributes
-#                ?let valuation] then
+//  if let [self.mLocalVarMap searchKey
+//                !inVarName
+//                ?3*
+//                ?let attributes
+//                ?let valuation] then
     [varDescriptor.mState checkFinalState !inVarName !varDescriptor.mAttributes]
     [!?self.mLocalVarMap removeKey !inVarName ?5*]
   else
@@ -525,7 +525,7 @@ setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! WRITE ACCESS
+//! WRITE ACCESS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForWriteAccess ?let @lstring inVarName
@@ -547,13 +547,13 @@ setter @currentVarManager searchForWriteAccess ?let @lstring inVarName
                                                !@string outCppName
                                                !@string outNameForCheckingFormalParameterUsing {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-#  if let [self.mLocalVarMap searchKey
-#            !inVarName
-#            ?let type
-#            ?let cppName
-#            ?let nameForCheckingFormalParameterUsing
-#            ?let attributes
-#            ?let valuation] then
+//  if let [self.mLocalVarMap searchKey
+//            !inVarName
+//            ?let type
+//            ?let cppName
+//            ?let nameForCheckingFormalParameterUsing
+//            ?let attributes
+//            ?let valuation] then
     var newValuation = varDescriptor.mState
     [!?newValuation writeTransition !inVarName !inOverridenMap: false !varDescriptor.mAttributes]
     if newValuation != varDescriptor.mState then
@@ -580,14 +580,14 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
-#    if let [localMap searchKey
-#             !inVarName
-#             ?let type
-#             ?let cppName
-#             ?let nameForCheckingFormalParameterUsing
-#             ?let attributes
-#             ?let valuation
-#           ] then
+//    if let [localMap searchKey
+//             !inVarName
+//             ?let type
+//             ?let cppName
+//             ?let nameForCheckingFormalParameterUsing
+//             ?let attributes
+//             ?let valuation
+//           ] then
       var newValuation = varDescriptor.mState
       [!?newValuation writeTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
       if newValuation != varDescriptor.mState then
@@ -610,9 +610,9 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
                                           ?let @localVariableAttributes inAttributes {
   switch self
   case invalid : //--- Error state, for disabled further error messages
-  case declared (*) : # The variable has no value
+  case declared (*) : // The variable has no value
     self = .initialized
-  case initialized : # The variable has been written once
+  case initialized : // The variable has been written once
     if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
@@ -624,20 +624,20 @@ setter @localVarValuation writeTransition ?let @lstring inVarName
     else
       self = .mutated
     end
-  case read : # The variable has been written, and read
+  case read : // The variable has been written, and read
     if [inAttributes contains !.rejectWriteInInitializedAndReadStates] then
       error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
     else
       self = .mutated
     end
-  case mutated : # The variable has been rewritten
-    # ok
+  case mutated : // The variable has been rewritten
+    // ok
   end
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! READ ACCESS
+//! READ ACCESS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForReadAccess ?let @lstring inVarName
@@ -701,19 +701,19 @@ setter @localVarValuation readTransition ?let @lstring inVarName
                                          ?let @localVariableAttributes inAttributes {
   switch self
   case invalid :
-  case declared (*) : # The variable has no value
+  case declared (*) : // The variable has no value
     error inVarName : "variable '" + inVarName + "' used before being initialized"
     self = .invalid
-  case initialized: # The variable has been written once
+  case initialized: // The variable has been written once
     self = .read
     if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
-  case read : # The variable has been written, and read
+  case read : // The variable has been written, and read
     if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
-  case mutated : # The variable has been rewritten
+  case mutated : // The variable has been rewritten
     if [inAttributes contains !.warnsOnAnyAcces] then
       warning inVarName : "formal parameter has been declared as unused"
     end
@@ -721,7 +721,7 @@ setter @localVarValuation readTransition ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! READ WRITE ACCESS
+//! READ WRITE ACCESS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @localVarManager searchForReadWriteAccess ?let @lstring inVarName
@@ -738,13 +738,13 @@ setter @currentVarManager searchForReadWriteAccess ?let @lstring inVarName
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
   if let varDescriptor = self.mLocalVarMap @[inVarName] then
-#  if let [self.mLocalVarMap searchKey
-#           !inVarName
-#           ?let type
-#           ?let cppName
-#           ?let nameForCheckingFormalParameterUsing
-#           ?let inAttributes
-#           ?let valuation] then
+//  if let [self.mLocalVarMap searchKey
+//           !inVarName
+//           ?let type
+//           ?let cppName
+//           ?let nameForCheckingFormalParameterUsing
+//           ?let inAttributes
+//           ?let valuation] then
     var newValuation = varDescriptor.mState
     [!?newValuation readWriteTransition !inVarName !inOverridenMap: false !varDescriptor.mAttributes]
     if newValuation != varDescriptor.mState then
@@ -771,13 +771,13 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
   else
     var localMap = [self mMapAtIndex !inIndex]
     if let varDescriptor = localMap @[inVarName] then
-#    if let [localMap searchKey
-#              !inVarName
-#              ?let type
-#              ?let cppName
-#              ?let nameForCheckingFormalParameterUsing
-#              ?let inAttributes
-#              ?let valuation] then
+//    if let [localMap searchKey
+//              !inVarName
+//              ?let type
+//              ?let cppName
+//              ?let nameForCheckingFormalParameterUsing
+//              ?let inAttributes
+//              ?let valuation] then
       var newValuation = varDescriptor.mState
       [!?newValuation readWriteTransition !inVarName !inOverridenMap: true !varDescriptor.mAttributes]
       if newValuation != varDescriptor.mState then
@@ -803,7 +803,7 @@ setter @localVarValuation readWriteTransition ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SCOPE
+//! SCOPE
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager openScope {
@@ -824,7 +824,7 @@ setter @currentVarManager closeScope ?let @location inErrorLocation {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! INSERT KEY
+//! INSERT KEY
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager insertKey ?let @lstring inVarName
@@ -844,13 +844,13 @@ setter @currentVarManager insertKey ?let @lstring inVarName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CHECK FINAL STATE
+//! CHECK FINAL STATE
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVariableAttributes inAttributes {
   switch self
   case invalid :
-  case declared (usedInOtherBlock) : # The variable has no value
+  case declared (usedInOtherBlock) : // The variable has no value
     if [inAttributes contains !.rejectDeclaredStateAsFinalState] then
       error inVarName : "variable '" + inVarName + "' should be initialized"
     elsif usedInOtherBlock then
@@ -858,7 +858,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
     else
       warning inVarName : "variable '" + inVarName + "' was never used; consider removing it"
     end
-  case initialized : # The variable has been written once
+  case initialized : // The variable has been written once
     if [inAttributes contains !.suggestDeclareUnusedParameterAsUnused] then
       warning inVarName : "parameter '" + inVarName + "' was never read; consider declaring it as unused"
     elsif not [inAttributes contains !.acceptInitializedStateAsFinalState] then
@@ -869,7 +869,7 @@ method @localVarValuation checkFinalState ?let @lstring inVarName ?let @localVar
       warning inVarName : "variable '" + inVarName + "' was never mutated; consider declaring it as 'let'"
     end
   case mutated :
-    # Ok
+    // Ok
   end
 }
 
@@ -894,7 +894,7 @@ method @currentVarManager checkAutomatonStates ?let @location inErrorLocation {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! COMBINE MANAGERS
+//! COMBINE MANAGERS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @localVarValuation combineValuationWith ?let @localVarValuation inOther
@@ -921,7 +921,7 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     case initialized, read, mutated :
       outResult = inOther
     end
-  case read : # The variable has been written, and read
+  case read : // The variable has been written, and read
     switch inOther
     case invalid :
       outResult = inOther
@@ -932,7 +932,7 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
     case read, mutated :
       outResult = inOther
    end
-  case mutated : # The variable has been rewritten
+  case mutated : // The variable has been rewritten
     switch inOther
     case invalid :
       outResult = inOther
@@ -1000,21 +1000,21 @@ setter @currentVarManager combineManagerWith ?otherManager: let @currentVarManag
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-# EXAMPLES
+// EXAMPLES
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-#proc azerty1 ?let @bool unused ssss { message [ssss cString] }
-#proc azerty2 ?let @bool ssss { message [ssss cString] }
-#proc azerty3 ?let @bool ssss {  }
-#proc azerty4 ?let @bool unused ssss {  }
-#proc azerty5 ? @bool unused ssss { message [ssss cString] }
-#proc azerty6 ? @bool ssss { message [ssss cString] }
-#proc azerty7 ? @bool ssss {  }
-#proc azerty8 ? @bool unused ssss {  }
+//proc azerty1 ?let @bool unused ssss { message [ssss cString] }
+//proc azerty2 ?let @bool ssss { message [ssss cString] }
+//proc azerty3 ?let @bool ssss {  }
+//proc azerty4 ?let @bool unused ssss {  }
+//proc azerty5 ? @bool unused ssss { message [ssss cString] }
+//proc azerty6 ? @bool ssss { message [ssss cString] }
+//proc azerty7 ? @bool ssss {  }
+//proc azerty8 ? @bool unused ssss {  }
 
-#proc azerty9 ?!@bool unused ssss {  }
-#proc azertyA ?!@bool ssss {  }
-#proc azertyB ?!@bool unused ssss { ssss = true }
-#proc azertyC ?!@bool ssss { ssss = true }
+//proc azerty9 ?!@bool unused ssss {  }
+//proc azertyA ?!@bool ssss {  }
+//proc azertyB ?!@bool unused ssss { ssss = true }
+//proc azertyC ?!@bool ssss { ssss = true }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————

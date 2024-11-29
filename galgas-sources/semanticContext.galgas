@@ -1,25 +1,25 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  semantics definitions for semantics component
-#
-#  Copyright (C) 2010, ..., 2022 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  semantics definitions for semantics component
+//
+//  Copyright (C) 2010, ..., 2022 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @location sourceFile -> @string {
@@ -67,9 +67,9 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  G R A M M A R   M A P
-#
+//
+//  G R A M M A R   M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @grammarLabelMap {
@@ -89,9 +89,9 @@ map @grammarMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  F U N C T I O N   M A P
-#
+//
+//  F U N C T I O N   M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @functionMap {
@@ -103,14 +103,14 @@ map @functionMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  F I L E W R A P P E R   M A P
-#
+//
+//  F I L E W R A P P E R   M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @wrapperFileMap { # Key is file name
+map @wrapperFileMap { // Key is file name
   public let @string mAbsoluteFilePath
-  public let @bool mIsTextFile # true: text file, false: binary file
+  public let @bool mIsTextFile // true: text file, false: binary file
   public let @uint mWrapperDirectoryIndex
   public let @uint mWrapperFileIndex
   insert insertKey error message "INTERNAL ERROR"
@@ -119,7 +119,7 @@ map @wrapperFileMap { # Key is file name
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @wrapperDirectoryMap { # Key is directory name
+map @wrapperDirectoryMap { // Key is directory name
   public let @wrapperFileMap mRegularFileMap
   public let @wrapperDirectoryMap mDirectoryMap
   public let @uint mWrapperDirectoryIndex
@@ -150,9 +150,9 @@ map @filewrapperMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  O P T I O N   M A P
-#
+//
+//  O P T I O N   M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @optionComponentMapForSemanticAnalysis {
@@ -166,16 +166,16 @@ map @optionComponentMapForSemanticAnalysis {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  L E X I Q U E   M A P
-#
+//
+//  L E X I Q U E   M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexiqueComponentMapForSemanticAnalysis {
   public let @bool mIsTemplate
   public let @terminalMap mTerminalMap
   public let @indexingListAST mIndexingListAST
-#  public let @lstring mIndexingDirectory
+//  public let @lstring mIndexingDirectory
   public let @terminalDeclarationListAST mTerminalListAST
   private let @lexicalAttributeListAST mLexicalAttributeListAST
   private let @lexicalStyleListAST mLexicalStyleListAST
@@ -185,9 +185,9 @@ map @lexiqueComponentMapForSemanticAnalysis {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  S Y N T A X   M A P
-#
+//
+//  S Y N T A X   M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @syntaxComponentMap {
@@ -200,9 +200,9 @@ map @syntaxComponentMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    S E M A N T I C    C O N T E X T
-#
+//
+//    S E M A N T I C    C O N T E X T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @semanticContext {
@@ -217,9 +217,9 @@ struct @semanticContext {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    EXTENSION INITIALIZER MAP
-#
+//
+//    EXTENSION INITIALIZER MAP
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionInitializerMapForType {
@@ -236,9 +236,9 @@ map @extensionInitializerForBuildingContext {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    EXTENSION    M E T H O D    M A P
-#
+//
+//    EXTENSION    M E T H O D    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionMethodMapForType {
@@ -256,9 +256,9 @@ map @extensionMethodMapForBuildingContext {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    EXTENSION    M O D I F I E R    M A P
-#
+//
+//    EXTENSION    M O D I F I E R    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionSetterMapForType {
@@ -275,9 +275,9 @@ map @extensionSetterMapForBuildingContext {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    EXTENSION    G E T T E R    M A P
-#
+//
+//    EXTENSION    G E T T E R    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @extensionGetterMapForType {
@@ -296,28 +296,28 @@ map @extensionGetterMapForBuildingContext {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    EXTENSION INITIALIZER MAP
-#
+//
+//    EXTENSION INITIALIZER MAP
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-#map @extensionInitializerMapForType {
-#  public let @formalInputParameterListAST mInputFormalParameterList
-#  insert insertKey error message "the '%K' initializer has been already declared in %L"
-#}
-#
-#//————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#map @extensionInitializerMapForBuildingContext {
-#  public let @extensionInitializerMapForType mExtensionInitiamlizerMapForType
-#  insert insertKey error message "internal error"
-#  search searchKey error message "internal error"
-#}
+//map @extensionInitializerMapForType {
+//  public let @formalInputParameterListAST mInputFormalParameterList
+//  insert insertKey error message "the '%K' initializer has been already declared in %L"
+//}
+//
+////————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//map @extensionInitializerMapForBuildingContext {
+//  public let @extensionInitializerMapForType mExtensionInitiamlizerMapForType
+//  insert insertKey error message "internal error"
+//  search searchKey error message "internal error"
+//}
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    D I S P L A Y
-#
+//
+//    D I S P L A Y
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @semanticDeclarationAST keyRepresentation -> @string
@@ -385,9 +385,9 @@ override getter @externFunctionDeclarationAST keyRepresentation -> @string {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    E N T E R    T Y P E S
-#
+//
+//    E N T E R    T Y P E S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc addExtensions
@@ -435,7 +435,7 @@ proc addExtensions
           !true
           !returnedType
           !.isVirtual
-          !"" # getter name is not obsolete, no replacement getter
+          !"" // getter name is not obsolete, no replacement getter
         ]
       else
         [!?ioGetterMap insertKey
@@ -446,7 +446,7 @@ proc addExtensions
           !true
           !returnedType
           !qualifier
-          !"" # getter name is not obsolete, no replacement getter
+          !"" // getter name is not obsolete, no replacement getter
         ]
       end
     end
@@ -483,7 +483,7 @@ proc addExtensions
           !lkey.location
           !true
           !.isVirtual
-          !"" # No Error message
+          !"" // No Error message
         ]
       else
         [!?ioInstanceMethodMap insertKey
@@ -493,7 +493,7 @@ proc addExtensions
           !lkey.location
           !true
           !qualifier
-          !"" # No error message
+          !"" // No error message
         ]
       end
     end
@@ -517,7 +517,7 @@ proc addExtensions
         !formalArgumentList
         !true
         !@methodQualifier.isBasic
-        !"" # No Error message
+        !"" // No Error message
       ]
       if not inAcceptSetters then
         error lkey : "a class does not accept any setter; use method instead"
@@ -533,14 +533,14 @@ proc addExtensions
         [!?ioTypeMap makeEntry !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string !isConstant
       end
-#      for parameter in mFormalParameterList do
-#        [!?ioTypeMap makeEntry !parameter.mFormalArgumentTypeName ?let typeIndex]
-#        formalArgumentList +=
-#          !parameter.mFormalSelector
-#          !typeIndex
-#          !parameter.mFormalArgumentPassingMode
-#          !parameter.mFormalArgumentName.string
-#      end
+//      for parameter in mFormalParameterList do
+//        [!?ioTypeMap makeEntry !parameter.mFormalArgumentTypeName ?let typeIndex]
+//        formalArgumentList +=
+//          !parameter.mFormalSelector
+//          !typeIndex
+//          !parameter.mFormalArgumentPassingMode
+//          !parameter.mFormalArgumentName.string
+//      end
       [!?ioInitializerMap insertKey
         !lkey
         !formalArgumentList
@@ -550,7 +550,7 @@ proc addExtensions
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! enterInSemanticContext
+//! enterInSemanticContext
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @wrapperExtensionMap {
@@ -579,7 +579,7 @@ proc recursivelyEnumerateDirectories
       [!?outWrapperFileMap insertKey
         !@lstring {!mValue !@location.here}
         !absoluteFilePath
-        !true # Text File
+        !true // Text File
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ]
@@ -589,7 +589,7 @@ proc recursivelyEnumerateDirectories
       [!?outWrapperFileMap insertKey
         !@lstring {!mValue !@location.here}
         !absoluteFilePath
-        !false # Binary file
+        !false // Binary file
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ]
@@ -700,7 +700,7 @@ override method @filewrapperDeclarationAST enterDeclarationInSemanticContext
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @externFunctionDeclarationAST enterDeclarationInSemanticContext # Handles also function declaration
+override method @externFunctionDeclarationAST enterDeclarationInSemanticContext // Handles also function declaration
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
   ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
@@ -721,7 +721,7 @@ override method @externFunctionDeclarationAST enterDeclarationInSemanticContext 
     !self.mFunctionName
     !functionSignature
     !resultTypeIndex
-    !false # Is not internal
+    !false // Is not internal
   ]
 }
 
@@ -800,12 +800,12 @@ override method @galgas3GrammarComponentAST enterDeclarationInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    B U I L D    O R D E R E D     S E M A N T I C    L I S T
-#
+//
+//    B U I L D    O R D E R E D     S E M A N T I C    L I S T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-#! enterDeclarationInGraph
+//! enterDeclarationInGraph
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 

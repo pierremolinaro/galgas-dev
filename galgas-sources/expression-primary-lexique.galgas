@@ -1,30 +1,31 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @literalTypeInExpressionAST : @semanticExpressionAST {
-  private let @lstring mLiteralTypeName
+class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
+  private let @lstring mLexiqueComponentName
+  private let @lstring mLexiqueGetterName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
@@ -33,9 +34,13 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
-    $`$
-    $@type$ ?let @lstring typeName
-    outExpression = @literalTypeInExpressionAST {!typeName}
+    $[$
+    $lexique$
+    $identifier$ ?let lexiqueName
+    $:$
+    $identifier$ ?let getterName
+    outExpression = @lexiqueIntrospectionExpressionAST {!lexiqueName !getterName}
+    $]$
   }
 
   //······························································································
@@ -50,9 +55,13 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
-    $`$
-    $@type$ ?let @lstring typeName # Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
-    outExpression = @literalTypeInExpressionAST {!typeName}
+    $lexique$
+    $[$
+    $identifier$ ?let lexiqueName
+    $:$
+    $identifier$ ?let getterName
+    outExpression = @lexiqueIntrospectionExpressionAST {!lexiqueName !getterName}
+    $]$
   }
 
   //······························································································
@@ -60,57 +69,66 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @literalTypeInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
+override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
 {
-  [!?ioTypeMap makeEntry !self.mLiteralTypeName ?*]
 }
 
-#·····················································································································
+//································································································
 
-override method @literalTypeInExpressionAST analyzeSemanticExpression
+override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
-  ?let @analysisContext unused inAnalysisContext
+  ?let @analysisContext inAnalysisContext
                                 ?!@unifiedTypeMap ioTypeMap
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
+ let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+//--- Check  lexique is declared
+  [inAnalysisContext.semanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
+    !self.mLexiqueComponentName
+    ?7*
+  ]
+//--- Check getter name
+  if self.mLexiqueGetterName.string != "symbols" then
+    error self.mLexiqueGetterName:"unknown getter"
+  end
 //---
-  let type = [ioTypeMap typeMapEntryForLKey !self.mLiteralTypeName]
-  outExpression = @literalTypeInExpressionForGeneration {
-    ![ioTypeMap typeMapEntryForLKey !@{!"type" !.here}]
-    !self.mLiteralTypeName.location
-    !type
-  }
+  outExpression = @lexiqueIntrospectionForGeneration {
+    ![ioTypeMap typeMapEntryForLKey !["stringlist" nowhere]]
+    !self.mLexiqueComponentName.location
+    !self.mLexiqueComponentName.string
+    !self.mLexiqueGetterName.string}
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @unifiedTypeMapEntry mLiteralType
+class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
+  private let @string mLexiqueComponentName
+  private let @string mLexiqueGetterName
 }
 
-#·····················································································································
+//································································································
 
-override method @literalTypeInExpressionForGeneration generateExpression
+override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
-  [self.mLiteralType addHeaderFileName !?ioInclusionSet]
-  outCppExpression = "GGS_type (& kTypeDescriptor_GALGAS_"
-                  + [[self.mLiteralType definition].typeName.string identifierRepresentation] + ")"
+  !@string outCppExpression {
+//---
+  ioInclusionSet += !"lexique-" + [self.mLexiqueComponentName fileNameRepresentation]
+  outCppExpression = "Lexique_" + [self.mLexiqueComponentName identifierRepresentation] + "::"
+  + [self.mLexiqueGetterName identifierRepresentation]
+  + "(" + [self.mLocation sourceFile] + ")"
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————

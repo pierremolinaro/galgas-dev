@@ -1,23 +1,23 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  A C T U A L    P A R A M E T E R
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  A C T U A L    P A R A M E T E R
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualParameterListAST {
@@ -358,7 +358,7 @@ class @outputInputJokerParameterAST : @actualParameterAST {
     let cppVarName = "joker_" + [self.mActualSelector.location startLocationIndex]
     ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration {
       !inFormalArgumentType
-      !false # Is not constant
+      !false // Is not constant
       !cppVarName
       !expressionGeneration
     }
@@ -499,7 +499,7 @@ class @inputActualExistingVariableParameterAST : @actualParameterAST {
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
       error self.mActualSelector : "the selector should be '" + s + "'" fixit { replace s }
-  #     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  //     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
     end
     [!?ioVariableMap searchForWriteAccess
       !self.mInputActualParameterName
@@ -1032,9 +1032,9 @@ class @inputJokerActualParameterAST : @actualParameterAST {
   override getter isCompatibleWith ?let @formalArgumentPassingModeAST inFormalPassingMode
                                    ?let @string unused inSelector -> @bool {
     result = inFormalPassingMode == .argumentOut
-#    if result then
-#      result = self.mActualSelector.string == inSelector
-#    end
+//    if result then
+//      result = self.mActualSelector.string == inSelector
+//    end
   }
 
   //······························································································

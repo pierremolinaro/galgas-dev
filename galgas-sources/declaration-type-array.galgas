@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -114,38 +114,38 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !returnedTypeName: "uint"
       !hasCompilerArgument: false
     )
-#    enterInheritedGetterWithoutArgument (
-#      !?getterMap
-#      !?ioTypeMap
-#      !getterName:"range"
-#      !obsoleteName: ""
-#      !returnedTypeName:"range"
-#      !hasCompilerArgument:false
-#    )
-#    enterBaseGetterWithArgument (
-#      !?getterMap
-#      !?ioTypeMap
-#      !getterName: "subListFromIndex"
-#      !argSelector: "" !argType: "uint" !argName: "inIndex"
-#      !returnedTypeName:self.arrayTypeName.string
-#      !hasCompilerArgument:true
-#    )
-#    enterBaseGetterWithArgument (
-#      !?getterMap
-#      !?ioTypeMap
-#      !getterName: "subListToIndex"
-#      !argSelector: "" !argType: "uint" !argName: "inIndex"
-#      !returnedTypeName: self.arrayTypeName.string
-#      !hasCompilerArgument: true
-#    )
-#    enterBaseGetterWithArgument (
-#      !?getterMap
-#      !?ioTypeMap
-#      !getterName: "subListWithRange"
-#      !argSelector: "" !argType: "range" !argName: "inRange"
-#      !returnedTypeName:self.arrayTypeName.string
-#      !hasCompilerArgument:true
-#    )
+//    enterInheritedGetterWithoutArgument (
+//      !?getterMap
+//      !?ioTypeMap
+//      !getterName:"range"
+//      !obsoleteName: ""
+//      !returnedTypeName:"range"
+//      !hasCompilerArgument:false
+//    )
+//    enterBaseGetterWithArgument (
+//      !?getterMap
+//      !?ioTypeMap
+//      !getterName: "subListFromIndex"
+//      !argSelector: "" !argType: "uint" !argName: "inIndex"
+//      !returnedTypeName:self.arrayTypeName.string
+//      !hasCompilerArgument:true
+//    )
+//    enterBaseGetterWithArgument (
+//      !?getterMap
+//      !?ioTypeMap
+//      !getterName: "subListToIndex"
+//      !argSelector: "" !argType: "uint" !argName: "inIndex"
+//      !returnedTypeName: self.arrayTypeName.string
+//      !hasCompilerArgument: true
+//    )
+//    enterBaseGetterWithArgument (
+//      !?getterMap
+//      !?ioTypeMap
+//      !getterName: "subListWithRange"
+//      !argSelector: "" !argType: "range" !argName: "inRange"
+//      !returnedTypeName:self.arrayTypeName.string
+//      !hasCompilerArgument:true
+//    )
   //------------------------ Instance methods
     var @instanceMethodMap instanceMethodMap = @()
     [!?instanceMethodMap insertKey
@@ -209,7 +209,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !setterInputFormalArgumentList
       !true
       !@methodQualifier.isBasic
-      !"" # No error message
+      !"" // No error message
     ]
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
@@ -258,7 +258,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.arrayTypeName
       !isPredefined: self.isPredefined
-      !isConcrete: true # Concrete Type
+      !isConcrete: true // Concrete Type
       !superType: .null
       !typeKind: .listType
       !supportCollectionValue: true 
@@ -289,23 +289,23 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   override method addAssociatedElement
     ?!@galgasDeclarationAST unused ioDeclarations {
-#    var @propertyInCollectionListAST structAttributeList = @()
-#    for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
-#      structAttributeList +=
-#        !isConstant: isConstant
-#        !qualifiedTypeAST
-#        !mPropertyName
-#        !.publicAccess
-#        !hasSelector: hasSelector
-#        !initialization: initExpression
-#    end
-#    ioSemanticDeclarationList += !@structDeclarationAST {
-#      !isPredefined: self.isPredefined
-#      !@{!self.arrayTypeName.string + elementTypeNameSuffix () !self.arrayTypeName.location}
-#      !structAttributeList
-#      !enumeratedElementTypeName: ""
-#      !comparison: if self.equatable then .equatable else .none end
-#    }
+//    var @propertyInCollectionListAST structAttributeList = @()
+//    for (isConstant qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
+//      structAttributeList +=
+//        !isConstant: isConstant
+//        !qualifiedTypeAST
+//        !mPropertyName
+//        !.publicAccess
+//        !hasSelector: hasSelector
+//        !initialization: initExpression
+//    end
+//    ioSemanticDeclarationList += !@structDeclarationAST {
+//      !isPredefined: self.isPredefined
+//      !@{!self.arrayTypeName.string + elementTypeNameSuffix () !self.arrayTypeName.location}
+//      !structAttributeList
+//      !enumeratedElementTypeName: ""
+//      !comparison: if self.equatable then .equatable else .none end
+//    }
   }
 
   //······························································································
@@ -340,23 +340,23 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
   //---
-#    var @typedPropertyList typedAttributeList = @()
-#    var @propertyIndexMap attributeMap = @()
-#    for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-#      if [initExpression isSome] then
-#        error propertyName : "property initialization is not handled for a list"
-#      end
-#      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
-#      [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-#      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
-#      typedAttributeList +=
-#        !t
-#        !propertyName
-#        !initExpression
-#        !hasSetter: true # not isConstant
-#        !hasSelector: hasSelector
-#      [!?attributeMap insertKey !propertyName !t]
-#    end
+//    var @typedPropertyList typedAttributeList = @()
+//    var @propertyIndexMap attributeMap = @()
+//    for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
+//      if [initExpression isSome] then
+//        error propertyName : "property initialization is not handled for a list"
+//      end
+//      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+//      [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+//      let t = [ioTypeMap typeMapEntryForLKey !propertyTypeName]
+//      typedAttributeList +=
+//        !t
+//        !propertyName
+//        !initExpression
+//        !hasSetter: true // not isConstant
+//        !hasSelector: hasSelector
+//      [!?attributeMap insertKey !propertyName !t]
+//    end
   //---
     let selfType = [ioTypeMap typeMapEntryForLKey !self.arrayTypeName]
     ioSemanticDeclarationListForGeneration +=
@@ -372,7 +372,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @arrayTypeForGeneration : @semanticTypeForGeneration {

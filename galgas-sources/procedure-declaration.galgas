@@ -1,30 +1,30 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    R O U T I N E    D E C L A R A T I O N
-#
+//
+//    R O U T I N E    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
   //······························································································
-  #    R O U T I N E    D E C L A R A T I O N
+  //    R O U T I N E    D E C L A R A T I O N
   //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -45,8 +45,8 @@ syntax extension galgas3InstructionsSyntax {
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false # Is not predefined
-      !isFilePrivate: false # private
+      !isPredefined: false // Is not predefined
+      !isFilePrivate: false // private
       !mRoutineName
       !formalParameterList
       !usefullProcedure: isUsefull
@@ -76,8 +76,8 @@ syntax extension galgas3InstructionsSyntax {
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false # Is not predefined
-      !isFilePrivate: true # private
+      !isPredefined: false // Is not predefined
+      !isFilePrivate: true // private
       !mRoutineName
       !formalParameterList
       !usefullProcedure: isUsefull
@@ -95,7 +95,7 @@ syntax extension galgas3InstructionsSyntax {
 syntax extension galgas4InstructionsSyntax {
 
   //······························································································
-  #    R O U T I N E    D E C L A R A T I O N
+  //    R O U T I N E    D E C L A R A T I O N
   //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
@@ -116,7 +116,7 @@ syntax extension galgas4InstructionsSyntax {
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !isFilePrivate: false
       !mRoutineName
       !mFormalParameterList
@@ -147,7 +147,7 @@ syntax extension galgas4InstructionsSyntax {
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList += !@procDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !isFilePrivate: true
       !mRoutineName
       !mFormalParameterList
@@ -248,11 +248,11 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "proc " + mangledName
       !@routineImplementationForGeneration {
-        !generateHeader: true # Generate Cpp header file
+        !generateHeader: true // Generate Cpp header file
         !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
         !routineMangledName: mangledName.string
         !formalArgumentList
-        !false # Do not generate static
+        !false // Do not generate static
         !instructionList
       }
   }
@@ -262,9 +262,9 @@ class @procDeclarationAST : @externProcedureDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    R O U T I N E    I M P L E M E N T A T I O N
-#
+//
+//    R O U T I N E    I M P L E M E N T A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
@@ -287,11 +287,11 @@ class @routineImplementationForGeneration : @routinePrototypeDeclarationForGener
       !?ioInclusionSet
       !self.mFormalArgumentList
       !self.mRoutineInstructionList
-      !false # Do not generate 'const' qualifier
+      !false // Do not generate 'const' qualifier
       !"Compiler"
-      !true # Generate location Argument
-      !false # Do not generate 'resetTemplateString'
-      !false # Do not generate syntaxDirectedTranslationString argument
+      !true // Generate location Argument
+      !false // Do not generate 'resetTemplateString'
+      !false // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.routineImplementation

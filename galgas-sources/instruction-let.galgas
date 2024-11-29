@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
@@ -33,7 +33,7 @@ class @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
   private let @lstring mConstantName
 }
 
-#·····················································································································*
+//································································································*
 
 class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   private let @lstring mVariableName
@@ -41,7 +41,7 @@ class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -64,7 +64,7 @@ syntax extension galgas3InstructionsSyntax {
       <expression_ggs3> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
-        !true # Is Constant
+        !true // Is Constant
         !typeName
         !constantName
         !sourceExpression
@@ -112,7 +112,7 @@ syntax extension galgas4InstructionsSyntax {
       <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST {
         !typeName.location
-        !true # Is Constant
+        !true // Is Constant
         !typeName
         !constantName
         !sourceExpression
@@ -139,7 +139,7 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+//! CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext
@@ -147,7 +147,7 @@ override method @undefinedLocalConstantDeclarationAST enterInstructionInSemantic
 {
 }
 
-#······················································································································
+//·································································································
 
 
 override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
@@ -155,7 +155,7 @@ override method @localConstantDeclarationWithAssignmentAST enterInstructionInSem
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#······················································································································
+//·································································································
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap {
@@ -166,7 +166,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
@@ -192,7 +192,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
   }
 }
 
-#······················································································································
+//·································································································
 
 override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
                             ?let @lstring inUsefulnessCallerEntityName
@@ -228,7 +228,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
     !expression}
 }
 
-#······················································································································
+//·································································································
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
                             ?let @lstring inUsefulnessCallerEntityName
@@ -279,7 +279,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION
+//! GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
@@ -287,7 +287,7 @@ class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForG
   private let @string mCppVariableName
 }
 
-#······················································································································
+//·································································································
 
 class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mTargetType
@@ -296,7 +296,7 @@ class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @se
   private let @semanticExpressionForGeneration mSourceExpression
 }
 
-#······················································································································
+//·································································································
 
 override method @undefinedLocalConstantDeclarationForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -309,7 +309,7 @@ override method @undefinedLocalConstantDeclarationForGeneration generateInstruct
   ioGeneratedCode += "GGS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
-#······················································································································
+//·································································································
 
 override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
                                                     ?!@stringset ioInclusionSet

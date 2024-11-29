@@ -1,20 +1,20 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates/target_generation" {
@@ -27,7 +27,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
   template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate"
   template build_release_macosx "makefile-macosx/build+release.py.galgasTemplate"
   template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
-#  template install_macosx "makefile-macosx/install.py.galgasTemplate"
+//  template install_macosx "makefile-macosx/install.py.galgasTemplate"
 
   template clean_unix "makefile-unix/clean.py.galgasTemplate" ?@string PROJECT_NAME
   template build_unix "makefile-unix/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
@@ -122,31 +122,31 @@ private proc generateGalgasCodeBlocksWindowsTarget
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-#private proc generateGalgasCodeBlocksMacTarget
-#  ?let @string inProjectDirectory
-#  ?buildDirName: let @string inBuildDirectoryName
-#  ?let @string inProjectName
-#  ?let @stringlist inToolCppFileList
-#  ?let @string inLIBPMpath
-#  ?let @stringlist inHandCodedSourceToolFileList
-#  ?let @stringset inHandCodedSourceDirectorySet
-#  ?let @bool inVerboseOption
-#{
-#  let @string dir = inProjectDirectory + "/project-codeblocks-mac"
-#  [dir makeDirectory]
-#  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
-#    !inProjectName
-#    !inToolCppFileList
-#    !inLIBPMpath
-#    !inHandCodedSourceToolFileList
-#    !inHandCodedSourceDirectorySet
-#    !windows:false
-#    !platform:"Mac"
-#    !verboseOption:inVerboseOption
-#    !buildDirName: inBuildDirectoryName
-#  ]
-#  [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
-#}
+//private proc generateGalgasCodeBlocksMacTarget
+//  ?let @string inProjectDirectory
+//  ?buildDirName: let @string inBuildDirectoryName
+//  ?let @string inProjectName
+//  ?let @stringlist inToolCppFileList
+//  ?let @string inLIBPMpath
+//  ?let @stringlist inHandCodedSourceToolFileList
+//  ?let @stringset inHandCodedSourceDirectorySet
+//  ?let @bool inVerboseOption
+//{
+//  let @string dir = inProjectDirectory + "/project-codeblocks-mac"
+//  [dir makeDirectory]
+//  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+//    !inProjectName
+//    !inToolCppFileList
+//    !inLIBPMpath
+//    !inHandCodedSourceToolFileList
+//    !inHandCodedSourceDirectorySet
+//    !windows:false
+//    !platform:"Mac"
+//    !verboseOption:inVerboseOption
+//    !buildDirName: inBuildDirectoryName
+//  ]
+//  [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
+//}
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -255,7 +255,7 @@ private proc generateGalgas3MakefileMacTarget
   [[filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+lto.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx] writeToExecutableFileWhenDifferentContents !dir +"/build+debug.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx] writeToExecutableFileWhenDifferentContents !dir +"/verbose-build.py" ?*]
-#  [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
+//  [[filewrapper targetGalgas3GenerationFileWrapper.install_macosx] writeToExecutableFileWhenDifferentContents !dir +"/install.py" ?*]
   [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName] writeToExecutableFileWhenDifferentContents !dir +"/clean.py" ?*]
   [@string deleteFileIfExists !dir + "/makefile"]
 }
@@ -410,9 +410,9 @@ proc updateGalgasTargets
     : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacOS\""
   end
 //--- Generation of Xcode project given by command line option ?
-#  if [option galgas_cli_options.macosxSDK value] != 0 then
-#    SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
-#  end
+//  if [option galgas_cli_options.macosxSDK value] != 0 then
+//    SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
+//  end
 //--- Check Cocoa features
   if SDK != "", not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
     warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"

@@ -1,25 +1,25 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Grammar component compilation
-#
-#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Grammar component compilation
+//
+//  Copyright (C) 2009, ..., 2015 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transformLabelMap
@@ -145,7 +145,7 @@ proc handleNonTerminalDeclarationsFromRuleList
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#                     transformInstructionList
+//                     transformInstructionList
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @syntaxInstructionAST transformInstruction
@@ -218,9 +218,9 @@ proc buildRuleList
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N
-#
+//
+//    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generation" {
@@ -230,7 +230,7 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
     ?@string LEXIQUE_IDENTIFIER
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
-#    ?@bool HAS_INDEXING
+//    ?@bool HAS_INDEXING
     ?@string START_SYMBOL_NAME
     ?@bool HAS_TRANSLATE_FEATURE
     ?@string GRAMMAR_NAME
@@ -238,9 +238,9 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#   Extern routine that performs grammar analysis
-#
+//
+//   Extern routine that performs grammar analysis
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern proc grammarAnalysisAndGeneration
@@ -253,8 +253,8 @@ extern proc grammarAnalysisAndGeneration
   ?let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
   ?let @string inHTMLfilePath
   ?let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
-#  ?let @bool inHasIndexing
-  ?let @string inSyntaxDirectedTranslationVarName # Empty if not syntax directed translation
+//  ?let @bool inHasIndexing
+  ?let @string inSyntaxDirectedTranslationVarName // Empty if not syntax directed translation
   !@string outGrammarCppFile
   !@string outGrammarHTMLHelperContents
 

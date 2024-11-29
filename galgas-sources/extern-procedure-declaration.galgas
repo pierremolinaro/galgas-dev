@@ -1,30 +1,30 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    E X T E R N    R O U T I N E    D E C L A R A T I O N
-#
+//
+//    E X T E R N    R O U T I N E    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
   //······························································································
-  #    E X T E R N    R O U T I N E    D E C L A R A T I O N
+  //    E X T E R N    R O U T I N E    D E C L A R A T I O N
   //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -42,8 +42,8 @@ syntax extension galgas3InstructionsSyntax {
     $identifier$ ?let @lstring mActionName indexing routineDefinition
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST {
-      !isPredefined: false # Is not predefined
-      !isFilePrivate: false # Is not internal
+      !isPredefined: false // Is not predefined
+      !isFilePrivate: false // Is not internal
       !mActionName
       !formalParameterList
       !usefullProcedure: isUsefull
@@ -59,7 +59,7 @@ syntax extension galgas3InstructionsSyntax {
 syntax extension galgas4InstructionsSyntax {
 
   //······························································································
-  #    E X T E R N    R O U T I N E    D E C L A R A T I O N
+  //    E X T E R N    R O U T I N E    D E C L A R A T I O N
   //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
@@ -77,8 +77,8 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ ?let @lstring mActionName indexing routineDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST mFormalParameterList
     ioDeclarations.mDeclarationList += !@externProcedureDeclarationAST {
-      !isPredefined: false # Is not predefined
-      !isFilePrivate: false # Is not internal
+      !isPredefined: false // Is not predefined
+      !isFilePrivate: false // Is not internal
       !mActionName
       !mFormalParameterList
       !usefullProcedure: isUsefull
@@ -181,9 +181,9 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "proc " + mangledName
       !@routinePrototypeDeclarationForGeneration {
-        !generateHeader: true # Generate Cpp header file
+        !generateHeader: true // Generate Cpp header file
         !implementationCppFileName: "proc-" + [mangledName fileNameRepresentation]
-        !routineMangledName: mangledName.string # self.mRoutineName.string
+        !routineMangledName: mangledName.string // self.mRoutineName.string
         !formalArgumentList
        }
   }
@@ -193,9 +193,9 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    R O U T I N E    D E C L A R A T I O N
-#
+//
+//    R O U T I N E    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {

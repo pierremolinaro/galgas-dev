@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @messageInstructionAST : @semanticInstructionAST {
@@ -24,7 +24,7 @@ class @messageInstructionAST : @semanticInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -48,22 +48,22 @@ syntax extension galgas3InstructionsSyntax {
 syntax extension galgas4InstructionsSyntax {
 
   //······························································································
-  # Replaced by print (...)
+  // Replaced by print (...)
   //······························································································
 
-#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-#    $message$
-#    let instructionLocation = @location.here
-#    <expression> ?let @semanticExpressionAST expression
-#    outInstruction = @messageInstructionAST {!instructionLocation !expression}
-#  }
+//  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+//    $message$
+//    let instructionLocation = @location.here
+//    <expression> ?let @semanticExpressionAST expression
+//    outInstruction = @messageInstructionAST {!instructionLocation !expression}
+//  }
 
   //······························································································
 
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+//! CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @messageInstructionAST enterInstructionInSemanticContext
@@ -73,7 +73,7 @@ override method @messageInstructionAST enterInstructionInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @messageInstructionAST analyzeSemanticInstruction
@@ -105,7 +105,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION
+//! GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @messageInstructionForGeneration : @semanticInstructionForGeneration {
@@ -113,7 +113,7 @@ class @messageInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
 }
 
-#·····················································································································*
+//································································································*
 
 override method @messageInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet

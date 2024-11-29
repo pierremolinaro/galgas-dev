@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @setterCallInstructionAST : @semanticInstructionAST {
@@ -28,7 +28,7 @@ class @setterCallInstructionAST : @semanticInstructionAST {
   private let @actualParameterListAST mActualParameterList
 }
 
-#·····················································································································*
+//································································································*
 
 class @selfSetterCallInstructionAST : @semanticInstructionAST {
   private let @lstring mSetterName
@@ -36,7 +36,7 @@ class @selfSetterCallInstructionAST : @semanticInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -113,42 +113,42 @@ syntax extension galgas4InstructionsSyntax {
 
   //······························································································
 
-#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-#    $[$
-#    let instructionLocation = @location.here
-#    $!?selector:$ ?let selector
-#    if selector.string != "" then
-#      error selector : "an empty selector '!?' is required here"
-#    end
-#    let @bool prefixedBySelf
-#    select
-#      prefixedBySelf = false
-#    or
-#      $self$
-#      $.$
-#      prefixedBySelf = true
-#    end
-#    $identifier$ ?let mReceiverName
-#    var mReceiverStructAttributes = @lstringlist ()
-#    repeat
-#    while
-#      $.$
-#      $identifier$ ?let structAttribute
-#      mReceiverStructAttributes += !structAttribute
-#    end
-#    $identifier$ ?let mSetterName
-#    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-#    outInstruction = @setterCallInstructionAST {
-#      !instructionLocation
-#      !prefixedBySelf
-#      !mReceiverName
-#      !mReceiverStructAttributes
-#      !["" here] # typeNameForCasting
-#      !mSetterName
-#      !actualParameterList
-#    }
-#    $]$
-#  }
+//  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+//    $[$
+//    let instructionLocation = @location.here
+//    $!?selector:$ ?let selector
+//    if selector.string != "" then
+//      error selector : "an empty selector '!?' is required here"
+//    end
+//    let @bool prefixedBySelf
+//    select
+//      prefixedBySelf = false
+//    or
+//      $self$
+//      $.$
+//      prefixedBySelf = true
+//    end
+//    $identifier$ ?let mReceiverName
+//    var mReceiverStructAttributes = @lstringlist ()
+//    repeat
+//    while
+//      $.$
+//      $identifier$ ?let structAttribute
+//      mReceiverStructAttributes += !structAttribute
+//    end
+//    $identifier$ ?let mSetterName
+//    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+//    outInstruction = @setterCallInstructionAST {
+//      !instructionLocation
+//      !prefixedBySelf
+//      !mReceiverName
+//      !mReceiverStructAttributes
+//      !["" here] // typeNameForCasting
+//      !mSetterName
+//      !actualParameterList
+//    }
+//    $]$
+//  }
 
   //······························································································
 
@@ -191,7 +191,7 @@ syntax extension galgas4InstructionsSyntax {
         !prefixedBySelf
         !mReceiverName
         !receiverStructProperties
-        !["" here] # typeNameForCasting
+        !["" here] // typeNameForCasting
         !setterName
         !actualParameterList
       }
@@ -203,7 +203,7 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+//! CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST enterInstructionInSemanticContext
@@ -214,7 +214,7 @@ override method @setterCallInstructionAST enterInstructionInSemanticContext
   end
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -225,7 +225,7 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @setterCallInstructionAST analyzeSemanticInstruction
@@ -348,7 +348,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   }
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -394,7 +394,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION
+//! GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
@@ -411,7 +411,7 @@ class @setterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mMethodBaseType
 }
 
-#·····················································································································*
+//································································································*
 
 class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @string mSelfCppName
@@ -422,7 +422,7 @@ class @selfSetterCallInstructionForGeneration : @semanticInstructionForGeneratio
   private let @bool mHasCompilerArgument
 }
 
-#·····················································································································*
+//································································································*
 
 override method @setterCallInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -457,7 +457,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   case definedAsExtension :
     ioInclusionSet += !"setter-" + [[self.mMethodBaseType definition].typeName.string fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
     if [[self.mReceiverType definition].typeKind isClassType] then
-      if ([[self.mReceiverType definition].allTypedPropertyList count] > 0) then #  & [mReceiverType mIsConcrete] then
+      if ([[self.mReceiverType definition].allTypedPropertyList count] > 0) then //  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
      end
@@ -502,7 +502,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfSetterCallInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet

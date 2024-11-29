@@ -1,36 +1,36 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  semantics definitions for semantics component
-#
-#  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  semantics definitions for semantics component
+//
+//  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @unifiedTypeDefinition {
   public let @lstring typeName %initArgLabel
   public let @bool isPredefined %initArgLabel
-  public let @bool isConcrete %initArgLabel # false if abstract class
+  public let @bool isConcrete %initArgLabel // false if abstract class
   public let @unifiedTypeMapEntry superType %initArgLabel
   public let @typeKindEnum typeKind %initArgLabel
   public let @bool supportCollectionValue %initArgLabel
   public let @typedPropertyList allTypedPropertyList %initArgLabel
-  public let @propertyMap propertyMap %initArgLabel # struct, class
+  public let @propertyMap propertyMap %initArgLabel // struct, class
   public let @typedPropertyList currentTypedPropertyList %initArgLabel
   public let @initializerMap initializerMap %initArgLabel
   public let @classFunctionMap classFunctionMap %initArgLabel
@@ -38,15 +38,15 @@ struct @unifiedTypeDefinition {
   public let @setterMap setterMap %initArgLabel
   public let @instanceMethodMap instanceMethodMap %initArgLabel
   public let @classMethodMap classMethodMap %initArgLabel
-  public let @unifiedTypeMapEntry unwrappedType %initArgLabel # null if not optional
-  public let @subscriptMap readSubscriptMap %initArgLabel # Read access
-  public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel # Empty List if cannot be enumerated
+  public let @unifiedTypeMapEntry unwrappedType %initArgLabel // null if not optional
+  public let @subscriptMap readSubscriptMap %initArgLabel // Read access
+  public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel // Empty List if cannot be enumerated
   public let @typeFeatures features %initArgLabel
-  public let @functionSignature addAssignOperatorArguments %initArgLabel # Empty list if += operator is not supported
-  public let @mapSearchMethodListAST mapSearchMethodList %initArgLabel # For a map, the list of search methods
-  public let @bool generateHeaderInSeparateFile %initArgLabel # Significant only for classes
+  public let @functionSignature addAssignOperatorArguments %initArgLabel // Empty list if += operator is not supported
+  public let @mapSearchMethodListAST mapSearchMethodList %initArgLabel // For a map, the list of search methods
+  public let @bool generateHeaderInSeparateFile %initArgLabel // Significant only for classes
   public let @unifiedTypeMapEntry typeForEnumeratedElement %initArgLabel
-  public let @string headerFileName %initArgLabel # Name of C++ header file that contains type declaration
+  public let @string headerFileName %initArgLabel // Name of C++ header file that contains type declaration
   public let @headerKind headerKind %initArgLabel
 }
 
@@ -114,17 +114,17 @@ boolset @typeFeatures {
   case infixXorOperator
   case prefixNotOperator
 
-  case equatable # Supports ==, != operators
-  case comparable # Supports <, <=, >, >= operators
-  case referenceEquatable # Supports ===, !== operators
+  case equatable // Supports ==, != operators
+  case comparable // Supports <, <=, >, >= operators
+  case referenceEquatable // Supports ===, !== operators
 
-  case plusAssignOperatorWithExpression # var += exp ;
-  case minusAssignOperatorWithExpression # var -= exp ;
-  case mulAssignOperatorWithExpression # var *= exp ;
-  case divAssignOperatorWithExpression # var /= exp ;
-  case xorAssignOperatorWithExpression # var ^= exp ;
-  case orAssignOperatorWithExpression # var |= exp ;
-  case andAssignOperatorWithExpression # var &= exp ;
+  case plusAssignOperatorWithExpression // var += exp ;
+  case minusAssignOperatorWithExpression // var -= exp ;
+  case mulAssignOperatorWithExpression // var *= exp ;
+  case divAssignOperatorWithExpression // var /= exp ;
+  case xorAssignOperatorWithExpression // var ^= exp ;
+  case orAssignOperatorWithExpression // var |= exp ;
+  case andAssignOperatorWithExpression // var &= exp ;
 
   case infixAddOperatorNoOVF
   case infixSubOperatorNoOVF
@@ -153,7 +153,7 @@ boolset @typeFeatures {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#  SUBSCRIPT MAP
+//  SUBSCRIPT MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @subscriptMap {

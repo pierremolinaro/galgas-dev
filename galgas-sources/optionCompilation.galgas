@@ -1,23 +1,23 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @optionDefaultValueEnumAST %equatable {
@@ -46,7 +46,7 @@ class @optionComponentDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 
@@ -174,7 +174,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! ENTER IN GRAPH
+//! ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInGraph
@@ -190,7 +190,7 @@ override method @optionComponentDeclarationAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! ENTER IN CONTEXT
+//! ENTER IN CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
@@ -271,7 +271,7 @@ override method @optionComponentDeclarationAST enterDeclarationInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTIC ANALYSIS
+//! SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionComponentDeclarationAST semanticAnalysis
@@ -336,7 +336,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "option " + self.mOptionComponentName
     !@optionComponentForGeneration {
-      !generateHeader: true # Generate Cpp header file
+      !generateHeader: true // Generate Cpp header file
       !implementationCppFileName: "option-" + [self.mOptionComponentName fileNameRepresentation]
       !optionIsPredefined
       !self.mOptionComponentName.string
@@ -348,7 +348,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -426,12 +426,12 @@ override method @optionComponentForGeneration appendSpecificFiles
       !startPath:inProductDirectory
       !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
         !self.mOptionComponentName
       ]
-      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
         !self.mOptionComponentName
       ]
@@ -444,8 +444,8 @@ override method @optionComponentForGeneration appendSpecificFiles
       !startPath:inProductDirectory
       !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
         !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa"
         !self.mOptionComponentName
@@ -454,8 +454,8 @@ override method @optionComponentForGeneration appendSpecificFiles
         !self.mStringOptionSortedList
         !self.mStringListSortedList
       ]
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"\n\n" # User Zone 3
+      !defaultUserZone2:"\n\n" // Defaut user zone2
+      !generatedZone3:"\n\n" // User Zone 3
       !makeExecutable:false
     ]
   //--- Generate Swift Cocoa Implementation
@@ -465,8 +465,8 @@ override method @optionComponentForGeneration appendSpecificFiles
       !startPath:inProductDirectory
       !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.swift"
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftCocoa
         !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-swift-cocoa"
         !self.mOptionComponentName
@@ -475,8 +475,8 @@ override method @optionComponentForGeneration appendSpecificFiles
         !self.mStringOptionSortedList
         !self.mStringListSortedList
       ]
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"\n\n" # User Zone 3
+      !defaultUserZone2:"\n\n" // Defaut user zone2
+      !generatedZone3:"\n\n" // User Zone 3
       !makeExecutable:false
     ]
  end
@@ -484,7 +484,7 @@ override method @optionComponentForGeneration appendSpecificFiles
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-map @commandLineOptionMap { # the key is the option identifier
+map @commandLineOptionMap { // the key is the option identifier
   public let @char mOptionChar
   public let @string mOptionString
   public let @string mComment
@@ -506,7 +506,7 @@ sortedlist @commandLineOptionSortedList {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S
+//         G E N E R A T I O N    T E M P L A T E S
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {

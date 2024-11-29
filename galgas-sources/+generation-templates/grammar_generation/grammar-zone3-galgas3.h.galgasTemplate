@@ -11,19 +11,19 @@ end
 %
 for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP do
   %//------------------------------------- '%!lkey.string%' non terminal\n%
-  #--- Parse
+  //--- Parse
     %//--- 'parse' label\n%
     %  public: virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
     if HAS_TRANSLATE_FEATURE then
       %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-  #--- indexing
+  //--- indexing
     %//--- indexing\n%
     %  public: virtual void nt_%![lkey identifierRepresentation]%_indexing (Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   for (label_lkey label_mFormalParametersList) in mNonterminalSymbolParametersMap do
   %//----------- '%!label_lkey.string%' label\n%
-  #--- Non terminal declaration
+  //--- Non terminal declaration
     %  public: virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in label_mFormalParametersList do (IDX)
       if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -32,7 +32,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
         %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
         %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
+      else // argumentIn
         %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
       end
       %,\n%!^
@@ -41,7 +41,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-  #--- Start symbol ?
+  //--- Start symbol ?
     if START_SYMBOL_NAME == lkey.string then
       %//--- Start symbol\n%
       %  public: static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
@@ -58,7 +58,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
           %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
         elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
           %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
-        else # argumentIn
+        else // argumentIn
           %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
         end
       end
@@ -78,14 +78,14 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
           %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
         elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
           %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
-        else # argumentIn
+        else // argumentIn
           %GGS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
         end
       end
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     end
   end
- #--- Start symbol ?
+ //--- Start symbol ?
   if START_SYMBOL_NAME == lkey.string then
     %//--- Indexing\n%
     %  public: static void performIndexing (%?^%Compiler * inCompiler,\n%

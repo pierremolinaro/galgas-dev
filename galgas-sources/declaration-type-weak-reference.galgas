@@ -1,33 +1,33 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @weakReferenceDeclarationAST : @semanticDeclarationAST {
   private let @lstring mClassTypeName
   private let @lstring mWeakReferenceTypeName
-  private let @lstring mSuperWeakReferenceTypeName # Empty if no super class
+  private let @lstring mSuperWeakReferenceTypeName // Empty if no super class
   private let @bool mGenerateInSeparateFile
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @weakReferenceDeclarationAST keyRepresentation -> @string {
@@ -56,7 +56,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+//   SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
@@ -78,10 +78,10 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
     let superTypeDefinition = [ioTypeMap typeDefinition !self.mSuperWeakReferenceTypeName]
     generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
   //---
-#    if not [superTypeDefinition.typeKind isWeakReferenceType] then
-#      error self.mSuperWeakReferenceTypeName
-#      : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
-#    end
+//    if not [superTypeDefinition.typeKind isWeakReferenceType] then
+//      error self.mSuperWeakReferenceTypeName
+//      : "the @" + self.mSuperWeakReferenceTypeName + " should be a weak reference type"
+//    end
   end
 //--- Current class Index
   [!?ioTypeMap makeEntry
@@ -138,7 +138,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mWeakReferenceTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
+    !isConcrete: true // Concrete Type
     !superType: superClassIndex
     !typeKind: .weakReferenceType {!referenceType: classIndex}
     !supportCollectionValue: false
@@ -166,7 +166,7 @@ override method @weakReferenceDeclarationAST enterDeclarationInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @weakReferenceDeclarationAST semanticAnalysis
@@ -212,13 +212,13 @@ override method @weakReferenceDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @weakReferenceTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mReferenceClassType
-  private let @unifiedTypeMapEntry mSuperClass # Null if no super class
-  private let @bool generateHeaderInSeparateFile # Significant only for classes
+  private let @unifiedTypeMapEntry mSuperClass // Null if no super class
+  private let @bool generateHeaderInSeparateFile // Significant only for classes
   private let @unifiedTypeMapEntry optionalClassTypeOrNull
 }
 
@@ -289,7 +289,7 @@ override method @weakReferenceTypeForGeneration appendSpecificImplementation
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Generation Filewrappers
+//! Generation Filewrappers
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper weakClassGenerationTemplate in "+generation-templates/type_generation" {

@@ -1,20 +1,20 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -37,7 +37,7 @@ syntax extension galgas3DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !methodName
@@ -66,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !methodName
@@ -103,7 +103,7 @@ syntax extension galgas4DeclarationsSyntax {
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: true
       !typeName
       !methodName
@@ -272,7 +272,7 @@ class @extensionMethodAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage:"extension method " + self.mExtensionMethodName
       !@extensionMethodForGeneration {
-        !generateHeader: true # Generate Cpp header file
+        !generateHeader: true // Generate Cpp header file
         !implementationCppFileName: "method-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionMethodName fileNameRepresentation]
         !selfType
         !self.mExtensionMethodName.string
@@ -288,7 +288,7 @@ class @extensionMethodAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP
+//   EXTENSION LIST MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionMethodAST buildExtensionListMaps
@@ -305,12 +305,12 @@ override method @extensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-#  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
+//  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
   [!?ioExtensionMethodListMap insertKey !self.mTypeName.string !self.mExtensionMethodName]
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -322,13 +322,13 @@ class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneratio
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
-#·······················································································································
+//································································································
 
 override getter @extensionMethodForGeneration headerKind ->@headerKind {
   result = @headerKind.oneHeader
 }
 
-#·······················································································································
+//································································································
 
 override method @extensionMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -348,7 +348,7 @@ override method @extensionMethodForGeneration appendDeclaration1
   end
 }
 
-#·······················································································································
+//································································································
 
 override method @extensionMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -372,11 +372,11 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !?ioInclusionSet
       !extensionMethodFormalParameterList
       !self.mSemanticInstructionListForGeneration
-      !false # is not const
+      !false // is not const
       !"Compiler"
-      !true # Generate location Argument
-      !false # Do not generate 'resetTemplateString'
-      !false # Do not generate syntaxDirectedTranslationString argument
+      !true // Generate location Argument
+      !false // Do not generate 'resetTemplateString'
+      !false // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation

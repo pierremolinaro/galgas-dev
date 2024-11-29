@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @insertMethodListAST {
@@ -25,27 +25,27 @@ list @insertMethodListAST {
   public let @lstring mShadowErrorMessage
 }
 
-#·······················································································································
+//································································································
 
 list @mapSearchMethodListAST {
   public let @lstring mSearchMethodName
   public let @lstring mErrorMessage
 }
 
-#·······················································································································
+//································································································
 
 list @mapRemoveMethodListAST {
   public let @lstring mMethodName
   public let @lstring mErrorMessage
 }
 
-#·······················································································································
+//································································································
 
 list @insertOrReplaceDeclarationListAST {
   public let @location mInsertOrReplaceDeclarationLocation
 }
 
-#·······················································································································
+//································································································
 
 class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
@@ -64,7 +64,7 @@ override getter @mapDeclarationAST keyRepresentation ->@string result {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -103,7 +103,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !mapTypeName
       !propertyList
       !mInsertMethodList
@@ -121,7 +121,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring methodName
     $error$ ; $message$
     $"string"$ ?let @lstring errorMessage
-    ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
+    ioMapSearchMethodListAST += !methodName !errorMessage // !locationAttribute
   }
 
   //······························································································
@@ -207,7 +207,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@mapDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !mapTypeName
       !propertyList
       !mInsertMethodList
@@ -225,7 +225,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring methodName
     $%errorMessage$
     $"string"$ ?let @lstring errorMessage
-    ioMapSearchMethodListAST += !methodName !errorMessage # !locationAttribute
+    ioMapSearchMethodListAST += !methodName !errorMessage // !locationAttribute
   }
 
   //······························································································
@@ -270,7 +270,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ASSOCIATED ELEMENT
+//   ASSOCIATED ELEMENT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
@@ -305,7 +305,7 @@ override method @mapDeclarationAST addAssociatedElement ?!@galgasDeclarationAST 
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST enterDeclarationInGraph
@@ -324,7 +324,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT
+//   ENTER IN SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mapDeclarationAST enterDeclarationInSemanticContext
@@ -525,7 +525,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !mSearchMethodName.location
       !true
       !.isBasic
-      !"" # No error message
+      !"" // No error message
     ]
   end
 //--- Enter "attributeForKey" getters
@@ -540,7 +540,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !true
       !attributeTypeIndex
       !.isBasic
-      !"" # getter name is not obsolete, no replacement getter
+      !"" // getter name is not obsolete, no replacement getter
     ]
   end
 //--------- Handle "insertOrReplace" setter
@@ -552,7 +552,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !insertMethodFormalArgumentList
       !false
       !.isBasic
-      !"" # No error message
+      !"" // No error message
     ]
   end
 //--------- Enter "set...Attribute...forKey" setters, and 'with' accessor
@@ -574,7 +574,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
       !accessorFormalArgumentList
       !true
       !@methodQualifier.isBasic
-      !"" # No error message
+      !"" // No error message
     ]
   end
 //--- Add initializer without argument
@@ -637,10 +637,10 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mMapTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
+    !isConcrete: true // Concrete Type
     !superType: .null
     !typeKind: .mapType
-    !supportCollectionValue: true # Support collection value
+    !supportCollectionValue: true // Support collection value
     !allTypedPropertyList: @()
     !propertyMap: @()
     !currentTypedPropertyList: typedPropertyList
@@ -656,8 +656,8 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     !features: features
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList
     !mapSearchMethodList: self.mSearchMethodList
-    !generateHeaderInSeparateFile: false # Do not generate header in separate file
-    !typeForEnumeratedElement: elementTypeEntry # Type for enumerated element for "for" instruction
+    !generateHeaderInSeparateFile: false // Do not generate header in separate file
+    !typeForEnumeratedElement: elementTypeEntry // Type for enumerated element for "for" instruction
     !headerFileName: "map-" + [self.mMapTypeName fileNameRepresentation]
     !headerKind: .twoHeaders
   }
@@ -665,7 +665,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @insertMethodMap {
@@ -785,7 +785,7 @@ override method @mapDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @mapTypeForGeneration : @semanticTypeForGeneration {
@@ -873,7 +873,7 @@ override method @mapTypeForGeneration appendSpecificImplementation
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Generation Filewrappers
+//! Generation Filewrappers
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper mapGenerationTemplate in "+generation-templates/type_generation" {

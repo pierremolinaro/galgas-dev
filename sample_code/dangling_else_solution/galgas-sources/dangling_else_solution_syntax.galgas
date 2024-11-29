@@ -12,23 +12,23 @@ rule <S> {
   <closed_instruction>
 }
 
-rule <closed_instruction> { # Other instruction
+rule <closed_instruction> { // Other instruction
   $O$
 }
 
-rule <closed_instruction> { # IF EXPR THEN <instruction> ELSE <instruction>
+rule <closed_instruction> { // IF EXPR THEN <instruction> ELSE <instruction>
   $I$
   <closed_instruction>
   $E$
   <closed_instruction>
 }
 
-rule <non_closed_instruction> { # IF EXPR THEN <instruction>
+rule <non_closed_instruction> { // IF EXPR THEN <instruction>
   $I$
   <S>
 }
 
-rule <non_closed_instruction> { # IF EXPR THEN <instruction> ELSE <instruction>
+rule <non_closed_instruction> { // IF EXPR THEN <instruction> ELSE <instruction>
   $I$
   <closed_instruction>
   $E$

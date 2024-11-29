@@ -19,7 +19,7 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
         %class GGS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
         %class GGS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
+      else // argumentIn
         %class GGS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
       end
       %,\n%!^ 
@@ -51,7 +51,7 @@ end%
         %GGS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
         %GGS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
+      else // argumentIn
         %GGS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
       end
       %,\n%!^

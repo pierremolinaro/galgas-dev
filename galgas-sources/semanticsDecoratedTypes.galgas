@@ -1,27 +1,27 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2007, ..., 2019 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Copyright (C) 2007, ..., 2019 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           I N S T R U C T I O N    G E N E R A T I O N
-#
+//
+//           I N S T R U C T I O N    G E N E R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateInstructionList
@@ -87,9 +87,9 @@ class @castInExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  F O R M A L    P A R A M E T E R    L I S T
-#
+//
+//  F O R M A L    P A R A M E T E R    L I S T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterListForGeneration {
@@ -101,9 +101,9 @@ list @formalParameterListForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  F O R M A L    I N P U T    P A R A M E T E R    L I S T
-#
+//
+//  F O R M A L    I N P U T    P A R A M E T E R    L I S T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListForGeneration {
@@ -115,9 +115,9 @@ list @formalInputParameterListForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  A C T U A L    P A R A M E T E R
-#
+//
+//  A C T U A L    P A R A M E T E R
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @actualParameterForGeneration {
@@ -248,9 +248,9 @@ list @semanticDeclarationListForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    T Y P E    D E C L A R A T I O N
-#
+//
+//    T Y P E    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
@@ -282,9 +282,9 @@ override getter @semanticTypeForGeneration headerKind -> @headerKind {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C
-#
+//
+//    D E C L A R A T I O N    W I T H   H E A D E R    S P E C
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
@@ -317,9 +317,9 @@ override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @boo
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    L E X I Q U E    D E C L A R A T I O N
-#
+//
+//    L E X I Q U E    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -333,9 +333,9 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#   A C T I O N ,    M E T H O D    S I G N A T U R E
-#
+//
+//   A C T I O N ,    M E T H O D    S I G N A T U R E
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @signatureForGrammarAnalysis {
@@ -344,9 +344,9 @@ list @signatureForGrammarAnalysis {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  N O N    T E R M I N A L    S Y M B O L    M A P
-#
+//
+//  N O N    T E R M I N A L    S Y M B O L    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
@@ -357,9 +357,9 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#             nonterminal symbols map
-#
+//
+//             nonterminal symbols map
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonTerminalSymbolMapForGrammarAnalysis {
@@ -378,9 +378,9 @@ list @nonTerminalToAddList {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    F U N C T I O N    D E C L A R A T I O N
-#
+//
+//    F U N C T I O N    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -390,9 +390,9 @@ class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeade
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    F U N C T I O N    I M P L E M E N T A T I O N
-#
+//
+//    F U N C T I O N    I M P L E M E N T A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
@@ -401,9 +401,9 @@ class @functionImplementationForGeneration : @functionPrototypeDeclarationForGen
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    O N C E    F U N C T I O N    D E C L A R A T I O N
-#
+//
+//    O N C E    F U N C T I O N    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -414,13 +414,13 @@ class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForG
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  T E R M I N A L    C H E C K    I N S T R U C T I O N
-#
+//
+//  T E R M I N A L    C H E C K    I N S T R U C T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalCheckAssignementList {
-  public let @string mTypeName # Empty string if no declaration
+  public let @string mTypeName // Empty string if no declaration
   public let @string mTargetVarCppName
   public let @string mSourceLexicalAttributeName
 }
@@ -432,9 +432,9 @@ abstract class @syntaxInstructionForGeneration : @semanticInstructionForGenerati
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    F I L E W R A P P E R    D E C L A R A T I O N
-#
+//
+//    F I L E W R A P P E R    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListForGeneration {
@@ -454,9 +454,9 @@ class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGe
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    P R O G R A M    D E C L A R A T I O N
-#
+//
+//    P R O G R A M    D E C L A R A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -465,9 +465,9 @@ class @programComponentForGeneration : @semanticDeclarationWithHeaderForGenerati
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-# A P P E N D    D E C L A R A T I O N    1
-#
+//
+// A P P E N D    D E C L A R A T I O N    1
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendDeclaration1
@@ -478,9 +478,9 @@ method @semanticDeclarationForGeneration appendDeclaration1
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-# A P P E N D    D E C L A R A T I O N    2
-#
+//
+// A P P E N D    D E C L A R A T I O N    2
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @semanticDeclarationForGeneration appendDeclaration2

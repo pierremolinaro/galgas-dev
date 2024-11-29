@@ -1,23 +1,23 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Copyright (C) 2014, ..., 2022 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
@@ -31,7 +31,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
                               !@lstring outTypeName
 
   //······························································································
-  #          F O R M A L    P A R A M E T E R    L I S T
+  //          F O R M A L    P A R A M E T E R    L I S T
   //······························································································
 
   rule <formal_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
@@ -157,7 +157,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #  A C T U A L    P A R A M E T E R    L I S T
+  //  A C T U A L    P A R A M E T E R    L I S T
   //······························································································
 
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -246,7 +246,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         $?$
         selector = ["" here]
       end
-      select # input parameter, self.property
+      select // input parameter, self.property
         $self$
         $.$
         $identifier$ ?let inputActualParameterName
@@ -256,7 +256,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !inputActualParameterName
           !poisonedVarNameList
         }
-      or # input parameter, self
+      or // input parameter, self
         $self$
         <poisoned_var_list_ggs3> ?let poisonedVarNameList
         outActualParameterList += !@inputActualSelfParameterAST {
@@ -264,7 +264,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !.here
           !poisonedVarNameList
         }
-      or  # input parameter, new variable
+      or  // input parameter, new variable
         $var$
         let @lstring declarationTypeName
         select
@@ -280,7 +280,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !inputActualParameterName
           !poisonedVarNameList
         }
-      or  # input parameter, new variable, explicit type
+      or  // input parameter, new variable, explicit type
         <type_definition_ggs3> !?ioDeclarations ?let @lstring declarationTypeName
         $identifier$ ?let inputActualParameterName
         <poisoned_var_list_ggs3> ?let poisonedVarNameList
@@ -290,7 +290,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !inputActualParameterName
           !poisonedVarNameList
         }
-      or # input parameter, new constant
+      or // input parameter, new constant
         $let$
         let @lstring declarationTypeName
         select
@@ -314,7 +314,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           !markedAsUnused
           !poisonedVarNameList
         }
-      or # input parameter, existing variable
+      or // input parameter, existing variable
         $identifier$ ?let inputActualParameterName
         <poisoned_var_list_ggs3> ?let poisonedVarNameList
         outActualParameterList += !@inputActualExistingVariableParameterAST {
@@ -327,7 +327,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #  F O R M A L    I N P U T    P A R A M E T E R S
+  //  F O R M A L    I N P U T    P A R A M E T E R S
   //······························································································
 
   rule <formal_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -371,7 +371,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #  F O R M A L    I N P U T    P A R A M E T E R S
+  //  F O R M A L    I N P U T    P A R A M E T E R S
   //······························································································
 
   rule <formal_input_parameter_list_ggs34> ?!@galgasDeclarationAST ioDeclarations
@@ -461,7 +461,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
                                 !@lstring outTypeName
 
   //······························································································
-  #          F O R M A L    P A R A M E T E R    L I S T
+  //          F O R M A L    P A R A M E T E R    L I S T
   //······························································································
 
   rule <formal_parameter_list> ?!@galgasDeclarationAST ioDeclarations
@@ -545,7 +545,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #  A C T U A L    P A R A M E T E R    L I S T
+  //  A C T U A L    P A R A M E T E R    L I S T
   //······························································································
 
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
@@ -564,7 +564,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  # Actual input argument
+  // Actual input argument
   //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
@@ -604,7 +604,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !inputActualParameterName
         !poisonedVarNameList
       }
-    or # input parameter, self.property
+    or // input parameter, self.property
       $self$
       $.$
       $identifier$ ?let inputActualParameterName
@@ -614,7 +614,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !inputActualParameterName
         !poisonedVarNameList
       }
-    or # input parameter, self
+    or // input parameter, self
       $self$
       <poisoned_var_list> ?let poisonedVarNameList
       ioActualParameterList += !@inputActualSelfParameterAST {
@@ -622,7 +622,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !.here
         !poisonedVarNameList
       }
-    or # input parameter, new variable
+    or // input parameter, new variable
       $var$
       let @lstring declarationTypeName
       select
@@ -638,7 +638,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !inputActualParameterName
         !poisonedVarNameList
       }
-    or # input parameter, new variable, explicit type
+    or // input parameter, new variable, explicit type
       <type_definition> !?ioDeclarations ?let declarationTypeName
       $identifier$ ?let inputActualParameterName
       <poisoned_var_list> ?let poisonedVarNameList
@@ -648,7 +648,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         !inputActualParameterName
         !poisonedVarNameList
       }
-    or # input parameter, new constant
+    or // input parameter, new constant
       $let$
       let @lstring declarationTypeName
       select
@@ -676,7 +676,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  # Actual output / input argument
+  // Actual output / input argument
   //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
@@ -713,7 +713,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  # Actual output argument
+  // Actual output argument
   //······························································································
 
   rule <actual_parameter> ?!@galgasDeclarationAST ioDeclarations
@@ -749,7 +749,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #  F O R M A L    I N P U T    P A R A M E T E R S
+  //  F O R M A L    I N P U T    P A R A M E T E R S
   //······························································································
 
   rule <formal_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations

@@ -1,25 +1,25 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  semantics definitions for semantics component
-#
-#  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  semantics definitions for semantics component
+//
+//  Copyright (C) 1997, ..., 2023 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func %once generateFewHeaderFiles -> @bool {
@@ -50,7 +50,7 @@ list @functionSignature {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#  CLASS FUNCTION MAP
+//  CLASS FUNCTION MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @classFunctionMap {
@@ -63,7 +63,7 @@ map @classFunctionMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#  INITIALIZER MAP
+//  INITIALIZER MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @initializerMap { // Key is argument signature
@@ -74,7 +74,7 @@ map @initializerMap { // Key is argument signature
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum @methodQualifier %comparable { # NE PAS CHANGER L'ORDRE
+enum @methodQualifier %comparable { // NE PAS CHANGER L'ORDRE
   case isVirtual
   case isVirtualAbstract
   case isBasic
@@ -92,22 +92,22 @@ enum @methodKind %equatable {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  OPTIONAL METHOD MAP
-#
+//
+//  OPTIONAL METHOD MAP
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @optionalMethodSignature {
-  public let @bool mInputArgument # true -> input, false -> output
+  public let @bool mInputArgument // true -> input, false -> output
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
   public let @string mFormalArgumentName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  R E A D E R    M A P
-#
+//
+//  R E A D E R    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @getterMap {
@@ -117,7 +117,7 @@ map @getterMap {
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
   public let @methodQualifier mQualifier
-  public let @string mGetterNameThatObsoletesInvokationName # If not empty, this getter is the one actually called
+  public let @string mGetterNameThatObsoletesInvokationName // If not empty, this getter is the one actually called
 
   insert insertKey error message "the '%K' getter is already declared"
   search searchKey error message "the '%K' getter is not declared"
@@ -126,9 +126,9 @@ map @getterMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  M O D I F I E R    M A P
-#
+//
+//  M O D I F I E R    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalParameterSignature {
@@ -145,16 +145,16 @@ map @setterMap {
   public let @formalParameterSignature mParameterList
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
-  public let @string mErrorMessage # If not empty, calling the setter raises an error ith this message
+  public let @string mErrorMessage // If not empty, calling the setter raises an error ith this message
   insert or replace
   insert insertKey error message "the '%K' setter is already declared"
   search searchKey error message "the '%K' setter is not declared"
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  M E T H O D    M A P
-#
+//
+//  M E T H O D    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @instanceMethodMap {
@@ -163,16 +163,16 @@ map @instanceMethodMap {
   public let @location mDeclarationLocation
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
-  public let @string mErrorMessage # If not empty, calling the method raises an error with this message
+  public let @string mErrorMessage // If not empty, calling the method raises an error with this message
   insert insertKey error message "the '%K' instance method is already declared"
   search searchKey error message "the '%K' instance method is not declared"
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class"
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  C L A S S    M E T H O D    M A P
-#
+//
+//  C L A S S    M E T H O D    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @classMethodMap {
@@ -184,9 +184,9 @@ map @classMethodMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  E N U M E R A T I O N    D E S C R I P T O R    L I S T
-#
+//
+//  E N U M E R A T I O N    D E S C R I P T O R    L I S T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumerationDescriptorList {
@@ -195,9 +195,9 @@ list @enumerationDescriptorList {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  T Y P E D    P R O P E R T Y    L I S T
-#
+//
+//  T Y P E D    P R O P E R T Y    L I S T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @typedPropertyList {

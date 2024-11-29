@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @bangExpressionAST : @semanticExpressionAST {
@@ -25,7 +25,7 @@ class @bangExpressionAST : @semanticExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
@@ -56,8 +56,6 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     <primary> !?ioDeclarations ?outExpression
     $!$
-#    $.$
-#    $bang$
     outExpression = @bangExpressionAST {!operatorLocation !outExpression}
   }
 
@@ -66,7 +64,7 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @bangExpressionAST enterExpressionInSemanticContext
@@ -75,7 +73,7 @@ override method @bangExpressionAST enterExpressionInSemanticContext
   [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @bangExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -110,24 +108,10 @@ override method @bangExpressionAST analyzeSemanticExpression
     : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'bang' operator"
     : outExpression
   end
-//---
-#  if let element = [[type definition].unwrappedType getElement] then
-#  //  let e = element.weakElement.mDefinition
-#    outExpression = @bangExpressionForGeneration {
-#      !element.weakElement // init  (element)
-#      !self.mOperatorLocation
-#      !expression
-#      ![type definition].typeName.string
-#    }
-#  else
-#    error self.mOperatorLocation
-#    : "operand type is '@" + [type definition].typeName.string + "' and does not support the 'bang' operator"
-#    : outExpression
-#  end
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @bangExpressionForGeneration : @semanticExpressionForGeneration {
@@ -135,7 +119,7 @@ class @bangExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mReceiverTypeName
 }
 
-#·····················································································································
+//································································································
 
 override method @bangExpressionForGeneration generateExpression ?!@string ioGeneratedCode
                                                                 ?!@stringset ioInclusionSet

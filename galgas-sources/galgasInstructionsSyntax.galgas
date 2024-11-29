@@ -1,29 +1,29 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3InstructionsSyntax (galgasScanner3) {
 
   //······························································································
-  #          Rules prototypes
+  //          Rules prototypes
   //······························································································
 
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -51,7 +51,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
                                       !@actualOutputArgumentList outExpressionList
 
   //······························································································
-  #    S E M A N T I C    I N S T R U C T I O N    L I S T
+  //    S E M A N T I C    I N S T R U C T I O N    L I S T
   //······························································································
 
   rule <semantic_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -98,7 +98,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #    F U N C T I O N    D E C L A R A T I O N
+  //    F U N C T I O N    D E C L A R A T I O N
   //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -148,7 +148,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     let endOfFunctionInstructionList = @location.here
     if inIsOnce then
       ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !inFunctionName
         !resultTypeName
         !resultVariableName
@@ -159,7 +159,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
       }
     else
       ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !inFunctionName
         !formalInputParameterList
         !resultTypeName
@@ -242,7 +242,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
+  //    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -262,7 +262,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
     $->$
     <type_definition_ggs3> !?ioDeclarations ?let @lstring resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !mActionName
       !formalInputParameterList
       !resultTypeName
@@ -271,7 +271,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #    M E T H O D    C A L L    I N S T R U C T I O N
+  //    M E T H O D    C A L L    I N S T R U C T I O N
   //······························································································
 
   rule <actual_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -358,7 +358,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
 syntax galgas4InstructionsSyntax (galgasScanner4) {
 
   //······························································································
-  #          Rules prototypes
+  //          Rules prototypes
   //······························································································
 
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
@@ -383,7 +383,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
                                 !@actualOutputArgumentList outExpressionList
 
   //······························································································
-  #    S E M A N T I C    I N S T R U C T I O N    L I S T
+  //    S E M A N T I C    I N S T R U C T I O N    L I S T
   //······························································································
 
   rule <semantic_instruction_list> ?!@galgasDeclarationAST ioDeclarations
@@ -411,8 +411,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       let instructionLocation = @location.here
       <if_expression> !?ioDeclarations ?let testExpression
       $else$
-#      <error_instruction> !?ioDeclarations ?let errorInstruction
-#      let @semanticInstructionListAST else_instructionList = @[init  (errorInstruction)]
+//      <error_instruction> !?ioDeclarations ?let errorInstruction
+//      let @semanticInstructionListAST else_instructionList = @[init  (errorInstruction)]
       <semantic_instruction_list> !?ioDeclarations ?let else_instructionList
       let endOf_else_branch = @location.here
       $end$
@@ -431,7 +431,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #    F U N C T I O N    D E C L A R A T I O N
+  //    F U N C T I O N    D E C L A R A T I O N
   //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
@@ -471,18 +471,18 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     let endOfFunctionInstructionList = @location.here
     if isOnce then
       ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !functionName
         !resultTypeName
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !false # Private
+        !false // Private
         !isUsefull
       }
     else
       ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !functionName
         !formalInputParameterList
         !resultTypeName
@@ -490,7 +490,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !false # private
+        !false // private
       }
     end
   }
@@ -535,18 +535,18 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     let endOfFunctionInstructionList = @location.here
     if isOnce then
       ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !functionName
         !resultTypeName
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !true # Private
+        !true // Private
         !isUsefull
       }
     else
       ioDeclarations.mDeclarationList += !@functionDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !functionName
         !formalInputParameterList
         !resultTypeName
@@ -554,13 +554,13 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         !resultVariableName
         !functionInstructionList
         !endOfFunctionInstructionList
-        !true # private
+        !true // private
       }
     end
   }
 
   //······························································································
-  #    E X T E R N    F U N C T I O N    D E C L A R A T I O N
+  //    E X T E R N    F U N C T I O N    D E C L A R A T I O N
   //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
@@ -580,7 +580,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     $->$
     <type_definition> !?ioDeclarations ?let resultTypeName
     ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !mActionName
       !formalInputParameterList
       !resultTypeName
@@ -589,7 +589,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #    M E T H O D    C A L L    I N S T R U C T I O N
+  //    M E T H O D    C A L L    I N S T R U C T I O N
   //······························································································
 
   rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations

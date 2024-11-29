@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @incDecKind {
@@ -24,7 +24,7 @@ enum @incDecKind {
   case decrement
 }
 
-#·····················································································································*
+//································································································*
 
 class @incDecInstructionAST : @semanticInstructionAST {
   public let @bool mPrefixedBySelf
@@ -33,7 +33,7 @@ class @incDecInstructionAST : @semanticInstructionAST {
   public let @incDecKind mKind
 }
 
-#·····················································································································*
+//································································································*
 
 class @incDecNoOVFInstructionAST : @semanticInstructionAST {
   public let @bool mPrefixedBySelf
@@ -42,13 +42,13 @@ class @incDecNoOVFInstructionAST : @semanticInstructionAST {
   public let @incDecKind mKind
 }
 
-#·····················································································································*
+//································································································*
 
 class @selfIncDecInstructionAST : @semanticInstructionAST {
   public let @incDecKind mKind
 }
 
-#·····················································································································*
+//································································································*
 
 class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
   public let @incDecKind mKind
@@ -56,7 +56,7 @@ class @selfIncDecNoOVFInstructionAST : @semanticInstructionAST {
 
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -68,7 +68,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_inc_dec> !?ioDeclarations !prefixedBySelf: false ?outInstruction
   }
 
- #·····················································································································
+ //································································································
 
   rule <semantic_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
                                    !@semanticInstructionAST outInstruction {
@@ -167,29 +167,29 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+//! CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @incDecInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#·····················································································································*
+//································································································*
 
 override method @incDecNoOVFInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfIncDecInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @incDecInstructionAST analyzeSemanticInstruction
@@ -203,7 +203,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 //--- Check target variable
   var @unifiedTypeMapEntry targetType
   let @string targetVariableCppName
-#  let @string nameForCheckingFormalParameterUsing
+//  let @string nameForCheckingFormalParameterUsing
   if self.mPrefixedBySelf then
     if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
       if not [selfAvailable.selfMutability selfIsMutable] then
@@ -211,7 +211,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       end
       let propertyMap = [selfAvailable.type definition].propertyMap
       [propertyMap searchKey !self.mReceiverName ?* ?let isConstant ?targetType]
-#      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
+//      nameForCheckingFormalParameterUsing = inAnalysisContext.selfObjectCppName
       targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
        + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
       if isConstant then
@@ -222,14 +222,14 @@ override method @incDecInstructionAST analyzeSemanticInstruction
       end
     else
       error self.mInstructionLocation : "'self' not available in this context"
-      : targetType, targetVariableCppName #, nameForCheckingFormalParameterUsing
+      : targetType, targetVariableCppName //, nameForCheckingFormalParameterUsing
     end
   else
     [!?ioVariableMap searchForReadWriteAccess
        !self.mReceiverName
        ?targetType
        ?targetVariableCppName
-       ?* # nameForCheckingFormalParameterUsing
+       ?* // nameForCheckingFormalParameterUsing
     ]
   end
 //---
@@ -237,9 +237,9 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
+//    if not isPublic then
+//      error mValue : " inaccessible property (due to its 'private' qualifier)"
+//    end
     if isConstant then
       error value : "a constant property cannot be modified"
     end
@@ -259,7 +259,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   }
 }
 
-#·····················································································································*
+//································································································*
 
 override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -276,9 +276,9 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
     let propertyMap = [targetType definition].propertyMap
     [propertyMap searchKey !value ?let accessControl ?let isConstant ?targetType]
     [accessControl checkSetAccess !inAnalysisContext.selfAvailability !value.location]
-#    if not isPublic then
-#      error mValue : " inaccessible property (due to its 'private' qualifier)"
-#    end
+//    if not isPublic then
+//      error mValue : " inaccessible property (due to its 'private' qualifier)"
+//    end
     if isConstant then
       error value : "a constant property cannot be modified"
     end
@@ -298,7 +298,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   }
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -330,7 +330,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   end
 }
 
-#·····················································································································*
+//································································································*
 
 override method @selfIncDecInstructionAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -363,7 +363,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION
+//! GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
@@ -374,7 +374,7 @@ class @incDecInstructionForGeneration : @semanticInstructionForGeneration {
   public let @incDecKind mKind
 }
 
-#·····················································································································*
+//································································································*
 
 class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -384,7 +384,7 @@ class @incDecNoOVFInstructionForGeneration : @semanticInstructionForGeneration {
   public let @incDecKind mKind
 }
 
-#·····················································································································*
+//································································································*
 
 override method @incDecInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet
@@ -412,7 +412,7 @@ override method @incDecInstructionForGeneration generateInstruction
   end
 }
 
-#·····················································································································*
+//································································································*
 
 override method @incDecNoOVFInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet

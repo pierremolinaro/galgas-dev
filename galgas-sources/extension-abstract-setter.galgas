@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -30,7 +30,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !className
       !setterName
       !formalParameterList
@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !inClassName
       !setterName
       !formalParameterList
@@ -58,45 +58,45 @@ syntax extension galgas3DeclarationsSyntax {
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-#syntax extension galgas4DeclarationsSyntax {
-#
-#  //······························································································
-#
-#  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-#    $abstract$
-#    $mutating$
-#    $proc$
-#    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
-#    $.$
-#    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-#    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
-#      !isPredefined: false # Is not predefined
-#      !className
-#      !setterName
-#      !formalParameterList
-#    }
-#  }
-#
-#  //······························································································
-#
-#  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
-#    $abstract$
-#    $mutating$
-#    $proc$
-#    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
-#    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-#    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
-#      !isPredefined: false # Is not predefined
-#      !inClassName
-#      !setterName
-#      !formalParameterList
-#    }
-#  }
-#
-#  //······························································································
-#
-#}
+//syntax extension galgas4DeclarationsSyntax {
+//
+//  //······························································································
+//
+//  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
+//    $abstract$
+//    $mutating$
+//    $proc$
+//    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionSetter
+//    $.$
+//    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
+//    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+//    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
+//      !isPredefined: false // Is not predefined
+//      !className
+//      !setterName
+//      !formalParameterList
+//    }
+//  }
+//
+//  //······························································································
+//
+//  rule <method_declaration> ?let @lstring inClassName ?!@galgasDeclarationAST ioDeclarations {
+//    $abstract$
+//    $mutating$
+//    $proc$
+//    $identifier$ ?let @lstring setterName indexing abstractExtensionSetterDefinition
+//    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
+//    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST {
+//      !isPredefined: false // Is not predefined
+//      !inClassName
+//      !setterName
+//      !formalParameterList
+//    }
+//  }
+//
+//  //······························································································
+//
+//}
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -165,8 +165,8 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   {
   //--- Useful entities graph
-  #  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionSetterName)
-  #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  //  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mAbstractExtensionSetterName)
+  //  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   //--- Self type
     let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
   //--- Check self type is an abstract class
@@ -189,7 +189,7 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: " abstract extension setter " + self.mAbstractExtensionSetterName
       !@abstractExtensionSetterForGeneration {
-        !generateHeader: true # Generate Cpp header file
+        !generateHeader: true // Generate Cpp header file
         !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionSetterName fileNameRepresentation]
         !selfType
         !self.mAbstractExtensionSetterName.string
@@ -213,7 +213,7 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
   {
-#    ioAbstractExtensionSetterListMap += !self.mTypeName.string !self.mAbstractExtensionSetterName
+//    ioAbstractExtensionSetterListMap += !self.mTypeName.string !self.mAbstractExtensionSetterName
     [!?ioAbstractExtensionSetterListMap insertKey !self.mTypeName.string !self.mAbstractExtensionSetterName]
   }
 
@@ -222,7 +222,7 @@ class @abstractExtensionSetterAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {

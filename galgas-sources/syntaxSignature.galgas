@@ -1,32 +1,32 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Syntax component semantic analysis
-#
-#  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Syntax component semantic analysis
+//
+//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    S Y N T A X    S I G N A T U R E
-#
+//
+//    S Y N T A X    S I G N A T U R E
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-method @semanticInstructionForGeneration appendSyntaxSignature # Capture all semantic instructions
+method @semanticInstructionForGeneration appendSyntaxSignature // Capture all semantic instructions
   ?let @string unused inPosfix
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
 }
@@ -45,9 +45,9 @@ func syntaxSignatureOfInstructionList
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    S Y N T A X    S I G N A T U R E    C O M P A R I S O N
-#
+//
+//    S Y N T A X    S I G N A T U R E    C O M P A R I S O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @semanticInstructionForGeneration compareInstructionSyntaxSignature
@@ -82,8 +82,8 @@ func compareSyntaxSignature
     :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
     let @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex ![inTestedSignature count]]
     if let si = instruction as @syntaxInstructionForGeneration then
-#    cast instruction
-#    case >= @syntaxInstructionForGeneration si :
+//    cast instruction
+//    case >= @syntaxInstructionForGeneration si :
       error si.mInstructionLocation
       :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
     else

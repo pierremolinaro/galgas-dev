@@ -472,7 +472,7 @@ rule '$' {
     while '!' -> '#' | '%' -> '\uFFFD' :
       enterCharacterIntoString (!?tokenString !* )
     end
-  case '!' -> '#' | '%' -> '\uFFFD'  : # All printable characters, but '$'
+  case '!' -> '#' | '%' -> '\uFFFD'  : // All printable characters, but '$'
     enterCharacterIntoString (!?tokenString !* )
     repeat
     while "\\\\" :

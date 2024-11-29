@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -45,7 +45,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !externTypeName
       !cppPredeclarationCode
       !cppClassCode
@@ -183,7 +183,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@externTypeDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !externTypeName
       !cppPredeclarationCode
       !cppClassCode
@@ -387,13 +387,13 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     ?!@semanticContext unused ioSemanticContext {
   //---
     commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap )
-#    var @classFunctionMap classFunctionMap = @()
+//    var @classFunctionMap classFunctionMap = @()
     var @setterMap setterMap = @()
     var @instanceMethodMap instanceMethodMap = @()
   //--- Initializers
     var @initializerMap initializerMap = @()
     for initializer in self.externTypeInitializerList do
-#      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
+//      [!?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
     //---
       var @functionSignature arguments = @()
       for parameter in initializer.mParameterList do
@@ -419,10 +419,10 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         !@methodKind.definedAsMember
         !arguments
         !@location.here
-        !true #inHasLexiqueAndLocationArguments
+        !true //inHasLexiqueAndLocationArguments
         !returnedTypeEntry
         !@methodQualifier.isBasicFinal
-        !"" # getter name is not obsolete, no replacement getter
+        !"" // getter name is not obsolete, no replacement getter
       ]
     end
   //--- Modifiers
@@ -440,9 +440,9 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         !mSetterName
         !@methodKind.definedAsMember
         !routineSignature
-        !true #inHasLexiqueAndLocationArguments
+        !true //inHasLexiqueAndLocationArguments
         !@methodQualifier.isBasicFinal
-        !"" # No Error message
+        !"" // No Error message
       ]
     end
   //--- Methods
@@ -461,9 +461,9 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
         !@methodKind.definedAsMember
         !routineSignature
         !mDeclarationLocation
-        !true #inHasLexiqueAndLocationArguments
+        !true //inHasLexiqueAndLocationArguments
         !@methodQualifier.isBasicFinal
-        !"" # No Error message
+        !"" // No Error message
       ]
     end
     var features = @typeFeatures ()
@@ -478,10 +478,10 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mExternTypeName
       !isPredefined: self.isPredefined
-      !isConcrete: true # Concrete Type
+      !isConcrete: true // Concrete Type
       !superType: .null
       !typeKind: .externType
-      !supportCollectionValue: false # Does not support collection value
+      !supportCollectionValue: false // Does not support collection value
       !allTypedPropertyList: @()
       !propertyMap: @()
       !currentTypedPropertyList: @()
@@ -497,7 +497,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
       !features: features
       !addAssignOperatorArguments: @()
       !mapSearchMethodList: @()
-      !generateHeaderInSeparateFile: false # Do not generate header in separate file
+      !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null
       !headerFileName: "externtype-" + [self.mExternTypeName fileNameRepresentation]
       !headerKind: .oneHeader
@@ -510,7 +510,7 @@ class @externTypeDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @externTypeDeclarationAST semanticAnalysis
@@ -549,7 +549,7 @@ override method @externTypeDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {

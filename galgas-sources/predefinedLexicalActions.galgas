@@ -1,26 +1,26 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  'lexique' component
-#
-#  Copyright (C) 2009, ..., 2015 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
+//
+//  'lexique' component
+//
+//  Copyright (C) 2009, ..., 2015 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum lexicalTypeBaseName -> @string {
@@ -37,7 +37,7 @@ getter @lexicalTypeEnum lexicalTypeBaseName -> @string {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#                         buildLexicalRoutineMap
+//                         buildLexicalRoutineMap
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
@@ -53,7 +53,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterHexDigitIntoASCIIcharacter" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterDigitIntoASCIIcharacter
   lexicalRoutineFormalArgumentList = @()
@@ -66,7 +66,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterDigitIntoASCIIcharacter" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterCharacterIntoString
   lexicalRoutineFormalArgumentList = @()
@@ -76,14 +76,14 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"enterCharacterIntoString" !.here}
     !lexicalRoutineFormalArgumentList
     !@()
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- resetString
   [!?outLexicalRoutineMap insertKey
     !@lstring {!"resetString" !@location.here}
     !@[@(.lexicalInputOutputMode, .lexicalType_string, "ioString")]
     !@()
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertStringToDouble
   lexicalRoutineFormalArgumentList = @()
@@ -95,7 +95,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertStringToDouble" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterCharacterIntoCharacter
   lexicalRoutineFormalArgumentList = @()
@@ -106,7 +106,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterCharacterIntoCharacter" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- negateSInt
   lexicalRoutineFormalArgumentList = @()
@@ -117,7 +117,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"negateSInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- negateSInt64
   lexicalRoutineFormalArgumentList = @()
@@ -128,7 +128,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"negateSInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertUIntToSInt
   lexicalRoutineFormalArgumentList = @()
@@ -140,7 +140,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertUIntToSInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertUInt64ToSInt64
   lexicalRoutineFormalArgumentList = @()
@@ -152,7 +152,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertUInt64ToSInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterDigitIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -165,7 +165,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterDigitIntoUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterDigitIntoUInt64
   lexicalRoutineFormalArgumentList = @()
@@ -178,7 +178,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterDigitIntoUInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterDecimalDigitIntoBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -188,7 +188,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"enterDecimalDigitIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inCharacterIsNotDecimalDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterBinaryDigitIntoBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -198,7 +198,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"enterBinaryDigitIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inCharacterIsNotBinaryDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterHexDigitIntoBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -208,7 +208,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"enterHexDigitIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inCharacterIsNotHexDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertDecimalStringIntoBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -218,7 +218,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"convertDecimalStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inCharacterIsNotDecimalDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- negateBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -227,7 +227,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"negateBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@()
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertBinaryStringIntoBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -237,7 +237,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"convertBinaryStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inCharacterIsNotBinaryDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertHexStringIntoBigInt
   lexicalRoutineFormalArgumentList = @()
@@ -247,7 +247,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"convertHexStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inCharacterIsNotHexDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterHexDigitIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -260,7 +260,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterHexDigitIntoUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterHexDigitIntoUInt64
   lexicalRoutineFormalArgumentList = @()
@@ -273,7 +273,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterHexDigitIntoUInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertDecimalStringIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -286,7 +286,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertDecimalStringIntoUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertDecimalStringIntoSInt
   lexicalRoutineFormalArgumentList = @()
@@ -299,7 +299,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertDecimalStringIntoSInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertDecimalStringIntoUInt64
   lexicalRoutineFormalArgumentList = @()
@@ -309,7 +309,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@{!"convertDecimalStringIntoUInt64" !.here}
     !lexicalRoutineFormalArgumentList
     !@[@("inNumberTooLargeError"), @("inCharacterIsNotDecimalDigitError")]
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertDecimalStringIntoSInt64
   lexicalRoutineFormalArgumentList = @()
@@ -322,7 +322,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertDecimalStringIntoSInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterBinDigitIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -335,7 +335,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterBinDigitIntoUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterBinDigitIntoUInt64
   lexicalRoutineFormalArgumentList = @()
@@ -348,7 +348,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterBinDigitIntoUInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterOctDigitIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -361,7 +361,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterOctDigitIntoUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- enterOctDigitIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -374,7 +374,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"enterOctDigitIntoUInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- multiplyUInt
   lexicalRoutineFormalArgumentList = @()
@@ -386,7 +386,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"multiplyUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- multiplyUInt64
   lexicalRoutineFormalArgumentList = @()
@@ -398,7 +398,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"multiplyUInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertHexStringIntoUInt
   lexicalRoutineFormalArgumentList = @()
@@ -411,7 +411,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertHexStringIntoUInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertHexStringIntoUInt64
   lexicalRoutineFormalArgumentList = @()
@@ -424,7 +424,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertHexStringIntoUInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertHexStringIntoSInt
   lexicalRoutineFormalArgumentList = @()
@@ -437,7 +437,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertHexStringIntoSInt" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertHexStringIntoSInt64
   lexicalRoutineFormalArgumentList = @()
@@ -450,7 +450,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertHexStringIntoSInt64" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertUnsignedNumberToUnicodeChar
   lexicalRoutineFormalArgumentList = @()
@@ -462,7 +462,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertUnsignedNumberToUnicodeChar" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- convertHTMLSequenceToUnicodeCharacter
   lexicalRoutineFormalArgumentList = @()
@@ -474,7 +474,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"convertHTMLSequenceToUnicodeCharacter" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- codePointToUnicode
   lexicalRoutineFormalArgumentList = @()
@@ -485,12 +485,12 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !@lstring {!"codePointToUnicode" !@location.here}
     !lexicalRoutineFormalArgumentList
     !errorMessageList
-    !false # Is not extern
+    !false // Is not extern
   ]
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#                         buildLexicalFunctionMap
+//                         buildLexicalFunctionMap
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
@@ -503,7 +503,7 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
     !lexicalTypeList
     !.lexicalType_char
     !""
-    !false # Is not extern
+    !false // Is not extern
   ]
 //--- toUpper
   lexicalTypeList = @lexicalFunctionFormalArgumentList ()
@@ -513,12 +513,12 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
     !lexicalTypeList
     !.lexicalType_char
     !""
-    !false # Is not extern
+    !false // Is not extern
   ]
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#                    printPredefinedLexicalActions
+//                    printPredefinedLexicalActions
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc printPredefinedLexicalActions {

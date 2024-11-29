@@ -17,7 +17,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![
       %GGS_%![mFormalArgumentType identifierRepresentation]% & io_%![mFormalArgumentName identifierRepresentation]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %GGS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
-    else # argumentIn
+    else // argumentIn
       %GGS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
@@ -39,7 +39,7 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%cPtr_%![
         %io_%![mFormalArgumentName identifierRepresentation]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
         %out_%![mFormalArgumentName identifierRepresentation]
-      else # argumentIn
+      else // argumentIn
         %in_%![mFormalArgumentName identifierRepresentation]
       end
       %, %

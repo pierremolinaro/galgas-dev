@@ -1,21 +1,21 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @terminalList {
@@ -23,15 +23,15 @@ list @terminalList {
   public let @lexicalSentValueList mSentAttributeList
   public let @string mSyntaxErrorMessage
   public let @bool isEndOfTemplateMark %initArgLabel
-  public let @bool atomicSelection %initArgLabel # True if atomic selection in source editor
-  public let @uint mStyleIndex # 0 if default style
+  public let @bool atomicSelection %initArgLabel // True if atomic selection in source editor
+  public let @uint mStyleIndex // 0 if default style
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @lexicalExplicitTokenListMap {
   public let @lstring mTerminal
-  public let @bool atomicSelection %initArgLabel # True if atomic selection in source editor
+  public let @bool atomicSelection %initArgLabel // True if atomic selection in source editor
   public let @bool isEndOfTemplateMark %initArgLabel
   insert insertKey error message "the '%K' terminal has been already declared in the list"
   search searchKey error message "the '%K' terminal is not declared"
@@ -96,7 +96,7 @@ list @lexicalFunctionFormalArgumentList {
 map @lexicalFunctionMap {
   public let @lexicalFunctionFormalArgumentList mLexicalTypeList
   public let @lexicalTypeEnum mReturnedLexicalType
-  public let @string mReplacementFunctionName # If obsolete, the name of replacement routine
+  public let @string mReplacementFunctionName // If obsolete, the name of replacement routine
   public let @bool mIsExtern
   insert insertKey error message "the '%K' lexical function has been already declared"
   search searchKey error message "the '%K' lexical function is not declared"
@@ -112,12 +112,12 @@ list @templateDelimitorList {
 }
 
 //-----------------------------------------------------------------*
-#                       Styles map
+//                       Styles map
 //-----------------------------------------------------------------*
 
 map @styleMap {
   public let @lstring mComment
-  public let @uint mStyleIndex # Allways > 0
+  public let @uint mStyleIndex // Allways > 0
   insert insertKey error message "the '%K' style is already declared in %L"
   search searchKey error message "the '%K' style is not declared"
 }

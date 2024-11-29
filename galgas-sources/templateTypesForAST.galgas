@@ -1,36 +1,27 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
-//————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Template Abstract Syntax Tree types
-#
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
-#
-#  e-mail : pierre@pcmolinaro.name
-#
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
-#  License as published by the Free Software Foundation.
-#
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-#  details.
-#
+//
+//  Template Abstract Syntax Tree types
+//
+//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.
+//
+//  e-mail : pierre@pcmolinaro.name
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @templateInstructionAST {
@@ -43,9 +34,9 @@ list @templateInstructionListAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#   E X P R E S S I O N
-#
+//
+//   E X P R E S S I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @templateExpressionAST {
@@ -60,7 +51,7 @@ list @templateExpressionListAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   Class Function
+//   Class Function
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateClassFunctionAST : @templateExpressionAST {
@@ -70,7 +61,7 @@ class @templateClassFunctionAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   F I L E W R A P P E R    T E M P L A T E     C A L L
+//   F I L E W R A P P E R    T E M P L A T E     C A L L
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
@@ -80,7 +71,7 @@ class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   E X T E N S I O N    T E M P L A T E     C A L L
+//   E X T E N S I O N    T E M P L A T E     C A L L
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateExtensionTemplateCallAST : @templateExpressionAST {
@@ -90,7 +81,7 @@ class @templateExtensionTemplateCallAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   B O O L E A N    O P E R A T I O N S
+//   B O O L E A N    O P E R A T I O N S
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateAndOperationAST : @templateExpressionAST {
@@ -192,7 +183,7 @@ class @templateTestDynamicClassAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   F U N C T I O N    C A L L
+//   F U N C T I O N    C A L L
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateFunctionCallAST : @templateExpressionAST {
@@ -201,7 +192,7 @@ class @templateFunctionCallAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   S I M P L E    V A R I A B L E
+//   S I M P L E    V A R I A B L E
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateVarInExpressionAST : @templateExpressionAST {
@@ -209,7 +200,7 @@ class @templateVarInExpressionAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   A D D I T I O N    O P E R A T I O N
+//   A D D I T I O N    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateAddOperationAST : @templateExpressionAST {
@@ -219,7 +210,7 @@ class @templateAddOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   S U B S T R A C T I O N    O P E R A T I O N
+//   S U B S T R A C T I O N    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateSubOperationAST : @templateExpressionAST {
@@ -229,7 +220,7 @@ class @templateSubOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   M U L T I P L I C A T I O N    O P E R A T I O N
+//   M U L T I P L I C A T I O N    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateMultiplyOperationAST : @templateExpressionAST {
@@ -239,7 +230,7 @@ class @templateMultiplyOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   D I V I S I O N    O P E R A T I O N
+//   D I V I S I O N    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateDivideOperationAST : @templateExpressionAST {
@@ -249,7 +240,7 @@ class @templateDivideOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   M O D U L O    O P E R A T I O N
+//   M O D U L O    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateModuloOperationAST : @templateExpressionAST {
@@ -259,7 +250,7 @@ class @templateModuloOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   U N A R Y   -    O P E R A T I O N
+//   U N A R Y   -    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateUnaryMinusOperationAST : @templateExpressionAST {
@@ -268,7 +259,7 @@ class @templateUnaryMinusOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#  ==    O P E R A T I O N
+//  ==    O P E R A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateEqualTestAST : @templateExpressionAST {
@@ -334,9 +325,9 @@ class @templateRightShiftOperationAST : @templateExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    I N S T R U C T I O N S
-#
+//
+//    I N S T R U C T I O N S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateInstructionStringAST : @templateInstructionAST {

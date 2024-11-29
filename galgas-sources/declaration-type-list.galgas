@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @listDeclarationAST : @semanticDeclarationAST {
@@ -27,7 +27,7 @@ class @listDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -113,7 +113,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !listTypeName
       !propertyList
       !usefullList: isUsefull
@@ -126,7 +126,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listDeclarationAST keyRepresentation
@@ -152,7 +152,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST enterDeclarationInSemanticContext
@@ -272,7 +272,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
       !true
       !mPropertyTypeEntry
       !@methodQualifier.isBasic
-      !"" # getter name is not obsolete, no replacement getter
+      !"" // getter name is not obsolete, no replacement getter
     ]
   end
 //------------------------ Instance methods
@@ -341,7 +341,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
         !setterFormalArgumentList
         !true
         !@methodQualifier.isBasic
-        !"" # No error message
+        !"" // No error message
       ]
     end
   end
@@ -353,7 +353,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
     !setterInputFormalArgumentList
     !true
     !@methodQualifier.isBasic
-    !"" # No error message
+    !"" // No error message
   ]
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
@@ -394,10 +394,10 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mListTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
+    !isConcrete: true // Concrete Type
     !superType: .null
     !typeKind: .listType
-    !supportCollectionValue: true # Support collection value
+    !supportCollectionValue: true // Support collection value
     !allTypedPropertyList: typedAttributeList
     !propertyMap: @()
     !currentTypedPropertyList: @()
@@ -421,7 +421,7 @@ override method @listDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-#·······················································································································
+//································································································
 
 override method @listDeclarationAST addAssociatedElement
   ?!@galgasDeclarationAST ioDeclarations {
@@ -447,7 +447,7 @@ override method @listDeclarationAST addAssociatedElement
 
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN SEMANTIC CONTEXT
+//   ENTER IN SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @listDeclarationAST semanticAnalysis
@@ -496,7 +496,7 @@ override method @listDeclarationAST semanticAnalysis
       !t
       !propertyName
       !initExpression
-      !hasSetter: true # not isConstant
+      !hasSetter: true // not isConstant
       !hasSelector: hasSelector
     [!?attributeMap insertKey !propertyName !t]
   end
@@ -512,7 +512,7 @@ override method @listDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @listTypeForGeneration : @semanticTypeForGeneration {
@@ -520,7 +520,7 @@ class @listTypeForGeneration : @semanticTypeForGeneration {
   private let @typedPropertyList mTypedAttributeList
 }
 
-#·······················································································································
+//································································································
 
 filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -538,7 +538,7 @@ filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
     ?@bool GENERATE_COMPARISON
 }
 
-#·······················································································································
+//································································································
 
 override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -569,7 +569,7 @@ override method @listTypeForGeneration appendDeclaration1
   ]
 }
 
-#·······················································································································
+//································································································
 
 override method @listTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap

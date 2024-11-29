@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @readAccessWithInstructionAST : @semanticInstructionAST {
@@ -32,7 +32,7 @@ class @readAccessWithInstructionAST : @semanticInstructionAST {
   public let @location mEndOf_else_instructions
 }
 
-#······················································································································
+//·································································································
 
 class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
   public let @lstring mPrefix
@@ -50,7 +50,7 @@ class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -354,7 +354,7 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+//! CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readAccessWithInstructionAST enterInstructionInSemanticContext
@@ -366,7 +366,7 @@ override method @readAccessWithInstructionAST enterInstructionInSemanticContext
   [self.mElseBranchInstructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-#······················································································································
+//·································································································
 
 override method @readWriteAccessWithInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -377,7 +377,7 @@ override method @readWriteAccessWithInstructionAST enterInstructionInSemanticCon
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
@@ -445,14 +445,14 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     localConstantList +=
       !mPropertyTypeEntry
       !@lstring {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
-      !true # Do not warn if unused
+      !true // Do not warn if unused
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
 //--- Add lkey as @lstring constant
   localConstantList +=
     ![ioTypeMap typeMapEntryForLKey !["lstring" nowhere]]
     !@lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression}
-    !true # Do not warn if unused
+    !true // Do not warn if unused
     !objectArrayCppName + "->mPropertylkey"
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -494,7 +494,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   }
 }
 
-#······················································································································
+//·································································································
 
 override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
                                 ?let @lstring inUsefulnessCallerEntityName
@@ -590,7 +590,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   let localConstantList = @localConstantList @[@(
     [ioTypeMap typeMapEntryForLKey !["lstring" nowhere]],
     @lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression},
-    true, # Do not warn if unused
+    true, // Do not warn if unused
     objectArrayCppName + "->mProperty_lkey"
   )]
   analyzeSemanticInstructionList (
@@ -636,7 +636,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+//! GENERATION TYPES
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
@@ -649,7 +649,7 @@ class @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration 
   public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
-#······················································································································
+//·································································································
 
 class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -664,7 +664,7 @@ class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
@@ -730,7 +730,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#······················································································································
+//·································································································
 
 override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet

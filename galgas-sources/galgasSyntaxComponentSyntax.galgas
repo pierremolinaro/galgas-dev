@@ -1,29 +1,29 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 
   //······························································································
-  #          Rules prototypes
+  //          Rules prototypes
   //······························································································
 
   rule <expression_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -39,7 +39,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
                                     !@actualParameterListAST outActualParameterList
 
   //······························································································
-  #      S Y N T A X    C O M P O N E N T
+  //      S Y N T A X    C O M P O N E N T
   //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -83,7 +83,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #      S Y N T A X    E X T E N S I O N
+  //      S Y N T A X    E X T E N S I O N
   //······························································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
@@ -108,15 +108,15 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
       !nonterminalDeclarationList
       !ruleList
     ]
-#    ioDeclarations.mSyntaxExtensions +=
-#      !syntaxComponentName.string
-#      !syntaxComponentName
-#      !nonterminalDeclarationList
-#      !ruleList
+//    ioDeclarations.mSyntaxExtensions +=
+//      !syntaxComponentName.string
+//      !syntaxComponentName
+//      !nonterminalDeclarationList
+//      !ruleList
   }
 
   //······························································································
-  #      N O N T E R M I N A L    D E C L A R A T I O N
+  //      N O N T E R M I N A L    D E C L A R A T I O N
   //······························································································
 
   rule <nonterminal_declaration> ?!@galgasDeclarationAST ioDeclarations
@@ -137,7 +137,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #      S Y N T A X    R U L E    D E C L A R A T I O N
+  //      S Y N T A X    R U L E    D E C L A R A T I O N
   //······························································································
 
   rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
@@ -175,7 +175,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #   S Y N T A X    I N S T R U C T I O N    L I S T
+  //   S Y N T A X    I N S T R U C T I O N    L I S T
   //······························································································
 
   rule <syntax_instruction_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -205,7 +205,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   }
 
   //······························································································
-  #   T E R M I N A L    C H E C K    I N S T R U C T I O N
+  //   T E R M I N A L    C H E C K    I N S T R U C T I O N
   //······························································································
 
   rule <actual_input_parameter_list_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -225,7 +225,7 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
 syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
   //······························································································
-  #          Rules prototypes
+  //          Rules prototypes
   //······························································································
 
   rule <expression> ?!@galgasDeclarationAST ioDeclarations
@@ -241,7 +241,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                                                   !@actualParameterListAST outActualParameterList
 
   //······························································································
-  #      S Y N T A X    C O M P O N E N T
+  //      S Y N T A X    C O M P O N E N T
   //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
@@ -285,7 +285,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #      S Y N T A X    E X T E N S I O N
+  //      S Y N T A X    E X T E N S I O N
   //······························································································
 
   rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
@@ -310,15 +310,15 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       !nonterminalDeclarationList
       !ruleList
     ]
-#    ioDeclarations.mSyntaxExtensions +=
-#      !syntaxComponentName.string
-#      !syntaxComponentName
-#      !nonterminalDeclarationList
-#      !ruleList
+//    ioDeclarations.mSyntaxExtensions +=
+//      !syntaxComponentName.string
+//      !syntaxComponentName
+//      !nonterminalDeclarationList
+//      !ruleList
   }
 
   //······························································································
-  #      N O N T E R M I N A L    D E C L A R A T I O N
+  //      N O N T E R M I N A L    D E C L A R A T I O N
   //······························································································
 
   rule <nonterminal_declaration> ?!@galgasDeclarationAST ioDeclarations
@@ -339,7 +339,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #      S Y N T A X    R U L E    D E C L A R A T I O N
+  //      S Y N T A X    R U L E    D E C L A R A T I O N
   //······························································································
 
   rule <syntax_rule_label> ?!@galgasDeclarationAST ioDeclarations
@@ -377,7 +377,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #   S Y N T A X    I N S T R U C T I O N    L I S T
+  //   S Y N T A X    I N S T R U C T I O N    L I S T
   //······························································································
 
   rule <syntax_instruction_list> ?!@galgasDeclarationAST ioDeclarations
@@ -407,7 +407,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   }
 
   //······························································································
-  #   T E R M I N A L    C H E C K    I N S T R U C T I O N
+  //   T E R M I N A L    C H E C K    I N S T R U C T I O N
   //······························································································
 
   rule <actual_input_parameter_list> ?!@galgasDeclarationAST ioDeclarations

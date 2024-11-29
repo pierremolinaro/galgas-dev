@@ -1,30 +1,31 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfInExpressionAST : @semanticExpressionAST {
-  private let @location mSelfLocation
+class @literalDoubleExpressionAST : @semanticExpressionAST {
+  private let @ldouble mValue
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
@@ -33,8 +34,8 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
-    $self$
-    outExpression = @selfInExpressionAST {!@location.here}
+    $double.xxx$ ?let @ldouble literalDouble ?*
+    outExpression = @literalDoubleExpressionAST {!literalDouble}
   }
 
   //······························································································
@@ -49,8 +50,8 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
-    $self$
-    outExpression = @selfInExpressionAST {!@location.here}
+    $double.xxx$ ?let @ldouble literalDouble ?*
+    outExpression = @literalDoubleExpressionAST {!literalDouble}
   }
 
   //······························································································
@@ -58,17 +59,17 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @selfInExpressionAST enterExpressionInSemanticContext
+override method @literalDoubleExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#·····················································································································
+//································································································
 
-override method @selfInExpressionAST analyzeSemanticExpression
+override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -77,34 +78,32 @@ override method @selfInExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
-    let @string selfCppName = inAnalysisContext.selfObjectCppName
-    outExpression = @selfInExpressionForGeneration {!selfAvailable.type !self.mSelfLocation !selfCppName}
-  else
-    error self.mSelfLocation : "'self' not available in this context" : outExpression
-  end
+  outExpression = @literalDoubleExpressionForGeneration {
+    !inAnalysisContext.predefinedTypes.mDoubleType
+    !self.mValue.location
+    !self.mValue.double
+  }
 }
 
+
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @string mSelfCppName
+class @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
+  private let @double mValue
 }
 
-#·····················································································································
+//································································································
 
-override method @selfInExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
+override method @literalDoubleExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
   ?!@stringset unused ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
-  ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "const GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
+  outCppExpression = "GGS_double (" + [self.mValue string]+ ")"
 }
+
 
 //————————————————————————————————————————————————————————————————————————————————————————————————

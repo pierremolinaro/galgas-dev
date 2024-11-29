@@ -1,24 +1,24 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
+//
+//  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @templateLexiqueComponentAST : @semanticDeclarationAST {
@@ -32,7 +32,7 @@ class @templateLexiqueComponentAST : @semanticDeclarationAST {
 
 syntax extension galgas3LexiqueComponentSyntax {
 
- #·····················································································································
+ //································································································
 
   rule <declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations {
     $template$
@@ -53,7 +53,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !lexiqueComponentName
       !lexiqueSuperComponentName
       !templateDelimitorList
@@ -148,7 +148,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@templateLexiqueComponentAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !lexiqueComponentName
       !lexiqueSuperComponentName
       !templateDelimitorList
@@ -293,9 +293,9 @@ override method @templateLexiqueComponentAST semanticAnalysis
 //-------------------------------------- Get super lexique features
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
      !self.mLexiqueSuperComponentName
-     ?* #let superLexiqueIsTemplate
-     ?* #let terminalMap
-     ?* #let indexingDirectory
+     ?* //let superLexiqueIsTemplate
+     ?* //let terminalMap
+     ?* //let indexingDirectory
      ?let terminalListAST
      ?let lexicalAttributeListAST
      ?let lexicalStyleListAST
@@ -390,7 +390,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
   for (mMatchString mReplacementString *) in self.mTemplateReplacementList do
     unicodeStringToGenerate += !mMatchString.string
     unicodeStringToGenerate += !mReplacementString.string
-   # § TODO Check replacement function
+   // § TODO Check replacement function
   end
 //-------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
@@ -437,7 +437,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
       !@lexiqueDeclarationForGeneration {
-        !generateHeader: true # has header
+        !generateHeader: true // has header
         !implementationCppFileName: "lexique-" + [self.mLexiqueComponentName.string fileNameRepresentation]
         !self.mLexiqueComponentName.string
         !self.mLexiqueSuperComponentName.string
@@ -451,7 +451,7 @@ override method @templateLexiqueComponentAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S
+//         G E N E R A T I O N    T E M P L A T E S
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper templateLexiqueGenerationTemplates in "+generation-templates/lexique_generation" {

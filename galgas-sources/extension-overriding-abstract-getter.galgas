@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
@@ -27,7 +27,7 @@ class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -121,7 +121,7 @@ syntax extension galgas4DeclarationsSyntax {
     $->$
     <type_definition> !?ioDeclarations ?let returnedTypeName
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !typeName
       !getterName
       !formalInputParameterList
@@ -154,7 +154,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION
+//   KEY REPRESENTATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @string {
@@ -162,7 +162,7 @@ override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @str
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
@@ -192,7 +192,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+//   SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext
@@ -207,7 +207,7 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInSemantic
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST semanticAnalysis
@@ -220,8 +220,8 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 //--- Useful entities graph
-#  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
-#  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+//  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
+//  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Return type
@@ -283,7 +283,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP
+//   EXTENSION LIST MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
@@ -299,9 +299,9 @@ override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap {
-#  ioOverridingAbstractExtensionGetterListMap +=
-#    !self.mTypeName.string
-#    !self.mAbstractExtensionGetterName
+//  ioOverridingAbstractExtensionGetterListMap +=
+//    !self.mTypeName.string
+//    !self.mAbstractExtensionGetterName
   [!? ioOverridingAbstractExtensionGetterListMap insertKey
     !self.mTypeName.string
     !self.mAbstractExtensionGetterName

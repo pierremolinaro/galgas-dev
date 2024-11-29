@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!  SYNTAX
+//!  SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -83,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
       error enumTypeName : "an enumerated type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@enumDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !enumTypeName
       !constantList
       !comparison: comparison
@@ -161,7 +161,7 @@ syntax extension galgas4DeclarationsSyntax {
       error enumTypeName : "an enumerated type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@enumDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !enumTypeName
       !constantList
       !comparison: comparison
@@ -173,7 +173,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @associatedValue {
@@ -408,7 +408,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true
       !superType: .null
       !typeKind: .enumType {!constantMap: constantMap}
-      !supportCollectionValue: false # Does not support collection value
+      !supportCollectionValue: false // Does not support collection value
       !allTypedPropertyList: @()
       !propertyMap: @()
       !currentTypedPropertyList: @()
@@ -424,7 +424,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
       !features: features
       !addAssignOperatorArguments: @()
       !mapSearchMethodList: @()
-      !generateHeaderInSeparateFile: false # Do not generate header in separate file
+      !generateHeaderInSeparateFile: false // Do not generate header in separate file
       !typeForEnumeratedElement: .null
       !headerFileName: "enum-" + [self.enumTypeName fileNameRepresentation]
       !headerKind: .oneHeader
@@ -508,7 +508,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!  CODE GENERATION
+//!  CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @enumConstantListForGeneration {

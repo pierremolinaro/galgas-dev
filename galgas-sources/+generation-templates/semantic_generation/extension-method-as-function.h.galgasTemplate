@@ -13,7 +13,7 @@ void extensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const class 
       %class GGS_%![mFormalArgumentType identifierRepresentation]% & io_%![mFormalArgumentName identifierRepresentation]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %class GGS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
-    else # argumentIn
+    else // argumentIn
       %class GGS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end

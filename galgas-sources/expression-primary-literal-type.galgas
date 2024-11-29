@@ -15,30 +15,27 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
 //————————————————————————————————————————————————————————————————————————————————————————————————
-//! AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @lexicalRewindInstructionAST : @lexicalInstructionAST {
-  private let @lstring mLexicalTagName
-  private let @lstring mTerminalName
+class @literalTypeInExpressionAST : @semanticExpressionAST {
+  private let @lstring mLiteralTypeName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 //! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas3LexiqueComponentSyntax {
+syntax extension galgas3ExpressionSyntax {
 
   //······························································································
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $rewind$
-    $identifier$ ?let tagName
-    $send$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
+  rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
+                      !@semanticExpressionAST outExpression {
+    $`$
+    $@type$ ?let @lstring typeName
+    outExpression = @literalTypeInExpressionAST {!typeName}
   }
 
   //······························································································
@@ -47,16 +44,15 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4LexiqueComponentSyntax {
+syntax extension galgas4ExpressionSyntax {
 
   //······························································································
 
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $rewind$
-    $identifier$ ?let tagName
-    $send$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalRewindInstructionAST {!tagName !terminalName}
+  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
+                 !@semanticExpressionAST outExpression {
+    $`$
+    $@type$ ?let @lstring typeName // Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
+    outExpression = @literalTypeInExpressionAST {!typeName}
   }
 
   //······························································································
@@ -64,58 +60,57 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-//! CHECK LEXICAL INSTRUCTION
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @lexicalRewindInstructionAST checkLexicalInstruction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap ioTagMap {
-  [ioTagMap searchKey !self.mLexicalTagName]
-  [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
+override method @literalTypeInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [!?ioTypeMap makeEntry !self.mLiteralTypeName ?*]
+}
+
+//································································································
+
+override method @literalTypeInExpressionAST analyzeSemanticExpression
+  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?inferenceType: let @unifiedTypeMapEntry unused inType
+  ?let @analysisContext unused inAnalysisContext
+                                ?!@unifiedTypeMap ioTypeMap
+  ?!@localVarManager unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+//---
+  let type = [ioTypeMap typeMapEntryForLKey !self.mLiteralTypeName]
+  outExpression = @literalTypeInExpressionForGeneration {
+    ![ioTypeMap typeMapEntryForLKey !@{!"type" !.here}]
+    !self.mLiteralTypeName.location
+    !type
+  }
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-//! COCOA GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @lexicalRewindInstructionAST generateObjcCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "[self restoreScanningPoint: & locationForTag_" + self.mLexicalTagName + "] ;\n"
-  outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
+class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
+  private let @unifiedTypeMapEntry mLiteralType
+}
+
+//································································································
+
+override method @literalTypeInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [self.mLiteralType addHeaderFileName !?ioInclusionSet]
+  outCppExpression = "GGS_type (& kTypeDescriptor_GALGAS_"
+                  + [[self.mLiteralType definition].typeName.string identifierRepresentation] + ")"
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @lexicalRewindInstructionAST generateSwiftCocoaInstructionCode
-  ?let @string inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode {
-  outGeneratedCode = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
-  outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + "\n"
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————————————
-//! C++ CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
-
-override getter @lexicalRewindInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
-  result = false
-}
-
-//·································································································
-
-override getter @lexicalRewindInstructionAST generateLexicalInstructionCode
-  ?let @string unused inScannerClassName
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string {
-  result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
-  result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
-  result += "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
-  result += "token.mTokenCode = kToken_" + [self.mTerminalName identifierRepresentation] + " ;\n"
-  result += "enterToken (token) ;\n"
-}
-
-//————————————————————————————————————————————————————————————————————————————————————————————————
-

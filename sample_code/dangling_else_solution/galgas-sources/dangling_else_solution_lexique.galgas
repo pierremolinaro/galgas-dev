@@ -2,9 +2,9 @@ lexique dangling_else_solution_lexique {
 
 //--- Key words
 list keyWordList error message "the '%K' key word"{
- "I", # IF EXPR THEN
- "E", # ELSE
- "O" } # OTHER
+ "I", // IF EXPR THEN
+ "E", // ELSE
+ "O" } // OTHER
 rule list keyWordList
 
 //--- Identifiers

@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @guiSimpleAttributeListAST {
@@ -110,7 +110,7 @@ list @galgasGUIComponentListAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax galgas3GuiComponentSyntax (galgasScanner3) {
@@ -175,10 +175,10 @@ syntax galgas3GuiComponentSyntax (galgasScanner3) {
         $\$terminal\$$ ?let  @lstring terminal
         let @uint displayFlags
         select
-          displayFlags = 0 # Default
+          displayFlags = 0 // Default
         or
           $-$
-          displayFlags = 0xFFFF # Do not diplay
+          displayFlags = 0xFFFF // Do not diplay
         or
           $($
           $literalInt$ ?let leadingStrip
@@ -310,10 +310,10 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
         $\$terminal\$$ ?let  @lstring terminal
         let @uint displayFlags
         select
-          displayFlags = 0 # Default
+          displayFlags = 0 // Default
         or
           $-$
-          displayFlags = 0xFFFF # Do not diplay
+          displayFlags = 0xFFFF // Do not diplay
         or
           $($
           $literalInt$ ?let leadingStrip
@@ -382,7 +382,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTIC ANALYSIS
+//! SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @guiAnalysisContext {
@@ -546,7 +546,7 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
@@ -566,11 +566,11 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
       !startPath:inOutputDirectory
       !fileName: swiftFileName
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2: swift_string
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"\n\n" # Zone 3
+      !defaultUserZone2:"\n\n" // Defaut user zone2
+      !generatedZone3:"\n\n" // Zone 3
       !makeExecutable:false
     ]
     let objcFileName = "gui-" + lkey + ".m"
@@ -584,18 +584,18 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
       !startPath:inOutputDirectory
       !fileName: objcFileName
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2: objc_string
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:"\n\n" # Zone 3
+      !defaultUserZone2:"\n\n" // Defaut user zone2
+      !generatedZone3:"\n\n" // Zone 3
       !makeExecutable:false
     ]
   end
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#         G E N E R A T I O N    T E M P L A T E S
+//         G E N E R A T I O N    T E M P L A T E S
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {

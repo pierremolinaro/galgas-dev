@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
       isReference = false
     end
     $@type$ ?let @lstring className indexing classDefinition
-    let @lstring superClassName # Empty if no super class
+    let @lstring superClassName // Empty if no super class
     select
       superClassName = ["" nowhere]
     or
@@ -72,18 +72,18 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !isAbstract
       !isReference
       !className
-      !superClassName # Empty if no super class
+      !superClassName // Empty if no super class
       !generateInSeparateFile
       !propertyList
       !clonable
     }
     if isReference then
       ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
-        !isPredefined: false # Is not predefined
+        !isPredefined: false // Is not predefined
         !className
         !makeWeakTypeLName (!className)
         !if superClassName.string == ""
@@ -122,7 +122,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $class$
     $@type$ ?let @lstring className indexing classDefinition
-    let @lstring superClassName # Empty if no super class
+    let @lstring superClassName // Empty if no super class
     select
       superClassName = ["" nowhere]
     or
@@ -147,18 +147,18 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@classDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !isAbstract
       !true
       !className
-      !superClassName # Empty if no super class
+      !superClassName // Empty if no super class
       !generateInSeparateFile
       !propertyList
       !clonable
     }
   //--- Associated Weak Type
     ioDeclarations.mDeclarationList += !@weakReferenceDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !className
       !makeWeakTypeLName (!className)
       !if superClassName.string == ""
@@ -174,14 +174,14 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classDeclarationAST : @semanticDeclarationAST {
   private let @bool mIsAbstract
   private let @bool mIsReference
   private let @lstring mClassTypeName
-  private let @lstring mSuperClassName # Empty if no super class
+  private let @lstring mSuperClassName // Empty if no super class
   private let @bool mGenerateInSeparateFile
   private let @propertyInCollectionListAST mPropertyList
   private let @bool clonable
@@ -265,7 +265,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
           !mParameterList
           !mHasCompilerArgument
           !.isInherited
-          !"" # No error message
+          !"" // No error message
         ]
       end
     //--- Mark all getters as inherited
@@ -365,9 +365,9 @@ class @classDeclarationAST : @semanticDeclarationAST {
             !@{!"setProperty_"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
             !@[@(["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
-            !true # Compiler argument
+            !true // Compiler argument
             !.isBasicFinal
-            !"" # No error message
+            !"" // No error message
           ]
         end
       end
@@ -423,10 +423,10 @@ class @classDeclarationAST : @semanticDeclarationAST {
     let typeDefinition = @unifiedTypeDefinition {
       !typeName: self.mClassTypeName
       !isPredefined: self.isPredefined
-      !isConcrete: not self.mIsAbstract # Concrete Type
+      !isConcrete: not self.mIsAbstract // Concrete Type
       !superType: superClassIndex
       !typeKind: .classType {!isReference: self.mIsReference}
-      !supportCollectionValue: false # Does not support collection value
+      !supportCollectionValue: false // Does not support collection value
       !allTypedPropertyList: allTypedAttributeList
       !propertyMap: attributeMap
       !currentTypedPropertyList: currentClassTypedPropertyList
@@ -484,8 +484,8 @@ class @classDeclarationAST : @semanticDeclarationAST {
       else [ioTypeMap typeMapEntryForLKey !self.mSuperClassName]
     end
   //----- check "reference" status:
-  # a base class can be freely declared as shared or not
-  # a class should the same 'reference' status as its super class
+  // a base class can be freely declared as shared or not
+  // a class should the same 'reference' status as its super class
     if superClassEntry != .null then
       [[superClassEntry definition].typeKind extractClassType ?isReference: let superClassIsReference]
       if superClassIsReference & not self.mIsReference then
@@ -495,8 +495,8 @@ class @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   //----- Super type, and class features
-  # A class that has a super may not have any feature
-  # A class without a super class admits the 'generatedInSeparateFile' feature
+  // A class that has a super may not have any feature
+  // A class without a super class admits the 'generatedInSeparateFile' feature
     var @typedPropertyList allAttributeList
     if superClassEntry == .null then
       allAttributeList = @()
@@ -601,16 +601,16 @@ class @classDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classTypeForGeneration : @semanticTypeForGeneration {
   private let @bool mIsAbstract
   private let @bool mIsReference
-  private let @unifiedTypeMapEntry mSuperClass # Null if no super class
-  private let @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
+  private let @unifiedTypeMapEntry mSuperClass // Null if no super class
+  private let @typedPropertyList mAllTypedAttributeList // Inherited followed by current attributes
   private let @typedPropertyList mCurrentTypedAttributeList
-  private let @bool generateHeaderInSeparateFile # Significant only for classes
+  private let @bool generateHeaderInSeparateFile // Significant only for classes
   private let @bool initializerNeedsCompilerVariable
   private let @string propertyInitializationCode
   private let @typedPropertyList synthetizedInitializerArgumentList
@@ -698,10 +698,10 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
           !startPath:inOutputDirectory + "/../user-headers"
           !fileName:headerFileName
           !lineComment:"//"
-          !header:"" # Header
-          !defaultUserZone1:"\n\n" # Defaut user zone1
+          !header:"" // Header
+          !defaultUserZone1:"\n\n" // Defaut user zone1
           !generatedZone2:part1
-          !defaultUserZone2:"\n\n" # Defaut user zone2
+          !defaultUserZone2:"\n\n" // Defaut user zone2
           !generatedZone3:part2
           !makeExecutable:false
         ]
@@ -753,10 +753,10 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
           !startPath:inOutputDirectory + "/../user-headers"
           !fileName:headerFileName
           !lineComment:"//"
-          !header:"" # Header
-          !defaultUserZone1:"\n\n" # Defaut user zone1
+          !header:"" // Header
+          !defaultUserZone1:"\n\n" // Defaut user zone1
           !generatedZone2:part1
-          !defaultUserZone2:"\n\n" # Defaut user zone2
+          !defaultUserZone2:"\n\n" // Defaut user zone2
           !generatedZone3:part2
           !makeExecutable:false
         ]
@@ -940,7 +940,7 @@ func generateClassInstanceMethodDeclaration ?let @lstring inMethodName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Generation Filewrappers
+//! Generation Filewrappers
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper classGenerationTemplate in "+generation-templates/type_generation" {

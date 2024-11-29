@@ -1,30 +1,30 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @literalCharExpressionAST : @semanticExpressionAST {
-  private let @lchar mCharacter
+class @selfInExpressionAST : @semanticExpressionAST {
+  private let @location mSelfLocation
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
@@ -33,8 +33,8 @@ syntax extension galgas3ExpressionSyntax {
 
   rule <primary_ggs3> ?!@galgasDeclarationAST unused ioDeclarations
                       !@semanticExpressionAST outExpression {
-    $'char'$ ?let @lchar literalChar
-    outExpression = @literalCharExpressionAST {!literalChar}
+    $self$
+    outExpression = @selfInExpressionAST {!@location.here}
   }
 
   //······························································································
@@ -49,8 +49,8 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
                  !@semanticExpressionAST outExpression {
-    $'char'$ ?let @lchar literalChar
-    outExpression = @literalCharExpressionAST {!literalChar}
+    $self$
+    outExpression = @selfInExpressionAST {!@location.here}
   }
 
   //······························································································
@@ -58,17 +58,17 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @literalCharExpressionAST enterExpressionInSemanticContext
+override method @selfInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#·····················································································································
+//································································································
 
-override method @literalCharExpressionAST analyzeSemanticExpression
+override method @selfInExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?inferenceType: let @unifiedTypeMapEntry unused inType
@@ -77,31 +77,34 @@ override method @literalCharExpressionAST analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @literalCharExpressionForGeneration {
-    !inAnalysisContext.predefinedTypes.mCharType
-    !self.mCharacter.location
-    !self.mCharacter.char
-  }
+  if let selfAvailable = [inAnalysisContext.selfAvailability getAvailable] then
+    let @string selfCppName = inAnalysisContext.selfObjectCppName
+    outExpression = @selfInExpressionForGeneration {!selfAvailable.type !self.mSelfLocation !selfCppName}
+  else
+    error self.mSelfLocation : "'self' not available in this context" : outExpression
+  end
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @char mCharacter
+class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
+  private let @string mSelfCppName
 }
 
-#·····················································································································
+//································································································
 
-override method @literalCharExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
+override method @selfInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
   ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GGS_char (TO_UNICODE (" + [[self.mCharacter uint] string] + "))"
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex += 1
+  ioGeneratedCode += "const GGS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 }
-
 
 //————————————————————————————————————————————————————————————————————————————————————————————————

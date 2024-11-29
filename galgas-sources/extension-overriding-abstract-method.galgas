@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
@@ -26,7 +26,7 @@ class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !typeName
       !methodName
       !formalParameterList
@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list_ggs34> !?ioDeclarations ?let formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !inTypeName
       !methodName
       !formalParameterList
@@ -95,7 +95,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list>!?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !typeName
       !methodName
       !formalParameterList
@@ -119,7 +119,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ ?let @lstring methodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !typeName
       !methodName
       !formalParameterList
@@ -131,7 +131,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION
+//   KEY REPRESENTATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingAbstractExtensionMethodAST keyRepresentation -> @string {
@@ -139,7 +139,7 @@ override getter @overridingAbstractExtensionMethodAST keyRepresentation -> @stri
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
@@ -169,7 +169,7 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+//   SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST enterDeclarationInSemanticContext
@@ -183,7 +183,7 @@ override method @overridingAbstractExtensionMethodAST enterDeclarationInSemantic
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST semanticAnalysis
@@ -196,10 +196,10 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 //--- Useful entities graph
-#  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionMethodName)
-#  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
-#  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
+//  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionMethodName)
+//  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+//  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
+//  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 //--- Self type
   let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey !self.mTypeName]
 //--- Check type is an abstract class
@@ -255,7 +255,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP
+//   EXTENSION LIST MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
@@ -272,9 +272,9 @@ override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-#  ioOverridingAbstractExtensionMethodListMap +=
-#    !self.mTypeName.string
-#    !self.mOverridingExtensionMethodName
+//  ioOverridingAbstractExtensionMethodListMap +=
+//    !self.mTypeName.string
+//    !self.mOverridingExtensionMethodName
   [!?ioOverridingAbstractExtensionMethodListMap insertKey
     !self.mTypeName.string
     !self.mOverridingExtensionMethodName

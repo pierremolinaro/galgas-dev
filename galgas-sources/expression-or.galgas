@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @orExpressionAST : @semanticExpressionAST {
@@ -25,7 +25,7 @@ class @orExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 class @orShortExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -33,7 +33,7 @@ class @orShortExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 class @xorExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -41,7 +41,7 @@ class @xorExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 class @closedSliceExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -49,7 +49,7 @@ class @closedSliceExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 class @openedSliceExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -58,7 +58,7 @@ class @openedSliceExpressionAST : @semanticExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
@@ -154,7 +154,7 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orExpressionAST enterExpressionInSemanticContext
@@ -164,7 +164,7 @@ override method @orExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @orExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -220,7 +220,7 @@ override method @orShortExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @orShortExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -275,7 +275,7 @@ override method @xorExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @xorExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -332,7 +332,7 @@ override method @closedSliceExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @closedSliceExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -390,7 +390,7 @@ override method @openedSliceExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @openedSliceExpressionAST analyzeSemanticExpression
                                               ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -427,20 +427,20 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
     !leftExpression.mLocation
     !?leftExpression
   )
-#  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-#  if [leftType definition].mTypeName.string != "uint" then
-#    error leftExpression.mLocation : "the left expression of '..<' operator should an @uint"
-#  end
+//  let @unifiedTypeMapEntry leftType = leftExpression.mResultType
+//  if [leftType definition].mTypeName.string != "uint" then
+//    error leftExpression.mLocation : "the left expression of '..<' operator should an @uint"
+//  end
   checkAssignmentTypeWithImplicitGetterCall (
     !inAnalysisContext.predefinedTypes.mUIntType
     !rightExpression.mResultType
     !rightExpression.mLocation
     !?rightExpression
   )
-#  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-#  if [rightType definition].mTypeName.string != "uint" then
-#    error rightExpression.mLocation : "the right expression of '..<' operator should an @uint"
-#  end
+//  let @unifiedTypeMapEntry rightType = rightExpression.mResultType
+//  if [rightType definition].mTypeName.string != "uint" then
+//    error rightExpression.mLocation : "the right expression of '..<' operator should an @uint"
+//  end
 //--- Generate expression
   outExpression = @openedSliceExpressionForGeneration {
     ![ioTypeMap typeMapEntryForLKey !@{!"range" !leftExpression.mLocation}]
@@ -451,7 +451,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
@@ -459,21 +459,21 @@ class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 class @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mLeftExpression
   private let @semanticExpressionForGeneration mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 class @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration mLeftExpression
   private let @semanticExpressionForGeneration mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 override method @orShortExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -510,7 +510,7 @@ override method @orShortExpressionForGeneration generateExpression
   outCppExpression = testVar
 }
 
-#·····················································································································
+//································································································
 
 override method @closedSliceExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -541,7 +541,7 @@ override method @closedSliceExpressionForGeneration generateExpression
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ").add_operation (GGS_uint (1), " + compilerCppName () + [self.mLocation commaSourceFile] + "))"
 }
 
-#·····················································································································
+//································································································
 
 override method @openedSliceExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode

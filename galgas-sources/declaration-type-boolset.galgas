@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
       error boolsetTypeName : "a boolset type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !boolsetTypeName
       !slotList
       !isEquatable: isEquatable
@@ -90,7 +90,7 @@ syntax extension galgas4DeclarationsSyntax {
       error boolsetTypeName : "a boolset type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList += !@boolsetDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !boolsetTypeName
       !slotList
       !isEquatable: isEquatable
@@ -102,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @boolsetDeclarationAST : @semanticDeclarationAST {
@@ -112,7 +112,7 @@ class @boolsetDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST enterDeclarationInGraph
@@ -129,7 +129,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION
+//   KEY REPRESENTATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @boolsetDeclarationAST keyRepresentation -> @string {
@@ -137,7 +137,7 @@ override getter @boolsetDeclarationAST keyRepresentation -> @string {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+//   SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST enterDeclarationInSemanticContext
@@ -206,10 +206,10 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
   var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
     | .prefixTildeOperator
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator
-    | .andAssignOperatorWithExpression # var &= exp
-    | .orAssignOperatorWithExpression # var |= exp
-    | .xorAssignOperatorWithExpression # var ^= exp
-    | .minusAssignOperatorWithExpression # var -= exp
+    | .andAssignOperatorWithExpression // var &= exp
+    | .orAssignOperatorWithExpression // var |= exp
+    | .xorAssignOperatorWithExpression // var ^= exp
+    | .minusAssignOperatorWithExpression // var -= exp
   if self.isEquatable then
     features |= .equatable
   end
@@ -227,7 +227,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !isConcrete: true
     !superType: .null
     !typeKind: .boolsetType
-    !supportCollectionValue: false # Does not support collection value
+    !supportCollectionValue: false // Does not support collection value
     !allTypedPropertyList: @()
     !propertyMap: @()
     !currentTypedPropertyList: @()
@@ -243,7 +243,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
     !features: features
     !addAssignOperatorArguments: @()
     !mapSearchMethodList: @()
-    !generateHeaderInSeparateFile: false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: .null
     !headerFileName: "boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !headerKind: .oneHeader
@@ -253,7 +253,7 @@ override method @boolsetDeclarationAST enterDeclarationInSemanticContext
 
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @boolsetDeclarationAST semanticAnalysis
@@ -296,7 +296,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @boolsetTypeForGeneration : @semanticTypeForGeneration {
@@ -304,7 +304,7 @@ class @boolsetTypeForGeneration : @semanticTypeForGeneration {
   private let @bool equatable
 }
 
-#·······················································································································
+//································································································
 
 filewrapper structGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -322,7 +322,7 @@ filewrapper structGenerationTemplate in "+generation-templates/type_generation" 
     ?@bool EQUATABLE
 }
 
-#·······················································································································
+//································································································
 
 override method @boolsetTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -353,7 +353,7 @@ override method @boolsetTypeForGeneration appendDeclaration1
   ]
  }
 
-#·······················································································································
+//································································································
 
 override method @boolsetTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingExtensionSetterAST : @semanticDeclarationAST {
@@ -29,7 +29,7 @@ class @overridingExtensionSetterAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -83,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !setterName
@@ -98,7 +98,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInGraph
@@ -114,7 +114,7 @@ override method @overridingExtensionSetterAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY REPRESENTATION
+//   KEY REPRESENTATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @overridingExtensionSetterAST keyRepresentation -> @string {
@@ -122,7 +122,7 @@ override getter @overridingExtensionSetterAST keyRepresentation -> @string {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+//   SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST enterDeclarationInSemanticContext
@@ -137,7 +137,7 @@ override method @overridingExtensionSetterAST enterDeclarationInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST semanticAnalysis
@@ -212,7 +212,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: " overriding extension setter " + self.mOverridingExtensionSetterName
     !@overridingExtensionSetterForGeneration {
-      !generateHeader: false # Do not generate Cpp header file
+      !generateHeader: false // Do not generate Cpp header file
       !implementationCppFileName: "setter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mOverridingExtensionSetterName fileNameRepresentation]
       !selfType
       !baseTypeName
@@ -224,7 +224,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP
+//   EXTENSION LIST MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @overridingExtensionSetterAST buildExtensionListMaps
@@ -241,9 +241,9 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-#  ioOverridingExtensionSetterListMap +=
-#    !self.mTypeName.string
-#    !self.mOverridingExtensionSetterName
+//  ioOverridingExtensionSetterListMap +=
+//    !self.mTypeName.string
+//    !self.mOverridingExtensionSetterName
   [!?ioOverridingExtensionSetterListMap insertKey
     !self.mTypeName.string
     !self.mOverridingExtensionSetterName
@@ -251,7 +251,7 @@ override method @overridingExtensionSetterAST buildExtensionListMaps
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -263,13 +263,13 @@ class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderFo
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
-#·······················································································································
+//································································································
 
 override getter @overridingExtensionSetterForGeneration headerKind ->@headerKind {
   result = @headerKind.noHeader
 }
 
-#·······················································································································
+//································································································
 
 override method @overridingExtensionSetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

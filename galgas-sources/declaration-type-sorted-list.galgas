@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
@@ -34,7 +34,7 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -67,7 +67,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !sortedListTypeName
       !attributeList
       !sortDescriptorList
@@ -126,7 +126,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ioDeclarations.mDeclarationList += !@sortedListDeclarationAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !sortedListTypeName
       !attributeList
       !sortDescriptorList
@@ -153,7 +153,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   ENTER IN GRAPH
+//   ENTER IN GRAPH
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
@@ -172,7 +172,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC CONTEXT
+//   SEMANTIC CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST addAssociatedElement
@@ -197,7 +197,7 @@ override method @sortedListDeclarationAST addAssociatedElement
   }
 }
 
-#·······················································································································
+//································································································
 
 override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -263,7 +263,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !setterFormalOutputArgumentList
     !true
     !@methodQualifier.isBasic
-    !"" # No error message
+    !"" // No error message
   ]
   [!?setterMap insertOrReplace
     !@lstring {!"popSmallest" !@location.here}
@@ -271,7 +271,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !setterFormalOutputArgumentList
     !true
     !@methodQualifier.isBasic
-    !"" # No error message
+    !"" // No error message
   ]
   [!?setterMap insertOrReplace
     !@lstring {!"insert" !@location.here}
@@ -279,7 +279,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !setterFormalInputArgumentList
     !true
     !@methodQualifier.isBasic
-    !"" # No error message
+    !"" // No error message
   ]
 //--- Instance methods
   var @instanceMethodMap instanceMethodMap = @()
@@ -290,7 +290,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !"" # No error message
+    !"" // No error message
   ]
   [!?instanceMethodMap insertKey
     !@lstring {!"smallest" !@location.here}
@@ -299,7 +299,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !@location.here
     !true
     !@methodQualifier.isBasic
-    !"" # No error message
+    !"" // No error message
   ]
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
@@ -340,10 +340,10 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
   let typeDefinition = @unifiedTypeDefinition {
     !typeName: self.mSortedListTypeName
     !isPredefined: self.isPredefined
-    !isConcrete: true # Concrete Type
+    !isConcrete: true // Concrete Type
     !superType: .null
     !typeKind: .sortedListType
-    !supportCollectionValue: true # Support collection value
+    !supportCollectionValue: true // Support collection value
     !allTypedPropertyList: typedAttributeList
     !propertyMap: @()
     !currentTypedPropertyList: @()
@@ -359,7 +359,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
     !features: features 
     !addAssignOperatorArguments: constructorAttributeTypeList
     !mapSearchMethodList: @()
-    !generateHeaderInSeparateFile: false # Do not generate header in separate file
+    !generateHeaderInSeparateFile: false // Do not generate header in separate file
     !typeForEnumeratedElement: listElementTypeIndex
     !headerFileName: "-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
     !headerKind: .oneHeader
@@ -368,7 +368,7 @@ override method @sortedListDeclarationAST enterDeclarationInSemanticContext
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @sortedListDeclarationAST semanticAnalysis
@@ -442,7 +442,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortDescriptorListForGeneration {
@@ -451,7 +451,7 @@ list @sortDescriptorListForGeneration {
   public let @bool mAscendingOrder
 }
 
-#·······················································································································
+//································································································
 
 class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
@@ -459,7 +459,7 @@ class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   private let @sortDescriptorListForGeneration mSortDescriptorList
 }
 
-#·······················································································································
+//································································································
 
 override method @sortedListTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -489,7 +489,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
   ]
  }
 
-#·······················································································································
+//································································································
 
 override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

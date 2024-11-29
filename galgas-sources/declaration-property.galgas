@@ -1,29 +1,29 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
 
   //······························································································
-  #    PROPERTY IN COLLECTION
+  //    PROPERTY IN COLLECTION
   //······························································································
 
   rule <property_declaration_ggs3> ?!@galgasDeclarationAST ioDeclarations
@@ -94,10 +94,10 @@ syntax extension galgas3DeclarationsSyntax {
       selectorAttribute = false
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
-#    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then
-#      ioDeclarations.implicitTypeDeclarationSet += !propertyWeakTypeName
-#      
-#    end
+//    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then
+//      ioDeclarations.implicitTypeDeclarationSet += !propertyWeakTypeName
+//      
+//    end
     ioAttributeInCollectionList +=
       !mutability: .weakProperty
       !propertyWeakTypeName
@@ -151,7 +151,7 @@ enum @propertyInCollectionInitializationAST %equatable {
 syntax extension galgas4DeclarationsSyntax {
 
   //······························································································
-  #    PROPERTY DECLARATION
+  //    PROPERTY DECLARATION
   //······························································································
 
   rule <property_declaration> ?!@galgasDeclarationAST ioDeclarations
@@ -220,10 +220,10 @@ syntax extension galgas4DeclarationsSyntax {
       initialization = .some {!expression: expression}
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
-#    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then
-#      ioDeclarations.implicitTypeDeclarationSet += !propertyWeakTypeName
-#      
-#    end
+//    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then
+//      ioDeclarations.implicitTypeDeclarationSet += !propertyWeakTypeName
+//      
+//    end
     ioAttributeInCollectionList +=
       !mutability: .weakProperty
       !propertyWeakTypeName

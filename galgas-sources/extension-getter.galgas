@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SYNTAX
+//   SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
@@ -52,7 +52,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !typeName
       !getterName
@@ -88,7 +88,7 @@ syntax extension galgas3DeclarationsSyntax {
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: [option galgas_cli_options.propertyAccessRequiresSelf value]
       !inTypeName
       !getterName
@@ -135,7 +135,7 @@ syntax extension galgas4DeclarationsSyntax {
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: true
       !typeName
       !getterName
@@ -169,7 +169,7 @@ syntax extension galgas4DeclarationsSyntax {
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList += !@extensionGetterAST {
-      !isPredefined: false # Is not predefined
+      !isPredefined: false // Is not predefined
       !requiresSelfForAccessingProperty: true
       !typeName
       !getterName
@@ -186,7 +186,7 @@ syntax extension galgas4DeclarationsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   AST
+//   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @extensionGetterAST : @semanticDeclarationAST {
@@ -252,7 +252,7 @@ class @extensionGetterAST : @semanticDeclarationAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   SEMANTIC ANALYSIS
+//   SEMANTIC ANALYSIS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionGetterAST semanticAnalysis
@@ -317,7 +317,7 @@ override method @extensionGetterAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage:"extension getter " + self.mExtensionGetterName
     !@extensionGetterForGeneration {
-      !generateHeader: true # Generate Cpp header file
+      !generateHeader: true // Generate Cpp header file
       !implementationCppFileName: "getter-" + [[selfType definition].typeName.string fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
       !self.mExtensionGetterName.string
@@ -331,7 +331,7 @@ override method @extensionGetterAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   EXTENSION LIST MAP
+//   EXTENSION LIST MAP
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @extensionGetterAST buildExtensionListMaps
@@ -347,12 +347,12 @@ override method @extensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-#  ioExtensionGetterListMap += !self.mTypeName.string !self.mExtensionGetterName
+//  ioExtensionGetterListMap += !self.mTypeName.string !self.mExtensionGetterName
   [!?ioExtensionGetterListMap insertKey !self.mTypeName.string !self.mExtensionGetterName]
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#   CODE GENERATION
+//   CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -422,7 +422,7 @@ class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneratio
         !"Compiler"
         !self.mResultType
         !self.mResultVarCppName
-        !static: false # is not static
+        !static: false // is not static
         !const: false
         ?let @string code
       )

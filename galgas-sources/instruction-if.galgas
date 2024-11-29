@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -210,7 +210,7 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifExpressionKind {
@@ -250,29 +250,29 @@ class @ifInstructionAST : @semanticInstructionAST {
   }
 
   //······························································································
-  #! SEMANTICS
+  //! SEMANTICS
   //······························································································
-  # l'expression a peut être de la forme let varA = exp as @T ; idem pour b
-  #
-  # L'instruction : IF a, b THEN X ELSE Y END est analysée par :
-  #
-  #  analyser (a), création varA
-  #  openOverrideForSelect
-  #    openBranch
-  #      insertion varA dans table des symboles
-  #      analyser (b), création varB
-  #      openOverrideForSelect
-  #        openBranch
-  #          insertion varB dans table des symboles
-  #          X
-  #        closeBranch
-  #      closeOverride
-  #    closeBranch
-  #    openBranch
-  #      Y
-  #    closeBranch
-  #  closeOverride
-  #
+  // l'expression a peut être de la forme let varA = exp as @T ; idem pour b
+  //
+  // L'instruction : IF a, b THEN X ELSE Y END est analysée par :
+  //
+  //  analyser (a), création varA
+  //  openOverrideForSelect
+  //    openBranch
+  //      insertion varA dans table des symboles
+  //      analyser (b), création varB
+  //      openOverrideForSelect
+  //        openBranch
+  //          insertion varB dans table des symboles
+  //          X
+  //        closeBranch
+  //      closeOverride
+  //    closeBranch
+  //    openBranch
+  //      Y
+  //    closeBranch
+  //  closeOverride
+  //
   //······························································································
 
   override method analyzeSemanticInstruction
@@ -483,24 +483,24 @@ class @ifInstructionAST : @semanticInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION
+//! GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
-# L'instruction : IF a, b THEN X ELSE Y END est traduite en :
-#
-#  enumGalgasBool testResult = kBoolTrue ;
-#  if (testResult == kBoolTrue) {
-#    testResult = evaluation (a)
-#    if (testResult == kBoolTrue) {
-#      testResult = evaluation (b)
-#      if (testResult == kBoolTrue) {
-#        X
-#      }
-#    }
-#  }
-#  if (testResult == kBoolFalse) {
-#    Y
-#  }
-#
+// L'instruction : IF a, b THEN X ELSE Y END est traduite en :
+//
+//  enumGalgasBool testResult = kBoolTrue ;
+//  if (testResult == kBoolTrue) {
+//    testResult = evaluation (a)
+//    if (testResult == kBoolTrue) {
+//      testResult = evaluation (b)
+//      if (testResult == kBoolTrue) {
+//        X
+//      }
+//    }
+//  }
+//  if (testResult == kBoolFalse) {
+//    Y
+//  }
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @ifTestForGeneration {
@@ -514,13 +514,13 @@ enum @ifTestForGeneration {
                     @unifiedTypeMapEntry targetType)
 }
 
-#·······················································································································
+//································································································
 
 list @ifTestListForGeneration {
   public let @ifTestForGeneration mExpression
 }
 
-#·······················································································································
+//································································································
 
 class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -529,7 +529,7 @@ class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   public let @semanticInstructionListForGeneration m_else_instructionList
 }
 
-#·······················································································································
+//································································································
 
 override method @ifInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet

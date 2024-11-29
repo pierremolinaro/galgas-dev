@@ -86,7 +86,7 @@ syntax logo_syntax (logo_lexique) {
     var @bool pendown = false
     var @double x = 0.0
     var @double y = 0.0
-    var @double angle = 0.0 # Angle en degrés
+    var @double angle = 0.0 // Angle en degrés
     var @string SVG = ""
     for i in instructions do
       [i.mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]

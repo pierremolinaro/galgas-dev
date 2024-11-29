@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @repeatInstruction : @syntaxInstructionAST {
@@ -27,7 +27,7 @@ class @repeatInstruction : @syntaxInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3SyntaxComponentSyntax {
@@ -97,7 +97,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! TRANSFORM
+//! TRANSFORM
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstruction transformInstruction
@@ -138,7 +138,7 @@ override method @repeatInstruction transformInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstruction analyzeSyntaxInstruction
@@ -214,7 +214,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+//! GENERATION TYPES
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
@@ -226,7 +226,7 @@ class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX SIGNATURE
+//! SYNTAX SIGNATURE
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstructionForGeneration appendSyntaxSignature
@@ -252,14 +252,14 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! COMPARE SYNTAX SIGNATURE
+//! COMPARE SYNTAX SIGNATURE
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @repeatInstructionForGeneration compareInstructionSyntaxSignature
   ?let @semanticInstructionForGeneration inTestedInstruction ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
-#  cast inTestedInstruction
-#  case >= @repeatInstructionForGeneration si :
+//  cast inTestedInstruction
+//  case >= @repeatInstructionForGeneration si :
     result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
     if result & ([self.mListOfSemanticInstructionListForGeneration count] != [si.mListOfSemanticInstructionListForGeneration count]) then
       error si.mInstructionLocation
@@ -273,7 +273,7 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
       result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
-#  case >= @syntaxInstructionForGeneration si :
+//  case >= @syntaxInstructionForGeneration si :
     error si.mInstructionLocation
       :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
     result = false
@@ -288,7 +288,7 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @repeatInstructionForGeneration generateInstruction

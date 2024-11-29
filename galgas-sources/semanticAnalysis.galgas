@@ -1,27 +1,27 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Copyright (C) 2007, ..., 2023 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Copyright (C) 2007, ..., 2023 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    C H E C K    M E T H O D    S I G N A T U R E
-#
+//
+//    C H E C K    M E T H O D    S I G N A T U R E
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkMethodSignatures
@@ -54,7 +54,7 @@ proc checkMethodSignatures
         end
         s += if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mFormalSelector : "the selector should be '" + [ref_mFormalArgumentPassingMode string] + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
+//        error mFormalSelector : "the selector should be '" + [ref_mFormalArgumentPassingMode string] + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType definition].typeName.string != [ref_mFormalArgumentType definition].typeName.string then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
@@ -67,9 +67,9 @@ proc checkMethodSignatures
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    C H E C K    G E T T E R    S I G N A T U R E
-#
+//
+//    C H E C K    G E T T E R    S I G N A T U R E
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkGetterSignatures
@@ -94,9 +94,9 @@ proc checkGetterSignatures
       if mFormalSelector.string != ref_mFormalSelector.string then
         let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
         error mFormalSelector : "the selector should be '" + s + "'" fixit { replace s }
-#        error mFormalSelector
-#        : "the selector should be '?" + ref_mFormalSelector
-#          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
+//        error mFormalSelector
+//        : "the selector should be '?" + ref_mFormalSelector
+//          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType definition].typeName.string != [ref_mFormalArgumentType definition].typeName.string then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
@@ -117,7 +117,7 @@ map @propertyIndexMap {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#         M A P
+//         M A P
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildLocalVariableMapAndSignature ?let @semanticContext unused inSemanticContext
@@ -307,7 +307,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern func " + self.mFunctionName
     !@functionPrototypeDeclarationForGeneration {
-      !generateHeader: true # Generate Cpp header file
+      !generateHeader: true // Generate Cpp header file
       !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !formalArgumentList
@@ -435,7 +435,7 @@ override method @functionDeclarationAST semanticAnalysis
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
-    !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
+    !requiresSelfForAccessingProperty: true // self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -458,7 +458,7 @@ override method @functionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "function " + self.mFunctionName
     !@functionImplementationForGeneration {
-      !generateHeader: true # Generate Cpp header file
+      !generateHeader: true // Generate Cpp header file
       !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !formalInputParameterList
@@ -491,7 +491,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !selfObjectCppName: ""
     !selfAvailability: .none
     !selfObjectCppPrefixForAccessingProperty: ""
-    !requiresSelfForAccessingProperty: true # self.requiresSelfForAccessingProperty
+    !requiresSelfForAccessingProperty: true // self.requiresSelfForAccessingProperty
   }
   analyzeFunctionBody (
     !nameForUsefulness
@@ -514,7 +514,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "once function " + self.mFunctionName
     !@onceFunctionDeclarationForGeneration {
-      !generateHeader: true # Generate Cpp header file
+      !generateHeader: true // Generate Cpp header file
       !implementationCppFileName: "func-" + [self.mFunctionName fileNameRepresentation]
       !self.mFunctionName.string
       !returnType
@@ -523,9 +523,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#     F I L E W R A P P E R    A N A L Y S I S
-#
+//
+//     F I L E W R A P P E R    A N A L Y S I S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperDeclarationAST semanticAnalysis
@@ -610,7 +610,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "filewrapper " + self.mFilewrapperName
       !@filewrapperDeclarationForGeneration {
-        !generateHeader: true # Generate Cpp header file
+        !generateHeader: true // Generate Cpp header file
         !implementationCppFileName: "filewrapper-" + self.mFilewrapperName
         !self.mFilewrapperName.string
         !self.mFilewrapperPath.string
@@ -641,7 +641,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ?*
     ?let @terminalMap terminalMap
     ?let @indexingListAST indexingListAST
-#    ?let @lstring indexingDirectory
+//    ?let @lstring indexingDirectory
     ?4*
   ]
 //-------------------------------------- Build "indexing" set
@@ -649,7 +649,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   for (mIndexName *) in indexingListAST do
     indexNameSet += !mIndexName.string
   end
-  let @bool hasIndexing = true # not [indexingDirectory isNowhere]
+  let @bool hasIndexing = true // not [indexingDirectory isNowhere]
 //--- Build semantic context from rule headers and non terminal declaration
   if @uint. errorCount == 0 then
     let lexiqueName = self.mLexiqueName.string
@@ -672,7 +672,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: ""
       !syntaxDeclarationForGeneration
-#      !""
+//      !""
   end
 }
 
@@ -695,7 +695,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 //--------------------------------------------------------- Parse syntax components
   var @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = @()
   var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis = @()
-  var @lstring lexiqueComponentName =  ["" nowhere] # Empty string means unknown
+  var @lstring lexiqueComponentName =  ["" nowhere] // Empty string means unknown
   var @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = @()
   var @nonTerminalToAddList nonTerminalToAddList = @()
   var @uint addedNonTerminalCount = 0
@@ -752,20 +752,20 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     end
   end
 //----------------------- Get lexique component, for knowing if there are "indexing" declaration
-#  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-#    !lexiqueComponentName
-#    ?*
-#    ?* # @terminalMap inTerminalMap
-#    ?* # @indexingListAST inIndexingListAST
-##    ?let @lstring inIndexingDirectory
-#    ?4*
-#  ]
-#  let @bool hasIndexing = true # not [inIndexingDirectory isNowhere]
-#  if hasIndexing & not self.mHasIndexing.bool then
-#    error self.mGrammarComponentName : "the grammar does not enable indexing, but the '" + lexiqueComponentName + "' does"
-#  elsif (not hasIndexing) & self.mHasIndexing.bool then
-#    error self.mHasIndexing : "the grammar enables indexing, but the '" + lexiqueComponentName + "' does not"
-#  end
+//  [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
+//    !lexiqueComponentName
+//    ?*
+//    ?* // @terminalMap inTerminalMap
+//    ?* // @indexingListAST inIndexingListAST
+////    ?let @lstring inIndexingDirectory
+//    ?4*
+//  ]
+//  let @bool hasIndexing = true // not [inIndexingDirectory isNowhere]
+//  if hasIndexing & not self.mHasIndexing.bool then
+//    error self.mGrammarComponentName : "the grammar does not enable indexing, but the '" + lexiqueComponentName + "' does"
+//  elsif (not hasIndexing) & self.mHasIndexing.bool then
+//    error self.mHasIndexing : "the grammar enables indexing, but the '" + lexiqueComponentName + "' does not"
+//  end
 //--------------------------------------------------------- Start symbol
 //--- Search start symbol in non terminal map
   [nonTerminalMapForGrammarAnalysis searchKey
@@ -812,8 +812,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     [@string deleteFileIfExists !dotDocumentFilePath]
   end
   //--------------------------------------------------------- Header of implementation file
-#  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
-# for these arguments, we need to include the corresponding type declaration.
+//  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
+// for these arguments, we need to include the corresponding type declaration.
   var @stringset implementationFileHeader = @()
   for nonTerminal in nonTerminalMapForGrammarAnalysis do
     for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
@@ -857,7 +857,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: ""
     !@grammarForGeneration {
-      !generateHeader:  true # has header
+      !generateHeader:  true // has header
       !implementationCppFileName: "grammar-" + [self.mGrammarComponentName fileNameRepresentation]
       !self.mGrammarComponentName.string
       !lexiqueComponentName.string
@@ -872,9 +872,9 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    P R E D E F I N E D    T Y P E S
-#
+//
+//    P R E D E F I N E D    T Y P E S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
@@ -905,9 +905,9 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    S Y N T A X    D E C L A R A T I O N S
-#
+//
+//    S Y N T A X    D E C L A R A T I O N S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @nonterminalLabelMap {
@@ -945,9 +945,9 @@ list @ruleDeclarationList {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           G E N E R A T I O N    F I L E W R A P P E R S
-#
+//
+//           G E N E R A T I O N    F I L E W R A P P E R S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_generation" {
@@ -967,9 +967,9 @@ filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_genera
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           B U I L D    N O N T E R M I N A L    M A P
-#
+//
+//           B U I L D    N O N T E R M I N A L    M A P
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc enterNonterminalNonTerminalInMapAndCheck
@@ -1042,9 +1042,9 @@ proc buildNonterminalDeclarationsMap
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S
-#
+//
+//    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
@@ -1137,7 +1137,7 @@ override method @inputParameterVariable analyzeInputParameter
     + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
   end
   ioTerminalCheckAssignementList +=
-    !"" # Do not declare variable
+    !"" // Do not declare variable
     !cppName
     !inLexicalAttributeName
 }
@@ -1430,9 +1430,9 @@ proc analyzeSyntaxInstructionList
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           B U I L D    C O N T E X T
-#
+//
+//           B U I L D    C O N T E X T
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc semanticAnalysisOfRuleLabel
@@ -1469,7 +1469,7 @@ proc semanticAnalysisOfRuleLabel
   end
 //--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
-#  var localVariableCppNameList = @stringlist ()
+//  var localVariableCppNameList = @stringlist ()
   for (mInstruction) in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inUsefulnessCallerEntityName
@@ -1492,9 +1492,9 @@ proc semanticAnalysisOfRuleLabel
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           S E M A N T I C    A N A L Y S I S
-#
+//
+//           S E M A N T I C    A N A L Y S I S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc semanticAnalysisOfSyntaxComponent

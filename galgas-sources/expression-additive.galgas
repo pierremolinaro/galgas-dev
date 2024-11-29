@@ -1,22 +1,22 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#!   AST
+//!   AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @rightShiftExpressionAST : @semanticExpressionAST {
@@ -25,7 +25,7 @@ class @rightShiftExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @leftShiftExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -33,7 +33,7 @@ class @leftShiftExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @addExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -41,7 +41,7 @@ class @addExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @addExpressionNoOverflowAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -49,7 +49,7 @@ class @addExpressionNoOverflowAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @subExpressionAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -57,7 +57,7 @@ class @subExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mRightExpression
 }
 
-#·······················································································································
+//································································································
 
 class @subExpressionNoOverflowAST : @semanticExpressionAST {
   private let @location mOperatorLocation
@@ -66,7 +66,7 @@ class @subExpressionNoOverflowAST : @semanticExpressionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3ExpressionSyntax {
@@ -174,7 +174,7 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @rightShiftExpressionAST enterExpressionInSemanticContext
@@ -184,7 +184,7 @@ override method @rightShiftExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @rightShiftExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -256,7 +256,7 @@ override method @leftShiftExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @leftShiftExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -328,7 +328,7 @@ override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -395,7 +395,7 @@ override method @addExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @addExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -461,7 +461,7 @@ override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -528,7 +528,7 @@ override method @subExpressionAST enterExpressionInSemanticContext
   [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································
+//································································································
 
 override method @subExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -586,7 +586,7 @@ override method @subExpressionAST analyzeSemanticExpression
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum @binaryOperator {
@@ -606,7 +606,7 @@ enum @binaryOperator {
   case modulo_operation
 }
 
-#·····················································································································
+//································································································
 
 class @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
   public let @semanticExpressionForGeneration mLeftExpression
@@ -614,7 +614,7 @@ class @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration 
   public let @semanticExpressionForGeneration mRightExpression
 }
 
-#·····················································································································
+//································································································
 
 override method @binaryOperatorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode

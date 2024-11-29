@@ -1,27 +1,27 @@
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#  Generate predefined types
-#
-#  Copyright (C) 2010, ..., 2021 Pierre Molinaro.
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  Generate predefined types
+//
+//  Copyright (C) 2010, ..., 2021 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Grammar
+//! Grammar
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
@@ -186,8 +186,8 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
           !mInstructionListForGeneration
           !false
           !lexiqueCppName
-          !false # Do not generate location Argument
-          !false # Do not generate 'resetTemplateString'
+          !false // Do not generate location Argument
+          !false // Do not generate 'resetTemplateString'
           !self.mHasTranslateFeature
           ?let @string code
         )
@@ -208,8 +208,8 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
         !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
         !false
         !lexiqueCppName
-        !false # Do not generate location Argument
-        !true # Generate 'resetTemplateString'
+        !false // Do not generate location Argument
+        !true // Generate 'resetTemplateString'
         !self.mHasTranslateFeature
         ?let @string parseCode
       )
@@ -230,9 +230,9 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
           !syntaxSignatureOfInstructionList (!"indexing" !instructionList)
           !false
           !lexiqueCppName
-          !false # Do not generate location Argument
-          !false # Do not generate 'resetTemplateString'
-          !false # Do not generate syntaxDirectedTranslationString argument
+          !false // Do not generate location Argument
+          !false // Do not generate 'resetTemplateString'
+          !false // Do not generate syntaxDirectedTranslationString argument
           ?let @string code
         )
         outImplementation += code
@@ -245,9 +245,9 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-# P R O C E D U R E    I M P L E M E N T A T I O N
-#
+//
+// P R O C E D U R E    I M P L E M E N T A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateProcedure
@@ -366,9 +366,9 @@ proc generateProcedure
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-# F U N C T I O N    I M P L E M E N A T I O N
-#
+//
+// F U N C T I O N    I M P L E M E N A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateFunction ?let @string inFunctionCppRepresentationName
@@ -400,7 +400,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
       !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
-      !false # inGenerateSyntaxDirectedTranslationString
+      !false // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     ]
   end
@@ -420,7 +420,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
       outGeneratedCode += "GGS_" + [mFormalArgumentType identifierRepresentation]
     end
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
-#      outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
+//      outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
     else
       outGeneratedCode += " " + mFormalArgumentCppName
     end
@@ -430,7 +430,7 @@ proc generateFunction ?let @string inFunctionCppRepresentationName
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
   if [unusedVariableCppNameSet hasKey !compilerCppName ()] then
-#    outGeneratedCode += "/* " + compilerCppName () + " */"
+//    outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += " " + compilerCppName ()
   end
@@ -482,7 +482,7 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
       !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
-      !false # inGenerateSyntaxDirectedTranslationString
+      !false // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     ]
   end
@@ -529,9 +529,9 @@ proc generateExtensionGetter ?let @string inFunctionCppRepresentationName
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-# E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N
-#
+//
+// E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionSetter
@@ -558,7 +558,7 @@ proc generateExtensionSetter
       !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
-      !false # inGenerateSyntaxDirectedTranslationString
+      !false // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     ]
   end
@@ -625,7 +625,7 @@ proc generateExtensionSetter
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-# E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
+// E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
@@ -651,7 +651,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
       !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
-      !false # inGenerateSyntaxDirectedTranslationString
+      !false // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     ]
   end
@@ -716,7 +716,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Generation Filewrappers
+//! Generation Filewrappers
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
@@ -726,7 +726,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
   template unifiedClassBodyForType "unified-class-body-for-type.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@bool IS_CONCRETE # false if abstract class
+    ?@bool IS_CONCRETE // false if abstract class
     ?@initializerMap INITIALIZER_MAP
     ?@classFunctionMap CLASS_FUNC_MAP
     ?@getterMap GETTER_MAP
@@ -734,9 +734,9 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@instanceMethodMap INSTANCE_METHOD_MAP
     ?@classMethodMap CLASS_METHOD_MAP
     ?@subscriptMap READ_SUBSCRIPT_MAP
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST // Empty List if cannot be enumerated
     ?@typeFeatures SUPPORTED_OPERATORS
-    ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST // Empty list if operator is not supported
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
     ?@bool SUPPORT_COLLECTION_VALUE
 
@@ -771,9 +771,9 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           G E N E R A T I O N    F I L E W R A P P E R S
-#
+//
+//           G E N E R A T I O N    F I L E W R A P P E R S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
@@ -957,7 +957,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! func
+//! func
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
@@ -995,7 +995,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Semantic Type
+//! Semantic Type
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string {
@@ -1012,7 +1012,7 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @s
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Sub programs
+//! Sub programs
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionImplementationForGeneration appendSpecificImplementation
@@ -1028,7 +1028,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
     !"Compiler"
     !self.mReturnType
     !self.mResultVariableCppName
-    !static: false # is not static
+    !static: false // is not static
     !const: false
     ?let @string code
   )
@@ -1056,7 +1056,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
     !"Compiler"
     !self.mReturnType
     !self.mResultVariableCppName
-    !static: true # is static
+    !static: true // is static
     !const: false
     ?let @string code
   )
@@ -1069,7 +1069,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Lexique
+//! Lexique
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
@@ -1109,10 +1109,10 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !startPath:inProductDirectory
     !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
     !lineComment:"//"
-    !header:"" # Header
-    !defaultUserZone1:"\n\n" # Defaut user zone1
+    !header:"" // Header
+    !defaultUserZone1:"\n\n" // Defaut user zone1
     !generatedZone2: self.mObjcCocoaHeader
-    !defaultUserZone2:"\n\n" # Defaut user zone2
+    !defaultUserZone2:"\n\n" // Defaut user zone2
     !generatedZone3:"\n"
     !makeExecutable:false
   ]
@@ -1123,11 +1123,11 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !startPath:inProductDirectory
     !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
     !lineComment:"//"
-    !header:"" # Header
-    !defaultUserZone1:"\n\n" # Defaut user zone1
+    !header:"" // Header
+    !defaultUserZone1:"\n\n" // Defaut user zone1
     !generatedZone2:self.mObjcCocoaImplementation
-    !defaultUserZone2:"\n\n" # Defaut user zone2
-    !generatedZone3:"\n\n" # Zone 3
+    !defaultUserZone2:"\n\n" // Defaut user zone2
+    !generatedZone3:"\n\n" // Zone 3
     !makeExecutable:false
   ]
 //--- Generate Swift Cocoa implementation file
@@ -1136,17 +1136,17 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !startPath:inProductDirectory
     !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
     !lineComment:"//"
-    !header:"" # Header
-    !defaultUserZone1:"\n\n" # Defaut user zone1
+    !header:"" // Header
+    !defaultUserZone1:"\n\n" // Defaut user zone1
     !generatedZone2:self.mSwiftCocoaImplementation
-    !defaultUserZone2:"\n\n" # Defaut user zone2
-    !generatedZone3:"\n\n" # Zone 3
+    !defaultUserZone2:"\n\n" // Defaut user zone2
+    !generatedZone3:"\n\n" // Zone 3
     !makeExecutable:false
   ]
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Program
+//! Program
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @programComponentForGeneration headerKind ->@headerKind {
@@ -1165,7 +1165,7 @@ override method @programComponentForGeneration appendSpecificImplementation
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
-#! Filewrapper
+//! Filewrapper
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1399,7 +1399,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#    P R I M I T I V E    T Y P E
+//    P R I M I T I V E    T Y P E
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @primitiveTypeForGeneration : @semanticTypeForGeneration {
@@ -1451,7 +1451,7 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! Generate Predefined types
+//! Generate Predefined types
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc generatePredefinedTypeFiles
@@ -1494,10 +1494,10 @@ proc generatePredefinedTypeFiles
       !startPath:inDirectory
       !fileName:"all-predefined-types.h"
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2:generatedCode
-      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:""
       !makeExecutable:false
     ]
@@ -1518,10 +1518,10 @@ proc generatePredefinedTypeFiles
       !startPath:inDirectory
       !fileName:"all-predefined-types.cpp"
       !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !header:"" // Header
+      !defaultUserZone1:"\n\n" // Defaut user zone1
       !generatedZone2:generatedCode
-      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !defaultUserZone2:"\n\n" // Defaut user zone2
       !generatedZone3:""
       !makeExecutable:false
     ]
@@ -1529,9 +1529,9 @@ proc generatePredefinedTypeFiles
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#           G E N E R A T I O N    F I L E W R A P P E R S
-#
+//
+//           G E N E R A T I O N    F I L E W R A P P E R S
+//
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {

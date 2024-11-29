@@ -1,36 +1,36 @@
-#
-#  MIT License
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-# and associated documentation files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-# BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! AST
+//! AST
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectElementListAST {
-  public let @lstring mOptionalTypeName # Empty string if joker
-  public let @bool mDeclaredAsUnused # true if joker
-  public let @lstring mOptionalConstantName  # Empty string if joker
+  public let @lstring mOptionalTypeName // Empty string if joker
+  public let @bool mDeclaredAsUnused // true if joker
+  public let @lstring mOptionalConstantName  // Empty string if joker
 }
 
-#·····················································································································*
+//································································································*
 
 abstract class @abstractEnumeratedCollectionAST {
 }
 
-#·····················································································································*
+//································································································*
 
 class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
   private let @lstring mPrefix
@@ -38,16 +38,16 @@ class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAS
   private let @location mEndOfAnonymousEnumeration
 }
 
-#·····················································································································*
+//································································································*
 
 class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
-  private let @lstring mEnumerationOptionalTypeName # Empty string if implicit
-  private let @lstring mEnumerationVariable  # Empty string if joker
+  private let @lstring mEnumerationOptionalTypeName // Empty string if implicit
+  private let @lstring mEnumerationVariable  // Empty string if joker
   private let @semanticExpressionAST mEnumeratedExpression
   private let @location mEndOfEnumerationExpression
 }
 
-#·····················································································································*
+//································································································*
 
 class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   private let @forInstructionEnumeratedObjectElementListAST mElementList
@@ -56,14 +56,14 @@ class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
   private let @location mEndOfEnumerationExpression
 }
 
-#·····················································································································*
+//································································································*
 
 list @forInstructionEnumeratedObjectListAST {
   private let @bool mAscending
   private let @abstractEnumeratedCollectionAST mEnumeratedCollection
 }
 
-#·····················································································································*
+//································································································*
 
 class @forInstructionAST : @semanticInstructionAST {
   private let @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
@@ -82,7 +82,7 @@ class @forInstructionAST : @semanticInstructionAST {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SYNTAX
+//! SYNTAX
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
@@ -507,7 +507,7 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CONTEXT
+//! CONTEXT
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @forInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
@@ -521,23 +521,23 @@ override method @forInstructionAST enterInstructionInSemanticContext ?!@unifiedT
   end
 }
 
-#·····················································································································*
+//································································································*
 
 abstract method @abstractEnumeratedCollectionAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#·····················································································································*
+//································································································*
 
 override method @enumeratedCollectionImplicitVarInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································*
+//································································································*
 
 override method @enumeratedCollectionCstListInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#·····················································································································*
+//································································································*
 
 override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -545,7 +545,7 @@ override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifi
 
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! SEMANTICS
+//! SEMANTICS
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
@@ -558,7 +558,7 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
 
-#·····················································································································*
+//································································································*
 
 override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
@@ -593,7 +593,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     ioLocalConstantListForDoBranch +=
       !mEnumeratedType
       !@lstring {!self.mPrefix.string + mEnumerationName !self.mEndOfAnonymousEnumeration}
-      !true # No warning if unused
+      !true // No warning if unused
       !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
   between
     suggestion += " "
@@ -606,7 +606,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   end
 }
 
-#·····················································································································*
+//································································································*
 
 override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
@@ -666,7 +666,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
         fixit { replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end }
       end
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
-        if mOptionalConstantName.string != "" then # Empty string if joker
+        if mOptionalConstantName.string != "" then // Empty string if joker
           if mOptionalTypeName.string != "" then
             let foundType = [ioTypeMap typeMapEntryForLKey !mOptionalTypeName]
             if foundType != mEnumeratedType then
@@ -676,7 +676,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
           ioLocalConstantListForDoBranch +=
             !mEnumeratedType
             !mOptionalConstantName
-            !mDeclaredAsUnused # No warning if unused
+            !mDeclaredAsUnused // No warning if unused
             !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
         end
       end
@@ -684,7 +684,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   end
 }
 
-#·····················································································································*
+//································································································*
 
 override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ?let @lstring inUsefulnessCallerEntityName
@@ -723,7 +723,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
 //---
 }
 
-#·····················································································································*
+//································································································*
 
 override method @forInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -843,7 +843,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     localConstantListForDoBranch +=
       !inAnalysisContext.predefinedTypes.mUIntType
       !self.mIndexVariableName
-      !false # Warns if unused
+      !false // Warns if unused
       !indexCppName
   end
 //--- 'do' branch
@@ -852,7 +852,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioTypeMap
-    !localConstantList: localConstantListForDoBranch # indexDeclaration
+    !localConstantList: localConstantListForDoBranch // indexDeclaration
     !localInitializedVariableListWarnsIfNotMutated: @()
     !localInitializedVariableListNoWarnsIfNotMutated: @()
     !self.mDoInstructionList
@@ -879,7 +879,7 @@ override method @forInstructionAST analyzeSemanticInstruction
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! GENERATION TYPES
+//! GENERATION TYPES
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectListForGeneration {
@@ -888,12 +888,12 @@ list @forInstructionEnumeratedObjectListForGeneration {
   public let @string mEnumeratorCppName
 }
 
-#·····················································································································*
+//································································································*
 
 class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
-  private let @string mIndexVariableCppName  # Empty string if no index
+  private let @string mIndexVariableCppName  // Empty string if no index
   private let @semanticExpressionForGeneration mWhileExpression
   private let @semanticInstructionListForGeneration mBeforeInstructionList
   private let @semanticInstructionListForGeneration mBetweenInstructionList
@@ -902,7 +902,7 @@ class @forInstructionForGeneration : @semanticInstructionForGeneration {
 }
 
 //————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
+//! CODE GENERATION
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @forInstructionForGeneration generateInstruction
