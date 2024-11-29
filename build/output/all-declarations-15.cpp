@@ -6902,6 +6902,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [196] = {
   false /* ..< */,
   false /* @{ */,
   false /* @( */,
+  false /* @[ */,
   false /* += */,
   false /* -= */,
   false /* *= */,
@@ -6928,8 +6929,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [196] = {
   false /* === */,
   false /* !== */,
   false /* ?^ */,
-  false /* !^ */,
-  false /* §[ */
+  false /* !^ */
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7161,6 +7161,7 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("..<") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("@{") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("@(") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("@[") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("+=") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("-=") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("*=") COMMA_HERE) ;
@@ -7188,7 +7189,6 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("!==") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("\?^") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("!^") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("§[") COMMA_HERE) ;
   return result ;
 }
 

@@ -29,12 +29,12 @@ var aVariable = @maStructure {!123 !true}
 \end{galgas3}
 
 
-Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur, en utilisant en GALGAS 4 le délimiteur \ggsq=.(= ou en GALGAS 3 le délimiteur \ggst=.{=~:
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur, en utilisant en GALGAS 4 le délimiteur \ggsq=@(= ou en GALGAS 3 le délimiteur \ggst=@{=~:
 \begin{galgas34}
-var @maStructure aVariable = .(123, true)
+var @maStructure aVariable = @(123, true)
 \end{galgas34}
 \begin{galgas3}
-var @maStructure aVariable = .{!123 !true}
+var @maStructure aVariable = @{!123 !true}
 \end{galgas3}
 
 
@@ -69,22 +69,12 @@ On écrit donc~:
 \begin{galgas34}
 var aVariable = @maStructure ()
 // Ou :
-var @maStructure aVariable = .init ()
-// Ou :
-var @maStructure aVariable = .init
-// Ou :
-var @maStructure aVariable = ()
+var @maStructure aVariable = @()
 \end{galgas34}
 \begin{galgas3}
-var aVariable = @maStructure.init {}
-// Ou :
-var aVariable = @maStructure.init
-// Ou :
 var aVariable = @maStructure {}
 // Ou :
-var @maStructure aVariable = .init {}
-// Ou :
-var @maStructure aVariable = .init
+var @maStructure aVariable = @{}
 \end{galgas3}
 
 

@@ -193,6 +193,7 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__2E__2E__3C_,
   galgasScanner3_1__40__7B_,
   galgasScanner3_1__40__28_,
+  galgasScanner3_1__40__5B_,
   galgasScanner3_1__2B__3D_,
   galgasScanner3_1__2D__3D_,
   galgasScanner3_1__2A__3D_,
@@ -219,8 +220,7 @@ enum {galgasScanner3_1_,
   galgasScanner3_1__3D__3D__3D_,
   galgasScanner3_1__21__3D__3D_,
   galgasScanner3_1__3F__5E_,
-  galgasScanner3_1__21__5E_,
-  galgasScanner3_1__A7__5B_
+  galgasScanner3_1__21__5E_
 } ;
 
 //--------------------------------------------------------------------------------------------------

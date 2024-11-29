@@ -24,7 +24,7 @@ syntax extension galgas3ExpressionSyntax {
   rule <primary_ggs3> ?!@galgasDeclarationAST ioDeclarations
                       !@semanticExpressionAST outExpression {
     <optional_type_ggs3> ?let @lstring typeName
-    $§[$
+    $@[$
     var @collectionValueElementList expressionList = @()
     select
     or

@@ -46,7 +46,7 @@ struct @syntaxExtensions {
       [!?aList append !inSyntaxComponentName !inNonterminalDeclarationList !inRuleList]
       self.dictionary += !inKey !aList
     else
-      self.dictionary += !inKey !§[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
+      self.dictionary += !inKey !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)]
     end
   }
 

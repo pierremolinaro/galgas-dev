@@ -81,7 +81,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
 //--- resetString
   [!?outLexicalRoutineMap insertKey
     !@lstring {!"resetString" !@location.here}
-    !§[@(.lexicalInputOutputMode, .lexicalType_string, "ioString")]
+    !@[@(.lexicalInputOutputMode, .lexicalType_string, "ioString")]
     !@()
     !false # Is not extern
   ]
@@ -187,7 +187,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"enterDecimalDigitIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inCharacterIsNotDecimalDigitError")]
+    !@[@("inCharacterIsNotDecimalDigitError")]
     !false # Is not extern
   ]
 //--- enterBinaryDigitIntoBigInt
@@ -197,7 +197,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"enterBinaryDigitIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inCharacterIsNotBinaryDigitError")]
+    !@[@("inCharacterIsNotBinaryDigitError")]
     !false # Is not extern
   ]
 //--- enterHexDigitIntoBigInt
@@ -207,7 +207,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"enterHexDigitIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inCharacterIsNotHexDigitError")]
+    !@[@("inCharacterIsNotHexDigitError")]
     !false # Is not extern
   ]
 //--- convertDecimalStringIntoBigInt
@@ -217,7 +217,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"convertDecimalStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inCharacterIsNotDecimalDigitError")]
+    !@[@("inCharacterIsNotDecimalDigitError")]
     !false # Is not extern
   ]
 //--- negateBigInt
@@ -236,7 +236,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"convertBinaryStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inCharacterIsNotBinaryDigitError")]
+    !@[@("inCharacterIsNotBinaryDigitError")]
     !false # Is not extern
   ]
 //--- convertHexStringIntoBigInt
@@ -246,7 +246,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"convertHexStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inCharacterIsNotHexDigitError")]
+    !@[@("inCharacterIsNotHexDigitError")]
     !false # Is not extern
   ]
 //--- enterHexDigitIntoUInt
@@ -308,7 +308,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
   [!?outLexicalRoutineMap insertKey
     !@{!"convertDecimalStringIntoUInt64" !.here}
     !lexicalRoutineFormalArgumentList
-    !§[@("inNumberTooLargeError"), @("inCharacterIsNotDecimalDigitError")]
+    !@[@("inNumberTooLargeError"), @("inCharacterIsNotDecimalDigitError")]
     !false # Is not extern
   ]
 //--- convertDecimalStringIntoSInt64

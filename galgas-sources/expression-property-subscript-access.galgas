@@ -29,7 +29,7 @@ syntax extension galgas3ExpressionSyntax {
     repeat
     while 
       var expressionList = @actualOutputArgumentList ()
-      $§[$
+      $@[$
       repeat
         select
           $!selector:$ ?let selector
@@ -158,7 +158,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
   //--- Check field access availability
     let @unifiedTypeMapEntry expressionType = expression.mResultType
     let propertyMap = [expressionType definition].propertyMap
-    if let prop = propertyMap §[self.propertyName] then
+    if let prop = propertyMap @[self.propertyName] then
 #      let typeKind = [expressionType definition].typeKind
 #      if (not [typeKind structType]) & (not [typeKind isClassType]) then
 #        error self.propertyName: "the '.' operator requires the receiver to be a struct or a class"
@@ -179,7 +179,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       }
     else
       let getterMap = [expressionType definition].getterMap
-      if let theGetter = getterMap §[self.propertyName] then
+      if let theGetter = getterMap @[self.propertyName] then
         if [theGetter.mArgumentTypeList count] != 0 then
           error self.propertyName
           : "for being called as a property read, the getter should have no formal argument (has "
@@ -288,7 +288,7 @@ class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     let invocationSignature = [self.actualArgumentList subscriptSignature]
   //--- Check subscript availability
     let subscriptMap = [expressionType definition].readSubscriptMap
-    if let aSubscript = subscriptMap §[invocationSignature] then
+    if let aSubscript = subscriptMap @[invocationSignature] then
     //--- Check effective argument list
       var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
       for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do

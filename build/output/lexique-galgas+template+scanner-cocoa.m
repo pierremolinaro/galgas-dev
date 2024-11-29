@@ -235,6 +235,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [196] = {
   NO /* ..< */,
   NO /* @{ */,
   NO /* @( */,
+  NO /* @[ */,
   NO /* += */,
   NO /* -= */,
   NO /* *= */,
@@ -261,8 +262,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [196] = {
   NO /* === */,
   NO /* !== */,
   NO /* ?^ */,
-  NO /* !^ */,
-  NO /* §[ */
+  NO /* !^ */
 } ;
 
 //--------------------------------------------------------------------------------------------------

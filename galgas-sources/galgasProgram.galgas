@@ -75,7 +75,7 @@ grammar galgas3Grammar
 ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[@("galgasProject")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("galgasProject")]]
   if [candidateProjectFiles count] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
   elsif [candidateProjectFiles count] > 1 then
@@ -101,7 +101,7 @@ message "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !§[@("ggsProject")]]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !@[@("ggsProject")]]
   if [candidateProjectFiles count] == 0 then
     error inSourceFile : "no project file in parent directory of source file"
   elsif [candidateProjectFiles count] > 1 then

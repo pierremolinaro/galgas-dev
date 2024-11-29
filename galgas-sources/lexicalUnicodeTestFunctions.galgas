@@ -27,7 +27,7 @@
 
 proc lexicalUnicodeTestFunctionAnalysis !@stringset outUnicodeTestFunctions {
 //--- Check for no recursive call
-  outUnicodeTestFunctions = §[
+  outUnicodeTestFunctions = @[
    "isUnicodeLetter",
    "isUnicodeMark",
    "isUnicodeNumber",

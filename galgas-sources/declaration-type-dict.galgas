@@ -303,7 +303,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature §[@(["" nowhere], keyTypeIndex, "inKey", true)]
+      !@functionSignature @[@(["" nowhere], keyTypeIndex, "inKey", true)]
       !.here
       !true
       !attributeTypeIndex
@@ -382,7 +382,7 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   ]
 //--- Read subscripts
   var @subscriptMap readSubscriptMap = @()
-  let @functionSignature argumentTypeList = §[@(["" nowhere], keyTypeIndex, "inKey", true)]
+  let @functionSignature argumentTypeList = @[@(["" nowhere], keyTypeIndex, "inKey", true)]
   [!?readSubscriptMap insertKey
     !@([argumentTypeList subcriptSignature], .nowhere)
     !argumentTypeList

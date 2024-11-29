@@ -80,7 +80,7 @@ proc handleEquatableComparableExtension ?!@equatableExtensionMap ioEquatableExte
                                         ?!@typeFeatures ioFeatures
                                         ?acceptEquatable: let @bool inAcceptEquatable
                                         ?acceptComparable: let @bool inAcceptComparable {
-  if let node = ioEquatableExtensionMap §[inTypeName] then
+  if let node = ioEquatableExtensionMap @[inTypeName] then
     let location = [ioEquatableExtensionMap locationForKey !inTypeName]
     [!?ioEquatableExtensionMap removeKey !inTypeName ?*]
     let currentlyEquatable = [ioFeatures contains !.equatable]
@@ -151,7 +151,7 @@ class @equatableExtensionAST : @semanticDeclarationAST {
     [!?ioSemanticTypePrecedenceGraph addNode !key !self]
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@("@" + self.mTypeName, self.mTypeName)]
   //---
-    if let node = ioEquatableExtensionMap §[self.mTypeName] then
+    if let node = ioEquatableExtensionMap @[self.mTypeName] then
       switch self.mExtension
       case equatable :
         switch node.mExtension

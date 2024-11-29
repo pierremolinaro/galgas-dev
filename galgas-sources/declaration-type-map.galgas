@@ -341,7 +341,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
 //--- lstring type index
   [!?ioTypeMap makeEntryFromString !"lstring" ?let lstringTypeIndex]
 //--- Enumeration description
-  var @enumerationDescriptorList enumerationDescriptor = §[@(lstringTypeIndex, "lkey")]
+  var @enumerationDescriptorList enumerationDescriptor = @[@(lstringTypeIndex, "lkey")]
 //---
   var @classFunctionMap classFunctionMap = @()
   commonGetterMapForAllTypes (!?ioTypeMap ?var @getterMap getterMap)
@@ -535,7 +535,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
     [!?getterMap insertOrReplace
       !accessorName
       !.definedAsMember
-      !@functionSignature §[@(["" nowhere], stringTypeIndex, "inKey", true)]
+      !@functionSignature @[@(["" nowhere], stringTypeIndex, "inKey", true)]
       !.here
       !true
       !attributeTypeIndex
@@ -627,7 +627,7 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   ]
 //--- Read subscripts
   var @subscriptMap readSubscriptMap = @()
-  let @functionSignature argumentTypeList = §[@(["" nowhere], stringTypeIndex, "inKey", true)]
+  let @functionSignature argumentTypeList = @[@(["" nowhere], stringTypeIndex, "inKey", true)]
   [!?readSubscriptMap insertKey
     !@([argumentTypeList subcriptSignature], .nowhere)
     !argumentTypeList

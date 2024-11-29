@@ -453,7 +453,7 @@ setter @currentVarManager neutralAccess ?let @lstring inVarName
                                         !@unifiedTypeMapEntry outType
                                         !@string outCppName
                                         !@string outNameForCheckingFormalParameterUsing {
-  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+  if let varDescriptor = self.mLocalVarMap @[inVarName] then
 #  if let [self.mLocalVarMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
     outType = varDescriptor.mType
     outCppName = varDescriptor.mCppName
@@ -481,7 +481,7 @@ setter @localVarMapListForLLVM neutralAccess ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     let localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap §[inVarName] then
+    if let varDescriptor = localMap @[inVarName] then
 #    if let [localMap searchKey !inVarName ?let type ?let cppName ?let nameForCheckingFormalParameterUsing ?2*] then
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
@@ -503,7 +503,7 @@ setter @localVarManager searchForDropAccess ?let @lstring inVarName {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @currentVarManager searchForDropAccess ?let @lstring inVarName {
-  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+  if let varDescriptor = self.mLocalVarMap @[inVarName] then
 #  if let [self.mLocalVarMap searchKey
 #                !inVarName
 #                ?3*
@@ -546,7 +546,7 @@ setter @currentVarManager searchForWriteAccess ?let @lstring inVarName
                                                !@unifiedTypeMapEntry outType
                                                !@string outCppName
                                                !@string outNameForCheckingFormalParameterUsing {
-  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+  if let varDescriptor = self.mLocalVarMap @[inVarName] then
 #  if let [self.mLocalVarMap searchKey
 #            !inVarName
 #            ?let type
@@ -579,7 +579,7 @@ setter @localVarMapListForLLVM writeAccessInSubMap ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap §[inVarName] then
+    if let varDescriptor = localMap @[inVarName] then
 #    if let [localMap searchKey
 #             !inVarName
 #             ?let type
@@ -653,7 +653,7 @@ setter @currentVarManager searchForReadAccess ?let @lstring inVarName
                                               !@unifiedTypeMapEntry outType
                                               !@string outCppName
                                               !@string outNameForCheckingFormalParameterUsing {
-  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+  if let varDescriptor = self.mLocalVarMap @[inVarName] then
     var newValuation = varDescriptor.mState
     [!?newValuation readTransition !inVarName !varDescriptor.mAttributes]
     outType = varDescriptor.mType
@@ -679,7 +679,7 @@ setter @localVarMapListForLLVM readAccess ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap §[inVarName] then
+    if let varDescriptor = localMap @[inVarName] then
       var newValuation = varDescriptor.mState
       [!?newValuation readTransition !inVarName !varDescriptor.mAttributes]
       outType = varDescriptor.mType
@@ -737,7 +737,7 @@ setter @currentVarManager searchForReadWriteAccess ?let @lstring inVarName
                                                    !@unifiedTypeMapEntry outType
                                                    !@string outCppName
                                                    !@string outNameForCheckingFormalParameterUsing {
-  if let varDescriptor = self.mLocalVarMap §[inVarName] then
+  if let varDescriptor = self.mLocalVarMap @[inVarName] then
 #  if let [self.mLocalVarMap searchKey
 #           !inVarName
 #           ?let type
@@ -770,7 +770,7 @@ setter @localVarMapListForLLVM readWriteAccess ?let @lstring inVarName
     : outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = [self mMapAtIndex !inIndex]
-    if let varDescriptor = localMap §[inVarName] then
+    if let varDescriptor = localMap @[inVarName] then
 #    if let [localMap searchKey
 #              !inVarName
 #              ?let type
@@ -949,7 +949,7 @@ method @localVarValuation combineValuationWith ?let @localVarValuation inOther
 setter @scopeLocalVarMap combineMapWith ?otherMap: let @scopeLocalVarMap inOtherMap
                                         ?!@string ioErrorMessage {
   for (varName * cppName * * valuation) in self do
-    if let otherVar = inOtherMap §[varName] then
+    if let otherVar = inOtherMap @[varName] then
       if cppName != otherVar.mCppName then
         ioErrorMessage += "\n  - 'internal error type 1 for '" + varName + "' local variable"
       else

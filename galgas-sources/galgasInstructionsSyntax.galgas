@@ -412,7 +412,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       <if_expression> !?ioDeclarations ?let testExpression
       $else$
 #      <error_instruction> !?ioDeclarations ?let errorInstruction
-#      let @semanticInstructionListAST else_instructionList = §[init  (errorInstruction)]
+#      let @semanticInstructionListAST else_instructionList = @[init  (errorInstruction)]
       <semantic_instruction_list> !?ioDeclarations ?let else_instructionList
       let endOf_else_branch = @location.here
       $end$

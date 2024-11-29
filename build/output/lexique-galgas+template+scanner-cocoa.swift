@@ -196,6 +196,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* ..< */,
   false /* @{ */,
   false /* @( */,
+  false /* @[ */,
   false /* += */,
   false /* -= */,
   false /* *= */,
@@ -222,8 +223,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* === */,
   false /* !== */,
   false /* ?^ */,
-  false /* !^ */,
-  false /* §[ */
+  false /* !^ */
 ]
 
 
@@ -526,6 +526,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [196] = {
   NO /* ..< */,
   NO /* @{ */,
   NO /* @( */,
+  NO /* @[ */,
   NO /* += */,
   NO /* -= */,
   NO /* *= */,
@@ -552,8 +553,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [196] = {
   NO /* === */,
   NO /* !== */,
   NO /* ?^ */,
-  NO /* !^ */,
-  NO /* §[ */
+  NO /* !^ */
 } ;
  */
 

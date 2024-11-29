@@ -90,7 +90,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
     ]
     let @unifiedTypeMapEntry receiverType = receiverExpression.mResultType
   //-------------------------------------- Search getter
-    if let aGetter = [receiverType definition].getterMap §[self.mGetterName] then
+    if let aGetter = [receiverType definition].getterMap @[self.mGetterName] then
       if (aGetter.mGetterNameThatObsoletesInvokationName != "") && [option galgas_cli_options.errorObsoleteGetterCall value] then
         error self.mGetterName : "obsolete getter" fixit {
           replace aGetter.mGetterNameThatObsoletesInvokationName
@@ -143,7 +143,7 @@ class @getterCallExpressionAST : @semanticExpressionAST {
         end
       end
   //-------------------------------------- The getter does not exist, it is a property ?
-    elsif [self.mActualArgumentList count] == 0, let prop = [receiverType definition].propertyMap §[self.mGetterName] then
+    elsif [self.mActualArgumentList count] == 0, let prop = [receiverType definition].propertyMap @[self.mGetterName] then
       [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.mGetterName]
       outExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType

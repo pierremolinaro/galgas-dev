@@ -191,7 +191,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
       end
     end
   //--- Check for a direct property access or for a conversion getter
-    if not ok, let prop = [inSourceType definition].propertyMap §[targetTypeDef.typeName.string] then
+    if not ok, let prop = [inSourceType definition].propertyMap @[targetTypeDef.typeName.string] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
@@ -323,7 +323,7 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
       end
     end
   //--- Check for a direct property access or for a conversion getter
-    if not ok, let prop = [rightType definition].propertyMap §[[leftResultType definition].typeName] then
+    if not ok, let prop = [rightType definition].propertyMap @[[leftResultType definition].typeName] then
       [prop.mAccessControl checkSetAccess !.none !inErrorLocation]
       let conversionExpression = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType

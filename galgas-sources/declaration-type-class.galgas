@@ -364,7 +364,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
           [!?setterMap insertKey
             !@{!"setProperty_"+ [property.name.string stringByCapitalizingFirstCharacter] !.here}
             !@methodKind.definedAsMember
-            !§[@(["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
+            !@[@(["" nowhere], property.typeEntry, .argumentVarIn, property.name.string)]
             !true # Compiler argument
             !.isBasicFinal
             !"" # No error message

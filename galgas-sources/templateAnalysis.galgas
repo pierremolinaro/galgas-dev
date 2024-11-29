@@ -90,7 +90,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   //-------------------------------------- Property ?
   if [[receiverType definition].typeKind isStructType] || [[receiverType definition].typeKind isClassType],
      [self.mExpressionList count] == 0,
-     let theGetter = [receiverType definition].propertyMap §[self.mGetterName] then
+     let theGetter = [receiverType definition].propertyMap @[self.mGetterName] then
     if [option galgas_cli_options.errorPropertyGetterCall value] then
       error self.mExpressionLocation : "property getter call (due to '--error-property-getter-call' option)"
     end

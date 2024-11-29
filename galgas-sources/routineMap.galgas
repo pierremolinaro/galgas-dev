@@ -94,7 +94,7 @@ struct @routineMap {
                    !@formalParameterSignature outRoutineSignature
                    !isFilePrivate: @bool outIsFilePrivate
                    !routineMangledName: @lstring outRoutineMangledName {
-    if let routine = self.mInternalRoutineMap §[inRoutineName] then
+    if let routine = self.mInternalRoutineMap @[inRoutineName] then
       outIsFilePrivate = false
       outRoutineSignature = @()
       for entry in routine.mArgumentMap do

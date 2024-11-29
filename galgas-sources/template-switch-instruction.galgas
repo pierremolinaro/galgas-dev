@@ -292,7 +292,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
         ioGeneratedCode += " " + associatedValue.mCppName + " ;\n"
       end
       ioGeneratedCode += "  " + switchVarCppName + ".getAssociatedValuesFor_"
-      ioGeneratedCode += [branch.mConstantList §[0] identifierRepresentation] + " ("
+      ioGeneratedCode += [branch.mConstantList @[0] identifierRepresentation] + " ("
       for associatedValue in branch.mExtractedAssociatedValuesForGeneration
         do ioGeneratedCode += associatedValue.mCppName
         between ioGeneratedCode += ", "

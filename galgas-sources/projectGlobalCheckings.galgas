@@ -48,7 +48,7 @@ struct @genericExtensionMethodListMap {
       [!?aList append !inValue]
       self.dictionary += !inKey !aList
     else
-      self.dictionary += !inKey !§[@(inValue)]
+      self.dictionary += !inKey !@[@(inValue)]
     end
   }
 
@@ -117,7 +117,7 @@ struct @descendantClassListMap {
       [!?aList append !inType]
       self.dictionary += !inKey !aList
     else
-      self.dictionary += !inKey !§[@(inType)]
+      self.dictionary += !inKey !@[@(inType)]
     end
   }
 

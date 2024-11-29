@@ -27,7 +27,7 @@ class @dataPredefinedTypeAST : @predefinedTypeAST {
   //----------------------------------------------------------------------------------------------
 
   override getter initializers -> @initializerSignatureList {
-    result = §[@(@formalInputParameterListAST ())]
+    result = @[@(@formalInputParameterListAST ())]
   }
 
   //----------------------------------------------------------------------------------------------

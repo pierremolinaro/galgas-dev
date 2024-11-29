@@ -98,10 +98,10 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   //--- Element type index
     [!?ioTypeMap makeEntry !self.elementTypeName ?let elementType]
   //--- Setter argument list
-    var @formalParameterSignature setterInputFormalArgumentList = §[
+    var @formalParameterSignature setterInputFormalArgumentList = @[
       @(["" nowhere], elementType, .argumentConstantIn, "inElement")
     ]
-    var @formalParameterSignature setterOutputFormalArgumentList = §[
+    var @formalParameterSignature setterOutputFormalArgumentList = @[
       @(["" nowhere], elementType, .argumentOut, "outElement")
     ]
   //--- Getters
@@ -171,7 +171,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     [!?setterMap insertKey
       !@lstring {!"append" !.here}
       !.definedAsMember
-      !§[@(["" nowhere], elementType, .argumentConstantIn, "inElement")]
+      !@[@(["" nowhere], elementType, .argumentConstantIn, "inElement")]
       !true
       !@methodQualifier.isBasic
       !""
@@ -220,7 +220,7 @@ class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ]
   //--- Read subscripts
     var @subscriptMap readSubscriptMap = @()
-    let @functionSignature argumentTypeList = §[@(["" nowhere], uintType, "inIndex", true)]
+    let @functionSignature argumentTypeList = @[@(["" nowhere], uintType, "inIndex", true)]
     [!?readSubscriptMap insertKey
       !@([argumentTypeList subcriptSignature], .nowhere)
       !argumentTypeList

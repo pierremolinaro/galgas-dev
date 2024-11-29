@@ -587,7 +587,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       !@lstring {!self.mPrefix.string + mPropertyName !self.mEndOfReceiverExpression}
       !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
-  let localConstantList = @localConstantList §[@(
+  let localConstantList = @localConstantList @[@(
     [ioTypeMap typeMapEntryForLKey !["lstring" nowhere]],
     @lstring {!self.mPrefix.string + "lkey" !self.mEndOfReceiverExpression},
     true, # Do not warn if unused
