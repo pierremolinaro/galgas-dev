@@ -185,7 +185,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
     const NSUInteger sourceTextLength = documentData.sourceString.length ;
     if (NSMaxRange (selectionRange) <= sourceTextLength) {
-      [self setSelectionRangeAndMakeItVisible:selectionRange] ;
+      [self setSelectionRangeAndMakeItVisible: selectionRange] ;
     }
   }
   #ifdef DEBUG_MESSAGES

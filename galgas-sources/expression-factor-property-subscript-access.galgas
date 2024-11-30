@@ -138,13 +138,13 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
   //······························································································
 
   override method analyzeSemanticExpression
-                                  ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-                                  ?inferenceType: let @unifiedTypeMapEntry unused inType
-                                  ?let @analysisContext inAnalysisContext
-                                  ?!@unifiedTypeMap ioTypeMap
-                                  ?!@localVarManager ioVariableMap
-                                  !@semanticExpressionForGeneration outExpression {
+                      ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
+                      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+                      ?inferenceType: let @unifiedTypeMapEntry unused inType
+                      ?let @analysisContext inAnalysisContext
+                      ?!@unifiedTypeMap ioTypeMap
+                      ?!@localVarManager ioVariableMap
+                      !@semanticExpressionForGeneration outExpressionGeneration {
   //--- Expression analysis
     [self.mExpression analyzeSemanticExpression
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName
@@ -153,13 +153,13 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       !inAnalysisContext
       !?ioTypeMap
       !?ioVariableMap
-      ?let @semanticExpressionForGeneration expression
+      ?let @semanticExpressionForGeneration exprGeneration
     ]
   //--- Check field access availability
-    let @unifiedTypeMapEntry expressionType = expression.mResultType
+    let @unifiedTypeMapEntry expressionType = exprGeneration.mResultType
     let propertyMap = [expressionType definition].propertyMap
     if let prop = propertyMap @[self.propertyName] then
-      if expression is @selfInExpressionForGeneration then
+      if exprGeneration is @selfInExpressionForGeneration then
         [!?ioVariableMap searchForReadAccess 
           !@("self." + self.propertyName, self.propertyName)
           ?3*
@@ -167,10 +167,10 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       end
       [prop.mAccessControl checkGetAccess !inAnalysisContext.selfAvailability !self.propertyName]
     //--- Generate expression
-      outExpression = @propertyAccessExpressionForGeneration {
+      outExpressionGeneration = @propertyAccessExpressionForGeneration {
         !prop.mPropertyType
         !self.operatorLocation
-        !expression
+        !exprGeneration
         !self.propertyName.string
       }
     else
@@ -180,15 +180,18 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           error self.propertyName
           : "for being called as a property read, the getter should have no formal argument (has "
           + [theGetter.mArgumentTypeList count] + ")"
-          : outExpression
+          : outExpressionGeneration
         else
-          outExpression = @getterCallExpressionForGeneration {
+          outExpressionGeneration = @getterCallExpressionForGeneration {
             !theGetter.mReturnedType
             !self.propertyName.location
             !theGetter.mKind
-            !expression
+            !exprGeneration
             !@()
-            !if theGetter.mGetterNameThatObsoletesInvokationName == "" then self.propertyName.string else theGetter.mGetterNameThatObsoletesInvokationName end
+            !if theGetter.mGetterNameThatObsoletesInvokationName == ""
+               then self.propertyName.string
+               else theGetter.mGetterNameThatObsoletesInvokationName
+             end
             !@()
             !theGetter.mHasCompilerArgument
           }
@@ -203,7 +206,7 @@ class @structPropertyAccessExpressionAST : @semanticExpressionAST {
            s += "\n  -- getter: " + aGetter.lkey
          end
         end
-        error self.propertyName : s : outExpression
+        error self.propertyName : s : outExpressionGeneration
       end
     end
   }
@@ -235,7 +238,8 @@ class @propertyAccessExpressionForGeneration : @semanticExpressionForGeneration 
       ?let @string operand
     ]
   //--- Generate
-    outCppExpression = operand + ".readProperty_" + [self.structFieldName identifierRepresentation] + " ()"
+    outCppExpression = operand + ".readProperty_"
+    outCppExpression += [self.structFieldName identifierRepresentation] + " ()"
   }
 
   //······························································································
@@ -366,7 +370,8 @@ class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGenera
       [!?subscriptArgumentList append !actualArgOperand]
     end
   //--- Generate
-    outCppExpression = operand + ".readSubscript_" + [self.subscriptInvocationName identifierRepresentation]
+    outCppExpression = operand + ".readSubscript_"
+    outCppExpression += [self.subscriptInvocationName identifierRepresentation]
     outCppExpression += " ("
     for operand in subscriptArgumentList do
       outCppExpression += operand + ", "

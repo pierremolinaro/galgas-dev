@@ -1164,22 +1164,36 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //--------------------------------------------------------------------------------------------------
 
 - (void) actionOpenFromSelectionInNewWindow: (id) sender {
-  NSString * newDocumentPath = self.fileNameFromSelection ;
-  NSError * error = nil ;
-  NSDocument * doc = [[NSDocumentController sharedDocumentController]
-    openDocumentWithContentsOfURL:[NSURL fileURLWithPath:newDocumentPath]
-    display:YES
-    error:& error
-  ] ;
-  if (nil == doc) {
-    [self.windowForSheet presentError:error] ;
+  NSString * absoluteFilePath = self.fileNameFromSelection ;
+  NSFileManager * fm = [NSFileManager new] ;
+  BOOL isDirectory = YES ;
+  if ([fm fileExistsAtPath: absoluteFilePath isDirectory: &isDirectory] && !isDirectory) {
+    NSError * error = nil ;
+    NSDocument * doc = [[NSDocumentController sharedDocumentController]
+      openDocumentWithContentsOfURL: [NSURL fileURLWithPath: absoluteFilePath]
+      display:YES
+      error:& error
+    ] ;
+    if (nil == doc) {
+      [self.windowForSheet presentError: error] ;
+    }
+  }else{
+    NSBeep () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 - (void) actionOpenFromSelection: (id) sender {
-  [self findOrAddNewTabForFile:self.fileNameFromSelection] ;
+  NSString * absoluteFilePath = self.fileNameFromSelection ;
+//  NSLog (@"FILE NAME %@", absoluteFilePath) ;
+  NSFileManager * fm = [NSFileManager new] ;
+  BOOL isDirectory = YES ;
+  if ([fm fileExistsAtPath: absoluteFilePath isDirectory: &isDirectory] && !isDirectory) {
+    [self findOrAddNewTabForFile: absoluteFilePath] ;
+  }else{
+    NSBeep () ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

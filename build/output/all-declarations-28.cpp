@@ -3518,99 +3518,99 @@ void cPtr_structPropertyAccessExpressionAST::method_analyzeSemanticExpression (c
                                                                                const GGS_analysisContext constinArgument_inAnalysisContext,
                                                                                GGS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                                GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                               GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                               GGS_semanticExpressionForGeneration & outArgument_outExpressionGeneration,
                                                                                Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_expression_5912 ;
+  GGS_semanticExpressionForGeneration var_exprGeneration_5838 ;
   const GGS_structPropertyAccessExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 152)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_5912, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 149)) ;
-  GGS_unifiedTypeMapEntry var_expressionType_5998 = var_expression_5912.readProperty_mResultType () ;
-  GGS_propertyMap var_propertyMap_6046 = extensionGetter_definition (var_expressionType_5998, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 160)).readProperty_propertyMap () ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 152)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_exprGeneration_5838, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 149)) ;
+  GGS_unifiedTypeMapEntry var_expressionType_5928 = var_exprGeneration_5838.readProperty_mResultType () ;
+  GGS_propertyMap var_propertyMap_5980 = extensionGetter_definition (var_expressionType_5928, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 160)).readProperty_propertyMap () ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
     const GGS_structPropertyAccessExpressionAST temp_2 = this ;
-    const GGS_propertyMap_2E_element var_prop_6111 = var_propertyMap_6046.readSubscript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!var_propertyMap_6046.readSubscript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+    const GGS_propertyMap_2E_element var_prop_6045 = var_propertyMap_5980.readSubscript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!var_propertyMap_5980.readSubscript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_1 = kBoolFalse ;
     }
     if (kBoolTrue == test_1) {
       enumGalgasBool test_3 = kBoolTrue ;
       if (kBoolTrue == test_3) {
-        test_3 = GGS_bool (nullptr != dynamic_cast <const cPtr_selfInExpressionForGeneration *> (var_expression_5912.ptr ())).boolEnum () ;
+        test_3 = GGS_bool (nullptr != dynamic_cast <const cPtr_selfInExpressionForGeneration *> (var_exprGeneration_5838.ptr ())).boolEnum () ;
         if (kBoolTrue == test_3) {
           {
           const GGS_structPropertyAccessExpressionAST temp_4 = this ;
           const GGS_structPropertyAccessExpressionAST temp_5 = this ;
-          GGS_unifiedTypeMapEntry joker_6332_3 ; // Joker input parameter
-          GGS_string joker_6332_2 ; // Joker input parameter
-          GGS_string joker_6332_1 ; // Joker input parameter
-          extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, GGS_lstring::init_21__21_ (GGS_string ("self.").add_operation (temp_4.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 164)), temp_5.readProperty_propertyName ().readProperty_location (), inCompiler COMMA_HERE), joker_6332_3, joker_6332_2, joker_6332_1, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 163)) ;
+          GGS_unifiedTypeMapEntry joker_6270_3 ; // Joker input parameter
+          GGS_string joker_6270_2 ; // Joker input parameter
+          GGS_string joker_6270_1 ; // Joker input parameter
+          extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, GGS_lstring::init_21__21_ (GGS_string ("self.").add_operation (temp_4.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 164)), temp_5.readProperty_propertyName ().readProperty_location (), inCompiler COMMA_HERE), joker_6270_3, joker_6270_2, joker_6270_1, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 163)) ;
           }
         }
       }
       const GGS_structPropertyAccessExpressionAST temp_6 = this ;
-      extensionMethod_checkGetAccess (var_prop_6111.readProperty_mAccessControl (), constinArgument_inAnalysisContext.readProperty_selfAvailability (), temp_6.readProperty_propertyName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 168)) ;
+      extensionMethod_checkGetAccess (var_prop_6045.readProperty_mAccessControl (), constinArgument_inAnalysisContext.readProperty_selfAvailability (), temp_6.readProperty_propertyName ().readProperty_location (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 168)) ;
       const GGS_structPropertyAccessExpressionAST temp_7 = this ;
       const GGS_structPropertyAccessExpressionAST temp_8 = this ;
-      outArgument_outExpression = GGS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_prop_6111.readProperty_mPropertyType (), temp_7.readProperty_operatorLocation (), var_expression_5912, temp_8.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE) ;
+      outArgument_outExpressionGeneration = GGS_propertyAccessExpressionForGeneration::init_21__21__21__21_ (var_prop_6045.readProperty_mPropertyType (), temp_7.readProperty_operatorLocation (), var_exprGeneration_5838, temp_8.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE) ;
     }
   }
   if (kBoolFalse == test_1) {
-    GGS_getterMap var_getterMap_6687 = extensionGetter_definition (var_expressionType_5998, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 177)).readProperty_getterMap () ;
+    GGS_getterMap var_getterMap_6639 = extensionGetter_definition (var_expressionType_5928, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 177)).readProperty_getterMap () ;
     enumGalgasBool test_9 = kBoolTrue ;
     if (kBoolTrue == test_9) {
       const GGS_structPropertyAccessExpressionAST temp_10 = this ;
-      const GGS_getterMap_2E_element var_theGetter_6750 = var_getterMap_6687.readSubscript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!var_getterMap_6687.readSubscript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+      const GGS_getterMap_2E_element var_theGetter_6702 = var_getterMap_6639.readSubscript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!var_getterMap_6639.readSubscript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
         test_9 = kBoolFalse ;
       }
       if (kBoolTrue == test_9) {
         enumGalgasBool test_11 = kBoolTrue ;
         if (kBoolTrue == test_11) {
-          test_11 = GGS_bool (ComparisonKind::notEqual, var_theGetter_6750.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 179)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_11 = GGS_bool (ComparisonKind::notEqual, var_theGetter_6702.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 179)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_11) {
             const GGS_structPropertyAccessExpressionAST temp_12 = this ;
             TC_Array <FixItDescription> fixItArray13 ;
-            inCompiler->emitSemanticError (temp_12.readProperty_propertyName ().readProperty_location (), GGS_string ("for being called as a property read, the getter should have no formal argument (has ").add_operation (var_theGetter_6750.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 182)).getter_string (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 181)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 182)), fixItArray13  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 180)) ;
-            outArgument_outExpression.drop () ; // Release error dropped variable
+            inCompiler->emitSemanticError (temp_12.readProperty_propertyName ().readProperty_location (), GGS_string ("for being called as a property read, the getter should have no formal argument (has ").add_operation (var_theGetter_6702.readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 182)).getter_string (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 181)), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 181)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 182)), fixItArray13  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 180)) ;
+            outArgument_outExpressionGeneration.drop () ; // Release error dropped variable
           }
         }
         if (kBoolFalse == test_11) {
           const GGS_structPropertyAccessExpressionAST temp_14 = this ;
           GGS_string temp_15 ;
-          const enumGalgasBool test_16 = GGS_bool (ComparisonKind::equal, var_theGetter_6750.readProperty_mGetterNameThatObsoletesInvokationName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+          const enumGalgasBool test_16 = GGS_bool (ComparisonKind::equal, var_theGetter_6702.readProperty_mGetterNameThatObsoletesInvokationName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_16) {
             const GGS_structPropertyAccessExpressionAST temp_17 = this ;
             temp_15 = temp_17.readProperty_propertyName ().readProperty_string () ;
           }else if (kBoolFalse == test_16) {
-            temp_15 = var_theGetter_6750.readProperty_mGetterNameThatObsoletesInvokationName () ;
+            temp_15 = var_theGetter_6702.readProperty_mGetterNameThatObsoletesInvokationName () ;
           }
-          outArgument_outExpression = GGS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_theGetter_6750.readProperty_mReturnedType (), temp_14.readProperty_propertyName ().readProperty_location (), var_theGetter_6750.readProperty_mKind (), var_expression_5912, GGS_stringlist::init (inCompiler COMMA_HERE), temp_15, GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE), var_theGetter_6750.readProperty_mHasCompilerArgument (), inCompiler COMMA_HERE) ;
+          outArgument_outExpressionGeneration = GGS_getterCallExpressionForGeneration::init_21__21__21__21__21__21__21__21_ (var_theGetter_6702.readProperty_mReturnedType (), temp_14.readProperty_propertyName ().readProperty_location (), var_theGetter_6702.readProperty_mKind (), var_exprGeneration_5838, GGS_stringlist::init (inCompiler COMMA_HERE), temp_15, GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE), var_theGetter_6702.readProperty_mHasCompilerArgument (), inCompiler COMMA_HERE) ;
         }
       }
     }
     if (kBoolFalse == test_9) {
-      GGS_string var_s_7558 = GGS_string ("undefined property, undefined getter") ;
-      cEnumerator_propertyMap enumerator_7625 (var_propertyMap_6046, EnumerationOrder::up) ;
-      while (enumerator_7625.hasCurrentObject ()) {
-        var_s_7558.plusAssign_operation(GGS_string ("\n  -- property: ").add_operation (enumerator_7625.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 199)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 199)) ;
-        enumerator_7625.gotoNextObject () ;
+      GGS_string var_s_7577 = GGS_string ("undefined property, undefined getter") ;
+      cEnumerator_propertyMap enumerator_7644 (var_propertyMap_5980, EnumerationOrder::up) ;
+      while (enumerator_7644.hasCurrentObject ()) {
+        var_s_7577.plusAssign_operation(GGS_string ("\n  -- property: ").add_operation (enumerator_7644.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 202)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 202)) ;
+        enumerator_7644.gotoNextObject () ;
       }
-      cEnumerator_getterMap enumerator_7726 (var_getterMap_6687, EnumerationOrder::up) ;
-      while (enumerator_7726.hasCurrentObject ()) {
+      cEnumerator_getterMap enumerator_7745 (var_getterMap_6639, EnumerationOrder::up) ;
+      while (enumerator_7745.hasCurrentObject ()) {
         enumGalgasBool test_18 = kBoolTrue ;
         if (kBoolTrue == test_18) {
-          test_18 = GGS_bool (ComparisonKind::equal, enumerator_7726.current (HERE).readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 202)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_18 = GGS_bool (ComparisonKind::equal, enumerator_7745.current (HERE).readProperty_mArgumentTypeList ().getter_count (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 205)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (kBoolTrue == test_18) {
-            var_s_7558.plusAssign_operation(GGS_string ("\n  -- getter: ").add_operation (enumerator_7726.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 203)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 203)) ;
+            var_s_7577.plusAssign_operation(GGS_string ("\n  -- getter: ").add_operation (enumerator_7745.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 206)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 206)) ;
           }
         }
-        enumerator_7726.gotoNextObject () ;
+        enumerator_7745.gotoNextObject () ;
       }
       const GGS_structPropertyAccessExpressionAST temp_19 = this ;
       TC_Array <FixItDescription> fixItArray20 ;
-      inCompiler->emitSemanticError (temp_19.readProperty_propertyName ().readProperty_location (), var_s_7558, fixItArray20  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 206)) ;
-      outArgument_outExpression.drop () ; // Release error dropped variable
+      inCompiler->emitSemanticError (temp_19.readProperty_propertyName ().readProperty_location (), var_s_7577, fixItArray20  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 209)) ;
+      outArgument_outExpressionGeneration.drop () ; // Release error dropped variable
     }
   }
 }
@@ -3628,12 +3628,13 @@ void cPtr_propertyAccessExpressionForGeneration::method_generateExpression (GGS_
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_propertyAccessExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 228)) ;
-  GGS_string var_operand_9018 ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 231)) ;
+  GGS_string var_operand_9047 ;
   const GGS_propertyAccessExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_expression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_9018, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 230)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_expression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_9047, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 233)) ;
+  outArgument_outCppExpression = var_operand_9047.add_operation (GGS_string (".readProperty_"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 241)) ;
   const GGS_propertyAccessExpressionForGeneration temp_2 = this ;
-  outArgument_outCppExpression = var_operand_9018.add_operation (GGS_string (".readProperty_"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 238)).add_operation (temp_2.readProperty_structFieldName ().getter_identifierRepresentation (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 238)), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 238)).add_operation (GGS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 238)) ;
+  outArgument_outCppExpression.plusAssign_operation(temp_2.readProperty_structFieldName ().getter_identifierRepresentation (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 242)).add_operation (GGS_string (" ()"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 242)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 242)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -3645,10 +3646,10 @@ void cPtr_subscriptReadAccessExpressionAST::method_enterExpressionInSemanticCont
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_subscriptReadAccessExpressionAST temp_0 = this ;
-  cEnumerator_actualOutputArgumentList enumerator_9918 (temp_0.readProperty_actualArgumentList (), EnumerationOrder::up) ;
-  while (enumerator_9918.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_9918.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 258)) ;
-    enumerator_9918.gotoNextObject () ;
+  cEnumerator_actualOutputArgumentList enumerator_9969 (temp_0.readProperty_actualArgumentList (), EnumerationOrder::up) ;
+  while (enumerator_9969.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_9969.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 262)) ;
+    enumerator_9969.gotoNextObject () ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -3666,59 +3667,59 @@ void cPtr_subscriptReadAccessExpressionAST::method_analyzeSemanticExpression (co
                                                                               GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                               Compiler * inCompiler
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_expression_11038 ;
+  GGS_semanticExpressionForGeneration var_expression_11089 ;
   const GGS_subscriptReadAccessExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 276)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11038, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 273)) ;
-  GGS_unifiedTypeMapEntry var_expressionType_11084 = var_expression_11038.readProperty_mResultType () ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 280)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11089, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 277)) ;
+  GGS_unifiedTypeMapEntry var_expressionType_11135 = var_expression_11089.readProperty_mResultType () ;
   const GGS_subscriptReadAccessExpressionAST temp_1 = this ;
-  GGS_string var_invocationSignature_11171 = extensionGetter_subscriptSignature (temp_1.readProperty_actualArgumentList (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 284)) ;
-  GGS_subscriptMap var_subscriptMap_11283 = extensionGetter_definition (var_expressionType_11084, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 286)).readProperty_readSubscriptMap () ;
+  GGS_string var_invocationSignature_11222 = extensionGetter_subscriptSignature (temp_1.readProperty_actualArgumentList (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 288)) ;
+  GGS_subscriptMap var_subscriptMap_11334 = extensionGetter_definition (var_expressionType_11135, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 290)).readProperty_readSubscriptMap () ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    const GGS_subscriptMap_2E_element var_aSubscript_11354 = var_subscriptMap_11283.readSubscript__3F_ (var_invocationSignature_11171, inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!var_subscriptMap_11283.readSubscript__3F_ (var_invocationSignature_11171, inCompiler COMMA_HERE).isValuated ()) {
+    const GGS_subscriptMap_2E_element var_aSubscript_11405 = var_subscriptMap_11334.readSubscript__3F_ (var_invocationSignature_11222, inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!var_subscriptMap_11334.readSubscript__3F_ (var_invocationSignature_11222, inCompiler COMMA_HERE).isValuated ()) {
       test_2 = kBoolFalse ;
     }
     if (kBoolTrue == test_2) {
-      GGS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_11458 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
+      GGS_semanticExpressionListForGeneration var_semanticExpressionListForGeneration_11509 = GGS_semanticExpressionListForGeneration::init (inCompiler COMMA_HERE) ;
       const GGS_subscriptReadAccessExpressionAST temp_3 = this ;
-      cEnumerator_functionSignature enumerator_11570 (var_aSubscript_11354.readProperty_argumentTypeList (), EnumerationOrder::up) ;
-      cEnumerator_actualOutputArgumentList enumerator_11606 (temp_3.readProperty_actualArgumentList (), EnumerationOrder::up) ;
-      while (enumerator_11570.hasCurrentObject () && enumerator_11606.hasCurrentObject ()) {
-        GGS_semanticExpressionForGeneration var_expression_11964 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_11606.current (HERE).readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_11570.current (HERE).readProperty_mFormalArgumentType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_11964, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 291)) ;
+      cEnumerator_functionSignature enumerator_11621 (var_aSubscript_11405.readProperty_argumentTypeList (), EnumerationOrder::up) ;
+      cEnumerator_actualOutputArgumentList enumerator_11657 (temp_3.readProperty_actualArgumentList (), EnumerationOrder::up) ;
+      while (enumerator_11621.hasCurrentObject () && enumerator_11657.hasCurrentObject ()) {
+        GGS_semanticExpressionForGeneration var_expression_12015 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) enumerator_11657.current (HERE).readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, enumerator_11621.current (HERE).readProperty_mFormalArgumentType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_12015, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 295)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_11570.current (HERE).readProperty_mFormalArgumentType (), var_expression_11964.readProperty_mResultType (), enumerator_11606.current (HERE).readProperty_mEndOfExpressionLocation (), var_expression_11964, inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 300)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (enumerator_11621.current (HERE).readProperty_mFormalArgumentType (), var_expression_12015.readProperty_mResultType (), enumerator_11657.current (HERE).readProperty_mEndOfExpressionLocation (), var_expression_12015, inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 304)) ;
         }
         enumGalgasBool test_4 = kBoolTrue ;
         if (kBoolTrue == test_4) {
-          test_4 = GGS_bool (ComparisonKind::notEqual, enumerator_11570.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (enumerator_11606.current (HERE).readProperty_mActualSelector ().readProperty_string ())).boolEnum () ;
+          test_4 = GGS_bool (ComparisonKind::notEqual, enumerator_11621.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (enumerator_11657.current (HERE).readProperty_mActualSelector ().readProperty_string ())).boolEnum () ;
           if (kBoolTrue == test_4) {
             GGS_string temp_5 ;
-            const enumGalgasBool test_6 = GGS_bool (ComparisonKind::notEqual, enumerator_11570.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+            const enumGalgasBool test_6 = GGS_bool (ComparisonKind::notEqual, enumerator_11621.current (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_6) {
-              temp_5 = enumerator_11570.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 308)) ;
+              temp_5 = enumerator_11621.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 312)) ;
             }else if (kBoolFalse == test_6) {
               temp_5 = GGS_string::makeEmptyString () ;
             }
-            GGS_string var_s_12298 = GGS_string ("!").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 307)) ;
+            GGS_string var_s_12349 = GGS_string ("!").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 311)) ;
             TC_Array <FixItDescription> fixItArray7 ;
-            appendFixItActions (fixItArray7, kFixItReplace, var_s_12298) ;
-            inCompiler->emitSemanticError (enumerator_11606.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_12298, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 311)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 311)), fixItArray7  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 311)) ;
+            appendFixItActions (fixItArray7, kFixItReplace, var_s_12349) ;
+            inCompiler->emitSemanticError (enumerator_11657.current (HERE).readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_12349, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 315)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 315)), fixItArray7  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 315)) ;
           }
         }
-        var_semanticExpressionListForGeneration_11458.addAssign_operation (var_expression_11964  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 314)) ;
-        enumerator_11570.gotoNextObject () ;
-        enumerator_11606.gotoNextObject () ;
+        var_semanticExpressionListForGeneration_11509.addAssign_operation (var_expression_12015  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 318)) ;
+        enumerator_11621.gotoNextObject () ;
+        enumerator_11657.gotoNextObject () ;
       }
       const GGS_subscriptReadAccessExpressionAST temp_8 = this ;
-      outArgument_outExpression = GGS_subscriptReadAccessExpressionForGeneration::init_21__21__21__21__21_ (var_aSubscript_11354.readProperty_valueType (), temp_8.readProperty_endOfArgsLocation (), var_expression_11038, var_invocationSignature_11171, var_semanticExpressionListForGeneration_11458, inCompiler COMMA_HERE) ;
+      outArgument_outExpression = GGS_subscriptReadAccessExpressionForGeneration::init_21__21__21__21__21_ (var_aSubscript_11405.readProperty_valueType (), temp_8.readProperty_endOfArgsLocation (), var_expression_11089, var_invocationSignature_11222, var_semanticExpressionListForGeneration_11509, inCompiler COMMA_HERE) ;
     }
   }
   if (kBoolFalse == test_2) {
     const GGS_subscriptReadAccessExpressionAST temp_9 = this ;
     TC_Array <FixItDescription> fixItArray10 ;
-    inCompiler->emitSemanticError (temp_9.readProperty_endOfArgsLocation (), GGS_string ("unknown subscript signature"), fixItArray10  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 325)) ;
+    inCompiler->emitSemanticError (temp_9.readProperty_endOfArgsLocation (), GGS_string ("unknown subscript signature"), fixItArray10  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 329)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
@@ -3736,33 +3737,34 @@ void cPtr_subscriptReadAccessExpressionForGeneration::method_generateExpression 
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_subscriptReadAccessExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 347)) ;
-  GGS_string var_operand_14189 ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 351)) ;
+  GGS_string var_operand_14240 ;
   const GGS_subscriptReadAccessExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_expression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_14189, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 349)) ;
-  GGS__5B_string_5D_ var_subscriptArgumentList_14247 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_expression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_14240, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 353)) ;
+  GGS__5B_string_5D_ var_subscriptArgumentList_14298 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
   const GGS_subscriptReadAccessExpressionForGeneration temp_2 = this ;
-  cEnumerator_semanticExpressionListForGeneration enumerator_14301 (temp_2.readProperty_actualExpressionList (), EnumerationOrder::up) ;
-  while (enumerator_14301.hasCurrentObject ()) {
-    GGS_string var_actualArgOperand_14517 ;
-    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_14301.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_actualArgOperand_14517, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 359)) ;
+  cEnumerator_semanticExpressionListForGeneration enumerator_14352 (temp_2.readProperty_actualExpressionList (), EnumerationOrder::up) ;
+  while (enumerator_14352.hasCurrentObject ()) {
+    GGS_string var_actualArgOperand_14568 ;
+    callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) enumerator_14352.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_actualArgOperand_14568, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 363)) ;
     {
-    var_subscriptArgumentList_14247.setter_append (var_actualArgOperand_14517, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 366)) ;
+    var_subscriptArgumentList_14298.setter_append (var_actualArgOperand_14568, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 370)) ;
     }
-    enumerator_14301.gotoNextObject () ;
+    enumerator_14352.gotoNextObject () ;
   }
+  outArgument_outCppExpression = var_operand_14240.add_operation (GGS_string (".readSubscript_"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 373)) ;
   const GGS_subscriptReadAccessExpressionForGeneration temp_3 = this ;
-  outArgument_outCppExpression = var_operand_14189.add_operation (GGS_string (".readSubscript_"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 369)).add_operation (temp_3.readProperty_subscriptInvocationName ().getter_identifierRepresentation (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 369)), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 369)) ;
-  outArgument_outCppExpression.plusAssign_operation(GGS_string (" ("), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 370)) ;
-  cEnumerator__5B_string_5D_ enumerator_14781 (var_subscriptArgumentList_14247, EnumerationOrder::up) ;
-  while (enumerator_14781.hasCurrentObject ()) {
-    outArgument_outCppExpression.plusAssign_operation(enumerator_14781.current (HERE).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 372)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 372)) ;
-    enumerator_14781.gotoNextObject () ;
+  outArgument_outCppExpression.plusAssign_operation(temp_3.readProperty_subscriptInvocationName ().getter_identifierRepresentation (SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 374)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 374)) ;
+  outArgument_outCppExpression.plusAssign_operation(GGS_string (" ("), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 375)) ;
+  cEnumerator__5B_string_5D_ enumerator_14854 (var_subscriptArgumentList_14298, EnumerationOrder::up) ;
+  while (enumerator_14854.hasCurrentObject ()) {
+    outArgument_outCppExpression.plusAssign_operation(enumerator_14854.current (HERE).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 377)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 377)) ;
+    enumerator_14854.gotoNextObject () ;
   }
   {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 374)) COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 374)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 379)) COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 379)) ;
   }
-  outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 375)).add_operation (GGS_string (" COMMA_HERE)"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 375)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 375)) ;
+  outArgument_outCppExpression.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 380)).add_operation (GGS_string (" COMMA_HERE)"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 380)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas", 380)) ;
 }
 //--------------------------------------------------------------------------------------------------
 //
@@ -5767,15 +5769,15 @@ void cPtr_varInExpressionAST::method_analyzeSemanticExpression (const GGS_lstrin
                                                                 GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_type_3526 ;
-  GGS_string var_sourceVariableCppName_3550 ;
-  GGS_string var_nameForCheckingFormalParameterUsing_3591 ;
+  GGS_unifiedTypeMapEntry var_type_3345 ;
+  GGS_string var_sourceVariableCppName_3369 ;
+  GGS_string var_nameForCheckingFormalParameterUsing_3410 ;
   {
   const GGS_varInExpressionAST temp_0 = this ;
-  extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, temp_0.readProperty_mVarName (), var_type_3526, var_sourceVariableCppName_3550, var_nameForCheckingFormalParameterUsing_3591, inCompiler COMMA_SOURCE_FILE ("expression-primary-var.galgas", 72)) ;
+  extensionSetter_searchForReadAccess (ioArgument_ioVariableMap, temp_0.readProperty_mVarName (), var_type_3345, var_sourceVariableCppName_3369, var_nameForCheckingFormalParameterUsing_3410, inCompiler COMMA_SOURCE_FILE ("expression-primary-var.galgas", 72)) ;
   }
   const GGS_varInExpressionAST temp_1 = this ;
-  outArgument_outExpression = GGS_varInExpressionForGeneration::init_21__21__21__21_ (var_type_3526, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_3550, var_nameForCheckingFormalParameterUsing_3591, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_varInExpressionForGeneration::init_21__21__21__21_ (var_type_3345, temp_1.readProperty_mVarName ().readProperty_location (), var_sourceVariableCppName_3369, var_nameForCheckingFormalParameterUsing_3410, inCompiler COMMA_HERE) ;
 }
 //--------------------------------------------------------------------------------------------------
 //

@@ -52,7 +52,7 @@ syntax extension galgas4ExpressionSyntax {
 //————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @varInExpressionAST : @semanticExpressionAST {
-  public let @lstring mVarName
+  private let @lstring mVarName
 
   //······························································································
 
@@ -62,13 +62,13 @@ class @varInExpressionAST : @semanticExpressionAST {
   //······························································································
 
   override method analyzeSemanticExpression
-                                  ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
-                                  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-                                  ?inferenceType: let @unifiedTypeMapEntry unused inType
-                                  ?let @analysisContext unused inAnalysisContext
-                                  ?!@unifiedTypeMap unused ioTypeMap
-                                  ?!@localVarManager ioVariableMap
-                                  !@semanticExpressionForGeneration outExpression {
+        ?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName
+        ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+        ?inferenceType: let @unifiedTypeMapEntry unused inType
+        ?let @analysisContext unused inAnalysisContext
+        ?!@unifiedTypeMap unused ioTypeMap
+        ?!@localVarManager ioVariableMap
+        !@semanticExpressionForGeneration outExpression {
     [!?ioVariableMap searchForReadAccess
       !self.mVarName
       ?let @unifiedTypeMapEntry type
