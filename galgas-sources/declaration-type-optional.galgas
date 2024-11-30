@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring optionalTypeName %initArgLabel
@@ -173,9 +173,9 @@ class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @optionalTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry unwrappedType
@@ -236,7 +236,7 @@ class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private filewrapper optionalTypeGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -255,5 +255,5 @@ private filewrapper optionalTypeGenerationTemplate in "+generation-templates/typ
     ?@string WEAK_TYPE_IDENTIFIER // "" if no weak type
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 

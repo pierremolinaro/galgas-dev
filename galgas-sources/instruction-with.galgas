@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @readAccessWithInstructionAST : @semanticInstructionAST {
   public let @lstring mPrefix
@@ -49,9 +49,9 @@ class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
   public let @location mEndOf_else_instructions
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -202,7 +202,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -353,9 +353,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @readAccessWithInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -376,9 +376,9 @@ override method @readWriteAccessWithInstructionAST enterInstructionInSemanticCon
   [self.m_else_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -635,9 +635,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   }
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -663,9 +663,9 @@ class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration
   public let @semanticInstructionListForGeneration mElseBranchInstructions
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -789,4 +789,4 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

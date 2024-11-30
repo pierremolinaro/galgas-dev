@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
@@ -26,15 +26,15 @@ class @dictDeclarationAST : @semanticDeclarationAST {
   private let @bool equatable %initArgLabel
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @dictDeclarationAST keyRepresentation ->@string {
   result = "dict @" + self.mDictTypeName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -76,7 +76,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -118,9 +118,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ASSOCIATED ELEMENT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
 //--- Add element
@@ -154,9 +154,9 @@ override method @dictDeclarationAST addAssociatedElement ?!@galgasDeclarationAST
   [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ENTER IN GRAPH
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @dictDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -175,9 +175,9 @@ override method @dictDeclarationAST enterDeclarationInGraph
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ENTER IN SEMANTIC CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @dictDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -419,9 +419,9 @@ override method @dictDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SEMANTIC ANALYSIS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc check_K_escapeCharacters ?let @lstring inString {  //--- Check escape sequences : only %K or %%
   for components in [inString.string componentsSeparatedByString !"%%"] do
@@ -438,7 +438,7 @@ proc check_K_escapeCharacters ?let @lstring inString {  //--- Check escape seque
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc check_K_L_escapeCharacters ?let @lstring inString {  //--- Check escape sequences : only %K, %L or %%
   for components in [inString.string componentsSeparatedByString !"%%"] do
@@ -455,7 +455,7 @@ proc check_K_L_escapeCharacters ?let @lstring inString {  //--- Check escape seq
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 func %once forbiddenKeysForMapAndDict () -> @stringset {
   result = @()
@@ -464,7 +464,7 @@ func %once forbiddenKeysForMapAndDict () -> @stringset {
   result += !"object"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @dictDeclarationAST semanticAnalysis
                 ?!@lstringlist ioUsefulnessRootEntities
@@ -543,9 +543,9 @@ override method @dictDeclarationAST semanticAnalysis
     }
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @dictTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
@@ -555,7 +555,7 @@ class @dictTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mOptionalElementTypeEntry
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @dictTypeForGeneration appendDeclaration1 ?!@stringset unused ioInclusionSet
                           !@string outHeader {
@@ -584,7 +584,7 @@ override method @dictTypeForGeneration appendDeclaration1 ?!@stringset unused io
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @dictTypeForGeneration appendSpecificImplementation
                                         ?let @unifiedTypeMap unused inTypeMap
@@ -603,9 +603,9 @@ override method @dictTypeForGeneration appendSpecificImplementation
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! Generation Filewrappers
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private filewrapper dictGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -626,4 +626,4 @@ private filewrapper dictGenerationTemplate in "+generation-templates/type_genera
     ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

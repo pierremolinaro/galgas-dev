@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -105,7 +105,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -194,9 +194,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @switchExtractedValuesListAST {
   public let @lstring mExtractedValueTypeName
@@ -204,7 +204,7 @@ list @switchExtractedValuesListAST {
   public let @bool mMarkedAsUnused
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @switchBranchesAST {
   public let [@lstring] mSwitchConstantList
@@ -213,7 +213,7 @@ list @switchBranchesAST {
   public let @location mEndOfBranch
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @switchInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSwitchExpression
@@ -367,9 +367,9 @@ class @switchInstructionAST : @semanticInstructionAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @extractedAssociatedValuesForGeneration {
   public let @unifiedTypeMapEntry mType
@@ -378,7 +378,7 @@ list @extractedAssociatedValuesForGeneration {
   public let @string name
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @switchBranchesForGeneration {
   public let [@lstring] mSwitchConstantList
@@ -387,7 +387,7 @@ list @switchBranchesForGeneration {
   public let @semanticInstructionListForGeneration mInstructions
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mEnumType
@@ -459,4 +459,4 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

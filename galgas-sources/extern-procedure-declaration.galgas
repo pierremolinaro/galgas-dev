@@ -15,11 +15,11 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //    E X T E R N    R O U T I N E    D E C L A R A T I O N
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -54,7 +54,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -89,7 +89,7 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @bool isFilePrivate %initArgLabel
@@ -192,11 +192,11 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //    R O U T I N E    D E C L A R A T I O N
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string routineMangledName %initArgLabel
@@ -222,5 +222,5 @@ class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeader
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 

@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @castInstructionBranchListAST {
   public let @lstring mTypeName
@@ -36,9 +36,9 @@ class @structuredCastInstructionAST : @semanticInstructionAST {
   private let @location mEndOfCastInstruction
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -130,9 +130,9 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @structuredCastInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap {
@@ -143,9 +143,9 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -235,9 +235,9 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !else_instructionList}
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @castInstructionBranchListForGeneration {
   public let @dynamicTypeComparisonKind mTypeComparisonKind
@@ -254,9 +254,9 @@ class @structuredCastInstructionForGeneration : @semanticInstructionForGeneratio
   private let @semanticInstructionListForGeneration mElseInstructionList
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @structuredCastInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -327,4 +327,4 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

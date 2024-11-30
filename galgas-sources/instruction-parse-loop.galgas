@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @parseLoopInstruction : @syntaxInstructionAST {
   private let @semanticExpressionAST mVariantExpression
@@ -28,9 +28,9 @@ class @parseLoopInstruction : @syntaxInstructionAST {
   private let @location mEndOfInstructionList
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3SyntaxComponentSyntax {
 
@@ -65,7 +65,7 @@ syntax extension galgas3SyntaxComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4SyntaxComponentSyntax {
 
@@ -99,9 +99,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! TRANSFORM
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @parseLoopInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -117,9 +117,9 @@ override method @parseLoopInstruction transformInstruction
   )
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -197,9 +197,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   }
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! GENERATION TYPES
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticExpressionForGeneration mVariantExpression
@@ -207,9 +207,9 @@ class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @semanticInstructionListForGeneration mInstructionList
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX SIGNATURE
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
@@ -217,9 +217,9 @@ override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @parseLoopInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -278,4 +278,4 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += compilerCppName () + "->resetTemplateString () ;\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

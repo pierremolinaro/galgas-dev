@@ -16,9 +16,9 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //!   AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @optionExpressionAST : @semanticExpressionAST {
   private let @lstring mOptionComponentName
@@ -26,9 +26,9 @@ class @optionExpressionAST : @semanticExpressionAST {
   private let @lstring mOptionGetterName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3ExpressionSyntax {
 
@@ -63,7 +63,7 @@ syntax extension galgas3ExpressionSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4ExpressionSyntax {
 
@@ -98,9 +98,9 @@ syntax extension galgas4ExpressionSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @optionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
@@ -193,9 +193,9 @@ override method @optionExpressionAST analyzeSemanticExpression
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
@@ -218,7 +218,7 @@ override method @optionValueExpressionForGeneration generateExpression
                    + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_value ())"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
@@ -241,7 +241,7 @@ override method @optionCharExpressionForGeneration generateExpression
                   + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_char ())"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
   private let @bool mOptionComponentIsPredefined
@@ -264,7 +264,7 @@ override method @optionStringExpressionForGeneration generateExpression
                   + "_" + [self.mOptionEntryName identifierRepresentation] + ".readProperty_string ())"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @optionCommentExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -287,4 +287,4 @@ class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mOptionEntryName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

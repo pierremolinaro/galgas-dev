@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @typeMethodCallInstructionAST : @semanticInstructionAST {
   private let @lstring mTypeName
@@ -25,9 +25,9 @@ class @typeMethodCallInstructionAST : @semanticInstructionAST {
   private let @actualParameterListAST mActualParameterList
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -53,7 +53,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -78,9 +78,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @typeMethodCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for (mActualParameter) in self.mActualParameterList do
@@ -88,9 +88,9 @@ override method @typeMethodCallInstructionAST enterInstructionInSemanticContext 
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -124,9 +124,9 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !hasCompilerArgument}
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring mTypeName
@@ -180,4 +180,4 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

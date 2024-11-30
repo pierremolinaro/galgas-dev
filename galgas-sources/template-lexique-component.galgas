@@ -1,4 +1,4 @@
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  Copyright (C) 2022, ..., 2022 Pierre Molinaro.
 //
@@ -19,7 +19,7 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
@@ -28,7 +28,7 @@ class @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @templateReplacementListAST mTemplateReplacementList
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3LexiqueComponentSyntax {
 
@@ -123,7 +123,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -218,13 +218,13 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @templateLexiqueComponentAST keyRepresentation -> @string {
   result = "lexique " + self.mLexiqueComponentName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @templateLexiqueComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -240,7 +240,7 @@ override method @templateLexiqueComponentAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addEdge !key !superKey]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -277,7 +277,7 @@ override method @templateLexiqueComponentAST enterDeclarationInSemanticContext
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @templateLexiqueComponentAST semanticAnalysis
                                   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -450,9 +450,9 @@ override method @templateLexiqueComponentAST semanticAnalysis
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //         G E N E R A T I O N    T E M P L A T E S
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private filewrapper templateLexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
 }{
@@ -492,4 +492,4 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

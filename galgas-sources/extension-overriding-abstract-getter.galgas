@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -26,9 +26,9 @@ class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -98,7 +98,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -153,17 +153,17 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   KEY REPRESENTATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @overridingAbstractExtensionGetterAST keyRepresentation  -> @string {
   result = "overriding extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ENTER IN GRAPH
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
       ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
@@ -191,9 +191,9 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
    end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SEMANTIC CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @overridingAbstractExtensionGetterAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap unused ioEquatableExtensionMap
@@ -206,9 +206,9 @@ override method @overridingAbstractExtensionGetterAST enterDeclarationInSemantic
 {
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SEMANTIC ANALYSIS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities
@@ -282,9 +282,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   EXTENSION LIST MAP
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
@@ -308,4 +308,4 @@ override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

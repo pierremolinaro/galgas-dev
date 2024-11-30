@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @insertMethodListAST {
   public let @lstring mInsertMethodName
@@ -57,15 +57,15 @@ class @mapDeclarationAST : @semanticDeclarationAST {
   private let @bool equatable %initArgLabel
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @mapDeclarationAST keyRepresentation ->@string result {
   result = "map @" + self.mMapTypeName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -169,7 +169,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -269,9 +269,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ASSOCIATED ELEMENT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapDeclarationAST addAssociatedElement ?!@galgasDeclarationAST ioDeclarations {
   var structAttributeList = @propertyInCollectionListAST ()
@@ -304,9 +304,9 @@ override method @mapDeclarationAST addAssociatedElement ?!@galgasDeclarationAST 
   [!?ioDeclarations getOptionalTypeName ?* !forTypeNamed: elementTypeName !isPredefined: false]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ENTER IN GRAPH
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -323,9 +323,9 @@ override method @mapDeclarationAST enterDeclarationInGraph
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   ENTER IN SEMANTIC CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapDeclarationAST enterDeclarationInSemanticContext
   ?!@equatableExtensionMap ioEquatableExtensionMap
@@ -664,21 +664,21 @@ override method @mapDeclarationAST enterDeclarationInSemanticContext
   [!?ioTypeMap insertType !typeDefinition.typeName !typeDefinition]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   SEMANTIC ANALYSIS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 map @insertMethodMap {
   insert insertKey error message "the '%K' insert setter is already declared"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 map @searchMethodMap {
   insert insertKey error message "the '%K' search method is already declared"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapDeclarationAST semanticAnalysis
   ?!@lstringlist ioUsefulnessRootEntities
@@ -784,9 +784,9 @@ override method @mapDeclarationAST semanticAnalysis
     }
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
@@ -799,7 +799,7 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mOptionalElementTypeEntry
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapTypeForGeneration appendDeclaration1
                                       ?!@stringset unused ioInclusionSet
@@ -830,7 +830,7 @@ override method @mapTypeForGeneration appendDeclaration1
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
@@ -849,7 +849,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @mapTypeForGeneration appendSpecificImplementation
                                           ?let @unifiedTypeMap unused inTypeMap
@@ -872,9 +872,9 @@ override method @mapTypeForGeneration appendSpecificImplementation
   ]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! Generation Filewrappers
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private filewrapper mapGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -904,4 +904,4 @@ private filewrapper mapGenerationTemplate in "+generation-templates/type_generat
     ?@bool GENERATE_COMPARISON
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

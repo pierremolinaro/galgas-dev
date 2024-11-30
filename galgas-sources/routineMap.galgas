@@ -1,4 +1,4 @@
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  semantics routine map
 //
@@ -18,7 +18,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 func routineMangledName ?let @lstring inRoutineName
                         ?let @formalParameterSignature inRoutineFormalParameters -> @lstring {
@@ -37,7 +37,7 @@ func routineMangledName ?let @lstring inRoutineName
   result = @{!str !inRoutineName.location}
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private func routineArgumentFromFormalParameters ?let @formalParameterSignature inRoutineFormalParameters -> @string {
   result = "("
@@ -58,7 +58,7 @@ private func routineArgumentFromFormalParameters ?let @formalParameterSignature 
   result += ")"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 struct @routineMap {
   private var @internalRoutineMap mInternalRoutineMap = @()
@@ -147,7 +147,7 @@ struct @routineMap {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 map @internalRoutineMap {
   public var @routineArgumentMap mArgumentMap
@@ -156,7 +156,7 @@ map @internalRoutineMap {
   insert or replace
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 map @routineArgumentMap {
   public let @formalParameterSignature mRoutineSignature
@@ -165,11 +165,11 @@ map @routineArgumentMap {
   search searchKey error message "-- internal error --"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @acceptableParameterList {
   public let @formalParameterSignature mRoutineSignature
   public let @bool mIsFilePrivate
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

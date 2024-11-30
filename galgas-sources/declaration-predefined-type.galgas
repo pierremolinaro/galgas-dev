@@ -1,4 +1,4 @@
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  Generate predefined types
 //
@@ -20,17 +20,17 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  A S T   C L A S S    F O R    P R E D E F I N E D   T Y P E S
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @initializerSignatureList {
   public let @formalInputParameterListAST initializer
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract class @predefinedTypeAST : @semanticDeclarationAST {
   public let @string mPredefinedTypeName
@@ -255,7 +255,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                           ?let @string inElementTypeName
@@ -278,7 +278,7 @@ private proc appendPredefinedListTypeAST ?!@semanticDeclarationListAST ioDeclara
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !inElementTypeName + "list")
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?!@lstringlist ioUsefulnessRootEntities {
@@ -308,7 +308,7 @@ private proc appendPredefined2StringListTypeAST ?!@semanticDeclarationListAST io
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2stringlist")
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST ioDeclarationListASTs
                                                 ?let @string inElementTypeName
@@ -351,7 +351,7 @@ private proc appendStructASTForTypeWithLocation ?!@semanticDeclarationListAST io
 //  end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclarationListASTs
                                          ?!@lstringlist unused ioUsefulnessRootEntities {
@@ -380,7 +380,7 @@ private proc appendStructASTForRangeType ?!@semanticDeclarationListAST ioDeclara
   }
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc insertInUsefulnessEntities 
          ?!@lstringlist ioUsefulnessRootEntities
@@ -389,7 +389,7 @@ private proc insertInUsefulnessEntities
   ioUsefulnessRootEntities += !typeUsefulnessName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc insertPredefinedType 
          ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -412,7 +412,7 @@ private proc insertPredefinedType
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListASTs
                                ?!@lstringlist ioUsefulnessRootEntities {
@@ -538,7 +538,7 @@ proc appendPredefinedTypesASTs ?!@semanticDeclarationListAST ioDeclarationListAS
   appendStructASTForRangeType (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_generation" {
 }{
@@ -588,5 +588,5 @@ filewrapper predefinedTypeGenerationTemplate in "+generation-templates/type_gene
   template timer_type "timer-type.h.galgasTemplate"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 

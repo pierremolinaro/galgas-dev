@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3DeclarationsSyntax {
 
@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
 
@@ -125,9 +125,9 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @initializerAST : @semanticDeclarationAST {
   private let @lstring mTypeName
@@ -253,7 +253,7 @@ class @initializerAST : @semanticDeclarationAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -330,9 +330,9 @@ private proc analyzeInitializerBody ?let @lstring inUsefulnessCallerEntityName
   [variableMap checkAutomatonStates !inEndOfMethodLocation]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
@@ -375,9 +375,9 @@ class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGene
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 // INITIALIZER IMPLEMENTATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
                          ?let @string inInitializerName
@@ -507,5 +507,5 @@ private proc generateInitializer ?let @unifiedTypeMapEntry inReceiverType
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 

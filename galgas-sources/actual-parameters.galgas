@@ -1,4 +1,4 @@
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  A C T U A L    P A R A M E T E R
 //
@@ -18,7 +18,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 list @actualParameterListAST {
   public let @actualParameterAST mActualParameter
@@ -66,7 +66,7 @@ list @actualParameterListAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract class @actualParameterAST {
 
@@ -102,7 +102,7 @@ abstract class @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @outputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -187,7 +187,7 @@ class @outputActualParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @outputInputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -286,7 +286,7 @@ class @outputInputActualParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @outputInputJokerParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -374,7 +374,7 @@ class @outputInputJokerParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @outputInputSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -450,7 +450,7 @@ class @outputInputSelfParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputActualExistingVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -541,7 +541,7 @@ class @inputActualExistingVariableParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputActualSelfPropertyParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -633,7 +633,7 @@ class @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputActualSelfParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -723,7 +723,7 @@ class @inputActualSelfParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputActualNewVariableParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -828,7 +828,7 @@ class @inputActualNewVariableParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputActualNewConstantParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -942,7 +942,7 @@ class @inputActualNewConstantParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputSingleJokerActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
@@ -1016,7 +1016,7 @@ class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @inputJokerActualParameterAST : @actualParameterAST {
   public let @location mQualifierLocation
@@ -1076,4 +1076,4 @@ class @inputJokerActualParameterAST : @actualParameterAST {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

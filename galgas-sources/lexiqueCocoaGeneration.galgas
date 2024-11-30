@@ -1,4 +1,4 @@
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  'lexique' component metamodel
 //
@@ -21,15 +21,15 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N (OBJC)
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalExpressionAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalOrExpressionAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
@@ -39,7 +39,7 @@ override getter @lexicalOrExpressionAST generateObjcCocoaConditionCode
   result += [self.mRightOperand generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterIntervalMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -52,7 +52,7 @@ override getter @lexicalCharacterIntervalMatchAST generateObjcCocoaConditionCode
   outGeneratedCode += "]"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalStringMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -61,7 +61,7 @@ override getter @lexicalStringMatchAST generateObjcCocoaConditionCode
   outGeneratedCode += " advance:YES]"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalStringNotMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -71,7 +71,7 @@ override getter @lexicalStringNotMatchAST generateObjcCocoaConditionCode
   outGeneratedCode += " error:& scanningOk]"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterMatchAST generateObjcCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -81,7 +81,7 @@ override getter @lexicalCharacterMatchAST generateObjcCocoaConditionCode
   outGeneratedCode += "]"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterSetMatchAST generateObjcCocoaConditionCode
             ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext  -> @string outGeneratedCode {
@@ -90,15 +90,15 @@ override getter @lexicalCharacterSetMatchAST generateObjcCocoaConditionCode
   outGeneratedCode += "]"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N (SWIFT)
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalExpressionAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalOrExpressionAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
@@ -108,7 +108,7 @@ override getter @lexicalOrExpressionAST generateSwiftCocoaConditionCode
   result += [self.mRightOperand generateSwiftCocoaConditionCode !inLexiqueAnalysisContext]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterIntervalMatchAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -121,7 +121,7 @@ override getter @lexicalCharacterIntervalMatchAST generateSwiftCocoaConditionCod
   outGeneratedCode += ")"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalStringMatchAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -130,7 +130,7 @@ override getter @lexicalStringMatchAST generateSwiftCocoaConditionCode
   outGeneratedCode += ", advance: true)"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalStringNotMatchAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -140,7 +140,7 @@ override getter @lexicalStringNotMatchAST generateSwiftCocoaConditionCode
   outGeneratedCode += ", error: &scanningOk)"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterMatchAST generateSwiftCocoaConditionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -150,7 +150,7 @@ override getter @lexicalCharacterMatchAST generateSwiftCocoaConditionCode
   outGeneratedCode += ")"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterSetMatchAST generateSwiftCocoaConditionCode
             ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext -> @string outGeneratedCode {
@@ -159,41 +159,41 @@ override getter @lexicalCharacterSetMatchAST generateSwiftCocoaConditionCode
   outGeneratedCode += ")"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //     R O U T I N E    O R    F U N C T I O N    A R G U M E N T
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalAttributeInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "mLexicalAttribute_" + self.mAttributeName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = [[self.mCharacter.char uint] string]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalUnsignedInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument -> @string outGeneratedCode {
   outGeneratedCode = [self.mUnsigned.bigint string]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCurrentCharacterInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "mPreviousChar"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalFunctionInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
@@ -205,39 +205,39 @@ override getter @lexicalFunctionInputArgumentAST generateObjcCocoaRoutineOrFunct
   outGeneratedCode += ")"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalAttributeInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "mLexicalAttribute_" + self.mAttributeName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCharacterInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = [[self.mCharacter.char uint] string]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalUnsignedInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument -> @string outGeneratedCode {
   outGeneratedCode = [self.mUnsigned.bigint string]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalCurrentCharacterInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "self.previousChar"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalFunctionInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
@@ -249,15 +249,15 @@ override getter @lexicalFunctionInputArgumentAST generateSwiftCocoaRoutineOrFunc
   outGeneratedCode += ")"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalSendDefaultActionAST generateObjcCocoaDefaultSendCode
   ?let @string inScannerClassName
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalSendTerminalByDefaultAST generateObjcCocoaDefaultSendCode
   ?let @string inScannerClassName
@@ -265,7 +265,7 @@ override getter @lexicalSendTerminalByDefaultAST generateObjcCocoaDefaultSendCod
   outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mDefaultSentTerminal.string identifierRepresentation] + " ;\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalErrorByDefaultAST generateObjcCocoaDefaultSendCode
   ?let @string unused inScannerClassName
@@ -273,13 +273,13 @@ override getter @lexicalErrorByDefaultAST generateObjcCocoaDefaultSendCode
   outGeneratedCode = "scanningOk = NO ;\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalSendDefaultActionAST generateSwiftCocoaDefaultSendCode
   ?let @string inScannerClassName
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalSendTerminalByDefaultAST generateSwiftCocoaDefaultSendCode
   ?let @string inScannerClassName
@@ -287,7 +287,7 @@ override getter @lexicalSendTerminalByDefaultAST generateSwiftCocoaDefaultSendCo
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + [self.mDefaultSentTerminal.string identifierRepresentation] + " ;\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalErrorByDefaultAST generateSwiftCocoaDefaultSendCode
   ?let @string unused inScannerClassName
@@ -295,32 +295,32 @@ override getter @lexicalErrorByDefaultAST generateSwiftCocoaDefaultSendCode
   outGeneratedCode = "scanningOk = false\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @lexicalInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (OBJC)
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @abstractLexicalRuleAST generateObjcCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalImplicitRuleAST generateObjcCocoaCode
   ?let @string inScannerClassName
@@ -337,7 +337,7 @@ override getter @lexicalImplicitRuleAST generateObjcCocoaCode
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalExplicitRuleAST generateObjcCocoaCode
   ?let @string inScannerClassName
@@ -354,16 +354,16 @@ override getter @lexicalExplicitRuleAST generateObjcCocoaCode
   outGeneratedCode += "}else "
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (SWIFT)
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract getter @abstractLexicalRuleAST generateSwiftCocoaCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalImplicitRuleAST generateSwiftCocoaCode
   ?let @string inScannerClassName
@@ -380,7 +380,7 @@ override getter @lexicalImplicitRuleAST generateSwiftCocoaCode
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalExplicitRuleAST generateSwiftCocoaCode
   ?let @string inScannerClassName
@@ -397,5 +397,5 @@ override getter @lexicalExplicitRuleAST generateSwiftCocoaCode
   outGeneratedCode += "}else "
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 

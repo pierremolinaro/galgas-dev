@@ -16,17 +16,17 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @lexicalDropInstructionAST : @lexicalInstructionAST {
   private let @lstring mTerminalName
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3LexiqueComponentSyntax {
 
@@ -42,7 +42,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -58,9 +58,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CHECK LEXICAL INSTRUCTION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
@@ -68,9 +68,9 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
   [ioLexiqueAnalysisContext.mTerminalMap searchKey !self.mTerminalName ?*]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! COCOA GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalDropInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
@@ -79,7 +79,7 @@ override getter @lexicalDropInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + " ;\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalDropInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -88,9 +88,9 @@ override getter @lexicalDropInstructionAST generateSwiftCocoaInstructionCode
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + [self.mTerminalName.string identifierRepresentation] + "\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! C++ CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalDropInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -106,5 +106,5 @@ override getter @lexicalDropInstructionAST generateLexicalInstructionCode
   result = "enterDroppedTerminal (kToken_" + [self.mTerminalName identifierRepresentation] + ") ;\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 

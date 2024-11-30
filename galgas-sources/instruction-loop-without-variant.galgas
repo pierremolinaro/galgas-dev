@@ -15,9 +15,9 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   public let @semanticInstructionListAST mFirstInstructions
@@ -29,9 +29,9 @@ class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   public let @location mEndOfLoopInstruction
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -68,7 +68,7 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
 
@@ -105,9 +105,9 @@ syntax extension galgas4InstructionsSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CONTEXT
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @loopInstructionWithoutVariantAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [self.mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -115,9 +115,9 @@ override method @loopInstructionWithoutVariantAST enterInstructionInSemanticCont
   [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SEMANTICS
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -182,9 +182,9 @@ override method @loopInstructionWithoutVariantAST analyzeSemanticInstruction
   }
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
@@ -237,4 +237,4 @@ override method @loopInstructionWithoutVariantForGeneration generateInstruction 
   ioGeneratedCode += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

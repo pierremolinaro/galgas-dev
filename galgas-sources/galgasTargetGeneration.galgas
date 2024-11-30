@@ -15,7 +15,7 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates/target_generation" {
  "bat", "rtf", "py"
@@ -92,7 +92,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?@string VERSION_STRING
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgasCodeBlocksWindowsTarget
   ?let @string inProjectDirectory
@@ -120,7 +120,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 //private proc generateGalgasCodeBlocksMacTarget
 //  ?let @string inProjectDirectory
@@ -148,7 +148,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
 //  [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 //}
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgasCodeBlocksLinuxI686Target
   ?let @string inProjectDirectory
@@ -176,7 +176,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgasCodeBlocksLinuxX86_64Target
   ?let @string inProjectDirectory
@@ -204,7 +204,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgas3MinGWOnMacOSXTarget
   ?let @string inProjectDirectory
@@ -224,7 +224,7 @@ private proc generateGalgas3MinGWOnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgas3MakefileUnixTarget
   ?let @string inProjectDirectory
@@ -242,7 +242,7 @@ private proc generateGalgas3MakefileUnixTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgas3MakefileMacTarget
   ?let @string inProjectDirectory
@@ -260,7 +260,7 @@ private proc generateGalgas3MakefileMacTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgas3Linux32OnMacOSXTarget
   ?let @string inProjectDirectory
@@ -277,7 +277,7 @@ private proc generateGalgas3Linux32OnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 private proc generateGalgas3Linux64OnMacOSXTarget
   ?let @string inProjectDirectory
@@ -294,7 +294,7 @@ private proc generateGalgas3Linux64OnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc updateGalgasTargets
   ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
@@ -1311,4 +1311,4 @@ proc updateGalgasTargets
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //  Semantic Analysis of expression
 //
@@ -20,11 +20,11 @@
 // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //    A N A L Y S I S    C O N T E X T
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 enum @selfMutability %equatable {
   case none
@@ -54,14 +54,14 @@ enum @selfMutability %equatable {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 enum @selfAvailability %equatable {
   case none
   case available (@unifiedTypeMapEntry type @selfMutability selfMutability)
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 struct @analysisContext {
   public let @semanticContext semanticContext
@@ -72,7 +72,7 @@ struct @analysisContext {
   public let @bool requiresSelfForAccessingProperty %initArgLabel
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
                           ?let @unifiedTypeMapEntry inSourceType
@@ -97,7 +97,7 @@ proc checkAssignmentTypes ?let @unifiedTypeMapEntry inTargetType
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTargetType
                                                 ?let @unifiedTypeMapEntry inSourceType
@@ -237,7 +237,7 @@ proc checkAssignmentTypeWithImplicitGetterCall ?let @unifiedTypeMapEntry inTarge
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
                           ?let @string inOperatorNameForErrorMessage
@@ -367,11 +367,11 @@ proc checkDiadicOperator ?operatorIsHandled: let @bool inOperandIsHandled
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLocationType
@@ -398,11 +398,11 @@ struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLStringListType
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //
 //    E X P R E S S I O N    A N A L Y S I S
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
   ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName
@@ -413,4 +413,4 @@ abstract method @semanticExpressionAST analyzeSemanticExpression
   ?!@localVarManager ioVariableMap
   !@semanticExpressionForGeneration outExpression
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------

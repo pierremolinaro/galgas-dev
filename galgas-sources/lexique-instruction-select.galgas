@@ -16,18 +16,18 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! AST
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 class @lexicalSelectInstructionAST : @lexicalInstructionAST {
   private let @lexicalSelectBranchListAST mLexicalSelectBranchList
   private let @lexicalInstructionListAST mDefaultInstructionList
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! SYNTAX
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas3LexiqueComponentSyntax {
 
@@ -65,7 +65,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -103,9 +103,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! CHECK LEXICAL INSTRUCTION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -123,9 +123,9 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
   end
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! COCOA GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalSelectInstructionAST generateObjcCocoaInstructionCode
   ?let @string inScannerClassName
@@ -158,7 +158,7 @@ override getter @lexicalSelectInstructionAST generateObjcCocoaInstructionCode
   outGeneratedCode += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalSelectInstructionAST generateSwiftCocoaInstructionCode
   ?let @string inScannerClassName
@@ -191,9 +191,9 @@ override getter @lexicalSelectInstructionAST generateSwiftCocoaInstructionCode
   outGeneratedCode += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 //! C++ CODE GENERATION
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
 override getter @lexicalSelectInstructionAST lexicalInstructionUsesLoopLocalVariable -> @bool {
   result = false
@@ -240,5 +240,5 @@ override getter @lexicalSelectInstructionAST generateLexicalInstructionCode
   result += "}\n"
 }
 
-//————————————————————————————————————————————————————————————————————————————————————————————————
+//------------------------------------------------------------------------------------------------
 
