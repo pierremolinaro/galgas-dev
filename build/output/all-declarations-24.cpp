@@ -3062,139 +3062,130 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwi
                                                                                          const GGS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  uint32_t columnMarker = 0 ;
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nfunc enterOptions (") ;
-  columnMarker = result.currentColumn () ;
-  result.appendString ("_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],\n           ") ;
-  result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("_ ioUIntOptionArray : inout [SWIFT_CommandLineOption],\n           ") ;
-  result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("_ ioStringOptionArray : inout [SWIFT_CommandLineOption],\n           ") ;
-  result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("_ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {\n") ;
-  GGS_uint index_502_ (0) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nfunc enterOptions () -> [SWIFT_CommandLineOption] {\n  var array = [SWIFT_CommandLineOption] ()\n") ;
+  GGS_uint index_299_ (0) ;
   if (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_502 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_502.hasCurrentObject ()) {
-      result.appendString ("  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
-      result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 10)).stringValue ()) ;
-      result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_502.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).stringValue ()) ;
+    cEnumerator_commandLineOptionSortedList enumerator_299 (in_BOOL_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_299.hasCurrentObject ()) {
+      result.appendString ("  array.append (SWIFT_CommandLineOption (\n    domainName: ") ;
+      result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 8)).stringValue ()) ;
+      result.appendString (",\n    type: .bool,\n    identifier: ") ;
+      result.appendString (enumerator_299.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 10)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_502.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_299.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_0) {
       case kBoolTrue : {
         result.appendString (GGS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GGS_string ("\"").add_operation (enumerator_502.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).stringValue ()) ;
+        result.appendString (GGS_string ("\"").add_operation (enumerator_299.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 11)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_502.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue ()) ;
+      result.appendString (enumerator_299.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 12)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_502.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 14)).stringValue ()) ;
+      result.appendString (enumerator_299.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue ()) ;
       result.appendString (",\n    defaultValue: \"\"\n  ))\n") ;
-      index_502_.increment () ;
-      enumerator_502.gotoNextObject () ;
+      index_299_.increment () ;
+      enumerator_299.gotoNextObject () ;
     }
   }
-  GGS_uint index_1145_ (0) ;
+  GGS_uint index_953_ (0) ;
   if (in_UINT_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_1145 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_1145.hasCurrentObject ()) {
-      result.appendString ("  ioUIntOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
-      result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 20)).stringValue ()) ;
-      result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_1145.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 21)).stringValue ()) ;
+    cEnumerator_commandLineOptionSortedList enumerator_953 (in_UINT_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_953.hasCurrentObject ()) {
+      result.appendString ("  array.append (SWIFT_CommandLineOption (\n    domainName: ") ;
+      result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 19)).stringValue ()) ;
+      result.appendString (",\n    type: .uint,\n    identifier: ") ;
+      result.appendString (enumerator_953.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 21)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1145.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_953.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_1) {
       case kBoolTrue : {
         result.appendString (GGS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GGS_string ("\"").add_operation (enumerator_1145.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).stringValue ()) ;
+        result.appendString (GGS_string ("\"").add_operation (enumerator_953.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 22)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_1145.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue ()) ;
+      result.appendString (enumerator_953.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_1145.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 24)).stringValue ()) ;
+      result.appendString (enumerator_953.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 24)).stringValue ()) ;
       result.appendString (",\n    defaultValue: ") ;
-      result.appendString (enumerator_1145.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 25)).stringValue ()) ;
+      result.appendString (enumerator_953.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 25)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_1145_.increment () ;
-      enumerator_1145.gotoNextObject () ;
+      index_953_.increment () ;
+      enumerator_953.gotoNextObject () ;
     }
   }
-  GGS_uint index_1845_ (0) ;
+  GGS_uint index_1664_ (0) ;
   if (in_STRING_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_1845 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_1845.hasCurrentObject ()) {
-      result.appendString ("  ioStringOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
+    cEnumerator_commandLineOptionSortedList enumerator_1664 (in_STRING_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_1664.hasCurrentObject ()) {
+      result.appendString ("  array.append (SWIFT_CommandLineOption (\n    domainName: ") ;
       result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 30)).stringValue ()) ;
-      result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_1845.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 31)).stringValue ()) ;
+      result.appendString (",\n    type: .string,\n    identifier: ") ;
+      result.appendString (enumerator_1664.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1845.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1664.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_2) {
       case kBoolTrue : {
         result.appendString (GGS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GGS_string ("\"").add_operation (enumerator_1845.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 32)).stringValue ()) ;
+        result.appendString (GGS_string ("\"").add_operation (enumerator_1664.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_1845.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue ()) ;
+      result.appendString (enumerator_1664.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 34)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_1845.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 34)).stringValue ()) ;
+      result.appendString (enumerator_1664.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 35)).stringValue ()) ;
       result.appendString (",\n    defaultValue: ") ;
-      result.appendString (enumerator_1845.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 35)).stringValue ()) ;
+      result.appendString (enumerator_1664.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 36)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_1845_.increment () ;
-      enumerator_1845.gotoNextObject () ;
+      index_1664_.increment () ;
+      enumerator_1664.gotoNextObject () ;
     }
   }
-  GGS_uint index_2552_ (0) ;
+  GGS_uint index_2382_ (0) ;
   if (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST.isValid ()) {
-    cEnumerator_commandLineOptionSortedList enumerator_2552 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_2552.hasCurrentObject ()) {
-      result.appendString ("  ioStringListOptionArray.append (SWIFT_CommandLineOption (\n    domainName: ") ;
-      result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 40)).stringValue ()) ;
-      result.appendString (",\n    identifier: ") ;
-      result.appendString (enumerator_2552.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 41)).stringValue ()) ;
+    cEnumerator_commandLineOptionSortedList enumerator_2382 (in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_2382.hasCurrentObject ()) {
+      result.appendString ("  array.append (SWIFT_CommandLineOption (\n    domainName: ") ;
+      result.appendString (in_OPTION_5F_COMPONENT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 41)).stringValue ()) ;
+      result.appendString (",\n    type: .stringList,\n    identifier: ") ;
+      result.appendString (enumerator_2382.current_mOptionIdentifier (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue ()) ;
       result.appendString (",\n    commandChar: ") ;
-      const enumGalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_2552.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
+      const enumGalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_2382.current_mOptionChar (HERE).objectCompare (GGS_char (TO_UNICODE (0)))).boolEnum () ;
       switch (test_3) {
       case kBoolTrue : {
         result.appendString (GGS_string ("\"\"").stringValue ()) ;
         } break ;
       case kBoolFalse : {
-        result.appendString (GGS_string ("\"").add_operation (enumerator_2552.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 42)).stringValue ()) ;
+        result.appendString (GGS_string ("\"").add_operation (enumerator_2382.current_mOptionChar (HERE).getter_string (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)).stringValue ()) ;
         } break ;
       default :
         break ;
       }
       result.appendString (",\n    commandString: ") ;
-      result.appendString (enumerator_2552.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue ()) ;
+      result.appendString (enumerator_2382.current_mOptionString (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 45)).stringValue ()) ;
       result.appendString (",\n    comment: ") ;
-      result.appendString (enumerator_2552.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 44)).stringValue ()) ;
+      result.appendString (enumerator_2382.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 46)).stringValue ()) ;
       result.appendString (",\n    defaultValue: ") ;
-      result.appendString (enumerator_2552.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 45)).stringValue ()) ;
+      result.appendString (enumerator_2382.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 47)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_2552_.increment () ;
-      enumerator_2552.gotoNextObject () ;
+      index_2382_.increment () ;
+      enumerator_2382.gotoNextObject () ;
     }
   }
-  result.appendString ("  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n    domainName: \"galgas_cli_options\",\n    identifier: \"quiet_output\",\n    commandChar: \"q\",\n    commandString: \"quiet\",\n    comment: \"Quiet output\",\n    defaultValue: \"\"\n  ))\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  result.appendString ("  array.append (SWIFT_CommandLineOption (\n    domainName: \"galgas_cli_options\",\n    type: .bool,\n    identifier: \"quiet_output\",\n    commandChar: \"q\",\n    commandString: \"quiet\",\n    comment: \"Quiet output\",\n    defaultValue: \"\"\n  ))\n  return array\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
 }
 

@@ -1132,220 +1132,220 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (enumerator_249.current_mFileName (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXBuildFile;\n    fileRef = ") ;
       result.appendString (enumerator_249.current_mFileReference (HERE).stringValue ()) ;
-      result.appendString (" ;\n    settings = {ATTRIBUTES = @(); };\n  };\n\n") ;
+      result.appendString (" ;\n    settings = {ATTRIBUTES = (); };\n  };\n\n") ;
       index_249_.increment () ;
       enumerator_249.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXFileReference */\n") ;
-  GGS_uint index_553_ (0) ;
+  GGS_uint index_552_ (0) ;
   if (in_C_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_553 (in_C_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_553.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_552 (in_C_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_552.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_553.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_552.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_553.current_mValue_31_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_552.current_mValue_31_ (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.c.c;\n    name = ") ;
-      result.appendString (enumerator_553.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue ()) ;
+      result.appendString (enumerator_552.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_553.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue ()) ;
+      result.appendString (enumerator_552.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_553_.increment () ;
-      enumerator_553.gotoNextObject () ;
+      index_552_.increment () ;
+      enumerator_552.gotoNextObject () ;
     }
   }
-  GGS_uint index_938_ (0) ;
+  GGS_uint index_937_ (0) ;
   if (in_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_938 (in_CPP_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_938.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_937 (in_CPP_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_937.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_938.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_937.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_938.current_mValue_31_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_937.current_mValue_31_ (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.cpp.cpp;\n    name = ") ;
-      result.appendString (enumerator_938.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue ()) ;
+      result.appendString (enumerator_937.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_938.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue ()) ;
+      result.appendString (enumerator_937.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_938_.increment () ;
-      enumerator_938.gotoNextObject () ;
+      index_937_.increment () ;
+      enumerator_937.gotoNextObject () ;
     }
   }
-  GGS_uint index_1325_ (0) ;
+  GGS_uint index_1324_ (0) ;
   if (in_M_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1325 (in_M_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_1325.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_1324 (in_M_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_1324.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_1325.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_1324.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_1325.current_mValue_31_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_1324.current_mValue_31_ (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.c.obj;\n    name = ") ;
-      result.appendString (enumerator_1325.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue ()) ;
+      result.appendString (enumerator_1324.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_1325.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue ()) ;
+      result.appendString (enumerator_1324.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_1325_.increment () ;
-      enumerator_1325.gotoNextObject () ;
+      index_1324_.increment () ;
+      enumerator_1324.gotoNextObject () ;
     }
   }
-  GGS_uint index_1711_ (0) ;
+  GGS_uint index_1710_ (0) ;
   if (in_MM_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1711 (in_MM_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_1711.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_1710 (in_MM_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_1710.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_1711.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_1710.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_1711.current_mValue_31_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_1710.current_mValue_31_ (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.cpp.objcpp;\n    name = ") ;
-      result.appendString (enumerator_1711.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue ()) ;
+      result.appendString (enumerator_1710.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_1711.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue ()) ;
+      result.appendString (enumerator_1710.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_1711_.increment () ;
-      enumerator_1711.gotoNextObject () ;
+      index_1710_.increment () ;
+      enumerator_1710.gotoNextObject () ;
     }
   }
-  GGS_uint index_2106_ (0) ;
+  GGS_uint index_2105_ (0) ;
   if (in_HEADER_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_2106 (in_HEADER_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_2106.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_2105 (in_HEADER_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_2105.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_2106.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_2105.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_2106.current_mValue_31_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_2105.current_mValue_31_ (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.c.h;\n    name = ") ;
-      result.appendString (enumerator_2106.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue ()) ;
+      result.appendString (enumerator_2105.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_2106.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue ()) ;
+      result.appendString (enumerator_2105.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_2106_.increment () ;
-      enumerator_2106.gotoNextObject () ;
+      index_2105_.increment () ;
+      enumerator_2105.gotoNextObject () ;
     }
   }
-  GGS_uint index_2497_ (0) ;
+  GGS_uint index_2496_ (0) ;
   if (in_FRAMEWORK_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_2497 (in_FRAMEWORK_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_2497.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_2496 (in_FRAMEWORK_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_2496.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_2497.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_2496.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_2497.current_mValue_31_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_2496.current_mValue_31_ (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXFileReference;\n    lastKnownFileType = wrapper.framework;\n    name = ") ;
-      result.appendString (enumerator_2497.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).stringValue ()) ;
+      result.appendString (enumerator_2496.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 74)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_2497.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue ()) ;
+      result.appendString (enumerator_2496.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_2497_.increment () ;
-      enumerator_2497.gotoNextObject () ;
+      index_2496_.increment () ;
+      enumerator_2496.gotoNextObject () ;
     }
   }
-  GGS_uint index_3070_ (0) ;
+  GGS_uint index_3069_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_3070 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_3070.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_3069 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_3069.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_3070.current_mProductFileReference (HERE).stringValue ()) ;
+      result.appendString (enumerator_3069.current_mProductFileReference (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFileReference;\n    explicitFileType = \"compiled.mach-o.executable\";\n    includeInIndex = 0;\n    path = ") ;
-      result.appendString (enumerator_3070.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue ()) ;
+      result.appendString (enumerator_3069.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue ()) ;
       result.appendString (";\n    sourceTree = BUILT_PRODUCTS_DIR;\n  };\n\n") ;
-      index_3070_.increment () ;
-      enumerator_3070.gotoNextObject () ;
+      index_3069_.increment () ;
+      enumerator_3069.gotoNextObject () ;
     }
   }
-  GGS_uint index_3666_ (0) ;
+  GGS_uint index_3665_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_3666 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_3666.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_3665 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_3665.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_3666.current_mProductFileReference (HERE).stringValue ()) ;
+      result.appendString (enumerator_3665.current_mProductFileReference (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFileReference;\n    explicitFileType = \"compiled.mach-o.executable\";\n    includeInIndex = 0;\n    path = ") ;
-      result.appendString (enumerator_3666.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 93)).stringValue ()) ;
+      result.appendString (enumerator_3665.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 93)).stringValue ()) ;
       result.appendString (";\n    sourceTree = BUILT_PRODUCTS_DIR;\n  };\n\n") ;
-      index_3666_.increment () ;
-      enumerator_3666.gotoNextObject () ;
+      index_3665_.increment () ;
+      enumerator_3665.gotoNextObject () ;
     }
   }
-  GGS_uint index_3995_ (0) ;
+  GGS_uint index_3994_ (0) ;
   if (in_PLIST_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3995 (in_PLIST_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_3995.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_3994 (in_PLIST_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_3994.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_3995.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_3994.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = text.plist;\n    name = ") ;
-      result.appendString (enumerator_3995.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).stringValue ()) ;
+      result.appendString (enumerator_3994.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 102)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_3995.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue ()) ;
+      result.appendString (enumerator_3994.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_3995_.increment () ;
-      enumerator_3995.gotoNextObject () ;
+      index_3994_.increment () ;
+      enumerator_3994.gotoNextObject () ;
     }
   }
-  GGS_uint index_4359_ (0) ;
+  GGS_uint index_4358_ (0) ;
   if (in_XIB_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_4359 (in_XIB_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_4359.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_4358 (in_XIB_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_4358.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_4359.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_4358.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = wrapper.xib;\n    name = ") ;
-      result.appendString (enumerator_4359.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue ()) ;
+      result.appendString (enumerator_4358.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_4359.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue ()) ;
+      result.appendString (enumerator_4358.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_4359_.increment () ;
-      enumerator_4359.gotoNextObject () ;
+      index_4358_.increment () ;
+      enumerator_4358.gotoNextObject () ;
     }
   }
-  GGS_uint index_4725_ (0) ;
+  GGS_uint index_4724_ (0) ;
   if (in_TIFF_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_4725 (in_TIFF_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_4725.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_4724 (in_TIFF_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_4724.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_4725.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_4724.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFileReference;\n    lastKnownFileType = image.tiff;\n    name = ") ;
-      result.appendString (enumerator_4725.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).stringValue ()) ;
+      result.appendString (enumerator_4724.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 121)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_4725.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue ()) ;
+      result.appendString (enumerator_4724.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_4725_.increment () ;
-      enumerator_4725.gotoNextObject () ;
+      index_4724_.increment () ;
+      enumerator_4724.gotoNextObject () ;
     }
   }
-  GGS_uint index_5064_ (0) ;
+  GGS_uint index_5063_ (0) ;
   if (in_ICNS_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_5064 (in_ICNS_5F_FILE_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_5064.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_5063 (in_ICNS_5F_FILE_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_5063.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_5064.current_mValue_30_ (HERE).stringValue ()) ;
+      result.appendString (enumerator_5063.current_mValue_30_ (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFileReference;\n    lastKnownFileType = image.icns;\n    name = ") ;
-      result.appendString (enumerator_5064.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).stringValue ()) ;
+      result.appendString (enumerator_5063.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 130)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_5064.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue ()) ;
+      result.appendString (enumerator_5063.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_5064_.increment () ;
-      enumerator_5064.gotoNextObject () ;
+      index_5063_.increment () ;
+      enumerator_5063.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */\n\n") ;
-  GGS_uint index_5715_ (0) ;
+  GGS_uint index_5714_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_5715 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_5715.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_5715.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    cEnumerator_XCodeToolTargetList enumerator_5714 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_5714.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_5714.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       switch (test_0) {
       case kBoolTrue : {
         result.appendString ("  ") ;
-        result.appendString (enumerator_5715.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
+        result.appendString (enumerator_5714.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
         result.appendString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
-        GGS_uint index_5954_ (0) ;
-        if (enumerator_5715.current_mFrameworksFileRefList (HERE).isValid ()) {
-          cEnumerator_stringlist enumerator_5954 (enumerator_5715.current_mFrameworksFileRefList (HERE), EnumerationOrder::up) ;
-          while (enumerator_5954.hasCurrentObject ()) {
+        GGS_uint index_5953_ (0) ;
+        if (enumerator_5714.current_mFrameworksFileRefList (HERE).isValid ()) {
+          cEnumerator_stringlist enumerator_5953 (enumerator_5714.current_mFrameworksFileRefList (HERE), EnumerationOrder::up) ;
+          while (enumerator_5953.hasCurrentObject ()) {
             result.appendString ("      ") ;
-            result.appendString (enumerator_5954.current_mValue (HERE).stringValue ()) ;
+            result.appendString (enumerator_5953.current_mValue (HERE).stringValue ()) ;
             result.appendString (",\n") ;
-            index_5954_.increment () ;
-            enumerator_5954.gotoNextObject () ;
+            index_5953_.increment () ;
+            enumerator_5953.gotoNextObject () ;
           }
         }
         result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
@@ -1355,96 +1355,96 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       default :
         break ;
       }
-      index_5715_.increment () ;
-      enumerator_5715.gotoNextObject () ;
+      index_5714_.increment () ;
+      enumerator_5714.gotoNextObject () ;
     }
   }
-  GGS_uint index_6392_ (0) ;
+  GGS_uint index_6391_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_6392 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_6392.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_6391 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_6391.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_6392.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_6391.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
       result.appendString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
-      GGS_uint index_6576_ (0) ;
-      if (enumerator_6392.current_mFrameworksFileRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_6576 (enumerator_6392.current_mFrameworksFileRefList (HERE), EnumerationOrder::up) ;
-        while (enumerator_6576.hasCurrentObject ()) {
+      GGS_uint index_6575_ (0) ;
+      if (enumerator_6391.current_mFrameworksFileRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_6575 (enumerator_6391.current_mFrameworksFileRefList (HERE), EnumerationOrder::up) ;
+        while (enumerator_6575.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_6576.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_6575.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_6576_.increment () ;
-          enumerator_6576.gotoNextObject () ;
+          index_6575_.increment () ;
+          enumerator_6575.gotoNextObject () ;
         }
       }
       result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      index_6392_.increment () ;
-      enumerator_6392.gotoNextObject () ;
+      index_6391_.increment () ;
+      enumerator_6391.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXGroup section */\n") ;
-  GGS_uint index_6852_ (0) ;
+  GGS_uint index_6851_ (0) ;
   if (in_GROUPS.isValid ()) {
-    cEnumerator_XCodeGroupList enumerator_6852 (in_GROUPS, EnumerationOrder::up) ;
-    while (enumerator_6852.hasCurrentObject ()) {
+    cEnumerator_XCodeGroupList enumerator_6851 (in_GROUPS, EnumerationOrder::up) ;
+    while (enumerator_6851.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_6852.current_mGroupReference (HERE).stringValue ()) ;
+      result.appendString (enumerator_6851.current_mGroupReference (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_6852.current_mGroupName (HERE).stringValue ()) ;
+      result.appendString (enumerator_6851.current_mGroupName (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXGroup;\n    children = (\n") ;
-      GGS_uint index_6979_ (0) ;
-      if (enumerator_6852.current_mChildrenRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_6979 (enumerator_6852.current_mChildrenRefs (HERE), EnumerationOrder::up) ;
-        while (enumerator_6979.hasCurrentObject ()) {
+      GGS_uint index_6978_ (0) ;
+      if (enumerator_6851.current_mChildrenRefs (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_6978 (enumerator_6851.current_mChildrenRefs (HERE), EnumerationOrder::up) ;
+        while (enumerator_6978.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_6979.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_6978.current_mValue (HERE).stringValue ()) ;
           result.appendString (", \n") ;
-          index_6979_.increment () ;
-          enumerator_6979.gotoNextObject () ;
+          index_6978_.increment () ;
+          enumerator_6978.gotoNextObject () ;
         }
       }
       result.appendString ("    );\n    name = ") ;
-      result.appendString (enumerator_6852.current_mGroupName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 174)).stringValue ()) ;
+      result.appendString (enumerator_6851.current_mGroupName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 174)).stringValue ()) ;
       result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_6852.current_mGroupPath (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 175)).stringValue ()) ;
+      result.appendString (enumerator_6851.current_mGroupPath (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 175)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n") ;
-      index_6852_.increment () ;
-      enumerator_6852.gotoNextObject () ;
+      index_6851_.increment () ;
+      enumerator_6851.gotoNextObject () ;
     }
   }
   result.appendString ("\n  ") ;
   result.appendString (in_MAIN_5F_GROUP_5F_REF.stringValue ()) ;
   result.appendString (" /* Main Group */ = {\n    isa = PBXGroup;\n    children = (\n") ;
-  GGS_uint index_7331_ (0) ;
+  GGS_uint index_7330_ (0) ;
   if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
-    cEnumerator_stringlist enumerator_7331 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, EnumerationOrder::up) ;
-    while (enumerator_7331.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_7330 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, EnumerationOrder::up) ;
+    while (enumerator_7330.hasCurrentObject ()) {
       result.appendString ("      ") ;
-      result.appendString (enumerator_7331.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_7330.current_mValue (HERE).stringValue ()) ;
       result.appendString (",\n") ;
-      index_7331_.increment () ;
-      enumerator_7331.gotoNextObject () ;
+      index_7330_.increment () ;
+      enumerator_7330.gotoNextObject () ;
     }
   }
   result.appendString ("    );\n    sourceTree = \"<group>\";\n  };\n\n  /*------------------------------------------------------------------ PBXNativeTarget */\n") ;
-  GGS_uint index_7745_ (0) ;
+  GGS_uint index_7744_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_7745 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_7745.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_7744 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_7744.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_7745.current_mTargetRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mTargetRef (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_7745.current_mTargetName (HERE).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mTargetName (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXNativeTarget;\n    buildConfigurationList = ") ;
-      result.appendString (enumerator_7745.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
       result.appendString (" ;\n    buildPhases = (\n      ") ;
-      result.appendString (enumerator_7745.current_mBuildPhaseRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mBuildPhaseRef (HERE).stringValue ()) ;
       result.appendString (" ,\n") ;
-      const enumGalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, enumerator_7745.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const enumGalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, enumerator_7744.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 200)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       switch (test_1) {
       case kBoolTrue : {
         result.appendString ("      ") ;
-        result.appendString (enumerator_7745.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
+        result.appendString (enumerator_7744.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
         result.appendString (" , /* Frameworks */\n") ;
         } break ;
       case kBoolFalse : {
@@ -1453,53 +1453,53 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
         break ;
       }
       result.appendString ("    );\n    buildRules = (\n    );\n    dependencies = (\n    );\n    name = ") ;
-      result.appendString (enumerator_7745.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 208)).stringValue ()) ;
       result.appendString (";\n    productInstallPath = \"$(HOME)/bin\";\n    productName = ") ;
-      result.appendString (enumerator_7745.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).stringValue ()) ;
       result.appendString (";\n    productReference = ") ;
-      result.appendString (enumerator_7745.current_mProductFileReference (HERE).stringValue ()) ;
+      result.appendString (enumerator_7744.current_mProductFileReference (HERE).stringValue ()) ;
       result.appendString (" ;\n    productType = \"com.apple.product-type.tool\";\n  };\n \n") ;
-      index_7745_.increment () ;
-      enumerator_7745.gotoNextObject () ;
+      index_7744_.increment () ;
+      enumerator_7744.gotoNextObject () ;
     }
   }
-  GGS_uint index_8702_ (0) ;
+  GGS_uint index_8701_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_8702 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_8702.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_8701 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_8701.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_8702.current_mTargetRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mTargetRef (HERE).stringValue ()) ;
       result.appendString (" /* ") ;
-      result.appendString (enumerator_8702.current_mTargetName (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mTargetName (HERE).stringValue ()) ;
       result.appendString (" */ = {\n    isa = PBXNativeTarget;\n    buildConfigurationList = ") ;
-      result.appendString (enumerator_8702.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
       result.appendString (" ;\n    buildPhases = (\n      ") ;
-      result.appendString (enumerator_8702.current_mResourceBuildRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mResourceBuildRef (HERE).stringValue ()) ;
       result.appendString (" , /* Resources */\n      ") ;
-      result.appendString (enumerator_8702.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
       result.appendString (" , /* Frameworks */\n      ") ;
-      result.appendString (enumerator_8702.current_mBuildPhaseRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mBuildPhaseRef (HERE).stringValue ()) ;
       result.appendString (" , /* Sources */\n    );\n    buildRules = (\n    );\n    dependencies = (\n") ;
-      GGS_uint index_9091_ (0) ;
-      if (enumerator_8702.current_mDependentTargets (HERE).isValid ()) {
-        cEnumerator__32_stringlist enumerator_9091 (enumerator_8702.current_mDependentTargets (HERE), EnumerationOrder::up) ;
-        while (enumerator_9091.hasCurrentObject ()) {
+      GGS_uint index_9090_ (0) ;
+      if (enumerator_8701.current_mDependentTargets (HERE).isValid ()) {
+        cEnumerator__32_stringlist enumerator_9090 (enumerator_8701.current_mDependentTargets (HERE), EnumerationOrder::up) ;
+        while (enumerator_9090.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_9091.current_mValue_30_ (HERE).stringValue ()) ;
+          result.appendString (enumerator_9090.current_mValue_30_ (HERE).stringValue ()) ;
           result.appendString (" ,\n") ;
-          index_9091_.increment () ;
-          enumerator_9091.gotoNextObject () ;
+          index_9090_.increment () ;
+          enumerator_9090.gotoNextObject () ;
         }
       }
       result.appendString ("    );\n    name = ") ;
-      result.appendString (enumerator_8702.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 234)).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 234)).stringValue ()) ;
       result.appendString (";\n    productInstallPath = \"$(HOME)/bin\";\n    productName = ") ;
-      result.appendString (enumerator_8702.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 236)).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 236)).stringValue ()) ;
       result.appendString (";\n    productReference = ") ;
-      result.appendString (enumerator_8702.current_mProductFileReference (HERE).stringValue ()) ;
+      result.appendString (enumerator_8701.current_mProductFileReference (HERE).stringValue ()) ;
       result.appendString (" ;\n    productType = \"com.apple.product-type.application\";\n  };\n\n") ;
-      index_8702_.increment () ;
-      enumerator_8702.gotoNextObject () ;
+      index_8701_.increment () ;
+      enumerator_8701.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXProject */\n  ") ;
@@ -1509,188 +1509,188 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   result.appendString (" /* Build configuration list for PBXProject */;\n   compatibilityVersion = \"Xcode 2.4\";\n   hasScannedForEncodings = 1;\n   mainGroup = ") ;
   result.appendString (in_MAIN_5F_GROUP_5F_REF.stringValue ()) ;
   result.appendString (";\n   projectDirPath = \"\";\n   projectRoot = \"\";\n   targets = (\n") ;
-  GGS_uint index_10115_ (0) ;
+  GGS_uint index_10114_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_10115 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_10115.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_10114 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_10114.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_10115.current_mTargetRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_10114.current_mTargetRef (HERE).stringValue ()) ;
       result.appendString (", \n") ;
-      index_10115_.increment () ;
-      enumerator_10115.gotoNextObject () ;
+      index_10114_.increment () ;
+      enumerator_10114.gotoNextObject () ;
     }
   }
-  GGS_uint index_10454_ (0) ;
+  GGS_uint index_10453_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_10454 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_10454.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_10453 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_10453.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_10454.current_mTargetRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_10453.current_mTargetRef (HERE).stringValue ()) ;
       result.appendString (", \n") ;
-      index_10454_.increment () ;
-      enumerator_10454.gotoNextObject () ;
+      index_10453_.increment () ;
+      enumerator_10453.gotoNextObject () ;
     }
   }
   result.appendString ("   );\n  };\n\n  /*------------------------------------------------------------------ PBXResourcesBuildPhase */\n\n") ;
-  GGS_uint index_10906_ (0) ;
+  GGS_uint index_10905_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_10906 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_10906.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_10905 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_10905.hasCurrentObject ()) {
       result.appendString ("  ") ;
-      result.appendString (enumerator_10906.current_mResourceBuildRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_10905.current_mResourceBuildRef (HERE).stringValue ()) ;
       result.appendString (" /* Resources */ = {\n    isa = PBXResourcesBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
-      GGS_uint index_11089_ (0) ;
-      if (enumerator_10906.current_mResourceFileBuildRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_11089 (enumerator_10906.current_mResourceFileBuildRefs (HERE), EnumerationOrder::up) ;
-        while (enumerator_11089.hasCurrentObject ()) {
+      GGS_uint index_11088_ (0) ;
+      if (enumerator_10905.current_mResourceFileBuildRefs (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_11088 (enumerator_10905.current_mResourceFileBuildRefs (HERE), EnumerationOrder::up) ;
+        while (enumerator_11088.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_11089.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_11088.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_11089_.increment () ;
-          enumerator_11089.gotoNextObject () ;
+          index_11088_.increment () ;
+          enumerator_11088.gotoNextObject () ;
         }
       }
       result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      index_10906_.increment () ;
-      enumerator_10906.gotoNextObject () ;
+      index_10905_.increment () ;
+      enumerator_10905.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXSourcesBuildPhase */\n") ;
-  GGS_uint index_11539_ (0) ;
+  GGS_uint index_11538_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_11539 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_11539.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_11538 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_11538.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_11539.current_mBuildPhaseRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_11538.current_mBuildPhaseRef (HERE).stringValue ()) ;
       result.appendString (" /* Sources */ = {\n      isa = PBXSourcesBuildPhase;\n      buildActionMask = 2147483647;\n      files = (\n") ;
-      GGS_uint index_11706_ (0) ;
-      if (enumerator_11539.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_11706 (enumerator_11539.current_mBuildPhaseRefList (HERE), EnumerationOrder::up) ;
-        while (enumerator_11706.hasCurrentObject ()) {
+      GGS_uint index_11705_ (0) ;
+      if (enumerator_11538.current_mBuildPhaseRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_11705 (enumerator_11538.current_mBuildPhaseRefList (HERE), EnumerationOrder::up) ;
+        while (enumerator_11705.hasCurrentObject ()) {
           result.appendString ("        ") ;
-          result.appendString (enumerator_11706.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_11705.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_11706_.increment () ;
-          enumerator_11706.gotoNextObject () ;
+          index_11705_.increment () ;
+          enumerator_11705.gotoNextObject () ;
         }
       }
       result.appendString ("      );\n      runOnlyForDeploymentPostprocessing = 0;\n    };\n") ;
-      index_11539_.increment () ;
-      enumerator_11539.gotoNextObject () ;
+      index_11538_.increment () ;
+      enumerator_11538.gotoNextObject () ;
     }
   }
-  GGS_uint index_12112_ (0) ;
+  GGS_uint index_12111_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_12112 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_12112.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_12111 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_12111.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_12112.current_mBuildPhaseRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_12111.current_mBuildPhaseRef (HERE).stringValue ()) ;
       result.appendString (" /* Sources */ = {\n      isa = PBXSourcesBuildPhase;\n      buildActionMask = 2147483647;\n      files = (\n") ;
-      GGS_uint index_12279_ (0) ;
-      if (enumerator_12112.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_12279 (enumerator_12112.current_mBuildPhaseRefList (HERE), EnumerationOrder::up) ;
-        while (enumerator_12279.hasCurrentObject ()) {
+      GGS_uint index_12278_ (0) ;
+      if (enumerator_12111.current_mBuildPhaseRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_12278 (enumerator_12111.current_mBuildPhaseRefList (HERE), EnumerationOrder::up) ;
+        while (enumerator_12278.hasCurrentObject ()) {
           result.appendString ("        ") ;
-          result.appendString (enumerator_12279.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_12278.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_12279_.increment () ;
-          enumerator_12279.gotoNextObject () ;
+          index_12278_.increment () ;
+          enumerator_12278.gotoNextObject () ;
         }
       }
       result.appendString ("      );\n      runOnlyForDeploymentPostprocessing = 0;\n    };\n") ;
-      index_12112_.increment () ;
-      enumerator_12112.gotoNextObject () ;
+      index_12111_.increment () ;
+      enumerator_12111.gotoNextObject () ;
     }
   }
   result.appendString ("\n\n  /*------------------------------------------------------------------ PBXTargetDependency */\n \n") ;
-  GGS_uint index_12786_ (0) ;
+  GGS_uint index_12785_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_12786 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_12786.hasCurrentObject ()) {
-      GGS_uint index_12834_ (0) ;
-      if (enumerator_12786.current_mDependentTargets (HERE).isValid ()) {
-        cEnumerator__32_stringlist enumerator_12834 (enumerator_12786.current_mDependentTargets (HERE), EnumerationOrder::up) ;
-        while (enumerator_12834.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_12785 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_12785.hasCurrentObject ()) {
+      GGS_uint index_12833_ (0) ;
+      if (enumerator_12785.current_mDependentTargets (HERE).isValid ()) {
+        cEnumerator__32_stringlist enumerator_12833 (enumerator_12785.current_mDependentTargets (HERE), EnumerationOrder::up) ;
+        while (enumerator_12833.hasCurrentObject ()) {
           result.appendString ("  ") ;
-          result.appendString (enumerator_12834.current_mValue_30_ (HERE).stringValue ()) ;
+          result.appendString (enumerator_12833.current_mValue_30_ (HERE).stringValue ()) ;
           result.appendString (" = {\n    isa = PBXTargetDependency;\n    target = ") ;
-          result.appendString (enumerator_12834.current_mValue_31_ (HERE).stringValue ()) ;
+          result.appendString (enumerator_12833.current_mValue_31_ (HERE).stringValue ()) ;
           result.appendString (";\n  };\n\n") ;
-          index_12834_.increment () ;
-          enumerator_12834.gotoNextObject () ;
+          index_12833_.increment () ;
+          enumerator_12833.gotoNextObject () ;
         }
       }
-      index_12786_.increment () ;
-      enumerator_12786.gotoNextObject () ;
+      index_12785_.increment () ;
+      enumerator_12785.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXVariantGroup */\n \n  /*------------------------------------------------------------------ XCBuildConfiguration */\n    ") ;
   result.appendString (in_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
   result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        CLANG_CXX_LANGUAGE_STANDARD = \"c++17\";\n") ;
-  GGS_uint index_13358_ (0) ;
+  GGS_uint index_13357_ (0) ;
   if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_13358 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_13358.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_13357 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_13357.hasCurrentObject ()) {
       result.appendString ("      ") ;
-      result.appendString (enumerator_13358.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_13357.current_mValue (HERE).stringValue ()) ;
       result.appendString (" ;\n") ;
-      index_13358_.increment () ;
-      enumerator_13358.gotoNextObject () ;
+      index_13357_.increment () ;
+      enumerator_13357.gotoNextObject () ;
     }
   }
   result.appendString ("    };\n    name = Default;\n  };\n\n") ;
-  GGS_uint index_13673_ (0) ;
+  GGS_uint index_13672_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_13673 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_13673.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_13672 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_13672.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_13673.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_13672.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        ONLY_ACTIVE_ARCH = YES;\n") ;
-      GGS_uint index_13877_ (0) ;
-      if (enumerator_13673.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_13877 (enumerator_13673.current_mBuildConfigurationSettingList (HERE), EnumerationOrder::up) ;
-        while (enumerator_13877.hasCurrentObject ()) {
+      GGS_uint index_13876_ (0) ;
+      if (enumerator_13672.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_13876 (enumerator_13672.current_mBuildConfigurationSettingList (HERE), EnumerationOrder::up) ;
+        while (enumerator_13876.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_13877.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_13876.current_mValue (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
-          index_13877_.increment () ;
-          enumerator_13877.gotoNextObject () ;
+          index_13876_.increment () ;
+          enumerator_13876.gotoNextObject () ;
         }
       }
       result.appendString ("      PRODUCT_NAME = ") ;
-      result.appendString (enumerator_13673.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 345)).stringValue ()) ;
+      result.appendString (enumerator_13672.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 345)).stringValue ()) ;
       result.appendString (" ;\n    };\n    name = Default;\n  };\n\n") ;
-      index_13673_.increment () ;
-      enumerator_13673.gotoNextObject () ;
+      index_13672_.increment () ;
+      enumerator_13672.gotoNextObject () ;
     }
   }
-  GGS_uint index_14352_ (0) ;
+  GGS_uint index_14351_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_14352 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_14352.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_14351 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_14351.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_14352.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_14351.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n") ;
-      GGS_uint index_14520_ (0) ;
-      if (enumerator_14352.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_14520 (enumerator_14352.current_mBuildConfigurationSettingList (HERE), EnumerationOrder::up) ;
-        while (enumerator_14520.hasCurrentObject ()) {
+      GGS_uint index_14519_ (0) ;
+      if (enumerator_14351.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_14519 (enumerator_14351.current_mBuildConfigurationSettingList (HERE), EnumerationOrder::up) ;
+        while (enumerator_14519.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_14520.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_14519.current_mValue (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
-          index_14520_.increment () ;
-          enumerator_14520.gotoNextObject () ;
+          index_14519_.increment () ;
+          enumerator_14519.gotoNextObject () ;
         }
       }
       result.appendString ("      INFOPLIST_FILE = \"Info.plist\";\n      PRODUCT_NAME = ") ;
-      result.appendString (enumerator_14352.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 358)).stringValue ()) ;
+      result.appendString (enumerator_14351.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 358)).stringValue ()) ;
       result.appendString (";\n      PRODUCT_BUNDLE_IDENTIFIER = \"") ;
       result.appendString (in_APPLICATION_5F_BUNDLE_5F_BASE.stringValue ()) ;
       result.appendString (".") ;
       result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
       result.appendString ("\";\n    };\n    name = Default;\n  };\n\n") ;
-      index_14352_.increment () ;
-      enumerator_14352.gotoNextObject () ;
+      index_14351_.increment () ;
+      enumerator_14351.gotoNextObject () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ XCConfigurationList section */\n\n    ") ;
@@ -1698,30 +1698,30 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   result.appendString (" /* Build configuration list for PBXProject */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
   result.appendString (in_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
   result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-  GGS_uint index_15479_ (0) ;
+  GGS_uint index_15478_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_15479 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_15479.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_15478 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_15478.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_15479.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_15478.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-      result.appendString (enumerator_15479.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_15478.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      index_15479_.increment () ;
-      enumerator_15479.gotoNextObject () ;
+      index_15478_.increment () ;
+      enumerator_15478.gotoNextObject () ;
     }
   }
-  GGS_uint index_16061_ (0) ;
+  GGS_uint index_16060_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_16061 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
-    while (enumerator_16061.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_16060 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::up) ;
+    while (enumerator_16060.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_16061.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_16060.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-      result.appendString (enumerator_16061.current_mBuildConfigurationRef (HERE).stringValue ()) ;
+      result.appendString (enumerator_16060.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      index_16061_.increment () ;
-      enumerator_16061.gotoNextObject () ;
+      index_16060_.increment () ;
+      enumerator_16060.gotoNextObject () ;
     }
   }
   result.appendString ("/*------------------------------------------------------------------ End */\n  };\n\n  rootObject = ") ;
@@ -4257,7 +4257,7 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       GGS_stringlist temp_70 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)) ;
       temp_70.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1266)) ;
       temp_70.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1267)) ;
-      temp_70.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = @()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1268)) ;
+      temp_70.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1268)) ;
       temp_70.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_WARN_UNUSED_PARAMETER = YES"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1269)) ;
       temp_70.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("PRODUCT_BUNDLE_IDENTIFIER = \"").add_operation (var_applicationBundleBase_24994, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)).add_operation (GGS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)).add_operation (GGS_string (".tooldebug\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1270)) ;
       var_settingList_52353 = temp_70.add_operation (var_codeSigningSettingList_51329, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1271)) ;
@@ -4265,37 +4265,37 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       if (kBoolTrue == test_71) {
         test_71 = GGS_bool (ComparisonKind::greaterThan, constinArgument_inHandCodedLinkToolFileList.getter_count (SOURCE_FILE ("galgasTargetGeneration.galgas", 1272)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
         if (kBoolTrue == test_71) {
-          GGS_string var_s_53726 = GGS_string ("OTHER_LDFLAGS=(") ;
-          cEnumerator_stringlist enumerator_53759 (constinArgument_inHandCodedLinkToolFileList, EnumerationOrder::up) ;
-          while (enumerator_53759.hasCurrentObject ()) {
-            var_s_53726.plusAssign_operation(GGS_string ("\"").add_operation (enumerator_53759.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1275)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1275)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1275)) ;
-            if (enumerator_53759.hasNextObject ()) {
-              var_s_53726.plusAssign_operation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)) ;
+          GGS_string var_s_53725 = GGS_string ("OTHER_LDFLAGS=(") ;
+          cEnumerator_stringlist enumerator_53758 (constinArgument_inHandCodedLinkToolFileList, EnumerationOrder::up) ;
+          while (enumerator_53758.hasCurrentObject ()) {
+            var_s_53725.plusAssign_operation(GGS_string ("\"").add_operation (enumerator_53758.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1275)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1275)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1275)) ;
+            if (enumerator_53758.hasNextObject ()) {
+              var_s_53725.plusAssign_operation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1276)) ;
             }
-            enumerator_53759.gotoNextObject () ;
+            enumerator_53758.gotoNextObject () ;
           }
-          var_s_53726.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1278)) ;
-          var_settingList_52353.addAssign_operation (var_s_53726  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1279)) ;
+          var_s_53725.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1278)) ;
+          var_settingList_52353.addAssign_operation (var_s_53725  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1279)) ;
         }
       }
-      GGS_string var_debugTargetRef_54251 ;
-      GGS_string var_debugProductFileRef_54292 ;
+      GGS_string var_debugTargetRef_54250 ;
+      GGS_string var_debugProductFileRef_54291 ;
       {
-      extensionSetter_addToolTarget (var_xcodeProject_26828, constinArgument_inTargetName.add_operation (GGS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1282)), constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1283)), var_buildCFileRefListForTool_31795.add_operation (var_buildCppFileRefListForTool_31846, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1284)).add_operation (var_mm_5F_FileRefList_31939, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1284)), var_toolFrameworksFileRefList_32791, var_settingList_52353, var_debugTargetRef_54251, var_debugProductFileRef_54292, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1281)) ;
+      extensionSetter_addToolTarget (var_xcodeProject_26828, constinArgument_inTargetName.add_operation (GGS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1282)), constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1283)), var_buildCFileRefListForTool_31795.add_operation (var_buildCppFileRefListForTool_31846, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1284)).add_operation (var_mm_5F_FileRefList_31939, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1284)), var_toolFrameworksFileRefList_32791, var_settingList_52353, var_debugTargetRef_54250, var_debugProductFileRef_54291, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1281)) ;
       }
       GGS_stringlist temp_72 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1293)) ;
       temp_72.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1292)) ;
-      temp_72.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = @()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1293)) ;
-      GGS_stringlist var_cocoaConfigurationSettingList_54363 = temp_72.add_operation (var_codeSigningSettingList_51329, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1294)) ;
+      temp_72.enterElement (GGS_stringlist_2E_element::init_21_ (GGS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()"), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1293)) ;
+      GGS_stringlist var_cocoaConfigurationSettingList_54362 = temp_72.add_operation (var_codeSigningSettingList_51329, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1294)) ;
       {
       GGS_stringlist temp_73 = GGS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1302)) ;
       temp_73.enterElement (GGS_stringlist_2E_element::init_21_ (var_releaseTargetRef_53226, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1302)) ;
-      temp_73.enterElement (GGS_stringlist_2E_element::init_21_ (var_debugTargetRef_54251, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1302)) ;
+      temp_73.enterElement (GGS_stringlist_2E_element::init_21_ (var_debugTargetRef_54250, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1302)) ;
       GGS__32_stringlist temp_74 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
       temp_74.enterElement (GGS__32_stringlist_2E_element::init_21__21_ (var_releaseProductFileRef_53269, constinArgument_inTargetName, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
-      temp_74.enterElement (GGS__32_stringlist_2E_element::init_21__21_ (var_debugProductFileRef_54292, constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
-      GGS_string joker_55157 ; // Joker input parameter
-      extensionSetter_addAppTarget (var_xcodeProject_26828, GGS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1296)), GGS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgasTargetGeneration.galgas", 1297)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1297)), var_m_5F_FileRefList_31899.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_30337, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1298)), var_frameworksFileRefList_31980.add_operation (var_appFrameworksFileRefList_31117, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1299)), var_resourceFileBuildRefs_32028.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_30398, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1300)), var_cocoaConfigurationSettingList_54363, temp_73, temp_74, joker_55157, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1295)) ;
+      temp_74.enterElement (GGS__32_stringlist_2E_element::init_21__21_ (var_debugProductFileRef_54291, constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1303)) ;
+      GGS_string joker_55155 ; // Joker input parameter
+      extensionSetter_addAppTarget (var_xcodeProject_26828, GGS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1296)), GGS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgasTargetGeneration.galgas", 1297)), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1297)), var_m_5F_FileRefList_31899.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_30337, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1298)), var_frameworksFileRefList_31980.add_operation (var_appFrameworksFileRefList_31117, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1299)), var_resourceFileBuildRefs_32028.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_30398, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1300)), var_cocoaConfigurationSettingList_54362, temp_73, temp_74, joker_55155, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1295)) ;
       }
       extensionMethod_generateAtPath (var_xcodeProject_26828, var_dir_24893.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1308)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1308)).add_operation (GGS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1308)), var_newIntermediateFilePath_26574, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1307)) ;
     }

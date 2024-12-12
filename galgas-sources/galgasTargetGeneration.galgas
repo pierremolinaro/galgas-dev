@@ -1265,7 +1265,7 @@ proc updateGalgasTargets
     settingList = @[
       @("GCC_OPTIMIZATION_LEVEL = 0"),
       @("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
-      @("GCC_PREPROCESSOR_DEFINITIONS = @()"),
+      @("GCC_PREPROCESSOR_DEFINITIONS = ()"),
       @("GCC_WARN_UNUSED_PARAMETER = YES"),
       @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
     ] + codeSigningSettingList
@@ -1290,7 +1290,7 @@ proc updateGalgasTargets
   //--- Add Cocoa target
     let @stringlist cocoaConfigurationSettingList = @[
       @("GCC_OPTIMIZATION_LEVEL = 0"),
-      @(!"GCC_PREPROCESSOR_DEFINITIONS = @()")
+      @(!"GCC_PREPROCESSOR_DEFINITIONS = ()")
     ] + codeSigningSettingList
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName

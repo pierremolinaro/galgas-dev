@@ -1,13 +1,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
-func enterOptions (%?^%_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
-           %!^%_ ioUIntOptionArray : inout [SWIFT_CommandLineOption],
-           %!^%_ ioStringOptionArray : inout [SWIFT_CommandLineOption],
-           %!^%_ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
+func enterOptions () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()
 %for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
-  %  ioBoolOptionArray.append (SWIFT_CommandLineOption (\n%
+  %  array.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .bool,\n%
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
@@ -16,8 +15,9 @@ func enterOptions (%?^%_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
   %  ))\n%
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
-  %  ioUIntOptionArray.append (SWIFT_CommandLineOption (\n%
+  %  array.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .uint,\n%
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
@@ -26,8 +26,9 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT
   %  ))\n%
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
-  %  ioStringOptionArray.append (SWIFT_CommandLineOption (\n%
+  %  array.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .string,\n%
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
@@ -36,8 +37,9 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRI
   %  ))\n%
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
-  %  ioStringListOptionArray.append (SWIFT_CommandLineOption (\n%
+  %  array.append (SWIFT_CommandLineOption (\n%
   %    domainName: %![OPTION_COMPONENT_NAME utf8RepresentationEscapingQuestionMark]%,\n%
+  %    type: .stringList,\n%
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
@@ -45,14 +47,16 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRI
   %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
-%  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+%  array.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    type: .bool,
     identifier: "quiet_output",
     commandChar: "q",
     commandString: "quiet",
     comment: "Quiet output",
     defaultValue: ""
   ))
+  return array
 }
 
 //--------------------------------------------------------------------------------------------------
