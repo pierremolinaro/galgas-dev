@@ -28,7 +28,7 @@ import MyAutoLayoutKit
 
   private var mToolCommands = [URL] ()
 
-  private let mToolPopUpButton = BasePopUpButton (pullsDown: false, size: .regular)
+  private let mToolPopUpButton = AutoLayoutPopUpButton (pullsDown: false, size: .regular)
 
   private let mToolPopUpButtonSelectedIndex = EBPreferenceProperty <Int> (defaultValue: 0, prefKey: "compiler-tool-index")
 
@@ -93,16 +93,19 @@ import MyAutoLayoutKit
 
     for tokenizer in tokenizers () {
       let vSettingsStack = AutoLayoutVerticalStackView ().set (spacing: .zero)
-      for i : UInt8 in 0 ..< tokenizer.styleCount() {
+      for i : UInt8 in 0 ... tokenizer.styleCount () {
         let boldCheckbox = AutoLayoutCheckbox (title: "B", size: .regular, adoptPushButtonStyle: true)
           .bind_value (tokenizer.bold (forStyle: i))
         let italicCheckbox = AutoLayoutCheckbox (title: "I", size: .regular, adoptPushButtonStyle: true)
           .bind_value (tokenizer.italic (forStyle: i))
+        let colorWell = AutoLayoutColorWell (minWidth: 48, size: .small)
+          .bind_color (tokenizer.color (forStyle: i))
         let hStack = AutoLayoutHorizontalStackView()
           .set (margins: .zero)
           .set (spacing: .zero)
           .appendView (boldCheckbox)
           .appendView (italicCheckbox)
+          .appendView (colorWell)
           .appendView (AutoLayoutStaticLabel (title: tokenizer.styleNameFor (styleIndex: i), bold: false, size: .regular, alignment: .left))
           .appendFlexibleSpace ()
         _ = vSettingsStack.appendView(hStack)
