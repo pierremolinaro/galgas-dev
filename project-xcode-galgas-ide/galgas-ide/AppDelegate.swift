@@ -11,12 +11,42 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
-@main class AppDelegate: NSObject, NSApplicationDelegate {
+@MainActor @main class AppDelegate : NSObject, NSApplicationDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  fileprivate var mSettingWindow : NSWindow? =  nil
-  fileprivate var mBoolOptions = [EBPreferenceProperty <Bool>] ()
+  private var mSettingsWindow = NSWindow (
+    contentRect: .zero,
+    styleMask: [.titled, .resizable],
+    backing: .buffered,
+    defer: true
+  )
+
+  private var mBoolOptions = [(EBPreferenceProperty <Bool>, SWIFT_CommandLineOption)] ()
+  private var mUIntOptions = [(EBPreferenceProperty <Int>, SWIFT_CommandLineOption)] ()
+  private var mStringOptions = [(EBPreferenceProperty <String>, SWIFT_CommandLineOption)] ()
+
+  private var mToolCommands = [URL] ()
+
+  private let mToolPopUpButton = BasePopUpButton (pullsDown: false, size: .regular)
+
+  private let mToolPopUpButtonSelectedIndex = EBPreferenceProperty <Int> (defaultValue: 0, prefKey: "compiler-tool-index")
+
+  private let mPrefixByTimeUtility = EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "prefix-with-time-utility")
+
+  private let mToolCommandLineObserver = EBObservedObserver ()
+
+  private let mCommandTextView = BaseTextView (
+    drawsBackground: true,
+    editable: false,
+    horizontalScroller: false,
+    verticalScroller: false,
+    minWidth: 100,
+    minHeight: 50,
+    hStretchingResistance: .low,
+    vStretchingResistance: .highest
+  ).setFont (.monospacedSystemFont (ofSize: NSFont.systemFontSize, weight: .bold))
+
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -29,27 +59,46 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor func createSettingWindows () {
-    let title = "tabView"
-    let window = NSWindow (
-      contentRect: .zero,
-      styleMask: [.titled, .resizable],
-      backing: .buffered,
-      defer: true
-    )
-    window.setFrameAutosaveName (title)
-    window.title = title
-    window.isReleasedWhenClosed = false
+  @IBAction func makeKeyAndOrderFrontSettingWindow (_ inSender : Any?) {
+    self.mSettingsWindow.makeKeyAndOrderFront (inSender)
+  }
 
-    let editionView = AutoLayoutVerticalStackView ().set (rightMargin: .zero)
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor func createSettingWindows () {
+    let title = "Settings"
+    self.mSettingsWindow.setFrameAutosaveName (title)
+    self.mSettingsWindow.title = title
+    self.mSettingsWindow.isReleasedWhenClosed = false
+
+    let tabView = BaseTabView (size: .regular)
+
+    self.populateBuildOptionsTab (tabView: tabView)
+
+    let colorsAndFontsView = SimpleBlockView (.fill, .fill)
+    _ = tabView.addTab (title: "Colors & Fonts", tooltip: "", contentView: colorsAndFontsView)
+
+    self.mSettingsWindow.setRootView (tabView)
+
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Populate "Build Options" tab
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor private func populateBuildOptionsTab (tabView inTabView : BaseTabView) {
+    self.populateToolPopupButtonInView ()
+    let prefixByTimeUtilityCheckbox = AutoLayoutCheckbox (title: "Prefix by 'time' utility", size: .regular)
+      .bind_value (self.mPrefixByTimeUtility)
+
     let firstRow = AutoLayoutHorizontalStackView ()
       .appendView (AutoLayoutStaticLabel (title: "Compiler:", bold: false, size: .regular, alignment: .right))
-      .appendView (BasePopUpButton (pullsDown: false, size: .regular).appendItem (title: "galgas").appendItem (title: "galgas_debug"))
-      .appendView (AutoLayoutCheckbox (title: "Prefix by 'time' utility", size: .regular))
+      .appendView (self.mToolPopUpButton)
+      .appendView (prefixByTimeUtilityCheckbox)
       .appendFlexibleSpace ()
-    _ = editionView.appendView (firstRow)
+
     let vStack = AutoLayoutVerticalStackView ()
-    let optionArray = enterOptions ()
+    let optionArray = enterOptions () + enterCommonCommandLineOptions ()
     for option in optionArray.sorted (by: { $0.comment < $1.comment} ) {
       switch option.type {
       case .bool :
@@ -57,22 +106,35 @@ import MyAutoLayoutKit
           defaultValue: false,
           prefKey: option.domainName + ":" + option.identifier
         )
-        self.mBoolOptions.append (prefs)
         _ = vStack.appendView (AutoLayoutCheckbox (title: option.comment, size: .regular).bind_value (prefs))
+        prefs.startsBeingObserved (by: self.mToolCommandLineObserver)
+        self.mBoolOptions.append ((prefs, option))
       case .uint :
+        let prefs = EBPreferenceProperty <Int> (
+          defaultValue: 0,
+          prefKey: option.domainName + ":" + option.identifier
+        )
         let hStack = AutoLayoutHorizontalStackView ()
           .set (margins: .zero)
-          .appendView (AutoLayoutIntField (minWidth: 72, size: .regular))
+          .appendView (AutoLayoutIntField (minWidth: 72, size: .regular).bind_value (prefs, sendContinously: true))
           .appendView (AutoLayoutStaticLabel (title: option.comment, bold: false, size: .regular, alignment: .left))
           .appendFlexibleSpace ()
          _ = vStack.appendView (hStack)
+        prefs.startsBeingObserved (by: self.mToolCommandLineObserver)
+        self.mUIntOptions.append ((prefs, option))
       case .string :
+        let prefs = EBPreferenceProperty <String> (
+          defaultValue: "",
+          prefKey: option.domainName + ":" + option.identifier
+        )
         let hStack = AutoLayoutHorizontalStackView ()
           .set (margins: .zero)
-          .appendView (AutoLayoutTextField (minWidth: 72, size: .regular))
+          .appendView (AutoLayoutTextField (minWidth: 72, size: .regular).bind_value (prefs, sendContinously: true))
           .appendView (AutoLayoutStaticLabel (title: option.comment, bold: false, size: .regular, alignment: .left))
           .appendFlexibleSpace ()
          _ = vStack.appendView (hStack)
+        prefs.startsBeingObserved (by: self.mToolCommandLineObserver)
+        self.mStringOptions.append ((prefs, option))
       case .stringList :
         let hStack = AutoLayoutHorizontalStackView ()
           .set (margins: .zero)
@@ -91,16 +153,69 @@ import MyAutoLayoutKit
       hStretchingResistance: .low,
       vStretchingResistance: .low
     ).set (drawsBackground: true)
-    _ = editionView.appendView (vScroll)
 
-    let colorsAndFontsView = SimpleBlockView (.fill, .fill)
-    let rootView = BaseTabView (size: .regular)
-      .addTab (title: "Edition", tooltip: "", contentView: editionView)
-      .addTab (title: "Colors & Fonts", tooltip: "", contentView: colorsAndFontsView)
-    window.setRootView (rootView)
+    let contentView = AutoLayoutVerticalStackView ()
+      .set (rightMargin: .zero)
+      .appendView (firstRow)
+      .appendView (vScroll)
+      .appendView (AutoLayoutStaticLabel (title: "Build Command:", bold: false, size: .regular, alignment: .left))
+      .appendView (self.mCommandTextView)
 
-    window.makeKeyAndOrderFront (nil)
-    self.mSettingWindow = window
+    _ = inTabView.addTab (title: "Build Options", tooltip: "", contentView: contentView)
+
+    self.mToolCommandLineObserver.mObserverCallback = {
+      [weak self] in self?.updateCommandLineTextView ()
+    }
+    self.mPrefixByTimeUtility.startsBeingObserved (by: self.mToolCommandLineObserver)
+    self.mToolPopUpButtonSelectedIndex.startsBeingObserved (by: self.mToolCommandLineObserver)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Populate tool pop up button
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func updateCommandLineTextView () {
+    var s = ""
+    if self.mPrefixByTimeUtility.propval {
+      s += "/usr/bin/time "
+    }
+    s += self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].lastPathComponent
+    for (property, option) in self.mBoolOptions {
+      if property.propval {
+        s += " --" + option.commandString
+      }
+    }
+    for (property, option) in self.mUIntOptions {
+      if property.propval != 0 {
+        s += " --" + option.commandString + "=\(property.propval)"
+      }
+    }
+    for (property, option) in self.mStringOptions {
+      if !property.propval.isEmpty {
+        s += " --" + option.commandString + "=" + property.propval
+      }
+    }
+    self.mCommandTextView.string = s
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Populate tool pop up button
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor private func populateToolPopupButtonInView () {
+    _ = self.mToolPopUpButton.bind_selectedIndex (self.mToolPopUpButtonSelectedIndex)
+  //--- Populate
+    self.mToolPopUpButton.removeAllItems ()
+    let resourcePath = Bundle.main.resourcePath!
+    let fm = FileManager ()
+    let contentArray = try! fm.contentsOfDirectory (atPath: resourcePath)
+    for path in contentArray {
+      let url = URL (fileURLWithPath: path)
+      if url.pathExtension.isEmpty {
+        _ = self.mToolPopUpButton.appendItem (title: path)
+        self.mToolCommands.append (URL (fileURLWithPath: resourcePath + "/" + path))
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

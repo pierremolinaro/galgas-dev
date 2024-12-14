@@ -205,15 +205,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"macosxSDK"
-    commandChar:0
-    commandString:@"macosx"
-    comment:@"Generate an Xcode project for OS X"
-    defaultValue:@"0"
-  ] ;
-  [ioUIntOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
     identifier:@"create_project"
     commandChar:0
     commandString:@"create-project"

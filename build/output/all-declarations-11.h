@@ -5374,8 +5374,6 @@ extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_3
 //
 //--------------------------------------------------------------------------------------------------
 
-extern UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ;
-
 //--------------------------------------------------------------------------------------------------
 //
 //                              String options                                                   

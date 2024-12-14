@@ -1606,13 +1606,6 @@ BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Featu
 //
 //--------------------------------------------------------------------------------------------------
 
-UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_options",
-                                         "macosxSDK",
-                                         0,
-                                         "macosx",
-                                         "Generate an Xcode project for OS X",
-                                         0) ;
-
 //--------------------------------------------------------------------------------------------------
 //
 //                              String options                                                   
@@ -8828,6 +8821,22 @@ GGS_string cPtr_lexicalCharacterSetMatchAST::getter_generateSwiftCocoaConditionC
   const GGS_lexicalCharacterSetMatchAST temp_0 = this ;
   result_outGeneratedCode.plusAssign_operation(temp_0.readProperty_mCharacterSetName ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 158)) ;
   result_outGeneratedCode.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 159)) ;
+//---
+  return result_outGeneratedCode ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@lexicalAttributeInputArgumentAST generateObjcCocoaRoutineOrFunctionArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateObjcCocoaRoutineOrFunctionArgument (Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result_outGeneratedCode ; // Returned variable
+  const GGS_lexicalAttributeInputArgumentAST temp_0 = this ;
+  result_outGeneratedCode = GGS_string ("mLexicalAttribute_").add_operation (temp_0.readProperty_mAttributeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 173)) ;
 //---
   return result_outGeneratedCode ;
 }

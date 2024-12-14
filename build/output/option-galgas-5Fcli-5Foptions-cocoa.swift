@@ -198,15 +198,6 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
-    type: .uint,
-    identifier: "macosxSDK",
-    commandChar: "",
-    commandString: "macosx",
-    comment: "Generate an Xcode project for OS X",
-    defaultValue: "0"
-  ))
-  array.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
     type: .string,
     identifier: "create_project",
     commandChar: "",
