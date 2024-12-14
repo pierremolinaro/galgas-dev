@@ -358,9 +358,17 @@
 		CF93BACB2D0D8CFD006DF788 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAAD2D0D8CFD006DF788 /* FIRST_computations.cpp */; };
 		CF93BACC2D0D8CFD006DF788 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA72D0D8CFD006DF788 /* check-big-integer.cpp */; };
 		CF93BACD2D0D8CFD006DF788 /* GrammarVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB42D0D8CFD006DF788 /* GrammarVocabulary.cpp */; };
-		CFAA22C42D0DB92D00FFC0B6 /* GGS_CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22C22D0DB92D00FFC0B6 /* GGS_CommandLineOption.swift */; };
+		CFAA22C42D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */; };
 		CFAA22D62D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */; };
 		CFD135DC2D0A104B00FE45B5 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFD135DB2D0A104B00FE45B5 /* MyAutoLayoutKit */; };
+		CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */; };
+		CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */; };
+		CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */; };
+		CFD6D23F2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */; };
+		CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */; };
+		CFD6D24A2D0DEFB900E91AE6 /* gui-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8F81BF2D0DADF40095170B /* gui-cocoa.swift */; };
+		CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */; };
+		CFD6D2552D0E0D8C00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */; };
 		CFDF0CCE2D0A0FA70014CD68 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0CCD2D0A0FA70014CD68 /* MyAutoLayoutKit */; };
 		CFDF0CD92D0A100E0014CD68 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0CD82D0A100E0014CD68 /* MyAutoLayoutKit */; };
 /* End PBXBuildFile section */
@@ -740,8 +748,15 @@
 		CF93BABC2D0D8CFD006DF788 /* SLR_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SLR_computations.cpp; sourceTree = "<group>"; };
 		CF93BABD2D0D8CFD006DF788 /* useful_symbols_computations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
-		CFAA22C22D0DB92D00FFC0B6 /* GGS_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGS_CommandLineOption.swift; sourceTree = "<group>"; };
+		CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CommandLineOption.swift; sourceTree = "<group>"; };
 		CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enterCommonCommandLineOptions.swift; sourceTree = "<group>"; };
+		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
+		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
+		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
+		CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Lexique.swift; sourceTree = "<group>"; };
+		CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
+		CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
+		CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Tokenizer_Protocol.swift; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* galgas-ide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "galgas-ide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1169,6 +1184,9 @@
 				CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */,
 				CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */,
 				CF8F81BF2D0DADF40095170B /* gui-cocoa.swift */,
+				CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */,
+				CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */,
+				CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */,
 				CF8F81C02D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift */,
 			);
 			name = "Generated by GALGAS";
@@ -1229,8 +1247,12 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
+				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,
 				CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */,
-				CFAA22C22D0DB92D00FFC0B6 /* GGS_CommandLineOption.swift */,
+				CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */,
+				CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */,
+				CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */,
+				CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */,
 			);
 			path = "swift-app";
 			sourceTree = "<group>";
@@ -1564,9 +1586,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD6D2552D0E0D8C00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift in Sources */,
+				CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */,
+				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
+				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
 				CFAA22D62D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift in Sources */,
 				CF8F81C22D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift in Sources */,
-				CFAA22C42D0DB92D00FFC0B6 /* GGS_CommandLineOption.swift in Sources */,
+				CFD6D24A2D0DEFB900E91AE6 /* gui-cocoa.swift in Sources */,
+				CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */,
+				CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */,
+				CFAA22C42D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift in Sources */,
+				CFD6D23F2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

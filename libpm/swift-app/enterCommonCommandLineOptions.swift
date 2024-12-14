@@ -28,8 +28,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "display_help",
     commandChar: "",
     commandString: "help",
-    comment: "Display help information",
-    defaultValue: ""
+    comment: "Display help information"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -38,8 +37,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "display_version",
     commandChar: "",
     commandString: "version",
-    comment: "Display version",
-    defaultValue: ""
+    comment: "Display version"
   ))
 
 
@@ -49,8 +47,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "log_file_read",
     commandChar: "",
     commandString: "log-file-read",
-    comment: "Log every file read",
-    defaultValue: ""
+    comment: "Log every file read"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -59,8 +56,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "do_not_generate_any_file",
     commandChar: "",
     commandString: "no-file-generation",
-    comment: "Do not generate any file",
-    defaultValue: ""
+    comment: "Do not generate any file"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -69,8 +65,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "treat_warnings_as_error",
     commandChar: "",
     commandString: "Werror",
-    comment: "Treat warnings as errors",
-    defaultValue: ""
+    comment: "Treat warnings as errors"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -79,8 +74,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "outputConcreteSyntaxTree",
     commandChar: "",
     commandString: "output-concrete-syntax-tree",
-    comment: "Generate the concrete syntax tree, in .dot format (suitable for Graphviz)",
-    defaultValue: ""
+    comment: "Generate the concrete syntax tree, in .dot format (suitable for Graphviz)"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -89,8 +83,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "max_errors",
     commandChar: "",
     commandString: "max-errors",
-    comment: "Stop after the given number of errors has been reached (0 is interpreted as 100)",
-    defaultValue: ""
+    comment: "Stop after the given number of errors has been reached (0 is interpreted as 100)"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -99,8 +92,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "max_warnings",
     commandChar: "",
     commandString: "max-warnings",
-    comment: "Stop after the given number of warnings has been reached (0 is interpreted as 100)",
-    defaultValue: ""
+    comment: "Stop after the given number of warnings has been reached (0 is interpreted as 100)"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -109,8 +101,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "emit_issue_json_file",
     commandChar: "",
     commandString: "emit-issue-json-file",
-    comment: "Emit a JSON file that contains all compilation issues",
-    defaultValue: ""
+    comment: "Emit a JSON file that contains all compilation issues"
   ))
 
   array.append (SWIFT_CommandLineOption (
@@ -119,8 +110,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "mode",
     commandChar: "",
     commandString: "mode",
-    comment: "Mode: empty, 'lexical-only' or 'syntax-only'",
-    defaultValue: ""
+    comment: "Mode: empty, 'lexical-only' or 'syntax-only'"
   ))
   
 
@@ -130,8 +120,7 @@ func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
     identifier: "outputKeywordList",
     commandChar: "",
     commandString: "output-keyword-list-file",
-    comment: "Output a Latex file containing keyword list",
-    defaultValue: ""
+    comment: "Output a Latex file containing keyword list"
   ))
   return array
 }

@@ -55,6 +55,7 @@ import MyAutoLayoutKit
     setDebugMenuVisibility (true)
   //--- Create settings windows
     self.createSettingWindows ()
+    self.mSettingsWindow.makeKeyAndOrderFront (nil)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -73,6 +74,7 @@ import MyAutoLayoutKit
 
     let tabView = BaseTabView (size: .regular)
 
+    self.populateFontAndColorsTab (tabView: tabView)
     self.populateBuildOptionsTab (tabView: tabView)
 
     let colorsAndFontsView = SimpleBlockView (.fill, .fill)
@@ -80,6 +82,55 @@ import MyAutoLayoutKit
 
     self.mSettingsWindow.setRootView (tabView)
 
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Populate "Font & colors" tab
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor private func populateFontAndColorsTab (tabView inTabView : BaseTabView) {
+    let fontAndColorTabView = BaseTabView (size: .small)
+
+    for tokenizer in tokenizers () {
+      let vSettingsStack = AutoLayoutVerticalStackView ().set (spacing: .zero)
+      for i : UInt8 in 0 ..< tokenizer.styleCount() {
+        let boldCheckbox = AutoLayoutCheckbox (title: "B", size: .regular, adoptPushButtonStyle: true)
+          .bind_value (tokenizer.bold (forStyle: i))
+        let italicCheckbox = AutoLayoutCheckbox (title: "I", size: .regular, adoptPushButtonStyle: true)
+          .bind_value (tokenizer.italic (forStyle: i))
+        let hStack = AutoLayoutHorizontalStackView()
+          .set (margins: .zero)
+          .set (spacing: .zero)
+          .appendView (boldCheckbox)
+          .appendView (italicCheckbox)
+          .appendView (AutoLayoutStaticLabel (title: tokenizer.styleNameFor (styleIndex: i), bold: false, size: .regular, alignment: .left))
+          .appendFlexibleSpace ()
+        _ = vSettingsStack.appendView(hStack)
+      }
+      let scrollView = BaseScrollView (
+        contentView: vSettingsStack,
+        horizontalScroller: true,
+        verticalScroller: true,
+        minWidth: 300,
+        minHeight: 300,
+        hStretchingResistance: .low,
+        vStretchingResistance: .low
+      ).set (drawsBackground: true)
+
+      let fontButton = AutoLayoutFontButton (size: .regular)
+        .setMinWidth (100)
+        .bind_fontValue (tokenizer.font)
+      let hStack = AutoLayoutHorizontalStackView ().set (margins: .zero)
+        .appendView (fontButton)
+        .appendFlexibleSpace ()
+
+       let vStack = AutoLayoutVerticalStackView ()
+         .appendView (hStack)
+         .appendView (scrollView)
+
+      _ = fontAndColorTabView.addTab (title: tokenizer.tabItemTitle (), tooltip: "", contentView: vStack)
+    }
+    _ = inTabView.addTab (title: "Fonts & Colors", tooltip: "", contentView: fontAndColorTabView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

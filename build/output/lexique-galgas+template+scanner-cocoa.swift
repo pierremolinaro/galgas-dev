@@ -271,7 +271,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
       }
       return SWIFT_Token (
         range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
-        tokenCode: galgasScanner_2_TEMPLATE,
+        tokenCode: galgasScanner3_2_TEMPLATE,
         templateDelimiterIndex: self.mEndTemplateDelimiterIndex
       )
     }

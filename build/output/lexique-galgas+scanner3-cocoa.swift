@@ -4,84 +4,82 @@
 //--- END OF USER ZONE 1
 
 import AppKit
+import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 //   LEXIQUE galgasScanner3
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gFont_galgasScanner3 = EBGenericPreferenceProperty <NSFont> (
+@MainActor fileprivate let gFont_galgasScanner3 = EBPreferenceProperty <NSFont> (
   defaultValue: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular),
   prefKey: "FontFor_" + galgasScanner3_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gLineHeight_galgasScanner3 = EBGenericPreferenceProperty <Int> (
+@MainActor fileprivate let gLineHeight_galgasScanner3 = EBPreferenceProperty <Int> (
   defaultValue: 12,
   prefKey: "LineHeightFor_" + galgasScanner3_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gColors_galgasScanner3 : [EBGenericPreferenceProperty <NSColor>] = [
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-keywordsStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-delimitersStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-selectorStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-terminalStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-nonTerminalStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-integerStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-bigintStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-floatStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-characterStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-stringStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-typeNameStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-attributeStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-commentStyle"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_galgasScanner3_lexical_error"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_galgasScanner3_template")
+@MainActor fileprivate let gColors_galgasScanner3 : [EBPreferenceProperty <NSColor>] = [
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-keywordsStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-delimitersStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-selectorStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-terminalStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-nonTerminalStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-integerStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-floatStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-characterStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-stringStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-typeNameStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-attributeStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_galgasScanner3-commentStyle"),
+  EBPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_galgasScanner3_lexical_error"),
+  EBPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_galgasScanner3_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gBoldStyle_galgasScanner3 : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-keywordsStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-delimitersStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-selectorStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-terminalStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-nonTerminalStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-integerStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-bigintStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-floatStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-characterStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-stringStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-typeNameStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-attributeStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-commentStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_galgasScanner3_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3_template")
+@MainActor fileprivate let gBoldStyle_galgasScanner3 : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-keywordsStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-delimitersStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-selectorStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-terminalStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-nonTerminalStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-integerStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-floatStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-characterStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-stringStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-typeNameStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-attributeStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3-commentStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_galgasScanner3_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_galgasScanner3_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gItalicStyle_galgasScanner3 : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-keywordsStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-delimitersStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-selectorStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-terminalStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-nonTerminalStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-integerStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-bigintStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-floatStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-characterStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-stringStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-typeNameStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-attributeStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-commentStyle"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3_template")
+@MainActor fileprivate let gItalicStyle_galgasScanner3 : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-keywordsStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-delimitersStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-selectorStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-terminalStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-nonTerminalStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-integerStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-floatStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-characterStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-stringStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-typeNameStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-attributeStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3-commentStyle"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_galgasScanner3_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -317,15 +315,14 @@ func galgasScanner3_styleNameFor (styleIndex inIndex : UInt8) -> String {
     "Terminal Symbols", // 4
     "Non Terminal Symbols", // 5
     "Integer Constants", // 6
-    "Big Integer Constants", // 7
-    "Floating Point Constants", // 8
-    "Character Constants", // 9
-    "String Constants", // 10
-    "Type Names (@...)", // 11
-    "Attributes (%...)", // 12
-    "Comments", // 13
-    "Lexical error", // 14
-    "Template" // 15
+    "Floating Point Constants", // 7
+    "Character Constants", // 8
+    "String Constants", // 9
+    "Type Names (@...)", // 10
+    "Attributes (%...)", // 11
+    "Comments", // 12
+    "Lexical error", // 13
+    "Template" // 14
   ]
   return kStyleArray [Int (inIndex)]
 }
@@ -341,15 +338,14 @@ func galgasScanner3_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
     "galgasScanner3-terminalStyle", // 4
     "galgasScanner3-nonTerminalStyle", // 5
     "galgasScanner3-integerStyle", // 6
-    "galgasScanner3-bigintStyle", // 7
-    "galgasScanner3-floatStyle", // 8
-    "galgasScanner3-characterStyle", // 9
-    "galgasScanner3-stringStyle", // 10
-    "galgasScanner3-typeNameStyle", // 11
-    "galgasScanner3-attributeStyle", // 12
-    "galgasScanner3-commentStyle", // 13
-    "galgasScanner3.ERROR", // 14
-    "galgasScanner3.TEMPLATE" // 15
+    "galgasScanner3-floatStyle", // 7
+    "galgasScanner3-characterStyle", // 8
+    "galgasScanner3-stringStyle", // 9
+    "galgasScanner3-typeNameStyle", // 10
+    "galgasScanner3-attributeStyle", // 11
+    "galgasScanner3-commentStyle", // 12
+    "galgasScanner3.ERROR", // 13
+    "galgasScanner3.TEMPLATE" // 14
   ]
   return kStyleArray [Int (inIndex)]
 }
@@ -392,27 +388,27 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var font : EBGenericPreferenceProperty <NSFont> { return gFont_galgasScanner3 }
+  var font : EBPreferenceProperty <NSFont> { return gFont_galgasScanner3 }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var lineHeight : EBGenericPreferenceProperty <Int> { return gLineHeight_galgasScanner3 }
+  var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_galgasScanner3 }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+  func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {
     return gColors_galgasScanner3 [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gBoldStyle_galgasScanner3 [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func italic (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gItalicStyle_galgasScanner3 [Int (inStyleIndex)]
   }
 
@@ -422,13 +418,13 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
     let kTerminalSymbolStyles : [UInt8] = [
       0, // Default
       0, // 1 : galgasScanner3_1_identifier
-      8, // 2 : galgasScanner3_1_double_2E_xxx
-      7, // 3 : galgasScanner3_1_literalInt
-      9, // 4 : galgasScanner3_1__27_char_27_
+      7, // 2 : galgasScanner3_1_double_2E_xxx
+      6, // 3 : galgasScanner3_1_literalInt
+      8, // 4 : galgasScanner3_1__27_char_27_
       4, // 5 : galgasScanner3_1__24_terminal_24_
-      13, // 6 : galgasScanner3_1_comment
-      13, // 7 : galgasScanner3_1_commentMark
-      11, // 8 : galgasScanner3_1__40_type
+      12, // 6 : galgasScanner3_1_comment
+      12, // 7 : galgasScanner3_1_commentMark
+      10, // 8 : galgasScanner3_1__40_type
       3, // 9 : galgasScanner3_1__3F_selector_3A_
       2, // 10 : galgasScanner3_1__3F_
       3, // 11 : galgasScanner3_1__3F__21_selector_3A_
@@ -441,7 +437,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       2, // 18 : galgasScanner3_1__3C__3D_
       2, // 19 : galgasScanner3_1__3C__3C_
       5, // 20 : galgasScanner3_1__3C_non_5F_terminal_3E_
-      10, // 21 : galgasScanner3_1__22_string_22_
+      9, // 21 : galgasScanner3_1__22_string_22_
       1, // 22 : galgasScanner3_1_abstract
       1, // 23 : galgasScanner3_1_after
       1, // 24 : galgasScanner3_1_as
@@ -535,35 +531,35 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       1, // 112 : galgasScanner3_1_weak
       1, // 113 : galgasScanner3_1_while
       1, // 114 : galgasScanner3_1_with
-      12, // 115 : galgasScanner3_1__25_app_2D_link
-      12, // 116 : galgasScanner3_1__25_app_2D_source
-      12, // 117 : galgasScanner3_1__25_applicationBundleBase
-      12, // 118 : galgasScanner3_1__25_clonable
-      12, // 119 : galgasScanner3_1__25_codeblocks_2D_linux_33__32_
-      12, // 120 : galgasScanner3_1__25_codeblocks_2D_linux_36__34_
-      12, // 121 : galgasScanner3_1__25_codeblocks_2D_windows
-      12, // 122 : galgasScanner3_1__25_comparable
-      12, // 123 : galgasScanner3_1__25_equatable
-      12, // 124 : galgasScanner3_1__25_from
-      12, // 125 : galgasScanner3_1__25_generatedInSeparateFile
-      12, // 126 : galgasScanner3_1__25_initArgLabel
-      12, // 127 : galgasScanner3_1__25_libpmAtPath
-      12, // 128 : galgasScanner3_1__25_MacOS
-      12, // 129 : galgasScanner3_1__25_MacOSDeployment
-      12, // 130 : galgasScanner3_1__25_macCodeSign
-      12, // 131 : galgasScanner3_1__25_makefile_2D_macosx
-      12, // 132 : galgasScanner3_1__25_makefile_2D_unix
-      12, // 133 : galgasScanner3_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
-      12, // 134 : galgasScanner3_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
-      12, // 135 : galgasScanner3_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
-      12, // 136 : galgasScanner3_1__25_nonAtomicSelection
-      12, // 137 : galgasScanner3_1__25_once
-      12, // 138 : galgasScanner3_1__25_preserved
-      12, // 139 : galgasScanner3_1__25_quietOutputByDefault
-      12, // 140 : galgasScanner3_1__25_templateEndMark
-      12, // 141 : galgasScanner3_1__25_tool_2D_source
-      12, // 142 : galgasScanner3_1__25_translate
-      12, // 143 : galgasScanner3_1__25_usefull
+      11, // 115 : galgasScanner3_1__25_app_2D_link
+      11, // 116 : galgasScanner3_1__25_app_2D_source
+      11, // 117 : galgasScanner3_1__25_applicationBundleBase
+      11, // 118 : galgasScanner3_1__25_clonable
+      11, // 119 : galgasScanner3_1__25_codeblocks_2D_linux_33__32_
+      11, // 120 : galgasScanner3_1__25_codeblocks_2D_linux_36__34_
+      11, // 121 : galgasScanner3_1__25_codeblocks_2D_windows
+      11, // 122 : galgasScanner3_1__25_comparable
+      11, // 123 : galgasScanner3_1__25_equatable
+      11, // 124 : galgasScanner3_1__25_from
+      11, // 125 : galgasScanner3_1__25_generatedInSeparateFile
+      11, // 126 : galgasScanner3_1__25_initArgLabel
+      11, // 127 : galgasScanner3_1__25_libpmAtPath
+      11, // 128 : galgasScanner3_1__25_MacOS
+      11, // 129 : galgasScanner3_1__25_MacOSDeployment
+      11, // 130 : galgasScanner3_1__25_macCodeSign
+      11, // 131 : galgasScanner3_1__25_makefile_2D_macosx
+      11, // 132 : galgasScanner3_1__25_makefile_2D_unix
+      11, // 133 : galgasScanner3_1__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      11, // 134 : galgasScanner3_1__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      11, // 135 : galgasScanner3_1__25_makefile_2D_win_33__32__2D_on_2D_macosx
+      11, // 136 : galgasScanner3_1__25_nonAtomicSelection
+      11, // 137 : galgasScanner3_1__25_once
+      11, // 138 : galgasScanner3_1__25_preserved
+      11, // 139 : galgasScanner3_1__25_quietOutputByDefault
+      11, // 140 : galgasScanner3_1__25_templateEndMark
+      11, // 141 : galgasScanner3_1__25_tool_2D_source
+      11, // 142 : galgasScanner3_1__25_translate
+      11, // 143 : galgasScanner3_1__25_usefull
       2, // 144 : galgasScanner3_1__2A_
       2, // 145 : galgasScanner3_1__2C_
       2, // 146 : galgasScanner3_1__2B_
@@ -617,8 +613,8 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       2, // 194 : galgasScanner3_1__21__3D__3D_
       2, // 195 : galgasScanner3_1__3F__5E_
       2, // 196 : galgasScanner3_1__21__5E_
-      14, // 197 : galgasScanner3_2_ERROR
-      15  // 198 : galgasScanner3_2_TEMPLATE
+      13, // 197 : galgasScanner3_2_ERROR
+      14  // 198 : galgasScanner3_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -894,7 +890,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleCount () -> UInt8 {
-    return 13
+    return 12
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1224,7 +1220,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       tokenCode = galgasScanner3_1__40__5B_
     }else if scanningOk && self.testForInputString ("@(", advance: true) {
       tokenCode = galgasScanner3_1__40__28_
-    }else if scanningOk && self.testForInputString ("\?^", advance: true) {
+    }else if scanningOk && self.testForInputString ("?^", advance: true) {
       tokenCode = galgasScanner3_1__3F__5E_
     }else if scanningOk && self.testForInputString (">>", advance: true) {
       tokenCode = galgasScanner3_1__3E__3E_
@@ -1320,7 +1316,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       }else{
         scanningOk = false
       }
-    }else if scanningOk && (self.testForInputString ("\?!", advance: true)) {
+    }else if scanningOk && (self.testForInputString ("?!", advance: true)) {
       let locationForTag_onlyInterrogationExclamationMark = self.savedScanningPoint ()
       if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
@@ -1362,7 +1358,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
       }else{
         tokenCode = galgasScanner3_1__3F_
       }
-    }else if scanningOk && (self.testForInputString ("!\?", advance: true)) {
+    }else if scanningOk && (self.testForInputString ("!?", advance: true)) {
       let locationForTag_onlyExclamationInterrogationMark = self.savedScanningPoint ()
       if scanningOk && (self.testForCharWithFunction (isUnicodeLetter)) {
         while (loop && scanningOk) {
@@ -1547,6 +1543,7 @@ class SWIFT_Lexique_galgasScanner3 : SWIFT_Lexique {
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
 
 //--------------------------------------------------------------------------------------------------
 

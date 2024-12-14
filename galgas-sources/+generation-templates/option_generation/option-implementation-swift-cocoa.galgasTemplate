@@ -10,8 +10,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
-  %    defaultValue: ""\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
@@ -21,8 +20,7 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
-  %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
@@ -32,8 +30,7 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRI
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
-  %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
@@ -43,8 +40,7 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRI
   %    identifier: %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
   %    commandChar: %if mOptionChar == '\0' then !"\"\"" else !"\"" + [mOptionChar string] + "\"" end%,\n%
   %    commandString: %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
-  %    defaultValue: %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
+  %    comment: %![mComment utf8RepresentationEscapingQuestionMark]%\n%
   %  ))\n%
 end
 %  array.append (SWIFT_CommandLineOption (
@@ -53,8 +49,7 @@ end
     identifier: "quiet_output",
     commandChar: "q",
     commandString: "quiet",
-    comment: "Quiet output",
-    defaultValue: ""
+    comment: "Quiet output"
   ))
   return array
 }

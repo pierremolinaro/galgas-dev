@@ -97,7 +97,6 @@ style selectorStyle -> "Selectors"
 style terminalStyle -> "Terminal Symbols"
 style nonTerminalStyle -> "Non Terminal Symbols"
 style integerStyle -> "Integer Constants"
-style bigintStyle -> "Big Integer Constants"
 style floatStyle -> "Floating Point Constants"
 style characterStyle -> "Character Constants"
 style stringStyle -> "String Constants"
@@ -210,7 +209,7 @@ rule isUnicodeLetter {
 @double floatValue
 @bigint bigintValue
 $double.xxx$ !floatValue !tokenString style floatStyle error message "a float number"
-$literalInt$ !bigintValue style bigintStyle error message "a big integer number"
+$literalInt$ !bigintValue style integerStyle error message "a literal integer"
 
 message floatNumberConversionError : "invalid float number"
 message internalError : "internal error"

@@ -91,7 +91,7 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique_%!SUPER_LEXIQUE_CLASS_
       }
       return SWIFT_Token (
         range: NSRange (location: startLocation, length: self.currentLocation - startLocation),
-        tokenCode: galgasScanner_2_TEMPLATE,
+        tokenCode: %!SUPER_LEXIQUE_CLASS_NAME%_2_TEMPLATE,
         templateDelimiterIndex: self.mEndTemplateDelimiterIndex
       )
     }

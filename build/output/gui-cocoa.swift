@@ -23,9 +23,9 @@ NSArray * nibsAndClasses (void) {
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-NSDictionary * indexingDescriptorDictionary (void) {
+/* NSDictionary * indexingDescriptorDictionary (void) {
   return [NSDictionary dictionaryWithObjectsAndKeys: @"build/indexes", @"galgasProject", @"*-build/indexes", @"ggsproject", nil] ;
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -509,7 +509,7 @@ class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 //   Global functions
 //--------------------------------------------------------------------------------------------------
 
-func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
+@MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
   var result : SWIFT_Tokenizer_Protocol? = nil
   if inExtension == "galgas" {
     result = SWIFT_Tokenizer_0_galgasScanner3 ()
@@ -529,7 +529,7 @@ func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? 
 
 //--------------------------------------------------------------------------------------------------
 
-func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
+@MainActor func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
   return [
     SWIFT_Tokenizer_0_galgasScanner3 (),
     SWIFT_Tokenizer_1_galgasScanner4 (),

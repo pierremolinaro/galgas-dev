@@ -15,7 +15,6 @@ struct SWIFT_CommandLineOption {
   let commandChar : String // Empty string, or one character string
   let commandString : String
   let comment : String
-  let defaultValue : String
 
   enum OptionType {
     case bool

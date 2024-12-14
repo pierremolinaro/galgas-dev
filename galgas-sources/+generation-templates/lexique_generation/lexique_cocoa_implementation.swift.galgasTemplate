@@ -1,56 +1,57 @@
 
 import AppKit
+import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 //   LEXIQUE %!LEXIQUE_CLASS_NAME%
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gFont_%!LEXIQUE_CLASS_NAME% = EBGenericPreferenceProperty <NSFont> (
+@MainActor fileprivate let gFont_%!LEXIQUE_CLASS_NAME% = EBPreferenceProperty <NSFont> (
   defaultValue: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular),
   prefKey: "FontFor_" + %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gLineHeight_%!LEXIQUE_CLASS_NAME% = EBGenericPreferenceProperty <Int> (
+@MainActor fileprivate let gLineHeight_%!LEXIQUE_CLASS_NAME% = EBPreferenceProperty <Int> (
   defaultValue: 12,
   prefKey: "LineHeightFor_" + %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier ()
 )
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gColors_%!LEXIQUE_CLASS_NAME% : [EBGenericPreferenceProperty <NSColor>] = [
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%"),
+@MainActor fileprivate let gColors_%!LEXIQUE_CLASS_NAME% : [EBPreferenceProperty <NSColor>] = [
+  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%"),
 %
 for (identifier *) in LEXICAL_STYLE_LIST do
- %  EBGenericPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"),\n%
+ %  EBPreferenceProperty <NSColor> (defaultValue: .black, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"),\n%
 end
-%  EBGenericPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error"),
-  EBGenericPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_template")
+%  EBPreferenceProperty <NSColor> (defaultValue: .red, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error"),
+  EBPreferenceProperty <NSColor> (defaultValue: .gray, prefKey: "ColorFor_%!LEXIQUE_CLASS_NAME%_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gBoldStyle_%!LEXIQUE_CLASS_NAME% : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%"),
+@MainActor fileprivate let gBoldStyle_%!LEXIQUE_CLASS_NAME% : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%"),
 %
 for (identifier *) in LEXICAL_STYLE_LIST do
- %  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"),\n%
+ %  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"),\n%
 end
-%  EBGenericPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_template")
+%  EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "BoldFor_%!LEXIQUE_CLASS_NAME%_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let gItalicStyle_%!LEXIQUE_CLASS_NAME% : [EBGenericPreferenceProperty <Bool>] = [
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%"),
+@MainActor fileprivate let gItalicStyle_%!LEXIQUE_CLASS_NAME% : [EBPreferenceProperty <Bool>] = [
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%"),
 %
 for (identifier *) in LEXICAL_STYLE_LIST do
- %  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"),\n%
+ %  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"),\n%
 end
-%  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error"),
-  EBGenericPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
+%  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error"),
+  EBPreferenceProperty <Bool> (defaultValue: false, prefKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
 ]
 
 //--------------------------------------------------------------------------------------------------
@@ -169,27 +170,27 @@ class SWIFT_Lexique_%!LEXIQUE_CLASS_NAME% : SWIFT_Lexique {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var font : EBGenericPreferenceProperty <NSFont> { return gFont_%!LEXIQUE_CLASS_NAME% }
+  var font : EBPreferenceProperty <NSFont> { return gFont_%!LEXIQUE_CLASS_NAME% }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var lineHeight : EBGenericPreferenceProperty <Int> { return gLineHeight_%!LEXIQUE_CLASS_NAME% }
+  var lineHeight : EBPreferenceProperty <Int> { return gLineHeight_%!LEXIQUE_CLASS_NAME% }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func color (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <NSColor> {
+  func color (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <NSColor> {
     return gColors_%!LEXIQUE_CLASS_NAME% [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func bold (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func bold (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gBoldStyle_%!LEXIQUE_CLASS_NAME% [Int (inStyleIndex)]
   }
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func italic (forStyle inStyleIndex : UInt8) -> EBGenericPreferenceProperty <Bool> {
+  func italic (forStyle inStyleIndex : UInt8) -> EBPreferenceProperty <Bool> {
     return gItalicStyle_%!LEXIQUE_CLASS_NAME% [Int (inStyleIndex)]
   }
 
@@ -297,6 +298,7 @@ end
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
+
 
 //--------------------------------------------------------------------------------------------------
 

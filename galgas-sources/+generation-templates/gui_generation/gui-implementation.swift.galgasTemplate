@@ -29,7 +29,7 @@ end
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-NSDictionary * indexingDescriptorDictionary (void) {
+/* NSDictionary * indexingDescriptorDictionary (void) {
 %if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
 % return [NSDictionary dictionary] ;
 %
@@ -41,7 +41,7 @@ end
 %nil] ;
 %
 end
-%}
+%} */
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -197,7 +197,7 @@ end
 //   Global functions
 //--------------------------------------------------------------------------------------------------
 
-func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
+@MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
   var result : SWIFT_Tokenizer_Protocol? = nil\n%
 for (lkey mLexiqueName mIndex) in GUI_CONTEXT.mExtensionMap
   before %  if%
@@ -211,7 +211,7 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-func tokenizers () -> [SWIFT_Tokenizer_Protocol] {%
+@MainActor func tokenizers () -> [SWIFT_Tokenizer_Protocol] {%
 if [GUI_CONTEXT.mWithLexiqueList count] == 0 then%
   return []
 %else%
