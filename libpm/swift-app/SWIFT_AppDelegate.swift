@@ -11,8 +11,17 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor @main class AppDelegate : NSObject, NSApplicationDelegate {
+@MainActor @main class SWIFT_AppDelegate : NSObject, NSApplicationDelegate {
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+   override init () {
+     super.init ()
+     _ = SWIFT_DocumentController () // Create my own subclass of NSDocumentController
+   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   New Document
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTempWindow = NSWindow (

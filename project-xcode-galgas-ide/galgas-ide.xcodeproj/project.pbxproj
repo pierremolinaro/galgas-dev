@@ -371,6 +371,15 @@
 		CFD6D2552D0E0D8C00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */; };
 		CFDF0CCE2D0A0FA70014CD68 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0CCD2D0A0FA70014CD68 /* MyAutoLayoutKit */; };
 		CFDF0CD92D0A100E0014CD68 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0CD82D0A100E0014CD68 /* MyAutoLayoutKit */; };
+		CFE752C32D0EE12D0071CADB /* SWIFT_AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */; };
+		CFE752CD2D0EE4740071CADB /* SWIFT_WeakElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */; };
+		CFE752E72D0F013B0071CADB /* SWIFT_SourceTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752E62D0F012C0071CADB /* SWIFT_SourceTextDocument.swift */; };
+		CFE752E92D0F03D30071CADB /* SWIFT_DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752E82D0F03D30071CADB /* SWIFT_DocumentController.swift */; };
+		CFE752EB2D0F04710071CADB /* SWIFT_SourceTextWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752EA2D0F046D0071CADB /* SWIFT_SourceTextWindow.swift */; };
+		CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */; };
+		CFE752F82D0F1B8A0071CADB /* SWIFT_DisplayDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752C62D0EE1E60071CADB /* SWIFT_DisplayDescriptor.swift */; };
+		CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */; };
+		CFE752FB2D0F1FC30071CADB /* SWIFT_SourceTextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752FA2D0F1FB00071CADB /* SWIFT_SourceTextManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -758,11 +767,34 @@
 		CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
 		CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Tokenizer_Protocol.swift; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* galgas-ide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "galgas-ide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_AppDelegate.swift; sourceTree = "<group>"; };
+		CFE752C42D0EE1E00071CADB /* SWIFT_SingleDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleDocument.swift; sourceTree = "<group>"; };
+		CFE752C62D0EE1E60071CADB /* SWIFT_DisplayDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DisplayDescriptor.swift; sourceTree = "<group>"; };
+		CFE752CA2D0EE3620071CADB /* SWIFT_SingleWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindow.swift; sourceTree = "<group>"; };
+		CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_WeakElement.swift; sourceTree = "<group>"; };
+		CFE752D42D0EE5CE0071CADB /* GGS_SingleDocument-syntax-coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GGS_SingleDocument-syntax-coloring.swift"; sourceTree = "<group>"; };
+		CFE752D62D0EE7220071CADB /* SWIFT_SingleWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindowController.swift; sourceTree = "<group>"; };
+		CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSourceTextPresentationView.swift; sourceTree = "<group>"; };
+		CFE752E62D0F012C0071CADB /* SWIFT_SourceTextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceTextDocument.swift; sourceTree = "<group>"; };
+		CFE752E82D0F03D30071CADB /* SWIFT_DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DocumentController.swift; sourceTree = "<group>"; };
+		CFE752EA2D0F046D0071CADB /* SWIFT_SourceTextWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceTextWindow.swift; sourceTree = "<group>"; };
+		CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_AppDelegate+new-document.swift"; sourceTree = "<group>"; };
+		CFE752FA2D0F1FB00071CADB /* SWIFT_SourceTextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceTextManager.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CFE752ED2D0F0C020071CADB /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CFDF0C9B2D0A0EEF0014CD68 /* galgas-ide */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CFDF0C9E2D0A0EEF0014CD68 /* galgas-ide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "galgas-ide"; sourceTree = "<group>"; };
+		CFDF0C9E2D0A0EEF0014CD68 /* galgas-ide */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CFE752ED2D0F0C020071CADB /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "galgas-ide"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1247,12 +1279,25 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
-				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,
+				CFE752FA2D0F1FB00071CADB /* SWIFT_SourceTextManager.swift */,
+				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
+				CFE752EA2D0F046D0071CADB /* SWIFT_SourceTextWindow.swift */,
+				CFE752E82D0F03D30071CADB /* SWIFT_DocumentController.swift */,
+				CFE752E62D0F012C0071CADB /* SWIFT_SourceTextDocument.swift */,
+				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
 				CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */,
-				CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */,
 				CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */,
+				CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */,
 				CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */,
 				CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */,
+				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,
+				CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */,
+				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
+				CFE752C42D0EE1E00071CADB /* SWIFT_SingleDocument.swift */,
+				CFE752D42D0EE5CE0071CADB /* GGS_SingleDocument-syntax-coloring.swift */,
+				CFE752D62D0EE7220071CADB /* SWIFT_SingleWindowController.swift */,
+				CFE752CA2D0EE3620071CADB /* SWIFT_SingleWindow.swift */,
+				CFE752C62D0EE1E60071CADB /* SWIFT_DisplayDescriptor.swift */,
 			);
 			path = "swift-app";
 			sourceTree = "<group>";
@@ -1586,17 +1631,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE752FB2D0F1FC30071CADB /* SWIFT_SourceTextManager.swift in Sources */,
+				CFE752C32D0EE12D0071CADB /* SWIFT_AppDelegate.swift in Sources */,
+				CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */,
 				CFD6D2552D0E0D8C00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift in Sources */,
 				CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */,
 				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
 				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
+				CFE752E72D0F013B0071CADB /* SWIFT_SourceTextDocument.swift in Sources */,
 				CFAA22D62D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift in Sources */,
 				CF8F81C22D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift in Sources */,
 				CFD6D24A2D0DEFB900E91AE6 /* gui-cocoa.swift in Sources */,
+				CFE752E92D0F03D30071CADB /* SWIFT_DocumentController.swift in Sources */,
 				CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */,
 				CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */,
+				CFE752F82D0F1B8A0071CADB /* SWIFT_DisplayDescriptor.swift in Sources */,
 				CFAA22C42D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift in Sources */,
 				CFD6D23F2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift in Sources */,
+				CFE752CD2D0EE4740071CADB /* SWIFT_WeakElement.swift in Sources */,
+				CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */,
+				CFE752EB2D0F04710071CADB /* SWIFT_SourceTextWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1971,6 +2025,7 @@
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "galgas-ide/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -2000,6 +2055,7 @@
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "galgas-ide/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;

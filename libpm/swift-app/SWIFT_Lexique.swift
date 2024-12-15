@@ -21,7 +21,7 @@ struct ScanningPointStructForCocoa {
 
 @MainActor class SWIFT_Lexique {
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSourceString = NSString ()
   private var mCurrentLocation = 0
@@ -29,13 +29,13 @@ struct ScanningPointStructForCocoa {
   private var mPreviousChar : UInt32 = 0
   var mEndTemplateDelimiterIndex : Int? = nil
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var currentChar : UInt32 { return self.mCurrentChar }
   var previousChar : UInt32 { return self.mPreviousChar }
   var currentLocation : Int { return mCurrentLocation }
   
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func set (sourceString inString : String, location inStartLocation : Int, templateDelimiterIndex inIndex : Int?) {
     self.mSourceString = inString as NSString
@@ -49,13 +49,13 @@ struct ScanningPointStructForCocoa {
     self.mPreviousChar = 0
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func savedScanningPoint () -> ScanningPointStructForCocoa {
     return ScanningPointStructForCocoa (previousChar: self.mPreviousChar, currentChar: self.mCurrentChar, currentLocation: self.mCurrentLocation)
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func restoreScanningPoint (_ inSavedScanningPoint : ScanningPointStructForCocoa) {
     self.mPreviousChar = inSavedScanningPoint.previousChar
@@ -63,7 +63,7 @@ struct ScanningPointStructForCocoa {
     self.mCurrentLocation = inSavedScanningPoint.currentLocation
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func testForCharWithFunction (_ inFunction : (UInt32) -> Bool) -> Bool {
     let ok = inFunction (self.mCurrentChar)
@@ -73,7 +73,7 @@ struct ScanningPointStructForCocoa {
     return ok
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func testForInputChar (_ inUnicodeCharacter : UInt32) -> Bool {
     let ok = self.mCurrentChar == inUnicodeCharacter
@@ -83,7 +83,7 @@ struct ScanningPointStructForCocoa {
     return ok
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func testForInputFromChar (_ inFirstUnicodeCharacter : UInt32, toChar inLastUnicodeCharacter : UInt32) -> Bool {
     let ok =  (inFirstUnicodeCharacter <= self.mCurrentChar) && (self.mCurrentChar <= inLastUnicodeCharacter)
@@ -93,7 +93,7 @@ struct ScanningPointStructForCocoa {
     return ok
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func testForInputString (_ inTestedString : String, advance inFlag : Bool) -> Bool {
     let testedString = inTestedString as NSString
@@ -115,7 +115,7 @@ struct ScanningPointStructForCocoa {
     return result
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func notTestForInputString (_ inTestedString : String, error ioScanningOk : inout Bool) -> Bool {
     var loop = false
@@ -142,7 +142,7 @@ struct ScanningPointStructForCocoa {
     return loop ;
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func advance () {
     if (self.mCurrentLocation + 1) < self.mSourceString.length {
@@ -156,7 +156,7 @@ struct ScanningPointStructForCocoa {
     }
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func searchForReplacementPattern (_ inReplacementPatternArray : [String]) {
     var found = false
@@ -179,7 +179,7 @@ struct ScanningPointStructForCocoa {
     }
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func findTemplateDelimiterIndex (_ inTemplateDelimiterArray : [SWIFT_TemplateDelimiter]) -> Int? {
     var templateIndex = 0
@@ -197,7 +197,7 @@ struct ScanningPointStructForCocoa {
     }
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

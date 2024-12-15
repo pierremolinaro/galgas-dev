@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>0</integer>
+			<key>CFBundleTypeName</key>
+			<string>Texte</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).source</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>$(PRODUCT_MODULE_NAME).SWIFT_SourceTextDocument</string>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Source</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).source</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>galgastxt</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
