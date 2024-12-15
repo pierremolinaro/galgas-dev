@@ -20,7 +20,7 @@ import Foundation
 
 //--------------------------------------------------------------------------------------------------
 
-func enterCommonCommandLineOptions () -> [SWIFT_CommandLineOption] {
+func commonCommandLineOptions () -> [SWIFT_CommandLineOption] {
   var array = [SWIFT_CommandLineOption] ()
   array.append (SWIFT_CommandLineOption (
     domainName: "generic_cli_options",

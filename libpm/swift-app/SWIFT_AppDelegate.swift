@@ -169,7 +169,7 @@ import MyAutoLayoutKit
       .appendFlexibleSpace ()
 
     let vStack = AutoLayoutVerticalStackView ()
-    let optionArray = enterOptions () + enterCommonCommandLineOptions ()
+    let optionArray = enterOptions () + commonCommandLineOptions ()
     for option in optionArray.sorted (by: { $0.comment < $1.comment} ) {
       switch option.type {
       case .bool :

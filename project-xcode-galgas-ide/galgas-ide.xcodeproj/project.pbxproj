@@ -166,6 +166,13 @@
 		CF3060932D0D8B2B000A5F79 /* all-declarations-19.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30605A2D0D8B2B000A5F79 /* all-declarations-19.cpp */; };
 		CF3060942D0D8B2B000A5F79 /* all-declarations-18.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3060582D0D8B2B000A5F79 /* all-declarations-18.cpp */; };
 		CF3060952D0D8B2B000A5F79 /* all-declarations-12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF30604C2D0D8B2B000A5F79 /* all-declarations-12.cpp */; };
+		CF79C5702D0F32CC002EEE48 /* SWIFT_DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C5692D0F32CC002EEE48 /* SWIFT_DocumentController.swift */; };
+		CF79C5712D0F32CC002EEE48 /* SWIFT_SingleDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C56C2D0F32CC002EEE48 /* SWIFT_SingleDocument.swift */; };
+		CF79C5722D0F32CC002EEE48 /* SWIFT_SingleWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C56E2D0F32CC002EEE48 /* SWIFT_SingleWindow.swift */; };
+		CF79C5732D0F32CC002EEE48 /* SWIFT_SingleWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C56F2D0F32CC002EEE48 /* SWIFT_SingleWindowController.swift */; };
+		CF79C5752D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */; };
+		CF79C5762D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */; };
+		CF79C5772D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79C56B2D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift */; };
 		CF8F80DF2D0D90C90095170B /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF8ED3C2D0D81C1006B2A3C /* galgas */; };
 		CF8F80E42D0D91490095170B /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF8F80E52D0D91490095170B /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
@@ -359,7 +366,7 @@
 		CF93BACC2D0D8CFD006DF788 /* check-big-integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAA72D0D8CFD006DF788 /* check-big-integer.cpp */; };
 		CF93BACD2D0D8CFD006DF788 /* GrammarVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB42D0D8CFD006DF788 /* GrammarVocabulary.cpp */; };
 		CFAA22C42D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */; };
-		CFAA22D62D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */; };
+		CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */; };
 		CFD135DC2D0A104B00FE45B5 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFD135DB2D0A104B00FE45B5 /* MyAutoLayoutKit */; };
 		CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */; };
 		CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */; };
@@ -373,13 +380,8 @@
 		CFDF0CD92D0A100E0014CD68 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFDF0CD82D0A100E0014CD68 /* MyAutoLayoutKit */; };
 		CFE752C32D0EE12D0071CADB /* SWIFT_AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */; };
 		CFE752CD2D0EE4740071CADB /* SWIFT_WeakElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */; };
-		CFE752E72D0F013B0071CADB /* SWIFT_SourceTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752E62D0F012C0071CADB /* SWIFT_SourceTextDocument.swift */; };
-		CFE752E92D0F03D30071CADB /* SWIFT_DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752E82D0F03D30071CADB /* SWIFT_DocumentController.swift */; };
-		CFE752EB2D0F04710071CADB /* SWIFT_SourceTextWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752EA2D0F046D0071CADB /* SWIFT_SourceTextWindow.swift */; };
 		CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */; };
-		CFE752F82D0F1B8A0071CADB /* SWIFT_DisplayDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752C62D0EE1E60071CADB /* SWIFT_DisplayDescriptor.swift */; };
 		CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */; };
-		CFE752FB2D0F1FC30071CADB /* SWIFT_SourceTextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752FA2D0F1FB00071CADB /* SWIFT_SourceTextManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -719,6 +721,14 @@
 		CF3060722D0D8B2B000A5F79 /* all-declarations-31.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-31.cpp"; sourceTree = "<group>"; };
 		CF3060732D0D8B2B000A5F79 /* all-predefined-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
 		CF3060742D0D8B2B000A5F79 /* all-predefined-types.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
+		CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DisplayDescriptor.swift; sourceTree = "<group>"; };
+		CF79C5692D0F32CC002EEE48 /* SWIFT_DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DocumentController.swift; sourceTree = "<group>"; };
+		CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleDocument+syntax-coloring.swift"; sourceTree = "<group>"; };
+		CF79C56B2D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleDocument+update-entry-popup.swift"; sourceTree = "<group>"; };
+		CF79C56C2D0F32CC002EEE48 /* SWIFT_SingleDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleDocument.swift; sourceTree = "<group>"; };
+		CF79C56D2D0F32CC002EEE48 /* SWIFT_SingleWindow+build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleWindow+build.swift"; sourceTree = "<group>"; };
+		CF79C56E2D0F32CC002EEE48 /* SWIFT_SingleWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindow.swift; sourceTree = "<group>"; };
+		CF79C56F2D0F32CC002EEE48 /* SWIFT_SingleWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindowController.swift; sourceTree = "<group>"; };
 		CF8F80D82D0D8F250095170B /* galgas_cli_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CF8F80D92D0D8F250095170B /* grammarCompilation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grammarCompilation.h; sourceTree = "<group>"; };
 		CF8F80DA2D0D8F250095170B /* separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
@@ -758,7 +768,7 @@
 		CF93BABD2D0D8CFD006DF788 /* useful_symbols_computations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
 		CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
 		CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CommandLineOption.swift; sourceTree = "<group>"; };
-		CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enterCommonCommandLineOptions.swift; sourceTree = "<group>"; };
+		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
@@ -768,18 +778,9 @@
 		CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Tokenizer_Protocol.swift; sourceTree = "<group>"; };
 		CFDF0C9C2D0A0EEF0014CD68 /* galgas-ide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "galgas-ide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_AppDelegate.swift; sourceTree = "<group>"; };
-		CFE752C42D0EE1E00071CADB /* SWIFT_SingleDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleDocument.swift; sourceTree = "<group>"; };
-		CFE752C62D0EE1E60071CADB /* SWIFT_DisplayDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DisplayDescriptor.swift; sourceTree = "<group>"; };
-		CFE752CA2D0EE3620071CADB /* SWIFT_SingleWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindow.swift; sourceTree = "<group>"; };
 		CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_WeakElement.swift; sourceTree = "<group>"; };
-		CFE752D42D0EE5CE0071CADB /* GGS_SingleDocument-syntax-coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GGS_SingleDocument-syntax-coloring.swift"; sourceTree = "<group>"; };
-		CFE752D62D0EE7220071CADB /* SWIFT_SingleWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindowController.swift; sourceTree = "<group>"; };
 		CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSourceTextPresentationView.swift; sourceTree = "<group>"; };
-		CFE752E62D0F012C0071CADB /* SWIFT_SourceTextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceTextDocument.swift; sourceTree = "<group>"; };
-		CFE752E82D0F03D30071CADB /* SWIFT_DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_DocumentController.swift; sourceTree = "<group>"; };
-		CFE752EA2D0F046D0071CADB /* SWIFT_SourceTextWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceTextWindow.swift; sourceTree = "<group>"; };
 		CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_AppDelegate+new-document.swift"; sourceTree = "<group>"; };
-		CFE752FA2D0F1FB00071CADB /* SWIFT_SourceTextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SourceTextManager.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1279,25 +1280,24 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
-				CFE752FA2D0F1FB00071CADB /* SWIFT_SourceTextManager.swift */,
-				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
-				CFE752EA2D0F046D0071CADB /* SWIFT_SourceTextWindow.swift */,
-				CFE752E82D0F03D30071CADB /* SWIFT_DocumentController.swift */,
-				CFE752E62D0F012C0071CADB /* SWIFT_SourceTextDocument.swift */,
+				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
-				CFAA22D52D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift */,
+				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
 				CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */,
-				CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */,
+				CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */,
+				CF79C5692D0F32CC002EEE48 /* SWIFT_DocumentController.swift */,
 				CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */,
+				CF79C56C2D0F32CC002EEE48 /* SWIFT_SingleDocument.swift */,
+				CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */,
+				CF79C56B2D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift */,
+				CF79C56E2D0F32CC002EEE48 /* SWIFT_SingleWindow.swift */,
+				CF79C56D2D0F32CC002EEE48 /* SWIFT_SingleWindow+build.swift */,
+				CF79C56F2D0F32CC002EEE48 /* SWIFT_SingleWindowController.swift */,
 				CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */,
 				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,
 				CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */,
-				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
-				CFE752C42D0EE1E00071CADB /* SWIFT_SingleDocument.swift */,
-				CFE752D42D0EE5CE0071CADB /* GGS_SingleDocument-syntax-coloring.swift */,
-				CFE752D62D0EE7220071CADB /* SWIFT_SingleWindowController.swift */,
-				CFE752CA2D0EE3620071CADB /* SWIFT_SingleWindow.swift */,
-				CFE752C62D0EE1E60071CADB /* SWIFT_DisplayDescriptor.swift */,
+				CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */,
+				CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */,
 			);
 			path = "swift-app";
 			sourceTree = "<group>";
@@ -1631,26 +1631,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFE752FB2D0F1FC30071CADB /* SWIFT_SourceTextManager.swift in Sources */,
 				CFE752C32D0EE12D0071CADB /* SWIFT_AppDelegate.swift in Sources */,
 				CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */,
 				CFD6D2552D0E0D8C00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift in Sources */,
 				CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */,
 				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
 				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
-				CFE752E72D0F013B0071CADB /* SWIFT_SourceTextDocument.swift in Sources */,
-				CFAA22D62D0DD79F00FFC0B6 /* enterCommonCommandLineOptions.swift in Sources */,
+				CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */,
 				CF8F81C22D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift in Sources */,
 				CFD6D24A2D0DEFB900E91AE6 /* gui-cocoa.swift in Sources */,
-				CFE752E92D0F03D30071CADB /* SWIFT_DocumentController.swift in Sources */,
 				CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */,
 				CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */,
-				CFE752F82D0F1B8A0071CADB /* SWIFT_DisplayDescriptor.swift in Sources */,
 				CFAA22C42D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift in Sources */,
 				CFD6D23F2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift in Sources */,
 				CFE752CD2D0EE4740071CADB /* SWIFT_WeakElement.swift in Sources */,
 				CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */,
-				CFE752EB2D0F04710071CADB /* SWIFT_SourceTextWindow.swift in Sources */,
+				CF79C5702D0F32CC002EEE48 /* SWIFT_DocumentController.swift in Sources */,
+				CF79C5712D0F32CC002EEE48 /* SWIFT_SingleDocument.swift in Sources */,
+				CF79C5722D0F32CC002EEE48 /* SWIFT_SingleWindow.swift in Sources */,
+				CF79C5732D0F32CC002EEE48 /* SWIFT_SingleWindowController.swift in Sources */,
+				CF79C5752D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift in Sources */,
+				CF79C5762D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift in Sources */,
+				CF79C5772D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

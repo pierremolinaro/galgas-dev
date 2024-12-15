@@ -31,10 +31,14 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
       editable: true,
       textStorage: inTextStorage,
       horizontalScroller: true,
-      verticalScroller: true
+      verticalScroller: true,
+      minWidth: 300,
+      minHeight: 400
     )
     super.init ()
-    _ = self.appendView (self.mSourceTextView)
+
+    _ = self.set (margins: .zero)
+      .appendView (self.mSourceTextView)
   //--- Configure text view
 //    self.mSourceTextView.isGrammarCheckingEnabled = false
 //    self.mSourceTextView.isContinuousSpellCheckingEnabled = false

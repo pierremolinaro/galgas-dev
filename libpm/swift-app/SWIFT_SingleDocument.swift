@@ -1,7 +1,4 @@
 //
-//  MyDocument.swift
-//  essai-editeur-texte-swift
-//
 //  Created by Pierre Molinaro on 02/11/2021.
 //
 //--------------------------------------------------------------------------------------------------

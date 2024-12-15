@@ -1,7 +1,4 @@
 //
-//  GGS_SingleDocument-syntax-coloring.swift
-//  essai-editeur-texte-swift
-//
 //  Created by Pierre Molinaro on 08/10/2023.
 //
 //--------------------------------------------------------------------------------------------------
@@ -130,7 +127,7 @@ extension SWIFT_SingleDocument {
     //--- IMPORTANT! This provides a default font to non represented glyphs
       self.mTextStorage.fixFontAttribute (in: modifiedRange)
     //--- Update display
-// §      self.updateEntryPopUpButtons (tokenizer.popupListData ())
+      self.updateEntryPopUpButtons (tokenizer.popupListData ())
   //---
     //--- Check that range array is correct
       if CHECK_RANGE_ARRAY {

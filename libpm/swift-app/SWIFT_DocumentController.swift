@@ -1,53 +1,50 @@
 //
-//  MyDocumentController.swift
-//  essai-editeur-texte-swift
-//
 //  Created by Pierre Molinaro on 03/11/2021.
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 import AppKit
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 // During development changing the UTI can confuse the LaunchServices database. You can try to reset it by running:
 //
 // /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 //
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------
 
 class SWIFT_DocumentController : NSDocumentController {
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func openDocument (withContentsOf inURL : URL,
                               display inDisplay : Bool,
                               completionHandler inCompletionHandler : @escaping (NSDocument?, Bool, Error?) -> Void) {
     super.openDocument (withContentsOf: inURL, display: false) { (inDocument : NSDocument?, alreadyOpened : Bool, error : Error?) in
-      if inDisplay, let document = inDocument as? SWIFT_SourceTextDocument {
-        let newWindow = SWIFT_SourceTextWindow (withDocument: document)
+      if inDisplay, let document = inDocument as? SWIFT_SingleDocument {
+        let newWindow = SWIFT_SingleWindow (withDocument: document)
         newWindow.makeKeyAndOrderFront (nil)
       }
       inCompletionHandler (inDocument, alreadyOpened, error)
     }
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func myDocuments () -> [SWIFT_SourceTextDocument] {
-    var result = [SWIFT_SourceTextDocument] ()
+  static func myDocuments () -> [SWIFT_SingleDocument] {
+    var result = [SWIFT_SingleDocument] ()
     for doc in NSDocumentController.shared.documents {
-      if let document = doc as? SWIFT_SourceTextDocument {
+      if let document = doc as? SWIFT_SingleDocument {
         result.append (document)
       }
     }
     return result
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func mySaveAllDocuments () {
     for doc in NSDocumentController.shared.documents {
-      if let document = doc as? SWIFT_SourceTextDocument {
+      if let document = doc as? SWIFT_SingleDocument {
         if document.isDocumentEdited {
           document.saveGGSDocument ()
         }
@@ -55,14 +52,14 @@ class SWIFT_DocumentController : NSDocumentController {
     }
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func closeUnreferencedDocuments () {
  //   Swift.print ("closeUnreferencedDocuments")
     for testedDocument in self.myDocuments () {
       var n = 0
       for w in NSApp.windows {
-        if let window = w as? SWIFT_SourceTextWindow {
+        if let window = w as? SWIFT_SingleWindow {
           n += window.tabsReferencing (document: testedDocument)
         }
       }
@@ -76,7 +73,7 @@ class SWIFT_DocumentController : NSDocumentController {
     }
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func supportedDocumentExtensions () -> [String] {
     var result = [String] ()
@@ -107,8 +104,8 @@ class SWIFT_DocumentController : NSDocumentController {
     return [String] (r)
   }
 
-  //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//--------------------------------------------------------------------------------------------------

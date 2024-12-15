@@ -1,7 +1,4 @@
 //
-//  MyWindowController.swift
-//  essai-editeur-texte-swift
-//
 //  Created by Pierre Molinaro on 05/11/2021.
 //
 //--------------------------------------------------------------------------------------------------
