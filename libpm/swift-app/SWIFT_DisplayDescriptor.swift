@@ -136,24 +136,6 @@ import MyAutoLayoutKit
 //  }
   
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //MARK: Window Controller
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func attachWindowController (to inWindow : NSWindow) {
-//    let windowController = SWIFT_SingleWindowController (window: inWindow)
-//    self.mDocument.addWindowController (windowController)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func detachWindowController (from inWindow : NSWindow) {
-//    if let windowController = inWindow.windowController {
-//      self.mDocument.removeWindowController (windowController)
-//      inWindow.windowController = nil
-//    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 

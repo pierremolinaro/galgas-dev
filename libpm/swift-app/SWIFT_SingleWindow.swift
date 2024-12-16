@@ -268,10 +268,10 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 
   func selectTab (atIndex inIndex : Int) {
     if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
-      if let wc = self.windowController, let document = wc.document as? SWIFT_SingleDocument {
-        document.removeWindowController (wc)
-        self.windowController = nil
-      }
+//      if let wc = self.windowController, let document = wc.document as? SWIFT_SingleDocument {
+//        document.removeWindowController (wc)
+//        self.windowController = nil
+//      }
       self.mSelectedTabIndex = inIndex
     //--- Remove all subviews of base view
       while self.mBaseView.subViews.count > 0 {
@@ -358,9 +358,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
    // Swift.print ("closeTab \(inIndex)")
     if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
     //--- Détacher le window controller (en fait, uniquement si le tab supprimé est celui sélectionné)
-      if inIndex == self.mSelectedTabIndex {
-        self.mTabArray [inIndex].detachWindowController (from: self)
-      }
+//      if inIndex == self.mSelectedTabIndex {
+//        self.mTabArray [inIndex].detachWindowController (from: self)
+//      }
     //--- Supprimer l'entrée
       self.mTabArray.remove (at: inIndex)
     //--- Fermer les documents qui ne sont plus visibles (en fait, un seul peut être
