@@ -109,7 +109,7 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
 
   //······························································································
 
-  override method transformInstruction
+  override method transformInstructionForGrammarAnalysis
                     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex

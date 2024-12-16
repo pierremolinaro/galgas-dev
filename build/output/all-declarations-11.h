@@ -2117,17 +2117,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapF
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@syntaxInstructionAST transformInstruction'
+//Abstract extension method '@syntaxInstructionAST transformInstructionForGrammarAnalysis'
 //
 //--------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_transformInstruction (class cPtr_syntaxInstructionAST * inObject,
-                                               class GGS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
-                                               const class GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
-                                               class GGS_uint & io_ioAddedNonTerminalIndex,
-                                               class GGS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_transformInstructionForGrammarAnalysis (class cPtr_syntaxInstructionAST * inObject,
+                                                                 class GGS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
+                                                                 const class GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
+                                                                 class GGS_uint & io_ioAddedNonTerminalIndex,
+                                                                 class GGS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -1,0 +1,254 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//------------------------------------------------------------------------------------------------
+//! SYNTAX
+//------------------------------------------------------------------------------------------------
+
+syntax extension galgas3SyntaxComponentSyntax {
+
+  //······························································································
+
+  rule <syntax_instruction_ggs3> ?!@galgasDeclarationAST ioDeclarations
+                                 !@syntaxInstructionAST outInstruction {
+    $let$
+    $indexing$
+    let location = @location.here
+    $identifier$ ?let @lstring indexName
+    $:$
+    <expression_ggs3> !?ioDeclarations ?let expression
+    outInstruction = @IndexingSyntaxInstruction {
+      !location
+      !indexName
+      !expression
+    }
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------
+
+syntax extension galgas4SyntaxComponentSyntax {
+
+  //······························································································
+
+  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
+                            !@syntaxInstructionAST outInstruction {
+    $let$
+    $indexing$
+    let location = @location.here
+    $identifier$ ?let @lstring indexName
+    $:$
+    <expression> !?ioDeclarations ?let expression
+    outInstruction = @IndexingSyntaxInstruction {
+      !location
+      !indexName
+      !expression
+    }
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------
+
+class @IndexingSyntaxInstruction : @syntaxInstructionAST {
+
+  //······························································································
+
+  private let @lstring mIndexName
+  private let @semanticExpressionAST mExpression
+
+  //······························································································
+
+  override method transformInstructionForGrammarAnalysis
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
+  }
+
+  //······························································································
+
+  override method analyzeSyntaxInstruction
+    ?let @lstring inUsefulnessCallerEntityName
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+    ?let @analysisContext inAnalysisContext
+    ?!@unifiedTypeMap ioTypeMap
+    ?let @bool unused inHasTranslateFeature
+    ?let @terminalMap unused inTerminalMap
+    ?let @string inLexiqueName
+    ?let @nonterminalMap unused inNonterminalMap
+    ?let @string unused inComponentName
+    ?let @stringset inIndexNameSet
+    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+    ?!@localVarManager ioVariableMap
+    ?!@uint unused ioSelectMethodCount {
+  //--- Check indexing name
+    if not [inIndexNameSet hasKey !self.mIndexName.string] then
+      error self.mIndexName
+        : "the '" + self.mIndexName + "' indexing name is not declared by the lexique"
+        fixit { replace inIndexNameSet }
+    end
+  //--- Analyze expression
+    [self.mExpression analyzeSemanticExpression
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inferenceType: inAnalysisContext.predefinedTypes.mLStringType
+      !inAnalysisContext
+      !?ioTypeMap
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration expression
+    ]
+  //--- Generate instructions
+    ioInstructionListForGeneration += !@IndexingInstructionForGeneration {
+      !self.mInstructionLocation
+      !self.mIndexName.string
+      !expression
+      !inLexiqueName
+    }
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------
+//! GENERATION TYPES
+//------------------------------------------------------------------------------------------------
+
+class @IndexingInstructionForGeneration : @syntaxInstructionForGeneration {
+  private let @string mIndexName
+  private let @semanticExpressionForGeneration mExpression
+  private let @string mLexiqueIdentifier
+
+  //······························································································
+
+  override method appendSyntaxSignature
+    ?let @string unused inPosfix
+    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+  {
+//    ioInstructionListForGeneration += !@IndexingInstructionForGeneration {
+//      !self.mInstructionLocation
+//      !self.mNonterminalName
+//      !inPosfix
+//      !@actualParameterListForGeneration ()
+//      !@grammarInstructionSyntaxDirectedTranslationResultNone.new
+//    }
+  }
+
+  //······························································································
+
+  override getter compareInstructionSyntaxSignature
+    ?let @semanticInstructionForGeneration inTestedInstruction
+    ->@bool {
+    if inTestedInstruction is @IndexingInstructionForGeneration then
+      result = true
+    else
+      result = false
+    end
+//      result = self.mNonterminalName == si.mNonterminalName
+//      if not result then
+//        error si.mInstructionLocation
+//        :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
+//      end
+//    elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
+//      error si.mInstructionLocation
+//        :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
+//      result = false
+//    else
+//      error self.mInstructionLocation : "internal error"
+//      result = false
+//    end
+//    if not result then
+//      error self.mInstructionLocation
+//      : "reference syntax instruction is here"
+//    end
+  }
+
+  //······························································································
+
+  override method generateInstruction
+    ?!@stringset ioInclusionSet
+    ?!@uint ioTemporaryVariableIndex
+    ?!@stringset ioUnusedVariableCppNameSet
+    ?let @bool unused inGenerateSyntaxDirectedTranslationString
+    ?!@string ioGeneratedCode
+  {
+    [self.mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let sourceVar
+    ]
+//    [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+//  for (mValue0 mValue1) in self.mIndexingKeyList do
+    ioGeneratedCode += compilerCppName ()
+    ioGeneratedCode += "->enterIndexedValue (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
+    ioGeneratedCode += [self.mIndexName identifierRepresentation]
+    ioGeneratedCode += ", " + sourceVar + ") ;\n"
+//  end
+//    var parameterCppNameList = @stringlist ()
+//    var jokerParametersToReleaseList = @stringlist ()
+//    var inputVariableList = @stringlist ()
+//    for (mActualParameter) in self.mActualParameterList do
+//      [mActualParameter generateActualParameter
+//        !?ioInclusionSet
+//        !?ioTemporaryVariableIndex
+//        !?ioGeneratedCode
+//        !?jokerParametersToReleaseList
+//        !?inputVariableList
+//        !?ioUnusedVariableCppNameSet
+//        ?let @string parameterCppName
+//      ]
+//      parameterCppNameList += !parameterCppName
+//    end
+//  //--- Generate method call
+//    let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation locationIndex]
+//    if inGenerateSyntaxDirectedTranslationString then
+//      ioGeneratedCode += "String " + sdtResultVarName + " ;\n"
+//    end
+//    ioGeneratedCode += "nt_" + [self.mNonterminalName identifierRepresentation] + "_" + [self.mLabelName identifierRepresentation] + " ("
+//    for (mValue) in parameterCppNameList do
+//      ioGeneratedCode += mValue + ", "
+//    end
+//    if inGenerateSyntaxDirectedTranslationString then
+//      ioGeneratedCode += sdtResultVarName + ", "
+//    end
+//    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+//    ioGeneratedCode +=  compilerCppName () + ") ;\n"
+//    [self.mGrammarInstructionSyntaxDirectedTranslationResult generateCode
+//      !inGenerateSyntaxDirectedTranslationString
+//      !sdtResultVarName
+//      !?ioUnusedVariableCppNameSet
+//      !?ioGeneratedCode
+//    ]
+//  //--- Release temporary variables
+//    for (mValue) in jokerParametersToReleaseList do
+//      ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
+//    end
+  }
+
+  //······························································································
+
+}
+
+//------------------------------------------------------------------------------------------------

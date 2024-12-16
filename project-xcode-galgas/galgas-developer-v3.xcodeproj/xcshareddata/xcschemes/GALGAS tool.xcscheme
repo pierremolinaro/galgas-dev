@@ -61,12 +61,20 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "/Volumes/dev-git/galgas-dev/galgas-sources/instruction-terminal.galgas"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--mode=indexing:/Users/pierremolinaro/Desktop/result.plist"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "/Volumes/dev-git/lpm-dev/+lpm.ggsproject"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-usefulness"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-file-generation"
@@ -74,11 +82,11 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--no-color"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--output-html-grammar-file"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--max-warnings=10000"
@@ -94,7 +102,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/galgas-dev/+galgas.galgasProject"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--check-big-int"

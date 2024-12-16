@@ -669,6 +669,29 @@ void Lexique::enterIndexing (const uint32_t inIndexingKind,
 
 //--------------------------------------------------------------------------------------------------
 
+void Lexique::enterIndexedValue (const uint32_t inIndexingKind,
+                                 const GGS_lstring & inIndexedValue) {
+  if ((nullptr != mIndexingDictionary) && inIndexedValue.isValid ()) {
+//    const uint32_t tokenStartLocation = uint32_t (mCurrentTokenPtr->mStartLocation.index ()) ;
+//    const uint32_t tokenLine = uint32_t (mCurrentTokenPtr->mStartLocation.lineNumber ()) ;
+//    const uint32_t tokenLength  = uint32_t (mCurrentTokenPtr->mEndLocation.index ()) - tokenStartLocation + 1 ;
+//    const String indexedKey = sourceText ().sourceString ().subString (int32_t (tokenStartLocation), int32_t (tokenLength)) + inIndexedKeyPosfix ;
+    const uint32_t tokenStartLocation = uint32_t (inIndexedValue.mProperty_location.startLocation ().index ()) ;
+    const uint32_t tokenLine = uint32_t (inIndexedValue.mProperty_location.startLocation ().lineNumber ()) ;
+    const uint32_t tokenLength = uint32_t (inIndexedValue.mProperty_location.endLocation ().index ()) - tokenStartLocation + 1 ;
+    const String indexedKey = inIndexedValue.mProperty_string.stringValue () ;
+    printf ("%u %u %u\n", tokenStartLocation, tokenLine, tokenLength) ;
+    mIndexingDictionary->addIndexedKey (inIndexingKind,
+                                        indexedKey,
+                                        inIndexedValue.mProperty_location.sourceText ().sourceFilePath (),
+                                        tokenLine,
+                                        tokenStartLocation,
+                                        tokenLength) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void Lexique::enableIndexing (void) {
   macroMyNew (mIndexingDictionary, cIndexingDictionary) ;
 }

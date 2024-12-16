@@ -408,6 +408,14 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i16_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
+  protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i17_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                   GGS_syntaxInstructionAST & outArgument1,
+                                                                                   Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i17_parse (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i17_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
 
 
 //--- Select methods

@@ -97,7 +97,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! TRANSFORM
 //------------------------------------------------------------------------------------------------
 
-override method @parseRewindInstruction transformInstruction
+override method @parseRewindInstruction transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
@@ -105,7 +105,7 @@ override method @parseRewindInstruction transformInstruction
 {
   [self.mParseRewindBranchList first ?let syntaxInstructionList ?*]
 
-  transformInstructionList (
+  transformInstructionListForGrammarAnalysis (
     !syntaxInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
     !nonTerminalSymbolMap:inNonTerminalSymbolMap

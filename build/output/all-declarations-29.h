@@ -32,17 +32,17 @@ void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'transformInstructionList?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'
+//Routine 'transformInstructionListForGrammarAnalysis?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_transformInstructionList_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GGS_syntaxInstructionList constinArgument0,
-                                                                                                                class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
-                                                                                                                const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
-                                                                                                                class GGS_uint & ioArgument3,
-                                                                                                                class GGS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
-                                                                                                                class Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
+void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GGS_syntaxInstructionList constinArgument0,
+                                                                                                                                  class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
+                                                                                                                                  const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
+                                                                                                                                  class GGS_uint & ioArgument3,
+                                                                                                                                  class GGS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
+                                                                                                                                  class Compiler * inCompiler
+                                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

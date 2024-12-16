@@ -4657,9 +4657,9 @@ GGS_lsint_36__34_ Lexique_galgasScanner_33_::synthetizedAttribute_sint_36__34_va
 GGS_lstring Lexique_galgasScanner_33_::synthetizedAttribute_tokenString (void) const {
   cTokenFor_galgasScanner_33_ * ptr = (cTokenFor_galgasScanner_33_ *) currentTokenPtr (HERE) ;
   macroValidSharedObject (ptr, cTokenFor_galgasScanner_33_) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_string value (ptr->mLexicalAttribute_tokenString) ;
-  GGS_lstring result (value, currentLocation) ;
+  const GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  const GGS_string value (ptr->mLexicalAttribute_tokenString) ;
+  const GGS_lstring result (value, currentLocation) ;
   return result ;
 }
 

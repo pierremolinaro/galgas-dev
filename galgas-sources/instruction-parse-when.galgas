@@ -172,13 +172,13 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! TRANSFORM
 //------------------------------------------------------------------------------------------------
 
-override method @parseWhenInstruction transformInstruction
+override method @parseWhenInstruction transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 {
-  transformInstructionList (
+  transformInstructionListForGrammarAnalysis (
     !self.mElseInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
     !nonTerminalSymbolMap:inNonTerminalSymbolMap

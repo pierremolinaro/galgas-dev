@@ -59,6 +59,14 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--mode=indexing:/Users/pierremolinaro/Desktop/result.plist"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Volumes/dev-git/galgas-dev/galgas-sources/instruction-terminal.galgas"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "/Volumes/dev-git/train-p2-m2/applis-cocoa/compilateurDescriptionReseauFerroviaire/descriptionReseauFerroviaire/+descriptionReseauFerroviaire.galgasProject"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -84,7 +92,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Volumes/dev-git/lpm-dev/+lpm.ggsproject"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

@@ -3182,22 +3182,22 @@ GGS_terminalSymbolsMapForGrammarAnalysis GGS_terminalSymbolsMapForGrammarAnalysi
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension method '@syntaxInstructionAST transformInstruction'
+//Abstract extension method '@syntaxInstructionAST transformInstructionForGrammarAnalysis'
 //
 //--------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_transformInstruction (cPtr_syntaxInstructionAST * inObject,
-                                               GGS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
-                                               const GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
-                                               GGS_uint & io_ioAddedNonTerminalIndex,
-                                               GGS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void callExtensionMethod_transformInstructionForGrammarAnalysis (cPtr_syntaxInstructionAST * inObject,
+                                                                 GGS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
+                                                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
+                                                                 GGS_uint & io_ioAddedNonTerminalIndex,
+                                                                 GGS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
-    inObject->method_transformInstruction (io_ioActuallyUsedTerminalSymbolMap, constin_inNonTerminalSymbolMap, io_ioAddedNonTerminalIndex, io_ioSyntaxInstructionList, inCompiler COMMA_THERE) ;
+    inObject->method_transformInstructionForGrammarAnalysis (io_ioActuallyUsedTerminalSymbolMap, constin_inNonTerminalSymbolMap, io_ioAddedNonTerminalIndex, io_ioSyntaxInstructionList, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------

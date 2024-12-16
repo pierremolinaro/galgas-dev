@@ -148,7 +148,7 @@ proc handleNonTerminalDeclarationsFromRuleList
 //                     transformInstructionList
 //------------------------------------------------------------------------------------------------
 
-abstract method @syntaxInstructionAST transformInstruction
+abstract method @syntaxInstructionAST transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
@@ -156,7 +156,7 @@ abstract method @syntaxInstructionAST transformInstruction
 
 //------------------------------------------------------------------------------------------------
 
-override method @semanticInstructionAST transformInstruction
+override method @semanticInstructionAST transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
@@ -165,14 +165,14 @@ override method @semanticInstructionAST transformInstruction
 
 //------------------------------------------------------------------------------------------------
 
-proc transformInstructionList
+proc transformInstructionListForGrammarAnalysis
   ?let @syntaxInstructionList inInstructionList
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   for (mInstruction) in inInstructionList do
-    [mInstruction transformInstruction
+    [mInstruction transformInstructionForGrammarAnalysis
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
       !nonTerminalSymbolMap:inNonTerminalSymbolMap
       !?addedTerminalIndex:ioAddedNonTerminalIndex
@@ -198,7 +198,7 @@ proc buildRuleList
     [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
   //--- Transform instruction list
     var instructionList = @syntaxInstructionListForGrammarAnalysis ()
-    transformInstructionList (
+    transformInstructionListForGrammarAnalysis (
       !parsedSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
       !nonTerminalSymbolMap:inNonTerminalMapForGrammarAnalysis

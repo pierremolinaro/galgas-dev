@@ -80,6 +80,8 @@ class Lexique : public Compiler {
 //--- Indexing
   public: void enterIndexing (const uint32_t inIndexingKind,
                               const char * inIndexedKeyPosfix) ;
+  public: void enterIndexedValue (const uint32_t inIndexingKind,
+                                  const GGS_lstring & inValue) ;
   public: void enableIndexing (void) ;
   public: void generateIndexFile (void) ;
   protected: cIndexingDictionary * mIndexingDictionary ;

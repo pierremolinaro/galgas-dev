@@ -83,9 +83,6 @@ import MyAutoLayoutKit
     self.populateFontAndColorsTab (tabView: tabView)
     self.populateBuildOptionsTab (tabView: tabView)
 
-    let colorsAndFontsView = SimpleBlockView (.fill, .fill)
-    _ = tabView.addTab (title: "Colors & Fonts", tooltip: "", contentView: colorsAndFontsView)
-
     self.mSettingsWindow.setRootView (tabView)
 
   }
@@ -129,8 +126,17 @@ import MyAutoLayoutKit
       let fontButton = AutoLayoutFontButton (size: .regular)
         .setMinWidth (100)
         .bind_fontValue (tokenizer.font)
+      let lineHeightPopUpButton = AutoLayoutTaggedPopUpButton (size: .regular)
+         .add (title: "1.0", withTag: 10)
+         .add (title: "1.1", withTag: 11)
+         .add (title: "1.2", withTag: 12)
+         .add (title: "1.5", withTag: 15)
+         .add (title: "2.0", withTag: 20)
+         .bind_selectedTag (tokenizer.lineHeight)
       let hStack = AutoLayoutHorizontalStackView ().set (margins: .zero)
         .appendView (fontButton)
+        .appendView (AutoLayoutStaticLabel (title: "Line Spacing", bold: false, size: .regular, alignment: .left))
+        .appendView (lineHeightPopUpButton)
         .appendFlexibleSpace ()
 
        let vStack = AutoLayoutVerticalStackView ()

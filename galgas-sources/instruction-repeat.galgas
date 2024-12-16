@@ -100,7 +100,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! TRANSFORM
 //------------------------------------------------------------------------------------------------
 
-override method @repeatInstruction transformInstruction
+override method @repeatInstruction transformInstructionForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
@@ -109,7 +109,7 @@ override method @repeatInstruction transformInstruction
   ioAddedNonTerminalIndex += 1
 
   var repeatedInstructionList = @syntaxInstructionListForGrammarAnalysis ()
-  transformInstructionList (
+  transformInstructionListForGrammarAnalysis (
     !self.mRepeatedInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
     !nonTerminalSymbolMap:inNonTerminalSymbolMap
@@ -120,7 +120,7 @@ override method @repeatInstruction transformInstruction
 
   for (mSyntaxInstructionList *) in self.mRepeatBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
-    transformInstructionList (
+    transformInstructionListForGrammarAnalysis (
       !mSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
       !nonTerminalSymbolMap:inNonTerminalSymbolMap

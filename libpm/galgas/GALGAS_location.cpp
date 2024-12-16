@@ -59,8 +59,8 @@ GGS_location::~ GGS_location (void) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_location::GGS_location (const LocationInSource & inStartLocationInSource,
-                                  const LocationInSource & inEndLocationInSource,
-                                  const SourceTextInString & inSourceText) :
+                            const LocationInSource & inEndLocationInSource,
+                            const SourceTextInString & inSourceText) :
 AC_GALGAS_root (),
 mInternalLocation (nullptr) {
   macroMyNew (mInternalLocation, InternalLocation (inSourceText, inStartLocationInSource, inEndLocationInSource))
@@ -123,21 +123,21 @@ bool GGS_location::isValid (void) const {
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_location GGS_location::class_func_here (Compiler * inCompiler
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+                                            COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->here () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_location GGS_location::class_func_next (Compiler * inCompiler
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+                                            COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->next () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_location GGS_location::class_func_separator (Compiler * inCompiler
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   return inCompiler->separator () ;
 }
 
@@ -186,7 +186,7 @@ ComparisonResult GGS_location::objectCompare (const GGS_location & inOperand) co
 //----------------------------------------------------------------------------------------------------------------------
 
 void GGS_location::description (String & ioString,
-                                   const int32_t /* inIndentation */) const {
+                                const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@location:") ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -209,7 +209,7 @@ void GGS_location::description (String & ioString,
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_string GGS_location::getter_startLocationString (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
+                                                     COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -232,7 +232,7 @@ GGS_string GGS_location::getter_startLocationString (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_string GGS_location::getter_endLocationString (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -254,7 +254,7 @@ GGS_string GGS_location::getter_endLocationString (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_string GGS_location::getter_file (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
+                                      COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -269,7 +269,7 @@ GGS_string GGS_location::getter_file (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_location::getter_startLocationIndex (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+                                                  COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -284,7 +284,7 @@ GGS_uint GGS_location::getter_startLocationIndex (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_location::getter_endLocationIndex (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+                                                COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -299,7 +299,7 @@ GGS_uint GGS_location::getter_endLocationIndex (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_location::getter_startColumn (Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
+                                           COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -314,7 +314,7 @@ GGS_uint GGS_location::getter_startColumn (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_location::getter_endColumn (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
+                                         COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -329,7 +329,7 @@ GGS_uint GGS_location::getter_endColumn (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_location::getter_startLine (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
+                                         COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
@@ -359,8 +359,8 @@ GGS_uint GGS_location::getter_endLine (Compiler * inCompiler
 //----------------------------------------------------------------------------------------------------------------------
 
 GGS_location GGS_location::getter_union (const GGS_location & inOtherLocation,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
   GGS_location result ;
   if (isValid () && inOtherLocation.isValid ()) {
     if (mInternalLocation->mSourceText != inOtherLocation.mInternalLocation->mSourceText) {
@@ -381,4 +381,3 @@ GGS_location GGS_location::getter_union (const GGS_location & inOtherLocation,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-

@@ -789,8 +789,8 @@ class cPtr_syntaxInstructionAST : public acStrongPtr_class {
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
            class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,
@@ -915,8 +915,8 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
   public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
-//--- Extension method transformInstruction
-  public: virtual void method_transformInstruction (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
+//--- Extension method transformInstructionForGrammarAnalysis
+  public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
            class GGS_uint & arg_ioAddedNonTerminalIndex,
            class GGS_syntaxInstructionListForGrammarAnalysis & arg_ioSyntaxInstructionList,

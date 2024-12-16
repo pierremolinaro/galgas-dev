@@ -81,31 +81,36 @@ final class SWIFT_TextViewRulerView : NSRulerView {
       while (idx < sourceString.length) && !maxYreached {
         let lineRange = sourceString.lineRange (for: NSMakeRange (idx, 0))
         let isVisible = max (visibleRange.location, lineRange.location) <= min (NSMaxRange(visibleRange), NSMaxRange(lineRange))
-        maxYreached = lineRange.location > NSMaxRange (visibleRange) ;
+        maxYreached = lineRange.location > NSMaxRange (visibleRange)
         if isVisible {
-          let r = layoutManager.lineFragmentRect (forGlyphAt: layoutManager.glyphIndexForCharacter (at: lineRange.location), effectiveRange: nil, withoutAdditionalLayout: true)
-          var p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
+          let r = layoutManager.lineFragmentRect (
+            forGlyphAt: layoutManager.glyphIndexForCharacter (at: lineRange.location),
+            effectiveRange: nil
+          )
+          let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
           let lineIntersectsSelection =
             max (selectedRange.location, idx)
               <
             min (selectedRange.location + selectedRange.length + 1, lineRange.location + lineRange.length)
         //--- Draw background if line selected
+          let ruleRectForCurrentLine = NSRect (
+            x: 0.0,
+            y: p.y,
+            width: self.bounds.size.width,
+            height: r.size.height
+          )
           if lineIntersectsSelection {
-            let rBackground = NSRect (origin: NSPoint (x: 0.0, y: p.y), size: NSSize (width: self.bounds.size.width, height: r.size.height))
             NSColor.white.setFill ()
-            NSBezierPath.fill (rBackground)
+            NSBezierPath.fill (ruleRectForCurrentLine)
           }
         //--- Draw line number
-          let offset = layoutManager.typesetter.baselineOffset (
-            in: layoutManager,
-            glyphIndex: layoutManager.glyphIndexForCharacter (at: lineRange.location)
-          )
           let str = "\(lineIndex)"
           let strSize = str.size (withAttributes: textAttributes)
-          p.x = self.bounds.size.width - strSize.width - rightMargin
-          // Swift.print ("p.y \(p.y) offset \(offset), r.size.height \(r.size.height), strSize.height \(strSize.height)")
-          p.y += r.size.height - strSize.height - offset
-          str.draw (at: p, withAttributes: textAttributes)
+          let lineNumberOrigin = NSPoint (
+            x: self.bounds.size.width - strSize.width - rightMargin,
+            y: ruleRectForCurrentLine.midY - strSize.height / 2.0
+          )
+          str.draw (at: lineNumberOrigin, withAttributes: textAttributes)
         }
         idx = lineRange.location + lineRange.length
         lineIndex += 1
@@ -127,9 +132,9 @@ final class SWIFT_TextViewRulerView : NSRulerView {
 //        str.draw (at: p, withAttributes: textAttributes)
 //      }
     //-------- Draw right border
-      let p1 = NSPoint (x: self.bounds.width, y: 0.0)
-      let p2 = NSPoint (x: self.bounds.width, y: self.bounds.height)
-      NSBezierPath.strokeLine (from: p1, to: p2)
+//      let p1 = NSPoint (x: self.bounds.width, y: 0.0)
+//      let p2 = NSPoint (x: self.bounds.width, y: self.bounds.height)
+//      NSBezierPath.strokeLine (from: p1, to: p2)
     }
   }
 
