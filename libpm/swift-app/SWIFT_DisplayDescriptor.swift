@@ -124,31 +124,33 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var title : NSAttributedString {
-    let title = self.mDocument.lastComponentOfFileName
-    let font = self.mDocument.isDocumentEdited
-      ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-      : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : font
-    ]
-    return NSAttributedString (string: title, attributes: textAttributes)
-  }
+//  var title2 : NSAttributedString {
+//    let title = self.mDocument.lastComponentOfFileName
+//    let font = self.mDocument.isDocumentEdited
+//      ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+//      : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : font
+//    ]
+//    return NSAttributedString (string: title, attributes: textAttributes)
+//  }
   
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Window Controller
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func attachWindowController (to inWindow : NSWindow) {
-    let windowController = SWIFT_SingleWindowController (window: inWindow)
-    self.mDocument.addWindowController (windowController)
+//    let windowController = SWIFT_SingleWindowController (window: inWindow)
+//    self.mDocument.addWindowController (windowController)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func detachWindowController (from inWindow : NSWindow) {
-    if let windowController = inWindow.windowController {
-      self.mDocument.removeWindowController (windowController)
-      inWindow.windowController = nil
-    }
+//    if let windowController = inWindow.windowController {
+//      self.mDocument.removeWindowController (windowController)
+//      inWindow.windowController = nil
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -53,6 +53,7 @@ final class SWIFT_TextViewRulerView : NSRulerView {
        let textView = scrollView.documentView as? NSTextView,
        let layoutManager = textView.layoutManager,
        let textContainer = textView.textContainer {
+      let rightMargin = 5.0
     //-------- Draw background
       NSColor.windowBackgroundColor.setFill ()
       NSBezierPath.fill (self.bounds)
@@ -101,7 +102,6 @@ final class SWIFT_TextViewRulerView : NSRulerView {
           )
           let str = "\(lineIndex)"
           let strSize = str.size (withAttributes: textAttributes)
-          let rightMargin = 5.0
           p.x = self.bounds.size.width - strSize.width - rightMargin
           // Swift.print ("p.y \(p.y) offset \(offset), r.size.height \(r.size.height), strSize.height \(strSize.height)")
           p.y += r.size.height - strSize.height - offset
@@ -110,6 +110,22 @@ final class SWIFT_TextViewRulerView : NSRulerView {
         idx = lineRange.location + lineRange.length
         lineIndex += 1
       }
+    //-------- Draw last line number
+//      do{
+//        let lineRange = sourceString.lineRange (for: NSMakeRange (idx, 0))
+//        let offset = layoutManager.typesetter.baselineOffset (
+//          in: layoutManager,
+//          glyphIndex: layoutManager.glyphIndexForCharacter (at: lineRange.location)
+//        )
+//        let r = layoutManager.lineFragmentRect (forGlyphAt: layoutManager.glyphIndexForCharacter (at: lineRange.location), effectiveRange: nil, withoutAdditionalLayout: true)
+//        var p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
+//        let str = "\(lineIndex)"
+//        let strSize = str.size (withAttributes: textAttributes)
+//        p.x = self.bounds.size.width - strSize.width - rightMargin
+//        // Swift.print ("p.y \(p.y) offset \(offset), r.size.height \(r.size.height), strSize.height \(strSize.height)")
+//        p.y += r.size.height - strSize.height - offset
+//        str.draw (at: p, withAttributes: textAttributes)
+//      }
     //-------- Draw right border
       let p1 = NSPoint (x: self.bounds.width, y: 0.0)
       let p2 = NSPoint (x: self.bounds.width, y: self.bounds.height)

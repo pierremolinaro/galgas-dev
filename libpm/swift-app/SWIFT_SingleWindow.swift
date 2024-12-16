@@ -256,7 +256,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Tabs
+  //MARK: Tabs
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func nextTab (_ inUnusedSender : Any?) {
@@ -283,14 +283,15 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     //--- Make the text view first responder
       presentationView.makeFirstResponder (of: self)
     //--- Attach a document window controller to the window, so that the Undo and Redo menu items work
-      self.mTabArray [self.mSelectedTabIndex].attachWindowController (to: self)
+//  §§    self.mTabArray [self.mSelectedTabIndex].attachWindowController (to: self)
     //--- UpDate Window Title
-      if self.mTabArray.count == 1 {
-        self.title = self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
-      }else{
-        self.title = self.mTabArray [0].lastComponentOfFileName
-          + " — " + self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
-      }
+      self.updateWindowTitle ()
+//      if self.mTabArray.count == 1 {
+//        self.title = self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
+//      }else{
+//        self.title = self.mTabArray [0].lastComponentOfFileName
+//          + " — " + self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
+//      }
 //      self.mTabListView.selectRowIndexes (IndexSet (integer: inIndex), byExtendingSelection: false)
     }
   }
@@ -314,49 +315,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     self.mTabArray.insert (SWIFT_DisplayDescriptor (withDocument: inDocument), at: inIndex)
 //    self.mTabListView.sortAndReloadData ()
     self.updateUserDefaults ()
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private func updateUserDefaults () {
-    DispatchQueue.main.async {
-      if self.mTabArray.count > 0 {
-//        let configKey = "CONFIG:\(self.mTabArray [0].fileURL!.path.identifierRepresentation)"
-//        var array = [String] ()
-//        for tab in self.mTabArray {
-//          array.append (tab.fileURL!.path)
-//        }
-//        array.removeFirst ()
-//        UserDefaults.standard.set (array as [NSString], forKey: configKey)
-  //      Swift.print ("Set \(array) for prefs \(configKey)")
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @IBAction func openDocumentInNewTab (_ inUnusedSender : Any?) {
-    NSDocumentController.shared.beginOpenPanel { (inOptionalURLs : [URL]?) in
-      if let urls = inOptionalURLs {
-        self.openFilesInNewTabs (urls, at: self.mTabArray.count)
-      }
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private func openFilesInNewTabs (_ inURLs : [URL], at inIndex : Int) {
-    var idx = inIndex
-    for url in inURLs {
-      let dc = NSDocumentController.shared
-      dc.openDocument (withContentsOf: url, display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
-        if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.insertTab (document: document, at: idx)
-          self.selectTab (atIndex: idx)
-          idx += 1
-        }
-      }
-    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -420,6 +378,62 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func openDocumentInNewTab (_ inUnusedSender : Any?) {
+    NSDocumentController.shared.beginOpenPanel { (inOptionalURLs : [URL]?) in
+      if let urls = inOptionalURLs {
+        self.openFilesInNewTabs (urls, at: self.mTabArray.count)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func openFilesInNewTabs (_ inURLs : [URL], at inIndex : Int) {
+    var idx = inIndex
+    for url in inURLs {
+      let dc = NSDocumentController.shared
+      dc.openDocument (withContentsOf: url, display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+        if let document = inOptionalDocument as? SWIFT_SingleDocument {
+          self.insertTab (document: document, at: idx)
+          self.selectTab (atIndex: idx)
+          idx += 1
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func updateWindowTitle () {
+    var s = self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
+    if self.mTabArray.count > 1 {
+      s += " — " + self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
+    }
+    if self.isDocumentEdited {
+      s += " ●"
+    }
+    self.title = s
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func updateUserDefaults () {
+    DispatchQueue.main.async {
+      if self.mTabArray.count > 0 {
+//        let configKey = "CONFIG:\(self.mTabArray [0].fileURL!.path.identifierRepresentation)"
+//        var array = [String] ()
+//        for tab in self.mTabArray {
+//          array.append (tab.fileURL!.path)
+//        }
+//        array.removeFirst ()
+//        UserDefaults.standard.set (array as [NSString], forKey: configKey)
+  //      Swift.print ("Set \(array) for prefs \(configKey)")
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // AutoLayoutTableViewDelegate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -457,6 +471,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Cette fonction est appelée par SWIFT_SingleDocument quand l'état d'édition d'un document a changé
+  //MARK: Document Edition State Did Change
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   class func documentEditionStateDidChange () {
@@ -481,6 +496,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
       }
     }
     self.isDocumentEdited = documentIsEdited
+    self.updateWindowTitle ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

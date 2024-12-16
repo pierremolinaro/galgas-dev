@@ -8,7 +8,7 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class SWIFT_SingleWindowController : NSWindowController {
+final class SWIFT_SingleWindowController2 : NSWindowController {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //    init

@@ -180,7 +180,6 @@ import MyAutoLayoutKit
                     range inEditedRange: NSRange,
                     changeInLength inDelta : Int) {
     if inEditedMask.contains (.editedCharacters) {
-//      DispatchQueue.main.async {
       self.mTextStorage.beginEditing ()
       self.computeLexicalColoring (inEditedRange, inDelta)
       self.mTextStorage.endEditing ()
@@ -198,16 +197,7 @@ import MyAutoLayoutKit
       }
       self.mActivateTimerOnChange = true
     }
-//    }
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   NSTextViewDelegate
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  func undoManager (for inView : NSTextView) -> UndoManager? {
-//    return self.mUndoManager
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Auto save
