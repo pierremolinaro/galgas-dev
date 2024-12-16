@@ -382,6 +382,7 @@
 		CFE752CD2D0EE4740071CADB /* SWIFT_WeakElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */; };
 		CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */; };
 		CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */; };
+		CFEDFC512D0F7E430010E2F4 /* SWIFT_TextViewRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -781,6 +782,7 @@
 		CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_WeakElement.swift; sourceTree = "<group>"; };
 		CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSourceTextPresentationView.swift; sourceTree = "<group>"; };
 		CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_AppDelegate+new-document.swift"; sourceTree = "<group>"; };
+		CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextViewRulerView.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1294,6 +1296,7 @@
 				CF79C56D2D0F32CC002EEE48 /* SWIFT_SingleWindow+build.swift */,
 				CF79C56F2D0F32CC002EEE48 /* SWIFT_SingleWindowController.swift */,
 				CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */,
+				CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */,
 				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,
 				CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */,
 				CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */,
@@ -1638,6 +1641,7 @@
 				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
 				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
 				CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */,
+				CFEDFC512D0F7E430010E2F4 /* SWIFT_TextViewRulerView.swift in Sources */,
 				CF8F81C22D0DADF40095170B /* option-galgas-5Fcli-5Foptions-cocoa.swift in Sources */,
 				CFD6D24A2D0DEFB900E91AE6 /* gui-cocoa.swift in Sources */,
 				CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */,

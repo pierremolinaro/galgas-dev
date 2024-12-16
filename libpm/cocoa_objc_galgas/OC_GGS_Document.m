@@ -259,7 +259,6 @@
     [mOutputScrollView setRulersVisible:YES] ;
   }
 //--- Open tabs
-//--- Open tabs
   key = [NSString stringWithFormat:@"CONFIG:%@", mBaseFilePreferenceKey] ;
   NSArray * tabFiles = [[[NSUserDefaults standardUserDefaults] objectForKey:key] copy] ;
   for (NSString * fileAbsolutePath in tabFiles) {

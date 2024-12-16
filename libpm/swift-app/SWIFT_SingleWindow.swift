@@ -10,7 +10,7 @@ import MyAutoLayoutKit
 
 class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDelegate
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   var mTabArray = [SWIFT_DisplayDescriptor] ()
   private var mSelectedTabIndex = 0
@@ -26,9 +26,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 //  let mAbortButton = AutoLayoutButton (title: "Stop", size: .regular)
 //  var mBuildOutputAttributeDictionary : [NSAttributedString.Key : Any]
 
- //····················································································································
- //   VIEWS
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   VIEWS
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mBaseView = AutoLayoutVerticalStackView ().set (margins: .zero)
 //  private let mMainHorizontalSplitView = AutoLayoutHorizontalStackView ().set (spacing: .zero)
@@ -40,7 +40,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 //    .set (minHeight: 100)
   private var mBuildTextFontObserver : EBSimpleObserver? = nil
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (withDocument inDocument : SWIFT_SingleDocument) {
 //    self.mBuildOutputAttributeDictionary = [.font : gBuildWindowFont.propval]
@@ -53,7 +53,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     noteObjectAllocation (self)
 
 //    self.mMainHorizontalSplitView.autosaveName = "HSplitFor_" + (inDocument.fileURL?.path ?? "")
-    self.delegate = self
+    self.delegate = self // NSWindowDelegate
     self.isReleasedWhenClosed = false
   //--- Build user interface
     self.setRootView (self.mBaseView)
@@ -279,10 +279,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
       }
     //--- Add new selected view
       let presentationView = self.mTabArray [self.mSelectedTabIndex].sourcePresentationView
-//      self.setRootView (presentationView)
       _ = self.mBaseView.appendView (presentationView)
     //--- Make the text view first responder
-  // §    self.makeFirstResponder (presentationView.sourceTextView)
+      presentationView.makeFirstResponder (of: self)
     //--- Attach a document window controller to the window, so that the Undo and Redo menu items work
       self.mTabArray [self.mSelectedTabIndex].attachWindowController (to: self)
     //--- UpDate Window Title
@@ -360,7 +359,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     }
   }
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func moveTab (fromRow inSourceIndex : Int, toRow inTargetIndex : Int) {
   //  Swift.print ("moveTab \(inSourceIndex) -> \(inTargetIndex)")
@@ -465,10 +464,23 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
       if let window = w as? SWIFT_SingleWindow {
         DispatchQueue.main.async {
 //          window.mTabListView.sortAndReloadData ()
+          window.editionStateDidChange ()
           window.updateUserDefaults ()
         }
       }
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func editionStateDidChange () {
+    var documentIsEdited = false
+    for descriptor in self.mTabArray {
+      if descriptor.mDocument.isDocumentEdited {
+        documentIsEdited = true
+      }
+    }
+    self.isDocumentEdited = documentIsEdited
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -487,27 +499,27 @@ extension NSPasteboard.PasteboardType {
 
 fileprivate final class FileEntryPasteboard : NSObject, NSPasteboardWriting, NSPasteboardReading {
 
- //····················································································································
- // Implémentation du protocole NSPasteboardWriting (pour le drag source)
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Implémentation du protocole NSPasteboardWriting (pour le drag source)
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     let path : String // Pas URL, non accepté dans une property list
     let index : Int
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (path : String, index : Int) {
     self.path = path
     self.index = index
   }
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writableTypes (for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
     return [.myEntry]
   }
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func pasteboardPropertyList (forType type: NSPasteboard.PasteboardType) -> Any? {
     let dictionary : NSDictionary = [
@@ -517,9 +529,9 @@ fileprivate final class FileEntryPasteboard : NSObject, NSPasteboardWriting, NSP
     return try? PropertyListSerialization.data (fromPropertyList: dictionary, format: .binary, options: 0)
   }
 
- //····················································································································
- // Implémentation du protocole NSPasteboardReading (pour le drag destination)
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Implémentation du protocole NSPasteboardReading (pour le drag destination)
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   required init? (pasteboardPropertyList inPropertyList : Any, ofType inType: NSPasteboard.PasteboardType) {
     if let data = inPropertyList as? Data,
@@ -533,7 +545,7 @@ fileprivate final class FileEntryPasteboard : NSObject, NSPasteboardWriting, NSP
     }
   }
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func readableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
     return [.myEntry]

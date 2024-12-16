@@ -8,27 +8,27 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor final class SWIFT_SingleDocument : NSDocument, NSTextStorageDelegate {
+@MainActor final class SWIFT_SingleDocument : NSDocument, @preconcurrency NSTextStorageDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mUndoManager = UndoManager ()
   private var mTokenizer : SWIFT_Tokenizer_Protocol? = nil
-  var tokenizer : SWIFT_Tokenizer_Protocol?  { self.mTokenizer }
+  var tokenizer : SWIFT_Tokenizer_Protocol? { self.mTokenizer }
   private let mFontStyleObserver = EBOutletEvent ()
   private let mLineHeightObserver = EBOutletEvent ()
   var mDisplayDescriptors = [SWIFT_WeakElement <SWIFT_DisplayDescriptor>] ()
   var mTokenRangeArray = [SWIFT_Token] ()
   let mTextStorage = NSTextStorage (string: "")
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override init () {
     super.init ()
     noteObjectAllocation (self)
 
     self.undoManager = self.mUndoManager
-    self.mTextStorage.delegate = self
+    self.mTextStorage.delegate = self // NSTextStorageDelegate
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -120,9 +120,9 @@ import MyAutoLayoutKit
     }
   }
 
- //····················································································································
- // Update from file system
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Update from file system
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func presentedItemDidChange () {
     // [caution] This method can be called from any thread.
@@ -131,7 +131,7 @@ import MyAutoLayoutKit
     DispatchQueue.main.async { self.presentedItemDidChange_onMainThread () }
   }
 
- //····················································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func presentedItemDidChange_onMainThread () {
     if let currentFileURL = self.fileURL {
@@ -172,38 +172,48 @@ import MyAutoLayoutKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   NSTextStorageDelegate method
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func textStorage (_ textStorage: NSTextStorage,
+                    didProcessEditing inEditedMask : NSTextStorageEditActions,
+                    range inEditedRange: NSRange,
+                    changeInLength inDelta : Int) {
+    if inEditedMask.contains (.editedCharacters) {
+//      DispatchQueue.main.async {
+      self.mTextStorage.beginEditing ()
+      self.computeLexicalColoring (inEditedRange, inDelta)
+      self.mTextStorage.endEditing ()
+      if self.mActivateTimerOnChange && (nil == self.mTimerForAutosaving) {
+        let timer = Timer (
+          timeInterval: 5.0,
+          target: self,
+          selector: #selector (Self.autosaveTimerDidFire (_:)),
+          userInfo: nil,
+          repeats: false
+        )
+        self.mTimerForAutosaving = timer
+        RunLoop.main.add (timer, forMode: .default)
+        SWIFT_SingleWindow.documentEditionStateDidChange ()
+      }
+      self.mActivateTimerOnChange = true
+    }
+//    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   NSTextViewDelegate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  func undoManager (for inView : NSTextView) -> UndoManager? {
+//    return self.mUndoManager
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Auto save
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTimerForAutosaving : Timer? = nil
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  nonisolated func textStorage (_ textStorage: NSTextStorage,
-                                didProcessEditing inEditedMask : NSTextStorageEditActions,
-                                range inEditedRange: NSRange,
-                                changeInLength inDelta : Int) {  // NSTextStorageDelegate
-    if inEditedMask.contains (.editedCharacters) {
-      DispatchQueue.main.async {
-        self.mTextStorage.beginEditing ()
-        self.computeLexicalColoring (inEditedRange, inDelta)
-        self.mTextStorage.endEditing ()
-        if self.mActivateTimerOnChange && (nil == self.mTimerForAutosaving) {
-          let timer = Timer (
-            timeInterval: 5.0,
-            target: self,
-            selector: #selector (Self.autosaveTimerDidFire (_:)),
-            userInfo: nil,
-            repeats: false
-          )
-          self.mTimerForAutosaving = timer
-          RunLoop.main.add (timer, forMode: .default)
-          SWIFT_SingleWindow.documentEditionStateDidChange ()
-        }
-        self.mActivateTimerOnChange = true
-      }
-    }
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

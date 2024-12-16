@@ -1,6 +1,4 @@
-//
-//  MyDisplayDescriptor.swift
-//  essai-editeur-texte-swift
+//--------------------------------------------------------------------------------------------------
 //
 //  Created by Pierre Molinaro on 04/11/2021.
 //
@@ -22,9 +20,10 @@ import MyAutoLayoutKit
 
   init (withDocument inDocument : SWIFT_SingleDocument) {
     self.mDocument = inDocument
-    self.mSourcePresentationView = AutoLayoutSourceTextPresentationView (textStorage: inDocument.mTextStorage, undoManager: inDocument.mUndoManager)
-//      .set (minWidth: 500)
-//      .set (minHeight: 500)
+    self.mSourcePresentationView = AutoLayoutSourceTextPresentationView (
+      textStorage: inDocument.mTextStorage,
+      undoManager: inDocument.mUndoManager
+    )
     noteObjectAllocation (self)
     inDocument.append (displayDescriptor: self)
   }
