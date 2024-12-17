@@ -49,6 +49,7 @@ import MyAutoLayoutKit
 
   func append (displayDescriptor inDisplayDescriptor : SWIFT_DisplayDescriptor) {
     self.mDisplayDescriptors.append (SWIFT_WeakElement (inDisplayDescriptor))
+    inDisplayDescriptor.sourcePresentationView.populateRevealInFinderPullDownButton (with: self.fileURL?.pathComponents)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

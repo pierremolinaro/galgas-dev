@@ -19,6 +19,7 @@ final class SWIFT_TextViewRulerView : NSRulerView {
     super.init (scrollView: inScrollView, orientation: .verticalRuler)
     noteObjectAllocation (self)
     self.ruleThickness = 50.0
+    self.clipsToBounds = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

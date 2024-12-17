@@ -20,7 +20,7 @@ extension SWIFT_AppDelegate  {
   @IBAction func newDocument (_ inUnusedSender : Any?) {
     let extensions = SWIFT_DocumentController.supportedDocumentExtensions ()
     let savePanel = NSSavePanel ()
-    let newDocumentTypePopUpButton = AutoLayoutPopUpButton (pullsDown: false, size: .regular)
+    let newDocumentTypePopUpButton = AutoLayoutPopUpButton (size: .regular)
     for documentExtension in extensions {
       _ = newDocumentTypePopUpButton.appendItem (
         title: documentExtension,

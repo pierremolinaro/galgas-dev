@@ -35,7 +35,7 @@ import MyAutoLayoutKit
 
   private var mToolCommands = [URL] ()
 
-  private let mToolPopUpButton = AutoLayoutPopUpButton (pullsDown: false, size: .regular)
+  private let mToolPopUpButton = AutoLayoutPopUpButton (size: .regular)
 
   private let mToolPopUpButtonSelectedIndex = EBPreferenceProperty <Int> (defaultValue: 0, prefKey: "compiler-tool-index")
 

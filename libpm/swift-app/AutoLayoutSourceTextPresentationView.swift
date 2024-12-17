@@ -9,7 +9,8 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mEntryPopUpButton = AutoLayoutPopUpButton (pullsDown: false, size: .regular)
+  private let mEntryPopUpButton = AutoLayoutPopUpButton (size: .regular)
+  private let mRevealInFinderPullDownButton = AutoLayoutPullDownButton (title: "Reveal in Finder", size: .regular)
   private let mSourceTextView : BaseTextView
   var sourceTextView : BaseTextView { return self.mSourceTextView }
   private var mBackgroundObserver : EBSimpleObserver? = nil
@@ -30,6 +31,13 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
     super.init ()
   //--- Set custom ruler view to scrollview
     self.mSourceTextView.createVerticalRulerView { SWIFT_TextViewRulerView (scrollView: $0) }
+  //--- Configure top h stack
+    let topHStack = AutoLayoutHorizontalStackView ()
+      .set (margins: .zero)
+      .set (topMargin: .regular)
+      .appendView (self.mRevealInFinderPullDownButton)
+      .appendView (self.mEntryPopUpButton)
+      .appendFlexibleSpace ()
   //--- Configure Text View
     self.mSourceTextView.setUndoManager (inUndoManager)
     self.mSourceTextView.setTextViewDidChangeSelectionAction { [weak self] in
@@ -38,7 +46,14 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
     }
 
     _ = self.set (margins: .zero)
+      .appendView (topHStack)
       .appendView (self.mSourceTextView)
+  //--- Populate mRevealInFinderPullDownButton
+//    public func appendItem (title inTitle : String,
+//                          menuItemActionTarget inTarget : AnyObject?,
+//                          menuItemActionSelector inSelector : Selector?,
+//                          represendedObject inRepresentedObject : Any?) -> Self {
+
 //// §    self.mSourceTextView.set (undoManager: inUndoManager)
 //    self.mSourceTextView.delegate = self
 //  //--- Ajouter un observateur pour être averti du changement de la couleur de fond
@@ -56,6 +71,41 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
 
   final func makeFirstResponder (of inWindow : NSWindow) {
     inWindow.makeFirstResponder (self.mSourceTextView.cocoaView)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  populateRevealInFinderPullDownButton
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func populateRevealInFinderPullDownButton (with inPathComponents : [String]?) {
+    self.mRevealInFinderPullDownButton.removeAllItems ()
+    if var array = inPathComponents {
+      if array.count > 0 {
+        array.removeFirst () // First is '/'
+      }
+      if array.count > 0 {
+        array.removeLast () // Last is file name
+      }
+      var title = ""
+      for pathComponent in array {
+        title += "/" + pathComponent
+        _ = self.mRevealInFinderPullDownButton.appendItem (
+          title: title,
+          menuItemActionTarget: self,
+          menuItemActionSelector: #selector (Self.revealInFinder (_:)),
+          represendedObject: title
+        )
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func revealInFinder (_ inSender : Any?) {
+    if let menuItem = inSender as? NSMenuItem,
+       let path = menuItem.representedObject as? String {
+      NSWorkspace.shared.open (URL (fileURLWithPath: path))
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
