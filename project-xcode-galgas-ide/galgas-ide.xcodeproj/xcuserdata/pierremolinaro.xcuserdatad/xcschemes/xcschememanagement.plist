@@ -17,17 +17,22 @@
 		<key>galgas-ide.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>galgas.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>CF8F80E22D0D91490095170B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFDF0C9B2D0A0EEF0014CD68</key>
 		<dict>
 			<key>primary</key>
 			<true/>

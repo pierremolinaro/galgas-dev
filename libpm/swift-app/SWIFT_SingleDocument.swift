@@ -40,8 +40,10 @@ import MyAutoLayoutKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //  IMPORTANT: if autosavesInPlace is true, "File" menu items are modified by MacOS!!!
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override class var autosavesInPlace: Bool { return true }
+  override class var autosavesInPlace : Bool { false }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   ADD DISPLAY DESCRIPTOR
@@ -122,7 +124,7 @@ import MyAutoLayoutKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Update from file system
+  //MARK: Update from file system
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func presentedItemDidChange () {
@@ -209,7 +211,7 @@ import MyAutoLayoutKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func autosaveTimerDidFire (_ inTimer : Timer) {
-    self.saveGGSDocument ()
+    self.save (nil)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -226,8 +228,8 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func saveGGSDocument () {
-    self.save (nil)
+  override func save (_ inSender : Any?) {
+    super.save (inSender)
     self.releaseTimer ()
   }
 

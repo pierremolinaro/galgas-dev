@@ -21,6 +21,8 @@
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
 		</dict>
 	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.15</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>

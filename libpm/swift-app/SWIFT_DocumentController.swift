@@ -41,12 +41,20 @@ class SWIFT_DocumentController : NSDocumentController {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Save all documents
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction override func saveAllDocuments (_ inSender : Any?) { // Invoked from menu item
+    Self.mySaveAllDocuments ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func mySaveAllDocuments () {
     for doc in NSDocumentController.shared.documents {
       if let document = doc as? SWIFT_SingleDocument {
         if document.isDocumentEdited {
-          document.saveGGSDocument ()
+          document.save (nil)
         }
       }
     }

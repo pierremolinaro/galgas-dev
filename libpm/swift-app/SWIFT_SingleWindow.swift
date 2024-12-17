@@ -378,6 +378,16 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Actions
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func saveDocument (_ inSender : Any?) {
+    for tab in self.mTabArray {
+      tab.mDocument.save (inSender)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func openDocumentInNewTab (_ inUnusedSender : Any?) {
     NSDocumentController.shared.beginOpenPanel { (inOptionalURLs : [URL]?) in

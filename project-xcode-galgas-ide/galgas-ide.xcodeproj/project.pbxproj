@@ -775,7 +775,7 @@
 		CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TemplateDelimiter.swift; sourceTree = "<group>"; };
 		CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Token.swift; sourceTree = "<group>"; };
 		CFD6D24B2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Tokenizer_Protocol.swift; sourceTree = "<group>"; };
-		CFDF0C9C2D0A0EEF0014CD68 /* galgas-ide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "galgas-ide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalgasIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_AppDelegate.swift; sourceTree = "<group>"; };
 		CFE752CC2D0EE4740071CADB /* SWIFT_WeakElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_WeakElement.swift; sourceTree = "<group>"; };
 		CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSourceTextPresentationView.swift; sourceTree = "<group>"; };
@@ -790,7 +790,7 @@
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = CFDF0C9B2D0A0EEF0014CD68 /* galgas-ide */;
+			target = CFDF0C9B2D0A0EEF0014CD68 /* GalgasIDE */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -1317,7 +1317,7 @@
 		CFDF0C9D2D0A0EEF0014CD68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFDF0C9C2D0A0EEF0014CD68 /* galgas-ide.app */,
+				CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */,
 				CFF8ED3C2D0D81C1006B2A3C /* galgas */,
 				CF8F81972D0D91490095170B /* galgas-debug */,
 			);
@@ -1346,9 +1346,9 @@
 			productReference = CF8F81972D0D91490095170B /* galgas-debug */;
 			productType = "com.apple.product-type.tool";
 		};
-		CFDF0C9B2D0A0EEF0014CD68 /* galgas-ide */ = {
+		CFDF0C9B2D0A0EEF0014CD68 /* GalgasIDE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFDF0CA92D0A0EF00014CD68 /* Build configuration list for PBXNativeTarget "galgas-ide" */;
+			buildConfigurationList = CFDF0CA92D0A0EF00014CD68 /* Build configuration list for PBXNativeTarget "GalgasIDE" */;
 			buildPhases = (
 				CFDF0C982D0A0EEF0014CD68 /* Sources */,
 				CFDF0C992D0A0EEF0014CD68 /* Frameworks */,
@@ -1363,14 +1363,14 @@
 			fileSystemSynchronizedGroups = (
 				CFDF0C9E2D0A0EEF0014CD68 /* galgas-ide */,
 			);
-			name = "galgas-ide";
+			name = GalgasIDE;
 			packageProductDependencies = (
 				CFDF0CCD2D0A0FA70014CD68 /* MyAutoLayoutKit */,
 				CFDF0CD82D0A100E0014CD68 /* MyAutoLayoutKit */,
 				CFD135DB2D0A104B00FE45B5 /* MyAutoLayoutKit */,
 			);
 			productName = "galgas-ide";
-			productReference = CFDF0C9C2D0A0EEF0014CD68 /* galgas-ide.app */;
+			productReference = CFDF0C9C2D0A0EEF0014CD68 /* GalgasIDE.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CFF8ED3B2D0D81C1006B2A3C /* galgas */ = {
@@ -1426,7 +1426,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CFDF0C9B2D0A0EEF0014CD68 /* galgas-ide */,
+				CFDF0C9B2D0A0EEF0014CD68 /* GalgasIDE */,
 				CFF8ED3B2D0D81C1006B2A3C /* galgas */,
 				CF8F80E22D0D91490095170B /* galgas-debug */,
 			);
@@ -2028,7 +2028,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "galgas-ide/Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -2036,6 +2036,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2058,7 +2059,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "galgas-ide/Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -2066,6 +2067,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2127,7 +2129,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CFDF0CA92D0A0EF00014CD68 /* Build configuration list for PBXNativeTarget "galgas-ide" */ = {
+		CFDF0CA92D0A0EF00014CD68 /* Build configuration list for PBXNativeTarget "GalgasIDE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CFDF0CAA2D0A0EF00014CD68 /* Debug */,
