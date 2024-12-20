@@ -101,7 +101,6 @@ import MyAutoLayoutKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func makeWindowControllers () {
-//    Swift.print ("makeWindowControllers has not been implemented")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

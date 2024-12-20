@@ -19,7 +19,15 @@ import MyAutoLayoutKit
    }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //   New Document
+  //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  nonisolated func applicationShouldOpenUntitledFile (_ inApplication : NSApplication) -> Bool {
+    return false
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Settings Window
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mSettingsWindow = NSWindow (
