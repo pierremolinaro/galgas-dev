@@ -114,47 +114,43 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
 
   func populateEntryPopUpButton (with inItems : [(NSAttributedString, Int)]) {
     self.mEntryPopUpButton.removeAllItems ()
-//    for (title, location) in inItems {
-//      self.mEntryPopUpButton.addItem (withTitle: "")
-//      let menuItem : NSMenuItem = self.mEntryPopUpButton.lastItem!
-//      menuItem.attributedTitle = title
-//      menuItem.tag = location
-//      menuItem.target = self
-//      menuItem.action = #selector (Self.gotoPopUpButtonSelectedEntry (_:))
-//    }
-//    self.mEntryPopUpButton.isEnabled = inItems.count > 0
-//    self.selectPopUpItemFollowingTextSelection ()
+    for (title, location) in inItems {
+      _ = self.mEntryPopUpButton.appendItem (
+        attributedTitle: title,
+        menuItemActionTarget: self,
+        menuItemActionSelector: #selector (Self.gotoPopUpButtonSelectedEntry (_:)),
+        represendedObject: location
+      )
+    }
+    _ = self.mEntryPopUpButton.set (enabled: inItems.count > 0)
+    self.selectPopUpItemFollowingTextSelection ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @objc private func gotoPopUpButtonSelectedEntry (_ inSender : Any?) {
-    if let menu = inSender as? NSMenuItem {
-      let location = menu.tag
-      if location >= 0, let ts = self.mSourceTextView.textStorage, location < ts.length {
-        let range = NSRange (location: location, length: 0)
-        self.mSourceTextView.setSelectedRange (range)
-        self.mSourceTextView.scrollRangeToVisible (range)
-      }
+    if let menu = inSender as? NSMenuItem,
+       let location = menu.representedObject as? Int,
+       location >= 0,
+       let ts = self.mSourceTextView.textStorage,
+       location < ts.length {
+      let range = NSRange (location: location, length: 0)
+      self.mSourceTextView.setSelectedRange (range)
+      self.mSourceTextView.scrollRangeToVisible (range)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func selectPopUpItemFollowingTextSelection () {
-//    let selectedLocation = self.mSourceTextView.selectedRange.location
-////    Swift.print ("selectedLocation \(selectedLocation)")
-//    var optionalSelectedMenuItem : NSMenuItem? = self.mEntryPopUpButton.itemArray.first
-//    for menuItem in self.mEntryPopUpButton.itemArray {
-////      Swift.print ("  menuItem.tag \(menuItem.tag)")
-//      if menuItem.tag <= selectedLocation {
-//        optionalSelectedMenuItem = menuItem
-////        Swift.print ("  match")
-//      }else{
-//        break
-//      }
-//    }
-//    self.mEntryPopUpButton.select (optionalSelectedMenuItem)
+    let selectedLocation = self.mSourceTextView.selectedRange.location
+    var optionalSelectedMenuItem : NSMenuItem? = self.mEntryPopUpButton.itemArray.first
+    for menuItem in self.mEntryPopUpButton.itemArray {
+      if let location = menuItem.representedObject as? Int, location <= selectedLocation {
+        optionalSelectedMenuItem = menuItem
+      }
+    }
+    self.mEntryPopUpButton.select (optionalSelectedMenuItem)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
