@@ -103,7 +103,8 @@ class @getterCallExpressionAST : @semanticExpressionAST {
       end
     //--- Analysis arguments
       if [self.mActualArgumentList count] != [aGetter.mArgumentTypeList count] then
-        error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
+        error self.mGetterName
+        : "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
         + [aGetter.mArgumentTypeList count] + " parameter(s), while this call has "
         + [self.mActualArgumentList count] + " parameter(s)" : outExpression
       else
@@ -202,7 +203,8 @@ class @getterCallExpressionAST : @semanticExpressionAST {
         end
       //--- Analysis arguments
         if [self.mActualArgumentList count] != [getterFormalArgumentTypeList count] then
-          error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
+          error self.mGetterName
+          : "calling the '" + self.mGetterName + "' getter of '@" + [receiverType definition].typeName.string + "' requires "
           + [[getterFormalArgumentTypeList count] string] + " parameter(s), while this call has "
           + [[self.mActualArgumentList count] string] + " parameter(s)" : outExpression
         else

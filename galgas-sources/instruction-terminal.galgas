@@ -56,7 +56,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       $indexing$
       repeat
         $identifier$ ?let @lstring indexName indexing indexingNameReference
-        let indexing indexingNameReference : indexName
+//        let indexing indexingNameReference : indexName
         let @lstring postfixName
         select
           postfixName = ["" nowhere]

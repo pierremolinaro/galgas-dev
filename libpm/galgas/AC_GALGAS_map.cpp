@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2008, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -30,9 +30,7 @@
 class cMapNode ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//  c S h a r e d M a p R o o t
-//
+//   cSharedMapRoot
 //--------------------------------------------------------------------------------------------------
 
 class cSharedMapRoot : public SharedObject {
@@ -153,12 +151,10 @@ class cSharedMapRoot : public SharedObject {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//  c M a p N o d e
-//
+//  cMapNode
 //--------------------------------------------------------------------------------------------------
 
-class cMapNode {
+class cMapNode final {
   public: cMapNode * mInfPtr ;
   public: cMapNode * mSupPtr ;
   public: int32_t mBalance ;
@@ -167,7 +163,7 @@ class cMapNode {
 
 //--- Constructors
   public: cMapNode (const String & inKey,
-                     const capCollectionElement & inAttributes) ;
+                    const capCollectionElement & inAttributes) ;
 
   public: cMapNode (cMapNode * inNode) ;
 

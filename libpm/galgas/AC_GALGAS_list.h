@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2024 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -71,51 +71,51 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   protected: VIRTUAL_IN_DEBUG void appendObject (const capCollectionElement & inElementToAdd) ;
 
   protected: VIRTUAL_IN_DEBUG void insertObjectAtIndex (const capCollectionElement & inElementToAdd,
-                                                      const uint32_t inInsertionIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+                                                        const uint32_t inInsertionIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void removeObjectAtIndex (capCollectionElement & outAttributes,
-                                                         const uint32_t inRemoveIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+                                                        const uint32_t inRemoveIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
   protected: VIRTUAL_IN_DEBUG void removeFirstObject (capCollectionElement & outAttributes,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  protected: VIRTUAL_IN_DEBUG void removeLastObject (capCollectionElement & outAttributes,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG void readFirst (capCollectionElement & outAttributes,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
+  protected: VIRTUAL_IN_DEBUG void removeLastObject (capCollectionElement & outAttributes,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG void readLast (capCollectionElement & outAttributes,
+  protected: VIRTUAL_IN_DEBUG void readFirst (capCollectionElement & outAttributes,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
+
+  protected: VIRTUAL_IN_DEBUG void readLast (capCollectionElement & outAttributes,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void appendList (const AC_GALGAS_list & inList) ;
 
   protected: VIRTUAL_IN_DEBUG void subListWithRange (AC_GALGAS_list & outList,
-                                                      const GGS_range & inRange,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+                                                     const GGS_range & inRange,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void subListFromIndex (AC_GALGAS_list & outList,
-                                                      const GGS_uint & inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+                                                     const GGS_uint & inIndex,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG void subListToIndex (AC_GALGAS_list & outList,
-                                                    const GGS_uint & inIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
+                                                   const GGS_uint & inIndex,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
 
   protected: VIRTUAL_IN_DEBUG capCollectionElement readObjectAtIndex (const GGS_uint & inIndex,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
 
 
   protected: VIRTUAL_IN_DEBUG

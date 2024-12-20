@@ -164,7 +164,7 @@ class @initializerAST : @semanticDeclarationAST {
         !@()
       ]
     end
-    with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey  do
+    with self.mTypeName in !?ioExtensionInitializerForBuildingContext error message searchKey do
       [!?mExtensionInitializerMapForType insertKey
         !@lstring {![self.mFormalParameterList initializerSignature] !self.mTypeName.location}
         !self.mFormalParameterList
