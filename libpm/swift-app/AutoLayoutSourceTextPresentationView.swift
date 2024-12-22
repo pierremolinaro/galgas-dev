@@ -25,7 +25,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
       textStorage: inTextStorage,
       horizontalScroller: true,
       verticalScroller: true,
-      minWidth: 300,
+      minWidth: 500,
       minHeight: 400
     )
     super.init ()

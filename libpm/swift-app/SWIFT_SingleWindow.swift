@@ -30,8 +30,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   //   VIEWS
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private let mBaseView = AutoLayoutVerticalStackView ().set (margins: .zero)
-//  private let mMainHorizontalSplitView = AutoLayoutHorizontalStackView ().set (spacing: .zero)
+  private let mSourceEditionView = AutoLayoutVerticalStackView ().set (margins: .zero)
+  private let mHorizontalSplitView = AutoLayoutHorizontalSplitView ()
 //  private let mTabListView = AutoLayoutSourceListTableView (size: .regular)
 //    .set (minWidth: 100)
 //    .set (minHeight: 400)
@@ -52,14 +52,18 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     )
     noteObjectAllocation (self)
 
-//    self.mMainHorizontalSplitView.autosaveName = "HSplitFor_" + (inDocument.fileURL?.path ?? "")
     self.delegate = self // NSWindowDelegate
     self.isReleasedWhenClosed = false
   //--- Build user interface
-    self.setRootView (self.mBaseView)
+    _ = self.mHorizontalSplitView
+      .appendView (SimpleBlockView (.fill, .fill))
+      .appendView (self.mSourceEditionView)
+//      .appendView (AutoLayoutButton (title: "ZERTY", size: .regular))
+    self.setRootView (self.mHorizontalSplitView)
   //---
     self.appendTab (document: inDocument, select: true)
 
+//    self.mMainHorizontalSplitView.autosaveName = "HSplitFor_" + (inDocument.fileURL?.path ?? "")
 //    _ = self.mBuildButton.setClosureAction { [weak self] in self?.buildAction (nil) }
 //    _ = self.mAbortButton.setClosureAction { [weak self] in self?.terminateBuildAction () }
 //    self.mAbortButton.isEnabled = false
@@ -72,7 +76,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 //      .appendView (self.mTabListView)
 //    _ = self.mMainHorizontalSplitView.appendView (vStack)
 //      .appendSeparator ()
-//      .appendView (self.mBaseView)
+//      .appendView (self.mSourceEditionView)
 //    let vSplit = AutoLayoutVerticalStackView ()
 //      .set (spacing: .zero)
 //      .appendView (self.mMainHorizontalSplitView)
@@ -274,12 +278,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 //      }
       self.mSelectedTabIndex = inIndex
     //--- Remove all subviews of base view
-      while self.mBaseView.subViews.count > 0 {
-        self.mBaseView.subViews [0].removeFromSuperView ()
+      while self.mSourceEditionView.subViews.count > 0 {
+        self.mSourceEditionView.subViews [0].removeFromSuperView ()
       }
     //--- Add new selected view
       let presentationView = self.mTabArray [self.mSelectedTabIndex].sourcePresentationView
-      _ = self.mBaseView.appendView (presentationView)
+      _ = self.mSourceEditionView.appendView (presentationView)
     //--- Make the text view first responder
       presentationView.makeFirstResponder (of: self)
     //--- Attach a document window controller to the window, so that the Undo and Redo menu items work
@@ -357,10 +361,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   private func closeTab (atIndex inIndex : Int) {
    // Swift.print ("closeTab \(inIndex)")
     if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
-    //--- Détacher le window controller (en fait, uniquement si le tab supprimé est celui sélectionné)
-//      if inIndex == self.mSelectedTabIndex {
-//        self.mTabArray [inIndex].detachWindowController (from: self)
-//      }
     //--- Supprimer l'entrée
       self.mTabArray.remove (at: inIndex)
     //--- Fermer les documents qui ne sont plus visibles (en fait, un seul peut être
@@ -444,7 +444,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // AutoLayoutTableViewDelegate
+  //MARK: AutoLayoutTableViewDelegate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows: IndexSet) {
