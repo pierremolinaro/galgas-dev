@@ -5,7 +5,7 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
-final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView { //, NSTextViewDelegate {
+final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, BaseTextViewDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -14,21 +14,23 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
   private let mSourceTextView : BaseTextView
   var sourceTextView : BaseTextView { return self.mSourceTextView }
   private var mBackgroundObserver : EBSimpleObserver? = nil
+  private weak var mDocument : SWIFT_SingleDocument? = nil // SHOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (textStorage inTextStorage : NSTextStorage,
-        undoManager inUndoManager : UndoManager) {
+  init (withDocument inDocument : SWIFT_SingleDocument) {
     self.mSourceTextView = BaseTextView (
       drawsBackground: true,
       editable: true,
-      textStorage: inTextStorage,
+      textStorage: inDocument.mTextStorage,
       horizontalScroller: true,
       verticalScroller: true,
       minWidth: 500,
       minHeight: 400
     )
     super.init ()
+    self.mDocument = inDocument
+    self.mSourceTextView.setTextViewDelegate (self)
   //--- Set custom ruler view to scrollview
     self.mSourceTextView.createVerticalRulerView { SWIFT_TextViewRulerView (scrollView: $0) }
   //--- Configure top h stack
@@ -39,7 +41,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
       .appendView (self.mEntryPopUpButton)
       .appendFlexibleSpace ()
   //--- Configure Text View
-    self.mSourceTextView.setUndoManager (inUndoManager)
+    self.mSourceTextView.setUndoManager (inDocument.mUndoManager)
     self.mSourceTextView.setTextViewDidChangeSelectionAction { [weak self] in
       self?.selectPopUpItemFollowingTextSelection ()
       self?.mSourceTextView.verticalRulerViewNeedsDisplay ()
@@ -72,6 +74,10 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
   final func makeFirstResponder (of inWindow : NSWindow) {
     inWindow.makeFirstResponder (self.mSourceTextView.cocoaView)
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public var selectedRange : NSRange { self.mSourceTextView.selectedRange }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  populateRevealInFinderPullDownButton
@@ -155,15 +161,48 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  func textViewDidChangeSelection (_ inNotification : Notification) { // NSTextViewDelegate
-//    self.selectPopUpItemFollowingTextSelection ()
-//    self.mSourceTextView.verticalRulerViewNeedsDisplay ()
-//  }
+  func lineHeightDidChange () {
+    self.mSourceTextView.verticalRulerViewNeedsDisplay ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   BaseTextViewDelegate
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  public func willDraw (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func lineHeightDidChange () {
-    self.mSourceTextView.verticalRulerViewNeedsDisplay ()
+  public func didDraw (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
+//    if let layoutManager = inCocoaTextWiew.layoutManager,
+//       let textContainer = inCocoaTextWiew.textContainer {
+//     //-------- Note: ruler view and text view are both flipped
+//      let selectedRange : NSRange = inCocoaTextWiew.selectedRange
+//    //-------- Compute layout
+//      layoutManager.ensureLayout (for: textContainer)
+//    //---
+//      let lineFragmentRect = layoutManager.lineFragmentRect (
+//        forGlyphAt: layoutManager.glyphIndexForCharacter (at: selectedRange.location),
+//        effectiveRange: nil
+//      )
+//      let r = NSRect (
+//        x: inCocoaTextWiew.bounds.origin.x,
+//        y: lineFragmentRect.origin.y,
+//        width: inCocoaTextWiew.bounds.width,
+//        height: lineFragmentRect.height
+//      )
+//      let color = NSColor (calibratedRed: 0.0, green: 0.0, blue: 1.0, alpha: 0.1)
+//      color.setFill ()
+//      NSBezierPath.fill (r)
+//    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func selectedRangeDidChange (_ inSelectedRange : NSRange,
+                               _ inCocoaWiew : InternalCocoaTextView) {
+    self.mDocument?.selectedRangeDidChange ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

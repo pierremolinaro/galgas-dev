@@ -48,7 +48,7 @@ import MyAutoLayoutKit
   //   ADD DISPLAY DESCRIPTOR
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func append (displayDescriptor inDisplayDescriptor : SWIFT_DisplayDescriptor) {
+  func appendDisplayDescriptor (_ inDisplayDescriptor : SWIFT_DisplayDescriptor) {
     self.mDisplayDescriptors.append (SWIFT_WeakElement (inDisplayDescriptor))
     inDisplayDescriptor.sourcePresentationView.populateRevealInFinderPullDownButton (with: self.fileURL?.pathComponents)
   }
@@ -118,6 +118,16 @@ import MyAutoLayoutKit
       self.mTextStorage.beginEditing ()
       self.mTextStorage.replaceCharacters (in: NSRange (location: 0, length: self.mTextStorage.length), with: inString)
       self.mTextStorage.endEditing ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func selectedRangeDidChange () {
+    for w in NSApp.windows {
+      if let window = w as? SWIFT_SingleWindow {
+        window.selectedRangeDidChange (forDocument: self)
+      }
     }
   }
 

@@ -8,7 +8,7 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
-class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDelegate
+class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -31,13 +31,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mSourceEditionView = AutoLayoutVerticalStackView ().set (margins: .zero)
+
   private let mHorizontalSplitView = AutoLayoutHorizontalSplitView ()
-//  private let mTabListView = AutoLayoutSourceListTableView (size: .regular)
-//    .set (minWidth: 100)
-//    .set (minHeight: 400)
-//  let mBuildOutputTextObserviewView = AutoLayoutTextObserverView ()
-//    .set (minWidth: 400)
-//    .set (minHeight: 100)
+
+  private let mTabListView = AutoLayoutTableView (size: .regular, minWidth: 250, addControlButtons: false)
+
   private var mBuildTextFontObserver : EBSimpleObserver? = nil
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -54,76 +52,61 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 
     self.delegate = self // NSWindowDelegate
     self.isReleasedWhenClosed = false
+    self.setFrameAutosaveName ("WindowFrameFor_" + (inDocument.fileURL?.path ?? ""))
   //--- Build user interface
+    self.configureTabListView (withDocument: inDocument)
     _ = self.mHorizontalSplitView
-      .appendView (SimpleBlockView (.fill, .fill))
+      .appendView (self.mTabListView)
       .appendView (self.mSourceEditionView)
-//      .appendView (AutoLayoutButton (title: "ZERTY", size: .regular))
     self.setRootView (self.mHorizontalSplitView)
   //---
-    self.appendTab (document: inDocument, select: true)
+    self.appendTab (document: inDocument, selectedRange: NSRange ())
+  //--- Open other tabs ?
+    self.openTabsFromUserDefaults (forDocument:  inDocument)
+  //--- Select first tab
+    self.selectTab (atIndex: 0)
+  }
 
-//    self.mMainHorizontalSplitView.autosaveName = "HSplitFor_" + (inDocument.fileURL?.path ?? "")
-//    _ = self.mBuildButton.setClosureAction { [weak self] in self?.buildAction (nil) }
-//    _ = self.mAbortButton.setClosureAction { [weak self] in self?.terminateBuildAction () }
-//    self.mAbortButton.isEnabled = false
-//    let vStack = AutoLayoutVerticalStackView ()
-//    let hStack = AutoLayoutHorizontalStackView ().set (margins: 8)
-//    _ = hStack.appendView (self.mBuildButton)
-//      .appendView (self.mAbortButton)
-//      .appendFlexibleSpace ()
-//    _ = vStack.appendView (hStack)
-//      .appendView (self.mTabListView)
-//    _ = self.mMainHorizontalSplitView.appendView (vStack)
-//      .appendSeparator ()
-//      .appendView (self.mSourceEditionView)
-//    let vSplit = AutoLayoutVerticalStackView ()
-//      .set (spacing: .zero)
-//      .appendView (self.mMainHorizontalSplitView)
-//      .appendSeparator ()
-//      .appendView (self.mBuildOutputTextObserviewView)
-  //--- Configure table view
-//    _ = self.mTabListView
-//      .noHeaderView ()
-//      .setIntercellSpacing (horizontal: 0, vertical: 5)
-//      .set (hasHorizontalGrid : false)
-//      .set (hasVerticalGrid : false)
-//      .set (usesAlternatingRowBackgroundColors: false)
-//    self.mTabListView.configure (
-//      allowsEmptySelection: false,
-//      allowsMultipleSelection: false,
-//      rowCountCallBack: { [weak self] in self?.mTabArray.count ?? 0 },
-//      delegate: self
-//    )
-//    self.mTabListView.addColumn_AttributedString (
-//      valueGetterDelegate: { [weak self] in
-//        return self?.mTabArray [$0].title ?? NSAttributedString ()
-//      },
-//      valueSetterDelegate: nil,
-//      sortDelegate: nil,
-//      title: "",
-//      minWidth: 80,
-//      maxWidth: 2000,
-//      headerAlignment: .center,
-//      contentAlignment: .left
-//    )
-//    self.mTabListView.addColumn_ButtonImage (
-//      valueGetterDelegate: { [weak self] (_ inRow : Int) in
-//        if let n = self?.mTabArray.count, n > 1 {
-//          return NSImage (named: NSImage.stopProgressTemplateName) ?? NSImage ()
-//        }else{
-//          return nil
-//        }
-//      },
-//      valueSetterDelegate: nil,
-//      actionDelegate: { [weak self] in self?.closeTab (atIndex: $0) },
-//      sortDelegate: nil,
-//      title: "",
-//      minWidth: 30,
-//      maxWidth: 30,
-//      headerAlignment: .center,
-//      contentAlignment: .right
-//    )
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func configureTabListView (withDocument inDocument : SWIFT_SingleDocument) {
+    self.mTabListView
+    .noHeaderView ()
+    .setIntercellSpacing (horizontal: 0, vertical: 5)
+    .set (hasHorizontalGrid : false)
+    .set (hasVerticalGrid : false)
+    .set (usesAlternatingRowBackgroundColors: false)
+    .configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mTabArray.count ?? 0 },
+      delegate: self
+    )
+    self.mTabListView.addColumn_AttributedString (
+      valueGetterDelegate: { [weak self] in
+        return self?.mTabArray [$0].title ?? NSAttributedString ()
+      },
+      title: "",
+      minWidth: 80,
+      maxWidth: 2000,
+      headerAlignment: .center,
+      contentAlignment: .left
+    )
+    self.mTabListView.addColumn_ButtonImage (
+      valueGetterDelegate: { [weak self] (_ inRow : Int) in
+        if let n = self?.mTabArray.count, n > 1 {
+          return NSImage (named: NSImage.stopProgressTemplateName) ?? NSImage ()
+        }else{
+          return nil
+        }
+      },
+      actionDelegate: { [weak self] in self?.closeTab (atIndex: $0) },
+      title: "",
+      minWidth: 30,
+      maxWidth: 30,
+      headerAlignment: .center,
+      contentAlignment: .right
+    )
 //    self.mTabListView.set (
 //      draggedTypes: [NSPasteboard.PasteboardType.URL, .myEntry],
 //      dragSourceCallBack : { [weak self] (_ inRow : Int) -> NSPasteboardWriting? in
@@ -199,19 +182,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 //        }
 //      }
 //    )
-  //--- Open other tabs ?
-//    let configKey = "CONFIG:\(inDocument.fileURL!.path.identifierRepresentation)"
-//    if let tabFilePathArray = UserDefaults.standard.object (forKey: configKey) as? [String] {
-//      // Swift.print ("Found Prefs \(tabFilePathArray)")
-//      for tabFile in tabFilePathArray {
-//        NSDocumentController.shared.openDocument (withContentsOf: URL (fileURLWithPath: tabFile), display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
-//          if let document = inOptionalDocument as? SWIFT_SingleDocument {
-//            self.appendTab (document: document, select: false)
-//          }
-//        }
-//      }
-//    }
-    self.setFrameAutosaveName ("WindowFrameFor_" + (inDocument.fileURL?.path ?? ""))
   //--- Simple observer for setting build text font
 //    self.mBuildTextFontObserver = EBSimpleObserver (object: gBuildWindowFont) {
 //      [weak self] in _ = self?.mBuildOutputTextObserviewView.set (font: gBuildWindowFont.propval)
@@ -247,11 +217,10 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     let displayDescriptor : SWIFT_DisplayDescriptor = self.mTabArray [self.mSelectedTabIndex]
     if let p = displayDescriptor.pathFromSelection (), let fileURL = displayDescriptor.fileURL {
       let url = fileURL.deletingLastPathComponent ().appendingPathComponent (p)
-      // Swift.print ("'\(url)'")
       let dc = NSDocumentController.shared
       dc.openDocument (withContentsOf: url, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
         if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.appendTab (document: document, select: true)
+          self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
         }
       }
     }else{
@@ -272,10 +241,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
 
   func selectTab (atIndex inIndex : Int) {
     if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
-//      if let wc = self.windowController, let document = wc.document as? SWIFT_SingleDocument {
-//        document.removeWindowController (wc)
-//        self.windowController = nil
-//      }
       self.mSelectedTabIndex = inIndex
     //--- Remove all subviews of base view
       while self.mSourceEditionView.subViews.count > 0 {
@@ -284,40 +249,43 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     //--- Add new selected view
       let presentationView = self.mTabArray [self.mSelectedTabIndex].sourcePresentationView
       _ = self.mSourceEditionView.appendView (presentationView)
+    //--- Scroll to make selected range visible
+      DispatchQueue.main.async {
+        self.mTabArray [self.mSelectedTabIndex].scrollSelectedRangeToVisible ()
+      }
     //--- Make the text view first responder
       presentationView.makeFirstResponder (of: self)
-    //--- Attach a document window controller to the window, so that the Undo and Redo menu items work
-//  §§    self.mTabArray [self.mSelectedTabIndex].attachWindowController (to: self)
     //--- UpDate Window Title
       self.updateWindowTitle ()
-//      if self.mTabArray.count == 1 {
-//        self.title = self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
-//      }else{
-//        self.title = self.mTabArray [0].lastComponentOfFileName
-//          + " — " + self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
-//      }
-//      self.mTabListView.selectRowIndexes (IndexSet (integer: inIndex), byExtendingSelection: false)
+      self.mTabListView.selectRowIndexes (IndexSet (integer: inIndex), byExtendingSelection: false)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func appendTab (document inDocument : SWIFT_SingleDocument,
-                  select inSelect : Bool) {
-    let dd = SWIFT_DisplayDescriptor (withDocument: inDocument)
+                  selectedRange inSelectedRange : NSRange) {
+    let dd = SWIFT_DisplayDescriptor (withDocument: inDocument, selectedRange: inSelectedRange)
     self.mTabArray.append (dd)
-//    self.mTabListView.sortAndReloadData ()
+    self.mTabListView.sortAndReloadData ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func appendTabUpdatingUserDefaults (document inDocument : SWIFT_SingleDocument,
+                                      selectedRange inSelectedRange : NSRange) {
+    let dd = SWIFT_DisplayDescriptor (withDocument: inDocument, selectedRange: inSelectedRange)
+    self.mTabArray.append (dd)
+    self.mTabListView.sortAndReloadData ()
     self.updateUserDefaults ()
-    if inSelect {
-      self.selectTab (atIndex: self.mTabArray.count - 1)
-    }
+    self.selectTab (atIndex: self.mTabArray.count - 1)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func insertTab (document inDocument : SWIFT_SingleDocument, at inIndex : Int) {
-    self.mTabArray.insert (SWIFT_DisplayDescriptor (withDocument: inDocument), at: inIndex)
-//    self.mTabListView.sortAndReloadData ()
+    self.mTabArray.insert (SWIFT_DisplayDescriptor (withDocument: inDocument, selectedRange: NSRange ()), at: inIndex)
+    self.mTabListView.sortAndReloadData ()
     self.updateUserDefaults ()
   }
 
@@ -328,18 +296,18 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     if inSourceIndex < inTargetIndex {
       let x = self.mTabArray.remove (at: inSourceIndex)
       self.mTabArray.insert (x, at: inTargetIndex - 1)
-//      self.mTabListView.beginUpdates ()
-//      self.mTabListView.sortAndReloadData ()
+      self.mTabListView.beginUpdates ()
+      self.mTabListView.sortAndReloadData ()
       self.selectTab (atIndex: inTargetIndex - 1)
-//      self.mTabListView.endUpdates ()
+      self.mTabListView.endUpdates ()
       self.updateUserDefaults ()
     }else if inSourceIndex > inTargetIndex {
       let x = self.mTabArray.remove (at: inSourceIndex)
       self.mTabArray.insert (x, at: inTargetIndex)
-//      self.mTabListView.beginUpdates ()
-//      self.mTabListView.sortAndReloadData ()
+      self.mTabListView.beginUpdates ()
+      self.mTabListView.sortAndReloadData ()
       self.selectTab (atIndex: inTargetIndex)
-//      self.mTabListView.endUpdates ()
+      self.mTabListView.endUpdates ()
       self.updateUserDefaults ()
     }
   }
@@ -372,8 +340,24 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
       }else{
         self.selectTab (atIndex: inIndex)
       }
-//     self.mTabListView.sortAndReloadData ()
+     self.mTabListView.sortAndReloadData ()
      self.updateUserDefaults ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func openFilesInNewTabs (_ inURLs : [URL], at inIndex : Int) {
+    var idx = inIndex
+    for url in inURLs {
+      let dc = NSDocumentController.shared
+      dc.openDocument (withContentsOf: url, display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+        if let document = inOptionalDocument as? SWIFT_SingleDocument {
+          self.insertTab (document: document, at: idx)
+          self.selectTab (atIndex: idx)
+          idx += 1
+        }
+      }
     }
   }
 
@@ -398,21 +382,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private func openFilesInNewTabs (_ inURLs : [URL], at inIndex : Int) {
-    var idx = inIndex
-    for url in inURLs {
-      let dc = NSDocumentController.shared
-      dc.openDocument (withContentsOf: url, display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
-        if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.insertTab (document: document, at: idx)
-          self.selectTab (atIndex: idx)
-          idx += 1
-        }
-      }
-    }
-  }
-
+  //MARK: Utilities
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateWindowTitle () {
@@ -427,20 +397,48 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: User Defaults
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var mSetUpDone = false
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private var userDefaultKey : String { "CONFIG:" + self.mTabArray [0].fileURL!.path }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateUserDefaults () {
-    DispatchQueue.main.async {
-      if self.mTabArray.count > 0 {
-//        let configKey = "CONFIG:\(self.mTabArray [0].fileURL!.path.identifierRepresentation)"
-//        var array = [String] ()
-//        for tab in self.mTabArray {
-//          array.append (tab.fileURL!.path)
-//        }
-//        array.removeFirst ()
-//        UserDefaults.standard.set (array as [NSString], forKey: configKey)
-  //      Swift.print ("Set \(array) for prefs \(configKey)")
+    if self.mSetUpDone && (self.mTabArray.count > 0) {
+//      Swift.print ("WRITE DEFAULT")
+      var array = [[String : String]] ()
+      for tab in self.mTabArray {
+        var dict = [String : String] ()
+        dict ["file"] = tab.fileURL!.path
+        dict ["range"] = NSStringFromRange (tab.selectedRange)
+//        Swift.print (dict)
+        array.append (dict)
+      }
+      array.removeFirst ()
+      UserDefaults.standard.set (array, forKey: self.userDefaultKey)
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func openTabsFromUserDefaults (forDocument inDocument : SWIFT_SingleDocument) {
+    if let tabFilePathArray = UserDefaults.standard.object (forKey: self.userDefaultKey) as? [[String : String]] {
+      for tabDict in tabFilePathArray {
+        if let filePath = tabDict ["file"], let rangeString = tabDict ["range"] {
+          NSDocumentController.shared.openDocument (withContentsOf: URL (fileURLWithPath: filePath), display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+            if let document = inOptionalDocument as? SWIFT_SingleDocument {
+              self.appendTab (document: document, selectedRange: NSRangeFromString (rangeString))
+            }
+          }
+        }
       }
     }
+    self.mSetUpDone = true
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -488,7 +486,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     for w in NSApp.windows {
       if let window = w as? SWIFT_SingleWindow {
         DispatchQueue.main.async {
-//          window.mTabListView.sortAndReloadData ()
+          window.mTabListView.sortAndReloadData ()
           window.editionStateDidChange ()
           window.updateUserDefaults ()
         }
@@ -509,6 +507,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate { // AutoLayoutTableViewDe
     self.updateWindowTitle ()
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func selectedRangeDidChange (forDocument inDocument : SWIFT_SingleDocument) {
+    self.updateUserDefaults ()
+  }
+  
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }

@@ -21,8 +21,10 @@ class SWIFT_DocumentController : NSDocumentController {
                               completionHandler inCompletionHandler : @escaping (NSDocument?, Bool, Error?) -> Void) {
     super.openDocument (withContentsOf: inURL, display: false) { (inDocument : NSDocument?, alreadyOpened : Bool, error : Error?) in
       if inDisplay, let document = inDocument as? SWIFT_SingleDocument {
-        let newWindow = SWIFT_SingleWindow (withDocument: document)
-        newWindow.makeKeyAndOrderFront (nil)
+        let window = SWIFT_SingleWindow (withDocument: document)
+        DispatchQueue.main.async {
+          window.makeKeyAndOrderFront (nil)
+        }
       }
       inCompletionHandler (inDocument, alreadyOpened, error)
     }

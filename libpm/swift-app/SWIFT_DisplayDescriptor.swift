@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
 //  Created by Pierre Molinaro on 04/11/2021.
-//
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
@@ -18,14 +16,16 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (withDocument inDocument : SWIFT_SingleDocument) {
+  init (withDocument inDocument : SWIFT_SingleDocument,
+        selectedRange inSelectedRange : NSRange) {
     self.mDocument = inDocument
-    self.mSourcePresentationView = AutoLayoutSourceTextPresentationView (
-      textStorage: inDocument.mTextStorage,
-      undoManager: inDocument.mUndoManager
-    )
+    self.mSourcePresentationView = AutoLayoutSourceTextPresentationView (withDocument: inDocument)
     noteObjectAllocation (self)
-    inDocument.append (displayDescriptor: self)
+    inDocument.appendDisplayDescriptor (self)
+    DispatchQueue.main.async {
+      self.mSourcePresentationView.sourceTextView.setSelectedRange (inSelectedRange)
+      self.mSourcePresentationView.sourceTextView.scrollRangeToVisible (inSelectedRange)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -45,6 +45,7 @@ import MyAutoLayoutKit
   func lineHeightDidChange () {
     self.mSourcePresentationView.lineHeightDidChange ()
   }
+
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   pathFromSelection
@@ -124,17 +125,27 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  var title2 : NSAttributedString {
-//    let title = self.mDocument.lastComponentOfFileName
-//    let font = self.mDocument.isDocumentEdited
-//      ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-//      : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : font
-//    ]
-//    return NSAttributedString (string: title, attributes: textAttributes)
-//  }
+  var title : NSAttributedString {
+    let title = self.mDocument.lastComponentOfFileName
+    let font = self.mDocument.isDocumentEdited
+      ? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+      : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : font
+    ]
+    return NSAttributedString (string: title, attributes: textAttributes)
+  }
   
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var selectedRange : NSRange { self.sourcePresentationView.selectedRange }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func scrollSelectedRangeToVisible () {
+    self.sourcePresentationView.sourceTextView.scrollRangeToVisible (self.selectedRange)
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
