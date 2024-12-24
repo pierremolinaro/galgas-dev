@@ -142,6 +142,12 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func setSelectedRange (_ inRange : NSRange) {
+    self.sourcePresentationView.setSelectedRange (inRange)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func scrollSelectedRangeToVisible () {
     self.sourcePresentationView.sourceTextView.scrollRangeToVisible (self.selectedRange)
   }

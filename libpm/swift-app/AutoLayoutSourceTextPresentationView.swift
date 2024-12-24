@@ -10,7 +10,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private let mEntryPopUpButton = AutoLayoutPopUpButton (size: .regular)
-  private let mRevealInFinderPullDownButton = AutoLayoutPullDownButton (title: "Reveal in Finder", size: .regular)
+  private let mRevealInFinderPullDownButton = AutoLayoutPullDownButton (title: "Reveal in Finder", size: .small)
   private let mSourceTextView : BaseTextView
   var sourceTextView : BaseTextView { return self.mSourceTextView }
   private var mBackgroundObserver : EBSimpleObserver? = nil
@@ -50,23 +50,11 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     _ = self.set (margins: .zero)
       .appendView (topHStack)
       .appendView (self.mSourceTextView)
-  //--- Populate mRevealInFinderPullDownButton
-//    public func appendItem (title inTitle : String,
-//                          menuItemActionTarget inTarget : AnyObject?,
-//                          menuItemActionSelector inSelector : Selector?,
-//                          represendedObject inRepresentedObject : Any?) -> Self {
-
-//// §    self.mSourceTextView.set (undoManager: inUndoManager)
-//    self.mSourceTextView.delegate = self
 //  //--- Ajouter un observateur pour être averti du changement de la couleur de fond
 //    self.mBackgroundObserver = EBSimpleObserver (object: prefsEditorBackColor) { [weak self] in
 //      self?.mSourceTextView.backgroundColor = prefsEditorBackColor.propval
 //      self?.mSourceTextView.needsDisplay = true
 //    }
-//  //--- Configure vertical stack view
-//    _ = self.set (topMargin: 8)
-//      .appendView (AutoLayoutHorizontalStackView ().appendView (self.mEntryPopUpButton).set (rightMargin: 8))
-//      .appendView (self.mScrollView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -196,6 +184,12 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 //      color.setFill ()
 //      NSBezierPath.fill (r)
 //    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setSelectedRange (_ inRange : NSRange) {
+    self.mSourceTextView.setSelectedRange (inRange)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

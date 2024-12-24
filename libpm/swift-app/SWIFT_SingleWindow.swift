@@ -12,7 +12,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var mTabArray = [SWIFT_DisplayDescriptor] ()
+  private var mTabArray = [SWIFT_DisplayDescriptor] ()
   private var mSelectedTabIndex = 0
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,7 +94,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     )
     self.mTabListView.addColumn_ButtonImage (
       valueGetterDelegate: { [weak self] (_ inRow : Int) in
-        if let n = self?.mTabArray.count, n > 1 {
+        if inRow > 0, let n = self?.mTabArray.count, n > 1 {
           return NSImage (named: NSImage.stopProgressTemplateName) ?? NSImage ()
         }else{
           return nil
@@ -102,8 +102,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       },
       actionDelegate: { [weak self] in self?.closeTab (atIndex: $0) },
       title: "",
-      minWidth: 30,
-      maxWidth: 30,
+      minWidth: 25,
+      maxWidth: 25,
       headerAlignment: .center,
       contentAlignment: .right
     )
@@ -386,8 +386,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateWindowTitle () {
-    var s = self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
-    if self.mTabArray.count > 1 {
+    var s = self.mTabArray [0].lastComponentOfFileName
+    if self.mSelectedTabIndex > 0 {
       s += " — " + self.mTabArray [self.mSelectedTabIndex].lastComponentOfFileName
     }
     if self.isDocumentEdited {
@@ -410,24 +410,30 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   private func updateUserDefaults () {
     if self.mSetUpDone && (self.mTabArray.count > 0) {
-//      Swift.print ("WRITE DEFAULT")
-      var array = [[String : String]] ()
+      var fileArray = [[String : String]] ()
       for tab in self.mTabArray {
         var dict = [String : String] ()
         dict ["file"] = tab.fileURL!.path
         dict ["range"] = NSStringFromRange (tab.selectedRange)
-//        Swift.print (dict)
-        array.append (dict)
+        fileArray.append (dict)
       }
-      array.removeFirst ()
-      UserDefaults.standard.set (array, forKey: self.userDefaultKey)
+      fileArray.removeFirst () // Remove first tab
+      var globalDict = [String : Any] ()
+      globalDict ["tabs"] = fileArray
+      globalDict ["range"] = NSStringFromRange (self.mTabArray [0].selectedRange)
+      UserDefaults.standard.set (globalDict, forKey: self.userDefaultKey)
     }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func openTabsFromUserDefaults (forDocument inDocument : SWIFT_SingleDocument) {
-    if let tabFilePathArray = UserDefaults.standard.object (forKey: self.userDefaultKey) as? [[String : String]] {
+    if let globalDict = UserDefaults.standard.object (forKey: self.userDefaultKey) as? [String : Any],
+       let tabFilePathArray = globalDict ["tabs"] as? [[String : String]],
+       let tab0RangeString = globalDict ["range"] as? String {
+      DispatchQueue.main.async {
+        self.mTabArray [0].setSelectedRange (NSRangeFromString (tab0RangeString))
+      }
       for tabDict in tabFilePathArray {
         if let filePath = tabDict ["file"], let rangeString = tabDict ["range"] {
           NSDocumentController.shared.openDocument (withContentsOf: URL (fileURLWithPath: filePath), display: false) { (inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in

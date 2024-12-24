@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
 //  Created by Pierre Molinaro on 11/12/2024.
-//
 //--------------------------------------------------------------------------------------------------
 
 import Cocoa
@@ -14,9 +12,23 @@ import MyAutoLayoutKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
    override init () {
-     super.init ()
      _ = SWIFT_DocumentController () // Create my own subclass of NSDocumentController
-   }
+     self.mSettingsWindow = NSWindow (
+      contentRect: .zero,
+      styleMask: [.titled, .resizable, .closable],
+      backing: .buffered,
+      defer: true
+    )
+    super.init ()
+    self.mSettingsWindow.setFrameAutosaveName ("SettingsWindowFrame")
+    self.mSettingsWindow.title = "Settings"
+    self.mSettingsWindow.isReleasedWhenClosed = false
+
+    let tabView = BaseTabView (size: .regular)
+    self.populateFontAndColorsTab (tabView: tabView)
+    self.populateBuildOptionsTab (tabView: tabView)
+    self.mSettingsWindow.setRootView (tabView)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
@@ -30,12 +42,7 @@ import MyAutoLayoutKit
   //   Settings Window
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private var mSettingsWindow = NSWindow (
-    contentRect: .zero,
-    styleMask: [.titled, .resizable],
-    backing: .buffered,
-    defer: true
-  )
+  private let mSettingsWindow : NSWindow
 
   private var mBoolOptions = [(EBPreferenceProperty <Bool>, SWIFT_CommandLineOption)] ()
   private var mUIntOptions = [(EBPreferenceProperty <Int>, SWIFT_CommandLineOption)] ()
@@ -65,34 +72,15 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func applicationDidFinishLaunching (_ aNotification : Notification) {
+  func applicationDidFinishLaunching (_ inUnusedNotification : Notification) {
     instanciateDebugMenuObjectOnWillFinishLaunchingNotification ()
     setDebugMenuVisibility (true)
-  //--- Create settings windows
-    self.createSettingWindows ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func makeKeyAndOrderFrontSettingWindow (_ inSender : Any?) {
     self.mSettingsWindow.makeKeyAndOrderFront (inSender)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @MainActor func createSettingWindows () {
-    let title = "Settings"
-    self.mSettingsWindow.setFrameAutosaveName (title)
-    self.mSettingsWindow.title = title
-    self.mSettingsWindow.isReleasedWhenClosed = false
-
-    let tabView = BaseTabView (size: .regular)
-
-    self.populateFontAndColorsTab (tabView: tabView)
-    self.populateBuildOptionsTab (tabView: tabView)
-
-    self.mSettingsWindow.setRootView (tabView)
-
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -138,6 +126,7 @@ import MyAutoLayoutKit
          .add (title: "1.0", withTag: 10)
          .add (title: "1.1", withTag: 11)
          .add (title: "1.2", withTag: 12)
+         .add (title: "1.3", withTag: 13)
          .add (title: "1.5", withTag: 15)
          .add (title: "2.0", withTag: 20)
          .bind_selectedTag (tokenizer.lineHeight)
