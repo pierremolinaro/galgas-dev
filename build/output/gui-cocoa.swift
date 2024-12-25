@@ -511,7 +511,7 @@ class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 
 @MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
   var result : SWIFT_Tokenizer_Protocol? = nil
-  if inExtension == "galgastxt" {
+  if inExtension == "galgas" {
     result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }else if inExtension == "galgasProject" {
     result = SWIFT_Tokenizer_0_galgasScanner3 ()

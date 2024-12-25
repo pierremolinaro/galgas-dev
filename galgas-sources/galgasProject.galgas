@@ -153,9 +153,9 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
     while
       $"string"$ ?let @lstring filePath
       projectSourceList += !filePath
-    while
-      $in$
-      <folderDirectory> !"" !?projectSourceList
+//    while
+//      $in$
+//      <folderDirectory> !"" !?projectSourceList
     end
     $}$
     outProjectComponentAST = @galgas3ProjectComponentAST {
@@ -172,25 +172,25 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <folderDirectory> ?@string inCurrentRelativePath ?!@lstringlist ioProjectSourceList {
-    $"string"$ ?var relativeDirectory
-    if (relativeDirectory.string.length > 0) && (relativeDirectory.string.lastCharacter != '/') then
-      relativeDirectory.string += "/"
-    end
-    ${$
-    repeat
-    while
-      $in$
-      <folderDirectory> !inCurrentRelativePath + relativeDirectory.string !?ioProjectSourceList
-    while
-      $"string"$ ?let relativePath
-      ioProjectSourceList += !@(
-        inCurrentRelativePath + relativeDirectory.string + relativePath.string,
-        relativePath.location
-      )
-    end
-    $}$
-  }
+//  rule <folderDirectory> ?@string inCurrentRelativePath ?!@lstringlist ioProjectSourceList {
+//    $"string"$ ?var relativeDirectory
+//    if (relativeDirectory.string.length > 0) && (relativeDirectory.string.lastCharacter != '/') then
+//      relativeDirectory.string += "/"
+//    end
+//    ${$
+//    repeat
+//    while
+//      $in$
+//      <folderDirectory> !inCurrentRelativePath + relativeDirectory.string !?ioProjectSourceList
+//    while
+//      $"string"$ ?let relativePath
+//      ioProjectSourceList += !@(
+//        inCurrentRelativePath + relativeDirectory.string + relativePath.string,
+//        relativePath.location
+//      )
+//    end
+//    $}$
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

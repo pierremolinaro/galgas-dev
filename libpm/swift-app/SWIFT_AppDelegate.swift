@@ -7,6 +7,13 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor func commandLineForBuildProcess () -> (String, [String]) {
+  let app = NSApp.delegate as! SWIFT_AppDelegate
+  return app.commandLineString (commandFullPath: true)
+}
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor @main class SWIFT_AppDelegate : NSObject, NSApplicationDelegate {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -24,7 +31,7 @@ import MyAutoLayoutKit
     self.mSettingsWindow.title = "Settings"
     self.mSettingsWindow.isReleasedWhenClosed = false
 
-    let tabView = BaseTabView (size: .regular)
+    let tabView = AutoLayoutBorderLessTabView (size: .regular)
     self.populateFontAndColorsTab (tabView: tabView)
     self.populateBuildOptionsTab (tabView: tabView)
     self.mSettingsWindow.setRootView (tabView)
@@ -87,7 +94,7 @@ import MyAutoLayoutKit
   //   Populate "Font & colors" tab
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor private func populateFontAndColorsTab (tabView inTabView : BaseTabView) {
+  @MainActor private func populateFontAndColorsTab (tabView inTabView : AutoLayoutBorderLessTabView) {
     let fontAndColorTabView = BaseTabView (size: .small)
 
     for tokenizer in tokenizers () {
@@ -99,7 +106,7 @@ import MyAutoLayoutKit
           .bind_value (tokenizer.italic (forStyle: i))
         let colorWell = AutoLayoutColorWell (minWidth: 48, size: .small)
           .bind_color (tokenizer.color (forStyle: i))
-        let hStack = AutoLayoutHorizontalStackView()
+        let hStack = AutoLayoutHorizontalStackView ()
           .set (margins: .zero)
           .set (spacing: .zero)
           .appendView (boldCheckbox)
@@ -149,7 +156,7 @@ import MyAutoLayoutKit
   //   Populate "Build Options" tab
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @MainActor private func populateBuildOptionsTab (tabView inTabView : BaseTabView) {
+  @MainActor private func populateBuildOptionsTab (tabView inTabView : AutoLayoutBorderLessTabView) {
     self.populateToolPopupButtonInView ()
     let prefixByTimeUtilityCheckbox = AutoLayoutCheckbox (title: "Prefix by 'time' utility", size: .regular)
       .bind_value (self.mPrefixByTimeUtility)
@@ -238,26 +245,30 @@ import MyAutoLayoutKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func updateCommandLineTextView () {
-    var s = ""
-    if self.mPrefixByTimeUtility.propval {
-      s += "/usr/bin/time "
+    let (command, arguments) = self.commandLineString (commandFullPath: false)
+    var s = command
+    for arg in arguments {
+      s += " " + arg
     }
-    s += self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].lastPathComponent
-    for (property, option) in self.mBoolOptions {
-      if property.propval {
-        s += " --" + option.commandString
-      }
-    }
-    for (property, option) in self.mUIntOptions {
-      if property.propval != 0 {
-        s += " --" + option.commandString + "=\(property.propval)"
-      }
-    }
-    for (property, option) in self.mStringOptions {
-      if !property.propval.isEmpty {
-        s += " --" + option.commandString + "=" + property.propval
-      }
-    }
+//    if self.mPrefixByTimeUtility.propval {
+//      s += "/usr/bin/time "
+//    }
+//    s += self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].lastPathComponent
+//    for (property, option) in self.mBoolOptions {
+//      if property.propval {
+//        s += " --" + option.commandString
+//      }
+//    }
+//    for (property, option) in self.mUIntOptions {
+//      if property.propval != 0 {
+//        s += " --" + option.commandString + "=\(property.propval)"
+//      }
+//    }
+//    for (property, option) in self.mStringOptions {
+//      if !property.propval.isEmpty {
+//        s += " --" + option.commandString + "=" + property.propval
+//      }
+//    }
     self.mCommandTextView.string = s
   }
 
@@ -280,6 +291,122 @@ import MyAutoLayoutKit
       }
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // commandLineString
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func commandLineString (commandFullPath inFlag : Bool) -> (String, [String]) {
+    var command : String
+    var arguments = [String] ()
+    if self.mPrefixByTimeUtility.propval {
+      command = "/usr/bin/time"
+      if inFlag {
+        arguments.append (self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].path)
+      }else{
+        arguments.append (self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].lastPathComponent)
+      }
+    }else if inFlag {
+      command = self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].path
+    }else{
+      command = self.mToolCommands [self.mToolPopUpButtonSelectedIndex.propval].lastPathComponent
+    }
+    for (property, option) in self.mBoolOptions {
+      if property.propval {
+        arguments.append ("--" + option.commandString)
+      }
+    }
+    for (property, option) in self.mUIntOptions {
+      if property.propval != 0 {
+        arguments.append ("--" + option.commandString + "=\(property.propval)")
+      }
+    }
+    for (property, option) in self.mStringOptions {
+      if !property.propval.isEmpty {
+        arguments.append ("--" + option.commandString + "=" + property.propval)
+      }
+    }
+    return (command, arguments)
+//  let defaults = UserDefaults.standard
+//  var arguments = [String] ()
+////--- Add tool path
+//  let toolIndex = self.mToolPopUpButtonSelectedIndex.propval
+//  if let toolPath = self.mToolPopUpButton.item (at: toolIndex)?.representedObject as? String {
+//    arguments.append (toolPath)
+//  }else{
+//    arguments.append ("???")
+//  }
+////--- Add boolean options
+//  for option in self.mBoolOptionArray {
+//    let optionValue = defaults.integer (forKey: GGS_bool_build_option + "_" + option.identifier) != 0
+//    if optionValue {
+//      let c = option.commandChar
+//      if !c.isEmpty {
+//        arguments.append ("-" + c)
+//      }else{
+//        let s = option.commandString
+//        if !s.isEmpty {
+//          arguments.append ("--" + s)
+//        }
+//      }
+//    }
+//  }
+////--- Add integer options
+//  for option in self.mUIntOptionArray {
+//    let optionValue = defaults.integer (forKey: GGS_uint_build_option + "_" + option.identifier)
+//    if optionValue != 0 {
+//      let c = option.commandChar
+//      if !c.isEmpty {
+//        arguments.append ("-" + c + "=\(optionValue)")
+//      }else{
+//        let s = option.commandString
+//        if !s.isEmpty {
+//          arguments.append ("--" + s + "=\(optionValue)")
+//        }
+//      }
+//    }
+//  }
+////--- Add string options
+//  for option in self.mStringOptionArray {
+//    let optionValue = defaults.string (forKey: GGS_string_build_option + "_" + option.identifier) ?? ""
+//    if !optionValue.isEmpty {
+//      let c = option.commandChar
+//      if !c.isEmpty {
+//        arguments.append ("-" + c + "=\(optionValue)")
+//      }else{
+//        let s = option.commandString
+//        if !s.isEmpty {
+//          arguments.append ("--" + s + "=\(optionValue)")
+//        }
+//      }
+//    }
+//  }
+//
+////--- Assign command line option array attribute
+////  mCommandLineItemArray = arguments ;
+//////---- Build string for displaying
+////  NSMutableString * s = [NSMutableString new] ;
+//  if self.prefixByToolUtility () {
+//    arguments.insert (self.toolUtilityPrefix, at: 0)
+//  }
+////  for (NSUInteger i=0 ; i<[arguments count] ; i++) {
+////    [s appendString:[arguments objectAtIndex:i]] ;
+////    [s appendString:@" "] ;
+////  }
+////---
+//   let command = arguments.remove (at: 0)
+//   return (command, arguments)
+ }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  func prefixByToolUtility () -> Bool {
+//    return UserDefaults.standard.bool (forKey: GGS_prefix_by_tool_utility)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// var toolUtilityPrefix : String { return "/usr/bin/time" }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

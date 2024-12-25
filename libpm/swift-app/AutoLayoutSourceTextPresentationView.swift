@@ -30,7 +30,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     )
     super.init ()
     self.mDocument = inDocument
-    self.mSourceTextView.setTextViewDelegate (self)
+    self.mSourceTextView.setTextViewDelegate (self) // BaseTextViewDelegate
   //--- Set custom ruler view to scrollview
     self.mSourceTextView.createVerticalRulerView { SWIFT_TextViewRulerView (scrollView: $0) }
   //--- Configure top h stack
@@ -163,27 +163,26 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public func didDraw (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
-//    if let layoutManager = inCocoaTextWiew.layoutManager,
-//       let textContainer = inCocoaTextWiew.textContainer {
-//     //-------- Note: ruler view and text view are both flipped
-//      let selectedRange : NSRange = inCocoaTextWiew.selectedRange
-//    //-------- Compute layout
-//      layoutManager.ensureLayout (for: textContainer)
-//    //---
-//      let lineFragmentRect = layoutManager.lineFragmentRect (
-//        forGlyphAt: layoutManager.glyphIndexForCharacter (at: selectedRange.location),
-//        effectiveRange: nil
-//      )
-//      let r = NSRect (
-//        x: inCocoaTextWiew.bounds.origin.x,
-//        y: lineFragmentRect.origin.y,
-//        width: inCocoaTextWiew.bounds.width,
-//        height: lineFragmentRect.height
-//      )
-//      let color = NSColor (calibratedRed: 0.0, green: 0.0, blue: 1.0, alpha: 0.1)
-//      color.setFill ()
-//      NSBezierPath.fill (r)
-//    }
+    if let layoutManager = inCocoaTextWiew.layoutManager,
+       let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView {
+     //-------- Note: ruler view and text view are both flipped
+      for issue in ruler.mIssueArray {
+        let range = self.sourceTextView.rangeFor (line: issue.line, startColumn: issue.startColumn, length: issue.length)
+        let lineFragmentRect = layoutManager.lineFragmentRect (
+          forGlyphAt: layoutManager.glyphIndexForCharacter (at: range.location),
+          effectiveRange: nil
+        )
+        let p1 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: range.location))
+        let p2 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: range.location + range.length + 1))
+        let bp = NSBezierPath ()
+        bp.move (to: NSPoint (x: lineFragmentRect.origin.x + p1.x, y: lineFragmentRect.maxY))
+        bp.line (to: NSPoint (x: lineFragmentRect.origin.x + p2.x, y: lineFragmentRect.maxY))
+        bp.lineWidth = 3.0
+        bp.lineCapStyle = .round
+        issue.color.setStroke ()
+        bp.stroke ()
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -194,9 +193,23 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func scrollToSelectedRange () {
+    self.mSourceTextView.scrollRangeToVisible (self.mSourceTextView.selectedRange)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func selectedRangeDidChange (_ inSelectedRange : NSRange,
                                _ inCocoaWiew : InternalCocoaTextView) {
     self.mDocument?.selectedRangeDidChange ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
+    if let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView {
+      ruler.setIssueArray (inIssueArray)
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -21,6 +21,7 @@ class SWIFT_DocumentController : NSDocumentController {
                               completionHandler inCompletionHandler : @escaping (NSDocument?, Bool, Error?) -> Void) {
     super.openDocument (withContentsOf: inURL, display: false) { (inDocument : NSDocument?, alreadyOpened : Bool, error : Error?) in
       if inDisplay, let document = inDocument as? SWIFT_SingleDocument {
+        self.noteNewRecentDocumentURL (inURL) // Ajout explicite au menu 'Open Recent'
         let window = SWIFT_SingleWindow (withDocument: document)
         DispatchQueue.main.async {
           window.makeKeyAndOrderFront (nil)
@@ -65,7 +66,6 @@ class SWIFT_DocumentController : NSDocumentController {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   static func closeUnreferencedDocuments () {
- //   Swift.print ("closeUnreferencedDocuments")
     for testedDocument in self.myDocuments () {
       var n = 0
       for w in NSApp.windows {
@@ -73,12 +73,8 @@ class SWIFT_DocumentController : NSDocumentController {
           n += window.tabsReferencing (document: testedDocument)
         }
       }
-    //  Swift.print ("n \(n) for \(testedDocument.lastComponentOfFileName)")
       if n == 0 {
-        DispatchQueue.main.async {
-       //   Swift.print ("testedDocument.windowControllers \(testedDocument.windowControllers)")
-          testedDocument.close ()
-        }
+        DispatchQueue.main.async { testedDocument.close () }
       }
     }
   }
@@ -96,7 +92,6 @@ class SWIFT_DocumentController : NSDocumentController {
            let typeSpecification = exportedIdentifierDict ["UTTypeTagSpecification"] as? NSDictionary,
            let extensions = typeSpecification ["public.filename-extension"] as? [String] {
            extensionDictionary [typeIdentifier] = extensions
-           //Swift.print ("\(typeIdentifier) -> \(extensions)")
          }
        }
        for docTypeDict in allDocumentTypes {
@@ -112,6 +107,16 @@ class SWIFT_DocumentController : NSDocumentController {
  //   Swift.print ("supportedDocumentExtensions \(result)")
     let r = Set <String> (result)
     return [String] (r)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // L'implémentation de noteNewRecentDocument par NSDocument appelle la méthode
+  // noteNewRecentDocumentURL. En interceptant noteNewRecentDocument, le menu 'Open Recent'
+  // n'est plus alimenté. On l'alimente en appelant noteNewRecentDocumentURL explicitement dans
+  // openDocument, voir ci-dessus.
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func noteNewRecentDocument (_ inDocument : NSDocument) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

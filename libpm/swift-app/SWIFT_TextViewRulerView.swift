@@ -1,9 +1,5 @@
-//
-//  SWIFT_TextViewRulerView.swift
-//  galgas-ide
-//
+//--------------------------------------------------------------------------------------------------
 //  Created by Pierre Molinaro on 15/12/2024.
-//
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
@@ -12,6 +8,8 @@ import MyAutoLayoutKit
 //--------------------------------------------------------------------------------------------------
 
 final class SWIFT_TextViewRulerView : NSRulerView {
+
+  private(set) var mIssueArray = [SWIFT_Issue] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -36,10 +34,10 @@ final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  - (void) setIssueArray: (NSArray *) inIssueArray {
-//    mIssueArray = inIssueArray.copy ;
-//    [self setNeedsDisplay:YES] ;
-//  }
+  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
+    self.mIssueArray = inIssueArray.sorted { $0.line < $1.line }
+    self.needsDisplay = true
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -74,9 +72,14 @@ final class SWIFT_TextViewRulerView : NSRulerView {
         in: textContainer
       )
       let visibleRange = layoutManager.characterRange (forGlyphRange: visibleGlyphRange, actualGlyphRange: nil)
+      let warningBP = NSBezierPath ()
+      let errorBP = NSBezierPath ()
+      let markDiameter = 12.0
+      let markOffset = 4.0
     //--- Find first line number to draw
       var idx = 0
       var lineIndex = 1
+      var issueIndex = 0
     //---
       var maxYreached = false
       while (idx < sourceString.length) && !maxYreached {
@@ -112,30 +115,47 @@ final class SWIFT_TextViewRulerView : NSRulerView {
             y: ruleRectForCurrentLine.midY - strSize.height / 2.0
           )
           str.draw (at: lineNumberOrigin, withAttributes: textAttributes)
+        //--- Draw mark ?
+          while issueIndex < self.mIssueArray.count, self.mIssueArray [issueIndex].line == lineIndex {
+            let mark = NSRect (
+              x: markOffset,
+              y: ruleRectForCurrentLine.midY - markDiameter / 2.0,
+              width: markDiameter,
+              height: markDiameter
+            )
+            switch self.mIssueArray [issueIndex].kind {
+            case .warning : warningBP.appendOval (in: mark)
+            case .error   : errorBP.appendOval (in: mark)
+            }
+            issueIndex += 1
+          }
         }
         idx = lineRange.location + lineRange.length
+      //---
         lineIndex += 1
       }
-    //-------- Draw last line number
-//      do{
-//        let lineRange = sourceString.lineRange (for: NSMakeRange (idx, 0))
-//        let offset = layoutManager.typesetter.baselineOffset (
-//          in: layoutManager,
-//          glyphIndex: layoutManager.glyphIndexForCharacter (at: lineRange.location)
+    //--- Iterate on issues
+//      let warningBP = NSBezierPath ()
+//      let errorBP = NSBezierPath ()
+//      let markDiameter = self.bounds.size.width * 2.0 / 3.0
+//      let markOffset = (self.bounds.size.width - markDiameter) / 2.0
+//      for issue in self.mIssueArray {
+//        let r = layoutManager.lineFragmentRect (
+//          forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.locationInBuildLogTextView),
+//          effectiveRange: nil
 //        )
-//        let r = layoutManager.lineFragmentRect (forGlyphAt: layoutManager.glyphIndexForCharacter (at: lineRange.location), effectiveRange: nil, withoutAdditionalLayout: true)
-//        var p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
-//        let str = "\(lineIndex)"
-//        let strSize = str.size (withAttributes: textAttributes)
-//        p.x = self.bounds.size.width - strSize.width - rightMargin
-//        // Swift.print ("p.y \(p.y) offset \(offset), r.size.height \(r.size.height), strSize.height \(strSize.height)")
-//        p.y += r.size.height - strSize.height - offset
-//        str.draw (at: p, withAttributes: textAttributes)
+//        let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
+//      //--- Draw mark
+//        let mark = NSRect (x: markOffset, y: p.y, width: markDiameter, height: markDiameter)
+//        switch issue.kind {
+//        case .warning : warningBP.appendOval (in: mark)
+//        case .error   : errorBP.appendOval (in: mark)
+//        }
 //      }
-    //-------- Draw right border
-//      let p1 = NSPoint (x: self.bounds.width, y: 0.0)
-//      let p2 = NSPoint (x: self.bounds.width, y: self.bounds.height)
-//      NSBezierPath.strokeLine (from: p1, to: p2)
+      NSColor.orange.setFill ()
+      warningBP.fill ()
+      NSColor.red.setFill ()
+      errorBP.fill ()
     }
   }
 

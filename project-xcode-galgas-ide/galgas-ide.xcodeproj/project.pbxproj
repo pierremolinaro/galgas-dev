@@ -366,6 +366,8 @@
 		CF93BACD2D0D8CFD006DF788 /* GrammarVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93BAB42D0D8CFD006DF788 /* GrammarVocabulary.cpp */; };
 		CFAA22C42D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */; };
 		CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */; };
+		CFAE1C222D1C36C7001FDE69 /* SWIFT_Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */; };
+		CFAE1C242D1C4450001FDE69 /* SWIFT_BuildLogViewRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */; };
 		CFD135DC2D0A104B00FE45B5 /* MyAutoLayoutKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFD135DB2D0A104B00FE45B5 /* MyAutoLayoutKit */; };
 		CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */; };
 		CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */; };
@@ -726,7 +728,6 @@
 		CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleDocument+syntax-coloring.swift"; sourceTree = "<group>"; };
 		CF79C56B2D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleDocument+update-entry-popup.swift"; sourceTree = "<group>"; };
 		CF79C56C2D0F32CC002EEE48 /* SWIFT_SingleDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleDocument.swift; sourceTree = "<group>"; };
-		CF79C56D2D0F32CC002EEE48 /* SWIFT_SingleWindow+build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_SingleWindow+build.swift"; sourceTree = "<group>"; };
 		CF79C56E2D0F32CC002EEE48 /* SWIFT_SingleWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_SingleWindow.swift; sourceTree = "<group>"; };
 		CF8F80D82D0D8F250095170B /* galgas_cli_options.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CF8F80D92D0D8F250095170B /* grammarCompilation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grammarCompilation.h; sourceTree = "<group>"; };
@@ -768,6 +769,8 @@
 		CF93BABE2D0D8CFD006DF788 /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
 		CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_CommandLineOption.swift; sourceTree = "<group>"; };
 		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
+		CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
+		CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_BuildLogViewRuler.swift; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
@@ -1280,6 +1283,8 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
+				CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */,
+				CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */,
 				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
 				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
@@ -1291,7 +1296,6 @@
 				CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */,
 				CF79C56B2D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift */,
 				CF79C56E2D0F32CC002EEE48 /* SWIFT_SingleWindow.swift */,
-				CF79C56D2D0F32CC002EEE48 /* SWIFT_SingleWindow+build.swift */,
 				CFD6D23E2D0DEAB800E91AE6 /* SWIFT_TemplateDelimiter.swift */,
 				CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */,
 				CFD6D2482D0DECCA00E91AE6 /* SWIFT_Token.swift */,
@@ -1634,6 +1638,7 @@
 				CFE752C32D0EE12D0071CADB /* SWIFT_AppDelegate.swift in Sources */,
 				CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */,
 				CFD6D2552D0E0D8C00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift in Sources */,
+				CFAE1C242D1C4450001FDE69 /* SWIFT_BuildLogViewRuler.swift in Sources */,
 				CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */,
 				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
 				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
@@ -1651,6 +1656,7 @@
 				CF79C5712D0F32CC002EEE48 /* SWIFT_SingleDocument.swift in Sources */,
 				CF79C5722D0F32CC002EEE48 /* SWIFT_SingleWindow.swift in Sources */,
 				CF79C5752D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift in Sources */,
+				CFAE1C222D1C36C7001FDE69 /* SWIFT_Issue.swift in Sources */,
 				CF79C5762D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift in Sources */,
 				CF79C5772D0F32CC002EEE48 /* SWIFT_SingleDocument+update-entry-popup.swift in Sources */,
 			);

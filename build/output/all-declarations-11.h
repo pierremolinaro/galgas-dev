@@ -4573,14 +4573,6 @@ class cParser_galgas_33_ProjectSyntax {
   public: virtual ~ cParser_galgas_33_ProjectSyntax (void) { }
 
 //--- Non terminal declarations
-  protected: virtual void nt_folderDirectory_ (const class GGS_string constinArgument0,
-                                               class GGS_lstringlist & ioArgument1,
-                                               class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_folderDirectory_parse (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
-  protected: virtual void nt_folderDirectory_indexing (class Lexique_galgasScanner_33_ * inLexique) = 0 ;
-
   protected: virtual void nt_project_5F_component_5F_start_5F_symbol_ (class GGS_galgas_33_ProjectComponentAST & outArgument0,
                                                                        class Lexique_galgasScanner_33_ * inLexique) = 0 ;
 
@@ -4617,20 +4609,10 @@ class cParser_galgas_33_ProjectSyntax {
 
   protected: void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_indexing (Lexique_galgasScanner_33_ * inLexique) ;
 
-  protected: void rule_galgas_33_ProjectSyntax_folderDirectory_i2_ (const GGS_string constinArgument0,
-                                                                    GGS_lstringlist & ioArgument1,
-                                                                    Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ProjectSyntax_folderDirectory_i2_parse (Lexique_galgasScanner_33_ * inLexique) ;
-
-  protected: void rule_galgas_33_ProjectSyntax_folderDirectory_i2_indexing (Lexique_galgasScanner_33_ * inLexique) ;
-
 
 
 //--- Select methods
   protected: virtual int32_t select_galgas_33_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_33_ProjectSyntax_1 (Lexique_galgasScanner_33_ *) = 0 ;
 
 
 } ;

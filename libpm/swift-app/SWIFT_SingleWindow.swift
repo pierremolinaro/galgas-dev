@@ -19,12 +19,24 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   //   https://www.hackingwithswift.com/example-code/system/how-to-run-an-external-program-using-process
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  var mProcess : Process? = nil
-//  var mProcessOutputPipe : Pipe? = nil
-//  var mResultData = Data ()
-//  let mBuildButton = AutoLayoutButton (title: "Build", size: .regular)
-//  let mAbortButton = AutoLayoutButton (title: "Stop", size: .regular)
-//  var mBuildOutputAttributeDictionary : [NSAttributedString.Key : Any]
+  private var mProcess : Process? = nil
+  private var mProcessOutputPipe : Pipe? = nil
+  private var mResultData = Data ()
+  private let mBuildButton = AutoLayoutButton (title: "🔨", size: .regular)
+  private let mAbortButton = AutoLayoutButton (title: "🛑", size: .regular)
+  private var mBuildHasBeenAborted = false
+  private var mIssueArray = [SWIFT_Issue] ()
+  private let mWarningCountTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .center).setTextColor (.orange)
+  private let mErrorCountTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center).setTextColor (.red)
+  private var mWarningCount = 0
+  private var mErrorCount = 0
+  private let mProgressIndicator = SpinningProgressIndicator (size: 20, displayedWhenStopped: false)
+  private var mCurrentBuildOutputColor = NSColor.black
+
+  let mBuildWindowFont = EBPreferenceProperty <NSFont> (
+    defaultValue: NSFont.userFixedPitchFont (ofSize: 10.0)!,
+    prefKey: "build-log-font"
+  )
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   VIEWS
@@ -34,6 +46,16 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   private let mHorizontalSplitView = AutoLayoutHorizontalSplitView ()
 
+  private let mInspectorTabView = AutoLayoutBorderLessTabView (size: .regular)
+
+  private let mBuildLogTextView = AutoLayoutStaticTextView (
+    drawsBackground: true,
+    horizontalScroller: false,
+    verticalScroller: true
+  )
+
+  private let mBuildLogTextViewRuler : SWIFT_BuildLogViewRuler
+
   private let mTabListView = AutoLayoutTableView (size: .regular, minWidth: 250, addControlButtons: false)
 
   private var mBuildTextFontObserver : EBSimpleObserver? = nil
@@ -41,7 +63,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   init (withDocument inDocument : SWIFT_SingleDocument) {
-//    self.mBuildOutputAttributeDictionary = [.font : gBuildWindowFont.propval]
+    self.mBuildLogTextView.createVerticalRulerView { SWIFT_BuildLogViewRuler (scrollView: $0) }
+    self.mBuildLogTextViewRuler = self.mBuildLogTextView.verticalRuler as! SWIFT_BuildLogViewRuler
+
     super.init (
       contentRect: NSRect (x: 0, y: 0, width: 800, height: 500),
       styleMask: [.titled, .closable, .miniaturizable, .resizable],
@@ -54,9 +78,43 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     self.isReleasedWhenClosed = false
     self.setFrameAutosaveName ("WindowFrameFor_" + (inDocument.fileURL?.path ?? ""))
   //--- Build user interface
+    _ = self.mBuildButton.setAction { [weak self] in self?.buildAction (nil) }
+    self.mAbortButton.setAction { [weak self] in self?.abortBuildAction () }
+      .setHidden (true)
+    _ = self.mInspectorTabView
+    .addTab (
+      title: "📁",
+      tooltip: "Files",
+      contentView: self.mTabListView
+    )
+    .addTab (
+      title: "🔨",
+      tooltip: "Build",
+      contentView: self.mBuildLogTextView
+    )
+//    .addTab (
+//      title: "🔍",
+//      tooltip: "Search in files",
+//      contentView: SimpleBlockView (.fill, .fill)
+//    )
     self.configureTabListView (withDocument: inDocument)
+    let vStack = AutoLayoutVerticalStackView ()
+    .set (margins: .zero)
+    .set (spacing: .zero)
+    .appendView (
+      AutoLayoutHorizontalStackView ()
+        .set (margins: .zero)
+        .appendView (self.mBuildButton)
+        .appendView (self.mErrorCountTextField)
+        .appendView (self.mWarningCountTextField)
+        .appendFlexibleSpace ()
+        .appendView (self.mProgressIndicator)
+        .appendView (self.mAbortButton)
+      )
+    .appendSeparator ()
+    .appendView (self.mInspectorTabView)
     _ = self.mHorizontalSplitView
-      .appendView (self.mTabListView)
+      .appendView (vStack)
       .appendView (self.mSourceEditionView)
     self.setRootView (self.mHorizontalSplitView)
   //---
@@ -210,25 +268,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Open from selection
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @IBAction func openFromSelection (_ inUnusedSender : Any?) {
-    let displayDescriptor : SWIFT_DisplayDescriptor = self.mTabArray [self.mSelectedTabIndex]
-    if let p = displayDescriptor.pathFromSelection (), let fileURL = displayDescriptor.fileURL {
-      let url = fileURL.deletingLastPathComponent ().appendingPathComponent (p)
-      let dc = NSDocumentController.shared
-      dc.openDocument (withContentsOf: url, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
-        if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
-        }
-      }
-    }else{
-      NSSound.beep ()
-    }
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Tabs
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -356,6 +395,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
           self.insertTab (document: document, at: idx)
           self.selectTab (atIndex: idx)
           idx += 1
+          self.mInspectorTabView.selectTab (atIndex: 0)
         }
       }
     }
@@ -377,6 +417,74 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     NSDocumentController.shared.beginOpenPanel { (inOptionalURLs : [URL]?) in
       if let urls = inOptionalURLs {
         self.openFilesInNewTabs (urls, at: self.mTabArray.count)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Open from selection
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func openFromSelectionInTab (_ inUnusedSender : Any?) {
+    let displayDescriptor : SWIFT_DisplayDescriptor = self.mTabArray [self.mSelectedTabIndex]
+    if let p = displayDescriptor.pathFromSelection (), let fileURL = displayDescriptor.fileURL {
+      self.mInspectorTabView.selectTab (atIndex: 0)
+      let url = fileURL.deletingLastPathComponent ().appendingPathComponent (p)
+      var found = false
+      for idx in 0 ..< self.mTabArray.count {
+        let dd = self.mTabArray [idx]
+        if !found && (dd.fileURL == url) {
+          self.selectTab (atIndex: idx)
+          found = true
+        }
+      }
+      if !found {
+        let dc = NSDocumentController.shared
+        dc.openDocument (withContentsOf: url, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+          if let document = inOptionalDocument as? SWIFT_SingleDocument {
+            self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
+          }
+        }
+      }
+    }else{
+      NSSound.beep ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func findOrAddTab (forIssue inIssue : SWIFT_Issue) {
+    var found = false
+    for idx in 0 ..< self.mTabArray.count {
+      let dd = self.mTabArray [idx]
+      if !found, dd.fileURL == inIssue.fileURL {
+        self.selectTab (atIndex: idx)
+        let range = self.mTabArray [idx].rangeFor (
+          line: inIssue.line,
+          startColumn: 0,
+          length: 0
+        )
+        self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
+        self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+        found = true
+      }
+    }
+    if !found {
+      let dc = NSDocumentController.shared
+      dc.openDocument (withContentsOf: inIssue.fileURL, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+        if let document = inOptionalDocument as? SWIFT_SingleDocument {
+          self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
+          let idx = self.mTabArray.count - 1
+          DispatchQueue.main.async {
+            let range = self.mTabArray [idx].rangeFor (
+              line: inIssue.line,
+              startColumn: 0,
+              length: 0
+            )
+            self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
+            self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+          }
+        }
       }
     }
   }
@@ -519,6 +627,241 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     self.updateUserDefaults ()
   }
   
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Build
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func buildAction (_ inUnusedSender : Any?) {
+    SWIFT_DocumentController.mySaveAllDocuments ()
+    self.mResultData.removeAll (keepingCapacity: true)
+//    self.mBuildButton.setHidden (true)
+    _ = self.mBuildButton.set (enabled: false)
+    self.mProgressIndicator.startAnimation ()
+    self.mAbortButton.setHidden (false)
+    self.mIssueArray.removeAll (keepingCapacity: true)
+    self.mBuildLogTextViewRuler.setIssueArray ([])
+    for dd in self.mTabArray {
+      dd.setIssueArray ([])
+    }
+    self.mBuildLogTextView.clear ()
+    _ = self.mBuildLogTextView.setFont (self.mBuildWindowFont.propval)
+    self.mInspectorTabView.selectTab (atIndex: 1)
+    self.mCurrentBuildOutputColor = .black
+    self.mBuildHasBeenAborted = false
+    self.mWarningCount = 0
+    self.mErrorCount = 0
+    self.mWarningCountTextField.setHidden (true)
+    self.mErrorCountTextField.setHidden (true)
+ //--- Create task
+    let process = Process ()
+    self.mProcess = process
+  //--- Command and arguments
+    let (command, arguments) = commandLineForBuildProcess ()
+    process.executableURL = URL (fileURLWithPath: command)
+    let sourceFile = self.mTabArray [0].fileURL!.path
+    process.arguments = arguments + [sourceFile, "--cocoa"]
+  //--- Set standard output notification
+    let pipe = Pipe ()
+    self.mProcessOutputPipe = pipe
+    process.standardOutput = pipe
+    process.standardError = pipe
+    NotificationCenter.default.addObserver (
+      self,
+      selector: #selector (Self.getDataFromTaskOutput(_:)),
+      name: FileHandle.readCompletionNotification,
+      object: pipe.fileHandleForReading
+    )
+    pipe.fileHandleForReading.readInBackgroundAndNotify ()
+  //---
+    NotificationCenter.default.addObserver (
+      self,
+      selector: #selector (Self.taskDidTerminate (_:)),
+      name: Process.didTerminateNotification,
+      object: process
+    )
+  //--- Start process
+    process.launch ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func getDataFromTaskOutput (_ inNotification : NSNotification) {
+    if let dictionary = inNotification.userInfo as? [String : Any],
+       let data = dictionary [NSFileHandleNotificationDataItem] as? Data,
+       let fileHandle = inNotification.object as? FileHandle {
+      if !data.isEmpty {
+        self.appendBuildOutputData (data)
+        fileHandle.readInBackgroundAndNotify ()
+      }else{
+        NotificationCenter.default.removeObserver (
+          self,
+          name: FileHandle.readCompletionNotification,
+          object: self.mProcessOutputPipe?.fileHandleForReading
+        )
+        self.mProcessOutputPipe?.fileHandleForReading.closeFile ()
+        self.mProcessOutputPipe = nil
+        if self.mBuildHasBeenAborted {
+          self.mBuildLogTextView.appendErrorString ("Aborted.")
+        }else{
+          self.mBuildLogTextView.appendSuccessString ("Done.")
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func taskDidTerminate (_ inNotification : NSNotification) {
+    if let process = self.mProcess {
+      NotificationCenter.default.removeObserver (
+        self,
+        name: Process.didTerminateNotification,
+        object: process
+      )
+      self.mProcess = nil
+    }
+//    self.mBuildButton.setHidden (false)
+    _ = self.mBuildButton.set (enabled: true)
+    self.mAbortButton.setHidden (true)
+    self.mProgressIndicator.stopAnimation ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func abortBuildAction () {
+    self.mBuildHasBeenAborted = true
+    self.mProcess?.terminate ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendBuildOutputData (_ inData : Data) {
+    self.mResultData.append (inData)
+  //--- Look for last line feed
+    let startIndex = self.mResultData.startIndex
+    var idx = self.mResultData.endIndex
+    var ok = false
+    while !ok, idx > 0 {
+      idx -= 1
+      ok = self.mResultData [idx] == ASCII.lineFeed.rawValue
+    }
+  //--- If found, extract data
+    if ok {
+      idx += 1
+      let data = self.mResultData [startIndex ..< idx]
+      if let string = String (data: data, encoding: .utf8) {
+        self.processBuildOutputString (string)
+        self.mResultData.removeSubrange (startIndex ..< idx)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func processBuildOutputString (_ inString : String) {
+    let messageArray = inString.components (separatedBy: "\u{1B}")
+  //--- Enter first component with current attributes
+    self.mBuildLogTextView.appendMessageString (messageArray [0], color: self.mCurrentBuildOutputColor)
+  //--- Send next components
+     var i = 1
+     while i < messageArray.count {
+       let component = messageArray [i] as NSString
+       i += 1
+      var idx = 0
+      while idx < component.length, component.character (at: idx) == ASCII.leftBracket.rawValue {
+        idx += 1
+        var code = 0
+        while idx < component.length, component.character (at: idx) >= ASCII.zero.rawValue, component.character (at: idx) <= ASCII.nine.rawValue {
+          code *= 10
+          code += Int (component.character (at: idx)) - Int (ASCII.zero.rawValue)
+          idx += 1
+        }
+        if idx < component.length, component.character (at: idx) == ASCII.m.rawValue {
+          idx += 1
+        }
+        switch code {
+        case  0 : self.mCurrentBuildOutputColor = .black
+        case 30 : self.mCurrentBuildOutputColor = .black
+        case 31 : self.mCurrentBuildOutputColor = .red
+        case 32 : self.mCurrentBuildOutputColor = NSColor (calibratedRed: 0.0, green:0.5, blue:0.0, alpha:1.0)
+        case 33 : self.mCurrentBuildOutputColor = NSColor.orange
+        case 34 : self.mCurrentBuildOutputColor = NSColor.blue
+        case 35 : self.mCurrentBuildOutputColor = NSColor.magenta
+        case 36 : self.mCurrentBuildOutputColor = NSColor.cyan
+        case 37 : self.mCurrentBuildOutputColor = NSColor.white
+        case 40 : self.mCurrentBuildOutputColor = NSColor.white
+        case 41 : self.mCurrentBuildOutputColor = NSColor.red
+        case 42 : self.mCurrentBuildOutputColor = NSColor (calibratedRed: 0.0, green:0.5, blue:0.0, alpha:1.0)
+        case 43 : self.mCurrentBuildOutputColor = NSColor.orange
+        case 44 : self.mCurrentBuildOutputColor = NSColor.blue
+        case 45 : self.mCurrentBuildOutputColor = NSColor.magenta
+        case 46 : self.mCurrentBuildOutputColor = NSColor.cyan
+        case 47 : self.mCurrentBuildOutputColor = NSColor.white
+        default: ()
+        }
+      }
+      var s = component.substring (from: idx)
+      if !s.isEmpty {
+        let COCOA_WARNING_ID = Character (Unicode.Scalar (3)!)
+        let COCOA_ERROR_ID   = Character (Unicode.Scalar (4)!)
+        let locationInBuildTextView = (self.mBuildLogTextView.string as NSString).length
+        if s [s.startIndex] == COCOA_WARNING_ID {
+          s.removeFirst ()
+          self.appendIssue (s, locationInBuildTextView, .warning)
+        }else if s [s.startIndex] == COCOA_ERROR_ID {
+          s.removeFirst ()
+          self.appendIssue (s, locationInBuildTextView, .error)
+        }
+        self.mBuildLogTextView.appendMessageString (s, color: self.mCurrentBuildOutputColor)
+      }
+    }
+    self.mBuildLogTextView.scrollToEndOfText ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func appendIssue (_ inMessage : String,
+                            _ inLocationInBuildLogTextView : Int,
+                            _ inKind : SWIFT_Issue.Kind) {
+  //--- Split message
+    let components = inMessage.components (separatedBy: ":")
+    if components.count >= 6,
+        let line = Int (components [1]),
+        let startColumn = Int (components [2]),
+        let endColumn = Int (components [3]) {
+      let sourcePath = components [0]
+      var messageComponents = components
+      messageComponents.removeFirst (5)
+      let message = messageComponents.joined (separator: ":")
+    //--- Append issue
+      let issue = SWIFT_Issue (
+        fileURL: URL (fileURLWithPath: sourcePath),
+        line: line,
+        startColumn: startColumn - 1,
+        length: endColumn - startColumn,
+        message: message,
+        kind: inKind,
+        locationInBuildLogTextView: inLocationInBuildLogTextView
+      )
+      self.mIssueArray.append (issue)
+      self.mBuildLogTextViewRuler.setIssueArray (self.mIssueArray)
+      for dd in self.mTabArray {
+        dd.setIssueArray (self.mIssueArray)
+      }
+    //--- Note issue on user interface
+      switch inKind {
+      case .warning :
+        self.mWarningCount += 1
+        self.mWarningCountTextField.stringValue = "⚠\(self.mWarningCount)"
+        self.mWarningCountTextField.setHidden (false)
+      case .error :
+        self.mErrorCount += 1
+        self.mErrorCountTextField.stringValue = "⚠\(self.mErrorCount)"
+        self.mErrorCountTextField.setHidden (false)
+      }
+    }
+  }
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }

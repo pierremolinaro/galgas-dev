@@ -46,6 +46,17 @@ import MyAutoLayoutKit
     self.mSourcePresentationView.lineHeightDidChange ()
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
+    var issueArray = [SWIFT_Issue] ()
+    for issue in inIssueArray {
+      if issue.fileURL == self.mDocument.fileURL {
+        issueArray.append (issue)
+      }
+    }
+    self.mSourcePresentationView.setIssueArray (issueArray)
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   pathFromSelection
@@ -150,6 +161,14 @@ import MyAutoLayoutKit
 
   func scrollSelectedRangeToVisible () {
     self.sourcePresentationView.sourceTextView.scrollRangeToVisible (self.selectedRange)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func rangeFor (line inLine : Int,
+                 startColumn inStartColumn : Int,
+                 length inLength : Int) -> NSRange {
+    return self.sourcePresentationView.sourceTextView.rangeFor (line: inLine, startColumn: inStartColumn, length: inLength)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

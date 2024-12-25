@@ -47,17 +47,15 @@ project (3:8:0) -> "galgas" {
   "galgas-sources/projectCreation.galgas"
 
 //--- Templates
-  in "galgas-sources/templates" {
-    "templateScanner.galgas"
-    "templateTypesForAST.galgas"
-    "templateSyntax.galgas"
-    "templateGrammar.galgas"
-    "templateDecoratedTypes.galgas"
-    "templateAnalysis.galgas"
-    "templateCodeGeneration.galgas"
-    "template-for-instruction.galgas"
-    "template-switch-instruction.galgas"
-  }
+  "galgas-sources/templates/templateScanner.galgas"
+  "galgas-sources/templates/templateTypesForAST.galgas"
+  "galgas-sources/templates/templateSyntax.galgas"
+  "galgas-sources/templates/templateGrammar.galgas"
+  "galgas-sources/templates/templateDecoratedTypes.galgas"
+  "galgas-sources/templates/templateAnalysis.galgas"
+  "galgas-sources/templates/templateCodeGeneration.galgas"
+  "galgas-sources/templates/template-for-instruction.galgas"
+  "galgas-sources/templates/template-switch-instruction.galgas"
 
 //--- Lexique Component
   "galgas-sources/lexique-component.galgas"
