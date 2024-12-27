@@ -32,7 +32,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     self.mDocument = inDocument
     self.mSourceTextView.setTextViewDelegate (self) // BaseTextViewDelegate
   //--- Set custom ruler view to scrollview
-    self.mSourceTextView.createVerticalRulerView { SWIFT_TextViewRulerView (scrollView: $0) }
+    self.mSourceTextView.createVerticalRulerView { SWIFT_TextViewRulerView (scrollView: $0, document: inDocument) }
   //--- Configure top h stack
     let topHStack = AutoLayoutHorizontalStackView ()
       .set (margins: .zero)
@@ -44,7 +44,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     self.mSourceTextView.setUndoManager (inDocument.mUndoManager)
     self.mSourceTextView.setTextViewDidChangeSelectionAction { [weak self] in
       self?.selectPopUpItemFollowingTextSelection ()
-      self?.mSourceTextView.verticalRulerViewNeedsDisplay ()
+      self?.mSourceTextView.textViewNeedsDisplay ()
     }
 
     _ = self.set (margins: .zero)
@@ -150,7 +150,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func lineHeightDidChange () {
-    self.mSourceTextView.verticalRulerViewNeedsDisplay ()
+    self.mSourceTextView.textViewNeedsDisplay ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -164,23 +164,26 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   public func didDraw (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
     if let layoutManager = inCocoaTextWiew.layoutManager,
-       let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView {
+       let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView,
+       let issueArray = ruler.mDocument?.mIssueArray {
      //-------- Note: ruler view and text view are both flipped
-      for issue in ruler.mIssueArray {
-        let range = self.sourceTextView.rangeFor (line: issue.line, startColumn: issue.startColumn, length: issue.length)
-        let lineFragmentRect = layoutManager.lineFragmentRect (
-          forGlyphAt: layoutManager.glyphIndexForCharacter (at: range.location),
-          effectiveRange: nil
-        )
-        let p1 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: range.location))
-        let p2 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: range.location + range.length + 1))
-        let bp = NSBezierPath ()
-        bp.move (to: NSPoint (x: lineFragmentRect.origin.x + p1.x, y: lineFragmentRect.maxY))
-        bp.line (to: NSPoint (x: lineFragmentRect.origin.x + p2.x, y: lineFragmentRect.maxY))
-        bp.lineWidth = 3.0
-        bp.lineCapStyle = .round
-        issue.color.setStroke ()
-        bp.stroke ()
+      for issue in issueArray {
+//        let range = self.sourceTextView.rangeFor (line: issue.line, startColumn: issue.startColumn, length: issue.length)
+        if issue.mIsValid {
+          let lineFragmentRect = layoutManager.lineFragmentRect (
+            forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location),
+            effectiveRange: nil
+          )
+          let p1 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location))
+          let p2 = layoutManager.location (forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location + issue.range.length + 1))
+          let bp = NSBezierPath ()
+          bp.move (to: NSPoint (x: lineFragmentRect.origin.x + p1.x, y: lineFragmentRect.maxY))
+          bp.line (to: NSPoint (x: lineFragmentRect.origin.x + p2.x, y: lineFragmentRect.maxY))
+          bp.lineWidth = 3.0
+          bp.lineCapStyle = .round
+          issue.color.setStroke ()
+          bp.stroke ()
+        }
       }
     }
   }
@@ -206,10 +209,8 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
-    if let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView {
-      ruler.setIssueArray (inIssueArray)
-    }
+  func textViewNeedsDisplay () {
+    self.mSourceTextView.textViewNeedsDisplay ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

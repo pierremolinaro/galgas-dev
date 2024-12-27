@@ -24,8 +24,8 @@ extension SWIFT_SingleDocument {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func computeLexicalColoring (_ inEditedRange : NSRange, _ inChangeInLength : Int) {
-    if let tokenizer = self.tokenizer {
-      self.mTextStorage.font = tokenizer.font.propval
+    if let tokenizer = self.mTokenizer {
+//      self.mTextStorage.font = tokenizer.font.propval
       let lineRange = (self.mTextStorage.string as NSString).lineRange (for: inEditedRange)
       DEBUG_PRINT ("inEditedRange \(inEditedRange), inChangeInLength \(inChangeInLength) -> lineRange \(lineRange)")
     //---------------------------------------- Remove edited token from range array
@@ -129,7 +129,6 @@ extension SWIFT_SingleDocument {
       self.mTextStorage.fixFontAttribute (in: modifiedRange)
     //--- Update display
       self.updateEntryPopUpButtons (tokenizer.popupListData ())
-  //---
     //--- Check that range array is correct
       if CHECK_RANGE_ARRAY {
         tokenizer.set (sourceString: self.mTextStorage.string, location: 0, templateDelimiterIndex: nil)

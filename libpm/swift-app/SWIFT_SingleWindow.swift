@@ -402,6 +402,52 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func findOrAddTab (forIssue inIssue : SWIFT_Issue) {
+    var found = false
+    for idx in 0 ..< self.mTabArray.count {
+      let dd = self.mTabArray [idx]
+      if !found, dd.fileURL == inIssue.fileURL {
+        self.selectTab (atIndex: idx)
+        let range = self.mTabArray [idx].mDocument.mTextStorage.rangeFor (
+          line: inIssue.line,
+          startColumn: 0,
+          length: 0
+        )
+        self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
+        self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+        found = true
+      }
+    }
+    if !found {
+      let dc = NSDocumentController.shared
+      dc.openDocument (withContentsOf: inIssue.fileURL, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+        if let document = inOptionalDocument as? SWIFT_SingleDocument {
+          self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
+          let idx = self.mTabArray.count - 1
+          DispatchQueue.main.async {
+//            for issue in self.mIssueArray {
+//              document.appendIssue (issue)
+//            }
+            let range = self.mTabArray [idx].mDocument.mTextStorage.rangeFor (
+              line: inIssue.line,
+              startColumn: 0,
+              length: 0
+            )
+            self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
+            self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+            DispatchQueue.main.async {
+              for issue in self.mIssueArray {
+                document.appendIssue (issue)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Actions
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -453,39 +499,19 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func findOrAddTab (forIssue inIssue : SWIFT_Issue) {
-    var found = false
-    for idx in 0 ..< self.mTabArray.count {
-      let dd = self.mTabArray [idx]
-      if !found, dd.fileURL == inIssue.fileURL {
-        self.selectTab (atIndex: idx)
-        let range = self.mTabArray [idx].rangeFor (
-          line: inIssue.line,
-          startColumn: 0,
-          length: 0
-        )
-        self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
-        self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
-        found = true
-      }
+  @IBAction func commentAction (_ inUnusedSender : Any?) {
+    if self.mSelectedTabIndex >= 0, self.mSelectedTabIndex < self.mTabArray.count {
+      let dd = self.mTabArray [self.mSelectedTabIndex]
+      dd.commentSelection ()
     }
-    if !found {
-      let dc = NSDocumentController.shared
-      dc.openDocument (withContentsOf: inIssue.fileURL, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
-        if let document = inOptionalDocument as? SWIFT_SingleDocument {
-          self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
-          let idx = self.mTabArray.count - 1
-          DispatchQueue.main.async {
-            let range = self.mTabArray [idx].rangeFor (
-              line: inIssue.line,
-              startColumn: 0,
-              length: 0
-            )
-            self.mTabArray [idx].sourcePresentationView.setSelectedRange (range)
-            self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
-          }
-        }
-      }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func uncommentAction (_ inUnusedSender : Any?) {
+    if self.mSelectedTabIndex >= 0, self.mSelectedTabIndex < self.mTabArray.count {
+      let dd = self.mTabArray [self.mSelectedTabIndex]
+      dd.uncommentSelection ()
     }
   }
 
@@ -640,8 +666,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     self.mAbortButton.setHidden (false)
     self.mIssueArray.removeAll (keepingCapacity: true)
     self.mBuildLogTextViewRuler.setIssueArray ([])
-    for dd in self.mTabArray {
-      dd.setIssueArray ([])
+    for document in SWIFT_DocumentController.myDocuments () {
+      document.removeAllIssues ()
     }
     self.mBuildLogTextView.clear ()
     _ = self.mBuildLogTextView.setFont (self.mBuildWindowFont.propval)
@@ -844,10 +870,10 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         locationInBuildLogTextView: inLocationInBuildLogTextView
       )
       self.mIssueArray.append (issue)
-      self.mBuildLogTextViewRuler.setIssueArray (self.mIssueArray)
-      for dd in self.mTabArray {
-        dd.setIssueArray (self.mIssueArray)
+      for document in SWIFT_DocumentController.myDocuments () {
+        document.appendIssue (issue)
       }
+      self.mBuildLogTextViewRuler.setIssueArray (self.mIssueArray)
     //--- Note issue on user interface
       switch inKind {
       case .warning :

@@ -47,18 +47,6 @@ import MyAutoLayoutKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
-    var issueArray = [SWIFT_Issue] ()
-    for issue in inIssueArray {
-      if issue.fileURL == self.mDocument.fileURL {
-        issueArray.append (issue)
-      }
-    }
-    self.mSourcePresentationView.setIssueArray (issueArray)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   pathFromSelection
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -165,10 +153,27 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func rangeFor (line inLine : Int,
-                 startColumn inStartColumn : Int,
-                 length inLength : Int) -> NSRange {
-    return self.sourcePresentationView.sourceTextView.rangeFor (line: inLine, startColumn: inStartColumn, length: inLength)
+  func textViewNeedsDisplay () {
+    self.sourcePresentationView.textViewNeedsDisplay ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Comment / Uncomment
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func commentSelection () {
+//    let newRange = [documentData.textSyntaxColoring commentRange:mTextView.selectedRange] ;
+    let newRange = self.mDocument.commentRange (self.selectedRange)
+    self.setSelectedRange (newRange)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func uncommentSelection () {
+    let newRange = self.mDocument.uncommentRange (self.selectedRange)
+    self.setSelectedRange (newRange)
+//    const NSRange newRange = [documentData.textSyntaxColoring uncommentRange:mTextView.selectedRange] ;
+//    mTextView.selectedRange = newRange ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

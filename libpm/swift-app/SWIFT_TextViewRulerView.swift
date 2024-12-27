@@ -9,11 +9,12 @@ import MyAutoLayoutKit
 
 final class SWIFT_TextViewRulerView : NSRulerView {
 
-  private(set) var mIssueArray = [SWIFT_Issue] ()
+  private(set) weak var mDocument : SWIFT_SingleDocument?
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (scrollView inScrollView : NSScrollView) {
+  init (scrollView inScrollView : NSScrollView, document inDocument : SWIFT_SingleDocument) {
+    self.mDocument = inDocument
     super.init (scrollView: inScrollView, orientation: .verticalRuler)
     noteObjectAllocation (self)
     self.ruleThickness = 50.0
@@ -34,13 +35,6 @@ final class SWIFT_TextViewRulerView : NSRulerView {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func setIssueArray (_ inIssueArray : [SWIFT_Issue]) {
-    self.mIssueArray = inIssueArray.sorted { $0.line < $1.line }
-    self.needsDisplay = true
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   override func draw (_ inRect : NSRect) { // Indispensable sous Monterey ?
     self.drawHashMarksAndLabels (in: inRect)
   }
@@ -51,7 +45,8 @@ final class SWIFT_TextViewRulerView : NSRulerView {
     if let scrollView = self.scrollView,
        let textView = scrollView.documentView as? NSTextView,
        let layoutManager = textView.layoutManager,
-       let textContainer = textView.textContainer {
+       let textContainer = textView.textContainer,
+       let issueArray = self.mDocument?.mIssueArray {
       let rightMargin = 5.0
     //-------- Draw background
       NSColor.windowBackgroundColor.setFill ()
@@ -116,14 +111,16 @@ final class SWIFT_TextViewRulerView : NSRulerView {
           )
           str.draw (at: lineNumberOrigin, withAttributes: textAttributes)
         //--- Draw mark ?
-          while issueIndex < self.mIssueArray.count, self.mIssueArray [issueIndex].line == lineIndex {
+          while issueIndex < issueArray.count,
+                issueArray [issueIndex].mIsValid,
+                issueArray [issueIndex].range.intersection(lineRange) != nil {
             let mark = NSRect (
               x: markOffset,
               y: ruleRectForCurrentLine.midY - markDiameter / 2.0,
               width: markDiameter,
               height: markDiameter
             )
-            switch self.mIssueArray [issueIndex].kind {
+            switch issueArray [issueIndex].kind {
             case .warning : warningBP.appendOval (in: mark)
             case .error   : errorBP.appendOval (in: mark)
             }

@@ -63,16 +63,18 @@ final class SWIFT_BuildLogViewRuler : NSRulerView {
       let markDiameter = self.bounds.size.width * 2.0 / 3.0
       let markOffset = (self.bounds.size.width - markDiameter) / 2.0
       for issue in self.mIssueArray {
-        let r = layoutManager.lineFragmentRect (
-          forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.locationInBuildLogTextView),
-          effectiveRange: nil
-        )
-        let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
-      //--- Draw mark
-        let mark = NSRect (x: markOffset, y: p.y, width: markDiameter, height: markDiameter)
-        switch issue.kind {
-        case .warning : warningBP.appendOval (in: mark)
-        case .error   : errorBP.appendOval (in: mark)
+        if issue.mIsValid {
+          let r = layoutManager.lineFragmentRect (
+            forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.locationInBuildLogTextView),
+            effectiveRange: nil
+          )
+          let p = self.convert (NSPoint (x: 0.0, y: r.origin.y), from: textView)
+        //--- Draw mark
+          let mark = NSRect (x: markOffset, y: p.y, width: markDiameter, height: markDiameter)
+          switch issue.kind {
+          case .warning : warningBP.appendOval (in: mark)
+          case .error   : errorBP.appendOval (in: mark)
+          }
         }
       }
       NSColor.orange.setFill ()

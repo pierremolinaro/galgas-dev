@@ -44,6 +44,8 @@ import MyAutoLayoutKit
   func parseLexicalTokenForLexicalColoring () -> SWIFT_Token
 
   func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any]
+
+  func blockComment () -> String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1283,14 +1283,14 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
-				CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */,
-				CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */,
 				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
 				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
+				CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */,
 				CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */,
 				CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */,
 				CF79C5692D0F32CC002EEE48 /* SWIFT_DocumentController.swift */,
+				CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */,
 				CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */,
 				CF79C56C2D0F32CC002EEE48 /* SWIFT_SingleDocument.swift */,
 				CF79C56A2D0F32CC002EEE48 /* SWIFT_SingleDocument+syntax-coloring.swift */,

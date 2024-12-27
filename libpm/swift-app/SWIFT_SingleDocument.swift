@@ -12,13 +12,13 @@ import MyAutoLayoutKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mUndoManager = UndoManager ()
-  private var mTokenizer : SWIFT_Tokenizer_Protocol? = nil
-  var tokenizer : SWIFT_Tokenizer_Protocol? { self.mTokenizer }
+  private(set) var mTokenizer : SWIFT_Tokenizer_Protocol? = nil
   private let mFontStyleObserver = EBOutletEvent ()
   private let mLineHeightObserver = EBOutletEvent ()
   var mDisplayDescriptors = [SWIFT_WeakElement <SWIFT_DisplayDescriptor>] ()
   var mTokenRangeArray = [SWIFT_Token] ()
   let mTextStorage = NSTextStorage (string: "")
+  private(set) var mIssueArray = [SWIFT_Issue] ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -132,6 +132,38 @@ import MyAutoLayoutKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Issues
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func removeAllIssues () {
+    self.mIssueArray.removeAll (keepingCapacity: true)
+    self.textViewNeedsDisplay ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func appendIssue (_ inIssue : SWIFT_Issue) {
+    if inIssue.fileURL == self.fileURL {
+      let range = self.mTextStorage.rangeFor (
+        line: inIssue.line,
+        startColumn: inIssue.startColumn,
+        length: inIssue.length
+      )
+      inIssue.range = range
+      self.mIssueArray.append (inIssue)
+      self.textViewNeedsDisplay ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func textViewNeedsDisplay () {
+    for dd in self.mDisplayDescriptors {
+      dd.possibleElement?.textViewNeedsDisplay ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Update from file system
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -186,9 +218,9 @@ import MyAutoLayoutKit
   //   NSTextStorageDelegate method
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func textStorage (_ textStorage: NSTextStorage,
+  func textStorage (_ inTextStorage : NSTextStorage,
                     didProcessEditing inEditedMask : NSTextStorageEditActions,
-                    range inEditedRange: NSRange,
+                    range inEditedRange : NSRange,
                     changeInLength inDelta : Int) {
     if inEditedMask.contains (.editedCharacters) {
       self.mTextStorage.beginEditing ()
@@ -207,6 +239,18 @@ import MyAutoLayoutKit
         SWIFT_SingleWindow.documentEditionStateDidChange ()
       }
       self.mActivateTimerOnChange = true
+    }
+  //--- Update issues
+    var updateDisplay = false
+    for issue in self.mIssueArray {
+      issue.updateLocationForPreviousRange (
+        inEditedRange,
+        changeInLength: inDelta,
+        updateDisplay: &updateDisplay
+      )
+    }
+    if updateDisplay {
+      self.textViewNeedsDisplay ()
     }
   }
 
@@ -239,6 +283,137 @@ import MyAutoLayoutKit
   override func save (_ inSender : Any?) {
     super.save (inSender)
     self.releaseTimer ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Comment / uncomment
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func commentRange (_ inSelectedRangeValue : NSRange) -> NSRange {
+    var newSelectedRange = NSRange ()
+    if let tokenizer = self.mTokenizer {
+      self.mTextStorage.beginEditing ()
+  //---
+      let blockCommentString = NSAttributedString (string: tokenizer.blockComment (), attributes: nil)
+//    NSMutableAttributedString * mutableSourceString = mSourceTextStorage ;
+//    NSString * sourceString = [mutableSourceString string] ;
+      let sourceString = self.mTextStorage.string as NSString
+      let lineRange = sourceString.lineRange (for: inSelectedRangeValue)
+//    const NSRange lineRange = [sourceString lineRangeForRange:inSelectedRangeValue] ;
+//    NSInteger insertedCharsCount = 0 ;
+      var insertedCharsCount = 0
+//    NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+      var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+      repeat {
+        self.mTextStorage.insert (blockCommentString, at: currentLineRange.location)
+//      [mutableSourceString insertAttributedString:blockCommentString atIndex:currentLineRange.location] ;
+        insertedCharsCount += (blockCommentString.string as NSString).length
+        if currentLineRange.location > 0 {
+//        currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
+          currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+        }
+      }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location))
+  //---
+      self.mTextStorage.endEditing ()
+  //--- Update selected range
+      newSelectedRange = NSRange (location: inSelectedRangeValue.location, length: inSelectedRangeValue.length + insertedCharsCount)
+//    const NSRange newSelectedRange = NSMakeRange (inSelectedRangeValue.location, inSelectedRangeValue.length + (NSUInteger) insertedCharsCount) ;
+    //--- Register undo
+//      [mUndoManager
+//        registerUndoWithTarget: self
+//        selector: @selector (uncommentRangeForUndo:)
+//        object: [NSValue valueWithRange: newSelectedRange]
+//      ] ;
+      self.mUndoManager.registerUndo (
+        withTarget: self,
+        selector: #selector (Self.uncommentRangeForUndo(_:)),
+        object: NSValue (range: newSelectedRange)
+      )
+    }
+  //---
+    return newSelectedRange
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func commentRangeForUndo (_ inRangeValue : NSValue) { // An NSValue of NSRange
+    _ = self.commentRange (inRangeValue.rangeValue)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  //                       U N C O M M E N T R A N G E
+  //
+  // Cette méthode a plusieurs rôles :
+  //   - supprimer les marques de commentaires des lignes concernées par la sélection, uniquement quand le
+  //     commentaire commence une ligne ;
+  //   - ajuster la sélection en conséquence ; en effet, dès que la méthode replaceCharactersInRange:withString: est
+  //     appelée, Cocoa ramène la sélection à un point d'insertion. La sélection est ajustée et maintenue dans la
+  //     variable finalSelectedRange.
+  //
+  // Le plus difficile est l'ajustement de la sélection. Pour cela, on calcule :
+  //   - le nombre beforeSelectionCharacterCount de caractères du commentaire supprimé qui sont avant la sélection ; si
+  //     ce nombre est > 0, on le début de la sélection du min entre ce nombre et le nombre de caractères du
+  //     commentaire ;
+  //   - le nombre withinSelectionCharacterCount de caractères du commentaire supprimé qui sont à l'intérieur de la
+  //     sélection ; si ce nombre est > 0, on le retranche de la longueur de la sélection.
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func uncommentRange (_ initialSelectedRange : NSRange) -> NSRange {
+    var finalSelectedRange = NSRange ()
+    if let tokenizer = self.mTokenizer {
+      self.mTextStorage.beginEditing ()
+    //--- Block comment string
+      let blockCommentString = tokenizer.blockComment ()
+      let blockCommentLength = (blockCommentString as NSString).length
+    //--- Get source string
+//      NSMutableAttributedString * mutableSourceString = mTextStorage ;
+//      NSString * sourceString = [mutableSourceString string] ;
+      let sourceString = self.mTextStorage.string as NSString
+    //--- Final selection range
+      finalSelectedRange = initialSelectedRange
+    //--- Get line range that is affected by the operation
+      let lineRange = sourceString.lineRange (for: initialSelectedRange)
+      var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
+      repeat {
+        let lineString = sourceString.substring (with: currentLineRange) as NSString
+        if lineString.compare (blockCommentString, options: .literal, range: NSRange (location: 0, length: blockCommentLength)) == .orderedSame {
+          self.mTextStorage.replaceCharacters (in: NSRange (location: currentLineRange.location, length: blockCommentLength), with: "")
+        //--- Examen du nombre de caractères à l'intérieur de la sélection
+          let withinSelectionCharacterCount =
+            min (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
+          -
+            max (currentLineRange.location, finalSelectedRange.location)
+          if withinSelectionCharacterCount > 0 {
+            finalSelectedRange.length -= withinSelectionCharacterCount
+          }
+        //--- Examen du nombre de caractères avant la sélection
+          let beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location
+          if beforeSelectionCharacterCount > 0 {
+            finalSelectedRange.location -= min (blockCommentLength, beforeSelectionCharacterCount)
+          }
+        }
+        if currentLineRange.location > 0 {
+          currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
+        }
+      }while (currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)
+    //---
+      self.mTextStorage.endEditing ()
+    //--- Register undo
+      self.mUndoManager.registerUndo (
+        withTarget: self,
+        selector: #selector (Self.commentRangeForUndo(_:)),
+        object: NSValue (range: finalSelectedRange)
+      )
+    }
+    return finalSelectedRange
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc private func uncommentRangeForUndo (_ inRangeValue : NSValue) { // An NSValue of NSRange
+    _ = self.uncommentRange (inRangeValue.rangeValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
