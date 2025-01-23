@@ -86,7 +86,6 @@ displayAndCheckFIRSTsets (HTMLString & ioHTMLFileContents,
                           TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
                           const int32_t inIterationsCount,
                           const bool inVerboseOptionOn) {
-//  const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
   const int32_t symbolsCount = (int32_t) inUsefulSymbols.configuration().constantCountForVariable (0 COMMA_HERE) ;
   BinaryDecisionDiagramRelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;

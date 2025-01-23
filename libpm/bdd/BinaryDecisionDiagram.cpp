@@ -3683,23 +3683,23 @@ uint32_t internalANDoperation (const uint32_t opf,
   uint32_t result ;
   uint32_t f = opf ;
   uint32_t g = opg ;
-//--- Simplification 1 : si f > g, and (f, g) -> and (g, f) ;
+//--- Simplification 1 : si f > g, and (f, g) -> and (g, f)
   if (f > g) {
     const uint32_t tempo = g ; g = f ; f = tempo ;
   }
-//--- Test trivial 1 : and (0, g) -> 0 ;
+//--- Test trivial 1 : and (0, g) -> 0
   if (f == 0) {
     gANDOperationCacheTrivialOperationCount ++ ;
     result = 0 ;
-//--- Test trivial 2 : and (1, g) -> g ;
+//--- Test trivial 2 : and (1, g) -> g
   }else if (f == 1) {
     gANDOperationCacheTrivialOperationCount ++ ;
     result = g ;
-//--- Test trivial 3 : and (f, f) -> f ;
+//--- Test trivial 3 : and (f, f) -> f
   }else if (f == g) {
     gANDOperationCacheTrivialOperationCount ++ ;
     result = g ;
-//--- Test trivial 3 : and (f, ~f) -> 0 ;
+//--- Test trivial 3 : and (f, ~f) -> 0
   }else if ((f ^ g) == 1) {
     gANDOperationCacheTrivialOperationCount ++ ;
     result = 0 ;
