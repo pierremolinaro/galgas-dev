@@ -88,7 +88,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST {!defaultSentTerminal}
     or
       $error$
-      $identifier$ ?var @lstring defaultErrorMessageName
+      $identifier$ ?let @lstring defaultErrorMessageName
       lexicalSendDefaultAction = @lexicalErrorByDefaultAST {!defaultErrorMessageName}
     end
     outInstruction = @lexicalStructuredSendInstructionAST {

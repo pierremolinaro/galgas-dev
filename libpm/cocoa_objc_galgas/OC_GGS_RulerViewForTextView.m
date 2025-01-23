@@ -40,7 +40,9 @@
   //--- Very very strange!!!! In Sonoma, setting clipsToBounds to YES is required!
   // Otherwise, the NSTextView displays no text!
   // See https://developer.apple.com/forums/thread/739492
-    self.clipsToBounds = YES ;
+    #if DEPLOYMENT_TARGET_NUMBER_MAJOR >= 13
+      self.clipsToBounds = YES ;
+    #endif
   }
   return self ;
 }
