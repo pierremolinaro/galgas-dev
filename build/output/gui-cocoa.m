@@ -615,17 +615,18 @@ static const UInt16 * gPopUpData_2_galgasTemplateScanner [1] = {
 
 OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
   OC_Lexique * result = nil ;
-  if ([inExtension isEqualToString:@"galgas"]) {
+  NSString * uppercasedExtension = [inExtension uppercaseString] ;
+  if ([uppercasedExtension isEqualToString:@"GALGAS"]) {
     result = [OC_Tokenizer_0_galgasScanner3 new] ;
-  }else if ([inExtension isEqualToString:@"galgasProject"]) {
+  }else if ([uppercasedExtension isEqualToString:@"GALGASPROJECT"]) {
     result = [OC_Tokenizer_0_galgasScanner3 new] ;
-  }else if ([inExtension isEqualToString:@"galgasTemplate"]) {
+  }else if ([uppercasedExtension isEqualToString:@"GALGASTEMPLATE"]) {
     result = [OC_Tokenizer_2_galgasTemplateScanner new] ;
-  }else if ([inExtension isEqualToString:@"ggs"]) {
+  }else if ([uppercasedExtension isEqualToString:@"GGS"]) {
     result = [OC_Tokenizer_1_galgasScanner4 new] ;
-  }else if ([inExtension isEqualToString:@"ggsTemplate"]) {
+  }else if ([uppercasedExtension isEqualToString:@"GGSTEMPLATE"]) {
     result = [OC_Tokenizer_2_galgasTemplateScanner new] ;
-  }else if ([inExtension isEqualToString:@"ggsproject"]) {
+  }else if ([uppercasedExtension isEqualToString:@"GGSPROJECT"]) {
     result = [OC_Tokenizer_1_galgasScanner4 new] ;
   }
   return result ;

@@ -180,10 +180,11 @@ end
 //--------------------------------------------------------------------------------------------------
 
 OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
-  OC_Lexique * result = nil ;\n%
+  OC_Lexique * result = nil ;
+  NSString * uppercasedExtension = [inExtension uppercaseString] ;\n%
 for (lkey mLexiqueName mIndex) in GUI_CONTEXT.mExtensionMap
   before %  if%
-  do % ([inExtension isEqualToString:@%![lkey utf8RepresentationEscapingQuestionMark]%]) {\n%
+  do % ([uppercasedExtension isEqualToString:@%![[lkey utf8RepresentationEscapingQuestionMark] uppercaseString]%]) {\n%
      %    result = [OC_Tokenizer_%![mIndex string]%_%!mLexiqueName% new] ;\n%
   between %  }else if%
   after %  }\n%

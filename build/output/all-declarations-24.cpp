@@ -3703,51 +3703,51 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
       enumerator_3759.gotoNextObject () ;
     }
   }
-  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\nOC_Lexique * tokenizerForExtension (const NSString * inExtension) {\n  OC_Lexique * result = nil ;\n") ;
-  GGS_uint index_8311_ (0) ;
+  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\nOC_Lexique * tokenizerForExtension (const NSString * inExtension) {\n  OC_Lexique * result = nil ;\n  NSString * uppercasedExtension = [inExtension uppercaseString] ;\n") ;
+  GGS_uint index_8378_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ().isValid ()) {
-    cEnumerator_extensionMap enumerator_8311 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap (), EnumerationOrder::up) ;
-    const bool nonEmpty_enumerator_8311 = enumerator_8311.hasCurrentObject () ;
-    if (nonEmpty_enumerator_8311) {
+    cEnumerator_extensionMap enumerator_8378 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap (), EnumerationOrder::up) ;
+    const bool nonEmpty_enumerator_8378 = enumerator_8378.hasCurrentObject () ;
+    if (nonEmpty_enumerator_8378) {
       result.appendString ("  if") ;
     }
-    while (enumerator_8311.hasCurrentObject ()) {
-      result.appendString (" ([inExtension isEqualToString:@") ;
-      result.appendString (enumerator_8311.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 186)).stringValue ()) ;
+    while (enumerator_8378.hasCurrentObject ()) {
+      result.appendString (" ([uppercasedExtension isEqualToString:@") ;
+      result.appendString (enumerator_8378.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 187)).getter_uppercaseString (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 187)).stringValue ()) ;
       result.appendString ("]) {\n    result = [OC_Tokenizer_") ;
-      result.appendString (enumerator_8311.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 187)).stringValue ()) ;
+      result.appendString (enumerator_8378.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 188)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_8311.current_mLexiqueName (HERE).stringValue ()) ;
+      result.appendString (enumerator_8378.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" new] ;\n") ;
-      if (enumerator_8311.hasNextObject ()) {
+      if (enumerator_8378.hasNextObject ()) {
         result.appendString ("  }else if") ;
       }
-      index_8311_.increment () ;
-      enumerator_8311.gotoNextObject () ;
+      index_8378_.increment () ;
+      enumerator_8378.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_8311) {
+    if (nonEmpty_enumerator_8378) {
       result.appendString ("  }\n") ;
     }
   }
   result.appendString ("  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nNSArray * tokenizers (void) {") ;
-  const enumGalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 197)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const enumGalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 198)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_3) {
   case kBoolTrue : {
     result.appendString ("\n  return [NSArray array] ;\n") ;
     } break ;
   case kBoolFalse : {
     result.appendString ("\n  return [NSArray arrayWithObjects:\n") ;
-    GGS_uint index_8867_ (0) ;
+    GGS_uint index_8960_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-      cEnumerator_importedLexiqueList enumerator_8867 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList (), EnumerationOrder::up) ;
-      while (enumerator_8867.hasCurrentObject ()) {
+      cEnumerator_importedLexiqueList enumerator_8960 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList (), EnumerationOrder::up) ;
+      while (enumerator_8960.hasCurrentObject ()) {
         result.appendString ("    [OC_Tokenizer_") ;
-        result.appendString (enumerator_8867.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 202)).stringValue ()) ;
+        result.appendString (enumerator_8960.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 203)).stringValue ()) ;
         result.appendString ("_") ;
-        result.appendString (enumerator_8867.current_mLexiqueClassName (HERE).stringValue ()) ;
+        result.appendString (enumerator_8960.current_mLexiqueClassName (HERE).stringValue ()) ;
         result.appendString (" new],\n") ;
-        index_8867_.increment () ;
-        enumerator_8867.gotoNextObject () ;
+        index_8960_.increment () ;
+        enumerator_8960.gotoNextObject () ;
       }
     }
     result.appendString ("    nil\n  ] ;\n") ;
