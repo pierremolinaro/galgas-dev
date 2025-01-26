@@ -12,7 +12,7 @@ import MyAutoLayoutKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   let mUndoManager = UndoManager ()
-  private(set) var mTokenizer : SWIFT_Tokenizer_Protocol? = nil
+  private(set) var mTokenizer : (any SWIFT_Tokenizer_Protocol)? = nil
   private let mFontStyleObserver = EBOutletEvent ()
   private let mLineHeightObserver = EBOutletEvent ()
   var mDisplayDescriptors = [SWIFT_WeakElement <SWIFT_DisplayDescriptor>] ()

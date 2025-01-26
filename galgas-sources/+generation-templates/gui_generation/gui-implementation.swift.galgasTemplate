@@ -197,8 +197,8 @@ end
 //   Global functions
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
-  var result : SWIFT_Tokenizer_Protocol? = nil\n%
+@MainActor func tokenizerFor (extension inExtension : String) -> (any SWIFT_Tokenizer_Protocol)? {
+  var result : (any SWIFT_Tokenizer_Protocol)? = nil\n%
 for (lkey mLexiqueName mIndex) in GUI_CONTEXT.mExtensionMap
   before %  if%
   do % inExtension == %![lkey utf8RepresentationEscapingQuestionMark]% {\n%
@@ -211,7 +211,7 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func tokenizers () -> [SWIFT_Tokenizer_Protocol] {%
+@MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {%
 if [GUI_CONTEXT.mWithLexiqueList count] == 0 then%
   return []
 %else%

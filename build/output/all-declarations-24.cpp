@@ -3954,33 +3954,33 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
       enumerator_3099.gotoNextObject () ;
     }
   }
-  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//   Global functions\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol\? {\n  var result : SWIFT_Tokenizer_Protocol\? = nil\n") ;
-  GGS_uint index_8021_ (0) ;
+  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//   Global functions\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizerFor (extension inExtension : String) -> (any SWIFT_Tokenizer_Protocol)\? {\n  var result : (any SWIFT_Tokenizer_Protocol)\? = nil\n") ;
+  GGS_uint index_8033_ (0) ;
   if (in_GUI_5F_CONTEXT.readProperty_mExtensionMap ().isValid ()) {
-    cEnumerator_extensionMap enumerator_8021 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap (), EnumerationOrder::up) ;
-    const bool nonEmpty_enumerator_8021 = enumerator_8021.hasCurrentObject () ;
-    if (nonEmpty_enumerator_8021) {
+    cEnumerator_extensionMap enumerator_8033 (in_GUI_5F_CONTEXT.readProperty_mExtensionMap (), EnumerationOrder::up) ;
+    const bool nonEmpty_enumerator_8033 = enumerator_8033.hasCurrentObject () ;
+    if (nonEmpty_enumerator_8033) {
       result.appendString ("  if") ;
     }
-    while (enumerator_8021.hasCurrentObject ()) {
+    while (enumerator_8033.hasCurrentObject ()) {
       result.appendString (" inExtension == ") ;
-      result.appendString (enumerator_8021.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 204)).stringValue ()) ;
+      result.appendString (enumerator_8033.current_lkey (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 204)).stringValue ()) ;
       result.appendString (" {\n    result = SWIFT_Tokenizer_") ;
-      result.appendString (enumerator_8021.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 205)).stringValue ()) ;
+      result.appendString (enumerator_8033.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 205)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_8021.current_mLexiqueName (HERE).stringValue ()) ;
+      result.appendString (enumerator_8033.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
-      if (enumerator_8021.hasNextObject ()) {
+      if (enumerator_8033.hasNextObject ()) {
         result.appendString ("  }else if") ;
       }
-      index_8021_.increment () ;
-      enumerator_8021.gotoNextObject () ;
+      index_8033_.increment () ;
+      enumerator_8033.gotoNextObject () ;
     }
-    if (nonEmpty_enumerator_8021) {
+    if (nonEmpty_enumerator_8033) {
       result.appendString ("  }\n") ;
     }
   }
-  result.appendString ("  return result\n}\n\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizers () -> [SWIFT_Tokenizer_Protocol] {") ;
+  result.appendString ("  return result\n}\n\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {") ;
   const enumGalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().getter_count (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 215)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_3) {
   case kBoolTrue : {
@@ -3988,20 +3988,20 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
     } break ;
   case kBoolFalse : {
     result.appendString ("\n  return [\n") ;
-    GGS_uint index_8549_ (0) ;
+    GGS_uint index_8565_ (0) ;
     if (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList ().isValid ()) {
-      cEnumerator_importedLexiqueList enumerator_8549 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList (), EnumerationOrder::up) ;
-      while (enumerator_8549.hasCurrentObject ()) {
+      cEnumerator_importedLexiqueList enumerator_8565 (in_GUI_5F_CONTEXT.readProperty_mWithLexiqueList (), EnumerationOrder::up) ;
+      while (enumerator_8565.hasCurrentObject ()) {
         result.appendString ("    SWIFT_Tokenizer_") ;
-        result.appendString (enumerator_8549.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 220)).stringValue ()) ;
+        result.appendString (enumerator_8565.current_mIndex (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 220)).stringValue ()) ;
         result.appendString ("_") ;
-        result.appendString (enumerator_8549.current_mLexiqueClassName (HERE).stringValue ()) ;
+        result.appendString (enumerator_8565.current_mLexiqueClassName (HERE).stringValue ()) ;
         result.appendString (" ()") ;
-        if (enumerator_8549.hasNextObject ()) {
+        if (enumerator_8565.hasNextObject ()) {
           result.appendString (",\n") ;
         }
-        index_8549_.increment () ;
-        enumerator_8549.gotoNextObject () ;
+        index_8565_.increment () ;
+        enumerator_8565.gotoNextObject () ;
       }
     }
     result.appendString ("\n  ]\n") ;

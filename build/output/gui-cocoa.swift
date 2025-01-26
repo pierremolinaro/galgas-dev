@@ -509,8 +509,8 @@ class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 //   Global functions
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func tokenizerFor (extension inExtension : String) -> SWIFT_Tokenizer_Protocol? {
-  var result : SWIFT_Tokenizer_Protocol? = nil
+@MainActor func tokenizerFor (extension inExtension : String) -> (any SWIFT_Tokenizer_Protocol)? {
+  var result : (any SWIFT_Tokenizer_Protocol)? = nil
   if inExtension == "galgas" {
     result = SWIFT_Tokenizer_0_galgasScanner3 ()
   }else if inExtension == "galgasProject" {
@@ -529,7 +529,7 @@ class SWIFT_Tokenizer_2_galgasTemplateScanner : SWIFT_Lexique_galgasTemplateScan
 
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func tokenizers () -> [SWIFT_Tokenizer_Protocol] {
+@MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {
   return [
     SWIFT_Tokenizer_0_galgasScanner3 (),
     SWIFT_Tokenizer_1_galgasScanner4 (),

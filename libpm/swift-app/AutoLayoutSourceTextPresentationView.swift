@@ -20,7 +20,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   init (withDocument inDocument : SWIFT_SingleDocument) {
     self.mSourceTextView = BaseTextView (
-      drawsBackground: true,
+      drawsBackground: false,
       editable: true,
       textStorage: inDocument.mTextStorage,
       horizontalScroller: true,
@@ -50,11 +50,10 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     _ = self.set (margins: .zero)
       .appendView (topHStack)
       .appendView (self.mSourceTextView)
-//  //--- Ajouter un observateur pour être averti du changement de la couleur de fond
-//    self.mBackgroundObserver = EBSimpleObserver (object: prefsEditorBackColor) { [weak self] in
-//      self?.mSourceTextView.backgroundColor = prefsEditorBackColor.propval
-//      self?.mSourceTextView.needsDisplay = true
-//    }
+  //--- Ajouter un observateur pour être averti du changement de la couleur de fond
+    self.mBackgroundObserver = EBSimpleObserver (objects: [gEditorBackgroundColor, gPageGuideColumn, gShowPageGuide]) { [weak self] in
+      self?.mSourceTextView.triggerDisplay ()
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -157,18 +156,38 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   //   BaseTextViewDelegate
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public func willDraw (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
+  public func willDrawTextView (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
+  //--- Draw page guide
+    if gShowPageGuide.propval,
+       let textAttributes = self.mSourceTextView.textStorage?.fontAttributes (in: NSMakeRange(0, 0)) {
+      let pageGuideColumn = gPageGuideColumn.propval
+      let str = String (repeating: "0", count: pageGuideColumn)
+      let s = str.size (withAttributes: textAttributes)
+      let column = rint (s.width) + 0.5
+      let pageRect = NSRect (x: 0.0, y: 0.0, width: column, height: NSMaxY (inCocoaTextWiew.frame))
+      let pageRectToDraw = inDirtyRect.intersection (pageRect)
+      if !pageRectToDraw.isEmpty {
+        gEditorBackgroundColor.propval.setFill ()
+        NSBezierPath.fill (pageRectToDraw)
+      }
+      let bp = NSBezierPath ()
+      bp.move (to: NSPoint (x: column, y: NSMinY (inDirtyRect)))
+      bp.line (to: NSPoint (x: column, y: NSMaxY (inDirtyRect)))
+      bp.lineWidth = 0.0
+      bp.lineCapStyle = .round
+      NSColor.windowFrameColor.setStroke ()
+      bp.stroke ()
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public func didDraw (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
+  public func didDrawTextView (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
     if let layoutManager = inCocoaTextWiew.layoutManager,
        let ruler = self.mSourceTextView.verticalRuler as? SWIFT_TextViewRulerView,
        let issueArray = ruler.mDocument?.mIssueArray {
      //-------- Note: ruler view and text view are both flipped
       for issue in issueArray {
-//        let range = self.sourceTextView.rangeFor (line: issue.line, startColumn: issue.startColumn, length: issue.length)
         if issue.mIsValid {
           let lineFragmentRect = layoutManager.lineFragmentRect (
             forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location),
@@ -180,6 +199,34 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
           bp.move (to: NSPoint (x: lineFragmentRect.origin.x + p1.x, y: lineFragmentRect.maxY))
           bp.line (to: NSPoint (x: lineFragmentRect.origin.x + p2.x, y: lineFragmentRect.maxY))
           bp.lineWidth = 3.0
+          bp.lineCapStyle = .round
+          issue.color.setStroke ()
+          bp.stroke ()
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func didDrawVerticalScroller (_ inDirtyRect : NSRect,
+                                _ inCocoaScroller : InternalVerticalScroller) {
+    let cocoaTextView = self.sourceTextView.mCocoaTextView
+    if let layoutManager = cocoaTextView.layoutManager,
+       let issueArray = self.mDocument?.mIssueArray {
+      for issue in issueArray {
+        if issue.mIsValid {
+          let lineFragmentRect = layoutManager.lineFragmentRect (
+            forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.range.location),
+            effectiveRange: nil
+          )
+          let bp = NSBezierPath ()
+          let textViewBounds = cocoaTextView.bounds
+          let scrollerBounds = inCocoaScroller.bounds
+          let y = lineFragmentRect.midY * scrollerBounds.height / textViewBounds.height
+          bp.move (to: NSPoint (x: scrollerBounds.minX, y: y))
+          bp.line (to: NSPoint (x: scrollerBounds.maxX, y: y))
+          bp.lineWidth = 1.0
           bp.lineCapStyle = .round
           issue.color.setStroke ()
           bp.stroke ()

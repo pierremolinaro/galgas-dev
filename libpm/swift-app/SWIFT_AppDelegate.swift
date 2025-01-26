@@ -7,6 +7,14 @@ import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
+@MainActor let gEditorBackgroundColor = EBPreferenceProperty <NSColor> (defaultValue: .white, prefKey: "editor-back-color")
+
+@MainActor let gShowPageGuide = EBPreferenceProperty <Bool> (defaultValue: true, prefKey: "show-page-guide")
+
+@MainActor let gPageGuideColumn = EBPreferenceProperty <Int> (defaultValue: 100, prefKey: "page-guide-column")
+
+//--------------------------------------------------------------------------------------------------
+
 @MainActor func commandLineForBuildProcess () -> (String, [String]) {
   let app = NSApp.delegate as! SWIFT_AppDelegate
   return app.commandLineString (commandFullPath: true)
@@ -32,6 +40,7 @@ import MyAutoLayoutKit
     self.mSettingsWindow.isReleasedWhenClosed = false
 
     let tabView = AutoLayoutBorderLessTabView (size: .regular)
+    self.populateEditionTab (tabView: tabView)
     self.populateFontAndColorsTab (tabView: tabView)
     self.populateBuildOptionsTab (tabView: tabView)
     self.mSettingsWindow.setRootView (tabView)
@@ -88,6 +97,23 @@ import MyAutoLayoutKit
 
   @IBAction func makeKeyAndOrderFrontSettingWindow (_ inSender : Any?) {
     self.mSettingsWindow.makeKeyAndOrderFront (inSender)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   Populate "Edition" tab
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor private func populateEditionTab (tabView inTabView : AutoLayoutBorderLessTabView) {
+    let firstRow = AutoLayoutHorizontalStackView ()
+      .appendView (AutoLayoutCheckbox (title: "Page Guide at Column:", size: .regular).bind_value (gShowPageGuide))
+      .appendView (AutoLayoutIntField (minWidth: 48, size: .regular).bind_enabled (.prop (gShowPageGuide)).bind_value (gPageGuideColumn, sendContinously: true))
+      .appendView (AutoLayoutStaticLabel (title: "Editor Background Color", bold: false, size: .regular, alignment: .left))
+      .appendView (AutoLayoutColorWell (minWidth: 64, size: .regular).bind_color (gEditorBackgroundColor))
+      .appendFlexibleSpace ()
+    let editionView = AutoLayoutVerticalStackView ()
+      .appendView (firstRow)
+      .appendFlexibleSpace ()
+    _ = inTabView.addTab (title: "Edition", tooltip: "", contentView: editionView)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
