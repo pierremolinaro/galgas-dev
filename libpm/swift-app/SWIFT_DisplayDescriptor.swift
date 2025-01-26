@@ -141,6 +141,10 @@ import MyAutoLayoutKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  var selectedString : String { self.sourcePresentationView.selectedString }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func setSelectedRange (_ inRange : NSRange) {
     self.sourcePresentationView.setSelectedRange (inRange)
   }

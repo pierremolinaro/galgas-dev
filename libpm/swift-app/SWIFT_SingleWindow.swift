@@ -54,6 +54,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     verticalScroller: true
   )
 
+  private let mSearchInFilesView = AutoLayoutVerticalStackView ()
+  private let mSearchTextField = AutoLayoutSearchField (minWidth: 100, bold: false, size: .regular)
+  private let mFindButton = AutoLayoutButton (title: "Find", size: .small)
+  private let mSearchResultLabel = AutoLayoutStaticLabel (title: "", bold: false, size: .small, alignment: .center)
+
   private let mBuildLogTextViewRuler : SWIFT_BuildLogViewRuler
 
   private let mTabListView = AutoLayoutTableView (size: .regular, minWidth: 250, addControlButtons: false)
@@ -92,11 +97,20 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       tooltip: "Build",
       contentView: self.mBuildLogTextView
     )
-//    .addTab (
-//      title: "🔍",
-//      tooltip: "Search in files",
-//      contentView: SimpleBlockView (.fill, .fill)
-//    )
+    .addTab (
+      title: "🔍",
+      tooltip: "Search in files",
+      contentView: self.mSearchInFilesView
+    )
+
+    _ = self.mFindButton.setAction { [weak self] in self?.performSearchInFiles () }
+    _ = self.mSearchInFilesView
+      .set (spacing: .zero)
+      .appendView (self.mSearchTextField)
+      .appendView (self.mFindButton)
+      .appendView (self.mSearchResultLabel)
+      .appendFlexibleSpace ()
+
     self.configureTabListView (withDocument: inDocument)
     let vStack = AutoLayoutVerticalStackView ()
     .set (margins: .zero)
@@ -451,6 +465,20 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   //MARK: Actions
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @IBAction func findInFiles (_ inSender : Any?) {
+    let idx = self.mSelectedTabIndex
+    if (idx >= 0) && (idx < self.mTabArray.count) {
+      let tab = self.mTabArray [idx]
+      let selection = tab.selectedString
+      if !selection.isEmpty {
+        self.mSearchTextField.stringValue = selection
+        self.mInspectorTabView.selectTab (atIndex: 2)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   @IBAction func saveDocument (_ inSender : Any?) {
     for tab in self.mTabArray {
       tab.mDocument.save (inSender)
@@ -528,6 +556,70 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       s += " ●"
     }
     self.title = s
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Search in files
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func performSearchInFiles () {
+    let searchedString = self.mSearchTextField.stringValue
+    if !searchedString.isEmpty, !self.mTabArray.isEmpty, let firstTabURL = self.mTabArray [0].fileURL {
+      let directory : URL = firstTabURL.deletingLastPathComponent ()
+      self.mSearchResultLabel.stringValue = "Searching…"
+      RunLoop.main.run (until: Date ())
+      var searchResults = [(String, [Int])] ()
+      let extensionSet = SWIFT_DocumentController.supportedDocumentExtensions ()
+      let enumerator = FileManager ().enumerator (atPath: directory.path)
+      while let file = enumerator?.nextObject () as? String {
+        if extensionSet.contains (file.pathExtension) {
+          let fullPath = directory.path + "/" + file
+          self.search (searchedString, inFile: fullPath, &searchResults)
+        }
+      }
+      if searchResults.count == 0 {
+        self.mSearchResultLabel.stringValue = "Not found"
+      }else{
+        var count = 0
+        for (_, indexArray) in searchResults {
+          count += indexArray.count
+        }
+        var s : String
+        if count == 1 {
+          s = "1 result"
+        }else{
+          s = "\(count) results"
+        }
+        s += " in "
+        if searchResults.count == 1 {
+          s += "1 file"
+        }else{
+          s += "\(searchResults.count) files"
+        }
+        self.mSearchResultLabel.stringValue = s
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  private func search (_ inSearchedString : String,
+                       inFile inFullPath : String,
+                       _ ioResult : inout [(String, [Int])]) {
+    if let contents = try? String (contentsOfFile: inFullPath, encoding: .utf8) {
+      var indices = [Int] ()
+      var searchStartIndex = contents.startIndex
+      while searchStartIndex < contents.endIndex,
+          let range = contents.range (of: inSearchedString, range: searchStartIndex ..< contents.endIndex),
+          !range.isEmpty {
+        let index = contents.distance (from: contents.startIndex, to: range.lowerBound)
+        indices.append (index)
+        searchStartIndex = range.upperBound
+      }
+      if indices.count > 0 {
+        ioResult.append ((inFullPath, indices))
+      }
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

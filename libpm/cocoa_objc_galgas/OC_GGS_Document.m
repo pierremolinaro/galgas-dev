@@ -117,82 +117,82 @@
   mFoundEntryTreeController = [NSTreeController new] ;
   mFoundEntryTreeController.childrenKeyPath = @"children" ;
   [mFoundEntryTreeController
-    bind:@"contentArray"
-    toObject:self
-    withKeyPath:@"mResultArray"
-    options:nil
+    bind: @"contentArray"
+    toObject: self
+    withKeyPath: @"mResultArray"
+    options: nil
   ] ;
   [mFoundEntryTreeController
-    addObserver:self 
-    forKeyPath:@"selectionIndexPath"
-    options:NSKeyValueObservingOptionNew
-    context:NULL
+    addObserver: self
+    forKeyPath: @"selectionIndexPath"
+    options: NSKeyValueObservingOptionNew
+    context: NULL
   ] ;
-  [[mResultOutlineView tableColumnWithIdentifier:@"count"]
+  [[mResultOutlineView tableColumnWithIdentifier: @"count"]
     bind: NSValueBinding
     toObject: mFoundEntryTreeController
     withKeyPath: @"arrangedObjects.countString"
     options: nil
   ] ;
-  [[mResultOutlineView tableColumnWithIdentifier:@"result"]
+  [[mResultOutlineView tableColumnWithIdentifier: @"result"]
     bind: NSValueBinding
-    toObject:mFoundEntryTreeController
-    withKeyPath:@"arrangedObjects.foundItem"
-    options:nil
+    toObject: mFoundEntryTreeController
+    withKeyPath: @"arrangedObjects.foundItem"
+    options: nil
   ] ;
-  [[mResultOutlineView tableColumnWithIdentifier:@"result"]
-    bind:@"fontBold"
-    toObject:mFoundEntryTreeController
-    withKeyPath:@"arrangedObjects.boldDisplay"
-    options:nil
+  [[mResultOutlineView tableColumnWithIdentifier: @"result"]
+    bind: @"fontBold"
+    toObject: mFoundEntryTreeController
+    withKeyPath: @"arrangedObjects.boldDisplay"
+    options: nil
   ] ;
-  [[mResultOutlineView tableColumnWithIdentifier:@"result"]
-    bind:@"textColor"
-    toObject:mFoundEntryTreeController
-    withKeyPath:@"arrangedObjects.color"
-    options:nil
-  ] ;
-//---
-  [mSourceDisplayArrayControllerHigh
-    bind:@"contentArray"
-    toObject:self
-    withKeyPath:@"mDisplayDescriptorArray"
-    options:nil
+  [[mResultOutlineView tableColumnWithIdentifier: @"result"]
+    bind: @"textColor"
+    toObject: mFoundEntryTreeController
+    withKeyPath: @"arrangedObjects.color"
+    options: nil
   ] ;
 //---
   [mSourceDisplayArrayControllerHigh
-    addObserver:self 
-    forKeyPath:@"selection.textSelectionStart"
-    options:NSKeyValueObservingOptionNew
-    context:NULL
+    bind: @"contentArray"
+    toObject: self
+    withKeyPath: @"mDisplayDescriptorArray"
+    options: nil
+  ] ;
+//---
+  [mSourceDisplayArrayControllerHigh
+    addObserver: self
+    forKeyPath: @"selection.textSelectionStart"
+    options: NSKeyValueObservingOptionNew
+    context: NULL
   ] ;
 //---
   [mSourceFilePathControl
     bind: NSValueBinding
-    toObject:mSourceDisplayArrayControllerHigh
-    withKeyPath:@"selection.sourceURL.path"
-    options:nil    
+    toObject: mSourceDisplayArrayControllerHigh
+    withKeyPath: @"selection.sourceURL.path"
+    options: nil
   ] ;
 //---
-  [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"source"]
+  [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier: @"source"]
     bind: NSValueBinding
-    toObject:mSourceDisplayArrayControllerHigh
-    withKeyPath:@"arrangedObjects.title"
-    options:nil    
+    toObject: mSourceDisplayArrayControllerHigh
+    withKeyPath: @"arrangedObjects.title"
+    options: nil
   ] ;
 //---
-  [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"source"]
-    bind:@"fontBold"
-    toObject:mSourceDisplayArrayControllerHigh
-    withKeyPath:@"arrangedObjects.isDirty"
-    options:nil    
+  [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier: @"source"]
+    bind: @"fontBold"
+    toObject: mSourceDisplayArrayControllerHigh
+    withKeyPath: @"arrangedObjects.isDirty"
+    options: nil
   ] ;
 //---
-  [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier:@"remove"]
+  [[mDisplayDescriptorTableViewHigh tableColumnWithIdentifier: @"remove"]
     bind: NSValueBinding
-    toObject:mSourceDisplayArrayControllerHigh
-    withKeyPath:@"arrangedObjects.imageForClosingInUserInterface"
-    options:nil    
+    toObject: mSourceDisplayArrayControllerHigh
+    withKeyPath: @"arrangedObjects.imageForClosingInUserInterface"
+    options: nil
   ] ;
 //---
   mDisplayDescriptorTableViewHigh.target = self ;
@@ -204,32 +204,32 @@
 //---
   [mBuildProgressIndicator startAnimation:nil] ;
   NSDictionary * negateTransformer = [NSDictionary
-    dictionaryWithObject:NSNegateBooleanTransformerName 
-    forKey:@"NSValueTransformerName"
+    dictionaryWithObject: NSNegateBooleanTransformerName
+    forKey: @"NSValueTransformerName"
   ] ;
   [mStartBuildButton
     bind: NSHiddenBinding
-    toObject:self
-    withKeyPath:@"mBuildTaskIsRunning"
-    options:nil
+    toObject: self
+    withKeyPath: @"mBuildTaskIsRunning"
+    options: nil
   ] ;
   [mBuildProgressIndicator
     bind: NSHiddenBinding
-    toObject:self
-    withKeyPath:@"mBuildTaskIsRunning"
-    options:negateTransformer    
+    toObject: self
+    withKeyPath: @"mBuildTaskIsRunning"
+    options: negateTransformer
   ] ;
   [mStopBuildButton
-    bind:@"enabled"
-    toObject:self
-    withKeyPath:@"mBuildTaskIsRunning"
-    options:nil    
+    bind: @"enabled"
+    toObject: self
+    withKeyPath: @"mBuildTaskIsRunning"
+    options: nil
   ] ;
   [mStopBuildButton
     bind: NSHiddenBinding
-    toObject:self
-    withKeyPath:@"mBuildTaskIsRunning"
-    options:negateTransformer    
+    toObject: self
+    withKeyPath: @"mBuildTaskIsRunning"
+    options: negateTransformer
   ] ;
 //---
   mWarningCountTextField.stringValue = @"0" ;
@@ -237,26 +237,26 @@
 //---
   [mOutputScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
 //--- Get selected tab
-  key = [NSString stringWithFormat:@"SELECTED-TAB:%@", mBaseFilePreferenceKey] ;
+  key = [NSString stringWithFormat: @"SELECTED-TAB:%@", mBaseFilePreferenceKey] ;
   const NSUInteger selectedTab = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
 //--- Install selected tab observer
   [mSourceDisplayArrayControllerHigh
-    addObserver:self 
-    forKeyPath:@"selectionIndex"
-    options:NSKeyValueObservingOptionNew
-    context:NULL
+    addObserver: self
+    forKeyPath: @"selectionIndex"
+    options: NSKeyValueObservingOptionNew
+    context: NULL
   ] ;
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [mDocumentData newSourceDisplayDescriptorForDocument:self] ;
   if (nil != textDisplayDescriptor) {
-    [mSourceDisplayArrayControllerHigh addObject:textDisplayDescriptor] ;
-    [mSourceDisplayArrayControllerHigh setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
+    [mSourceDisplayArrayControllerHigh addObject: textDisplayDescriptor] ;
+    [mSourceDisplayArrayControllerHigh setSelectedObjects: [NSArray arrayWithObject:textDisplayDescriptor]] ;
   //---
     mRulerViewForBuildOutput = [[OC_GGS_RulerViewForBuildOutput alloc] initWithDocument:self] ;
-    [mOutputScrollView setVerticalRulerView:mRulerViewForBuildOutput] ;
-    [mOutputScrollView setHasVerticalRuler:YES] ;
-    [mOutputScrollView.verticalRulerView setRuleThickness:8.0] ;
-    [mOutputScrollView setRulersVisible:YES] ;
+    [mOutputScrollView setVerticalRulerView: mRulerViewForBuildOutput] ;
+    [mOutputScrollView setHasVerticalRuler: YES] ;
+    [mOutputScrollView.verticalRulerView setRuleThickness: 8.0] ;
+    [mOutputScrollView setRulersVisible: YES] ;
   }
 //--- Open tabs
   key = [NSString stringWithFormat:@"CONFIG:%@", mBaseFilePreferenceKey] ;

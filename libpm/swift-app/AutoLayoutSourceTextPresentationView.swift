@@ -67,6 +67,14 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   public var selectedRange : NSRange { self.mSourceTextView.selectedRange }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var selectedString : String {
+    let str = self.mSourceTextView.string as NSString
+    let range = self.mSourceTextView.selectedRange
+    return str.substring (with: range)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  populateRevealInFinderPullDownButton
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
