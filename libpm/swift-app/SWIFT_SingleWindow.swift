@@ -56,11 +56,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   private let mSearchInFilesView = AutoLayoutVerticalStackView ()
   private let mSearchTextField = AutoLayoutSearchField (minWidth: 100, bold: false, size: .regular)
-  private let mFindButton = AutoLayoutButton (title: "Find", size: .small)
   private let mSearchResultLabel = AutoLayoutStaticLabel (title: "", bold: false, size: .small, alignment: .center)
   private let mSearchResultOutlineView = AutoLayoutOutlineView (size: .small, addControlButtons: false)
     .noHeaderView ()
     .setBackgroundColor (.clear)
+
+  private var mSearchResults = [FileSearchResult] ()
 
   private let mBuildLogTextViewRuler : SWIFT_BuildLogViewRuler
 
@@ -106,14 +107,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       contentView: self.mSearchInFilesView
     )
 
-    _ = self.mFindButton.setAction { [weak self] in self?.performSearchInFiles () }
     _ = self.mSearchInFilesView
       .set (spacing: .zero)
       .appendView (self.mSearchTextField)
-      .appendView (self.mFindButton)
       .appendView (self.mSearchResultLabel)
       .appendView (self.mSearchResultOutlineView)
-//      .appendFlexibleSpace ()
 
     self.configureTabListView (withDocument: inDocument)
     let vStack = AutoLayoutVerticalStackView ()
@@ -141,6 +139,34 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     self.openTabsFromUserDefaults (forDocument:  inDocument)
   //--- Select first tab
     self.selectTab (atIndex: 0)
+  //--- Configuring recent search menu
+    let cellMenu = NSMenu (title: NSLocalizedString ("Search Menu", comment: "Search Menu title"))
+    var item = NSMenuItem (
+      title: NSLocalizedString ("Clear", comment: "Clear menu title"),
+      action: nil,
+      keyEquivalent: ""
+    )
+    item.tag = NSSearchField.clearRecentsMenuItemTag
+    cellMenu.insertItem (item, at: 0)
+    item = NSMenuItem.separator ()
+    item.tag = NSSearchField.recentsTitleMenuItemTag
+    cellMenu.insertItem (item, at: 1)
+    item = NSMenuItem (
+      title: NSLocalizedString ("Recent Searches", comment: "Recent Searches menu title"),
+      action: nil,
+      keyEquivalent: ""
+    )
+    item.tag = NSSearchField.recentsTitleMenuItemTag
+    cellMenu.insertItem (item, at: 2)
+    item = NSMenuItem (
+      title: "Recents",
+      action: nil,
+      keyEquivalent:""
+    )
+    item.tag = NSSearchField.recentsMenuItemTag
+    cellMenu.insertItem (item, at: 3)
+    _ = self.mSearchTextField.setSearchMenuTemplate (cellMenu: cellMenu)
+      .setAction { [weak self] in self?.performSearchInFiles () }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -607,6 +633,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       self.mFilePath = inFilePath
       self.mIndexArray = inIndexArray
       self.mWindow = inWindow
+      noteObjectAllocation (self)
+    }
+
+    deinit {
+      noteObjectDeallocation (self)
     }
 
     func childView (forColumn inColumn : NSTableColumn) -> NSView {
@@ -649,6 +680,11 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       self.mRange = inRange
       self.mLine = inLine
       self.mWindow = inWindow
+      noteObjectAllocation (self)
+    }
+
+    deinit {
+      noteObjectDeallocation (self)
     }
 
     func childView (forColumn inColumn : NSTableColumn) -> NSView {
@@ -679,20 +715,20 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       let directory : URL = firstTabURL.deletingLastPathComponent ()
       self.mSearchResultLabel.stringValue = "Searching…"
       RunLoop.main.run (until: Date ())
-      var searchResults = [FileSearchResult] ()
+      self.mSearchResults.removeAll (keepingCapacity: true)
       let extensionSet = SWIFT_DocumentController.supportedDocumentExtensions ()
       let enumerator = FileManager ().enumerator (atPath: directory.path)
       while let file = enumerator?.nextObject () as? String {
         if extensionSet.contains (file.pathExtension) {
           let fullPath = directory.path + "/" + file
-          self.search (searchedString, inFile: fullPath, &searchResults)
+          self.search (searchedString, inFile: fullPath)
         }
       }
-      if searchResults.count == 0 {
+      if self.mSearchResults.count == 0 {
         self.mSearchResultLabel.stringValue = "Not found"
       }else{
         var count = 0
-        for result in searchResults {
+        for result in self.mSearchResults {
           count += result.childrenCount ()
         }
         var s : String
@@ -702,13 +738,13 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
           s = "\(count) results"
         }
         s += " in "
-        if searchResults.count == 1 {
+        if self.mSearchResults.count == 1 {
           s += "1 file"
         }else{
-          s += "\(searchResults.count) files"
+          s += "\(self.mSearchResults.count) files"
         }
         self.mSearchResultLabel.stringValue = s
-        self.mSearchResultOutlineView.setContentArray (searchResults)
+        self.mSearchResultOutlineView.setContentArray (self.mSearchResults)
       }
     }
   }
@@ -716,8 +752,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func search (_ inSearchedString : String,
-                       inFile inFullPath : String,
-                       _ ioResult : inout [FileSearchResult]) {
+                       inFile inFullPath : String) {
     if let contents = try? String (contentsOfFile: inFullPath, encoding: .utf8) {
       var indices = [FileEntrySearchResult] ()
       var searchStartIndex = contents.startIndex
@@ -734,7 +769,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         searchStartIndex = range.upperBound
       }
       if indices.count > 0 {
-        ioResult.append (FileSearchResult (inFullPath, indexArray: indices, window: self))
+        self.mSearchResults.append (FileSearchResult (inFullPath, indexArray: indices, window: self))
       }
     }
   }
@@ -869,7 +904,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   @IBAction func buildAction (_ inUnusedSender : Any?) {
     SWIFT_DocumentController.mySaveAllDocuments ()
     self.mResultData.removeAll (keepingCapacity: true)
-//    self.mBuildButton.setHidden (true)
     _ = self.mBuildButton.set (enabled: false)
     self.mProgressIndicator.startAnimation ()
     self.mAbortButton.setHidden (false)
