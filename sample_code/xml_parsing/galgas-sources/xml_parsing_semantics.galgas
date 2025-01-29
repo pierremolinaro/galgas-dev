@@ -61,7 +61,7 @@ proc listUnicodeCharacterProperties {
   loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do
     if [unicodeValue isUnicodeValueAssigned] then
-      let c = @char.unicodeCharacterWithUnsigned{! unicodeValue}
+      let c = @char.unicodeCharacterWithUnsigned {!unicodeValue}
       if [c isUnicodeSeparator] then
         print (!"  '" + [c string] + "' (" + [unicodeValue hexString] + "), name: '" + [c unicodeName] + "'\n")
       end

@@ -58,6 +58,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   private let mSearchTextField = AutoLayoutSearchField (minWidth: 100, bold: false, size: .regular)
   private let mFindButton = AutoLayoutButton (title: "Find", size: .small)
   private let mSearchResultLabel = AutoLayoutStaticLabel (title: "", bold: false, size: .small, alignment: .center)
+  private let mSearchResultOutlineView = AutoLayoutOutlineView (size: .small, addControlButtons: false)
+    .noHeaderView ()
+    .setBackgroundColor (.clear)
 
   private let mBuildLogTextViewRuler : SWIFT_BuildLogViewRuler
 
@@ -109,7 +112,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       .appendView (self.mSearchTextField)
       .appendView (self.mFindButton)
       .appendView (self.mSearchResultLabel)
-      .appendFlexibleSpace ()
+      .appendView (self.mSearchResultOutlineView)
+//      .appendFlexibleSpace ()
 
     self.configureTabListView (withDocument: inDocument)
     let vStack = AutoLayoutVerticalStackView ()
@@ -440,9 +444,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
           self.appendTabUpdatingUserDefaults (document: document, selectedRange: NSRange ())
           let idx = self.mTabArray.count - 1
           DispatchQueue.main.async {
-//            for issue in self.mIssueArray {
-//              document.appendIssue (issue)
-//            }
             let range = self.mTabArray [idx].mDocument.mTextStorage.rangeFor (
               line: inIssue.line,
               startColumn: 0,
@@ -454,6 +455,38 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
               for issue in self.mIssueArray {
                 document.appendIssue (issue)
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func findOrAddTab (forURL inURL : URL,
+                     range inRange : NSRange) {
+    var found = false
+    for idx in 0 ..< self.mTabArray.count {
+      let dd = self.mTabArray [idx]
+      if !found, dd.fileURL == inURL {
+        self.selectTab (atIndex: idx)
+        self.mTabArray [idx].sourcePresentationView.setSelectedRange (inRange)
+        self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+        found = true
+      }
+    }
+    if !found {
+      let dc = NSDocumentController.shared
+      dc.openDocument (withContentsOf: inURL, display: false) { (_ inOptionalDocument : NSDocument?, _ : Bool, _ : Error?) in
+        if let document = inOptionalDocument as? SWIFT_SingleDocument {
+          self.appendTabUpdatingUserDefaults (document: document, selectedRange: inRange)
+          let idx = self.mTabArray.count - 1
+          DispatchQueue.main.async {
+            self.mTabArray [idx].sourcePresentationView.setSelectedRange (inRange)
+            self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+            for issue in self.mIssueArray {
+              document.appendIssue (issue)
             }
           }
         }
@@ -562,13 +595,91 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   //MARK: Search in files
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  class FileSearchResult : OutlineViewNodeProtocol, OutlineViewClickableChildProtocol {
+
+    private let mFilePath : String
+    private let mIndexArray : [FileEntrySearchResult]
+    private weak var mWindow : SWIFT_SingleWindow?
+
+    init (_ inFilePath : String,
+          indexArray inIndexArray : [FileEntrySearchResult],
+          window inWindow : SWIFT_SingleWindow) {
+      self.mFilePath = inFilePath
+      self.mIndexArray = inIndexArray
+      self.mWindow = inWindow
+    }
+
+    func childView (forColumn inColumn : NSTableColumn) -> NSView {
+      let text = NSTextField ()
+      text.drawsBackground = false
+      text.isBordered = false
+      text.isEditable = false
+      text.alignment = .left
+      text.stringValue = String (self.mIndexArray.count) + ": " + self.mFilePath.lastPathComponent
+      text.toolTip = self.mFilePath
+      return text
+    }
+
+    func handleMouseDown () {
+      self.mWindow?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: NSRange ())
+    }
+
+    func childrenCount () -> Int {
+      return self.mIndexArray.count
+    }
+    
+    func child (atIndex inIndex: Int) -> AnyObject {
+      return self.mIndexArray [inIndex]
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  class FileEntrySearchResult : OutlineViewChildProtocol, OutlineViewClickableChildProtocol {
+    private let mFilePath : String
+    private let mRange : NSRange
+    private let mLine : String
+    private weak var mWindow : SWIFT_SingleWindow?
+
+    init (_ inFilePath : String,
+          _ inRange : NSRange,
+          _ inLine : String,
+          window inWindow : SWIFT_SingleWindow) {
+      self.mFilePath = inFilePath
+      self.mRange = inRange
+      self.mLine = inLine
+      self.mWindow = inWindow
+    }
+
+    func childView (forColumn inColumn : NSTableColumn) -> NSView {
+      let text = NSTextField ()
+      text.drawsBackground = false
+      text.isBordered = false
+      text.isEditable = false
+      text.alignment = .left
+      text.stringValue = self.mLine
+      text.toolTip = text.stringValue
+      return text
+    }
+
+    func handleMouseDown () {
+      self.mWindow?.findOrAddTab (
+        forURL: URL (fileURLWithPath: self.mFilePath),
+        range: self.mRange
+      )
+    }
+
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   private func performSearchInFiles () {
     let searchedString = self.mSearchTextField.stringValue
     if !searchedString.isEmpty, !self.mTabArray.isEmpty, let firstTabURL = self.mTabArray [0].fileURL {
       let directory : URL = firstTabURL.deletingLastPathComponent ()
       self.mSearchResultLabel.stringValue = "Searching…"
       RunLoop.main.run (until: Date ())
-      var searchResults = [(String, [Int])] ()
+      var searchResults = [FileSearchResult] ()
       let extensionSet = SWIFT_DocumentController.supportedDocumentExtensions ()
       let enumerator = FileManager ().enumerator (atPath: directory.path)
       while let file = enumerator?.nextObject () as? String {
@@ -581,8 +692,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         self.mSearchResultLabel.stringValue = "Not found"
       }else{
         var count = 0
-        for (_, indexArray) in searchResults {
-          count += indexArray.count
+        for result in searchResults {
+          count += result.childrenCount ()
         }
         var s : String
         if count == 1 {
@@ -597,6 +708,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
           s += "\(searchResults.count) files"
         }
         self.mSearchResultLabel.stringValue = s
+        self.mSearchResultOutlineView.setContentArray (searchResults)
       }
     }
   }
@@ -605,19 +717,24 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   private func search (_ inSearchedString : String,
                        inFile inFullPath : String,
-                       _ ioResult : inout [(String, [Int])]) {
+                       _ ioResult : inout [FileSearchResult]) {
     if let contents = try? String (contentsOfFile: inFullPath, encoding: .utf8) {
-      var indices = [Int] ()
+      var indices = [FileEntrySearchResult] ()
       var searchStartIndex = contents.startIndex
       while searchStartIndex < contents.endIndex,
-          let range = contents.range (of: inSearchedString, range: searchStartIndex ..< contents.endIndex),
+          let range : Range <String.Index> = contents.range (of: inSearchedString, range: searchStartIndex ..< contents.endIndex),
           !range.isEmpty {
-        let index = contents.distance (from: contents.startIndex, to: range.lowerBound)
-        indices.append (index)
+        let lineRange = contents.lineRange (for: range)
+        var line = String (contents [lineRange])
+        line.removeLast ()
+        let startRange : Int = contents.distance (from: contents.startIndex, to: range.lowerBound)
+        let endRange : Int = contents.distance (from: contents.startIndex, to: range.upperBound)
+        let nsRange = NSRange (location: startRange, length: endRange - startRange)
+        indices.append (FileEntrySearchResult (inFullPath, nsRange, line, window: self))
         searchStartIndex = range.upperBound
       }
       if indices.count > 0 {
-        ioResult.append ((inFullPath, indices))
+        ioResult.append (FileSearchResult (inFullPath, indexArray: indices, window: self))
       }
     }
   }

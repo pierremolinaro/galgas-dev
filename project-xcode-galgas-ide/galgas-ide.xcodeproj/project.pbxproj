@@ -384,6 +384,7 @@
 		CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */; };
 		CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */; };
 		CFEDFC512D0F7E430010E2F4 /* SWIFT_TextViewRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */; };
+		CFF191112D47F535000C6734 /* AutoLayoutOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF191102D47F524000C6734 /* AutoLayoutOutlineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -784,6 +785,7 @@
 		CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSourceTextPresentationView.swift; sourceTree = "<group>"; };
 		CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_AppDelegate+new-document.swift"; sourceTree = "<group>"; };
 		CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextViewRulerView.swift; sourceTree = "<group>"; };
+		CFF191102D47F524000C6734 /* AutoLayoutOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutOutlineView.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1283,6 +1285,7 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
+				CFF191102D47F524000C6734 /* AutoLayoutOutlineView.swift */,
 				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
 				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
@@ -1641,6 +1644,7 @@
 				CFAE1C242D1C4450001FDE69 /* SWIFT_BuildLogViewRuler.swift in Sources */,
 				CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */,
 				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
+				CFF191112D47F535000C6734 /* AutoLayoutOutlineView.swift in Sources */,
 				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
 				CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */,
 				CFEDFC512D0F7E430010E2F4 /* SWIFT_TextViewRulerView.swift in Sources */,
@@ -1948,8 +1952,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2015,8 +2018,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2047,7 +2049,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2078,7 +2079,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "name.pcmolinaro.pierre.galgas-ide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
