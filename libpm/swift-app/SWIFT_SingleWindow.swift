@@ -57,7 +57,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   private let mSearchInFilesView = AutoLayoutVerticalStackView ()
   private let mSearchTextField = AutoLayoutSearchField (minWidth: 100, bold: false, size: .regular)
   private let mSearchResultLabel = AutoLayoutStaticLabel (title: "", bold: false, size: .small, alignment: .center)
-  private let mSearchResultOutlineView = AutoLayoutOutlineView (size: .small, addControlButtons: false)
+  private let mSearchResultOutlineView = AutoLayoutOutlineView (size: .small, allowsEmptySelection: true, allowsMultipleSelection: false)
     .noHeaderView ()
     .setBackgroundColor (.clear)
 
@@ -491,7 +491,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func findOrAddTab (forURL inURL : URL,
-                     range inRange : NSRange) {
+                     range inRange : NSRange,
+                     postAction inPostAction : (() -> Void)?) {
     var found = false
     for idx in 0 ..< self.mTabArray.count {
       let dd = self.mTabArray [idx]
@@ -499,6 +500,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         self.selectTab (atIndex: idx)
         self.mTabArray [idx].sourcePresentationView.setSelectedRange (inRange)
         self.mTabArray [idx].sourcePresentationView.scrollToSelectedRange ()
+        inPostAction? ()
         found = true
       }
     }
@@ -514,6 +516,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
             for issue in self.mIssueArray {
               document.appendIssue (issue)
             }
+            DispatchQueue.main.async { inPostAction? () }
           }
         }
       }
@@ -621,7 +624,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   //MARK: Search in files
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  class FileSearchResult : OutlineViewNodeProtocol, OutlineViewClickableChildProtocol {
+  class FileSearchResult : OutlineViewNodeProtocol {
 
     private let mFilePath : String
     private let mIndexArray : [FileEntrySearchResult]
@@ -651,8 +654,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       return text
     }
 
-    func handleMouseDown () {
-      self.mWindow?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: NSRange ())
+    func childDidSelect () {
+      self.mWindow?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: NSRange ()) {
+        DispatchQueue.main.async {
+          _ = self.mWindow?.mSearchResultOutlineView.makeFirstResponder ()
+        }
+      }
     }
 
     func childrenCount () -> Int {
@@ -666,7 +673,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  class FileEntrySearchResult : OutlineViewChildProtocol, OutlineViewClickableChildProtocol {
+  class FileEntrySearchResult : OutlineViewChildProtocol {
     private let mFilePath : String
     private let mRange : NSRange
     private let mLine : String
@@ -698,11 +705,12 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       return text
     }
 
-    func handleMouseDown () {
-      self.mWindow?.findOrAddTab (
-        forURL: URL (fileURLWithPath: self.mFilePath),
-        range: self.mRange
-      )
+    func childDidSelect () {
+      self.mWindow?.findOrAddTab (forURL: URL (fileURLWithPath: self.mFilePath), range: self.mRange) {
+        DispatchQueue.main.async {
+          _ = self.mWindow?.mSearchResultOutlineView.makeFirstResponder ()
+        }
+      }
     }
 
   }

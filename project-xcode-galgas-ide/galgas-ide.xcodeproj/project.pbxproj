@@ -384,18 +384,17 @@
 		CFE752F72D0F11C80071CADB /* SWIFT_AppDelegate+new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */; };
 		CFE752F92D0F1D440071CADB /* AutoLayoutSourceTextPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */; };
 		CFEDFC512D0F7E430010E2F4 /* SWIFT_TextViewRulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */; };
-		CFF191112D47F535000C6734 /* AutoLayoutOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF191102D47F524000C6734 /* AutoLayoutOutlineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF8F80E02D0D90D10095170B /* PBXContainerItemProxy */ = {
+		CF7980E82D4A9A99001CE32A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFDF0C942D0A0EEF0014CD68 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CFF8ED3B2D0D81C1006B2A3C;
 			remoteInfo = galgas;
 		};
-		CF8F81982D0D91590095170B /* PBXContainerItemProxy */ = {
+		CF7980EA2D4A9A99001CE32A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFDF0C942D0A0EEF0014CD68 /* Project object */;
 			proxyType = 1;
@@ -785,7 +784,6 @@
 		CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSourceTextPresentationView.swift; sourceTree = "<group>"; };
 		CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT_AppDelegate+new-document.swift"; sourceTree = "<group>"; };
 		CFEDFC502D0F7E310010E2F4 /* SWIFT_TextViewRulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_TextViewRulerView.swift; sourceTree = "<group>"; };
-		CFF191102D47F524000C6734 /* AutoLayoutOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutOutlineView.swift; sourceTree = "<group>"; };
 		CFF8ED3C2D0D81C1006B2A3C /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1285,7 +1283,6 @@
 		CFAA22C32D0DB92D00FFC0B6 /* swift-app */ = {
 			isa = PBXGroup;
 			children = (
-				CFF191102D47F524000C6734 /* AutoLayoutOutlineView.swift */,
 				CFE752DC2D0EE7FD0071CADB /* AutoLayoutSourceTextPresentationView.swift */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
 				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
@@ -1364,8 +1361,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				CF8F81992D0D91590095170B /* PBXTargetDependency */,
-				CF8F80E12D0D90D10095170B /* PBXTargetDependency */,
+				CF7980E92D4A9A99001CE32A /* PBXTargetDependency */,
+				CF7980EB2D4A9A99001CE32A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CFDF0C9E2D0A0EEF0014CD68 /* galgas-ide */,
@@ -1644,7 +1641,6 @@
 				CFAE1C242D1C4450001FDE69 /* SWIFT_BuildLogViewRuler.swift in Sources */,
 				CFD6D24C2D0DF05900E91AE6 /* SWIFT_Tokenizer_Protocol.swift in Sources */,
 				CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */,
-				CFF191112D47F535000C6734 /* AutoLayoutOutlineView.swift in Sources */,
 				CFD6D2492D0DECCA00E91AE6 /* SWIFT_Token.swift in Sources */,
 				CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */,
 				CFEDFC512D0F7E430010E2F4 /* SWIFT_TextViewRulerView.swift in Sources */,
@@ -1850,15 +1846,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF8F80E12D0D90D10095170B /* PBXTargetDependency */ = {
+		CF7980E92D4A9A99001CE32A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFF8ED3B2D0D81C1006B2A3C /* galgas */;
-			targetProxy = CF8F80E02D0D90D10095170B /* PBXContainerItemProxy */;
+			targetProxy = CF7980E82D4A9A99001CE32A /* PBXContainerItemProxy */;
 		};
-		CF8F81992D0D91590095170B /* PBXTargetDependency */ = {
+		CF7980EB2D4A9A99001CE32A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF8F80E22D0D91490095170B /* galgas-debug */;
-			targetProxy = CF8F81982D0D91590095170B /* PBXContainerItemProxy */;
+			targetProxy = CF7980EA2D4A9A99001CE32A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2028,6 +2024,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "galgas-ide/galgas_ide.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -2058,6 +2055,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "galgas-ide/galgas_ide.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
