@@ -410,7 +410,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func closeTab (atIndex inIndex : Int) {
-   // Swift.print ("closeTab \(inIndex)")
     if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
     //--- Supprimer l'entrée
       self.mTabArray.remove (at: inIndex)
@@ -722,8 +721,9 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     if !searchedString.isEmpty, !self.mTabArray.isEmpty, let firstTabURL = self.mTabArray [0].fileURL {
       let directory : URL = firstTabURL.deletingLastPathComponent ()
       self.mSearchResultLabel.stringValue = "Searching…"
-      RunLoop.main.run (until: Date ())
       self.mSearchResults.removeAll (keepingCapacity: true)
+      self.mSearchResultOutlineView.setContentArray (self.mSearchResults)
+      RunLoop.main.run (until: Date ())
       let extensionSet = SWIFT_DocumentController.supportedDocumentExtensions ()
       let enumerator = FileManager ().enumerator (atPath: directory.path)
       while let file = enumerator?.nextObject () as? String {

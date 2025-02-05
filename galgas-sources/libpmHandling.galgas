@@ -18,7 +18,7 @@
 //------------------------------------------------------------------------------------------------
 
 filewrapper libpmFileWrapper in "../libpm" {
- "h", "cpp", "c", "m", "mak", "py" // Text files
+ "h", "cpp", "c", "m", "py", "swift" // Text files
 }{
  "tiff", "png", "xib", "gif" // Binary files
 }{
@@ -27,8 +27,7 @@ filewrapper libpmFileWrapper in "../libpm" {
 //------------------------------------------------------------------------------------------------
 
 proc updateLIBPMatPath ?let @string inLIBPMPath {
-//  message "LIBPM path: '" . inLIBPMPath . "'\n" ;
-  let @filewrapper fw = [filewrapper libpmFileWrapper]
+  let fw = [filewrapper libpmFileWrapper]
 //--- Create directories
   for (path) in [fw allDirectoryPathes] do
     let @string actualDirectory = inLIBPMPath + path
@@ -47,16 +46,16 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     allNeededFileSet += !path
   end
 //--- Update binary files
-  for (mValue) in [fw allBinaryFilePathes] do
-    let contents = [fw binaryFileContentsAtPath !mValue]
-    let actualFilePath = inLIBPMPath + mValue
+  for (value) in [fw allBinaryFilePathes] do
+    let contents = [fw binaryFileContentsAtPath !value]
+    let actualFilePath = inLIBPMPath + value
     [contents writeToFileWhenDifferentContents !actualFilePath ?*]
-    allNeededFileSet += !mValue
+    allNeededFileSet += !value
   end
 //--- Remove useless files
   var @stringset allActualFileSet = @()
-  for (mValue) in [inLIBPMPath regularFiles !true] do
-    allActualFileSet += !"/" + mValue
+  for (value) in [inLIBPMPath regularFiles !true] do
+    allActualFileSet += !"/" + value
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet
   for (key) in uselessFileSet do

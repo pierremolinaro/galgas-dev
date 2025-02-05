@@ -27,7 +27,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
   template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate"
   template build_release_macosx "makefile-macosx/build+release.py.galgasTemplate"
   template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
-//  template install_macosx "makefile-macosx/install.py.galgasTemplate"
 
   template clean_unix "makefile-unix/clean.py.galgasTemplate" ?@string PROJECT_NAME
   template build_unix "makefile-unix/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME

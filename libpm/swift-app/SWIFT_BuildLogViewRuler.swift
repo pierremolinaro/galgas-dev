@@ -96,8 +96,11 @@ final class SWIFT_BuildLogViewRuler : NSRulerView {
           forGlyphAt: layoutManager.glyphIndexForCharacter (at: issue.locationInBuildLogTextView),
           effectiveRange: nil
         )
-        if r.contains (locationInView), let w = self.window as? SWIFT_SingleWindow {
+        let rr = self.convert (r, from: textView)
+//        Swift.print (locationInView, rr)
+        if locationInView.y >= rr.minY, locationInView.y <= rr.maxY, let w = self.window as? SWIFT_SingleWindow {
           w.findOrAddTab (forIssue: issue)
+          return
         }
       }
     }

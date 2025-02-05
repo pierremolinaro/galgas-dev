@@ -8,28 +8,70 @@
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
-			<string>SourceGalgas</string>
+			<string>GALGAS 3 File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).source</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>GalgasProject</string>
+			<string>Galgas 4 Project File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgasProject</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4Project</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS Template Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3Template</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS 3 Project File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3Project</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS 4 File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SWIFT_SingleDocument</string>
@@ -42,14 +84,17 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.data</string>
+				<string>public.text</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>SourceGalgas</string>
+			<string>GALGAS 3 File</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>galgasDocuments</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).source</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -61,19 +106,88 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.data</string>
+				<string>public.text</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>galgasProject</string>
+			<string>galgas 3 Template</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>galgasDocuments</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgasProject</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3Template</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>galgasTemplate</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>GALGAS 3 Project</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>galgasDocuments</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas3Project</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
 					<string>galgasProject</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>GALGAS 4 File</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>galgasDocuments</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ggs</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>GALGAS 4 Project</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>galgasDocuments</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).galgas4Project</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>ggsProject</string>
 				</array>
 			</dict>
 		</dict>

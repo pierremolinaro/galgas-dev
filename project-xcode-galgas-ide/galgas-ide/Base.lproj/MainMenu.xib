@@ -103,9 +103,15 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                            <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                            <menuItem title="Close Widow" keyEquivalent="w" id="DVo-aG-piG">
+                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Close Tab" keyEquivalent="w" id="j6i-gQ-52t">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="XIJ-ca-6Ri"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Save" keyEquivalent="s" id="pxx-59-PXV">
@@ -162,12 +168,6 @@
                             <menuItem title="Paste" keyEquivalent="v" id="gVA-U4-sdL">
                                 <connections>
                                     <action selector="paste:" target="-1" id="UvS-8e-Qdg"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="WeT-3V-zwk">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="pasteAsPlainText:" target="-1" id="cEh-KX-wJQ"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Delete" id="pa3-QI-u2k">
@@ -244,6 +244,7 @@
                                     <action selector="buildAction:" target="-1" id="JG9-e4-t0b"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="42Q-EQ-Av8"/>
                             <menuItem title="Comment" keyEquivalent=":" id="fek-gv-hzP">
                                 <connections>
                                     <action selector="commentAction:" target="-1" id="WuZ-dV-dJo"/>
@@ -255,38 +256,7 @@
                                     <action selector="uncommentAction:" target="-1" id="CLB-ZC-qhM"/>
                                 </connections>
                             </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="View" id="H8h-7b-M4v">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="View" id="HyV-fh-RgO">
-                        <items>
-                            <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="toggleToolbarShown:" target="-1" id="BXY-wc-z0C"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="runToolbarCustomizationPalette:" target="-1" id="pQI-g3-MTW"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
-                            <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
-                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
-                                <connections>
-                                    <action selector="toggleSidebar:" target="-1" id="iwa-gc-5KM"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
-                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
-                                <connections>
-                                    <action selector="toggleFullScreen:" target="-1" id="dU3-MA-1Rq"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="kCf-dc-ZYU"/>
                         </items>
                     </menu>
                 </menuItem>
