@@ -557,8 +557,8 @@ static const char * gLexicalMessage_galgasScanner_33__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 197)) {
-    static const char * syntaxErrorMessageArray [197] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 198)) {
+    static const char * syntaxErrorMessageArray [198] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -687,6 +687,7 @@ String Lexique_galgasScanner_33_::getMessageForTerminal (const int32_t inTermina
         "the '%initArgLabel' keyword",
         "the '%libpmAtPath' keyword",
         "the '%MacOS' keyword",
+        "the '%MacSwiftApp' keyword",
         "the '%MacOSDeployment' keyword",
         "the '%macCodeSign' keyword",
         "the '%makefile-macosx' keyword",
@@ -1060,6 +1061,21 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__MacO
   TO_UNICODE ('e'),
   TO_UNICODE ('n'),
   TO_UNICODE ('t'),
+} ;
+
+//--- Unicode string for '$MacSwiftApp$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33__MacSwiftApp = {
+  TO_UNICODE ('M'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('S'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('A'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('p'),
 } ;
 
 //--- Unicode string for '$[$'
@@ -2492,7 +2508,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_33___7E_
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 29 ;
+static const int32_t ktable_size_galgasScanner_33__attributeKeyWordList = 30 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attributeKeyWordList [ktable_size_galgasScanner_33__attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__from, Lexique_galgasScanner_33_::kToken__25_from),
@@ -2506,6 +2522,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_33__attribut
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__translate, Lexique_galgasScanner_33_::kToken__25_translate),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__app_2D_source, Lexique_galgasScanner_33_::kToken__25_app_2D_source),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__comparable, Lexique_galgasScanner_33_::kToken__25_comparable),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__MacSwiftApp, Lexique_galgasScanner_33_::kToken__25_MacSwiftApp),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__libpmAtPath, Lexique_galgasScanner_33_::kToken__25_libpmAtPath),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__macCodeSign, Lexique_galgasScanner_33_::kToken__25_macCodeSign),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_33__tool_2D_source, Lexique_galgasScanner_33_::kToken__25_tool_2D_source),
@@ -3381,6 +3398,11 @@ String Lexique_galgasScanner_33_::getCurrentTokenString (const cToken * inTokenP
     case kToken__25_MacOS:
       s.appendChar (TO_UNICODE ('$')) ;
       s.appendCString ("%MacOS") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      break ;
+    case kToken__25_MacSwiftApp:
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("%MacSwiftApp") ;
       s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__25_MacOSDeployment:
@@ -4819,6 +4841,7 @@ GGS_stringlist Lexique_galgasScanner_33_::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GGS_string ("%initArgLabel") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%libpmAtPath") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%MacOS") COMMA_HERE) ;
+  result.addAssign_operation (GGS_string ("%MacSwiftApp") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%MacOSDeployment") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%macCodeSign") COMMA_HERE) ;
   result.addAssign_operation (GGS_string ("%makefile-macosx") COMMA_HERE) ;
@@ -4916,6 +4939,7 @@ static void getKeywordsForIdentifier_galgasScanner_33_ (const String & inIdentif
     ioList.appendObject ("translate") ;
     ioList.appendObject ("app-source") ;
     ioList.appendObject ("comparable") ;
+    ioList.appendObject ("MacSwiftApp") ;
     ioList.appendObject ("libpmAtPath") ;
     ioList.appendObject ("macCodeSign") ;
     ioList.appendObject ("tool-source") ;
@@ -5103,7 +5127,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_33_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [197] = {0,
+  static const uint32_t kTerminalSymbolStyles [198] = {0,
     0 /* galgasScanner3_1_identifier */,
     7 /* galgasScanner3_1_double_2E_xxx */,
     6 /* galgasScanner3_1_literalInt */,
@@ -5232,6 +5256,7 @@ uint32_t Lexique_galgasScanner_33_::styleIndexForTerminal (const int32_t inTermi
     11 /* galgasScanner3_1__25_initArgLabel */,
     11 /* galgasScanner3_1__25_libpmAtPath */,
     11 /* galgasScanner3_1__25_MacOS */,
+    11 /* galgasScanner3_1__25_MacSwiftApp */,
     11 /* galgasScanner3_1__25_MacOSDeployment */,
     11 /* galgasScanner3_1__25_macCodeSign */,
     11 /* galgasScanner3_1__25_makefile_2D_macosx */,

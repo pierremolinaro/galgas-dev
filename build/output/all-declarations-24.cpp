@@ -2591,30 +2591,31 @@ void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (con
 
 void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_string constinArgument_inProductDirectory,
                                                                     GGS_stringset & ioArgument_ioAllProductFileSet,
-                                                                    GGS_stringlist & ioArgument_ioCocoaProductFileList,
+                                                                    GGS_stringlist & ioArgument_ioObjcAppProductFileList,
+                                                                    GGS_stringlist & ioArgument_ioSwiftAppProductFileList,
                                                                     Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    GGS_bool test_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("optionCompilation.galgas", 423)).objectCompare (GGS_uint (uint32_t (0U)))) ;
+    GGS_bool test_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("optionCompilation.galgas", 424)).objectCompare (GGS_uint (uint32_t (0U)))) ;
     if (kBoolTrue == test_1.boolEnum ()) {
       const GGS_optionComponentForGeneration temp_2 = this ;
-      test_1 = temp_2.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("optionCompilation.galgas", 423)) ;
+      test_1 = temp_2.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("optionCompilation.galgas", 424)) ;
     }
     test_0 = test_1.boolEnum () ;
     if (kBoolTrue == test_0) {
       const GGS_optionComponentForGeneration temp_3 = this ;
-      ioArgument_ioAllProductFileSet.addAssign_operation (GGS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 424)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 424)).add_operation (GGS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 424))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 424)) ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GGS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 425)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 425)).add_operation (GGS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 425))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 425)) ;
       {
       const GGS_optionComponentForGeneration temp_4 = this ;
       const GGS_optionComponentForGeneration temp_5 = this ;
       const GGS_optionComponentForGeneration temp_6 = this ;
-      GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("option-").add_operation (temp_4.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 427)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 427)).add_operation (GGS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 427)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (inCompiler, temp_5.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 431))), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (inCompiler, temp_6.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 435))), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 425)) ;
+      GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("option-").add_operation (temp_4.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 428)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 428)).add_operation (GGS_string ("-cocoa.h"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 428)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (inCompiler, temp_5.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 432))), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (inCompiler, temp_6.readProperty_mOptionComponentName () COMMA_SOURCE_FILE ("optionCompilation.galgas", 436))), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 426)) ;
       }
       const GGS_optionComponentForGeneration temp_7 = this ;
-      ioArgument_ioAllProductFileSet.addAssign_operation (GGS_string ("option-").add_operation (temp_7.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 441)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 441)).add_operation (GGS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 441))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 441)) ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GGS_string ("option-").add_operation (temp_7.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 442)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 442)).add_operation (GGS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 442))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 442)) ;
       const GGS_optionComponentForGeneration temp_8 = this ;
-      ioArgument_ioCocoaProductFileList.addAssign_operation (GGS_string ("option-").add_operation (temp_8.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 442)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 442)).add_operation (GGS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 442))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 442)) ;
+      ioArgument_ioObjcAppProductFileList.addAssign_operation (GGS_string ("option-").add_operation (temp_8.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 443)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 443)).add_operation (GGS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 443))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 443)) ;
       {
       const GGS_optionComponentForGeneration temp_9 = this ;
       const GGS_optionComponentForGeneration temp_10 = this ;
@@ -2623,12 +2624,12 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_st
       const GGS_optionComponentForGeneration temp_13 = this ;
       const GGS_optionComponentForGeneration temp_14 = this ;
       const GGS_optionComponentForGeneration temp_15 = this ;
-      GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("option-").add_operation (temp_9.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 445)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 445)).add_operation (GGS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 445)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (inCompiler, GGS_string ("option-").add_operation (temp_10.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 450)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 450)).add_operation (GGS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 450)), temp_11.readProperty_mOptionComponentName (), temp_12.readProperty_mBoolOptionSortedList (), temp_13.readProperty_mUIntOptionSortedList (), temp_14.readProperty_mStringOptionSortedList (), temp_15.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 449))), GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 443)) ;
+      GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("option-").add_operation (temp_9.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 446)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 446)).add_operation (GGS_string ("-cocoa.m"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 446)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (inCompiler, GGS_string ("option-").add_operation (temp_10.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 451)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 451)).add_operation (GGS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 451)), temp_11.readProperty_mOptionComponentName (), temp_12.readProperty_mBoolOptionSortedList (), temp_13.readProperty_mUIntOptionSortedList (), temp_14.readProperty_mStringOptionSortedList (), temp_15.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 450))), GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 444)) ;
       }
       const GGS_optionComponentForGeneration temp_16 = this ;
-      ioArgument_ioAllProductFileSet.addAssign_operation (GGS_string ("option-").add_operation (temp_16.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 462)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 462)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 462))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 462)) ;
+      ioArgument_ioAllProductFileSet.addAssign_operation (GGS_string ("option-").add_operation (temp_16.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 463)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 463)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 463))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 463)) ;
       const GGS_optionComponentForGeneration temp_17 = this ;
-      ioArgument_ioCocoaProductFileList.addAssign_operation (GGS_string ("option-").add_operation (temp_17.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 463)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 463)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 463))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 463)) ;
+      ioArgument_ioSwiftAppProductFileList.addAssign_operation (GGS_string ("option-").add_operation (temp_17.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 464)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 464)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 464))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 464)) ;
       {
       const GGS_optionComponentForGeneration temp_18 = this ;
       const GGS_optionComponentForGeneration temp_19 = this ;
@@ -2637,7 +2638,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_st
       const GGS_optionComponentForGeneration temp_22 = this ;
       const GGS_optionComponentForGeneration temp_23 = this ;
       const GGS_optionComponentForGeneration temp_24 = this ;
-      GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("option-").add_operation (temp_18.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 466)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 466)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (inCompiler, GGS_string ("option-").add_operation (temp_19.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 471)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 471)).add_operation (GGS_string ("-swift-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 471)), temp_20.readProperty_mOptionComponentName (), temp_21.readProperty_mBoolOptionSortedList (), temp_22.readProperty_mUIntOptionSortedList (), temp_23.readProperty_mStringOptionSortedList (), temp_24.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 470))), GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 464)) ;
+      GGS_string::class_method_generateFileWithPattern (constinArgument_inProductDirectory, GGS_string ("option-").add_operation (temp_18.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 467)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 467)).add_operation (GGS_string ("-cocoa.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 467)), GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), GGS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (inCompiler, GGS_string ("option-").add_operation (temp_19.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 472)).add_operation (GGS_string ("-swift-cocoa"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 472)), temp_20.readProperty_mOptionComponentName (), temp_21.readProperty_mBoolOptionSortedList (), temp_22.readProperty_mUIntOptionSortedList (), temp_23.readProperty_mStringOptionSortedList (), temp_24.readProperty_mStringListSortedList () COMMA_SOURCE_FILE ("optionCompilation.galgas", 471))), GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 465)) ;
       }
     }
   }
@@ -3183,7 +3184,7 @@ void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const GGS_galg
   cEnumerator_galgasGUIComponentListAST enumerator_13821 (constinArgument_inGuiComponentListAST, EnumerationOrder::up) ;
   while (enumerator_13821.hasCurrentObject ()) {
     {
-    routine_guiComponentSemanticAnalysis_3F__3F__26_ (enumerator_13821.current (HERE), constinArgument_inSemanticContext, outArgument_outOptionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 416)) ;
+    routine_guiComponentSemanticAnalysis_3F__3F__26_ (enumerator_13821.current (HERE), constinArgument_inSemanticContext, outArgument_outOptionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 415)) ;
     }
     enumerator_13821.gotoNextObject () ;
   }
@@ -3206,7 +3207,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
     test_0 = GGS_bool (ComparisonKind::notEqual, constinArgument_inGUIComponentAST.readProperty_mGUIComponentName ().readProperty_string ().objectCompare (GGS_string ("cocoa"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName ().readProperty_location (), GGS_string ("the gui name should be 'cocoa'"), fixItArray1  COMMA_SOURCE_FILE ("guiCompilation.galgas", 430)) ;
+      inCompiler->emitSemanticError (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName ().readProperty_location (), GGS_string ("the gui name should be 'cocoa'"), fixItArray1  COMMA_SOURCE_FILE ("guiCompilation.galgas", 429)) ;
     }
   }
   GGS_guiAnalysisContext var_context_14557 = GGS_guiAnalysisContext::init (inCompiler COMMA_HERE) ;
@@ -3218,8 +3219,8 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
     GGS_commandLineOptionMap joker_14854_3 ; // Joker input parameter
     GGS_commandLineOptionMap joker_14854_2 ; // Joker input parameter
     GGS_commandLineOptionMap joker_14854_1 ; // Joker input parameter
-    constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (enumerator_14710.current_mValue (HERE), joker_14854_5, joker_14854_4, joker_14854_3, joker_14854_2, joker_14854_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 437)) ;
-    var_context_14557.mProperty_mImportedOptionComponentList.addAssign_operation (enumerator_14710.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 441)) ;
+    constinArgument_inSemanticContext.readProperty_mOptionComponentMapForSemanticAnalysis ().method_searchKey (enumerator_14710.current_mValue (HERE), joker_14854_5, joker_14854_4, joker_14854_3, joker_14854_2, joker_14854_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 436)) ;
+    var_context_14557.mProperty_mImportedOptionComponentList.addAssign_operation (enumerator_14710.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 440)) ;
     enumerator_14710.gotoNextObject () ;
   }
   GGS_bool var_runOptionDefined_14962 = GGS_bool (false) ;
@@ -3234,7 +3235,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
           test_3 = var_runOptionDefined_14962.boolEnum () ;
           if (kBoolTrue == test_3) {
             TC_Array <FixItDescription> fixItArray4 ;
-            inCompiler->emitSemanticError (enumerator_14999.current_mKey (HERE).readProperty_location (), GGS_string ("option already defined"), fixItArray4  COMMA_SOURCE_FILE ("guiCompilation.galgas", 448)) ;
+            inCompiler->emitSemanticError (enumerator_14999.current_mKey (HERE).readProperty_location (), GGS_string ("option already defined"), fixItArray4  COMMA_SOURCE_FILE ("guiCompilation.galgas", 447)) ;
           }
         }
         if (kBoolFalse == test_3) {
@@ -3243,7 +3244,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
             test_5 = GGS_bool (ComparisonKind::equal, enumerator_14999.current_mValue (HERE).readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_5) {
               TC_Array <FixItDescription> fixItArray6 ;
-              inCompiler->emitSemanticError (enumerator_14999.current_mValue (HERE).readProperty_location (), GGS_string ("run option string should not be empty"), fixItArray6  COMMA_SOURCE_FILE ("guiCompilation.galgas", 450)) ;
+              inCompiler->emitSemanticError (enumerator_14999.current_mValue (HERE).readProperty_location (), GGS_string ("run option string should not be empty"), fixItArray6  COMMA_SOURCE_FILE ("guiCompilation.galgas", 449)) ;
             }
           }
           if (kBoolFalse == test_5) {
@@ -3258,16 +3259,16 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
       if (kBoolTrue == test_7) {
         test_7 = GGS_bool (ComparisonKind::equal, enumerator_14999.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("nibAndMainClass"))).boolEnum () ;
         if (kBoolTrue == test_7) {
-          cEnumerator_stringlist enumerator_15487 (enumerator_14999.current_mValue (HERE).readProperty_string ().getter_componentsSeparatedByString (GGS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 456)), EnumerationOrder::up) ;
+          cEnumerator_stringlist enumerator_15487 (enumerator_14999.current_mValue (HERE).readProperty_string ().getter_componentsSeparatedByString (GGS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 455)), EnumerationOrder::up) ;
           while (enumerator_15487.hasCurrentObject ()) {
-            var_context_14557.mProperty_mNibAndClassList.addAssign_operation (enumerator_15487.current (HERE).readProperty_mValue ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 457)) ;
+            var_context_14557.mProperty_mNibAndClassList.addAssign_operation (enumerator_15487.current (HERE).readProperty_mValue ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 456)) ;
             enumerator_15487.gotoNextObject () ;
           }
         }
       }
       if (kBoolFalse == test_7) {
         TC_Array <FixItDescription> fixItArray8 ;
-        inCompiler->emitSemanticWarning (enumerator_14999.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_14999.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)).add_operation (GGS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)), fixItArray8  COMMA_SOURCE_FILE ("guiCompilation.galgas", 460)) ;
+        inCompiler->emitSemanticWarning (enumerator_14999.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_14999.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 459)).add_operation (GGS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 459)), fixItArray8  COMMA_SOURCE_FILE ("guiCompilation.galgas", 459)) ;
       }
     }
     enumerator_14999.gotoNextObject () ;
@@ -3282,18 +3283,18 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
     GGS_terminalDeclarationListAST joker_15975_2 ; // Joker input parameter
     GGS_lexicalAttributeListAST joker_15975_1 ; // Joker input parameter
     GGS_lexicalListDeclarationListAST joker_16016 ; // Joker input parameter
-    constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (enumerator_15739.current_mLexiqueFileName (HERE), joker_15930, var_terminalMap_15957, joker_15975_3, joker_15975_2, joker_15975_1, var_lexicalStyleListAST_15990, joker_16016, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 466)) ;
-    GGS_stringset var_terminalSymbolSet_16067 = var_terminalMap_15957.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 475)) ;
+    constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (enumerator_15739.current_mLexiqueFileName (HERE), joker_15930, var_terminalMap_15957, joker_15975_3, joker_15975_2, joker_15975_1, var_lexicalStyleListAST_15990, joker_16016, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 465)) ;
+    GGS_stringset var_terminalSymbolSet_16067 = var_terminalMap_15957.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 474)) ;
     cEnumerator_guiLabelListAST enumerator_16154 (enumerator_15739.current_mLabels (HERE), EnumerationOrder::up) ;
     while (enumerator_16154.hasCurrentObject ()) {
       cEnumerator_terminalLabelListAST enumerator_16191 (enumerator_16154.current_mTerminalList (HERE), EnumerationOrder::up) ;
       while (enumerator_16191.hasCurrentObject ()) {
         enumGalgasBool test_9 = kBoolTrue ;
         if (kBoolTrue == test_9) {
-          test_9 = var_terminalSymbolSet_16067.getter_hasKey (enumerator_16191.current_mTerminal (HERE).readProperty_string () COMMA_SOURCE_FILE ("guiCompilation.galgas", 479)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 479)).boolEnum () ;
+          test_9 = var_terminalSymbolSet_16067.getter_hasKey (enumerator_16191.current_mTerminal (HERE).readProperty_string () COMMA_SOURCE_FILE ("guiCompilation.galgas", 478)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 478)).boolEnum () ;
           if (kBoolTrue == test_9) {
             TC_Array <FixItDescription> fixItArray10 ;
-            inCompiler->emitSemanticError (enumerator_16191.current_mTerminal (HERE).readProperty_location (), GGS_string ("the '$").add_operation (enumerator_16191.current_mTerminal (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)).add_operation (GGS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 481)).add_operation (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 482)).add_operation (GGS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 483)), fixItArray10  COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)) ;
+            inCompiler->emitSemanticError (enumerator_16191.current_mTerminal (HERE).readProperty_location (), GGS_string ("the '$").add_operation (enumerator_16191.current_mTerminal (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 479)).add_operation (GGS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 480)).add_operation (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 481)).add_operation (GGS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 482)), fixItArray10  COMMA_SOURCE_FILE ("guiCompilation.galgas", 479)) ;
           }
         }
         enumerator_16191.gotoNextObject () ;
@@ -3308,11 +3309,11 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
         test_11 = GGS_bool (ComparisonKind::notEqual, enumerator_16585.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("textMacro"))).boolEnum () ;
         if (kBoolTrue == test_11) {
           TC_Array <FixItDescription> fixItArray12 ;
-          inCompiler->emitSemanticError (enumerator_16585.current_mKey (HERE).readProperty_location (), GGS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray12  COMMA_SOURCE_FILE ("guiCompilation.galgas", 492)) ;
+          inCompiler->emitSemanticError (enumerator_16585.current_mKey (HERE).readProperty_location (), GGS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray12  COMMA_SOURCE_FILE ("guiCompilation.galgas", 491)) ;
         }
       }
       if (kBoolFalse == test_11) {
-        var_textMacroList_16536.addAssign_operation (enumerator_16585.current_mAttributeName (HERE).readProperty_string (), enumerator_16585.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 494)) ;
+        var_textMacroList_16536.addAssign_operation (enumerator_16585.current_mAttributeName (HERE).readProperty_string (), enumerator_16585.current_mValue (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("guiCompilation.galgas", 493)) ;
       }
       enumerator_16585.gotoNextObject () ;
     }
@@ -3328,7 +3329,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
         test_13 = GGS_bool (ComparisonKind::equal, enumerator_17062.current_mKey (HERE).readProperty_string ().objectCompare (GGS_string ("fileExtension"))).boolEnum () ;
         if (kBoolTrue == test_13) {
           {
-          var_context_14557.mProperty_mExtensionMap.setter_insertKey (enumerator_17062.current_mValue (HERE), enumerator_15739.current_mLexiqueFileName (HERE).readProperty_string (), index_15694, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 505)) ;
+          var_context_14557.mProperty_mExtensionMap.setter_insertKey (enumerator_17062.current_mValue (HERE), enumerator_15739.current_mLexiqueFileName (HERE).readProperty_string (), index_15694, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 504)) ;
           }
           var_hasAssociatedExtension_16873 = GGS_bool (true) ;
         }
@@ -3343,7 +3344,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
               test_15 = var_hasTabViewTitle_16918.boolEnum () ;
               if (kBoolTrue == test_15) {
                 TC_Array <FixItDescription> fixItArray16 ;
-                inCompiler->emitSemanticError (enumerator_17062.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17062.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)), fixItArray16  COMMA_SOURCE_FILE ("guiCompilation.galgas", 509)) ;
+                inCompiler->emitSemanticError (enumerator_17062.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17062.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 508)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 508)), fixItArray16  COMMA_SOURCE_FILE ("guiCompilation.galgas", 508)) ;
               }
             }
             var_hasTabViewTitle_16918 = GGS_bool (true) ;
@@ -3360,7 +3361,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
                 test_18 = var_hasBlockComment_16956.boolEnum () ;
                 if (kBoolTrue == test_18) {
                   TC_Array <FixItDescription> fixItArray19 ;
-                  inCompiler->emitSemanticError (enumerator_17062.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17062.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 515)) ;
+                  inCompiler->emitSemanticError (enumerator_17062.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17062.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 514)).add_operation (GGS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 514)), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 514)) ;
                 }
               }
               var_hasBlockComment_16956 = GGS_bool (true) ;
@@ -3369,7 +3370,7 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
           }
           if (kBoolFalse == test_17) {
             TC_Array <FixItDescription> fixItArray20 ;
-            inCompiler->emitSemanticError (enumerator_17062.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17062.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)).add_operation (GGS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)), fixItArray20  COMMA_SOURCE_FILE ("guiCompilation.galgas", 520)) ;
+            inCompiler->emitSemanticError (enumerator_17062.current_mKey (HERE).readProperty_location (), GGS_string ("the '").add_operation (enumerator_17062.current_mKey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 519)).add_operation (GGS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 519)), fixItArray20  COMMA_SOURCE_FILE ("guiCompilation.galgas", 519)) ;
           }
         }
       }
@@ -3377,60 +3378,58 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
     }
     enumGalgasBool test_21 = kBoolTrue ;
     if (kBoolTrue == test_21) {
-      test_21 = var_hasAssociatedExtension_16873.operator_not (SOURCE_FILE ("guiCompilation.galgas", 524)).boolEnum () ;
+      test_21 = var_hasAssociatedExtension_16873.operator_not (SOURCE_FILE ("guiCompilation.galgas", 523)).boolEnum () ;
       if (kBoolTrue == test_21) {
         TC_Array <FixItDescription> fixItArray22 ;
-        inCompiler->emitSemanticError (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray22  COMMA_SOURCE_FILE ("guiCompilation.galgas", 525)) ;
+        inCompiler->emitSemanticError (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray22  COMMA_SOURCE_FILE ("guiCompilation.galgas", 524)) ;
       }
     }
     enumGalgasBool test_23 = kBoolTrue ;
     if (kBoolTrue == test_23) {
-      test_23 = var_hasTabViewTitle_16918.operator_not (SOURCE_FILE ("guiCompilation.galgas", 528)).boolEnum () ;
+      test_23 = var_hasTabViewTitle_16918.operator_not (SOURCE_FILE ("guiCompilation.galgas", 527)).boolEnum () ;
       if (kBoolTrue == test_23) {
         TC_Array <FixItDescription> fixItArray24 ;
-        inCompiler->emitSemanticError (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray24  COMMA_SOURCE_FILE ("guiCompilation.galgas", 529)) ;
+        inCompiler->emitSemanticError (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_location (), GGS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray24  COMMA_SOURCE_FILE ("guiCompilation.galgas", 528)) ;
       }
     }
-    var_context_14557.mProperty_mWithLexiqueList.addAssign_operation (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_string (), index_15694, var_blockComment_17030, var_tabViewTitle_16996, var_textMacroList_16536, enumerator_15739.current_mLabels (HERE), var_lexicalStyleListAST_15990  COMMA_SOURCE_FILE ("guiCompilation.galgas", 532)) ;
+    var_context_14557.mProperty_mWithLexiqueList.addAssign_operation (enumerator_15739.current_mLexiqueFileName (HERE).readProperty_string (), index_15694, var_blockComment_17030, var_tabViewTitle_16996, var_textMacroList_16536, enumerator_15739.current_mLabels (HERE), var_lexicalStyleListAST_15990  COMMA_SOURCE_FILE ("guiCompilation.galgas", 531)) ;
     enumerator_15739.gotoNextObject () ;
-    index_15694.increment_operation (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 464)) ;
+    index_15694.increment_operation (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 463)) ;
   }
   {
-  ioArgument_ioOptionComponentMapForGeneration.setter_insertKey (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName (), var_context_14557, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 542)) ;
+  ioArgument_ioOptionComponentMapForGeneration.setter_insertKey (constinArgument_inGUIComponentAST.readProperty_mGUIComponentName (), var_context_14557, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 541)) ;
   }
 }
 
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateAllGuiComponentsGalgas3???&&'
+//Routine 'generateAllGuiComponentsGalgas3???&objc&swift'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26__26_ (const GGS_optionComponentMapForGeneration constinArgument_inOptionComponentMapForGeneration,
-                                                                     const GGS_string constinArgument_inOutputDirectory,
-                                                                     const GGS_bool constinArgument_inQuietOutputByDefault,
-                                                                     GGS_stringlist & ioArgument_ioApplicationSourceSet,
-                                                                     GGS_stringset & ioArgument_ioAllProductFileSet,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_optionComponentMapForGeneration enumerator_19139 (constinArgument_inOptionComponentMapForGeneration, EnumerationOrder::up) ;
-  while (enumerator_19139.hasCurrentObject ()) {
-    GGS_string var_swiftFileName_19208 = GGS_string ("gui-").add_operation (enumerator_19139.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)).add_operation (GGS_string (".swift"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)) ;
-    ioArgument_ioApplicationSourceSet.addAssign_operation (var_swiftFileName_19208  COMMA_SOURCE_FILE ("guiCompilation.galgas", 559)) ;
-    ioArgument_ioAllProductFileSet.addAssign_operation (var_swiftFileName_19208  COMMA_SOURCE_FILE ("guiCompilation.galgas", 560)) ;
-    GGS_string var_swift_5F_string_19352 = GGS_string (filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (inCompiler, enumerator_19139.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 561))) ;
+void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26_objc_26_swift (const GGS_optionComponentMapForGeneration constinArgument_inOptionComponentMapForGeneration,
+                                                                              const GGS_string constinArgument_inOutputDirectory,
+                                                                              const GGS_bool constinArgument_inQuietOutputByDefault,
+                                                                              GGS_stringlist & ioArgument_ioObjcAllProductFileList,
+                                                                              GGS_stringlist & ioArgument_ioSwiftAllProductFileList,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  cEnumerator_optionComponentMapForGeneration enumerator_19239 (constinArgument_inOptionComponentMapForGeneration, EnumerationOrder::up) ;
+  while (enumerator_19239.hasCurrentObject ()) {
+    GGS_string var_swiftFileName_19308 = GGS_string ("gui-").add_operation (enumerator_19239.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)).add_operation (GGS_string (".swift"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 558)) ;
+    ioArgument_ioSwiftAllProductFileList.addAssign_operation (var_swiftFileName_19308  COMMA_SOURCE_FILE ("guiCompilation.galgas", 560)) ;
+    GGS_string var_swift_5F_string_19461 = GGS_string (filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (inCompiler, enumerator_19239.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 561))) ;
     {
-    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_swiftFileName_19208, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_swift_5F_string_19352, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 565)) ;
+    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_swiftFileName_19308, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_swift_5F_string_19461, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 565)) ;
     }
-    GGS_string var_objcFileName_19866 = GGS_string ("gui-").add_operation (enumerator_19139.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)).add_operation (GGS_string (".m"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)) ;
-    ioArgument_ioApplicationSourceSet.addAssign_operation (var_objcFileName_19866  COMMA_SOURCE_FILE ("guiCompilation.galgas", 577)) ;
-    ioArgument_ioAllProductFileSet.addAssign_operation (var_objcFileName_19866  COMMA_SOURCE_FILE ("guiCompilation.galgas", 578)) ;
-    GGS_string var_objc_5F_string_20003 = GGS_string (filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (inCompiler, enumerator_19139.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 579))) ;
+    GGS_string var_objcFileName_19975 = GGS_string ("gui-").add_operation (enumerator_19239.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)).add_operation (GGS_string (".m"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 576)) ;
+    ioArgument_ioObjcAllProductFileList.addAssign_operation (var_objcFileName_19975  COMMA_SOURCE_FILE ("guiCompilation.galgas", 578)) ;
+    GGS_string var_objc_5F_string_20120 = GGS_string (filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (inCompiler, enumerator_19239.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 579))) ;
     {
-    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_objcFileName_19866, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_objc_5F_string_20003, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 583)) ;
+    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_objcFileName_19975, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_objc_5F_string_20120, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 583)) ;
     }
-    enumerator_19139.gotoNextObject () ;
+    enumerator_19239.gotoNextObject () ;
   }
 }
 

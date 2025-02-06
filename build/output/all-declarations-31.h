@@ -476,7 +476,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
                                                                                                 const class GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
                                                                                                 const class GGS_string & in_VERSION_5F_STRING,
                                                                                                 const class GGS_stringset & in_HANDLED_5F_EXTENSION_5F_SET,
-                                                                                                const class GGS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET
+                                                                                                const class GGS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET,
+                                                                                                const class GGS_string & in_DOCUMENT_5F_CLASS
                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

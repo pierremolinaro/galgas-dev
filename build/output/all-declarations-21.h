@@ -61,6 +61,11 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     return mProperty_mCppFileList ;
   }
 
+  public: GGS__32_stringlist mProperty_m_5F_Swift_5F_FileList ;
+  public: inline GGS__32_stringlist readProperty_m_5F_Swift_5F_FileList (void) const {
+    return mProperty_m_5F_Swift_5F_FileList ;
+  }
+
   public: GGS__32_stringlist mProperty_m_5F_M_5F_FileList ;
   public: inline GGS__32_stringlist readProperty_m_5F_M_5F_FileList (void) const {
     return mProperty_m_5F_M_5F_FileList ;
@@ -175,6 +180,10 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     mProperty_mCppFileList = inValue ;
   }
 
+  public: inline void setter_setM_5F_Swift_5F_FileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_m_5F_Swift_5F_FileList = inValue ;
+  }
+
   public: inline void setter_setM_5F_M_5F_FileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_m_5F_M_5F_FileList = inValue ;
   }
@@ -247,6 +256,7 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                       const GGS_XCodeAppTargetList & in_mAppTargetList,
                                       const GGS__32_stringlist & in_mCFileList,
                                       const GGS__32_stringlist & in_mCppFileList,
+                                      const GGS__32_stringlist & in_m_5F_Swift_5F_FileList,
                                       const GGS__32_stringlist & in_m_5F_M_5F_FileList,
                                       const GGS__32_stringlist & in_m_5F_MM_5F_FileList,
                                       const GGS__32_stringlist & in_mFrameworkFileList,
@@ -361,6 +371,18 @@ void extensionSetter_addFrameworkFile (class GGS_XcodeProjectDescriptor & ioObje
                                        class GGS_string & out_outFileRef,
                                        class Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension setter '@XcodeProjectDescriptor addSwiftFile'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_addSwiftFile (class GGS_XcodeProjectDescriptor & ioObject,
+                                   const class GGS_string constin_inFileName,
+                                   class GGS_string & out_outFileRef,
+                                   class Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -499,6 +521,7 @@ void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObj
                                         class GGS_stringlist & io_ioCppFileBuildRefs,
                                         class GGS_stringlist & io_ioMFileBuildRefs,
                                         class GGS_stringlist & io_ioMMFileBuildRefs,
+                                        class GGS_stringlist & io_ioSwiftFileBuildRefs,
                                         class GGS_stringlist & io_ioFrameWorkFileBuildRefs,
                                         class GGS_stringlist & io_ioResourceFileBuildRefs,
                                         class GGS_string & out_outGroupRef,
@@ -584,6 +607,7 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (clas
                                                                             const class GGS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
                                                                             const class GGS__32_stringlist & in_C_5F_FILE_5F_LIST,
                                                                             const class GGS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
+                                                                            const class GGS__32_stringlist & in_SWIFT_5F_FILE_5F_LIST,
                                                                             const class GGS__32_stringlist & in_M_5F_FILE_5F_LIST,
                                                                             const class GGS__32_stringlist & in_MM_5F_FILE_5F_LIST,
                                                                             const class GGS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,

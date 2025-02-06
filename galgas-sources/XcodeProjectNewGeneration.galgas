@@ -71,6 +71,15 @@ setter @XcodeProjectDescriptor addFrameworkFile
 
 //------------------------------------------------------------------------------------------------
 
+setter @XcodeProjectDescriptor addSwiftFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  self.m_Swift_FileList += !outFileRef !inFileName
+}
+
+//------------------------------------------------------------------------------------------------
+
 setter @XcodeProjectDescriptor addMFile
   ?fileName:let @string inFileName
   !fileRef:@string outFileRef {
@@ -231,6 +240,7 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   ?!cppFileRefs:@stringlist ioCppFileBuildRefs
   ?!mFileRefs:@stringlist ioMFileBuildRefs
   ?!mmFileRefs:@stringlist ioMMFileBuildRefs
+  ?!swiftFileRefs:@stringlist ioSwiftFileBuildRefs
   ?!frameworkFileRefs:@stringlist ioFrameWorkFileBuildRefs
   ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs
   !groupRef:@string outGroupRef {
@@ -294,7 +304,10 @@ setter @XcodeProjectDescriptor addGroupWithFiles
       [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
       ioResourceFileBuildRefs += !buildRef
     elsif [f pathExtension] == "swift" then
-      // ignored file
+      [!?self addSwiftFile !fileName:f ?fileRef:let @string swiftFileRef]
+      [!?self addBuildFile !fileRef:swiftFileRef !fileName:f ?buildRef:let @string buildRef]
+      childrenRefs += !swiftFileRef
+      ioSwiftFileBuildRefs += !buildRef
     else
       error @location. nowhere : "unhandled extension for file '" + f + "'"
     end
@@ -392,6 +405,7 @@ struct @XcodeProjectDescriptor {
   public var @XCodeAppTargetList mAppTargetList = @()
   public var @2stringlist mCFileList = @()
   public var @2stringlist mCppFileList = @()
+  public var @2stringlist m_Swift_FileList = @()
   public var @2stringlist m_M_FileList = @()
   public var @2stringlist m_MM_FileList = @()
   public var @2stringlist mFrameworkFileList = @()
@@ -425,6 +439,7 @@ private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/
     ?@XCodeAppTargetList APP_TARGET_LIST
     ?@2stringlist C_FILE_LIST
     ?@2stringlist CPP_FILE_LIST
+    ?@2stringlist SWIFT_FILE_LIST
     ?@2stringlist M_FILE_LIST
     ?@2stringlist MM_FILE_LIST
     ?@2stringlist FRAMEWORK_FILE_LIST
@@ -455,6 +470,7 @@ method @XcodeProjectDescriptor generateAtPath
     !self.mAppTargetList
     !self.mCFileList
     !self.mCppFileList
+    !self.m_Swift_FileList
     !self.m_M_FileList
     !self.m_MM_FileList
     !self.mFrameworkFileList

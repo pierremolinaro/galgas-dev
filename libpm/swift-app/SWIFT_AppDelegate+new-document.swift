@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
-import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 // SWIFT_AppDelegate extension: new document
@@ -18,7 +17,7 @@ extension SWIFT_AppDelegate  {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @IBAction func newDocument (_ inUnusedSender : Any?) {
-    let extensions = SWIFT_DocumentController.supportedDocumentExtensions ()
+    let extensions = SWIFT_DocumentController.supportedDocumentExtensions
     let savePanel = NSSavePanel ()
     let newDocumentTypePopUpButton = AutoLayoutPopUpButton (size: .regular)
     for documentExtension in extensions {

@@ -1,7 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
-import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -28,6 +27,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       minWidth: 500,
       minHeight: 400
     )
+    .setUsesFindBar ()
     super.init ()
     self.mDocument = inDocument
     self.mSourceTextView.setTextViewDelegate (self) // BaseTextViewDelegate
@@ -167,7 +167,8 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   public func willDrawTextView (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
   //--- Draw page guide
     if gShowPageGuide.propval,
-       let textAttributes = self.mSourceTextView.textStorage?.fontAttributes (in: NSMakeRange(0, 0)) {
+       !self.mSourceTextView.string.isEmpty,
+       let textAttributes = self.mSourceTextView.textStorage?.fontAttributes (in: NSMakeRange (0, 0)) {
       let pageGuideColumn = gPageGuideColumn.propval
       let str = String (repeating: "0", count: pageGuideColumn)
       let s = str.size (withAttributes: textAttributes)

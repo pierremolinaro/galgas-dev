@@ -81,7 +81,7 @@ class SWIFT_DocumentController : NSDocumentController {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func supportedDocumentExtensions () -> [String] {
+  static var supportedDocumentExtensions : [String] {
     var result = [String] ()
     if let infoDictionary = Bundle.main.infoDictionary,
        let allDocumentTypes = infoDictionary ["CFBundleDocumentTypes"] as? [NSDictionary],

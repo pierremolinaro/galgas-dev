@@ -205,7 +205,8 @@ proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
-  ?!@stringlist ioCocoaProductFileList
+  ?!objc: @stringlist ioObjcAppProductFileList
+  ?!swift: @stringlist ioSwiftAppProductFileList
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioToolHeaderFileList
   ?!@stringset ioAllProductFileSet
@@ -215,7 +216,8 @@ proc generateSemanticDeclarationsGalgas3
     [declaration.mDeclaration appendSpecificFiles
       !inProductDirectory
       !?ioAllProductFileSet
-      !?ioCocoaProductFileList
+      !?objc: ioObjcAppProductFileList
+      !?swift: ioSwiftAppProductFileList
     ]
   end
 //---

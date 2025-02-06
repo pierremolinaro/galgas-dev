@@ -128,7 +128,8 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
 //--- Extension method appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GGS_string arg_inProductDirectory,
            class GGS_stringset & arg_ioAllProductFileSet,
-           class GGS_stringlist & arg_ioCocoaProductFileList,
+           class GGS_stringlist & arg_ioObjcAppProductFileList,
+           class GGS_stringlist & arg_ioSwiftAppProductFileList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension method appendSpecificImplementation

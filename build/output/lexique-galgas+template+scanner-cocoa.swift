@@ -156,6 +156,7 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* %initArgLabel */,
   false /* %libpmAtPath */,
   false /* %MacOS */,
+  false /* %MacSwiftApp */,
   false /* %MacOSDeployment */,
   false /* %macCodeSign */,
   false /* %makefile-macosx */,
@@ -357,7 +358,7 @@ class SWIFT_Lexique_galgasTemplateScanner : SWIFT_Lexique_galgasScanner3 {
 //--------------------------------------------------------------------------------------------------
 
 /*
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [196] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [197] = {
   NO /* identifier */,
   NO /* double.xxx */,
   NO /* literalInt */,
@@ -486,6 +487,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [196] = {
   NO /* %initArgLabel */,
   NO /* %libpmAtPath */,
   NO /* %MacOS */,
+  NO /* %MacSwiftApp */,
   NO /* %MacOSDeployment */,
   NO /* %macCodeSign */,
   NO /* %makefile-macosx */,

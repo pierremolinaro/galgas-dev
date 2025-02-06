@@ -129,17 +129,17 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUI
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateAllGuiComponentsGalgas3???&&'
+//Routine 'generateAllGuiComponentsGalgas3???&objc&swift'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26__26_ (const class GGS_optionComponentMapForGeneration constinArgument0,
-                                                                     const class GGS_string constinArgument1,
-                                                                     const class GGS_bool constinArgument2,
-                                                                     class GGS_stringlist & ioArgument3,
-                                                                     class GGS_stringset & ioArgument4,
-                                                                     class Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26_objc_26_swift (const class GGS_optionComponentMapForGeneration constinArgument0,
+                                                                              const class GGS_string constinArgument1,
+                                                                              const class GGS_bool constinArgument2,
+                                                                              class GGS_stringlist & ioArgument3,
+                                                                              class GGS_stringlist & ioArgument4,
+                                                                              class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

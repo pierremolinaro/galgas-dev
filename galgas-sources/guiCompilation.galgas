@@ -409,8 +409,7 @@ map @optionComponentMapForGeneration {
 proc compileAllGuiComponentFromASTGalgas3
   ?let @galgasGUIComponentListAST inGuiComponentListAST
   ?let @semanticContext inSemanticContext
-  !@optionComponentMapForGeneration outOptionComponentMapForGeneration
-{
+  !@optionComponentMapForGeneration outOptionComponentMapForGeneration {
   outOptionComponentMapForGeneration = @()
   for guiAST in inGuiComponentListAST do
     guiComponentSemanticAnalysis (
@@ -552,12 +551,13 @@ private proc guiComponentSemanticAnalysis ?let @galgasGUIComponentListAST.@eleme
 proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
                                       ?let @string inOutputDirectory
                                       ?let @bool inQuietOutputByDefault
-                                      ?!@stringlist ioApplicationSourceSet
-                                      ?!@stringset ioAllProductFileSet {
+//                                      ?!@stringlist ioApplicationSourceList
+                                      ?!objc: @stringlist ioObjcAllProductFileList
+                                      ?!swift: @stringlist ioSwiftAllProductFileList {
   for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
     let swiftFileName = "gui-" + lkey + ".swift"
-    ioApplicationSourceSet += !swiftFileName
-    ioAllProductFileSet += !swiftFileName
+//    ioApplicationSourceList += !swiftFileName
+    ioSwiftAllProductFileList += !swiftFileName
     let @string swift_string = [filewrapper guiGenerationTemplates.swift_gui_implementation
       !guiComponentContext
       !inQuietOutputByDefault
@@ -574,8 +574,8 @@ proc generateAllGuiComponentsGalgas3 ?let @optionComponentMapForGeneration inOpt
       !makeExecutable:false
     ]
     let objcFileName = "gui-" + lkey + ".m"
-    ioApplicationSourceSet += !objcFileName
-    ioAllProductFileSet += !objcFileName
+//    ioApplicationSourceList += !objcFileName
+    ioObjcAllProductFileList += !objcFileName
     let @string objc_string = [filewrapper guiGenerationTemplates.objc_gui_implementation
       !guiComponentContext
       !inQuietOutputByDefault

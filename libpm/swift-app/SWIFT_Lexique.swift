@@ -7,7 +7,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import Foundation
-import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -202,6 +201,8 @@ struct ScanningPointStructForCocoa {
 }
 
 //--------------------------------------------------------------------------------------------------
+//MARK: Lexical functions
+//--------------------------------------------------------------------------------------------------
 
 func isUnicodeLetter (_ inUnicodeCharacter : UInt32) -> Bool {
   return ((0x61 <= inUnicodeCharacter) && (inUnicodeCharacter <= 0x7A)) ||
@@ -230,6 +231,46 @@ func scanner_cocoa_routine_enterCharacterIntoString (_ ioScanningOk : inout Bool
                                                      _ ioStr : inout String,
                                                      _ inUnicodeCharacter : UInt32) {
   ioStr += String (Unicode.Scalar (inUnicodeCharacter)!)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func scanner_cocoa_routine_enterDecimalDigitIntoBigInt (_ ioScanningOk : inout Bool,
+                                                        _ inUnicodeChar : UInt32,
+                                                        _ ioBigIntegerString : inout String) {
+  if inUnicodeChar >= UInt32 (ASCII.zero.rawValue), inUnicodeChar <= UInt32 (ASCII.nine.rawValue) {
+    ioBigIntegerString += String (Unicode.Scalar (inUnicodeChar)!)
+  }else{
+    ioScanningOk = false
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func scanner_cocoa_routine_enterHexDigitIntoBigInt (_ ioScanningOk : inout Bool,
+                                                    _ inUnicodeChar : UInt32,
+                                                    _ ioBigIntegerString : inout String) {
+  if inUnicodeChar >= UInt32 (ASCII.zero.rawValue), inUnicodeChar <= UInt32 (ASCII.nine.rawValue) {
+    ioBigIntegerString += String (Unicode.Scalar (inUnicodeChar)!)
+  }else if inUnicodeChar >= UInt32 (ASCII.A.rawValue), inUnicodeChar <= UInt32 (ASCII.F.rawValue) {
+    ioBigIntegerString += String (Unicode.Scalar (inUnicodeChar)!)
+  }else if inUnicodeChar >= UInt32 (ASCII.a.rawValue), inUnicodeChar <= UInt32 (ASCII.f.rawValue) {
+    ioBigIntegerString += String (Unicode.Scalar (inUnicodeChar)!)
+  }else{
+    ioScanningOk = false
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func scanner_cocoa_routine_enterBinaryDigitIntoBigInt (_ ioScanningOk : inout Bool,
+                                                       _ inUnicodeChar : UInt32,
+                                                       _ ioBigIntegerString : inout String) {
+  if inUnicodeChar >= UInt32 (ASCII.zero.rawValue), inUnicodeChar <= UInt32 (ASCII.one.rawValue) {
+    ioBigIntegerString += String (Unicode.Scalar (inUnicodeChar)!)
+  }else{
+    ioScanningOk = false
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,6 +1,5 @@
 
 import AppKit
-import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 //   LEXIQUE %!LEXIQUE_CLASS_NAME%

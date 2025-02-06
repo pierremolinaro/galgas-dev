@@ -412,7 +412,7 @@ private proc projectGeneration
   ?let @stringlist inHandCodedLinkAppFileList
   ?let @stringlist inHandCodedLinkToolFileList
 {
-  var appProductFileList = inAppProductFileList
+  let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
   if @application.verboseOutput then
     println (!"*** Generating files")
@@ -425,16 +425,16 @@ private proc projectGeneration
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
-//  let cacheDirectory = inBuildDirectory + "/md5-cache"
-//  [cacheDirectory makeDirectory]
-//  message "*** Generate GUI\n" ;
+  var @stringlist objcAppProductFileList = @()
+  var @stringlist swiftAppProductFileList = @()
   if @uint.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
       !inOptionComponentMapForGeneration
       !productDirectory
       !quietOutputByDefault
-      !?appProductFileList
-      !?allProductFileSet
+//      !?appProductFileList
+      !?objc: objcAppProductFileList
+      !?swift: swiftAppProductFileList
     )
   end
 //--------------------------------- Generate semantic files
@@ -452,7 +452,8 @@ private proc projectGeneration
     !inTypeMap
     !productDirectory
     !inSemanticDeclarationSortedListForGeneration
-    !?appProductFileList
+    !?objc: objcAppProductFileList
+    !?swift: swiftAppProductFileList
     !?toolCppFileList
     !?toolHeaderFileList
     !?allProductFileSet
@@ -491,7 +492,9 @@ private proc projectGeneration
       !quietOutputByDefault
       !toolCppFileList
       !toolHeaderFileList
-      !appProductFileList
+      !appProductFileList: appProductFileList
+      !objcAppProductFileList: objcAppProductFileList
+      !swiftAppProductFileList: swiftAppProductFileList
       !inHandCodedSourceToolFileList
       !inFrameworkToolFileList
       !inHandCodedSourceDirectorySet
@@ -504,7 +507,7 @@ private proc projectGeneration
   end
 //--------------------------------- Remove useless files
   if 0 == @uint.errorCount then
-    var @stringset allActualFileSet = @()
+    var @stringset allActualFileSet = @() // .setWithStringList {!objcAppProductFileList + swiftAppProductFileList}
     for (mValue) in [productDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end

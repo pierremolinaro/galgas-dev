@@ -289,6 +289,7 @@ list attributeKeyWordList style attributeStyle error message "the '%K' keyword" 
   "makefile-x86linux64-on-macosx" -> $%makefile-x86linux64-on-macosx$,
   "makefile-win32-on-macosx" -> $%makefile-win32-on-macosx$,
   "MacOS" -> $%MacOS$,
+  "MacSwiftApp" -> $%MacSwiftApp$,
   "MacOSDeployment" -> $%MacOSDeployment$,
   "nonAtomicSelection" -> $%nonAtomicSelection$,
   "once" -> $%once$,

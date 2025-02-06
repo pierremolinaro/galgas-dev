@@ -12676,84 +12676,88 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 23 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx) // $%makefile-macosx$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_MacSwiftApp) // $%MacSwiftApp$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 26 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix) // $%makefile-unix$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx) // $%makefile-macosx$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 29 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx) // $%makefile-x86linux32-on-macosx$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix) // $%makefile-unix$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 32 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx) // $%makefile-x86linux64-on-macosx$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx) // $%makefile-x86linux32-on-macosx$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 35 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx) // $%makefile-win32-on-macosx$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx) // $%makefile-x86linux64-on-macosx$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 38 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_windows) // $%codeblocks-windows$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx) // $%makefile-win32-on-macosx$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 41 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_) // $%codeblocks-linux32$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_windows) // $%codeblocks-windows$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 44 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_) // $%codeblocks-linux64$
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_) // $%codeblocks-linux32$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
 // At index 47 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+, TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_) // $%codeblocks-linux64$
+, TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
+, TOP_DOWN_END_PRODUCTION ()
+// At index 50 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_applicationBundleBase) // $%applicationBundleBase$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 52 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 55 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_libpmAtPath) // $%libpmAtPath$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 57 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 60 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_tool_2D_source) // $%tool-source$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 62 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 65 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_MacOSDeployment) // $%MacOSDeployment$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 67 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 70 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_macCodeSign) // $%macCodeSign$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 72 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 75 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_app_2D_source) // $%app-source$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 77 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 80 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__25_app_2D_link) // $%app-link$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 82 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+// At index 85 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 , TOP_DOWN_TERMINAL (Lexique_galgasScanner_33_::kToken__22_string_22_) // $"string"$
 , TOP_DOWN_NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 85 : <>, in file '.ggs', line 0
+// At index 88 : <>, in file '.ggs', line 0
 , TOP_DOWN_NONTERMINAL (1) // <project_component_start_symbol>
 , TOP_DOWN_END_PRODUCTION ()
 } ;
@@ -12764,7 +12768,7 @@ static const int32_t gProductions_galgas3ProjectGrammar [] = {
 //
 //--------------------------------------------------------------------------------------------------
 
-static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22] = {
+static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [23] = {
  {"<project_header>", "galgas3ProjectSyntax", 0}, // at index 0
  {"<project_component_start_symbol>", "galgas3ProjectSyntax", 11}, // at index 1
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 16}, // at index 2
@@ -12779,14 +12783,15 @@ static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 41}, // at index 11
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 44}, // at index 12
  {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 47}, // at index 13
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 52}, // at index 14
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 57}, // at index 15
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 62}, // at index 16
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 67}, // at index 17
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 72}, // at index 18
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 77}, // at index 19
- {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 82}, // at index 20
- {"<>", "", 85} // at index 21
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 50}, // at index 14
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 55}, // at index 15
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 60}, // at index 16
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 65}, // at index 17
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 70}, // at index 18
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 75}, // at index 19
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 80}, // at index 20
+ {"<select_galgas_33_ProjectSyntax_0>", "galgas3ProjectSyntax", 85}, // at index 21
+ {"<>", "", 88} // at index 22
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12795,7 +12800,7 @@ static const ProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [22
 //
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t gProductionIndexes_galgas3ProjectGrammar [22] = {
+static const int32_t gProductionIndexes_galgas3ProjectGrammar [23] = {
 0, // index 0 : <project_header>, in file 'galgas3ProjectSyntax.ggs', line 59
 11, // index 1 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 77
 16, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
@@ -12810,14 +12815,15 @@ static const int32_t gProductionIndexes_galgas3ProjectGrammar [22] = {
 41, // index 11 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 44, // index 12 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
 47, // index 13 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-52, // index 14 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-57, // index 15 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-62, // index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-67, // index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-72, // index 18 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-77, // index 19 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-82, // index 20 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
-85 // index 21 : <>, in file '.ggs', line 0
+50, // index 14 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+55, // index 15 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+60, // index 16 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+65, // index 17 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+70, // index 18 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+75, // index 19 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+80, // index 20 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+85, // index 21 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 87
+88 // index 22 : <>, in file '.ggs', line 0
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12830,7 +12836,7 @@ static const int32_t gFirstProductionIndexes_galgas3ProjectGrammar [5] = {
 0, // at 0 : <project_header>
 1, // at 1 : <project_component_start_symbol>
 2, // at 2 : <select_galgas_33_ProjectSyntax_0>
-21, // at 3 : <>
+22, // at 3 : <>
 0} ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12849,24 +12855,25 @@ static const int32_t gDecision_galgas3ProjectGrammar [] = {
 Lexique_galgasScanner_33_::kToken__7D_, -1, // Choice 1
 Lexique_galgasScanner_33_::kToken__25_quietOutputByDefault, -1, // Choice 2
 Lexique_galgasScanner_33_::kToken__25_MacOS, -1, // Choice 3
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx, -1, // Choice 4
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix, -1, // Choice 5
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, -1, // Choice 6
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, -1, // Choice 7
-Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx, -1, // Choice 8
-Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_windows, -1, // Choice 9
-Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_, -1, // Choice 10
-Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_, -1, // Choice 11
-Lexique_galgasScanner_33_::kToken__25_applicationBundleBase, -1, // Choice 12
-Lexique_galgasScanner_33_::kToken__25_libpmAtPath, -1, // Choice 13
-Lexique_galgasScanner_33_::kToken__25_tool_2D_source, -1, // Choice 14
-Lexique_galgasScanner_33_::kToken__25_MacOSDeployment, -1, // Choice 15
-Lexique_galgasScanner_33_::kToken__25_macCodeSign, -1, // Choice 16
-Lexique_galgasScanner_33_::kToken__25_app_2D_source, -1, // Choice 17
-Lexique_galgasScanner_33_::kToken__25_app_2D_link, -1, // Choice 18
-Lexique_galgasScanner_33_::kToken__22_string_22_, -1, // Choice 19
+Lexique_galgasScanner_33_::kToken__25_MacSwiftApp, -1, // Choice 4
+Lexique_galgasScanner_33_::kToken__25_makefile_2D_macosx, -1, // Choice 5
+Lexique_galgasScanner_33_::kToken__25_makefile_2D_unix, -1, // Choice 6
+Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, -1, // Choice 7
+Lexique_galgasScanner_33_::kToken__25_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, -1, // Choice 8
+Lexique_galgasScanner_33_::kToken__25_makefile_2D_win_33__32__2D_on_2D_macosx, -1, // Choice 9
+Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_windows, -1, // Choice 10
+Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_33__32_, -1, // Choice 11
+Lexique_galgasScanner_33_::kToken__25_codeblocks_2D_linux_36__34_, -1, // Choice 12
+Lexique_galgasScanner_33_::kToken__25_applicationBundleBase, -1, // Choice 13
+Lexique_galgasScanner_33_::kToken__25_libpmAtPath, -1, // Choice 14
+Lexique_galgasScanner_33_::kToken__25_tool_2D_source, -1, // Choice 15
+Lexique_galgasScanner_33_::kToken__25_MacOSDeployment, -1, // Choice 16
+Lexique_galgasScanner_33_::kToken__25_macCodeSign, -1, // Choice 17
+Lexique_galgasScanner_33_::kToken__25_app_2D_source, -1, // Choice 18
+Lexique_galgasScanner_33_::kToken__25_app_2D_link, -1, // Choice 19
+Lexique_galgasScanner_33_::kToken__22_string_22_, -1, // Choice 20
   -1,
-// At index 41 : <> only one production, no choice
+// At index 43 : <> only one production, no choice
   -1,
 0} ;
 
@@ -12880,7 +12887,7 @@ static const int32_t gDecisionIndexes_galgas3ProjectGrammar [5] = {
 0, // at 0 : <project_header>
 1, // at 1 : <project_component_start_symbol>
 2, // at 2 : <select_galgas_33_ProjectSyntax_0>
-41, // at 3 : <>
+43, // at 3 : <>
 0} ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12931,7 +12938,7 @@ void cGrammar_galgas_33_ProjectGrammar::performIndexing (Compiler * inCompiler,
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
+                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 88) ;
     if (ok) {
       cGrammar_galgas_33_ProjectGrammar grammar ;
       grammar.nt_project_5F_component_5F_start_5F_symbol_indexing (scanner) ;
@@ -12957,7 +12964,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (Compiler * in
   macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
+                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 88) ;
   }
   macroDetachSharedObject (scanner) ;
 }
@@ -12983,7 +12990,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (Compiler * i
     macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, filePath COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                      gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
+                                                      gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 88) ;
       if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
         cGrammar_galgas_33_ProjectGrammar grammar ;
         grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;
@@ -13021,7 +13028,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceStringParsing_ (Compiler *
     Lexique_galgasScanner_33_ * scanner = nullptr ;
     macroMyNew (scanner, Lexique_galgasScanner_33_ (inCompiler, sourceString, nameString COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
-                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 85) ;
+                                                    gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 88) ;
     if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
       cGrammar_galgas_33_ProjectGrammar grammar ;
       grammar.nt_project_5F_component_5F_start_5F_symbol_ (parameter_1, scanner) ;

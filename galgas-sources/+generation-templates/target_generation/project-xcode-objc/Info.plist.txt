@@ -43,7 +43,7 @@
         <string>$(PRODUCT_BUNDLE_IDENTIFIER).%!key%</string>
       </array>
       <key>NSDocumentClass</key>
-      <string>OC_GGS_Document</string>
+      <string>%!DOCUMENT_CLASS%</string>
   </dict>
 %end%
  </array>

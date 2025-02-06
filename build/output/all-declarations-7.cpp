@@ -11764,7 +11764,8 @@ void callExtensionMethod_appendSpecificImplementation (cPtr_semanticDeclarationF
 
 void cPtr_semanticDeclarationForGeneration::method_appendSpecificFiles (const GGS_string /* constinArgument_inProductDirectory */,
                                                                         GGS_stringset & /* ioArgument_ioAllProductFileSet */,
-                                                                        GGS_stringlist & /* ioArgument_ioCocoaProductFileList */,
+                                                                        GGS_stringlist & /* ioArgument_ioObjcAppProductFileList */,
+                                                                        GGS_stringlist & /* ioArgument_ioSwiftAppProductFileList */,
                                                                         Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
@@ -11774,12 +11775,13 @@ void cPtr_semanticDeclarationForGeneration::method_appendSpecificFiles (const GG
 void callExtensionMethod_appendSpecificFiles (cPtr_semanticDeclarationForGeneration * inObject,
                                               const GGS_string constin_inProductDirectory,
                                               GGS_stringset & io_ioAllProductFileSet,
-                                              GGS_stringlist & io_ioCocoaProductFileList,
+                                              GGS_stringlist & io_ioObjcAppProductFileList,
+                                              GGS_stringlist & io_ioSwiftAppProductFileList,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendSpecificFiles  (constin_inProductDirectory, io_ioAllProductFileSet, io_ioCocoaProductFileList, inCompiler COMMA_THERE) ;
+    inObject->method_appendSpecificFiles  (constin_inProductDirectory, io_ioAllProductFileSet, io_ioObjcAppProductFileList, io_ioSwiftAppProductFileList, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------

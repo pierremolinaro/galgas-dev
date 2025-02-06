@@ -37,6 +37,16 @@ for (mValue0 mValue1) in CPP_FILE_LIST do
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
+for (mValue0 mValue1) in SWIFT_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXFileReference;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = sourcecode.swift;\n%
+%    name = %![[mValue1 lastPathComponent] utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![mValue1 utf8RepresentationEscapingQuestionMark]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
 for (mValue0 mValue1) in M_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
 %    isa = PBXFileReference;\n%
@@ -357,6 +367,7 @@ end
 %      INFOPLIST_FILE = "Info.plist";\n%
 %      PRODUCT_NAME = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %      PRODUCT_BUNDLE_IDENTIFIER = "%!APPLICATION_BUNDLE_BASE%.%!PROJECT_NAME%";\n%
+%      SWIFT_ACTIVE_COMPILATION_CONDITIONS = "CONFIGURATION_IS_DEBUG $(inherited)";\n%
 %    };\n%
 %    name = Default;\n%
 %  };\n\n%

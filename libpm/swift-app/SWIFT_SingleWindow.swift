@@ -4,7 +4,6 @@
 //--------------------------------------------------------------------------------------------------
 
 import AppKit
-import MyAutoLayoutKit
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13,7 +12,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private var mTabArray = [SWIFT_DisplayDescriptor] ()
-  private var mSelectedTabIndex = 0
+  private var mSelectedTabIndex = -1
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   https://www.hackingwithswift.com/example-code/system/how-to-run-an-external-program-using-process
@@ -209,8 +208,20 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       headerAlignment: .center,
       contentAlignment: .right
     )
-//    self.mTabListView.set (
-//      draggedTypes: [NSPasteboard.PasteboardType.URL, .myEntry],
+    self.mTabListView.set (
+      draggedTypes: [.URL, .myPasteboardEntry],
+      dragFilterCallBack: { (inURLs) -> Bool in
+        for url in inURLs {
+          if !SWIFT_DocumentController.supportedDocumentExtensions.contains (url.pathExtension) {
+            return false
+          }
+        }
+        return true
+      },
+      dragConcludeCallBack: { [weak self] (inURLs) in
+        self?.openFilesInNewTabs (inURLs, atIndex: self?.mTabArray.count ?? 0)
+      }
+    )
 //      dragSourceCallBack : { [weak self] (_ inRow : Int) -> NSPasteboardWriting? in
 //        if let uwSelf = self, let fileURL = uwSelf.mTabArray [inRow].fileURL {
 //          let pw = FileEntryPasteboard (path: fileURL.path, index: inRow)
@@ -284,10 +295,6 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 //        }
 //      }
 //    )
-  //--- Simple observer for setting build text font
-//    self.mBuildTextFontObserver = EBSimpleObserver (object: gBuildWindowFont) {
-//      [weak self] in _ = self?.mBuildOutputTextObserviewView.set (font: gBuildWindowFont.propval)
-//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -323,7 +330,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func selectTab (atIndex inIndex : Int) {
-    if (inIndex >= 0) && (inIndex < self.mTabArray.count) {
+    if inIndex >= 0, inIndex < self.mTabArray.count, self.mSelectedTabIndex != inIndex {
       self.mSelectedTabIndex = inIndex
     //--- Remove all subviews of base view
       while self.mSourceEditionView.subViews.count > 0 {
@@ -429,7 +436,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func openFilesInNewTabs (_ inURLs : [URL], at inIndex : Int) {
+  private func openFilesInNewTabs (_ inURLs : [URL], atIndex inIndex : Int) {
     var idx = inIndex
     for url in inURLs {
       let dc = NSDocumentController.shared
@@ -551,7 +558,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   @IBAction func openDocumentInNewTab (_ inUnusedSender : Any?) {
     NSDocumentController.shared.beginOpenPanel { (inOptionalURLs : [URL]?) in
       if let urls = inOptionalURLs {
-        self.openFilesInNewTabs (urls, at: self.mTabArray.count)
+        self.openFilesInNewTabs (urls, atIndex: self.mTabArray.count)
       }
     }
   }
@@ -642,7 +649,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       noteObjectDeallocation (self)
     }
 
-    func childView (forColumn inColumn : NSTableColumn) -> NSView {
+    @MainActor func childView (forColumn inColumn : NSTableColumn) -> NSView {
       let text = NSTextField ()
       text.drawsBackground = false
       text.isBordered = false
@@ -724,7 +731,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       self.mSearchResults.removeAll (keepingCapacity: true)
       self.mSearchResultOutlineView.setContentArray (self.mSearchResults)
       RunLoop.main.run (until: Date ())
-      let extensionSet = SWIFT_DocumentController.supportedDocumentExtensions ()
+      let extensionSet = SWIFT_DocumentController.supportedDocumentExtensions
       let enumerator = FileManager ().enumerator (atPath: directory.path)
       while let file = enumerator?.nextObject () as? String {
         if extensionSet.contains (file.pathExtension) {
@@ -1145,8 +1152,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
 //--------------------------------------------------------------------------------------------------
 
-extension NSPasteboard.PasteboardType {
-  static let myEntry = NSPasteboard.PasteboardType ("name.pcmolinaro.myEntry")
+fileprivate extension NSPasteboard.PasteboardType {
+  static let myPasteboardEntry = NSPasteboard.PasteboardType ("name.pcmolinaro.myEntry")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1172,7 +1179,7 @@ fileprivate final class FileEntryPasteboard : NSObject, NSPasteboardWriting, NSP
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func writableTypes (for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
-    return [.myEntry]
+    return [.myPasteboardEntry]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1203,8 +1210,8 @@ fileprivate final class FileEntryPasteboard : NSObject, NSPasteboardWriting, NSP
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  static func readableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
-    return [.myEntry]
+  static func readableTypes (for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
+    return [.myPasteboardEntry]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

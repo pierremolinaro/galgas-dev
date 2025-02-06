@@ -92,6 +92,9 @@ syntax galgas3ProjectSyntax (galgasScanner3) {
       $%MacOS$
       generateFeatureList += !["MacOS" here]
     while
+      $%MacSwiftApp$
+      generateFeatureList += !["MacSwiftApp" here]
+    while
       $%makefile-macosx$
       generateFeatureList += !["makefile-macosx" here]
     while

@@ -6378,7 +6378,8 @@ class cPtr_semanticDeclarationForGeneration : public acStrongPtr_class {
 //--- Extension method appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GGS_string arg_inProductDirectory,
            class GGS_stringset & arg_ioAllProductFileSet,
-           class GGS_stringlist & arg_ioCocoaProductFileList,
+           class GGS_stringlist & arg_ioObjcAppProductFileList,
+           class GGS_stringlist & arg_ioSwiftAppProductFileList,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension method appendSpecificImplementation
@@ -8790,7 +8791,8 @@ void callExtensionMethod_appendSpecificImplementation (class cPtr_semanticDeclar
 void callExtensionMethod_appendSpecificFiles (class cPtr_semanticDeclarationForGeneration * inObject,
                                               const class GGS_string constin_inProductDirectory,
                                               class GGS_stringset & io_ioAllProductFileSet,
-                                              class GGS_stringlist & io_ioCocoaProductFileList,
+                                              class GGS_stringlist & io_ioObjcAppProductFileList,
+                                              class GGS_stringlist & io_ioSwiftAppProductFileList,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 

@@ -1102,7 +1102,8 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
   ?!@stringset ioAllProductFileSet
-  ?!@stringlist ioCocoaProductFileList {
+  ?!objc: @stringlist ioObjcAppProductFileList
+  ?!swift: @stringlist ioSwiftAppProductFileList {
 //--- Generate cocoa header file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
   [@string generateFileWithPattern
@@ -1118,7 +1119,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 //--- Generate Objc Cocoa implementation file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
-  ioCocoaProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
+  ioObjcAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
     !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
@@ -1132,6 +1133,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 //--- Generate Swift Cocoa implementation file
   ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
+  ioSwiftAppProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
     !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.swift"
