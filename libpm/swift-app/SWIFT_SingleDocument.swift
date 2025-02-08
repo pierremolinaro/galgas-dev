@@ -31,7 +31,7 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func close () {
+  override func close () { // Is always called before deinit
     self.releaseTimer ()
     super.close ()
   }
@@ -39,7 +39,7 @@ import AppKit
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   deinit { // Not always in main thead
-//    self.mTimerForAutosaving?.invalidate ()
+  //    mTimerForAutosaving has been released by close()
     DispatchQueue.main.async {
       SWIFT_SingleWindow.documentEditionStateDidChange ()
     }

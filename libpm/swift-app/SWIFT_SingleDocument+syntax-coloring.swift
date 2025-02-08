@@ -25,7 +25,6 @@ extension SWIFT_SingleDocument {
 
   func computeLexicalColoring (_ inEditedRange : NSRange, _ inChangeInLength : Int) {
     if let tokenizer = self.mTokenizer {
-//      self.mTextStorage.font = tokenizer.font.propval
       let lineRange = (self.mTextStorage.string as NSString).lineRange (for: inEditedRange)
       DEBUG_PRINT ("inEditedRange \(inEditedRange), inChangeInLength \(inChangeInLength) -> lineRange \(lineRange)")
     //---------------------------------------- Remove edited token from range array

@@ -167,12 +167,13 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   public func willDrawTextView (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
   //--- Draw page guide
     if gShowPageGuide.propval,
-       !self.mSourceTextView.string.isEmpty,
-       let textAttributes = self.mSourceTextView.textStorage?.fontAttributes (in: NSMakeRange (0, 0)) {
+//       let spaceWidth = (inCocoaTextWiew.layoutManager as? NSLayoutManager)?.spaceWidth,
+       let textAttributes = self.mDocument?.mTokenizer?.attributes (fromStyleIndex: 0),
+       let textFont = textAttributes [.font] as? NSFont {
       let pageGuideColumn = gPageGuideColumn.propval
-      let str = String (repeating: "0", count: pageGuideColumn)
-      let s = str.size (withAttributes: textAttributes)
-      let column = rint (s.width) + 0.5
+      let spaceWidth = textFont.maximumAdvancement.width
+      let linePadding = inCocoaTextWiew.textContainer?.lineFragmentPadding ?? 0.0
+      let column = ceil (spaceWidth * Double (pageGuideColumn) + linePadding + inCocoaTextWiew.textContainerInset.width)
       let pageRect = NSRect (x: 0.0, y: 0.0, width: column, height: NSMaxY (inCocoaTextWiew.frame))
       let pageRectToDraw = inDirtyRect.intersection (pageRect)
       if !pageRectToDraw.isEmpty {
