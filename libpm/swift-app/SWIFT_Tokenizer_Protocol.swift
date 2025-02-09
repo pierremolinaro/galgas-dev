@@ -45,6 +45,8 @@ import AppKit
   func attributes (fromStyleIndex inStyleIndex : UInt8) -> [NSAttributedString.Key : Any]
 
   func blockComment () -> String
+
+  func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool
 }
 
 //--------------------------------------------------------------------------------------------------

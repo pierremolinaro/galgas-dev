@@ -219,6 +219,37 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func selectionRange (forProposedRange inProposedSelRange : NSRange,
+                       granularity inGranularity : NSSelectionGranularity,
+                       _ inCocoaWiew : InternalCocoaTextView) -> NSRange {
+    var result = inProposedSelRange
+    if inGranularity == .selectByWord, inProposedSelRange.length != 0 {
+      let tokenArray = self.mDocument?.mTokenRangeArray ?? []
+      var found = false
+      var idx = 0
+      while idx < tokenArray.count, !found {
+        let token = tokenArray [idx]
+        idx += 1
+        let range = token.range
+        found = ((range.location + range.length) > inProposedSelRange.location) && (range.location <= inProposedSelRange.location)
+        if (found) {
+          if let atomic = self.mDocument?.mTokenizer?.atomicSelectionFor (token: token.tokenCode), atomic {
+            result = range
+          }else{
+            let modifierFlags = NSApp.currentEvent?.modifierFlags ?? NSEvent.ModifierFlags ()
+            let altAndCmdOn = modifierFlags.contains (.command) && modifierFlags.contains (.option)
+            if altAndCmdOn {
+              result = range
+            }
+          }
+        }
+      }
+    }
+    return result
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   func didDrawVerticalScroller (_ inDirtyRect : NSRect,
                                 _ inCocoaScroller : InternalVerticalScroller) {
     let cocoaTextView = self.sourceTextView.mCocoaTextView
