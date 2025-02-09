@@ -2898,10 +2898,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
     cEnumerator_stringset enumerator_986 (in_HANDLED_5F_EXTENSION_5F_SET, EnumerationOrder::up) ;
     while (enumerator_986.hasCurrentObject ()) {
-      result.appendString ("  <dict>\n      <key>CFBundleTypeIconFile</key>\n      <string>") ;
+      result.appendString ("  <dict>\n      <key>CFBundleTypeIconSystemGenerated</key>\n      <integer>0</integer>\n      <key>CFBundleTypeName</key>\n      <string>") ;
       result.appendString (enumerator_986.current_key (HERE).stringValue ()) ;
-      result.appendString ("_icns</string>\n      <key>CFBundleTypeIconSystemGenerated</key>\n      <integer>0</integer>\n      <key>CFBundleTypeName</key>\n      <string>") ;
-      result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
       result.appendString (" Source</string>\n      <key>CFBundleTypeRole</key>\n      <string>Editor</string>\n      <key>LSHandlerRank</key>\n      <string>Default</string>\n      <key>LSItemContentTypes</key>\n      <array>\n        <string>$(PRODUCT_BUNDLE_IDENTIFIER).") ;
       result.appendString (enumerator_986.current_key (HERE).stringValue ()) ;
       result.appendString ("</string>\n      </array>\n      <key>NSDocumentClass</key>\n      <string>") ;
@@ -2912,19 +2910,21 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
     }
   }
   result.appendString ("\n </array>\n <key>UTExportedTypeDeclarations</key>\n <array>\n") ;
-  GGS_uint index_1664_ (0) ;
+  GGS_uint index_1582_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_1664 (in_HANDLED_5F_EXTENSION_5F_SET, EnumerationOrder::up) ;
-    while (enumerator_1664.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_1582 (in_HANDLED_5F_EXTENSION_5F_SET, EnumerationOrder::up) ;
+    while (enumerator_1582.hasCurrentObject ()) {
       result.appendString ("  <dict>\n    <key>UTTypeConformsTo</key>\n    <array>\n      <string>public.text</string>\n    </array>\n    <key>UTTypeDescription</key>\n    <string>") ;
-      result.appendString (enumerator_1664.current_key (HERE).stringValue ()) ;
-      result.appendString ("</string>\n    <key>UTTypeIcons</key>\n    <dict>\n      <key>UTTypeIconBadgeName</key>\n      <string>galgasDocuments</string>\n    </dict>\n    <key>UTTypeIdentifier</key>\n    <string>$(PRODUCT_BUNDLE_IDENTIFIER).") ;
-      result.appendString (enumerator_1664.current_key (HERE).stringValue ()) ;
+      result.appendString (enumerator_1582.current_key (HERE).stringValue ()) ;
+      result.appendString ("</string>\n    <key>UTTypeIcons</key>\n    <dict>\n      <key>UTTypeIconBadgeName</key>\n      <string>") ;
+      result.appendString (enumerator_1582.current_key (HERE).stringValue ()) ;
+      result.appendString ("_icns</string>\n    </dict>\n    <key>UTTypeIdentifier</key>\n    <string>$(PRODUCT_BUNDLE_IDENTIFIER).") ;
+      result.appendString (enumerator_1582.current_key (HERE).stringValue ()) ;
       result.appendString ("</string>\n    <key>UTTypeTagSpecification</key>\n    <dict>\n      <key>public.filename-extension</key>\n      <array>\n        <string>") ;
-      result.appendString (enumerator_1664.current_key (HERE).stringValue ()) ;
+      result.appendString (enumerator_1582.current_key (HERE).stringValue ()) ;
       result.appendString ("</string>\n      </array>\n    </dict>\n  </dict>\n") ;
-      index_1664_.increment () ;
-      enumerator_1664.gotoNextObject () ;
+      index_1582_.increment () ;
+      enumerator_1582.gotoNextObject () ;
     }
   }
   result.appendString ("\n </array>\n</dict>\n</plist>\n") ;

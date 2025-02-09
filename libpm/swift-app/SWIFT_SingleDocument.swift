@@ -293,6 +293,17 @@ import AppKit
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func canClose (withDelegate delegate : Any,
+                          shouldClose shouldCloseSelector : Selector?,
+                          contextInfo : UnsafeMutableRawPointer?) {
+    if self.isDocumentEdited {
+      self.save (nil)
+    }
+    super.canClose (withDelegate: delegate, shouldClose: shouldCloseSelector, contextInfo: contextInfo)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //MARK: Comment / uncomment
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

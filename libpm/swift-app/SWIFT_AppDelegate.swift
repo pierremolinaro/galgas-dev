@@ -12,6 +12,8 @@ import Cocoa
 
 @MainActor let gPageGuideColumn = EBPreferenceProperty <Int> (defaultValue: 100, prefKey: "page-guide-column")
 
+@MainActor let gSpacesForHTab = EBPreferenceProperty <Int> (defaultValue: 2, prefKey: "spaces-for-htab")
+
 //--------------------------------------------------------------------------------------------------
 
 @MainActor func commandLineForBuildProcess () -> (String, [String]) {

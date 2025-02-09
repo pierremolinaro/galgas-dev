@@ -396,21 +396,21 @@ private proc compileProject ?let @lstring inProjectSourceFile
 //------------------------------------------------------------------------------------------------
 
 private proc projectGeneration
-  ?let @unifiedTypeMap inTypeMap
-  ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
-  ?buildDirName: let @string inBuildDirectoryName
-  ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
-  ?let @stringlist inAppProductFileList
-  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
-  ?let @programRuleList inSourceRuleList
-  ?let @galgas3ProjectComponentAST inProjectComponentAST
-  ?let @string inProjectSourceFile
-  ?let @stringset inHandCodedSourceDirectorySet
-  ?let @stringlist inHandCodedSourceToolFileList
-  ?let @stringlist inFrameworkToolFileList
-  ?let @stringlist inHandCodedSourceAppFileList
-  ?let @stringlist inHandCodedLinkAppFileList
-  ?let @stringlist inHandCodedLinkToolFileList
+              ?let @unifiedTypeMap inTypeMap
+              ?absoluteBuildDir: let @string inAbsoluteBuildDirectory
+              ?buildDirName: let @string inBuildDirectoryName
+              ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
+              ?let @stringlist inAppProductFileList
+              ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
+              ?let @programRuleList inSourceRuleList
+              ?let @galgas3ProjectComponentAST inProjectComponentAST
+              ?let @string inProjectSourceFile
+              ?let @stringset inHandCodedSourceDirectorySet
+              ?let @stringlist inHandCodedSourceToolFileList
+              ?let @stringlist inFrameworkToolFileList
+              ?let @stringlist inHandCodedSourceAppFileList
+              ?let @stringlist inHandCodedLinkAppFileList
+              ?let @stringlist inHandCodedLinkToolFileList
 {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation

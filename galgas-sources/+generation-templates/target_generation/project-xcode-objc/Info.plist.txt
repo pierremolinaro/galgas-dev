@@ -28,12 +28,10 @@
  <array>
 %for (key) in HANDLED_EXTENSION_SET do
 %  <dict>
-      <key>CFBundleTypeIconFile</key>
-      <string>%!key%_icns</string>
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>
-      <string>%!PROJECT_NAME% Source</string>
+      <string>%!key% Source</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>
@@ -60,7 +58,7 @@
     <key>UTTypeIcons</key>
     <dict>
       <key>UTTypeIconBadgeName</key>
-      <string>galgasDocuments</string>
+      <string>%!key%_icns</string>
     </dict>
     <key>UTTypeIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER).%!key%</string>
