@@ -28,6 +28,8 @@
  <array>
 %for (key) in HANDLED_EXTENSION_SET do
 %  <dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>%!key%_icns</string>
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>

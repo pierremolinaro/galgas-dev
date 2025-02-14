@@ -5,7 +5,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-func enterOptions () -> [SWIFT_CommandLineOption] {
+func enterOptionsFor_galgas_5F_cli_5F_options () -> [SWIFT_CommandLineOption] {
   var array = [SWIFT_CommandLineOption] ()
   array.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",

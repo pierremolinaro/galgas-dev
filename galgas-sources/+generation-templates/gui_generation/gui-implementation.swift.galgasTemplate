@@ -49,46 +49,51 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%
+func enterOptions () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()\n%
 for (mValue) in GUI_CONTEXT.mImportedOptionComponentList do
-  %// #import "option-%![mValue fileNameRepresentation]%-cocoa.h"\n%
-end
-%
-//--------------------------------------------------------------------------------------------------
-
-/*
-void enterOptions (NSMutableArray * ioBoolOptionArray,
-                   NSMutableArray * ioUIntOptionArray,
-                   NSMutableArray * ioStringOptionArray,
-                   NSMutableArray * ioStringListOptionArray) {
-%
-for (mValue) in GUI_CONTEXT.mImportedOptionComponentList do
-  %  enterOptionsFor_%![mValue identifierRepresentation]% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;\n%
+  %  array += enterOptionsFor_%![mValue identifierRepresentation]% ()\n%
 end
 
 if QUIET_OUTPUT_BY_DEFAULT then
-%  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
+%  array.append (SWIFT_CommandLineOption (\n%
+%    domainName: "galgas_cli_options",\n%
+%    type: .bool,\n%
+%    identifier: "verbose_output",\n%
+%    commandChar: "v",\n%
+%    commandString: "verbose",\n%
+%    comment: "Verbose output"\n%
+%  ))\n%
+%/*  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
 %    initWithDomainName:@"galgas_cli_options"\n%
 %    identifier:@"verbose_output"\n%
 %    commandChar:'v'\n%
 %    commandString:@"verbose"\n%
 %    comment:@"Verbose output"\n%
 %    defaultValue:@""\n%
-%  ] ;\n%
+%  ] ; */\n%
 else
-%  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
+%  array.append (SWIFT_CommandLineOption (\n%
+%    domainName: "galgas_cli_options",\n%
+%    type: .bool,\n%
+%    identifier: "quiet_output",\n%
+%    commandChar: "q",\n%
+%    commandString: "quiet",\n%
+%    comment: "Quiet output"\n%
+%  ))\n%
+%/*  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
 %    initWithDomainName:@"galgas_cli_options"\n%
 %    identifier:@"quiet_output"\n%
 %    commandChar:'q'\n%
 %    commandString:@"quiet"\n%
 %    comment:@"Quiet output"\n%
 %    defaultValue:@""\n%
-%  ] ;\n%
+%  ] ; */\n%
 end
-%  [ioBoolOptionArray addObject:option] ;
+%  return array
 }
 
-*/
+
 
 %for (lexiqueClassName lexiqueIndex blockComment title textMacroList labels lexicalStyleList) in GUI_CONTEXT.mWithLexiqueList do
 %//--------------------------------------------------------------------------------------------------

@@ -75,13 +75,7 @@ end%
 %fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
 %
 for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
-  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
-      if [mEndString count] == 0 then
-        %nil%
-      else
-        ![mEndString utf8RepresentationEscapingQuestionMark]
-      end
-      %, discardStartString: %
+  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %![mEndString utf8RepresentationEscapingQuestionMark]%, discardStartString: %
       ![not mPreservesStartDelimiter cString]
       %)%
   between %,\n%

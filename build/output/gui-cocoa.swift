@@ -33,28 +33,29 @@ NSArray * nibsAndClasses (void) {
 //
 //--------------------------------------------------------------------------------------------------
 
-// #import "option-galgas-5Fcli-5Foptions-cocoa.h"
-
-//--------------------------------------------------------------------------------------------------
-
-/*
-void enterOptions (NSMutableArray * ioBoolOptionArray,
-                   NSMutableArray * ioUIntOptionArray,
-                   NSMutableArray * ioStringOptionArray,
-                   NSMutableArray * ioStringListOptionArray) {
-  enterOptionsFor_galgas_5F_cli_5F_options (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;
-  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]
+func enterOptions () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()
+  array += enterOptionsFor_galgas_5F_cli_5F_options ()
+  array.append (SWIFT_CommandLineOption (
+    domainName: "galgas_cli_options",
+    type: .bool,
+    identifier: "quiet_output",
+    commandChar: "q",
+    commandString: "quiet",
+    comment: "Quiet output"
+  ))
+/*  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
     identifier:@"quiet_output"
     commandChar:'q'
     commandString:@"quiet"
     comment:@"Quiet output"
     defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
+  ] ; */
+  return array
 }
 
-*/
+
 
 //--------------------------------------------------------------------------------------------------
 //                     P O P    U P    L I S T    D A T A
