@@ -377,7 +377,7 @@ void Compiler::semanticErrorWith_K_L_message (const GGS_lstring & inKey,
       }else if (UNICODE_VALUE (c) == 'L') {
         if (!inExistingKeyLocation.isValid ()) {
           message.appendCString ("<<unknown>>") ;
-        }else if (inExistingKeyLocation.getter_isNowhere (HERE).boolEnum () == kBoolTrue) {
+        }else if (inExistingKeyLocation.getter_isNowhere (HERE).boolEnum () == GalgasBool::boolTrue) {
           message.appendCString ("<<unknown>>") ;
         }else{
           message.appendString (inExistingKeyLocation.getter_startLocationString (this COMMA_THERE).stringValue ()) ;

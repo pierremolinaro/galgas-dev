@@ -487,17 +487,17 @@ class @ifInstructionAST : @semanticInstructionAST {
 //------------------------------------------------------------------------------------------------
 // L'instruction : IF a, b THEN X ELSE Y END est traduite en :
 //
-//  enumGalgasBool testResult = kBoolTrue ;
-//  if (testResult == kBoolTrue) {
+//  GalgasBool testResult = GalgasBool::boolTrue ;
+//  if (testResult == GalgasBool::boolTrue) {
 //    testResult = evaluation (a)
-//    if (testResult == kBoolTrue) {
+//    if (testResult == GalgasBool::boolTrue) {
 //      testResult = evaluation (b)
-//      if (testResult == kBoolTrue) {
+//      if (testResult == GalgasBool::boolTrue) {
 //        X
 //      }
 //    }
 //  }
-//  if (testResult == kBoolFalse) {
+//  if (testResult == GalgasBool::boolFalse) {
 //    Y
 //  }
 //
@@ -540,9 +540,9 @@ override method @ifInstructionForGeneration generateInstruction
 //--- Generate test expression
   let testVar = "test_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "enumGalgasBool " + testVar + " = kBoolTrue ;\n"
+  ioGeneratedCode += "GalgasBool " + testVar + " = GalgasBool::boolTrue ;\n"
   for (expression) in self.mExpressions do
-    ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+    ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     switch expression
     case regular (exp) :
@@ -569,7 +569,7 @@ override method @ifInstructionForGeneration generateInstruction
       ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
       ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
       ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
-      ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
+      ioGeneratedCode += "  " + testVar + " = GalgasBool::boolFalse ;\n"
       ioGeneratedCode += "}\n"
     case optionalExp (targetVarCppName exp targetType) :
       let targetTypeName = [targetType identifierRepresentation]
@@ -583,12 +583,12 @@ override method @ifInstructionForGeneration generateInstruction
       ioGeneratedCode += "const GGS_" + targetTypeName + " " + targetVarCppName
       ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
       ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
-      ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
+      ioGeneratedCode += "  " + testVar + " = GalgasBool::boolFalse ;\n"
       ioGeneratedCode += "}\n"
     end
   end
 //--- Then branch
-  ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+  ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
   generateInstructionList (
     !?ioInclusionSet
     !self.m_then_instructionList
@@ -604,7 +604,7 @@ override method @ifInstructionForGeneration generateInstruction
   end
 //--- else branch
   if [self.m_else_instructionList count] > 0 then
-    ioGeneratedCode += "if (kBoolFalse == " + testVar + ") {\n"
+    ioGeneratedCode += "if (GalgasBool::boolFalse == " + testVar + ") {\n"
     generateInstructionList (
       !?ioInclusionSet
       !self.m_else_instructionList

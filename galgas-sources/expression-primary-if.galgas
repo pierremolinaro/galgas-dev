@@ -212,8 +212,8 @@ override method @ifExpressionForGeneration generateExpression
   ioGeneratedCode += "GGS_" + [self.mThenExpression.mResultType identifierRepresentation] + " " + outCppExpression + " ;\n"
   let testVar = "test_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex += 1
-  ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifExpression + ".boolEnum () ;\n"
-  ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+  ioGeneratedCode += "const GalgasBool " + testVar + " = " + ifExpression + ".boolEnum () ;\n"
+  ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
 //--- 'then' expression
   [!?ioGeneratedCode incIndentation !2]
   [self.mThenExpression generateExpression
@@ -226,7 +226,7 @@ override method @ifExpressionForGeneration generateExpression
   ioGeneratedCode += outCppExpression + " = " + thenExpression + " ;\n"
   [!?ioGeneratedCode decIndentation !2]
 //--- 'else' expression
-  ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
+  ioGeneratedCode += "}else if (GalgasBool::boolFalse == " + testVar + ") {\n"
   [!?ioGeneratedCode incIndentation !2]
   [self.mElseExpression generateExpression
     !?ioGeneratedCode

@@ -29,19 +29,19 @@ end
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-/* NSDictionary * indexingDescriptorDictionary (void) {
+func indexingDescriptorDictionary () -> [String : String] {
 %if [GUI_CONTEXT.mProjectIndexingDescriptorList count] == 0 then
-% return [NSDictionary dictionary] ;
+% return [:]
 %
 else
-%  return [NSDictionary dictionaryWithObjectsAndKeys: %
+%  return [%
 for (projectFileExtension indexingPathSuffix) in GUI_CONTEXT.mProjectIndexingDescriptorList do
-  %@"%!indexingPathSuffix.string%", @"%!projectFileExtension.string%", %
+  %  "%!projectFileExtension.string%" : "%!indexingPathSuffix.string%",%
 end  
-%nil] ;
+%]
 %
 end
-%} */
+%}
 
 //--------------------------------------------------------------------------------------------------
 //

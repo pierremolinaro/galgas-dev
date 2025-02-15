@@ -47,6 +47,8 @@ import AppKit
   func blockComment () -> String
 
   func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool
+
+  func indexingTitles () -> [String]
 }
 
 //--------------------------------------------------------------------------------------------------

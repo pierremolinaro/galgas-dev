@@ -12361,14 +12361,14 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleListForGramm
     ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 209)) ;
     cEnumerator__32_stringlist enumerator_8289 (enumerator_8217.current_columns (HERE), EnumerationOrder::up) ;
     while (enumerator_8289.hasCurrentObject ()) {
-      enumGalgasBool test_6 = kBoolTrue ;
-      if (kBoolTrue == test_6) {
+      GalgasBool test_6 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_6) {
         test_6 = GGS_bool (ComparisonKind::equal, enumerator_8289.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-        if (kBoolTrue == test_6) {
+        if (GalgasBool::boolTrue == test_6) {
           ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 212)) ;
         }
       }
-      if (kBoolFalse == test_6) {
+      if (GalgasBool::boolFalse == test_6) {
         ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("\\node (").add_operation (enumerator_8289.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)).add_operation (enumerator_8289.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 214)) ;
       }
       enumerator_8289.gotoNextObject () ;
@@ -12393,11 +12393,11 @@ void extensionSetter_insertKey (GGS_genericExtensionMethodListMap & ioObject,
                                 const GGS_lstring constinArgument_inValue,
                                 Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
     const GGS_genericExtensionMethodListMap temp_1 = ioObject ;
     test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 46)).boolEnum () ;
-    if (kBoolTrue == test_0) {
+    if (GalgasBool::boolTrue == test_0) {
       GGS_lstringlist var_aList_2246 ;
       const GGS_genericExtensionMethodListMap temp_2 = ioObject ;
       temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2246, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 47)) ;
@@ -12407,7 +12407,7 @@ void extensionSetter_insertKey (GGS_genericExtensionMethodListMap & ioObject,
       ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, var_aList_2246, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 49)) ;
     }
   }
-  if (kBoolFalse == test_0) {
+  if (GalgasBool::boolFalse == test_0) {
     GGS_lstringlist temp_3 = GGS_lstringlist::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
     temp_3.enterElement (GGS_lstringlist_2E_element::init_21_ (constinArgument_inValue, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
     ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 51)) ;
@@ -12426,11 +12426,11 @@ void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
                                 const GGS_unifiedTypeMapEntry constinArgument_inType,
                                 Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
     const GGS_descendantClassListMap temp_1 = ioObject ;
     test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 115)).boolEnum () ;
-    if (kBoolTrue == test_0) {
+    if (GalgasBool::boolTrue == test_0) {
       GGS_unifiedTypeMapEntryList var_aList_5054 ;
       const GGS_descendantClassListMap temp_2 = ioObject ;
       temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5054, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 116)) ;
@@ -12440,7 +12440,7 @@ void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
       ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, var_aList_5054, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 118)) ;
     }
   }
-  if (kBoolFalse == test_0) {
+  if (GalgasBool::boolFalse == test_0) {
     GGS_unifiedTypeMapEntryList temp_3 = GGS_unifiedTypeMapEntryList::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
     temp_3.enterElement (GGS_unifiedTypeMapEntryList_2E_element::init_21_ (constinArgument_inType, inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
     ioObject.mProperty_dictionary.addAssign_operation (constinArgument_inKey, temp_3, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;

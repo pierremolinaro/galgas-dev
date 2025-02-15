@@ -78,10 +78,10 @@ mBoolValue (boolValueFromComparisonKindAndComparisonResult (inComparisonKind, in
 
 //--------------------------------------------------------------------------------------------------
 
-enumGalgasBool GGS_bool::boolEnum (void) const {
-  enumGalgasBool result = kBoolNotValid ;
+GalgasBool GGS_bool::boolEnum (void) const {
+  GalgasBool result = GalgasBool::boolNotValid ;
   if (isValid ()) {
-    result = mBoolValue ? kBoolTrue : kBoolFalse ;
+    result = mBoolValue ? GalgasBool::boolTrue : GalgasBool::boolFalse ;
   }
   return result ;  
 }

@@ -23,9 +23,9 @@ NSArray * nibsAndClasses (void) {
 //    Project file extensions
 //--------------------------------------------------------------------------------------------------
 
-/* NSDictionary * indexingDescriptorDictionary (void) {
-  return [NSDictionary dictionaryWithObjectsAndKeys: @"build/indexes", @"galgasProject", @"*-build/indexes", @"ggsproject", nil] ;
-} */
+func indexingDescriptorDictionary () -> [String : String] {
+  return [  "galgasProject" : "build/indexes",  "ggsproject" : "*-build/indexes",]
+}
 
 //--------------------------------------------------------------------------------------------------
 //

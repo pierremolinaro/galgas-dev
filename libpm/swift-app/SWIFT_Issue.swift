@@ -112,9 +112,9 @@ final class SWIFT_Issue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func storeItemsToMenu (_ inMenu : NSMenu,
-                         _ inCocoaTextView : NSTextView,
-                         _ inSelectionRange : NSRange) {
+  @MainActor func storeItemsToMenu (_ inMenu : NSMenu,
+                                    _ inCocoaTextView : NSTextView,
+                                    _ inSelectionRange : NSRange) {
   //--- Suggestion Attributes
     let suggestionAttributes : [NSAttributedString.Key : Any] = [
       .foregroundColor : NSColor.brown,
@@ -183,13 +183,6 @@ final class SWIFT_Issue {
       }
     }
   }
-//    NSArray * array = inSender.representedObject ;
-//    OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
-//    NSString * replacementString = [array objectAtIndex:1] ;
-//    NSValue * issueRangeValue = [array objectAtIndex:2] ;
-//    const NSRange issueRange = issueRangeValue.rangeValue ;
-//    [textViewDescriptor replaceRange:issueRange withString:replacementString] ;
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

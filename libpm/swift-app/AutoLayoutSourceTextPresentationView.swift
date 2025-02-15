@@ -248,7 +248,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
                        granularity inGranularity : NSSelectionGranularity,
                        _ inCocoaWiew : InternalCocoaTextView) -> NSRange {
     var result = inProposedSelRange
-    if inGranularity == .selectByWord, inProposedSelRange.length != 0 {
+    if inGranularity == .selectByWord {
       let tokenArray = self.mDocument?.mTokenRangeArray ?? []
       var found = false
       var idx = 0
@@ -381,20 +381,98 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       let r = inCocoaWiew.selectionRange (forProposedRange: selectedRange, granularity: .selectByWord)
       inCocoaWiew.setSelectedRange (r)
       let menu = NSMenu (title: "")
+      menu.autoenablesItems = false
     //--- Add issues
       for issue in self.mDocument?.mIssueArray ?? [] {
         if NSIntersectionRange (issue.range, r).length != NSNotFound {
-          issue.storeItemsToMenu (menu, inCocoaWiew, r) // displayDescriptor:mDisplayDescriptor] ;
+          issue.storeItemsToMenu (menu, inCocoaWiew, r)
         }
       }
     //--- Source indexing
-      let dsc = self.mDocument?.mTokenizer
-//      [dsc appendIndexingToMenu: menu forRange: r textDisplayDescriptor: mDisplayDescriptor] ;
+      self.appendToIndexingMenu (menu, r)
     //--- Display menu
       menu.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       menu.allowsContextMenuPlugIns = false
       NSMenu.popUpContextMenu (menu, with: inEvent, for: inCocoaWiew)
       outCallSuperOnReturn = false
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate func appendToIndexingMenu (_ inMenu : NSMenu, _ inSelectedRange : NSRange) {
+    let titleAttributes : [NSAttributedString.Key : Any] = [
+      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+  //--- Indexing dictionary
+    let dictionaryArray = self.buildIndexingDictionaryArray ()
+    let token = (self.mSourceTextView.string as NSString).substring (with: inSelectedRange)
+  //--- Build array of all references of given token
+    var allReferences = [String] ()
+    for currentIndexDictionary in dictionaryArray {
+      if let references = currentIndexDictionary [token] {
+        allReferences += references
+      }
+    }
+  //--- Build dictionary for the given token, organized by Kind
+    var kindDictionary = [Int : [String]] ()
+    for descriptor in allReferences {
+      let components = descriptor.components (separatedBy: ":")
+      if let kind = Int (components [0]) {
+        kindDictionary [kind] = kindDictionary [kind, default: []] + [descriptor]
+      }
+    }
+  //--- Build Menu
+//    if (! hasAtomicSelection) {
+//      NSMenuItem * item = [inMenu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
+//      [item setTarget:inTextDisplayDescriptor.textView] ;
+//      [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
+//    }
+  //---
+    inMenu.addItem (.separator ())
+    if kindDictionary.isEmpty {
+      let title = "No index for '\(token)'"
+      inMenu.addItem (withTitle: title, action: nil, keyEquivalent: "")
+    }else if let indexingTitles = self.mDocument?.mTokenizer?.indexingTitles () {
+      for kindIndex in kindDictionary.keys.sorted () {
+        if kindIndex >= 0, kindIndex < indexingTitles.count {
+          let str = NSAttributedString (string: indexingTitles [kindIndex], attributes: titleAttributes)
+          inMenu.addItem (withTitle: "", action: nil, keyEquivalent: "")
+          inMenu.items.last?.attributedTitle = str
+          for reference in kindDictionary [kindIndex]! {
+            let components = reference.split (separator: ":")
+            let line = components [1]
+            let file = components [4].description.lastPathComponent
+            inMenu.addItem (
+              withTitle: "  " + file + ", line" + line,
+              action: #selector (Self.indexingMenuAction (_:)),
+              keyEquivalent: ""
+            )
+            inMenu.items.last?.target = self
+            inMenu.items.last?.representedObject = reference
+          }
+        }
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @objc fileprivate func indexingMenuAction (_ inMenuItem : NSMenuItem) {
+    if let str = inMenuItem.representedObject as? String {
+      let components = str.split (separator: ":")
+      let locationIndexStr = components [2]
+      let lengthStr = components [3]
+      let file = String (components [4])
+      if let locationIndex = Int (locationIndexStr),
+       let length = Int (lengthStr),
+       let window = self.mSourceTextView.window as? SWIFT_SingleWindow {
+        window.findOrAddTab (
+          forURL: URL (fileURLWithPath: file),
+          range: NSRange (location: locationIndex, length: length),
+          postAction: nil
+        )
+      }
     }
   }
 

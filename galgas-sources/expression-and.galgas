@@ -236,7 +236,7 @@ override method @andShortExpressionForGeneration generateExpression
 //--- Generate Comparison
   let testVar = "test_" + [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
-  ioGeneratedCode += "if (kBoolTrue == " + testVar + ".boolEnum ()) {\n"
+  ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ".boolEnum ()) {\n"
 //--- Right operand
   [!?ioGeneratedCode incIndentation !2]
   [self.mRightExpression generateExpression
