@@ -14,29 +14,64 @@ final class SWIFT_Issue {
   let line : Int
   let startColumn : Int
   let length : Int
-  let message : String
+  let messageArray : [String]
   let kind : Kind
+  let fixitArray : [MyFixitDecoder]
   let locationInBuildLogTextView : Int
   var range = NSRange ()
   private(set) var mIsValid = true
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  init (fileURL inFileURL : URL,
-        line inLine : Int,
-        startColumn inStartColumn : Int,
-        length inLength : Int,
-        message inMessage : String,
-        kind inKind : Kind,
-        locationInBuildLogTextView inLocationInBuildLogTextView : Int) {
-    self.fileURL = inFileURL
-    self.line = inLine
-    self.startColumn = inStartColumn
-    self.length = inLength
-    self.message = inMessage
-    self.kind = inKind
-    self.locationInBuildLogTextView = inLocationInBuildLogTextView
-    noteObjectAllocation (self)
+  public struct MyFixitDecoder : Decodable {
+    enum FixitKind : String, Decodable {
+       case replace, remove, insertAfter, insertBefore
+    }
+    let kind : FixitKind
+    let action : String
+
+    var messageString : String {
+      var s = "Fix it: "
+      switch kind {
+      case .replace : s += "replace by"
+      case .remove : s += "remove"
+      case .insertAfter : s += "insert after"
+      case .insertBefore : s += "insert before"
+      }
+      s += " \"" + self.action + "\""
+      return s
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate struct MyDecoder : Decodable {
+    let error : Bool
+    let file : String
+    let line : Int
+    let startCol : Int
+    let length : Int
+    let message : [String]
+    let fixit : [MyFixitDecoder]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init? (jsonString inString : String,
+         _ inLocationInBuildLogTextView : Int) {
+    if let d = try? JSONDecoder ().decode (MyDecoder.self, from: inString.data (using: .utf8)!) {
+      self.fileURL = URL (fileURLWithPath: d.file)
+      self.line = d.line
+      self.startColumn = d.startCol
+      self.length = d.length
+      self.messageArray = d.message
+      self.kind = d.error ? .error : .warning
+      self.fixitArray = d.fixit
+      self.locationInBuildLogTextView = inLocationInBuildLogTextView
+      noteObjectAllocation (self)
+    }else{
+      return nil
+    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,7 +91,7 @@ final class SWIFT_Issue {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  enum Kind { case warning ; case error }
+  enum Kind { case warning, error }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -74,6 +109,87 @@ final class SWIFT_Issue {
       }
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  func storeItemsToMenu (_ inMenu : NSMenu,
+                         _ inCocoaTextView : NSTextView,
+                         _ inSelectionRange : NSRange) {
+  //--- Suggestion Attributes
+    let suggestionAttributes : [NSAttributedString.Key : Any] = [
+      .foregroundColor : NSColor.brown,
+      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+  //--- Title Attributes
+    let titleAttributes : [NSAttributedString.Key : Any] = [
+      .foregroundColor : self.color,
+      .font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+  //--- subtitle Attributes
+    let subtitleAttributes : [NSAttributedString.Key : Any] = [
+      .foregroundColor : self.color,
+      .font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    ]
+  //--- Extract
+    var first = true
+    for str in self.messageArray {
+      let attributedString : NSAttributedString
+      if first {
+        first = false
+        attributedString = NSAttributedString (
+          string: "\u{27A4} " + str, // ➤
+          attributes: titleAttributes
+        )
+      }else{
+         attributedString = NSAttributedString (
+          string: "  " + str,
+          attributes: subtitleAttributes
+        )
+      }
+      let menuItem = NSMenuItem (title: "", action: nil, keyEquivalent: "")
+      menuItem.attributedTitle = attributedString
+      inMenu.addItem (menuItem)
+    //--- Suggestions
+      for fixit in self.fixitArray {
+        let attributedString = NSAttributedString (
+          string: "  " + fixit.messageString,
+          attributes: suggestionAttributes
+        )
+        let menuItem = NSMenuItem (title: "", action: #selector (Self.fixItAction(_:)), keyEquivalent: "")
+        menuItem.representedObject = (fixit, inCocoaTextView, inSelectionRange)
+        menuItem.target = self
+        menuItem.attributedTitle = attributedString
+        inMenu.addItem (menuItem)
+      }
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @MainActor @objc func fixItAction (_ inSender : Any?) {
+    if let menuItem = inSender as? NSMenuItem,
+       let (fixit, cocoaTextView, selectedRange) = menuItem.representedObject as? (MyFixitDecoder, NSTextView, NSRange) {
+      switch fixit.kind {
+      case .replace :
+        cocoaTextView.insertText (fixit.action, replacementRange: selectedRange)
+      case .remove :
+        cocoaTextView.insertText ("", replacementRange: selectedRange)
+      case .insertAfter :
+        let r = NSRange (location: selectedRange.location + selectedRange.length, length: 0)
+        cocoaTextView.insertText (fixit.action, replacementRange: r)
+      case .insertBefore :
+        let r = NSRange (location: selectedRange.location, length: 0)
+        cocoaTextView.insertText (fixit.action, replacementRange: r)
+      }
+    }
+  }
+//    NSArray * array = inSender.representedObject ;
+//    OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
+//    NSString * replacementString = [array objectAtIndex:1] ;
+//    NSValue * issueRangeValue = [array objectAtIndex:2] ;
+//    const NSRange issueRange = issueRangeValue.rangeValue ;
+//    [textViewDescriptor replaceRange:issueRange withString:replacementString] ;
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

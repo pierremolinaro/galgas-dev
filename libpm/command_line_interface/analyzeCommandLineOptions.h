@@ -50,6 +50,10 @@ String commandLineArgumentAtIndex (const uint32_t inIndex) ;
 
 //--------------------------------------------------------------------------------------------------
 
-bool cocoaOutput (void) ;
+enum class IssueOutputKind { regular, cocoa, swiftApp } ;
+
+//--------------------------------------------------------------------------------------------------
+
+IssueOutputKind issueOutputKind (void) ;
 
 //--------------------------------------------------------------------------------------------------

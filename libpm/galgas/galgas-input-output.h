@@ -132,21 +132,17 @@ class ParsingContext final {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//         Abstract class for GALGAS input/output                                                
-//
-//--------------------------------------------------------------------------------------------------
 
-//--- Errors count
 int32_t maxErrorCount (void) ;
 
 int32_t totalErrorCount (void) ;
 
-//--- Warnings count
 int32_t maxWarningCount (void) ;
 
 int32_t totalWarningCount (void) ;
- 
+
+//--------------------------------------------------------------------------------------------------
+
 void signalParsingError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
                          const LocationInSource & inPreviousTokenEndLocation,
@@ -155,6 +151,8 @@ void signalParsingError (Compiler * inCompiler,
                          const TC_UniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void signalExtractError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
                          const IssueWithFixIt & inIssue,
@@ -162,13 +160,7 @@ void signalExtractError (Compiler * inCompiler,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
-void signalCastError (Compiler * inCompiler,
-                      const SourceTextInString & inSourceText,
-                      const IssueWithFixIt & inIssue,
-                      const std::type_info * inBaseClass,
-                      const bool inUseKindOfClass,
-                      const String & inActualFoundClassErrorString
-                      COMMA_LOCATION_ARGS) ;
+//--------------------------------------------------------------------------------------------------
 
 void signalLexicalWarning (Compiler * inCompiler,
                            const SourceTextInString & inSourceText,
@@ -176,11 +168,15 @@ void signalLexicalWarning (Compiler * inCompiler,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void signalLexicalError (Compiler * inCompiler,
                          const SourceTextInString & inSourceText,
                          const IssueWithFixIt & inIssue,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 
 void signalSemanticWarning (Compiler * inCompiler,
                             const SourceTextInString & inSourceText,
@@ -188,19 +184,27 @@ void signalSemanticWarning (Compiler * inCompiler,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void signalSemanticError (Compiler * inCompiler,
                           const SourceTextInString & inSourceText,
                           const IssueWithFixIt & inIssue,
                           const String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void signalRunTimeError (Compiler * inCompiler,
                          const String & inErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void signalRunTimeWarning (Compiler * inCompiler,
                            const String & inWarningMessage
                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 
 void ggs_printError (Compiler * inCompiler,
                      const SourceTextInString & inSourceText,
@@ -208,23 +212,31 @@ void ggs_printError (Compiler * inCompiler,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void ggs_printWarning (Compiler * inCompiler,
                        const SourceTextInString & inSourceText,
                        const IssueWithFixIt & inIssue,
                        const String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void ggs_printFileOperationSuccess (const String & inMessage) ;
 
+//--------------------------------------------------------------------------------------------------
+
 void ggs_printFileCreationSuccess (const String & inMessage) ;
+
+//--------------------------------------------------------------------------------------------------
 
 void ggs_printMessage (const String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void fatalError (const String & inErrorMessage,
-                 const char * inSourceFile,
-                 const int inSourceLine) ;
+void ggs_fatalError (const String & inErrorMessage,
+                     const char * inSourceFile,
+                     const int inSourceLine) ;
 
 //--------------------------------------------------------------------------------------------------

@@ -28,7 +28,7 @@
 #include "LocationInSource.h"
 #include "SourceTextInString.h"
 #include "IssueWithFixIt.h"
-#include "cIssueDescriptor.h"
+#include "IssueDescriptor.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -61,8 +61,8 @@ class Compiler : public SharedObject {
   protected: Compiler * mCallerCompiler ;
 
 //--- Issue array
-  private: TC_UniqueArray <cIssueDescriptor> mIssueArray ;
-  public: void appendIssue (const cIssueDescriptor & inIssue) ;
+  private: TC_UniqueArray <IssueDescriptor> mIssueArray ;
+  public: void appendIssue (const IssueDescriptor & inIssue) ;
   public: void writeIssueJSONFile (const String & inFile) ;
 
 //--- Sent string

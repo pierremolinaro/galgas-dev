@@ -50,12 +50,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-static bool gCocoaOutput = false ;
+static IssueOutputKind gIssueOutputKind = IssueOutputKind::regular ;
 
 //--------------------------------------------------------------------------------------------------
 
-bool cocoaOutput (void) {
-  return gCocoaOutput ;
+IssueOutputKind issueOutputKind (void) {
+  return gIssueOutputKind ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -223,28 +223,37 @@ static void option_beginning_with_double_minus_sign (const String & inCommand,
                                                      bool & outFound) {
   outFound = false ;
   bool correctFormat = true ;
-//--- Look for a boolean argument
-  BoolCommandLineOption::setBoolOptionForCommandString (inCommand, outFound, gCocoaOutput) ;
-//--- If not found, look for a Uint option
-  if (! outFound) {
-    UIntCommandLineOption::setUIntOptionForCommandString (inCommand, outFound, correctFormat) ;
-  }
-//--- If not found, look for a String option
-  if (! outFound) {
-    StringCommandLineOption::setStringOptionForCommandString (inCommand, outFound, correctFormat) ;
-  }
-  if (! outFound) {
-    StringListCommandLineOption::setStringListOptionForCommandString (inCommand, outFound, correctFormat) ;
-  }
-  if (! outFound) {
-    gCout.appendCString ("Error : unknown '--") ;
-    gCout.appendString (inCommand) ;
-    gCout.appendCString ("' command line option.\n") ;
-  }else if (! correctFormat) {
-    outFound = false ;
-    gCout.appendCString ("Error : incorrect format for '--") ;
-    gCout.appendString (inCommand) ;
-    gCout.appendCString ("' command line option.\n") ;
+//--- Look for output kind
+  if (inCommand == "cocoa") {
+    gIssueOutputKind = IssueOutputKind::cocoa ;
+    outFound = true ;
+  }else if (inCommand == "swift-app-json-output") {
+    gIssueOutputKind = IssueOutputKind::swiftApp ;
+    outFound = true ;
+  }else{
+  //--- Look for a boolean argument
+    BoolCommandLineOption::setBoolOptionForCommandString (inCommand, outFound) ;
+  //--- If not found, look for a Uint option
+    if (! outFound) {
+      UIntCommandLineOption::setUIntOptionForCommandString (inCommand, outFound, correctFormat) ;
+    }
+  //--- If not found, look for a String option
+    if (! outFound) {
+      StringCommandLineOption::setStringOptionForCommandString (inCommand, outFound, correctFormat) ;
+    }
+    if (! outFound) {
+      StringListCommandLineOption::setStringListOptionForCommandString (inCommand, outFound, correctFormat) ;
+    }
+    if (! outFound) {
+      gCout.appendCString ("Error : unknown '--") ;
+      gCout.appendString (inCommand) ;
+      gCout.appendCString ("' command line option.\n") ;
+    }else if (! correctFormat) {
+      outFound = false ;
+      gCout.appendCString ("Error : incorrect format for '--") ;
+      gCout.appendString (inCommand) ;
+      gCout.appendCString ("' command line option.\n") ;
+    }
   }
 }
 

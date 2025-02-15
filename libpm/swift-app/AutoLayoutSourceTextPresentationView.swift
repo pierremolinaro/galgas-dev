@@ -370,6 +370,36 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  func mouseDown (with inEvent : NSEvent,
+                  _ inCocoaWiew : InternalCocoaTextView,
+                  callSuperOnReturn outCallSuperOnReturn : inout Bool) {
+    if inEvent.modifierFlags.contains (.command) {
+    //--- Select range
+      let local_point = inCocoaWiew.convert (inEvent.locationInWindow, from: nil)
+      let characterIndex = inCocoaWiew.characterIndexForInsertion (at: local_point)
+      let selectedRange = NSRange (location: characterIndex, length: 0)
+      let r = inCocoaWiew.selectionRange (forProposedRange: selectedRange, granularity: .selectByWord)
+      inCocoaWiew.setSelectedRange (r)
+      let menu = NSMenu (title: "")
+    //--- Add issues
+      for issue in self.mDocument?.mIssueArray ?? [] {
+        if NSIntersectionRange (issue.range, r).length != NSNotFound {
+          issue.storeItemsToMenu (menu, inCocoaWiew, r) // displayDescriptor:mDisplayDescriptor] ;
+        }
+      }
+    //--- Source indexing
+      let dsc = self.mDocument?.mTokenizer
+//      [dsc appendIndexingToMenu: menu forRange: r textDisplayDescriptor: mDisplayDescriptor] ;
+    //--- Display menu
+      menu.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      menu.allowsContextMenuPlugIns = false
+      NSMenu.popUpContextMenu (menu, with: inEvent, for: inCocoaWiew)
+      outCallSuperOnReturn = false
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   private func shiftRightRange (_ inCocoaWiew : InternalCocoaTextView) {
   //--- Space string
     let spaceStringLength = gSpacesForHTab.propval

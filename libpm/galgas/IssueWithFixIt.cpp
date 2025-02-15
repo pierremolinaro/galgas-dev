@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2016, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2016, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -53,6 +53,30 @@ mStartLocation (inStartLocation),
 mEndLocation (inEndLocation),
 mFixItArray (inFixItArray) {
 }
+
+//--------------------------------------------------------------------------------------------------
+
+//String IssueWithFixIt::jsonDescriptionString (void) const {
+//  String result = "{" ;
+////--- Error
+//  result.appendString ("\"error\":") ;
+//  result.appendString (mIsError ? "true" : "false") ;
+////--- file
+//  result.appendString (",\"file\":") ;
+//  result.appendString (mFile) ;
+////--- Line
+//  result.appendString (",\"line\":") ;
+//  result.appendSigned (mLine) ;
+////--- Start Column
+//  result.appendString (",\"startCol\":") ;
+//  result.appendSigned (mStartColumn) ;
+////--- End Column
+//  result.appendString (",\"lastCol\":") ;
+//  result.appendSigned (mEndColumn) ;
+//
+//  result.appendString ("}") ;
+//  return result ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 

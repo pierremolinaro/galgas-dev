@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2017 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -25,7 +25,7 @@
 #include "C_galgas_CLI_Options.h"
 #include "C_galgas_class_inspector.h"
 #include "F_verbose_output.h"
-#include "cIssueDescriptor.h"
+#include "IssueDescriptor.h"
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -141,8 +141,8 @@ static String errorOrWarningLocationString (const IssueWithFixIt & inIssue,
 //--------------------------------------------------------------------------------------------------
 
 static String constructErrorOrWarningLocationMessage (const String & inMessage,
-                                                        const IssueWithFixIt & inIssue,
-                                                        const SourceTextInString & inSourceText) {
+                                                      const IssueWithFixIt & inIssue,
+                                                      const SourceTextInString & inSourceText) {
   String result ;
   if (!inSourceText.isValid ()) {
     result.appendString (inMessage) ;
@@ -353,93 +353,6 @@ void signalExtractError (Compiler * inCompiler,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//            Method called for signaling a cast error
-//
-//--------------------------------------------------------------------------------------------------
-
-void signalCastError (Compiler * inCompiler,
-                      const SourceTextInString & inSourceText,
-                      const IssueWithFixIt & inIssue,
-                      const std::type_info * inBaseClass,
-                      const bool inUseKindOfClass,
-                      const String & inActualFoundClassErrorString
-                      COMMA_LOCATION_ARGS) {
-//--- Increment error count
-  mErrorTotalCount ++ ;
-//--- Construct expected class message array
-  TC_UniqueArray <String> expectedClassMessageArray ;
-  const C_galgas_class_inspector * p = C_galgas_class_inspector::root () ;
-  bool found = false ;
-  while ((p != nullptr) && ! found) {
-    if (p->mClassID == inBaseClass) {
-      found = true ;
-      expectedClassMessageArray.appendObject (p->mClassMessage) ;
-    }
-    p = p->mNextClass ;
-  }
-  if (inUseKindOfClass) {
-    TC_UniqueArray <const std::type_info *> classIDarray ;
-    classIDarray.appendObject (inBaseClass) ;
-    bool loop = true ;
-    while (loop) {
-      loop = false ;
-      p = C_galgas_class_inspector::root () ;
-      while (p != nullptr) {
-        if (classIDarray.containsObjectEqualTo (p->mSuperClassID)
-          && ! classIDarray.containsObjectEqualTo (p->mClassID)) {
-          loop = true ;
-          classIDarray.appendObject (p->mClassID) ;
-          expectedClassMessageArray.appendObject (p->mClassMessage) ;
-        }
-        p = p->mNextClass ;
-      }
-    }
-  }
-//--- Print extract error
-  String errorMessage ;
-  expectedClassMessageArray.sortArrayUsingCompareMethod () ;
-  errorMessage.appendString (verboseOutput () ? "semantic " : "") ;
-  errorMessage.appendCString ("error: I have found:\n") ;
-  if (! verboseOutput ()) {
-    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.appendCString ("error: ") ;
-  }
-  errorMessage.appendCString ("  - ") ;
-  errorMessage.appendString (inActualFoundClassErrorString) ;
-  errorMessage.appendCString (";\n") ;
-  if (! verboseOutput ()) {
-    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.appendCString ("error: ") ;
-  }
-  errorMessage.appendCString ("I was expected:\n") ;
-  if (! verboseOutput ()) {
-    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.appendCString ("error: ") ;
-  }
-  if (expectedClassMessageArray.count () > 0) {
-    errorMessage.appendCString ("  - ") ;
-    errorMessage.appendString (expectedClassMessageArray (0 COMMA_HERE)) ;
-    for (int32_t i=1 ; i<expectedClassMessageArray.count () ; i++) {
-      errorMessage.appendCString (";\n") ;
-      if (! verboseOutput ()) {
-        errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-        errorMessage.appendCString ("error: ") ;
-      }
-      errorMessage.appendCString ("  - ") ;
-      errorMessage.appendString (expectedClassMessageArray (i COMMA_HERE)) ;
-    }
-  }
-  errorMessage.appendCString (".\n") ;
-//--- Print
-  ggs_printError (inCompiler, inSourceText, inIssue, errorMessage COMMA_THERE) ;
-//--- Error max count reached ?
-  if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
-    throw max_error_count_reached_exception () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 
 void signalSemanticWarning (Compiler * inCompiler,
                             const SourceTextInString & inSourceText,
@@ -556,7 +469,7 @@ void ggs_printError (Compiler * inCompiler,
                      const String & inMessage
                      COMMA_LOCATION_ARGS) {
 //--- Append to issue array
-  const cIssueDescriptor issue (
+  const IssueDescriptor issue (
     true,
     inSourceText.sourceFilePath (),
     inIssue.mStartLocation.lineNumber (),
@@ -566,19 +479,17 @@ void ggs_printError (Compiler * inCompiler,
   ) ;
   inCompiler->appendIssue (issue) ;
 //---
-  String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
-      errorMessage.appendCString ("[Error raised from file '") ;
-      errorMessage.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
-      errorMessage.appendCString ("' at line ") ;
-      errorMessage.appendSigned (IN_SOURCE_LINE) ;
-      errorMessage.appendCString ("]\n") ;
-    }
-  #endif
-//--- Append source string
+  const String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
+//--- Append error string
   if (! executionModeIsIndexing ()) {
-    if (cocoaOutput ()) {
+    switch (issueOutputKind ()) {
+    case IssueOutputKind::swiftApp :
+      gCout.appendString ("json:") ;
+      gCout.appendString (issue.jsonDescriptionString (inMessage, inIssue)) ;
+      gCout.appendNewLine () ;
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::cocoa :
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendChar (COCOA_ERROR_ID) ;
@@ -586,24 +497,35 @@ void ggs_printError (Compiler * inCompiler,
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
       gCout.flush () ;
-    }else{
+      break ;
+    case IssueOutputKind::regular :
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (errorMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.appendNewLine () ; ;
+      gCout.appendNewLine () ;
       gCout.flush () ;
+      break ;
     }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    if (verboseOutput ()) {
+      gCout.appendCString ("[Error raised from file '") ;
+      gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+      gCout.appendCString ("' at line ") ;
+      gCout.appendSigned (IN_SOURCE_LINE) ;
+      gCout.appendCString ("]\n") ;
+    }
+  #endif
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void fatalError (const String & inErrorMessage,
-                 const char * inSourceFile,
-                 const int inSourceLine) {
+void ggs_fatalError (const String & inErrorMessage,
+                     const char * inSourceFile,
+                     const int inSourceLine) {
 //--- Increment error count
-  mErrorTotalCount ++ ;
+  mErrorTotalCount += 1 ;
 //--- Error message
   String errorMessage = inErrorMessage ;
   errorMessage.appendCString (" in file '") ;
@@ -613,34 +535,43 @@ void fatalError (const String & inErrorMessage,
   errorMessage.appendCString ("\n") ;
 //----
   String message = constructErrorOrWarningLocationMessage (errorMessage, IssueWithFixIt (), SourceTextInString ()) ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
-      message.appendCString ("[Error raised from file '") ;
-      message.appendString (String (inSourceFile).lastPathComponent ()) ;
-      message.appendCString ("' at line ") ;
-      message.appendSigned (inSourceLine) ;
-      message.appendCString ("]\n") ;
-    }
-  #endif
 //--- Append source string
   if (! executionModeIsIndexing ()) {
-    if (cocoaOutput ()) {
+    switch (issueOutputKind ()) {
+    case IssueOutputKind::swiftApp :
+      gCout.appendString ("red:") ;
+      gCout.appendString (message) ;
+      gCout.appendNewLine () ;
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::cocoa :
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendChar (COCOA_ERROR_ID) ;
       gCout.appendString (message) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
-      gCout.appendNewLine () ; ;
+      gCout.appendNewLine () ;
       gCout.flush () ;
-    }else{
+      break ;
+    case IssueOutputKind::regular :
       gCout.setForeColor (kRedForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (message) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
       gCout.flush () ;
+      break ;
     }
   }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    if (verboseOutput ()) {
+      gCout.appendCString ("[Error raised from file '") ;
+      gCout.appendString (String (inSourceFile).lastPathComponent ()) ;
+      gCout.appendCString ("' at line ") ;
+      gCout.appendSigned (inSourceLine) ;
+      gCout.appendCString ("]\n") ;
+    }
+  #endif
   exit (1) ;
 }
 
@@ -656,7 +587,7 @@ void ggs_printWarning (Compiler * inCompiler,
                        const String & inMessage
                        COMMA_LOCATION_ARGS) {
 //--- Append to issue array
-  const cIssueDescriptor issue (
+  const IssueDescriptor issue (
     false,
     inSourceText.sourceFilePath (),
     inIssue.mStartLocation.lineNumber (),
@@ -667,21 +598,19 @@ void ggs_printWarning (Compiler * inCompiler,
   inCompiler->appendIssue (issue) ;
 //---
   String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
-      warningMessage.appendCString ("[Warning raised from file '") ;
-      warningMessage.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
-      warningMessage.appendCString ("' at line ") ;
-      warningMessage.appendSigned (IN_SOURCE_LINE) ;
-      warningMessage.appendCString ("]\n") ;
-    }
-  #endif
 //--- Append source string
   if (inSourceText.isValid ()) {
     inSourceText.appendSourceContents (warningMessage) ;
   }
   if (! executionModeIsIndexing ()) {
-    if (cocoaOutput ()) {
+    switch (issueOutputKind ()) {
+    case IssueOutputKind::swiftApp :
+      gCout.appendString ("json:") ;
+      gCout.appendString (issue.jsonDescriptionString (inMessage, inIssue)) ;
+      gCout.appendNewLine () ;
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::cocoa :
       gCout.setForeColor (kYellowForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendChar (COCOA_WARNING_ID) ;
@@ -689,15 +618,27 @@ void ggs_printWarning (Compiler * inCompiler,
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
       gCout.flush () ;
-    }else{
+      break ;
+    case IssueOutputKind::regular :
       gCout.setForeColor (kYellowForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (warningMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.appendNewLine () ; ;
       gCout.flush () ;
+      break ;
     }
   }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    if (verboseOutput ()) {
+      gCout.appendCString ("[Warning raised from file '") ;
+      gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+      gCout.appendCString ("' at line ") ;
+      gCout.appendSigned (IN_SOURCE_LINE) ;
+      gCout.appendCString ("]\n") ;
+      gCout.flush () ;
+    }
+  #endif
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -708,18 +649,29 @@ void ggs_printWarning (Compiler * inCompiler,
 
 void ggs_printFileOperationSuccess (const String & inMessage) {
   if (! executionModeIsIndexing ()) {
-    if (cocoaOutput ()) {
+    switch (issueOutputKind ()) {
+    case IssueOutputKind::swiftApp :
+      gCout.appendString ("green:") ;
+      gCout.appendString (inMessage) ;
+      if (inMessage.lastChar (HERE) != TO_UNICODE ('\n')) {
+        gCout.appendNewLine () ;
+      }
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::cocoa :
       gCout.setForeColor (kGreenForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
-    }else{
+      break ;
+    case IssueOutputKind::regular :
       gCout.setForeColor (kGreenForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
+      break ;
     }
   }
 }
@@ -732,18 +684,29 @@ void ggs_printFileOperationSuccess (const String & inMessage) {
 
 void ggs_printFileCreationSuccess (const String & inMessage) {
   if (! executionModeIsIndexing ()) {
-    if (cocoaOutput ()) {
+    switch (issueOutputKind ()) {
+    case IssueOutputKind::swiftApp :
+      gCout.appendString ("blue:") ;
+      gCout.appendString (inMessage) ;
+      if (inMessage.lastChar (HERE) != TO_UNICODE ('\n')) {
+        gCout.appendNewLine () ;
+      }
+      gCout.flush () ;
+      break ;
+    case IssueOutputKind::cocoa :
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
-    }else{
+      break ;
+    case IssueOutputKind::regular :
       gCout.setForeColor (kBlueForeColor) ;
       gCout.setTextAttribute (kBoldTextAttribute) ;
       gCout.appendString (inMessage) ;
       gCout.setTextAttribute (kAllAttributesOff) ;
       gCout.flush () ;
+      break ;
     }
   }
 }
@@ -756,19 +719,25 @@ void ggs_printFileCreationSuccess (const String & inMessage) {
 
 void ggs_printMessage (const String & inMessage
                        COMMA_LOCATION_ARGS) {
-  if (! executionModeIsIndexing ()) {
-    String message = inMessage ;
+  if (inMessage.length () > 0) {
+    if (! executionModeIsIndexing ()) {
+      String message = inMessage ;
+      gCout.appendString (message) ;
+      if (message.lastChar (HERE) != TO_UNICODE ('\n')) {
+        gCout.appendNewLine () ;
+      }
+      gCout.flush () ;
+    }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (verboseOutput ()) {
-        message.appendCString ("[Displayed from file '") ;
-        message.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
-        message.appendCString ("' at line ") ;
-        message.appendSigned (IN_SOURCE_LINE) ;
-        message.appendCString ("]\n") ;
+        gCout.appendCString ("[Displayed from file '") ;
+        gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+        gCout.appendCString ("' at line ") ;
+        gCout.appendSigned (IN_SOURCE_LINE) ;
+        gCout.appendCString ("]\n") ;
+        gCout.flush () ;
       }
     #endif
-    gCout.appendString (message) ;
-    gCout.flush () ;
   }
 }
 

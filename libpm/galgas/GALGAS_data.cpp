@@ -100,7 +100,7 @@ ComparisonResult GGS_data::objectCompare (const GGS_data & inOperand) const {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::description (String & ioString,
-                               const int32_t /* inIndentation */) const {
+                            const int32_t /* inIndentation */) const {
   ioString.appendCString ("<@data:") ;
   if (isValid ()) {
     ioString.appendCString ("length=") ;
@@ -143,8 +143,8 @@ GGS_string GGS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendByte (GGS_uint inArgument0,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     if (inArgument0.uintValue () > 255) {
       inCompiler->onTheFlyRunTimeError ("'@data appendByte' modifier invoked with value greater than 255" COMMA_THERE) ;
@@ -158,8 +158,8 @@ void GGS_data::setter_appendByte (GGS_uint inArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendShortBE (GGS_uint inArgument0,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     if (inArgument0.uintValue () > 0xFFFF) {
       inCompiler->onTheFlyRunTimeError ("'@data appendShortBE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
@@ -174,8 +174,8 @@ void GGS_data::setter_appendShortBE (GGS_uint inArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendShortLE (GGS_uint inArgument0,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     if (inArgument0.uintValue () > 0xFFFF) {
       inCompiler->onTheFlyRunTimeError ("'@data appendShortLE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
@@ -190,7 +190,7 @@ void GGS_data::setter_appendShortLE (GGS_uint inArgument0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
-                                       COMMA_UNUSED_LOCATION_ARGS) {
+                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
     mData.appendByte ((uint8_t) (value >> 24)) ;
@@ -203,7 +203,7 @@ void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
-                                       COMMA_UNUSED_LOCATION_ARGS) {
+                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
     mData.appendByte ((uint8_t) (value & 255)) ;
@@ -216,7 +216,7 @@ void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendUTF_38_String (GGS_string inString
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
     const String s = inString.stringValue () ;
     for (int32_t i=0 ; i<s.length () ; i++) {
@@ -234,7 +234,7 @@ void GGS_data::setter_appendUTF_38_String (GGS_string inString
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::setter_appendData (GGS_data inData
-                                     COMMA_UNUSED_LOCATION_ARGS) {
+                                  COMMA_UNUSED_LOCATION_ARGS) {
   if (inData.isValid ()) {
     mData.appendData (inData.mData) ;
   }
@@ -243,9 +243,9 @@ void GGS_data::setter_appendData (GGS_data inData
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
-                                                           GGS_bool & outFileWritten,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
+                                                        GGS_bool & outFileWritten,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   outFileWritten.drop () ;
   if (inFilePath.isValid ()) {
     bool needToWrite = true ;
@@ -293,8 +293,8 @@ void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::method_writeToFile (GGS_string inFilePath,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) const {
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
     const String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {
@@ -334,8 +334,8 @@ void GGS_data::method_writeToFile (GGS_string inFilePath,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
     const String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {

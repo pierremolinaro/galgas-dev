@@ -86,6 +86,9 @@
     public: inline bool operator == (const utf32 inOperand) const {
       return mCode == inOperand.mCode ;
     }
+    public: inline bool operator != (const utf32 inOperand) const {
+      return mCode != inOperand.mCode ;
+    }
   } ;
   #define UNICODE_VALUE(C) ((C).value ())
   #define TO_UNICODE(C) utf32 (C)

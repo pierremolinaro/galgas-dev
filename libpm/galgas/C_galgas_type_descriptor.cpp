@@ -164,7 +164,7 @@ void C_galgas_type_descriptor::recursiveInsert (C_galgas_type_descriptor * & ioR
       errorMessage.appendCString ("FATAL ERROR (type '@") ;
       errorMessage.appendString (inDescriptor->mGalgasTypeName) ;
       errorMessage.appendCString ("' already defined)") ;
-      fatalError (errorMessage, __FILE__, __LINE__) ;
+      ggs_fatalError (errorMessage, __FILE__, __LINE__) ;
     }
   }
 }

@@ -70,7 +70,7 @@ mUIntValue (inValue) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::class_method_setRandomSeed (class GGS_uint inSeed
+void GGS_uint::class_method_setRandomSeed (GGS_uint inSeed
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (inSeed.isValid  ()) {
     #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)

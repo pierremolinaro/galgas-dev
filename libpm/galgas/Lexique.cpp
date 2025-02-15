@@ -768,7 +768,6 @@ void Lexique::enterProduction (const char * inProductionName,
       message.appendString (inTag) ;
       message.appendCString ("'") ;
     }
-    message.appendCString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
     mDebugDepthCounter ++ ;
   }
@@ -797,7 +796,6 @@ void Lexique::didParseTerminal (const char * inTerminalName,
     if (inValue.length () > 0) {
       message.appendString (inValue) ;
     }
-    message.appendCString ("\n") ;
     ggs_printMessage (message COMMA_HERE) ;
   }
 }

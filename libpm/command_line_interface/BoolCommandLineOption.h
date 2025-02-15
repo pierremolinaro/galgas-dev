@@ -52,8 +52,7 @@ class BoolCommandLineOption final : public AbstractCommandLineOption {
                                                    bool & outFound) ;
 
   public: static void setBoolOptionForCommandString (const String & inCommandString,
-                                                     bool & outFound,
-                                                     bool & outCocoaOutput) ;
+                                                     bool & outFound) ;
   public: static void printUsageOfBoolOptions (void) ;
   public: static void printBoolOptions (void) ;
 

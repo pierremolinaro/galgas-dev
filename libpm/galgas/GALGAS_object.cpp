@@ -31,7 +31,7 @@ mSharedObject (nullptr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_object::GGS_object (AC_GALGAS_root * inObjectPointer
-                              COMMA_LOCATION_ARGS) :
+                        COMMA_LOCATION_ARGS) :
 AC_GALGAS_root (),
 mSharedObject (nullptr) {
   macroMyNew (mSharedObject, cPtr_object (inObjectPointer COMMA_THERE)) ;
@@ -77,7 +77,7 @@ const AC_GALGAS_root * GGS_object::embeddedObject (void) const {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_object::description (String & /* ioString */,
-                                 const int32_t /* inIndentation */) const {
+                              const int32_t /* inIndentation */) const {
 }
 
 //--------------------------------------------------------------------------------------------------

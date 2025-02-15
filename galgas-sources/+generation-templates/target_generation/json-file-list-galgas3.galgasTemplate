@@ -112,7 +112,7 @@ end
        "cGenericAbstractEnumerator.cpp",
        "cEnumerator_range.cpp",
        "cIndexingDictionary.cpp",
-       "cIssueDescriptor.cpp",
+       "IssueDescriptor.cpp",
        "cLexiqueIntrospection.cpp",
        "AC_GALGAS_root.cpp",
        "AC_GALGAS_list.cpp",

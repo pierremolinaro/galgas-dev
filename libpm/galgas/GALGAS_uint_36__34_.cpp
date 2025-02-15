@@ -52,8 +52,8 @@ GGS_uint_36__34_ GGS_uint_36__34_::class_func_max (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ GGS_uint_36__34_::class_func_uint_36__34_MaskWithCompressedBitString (const GGS_string & inBitString,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   GGS_uint_36__34_ result ;
   if (inBitString.isValid ()) {
     const int32_t bitStringLength = inBitString.stringValue ().length () ;
@@ -80,8 +80,8 @@ GGS_uint_36__34_ GGS_uint_36__34_::class_func_uint_36__34_MaskWithCompressedBitS
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ GGS_uint_36__34_::class_func_uint_36__34_BaseValueWithCompressedBitString (const GGS_string & inBitString,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) {
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
   GGS_uint_36__34_ result ;
   if (inBitString.isValid ()) {
     bool ok = true ;
@@ -537,7 +537,7 @@ ComparisonResult GGS_uint_36__34_::objectCompare (const GGS_uint_36__34_ & inOpe
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark GALGAS Readers
+  #pragma mark GALGAS Getters
 #endif
 
 //--------------------------------------------------------------------------------------------------

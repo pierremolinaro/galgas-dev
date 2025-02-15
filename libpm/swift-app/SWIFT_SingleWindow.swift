@@ -533,7 +533,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   //MARK: Actions
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  @IBAction func findInFiles (_ inSender : Any?) {
+  @IBAction func useSelectionForFindInFiles (_ inSender : Any?) {
     let idx = self.mSelectedTabIndex
     if (idx >= 0) && (idx < self.mTabArray.count) {
       let tab = self.mTabArray [idx]
@@ -541,8 +541,16 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
       if !selection.isEmpty {
         self.mSearchTextField.stringValue = selection
         self.mInspectorTabView.selectTab (atIndex: 2)
+        _ = self.mSearchTextField.makeFirstResponder ()
       }
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @IBAction func findInFiles (_ inSender : Any?) {
+    self.mInspectorTabView.selectTab (atIndex: 2)
+    _ = self.mSearchTextField.makeFirstResponder ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -943,7 +951,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     let (command, arguments) = commandLineForBuildProcess ()
     process.executableURL = URL (fileURLWithPath: command)
     let sourceFile = self.mTabArray [0].fileURL!.path
-    process.arguments = arguments + [sourceFile, "--cocoa"]
+    process.arguments = arguments + [sourceFile, "--swift-app-json-output"] // "--cocoa"]
   //--- Set standard output notification
     let pipe = Pipe ()
     self.mProcessOutputPipe = pipe
@@ -1021,119 +1029,91 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
 
   private func appendBuildOutputData (_ inData : Data) {
     self.mResultData.append (inData)
-  //--- Look for last line feed
-    let startIndex = self.mResultData.startIndex
-    var idx = self.mResultData.endIndex
-    var ok = false
-    while !ok, idx > 0 {
-      idx -= 1
-      ok = self.mResultData [idx] == ASCII.lineFeed.rawValue
-    }
-  //--- If found, extract data
-    if ok {
-      idx += 1
-      let data = self.mResultData [startIndex ..< idx]
-      if let string = String (data: data, encoding: .utf8) {
-        self.processBuildOutputString (string)
-        self.mResultData.removeSubrange (startIndex ..< idx)
+    var loop = true
+    while loop {
+    //--- Look for first line feed
+      let endIndex = self.mResultData.endIndex
+      var idx = self.mResultData.startIndex
+      var ok = false
+      while !ok, idx < endIndex {
+        ok = self.mResultData [idx] == ASCII.lineFeed.rawValue
+        idx += 1
+      }
+      if !ok {
+        loop = false
+      }else{
+        let data = self.mResultData [self.mResultData.startIndex ..< idx]
+        self.processBuildOutputString (data)
+        self.mResultData.removeSubrange (self.mResultData.startIndex ..< idx)
       }
     }
+  //--- Look for last line feed
+//    let startIndex = self.mResultData.startIndex
+//    var idx = self.mResultData.endIndex
+//    var ok = false
+//    while !ok, idx > 0 {
+//      idx -= 1
+//      ok = self.mResultData [idx] == ASCII.lineFeed.rawValue
+//    }
+  //--- If found, extract data
+//    if ok {
+//      idx += 1
+//      let data = self.mResultData [startIndex ..< idx]
+//      if let string = String (data: data, encoding: .utf8) {
+//        self.processBuildOutputString (string)
+//        self.mResultData.removeSubrange (startIndex ..< idx)
+//      }
+//    }
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func processBuildOutputString (_ inString : String) {
-    let messageArray = inString.components (separatedBy: "\u{1B}")
-  //--- Enter first component with current attributes
-    self.mBuildLogTextView.appendMessageString (messageArray [0], color: self.mCurrentBuildOutputColor)
-  //--- Send next components
-     var i = 1
-     while i < messageArray.count {
-       let component = messageArray [i] as NSString
-       i += 1
-      var idx = 0
-      while idx < component.length, component.character (at: idx) == ASCII.leftBracket.rawValue {
-        idx += 1
-        var code = 0
-        while idx < component.length, component.character (at: idx) >= ASCII.zero.rawValue, component.character (at: idx) <= ASCII.nine.rawValue {
-          code *= 10
-          code += Int (component.character (at: idx)) - Int (ASCII.zero.rawValue)
-          idx += 1
-        }
-        if idx < component.length, component.character (at: idx) == ASCII.m.rawValue {
-          idx += 1
-        }
-        switch code {
-        case  0 : self.mCurrentBuildOutputColor = .black
-        case 30 : self.mCurrentBuildOutputColor = .black
-        case 31 : self.mCurrentBuildOutputColor = .red
-        case 32 : self.mCurrentBuildOutputColor = NSColor (calibratedRed: 0.0, green:0.5, blue:0.0, alpha:1.0)
-        case 33 : self.mCurrentBuildOutputColor = NSColor.orange
-        case 34 : self.mCurrentBuildOutputColor = NSColor.blue
-        case 35 : self.mCurrentBuildOutputColor = NSColor.magenta
-        case 36 : self.mCurrentBuildOutputColor = NSColor.cyan
-        case 37 : self.mCurrentBuildOutputColor = NSColor.white
-        case 40 : self.mCurrentBuildOutputColor = NSColor.white
-        case 41 : self.mCurrentBuildOutputColor = NSColor.red
-        case 42 : self.mCurrentBuildOutputColor = NSColor (calibratedRed: 0.0, green:0.5, blue:0.0, alpha:1.0)
-        case 43 : self.mCurrentBuildOutputColor = NSColor.orange
-        case 44 : self.mCurrentBuildOutputColor = NSColor.blue
-        case 45 : self.mCurrentBuildOutputColor = NSColor.magenta
-        case 46 : self.mCurrentBuildOutputColor = NSColor.cyan
-        case 47 : self.mCurrentBuildOutputColor = NSColor.white
-        default: ()
-        }
-      }
-      var s = component.substring (from: idx)
-      if !s.isEmpty {
-        let COCOA_WARNING_ID = Character (Unicode.Scalar (3)!)
-        let COCOA_ERROR_ID   = Character (Unicode.Scalar (4)!)
+  private func processBuildOutputString (_ inData : Data) {
+    if let string = String (data: inData, encoding: .utf8) {
+      if string.hasPrefix ("red:") {
+        let str = String (string.dropFirst ("red:".count))
+        self.mBuildLogTextView.appendMessageString (str, color: .systemRed)
+      }else if string.hasPrefix ("green:") {
+        let str = String (string.dropFirst ("green:".count))
+        self.mBuildLogTextView.appendMessageString (str, color: NSColor (calibratedRed: 0.0, green: 0.5, blue: 0.0, alpha: 1.0))
+      }else if string.hasPrefix ("orange:") {
+        let str = String (string.dropFirst ("orange:".count))
+        self.mBuildLogTextView.appendMessageString (str, color: .systemOrange)
+      }else if string.hasPrefix ("blue:") {
+        let str = String (string.dropFirst ("blue:".count))
+        self.mBuildLogTextView.appendMessageString (str, color: .systemBlue)
+      }else if string.hasPrefix ("json:") {
+        let str = String (string.dropFirst ("json:".count))
         let locationInBuildTextView = (self.mBuildLogTextView.string as NSString).length
-        if s [s.startIndex] == COCOA_WARNING_ID {
-          s.removeFirst ()
-          self.appendIssue (s, locationInBuildTextView, .warning)
-        }else if s [s.startIndex] == COCOA_ERROR_ID {
-          s.removeFirst ()
-          self.appendIssue (s, locationInBuildTextView, .error)
-        }
-        self.mBuildLogTextView.appendMessageString (s, color: self.mCurrentBuildOutputColor)
+        self.appendIssue (jsonString: str, locationInBuildTextView)
+      }else{
+        self.mBuildLogTextView.appendMessageString (string, color: self.mCurrentBuildOutputColor)
       }
+    }else{
+      self.mBuildLogTextView.appendMessageString ("<<invalid output>>\n", color: self.mCurrentBuildOutputColor)
     }
     self.mBuildLogTextView.scrollToEndOfText ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func appendIssue (_ inMessage : String,
-                            _ inLocationInBuildLogTextView : Int,
-                            _ inKind : SWIFT_Issue.Kind) {
-  //--- Split message
-    let components = inMessage.components (separatedBy: ":")
-    if components.count >= 6,
-        let line = Int (components [1]),
-        let startColumn = Int (components [2]),
-        let endColumn = Int (components [3]) {
-      let sourcePath = components [0]
-      var messageComponents = components
-      messageComponents.removeFirst (5)
-      let message = messageComponents.joined (separator: ":")
-    //--- Append issue
-      let issue = SWIFT_Issue (
-        fileURL: URL (fileURLWithPath: sourcePath),
-        line: line,
-        startColumn: startColumn - 1,
-        length: endColumn - startColumn,
-        message: message,
-        kind: inKind,
-        locationInBuildLogTextView: inLocationInBuildLogTextView
-      )
+  private func appendIssue (jsonString inString : String,
+                            _ inLocationInBuildLogTextView : Int) {
+    if let issue = SWIFT_Issue (jsonString: inString, inLocationInBuildLogTextView) {
+      self.mBuildLogTextView.appendMessageString ("\(issue.fileURL.path):\(issue.line):\(issue.startColumn)\n", color: .systemRed)
+      for str in issue.messageArray {
+        self.mBuildLogTextView.appendMessageString (str + "\n", color: .systemRed)
+      }
+      for fixit in issue.fixitArray {
+        self.mBuildLogTextView.appendMessageString ("  " + fixit.messageString + "\n", color: .systemBrown)
+      }
+    //--- Note issue on user interface
       self.mIssueArray.append (issue)
       for document in SWIFT_DocumentController.myDocuments () {
         document.appendIssue (issue)
       }
       self.mBuildLogTextViewRuler.setIssueArray (self.mIssueArray)
-    //--- Note issue on user interface
-      switch inKind {
+      switch issue.kind {
       case .warning :
         self.mWarningCount += 1
         self.mWarningCountTextField.stringValue = "⚠\(self.mWarningCount)"
@@ -1143,6 +1123,8 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
         self.mErrorCountTextField.stringValue = "⚠\(self.mErrorCount)"
         self.mErrorCountTextField.setHidden (false)
       }
+    }else{
+      self.mBuildLogTextView.appendMessageString ("<<invalid \(inString)>>\n", color: .systemRed)
     }
   }
 

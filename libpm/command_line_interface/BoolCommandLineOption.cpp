@@ -62,12 +62,8 @@ void BoolCommandLineOption::setBoolOptionForCommandChar (const utf32 inCommandCh
 //--------------------------------------------------------------------------------------------------
 
 void BoolCommandLineOption::setBoolOptionForCommandString (const String & inCommandString,
-                                                           bool & outFound,
-                                                           bool & outCocoaOutput) {
-  outFound = inCommandString == "cocoa" ;
-  if (outFound) {
-    outCocoaOutput = true ;
-  }
+                                                           bool & outFound) {
+  outFound = false ;
   BoolCommandLineOption * p = gFirstBoolCommand ;
   while ((p != nullptr) && ! outFound) {
     if (inCommandString == p->mCommandString) {

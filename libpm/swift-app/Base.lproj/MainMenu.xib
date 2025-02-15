@@ -188,9 +188,14 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Find" id="c9d-sg-Hgn">
                         <items>
-                            <menuItem title="Find in Files…" keyEquivalent="F" id="v1a-y6-Wma">
+                            <menuItem title="Use Selection for Find in Files…" keyEquivalent="E" id="v1a-y6-Wma">
                                 <connections>
-                                    <action selector="findInFiles:" target="-1" id="jcB-hM-FaT"/>
+                                    <action selector="useSelectionForFindInFiles:" target="-1" id="eOl-sF-omJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Find in Files…" keyEquivalent="F" id="8UX-Si-eZc">
+                                <connections>
+                                    <action selector="findInFiles:" target="-1" id="gdY-Wt-lm7"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="ig1-hC-ee0"/>

@@ -99,7 +99,7 @@ String Compiler::sourceFilePath (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::appendIssue (const cIssueDescriptor & inIssue) {
+void Compiler::appendIssue (const IssueDescriptor & inIssue) {
   if (nullptr == mCallerCompiler) {
     mIssueArray.appendObject (inIssue) ;
   }else{
@@ -121,7 +121,7 @@ void Compiler::writeIssueJSONFile (const String & inFile) {
     const bool ok = FileManager::writeStringToFile (s, inFile) ;
     if (!ok) {
       const String message (String ("Cannot write to '") + inFile + "'") ;
-      fatalError (message, "", 0) ;
+      ggs_fatalError (message, "", 0) ;
     }
   }else{
     ggs_printWarning (this, SourceTextInString (), IssueWithFixIt (), String ("Need to replace '") + inFile + "'.\n" COMMA_HERE) ;
@@ -220,7 +220,7 @@ void Compiler::onTheFlySemanticWarning (const String & inWarningMessage
 //--------------------------------------------------------------------------------------------------
 
 void Compiler::printMessage (const GGS_string & inMessage
-                               COMMA_LOCATION_ARGS) {
+                             COMMA_LOCATION_ARGS) {
   if (inMessage.isValid ()) {
     ggs_printMessage (inMessage.stringValue () COMMA_THERE) ;
   }
