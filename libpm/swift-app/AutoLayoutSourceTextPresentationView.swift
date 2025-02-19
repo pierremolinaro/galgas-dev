@@ -28,6 +28,20 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       minHeight: 400
     )
     .setUsesFindBar ()
+    self.mSourceTextView.mCocoaTextView.useAllLigatures (nil)
+    self.mSourceTextView.mCocoaTextView.isAutomaticQuoteSubstitutionEnabled = false
+    self.mSourceTextView.mCocoaTextView.smartInsertDeleteEnabled = false
+    self.mSourceTextView.mCocoaTextView.isAutomaticDashSubstitutionEnabled = false
+    self.mSourceTextView.mCocoaTextView.layoutManager?.allowsNonContiguousLayout = false
+    self.mSourceTextView.mCocoaTextView.layoutManager?.usesFontLeading = true
+    self.mSourceTextView.mCocoaTextView.layoutManager?.backgroundLayoutEnabled = false
+    self.mSourceTextView.mCocoaTextView.isRichText = false
+    self.mSourceTextView.mCocoaTextView.importsGraphics = false
+    self.mSourceTextView.mCocoaTextView.allowsImageEditing = false
+//    self.mSourceTextView.mCocoaTextView.layoutManager?.usesScreenFonts = true
+    self.mSourceTextView.mCocoaTextView.layoutManager?.showsControlCharacters = true
+//    self.mSourceTextView.mCocoaTextView.layoutManager.showsInvisibleCharacters = true
+    self.mSourceTextView.mCocoaTextView.isAutomaticTextReplacementEnabled = false
     super.init ()
     self.mDocument = inDocument
     self.mSourceTextView.setTextViewDelegate (self) // BaseTextViewDelegate
@@ -175,7 +189,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func selectedRangeDidChange (_ inSelectedRange : NSRange,
-                               _ inCocoaWiew : InternalCocoaTextView) {
+                               _ inCocoaTextWiew : InternalCocoaTextView) {
     self.mDocument?.selectedRangeDidChange ()
   }
 
@@ -192,7 +206,6 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   public func willDrawTextView (_ inDirtyRect : NSRect, _ inCocoaTextWiew : InternalCocoaTextView) {
   //--- Draw page guide
     if gShowPageGuide.propval,
-//       let spaceWidth = (inCocoaTextWiew.layoutManager as? NSLayoutManager)?.spaceWidth,
        let textAttributes = self.mDocument?.mTokenizer?.attributes (fromStyleIndex: 0),
        let textFont = textAttributes [.font] as? NSFont {
       let pageGuideColumn = gPageGuideColumn.propval
@@ -246,8 +259,8 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   func selectionRange (forProposedRange inProposedSelRange : NSRange,
                        granularity inGranularity : NSSelectionGranularity,
-                       _ inCocoaWiew : InternalCocoaTextView) -> NSRange {
-    var result = inProposedSelRange
+                       _ inCocoaTextWiew : InternalCocoaTextView) -> NSRange? {
+    var result : NSRange? = nil
     if inGranularity == .selectByWord {
       let tokenArray = self.mDocument?.mTokenRangeArray ?? []
       var found = false
@@ -255,17 +268,13 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       while idx < tokenArray.count, !found {
         let token = tokenArray [idx]
         idx += 1
-        let range = token.range
-        found = ((range.location + range.length) > inProposedSelRange.location) && (range.location <= inProposedSelRange.location)
+        let tokenRange = token.range
+        found = ((tokenRange.location + tokenRange.length) > inProposedSelRange.location) && (tokenRange.location <= inProposedSelRange.location)
         if (found) {
           if let atomic = self.mDocument?.mTokenizer?.atomicSelectionFor (token: token.tokenCode), atomic {
-            result = range
-          }else{
-            let modifierFlags = NSApp.currentEvent?.modifierFlags ?? NSEvent.ModifierFlags ()
-            let altAndCmdOn = modifierFlags.contains (.command) && modifierFlags.contains (.option)
-            if altAndCmdOn {
-              result = range
-            }
+            result = tokenRange
+          }else if let modifierFlags = NSApp.currentEvent?.modifierFlags, modifierFlags.contains (.option) {
+            result = tokenRange
           }
         }
       }
@@ -315,17 +324,17 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func keyDown (with inEvent : NSEvent,
-                _ inCocoaWiew : InternalCocoaTextView,
+                _ inCocoaTextWiew : InternalCocoaTextView,
                 callSuperOnReturn outCallSuperOnReturn : inout Bool) {
     if let keys = inEvent.characters, let char = keys.first {
-      let nsString = inCocoaWiew.string as NSString
+      let nsString = inCocoaTextWiew.string as NSString
       let alignment = gSpacesForHTab.propval
       if char == "\t", alignment > 0 { // A Tab Character, without shift ?
         outCallSuperOnReturn = false
-        let selectedRange = inCocoaWiew.selectedRange
+        let selectedRange = inCocoaTextWiew.selectedRange
         let selectedString = nsString.substring (with: selectedRange)
         if selectedString.contains ("\n") {
-          self.shiftRightRange (inCocoaWiew)
+          self.shiftRightRange (inCocoaTextWiew)
         }else{
           var spacesToInsert = alignment - selectedRange.location % alignment
           var characterAfterSelection = selectedRange.location + selectedRange.length
@@ -338,32 +347,31 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
           if spacesToInsert == 0 {
             spacesToInsert = alignment
           }
-          inCocoaWiew.insertText (
+          inCocoaTextWiew.insertText (
             String (repeating: " ", count: spacesToInsert),
             replacementRange: selectedRange
           )
         }
       }else if char == "\u{19}", alignment > 0 { // A Tab Character, with shift ?
         outCallSuperOnReturn = false
-        self.shiftLeftRange (inCocoaWiew)
-//      case 13 : // A Carriage Return Character ?
-//        { const NSRange selectedRange = [self selectedRange] ;
-//          NSString * s = self.textStorage.string ;
-//          NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
-//        //--- Find the number of spaces at the beginning of the line
-//          if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
-//            currentLineRange.length = selectedRange.location - currentLineRange.location ;
-//          }
-//        //--- Insert string
-//          NSMutableString * stringToInsert = [NSMutableString new] ;
-//          [stringToInsert appendString: @"\n"] ;
-//          while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
-//            currentLineRange.location ++ ;
-//            currentLineRange.length -- ;
-//            [stringToInsert appendString: @" "] ;
-//          }
-//          [self insertText:stringToInsert] ;
-//        }break ;
+        self.shiftLeftRange (inCocoaTextWiew)
+      }else if char == "\r", let textStorage = inCocoaTextWiew.textStorage { // A Carriage Return Character ?
+        outCallSuperOnReturn = false
+        let selectedRange = inCocoaTextWiew.selectedRange
+        let s = textStorage.string as NSString
+        var currentLineRange = s.lineRange (for: selectedRange)
+      //--- Find the number of spaces at the beginning of the line
+        if currentLineRange.length > (selectedRange.location - currentLineRange.location) {
+          currentLineRange.length = selectedRange.location - currentLineRange.location ;
+        }
+      //--- Insert string
+        var stringToInsert = "\n"
+        while currentLineRange.length > 0, s.character (at: currentLineRange.location) == 32 {
+          currentLineRange.location += 1
+          currentLineRange.length -= 1
+          stringToInsert += " "
+        }
+        inCocoaTextWiew.insertText (stringToInsert, replacementRange: selectedRange)
       }
     }
   }
@@ -371,21 +379,21 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func mouseDown (with inEvent : NSEvent,
-                  _ inCocoaWiew : InternalCocoaTextView,
+                  _ inCocoaTextWiew : InternalCocoaTextView,
                   callSuperOnReturn outCallSuperOnReturn : inout Bool) {
     if inEvent.modifierFlags.contains (.command) {
     //--- Select range
-      let local_point = inCocoaWiew.convert (inEvent.locationInWindow, from: nil)
-      let characterIndex = inCocoaWiew.characterIndexForInsertion (at: local_point)
+      let local_point = inCocoaTextWiew.convert (inEvent.locationInWindow, from: nil)
+      let characterIndex = inCocoaTextWiew.characterIndexForInsertion (at: local_point)
       let selectedRange = NSRange (location: characterIndex, length: 0)
-      let r = inCocoaWiew.selectionRange (forProposedRange: selectedRange, granularity: .selectByWord)
-      inCocoaWiew.setSelectedRange (r)
+      let r = inCocoaTextWiew.selectionRange (forProposedRange: selectedRange, granularity: .selectByWord)
+      inCocoaTextWiew.setSelectedRange (r)
       let menu = NSMenu (title: "")
       menu.autoenablesItems = false
     //--- Add issues
       for issue in self.mDocument?.mIssueArray ?? [] {
         if NSIntersectionRange (issue.range, r).length != NSNotFound {
-          issue.storeItemsToMenu (menu, inCocoaWiew, r)
+          issue.storeItemsToMenu (menu, inCocoaTextWiew, r)
         }
       }
     //--- Source indexing
@@ -393,7 +401,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     //--- Display menu
       menu.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       menu.allowsContextMenuPlugIns = false
-      NSMenu.popUpContextMenu (menu, with: inEvent, for: inCocoaWiew)
+      NSMenu.popUpContextMenu (menu, with: inEvent, for: inCocoaTextWiew)
       outCallSuperOnReturn = false
     }
   }
@@ -406,11 +414,11 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     ]
   //--- Indexing dictionary
     let dictionaryArray = self.buildIndexingDictionaryArray ()
-    let token = (self.mSourceTextView.string as NSString).substring (with: inSelectedRange)
+    let tokenString = (self.mSourceTextView.string as NSString).substring (with: inSelectedRange)
   //--- Build array of all references of given token
     var allReferences = [String] ()
     for currentIndexDictionary in dictionaryArray {
-      if let references = currentIndexDictionary [token] {
+      if let references = currentIndexDictionary [tokenString] {
         allReferences += references
       }
     }
@@ -431,7 +439,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   //---
     inMenu.addItem (.separator ())
     if kindDictionary.isEmpty {
-      let title = "No index for '\(token)'"
+      let title = "No index for '\(tokenString)'"
       inMenu.addItem (withTitle: title, action: nil, keyEquivalent: "")
     }else if let indexingTitles = self.mDocument?.mTokenizer?.indexingTitles () {
       for kindIndex in kindDictionary.keys.sorted () {
@@ -478,31 +486,31 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func shiftRightRange (_ inCocoaWiew : InternalCocoaTextView) {
+  private func shiftRightRange (_ inCocoaTextWiew : InternalCocoaTextView) {
   //--- Space string
     let spaceStringLength = gSpacesForHTab.propval
     let spaceString = String (repeating: " ", count: spaceStringLength)
-    let sourceString = inCocoaWiew.string as NSString
+    let sourceString = inCocoaTextWiew.string as NSString
   //--- Line range contains all lines
-    let lineRange = sourceString.lineRange (for: inCocoaWiew.selectedRange)
+    let lineRange = sourceString.lineRange (for: inCocoaTextWiew.selectedRange)
     let lineRangeString = sourceString.substring (with: lineRange)
     let lines = lineRangeString.split (separator: "\n")
     let indentedLines = lines.map { spaceString + $0 }
     let newLineRangeString = indentedLines.joined (separator: "\n") + "\n"
-    inCocoaWiew.insertText (newLineRangeString, replacementRange: lineRange)
-    inCocoaWiew.setSelectedRange (NSRange (location: lineRange.location, length: newLineRangeString.count - 1))
+    inCocoaTextWiew.insertText (newLineRangeString, replacementRange: lineRange)
+    inCocoaTextWiew.setSelectedRange (NSRange (location: lineRange.location, length: newLineRangeString.count - 1))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private func shiftLeftRange (_ inCocoaWiew : InternalCocoaTextView) {
+  private func shiftLeftRange (_ inCocoaTextWiew : InternalCocoaTextView) {
   //--- Block comment string
     let spaceStringLength = gSpacesForHTab.propval
     let spaceString = String (repeating: " ", count: spaceStringLength)
   //--- Get source string
-    let sourceString = inCocoaWiew.string as NSString
+    let sourceString = inCocoaTextWiew.string as NSString
   //--- Line range contains all lines
-    let lineRange = sourceString.lineRange (for: inCocoaWiew.selectedRange)
+    let lineRange = sourceString.lineRange (for: inCocoaTextWiew.selectedRange)
     let lineRangeString = sourceString.substring (with: lineRange)
     let lines = lineRangeString.split (separator: "\n")
     let modifiedLines = lines.map {
@@ -513,54 +521,154 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       return result
     }
     let newLineRangeString = modifiedLines.joined (separator: "\n") + "\n"
-    inCocoaWiew.insertText (newLineRangeString, replacementRange: lineRange)
-    inCocoaWiew.setSelectedRange (NSRange (location: lineRange.location, length: newLineRangeString.count - 1))
+    inCocoaTextWiew.insertText (newLineRangeString, replacementRange: lineRange)
+    inCocoaTextWiew.setSelectedRange (NSRange (location: lineRange.location, length: newLineRangeString.count - 1))
+  }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //MARK: Indexing dictionary
+  // Every plist list is a dictionary: the key is the indexed to token; the
+  // associated value is an NSArray of NSString that has the following format:
+  //   "kind:line:locationIndex:length:sourceFileFullPath"
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @MainActor func buildIndexingDictionaryArray () -> [[String : [String]]] {
+    let fm = FileManager ()
+    var result = [[String : [String]]] ()
+  //--- Save all sources
+    NSDocumentController.shared.saveAllDocuments (nil)
+  //--- Project file path directory
+    let indexingDescriptors : [String : String] = indexingDescriptorDictionary ()
+    var optProjectFilePath : String? = nil
+    var optIndexingSuffix : String? = nil
+    for document in SWIFT_DocumentController.myDocuments () {
+      if let url = document.fileURL, let indexingSuffix = indexingDescriptors [url.path.pathExtension] {
+        optProjectFilePath = url.path
+        optIndexingSuffix = indexingSuffix
+      }
+    }
+  //--- index directory
+    if let projectFilePath = optProjectFilePath,
+       let indexingSuffix = optIndexingSuffix,
+       let appDelegate = NSApp.delegate as? SWIFT_AppDelegate {
+      let projectFileDirectory = projectFilePath.deletingLastPathComponent
+      let projectFileName = projectFilePath.lastPathComponent
+      let projectFileNameModified = projectFileName.replacingOccurrences (of: ".", with: "-")
+      let modifiedIndexingSuffix = indexingSuffix.replacingOccurrences (of: "*", with: projectFileNameModified)
+      let indexingDirectory = projectFileDirectory + "/" + modifiedIndexingSuffix
+      try? fm.createDirectory (
+        atPath: indexingDirectory,
+        withIntermediateDirectories: true,
+        attributes: nil
+      )
+    //--- Handled extensions
+      let handledExtensions = Set (SWIFT_DocumentController.supportedDocumentExtensions)
+    //--- All files in source directory
+      let compilerToolPath = appDelegate.compilerToolPath
+      let relativePathes = try? fm.subpathsOfDirectory (atPath: projectFileDirectory)
+      var availableDictionaryPathArray = [String] ()
+      let opq = OperationQueue ()
+      for relativeFilePath in relativePathes ?? [] {
+        let fullFilePath = projectFileDirectory + "/" + relativeFilePath
+        if handledExtensions.contains (fullFilePath.pathExtension) {
+        //--- Index file path
+          let indexFileFullPath = indexingDirectory + "/" + fullFilePath.lastPathComponent + ".plist"
+        //--- Parse source file ?
+          if !fm.fileExists (atPath: indexFileFullPath) { // Parse source file
+            let op = IndexingOperation (
+              path: fullFilePath,
+              compilerToolPath: compilerToolPath,
+              indexFileFullPath: indexFileFullPath
+            )
+            opq.addOperation (op)
+            availableDictionaryPathArray.append (indexFileFullPath)
+          }else if self.sourceFile (fullFilePath, newerThanFile: indexFileFullPath) {
+            try? fm.removeItem (atPath: indexFileFullPath)
+            let op = IndexingOperation (
+              path: fullFilePath,
+              compilerToolPath: compilerToolPath,
+              indexFileFullPath: indexFileFullPath
+            )
+            opq.addOperation (op)
+            availableDictionaryPathArray.append (indexFileFullPath)
+          }else{
+            availableDictionaryPathArray.append (indexFileFullPath)
+          }
+        }
+      }
+    //--- Wait operations are completed
+      opq.waitUntilAllOperationsAreFinished ()
+    //--- Parse available dictionaries
+      for fullPath in availableDictionaryPathArray {
+        if let dict = NSDictionary (contentsOfFile: fullPath) as? [String : [String]] {
+          result.append (dict)
+        }
+      }
+    }
+    return result ;
+  }
 
-//    let mutableSourceString : NSMutableAttributedString = inCocoaWiew.textStorage!
-//    let sourceString = mutableSourceString.string as NSString
-//  //--- Final selection range
-//    var finalSelectedRange = initialSelectedRange
-//  //--- Get line range that is affected by the operation
-//    let lineRange = sourceString.lineRange (for: initialSelectedRange)
-//    var currentLineRange = sourceString.lineRange (for: NSRange (location: lineRange.location + lineRange.length - 1, length: 1))
-//    var loop = true
-//    while loop {
-//      let lineString : NSString = sourceString.substring (with: currentLineRange) as NSString
-//      if lineString.compare (spaceString, options: .literal, range: NSRange (location: 0, length: spaceStringLength)) == .orderedSame {
-//        mutableSourceString.replaceCharacters (in: NSRange (location: currentLineRange.location, length: spaceStringLength), with:"")
-//      //--- Examen du nombre de caractères à l'intérieur de la sélection
-//        let withinSelectionCharacterCount =
-//          min (currentLineRange.location + spaceStringLength, finalSelectedRange.location + finalSelectedRange.length)
-//        -
-//          max (currentLineRange.location, finalSelectedRange.location)
-//        if withinSelectionCharacterCount > 0 {
-//          finalSelectedRange.length -= withinSelectionCharacterCount
-//        }
-//      //--- Examen du nombre de caractères avant la sélection
-//        let beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location
-//        if beforeSelectionCharacterCount > 0 {
-//          finalSelectedRange.location -= min (spaceStringLength, beforeSelectionCharacterCount)
-//        }
-//      }
-//      if currentLineRange.location > 0 {
-//        currentLineRange = sourceString.lineRange (for: NSRange (location: currentLineRange.location - 1, length: 1))
-//      }
-//      loop = (currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)
-//    }
-//  //--- Update selected range
-//    inCocoaWiew.setSelectedRange (finalSelectedRange)
-  //--- Register undo
-//    [documentData.textSyntaxColoring.undoManager
-//      registerUndoWithTarget:self
-//      selector:@selector (shiftRightRange:)
-//      object:[NSValue valueWithRange:finalSelectedRange]
-//    ] ;
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  fileprivate func sourceFile (_ inFile1 : String,
+                               newerThanFile inFile2 : String) -> Bool {
+    let fm = FileManager ()
+    var result = true
+    if let file1_dictionary = try? fm.attributesOfItem (atPath: inFile1),
+       let file1_modificationDate = file1_dictionary [.modificationDate] as? Date,
+       let file2_dictionary = try? fm.attributesOfItem (atPath: inFile2),
+       let file2_modificationDate = file2_dictionary [.modificationDate] as? Date {
+      result = file1_modificationDate > file2_modificationDate
+    }
+    return result
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
 
+//--------------------------------------------------------------------------------------------------
+
+fileprivate final class IndexingOperation : Operation, @unchecked Sendable {
+
+  private let path : String
+  private let compilerToolPath : String
+  private let indexFileFullPath : String
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  init (path inPath : String,
+        compilerToolPath inCompilerToolPath : String,
+        indexFileFullPath inIndexFileFullPath : String) {
+    self.path = inPath
+    self.compilerToolPath = inCompilerToolPath
+    self.indexFileFullPath = inIndexFileFullPath
+    super.init ()
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func main () {
+  //--- Command line tool does actually exist ?
+    if !self.compilerToolPath.isEmpty {
+    //--- Build argument array
+      var arguments = [String] ()
+      arguments.append (self.path)
+      arguments.append ("--mode=indexing:" + indexFileFullPath)
+    //--- Create task
+      let task = Process ()
+      task.launchPath = self.compilerToolPath
+      task.arguments = arguments
+    //--- Start task
+      task.launch ()
+    //--- Wait the task is completed
+      task.waitUntilExit ()
+    }
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------

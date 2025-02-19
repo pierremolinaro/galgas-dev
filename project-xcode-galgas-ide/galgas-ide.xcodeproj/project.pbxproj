@@ -472,7 +472,6 @@
 		CFAA22D62D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */; };
 		CFAE1C222D1C36C7001FDE69 /* SWIFT_Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */; };
 		CFAE1C242D1C4450001FDE69 /* SWIFT_BuildLogViewRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */; };
-		CFBDE6062D6110A5002F3847 /* SWIFT_buildIndexingDictionaryArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBDE6052D61108E002F3847 /* SWIFT_buildIndexingDictionaryArray.swift */; };
 		CFD6D23A2D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */; };
 		CFD6D23B2D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */; };
 		CFD6D23D2D0DEA8400E91AE6 /* SWIFT_Lexique.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6D23C2D0DEA8400E91AE6 /* SWIFT_Lexique.swift */; };
@@ -977,7 +976,6 @@
 		CFAA22D52D0DD79F00FFC0B6 /* SWIFT-common-command-line-options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SWIFT-common-command-line-options.swift"; sourceTree = "<group>"; };
 		CFAE1C212D1C36C1001FDE69 /* SWIFT_Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_Issue.swift; sourceTree = "<group>"; };
 		CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_BuildLogViewRuler.swift; sourceTree = "<group>"; };
-		CFBDE6052D61108E002F3847 /* SWIFT_buildIndexingDictionaryArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWIFT_buildIndexingDictionaryArray.swift; sourceTree = "<group>"; };
 		CFD6D2362D0DE45B00E91AE6 /* lexique-galgas+scanner3-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner3-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2372D0DE45B00E91AE6 /* lexique-galgas+scanner4-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+scanner4-cocoa.swift"; sourceTree = "<group>"; };
 		CFD6D2382D0DE45B00E91AE6 /* lexique-galgas+template+scanner-cocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lexique-galgas+template+scanner-cocoa.swift"; sourceTree = "<group>"; };
@@ -1771,7 +1769,6 @@
 				CF08BB882D55316A000DE9C4 /* Base.lproj */,
 				CFE752BC2D0EE12D0071CADB /* SWIFT_AppDelegate.swift */,
 				CFE752F62D0F11B80071CADB /* SWIFT_AppDelegate+new-document.swift */,
-				CFBDE6052D61108E002F3847 /* SWIFT_buildIndexingDictionaryArray.swift */,
 				CFAE1C232D1C443D001FDE69 /* SWIFT_BuildLogViewRuler.swift */,
 				CFAA22C22D0DB92D00FFC0B6 /* SWIFT_CommandLineOption.swift */,
 				CF79C5682D0F32CC002EEE48 /* SWIFT_DisplayDescriptor.swift */,
@@ -2190,7 +2187,6 @@
 				CF08BABB2D552D3A000DE9C4 /* EBSelection.swift in Sources */,
 				CF08BABC2D552D3A000DE9C4 /* EBPreferenceProperty.swift in Sources */,
 				CF08BABD2D552D3A000DE9C4 /* extension-Data-EBPropertyProtocol.swift in Sources */,
-				CFBDE6062D6110A5002F3847 /* SWIFT_buildIndexingDictionaryArray.swift in Sources */,
 				CF08BABE2D552D3A000DE9C4 /* extension-NSBezierPath.swift in Sources */,
 				CF08BABF2D552D3A000DE9C4 /* AutoLayoutLabel.swift in Sources */,
 				CF08BAC02D552D3A000DE9C4 /* EBSimpleObserver.swift in Sources */,

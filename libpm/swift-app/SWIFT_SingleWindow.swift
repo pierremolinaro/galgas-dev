@@ -51,7 +51,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
     drawsBackground: true,
     horizontalScroller: false,
     verticalScroller: true
-  )
+  ).setSelectable (true)
 
   private let mSearchInFilesView = AutoLayoutVerticalStackView ()
   private let mSearchTextField = AutoLayoutSearchField (minWidth: 100, bold: false, size: .regular)
@@ -732,6 +732,7 @@ class SWIFT_SingleWindow : NSWindow, NSWindowDelegate, AutoLayoutTableViewDelega
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private func performSearchInFiles () {
+    NSDocumentController.shared.saveAllDocuments (nil)
     let searchedString = self.mSearchTextField.stringValue
     if !searchedString.isEmpty, !self.mTabArray.isEmpty, let firstTabURL = self.mTabArray [0].fileURL {
       let directory : URL = firstTabURL.deletingLastPathComponent ()

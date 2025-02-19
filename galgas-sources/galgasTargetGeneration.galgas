@@ -925,7 +925,6 @@ proc updateGalgasTargets
           "SWIFT-common-command-line-options.swift",
           "SWIFT_AppDelegate+new-document.swift",
           "SWIFT_AppDelegate.swift",
-          "SWIFT_buildIndexingDictionaryArray.swift",
           "SWIFT_BuildLogViewRuler.swift",
           "SWIFT_CommandLineOption.swift",
           "SWIFT_DisplayDescriptor.swift",

@@ -230,7 +230,9 @@ func scanner_cocoa_function_toLower (_ inUnicodeCharacter : UInt32) -> UInt32 {
 func scanner_cocoa_routine_enterCharacterIntoString (_ ioScanningOk : inout Bool,
                                                      _ ioStr : inout String,
                                                      _ inUnicodeCharacter : UInt32) {
-  ioStr += String (Unicode.Scalar (inUnicodeCharacter)!)
+  if let char = Unicode.Scalar (inUnicodeCharacter) {
+    ioStr += String (char)
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
