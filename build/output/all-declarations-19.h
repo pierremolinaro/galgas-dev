@@ -215,6 +215,18 @@ void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
 //--------------------------------------------------------------------------------------------------
 
 class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax {
+//------------------------------------- 'folderDirectory' non terminal
+//--- 'parse' label
+  public: virtual void nt_folderDirectory_parse (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//--- indexing
+  public: virtual void nt_folderDirectory_indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_folderDirectory_ (const GGS_string inArgument0,
+                                            GGS_lstringlist & ioArgument1,
+                                            Lexique_galgasScanner_33_ * inCompiler) ;
+
 //------------------------------------- 'project_component_start_symbol' non terminal
 //--- 'parse' label
   public: virtual void nt_project_5F_component_5F_start_5F_symbol_parse (Lexique_galgasScanner_33_ * inCompiler) ;
@@ -265,6 +277,8 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
                                               Lexique_galgasScanner_33_ * inCompiler) ;
 
   public: virtual int32_t select_galgas_33_ProjectSyntax_0 (Lexique_galgasScanner_33_ *) ;
+
+  public: virtual int32_t select_galgas_33_ProjectSyntax_1 (Lexique_galgasScanner_33_ *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

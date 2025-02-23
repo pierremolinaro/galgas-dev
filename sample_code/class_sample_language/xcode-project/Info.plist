@@ -27,8 +27,8 @@
  <key>CFBundleDocumentTypes</key>
  <array>
   <dict>
-      <key>CFBundleTypeIconFile</key>
-      <string>classSampleLanguage_icns</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>classSampleLanguage_icns</string>
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>
@@ -58,7 +58,7 @@
     <key>UTTypeIcons</key>
     <dict>
       <key>UTTypeIconBadgeName</key>
-      <string>galgasDocuments</string>
+      <string>classSampleLanguage_icns</string>
     </dict>
     <key>UTTypeIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER).classSampleLanguage</string>

@@ -27,12 +27,12 @@
  <key>CFBundleDocumentTypes</key>
  <array>
   <dict>
-      <key>CFBundleTypeIconFile</key>
-      <string>LR1_grammar_icns</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>LR1_grammar_icns</string>
       <key>CFBundleTypeIconSystemGenerated</key>
       <integer>0</integer>
       <key>CFBundleTypeName</key>
-      <string>LR1Grammar Source</string>
+      <string>LR1_grammar Source</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>
@@ -58,7 +58,7 @@
     <key>UTTypeIcons</key>
     <dict>
       <key>UTTypeIconBadgeName</key>
-      <string>galgasDocuments</string>
+      <string>LR1_grammar_icns</string>
     </dict>
     <key>UTTypeIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER).LR1_grammar</string>
