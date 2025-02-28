@@ -12,7 +12,7 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
   private let mRevealInFinderPullDownButton = AutoLayoutPullDownButton (title: "Reveal in Finder", size: .small)
   private let mSourceTextView : BaseTextView
   var sourceTextView : BaseTextView { return self.mSourceTextView }
-  private var mBackgroundObserver : EBSimpleObserver? = nil
+  private var mDisplayChangeObserver : EBSimpleObserver? = nil
   private weak var mDocument : SWIFT_SingleDocument? = nil // SHOULD BE WEAK
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,9 +64,12 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
     _ = self.set (margins: .zero)
       .appendView (topHStack)
       .appendView (self.mSourceTextView)
-  //--- Ajouter un observateur pour être averti du changement de la couleur de fond
-    self.mBackgroundObserver = EBSimpleObserver (objects: [gEditorBackgroundColor, gPageGuideColumn, gShowPageGuide]) { [weak self] in
-      self?.mSourceTextView.triggerDisplay ()
+  //--- Ajouter un observateur pour être averti des changements de style
+    DispatchQueue.main.async {
+      let observedObjects : [EBObservedObject] = [gEditorBackgroundColor, gPageGuideColumn, gShowPageGuide]
+      self.mDisplayChangeObserver = EBSimpleObserver (objects: observedObjects) { [weak self] in
+        self?.mSourceTextView.triggerDisplay ()
+      }
     }
   }
 
@@ -166,12 +169,6 @@ final class AutoLayoutSourceTextPresentationView : AutoLayoutVerticalStackView, 
       }
     }
     self.mEntryPopUpButton.select (optionalSelectedMenuItem)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func lineHeightDidChange () {
-    self.mSourceTextView.textViewNeedsDisplay ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

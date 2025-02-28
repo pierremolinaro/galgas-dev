@@ -41,8 +41,8 @@ import AppKit
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func lineHeightDidChange () {
-    self.mSourcePresentationView.lineHeightDidChange ()
+  func textViewNeedsDisplay () {
+    self.mSourcePresentationView.textViewNeedsDisplay ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -152,12 +152,6 @@ import AppKit
 
   func scrollSelectedRangeToVisible () {
     self.sourcePresentationView.sourceTextView.scrollRangeToVisible (self.selectedRange)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func textViewNeedsDisplay () {
-    self.sourcePresentationView.textViewNeedsDisplay ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

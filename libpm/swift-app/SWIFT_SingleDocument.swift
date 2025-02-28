@@ -12,7 +12,7 @@ import AppKit
 
   let mUndoManager = UndoManager ()
   private(set) var mTokenizer : (any SWIFT_Tokenizer_Protocol)? = nil
-  private let mFontStyleObserver = EBOutletEvent ()
+  private let mDisplayStyleChangeObserver = EBOutletEvent ()
   private let mLineHeightObserver = EBOutletEvent ()
   var mDisplayDescriptors = [SWIFT_WeakElement <SWIFT_DisplayDescriptor>] ()
   var mTokenRangeArray = [SWIFT_Token] ()
@@ -71,25 +71,28 @@ import AppKit
       self.mTokenizer = tokenizerFor (extension: self.lastComponentOfFileName.pathExtension)
       if let tokenizer = self.mTokenizer {
         for i : UInt8 in 0 ..< (tokenizer.styleCount () + 3) {
-          tokenizer.color (forStyle: i).startsBeingObserved (by: self.mFontStyleObserver)
-          tokenizer.bold (forStyle: i).startsBeingObserved (by: self.mFontStyleObserver)
-          tokenizer.italic (forStyle: i).startsBeingObserved (by: self.mFontStyleObserver)
+          tokenizer.color (forStyle: i).startsBeingObserved (by: self.mDisplayStyleChangeObserver)
+          tokenizer.bold (forStyle: i).startsBeingObserved (by: self.mDisplayStyleChangeObserver)
+          tokenizer.italic (forStyle: i).startsBeingObserved (by: self.mDisplayStyleChangeObserver)
         }
-        tokenizer.font.startsBeingObserved (by: self.mFontStyleObserver)
-        tokenizer.lineHeight.startsBeingObserved (by: self.mFontStyleObserver)
+        tokenizer.font.startsBeingObserved (by: self.mDisplayStyleChangeObserver)
+        tokenizer.lineHeight.startsBeingObserved (by: self.mDisplayStyleChangeObserver)
         tokenizer.lineHeight.startsBeingObserved (by: self.mLineHeightObserver)
       }
-      self.mFontStyleObserver.mEventCallBack = { [weak self] in
+      self.mDisplayStyleChangeObserver.mEventCallBack = { [weak self] in
         if let me = self {
           me.mTextStorage.beginEditing ()
           me.computeLexicalColoring (NSRange (location: 0, length: me.mTextStorage.length), 0)
           me.mTextStorage.endEditing ()
+          for displayDescriptor in me.mDisplayDescriptors {
+            displayDescriptor.possibleElement?.textViewNeedsDisplay ()
+          }
         }
       }
       self.mLineHeightObserver.mEventCallBack = { [weak self] in
         if let me = self {
           for displayDescriptor in me.mDisplayDescriptors {
-            displayDescriptor.possibleElement?.lineHeightDidChange ()
+            displayDescriptor.possibleElement?.textViewNeedsDisplay ()
           }
         }
       }
