@@ -955,10 +955,6 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_stringset (void) ;
-
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers

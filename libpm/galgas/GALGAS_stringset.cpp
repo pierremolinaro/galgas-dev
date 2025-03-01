@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2005, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2005, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -102,11 +102,6 @@ mIsValid (false) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset::~GGS_stringset (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_stringset::drop (void) {
   mStringSet.clear () ;
   mIsValid = false ;
@@ -167,38 +162,31 @@ void GGS_stringset::addAssign_operation (const GGS_string & inKey
 void GGS_stringset::setter_removeKey (GGS_string inKey
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    mStringSet.erase (inKey.stringValue()) ;
+    mStringSet.erase (inKey.stringValue ()) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark stringset operations
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//
 //    I N T E R S E C T I O N
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand
                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
-    for (auto s : mStringSet) {
-      auto iterator = inOperand.mStringSet.find (s) ;
-      if (iterator != inOperand.mStringSet.end ()) { // C++20
-      // if (inOperand.mStringSet.contains (s)) {
-        result.mStringSet.insert (s) ;
+    auto iterator1 = mStringSet.begin () ;
+    auto iterator2 = inOperand.mStringSet.begin () ;
+    while ((iterator1 != mStringSet.end ()) && (iterator2 != inOperand.mStringSet.end ())) {
+      if (*iterator1 < *iterator2) {
+        iterator1 ++ ;
+      }else if (*iterator1 > *iterator2) {
+        iterator2 ++ ;
+      }else{
+        result.mStringSet.insert (*iterator1) ;
+        iterator1 ++ ;
+        iterator2 ++ ;
       }
     }
-//    std::set_intersection (
-//      mStringSet.begin (), mStringSet.end (),
-//      inOperand.mStringSet.begin (), inOperand.mStringSet.end (),
-//      std::back_inserter (result.mStringSet)
-//    ) ;
     result.mIsValid = true ;
   }
   return result ;
@@ -213,7 +201,7 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
   GGS_stringset result ;
   if (isValid () && inOperand.isValid ()) {
     result.mStringSet = mStringSet ;
-    for (auto s : inOperand.mStringSet) {
+    for (String s : inOperand.mStringSet) {
       result.mStringSet.insert (s) ;
     }
     result.mIsValid = true ;
@@ -226,12 +214,10 @@ GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
 void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand,
                                           Compiler *
                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    for (auto s : inOperand.mStringSet) {
+  if (inOperand.isValid ()) {
+    for (String s : inOperand.mStringSet) {
       mStringSet.insert (s) ;
     }
-  }else{
-    drop () ;
   }
 }
 
@@ -260,12 +246,6 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
 
 //--------------------------------------------------------------------------------------------------
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Getters
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
@@ -280,7 +260,7 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
-                                             COMMA_UNUSED_LOCATION_ARGS) const {
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -384,11 +364,9 @@ ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) 
       while ((iterator1 != mStringSet.end())
           && (iterator2 != inOperand.mStringSet.end())
           && (result == ComparisonResult::operandEqual)) {
-        const String s1 = *iterator1 ;
-        const String s2 = *iterator2 ;
-        if (s1 < s2) {
+        if (*iterator1 < *iterator2) {
           result = ComparisonResult::firstOperandLowerThanSecond ;
-        }else if (s1 > s2) {
+        }else if (*iterator1 > *iterator2) {
           result = ComparisonResult::firstOperandGreaterThanSecond ;
         }
         iterator1 ++ ;
@@ -424,8 +402,8 @@ GGS_stringset GGS_stringset::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_stringset::enterElement (const GGS_string & inValue,
-                                     Compiler *
-                                     COMMA_LOCATION_ARGS) {
+                                  Compiler *
+                                  COMMA_LOCATION_ARGS) {
   addAssign_operation (inValue COMMA_THERE) ;
 }
 
@@ -460,7 +438,7 @@ GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlist & inStringList
-                                                                   COMMA_LOCATION_ARGS) {
+                                                            COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
@@ -474,4 +452,3 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
 }
 
 //--------------------------------------------------------------------------------------------------
-
