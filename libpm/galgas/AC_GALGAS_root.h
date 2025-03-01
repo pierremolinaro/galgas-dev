@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  AC_GALGAS_root : root type for all GALGAS types (on debug mode only)                         
+//  AC_GALGAS_root : root type for all GALGAS types                        
 //
 //  This file is part of libpm library                                                           
 //
@@ -73,8 +73,6 @@ class AC_GALGAS_root {
   public: virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
 
   public: virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
-
- // public: virtual class ComparisonResult objectCompare (const AC_GALGAS_root & inOperand) const = 0 ;
 
   public: VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;
 

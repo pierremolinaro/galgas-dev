@@ -25,8 +25,9 @@ mBDD (inBDD) {
 
 //--------------------------------------------------------------------------------------------------
 
-BinaryDecisionDiagramRelation::BinaryDecisionDiagramRelation (const BinaryDecisionDiagramRelationConfiguration & inConfiguration,
-                        const bool inIsFull) :
+BinaryDecisionDiagramRelation::
+BinaryDecisionDiagramRelation (const BinaryDecisionDiagramRelationConfiguration & inConfiguration,
+                               const bool inIsFull) :
 mConfiguration (inConfiguration),
 mBDD () {
   if (inIsFull) {
