@@ -940,30 +940,24 @@ class GGS_uint : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 
 //--------------------------------------------------------------------------------------------------
-//
 //   @stringset type
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private: class cSharedStringsetRoot * mSharedRoot ;
+  private: std::set <String> mStringSet ;
+  private: bool mIsValid ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedRoot != nullptr ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
 
-//--------------------------------- Destructor (virtual in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GGS_stringset (void) ;
 
-//--------------------------------- In debug mode : check method
-  protected: void checkStringset (LOCATION_ARGS) const ;
-
-//--------------------------------- Insulate
-  protected: void insulate (LOCATION_ARGS) ;
 
 //-- Start of type generic part
 

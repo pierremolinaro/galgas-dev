@@ -91,641 +91,83 @@ void cCollectionElement_stringset::description (String & ioString, const int32_t
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//  c S t r i n g s e t N o d e
-//
-//--------------------------------------------------------------------------------------------------
-
-class cStringsetNode {
-  public: cStringsetNode * mInfPtr ;
-  public: cStringsetNode * mSupPtr ;
-  public: int32_t mBalance ;
-  public: String mKey ;
-
-//---
-  public: cStringsetNode (const String & inString) ;
-  public: cStringsetNode (const cStringsetNode * inNode) ;
-
-//--- No copy
-  private: cStringsetNode (const cStringsetNode &) ;
-  private: cStringsetNode & operator = (const cStringsetNode &) ;
-
-//--- Destructor
-  public: virtual ~ cStringsetNode (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cStringsetNode::cStringsetNode (const String & inString) :
-mInfPtr (nullptr),
-mSupPtr (nullptr),
-mBalance (0),
-mKey (inString) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cStringsetNode::cStringsetNode (const cStringsetNode * inNode) :
-mInfPtr (nullptr),
-mSupPtr (nullptr),
-mBalance (inNode->mBalance),
-mKey (inNode->mKey) {
-  if (inNode->mInfPtr != nullptr) {
-    macroMyNew (mInfPtr, cStringsetNode (inNode->mInfPtr)) ;
-  }
-  if (inNode->mSupPtr != nullptr) {
-    macroMyNew (mSupPtr, cStringsetNode (inNode->mSupPtr)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cStringsetNode::~cStringsetNode (void) {
-  macroMyDelete (mInfPtr) ;
-  macroMyDelete (mSupPtr) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Insertion Implementation
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-static void rotateLeft (cStringsetNode * & ioRootPtr) {
-  cStringsetNode * ptr = ioRootPtr->mSupPtr ;
-  ioRootPtr->mSupPtr = ptr->mInfPtr ;
-  ptr->mInfPtr = ioRootPtr;
-
-  if (ptr->mBalance >= 0) {
-    ioRootPtr->mBalance ++ ;
-  }else{
-    ioRootPtr->mBalance += 1 - ptr->mBalance ;
-  }
-
-  if (ioRootPtr->mBalance > 0) {
-    ptr->mBalance += ioRootPtr->mBalance + 1 ;
-  }else{
-    ptr->mBalance ++ ;
-  }
-  ioRootPtr = ptr ;
-}
-
-//---------------------------------------------------------------------
-
-static void rotateRight (cStringsetNode * & ioRootPtr) {
-  cStringsetNode * ptr = ioRootPtr->mInfPtr ;
-  ioRootPtr->mInfPtr = ptr->mSupPtr ;
-  ptr->mSupPtr = ioRootPtr ;
-
-  if (ptr->mBalance > 0) {
-    ioRootPtr->mBalance += -ptr->mBalance - 1 ;
-  }else{
-    ioRootPtr->mBalance -- ;
-  }
-  if (ioRootPtr->mBalance >= 0) {
-    ptr->mBalance -- ;
-  }else{
-    ptr->mBalance += ioRootPtr->mBalance - 1 ;
-  }
-  ioRootPtr = ptr ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void recursiveAddEntry (cStringsetNode * & ioRootPtr,
-                               const String & inKey,
-                               bool & outEntryAdded,
-                               bool & ioExtension) {
-  if (ioRootPtr == nullptr) {
-    macroMyNew (ioRootPtr, cStringsetNode (inKey)) ;
-    ioExtension = true ;
-    outEntryAdded = true ;
-  }else{
-    macroValidPointer (ioRootPtr) ;
-    const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;
-    if (comparaison > 0) {
-      recursiveAddEntry (ioRootPtr->mInfPtr, inKey, outEntryAdded, ioExtension) ;
-      if (ioExtension) {
-        ioRootPtr->mBalance++;
-        if (ioRootPtr->mBalance == 0) {
-          ioExtension = false;
-        }else if (ioRootPtr->mBalance == 2) {
-          if (ioRootPtr->mInfPtr->mBalance == -1) {
-            rotateLeft (ioRootPtr->mInfPtr) ;
-          }
-          rotateRight (ioRootPtr) ;
-          ioExtension = false;
-        }
-      }
-    }else if (comparaison < 0) {
-      recursiveAddEntry (ioRootPtr->mSupPtr, inKey, outEntryAdded, ioExtension) ;
-      if (ioExtension) {
-        ioRootPtr->mBalance-- ;
-        if (ioRootPtr->mBalance == 0) {
-          ioExtension = false ;
-        }else if (ioRootPtr->mBalance == -2) {
-          if (ioRootPtr->mSupPtr->mBalance == 1) {
-            rotateRight (ioRootPtr->mSupPtr) ;
-          }
-          rotateLeft (ioRootPtr) ;
-          ioExtension = false;
-        }
-      }
-    }else{
-      ioExtension = false ; // Found
-      outEntryAdded = false ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Remove Implementation
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-static void supBranchDecreased (cStringsetNode * & ioRoot,
-                                bool & ioBranchHasBeenRemoved) {
-  ioRoot->mBalance ++ ;
-  switch (ioRoot->mBalance) {
-  case 0:
-    break;
-  case 1:
-    ioBranchHasBeenRemoved = false;
-    break;
-  case 2:
-    switch (ioRoot->mInfPtr->mBalance) {
-    case -1:
-      rotateLeft (ioRoot->mInfPtr) ;
-      rotateRight (ioRoot) ;
-      break;
-    case 0:
-      rotateRight (ioRoot) ;
-      ioBranchHasBeenRemoved = false;
-      break;
-    case 1:
-      rotateRight (ioRoot) ;
-      break;
-    }
-    break;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void infBranchDecreased (cStringsetNode * & ioRoot,
-                                bool & ioBranchHasBeenRemoved) {
-  ioRoot->mBalance -- ;
-  switch (ioRoot->mBalance) {
-  case 0:
-    break;
-  case -1:
-    ioBranchHasBeenRemoved = false;
-    break;
-  case -2:
-    switch (ioRoot->mSupPtr->mBalance) {
-    case 1:
-      rotateRight (ioRoot->mSupPtr) ;
-      rotateLeft (ioRoot) ;
-      break;
-    case 0:
-      rotateLeft (ioRoot) ;
-      ioBranchHasBeenRemoved = false;
-      break;
-    case -1:
-      rotateLeft (ioRoot) ;
-      break;
-    }
-    break;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void getPreviousElement (cStringsetNode * & ioRoot,
-                                cStringsetNode * & ioElement,
-                                bool & ioBranchHasBeenRemoved) {
-  if (ioRoot->mSupPtr == nullptr) {
-    ioElement = ioRoot ;
-    ioRoot = ioRoot->mInfPtr ;
-    ioBranchHasBeenRemoved = true ;
-  }else{
-    getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;
-    if (ioBranchHasBeenRemoved) {
-      supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void internalRemoveRecursively (cStringsetNode * & ioRoot,
-                                       const String & inKeyToRemove,
-                                       bool & outKeyHasBeenRemoved,
-                                       bool & ioBranchHasBeenRemoved) {
-  if (ioRoot != nullptr) {
-    const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
-    if (comparaison > 0) {
-      internalRemoveRecursively (ioRoot->mInfPtr, inKeyToRemove, outKeyHasBeenRemoved, ioBranchHasBeenRemoved);
-      if (ioBranchHasBeenRemoved) {
-        infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-      }
-    }else if (comparaison < 0) {
-      internalRemoveRecursively (ioRoot->mSupPtr, inKeyToRemove, outKeyHasBeenRemoved, ioBranchHasBeenRemoved);
-      if (ioBranchHasBeenRemoved) {
-        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
-      }
-    }else{
-      cStringsetNode * p = ioRoot ;
-      outKeyHasBeenRemoved = true ;
-      if (p->mInfPtr == nullptr) {
-        ioRoot = p->mSupPtr;
-        p->mSupPtr = nullptr;
-        ioBranchHasBeenRemoved = true;
-      }else if (p->mSupPtr == nullptr) {
-        ioRoot = p->mInfPtr;
-        p->mInfPtr = nullptr;
-        ioBranchHasBeenRemoved = true;
-      }else{
-        getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
-        ioRoot->mSupPtr = p->mSupPtr;
-        p->mSupPtr = nullptr;
-        ioRoot->mInfPtr = p->mInfPtr;
-        p->mInfPtr = nullptr;
-        ioRoot->mBalance = p->mBalance;
-        p->mBalance = 0;
-        if (ioBranchHasBeenRemoved) {
-          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-        }
-      }
-      macroMyDelete (p) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cSharedStringsetRoot
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//
-//  cSharedStringsetRoot
-//
-//--------------------------------------------------------------------------------------------------
-
-class cSharedStringsetRoot : public SharedObject {
-//--- Private data members
-  private: cStringsetNode * mRoot ;
-  private: uint32_t mEntryCount ;
-
-//--- Accessors
-  public: inline const cStringsetNode * root (void) const { return mRoot ; }
-  public: inline uint32_t count (void) const { return mEntryCount ; }
-
-//--- Default constructor
-  public: cSharedStringsetRoot (LOCATION_ARGS) ;
-
-//--- Virtual destructor
-  public: virtual ~ cSharedStringsetRoot (void) ;
-
-//--- No copy
-  private: cSharedStringsetRoot (const cSharedStringsetRoot &) ;
-  private: cSharedStringsetRoot & operator = (const cSharedStringsetRoot &) ;
-
-//--- In debug mode : check methods
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: void countStringSetNodes (const cStringsetNode * inNode,
-                                       uint32_t & ioCount) const ;
-    public: void checkStringset (LOCATION_ARGS) const ;
-  #endif
-
-//--- Get root key
-  public: String rootKey (void) const ;
-
-//--- Add entry
-  public: void addKey (const String & inKey) ;
-
-//--- Remove key
-  public: void removeKey (const String & inKey) ;
-
-//--- Has key
-  public: bool hasKey (const String & inKey) const ;
-
-//--- Build key list
-  public: void buildOrderedKeyList (TC_UniqueArray <String> & ioList) const ;
-
-//--- enter contents into stringlist
-  public: void addToStringList (GGS_stringlist & ioResult) const ;
-
-//--- Copy from
-  public: void copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) ;
-
-//--- Description
-  protected: void displayEntries (const cStringsetNode * inNode,
-                                   String & ioString) const ;
-  public: void description (String & ioString) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cSharedStringsetRoot::cSharedStringsetRoot (LOCATION_ARGS) :
-SharedObject (THERE),
-mRoot (nullptr),
-mEntryCount (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cSharedStringsetRoot::~cSharedStringsetRoot (void) {
-  macroMyDelete (mRoot) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cSharedStringsetRoot::countStringSetNodes (const cStringsetNode * inNode,
-                                                  uint32_t & ioCount) const {
-    if (nullptr != inNode) {
-      countStringSetNodes (inNode->mInfPtr, ioCount) ;
-      ioCount ++ ;
-      countStringSetNodes (inNode->mSupPtr, ioCount) ;
-    }
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cSharedStringsetRoot::checkStringset (LOCATION_ARGS) const {
-    uint32_t n = 0 ;
-    countStringSetNodes (mRoot, n) ;
-    macroAssertThere (n == mEntryCount, "count %lld != mEntryCount %lld", n, mEntryCount) ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::displayEntries (const cStringsetNode * inNode,
-                                           String & ioString) const {
-  if (inNode != nullptr) {
-    displayEntries (inNode->mInfPtr, ioString) ;
-    ioString.appendCString (" '") ;
-    ioString.appendString (inNode->mKey) ;
-    ioString.appendCString ("'") ;
-    displayEntries (inNode->mSupPtr, ioString) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::description (String & ioString) const {
-  ioString.appendUnsigned (mEntryCount) ;
-  if (mEntryCount > 1) {
-    ioString.appendCString (" entries") ;
-  }else{
-    ioString.appendCString (" entry") ;
-  }
-  displayEntries (mRoot, ioString) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::addKey (const String & inKey) {
-  macroUniqueSharedObject (this) ;
-  bool extension = false ;
-  bool entryAdded = false ;
-  recursiveAddEntry (mRoot, inKey, entryAdded, extension) ;
-  if (entryAdded) {
-    mEntryCount ++ ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-String cSharedStringsetRoot::rootKey (void) const {
-  macroValidPointer (mRoot) ;
-  return mRoot->mKey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) {
-  macroValidSharedObject (inSharedRootToCopy, cSharedStringsetRoot) ;
-  if (nullptr != inSharedRootToCopy->mRoot) {
-    macroMyNew (mRoot, cStringsetNode (inSharedRootToCopy->mRoot)) ;
-    mEntryCount = inSharedRootToCopy->mEntryCount ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::removeKey (const String & inKey) {
-  macroUniqueSharedObject (this) ;
-  bool branchHasBeenRemoved = false ;
-  bool keyHasBeenRemoved = false ;
-  internalRemoveRecursively (mRoot, inKey, keyHasBeenRemoved, branchHasBeenRemoved) ;
-  if (keyHasBeenRemoved) {
-    mEntryCount -- ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void recursiveBuildKeyList (const cStringsetNode * inNode,
-                                   TC_UniqueArray <String> & ioList) {
-  if (inNode != nullptr) {
-    recursiveBuildKeyList (inNode->mInfPtr, ioList) ;
-    ioList.appendObject (inNode->mKey) ;
-    recursiveBuildKeyList (inNode->mSupPtr, ioList) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::buildOrderedKeyList (TC_UniqueArray <String> & ioList) const {
-  recursiveBuildKeyList (mRoot, ioList) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cSharedStringsetRoot::hasKey (const String & inKey) const {
-  bool found = false ;
-  const cStringsetNode * p = mRoot ;
-  while ((p != nullptr) && ! found) {
-    const int32_t comparaison = p->mKey.compare (inKey) ;
-    if (comparaison > 0) {
-      p = p->mInfPtr ;
-    }else if (comparaison < 0) {
-      p = p->mSupPtr ;
-    }else{
-      found = true ;
-    }
-  }
-  return found ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void recursiveAddToStringList (GGS_stringlist & ioResult,
-                                      const cStringsetNode * inNode) {
-  if (inNode != nullptr) {
-    recursiveAddToStringList (ioResult, inNode->mInfPtr) ;
-    ioResult.addAssign_operation (GGS_string (inNode->mKey) COMMA_HERE) ;
-    recursiveAddToStringList (ioResult, inNode->mSupPtr) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cSharedStringsetRoot::addToStringList (GGS_stringlist & ioResult) const {
-  recursiveAddToStringList (ioResult, mRoot) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark GGS_stringset
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//
-//  G A L G A S _ s t r i n g s e t
-//
+//  GGS_stringset
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset::GGS_stringset (void) :
 AC_GALGAS_root (),
-mSharedRoot (nullptr) {
+mStringSet (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset::~GGS_stringset (void) {
-  macroDetachSharedObject (mSharedRoot) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_stringset::drop (void) {
-  macroDetachSharedObject (mSharedRoot) ;
+  mStringSet.clear () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset::GGS_stringset (const GGS_stringset & inSource) :
 AC_GALGAS_root (),
-mSharedRoot (nullptr) {
-  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
+mStringSet (inSource.mStringSet),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset & GGS_stringset::operator = (const GGS_stringset & inSource) {
-  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;
+  mStringSet = inSource.mStringSet ;
+  mIsValid = inSource.mIsValid ;
   return * this ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void GGS_stringset::checkStringset (LOCATION_ARGS) const {
-    if (nullptr != mSharedRoot) {
-      mSharedRoot->checkStringset (THERE) ;
-    }
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_stringset::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<@stringset:") ;
-  if (nullptr == mSharedRoot) {
+  ioString.appendCString ("<@stringset: ") ;
+  if (!mIsValid) {
     ioString.appendCString ("not built") ;
   }else{
-    mSharedRoot->description (ioString) ;
+    const size_t n = mStringSet.size () ;
+    ioString.appendUnsigned (n) ;
+    ioString.appendCString ((n > 1) ? " values" : " value") ;
   }
   ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::insulate (LOCATION_ARGS) {
-  if ((nullptr != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
-    cSharedStringsetRoot * p = nullptr ;
-    macroMyNew (p, cSharedStringsetRoot (THERE)) ;
-    p->copyFrom (mSharedRoot) ;
-    macroAssignSharedObject (mSharedRoot, p) ;
-    macroDetachSharedObject (p) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_stringset::setter_insert (const GGS_string inKey,
-                                      Compiler * /* inCompiler */
-                                      COMMA_LOCATION_ARGS) {
+                                   Compiler * /* inCompiler */
+                                   COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
-    insulate (THERE) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
-    mSharedRoot->addKey (inKey.stringValue ()) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
+    mStringSet.insert (inKey.stringValue()) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_stringset::addAssign_operation (const GGS_string & inKey
-                                            COMMA_LOCATION_ARGS) {
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && (inKey.isValid ())) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
-    insulate (THERE) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
-    mSharedRoot->addKey (inKey.stringValue ()) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
+    mStringSet.insert (inKey.stringValue()) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_stringset::setter_removeKey (GGS_string inKey
-                                           COMMA_LOCATION_ARGS) {
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (THERE) ;
-    #endif
-    insulate (THERE) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
-    if (nullptr != mSharedRoot) {
-      mSharedRoot->removeKey (inKey.stringValue ()) ;
-    }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (THERE) ;
-    #endif
+    mStringSet.erase (inKey.stringValue()) ;
   }
 }
 
@@ -741,129 +183,77 @@ void GGS_stringset::setter_removeKey (GGS_string inKey
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand2
-                                                 COMMA_LOCATION_ARGS) const {
+GGS_stringset GGS_stringset::operator_and (const GGS_stringset & inOperand
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringset result ;
-  if (isValid () && inOperand2.isValid ()) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-      inOperand2.checkStringset (HERE) ;
-    #endif
-    result = class_func_emptySet (THERE) ;
-    if (nullptr != mSharedRoot) {
-      const uint32_t leftCount = mSharedRoot->count () ;
-      TC_UniqueArray <String> leftList ((int32_t) leftCount COMMA_THERE) ;
-      mSharedRoot->buildOrderedKeyList (leftList) ;
-      const uint32_t rightCount = (nullptr == inOperand2.mSharedRoot) ? 0 : inOperand2.mSharedRoot->count () ;
-      TC_UniqueArray <String> rightList ((int32_t) rightCount COMMA_THERE) ;
-      if (nullptr != inOperand2.mSharedRoot) {
-        inOperand2.mSharedRoot->buildOrderedKeyList (rightList) ;
-      }
-      uint32_t leftIndex = 0 ;
-      uint32_t rightIndex = 0 ;
-      while ((leftIndex < leftCount) && (rightIndex < rightCount)) {
-        const int32_t cmp = leftList ((int32_t) leftIndex COMMA_THERE).compare (rightList ((int32_t) rightIndex COMMA_THERE)) ;
-        if (cmp < 0) {
-          leftIndex ++ ;
-        }else if (cmp > 0) {
-          rightIndex ++ ;
-        }else{
-          result.addAssign_operation (GGS_string (leftList ((int32_t) leftIndex COMMA_THERE)) COMMA_HERE) ;
-          leftIndex ++ ;
-          rightIndex ++ ;
-        }
+  if (isValid () && inOperand.isValid ()) {
+    for (auto s : mStringSet) {
+      auto iterator = inOperand.mStringSet.find (s) ;
+      if (iterator != inOperand.mStringSet.end ()) { // C++20
+      // if (inOperand.mStringSet.contains (s)) {
+        result.mStringSet.insert (s) ;
       }
     }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
+//    std::set_intersection (
+//      mStringSet.begin (), mStringSet.end (),
+//      inOperand.mStringSet.begin (), inOperand.mStringSet.end (),
+//      std::back_inserter (result.mStringSet)
+//    ) ;
+    result.mIsValid = true ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    U N I O N
-//
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand2
-                                                COMMA_LOCATION_ARGS) const {
+GGS_stringset GGS_stringset::operator_or (const GGS_stringset & inOperand
+                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringset result ;
-  if (isValid () && inOperand2.isValid ()) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-      inOperand2.checkStringset (HERE) ;
-    #endif
-    result = *this ;
-    const uint32_t rightCount = (nullptr == inOperand2.mSharedRoot) ? 0 : inOperand2.mSharedRoot->count () ;
-    TC_UniqueArray <String> rightList ((int32_t) rightCount COMMA_THERE) ;
-    if (nullptr != inOperand2.mSharedRoot) {
-      inOperand2.mSharedRoot->buildOrderedKeyList (rightList) ;
+  if (isValid () && inOperand.isValid ()) {
+    result.mStringSet = mStringSet ;
+    for (auto s : inOperand.mStringSet) {
+      result.mStringSet.insert (s) ;
     }
-    for (uint32_t i=0 ; i<rightCount ; i++) {
-      result.addAssign_operation (GGS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
-    }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
+    result.mIsValid = true ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand2,
-                                             Compiler *
-                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand2.isValid ()) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-      inOperand2.checkStringset (HERE) ;
-    #endif
-    const uint32_t rightCount = (nullptr == inOperand2.mSharedRoot) ? 0 : inOperand2.mSharedRoot->count () ;
-    TC_UniqueArray <String> rightList ((int32_t) rightCount COMMA_THERE) ;
-    if (nullptr != inOperand2.mSharedRoot) {
-      inOperand2.mSharedRoot->buildOrderedKeyList (rightList) ;
+void GGS_stringset::plusAssign_operation (const GGS_stringset inOperand,
+                                          Compiler *
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    for (auto s : inOperand.mStringSet) {
+      mStringSet.insert (s) ;
     }
-    for (uint32_t i=0 ; i<rightCount ; i++) {
-      addAssign_operation (GGS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
-    }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-    #endif
   }else{
     drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    D I F F E R E N C E
-//
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperand2,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) const {
+GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperand,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringset result ;
-  if (isValid () && inOperand2.isValid ()) {
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkStringset (HERE) ;
-      inOperand2.checkStringset (HERE) ;
-    #endif
-    result = class_func_emptySet (THERE) ;
-    const int32_t leftCount = (int32_t) mSharedRoot->count () ;
-    TC_UniqueArray <String> leftList (leftCount COMMA_THERE) ;
-    mSharedRoot->buildOrderedKeyList (leftList) ;
-    for (int32_t i=0 ; i<leftCount ; i++) {
-      if (! inOperand2.mSharedRoot->hasKey (leftList (i COMMA_HERE))) {
-        result.addAssign_operation (GGS_string (leftList (i COMMA_HERE)) COMMA_HERE) ;
-      }
+  if (isValid () && inOperand.isValid ()) {
+    std::vector <String> r ;
+    std::set_difference (
+      mStringSet.begin (), mStringSet.end (),
+      inOperand.mStringSet.begin (), inOperand.mStringSet.end (),
+      std::back_inserter (r)
+    ) ;
+    for (String s : r) {
+      result.mStringSet.insert (s) ;
     }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
+    result.mIsValid = true ;
   }
   return result ;
 }
@@ -871,7 +261,7 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Readers
+  #pragma mark Getters
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -880,7 +270,9 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (isValid ()) {
     result = GGS_stringlist::class_func_emptyList (THERE) ;
-    mSharedRoot->addToStringList (result) ;
+    for (String item : mStringSet) {
+      result.addAssign_operation (GGS_string (item) COMMA_HERE) ;
+    }
   }
   return result ;
 }
@@ -892,7 +284,9 @@ GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
-    result = GGS_bool (mSharedRoot->hasKey (key)) ;
+    auto iterator = mStringSet.find (key) ;
+    result = GGS_bool (iterator != mStringSet.end ()) ;
+//    result = GGS_bool (mStringSet.contains (key) ) ; // C++20
   }
   return result ;
 }
@@ -902,7 +296,7 @@ GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
 GGS_uint GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->count ()) ;
+    result = GGS_uint (uint32_t (mStringSet.size ())) ;
   }
   return result ;
 }
@@ -910,14 +304,15 @@ GGS_uint GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+                                            COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
-    if (mSharedRoot->count () == 0) {
+    if (mStringSet.size () == 0) {
       String message = "@stringset anyString: receiver is empty" ;
       inCompiler->onTheFlySemanticError(message COMMA_THERE) ;
      }else{
-      result = GGS_string (mSharedRoot->rootKey ()) ;
+      auto iterator = mStringSet.begin () ;
+      result = GGS_string (*iterator) ;
     }
   }
   return result ;
@@ -930,37 +325,18 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
-//                 'GGS_stringset::cEnumerator' class
-//
-//--------------------------------------------------------------------------------------------------
 
-static void enterAscendingEnumeration (const cStringsetNode * inNode,
-                                       capCollectionElementArray & ioResult) {
-  if (inNode != nullptr) {
-    enterAscendingEnumeration (inNode->mInfPtr, ioResult) ;
-    cCollectionElement_stringset * p = nullptr ;
-    GGS_string str (GGS_string (inNode->mKey)) ;
-    macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
-    capCollectionElement object ;
-    object.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    ioResult.appendObject (object) ;
-    enterAscendingEnumeration (inNode->mSupPtr, ioResult) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
+void GGS_stringset::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   if (isValid ()) {
-    inEnumerationArray.setCapacity (mSharedRoot->count ()) ;
-    enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      macroAssert (mSharedRoot->count () == inEnumerationArray.count (),
-                 "mSharedRoot->count () %lld != inEnumerationArray.count () %lld",
-                 mSharedRoot->count (), inEnumerationArray.count ()) ;
-    #endif
+    for (String s : mStringSet) {
+      GGS_string str (s) ;
+      cCollectionElement_stringset * p = nullptr ;
+      macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
+      capCollectionElement object ;
+      object.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      ioEnumerationArray.appendObject (object) ;
+    }
   }
 }
 
@@ -989,37 +365,35 @@ GGS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    C O M P A R I S O N
-//
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    const int32_t count1 = (int32_t) mSharedRoot->count () ;
-    const cStringsetNode * root1 = mSharedRoot->root () ;
-    const int32_t count2 = (int32_t) inOperand.mSharedRoot->count () ;
-    const cStringsetNode * root2 = inOperand.mSharedRoot->root () ;
-    int32_t r = 0 ;
-    if (root1 != root2) {
-      r = count1 - count2 ;
-      if (r == 0) {
-        TC_UniqueArray <String> leftList (count1 COMMA_HERE) ;
-        mSharedRoot->buildOrderedKeyList (leftList) ;
-        TC_UniqueArray <String> rightList (count2 COMMA_HERE) ;
-        inOperand.mSharedRoot->buildOrderedKeyList (rightList) ;
-        for (int32_t i=0 ; (i<count1) && (r == 0) ; i++) {
-          r = leftList (i COMMA_HERE).compare (rightList (i COMMA_HERE)) ;
-        }
-      }
-    }
-    if (r < 0) {
+    const size_t count1 = mStringSet.size () ;
+    const size_t count2 = inOperand.mStringSet.size () ;
+    if (count1 < count2) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (r > 0) {
+    }else if (count1 > count2) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       result = ComparisonResult::operandEqual ;
+      auto iterator1 = mStringSet.begin () ;
+      auto iterator2 = inOperand.mStringSet.begin () ;
+      while ((iterator1 != mStringSet.end())
+          && (iterator2 != inOperand.mStringSet.end())
+          && (result == ComparisonResult::operandEqual)) {
+        const String s1 = *iterator1 ;
+        const String s2 = *iterator2 ;
+        if (s1 < s2) {
+          result = ComparisonResult::firstOperandLowerThanSecond ;
+        }else if (s1 > s2) {
+          result = ComparisonResult::firstOperandGreaterThanSecond ;
+        }
+        iterator1 ++ ;
+        iterator2 ++ ;
+      }
     }
   }
   return result ;
@@ -1033,17 +407,17 @@ ComparisonResult GGS_stringset::objectCompare (const GGS_stringset & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::class_func_emptySet (LOCATION_ARGS) {
+GGS_stringset GGS_stringset::class_func_emptySet (UNUSED_LOCATION_ARGS) {
   GGS_stringset result ;
-  macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
+  result.mIsValid = true ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
+GGS_stringset GGS_stringset::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_stringset result ;
-  macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
+  result.mIsValid = true ;
   return result ;
 }
 
@@ -1058,14 +432,11 @@ void GGS_stringset::enterElement (const GGS_string & inValue,
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset GGS_stringset::class_func_setWithString (const GGS_string & inString
-                                                              COMMA_LOCATION_ARGS) {
+                                                       COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
   if (inString.isValid ()) {
     result = class_func_emptySet (THERE) ;
     result.addAssign_operation (inString COMMA_HERE) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
   }
   return result ;
 }
@@ -1073,7 +444,7 @@ GGS_stringset GGS_stringset::class_func_setWithString (const GGS_string & inStri
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist & inStringList
-                                                                  COMMA_LOCATION_ARGS) {
+                                                           COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
@@ -1082,9 +453,6 @@ GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist 
       result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
   }
   return result ;
 }
@@ -1101,9 +469,6 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
       result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
   }
   return result ;
 }
