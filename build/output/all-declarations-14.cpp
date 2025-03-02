@@ -3108,9 +3108,7 @@ GGS_string cEnumerator_headerCompositionMap::current_mHeaderString (LOCATION_ARG
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerCompositionMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap ("headerCompositionMap",
@@ -3418,9 +3416,7 @@ GGS_string cEnumerator_headerRepartitionMap::current_mHeaderFileName (LOCATION_A
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerRepartitionMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap ("headerRepartitionMap",
@@ -3728,9 +3724,7 @@ GGS_lstring cEnumerator_projectQualifiedFeatureMap::current_mFeatureValue (LOCAT
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @projectQualifiedFeatureMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap ("projectQualifiedFeatureMap",
@@ -4329,9 +4323,7 @@ GGS_stringlist cEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_ARGS)
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @XCodeGroupList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
@@ -5378,9 +5370,7 @@ GGS_string cEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (LOC
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @XCodeToolTargetList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
@@ -6619,9 +6609,7 @@ GGS_stringlist cEnumerator_XCodeAppTargetList::current_mResourceFileBuildRefs (L
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @XCodeAppTargetList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList ("XCodeAppTargetList",
@@ -7156,9 +7144,7 @@ GGS_string cEnumerator_BuildFileList::current_mBuildReference (LOCATION_ARGS) co
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @BuildFileList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ("BuildFileList",
@@ -7289,9 +7275,7 @@ ComparisonResult GGS_xcodeProject::objectCompare (const GGS_xcodeProject & inOpe
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @xcodeProject generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xcodeProject ("xcodeProject",
@@ -7400,9 +7384,7 @@ void GGS_templateInstructionListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListAST_2E_element ("templateInstructionListAST.element",
@@ -7521,9 +7503,7 @@ void GGS_templateInstructionIfBranchListAST_2E_element::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionIfBranchListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListAST_2E_element ("templateInstructionIfBranchListAST.element",
@@ -7642,9 +7622,7 @@ void GGS_templateInstructionForEnumerationAST_2E_implicit::description (String &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionForEnumerationAST.implicit generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_implicit ("templateInstructionForEnumerationAST.implicit",
@@ -7764,9 +7742,7 @@ void GGS_templateInstructionForEnumerationAST_2E_implicit_3F_::description (Stri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionForEnumerationAST.implicit? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_implicit_3F_ ("templateInstructionForEnumerationAST.implicit?",
@@ -7885,9 +7861,7 @@ void GGS_templateInstructionForEnumerationAST_2E_explicit::description (String &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionForEnumerationAST.explicit generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_explicit ("templateInstructionForEnumerationAST.explicit",
@@ -8007,9 +7981,7 @@ void GGS_templateInstructionForEnumerationAST_2E_explicit_3F_::description (Stri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionForEnumerationAST.explicit? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForEnumerationAST_2E_explicit_3F_ ("templateInstructionForEnumerationAST.explicit?",
@@ -8148,9 +8120,7 @@ void GGS_templateInstructionSwitchBranchListAST_2E_element::description (String 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionSwitchBranchListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST_2E_element ("templateInstructionSwitchBranchListAST.element",
@@ -8289,9 +8259,7 @@ void GGS_templateInstructionSwitchBranchListForGeneration_2E_element::descriptio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionSwitchBranchListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration_2E_element ("templateInstructionSwitchBranchListForGeneration.element",
@@ -8400,9 +8368,7 @@ void GGS_lexicalInstructionListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalInstructionListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST_2E_element ("lexicalInstructionListAST.element",
@@ -8511,9 +8477,7 @@ void GGS_lexicalRuleListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalRuleListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST_2E_element ("lexicalRuleListAST.element",
@@ -8632,9 +8596,7 @@ void GGS_lexicalWhileBranchListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalWhileBranchListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWhileBranchListAST_2E_element ("lexicalWhileBranchListAST.element",
@@ -8753,9 +8715,7 @@ void GGS_lexicalSelectBranchListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalSelectBranchListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectBranchListAST_2E_element ("lexicalSelectBranchListAST.element",
@@ -8864,9 +8824,7 @@ void GGS_lexicalFunctionCallActualArgumentListAST_2E_element::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalFunctionCallActualArgumentListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element ("lexicalFunctionCallActualArgumentListAST.element",
@@ -8995,9 +8953,7 @@ void GGS_tokenSortedlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @tokenSortedlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist_2E_element ("tokenSortedlist.element",
@@ -9126,9 +9082,7 @@ void GGS_lexicalRoutineFormalArgumentList_2E_element::description (String & ioSt
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalRoutineFormalArgumentList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList_2E_element ("lexicalRoutineFormalArgumentList.element",
@@ -9247,9 +9201,7 @@ void GGS_lexicalFunctionFormalArgumentList_2E_element::description (String & ioS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalFunctionFormalArgumentList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList_2E_element ("lexicalFunctionFormalArgumentList.element",
@@ -9358,9 +9310,7 @@ void GGS_lexicalRoutineCallActualArgumentListAST_2E_element::description (String
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexicalRoutineCallActualArgumentListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element ("lexicalRoutineCallActualArgumentListAST.element",
@@ -9509,9 +9459,7 @@ void GGS_commandLineOptionSortedList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @commandLineOptionSortedList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionSortedList_2E_element ("commandLineOptionSortedList.element",
@@ -9640,9 +9588,7 @@ void GGS_guiLabelListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @guiLabelListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST_2E_element ("guiLabelListAST.element",
@@ -9791,9 +9737,7 @@ void GGS_guiCommandLineOptionList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @guiCommandLineOptionList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCommandLineOptionList_2E_element ("guiCommandLineOptionList.element",
@@ -9912,9 +9856,7 @@ void GGS_textMacroList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @textMacroList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList_2E_element ("textMacroList.element",
@@ -10083,9 +10025,7 @@ void GGS_importedLexiqueList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @importedLexiqueList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList_2E_element ("importedLexiqueList.element",
@@ -10194,9 +10134,7 @@ void GGS_initializerSignatureList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerSignatureList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerSignatureList_2E_element ("initializerSignatureList.element",
@@ -10315,9 +10253,7 @@ void GGS_propertyInCollectionInitializationAST_2E_some::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyInCollectionInitializationAST.some generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST_2E_some ("propertyInCollectionInitializationAST.some",
@@ -10454,9 +10390,7 @@ void GGS_propertyInCollectionInitializationAST_2E_some_3F_::description (String 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyInCollectionInitializationAST.some? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST_2E_some_3F_ ("propertyInCollectionInitializationAST.some?",
@@ -10575,9 +10509,7 @@ void GGS_enumConstantListForGeneration_2E_element::description (String & ioStrin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumConstantListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListForGeneration_2E_element ("enumConstantListForGeneration.element",
@@ -10686,9 +10618,7 @@ void GGS_externTypeConstructorList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externTypeConstructorList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList_2E_element ("externTypeConstructorList.element",
@@ -10797,9 +10727,7 @@ void GGS_insertOrReplaceDeclarationListAST_2E_element::description (String & ioS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @insertOrReplaceDeclarationListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST_2E_element ("insertOrReplaceDeclarationListAST.element",
@@ -10928,9 +10856,7 @@ void GGS_sortDescriptorListForGeneration_2E_element::description (String & ioStr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sortDescriptorListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration_2E_element ("sortDescriptorListForGeneration.element",
@@ -11049,9 +10975,7 @@ void GGS_typeKindEnum_2E_classType::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum.classType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_classType ("typeKindEnum.classType",
@@ -11188,9 +11112,7 @@ void GGS_typeKindEnum_2E_classType_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum.classType? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_classType_3F_ ("typeKindEnum.classType?",
@@ -11309,9 +11231,7 @@ void GGS_typeKindEnum_2E_weakReferenceType::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum.weakReferenceType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType ("typeKindEnum.weakReferenceType",
@@ -11448,9 +11368,7 @@ void GGS_typeKindEnum_2E_weakReferenceType_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum.weakReferenceType? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType_3F_ ("typeKindEnum.weakReferenceType?",
@@ -11569,9 +11487,7 @@ void GGS_typeKindEnum_2E_enumType::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum.enumType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_enumType ("typeKindEnum.enumType",
@@ -11708,9 +11624,7 @@ void GGS_typeKindEnum_2E_enumType_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum.enumType? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_enumType_3F_ ("typeKindEnum.enumType?",
@@ -11829,9 +11743,7 @@ void GGS_localVarValuation_2E_declared::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localVarValuation.declared generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation_2E_declared ("localVarValuation.declared",
@@ -11968,9 +11880,7 @@ void GGS_localVarValuation_2E_declared_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localVarValuation.declared? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation_2E_declared_3F_ ("localVarValuation.declared?",
@@ -12079,9 +11989,7 @@ void GGS_localVarMapListForLLVM_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localVarMapListForLLVM.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarMapListForLLVM_2E_element ("localVarMapListForLLVM.element",
@@ -12190,9 +12098,7 @@ void GGS_overrideKind_2E_selectOverrideFirstBranch::description (String & ioStri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overrideKind.selectOverrideFirstBranch generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2E_selectOverrideFirstBranch ("overrideKind.selectOverrideFirstBranch",
@@ -12312,9 +12218,7 @@ void GGS_overrideKind_2E_selectOverrideFirstBranch_3F_::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overrideKind.selectOverrideFirstBranch? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2E_selectOverrideFirstBranch_3F_ ("overrideKind.selectOverrideFirstBranch?",
@@ -12433,9 +12337,7 @@ void GGS_overrideKind_2E_selectOverrideNextBranches::description (String & ioStr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overrideKind.selectOverrideNextBranches generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2E_selectOverrideNextBranches ("overrideKind.selectOverrideNextBranches",
@@ -12555,9 +12457,7 @@ void GGS_overrideKind_2E_selectOverrideNextBranches_3F_::description (String & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overrideKind.selectOverrideNextBranches? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind_2E_selectOverrideNextBranches_3F_ ("overrideKind.selectOverrideNextBranches?",
@@ -12666,9 +12566,7 @@ void GGS_openedOverrideList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @openedOverrideList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedOverrideList_2E_element ("openedOverrideList.element",
@@ -12787,9 +12685,7 @@ void GGS_unifiedTypeMapEntry_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unifiedTypeMapEntry.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry_2E_element ("unifiedTypeMapEntry.element",
@@ -12926,9 +12822,7 @@ void GGS_unifiedTypeMapEntry_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unifiedTypeMapEntry.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntry_2E_element_3F_ ("unifiedTypeMapEntry.element?",
@@ -13037,9 +12931,7 @@ void GGS_actualParameterListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListAST_2E_element ("actualParameterListAST.element",
@@ -13158,9 +13050,7 @@ void GGS_syntaxExtensionsDictionary_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxExtensionsDictionary.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ("syntaxExtensionsDictionary.element",
@@ -13280,9 +13170,7 @@ void GGS_syntaxExtensionsDictionary_2E_element_3F_::description (String & ioStri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxExtensionsDictionary.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element_3F_ ("syntaxExtensionsDictionary.element?",
@@ -13391,9 +13279,7 @@ void GGS_semanticInstructionListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticInstructionListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST_2E_element ("semanticInstructionListAST.element",
@@ -13502,9 +13388,7 @@ void GGS_semanticDeclarationListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticDeclarationListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListAST_2E_element ("semanticDeclarationListAST.element",
@@ -13613,9 +13497,7 @@ void GGS_syntaxInstructionList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxInstructionList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionList_2E_element ("syntaxInstructionList.element",
@@ -13734,9 +13616,7 @@ void GGS_listOfSyntaxInstructionList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @listOfSyntaxInstructionList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSyntaxInstructionList_2E_element ("listOfSyntaxInstructionList.element",
@@ -13855,9 +13735,7 @@ void GGS_prologueEpilogueList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @prologueEpilogueList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_prologueEpilogueList_2E_element ("prologueEpilogueList.element",
@@ -13976,9 +13854,7 @@ void GGS_enumerationDescriptorList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumerationDescriptorList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescriptorList_2E_element ("enumerationDescriptorList.element",
@@ -14110,9 +13986,7 @@ void GGS_associatedValueDescriptorList_2E_element::description (String & ioStrin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @associatedValueDescriptorList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_associatedValueDescriptorList_2E_element ("associatedValueDescriptorList.element",
@@ -14231,9 +14105,7 @@ void GGS_acceptableParameterList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @acceptableParameterList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_acceptableParameterList_2E_element ("acceptableParameterList.element",
@@ -14342,9 +14214,7 @@ void GGS_templateInstructionListForGeneration_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration_2E_element ("templateInstructionListForGeneration.element",
@@ -14453,9 +14323,7 @@ void GGS_actualParameterListForGeneration_2E_element::description (String & ioSt
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListForGeneration_2E_element ("actualParameterListForGeneration.element",
@@ -14564,9 +14432,7 @@ void GGS_semanticInstructionListForGeneration_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticInstructionListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration_2E_element ("semanticInstructionListForGeneration.element",
@@ -14685,9 +14551,7 @@ void GGS_listOfSemanticInstructionListForGeneration_2E_element::description (Str
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @listOfSemanticInstructionListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstructionListForGeneration_2E_element ("listOfSemanticInstructionListForGeneration.element",
@@ -14721,6 +14585,125 @@ GGS_listOfSemanticInstructionListForGeneration_2E_element GGS_listOfSemanticInst
       result = *p ;
     }else{
       inCompiler->castError ("listOfSemanticInstructionListForGeneration.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationListForGeneration_2E_element::GGS_semanticDeclarationListForGeneration_2E_element (void) :
+mProperty_infoMessage (),
+mProperty_mDeclaration () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationListForGeneration_2E_element::~ GGS_semanticDeclarationListForGeneration_2E_element (void) {
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_semanticDeclarationListForGeneration_2E_element GGS_semanticDeclarationListForGeneration_2E_element::init_21_infoMessage_21_ (const GGS_string & in_infoMessage,
+                                                                                                                                  const GGS_semanticDeclarationForGeneration & in_mDeclaration,
+                                                                                                                                  Compiler * inCompiler
+                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_semanticDeclarationListForGeneration_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_infoMessage = in_infoMessage ;
+  result.mProperty_mDeclaration = in_mDeclaration ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_semanticDeclarationListForGeneration_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationListForGeneration_2E_element::GGS_semanticDeclarationListForGeneration_2E_element (const GGS_string & inOperand0,
+                                                                                                          const GGS_semanticDeclarationForGeneration & inOperand1) :
+mProperty_infoMessage (inOperand0),
+mProperty_mDeclaration (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationListForGeneration_2E_element GGS_semanticDeclarationListForGeneration_2E_element::class_func_new (const GGS_string & in_infoMessage,
+                                                                                                                         const GGS_semanticDeclarationForGeneration & in_mDeclaration,
+                                                                                                                         Compiler * inCompiler
+                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_semanticDeclarationListForGeneration_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_infoMessage = in_infoMessage ;
+  result.mProperty_mDeclaration = in_mDeclaration ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_semanticDeclarationListForGeneration_2E_element::isValid (void) const {
+  return mProperty_infoMessage.isValid () && mProperty_mDeclaration.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_semanticDeclarationListForGeneration_2E_element::drop (void) {
+  mProperty_infoMessage.drop () ;
+  mProperty_mDeclaration.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_semanticDeclarationListForGeneration_2E_element::description (String & ioString,
+                                                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @semanticDeclarationListForGeneration.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_infoMessage.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mDeclaration.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @semanticDeclarationListForGeneration.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListForGeneration_2E_element ("semanticDeclarationListForGeneration.element",
+                                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_semanticDeclarationListForGeneration_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_semanticDeclarationListForGeneration_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_semanticDeclarationListForGeneration_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_semanticDeclarationListForGeneration_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationListForGeneration_2E_element GGS_semanticDeclarationListForGeneration_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                                        Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_semanticDeclarationListForGeneration_2E_element result ;
+  const GGS_semanticDeclarationListForGeneration_2E_element * p = (const GGS_semanticDeclarationListForGeneration_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_semanticDeclarationListForGeneration_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("semanticDeclarationListForGeneration.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

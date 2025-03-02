@@ -567,9 +567,7 @@ GGS_uint cEnumerator_productionRuleListForGrammarAnalysis::current_mProductionIn
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @productionRuleListForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_productionRuleListForGrammarAnalysis ("productionRuleListForGrammarAnalysis",
@@ -855,9 +853,7 @@ GGS_uint cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis::current_mNonT
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unusedNonTerminalSymbolMapForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ("unusedNonTerminalSymbolMapForGrammarAnalysis",
@@ -1216,9 +1212,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis cEnumerator_nonTerminalSymbolSor
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalSymbolSortedListForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ("nonTerminalSymbolSortedListForGrammarAnalysis",
@@ -1327,9 +1321,7 @@ GGS_nonTerminalInstructionForGrammarAnalysis GGS_nonTerminalInstructionForGramma
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalInstructionForGrammarAnalysis.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis_2E_weak ("nonTerminalInstructionForGrammarAnalysis.weak",
@@ -1736,9 +1728,7 @@ GGS_syntaxInstructionListForGrammarAnalysis cEnumerator_branchListForGrammarAnal
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @branchListForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchListForGrammarAnalysis ("branchListForGrammarAnalysis",
@@ -1935,9 +1925,7 @@ acPtr_class * cPtr_selectInstructionForGrammarAnalysis::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selectInstructionForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ("selectInstructionForGrammarAnalysis",
@@ -2046,9 +2034,7 @@ GGS_selectInstructionForGrammarAnalysis GGS_selectInstructionForGrammarAnalysis_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selectInstructionForGrammarAnalysis.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis_2E_weak ("selectInstructionForGrammarAnalysis.weak",
@@ -2245,9 +2231,7 @@ acPtr_class * cPtr_repeatInstructionForGrammarAnalysis::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @repeatInstructionForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ("repeatInstructionForGrammarAnalysis",
@@ -2356,9 +2340,7 @@ GGS_repeatInstructionForGrammarAnalysis GGS_repeatInstructionForGrammarAnalysis_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @repeatInstructionForGrammarAnalysis.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis_2E_weak ("repeatInstructionForGrammarAnalysis.weak",
@@ -2829,9 +2811,7 @@ GGS_lstring cEnumerator_syntaxComponentListForGrammarAnalysis::current_mSyntaxCo
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxComponentListForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentListForGrammarAnalysis ("syntaxComponentListForGrammarAnalysis",
@@ -3139,9 +3119,7 @@ GGS_uint cEnumerator_terminalSymbolsMapForGrammarAnalysis::current_mTerminalInde
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @terminalSymbolsMapForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis ("terminalSymbolsMapForGrammarAnalysis",
@@ -3611,9 +3589,7 @@ GGS__32_stringlist cEnumerator_rowList::current_columns (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @rowList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList ("rowList",
@@ -3725,9 +3701,7 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (cPtr_abstractSyntaxInstru
   }
 }
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@syntaxInstructionListForGrammarAnalysis displayVertically'
-//
+//  Extension Getter '@syntaxInstructionListForGrammarAnalysis displayVertically'
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGrammarAnalysis & inObject,
@@ -4139,9 +4113,7 @@ GGS_semanticDeclarationForGeneration cEnumerator_programListForGeneration::curre
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @programListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGeneration ("programListForGeneration",
@@ -4958,9 +4930,7 @@ GGS_lstringlist cEnumerator_genericExtensionMethodListMapDictionary::current_mLi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @genericExtensionMethodListMapDictionary generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary ("genericExtensionMethodListMapDictionary",
@@ -5066,9 +5036,7 @@ void GGS_genericExtensionMethodListMap::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @genericExtensionMethodListMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMap ("genericExtensionMethodListMap",
@@ -5108,9 +5076,7 @@ GGS_genericExtensionMethodListMap GGS_genericExtensionMethodListMap::extractObje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@genericExtensionMethodListMap listForKey'
-//
+//  Extension Getter '@genericExtensionMethodListMap listForKey'
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstringlist extensionGetter_listForKey (const GGS_genericExtensionMethodListMap & inObject,
@@ -5959,9 +5925,7 @@ GGS_unifiedTypeMapEntryList cEnumerator_descendantClassListMapDictionary::curren
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @descendantClassListMapDictionary generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassListMapDictionary ("descendantClassListMapDictionary",
@@ -6067,9 +6031,7 @@ void GGS_descendantClassListMap::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @descendantClassListMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassListMap ("descendantClassListMap",
@@ -6109,9 +6071,7 @@ GGS_descendantClassListMap GGS_descendantClassListMap::extractObject (const GGS_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@descendantClassListMap listForKey'
-//
+//  Extension Getter '@descendantClassListMap listForKey'
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntryList extensionGetter_listForKey (const GGS_descendantClassListMap & inObject,
@@ -6338,9 +6298,7 @@ GGS_lstring cEnumerator_extensionMethodMapForGlobalCheckings::current_lkey (LOCA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForGlobalCheckings generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings ("extensionMethodMapForGlobalCheckings",
@@ -6579,9 +6537,7 @@ GGS_lstring cEnumerator_extensionSetterMapForGlobalCheckings::current_lkey (LOCA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForGlobalCheckings generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ("extensionSetterMapForGlobalCheckings",
@@ -6820,9 +6776,7 @@ GGS_lstring cEnumerator_extensionGetterMapForGlobalCheckings::current_lkey (LOCA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForGlobalCheckings generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ("extensionGetterMapForGlobalCheckings",
@@ -7293,9 +7247,7 @@ GGS_lstring cEnumerator_galgas_33_QualifiedFeatureList::current_mFeatureValue (L
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @galgas3QualifiedFeatureList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_QualifiedFeatureList ("galgas3QualifiedFeatureList",
@@ -7838,9 +7790,7 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@AccessControlAST accessControl'
-//
+//  Extension Getter '@AccessControlAST accessControl'
 //--------------------------------------------------------------------------------------------------
 
 GGS_AccessControl extensionGetter_accessControl (const GGS_AccessControlAST & inObject,

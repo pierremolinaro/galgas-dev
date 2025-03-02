@@ -6422,7 +6422,7 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   const GalgasBool test_63 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_generateEnumerationHelperMethods (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 410)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 410)).boolEnum () ;
   switch (test_63) {
   case GalgasBool::boolTrue : {
-    result.appendString ("//--------------------------------- Enumeration helper methods\n  protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;\n\n") ;
+    result.appendString ("//--------------------------------- Enumeration helper methods\n  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;\n\n") ;
     } break ;
   case GalgasBool::boolFalse : {
     } break ;
@@ -6479,7 +6479,7 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------------------------------------------------------------------------\n//   Enumerator declaration                                                                      \n//--------------------------------------------------------------------------------------------------\n\nclass cEnumerator_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-    result.appendString (" : public cGenericAbstractEnumerator {\n  public: cEnumerator_") ;
+    result.appendString (" final\n#ifndef NEW_ITERATOR\n  : public cGenericAbstractEnumerator\n#endif\n{\n  public: cEnumerator_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
     result.appendString (" (") ;
     columnMarker = result.currentColumn () ;
@@ -6487,25 +6487,25 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
     result.appendString (" & inEnumeratedObject,\n     ") ;
     result.appendSpacesUntilColumn (columnMarker) ;
-    result.appendString ("const EnumerationOrder inOrder) ;\n\n//--- Current element access\n") ;
-    GGS_uint index_21458_ (0) ;
+    result.appendString ("const EnumerationOrder inOrder) ;\n\n//--- Current element access\n  #ifdef NEW_ITERATOR\n    public: bool hasCurrentObject (void) const ;\n    public: void gotoNextObject (void) ;\n    public: void rewind (void) ;\n  #endif\n") ;
+    GGS_uint index_21630_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_21458 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, EnumerationOrder::up) ;
-      while (enumerator_21458.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_21630 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, EnumerationOrder::up) ;
+      while (enumerator_21630.hasCurrentObject ()) {
         result.appendString ("  public: class GGS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_21458.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 447)).stringValue ()) ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_21630.current_mEnumeratedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 457)).stringValue ()) ;
         result.appendString (" current_") ;
-        result.appendString (enumerator_21458.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 447)).stringValue ()) ;
+        result.appendString (enumerator_21630.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 457)).stringValue ()) ;
         result.appendString (" (LOCATION_ARGS) const ;\n") ;
-        index_21458_.increment () ;
-        enumerator_21458.gotoNextObject () ;
+        index_21630_.increment () ;
+        enumerator_21630.gotoNextObject () ;
       }
     }
-    const GalgasBool test_68 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 449)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 449)).boolEnum () ;
+    const GalgasBool test_68 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 459)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 459)).boolEnum () ;
     switch (test_68) {
     case GalgasBool::boolTrue : {
       result.appendString ("//--- Current element access\n  public: class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 451)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 461)).stringValue ()) ;
       result.appendString (" current (LOCATION_ARGS) const ;\n") ;
       } break ;
     case GalgasBool::boolFalse : {
@@ -6746,9 +6746,9 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation 
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   uint32_t columnMarker = 0 ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//     ") ;
-  result.appendString (GGS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 3)).add_operation (GGS_string (" generic code implementation"), inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 3)).stringValue ()) ;
-  result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\nconst C_galgas_type_descriptor kTypeDescriptor_GALGAS_") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//     ") ;
+  result.appendString (GGS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 2)).add_operation (GGS_string (" generic code implementation"), inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nconst C_galgas_type_descriptor kTypeDescriptor_GALGAS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
@@ -6756,14 +6756,14 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation 
   result.appendString (in_TYPE_5F_NAME.stringValue ()) ;
   result.appendString ("\",\n                       ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  const GalgasBool test_0 = in_SUPER_5F_TYPE_5F_INDEX.getter_isNull (SOURCE_FILE ("generic-type.cpp.galgasTemplate", 8)).boolEnum () ;
+  const GalgasBool test_0 = in_SUPER_5F_TYPE_5F_INDEX.getter_isNull (SOURCE_FILE ("generic-type.cpp.galgasTemplate", 6)).boolEnum () ;
   switch (test_0) {
   case GalgasBool::boolTrue : {
     result.appendString ("nullptr") ;
     } break ;
   case GalgasBool::boolFalse : {
     result.appendString ("& kTypeDescriptor_GALGAS_") ;
-    result.appendString (extensionGetter_identifierRepresentation (in_SUPER_5F_TYPE_5F_INDEX, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 8)).stringValue ()) ;
+    result.appendString (extensionGetter_identifierRepresentation (in_SUPER_5F_TYPE_5F_INDEX, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 6)).stringValue ()) ;
     } break ;
   case GalgasBool::boolNotValid :
     break ;
@@ -8880,9 +8880,9 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
                                                                                                             const GGS_string & in_FUNCTION_5F_IMPLEMENTATION
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
-  result.appendString (GGS_string ("Extension Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).stringValue ()) ;
-  result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
+  result.appendString (GGS_string ("  Extension Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 2)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 2)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 2)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   result.appendString (in_FUNCTION_5F_IMPLEMENTATION.stringValue ()) ;
   result.appendString ("\n\n\n") ;
   return GGS_string (result) ;

@@ -272,9 +272,7 @@ GGS_equatableComparableExtension cEnumerator_equatableExtensionMap::current_mExt
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @equatableExtensionMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionMap ("equatableExtensionMap",
@@ -383,9 +381,7 @@ GGS_equatableExtensionAST GGS_equatableExtensionAST_2E_weak::bang_equatableExten
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @equatableExtensionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableExtensionAST_2E_weak ("equatableExtensionAST.weak",
@@ -792,9 +788,7 @@ GGS_semanticInstructionAST cEnumerator_semanticInstructionListAST::current_mInst
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticInstructionListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ("semanticInstructionListAST",
@@ -903,9 +897,7 @@ GGS_extensionGetterAST GGS_extensionGetterAST_2E_weak::bang_extensionGetterAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterAST_2E_weak ("extensionGetterAST.weak",
@@ -1312,9 +1304,7 @@ GGS_semanticInstructionForGeneration cEnumerator_semanticInstructionListForGener
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticInstructionListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionListForGeneration ("semanticInstructionListForGeneration",
@@ -1423,9 +1413,7 @@ GGS_extensionMethodAST GGS_extensionMethodAST_2E_weak::bang_extensionMethodAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodAST_2E_weak ("extensionMethodAST.weak",
@@ -1534,9 +1522,7 @@ GGS_extensionSetterAST GGS_extensionSetterAST_2E_weak::bang_extensionSetterAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST_2E_weak ("extensionSetterAST.weak",
@@ -1645,9 +1631,7 @@ GGS_initializerAST GGS_initializerAST_2E_weak::bang_initializerAST_2E_weak (Comp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerAST_2E_weak ("initializerAST.weak",
@@ -1756,9 +1740,7 @@ GGS_overridingAbstractExtensionGetterAST GGS_overridingAbstractExtensionGetterAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overridingAbstractExtensionGetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST_2E_weak ("overridingAbstractExtensionGetterAST.weak",
@@ -1867,9 +1849,7 @@ GGS_overridingAbstractExtensionMethodAST GGS_overridingAbstractExtensionMethodAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overridingAbstractExtensionMethodAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ("overridingAbstractExtensionMethodAST.weak",
@@ -1978,9 +1958,7 @@ GGS_overridingAbstractExtensionSetterAST GGS_overridingAbstractExtensionSetterAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overridingAbstractExtensionSetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST_2E_weak ("overridingAbstractExtensionSetterAST.weak",
@@ -2089,9 +2067,7 @@ GGS_overridingExtensionGetterAST GGS_overridingExtensionGetterAST_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overridingExtensionGetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ("overridingExtensionGetterAST.weak",
@@ -2200,9 +2176,7 @@ GGS_overridingExtensionMethodAST GGS_overridingExtensionMethodAST_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overridingExtensionMethodAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionMethodAST_2E_weak ("overridingExtensionMethodAST.weak",
@@ -2311,9 +2285,7 @@ GGS_overridingExtensionSetterAST GGS_overridingExtensionSetterAST_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overridingExtensionSetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtensionSetterAST_2E_weak ("overridingExtensionSetterAST.weak",
@@ -2786,9 +2758,7 @@ ComparisonResult GGS_typeKindEnum::objectCompare (const GGS_typeKindEnum & inOpe
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeKindEnum generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum ("typeKindEnum",
@@ -3196,9 +3166,7 @@ GGS_unifiedTypeMapEntry cEnumerator_propertyMap::current_mPropertyType (LOCATION
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap ("propertyMap",
@@ -3621,9 +3589,7 @@ GGS_unifiedTypeMapEntry cEnumerator_classFunctionMap::current_mReturnedType (LOC
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classFunctionMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFunctionMap ("classFunctionMap",
@@ -4250,9 +4216,7 @@ GGS_string cEnumerator_getterMap::current_mGetterNameThatObsoletesInvokationName
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @getterMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap ("getterMap",
@@ -4777,9 +4741,7 @@ GGS_string cEnumerator_setterMap::current_mErrorMessage (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @setterMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap ("setterMap",
@@ -5374,9 +5336,7 @@ GGS_string cEnumerator_instanceMethodMap::current_mErrorMessage (LOCATION_ARGS) 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @instanceMethodMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap ("instanceMethodMap",
@@ -5748,9 +5708,7 @@ GGS_bool cEnumerator_classMethodMap::current_mHasCompilerArgument (LOCATION_ARGS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classMethodMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap ("classMethodMap",
@@ -6108,9 +6066,7 @@ GGS_unifiedTypeMapEntry cEnumerator_subscriptMap::current_valueType (LOCATION_AR
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subscriptMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptMap ("subscriptMap",
@@ -6581,9 +6537,7 @@ GGS_string cEnumerator_enumerationDescriptorList::current_mEnumerationName (LOCA
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumerationDescriptorList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescriptorList ("enumerationDescriptorList",
@@ -7111,9 +7065,7 @@ void GGS_typeFeatures::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeFeatures generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeFeatures ("typeFeatures",
@@ -7712,9 +7664,7 @@ GGS_bool cEnumerator_functionSignature::current_isConstant (LOCATION_ARGS) const
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionSignature generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionSignature ("functionSignature",
@@ -7845,9 +7795,7 @@ ComparisonResult GGS_headerKind::objectCompare (const GGS_headerKind & inOperand
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerKind generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerKind ("headerKind",
@@ -7887,9 +7835,7 @@ GGS_headerKind GGS_headerKind::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@typeKindEnum string'
-//
+//  Extension Getter '@typeKindEnum string'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
@@ -7997,9 +7943,7 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@typeFeatures generateCppObjectComparison'
-//
+//  Extension Getter '@typeFeatures generateCppObjectComparison'
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & inObject,
@@ -8216,9 +8160,7 @@ void GGS_localVariableAttributes::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localVariableAttributes generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableAttributes ("localVariableAttributes",
@@ -8433,9 +8375,7 @@ ComparisonResult GGS_localVarValuation::objectCompare (const GGS_localVarValuati
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localVarValuation generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarValuation ("localVarValuation",
@@ -8973,9 +8913,7 @@ GGS_localVarValuation cEnumerator_scopeLocalVarMap::current_mState (LOCATION_ARG
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @scopeLocalVarMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_scopeLocalVarMap ("scopeLocalVarMap",
@@ -9382,9 +9320,7 @@ GGS_scopeLocalVarMap cEnumerator_localVarMapListForLLVM::current_mMap (LOCATION_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localVarMapListForLLVM generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVarMapListForLLVM ("localVarMapListForLLVM",
@@ -9586,9 +9522,7 @@ void GGS_overrideKind::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @overrideKind generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideKind ("overrideKind",
@@ -9995,9 +9929,7 @@ GGS_overrideKind cEnumerator_openedOverrideList::current_mOverrideKind (LOCATION
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @openedOverrideList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedOverrideList ("openedOverrideList",
@@ -10110,9 +10042,7 @@ void GGS_currentVarManager::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @currentVarManager generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_currentVarManager ("currentVarManager",
@@ -11570,9 +11500,7 @@ GGS_unifiedTypeMapElementClass cEnumerator_unifiedTypeMap::current_mElement (LOC
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unifiedTypeMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ("unifiedTypeMap",
@@ -11696,9 +11624,7 @@ void extensionSetter_makeEntryFromString (GGS_unifiedTypeMap & ioObject,
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMap typeMapEntryForLKey'
-//
+//  Extension Getter '@unifiedTypeMap typeMapEntryForLKey'
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GGS_unifiedTypeMap & inObject,
@@ -11739,9 +11665,7 @@ GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GGS_unifiedTy
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMap typeMapEntryOrNullForLKey'
-//
+//  Extension Getter '@unifiedTypeMap typeMapEntryOrNullForLKey'
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const GGS_unifiedTypeMap & inObject,
@@ -11828,9 +11752,7 @@ void extensionSetter_insertType (GGS_unifiedTypeMap & ioObject,
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMap typeDefinition'
-//
+//  Extension Getter '@unifiedTypeMap typeDefinition'
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeMap & inObject,
@@ -11979,9 +11901,7 @@ void GGS_typeDefinition::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
@@ -12090,9 +12010,7 @@ GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::bang_unif
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unifiedTypeMapElementClass.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ("unifiedTypeMapElementClass.weak",
@@ -12132,9 +12050,7 @@ GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::e
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry definition'
-//
+//  Extension Getter '@unifiedTypeMapEntry definition'
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEntry & inObject,
@@ -12199,9 +12115,7 @@ GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEn
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
-//
+//  Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEntry & inObject,
@@ -12218,9 +12132,7 @@ GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEnt
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry typeName'
-//
+//  Extension Getter '@unifiedTypeMapEntry typeName'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
@@ -12237,9 +12149,7 @@ GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@unifiedTypeMapEntry baseType'
-//
+//  Extension Getter '@unifiedTypeMapEntry baseType'
 //--------------------------------------------------------------------------------------------------
 
 GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry & inObject,
@@ -12692,9 +12602,7 @@ GGS_actualParameterAST cEnumerator_actualParameterListAST::current_mActualParame
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListAST ("actualParameterListAST",
@@ -12787,9 +12695,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST ("actualParameterAST",
@@ -12977,9 +12883,7 @@ GGS_actualParameterAST GGS_actualParameterAST_2E_weak::bang_actualParameterAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterAST_2E_weak ("actualParameterAST.weak",
@@ -13072,9 +12976,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionAST ("semanticExpressionAST",
@@ -13183,9 +13085,7 @@ GGS_outputActualParameterAST GGS_outputActualParameterAST_2E_weak::bang_outputAc
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @outputActualParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterAST_2E_weak ("outputActualParameterAST.weak",
@@ -13294,9 +13194,7 @@ GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @outputInputActualParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST_2E_weak ("outputInputActualParameterAST.weak",
@@ -13405,9 +13303,7 @@ GGS_outputInputJokerParameterAST GGS_outputInputJokerParameterAST_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @outputInputJokerParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2E_weak ("outputInputJokerParameterAST.weak",
@@ -13516,9 +13412,7 @@ GGS_outputInputSelfParameterAST GGS_outputInputSelfParameterAST_2E_weak::bang_ou
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @outputInputSelfParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2E_weak ("outputInputSelfParameterAST.weak",
@@ -13627,9 +13521,7 @@ GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParam
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputActualExistingVariableParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2E_weak ("inputActualExistingVariableParameterAST.weak",
@@ -13738,9 +13630,7 @@ GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputActualSelfPropertyParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2E_weak ("inputActualSelfPropertyParameterAST.weak",
@@ -13849,9 +13739,7 @@ GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST_2E_weak::bang_in
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputActualSelfParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2E_weak ("inputActualSelfParameterAST.weak",
@@ -13960,9 +13848,7 @@ GGS_inputActualNewVariableParameterAST GGS_inputActualNewVariableParameterAST_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputActualNewVariableParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVariableParameterAST_2E_weak ("inputActualNewVariableParameterAST.weak",
@@ -14071,9 +13957,7 @@ GGS_inputActualNewConstantParameterAST GGS_inputActualNewConstantParameterAST_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputActualNewConstantParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConstantParameterAST_2E_weak ("inputActualNewConstantParameterAST.weak",
@@ -14182,9 +14066,7 @@ GGS_inputSingleJokerActualParameterAST GGS_inputSingleJokerActualParameterAST_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputSingleJokerActualParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST_2E_weak ("inputSingleJokerActualParameterAST.weak",
@@ -14373,9 +14255,7 @@ acPtr_class * cPtr_inputJokerActualParameterAST::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputJokerActualParameterAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualParameterAST ("inputJokerActualParameterAST",
@@ -14484,9 +14364,7 @@ GGS_inputJokerActualParameterAST GGS_inputJokerActualParameterAST_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputJokerActualParameterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualParameterAST_2E_weak ("inputJokerActualParameterAST.weak",
@@ -14595,9 +14473,7 @@ GGS_externProcedureDeclarationAST GGS_externProcedureDeclarationAST_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externProcedureDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externProcedureDeclarationAST_2E_weak ("externProcedureDeclarationAST.weak",
@@ -14706,9 +14582,7 @@ GGS_procDeclarationAST GGS_procDeclarationAST_2E_weak::bang_procDeclarationAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @procDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST_2E_weak ("procDeclarationAST.weak",
@@ -15525,9 +15399,7 @@ GGS_galgas_33_SyntaxExtensionListAST cEnumerator_syntaxExtensionsDictionary::cur
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxExtensionsDictionary generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ("syntaxExtensionsDictionary",
@@ -16062,9 +15934,7 @@ GGS_syntaxRuleListAST cEnumerator_galgas_33_SyntaxExtensionListAST::current_mRul
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @galgas3SyntaxExtensionListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionListAST ("galgas3SyntaxExtensionListAST",
@@ -16170,9 +16040,7 @@ void GGS_syntaxExtensions::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxExtensions generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ("syntaxExtensions",
@@ -16212,9 +16080,7 @@ GGS_syntaxExtensions GGS_syntaxExtensions::extractObject (const GGS_object & inO
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@syntaxExtensions listForKey'
-//
+//  Extension Getter '@syntaxExtensions listForKey'
 //--------------------------------------------------------------------------------------------------
 
 GGS_galgas_33_SyntaxExtensionListAST extensionGetter_listForKey (const GGS_syntaxExtensions & inObject,
@@ -16311,9 +16177,7 @@ GGS_semanticExpressionAST GGS_semanticExpressionAST_2E_weak::bang_semanticExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak ("semanticExpressionAST.weak",

@@ -134,9 +134,7 @@ acPtr_class * cPtr_templateInstructionExpressionForGeneration::duplicate (Compil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateInstructionExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ("templateInstructionExpressionForGeneration",
@@ -294,9 +292,7 @@ void GGS_semanticContext::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ("semanticContext",
@@ -593,9 +589,7 @@ acPtr_class * cPtr_optionComponentForGeneration::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionComponentForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration ("optionComponentForGeneration",
@@ -704,9 +698,7 @@ GGS_optionComponentForGeneration GGS_optionComponentForGeneration_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionComponentForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentForGeneration_2E_weak ("optionComponentForGeneration.weak",
@@ -880,9 +872,7 @@ acPtr_class * cPtr_arrayTypeForGeneration::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @arrayTypeForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration ("arrayTypeForGeneration",
@@ -991,9 +981,7 @@ GGS_arrayTypeForGeneration GGS_arrayTypeForGeneration_2E_weak::bang_arrayTypeFor
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @arrayTypeForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ("arrayTypeForGeneration.weak",
@@ -1216,9 +1204,7 @@ void GGS_analysisContext::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @analysisContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_analysisContext ("analysisContext",
@@ -1427,9 +1413,7 @@ void GGS_templateAnalysisContext::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateAnalysisContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAnalysisContext ("templateAnalysisContext",

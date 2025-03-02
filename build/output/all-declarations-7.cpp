@@ -476,9 +476,7 @@ GGS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::curr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionComponentMapForSemanticAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis ("optionComponentMapForSemanticAnalysis",
@@ -1086,9 +1084,7 @@ GGS_lexicalListDeclarationListAST cEnumerator_lexiqueComponentMapForSemanticAnal
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueComponentMapForSemanticAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis ("lexiqueComponentMapForSemanticAnalysis",
@@ -1546,9 +1542,7 @@ GGS_bool cEnumerator_syntaxComponentMap::current_mHasTranslateFeature (LOCATION_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxComponentMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap ("syntaxComponentMap",
@@ -1834,9 +1828,7 @@ GGS_formalInputParameterListAST cEnumerator_extensionInitializerMapForType::curr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionInitializerMapForType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType ("extensionInitializerMapForType",
@@ -2144,9 +2136,7 @@ GGS_extensionInitializerMapForType cEnumerator_extensionInitializerForBuildingCo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionInitializerForBuildingContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext ("extensionInitializerForBuildingContext",
@@ -2479,9 +2469,7 @@ GGS_methodQualifier cEnumerator_extensionMethodMapForType::current_mQualifier (L
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType ("extensionMethodMapForType",
@@ -2789,9 +2777,7 @@ GGS_extensionMethodMapForType cEnumerator_extensionMethodMapForBuildingContext::
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForBuildingContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext ("extensionMethodMapForBuildingContext",
@@ -3077,9 +3063,7 @@ GGS_formalParameterListAST cEnumerator_extensionSetterMapForType::current_mForma
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType ("extensionSetterMapForType",
@@ -3387,9 +3371,7 @@ GGS_extensionSetterMapForType cEnumerator_extensionSetterMapForBuildingContext::
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForBuildingContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext ("extensionSetterMapForBuildingContext",
@@ -3769,9 +3751,7 @@ GGS_methodQualifier cEnumerator_extensionGetterMapForType::current_mQualifier (L
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForType generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForType ("extensionGetterMapForType",
@@ -4079,9 +4059,7 @@ GGS_extensionGetterMapForType cEnumerator_extensionGetterMapForBuildingContext::
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForBuildingContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext ("extensionGetterMapForBuildingContext",
@@ -4336,9 +4314,7 @@ GGS_lstring cEnumerator_wrapperExtensionMap::current_lkey (LOCATION_ARGS) const 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperExtensionMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap ("wrapperExtensionMap",
@@ -4526,9 +4502,7 @@ GGS_lstringlist GGS_semanticTypePrecedenceGraph::getter_accessibleNodesFrom (con
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticTypePrecedenceGraph generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypePrecedenceGraph ("semanticTypePrecedenceGraph",
@@ -4659,9 +4633,7 @@ GGS_semanticExpressionForGeneration GGS_semanticExpressionForGeneration_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak ("semanticExpressionForGeneration.weak",
@@ -5068,9 +5040,7 @@ GGS_semanticExpressionForGeneration cEnumerator_semanticExpressionListForGenerat
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticExpressionListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionListForGeneration ("semanticExpressionListForGeneration",
@@ -5179,9 +5149,7 @@ GGS_castInExpressionForGeneration GGS_castInExpressionForGeneration_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @castInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionForGeneration_2E_weak ("castInExpressionForGeneration.weak",
@@ -5294,9 +5262,7 @@ mProperty_mFormalArgumentType () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForGeneration ("actualParameterForGeneration",
@@ -5405,9 +5371,7 @@ GGS_actualParameterForGeneration GGS_actualParameterForGeneration_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForGeneration_2E_weak ("actualParameterForGeneration.weak",
@@ -5558,9 +5522,7 @@ GGS_outputActualParameterForGeneration GGS_outputActualParameterForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @outputActualParameterForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterForGeneration_2E_weak ("outputActualParameterForGeneration.weak",
@@ -5976,9 +5938,7 @@ GGS_unifiedTypeMapEntry cEnumerator_unifiedTypeMapEntryList::current_mEntry (LOC
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unifiedTypeMapEntryList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapEntryList ("unifiedTypeMapEntryList",
@@ -6087,9 +6047,7 @@ GGS_outputInputActualParameterForGeneration GGS_outputInputActualParameterForGen
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @outputInputActualParameterForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration_2E_weak ("outputInputActualParameterForGeneration.weak",
@@ -6198,9 +6156,7 @@ GGS_inputActualParameterForGeneration GGS_inputActualParameterForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputActualParameterForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration_2E_weak ("inputActualParameterForGeneration.weak",
@@ -6397,9 +6353,7 @@ acPtr_class * cPtr_inputJokerParameterForGeneration::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputJokerParameterForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ("inputJokerParameterForGeneration",
@@ -6508,9 +6462,7 @@ GGS_inputJokerParameterForGeneration GGS_inputJokerParameterForGeneration_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @inputJokerParameterForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration_2E_weak ("inputJokerParameterForGeneration.weak",
@@ -6917,9 +6869,7 @@ GGS_actualParameterForGeneration cEnumerator_actualParameterListForGeneration::c
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualParameterListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterListForGeneration ("actualParameterListForGeneration",
@@ -7012,9 +6962,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionForGeneration ("semanticInstructionForGeneration",
@@ -7123,9 +7071,7 @@ GGS_semanticInstructionForGeneration GGS_semanticInstructionForGeneration_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstructionForGeneration_2E_weak ("semanticInstructionForGeneration.weak",
@@ -7312,9 +7258,7 @@ acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (Compiler * 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticBlockInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticBlockInstructionForGeneration ("semanticBlockInstructionForGeneration",
@@ -7423,9 +7367,7 @@ GGS_semanticBlockInstructionForGeneration GGS_semanticBlockInstructionForGenerat
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticBlockInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticBlockInstructionForGeneration_2E_weak ("semanticBlockInstructionForGeneration.weak",
@@ -7896,9 +7838,7 @@ GGS_location cEnumerator_listOfSemanticInstructionListForGeneration::current_mEn
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @listOfSemanticInstructionListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstructionListForGeneration ("listOfSemanticInstructionListForGeneration",
@@ -7991,9 +7931,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticDeclarationForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationForGeneration ("semanticDeclarationForGeneration",
@@ -8102,9 +8040,7 @@ GGS_semanticDeclarationForGeneration GGS_semanticDeclarationForGeneration_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticDeclarationForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationForGeneration_2E_weak ("semanticDeclarationForGeneration.weak",
@@ -8689,9 +8625,7 @@ GGS_semanticDeclarationForGeneration cEnumerator_semanticDeclarationListForGener
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticDeclarationListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclarationListForGeneration ("semanticDeclarationListForGeneration",
@@ -9162,9 +9096,7 @@ GGS_lstring cEnumerator_signatureForGrammarAnalysis::current_mGalgasTypeNameForG
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @signatureForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_signatureForGrammarAnalysis ("signatureForGrammarAnalysis",
@@ -9472,9 +9404,7 @@ GGS_signatureForGrammarAnalysis cEnumerator_nonterminalSymbolLabelMapForGrammarA
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalSymbolLabelMapForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis ("nonterminalSymbolLabelMapForGrammarAnalysis",
@@ -9832,9 +9762,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis cEnumerator_nonTerminalSymbolMap
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalSymbolMapForGrammarAnalysis generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis ("nonTerminalSymbolMapForGrammarAnalysis",
@@ -10305,9 +10233,7 @@ GGS_uint cEnumerator_nonTerminalToAddList::current_mNonTerminalToAddCount (LOCAT
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalToAddList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddList ("nonTerminalToAddList",
@@ -10842,9 +10768,7 @@ GGS_string cEnumerator_terminalCheckAssignementList::current_mSourceLexicalAttri
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @terminalCheckAssignementList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssignementList ("terminalCheckAssignementList",
@@ -10957,9 +10881,7 @@ mProperty_mInstructionLocation () {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionForGeneration ("syntaxInstructionForGeneration",
@@ -11068,9 +10990,7 @@ GGS_syntaxInstructionForGeneration GGS_syntaxInstructionForGeneration_2E_weak::b
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionForGeneration_2E_weak ("syntaxInstructionForGeneration.weak",
@@ -11605,9 +11525,7 @@ GGS_templateInstructionListForGeneration cEnumerator_filewrapperTemplateListForG
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateListForGeneration ("filewrapperTemplateListForGeneration",
@@ -12366,9 +12284,7 @@ GGS_string cEnumerator_localConstantList::current_mCppName (LOCATION_ARGS) const
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localConstantList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList ("localConstantList",
@@ -12903,9 +12819,7 @@ GGS_string cEnumerator_localInitializedVariableList::current_mCppName (LOCATION_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localInitializedVariableList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localInitializedVariableList ("localInitializedVariableList",
@@ -12945,9 +12859,7 @@ GGS_localInitializedVariableList GGS_localInitializedVariableList::extractObject
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'
-//
+//  Extension Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_correspondingEffectiveParameterString (const GGS_formalArgumentPassingModeAST & inObject,
@@ -13040,9 +12952,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractGrammarInstructionSyntaxDirectedTranslationResult generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult ("abstractGrammarInstructionSyntaxDirectedTranslationResult",
@@ -13419,9 +13329,7 @@ GGS_unifiedTypeMapEntry cEnumerator_propertyIndexMap::current_mPropertyTypeIndex
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyIndexMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap ("propertyIndexMap",
@@ -13829,9 +13737,7 @@ GGS_location cEnumerator_nonterminalLabelMap::current_mEndOfArgumentLocation (LO
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalLabelMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap ("nonterminalLabelMap",
@@ -14139,9 +14045,7 @@ GGS_nonterminalLabelMap cEnumerator_nonterminalMap::current_mLabelMap (LOCATION_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap ("nonterminalMap",
@@ -14804,9 +14708,7 @@ GGS_semanticInstructionListForGeneration cEnumerator_ruleLabelImplementationList
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ruleLabelImplementationList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementationList ("ruleLabelImplementationList",

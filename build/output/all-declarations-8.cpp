@@ -503,9 +503,7 @@ GGS_ruleLabelImplementationList cEnumerator_ruleDeclarationList::current_mLabelI
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ruleDeclarationList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList ("ruleDeclarationList",
@@ -900,9 +898,7 @@ acPtr_class * cPtr_syntaxDeclarationForGeneration::duplicate (Compiler * inCompi
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxDeclarationForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration ("syntaxDeclarationForGeneration",
@@ -1011,9 +1007,7 @@ GGS_syntaxDeclarationForGeneration GGS_syntaxDeclarationForGeneration_2E_weak::b
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxDeclarationForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2E_weak ("syntaxDeclarationForGeneration.weak",
@@ -1201,9 +1195,7 @@ GGS_lstringlist GGS_usefulEntitiesGraph::getter_accessibleNodesFrom (const GGS_l
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @usefulEntitiesGraph generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_usefulEntitiesGraph ("usefulEntitiesGraph",
@@ -1536,9 +1528,7 @@ GGS_location cEnumerator_uselessEntityLocationMap::current_mLocation (LOCATION_A
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uselessEntityLocationMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap ("uselessEntityLocationMap",
@@ -1750,9 +1740,7 @@ acPtr_class * cPtr_rightShiftExpressionAST::duplicate (Compiler * inCompiler COM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @rightShiftExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST ("rightShiftExpressionAST",
@@ -1861,9 +1849,7 @@ GGS_rightShiftExpressionAST GGS_rightShiftExpressionAST_2E_weak::bang_rightShift
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @rightShiftExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST_2E_weak ("rightShiftExpressionAST.weak",
@@ -2075,9 +2061,7 @@ acPtr_class * cPtr_leftShiftExpressionAST::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @leftShiftExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST ("leftShiftExpressionAST",
@@ -2186,9 +2170,7 @@ GGS_leftShiftExpressionAST GGS_leftShiftExpressionAST_2E_weak::bang_leftShiftExp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @leftShiftExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST_2E_weak ("leftShiftExpressionAST.weak",
@@ -2400,9 +2382,7 @@ acPtr_class * cPtr_addExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @addExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST ("addExpressionAST",
@@ -2511,9 +2491,7 @@ GGS_addExpressionAST GGS_addExpressionAST_2E_weak::bang_addExpressionAST_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @addExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST_2E_weak ("addExpressionAST.weak",
@@ -2725,9 +2703,7 @@ acPtr_class * cPtr_addExpressionNoOverflowAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @addExpressionNoOverflowAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST ("addExpressionNoOverflowAST",
@@ -2836,9 +2812,7 @@ GGS_addExpressionNoOverflowAST GGS_addExpressionNoOverflowAST_2E_weak::bang_addE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @addExpressionNoOverflowAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST_2E_weak ("addExpressionNoOverflowAST.weak",
@@ -3050,9 +3024,7 @@ acPtr_class * cPtr_subExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST ("subExpressionAST",
@@ -3161,9 +3133,7 @@ GGS_subExpressionAST GGS_subExpressionAST_2E_weak::bang_subExpressionAST_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST_2E_weak ("subExpressionAST.weak",
@@ -3375,9 +3345,7 @@ acPtr_class * cPtr_subExpressionNoOverflowAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subExpressionNoOverflowAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowAST ("subExpressionNoOverflowAST",
@@ -3486,9 +3454,7 @@ GGS_subExpressionNoOverflowAST GGS_subExpressionNoOverflowAST_2E_weak::bang_subE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subExpressionNoOverflowAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowAST_2E_weak ("subExpressionNoOverflowAST.weak",
@@ -3791,9 +3757,7 @@ void GGS_binaryOperator::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @binaryOperator generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperator ("binaryOperator",
@@ -3902,9 +3866,7 @@ GGS_binaryOperatorExpressionForGeneration GGS_binaryOperatorExpressionForGenerat
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @binaryOperatorExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration_2E_weak ("binaryOperatorExpressionForGeneration.weak",
@@ -4116,9 +4078,7 @@ acPtr_class * cPtr_andShortExpressionAST::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @andShortExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST ("andShortExpressionAST",
@@ -4227,9 +4187,7 @@ GGS_andShortExpressionAST GGS_andShortExpressionAST_2E_weak::bang_andShortExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @andShortExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST_2E_weak ("andShortExpressionAST.weak",
@@ -4441,9 +4399,7 @@ acPtr_class * cPtr_andExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @andExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST ("andExpressionAST",
@@ -4552,9 +4508,7 @@ GGS_andExpressionAST GGS_andExpressionAST_2E_weak::bang_andExpressionAST_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @andExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST_2E_weak ("andExpressionAST.weak",
@@ -4663,9 +4617,7 @@ GGS_andShortExpressionForGeneration GGS_andShortExpressionForGeneration_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @andShortExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration_2E_weak ("andShortExpressionForGeneration.weak",
@@ -4774,9 +4726,7 @@ GGS_testDynamicClassInExpressionAST GGS_testDynamicClassInExpressionAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @testDynamicClassInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST_2E_weak ("testDynamicClassInExpressionAST.weak",
@@ -4885,9 +4835,7 @@ GGS_castInExpressionAST GGS_castInExpressionAST_2E_weak::bang_castInExpressionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @castInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST_2E_weak ("castInExpressionAST.weak",
@@ -4996,9 +4944,7 @@ GGS_testDynamicClassInExpressionForGeneration GGS_testDynamicClassInExpressionFo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @testDynamicClassInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration_2E_weak ("testDynamicClassInExpressionForGeneration.weak",
@@ -5107,9 +5053,7 @@ GGS_extractObjectInExpressionForGeneration GGS_extractObjectInExpressionForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extractObjectInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration_2E_weak ("extractObjectInExpressionForGeneration.weak",
@@ -5310,9 +5254,7 @@ void GGS_comparison::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @comparison generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparison ("comparison",
@@ -5547,9 +5489,7 @@ acPtr_class * cPtr_comparisonExpressionAST::duplicate (Compiler * inCompiler COM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @comparisonExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionAST ("comparisonExpressionAST",
@@ -5658,9 +5598,7 @@ GGS_comparisonExpressionAST GGS_comparisonExpressionAST_2E_weak::bang_comparison
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @comparisonExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionAST_2E_weak ("comparisonExpressionAST.weak",
@@ -5769,9 +5707,7 @@ GGS_comparisonExpressionForGeneration GGS_comparisonExpressionForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @comparisonExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionForGeneration_2E_weak ("comparisonExpressionForGeneration.weak",
@@ -6306,9 +6242,7 @@ GGS_location cEnumerator_actualOutputArgumentList::current_mEndOfExpressionLocat
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualOutputArgumentList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputArgumentList ("actualOutputArgumentList",
@@ -6417,9 +6351,7 @@ GGS_functionCallExpressionAST GGS_functionCallExpressionAST_2E_weak::bang_functi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionCallExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionAST_2E_weak ("functionCallExpressionAST.weak",
@@ -6528,9 +6460,7 @@ GGS_functionCallExpressionForGeneration GGS_functionCallExpressionForGeneration_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionCallExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration_2E_weak ("functionCallExpressionForGeneration.weak",
@@ -6639,9 +6569,7 @@ GGS_getterCallExpressionAST GGS_getterCallExpressionAST_2E_weak::bang_getterCall
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @getterCallExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionAST_2E_weak ("getterCallExpressionAST.weak",
@@ -6750,9 +6678,7 @@ GGS_getterCallExpressionForGeneration GGS_getterCallExpressionForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @getterCallExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration_2E_weak ("getterCallExpressionForGeneration.weak",
@@ -6861,9 +6787,7 @@ GGS_initializerCallAST GGS_initializerCallAST_2E_weak::bang_initializerCallAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerCallAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallAST_2E_weak ("initializerCallAST.weak",
@@ -6972,9 +6896,7 @@ GGS_initializerCallForGeneration GGS_initializerCallForGeneration_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerCallForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallForGeneration_2E_weak ("initializerCallForGeneration.weak",
@@ -7083,9 +7005,7 @@ GGS_structPropertyAccessExpressionAST GGS_structPropertyAccessExpressionAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structPropertyAccessExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structPropertyAccessExpressionAST_2E_weak ("structPropertyAccessExpressionAST.weak",
@@ -7194,9 +7114,7 @@ GGS_propertyAccessExpressionForGeneration GGS_propertyAccessExpressionForGenerat
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyAccessExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration_2E_weak ("propertyAccessExpressionForGeneration.weak",
@@ -7408,9 +7326,7 @@ acPtr_class * cPtr_subscriptReadAccessExpressionAST::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subscriptReadAccessExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionAST ("subscriptReadAccessExpressionAST",
@@ -7519,9 +7435,7 @@ GGS_subscriptReadAccessExpressionAST GGS_subscriptReadAccessExpressionAST_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subscriptReadAccessExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionAST_2E_weak ("subscriptReadAccessExpressionAST.weak",
@@ -7803,9 +7717,7 @@ GGS_string cEnumerator__5B_string_5D_::current (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @[string] generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_string_5D_ ("[string]",
@@ -7914,9 +7826,7 @@ GGS_subscriptReadAccessExpressionForGeneration GGS_subscriptReadAccessExpression
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subscriptReadAccessExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration_2E_weak ("subscriptReadAccessExpressionForGeneration.weak",
@@ -8025,9 +7935,7 @@ GGS_classFuncExpressionAST GGS_classFuncExpressionAST_2E_weak::bang_classFuncExp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classFuncExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST_2E_weak ("classFuncExpressionAST.weak",
@@ -8136,9 +8044,7 @@ GGS_classFuncExpressionForGeneration GGS_classFuncExpressionForGeneration_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classFuncExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2E_weak ("classFuncExpressionForGeneration.weak",
@@ -8327,9 +8233,7 @@ acPtr_class * cPtr_bangExpressionAST::duplicate (Compiler * inCompiler COMMA_LOC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bangExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionAST ("bangExpressionAST",
@@ -8438,9 +8342,7 @@ GGS_bangExpressionAST GGS_bangExpressionAST_2E_weak::bang_bangExpressionAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bangExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionAST_2E_weak ("bangExpressionAST.weak",
@@ -8549,9 +8451,7 @@ GGS_bangExpressionForGeneration GGS_bangExpressionForGeneration_2E_weak::bang_ba
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bangExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration_2E_weak ("bangExpressionForGeneration.weak",
@@ -9022,9 +8922,7 @@ GGS_location cEnumerator_collectionValueElementList::current_location (LOCATION_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @collectionValueElementList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementList ("collectionValueElementList",
@@ -9133,9 +9031,7 @@ GGS_collectionValueAST GGS_collectionValueAST_2E_weak::bang_collectionValueAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @collectionValueAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST_2E_weak ("collectionValueAST.weak",
@@ -9606,9 +9502,7 @@ GGS_location cEnumerator_collectionValueElementListForGeneration::current_locati
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @collectionValueElementListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementListForGeneration ("collectionValueElementListForGeneration",
@@ -9717,9 +9611,7 @@ GGS_expressionCollectionForGeneration GGS_expressionCollectionForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @expressionCollectionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration_2E_weak ("expressionCollectionForGeneration.weak",
@@ -9828,9 +9720,7 @@ GGS_filewrapperObjectInstanciationInExpressionAST GGS_filewrapperObjectInstancia
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperObjectInstanciationInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST_2E_weak ("filewrapperObjectInstanciationInExpressionAST.weak",
@@ -9939,9 +9829,7 @@ GGS_filewrapperInExpressionAST GGS_filewrapperInExpressionAST_2E_weak::bang_file
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST_2E_weak ("filewrapperInExpressionAST.weak",
@@ -10050,9 +9938,7 @@ GGS_filewrapperTemplateInExpressionAST GGS_filewrapperTemplateInExpressionAST_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST_2E_weak ("filewrapperTemplateInExpressionAST.weak",
@@ -10161,9 +10047,7 @@ GGS_filewrapperInExpressionForGeneration GGS_filewrapperInExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration_2E_weak ("filewrapperInExpressionForGeneration.weak",
@@ -10272,9 +10156,7 @@ GGS_filewrapperTemplateInExpressionForGeneration GGS_filewrapperTemplateInExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration_2E_weak ("filewrapperTemplateInExpressionForGeneration.weak",
@@ -10383,9 +10265,7 @@ GGS_filewrapperStaticPathInExpressionForGeneration GGS_filewrapperStaticPathInEx
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperStaticPathInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration_2E_weak ("filewrapperStaticPathInExpressionForGeneration.weak",
@@ -10620,9 +10500,7 @@ acPtr_class * cPtr_ifExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCAT
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionAST ("ifExpressionAST",
@@ -10731,9 +10609,7 @@ GGS_ifExpressionAST GGS_ifExpressionAST_2E_weak::bang_ifExpressionAST_2E_weak (C
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionAST_2E_weak ("ifExpressionAST.weak",
@@ -10842,9 +10718,7 @@ GGS_ifExpressionForGeneration GGS_ifExpressionForGeneration_2E_weak::bang_ifExpr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGeneration_2E_weak ("ifExpressionForGeneration.weak",
@@ -10953,9 +10827,7 @@ GGS_lexiqueIntrospectionExpressionAST GGS_lexiqueIntrospectionExpressionAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueIntrospectionExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST_2E_weak ("lexiqueIntrospectionExpressionAST.weak",
@@ -11064,9 +10936,7 @@ GGS_lexiqueIntrospectionForGeneration GGS_lexiqueIntrospectionForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueIntrospectionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration_2E_weak ("lexiqueIntrospectionForGeneration.weak",
@@ -11175,9 +11045,7 @@ GGS_literalCharExpressionAST GGS_literalCharExpressionAST_2E_weak::bang_literalC
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalCharExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionAST_2E_weak ("literalCharExpressionAST.weak",
@@ -11286,9 +11154,7 @@ GGS_literalCharExpressionForGeneration GGS_literalCharExpressionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalCharExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionForGeneration_2E_weak ("literalCharExpressionForGeneration.weak",
@@ -11397,9 +11263,7 @@ GGS_literalDoubleExpressionAST GGS_literalDoubleExpressionAST_2E_weak::bang_lite
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalDoubleExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionAST_2E_weak ("literalDoubleExpressionAST.weak",
@@ -11508,9 +11372,7 @@ GGS_literalDoubleExpressionForGeneration GGS_literalDoubleExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalDoubleExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration_2E_weak ("literalDoubleExpressionForGeneration.weak",
@@ -11619,9 +11481,7 @@ GGS_literalBigIntExpressionAST GGS_literalBigIntExpressionAST_2E_weak::bang_lite
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalBigIntExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST_2E_weak ("literalBigIntExpressionAST.weak",
@@ -11730,9 +11590,7 @@ GGS_literalUIntExpressionForGeneration GGS_literalUIntExpressionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalUIntExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration_2E_weak ("literalUIntExpressionForGeneration.weak",
@@ -11841,9 +11699,7 @@ GGS_literalUInt_36__34_ExpressionForGeneration GGS_literalUInt_36__34_Expression
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalUInt64ExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration_2E_weak ("literalUInt64ExpressionForGeneration.weak",
@@ -11952,9 +11808,7 @@ GGS_literalSIntExpressionForGeneration GGS_literalSIntExpressionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalSIntExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration_2E_weak ("literalSIntExpressionForGeneration.weak",
@@ -12063,9 +11917,7 @@ GGS_literalSInt_36__34_ExpressionForGeneration GGS_literalSInt_36__34_Expression
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalSInt64ExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration_2E_weak ("literalSInt64ExpressionForGeneration.weak",
@@ -12174,9 +12026,7 @@ GGS_literalBigIntExpressionForGeneration GGS_literalBigIntExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalBigIntExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration_2E_weak ("literalBigIntExpressionForGeneration.weak",
@@ -12365,9 +12215,7 @@ acPtr_class * cPtr_literalStringExpressionAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalStringExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionAST ("literalStringExpressionAST",
@@ -12476,9 +12324,7 @@ GGS_literalStringExpressionAST GGS_literalStringExpressionAST_2E_weak::bang_lite
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalStringExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionAST_2E_weak ("literalStringExpressionAST.weak",
@@ -12587,9 +12433,7 @@ GGS_literalStringExpressionForGeneration GGS_literalStringExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalStringExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionForGeneration_2E_weak ("literalStringExpressionForGeneration.weak",
@@ -12698,9 +12542,7 @@ GGS_literalTypeInExpressionAST GGS_literalTypeInExpressionAST_2E_weak::bang_lite
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalTypeInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionAST_2E_weak ("literalTypeInExpressionAST.weak",
@@ -12809,9 +12651,7 @@ GGS_literalTypeInExpressionForGeneration GGS_literalTypeInExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalTypeInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration_2E_weak ("literalTypeInExpressionForGeneration.weak",
@@ -12977,9 +12817,7 @@ acPtr_class * cPtr_selfInExpressionAST::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionAST ("selfInExpressionAST",
@@ -13088,9 +12926,7 @@ GGS_selfInExpressionAST GGS_selfInExpressionAST_2E_weak::bang_selfInExpressionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionAST_2E_weak ("selfInExpressionAST.weak",
@@ -13199,9 +13035,7 @@ GGS_selfInExpressionForGeneration GGS_selfInExpressionForGeneration_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration_2E_weak ("selfInExpressionForGeneration.weak",
@@ -13367,9 +13201,7 @@ acPtr_class * cPtr_nilExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nilExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionAST ("nilExpressionAST",
@@ -13478,9 +13310,7 @@ GGS_nilExpressionAST GGS_nilExpressionAST_2E_weak::bang_nilExpressionAST_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nilExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionAST_2E_weak ("nilExpressionAST.weak",
@@ -13589,9 +13419,7 @@ GGS_nilExpressionForGeneration GGS_nilExpressionForGeneration_2E_weak::bang_nilE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nilExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionForGeneration_2E_weak ("nilExpressionForGeneration.weak",
@@ -13700,9 +13528,7 @@ GGS_optionExpressionAST GGS_optionExpressionAST_2E_weak::bang_optionExpressionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST_2E_weak ("optionExpressionAST.weak",
@@ -13811,9 +13637,7 @@ GGS_optionValueExpressionForGeneration GGS_optionValueExpressionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionValueExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration_2E_weak ("optionValueExpressionForGeneration.weak",
@@ -13922,9 +13746,7 @@ GGS_optionCharExpressionForGeneration GGS_optionCharExpressionForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionCharExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration_2E_weak ("optionCharExpressionForGeneration.weak",
@@ -14033,9 +13855,7 @@ GGS_optionStringExpressionForGeneration GGS_optionStringExpressionForGeneration_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionStringExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration_2E_weak ("optionStringExpressionForGeneration.weak",
@@ -14144,9 +13964,7 @@ GGS_optionCommentExpressionForGeneration GGS_optionCommentExpressionForGeneratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionCommentExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration_2E_weak ("optionCommentExpressionForGeneration.weak",
@@ -14312,9 +14130,7 @@ acPtr_class * cPtr_trueExpressionAST::duplicate (Compiler * inCompiler COMMA_LOC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @trueExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionAST ("trueExpressionAST",
@@ -14423,9 +14239,7 @@ GGS_trueExpressionAST GGS_trueExpressionAST_2E_weak::bang_trueExpressionAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @trueExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionAST_2E_weak ("trueExpressionAST.weak",
@@ -14591,9 +14405,7 @@ acPtr_class * cPtr_falseExpressionAST::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @falseExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionAST ("falseExpressionAST",
@@ -14702,9 +14514,7 @@ GGS_falseExpressionAST GGS_falseExpressionAST_2E_weak::bang_falseExpressionAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @falseExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionAST_2E_weak ("falseExpressionAST.weak",
@@ -14813,9 +14623,7 @@ GGS_trueExpressionForGeneration GGS_trueExpressionForGeneration_2E_weak::bang_tr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @trueExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionForGeneration_2E_weak ("trueExpressionForGeneration.weak",
@@ -14924,9 +14732,7 @@ GGS_falseExpressionForGeneration GGS_falseExpressionForGeneration_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @falseExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionForGeneration_2E_weak ("falseExpressionForGeneration.weak",
@@ -15035,9 +14841,7 @@ GGS_varInExpressionAST GGS_varInExpressionAST_2E_weak::bang_varInExpressionAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @varInExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionAST_2E_weak ("varInExpressionAST.weak",
@@ -15146,9 +14950,7 @@ GGS_varInExpressionForGeneration GGS_varInExpressionForGeneration_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @varInExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionForGeneration_2E_weak ("varInExpressionForGeneration.weak",
@@ -15360,9 +15162,7 @@ acPtr_class * cPtr_multiplicationExpressionAST::duplicate (Compiler * inCompiler
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @multiplicationExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST ("multiplicationExpressionAST",
@@ -15471,9 +15271,7 @@ GGS_multiplicationExpressionAST GGS_multiplicationExpressionAST_2E_weak::bang_mu
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @multiplicationExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST_2E_weak ("multiplicationExpressionAST.weak",
@@ -15685,9 +15483,7 @@ acPtr_class * cPtr_multiplicationExpressionNoOverflowAST::duplicate (Compiler * 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @multiplicationExpressionNoOverflowAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ("multiplicationExpressionNoOverflowAST",
@@ -15796,9 +15592,7 @@ GGS_multiplicationExpressionNoOverflowAST GGS_multiplicationExpressionNoOverflow
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @multiplicationExpressionNoOverflowAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST_2E_weak ("multiplicationExpressionNoOverflowAST.weak",
@@ -16010,9 +15804,7 @@ acPtr_class * cPtr_divisionExpressionAST::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @divisionExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST ("divisionExpressionAST",
@@ -16121,9 +15913,7 @@ GGS_divisionExpressionAST GGS_divisionExpressionAST_2E_weak::bang_divisionExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @divisionExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST_2E_weak ("divisionExpressionAST.weak",
@@ -16335,9 +16125,7 @@ acPtr_class * cPtr_divisionExpressionNoOverflowAST::duplicate (Compiler * inComp
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @divisionExpressionNoOverflowAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ("divisionExpressionNoOverflowAST",
@@ -16446,9 +16234,7 @@ GGS_divisionExpressionNoOverflowAST GGS_divisionExpressionNoOverflowAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @divisionExpressionNoOverflowAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST_2E_weak ("divisionExpressionNoOverflowAST.weak",
@@ -16660,9 +16446,7 @@ acPtr_class * cPtr_moduloExpressionAST::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @moduloExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST ("moduloExpressionAST",

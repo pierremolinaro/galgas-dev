@@ -77,9 +77,7 @@ GGS_sint_36__34_PredefinedTypeAST GGS_sint_36__34_PredefinedTypeAST_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sint64PredefinedTypeAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_PredefinedTypeAST_2E_weak ("sint64PredefinedTypeAST.weak",
@@ -238,9 +236,7 @@ acPtr_class * cPtr_stringPredefinedTypeAST::duplicate (Compiler * inCompiler COM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @stringPredefinedTypeAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST ("stringPredefinedTypeAST",
@@ -349,9 +345,7 @@ GGS_stringPredefinedTypeAST GGS_stringPredefinedTypeAST_2E_weak::bang_stringPred
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @stringPredefinedTypeAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTypeAST_2E_weak ("stringPredefinedTypeAST.weak",
@@ -510,9 +504,7 @@ acPtr_class * cPtr_timerPredefinedTypeAST::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @timerPredefinedTypeAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST ("timerPredefinedTypeAST",
@@ -621,9 +613,7 @@ GGS_timerPredefinedTypeAST GGS_timerPredefinedTypeAST_2E_weak::bang_timerPredefi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @timerPredefinedTypeAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedTypeAST_2E_weak ("timerPredefinedTypeAST.weak",
@@ -782,9 +772,7 @@ acPtr_class * cPtr_typePredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typePredefinedTypeAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST ("typePredefinedTypeAST",
@@ -893,9 +881,7 @@ GGS_typePredefinedTypeAST GGS_typePredefinedTypeAST_2E_weak::bang_typePredefined
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typePredefinedTypeAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeAST_2E_weak ("typePredefinedTypeAST.weak",
@@ -1054,9 +1040,7 @@ acPtr_class * cPtr_uintPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uintPredefinedTypeAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST ("uintPredefinedTypeAST",
@@ -1165,9 +1149,7 @@ GGS_uintPredefinedTypeAST GGS_uintPredefinedTypeAST_2E_weak::bang_uintPredefined
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uintPredefinedTypeAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeAST_2E_weak ("uintPredefinedTypeAST.weak",
@@ -1326,9 +1308,7 @@ acPtr_class * cPtr_uint_36__34_PredefinedTypeAST::duplicate (Compiler * inCompil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uint64PredefinedTypeAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST ("uint64PredefinedTypeAST",
@@ -1437,9 +1417,7 @@ GGS_uint_36__34_PredefinedTypeAST GGS_uint_36__34_PredefinedTypeAST_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uint64PredefinedTypeAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_PredefinedTypeAST_2E_weak ("uint64PredefinedTypeAST.weak",
@@ -1555,9 +1533,7 @@ void GGS_propertyMutability::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyMutability generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMutability ("propertyMutability",
@@ -1721,9 +1697,7 @@ ComparisonResult GGS_propertyInCollectionInitializationAST::objectCompare (const
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyInCollectionInitializationAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ("propertyInCollectionInitializationAST",
@@ -2450,9 +2424,7 @@ GGS_propertyInCollectionInitializationAST cEnumerator_propertyInCollectionListAS
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyInCollectionListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST ("propertyInCollectionListAST",
@@ -2716,9 +2688,7 @@ void GGS_AccessControlAST::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AccessControlAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AccessControlAST ("AccessControlAST",
@@ -2827,9 +2797,7 @@ GGS_arrayTypeDeclarationAST GGS_arrayTypeDeclarationAST_2E_weak::bang_arrayTypeD
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @arrayTypeDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_arrayTypeDeclarationAST_2E_weak ("arrayTypeDeclarationAST.weak",
@@ -2938,9 +2906,7 @@ GGS_boolsetDeclarationAST GGS_boolsetDeclarationAST_2E_weak::bang_boolsetDeclara
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @boolsetDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationAST_2E_weak ("boolsetDeclarationAST.weak",
@@ -3049,9 +3015,7 @@ GGS_classDeclarationAST GGS_classDeclarationAST_2E_weak::bang_classDeclarationAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST_2E_weak ("classDeclarationAST.weak",
@@ -3714,9 +3678,7 @@ GGS_bool cEnumerator_typedPropertyList::current_hasSelector (LOCATION_ARGS) cons
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typedPropertyList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList ("typedPropertyList",
@@ -4024,9 +3986,7 @@ GGS_functionSignature cEnumerator_initializerMap::current_mArgumentTypeList (LOC
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerMap ("initializerMap",
@@ -4135,9 +4095,7 @@ GGS_weakReferenceDeclarationAST GGS_weakReferenceDeclarationAST_2E_weak::bang_we
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @weakReferenceDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclarationAST_2E_weak ("weakReferenceDeclarationAST.weak",
@@ -4419,9 +4377,7 @@ GGS_associatedValue cEnumerator__5B_associatedValue_5D_::current (LOCATION_ARGS)
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @[associatedValue] generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_associatedValue_5D_ ("[associatedValue]",
@@ -4892,9 +4848,7 @@ GGS__5B_associatedValue_5D_ cEnumerator_enumConstantList::current_associatedValu
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumConstantList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList ("enumConstantList",
@@ -5010,9 +4964,7 @@ void GGS_structComparison::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structComparison generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structComparison ("structComparison",
@@ -5121,9 +5073,7 @@ GGS_enumDeclarationAST GGS_enumDeclarationAST_2E_weak::bang_enumDeclarationAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumDeclarationAST_2E_weak ("enumDeclarationAST.weak",
@@ -5594,9 +5544,7 @@ GGS_associatedValueDescriptorList cEnumerator_enumConstantListForGeneration::cur
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumConstantListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListForGeneration ("enumConstantListForGeneration",
@@ -6076,9 +6024,7 @@ GGS_string cEnumerator_associatedValueDescriptorList::current_name (LOCATION_ARG
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @associatedValueDescriptorList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_associatedValueDescriptorList ("associatedValueDescriptorList",
@@ -6613,9 +6559,7 @@ GGS_lstring cEnumerator_typeNameFormalParameterNameList::current_mFormalParamete
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeNameFormalParameterNameList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList ("typeNameFormalParameterNameList",
@@ -7022,9 +6966,7 @@ GGS_typeNameFormalParameterNameList cEnumerator_externTypeConstructorList::curre
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externTypeConstructorList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstructorList ("externTypeConstructorList",
@@ -7559,9 +7501,7 @@ GGS_typeNameFormalParameterNameList cEnumerator_externTypeGetterList::current_mP
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externTypeGetterList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterList ("externTypeGetterList",
@@ -8032,9 +7972,7 @@ GGS_formalParameterListAST cEnumerator_externTypeSetterList::current_mFormalPara
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externTypeSetterList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterList ("externTypeSetterList",
@@ -8697,9 +8635,7 @@ GGS_bool cEnumerator_formalParameterListAST::current_mIsUnused (LOCATION_ARGS) c
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @formalParameterListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListAST ("formalParameterListAST",
@@ -9234,9 +9170,7 @@ GGS_location cEnumerator_externTypeMethodList::current_mDeclarationLocation (LOC
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externTypeMethodList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodList ("externTypeMethodList",
@@ -9345,9 +9279,7 @@ GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST_2E_weak::bang_externTy
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @externTypeDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ("externTypeDeclarationAST.weak",
@@ -9818,9 +9750,7 @@ GGS_lstring cEnumerator_graphInsertModifierList::current_mInsertErrorMessage (LO
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @graphInsertModifierList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifierList ("graphInsertModifierList",
@@ -9929,9 +9859,7 @@ GGS_graphDeclarationAST GGS_graphDeclarationAST_2E_weak::bang_graphDeclarationAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @graphDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationAST_2E_weak ("graphDeclarationAST.weak",
@@ -10040,9 +9968,7 @@ GGS_listDeclarationAST GGS_listDeclarationAST_2E_weak::bang_listDeclarationAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @listDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ("listDeclarationAST.weak",
@@ -10151,9 +10077,7 @@ GGS_dictDeclarationAST GGS_dictDeclarationAST_2E_weak::bang_dictDeclarationAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @dictDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dictDeclarationAST_2E_weak ("dictDeclarationAST.weak",
@@ -10688,9 +10612,7 @@ GGS_lstring cEnumerator_insertMethodListAST::current_mShadowErrorMessage (LOCATI
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @insertMethodListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodListAST ("insertMethodListAST",
@@ -11161,9 +11083,7 @@ GGS_lstring cEnumerator_mapSearchMethodListAST::current_mErrorMessage (LOCATION_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @mapSearchMethodListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodListAST ("mapSearchMethodListAST",
@@ -11634,9 +11554,7 @@ GGS_lstring cEnumerator_mapRemoveMethodListAST::current_mErrorMessage (LOCATION_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @mapRemoveMethodListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodListAST ("mapRemoveMethodListAST",
@@ -12043,9 +11961,7 @@ GGS_location cEnumerator_insertOrReplaceDeclarationListAST::current_mInsertOrRep
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @insertOrReplaceDeclarationListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDeclarationListAST ("insertOrReplaceDeclarationListAST",
@@ -12154,9 +12070,7 @@ GGS_mapDeclarationAST GGS_mapDeclarationAST_2E_weak::bang_mapDeclarationAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @mapDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST_2E_weak ("mapDeclarationAST.weak",
@@ -12395,9 +12309,7 @@ GGS_lstring cEnumerator_insertMethodMap::current_lkey (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @insertMethodMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap ("insertMethodMap",
@@ -12636,9 +12548,7 @@ GGS_lstring cEnumerator_searchMethodMap::current_lkey (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @searchMethodMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap ("searchMethodMap",
@@ -12747,9 +12657,7 @@ GGS_optionalTypeDeclarationAST GGS_optionalTypeDeclarationAST_2E_weak::bang_opti
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionalTypeDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionalTypeDeclarationAST_2E_weak ("optionalTypeDeclarationAST.weak",
@@ -13220,9 +13128,7 @@ GGS_bool cEnumerator_sortedListSortDescriptorListAST::current_mAscending (LOCATI
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sortedListSortDescriptorListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescriptorListAST ("sortedListSortDescriptorListAST",
@@ -13331,9 +13237,7 @@ GGS_sortedListDeclarationAST GGS_sortedListDeclarationAST_2E_weak::bang_sortedLi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sortedListDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ("sortedListDeclarationAST.weak",
@@ -13868,9 +13772,7 @@ GGS_bool cEnumerator_sortDescriptorListForGeneration::current_mAscendingOrder (L
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sortDescriptorListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListForGeneration ("sortDescriptorListForGeneration",
@@ -13979,9 +13881,7 @@ GGS_structDeclarationAST GGS_structDeclarationAST_2E_weak::bang_structDeclaratio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structDeclarationAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAST_2E_weak ("structDeclarationAST.weak",
@@ -14090,9 +13990,7 @@ GGS_abstractExtensionGetterAST GGS_abstractExtensionGetterAST_2E_weak::bang_abst
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractExtensionGetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGetterAST_2E_weak ("abstractExtensionGetterAST.weak",
@@ -14755,9 +14653,7 @@ GGS_bool cEnumerator_formalInputParameterListForGeneration::current_mIsConstant 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @formalInputParameterListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration ("formalInputParameterListForGeneration",
@@ -14866,9 +14762,7 @@ GGS_abstractExtensionMethodAST GGS_abstractExtensionMethodAST_2E_weak::bang_abst
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractExtensionMethodAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ("abstractExtensionMethodAST.weak",
@@ -15531,9 +15425,7 @@ GGS_string cEnumerator_formalParameterListForGeneration::current_mFormalArgument
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @formalParameterListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration ("formalParameterListForGeneration",
@@ -15642,9 +15534,7 @@ GGS_abstractExtensionSetterAST GGS_abstractExtensionSetterAST_2E_weak::bang_abst
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractExtensionSetterAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST_2E_weak ("abstractExtensionSetterAST.weak",
@@ -15743,9 +15633,7 @@ void GGS_equatableComparableExtension::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @equatableComparableExtension generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equatableComparableExtension ("equatableComparableExtension",

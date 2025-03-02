@@ -77,9 +77,7 @@ GGS_grammarForGeneration GGS_grammarForGeneration_2E_weak::bang_grammarForGenera
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarForGeneration_2E_weak ("grammarForGeneration.weak",
@@ -299,9 +297,7 @@ acPtr_class * cPtr_primitiveTypeForGeneration::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @primitiveTypeForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_primitiveTypeForGeneration ("primitiveTypeForGeneration",
@@ -410,9 +406,7 @@ GGS_primitiveTypeForGeneration GGS_primitiveTypeForGeneration_2E_weak::bang_prim
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @primitiveTypeForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_primitiveTypeForGeneration_2E_weak ("primitiveTypeForGeneration.weak",
@@ -640,9 +634,7 @@ acPtr_class * cPtr_binaryOperatorExpressionForGeneration::duplicate (Compiler * 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @binaryOperatorExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryOperatorExpressionForGeneration ("binaryOperatorExpressionForGeneration",
@@ -847,9 +839,7 @@ acPtr_class * cPtr_andShortExpressionForGeneration::duplicate (Compiler * inComp
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @andShortExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration ("andShortExpressionForGeneration",
@@ -1084,9 +1074,7 @@ acPtr_class * cPtr_testDynamicClassInExpressionAST::duplicate (Compiler * inComp
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @testDynamicClassInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionAST ("testDynamicClassInExpressionAST",
@@ -1298,9 +1286,7 @@ acPtr_class * cPtr_castInExpressionAST::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @castInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST ("castInExpressionAST",
@@ -1528,9 +1514,7 @@ acPtr_class * cPtr_testDynamicClassInExpressionForGeneration::duplicate (Compile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @testDynamicClassInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration ("testDynamicClassInExpressionForGeneration",
@@ -1735,9 +1719,7 @@ acPtr_class * cPtr_extractObjectInExpressionForGeneration::duplicate (Compiler *
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extractObjectInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration ("extractObjectInExpressionForGeneration",
@@ -1965,9 +1947,7 @@ acPtr_class * cPtr_comparisonExpressionForGeneration::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @comparisonExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonExpressionForGeneration ("comparisonExpressionForGeneration",
@@ -2156,9 +2136,7 @@ acPtr_class * cPtr_functionCallExpressionAST::duplicate (Compiler * inCompiler C
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionCallExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionAST ("functionCallExpressionAST",
@@ -2363,9 +2341,7 @@ acPtr_class * cPtr_functionCallExpressionForGeneration::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionCallExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration ("functionCallExpressionForGeneration",
@@ -2623,9 +2599,7 @@ acPtr_class * cPtr_getterCallExpressionAST::duplicate (Compiler * inCompiler COM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @getterCallExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionAST ("getterCallExpressionAST",
@@ -2922,9 +2896,7 @@ acPtr_class * cPtr_getterCallExpressionForGeneration::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @getterCallExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration ("getterCallExpressionForGeneration",
@@ -3136,9 +3108,7 @@ acPtr_class * cPtr_initializerCallAST::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerCallAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallAST ("initializerCallAST",
@@ -3343,9 +3313,7 @@ acPtr_class * cPtr_initializerCallForGeneration::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @initializerCallForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_initializerCallForGeneration ("initializerCallForGeneration",
@@ -3557,9 +3525,7 @@ acPtr_class * cPtr_structPropertyAccessExpressionAST::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structPropertyAccessExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structPropertyAccessExpressionAST ("structPropertyAccessExpressionAST",
@@ -3764,9 +3730,7 @@ acPtr_class * cPtr_propertyAccessExpressionForGeneration::duplicate (Compiler * 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyAccessExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyAccessExpressionForGeneration ("propertyAccessExpressionForGeneration",
@@ -3994,9 +3958,7 @@ acPtr_class * cPtr_subscriptReadAccessExpressionForGeneration::duplicate (Compil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @subscriptReadAccessExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccessExpressionForGeneration ("subscriptReadAccessExpressionForGeneration",
@@ -4231,9 +4193,7 @@ acPtr_class * cPtr_classFuncExpressionAST::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classFuncExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ("classFuncExpressionAST",
@@ -4507,9 +4467,7 @@ acPtr_class * cPtr_classFuncExpressionForGeneration::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @classFuncExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration ("classFuncExpressionForGeneration",
@@ -4714,9 +4672,7 @@ acPtr_class * cPtr_bangExpressionForGeneration::duplicate (Compiler * inCompiler
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bangExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bangExpressionForGeneration ("bangExpressionForGeneration",
@@ -4928,9 +4884,7 @@ acPtr_class * cPtr_collectionValueAST::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @collectionValueAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST ("collectionValueAST",
@@ -5112,9 +5066,7 @@ acPtr_class * cPtr_expressionCollectionForGeneration::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @expressionCollectionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration ("expressionCollectionForGeneration",
@@ -5280,9 +5232,7 @@ acPtr_class * cPtr_filewrapperObjectInstanciationInExpressionAST::duplicate (Com
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperObjectInstanciationInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectInstanciationInExpressionAST ("filewrapperObjectInstanciationInExpressionAST",
@@ -5471,9 +5421,7 @@ acPtr_class * cPtr_filewrapperInExpressionAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionAST ("filewrapperInExpressionAST",
@@ -5685,9 +5633,7 @@ acPtr_class * cPtr_filewrapperTemplateInExpressionAST::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionAST ("filewrapperTemplateInExpressionAST",
@@ -5892,9 +5838,7 @@ acPtr_class * cPtr_filewrapperInExpressionForGeneration::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ("filewrapperInExpressionForGeneration",
@@ -6122,9 +6066,7 @@ acPtr_class * cPtr_filewrapperTemplateInExpressionForGeneration::duplicate (Comp
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ("filewrapperTemplateInExpressionForGeneration",
@@ -6352,9 +6294,7 @@ acPtr_class * cPtr_filewrapperStaticPathInExpressionForGeneration::duplicate (Co
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperStaticPathInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration ("filewrapperStaticPathInExpressionForGeneration",
@@ -6582,9 +6522,7 @@ acPtr_class * cPtr_ifExpressionForGeneration::duplicate (Compiler * inCompiler C
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGeneration ("ifExpressionForGeneration",
@@ -6773,9 +6711,7 @@ acPtr_class * cPtr_lexiqueIntrospectionExpressionAST::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueIntrospectionExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionExpressionAST ("lexiqueIntrospectionExpressionAST",
@@ -6980,9 +6916,7 @@ acPtr_class * cPtr_lexiqueIntrospectionForGeneration::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueIntrospectionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration ("lexiqueIntrospectionForGeneration",
@@ -7148,9 +7082,7 @@ acPtr_class * cPtr_literalCharExpressionAST::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalCharExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionAST ("literalCharExpressionAST",
@@ -7332,9 +7264,7 @@ acPtr_class * cPtr_literalCharExpressionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalCharExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ("literalCharExpressionForGeneration",
@@ -7500,9 +7430,7 @@ acPtr_class * cPtr_literalDoubleExpressionAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalDoubleExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionAST ("literalDoubleExpressionAST",
@@ -7684,9 +7612,7 @@ acPtr_class * cPtr_literalDoubleExpressionForGeneration::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalDoubleExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ("literalDoubleExpressionForGeneration",
@@ -7852,9 +7778,7 @@ acPtr_class * cPtr_literalBigIntExpressionAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalBigIntExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionAST ("literalBigIntExpressionAST",
@@ -8036,9 +7960,7 @@ acPtr_class * cPtr_literalUIntExpressionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalUIntExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ("literalUIntExpressionForGeneration",
@@ -8220,9 +8142,7 @@ acPtr_class * cPtr_literalUInt_36__34_ExpressionForGeneration::duplicate (Compil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalUInt64ExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ("literalUInt64ExpressionForGeneration",
@@ -8404,9 +8324,7 @@ acPtr_class * cPtr_literalSIntExpressionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalSIntExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ("literalSIntExpressionForGeneration",
@@ -8588,9 +8506,7 @@ acPtr_class * cPtr_literalSInt_36__34_ExpressionForGeneration::duplicate (Compil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalSInt64ExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ("literalSInt64ExpressionForGeneration",
@@ -8772,9 +8688,7 @@ acPtr_class * cPtr_literalBigIntExpressionForGeneration::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalBigIntExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ("literalBigIntExpressionForGeneration",
@@ -8956,9 +8870,7 @@ acPtr_class * cPtr_literalStringExpressionForGeneration::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalStringExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ("literalStringExpressionForGeneration",
@@ -9124,9 +9036,7 @@ acPtr_class * cPtr_literalTypeInExpressionAST::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalTypeInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionAST ("literalTypeInExpressionAST",
@@ -9308,9 +9218,7 @@ acPtr_class * cPtr_literalTypeInExpressionForGeneration::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @literalTypeInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ("literalTypeInExpressionForGeneration",
@@ -9492,9 +9400,7 @@ acPtr_class * cPtr_selfInExpressionForGeneration::duplicate (Compiler * inCompil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration ("selfInExpressionForGeneration",
@@ -9653,9 +9559,7 @@ acPtr_class * cPtr_nilExpressionForGeneration::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nilExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nilExpressionForGeneration ("nilExpressionForGeneration",
@@ -9867,9 +9771,7 @@ acPtr_class * cPtr_optionExpressionAST::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST ("optionExpressionAST",
@@ -10097,9 +9999,7 @@ acPtr_class * cPtr_optionValueExpressionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionValueExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration ("optionValueExpressionForGeneration",
@@ -10327,9 +10227,7 @@ acPtr_class * cPtr_optionCharExpressionForGeneration::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionCharExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration ("optionCharExpressionForGeneration",
@@ -10557,9 +10455,7 @@ acPtr_class * cPtr_optionStringExpressionForGeneration::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionStringExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ("optionStringExpressionForGeneration",
@@ -10787,9 +10683,7 @@ acPtr_class * cPtr_optionCommentExpressionForGeneration::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionCommentExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ("optionCommentExpressionForGeneration",
@@ -10948,9 +10842,7 @@ acPtr_class * cPtr_trueExpressionForGeneration::duplicate (Compiler * inCompiler
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @trueExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionForGeneration ("trueExpressionForGeneration",
@@ -11109,9 +11001,7 @@ acPtr_class * cPtr_falseExpressionForGeneration::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @falseExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionForGeneration ("falseExpressionForGeneration",
@@ -11305,9 +11195,7 @@ acPtr_class * cPtr_varInExpressionAST::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @varInExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionAST ("varInExpressionAST",
@@ -11512,9 +11400,7 @@ acPtr_class * cPtr_varInExpressionForGeneration::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @varInExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionForGeneration ("varInExpressionForGeneration",
@@ -11696,9 +11582,7 @@ acPtr_class * cPtr_notExpressionForGeneration::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @notExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration ("notExpressionForGeneration",
@@ -11903,9 +11787,7 @@ acPtr_class * cPtr_orShortExpressionForGeneration::duplicate (Compiler * inCompi
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @orShortExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration ("orShortExpressionForGeneration",
@@ -12110,9 +11992,7 @@ acPtr_class * cPtr_openedSliceExpressionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @openedSliceExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ("openedSliceExpressionForGeneration",
@@ -12317,9 +12197,7 @@ acPtr_class * cPtr_closedSliceExpressionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @closedSliceExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ("closedSliceExpressionForGeneration",
@@ -12501,9 +12379,7 @@ acPtr_class * cPtr_tildeExpressionForGeneration::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @tildeExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration ("tildeExpressionForGeneration",
@@ -12685,9 +12561,7 @@ acPtr_class * cPtr_unaryMinusExpressionForGeneration::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryMinusExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration ("unaryMinusExpressionForGeneration",
@@ -12869,9 +12743,7 @@ acPtr_class * cPtr_unaryWrappingMinusExpressionForGeneration::duplicate (Compile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryWrappingMinusExpressionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ("unaryWrappingMinusExpressionForGeneration",
@@ -12911,9 +12783,7 @@ GGS_unaryWrappingMinusExpressionForGeneration GGS_unaryWrappingMinusExpressionFo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@selfMutability propertiesAreMutable'
-//
+//  Extension Getter '@selfMutability propertiesAreMutable'
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool extensionGetter_propertiesAreMutable (const GGS_selfMutability & inObject,
@@ -13125,9 +12995,7 @@ acPtr_class * cPtr_assignmentInstructionAST::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @assignmentInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionAST ("assignmentInstructionAST",
@@ -13347,9 +13215,7 @@ acPtr_class * cPtr_selfPropertyAssignmentInstructionAST::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfPropertyAssignmentInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ("selfPropertyAssignmentInstructionAST",
@@ -13653,9 +13519,7 @@ acPtr_class * cPtr_assignmentInstructionForGeneration::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @assignmentInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ("assignmentInstructionForGeneration",
@@ -13867,9 +13731,7 @@ acPtr_class * cPtr_structuredCastInstructionForGeneration::duplicate (Compiler *
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structuredCastInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ("structuredCastInstructionForGeneration",
@@ -13909,9 +13771,7 @@ GGS_structuredCastInstructionForGeneration GGS_structuredCastInstructionForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@opAssignmentOperator features'
-//
+//  Extension Getter '@opAssignmentOperator features'
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeFeatures extensionGetter_features (const GGS_opAssignmentOperator & inObject,
@@ -14192,9 +14052,7 @@ acPtr_class * cPtr_opAssignExpressionInstructionAST::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @opAssignExpressionInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST ("opAssignExpressionInstructionAST",
@@ -14437,9 +14295,7 @@ acPtr_class * cPtr_plusEqualElementsInstructionAST::duplicate (Compiler * inComp
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @plusEqualElementsInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST ("plusEqualElementsInstructionAST",
@@ -14743,9 +14599,7 @@ acPtr_class * cPtr_opAssignInstructionForGeneration::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @opAssignInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration ("opAssignInstructionForGeneration",
@@ -15003,9 +14857,7 @@ acPtr_class * cPtr_errorInstructionForGeneration::duplicate (Compiler * inCompil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @errorInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration ("errorInstructionForGeneration",

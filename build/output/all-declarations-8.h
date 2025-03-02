@@ -175,11 +175,20 @@ class GGS_ruleDeclarationList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_ruleDeclarationList : public cGenericAbstractEnumerator {
+class cEnumerator_ruleDeclarationList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_ruleDeclarationList (const GGS_ruleDeclarationList & inEnumeratedObject,
                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_string current_mNonterminalName (LOCATION_ARGS) const ;
   public: class GGS_uint current_mRuleIndex (LOCATION_ARGS) const ;
   public: class GGS_ruleLabelImplementationList current_mLabelImplementationList (LOCATION_ARGS) const ;
@@ -725,11 +734,20 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_uselessEntityLocationMap : public cGenericAbstractEnumerator {
+class cEnumerator_uselessEntityLocationMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_uselessEntityLocationMap (const GGS_uselessEntityLocationMap & inEnumeratedObject,
                                                 const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_string current_mUnusedEntityName (LOCATION_ARGS) const ;
   public: class GGS_location current_mLocation (LOCATION_ARGS) const ;
@@ -8173,11 +8191,20 @@ class GGS_collectionValueElementList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_collectionValueElementList : public cGenericAbstractEnumerator {
+class cEnumerator_collectionValueElementList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_collectionValueElementList (const GGS_collectionValueElementList & inEnumeratedObject,
                                                   const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_semanticExpressionAST current_mExpression (LOCATION_ARGS) const ;
   public: class GGS_location current_location (LOCATION_ARGS) const ;
 //--- Current element access
@@ -8643,11 +8670,20 @@ class GGS_collectionValueElementListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_collectionValueElementListForGeneration : public cGenericAbstractEnumerator {
+class cEnumerator_collectionValueElementListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_collectionValueElementListForGeneration (const GGS_collectionValueElementListForGeneration & inEnumeratedObject,
                                                                const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_semanticExpressionForGeneration current_expression (LOCATION_ARGS) const ;
   public: class GGS_location current_location (LOCATION_ARGS) const ;
 //--- Current element access

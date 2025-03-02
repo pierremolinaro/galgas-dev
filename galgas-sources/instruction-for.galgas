@@ -923,10 +923,10 @@ override method @forInstructionForGeneration generateInstruction
     ]
     enumerationVarCppNameList += !enumerationVar
   end
-  for (mEnumerationOrder mEnumeratedExpression mEnumeratorCppName) in self.mEnumeratedObjectList, (mValue) in enumerationVarCppNameList do
-    ioGeneratedCode += "cEnumerator_" + [mEnumeratedExpression.mResultType identifierRepresentation]
-      + " " + mEnumeratorCppName + " (" + mValue
-      + ", EnumerationOrder::" + mEnumerationOrder + ") ;\n"
+  for enumerated in self.mEnumeratedObjectList, (mValue) in enumerationVarCppNameList do
+    ioGeneratedCode += "cEnumerator_" + [enumerated.mEnumeratedExpression.mResultType identifierRepresentation]
+    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + mValue
+    ioGeneratedCode += ", EnumerationOrder::" + enumerated.mEnumerationOrder + ") ;\n"
   end
 //--- Analyse 'while' expression
   let whileExpressionIsAllwaysTrue = [self.mWhileExpression isTrueExpression]

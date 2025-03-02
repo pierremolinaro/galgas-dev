@@ -19,9 +19,7 @@ mProperty_lkey (inLKey) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @location generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ("location",
@@ -61,9 +59,7 @@ GGS_location GGS_location::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @stringlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
@@ -479,9 +475,7 @@ GGS_string cEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @string generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_string ("string",
@@ -521,9 +515,7 @@ GGS_string GGS_string::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bool generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ("bool",
@@ -563,9 +555,7 @@ GGS_bool GGS_bool::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uint generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ("uint",
@@ -605,9 +595,7 @@ GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @stringset generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringset ("stringset",
@@ -647,9 +635,7 @@ GGS_stringset GGS_stringset::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lstringlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
@@ -1065,9 +1051,7 @@ GGS_lstring cEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @char generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_char ("char",
@@ -1107,9 +1091,7 @@ GGS_char GGS_char::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lbool generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ("lbool",
@@ -1241,9 +1223,7 @@ void GGS_lbool::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @2stringlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
@@ -1723,9 +1703,7 @@ GGS_string cEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const 
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @double generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_double ("double",
@@ -1765,9 +1743,7 @@ GGS_double GGS_double::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uint64 generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
@@ -1807,9 +1783,7 @@ GGS_uint_36__34_ GGS_uint_36__34_::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sint generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ("sint",
@@ -1849,9 +1823,7 @@ GGS_sint GGS_sint::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @sint64 generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
@@ -1891,9 +1863,7 @@ GGS_sint_36__34_ GGS_sint_36__34_::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bigint generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ("bigint",
@@ -1933,9 +1903,7 @@ GGS_bigint GGS_bigint::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @binaryset generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
@@ -1975,9 +1943,7 @@ GGS_binaryset GGS_binaryset::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @data generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_data ("data",
@@ -2017,9 +1983,7 @@ GGS_data GGS_data::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapper generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
@@ -2059,9 +2023,7 @@ GGS_filewrapper GGS_filewrapper::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @function generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_function ("function",
@@ -2101,9 +2063,7 @@ GGS_function GGS_function::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @object generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ("object",
@@ -2143,9 +2103,7 @@ GGS_object GGS_object::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @timer generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timer ("timer",
@@ -2185,9 +2143,7 @@ GGS_timer GGS_timer::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @type generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ("type",
@@ -2227,9 +2183,7 @@ GGS_type GGS_type::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
@@ -2645,9 +2599,7 @@ GGS_function cEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @luintlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
@@ -3063,9 +3015,7 @@ GGS_luint cEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @luint generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ("luint",
@@ -3197,9 +3147,7 @@ void GGS_luint::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @objectlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
@@ -3615,9 +3563,7 @@ GGS_object cEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typelist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ("typelist",
@@ -4033,9 +3979,7 @@ GGS_type cEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uintlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
@@ -4451,9 +4395,7 @@ GGS_uint cEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uint64list generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
@@ -4869,9 +4811,7 @@ GGS_uint_36__34_ cEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) co
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bigintlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
@@ -5287,9 +5227,7 @@ GGS_bigint cEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lbigintlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
@@ -5705,9 +5643,7 @@ GGS_lbigint cEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lsint generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ("lsint",
@@ -5839,9 +5775,7 @@ void GGS_lsint::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lsint64 generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
@@ -5973,9 +5907,7 @@ void GGS_lsint_36__34_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @luint64 generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
@@ -6107,9 +6039,7 @@ void GGS_luint_36__34_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @range generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ("range",
@@ -6241,9 +6171,7 @@ void GGS_range::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bigint? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
@@ -6380,9 +6308,7 @@ void GGS_bigint_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2E_element ("functionlist.element",
@@ -6501,9 +6427,7 @@ void GGS_functionlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @luintlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2E_element ("luintlist.element",
@@ -6622,9 +6546,7 @@ void GGS_luintlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @objectlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2E_element ("objectlist.element",
@@ -6743,9 +6665,7 @@ void GGS_objectlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @stringlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2E_element ("stringlist.element",
@@ -6864,9 +6784,7 @@ void GGS_stringlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typelist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2E_element ("typelist.element",
@@ -6985,9 +6903,7 @@ void GGS_typelist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uintlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2E_element ("uintlist.element",
@@ -7106,9 +7022,7 @@ void GGS_uintlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uint64list.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ("uint64list.element",
@@ -7227,9 +7141,7 @@ void GGS_uint_36__34_list_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @bigintlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist_2E_element ("bigintlist.element",
@@ -7348,9 +7260,7 @@ void GGS_bigintlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @2stringlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ("2stringlist.element",
@@ -7482,9 +7392,7 @@ void GGS__32_stringlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lstring generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstring ("lstring",
@@ -7616,9 +7524,7 @@ void GGS_lstring::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lbigint generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
@@ -7750,9 +7656,7 @@ void GGS_lbigint::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lchar generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lchar ("lchar",
@@ -7884,9 +7788,7 @@ void GGS_lchar::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ldouble generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
@@ -8018,9 +7920,7 @@ void GGS_ldouble::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lstringlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ("lstringlist.element",
@@ -8139,9 +8039,7 @@ void GGS_lstringlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lbigintlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element ("lbigintlist.element",

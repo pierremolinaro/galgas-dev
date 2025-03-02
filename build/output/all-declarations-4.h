@@ -1770,11 +1770,20 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerator {
+class cEnumerator_propertyInCollectionListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_propertyInCollectionListAST (const GGS_propertyInCollectionListAST & inEnumeratedObject,
                                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_propertyMutability current_mutability (LOCATION_ARGS) const ;
   public: class GGS_lstring current_typeName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_name (LOCATION_ARGS) const ;
@@ -3325,11 +3334,20 @@ class GGS_typedPropertyList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_typedPropertyList : public cGenericAbstractEnumerator {
+class cEnumerator_typedPropertyList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_typedPropertyList (const GGS_typedPropertyList & inEnumeratedObject,
                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_unifiedTypeMapEntry current_typeEntry (LOCATION_ARGS) const ;
   public: class GGS_lstring current_name (LOCATION_ARGS) const ;
   public: class GGS_propertyInCollectionInitializationAST current_initialization (LOCATION_ARGS) const ;
@@ -3577,11 +3595,20 @@ class GGS_initializerMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_initializerMap : public cGenericAbstractEnumerator {
+class cEnumerator_initializerMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_initializerMap (const GGS_initializerMap & inEnumeratedObject,
                                       const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_functionSignature current_mArgumentTypeList (LOCATION_ARGS) const ;
 //--- Current element access
@@ -4436,11 +4463,20 @@ class GGS_enumConstantList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_enumConstantList : public cGenericAbstractEnumerator {
+class cEnumerator_enumConstantList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_enumConstantList (const GGS_enumConstantList & inEnumeratedObject,
                                         const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_name (LOCATION_ARGS) const ;
   public: class GGS__5B_associatedValue_5D_ current_associatedValueTypeList (LOCATION_ARGS) const ;
 //--- Current element access
@@ -5015,11 +5051,20 @@ class GGS_enumConstantListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_enumConstantListForGeneration : public cGenericAbstractEnumerator {
+class cEnumerator_enumConstantListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_enumConstantListForGeneration (const GGS_enumConstantListForGeneration & inEnumeratedObject,
                                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_string current_name (LOCATION_ARGS) const ;
   public: class GGS_associatedValueDescriptorList current_associatedValueTypeList (LOCATION_ARGS) const ;
 //--- Current element access
@@ -5178,11 +5223,20 @@ class GGS_associatedValueDescriptorList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_associatedValueDescriptorList : public cGenericAbstractEnumerator {
+class cEnumerator_associatedValueDescriptorList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_associatedValueDescriptorList (const GGS_associatedValueDescriptorList & inEnumeratedObject,
                                                      const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_unifiedTypeMapEntry current_type (LOCATION_ARGS) const ;
   public: class GGS_string current_name (LOCATION_ARGS) const ;
 //--- Current element access
@@ -5540,11 +5594,20 @@ class GGS_typeNameFormalParameterNameList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_typeNameFormalParameterNameList : public cGenericAbstractEnumerator {
+class cEnumerator_typeNameFormalParameterNameList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_typeNameFormalParameterNameList (const GGS_typeNameFormalParameterNameList & inEnumeratedObject,
                                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFormalParameterTypeName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFormalParameterName (LOCATION_ARGS) const ;
@@ -5786,11 +5849,20 @@ class GGS_externTypeConstructorList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_externTypeConstructorList : public cGenericAbstractEnumerator {
+class cEnumerator_externTypeConstructorList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_externTypeConstructorList (const GGS_externTypeConstructorList & inEnumeratedObject,
                                                  const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_typeNameFormalParameterNameList current_mParameterList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_externTypeConstructorList_2E_element current (LOCATION_ARGS) const ;
@@ -6044,11 +6116,20 @@ class GGS_externTypeGetterList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_externTypeGetterList : public cGenericAbstractEnumerator {
+class cEnumerator_externTypeGetterList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_externTypeGetterList (const GGS_externTypeGetterList & inEnumeratedObject,
                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mGetterName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
   public: class GGS_typeNameFormalParameterNameList current_mParameterList (LOCATION_ARGS) const ;
@@ -6309,11 +6390,20 @@ class GGS_externTypeSetterList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_externTypeSetterList : public cGenericAbstractEnumerator {
+class cEnumerator_externTypeSetterList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_externTypeSetterList (const GGS_externTypeSetterList & inEnumeratedObject,
                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mSetterName (LOCATION_ARGS) const ;
   public: class GGS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
 //--- Current element access
@@ -6529,11 +6619,20 @@ class GGS_formalParameterListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_formalParameterListAST : public cGenericAbstractEnumerator {
+class cEnumerator_formalParameterListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_formalParameterListAST (const GGS_formalParameterListAST & inEnumeratedObject,
                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
   public: class GGS_formalArgumentPassingModeAST current_mFormalArgumentPassingMode (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFormalArgumentTypeName (LOCATION_ARGS) const ;
@@ -7017,11 +7116,20 @@ class GGS_externTypeMethodList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_externTypeMethodList : public cGenericAbstractEnumerator {
+class cEnumerator_externTypeMethodList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_externTypeMethodList (const GGS_externTypeMethodList & inEnumeratedObject,
                                             const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mMethodName (LOCATION_ARGS) const ;
   public: class GGS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
   public: class GGS_location current_mDeclarationLocation (LOCATION_ARGS) const ;
@@ -7551,11 +7659,20 @@ class GGS_graphInsertModifierList : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_graphInsertModifierList : public cGenericAbstractEnumerator {
+class cEnumerator_graphInsertModifierList final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_graphInsertModifierList (const GGS_graphInsertModifierList & inEnumeratedObject,
                                                const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mInsertModifierName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mInsertErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
@@ -8567,11 +8684,20 @@ class GGS_insertMethodListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_insertMethodListAST : public cGenericAbstractEnumerator {
+class cEnumerator_insertMethodListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_insertMethodListAST (const GGS_insertMethodListAST & inEnumeratedObject,
                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mInsertMethodName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mShadowErrorMessage (LOCATION_ARGS) const ;
@@ -8832,11 +8958,20 @@ class GGS_mapSearchMethodListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_mapSearchMethodListAST : public cGenericAbstractEnumerator {
+class cEnumerator_mapSearchMethodListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_mapSearchMethodListAST (const GGS_mapSearchMethodListAST & inEnumeratedObject,
                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mSearchMethodName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
@@ -9084,11 +9219,20 @@ class GGS_mapRemoveMethodListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_mapRemoveMethodListAST : public cGenericAbstractEnumerator {
+class cEnumerator_mapRemoveMethodListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_mapRemoveMethodListAST (const GGS_mapRemoveMethodListAST & inEnumeratedObject,
                                               const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mMethodName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
@@ -9317,11 +9461,20 @@ class GGS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_insertOrReplaceDeclarationListAST : public cGenericAbstractEnumerator {
+class cEnumerator_insertOrReplaceDeclarationListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_insertOrReplaceDeclarationListAST (const GGS_insertOrReplaceDeclarationListAST & inEnumeratedObject,
                                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_location current_mInsertOrReplaceDeclarationLocation (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_insertOrReplaceDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
@@ -9770,11 +9923,20 @@ class GGS_insertMethodMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_insertMethodMap : public cGenericAbstractEnumerator {
+class cEnumerator_insertMethodMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_insertMethodMap (const GGS_insertMethodMap & inEnumeratedObject,
                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_insertMethodMap_2E_element current (LOCATION_ARGS) const ;
@@ -10057,11 +10219,20 @@ class GGS_searchMethodMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_searchMethodMap : public cGenericAbstractEnumerator {
+class cEnumerator_searchMethodMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_searchMethodMap (const GGS_searchMethodMap & inEnumeratedObject,
                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_searchMethodMap_2E_element current (LOCATION_ARGS) const ;
@@ -10648,11 +10819,20 @@ class GGS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_sortedListSortDescriptorListAST : public cGenericAbstractEnumerator {
+class cEnumerator_sortedListSortDescriptorListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_sortedListSortDescriptorListAST (const GGS_sortedListSortDescriptorListAST & inEnumeratedObject,
                                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mSortedAttributeName (LOCATION_ARGS) const ;
   public: class GGS_bool current_mAscending (LOCATION_ARGS) const ;
 //--- Current element access
@@ -11171,11 +11351,20 @@ class GGS_sortDescriptorListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_sortDescriptorListForGeneration : public cGenericAbstractEnumerator {
+class cEnumerator_sortDescriptorListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_sortDescriptorListForGeneration (const GGS_sortDescriptorListForGeneration & inEnumeratedObject,
                                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_unifiedTypeMapEntry current_mAttributeTypeIndex (LOCATION_ARGS) const ;
   public: class GGS_string current_mAttributeName (LOCATION_ARGS) const ;
   public: class GGS_bool current_mAscendingOrder (LOCATION_ARGS) const ;
@@ -12011,11 +12200,20 @@ class GGS_formalInputParameterListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_formalInputParameterListForGeneration : public cGenericAbstractEnumerator {
+class cEnumerator_formalInputParameterListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_formalInputParameterListForGeneration (const GGS_formalInputParameterListForGeneration & inEnumeratedObject,
                                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapEntry current_mFormalArgumentType (LOCATION_ARGS) const ;
   public: class GGS_string current_mFormalArgumentCppName (LOCATION_ARGS) const ;
@@ -12615,11 +12813,20 @@ class GGS_formalParameterListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_formalParameterListForGeneration : public cGenericAbstractEnumerator {
+class cEnumerator_formalParameterListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
   public: cEnumerator_formalParameterListForGeneration (const GGS_formalParameterListForGeneration & inEnumeratedObject,
                                                         const EnumerationOrder inOrder) ;
 
 //--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
   public: class GGS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
   public: class GGS_formalArgumentPassingModeAST current_mFormalArgumentPassingMode (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapEntry current_mFormalArgumentType (LOCATION_ARGS) const ;

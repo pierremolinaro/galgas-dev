@@ -77,9 +77,7 @@ GGS_moduloExpressionAST GGS_moduloExpressionAST_2E_weak::bang_moduloExpressionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @moduloExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ("moduloExpressionAST.weak",
@@ -268,9 +266,7 @@ acPtr_class * cPtr_notExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @notExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST ("notExpressionAST",
@@ -379,9 +375,7 @@ GGS_notExpressionAST GGS_notExpressionAST_2E_weak::bang_notExpressionAST_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @notExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST_2E_weak ("notExpressionAST.weak",
@@ -490,9 +484,7 @@ GGS_notExpressionForGeneration GGS_notExpressionForGeneration_2E_weak::bang_notE
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @notExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration_2E_weak ("notExpressionForGeneration.weak",
@@ -704,9 +696,7 @@ acPtr_class * cPtr_orExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCAT
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @orExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpressionAST ("orExpressionAST",
@@ -815,9 +805,7 @@ GGS_orExpressionAST GGS_orExpressionAST_2E_weak::bang_orExpressionAST_2E_weak (C
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @orExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpressionAST_2E_weak ("orExpressionAST.weak",
@@ -1029,9 +1017,7 @@ acPtr_class * cPtr_orShortExpressionAST::duplicate (Compiler * inCompiler COMMA_
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @orShortExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionAST ("orShortExpressionAST",
@@ -1140,9 +1126,7 @@ GGS_orShortExpressionAST GGS_orShortExpressionAST_2E_weak::bang_orShortExpressio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @orShortExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionAST_2E_weak ("orShortExpressionAST.weak",
@@ -1354,9 +1338,7 @@ acPtr_class * cPtr_xorExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @xorExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionAST ("xorExpressionAST",
@@ -1465,9 +1447,7 @@ GGS_xorExpressionAST GGS_xorExpressionAST_2E_weak::bang_xorExpressionAST_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @xorExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionAST_2E_weak ("xorExpressionAST.weak",
@@ -1679,9 +1659,7 @@ acPtr_class * cPtr_closedSliceExpressionAST::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @closedSliceExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST ("closedSliceExpressionAST",
@@ -1790,9 +1768,7 @@ GGS_closedSliceExpressionAST GGS_closedSliceExpressionAST_2E_weak::bang_closedSl
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @closedSliceExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST_2E_weak ("closedSliceExpressionAST.weak",
@@ -2004,9 +1980,7 @@ acPtr_class * cPtr_openedSliceExpressionAST::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @openedSliceExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST ("openedSliceExpressionAST",
@@ -2115,9 +2089,7 @@ GGS_openedSliceExpressionAST GGS_openedSliceExpressionAST_2E_weak::bang_openedSl
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @openedSliceExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST_2E_weak ("openedSliceExpressionAST.weak",
@@ -2226,9 +2198,7 @@ GGS_orShortExpressionForGeneration GGS_orShortExpressionForGeneration_2E_weak::b
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @orShortExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration_2E_weak ("orShortExpressionForGeneration.weak",
@@ -2337,9 +2307,7 @@ GGS_openedSliceExpressionForGeneration GGS_openedSliceExpressionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @openedSliceExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration_2E_weak ("openedSliceExpressionForGeneration.weak",
@@ -2448,9 +2416,7 @@ GGS_closedSliceExpressionForGeneration GGS_closedSliceExpressionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @closedSliceExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration_2E_weak ("closedSliceExpressionForGeneration.weak",
@@ -2490,9 +2456,7 @@ GGS_closedSliceExpressionForGeneration_2E_weak GGS_closedSliceExpressionForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@actualOutputArgumentList initializerSignature'
-//
+//  Extension Getter '@actualOutputArgumentList initializerSignature'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_initializerSignature (const GGS_actualOutputArgumentList & inObject,
@@ -2514,9 +2478,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_actualOutputArgumentL
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@actualOutputArgumentList subscriptSignature'
-//
+//  Extension Getter '@actualOutputArgumentList subscriptSignature'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_subscriptSignature (const GGS_actualOutputArgumentList & inObject,
@@ -2706,9 +2668,7 @@ acPtr_class * cPtr_tildeExpressionAST::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @tildeExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionAST ("tildeExpressionAST",
@@ -2817,9 +2777,7 @@ GGS_tildeExpressionAST GGS_tildeExpressionAST_2E_weak::bang_tildeExpressionAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @tildeExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionAST_2E_weak ("tildeExpressionAST.weak",
@@ -2928,9 +2886,7 @@ GGS_tildeExpressionForGeneration GGS_tildeExpressionForGeneration_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @tildeExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration_2E_weak ("tildeExpressionForGeneration.weak",
@@ -3119,9 +3075,7 @@ acPtr_class * cPtr_unaryMinusExpressionAST::duplicate (Compiler * inCompiler COM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryMinusExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST ("unaryMinusExpressionAST",
@@ -3230,9 +3184,7 @@ GGS_unaryMinusExpressionAST GGS_unaryMinusExpressionAST_2E_weak::bang_unaryMinus
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryMinusExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST_2E_weak ("unaryMinusExpressionAST.weak",
@@ -3341,9 +3293,7 @@ GGS_unaryMinusExpressionForGeneration GGS_unaryMinusExpressionForGeneration_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryMinusExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionForGeneration_2E_weak ("unaryMinusExpressionForGeneration.weak",
@@ -3532,9 +3482,7 @@ acPtr_class * cPtr_unaryPlusExpressionAST::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryPlusExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST ("unaryPlusExpressionAST",
@@ -3643,9 +3591,7 @@ GGS_unaryPlusExpressionAST GGS_unaryPlusExpressionAST_2E_weak::bang_unaryPlusExp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryPlusExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST_2E_weak ("unaryPlusExpressionAST.weak",
@@ -3834,9 +3780,7 @@ acPtr_class * cPtr_unaryWrappingMinusExpressionAST::duplicate (Compiler * inComp
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryWrappingMinusExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST ("unaryWrappingMinusExpressionAST",
@@ -3945,9 +3889,7 @@ GGS_unaryWrappingMinusExpressionAST GGS_unaryWrappingMinusExpressionAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryWrappingMinusExpressionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST_2E_weak ("unaryWrappingMinusExpressionAST.weak",
@@ -4056,9 +3998,7 @@ GGS_unaryWrappingMinusExpressionForGeneration GGS_unaryWrappingMinusExpressionFo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unaryWrappingMinusExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration_2E_weak ("unaryWrappingMinusExpressionForGeneration.weak",
@@ -4206,9 +4146,7 @@ ComparisonResult GGS_selfMutability::objectCompare (const GGS_selfMutability & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfMutability generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMutability ("selfMutability",
@@ -4248,9 +4186,7 @@ GGS_selfMutability GGS_selfMutability::extractObject (const GGS_object & inObjec
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@selfMutability selfIsMutable'
-//
+//  Extension Getter '@selfMutability selfIsMutable'
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool extensionGetter_selfIsMutable (const GGS_selfMutability & inObject,
@@ -4412,9 +4348,7 @@ ComparisonResult GGS_selfAvailability::objectCompare (const GGS_selfAvailability
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfAvailability generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAvailability ("selfAvailability",
@@ -4547,9 +4481,7 @@ GGS_assignmentInstructionAST GGS_assignmentInstructionAST_2E_weak::bang_assignme
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @assignmentInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionAST_2E_weak ("assignmentInstructionAST.weak",
@@ -4658,9 +4590,7 @@ GGS_selfPropertyAssignmentInstructionAST GGS_selfPropertyAssignmentInstructionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfPropertyAssignmentInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST_2E_weak ("selfPropertyAssignmentInstructionAST.weak",
@@ -4769,9 +4699,7 @@ GGS_assignmentInstructionForGeneration GGS_assignmentInstructionForGeneration_2E
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @assignmentInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration_2E_weak ("assignmentInstructionForGeneration.weak",
@@ -5434,9 +5362,7 @@ GGS_location cEnumerator_castInstructionBranchListAST::current_mEndOfInstruction
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @castInstructionBranchListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST ("castInstructionBranchListAST",
@@ -5679,9 +5605,7 @@ acPtr_class * cPtr_structuredCastInstructionAST::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structuredCastInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST ("structuredCastInstructionAST",
@@ -5790,9 +5714,7 @@ GGS_structuredCastInstructionAST GGS_structuredCastInstructionAST_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structuredCastInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST_2E_weak ("structuredCastInstructionAST.weak",
@@ -6391,9 +6313,7 @@ GGS_semanticInstructionListForGeneration cEnumerator_castInstructionBranchListFo
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @castInstructionBranchListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration ("castInstructionBranchListForGeneration",
@@ -6502,9 +6422,7 @@ GGS_structuredCastInstructionForGeneration GGS_structuredCastInstructionForGener
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @structuredCastInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration_2E_weak ("structuredCastInstructionForGeneration.weak",
@@ -6688,9 +6606,7 @@ void GGS_opAssignmentOperator::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @opAssignmentOperator generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignmentOperator ("opAssignmentOperator",
@@ -6730,9 +6646,7 @@ GGS_opAssignmentOperator GGS_opAssignmentOperator::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@opAssignmentOperator string'
-//
+//  Extension Getter '@opAssignmentOperator string'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_string (const GGS_opAssignmentOperator & inObject,
@@ -6787,9 +6701,7 @@ GGS_string extensionGetter_string (const GGS_opAssignmentOperator & inObject,
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension Getter '@opAssignmentOperator cppFunctionName'
-//
+//  Extension Getter '@opAssignmentOperator cppFunctionName'
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cppFunctionName (const GGS_opAssignmentOperator & inObject,
@@ -6913,9 +6825,7 @@ GGS_opAssignExpressionInstructionAST GGS_opAssignExpressionInstructionAST_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @opAssignExpressionInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignExpressionInstructionAST_2E_weak ("opAssignExpressionInstructionAST.weak",
@@ -7024,9 +6934,7 @@ GGS_plusEqualElementsInstructionAST GGS_plusEqualElementsInstructionAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @plusEqualElementsInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsInstructionAST_2E_weak ("plusEqualElementsInstructionAST.weak",
@@ -7307,9 +7215,7 @@ acPtr_class * cPtr_plusEqualnstructionForGeneration::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @plusEqualnstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ("plusEqualnstructionForGeneration",
@@ -7418,9 +7324,7 @@ GGS_plusEqualnstructionForGeneration GGS_plusEqualnstructionForGeneration_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @plusEqualnstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration_2E_weak ("plusEqualnstructionForGeneration.weak",
@@ -7529,9 +7433,7 @@ GGS_opAssignInstructionForGeneration GGS_opAssignInstructionForGeneration_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @opAssignInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opAssignInstructionForGeneration_2E_weak ("opAssignInstructionForGeneration.weak",
@@ -7705,9 +7607,7 @@ acPtr_class * cPtr_dropInstructionAST::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @dropInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dropInstructionAST ("dropInstructionAST",
@@ -7816,9 +7716,7 @@ GGS_dropInstructionAST GGS_dropInstructionAST_2E_weak::bang_dropInstructionAST_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @dropInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dropInstructionAST_2E_weak ("dropInstructionAST.weak",
@@ -8088,9 +7986,7 @@ void GGS_fixitElementAST::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST ("fixitElementAST",
@@ -8497,9 +8393,7 @@ GGS_fixitElementAST cEnumerator_fixitListAST::current_mElement (LOCATION_ARGS) c
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST ("fixitListAST",
@@ -8742,9 +8636,7 @@ acPtr_class * cPtr_errorInstructionAST::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @errorInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionAST ("errorInstructionAST",
@@ -8853,9 +8745,7 @@ GGS_errorInstructionAST GGS_errorInstructionAST_2E_weak::bang_errorInstructionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @errorInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionAST_2E_weak ("errorInstructionAST.weak",
@@ -9155,9 +9045,7 @@ void GGS_fixitElementForGeneration::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration ("fixitElementForGeneration",
@@ -9564,9 +9452,7 @@ GGS_fixitElementForGeneration cEnumerator_fixitListForGeneration::current_mEleme
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListForGeneration ("fixitListForGeneration",
@@ -9738,9 +9624,7 @@ GGS_errorInstructionForGeneration GGS_errorInstructionForGeneration_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @errorInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration_2E_weak ("errorInstructionForGeneration.weak",
@@ -10275,9 +10159,7 @@ GGS_lstring cEnumerator_forInstructionEnumeratedObjectElementListAST::current_mO
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionEnumeratedObjectElementListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST ("forInstructionEnumeratedObjectElementListAST",
@@ -10370,9 +10252,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractEnumeratedCollectionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST ("abstractEnumeratedCollectionAST",
@@ -10481,9 +10361,7 @@ GGS_abstractEnumeratedCollectionAST GGS_abstractEnumeratedCollectionAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractEnumeratedCollectionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST_2E_weak ("abstractEnumeratedCollectionAST.weak",
@@ -10592,9 +10470,7 @@ GGS_enumeratedCollectionImplicitVarInExpAST GGS_enumeratedCollectionImplicitVarI
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumeratedCollectionImplicitVarInExpAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST_2E_weak ("enumeratedCollectionImplicitVarInExpAST.weak",
@@ -10703,9 +10579,7 @@ GGS_enumeratedCollectionVarInExpAST GGS_enumeratedCollectionVarInExpAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumeratedCollectionVarInExpAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST_2E_weak ("enumeratedCollectionVarInExpAST.weak",
@@ -10940,9 +10814,7 @@ acPtr_class * cPtr_enumeratedCollectionCstListInExpAST::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumeratedCollectionCstListInExpAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ("enumeratedCollectionCstListInExpAST",
@@ -11051,9 +10923,7 @@ GGS_enumeratedCollectionCstListInExpAST GGS_enumeratedCollectionCstListInExpAST_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @enumeratedCollectionCstListInExpAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST_2E_weak ("enumeratedCollectionCstListInExpAST.weak",
@@ -11524,9 +11394,7 @@ GGS_abstractEnumeratedCollectionAST cEnumerator_forInstructionEnumeratedObjectLi
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionEnumeratedObjectListAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST ("forInstructionEnumeratedObjectListAST",
@@ -11635,9 +11503,7 @@ GGS_forInstructionAST GGS_forInstructionAST_2E_weak::bang_forInstructionAST_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST_2E_weak ("forInstructionAST.weak",
@@ -12215,9 +12081,7 @@ GGS_string cEnumerator_forInstructionEnumeratedObjectListForGeneration::current_
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionEnumeratedObjectListForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration ("forInstructionEnumeratedObjectListForGeneration",
@@ -12326,9 +12190,7 @@ GGS_forInstructionForGeneration GGS_forInstructionForGeneration_2E_weak::bang_fo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration_2E_weak ("forInstructionForGeneration.weak",
@@ -12437,9 +12299,7 @@ GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult GGS_abstractGramma
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @abstractGrammarInstructionSyntaxDirectedTranslationResult.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak ("abstractGrammarInstructionSyntaxDirectedTranslationResult.weak",
@@ -12578,9 +12438,7 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationResultNone::duplic
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationResultNone generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone ("grammarInstructionSyntaxDirectedTranslationResultNone",
@@ -12689,9 +12547,7 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultNone GGS_grammarInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationResultNone.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak ("grammarInstructionSyntaxDirectedTranslationResultNone.weak",
@@ -12857,9 +12713,7 @@ acPtr_class * cPtr_grammarInstructionSyntaxDirectedTranslationDropResult::duplic
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationDropResult generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult ("grammarInstructionSyntaxDirectedTranslationDropResult",
@@ -12968,9 +12822,7 @@ GGS_grammarInstructionSyntaxDirectedTranslationDropResult GGS_grammarInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationDropResult.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak ("grammarInstructionSyntaxDirectedTranslationDropResult.weak",
@@ -13079,9 +12931,7 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInVar GGS_grammarInstructio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationResultInVar.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak ("grammarInstructionSyntaxDirectedTranslationResultInVar.weak",
@@ -13190,9 +13040,7 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar GGS_grammarIn
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak ("grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.weak",
@@ -13301,9 +13149,7 @@ GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst GGS_grammar
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_weak ("grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.weak",
@@ -13412,9 +13258,7 @@ GGS_grammarInFileInstructionAST GGS_grammarInFileInstructionAST_2E_weak::bang_gr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInFileInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST_2E_weak ("grammarInFileInstructionAST.weak",
@@ -13523,9 +13367,7 @@ GGS_grammarInStringInstructionAST GGS_grammarInStringInstructionAST_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInStringInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST_2E_weak ("grammarInStringInstructionAST.weak",
@@ -13634,9 +13476,7 @@ GGS_grammarInstructionWithSourceFileForGeneration GGS_grammarInstructionWithSour
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionWithSourceFileForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration_2E_weak ("grammarInstructionWithSourceFileForGeneration.weak",
@@ -13745,9 +13585,7 @@ GGS_grammarInstructionWithSourceExpressionForGeneration GGS_grammarInstructionWi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarInstructionWithSourceExpressionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration_2E_weak ("grammarInstructionWithSourceExpressionForGeneration.weak",
@@ -13846,9 +13684,7 @@ void GGS_incDecKind::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecKind generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecKind ("incDecKind",
@@ -13957,9 +13793,7 @@ GGS_incDecInstructionAST GGS_incDecInstructionAST_2E_weak::bang_incDecInstructio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAST_2E_weak ("incDecInstructionAST.weak",
@@ -14068,9 +13902,7 @@ GGS_incDecNoOVFInstructionAST GGS_incDecNoOVFInstructionAST_2E_weak::bang_incDec
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecNoOVFInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionAST_2E_weak ("incDecNoOVFInstructionAST.weak",
@@ -14244,9 +14076,7 @@ acPtr_class * cPtr_selfIncDecInstructionAST::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfIncDecInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST ("selfIncDecInstructionAST",
@@ -14355,9 +14185,7 @@ GGS_selfIncDecInstructionAST GGS_selfIncDecInstructionAST_2E_weak::bang_selfIncD
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfIncDecInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructionAST_2E_weak ("selfIncDecInstructionAST.weak",
@@ -14531,9 +14359,7 @@ acPtr_class * cPtr_selfIncDecNoOVFInstructionAST::duplicate (Compiler * inCompil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfIncDecNoOVFInstructionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST ("selfIncDecNoOVFInstructionAST",
@@ -14642,9 +14468,7 @@ GGS_selfIncDecNoOVFInstructionAST GGS_selfIncDecNoOVFInstructionAST_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @selfIncDecNoOVFInstructionAST.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInstructionAST_2E_weak ("selfIncDecNoOVFInstructionAST.weak",
@@ -14902,9 +14726,7 @@ acPtr_class * cPtr_incDecInstructionForGeneration::duplicate (Compiler * inCompi
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration ("incDecInstructionForGeneration",
@@ -15013,9 +14835,7 @@ GGS_incDecInstructionForGeneration GGS_incDecInstructionForGeneration_2E_weak::b
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionForGeneration_2E_weak ("incDecInstructionForGeneration.weak",
@@ -15273,9 +15093,7 @@ acPtr_class * cPtr_incDecNoOVFInstructionForGeneration::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecNoOVFInstructionForGeneration generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionForGeneration ("incDecNoOVFInstructionForGeneration",
@@ -15384,9 +15202,7 @@ GGS_incDecNoOVFInstructionForGeneration GGS_incDecNoOVFInstructionForGeneration_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @incDecNoOVFInstructionForGeneration.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstructionForGeneration_2E_weak ("incDecNoOVFInstructionForGeneration.weak",
@@ -15589,9 +15405,7 @@ void GGS_ifExpressionKind::description (String & ioString,
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionKind generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind ("ifExpressionKind",
@@ -15998,9 +15812,7 @@ GGS_ifExpressionKind cEnumerator_ifExpressionList::current_mExpression (LOCATION
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList ("ifExpressionList",

@@ -88,9 +88,7 @@ void GGS_grammarMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @grammarMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap_2E_element_3F_ ("grammarMap.element?",
@@ -229,9 +227,7 @@ void GGS_functionMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap_2E_element ("functionMap.element",
@@ -351,9 +347,7 @@ void GGS_functionMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @functionMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap_2E_element_3F_ ("functionMap.element?",
@@ -502,9 +496,7 @@ void GGS_wrapperFileMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperFileMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap_2E_element ("wrapperFileMap.element",
@@ -624,9 +616,7 @@ void GGS_wrapperFileMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperFileMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap_2E_element_3F_ ("wrapperFileMap.element?",
@@ -765,9 +755,7 @@ void GGS_wrapperDirectoryMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperDirectoryMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2E_element ("wrapperDirectoryMap.element",
@@ -887,9 +875,7 @@ void GGS_wrapperDirectoryMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperDirectoryMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2E_element_3F_ ("wrapperDirectoryMap.element?",
@@ -1018,9 +1004,7 @@ void GGS_filewrapperTemplateMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element ("filewrapperTemplateMap.element",
@@ -1140,9 +1124,7 @@ void GGS_filewrapperTemplateMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperTemplateMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element_3F_ ("filewrapperTemplateMap.element?",
@@ -1311,9 +1293,7 @@ void GGS_filewrapperMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2E_element ("filewrapperMap.element",
@@ -1433,9 +1413,7 @@ void GGS_filewrapperMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @filewrapperMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2E_element_3F_ ("filewrapperMap.element?",
@@ -1594,9 +1572,7 @@ void GGS_optionComponentMapForSemanticAnalysis_2E_element::description (String &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionComponentMapForSemanticAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis_2E_element ("optionComponentMapForSemanticAnalysis.element",
@@ -1716,9 +1692,7 @@ void GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_::description (Stri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @optionComponentMapForSemanticAnalysis.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis_2E_element_3F_ ("optionComponentMapForSemanticAnalysis.element?",
@@ -1897,9 +1871,7 @@ void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::description (String 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueComponentMapForSemanticAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element ("lexiqueComponentMapForSemanticAnalysis.element",
@@ -2019,9 +1991,7 @@ void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_::description (Str
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @lexiqueComponentMapForSemanticAnalysis.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ ("lexiqueComponentMapForSemanticAnalysis.element?",
@@ -2170,9 +2140,7 @@ void GGS_syntaxComponentMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxComponentMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap_2E_element ("syntaxComponentMap.element",
@@ -2292,9 +2260,7 @@ void GGS_syntaxComponentMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxComponentMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap_2E_element_3F_ ("syntaxComponentMap.element?",
@@ -2413,9 +2379,7 @@ void GGS_extensionInitializerMapForType_2E_element::description (String & ioStri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionInitializerMapForType.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType_2E_element ("extensionInitializerMapForType.element",
@@ -2535,9 +2499,7 @@ void GGS_extensionInitializerMapForType_2E_element_3F_::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionInitializerMapForType.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerMapForType_2E_element_3F_ ("extensionInitializerMapForType.element?",
@@ -2656,9 +2618,7 @@ void GGS_extensionInitializerForBuildingContext_2E_element::description (String 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionInitializerForBuildingContext.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext_2E_element ("extensionInitializerForBuildingContext.element",
@@ -2778,9 +2738,7 @@ void GGS_extensionInitializerForBuildingContext_2E_element_3F_::description (Str
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionInitializerForBuildingContext.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionInitializerForBuildingContext_2E_element_3F_ ("extensionInitializerForBuildingContext.element?",
@@ -2909,9 +2867,7 @@ void GGS_extensionMethodMapForType_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForType.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType_2E_element ("extensionMethodMapForType.element",
@@ -3031,9 +2987,7 @@ void GGS_extensionMethodMapForType_2E_element_3F_::description (String & ioStrin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForType.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForType_2E_element_3F_ ("extensionMethodMapForType.element?",
@@ -3152,9 +3106,7 @@ void GGS_extensionMethodMapForBuildingContext_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForBuildingContext.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext_2E_element ("extensionMethodMapForBuildingContext.element",
@@ -3274,9 +3226,7 @@ void GGS_extensionMethodMapForBuildingContext_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForBuildingContext.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForBuildingContext_2E_element_3F_ ("extensionMethodMapForBuildingContext.element?",
@@ -3395,9 +3345,7 @@ void GGS_extensionSetterMapForType_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForType.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType_2E_element ("extensionSetterMapForType.element",
@@ -3517,9 +3465,7 @@ void GGS_extensionSetterMapForType_2E_element_3F_::description (String & ioStrin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForType.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForType_2E_element_3F_ ("extensionSetterMapForType.element?",
@@ -3638,9 +3584,7 @@ void GGS_extensionSetterMapForBuildingContext_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForBuildingContext.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext_2E_element ("extensionSetterMapForBuildingContext.element",
@@ -3760,9 +3704,7 @@ void GGS_extensionSetterMapForBuildingContext_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForBuildingContext.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext_2E_element_3F_ ("extensionSetterMapForBuildingContext.element?",
@@ -3901,9 +3843,7 @@ void GGS_extensionGetterMapForType_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForType.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForType_2E_element ("extensionGetterMapForType.element",
@@ -4023,9 +3963,7 @@ void GGS_extensionGetterMapForType_2E_element_3F_::description (String & ioStrin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForType.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForType_2E_element_3F_ ("extensionGetterMapForType.element?",
@@ -4144,9 +4082,7 @@ void GGS_extensionGetterMapForBuildingContext_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForBuildingContext.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext_2E_element ("extensionGetterMapForBuildingContext.element",
@@ -4266,9 +4202,7 @@ void GGS_extensionGetterMapForBuildingContext_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForBuildingContext.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext_2E_element_3F_ ("extensionGetterMapForBuildingContext.element?",
@@ -4377,9 +4311,7 @@ void GGS_wrapperExtensionMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperExtensionMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element ("wrapperExtensionMap.element",
@@ -4499,9 +4431,7 @@ void GGS_wrapperExtensionMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @wrapperExtensionMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element_3F_ ("wrapperExtensionMap.element?",
@@ -4610,9 +4540,7 @@ void GGS_semanticExpressionListForGeneration_2E_element::description (String & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticExpressionListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionListForGeneration_2E_element ("semanticExpressionListForGeneration.element",
@@ -4761,9 +4689,7 @@ void GGS_formalParameterListForGeneration_2E_element::description (String & ioSt
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @formalParameterListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterListForGeneration_2E_element ("formalParameterListForGeneration.element",
@@ -4912,9 +4838,7 @@ void GGS_formalInputParameterListForGeneration_2E_element::description (String &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @formalInputParameterListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParameterListForGeneration_2E_element ("formalInputParameterListForGeneration.element",
@@ -5033,9 +4957,7 @@ void GGS_signatureForGrammarAnalysis_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @signatureForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_signatureForGrammarAnalysis_2E_element ("signatureForGrammarAnalysis.element",
@@ -5154,9 +5076,7 @@ void GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element::description (St
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalSymbolLabelMapForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element ("nonterminalSymbolLabelMapForGrammarAnalysis.element",
@@ -5276,9 +5196,7 @@ void GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element_3F_::description
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalSymbolLabelMapForGrammarAnalysis.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element_3F_ ("nonterminalSymbolLabelMapForGrammarAnalysis.element?",
@@ -5407,9 +5325,7 @@ void GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element::description (String 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalSymbolMapForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element ("nonTerminalSymbolMapForGrammarAnalysis.element",
@@ -5529,9 +5445,7 @@ void GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_::description (Str
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalSymbolMapForGrammarAnalysis.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ ("nonTerminalSymbolMapForGrammarAnalysis.element?",
@@ -5670,9 +5584,7 @@ void GGS_localConstantList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localConstantList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList_2E_element ("localConstantList.element",
@@ -5801,9 +5713,7 @@ void GGS_localInitializedVariableList_2E_element::description (String & ioString
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @localInitializedVariableList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localInitializedVariableList_2E_element ("localInitializedVariableList.element",
@@ -5922,9 +5832,7 @@ void GGS_propertyIndexMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyIndexMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap_2E_element ("propertyIndexMap.element",
@@ -6044,9 +5952,7 @@ void GGS_propertyIndexMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @propertyIndexMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap_2E_element_3F_ ("propertyIndexMap.element?",
@@ -6185,9 +6091,7 @@ void GGS_nonterminalLabelMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalLabelMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element ("nonterminalLabelMap.element",
@@ -6307,9 +6211,7 @@ void GGS_nonterminalLabelMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalLabelMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element_3F_ ("nonterminalLabelMap.element?",
@@ -6428,9 +6330,7 @@ void GGS_nonterminalMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2E_element ("nonterminalMap.element",
@@ -6550,9 +6450,7 @@ void GGS_nonterminalMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonterminalMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2E_element_3F_ ("nonterminalMap.element?",
@@ -6701,9 +6599,7 @@ void GGS_ruleLabelImplementationList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ruleLabelImplementationList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementationList_2E_element ("ruleLabelImplementationList.element",
@@ -6832,9 +6728,7 @@ void GGS_uselessEntityLocationMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uselessEntityLocationMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap_2E_element ("uselessEntityLocationMap.element",
@@ -6954,9 +6848,7 @@ void GGS_uselessEntityLocationMap_2E_element_3F_::description (String & ioString
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @uselessEntityLocationMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap_2E_element_3F_ ("uselessEntityLocationMap.element?",
@@ -7075,9 +6967,7 @@ void GGS_collectionValueElementListForGeneration_2E_element::description (String
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @collectionValueElementListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementListForGeneration_2E_element ("collectionValueElementListForGeneration.element",
@@ -7206,9 +7096,7 @@ void GGS_actualOutputArgumentList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @actualOutputArgumentList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputArgumentList_2E_element ("actualOutputArgumentList.element",
@@ -7357,9 +7245,7 @@ void GGS_castInstructionBranchListAST_2E_element::description (String & ioString
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @castInstructionBranchListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST_2E_element ("castInstructionBranchListAST.element",
@@ -7468,9 +7354,7 @@ void GGS_fixitElementForGeneration_2E_fixItReplace::description (String & ioStri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration.fixItReplace generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace ("fixitElementForGeneration.fixItReplace",
@@ -7590,9 +7474,7 @@ void GGS_fixitElementForGeneration_2E_fixItReplace_3F_::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration.fixItReplace? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace_3F_ ("fixitElementForGeneration.fixItReplace?",
@@ -7701,9 +7583,7 @@ void GGS_fixitElementForGeneration_2E_fixItInsertBefore::description (String & i
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration.fixItInsertBefore generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore ("fixitElementForGeneration.fixItInsertBefore",
@@ -7823,9 +7703,7 @@ void GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_::description (String
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration.fixItInsertBefore? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ ("fixitElementForGeneration.fixItInsertBefore?",
@@ -7934,9 +7812,7 @@ void GGS_fixitElementForGeneration_2E_fixItInsertAfter::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration.fixItInsertAfter generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter ("fixitElementForGeneration.fixItInsertAfter",
@@ -8056,9 +7932,7 @@ void GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_::description (String 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @fixitElementForGeneration.fixItInsertAfter? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ ("fixitElementForGeneration.fixItInsertAfter?",
@@ -8187,9 +8061,7 @@ void GGS_forInstructionEnumeratedObjectElementListAST_2E_element::description (S
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionEnumeratedObjectElementListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST_2E_element ("forInstructionEnumeratedObjectElementListAST.element",
@@ -8318,9 +8190,7 @@ void GGS_forInstructionEnumeratedObjectListForGeneration_2E_element::description
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @forInstructionEnumeratedObjectListForGeneration.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration_2E_element ("forInstructionEnumeratedObjectListForGeneration.element",
@@ -8459,9 +8329,7 @@ void GGS_ifExpressionKind_2E_letExp::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionKind.letExp generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp ("ifExpressionKind.letExp",
@@ -8581,9 +8449,7 @@ void GGS_ifExpressionKind_2E_letExp_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifExpressionKind.letExp? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letExp_3F_ ("ifExpressionKind.letExp?",
@@ -8692,9 +8558,7 @@ void GGS_ifTestForGeneration_2E_regular::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifTestForGeneration.regular generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular ("ifTestForGeneration.regular",
@@ -8814,9 +8678,7 @@ void GGS_ifTestForGeneration_2E_regular_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifTestForGeneration.regular? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_regular_3F_ ("ifTestForGeneration.regular?",
@@ -8955,9 +8817,7 @@ void GGS_ifTestForGeneration_2E_letExp::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifTestForGeneration.letExp generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp ("ifTestForGeneration.letExp",
@@ -9077,9 +8937,7 @@ void GGS_ifTestForGeneration_2E_letExp_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifTestForGeneration.letExp? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_letExp_3F_ ("ifTestForGeneration.letExp?",
@@ -9208,9 +9066,7 @@ void GGS_ifTestForGeneration_2E_optionalExp::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifTestForGeneration.optionalExp generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp ("ifTestForGeneration.optionalExp",
@@ -9330,9 +9186,7 @@ void GGS_ifTestForGeneration_2E_optionalExp_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ifTestForGeneration.optionalExp? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E_optionalExp_3F_ ("ifTestForGeneration.optionalExp?",
@@ -9451,9 +9305,7 @@ void GGS_logListAST_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @logListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logListAST_2E_element ("logListAST.element",
@@ -9582,9 +9434,7 @@ void GGS_switchExtractedValuesListAST_2E_element::description (String & ioString
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @switchExtractedValuesListAST.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ("switchExtractedValuesListAST.element",
@@ -9703,9 +9553,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element::description (S
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unusedNonTerminalSymbolMapForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element ("unusedNonTerminalSymbolMapForGrammarAnalysis.element",
@@ -9825,9 +9673,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_::descriptio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @unusedNonTerminalSymbolMapForGrammarAnalysis.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ ("unusedNonTerminalSymbolMapForGrammarAnalysis.element?",
@@ -9956,9 +9802,7 @@ void GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element::description (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @nonTerminalSymbolSortedListForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element ("nonTerminalSymbolSortedListForGrammarAnalysis.element",
@@ -10077,9 +9921,7 @@ void GGS_syntaxComponentListForGrammarAnalysis_2E_element::description (String &
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @syntaxComponentListForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentListForGrammarAnalysis_2E_element ("syntaxComponentListForGrammarAnalysis.element",
@@ -10198,9 +10040,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @terminalSymbolsMapForGrammarAnalysis.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis_2E_element ("terminalSymbolsMapForGrammarAnalysis.element",
@@ -10320,9 +10160,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @terminalSymbolsMapForGrammarAnalysis.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapForGrammarAnalysis_2E_element_3F_ ("terminalSymbolsMapForGrammarAnalysis.element?",
@@ -10431,9 +10269,7 @@ void GGS_extensionMethodMapForGlobalCheckings_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForGlobalCheckings.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings_2E_element ("extensionMethodMapForGlobalCheckings.element",
@@ -10553,9 +10389,7 @@ void GGS_extensionMethodMapForGlobalCheckings_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionMethodMapForGlobalCheckings.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings_2E_element_3F_ ("extensionMethodMapForGlobalCheckings.element?",
@@ -10664,9 +10498,7 @@ void GGS_extensionSetterMapForGlobalCheckings_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForGlobalCheckings.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings_2E_element ("extensionSetterMapForGlobalCheckings.element",
@@ -10786,9 +10618,7 @@ void GGS_extensionSetterMapForGlobalCheckings_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionSetterMapForGlobalCheckings.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings_2E_element_3F_ ("extensionSetterMapForGlobalCheckings.element?",
@@ -10897,9 +10727,7 @@ void GGS_extensionGetterMapForGlobalCheckings_2E_element::description (String & 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForGlobalCheckings.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings_2E_element ("extensionGetterMapForGlobalCheckings.element",
@@ -11019,9 +10847,7 @@ void GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_::description (Strin
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @extensionGetterMapForGlobalCheckings.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings_2E_element_3F_ ("extensionGetterMapForGlobalCheckings.element?",
@@ -11140,9 +10966,7 @@ void GGS_galgas_33_QualifiedFeatureList_2E_element::description (String & ioStri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @galgas3QualifiedFeatureList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_QualifiedFeatureList_2E_element ("galgas3QualifiedFeatureList.element",
@@ -11271,9 +11095,7 @@ void GGS_headerCompositionMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerCompositionMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap_2E_element ("headerCompositionMap.element",
@@ -11393,9 +11215,7 @@ void GGS_headerCompositionMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerCompositionMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMap_2E_element_3F_ ("headerCompositionMap.element?",
@@ -11514,9 +11334,7 @@ void GGS_headerRepartitionMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerRepartitionMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap_2E_element ("headerRepartitionMap.element",
@@ -11636,9 +11454,7 @@ void GGS_headerRepartitionMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @headerRepartitionMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMap_2E_element_3F_ ("headerRepartitionMap.element?",
@@ -11757,9 +11573,7 @@ void GGS_projectQualifiedFeatureMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @projectQualifiedFeatureMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap_2E_element ("projectQualifiedFeatureMap.element",
@@ -11879,9 +11693,7 @@ void GGS_projectQualifiedFeatureMap_2E_element_3F_::description (String & ioStri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @projectQualifiedFeatureMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFeatureMap_2E_element_3F_ ("projectQualifiedFeatureMap.element?",
@@ -12047,9 +11859,7 @@ acPtr_class * cPtr_templateLiteralUIntExpressionAST::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateLiteralUIntExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralUIntExpressionAST ("templateLiteralUIntExpressionAST",
@@ -12215,9 +12025,7 @@ acPtr_class * cPtr_templateLiteralCharExpressionAST::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateLiteralCharExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralCharExpressionAST ("templateLiteralCharExpressionAST",
@@ -12383,9 +12191,7 @@ acPtr_class * cPtr_templateLiteralDoubleExpressionAST::duplicate (Compiler * inC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @templateLiteralDoubleExpressionAST generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralDoubleExpressionAST ("templateLiteralDoubleExpressionAST",
