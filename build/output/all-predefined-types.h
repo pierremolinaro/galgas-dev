@@ -952,6 +952,29 @@ class cEnumerator_stringset final : public cGenericAbstractEnumerator {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_stringset final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
+
+//--- Current element access
+  public: class GGS_string current_key (LOCATION_ARGS) const ;
+  public: class GGS_string current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_stringset final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+//--- Current element access
+  public: class GGS_string current_key (LOCATION_ARGS) const ;
+  public: class GGS_string current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 //   @stringset type
 //--------------------------------------------------------------------------------------------------
 
@@ -1063,6 +1086,8 @@ class GGS_stringset : public AC_GALGAS_root {
 
 //--------------------------------- Friend
   friend class cEnumerator_stringset ;
+  friend class UpEnumerator_stringset ;
+  friend class DownEnumerator_stringset ;
  
 } ;
 
@@ -2644,6 +2669,34 @@ class cEnumerator_data final : public cGenericAbstractEnumerator {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_data final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_uint current_data (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uint current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_data final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_uint current_data (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uint current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 //   @data type
 //--------------------------------------------------------------------------------------------------
 
@@ -2747,6 +2800,8 @@ class GGS_data : public AC_GALGAS_root {
 
 //--------------------------------- Friend
   friend class cEnumerator_data ;
+  friend class UpEnumerator_data ;
+  friend class DownEnumerator_data ;
  
 } ;
 
@@ -3214,6 +3269,30 @@ class cEnumerator_stringlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_stringlist (const class GGS_stringlist & inEnumeratedObject,
                                   const EnumerationOrder inOrder) ;
 
+  public: class GGS_string current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_stringlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_stringlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_stringlist (const class GGS_stringlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_string current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_stringlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_stringlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_stringlist (const class GGS_stringlist & inEnumeratedObject) ;
+
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
 //    public: void rewind (void) ;
@@ -3343,6 +3422,8 @@ class GGS_stringlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_stringlist ;
+  friend class UpEnumerator_stringlist ;
+  friend class DownEnumerator_stringlist ;
  
 } ;
 
@@ -3357,6 +3438,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ;
 class cEnumerator_lstringlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_lstringlist (const class GGS_lstringlist & inEnumeratedObject,
                                    const EnumerationOrder inOrder) ;
+
+  public: class GGS_lstring current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lstringlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lstringlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_lstringlist (const class GGS_lstringlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lstringlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lstringlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_lstringlist (const class GGS_lstringlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -3487,6 +3592,8 @@ class GGS_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_lstringlist ;
+  friend class UpEnumerator_lstringlist ;
+  friend class DownEnumerator_lstringlist ;
  
 } ;
 
@@ -3591,6 +3698,32 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ;
 class cEnumerator__32_stringlist final : public cGenericAbstractEnumerator {
   public: cEnumerator__32_stringlist (const class GGS__32_stringlist & inEnumeratedObject,
                                       const EnumerationOrder inOrder) ;
+
+  public: class GGS_string current_mValue_30_ (LOCATION_ARGS) const ;
+  public: class GGS_string current_mValue_31_ (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS__32_stringlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__32_stringlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator__32_stringlist (const class GGS__32_stringlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_string current_mValue_30_ (LOCATION_ARGS) const ;
+  public: class GGS_string current_mValue_31_ (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS__32_stringlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__32_stringlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator__32_stringlist (const class GGS__32_stringlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -3741,6 +3874,8 @@ class GGS__32_stringlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator__32_stringlist ;
+  friend class UpEnumerator__32_stringlist ;
+  friend class DownEnumerator__32_stringlist ;
  
 } ;
 
@@ -3755,6 +3890,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ;
 class cEnumerator_functionlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_functionlist (const class GGS_functionlist & inEnumeratedObject,
                                     const EnumerationOrder inOrder) ;
+
+  public: class GGS_function current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_functionlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_functionlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_functionlist (const class GGS_functionlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_function current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_functionlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_functionlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_functionlist (const class GGS_functionlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -3885,6 +4044,8 @@ class GGS_functionlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_functionlist ;
+  friend class UpEnumerator_functionlist ;
+  friend class DownEnumerator_functionlist ;
  
 } ;
 
@@ -3899,6 +4060,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ;
 class cEnumerator_luintlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_luintlist (const class GGS_luintlist & inEnumeratedObject,
                                  const EnumerationOrder inOrder) ;
+
+  public: class GGS_luint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_luintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_luintlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_luintlist (const class GGS_luintlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_luint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_luintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_luintlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_luintlist (const class GGS_luintlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4029,6 +4214,8 @@ class GGS_luintlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_luintlist ;
+  friend class UpEnumerator_luintlist ;
+  friend class DownEnumerator_luintlist ;
  
 } ;
 
@@ -4133,6 +4320,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ;
 class cEnumerator_objectlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_objectlist (const class GGS_objectlist & inEnumeratedObject,
                                   const EnumerationOrder inOrder) ;
+
+  public: class GGS_object current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_objectlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_objectlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_objectlist (const class GGS_objectlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_object current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_objectlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_objectlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_objectlist (const class GGS_objectlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4263,6 +4474,8 @@ class GGS_objectlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_objectlist ;
+  friend class UpEnumerator_objectlist ;
+  friend class DownEnumerator_objectlist ;
  
 } ;
 
@@ -4277,6 +4490,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ;
 class cEnumerator_typelist final : public cGenericAbstractEnumerator {
   public: cEnumerator_typelist (const class GGS_typelist & inEnumeratedObject,
                                 const EnumerationOrder inOrder) ;
+
+  public: class GGS_type current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_typelist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_typelist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_typelist (const class GGS_typelist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_type current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_typelist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_typelist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_typelist (const class GGS_typelist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4407,6 +4644,8 @@ class GGS_typelist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_typelist ;
+  friend class UpEnumerator_typelist ;
+  friend class DownEnumerator_typelist ;
  
 } ;
 
@@ -4421,6 +4660,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ;
 class cEnumerator_uintlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_uintlist (const class GGS_uintlist & inEnumeratedObject,
                                 const EnumerationOrder inOrder) ;
+
+  public: class GGS_uint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_uintlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_uintlist (const class GGS_uintlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_uint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_uintlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_uintlist (const class GGS_uintlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4551,6 +4814,8 @@ class GGS_uintlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_uintlist ;
+  friend class UpEnumerator_uintlist ;
+  friend class DownEnumerator_uintlist ;
  
 } ;
 
@@ -4565,6 +4830,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ;
 class cEnumerator_uint_36__34_list final : public cGenericAbstractEnumerator {
   public: cEnumerator_uint_36__34_list (const class GGS_uint_36__34_list & inEnumeratedObject,
                                         const EnumerationOrder inOrder) ;
+
+  public: class GGS_uint_36__34_ current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uint_36__34_list_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_uint_36__34_list final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_uint_36__34_list (const class GGS_uint_36__34_list & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_uint_36__34_ current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uint_36__34_list_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_uint_36__34_list final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_uint_36__34_list (const class GGS_uint_36__34_list & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4695,6 +4984,8 @@ class GGS_uint_36__34_list : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_uint_36__34_list ;
+  friend class UpEnumerator_uint_36__34_list ;
+  friend class DownEnumerator_uint_36__34_list ;
  
 } ;
 
@@ -4709,6 +5000,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ;
 class cEnumerator_bigintlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_bigintlist (const class GGS_bigintlist & inEnumeratedObject,
                                   const EnumerationOrder inOrder) ;
+
+  public: class GGS_bigint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_bigintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_bigintlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_bigintlist (const class GGS_bigintlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_bigint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_bigintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_bigintlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_bigintlist (const class GGS_bigintlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4839,6 +5154,8 @@ class GGS_bigintlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_bigintlist ;
+  friend class UpEnumerator_bigintlist ;
+  friend class DownEnumerator_bigintlist ;
  
 } ;
 
@@ -4853,6 +5170,30 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ;
 class cEnumerator_lbigintlist final : public cGenericAbstractEnumerator {
   public: cEnumerator_lbigintlist (const class GGS_lbigintlist & inEnumeratedObject,
                                    const EnumerationOrder inOrder) ;
+
+  public: class GGS_lbigint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lbigintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lbigintlist final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_lbigintlist (const class GGS_lbigintlist & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lbigint current_mValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lbigintlist_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lbigintlist final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_lbigintlist (const class GGS_lbigintlist & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;
@@ -4983,6 +5324,8 @@ class GGS_lbigintlist : public AC_GALGAS_list {
 
 //--------------------------------- Friend
   friend class cEnumerator_lbigintlist ;
+  friend class UpEnumerator_lbigintlist ;
+  friend class DownEnumerator_lbigintlist ;
  
 } ;
 

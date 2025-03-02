@@ -473,6 +473,8 @@ end
 %
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const EnumerationOrder inOrder) :
@@ -492,6 +494,62 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION
 %for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![propertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mObject.mProperty_%![propertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end
+%
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return p->mObject ;
+}
+
+
+%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![propertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mObject.mProperty_%![propertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end
+%
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return p->mObject ;
+}
+
+
+%for (propertyTypeEntry propertyName 3*) in ATTRIBUTE_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![propertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mObject.mProperty_%![propertyName identifierRepresentation]% ;\n%

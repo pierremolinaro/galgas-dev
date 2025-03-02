@@ -21,11 +21,14 @@
 #include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
+// cEnumerator_range
+//--------------------------------------------------------------------------------------------------
+
 
 cEnumerator_range::cEnumerator_range (const GGS_range & inEnumeratedRange,
                                       const EnumerationOrder inOrder) :
 mIsValid (inEnumeratedRange.isValid ()),
-mAscending (inOrder == EnumerationOrder::up),
+mAscending (inOrder == EnumerationOrder::Up),
 mStart (inEnumeratedRange.mProperty_start.uintValue ()),
 mLength (inEnumeratedRange.mProperty_length.uintValue ()),
 mCurrent (0) {
@@ -36,11 +39,6 @@ mCurrent (0) {
   }
 }
 
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_range::~cEnumerator_range (void) {
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -83,6 +81,130 @@ void cEnumerator_range::gotoNextObject (void) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint cEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (hasCurrentObject (), (uint32_t) (mCurrent)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// DownEnumerator_range
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_range::DownEnumerator_range (const GGS_range & inEnumeratedRange) :
+mIsValid (inEnumeratedRange.isValid ()),
+mAscending (false),
+mStart (inEnumeratedRange.mProperty_start.uintValue ()),
+mLength (inEnumeratedRange.mProperty_length.uintValue ()),
+mCurrent (0) {
+  if (mAscending) {
+    mCurrent = mStart ;
+  }else{
+    mCurrent = mStart + mLength - 1 ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+bool DownEnumerator_range::hasCurrentObject (void) const {
+  bool ok = false ;
+  if (mIsValid) {
+    if (mAscending) {
+      ok = mCurrent < (mStart + mLength) ;
+    }else{
+      ok = mCurrent >= mStart ;
+    }
+  }
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool DownEnumerator_range::hasNextObject (void) const {
+  bool ok = false ;
+  if (mIsValid) {
+    if (mAscending) {
+      ok = (mCurrent + 1) < (mStart + mLength) ;
+    }else{
+      ok = mCurrent > mStart ;
+    }
+  }
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void DownEnumerator_range::gotoNextObject (void) {
+  if (mAscending) {
+    mCurrent ++ ;
+  }else{
+    mCurrent -- ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (hasCurrentObject (), (uint32_t) (mCurrent)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// UpEnumerator_range
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_range::UpEnumerator_range (const GGS_range & inEnumeratedRange) :
+mIsValid (inEnumeratedRange.isValid ()),
+mAscending (true),
+mStart (inEnumeratedRange.mProperty_start.uintValue ()),
+mLength (inEnumeratedRange.mProperty_length.uintValue ()),
+mCurrent (0) {
+  if (mAscending) {
+    mCurrent = mStart ;
+  }else{
+    mCurrent = mStart + mLength - 1 ;
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+bool UpEnumerator_range::hasCurrentObject (void) const {
+  bool ok = false ;
+  if (mIsValid) {
+    if (mAscending) {
+      ok = mCurrent < (mStart + mLength) ;
+    }else{
+      ok = mCurrent >= mStart ;
+    }
+  }
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool UpEnumerator_range::hasNextObject (void) const {
+  bool ok = false ;
+  if (mIsValid) {
+    if (mAscending) {
+      ok = (mCurrent + 1) < (mStart + mLength) ;
+    }else{
+      ok = mCurrent > mStart ;
+    }
+  }
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void UpEnumerator_range::gotoNextObject (void) {
+  if (mAscending) {
+    mCurrent ++ ;
+  }else{
+    mCurrent -- ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
   return GGS_uint (hasCurrentObject (), (uint32_t) (mCurrent)) ;
 }
 

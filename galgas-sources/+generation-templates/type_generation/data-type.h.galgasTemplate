@@ -16,6 +16,34 @@ class cEnumerator_data final : public cGenericAbstractEnumerator {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_data final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_data (%?^%const class GGS_data & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_uint current_data (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uint current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_data final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_data (%?^%const class GGS_data & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_uint current_data (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_uint current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 //   @data type
 //--------------------------------------------------------------------------------------------------
 

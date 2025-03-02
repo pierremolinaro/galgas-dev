@@ -345,6 +345,52 @@ GGS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string UpEnumerator_stringset::current_key (LOCATION_ARGS) const {
+  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringset) ;
+  return p->attribute_key () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string UpEnumerator_stringset::current (LOCATION_ARGS) const {
+  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringset) ;
+  return p->attribute_key () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string DownEnumerator_stringset::current_key (LOCATION_ARGS) const {
+  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringset) ;
+  return p->attribute_key () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string DownEnumerator_stringset::current (LOCATION_ARGS) const {
+  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringset) ;
+  return p->attribute_key () ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //    C O M P A R I S O N
 //--------------------------------------------------------------------------------------------------
 
@@ -426,7 +472,7 @@ GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist 
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    cEnumerator_stringlist enumerator (inStringList, EnumerationOrder::up) ;
+    cEnumerator_stringlist enumerator (inStringList, EnumerationOrder::Up) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
@@ -442,7 +488,7 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    cEnumerator_lstringlist enumerator (inStringList, EnumerationOrder::up) ;
+    cEnumerator_lstringlist enumerator (inStringList, EnumerationOrder::Up) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;

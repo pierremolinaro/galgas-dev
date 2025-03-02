@@ -750,8 +750,8 @@ GGS_string GGS_binaryset::getter_print (const GGS_stringlist & inVariableList,
   if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
     TC_UniqueArray <String> variablesNames ;
     TC_UniqueArray <int32_t> bitCounts ;
-    cEnumerator_stringlist variableEnumerator (inVariableList, EnumerationOrder::up) ;
-    cEnumerator_uintlist bddCountEnumerator (inBDDCount, EnumerationOrder::up) ;
+    cEnumerator_stringlist variableEnumerator (inVariableList, EnumerationOrder::Up) ;
+    cEnumerator_uintlist bddCountEnumerator (inBDDCount, EnumerationOrder::Up) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       variablesNames.appendObject (name) ;
@@ -775,7 +775,7 @@ GGS_binaryset GGS_binaryset::getter_transformedBy (const GGS_uintlist & inTransf
   if (isValid () && inTransformationArray.isValid ()) {
     uint32_t * substitutionArray = nullptr ;
     macroMyNewPODArray (substitutionArray, uint32_t, inTransformationArray.count ()) ;
-    cEnumerator_uintlist enumerator (inTransformationArray, EnumerationOrder::up) ;
+    cEnumerator_uintlist enumerator (inTransformationArray, EnumerationOrder::Up) ;
     uint32_t idx = 0 ;
     while (enumerator.hasCurrentObject ()) {
       const uint32_t value = enumerator.current_mValue (HERE).uintValue () ;
@@ -806,7 +806,7 @@ GGS_string GGS_binaryset::getter_graphviz (const GGS_stringlist & inBitNameList
   GGS_string result ;
   if (isValid () && inBitNameList.isValid ()) {
     TC_UniqueArray <String> bitNameArray ;
-    cEnumerator_stringlist variableEnumerator (inBitNameList, EnumerationOrder::up) ;
+    cEnumerator_stringlist variableEnumerator (inBitNameList, EnumerationOrder::Up) ;
     while (variableEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       bitNameArray.appendObject (name) ;

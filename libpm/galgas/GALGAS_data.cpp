@@ -489,3 +489,49 @@ GGS_uint cEnumerator_data::current (LOCATION_ARGS) const {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+UpEnumerator_data::UpEnumerator_data (const GGS_data & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_data::current_data (LOCATION_ARGS) const {
+  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_data) ;
+  return p->attribute_data () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_data::current (LOCATION_ARGS) const {
+  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_data) ;
+  return p->attribute_data () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_data::DownEnumerator_data (const GGS_data & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_data::current_data (LOCATION_ARGS) const {
+  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_data) ;
+  return p->attribute_data () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_data::current (LOCATION_ARGS) const {
+  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_data) ;
+  return p->attribute_data () ;
+}
+
+//--------------------------------------------------------------------------------------------------

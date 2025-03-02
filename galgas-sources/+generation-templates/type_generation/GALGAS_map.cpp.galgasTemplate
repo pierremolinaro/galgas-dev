@@ -192,7 +192,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TY
    !^%Compiler * inCompiler%
    %\n %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!TYPE_IDENTIFIER% result = *this ;
-  cEnumerator_%!TYPE_IDENTIFIER% enumerator (inOperand, EnumerationOrder::up) ;
+  cEnumerator_%!TYPE_IDENTIFIER% enumerator (inOperand, EnumerationOrder::Up) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE)%
 for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
@@ -344,9 +344,9 @@ cMapElement_%!TYPE_IDENTIFIER% * GGS_%!TYPE_IDENTIFIER%::readWriteAccessForWithI
   return result ;
 }
 
-%
-
-%//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//  Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                        %!^%const EnumerationOrder inOrder) :
@@ -383,3 +383,79 @@ GGS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
   %}\n\n%
 end
 
+%//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
+  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+  %, p->mProperty_%![mPropertyName identifierRepresentation]
+end
+%) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end
+
+%//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
+  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mProperty_lkey%
+for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do
+  %, p->mProperty_%![mPropertyName identifierRepresentation]
+end
+%) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end
+%

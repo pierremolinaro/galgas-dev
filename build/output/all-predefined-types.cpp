@@ -447,6 +447,8 @@ GGS_string GGS_stringlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @stringlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_stringlist::cEnumerator_stringlist (const GGS_stringlist & inEnumeratedObject,
                                                 const EnumerationOrder inOrder) :
@@ -466,6 +468,62 @@ GGS_stringlist_2E_element cEnumerator_stringlist::current (LOCATION_ARGS) const 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string cEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @stringlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_stringlist::DownEnumerator_stringlist (const GGS_stringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist_2E_element DownEnumerator_stringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string DownEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @stringlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_stringlist::UpEnumerator_stringlist (const GGS_stringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist_2E_element UpEnumerator_stringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_stringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string UpEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringlist) ;
   return p->mObject.mProperty_mValue ;
@@ -1023,6 +1081,8 @@ GGS_lstring GGS_lstringlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @lstringlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_lstringlist::cEnumerator_lstringlist (const GGS_lstringlist & inEnumeratedObject,
                                                   const EnumerationOrder inOrder) :
@@ -1042,6 +1102,62 @@ GGS_lstringlist_2E_element cEnumerator_lstringlist::current (LOCATION_ARGS) cons
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring cEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @lstringlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_lstringlist::DownEnumerator_lstringlist (const GGS_lstringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist_2E_element DownEnumerator_lstringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @lstringlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_lstringlist::UpEnumerator_lstringlist (const GGS_lstringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist_2E_element UpEnumerator_lstringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lstringlist) ;
   return p->mObject.mProperty_mValue ;
@@ -1667,6 +1783,8 @@ GGS_string GGS__32_stringlist::getter_mValue_31_AtIndex (const GGS_uint & inInde
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @_32_stringlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator__32_stringlist::cEnumerator__32_stringlist (const GGS__32_stringlist & inEnumeratedObject,
                                                         const EnumerationOrder inOrder) :
@@ -1694,6 +1812,78 @@ GGS_string cEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) const 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string cEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const {
+  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+  return p->mObject.mProperty_mValue_31_ ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_32_stringlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__32_stringlist::DownEnumerator__32_stringlist (const GGS__32_stringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist_2E_element DownEnumerator__32_stringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string DownEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) const {
+  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+  return p->mObject.mProperty_mValue_30_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string DownEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const {
+  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+  return p->mObject.mProperty_mValue_31_ ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_32_stringlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__32_stringlist::UpEnumerator__32_stringlist (const GGS__32_stringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist_2E_element UpEnumerator__32_stringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string UpEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) const {
+  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+  return p->mObject.mProperty_mValue_30_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string UpEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const {
   const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
   return p->mObject.mProperty_mValue_31_ ;
@@ -2571,6 +2761,8 @@ GGS_function GGS_functionlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @functionlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_functionlist::cEnumerator_functionlist (const GGS_functionlist & inEnumeratedObject,
                                                     const EnumerationOrder inOrder) :
@@ -2590,6 +2782,62 @@ GGS_functionlist_2E_element cEnumerator_functionlist::current (LOCATION_ARGS) co
 //--------------------------------------------------------------------------------------------------
 
 GGS_function cEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_functionlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @functionlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_functionlist::DownEnumerator_functionlist (const GGS_functionlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionlist_2E_element DownEnumerator_functionlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_functionlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_function DownEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_functionlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @functionlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_functionlist::UpEnumerator_functionlist (const GGS_functionlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionlist_2E_element UpEnumerator_functionlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_functionlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_function UpEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_functionlist) ;
   return p->mObject.mProperty_mValue ;
@@ -2987,6 +3235,8 @@ GGS_luint GGS_luintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @luintlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_luintlist::cEnumerator_luintlist (const GGS_luintlist & inEnumeratedObject,
                                               const EnumerationOrder inOrder) :
@@ -3006,6 +3256,62 @@ GGS_luintlist_2E_element cEnumerator_luintlist::current (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_luint cEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_luintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @luintlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_luintlist::DownEnumerator_luintlist (const GGS_luintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist_2E_element DownEnumerator_luintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_luintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint DownEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_luintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @luintlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_luintlist::UpEnumerator_luintlist (const GGS_luintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist_2E_element UpEnumerator_luintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_luintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint UpEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_luintlist) ;
   return p->mObject.mProperty_mValue ;
@@ -3535,6 +3841,8 @@ GGS_object GGS_objectlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @objectlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_objectlist::cEnumerator_objectlist (const GGS_objectlist & inEnumeratedObject,
                                                 const EnumerationOrder inOrder) :
@@ -3554,6 +3862,62 @@ GGS_objectlist_2E_element cEnumerator_objectlist::current (LOCATION_ARGS) const 
 //--------------------------------------------------------------------------------------------------
 
 GGS_object cEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_objectlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @objectlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_objectlist::DownEnumerator_objectlist (const GGS_objectlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_objectlist_2E_element DownEnumerator_objectlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_objectlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_object DownEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_objectlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @objectlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_objectlist::UpEnumerator_objectlist (const GGS_objectlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_objectlist_2E_element UpEnumerator_objectlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_objectlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_object UpEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_objectlist) ;
   return p->mObject.mProperty_mValue ;
@@ -3951,6 +4315,8 @@ GGS_type GGS_typelist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @typelist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_typelist::cEnumerator_typelist (const GGS_typelist & inEnumeratedObject,
                                             const EnumerationOrder inOrder) :
@@ -3970,6 +4336,62 @@ GGS_typelist_2E_element cEnumerator_typelist::current (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_type cEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typelist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @typelist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_typelist::DownEnumerator_typelist (const GGS_typelist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typelist_2E_element DownEnumerator_typelist::current (LOCATION_ARGS) const {
+  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typelist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_type DownEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typelist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @typelist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_typelist::UpEnumerator_typelist (const GGS_typelist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typelist_2E_element UpEnumerator_typelist::current (LOCATION_ARGS) const {
+  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_typelist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_type UpEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_typelist) ;
   return p->mObject.mProperty_mValue ;
@@ -4367,6 +4789,8 @@ GGS_uint GGS_uintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @uintlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_uintlist::cEnumerator_uintlist (const GGS_uintlist & inEnumeratedObject,
                                             const EnumerationOrder inOrder) :
@@ -4386,6 +4810,62 @@ GGS_uintlist_2E_element cEnumerator_uintlist::current (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint cEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @uintlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_uintlist::DownEnumerator_uintlist (const GGS_uintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist_2E_element DownEnumerator_uintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint DownEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @uintlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_uintlist::UpEnumerator_uintlist (const GGS_uintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist_2E_element UpEnumerator_uintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_uintlist) ;
   return p->mObject.mProperty_mValue ;
@@ -4783,6 +5263,8 @@ GGS_uint_36__34_ GGS_uint_36__34_list::getter_mValueAtIndex (const GGS_uint & in
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @uint_36__34_list
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_uint_36__34_list::cEnumerator_uint_36__34_list (const GGS_uint_36__34_list & inEnumeratedObject,
                                                             const EnumerationOrder inOrder) :
@@ -4802,6 +5284,62 @@ GGS_uint_36__34_list_2E_element cEnumerator_uint_36__34_list::current (LOCATION_
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ cEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @uint_36__34_list
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_uint_36__34_list::DownEnumerator_uint_36__34_list (const GGS_uint_36__34_list & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_list_2E_element DownEnumerator_uint_36__34_list::current (LOCATION_ARGS) const {
+  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_ DownEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @uint_36__34_list
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_uint_36__34_list::UpEnumerator_uint_36__34_list (const GGS_uint_36__34_list & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_list_2E_element UpEnumerator_uint_36__34_list::current (LOCATION_ARGS) const {
+  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_ UpEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
   return p->mObject.mProperty_mValue ;
@@ -5199,6 +5737,8 @@ GGS_bigint GGS_bigintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @bigintlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_bigintlist::cEnumerator_bigintlist (const GGS_bigintlist & inEnumeratedObject,
                                                 const EnumerationOrder inOrder) :
@@ -5218,6 +5758,62 @@ GGS_bigintlist_2E_element cEnumerator_bigintlist::current (LOCATION_ARGS) const 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigint cEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @bigintlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_bigintlist::DownEnumerator_bigintlist (const GGS_bigintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist_2E_element DownEnumerator_bigintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigint DownEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @bigintlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_bigintlist::UpEnumerator_bigintlist (const GGS_bigintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist_2E_element UpEnumerator_bigintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigint UpEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_bigintlist) ;
   return p->mObject.mProperty_mValue ;
@@ -5615,6 +6211,8 @@ GGS_lbigint GGS_lbigintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @lbigintlist
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_lbigintlist::cEnumerator_lbigintlist (const GGS_lbigintlist & inEnumeratedObject,
                                                   const EnumerationOrder inOrder) :
@@ -5634,6 +6232,62 @@ GGS_lbigintlist_2E_element cEnumerator_lbigintlist::current (LOCATION_ARGS) cons
 //--------------------------------------------------------------------------------------------------
 
 GGS_lbigint cEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @lbigintlist
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_lbigintlist::DownEnumerator_lbigintlist (const GGS_lbigintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist_2E_element DownEnumerator_lbigintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigint DownEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
+  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
+  return p->mObject.mProperty_mValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @lbigintlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_lbigintlist::UpEnumerator_lbigintlist (const GGS_lbigintlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist_2E_element UpEnumerator_lbigintlist::current (LOCATION_ARGS) const {
+  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigint UpEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
   return p->mObject.mProperty_mValue ;

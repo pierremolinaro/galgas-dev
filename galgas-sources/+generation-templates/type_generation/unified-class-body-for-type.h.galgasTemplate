@@ -429,6 +429,8 @@ end
 if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
 %//--------------------------------- Friend
   friend class cEnumerator_%!TYPE_IDENTIFIER% ;
+  friend class UpEnumerator_%!TYPE_IDENTIFIER% ;
+  friend class DownEnumerator_%!TYPE_IDENTIFIER% ;
 %end
 % 
 } ;

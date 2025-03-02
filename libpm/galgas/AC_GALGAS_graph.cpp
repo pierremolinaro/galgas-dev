@@ -554,7 +554,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
                              COMMA_LOCATION_ARGS) const {
 //--- Build start node set
   UInt32Set startNodeSet ;
-  cEnumerator_lstringlist enumerator1 (inStartNodes, EnumerationOrder::up) ;
+  cEnumerator_lstringlist enumerator1 (inStartNodes, EnumerationOrder::Up) ;
   while (enumerator1.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
     if (nullptr == nodePtr) {
@@ -572,7 +572,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   }
 //--- Build node to exclude set
   UInt32Set nodesToExcludeSet ;
-  cEnumerator_stringset enumerator2 (inNodesToExclude, EnumerationOrder::up) ;
+  cEnumerator_stringset enumerator2 (inNodesToExclude, EnumerationOrder::Up) ;
   while (enumerator2.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator2.current_key (THERE).stringValue(), root()) ;
     if (nullptr == nodePtr) {

@@ -797,6 +797,8 @@ void GGS_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementArray
 }
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @%!KEY_TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                                                         const EnumerationOrder inOrder) :
@@ -823,6 +825,74 @@ GGS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION
 %for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![propertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
+  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mElement.mProperty_%![propertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end 
+%
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @%!KEY_TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mElement) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!KEY_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return p->mElement.mProperty_key ;
+}
+
+%for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![propertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
+  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mElement.mProperty_%![propertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end 
+%
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @%!KEY_TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return GGS_%!ELEMENT_TYPE_IDENTIFIER% (p->mElement) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!KEY_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return p->mElement.mProperty_key ;
+}
+
+%for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![propertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![propertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mElement.mProperty_%![propertyName identifierRepresentation]% ;\n%

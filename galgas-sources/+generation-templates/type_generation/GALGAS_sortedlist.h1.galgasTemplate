@@ -5,6 +5,38 @@
 class cEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
   public: cEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
      %!^%const EnumerationOrder inOrder) ;
+%
+  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  end
+  if not [ENUMERATED_OBJECT_TYPE isNull] then
+%//--- Current element access\n%
+%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+  end
+%} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+%
+  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  end
+  if not [ENUMERATED_OBJECT_TYPE isNull] then
+%//--- Current element access\n%
+%  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+  end
+%} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_%!TYPE_IDENTIFIER% final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) ;
 
 //    public: bool hasCurrentObject (void) const ;
 //    public: void gotoNextObject (void) ;

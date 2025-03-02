@@ -15,6 +15,29 @@ class cEnumerator_stringset final : public cGenericAbstractEnumerator {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_stringset final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_stringset (%?^%const class GGS_stringset & inEnumeratedObject) ;
+
+//--- Current element access
+  public: class GGS_string current_key (LOCATION_ARGS) const ;
+  public: class GGS_string current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_stringset final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_stringset (%?^%const class GGS_stringset & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+//--- Current element access
+  public: class GGS_string current_key (LOCATION_ARGS) const ;
+  public: class GGS_string current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 //   @stringset type
 //--------------------------------------------------------------------------------------------------
 

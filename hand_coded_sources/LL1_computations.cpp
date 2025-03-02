@@ -470,7 +470,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
   ioCppFileContents.appendCString ("static const int32_t gProductions_") ;
   ioCppFileContents.appendString (inTargetFileName) ;
   ioCppFileContents.appendCString (" [] = {\n") ;
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::up) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::Up) ;
   int16_t productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {
@@ -631,7 +631,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
                                      "indexing",
                                      "") ;
     ioCppFileContents.appendCString ("}\n\n") ;
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), EnumerationOrder::up) ;
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), EnumerationOrder::Up) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       ioCppFileContents.appendCString ("void cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
@@ -640,7 +640,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
       ioCppFileContents.appendCString ("_") ;
       ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" (") ;
-      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
+      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
@@ -788,7 +788,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendCString (",\n                                ") ;
         }
         ioCppFileContents.appendCString ("GGS_lstring inFilePath") ;
-        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::up) ;
+        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;

@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
 //%!"Class for element of '@" + TYPE_IDENTIFIER + "' sorted list"%
-//
 //--------------------------------------------------------------------------------------------------
 
 class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
@@ -337,6 +335,8 @@ void GGS_%!TYPE_IDENTIFIER%::method_greatest (%?^
 }
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const EnumerationOrder inOrder) :
@@ -355,6 +355,60 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION
 %for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
   %GGS_%![mPropertyTypeEntry identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end
+%
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  return p->mObject ;
+}
+
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end
+%
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  return p->mObject ;
+}
+
+%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
+  %//--------------------------------------------------------------------------------------------------\n\n%
+  %GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%

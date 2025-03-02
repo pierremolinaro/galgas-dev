@@ -214,6 +214,8 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%c
 }
 
 //--------------------------------------------------------------------------------------------------
+// Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const EnumerationOrder inOrder) :
@@ -228,10 +230,64 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
   if (mCurrent < mSharedArray.count ()) {
     switch (mEnumerationOrder) {
-    case EnumerationOrder::up :
+    case EnumerationOrder::Up :
       result = mSharedArray (mCurrent COMMA_THERE) ;
       break ;
-    case EnumerationOrder::down :
+    case EnumerationOrder::Down :
+      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
+      break ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+mSharedArray (inEnumeratedObject.mSharedArray),
+mCurrent (0),
+mEnumerationOrder (EnumerationOrder::Down) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (mCurrent < mSharedArray.count ()) {
+    switch (mEnumerationOrder) {
+    case EnumerationOrder::Up :
+      result = mSharedArray (mCurrent COMMA_THERE) ;
+      break ;
+    case EnumerationOrder::Down :
+      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
+      break ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject) :
+mSharedArray (inEnumeratedObject.mSharedArray),
+mCurrent (0),
+mEnumerationOrder (EnumerationOrder::Up) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (mCurrent < mSharedArray.count ()) {
+    switch (mEnumerationOrder) {
+    case EnumerationOrder::Up :
+      result = mSharedArray (mCurrent COMMA_THERE) ;
+      break ;
+    case EnumerationOrder::Down :
       result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
       break ;
     }

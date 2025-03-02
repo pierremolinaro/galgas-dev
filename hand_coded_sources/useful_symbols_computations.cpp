@@ -94,7 +94,7 @@ static bool displayUnusefulSymbols (Compiler * inCompiler,
   BinaryDecisionDiagramRelation uselessSymbolsForWarning = uselessSymbols ;
 
 //--------------------- Compute array of used symbols declared as unused by user
-  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, EnumerationOrder::up) ;
+  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, EnumerationOrder::Up) ;
   TC_UniqueArray <String> usedSymbolDeclaredAsUnusedArray ;
   while (currentNT.hasCurrentObject ()) {
     const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;

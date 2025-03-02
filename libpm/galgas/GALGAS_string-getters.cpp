@@ -880,7 +880,7 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
         }else if (FileManager::fileExistsAtPath (name)) {
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          cEnumerator_stringlist currentExtension (inExtensionList, EnumerationOrder::up) ;
+          cEnumerator_stringlist currentExtension (inExtensionList, EnumerationOrder::Up) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
             extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;
@@ -936,7 +936,7 @@ static void recursiveSearchForDirectories (const String & inUnixStartPath,
         //--- Look for extension
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          cEnumerator_stringlist currentExtension (inExtensionList, EnumerationOrder::up) ;
+          cEnumerator_stringlist currentExtension (inExtensionList, EnumerationOrder::Up) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
             extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;

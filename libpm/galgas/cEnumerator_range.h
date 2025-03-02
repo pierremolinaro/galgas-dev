@@ -36,12 +36,61 @@ class cEnumerator_range final {
   public: cEnumerator_range (const GGS_range & inEnumeratedRange,
                              const EnumerationOrder inOrder) ;
 
-//--- Destructor
-  public: ~ cEnumerator_range (void) ;
-
 //--- No copy
   private: cEnumerator_range (const cEnumerator_range &) = delete ;
   private: cEnumerator_range & operator = (const cEnumerator_range &) = delete ;
+
+//--- 
+  public: bool hasCurrentObject (void) const ;
+  public: bool hasNextObject (void) const ;
+  public: void gotoNextObject (void) ;
+
+//--- Current element access
+  public: GGS_uint current (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const bool mIsValid ;
+  private: const bool mAscending ;
+  private: const int64_t mStart ;
+  private: const int64_t mLength ;
+  private: int64_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_range final {
+//--- Constructor
+  public: UpEnumerator_range (const GGS_range & inEnumeratedRange) ;
+
+//--- No copy
+  private: UpEnumerator_range (const UpEnumerator_range &) = delete ;
+  private: UpEnumerator_range & operator = (const UpEnumerator_range &) = delete ;
+
+//--- 
+  public: bool hasCurrentObject (void) const ;
+  public: bool hasNextObject (void) const ;
+  public: void gotoNextObject (void) ;
+
+//--- Current element access
+  public: GGS_uint current (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const bool mIsValid ;
+  private: const bool mAscending ;
+  private: const int64_t mStart ;
+  private: const int64_t mLength ;
+  private: int64_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_range final {
+//--- Constructor
+  public: DownEnumerator_range (const GGS_range & inEnumeratedRange) ;
+
+//--- No copy
+  private: DownEnumerator_range (const DownEnumerator_range &) = delete ;
+  private: DownEnumerator_range & operator = (const DownEnumerator_range &) = delete ;
 
 //--- 
   public: bool hasCurrentObject (void) const ;
