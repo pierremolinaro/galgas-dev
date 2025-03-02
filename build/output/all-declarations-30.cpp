@@ -7356,7 +7356,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
   GGS_uint index_331_ (0) ;
   if (in_SYNTAX_5F_COMPONENTS.isValid ()) {
     UpEnumerator_lstringlist enumerator_331 (in_SYNTAX_5F_COMPONENTS) ;
-    // cEnumerator_lstringlist enumerator_331 (in_SYNTAX_5F_COMPONENTS, EnumerationOrder::Up) ;
     while (enumerator_331.hasCurrentObject ()) {
       result.appendString ("public cParser_") ;
       result.appendString (enumerator_331.current_mValue (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 7)).stringValue ()) ;
@@ -7372,7 +7371,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
   GGS_uint index_503_ (0) ;
   if (in_NON_5F_TERMINAL_5F_MAP.isValid ()) {
     UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_503 (in_NON_5F_TERMINAL_5F_MAP) ;
-    // cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_503 (in_NON_5F_TERMINAL_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_503.hasCurrentObject ()) {
       result.appendString ("//------------------------------------- '") ;
       result.appendString (enumerator_503.current_lkey (HERE).readProperty_string ().stringValue ()) ;
@@ -7403,7 +7401,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
       GGS_uint index_1116_ (0) ;
       if (enumerator_503.current_mNonterminalSymbolParametersMap (HERE).isValid ()) {
         UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_1116 (enumerator_503.current_mNonterminalSymbolParametersMap (HERE)) ;
-        // cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_1116 (enumerator_503.current_mNonterminalSymbolParametersMap (HERE), EnumerationOrder::Up) ;
         while (enumerator_1116.hasCurrentObject ()) {
           result.appendString ("//----------- '") ;
           result.appendString (enumerator_1116.current_lkey (HERE).readProperty_string ().stringValue ()) ;
@@ -7416,7 +7413,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
           GGS_uint index_1437_IDX (0) ;
           if (enumerator_1116.current_mFormalParametersList (HERE).isValid ()) {
             UpEnumerator_signatureForGrammarAnalysis enumerator_1437 (enumerator_1116.current_mFormalParametersList (HERE)) ;
-            // cEnumerator_signatureForGrammarAnalysis enumerator_1437 (enumerator_1116.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
             while (enumerator_1437.hasCurrentObject ()) {
               const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1437.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 29)))).boolEnum () ;
               switch (test_1) {
@@ -7509,7 +7505,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
             GGS_uint index_2935_IDX (0) ;
             if (enumerator_1116.current_mFormalParametersList (HERE).isValid ()) {
               UpEnumerator_signatureForGrammarAnalysis enumerator_2935 (enumerator_1116.current_mFormalParametersList (HERE)) ;
-              // cEnumerator_signatureForGrammarAnalysis enumerator_2935 (enumerator_1116.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
               while (enumerator_2935.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
@@ -7587,7 +7582,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
             GGS_uint index_4275_IDX (0) ;
             if (enumerator_1116.current_mFormalParametersList (HERE).isValid ()) {
               UpEnumerator_signatureForGrammarAnalysis enumerator_4275 (enumerator_1116.current_mFormalParametersList (HERE)) ;
-              // cEnumerator_signatureForGrammarAnalysis enumerator_4275 (enumerator_1116.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
               while (enumerator_4275.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
@@ -7680,7 +7674,6 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
   GGS_uint index_5812_ (0) ;
   if (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator_nonTerminalToAddList enumerator_5812 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST) ;
-    // cEnumerator_nonTerminalToAddList enumerator_5812 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_5812.hasCurrentObject ()) {
       result.appendString ("  public: virtual int32_t select_") ;
       result.appendString (enumerator_5812.current_mSyntaxComponentName (HERE).getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 103)).stringValue ()) ;

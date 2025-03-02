@@ -362,8 +362,6 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   ioGeneratedCode += if self.mIsAscending then "Up" else "Down" end
   ioGeneratedCode += "Enumerator_" + [self.mExpression.mResultType identifierRepresentation]
   ioGeneratedCode += " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ") ;\n"
-  ioGeneratedCode += "// cEnumerator_" + [self.mExpression.mResultType identifierRepresentation] + " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ", "
-                  + if self.mIsAscending then "EnumerationOrder::Up" else "EnumerationOrder::Down" end + ") ;\n"
 //--- Before
   if ([self.mBeforeInstructionList count] + [self.mAfterInstructionList count]) > 0 then
     ioGeneratedCode += "const bool nonEmpty_" + self.mEnumeratorCppName + " = " + self.mEnumeratorCppName + ".hasCurrentObject () ;\n"

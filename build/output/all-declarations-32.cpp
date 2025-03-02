@@ -1127,7 +1127,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_249_ (0) ;
   if (in_BUILD_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator_BuildFileList enumerator_249 (in_BUILD_5F_FILE_5F_LIST) ;
-    // cEnumerator_BuildFileList enumerator_249 (in_BUILD_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_249.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_249.current_mBuildReference (HERE).stringValue ()) ;
@@ -1144,7 +1143,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_552_ (0) ;
   if (in_C_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_552 (in_C_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_552 (in_C_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_552.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_552.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1162,7 +1160,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_937_ (0) ;
   if (in_CPP_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_937 (in_CPP_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_937 (in_CPP_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_937.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_937.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1180,7 +1177,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_1328_ (0) ;
   if (in_SWIFT_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_1328 (in_SWIFT_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_1328 (in_SWIFT_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1328.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_1328.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1198,7 +1194,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_1713_ (0) ;
   if (in_M_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_1713 (in_M_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_1713 (in_M_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1713.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_1713.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1216,7 +1211,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_2099_ (0) ;
   if (in_MM_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_2099 (in_MM_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_2099 (in_MM_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2099.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_2099.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1234,7 +1228,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_2494_ (0) ;
   if (in_HEADER_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_2494 (in_HEADER_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_2494 (in_HEADER_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2494.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_2494.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1252,7 +1245,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_2885_ (0) ;
   if (in_FRAMEWORK_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_2885 (in_FRAMEWORK_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_2885 (in_FRAMEWORK_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2885.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_2885.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1270,7 +1262,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_3458_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_3458 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_3458 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_3458.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_3458.current_mProductFileReference (HERE).stringValue ()) ;
@@ -1284,7 +1275,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_4054_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_4054 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_4054 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_4054.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_4054.current_mProductFileReference (HERE).stringValue ()) ;
@@ -1298,7 +1288,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_4383_ (0) ;
   if (in_PLIST_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_4383 (in_PLIST_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_4383 (in_PLIST_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_4383.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_4383.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1314,7 +1303,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_4747_ (0) ;
   if (in_XIB_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_4747 (in_XIB_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_4747 (in_XIB_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_4747.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_4747.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1330,7 +1318,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_5113_ (0) ;
   if (in_TIFF_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_5113 (in_TIFF_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_5113 (in_TIFF_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_5113.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_5113.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1346,7 +1333,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_5452_ (0) ;
   if (in_ICNS_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator__32_stringlist enumerator_5452 (in_ICNS_5F_FILE_5F_LIST) ;
-    // cEnumerator__32_stringlist enumerator_5452 (in_ICNS_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_5452.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_5452.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1363,7 +1349,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_6103_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_6103 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_6103 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_6103.hasCurrentObject ()) {
       const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_6103.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 149)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       switch (test_0) {
@@ -1374,7 +1359,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
         GGS_uint index_6342_ (0) ;
         if (enumerator_6103.current_mFrameworksFileRefList (HERE).isValid ()) {
           UpEnumerator_stringlist enumerator_6342 (enumerator_6103.current_mFrameworksFileRefList (HERE)) ;
-          // cEnumerator_stringlist enumerator_6342 (enumerator_6103.current_mFrameworksFileRefList (HERE), EnumerationOrder::Up) ;
           while (enumerator_6342.hasCurrentObject ()) {
             result.appendString ("      ") ;
             result.appendString (enumerator_6342.current_mValue (HERE).stringValue ()) ;
@@ -1397,7 +1381,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_6780_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_6780 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_6780 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_6780.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_6780.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
@@ -1405,7 +1388,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_6964_ (0) ;
       if (enumerator_6780.current_mFrameworksFileRefList (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_6964 (enumerator_6780.current_mFrameworksFileRefList (HERE)) ;
-        // cEnumerator_stringlist enumerator_6964 (enumerator_6780.current_mFrameworksFileRefList (HERE), EnumerationOrder::Up) ;
         while (enumerator_6964.hasCurrentObject ()) {
           result.appendString ("      ") ;
           result.appendString (enumerator_6964.current_mValue (HERE).stringValue ()) ;
@@ -1423,7 +1405,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_7240_ (0) ;
   if (in_GROUPS.isValid ()) {
     UpEnumerator_XCodeGroupList enumerator_7240 (in_GROUPS) ;
-    // cEnumerator_XCodeGroupList enumerator_7240 (in_GROUPS, EnumerationOrder::Up) ;
     while (enumerator_7240.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_7240.current_mGroupReference (HERE).stringValue ()) ;
@@ -1433,7 +1414,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_7367_ (0) ;
       if (enumerator_7240.current_mChildrenRefs (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_7367 (enumerator_7240.current_mChildrenRefs (HERE)) ;
-        // cEnumerator_stringlist enumerator_7367 (enumerator_7240.current_mChildrenRefs (HERE), EnumerationOrder::Up) ;
         while (enumerator_7367.hasCurrentObject ()) {
           result.appendString ("      ") ;
           result.appendString (enumerator_7367.current_mValue (HERE).stringValue ()) ;
@@ -1457,7 +1437,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_7719_ (0) ;
   if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
     UpEnumerator_stringlist enumerator_7719 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS) ;
-    // cEnumerator_stringlist enumerator_7719 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, EnumerationOrder::Up) ;
     while (enumerator_7719.hasCurrentObject ()) {
       result.appendString ("      ") ;
       result.appendString (enumerator_7719.current_mValue (HERE).stringValue ()) ;
@@ -1470,7 +1449,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_8133_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_8133 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_8133 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_8133.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_8133.current_mTargetRef (HERE).stringValue ()) ;
@@ -1507,7 +1485,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_9090_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_9090 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_9090 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_9090.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_9090.current_mTargetRef (HERE).stringValue ()) ;
@@ -1525,7 +1502,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_9479_ (0) ;
       if (enumerator_9090.current_mDependentTargets (HERE).isValid ()) {
         UpEnumerator__32_stringlist enumerator_9479 (enumerator_9090.current_mDependentTargets (HERE)) ;
-        // cEnumerator__32_stringlist enumerator_9479 (enumerator_9090.current_mDependentTargets (HERE), EnumerationOrder::Up) ;
         while (enumerator_9479.hasCurrentObject ()) {
           result.appendString ("      ") ;
           result.appendString (enumerator_9479.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1555,7 +1531,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_10503_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_10503 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_10503 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_10503.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_10503.current_mTargetRef (HERE).stringValue ()) ;
@@ -1567,7 +1542,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_10842_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_10842 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_10842 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_10842.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_10842.current_mTargetRef (HERE).stringValue ()) ;
@@ -1580,7 +1554,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_11294_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_11294 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_11294 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_11294.hasCurrentObject ()) {
       result.appendString ("  ") ;
       result.appendString (enumerator_11294.current_mResourceBuildRef (HERE).stringValue ()) ;
@@ -1588,7 +1561,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_11477_ (0) ;
       if (enumerator_11294.current_mResourceFileBuildRefs (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_11477 (enumerator_11294.current_mResourceFileBuildRefs (HERE)) ;
-        // cEnumerator_stringlist enumerator_11477 (enumerator_11294.current_mResourceFileBuildRefs (HERE), EnumerationOrder::Up) ;
         while (enumerator_11477.hasCurrentObject ()) {
           result.appendString ("      ") ;
           result.appendString (enumerator_11477.current_mValue (HERE).stringValue ()) ;
@@ -1606,7 +1578,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_11927_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_11927 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_11927 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_11927.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_11927.current_mBuildPhaseRef (HERE).stringValue ()) ;
@@ -1614,7 +1585,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_12094_ (0) ;
       if (enumerator_11927.current_mBuildPhaseRefList (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_12094 (enumerator_11927.current_mBuildPhaseRefList (HERE)) ;
-        // cEnumerator_stringlist enumerator_12094 (enumerator_11927.current_mBuildPhaseRefList (HERE), EnumerationOrder::Up) ;
         while (enumerator_12094.hasCurrentObject ()) {
           result.appendString ("        ") ;
           result.appendString (enumerator_12094.current_mValue (HERE).stringValue ()) ;
@@ -1631,7 +1601,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_12500_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_12500 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_12500 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_12500.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_12500.current_mBuildPhaseRef (HERE).stringValue ()) ;
@@ -1639,7 +1608,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_12667_ (0) ;
       if (enumerator_12500.current_mBuildPhaseRefList (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_12667 (enumerator_12500.current_mBuildPhaseRefList (HERE)) ;
-        // cEnumerator_stringlist enumerator_12667 (enumerator_12500.current_mBuildPhaseRefList (HERE), EnumerationOrder::Up) ;
         while (enumerator_12667.hasCurrentObject ()) {
           result.appendString ("        ") ;
           result.appendString (enumerator_12667.current_mValue (HERE).stringValue ()) ;
@@ -1657,12 +1625,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_13174_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_13174 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_13174 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_13174.hasCurrentObject ()) {
       GGS_uint index_13222_ (0) ;
       if (enumerator_13174.current_mDependentTargets (HERE).isValid ()) {
         UpEnumerator__32_stringlist enumerator_13222 (enumerator_13174.current_mDependentTargets (HERE)) ;
-        // cEnumerator__32_stringlist enumerator_13222 (enumerator_13174.current_mDependentTargets (HERE), EnumerationOrder::Up) ;
         while (enumerator_13222.hasCurrentObject ()) {
           result.appendString ("  ") ;
           result.appendString (enumerator_13222.current_mValue_30_ (HERE).stringValue ()) ;
@@ -1683,7 +1649,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_13746_ (0) ;
   if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_13746 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_13746 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_13746.hasCurrentObject ()) {
       result.appendString ("      ") ;
       result.appendString (enumerator_13746.current_mValue (HERE).stringValue ()) ;
@@ -1696,7 +1661,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_14061_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_14061 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_14061 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_14061.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_14061.current_mBuildConfigurationRef (HERE).stringValue ()) ;
@@ -1704,7 +1668,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_14265_ (0) ;
       if (enumerator_14061.current_mBuildConfigurationSettingList (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_14265 (enumerator_14061.current_mBuildConfigurationSettingList (HERE)) ;
-        // cEnumerator_stringlist enumerator_14265 (enumerator_14061.current_mBuildConfigurationSettingList (HERE), EnumerationOrder::Up) ;
         while (enumerator_14265.hasCurrentObject ()) {
           result.appendString ("      ") ;
           result.appendString (enumerator_14265.current_mValue (HERE).stringValue ()) ;
@@ -1723,7 +1686,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_14740_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_14740 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_14740 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_14740.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_14740.current_mBuildConfigurationRef (HERE).stringValue ()) ;
@@ -1731,7 +1693,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       GGS_uint index_14908_ (0) ;
       if (enumerator_14740.current_mBuildConfigurationSettingList (HERE).isValid ()) {
         UpEnumerator_stringlist enumerator_14908 (enumerator_14740.current_mBuildConfigurationSettingList (HERE)) ;
-        // cEnumerator_stringlist enumerator_14908 (enumerator_14740.current_mBuildConfigurationSettingList (HERE), EnumerationOrder::Up) ;
         while (enumerator_14908.hasCurrentObject ()) {
           result.appendString ("      ") ;
           result.appendString (enumerator_14908.current_mValue (HERE).stringValue ()) ;
@@ -1759,7 +1720,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_15954_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeToolTargetList enumerator_15954 (in_TOOL_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeToolTargetList enumerator_15954 (in_TOOL_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_15954.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_15954.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
@@ -1773,7 +1733,6 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   GGS_uint index_16536_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
     UpEnumerator_XCodeAppTargetList enumerator_16536 (in_APP_5F_TARGET_5F_LIST) ;
-    // cEnumerator_XCodeAppTargetList enumerator_16536 (in_APP_5F_TARGET_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_16536.hasCurrentObject ()) {
       result.appendString ("    ") ;
       result.appendString (enumerator_16536.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
@@ -2598,7 +2557,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
   GGS_uint index_2819_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
     UpEnumerator_stringset enumerator_2819 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET) ;
-    // cEnumerator_stringset enumerator_2819 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, EnumerationOrder::Up) ;
     while (enumerator_2819.hasCurrentObject ()) {
       result.appendString ("  <Add directory=\"") ;
       result.appendString (enumerator_2819.current_key (HERE).stringValue ()) ;
@@ -2637,7 +2595,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
   GGS_uint index_3218_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_3218 (in_TOOL_5F_CPP_5F_FILE_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_3218 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_3218.hasCurrentObject ()) {
       result.appendString ("  <Unit filename=\"../") ;
       result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
@@ -2651,7 +2608,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
   GGS_uint index_3338_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_3338 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_3338 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_3338.hasCurrentObject ()) {
       result.appendString ("  <Unit filename=\"../") ;
       result.appendString (enumerator_3338.current_mValue (HERE).stringValue ()) ;
@@ -2941,7 +2897,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
   GGS_uint index_986_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
     UpEnumerator_stringset enumerator_986 (in_HANDLED_5F_EXTENSION_5F_SET) ;
-    // cEnumerator_stringset enumerator_986 (in_HANDLED_5F_EXTENSION_5F_SET, EnumerationOrder::Up) ;
     while (enumerator_986.hasCurrentObject ()) {
       result.appendString ("  <dict>\n			<key>CFBundleTypeIconFile</key>\n			<string>") ;
       result.appendString (enumerator_986.current_key (HERE).stringValue ()) ;
@@ -2960,7 +2915,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
   GGS_uint index_1649_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
     UpEnumerator_stringset enumerator_1649 (in_HANDLED_5F_EXTENSION_5F_SET) ;
-    // cEnumerator_stringset enumerator_1649 (in_HANDLED_5F_EXTENSION_5F_SET, EnumerationOrder::Up) ;
     while (enumerator_1649.hasCurrentObject ()) {
       result.appendString ("  <dict>\n    <key>UTTypeConformsTo</key>\n    <array>\n      <string>public.text</string>\n    </array>\n    <key>UTTypeDescription</key>\n    <string>") ;
       result.appendString (enumerator_1649.current_key (HERE).stringValue ()) ;
@@ -3051,7 +3005,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
   GGS_uint index_821_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET.isValid ()) {
     UpEnumerator_stringset enumerator_821 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET) ;
-    // cEnumerator_stringset enumerator_821 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, EnumerationOrder::Up) ;
     while (enumerator_821.hasCurrentObject ()) {
       result.appendString (",\n                       \"") ;
       result.appendString (enumerator_821.current_key (HERE).stringValue ()) ;
@@ -3064,7 +3017,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
   GGS_uint index_934_ (0) ;
   if (in_MAKEFILE_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_934 (in_MAKEFILE_5F_FILE_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_934 (in_MAKEFILE_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_934.hasCurrentObject ()) {
       result.appendString ("        \"") ;
       result.appendString (enumerator_934.current_mValue (HERE).stringValue ()) ;
@@ -3076,7 +3028,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
   GGS_uint index_1018_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_1018 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_1018 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1018.hasCurrentObject ()) {
       result.appendString ("        \"") ;
       result.appendString (enumerator_1018.current_mValue (HERE).stringValue ()) ;
@@ -3089,7 +3040,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
   GGS_uint index_5148_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_5148 (in_TOOL_5F_LINK_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_5148 (in_TOOL_5F_LINK_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_5148.hasCurrentObject ()) {
       result.appendString ("\n        \"") ;
       result.appendString (enumerator_5148.current_mValue (HERE).stringValue ()) ;

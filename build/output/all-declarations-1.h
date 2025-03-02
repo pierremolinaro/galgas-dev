@@ -1694,19 +1694,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: @templateVariableMap map enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_templateVariableMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateVariableMap (const class GGS_templateVariableMap & inEnumeratedObject,
-                                           const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
-  public: class GGS_string current_mCppName (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateVariableMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_templateVariableMap final : public cGenericAbstractEnumerator {
   public: DownEnumerator_templateVariableMap (const class GGS_templateVariableMap & inEnumeratedObject) ;
 
@@ -2942,18 +2929,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_usefulEntitiesGraph
 // Phase 1: @unifiedTypeMap map enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_unifiedTypeMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_unifiedTypeMap (const class GGS_unifiedTypeMap & inEnumeratedObject,
-                                      const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapElementClass current_mElement (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_unifiedTypeMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_unifiedTypeMap final : public cGenericAbstractEnumerator {
   public: DownEnumerator_unifiedTypeMap (const class GGS_unifiedTypeMap & inEnumeratedObject) ;
 
@@ -3114,23 +3089,6 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_filewrapperMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_filewrapperMap (const class GGS_filewrapperMap & inEnumeratedObject,
-                                      const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mFilewrapperPath (LOCATION_ARGS) const ;
-  public: class GGS_lstringlist current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
-  public: class GGS_wrapperFileMap current_mFilewrapperFileMap (LOCATION_ARGS) const ;
-  public: class GGS_wrapperDirectoryMap current_mFilewrapperDirectoryMap (LOCATION_ARGS) const ;
-  public: class GGS_filewrapperTemplateMap current_mFilewrapperTemplateMap (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_filewrapperMap final : public cGenericAbstractEnumerator {
@@ -3344,20 +3302,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap ;
 // Phase 1: @functionMap map enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_functionMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_functionMap (const class GGS_functionMap & inEnumeratedObject,
-                                   const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_functionSignature current_mFunctionSignature (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntry current_mResultType (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_functionMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_functionMap final : public cGenericAbstractEnumerator {
   public: DownEnumerator_functionMap (const class GGS_functionMap & inEnumeratedObject) ;
 
@@ -3527,20 +3471,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap ;
 // Phase 1: @grammarMap map enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_grammarMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_grammarMap (const class GGS_grammarMap & inEnumeratedObject,
-                                  const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_grammarLabelMap current_mLabelMap (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mHasIndexing (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_grammarMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_grammarMap final : public cGenericAbstractEnumerator {
   public: DownEnumerator_grammarMap (const class GGS_grammarMap & inEnumeratedObject) ;
 
@@ -3708,24 +3638,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexiqueComponentMapForSemanticAnalysis map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_lexiqueComponentMapForSemanticAnalysis final : public cGenericAbstractEnumerator {
-  public: cEnumerator_lexiqueComponentMapForSemanticAnalysis (const class GGS_lexiqueComponentMapForSemanticAnalysis & inEnumeratedObject,
-                                                              const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsTemplate (LOCATION_ARGS) const ;
-  public: class GGS_terminalMap current_mTerminalMap (LOCATION_ARGS) const ;
-  public: class GGS_indexingListAST current_mIndexingListAST (LOCATION_ARGS) const ;
-  public: class GGS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
-  public: class GGS_lexicalAttributeListAST current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
-  public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
-  public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final : public cGenericAbstractEnumerator {
@@ -3953,22 +3865,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMap
 // Phase 1: @optionComponentMapForSemanticAnalysis map enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_optionComponentMapForSemanticAnalysis final : public cGenericAbstractEnumerator {
-  public: cEnumerator_optionComponentMapForSemanticAnalysis (const class GGS_optionComponentMapForSemanticAnalysis & inEnumeratedObject,
-                                                             const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mIsPredefined (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionMap current_mBoolOptionMap (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionMap current_mUIntOptionMap (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionMap current_mStringOptionMap (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_optionComponentMapForSemanticAnalysis final : public cGenericAbstractEnumerator {
   public: DownEnumerator_optionComponentMapForSemanticAnalysis (const class GGS_optionComponentMapForSemanticAnalysis & inEnumeratedObject) ;
 
@@ -4166,21 +4062,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 // Phase 1: @syntaxComponentMap map enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_syntaxComponentMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_syntaxComponentMap (const class GGS_syntaxComponentMap & inEnumeratedObject,
-                                          const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mLexiqueName (LOCATION_ARGS) const ;
-  public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
-  public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxComponentMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_syntaxComponentMap final : public cGenericAbstractEnumerator {
   public: DownEnumerator_syntaxComponentMap (const class GGS_syntaxComponentMap & inEnumeratedObject) ;
 
@@ -4362,18 +4243,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap 
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @internalRoutineMap map enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_internalRoutineMap final : public cGenericAbstractEnumerator {
-  public: cEnumerator_internalRoutineMap (const class GGS_internalRoutineMap & inEnumeratedObject,
-                                          const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_routineArgumentMap current_mArgumentMap (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_internalRoutineMap_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_internalRoutineMap final : public cGenericAbstractEnumerator {

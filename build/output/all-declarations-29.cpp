@@ -694,7 +694,6 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader
   GGS_uint index_295_ (0) ;
   if (in_IMPORTED_5F_COMPONENT_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_295 (in_IMPORTED_5F_COMPONENT_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_295 (in_IMPORTED_5F_COMPONENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_295.hasCurrentObject ()) {
       result.appendString ("#include \"") ;
       result.appendString (enumerator_295.current_mValue (HERE).stringValue ()) ;
@@ -721,7 +720,6 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplem
   GGS_uint index_264_ (0) ;
   if (in_IMPORTED_5F_COMPONENT_5F_LIST.isValid ()) {
     UpEnumerator_stringlist enumerator_264 (in_IMPORTED_5F_COMPONENT_5F_LIST) ;
-    // cEnumerator_stringlist enumerator_264 (in_IMPORTED_5F_COMPONENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_264.hasCurrentObject ()) {
       result.appendString ("#include \"") ;
       result.appendString (enumerator_264.current_mValue (HERE).stringValue ()) ;

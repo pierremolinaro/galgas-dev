@@ -2123,7 +2123,7 @@ GGS_templateVariableMap GGS_templateVariableMap::add_operation (const GGS_templa
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GGS_templateVariableMap result = *this ;
-  cEnumerator_templateVariableMap enumerator (inOperand, EnumerationOrder::Up) ;
+  UpEnumerator_templateVariableMap enumerator (inOperand) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mType (HERE), enumerator.current_mCppName (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -2239,48 +2239,6 @@ cMapElement_templateVariableMap * GGS_templateVariableMap::readWriteAccessForWit
   cMapElement_templateVariableMap * result = (cMapElement_templateVariableMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_templateVariableMap) ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Enumerator for @templateVariableMap
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_templateVariableMap::cEnumerator_templateVariableMap (const GGS_templateVariableMap & inEnumeratedObject,
-                                                                  const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateVariableMap_2E_element cEnumerator_templateVariableMap::current (LOCATION_ARGS) const {
-  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return GGS_templateVariableMap_2E_element (p->mProperty_lkey, p->mProperty_mType, p->mProperty_mCppName) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry cEnumerator_templateVariableMap::current_mType (LOCATION_ARGS) const {
-  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return p->mProperty_mType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) const {
-  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return p->mProperty_mCppName ;
 }
 
 //--------------------------------------------------------------------------------------------------

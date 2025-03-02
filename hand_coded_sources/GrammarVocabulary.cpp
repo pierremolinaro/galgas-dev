@@ -54,7 +54,7 @@ buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymb
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = (int32_t) inTerminalSymbolMap.count () ;
-  cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, EnumerationOrder::Up) ;
+  UpEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap) ;
   while (t.hasCurrentObject ()) {
     mStringsArray.appendObject ("") ;  
     t.gotoNextObject () ;
