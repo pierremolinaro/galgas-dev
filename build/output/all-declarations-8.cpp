@@ -14835,9 +14835,7 @@ GGS_subscriptReadAccessExpressionAST_2E_weak GGS_subscriptReadAccessExpressionAS
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_5B_string_5D_' array
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_string_5D_::GGS__5B_string_5D_ (void) :
@@ -15044,34 +15042,6 @@ GGS_string GGS__5B_string_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Enumerator for @_5B_string_5D_
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator__5B_string_5D_::cEnumerator__5B_string_5D_ (const GGS__5B_string_5D_ & inEnumeratedObject,
-                                                        const EnumerationOrder inOrder) :
-mSharedArray (inEnumeratedObject.mSharedArray),
-mCurrent (0),
-mEnumerationOrder (inOrder) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator__5B_string_5D_::current (LOCATION_ARGS) const {
-  GGS_string result ;
-  if (mCurrent < mSharedArray.count ()) {
-    switch (mEnumerationOrder) {
-    case EnumerationOrder::Up :
-      result = mSharedArray (mCurrent COMMA_THERE) ;
-      break ;
-    case EnumerationOrder::Down :
-      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
-      break ;
     }
   }
   return result ;

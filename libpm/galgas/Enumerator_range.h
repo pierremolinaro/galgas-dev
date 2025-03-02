@@ -1,10 +1,10 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'cEnumerator_range' : galgas range enumerator                                                
+//  'Enumerator_range' : galgas range enumerator
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2012, ..., 2023 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //

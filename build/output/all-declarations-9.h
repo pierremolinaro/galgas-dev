@@ -598,7 +598,6 @@ class GGS_collectionValueElementList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_collectionValueElementList ;
   friend class UpEnumerator_collectionValueElementList ;
   friend class DownEnumerator_collectionValueElementList ;
  
@@ -1082,7 +1081,6 @@ class GGS_collectionValueElementListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_collectionValueElementListForGeneration ;
   friend class UpEnumerator_collectionValueElementListForGeneration ;
   friend class DownEnumerator_collectionValueElementListForGeneration ;
  
@@ -15358,7 +15356,6 @@ class GGS_castInstructionBranchListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_castInstructionBranchListAST ;
   friend class UpEnumerator_castInstructionBranchListAST ;
   friend class DownEnumerator_castInstructionBranchListAST ;
  
@@ -15930,7 +15927,6 @@ class GGS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_castInstructionBranchListForGeneration ;
   friend class UpEnumerator_castInstructionBranchListForGeneration ;
   friend class DownEnumerator_castInstructionBranchListForGeneration ;
  

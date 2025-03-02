@@ -1423,7 +1423,6 @@ class GGS_lexicalSendSearchListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalSendSearchListAST ;
   friend class UpEnumerator_lexicalSendSearchListAST ;
   friend class DownEnumerator_lexicalSendSearchListAST ;
  
@@ -2287,7 +2286,6 @@ class GGS_lexicalWhileBranchListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalWhileBranchListAST ;
   friend class UpEnumerator_lexicalWhileBranchListAST ;
   friend class DownEnumerator_lexicalWhileBranchListAST ;
  
@@ -2555,7 +2553,6 @@ class GGS_lexicalSelectBranchListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalSelectBranchListAST ;
   friend class UpEnumerator_lexicalSelectBranchListAST ;
   friend class DownEnumerator_lexicalSelectBranchListAST ;
  
@@ -2993,7 +2990,6 @@ class GGS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalFunctionCallActualArgumentListAST ;
   friend class UpEnumerator_lexicalFunctionCallActualArgumentListAST ;
   friend class DownEnumerator_lexicalFunctionCallActualArgumentListAST ;
  
@@ -4538,7 +4534,6 @@ class GGS_lexicalSentValueList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalSentValueList ;
   friend class UpEnumerator_lexicalSentValueList ;
   friend class DownEnumerator_lexicalSentValueList ;
  
@@ -4779,7 +4774,6 @@ class GGS_terminalMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_terminalMap ;
   friend class UpEnumerator_terminalMap ;
   friend class DownEnumerator_terminalMap ;
  
@@ -5116,7 +5110,6 @@ class GGS_lexicalTypeMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalTypeMap ;
   friend class UpEnumerator_lexicalTypeMap ;
   friend class DownEnumerator_lexicalTypeMap ;
  
@@ -5453,7 +5446,6 @@ class GGS_lexicalAttributeMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalAttributeMap ;
   friend class UpEnumerator_lexicalAttributeMap ;
   friend class DownEnumerator_lexicalAttributeMap ;
  
@@ -5913,7 +5905,6 @@ class GGS_terminalList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_terminalList ;
   friend class UpEnumerator_terminalList ;
   friend class DownEnumerator_terminalList ;
  
@@ -6218,7 +6209,6 @@ class GGS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalExplicitTokenListMap ;
   friend class UpEnumerator_lexicalExplicitTokenListMap ;
   friend class DownEnumerator_lexicalExplicitTokenListMap ;
  
@@ -6573,7 +6563,6 @@ class GGS_tokenSortedlist : public AC_GALGAS_sortedlist {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_tokenSortedlist ;
   friend class UpEnumerator_tokenSortedlist ;
   friend class DownEnumerator_tokenSortedlist ;
  
@@ -6842,7 +6831,6 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalExplicitTokenListMapMap ;
   friend class UpEnumerator_lexicalExplicitTokenListMapMap ;
   friend class DownEnumerator_lexicalExplicitTokenListMapMap ;
  
@@ -7221,7 +7209,6 @@ class GGS_lexicalMessageMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalMessageMap ;
   friend class UpEnumerator_lexicalMessageMap ;
   friend class DownEnumerator_lexicalMessageMap ;
  
@@ -7632,7 +7619,6 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalRoutineFormalArgumentList ;
   friend class UpEnumerator_lexicalRoutineFormalArgumentList ;
   friend class DownEnumerator_lexicalRoutineFormalArgumentList ;
  
@@ -7901,7 +7887,6 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalRoutineMap ;
   friend class UpEnumerator_lexicalRoutineMap ;
   friend class DownEnumerator_lexicalRoutineMap ;
  
@@ -8305,7 +8290,6 @@ class GGS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalFunctionFormalArgumentList ;
   friend class UpEnumerator_lexicalFunctionFormalArgumentList ;
   friend class DownEnumerator_lexicalFunctionFormalArgumentList ;
  
@@ -8576,7 +8560,6 @@ class GGS_lexicalFunctionMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalFunctionMap ;
   friend class UpEnumerator_lexicalFunctionMap ;
   friend class DownEnumerator_lexicalFunctionMap ;
  
@@ -9015,7 +8998,6 @@ class GGS_templateDelimitorList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateDelimitorList ;
   friend class UpEnumerator_templateDelimitorList ;
   friend class DownEnumerator_templateDelimitorList ;
  
@@ -9270,7 +9252,6 @@ class GGS_styleMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_styleMap ;
   friend class UpEnumerator_styleMap ;
   friend class DownEnumerator_styleMap ;
  
@@ -9607,7 +9588,6 @@ class GGS_lexicalTagMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalTagMap ;
   friend class UpEnumerator_lexicalTagMap ;
   friend class DownEnumerator_lexicalTagMap ;
  
@@ -12423,7 +12403,6 @@ class GGS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalRoutineCallActualArgumentListAST ;
   friend class UpEnumerator_lexicalRoutineCallActualArgumentListAST ;
   friend class DownEnumerator_lexicalRoutineCallActualArgumentListAST ;
  

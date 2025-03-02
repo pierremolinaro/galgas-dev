@@ -202,7 +202,6 @@ class GGS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_extensionMethodMapForGlobalCheckings ;
   friend class UpEnumerator_extensionMethodMapForGlobalCheckings ;
   friend class DownEnumerator_extensionMethodMapForGlobalCheckings ;
  
@@ -503,7 +502,6 @@ class GGS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_extensionSetterMapForGlobalCheckings ;
   friend class UpEnumerator_extensionSetterMapForGlobalCheckings ;
   friend class DownEnumerator_extensionSetterMapForGlobalCheckings ;
  
@@ -804,7 +802,6 @@ class GGS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_extensionGetterMapForGlobalCheckings ;
   friend class UpEnumerator_extensionGetterMapForGlobalCheckings ;
   friend class DownEnumerator_extensionGetterMapForGlobalCheckings ;
  
@@ -1166,7 +1163,6 @@ class GGS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_galgas_33_QualifiedFeatureList ;
   friend class UpEnumerator_galgas_33_QualifiedFeatureList ;
   friend class DownEnumerator_galgas_33_QualifiedFeatureList ;
  

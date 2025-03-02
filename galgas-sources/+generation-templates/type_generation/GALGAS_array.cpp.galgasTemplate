@@ -1,7 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//
 //%!"Class for element of '@" + TYPE_IDENTIFIER + "' array"%
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
@@ -208,34 +206,6 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%c
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Enumerator for @%!TYPE_IDENTIFIER%
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
-                   %!^%const EnumerationOrder inOrder) :
-mSharedArray (inEnumeratedObject.mSharedArray),
-mCurrent (0),
-mEnumerationOrder (inOrder) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!ELEMENT_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
-  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
-  if (mCurrent < mSharedArray.count ()) {
-    switch (mEnumerationOrder) {
-    case EnumerationOrder::Up :
-      result = mSharedArray (mCurrent COMMA_THERE) ;
-      break ;
-    case EnumerationOrder::Down :
-      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
-      break ;
     }
   }
   return result ;

@@ -2,44 +2,9 @@
 //%!" Phase 1: " + TYPE_NAME + " array"%
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_%!TYPE_IDENTIFIER% final {
-//--- Constructor
-  public: cEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange,
-      %!^%const EnumerationOrder inOrder) ;
-
-//--- No copy
-  private: cEnumerator_%!TYPE_IDENTIFIER% (const cEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
-  private: cEnumerator_%!TYPE_IDENTIFIER% & operator = (const cEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
-
-//--- 
-  public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
-  }
-  
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
-
-//--- 
-  public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
-  }
-
-//--- Current element access
-  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const TC_Array <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
-  private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_%!TYPE_IDENTIFIER% final {
 //--- Constructor
-  public: DownEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange) ;
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange) ;
 
 //--- No copy
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -73,7 +38,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 
 class UpEnumerator_%!TYPE_IDENTIFIER% final {
 //--- Constructor
-  public: UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange) ;
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inEnumeratedRange) ;
 
 //--- No copy
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
@@ -125,7 +90,6 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
                                     const int32_t inIndentation) const override ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_%!TYPE_IDENTIFIER% ;
   friend class UpEnumerator_%!TYPE_IDENTIFIER% ;
   friend class DownEnumerator_%!TYPE_IDENTIFIER% ;
 

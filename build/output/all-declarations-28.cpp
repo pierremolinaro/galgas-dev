@@ -6666,9 +6666,7 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   const GalgasBool test_66 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 429)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
   switch (test_66) {
   case GalgasBool::boolTrue : {
-    result.appendString ("//--------------------------------- Friend\n  friend class cEnumerator_") ;
-    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-    result.appendString (" ;\n  friend class UpEnumerator_") ;
+    result.appendString ("//--------------------------------- Friend\n  friend class UpEnumerator_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
     result.appendString (" ;\n  friend class DownEnumerator_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;

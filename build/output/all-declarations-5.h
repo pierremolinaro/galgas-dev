@@ -388,7 +388,6 @@ class GGS_insertMethodMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_insertMethodMap ;
   friend class UpEnumerator_insertMethodMap ;
   friend class DownEnumerator_insertMethodMap ;
  
@@ -689,7 +688,6 @@ class GGS_searchMethodMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_searchMethodMap ;
   friend class UpEnumerator_searchMethodMap ;
   friend class DownEnumerator_searchMethodMap ;
  
@@ -1294,7 +1292,6 @@ class GGS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_sortedListSortDescriptorListAST ;
   friend class UpEnumerator_sortedListSortDescriptorListAST ;
   friend class DownEnumerator_sortedListSortDescriptorListAST ;
  
@@ -1833,7 +1830,6 @@ class GGS_sortDescriptorListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_sortDescriptorListForGeneration ;
   friend class UpEnumerator_sortDescriptorListForGeneration ;
   friend class DownEnumerator_sortDescriptorListForGeneration ;
  
@@ -2690,7 +2686,6 @@ class GGS_formalInputParameterListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_formalInputParameterListForGeneration ;
   friend class UpEnumerator_formalInputParameterListForGeneration ;
   friend class DownEnumerator_formalInputParameterListForGeneration ;
  
@@ -3311,7 +3306,6 @@ class GGS_formalParameterListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_formalParameterListForGeneration ;
   friend class UpEnumerator_formalParameterListForGeneration ;
   friend class DownEnumerator_formalParameterListForGeneration ;
  
@@ -3902,7 +3896,6 @@ class GGS_equatableExtensionMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_equatableExtensionMap ;
   friend class UpEnumerator_equatableExtensionMap ;
   friend class DownEnumerator_equatableExtensionMap ;
  
@@ -4489,7 +4482,6 @@ class GGS_semanticInstructionListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_semanticInstructionListAST ;
   friend class UpEnumerator_semanticInstructionListAST ;
   friend class DownEnumerator_semanticInstructionListAST ;
  
@@ -5251,7 +5243,6 @@ class GGS_semanticInstructionListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_semanticInstructionListForGeneration ;
   friend class UpEnumerator_semanticInstructionListForGeneration ;
   friend class DownEnumerator_semanticInstructionListForGeneration ;
  
@@ -8313,7 +8304,6 @@ class GGS_constantIndexMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_constantIndexMap ;
   friend class UpEnumerator_constantIndexMap ;
   friend class DownEnumerator_constantIndexMap ;
  
@@ -8798,7 +8788,6 @@ class GGS_propertyMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_propertyMap ;
   friend class UpEnumerator_propertyMap ;
   friend class DownEnumerator_propertyMap ;
  
@@ -10374,7 +10363,6 @@ class GGS_subscriptMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_subscriptMap ;
   friend class UpEnumerator_subscriptMap ;
   friend class DownEnumerator_subscriptMap ;
  
@@ -11500,7 +11488,6 @@ class GGS_scopeLocalVarMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_scopeLocalVarMap ;
   friend class UpEnumerator_scopeLocalVarMap ;
   friend class DownEnumerator_scopeLocalVarMap ;
  
@@ -11911,7 +11898,6 @@ class GGS_localVarMapListForLLVM : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_localVarMapListForLLVM ;
   friend class UpEnumerator_localVarMapListForLLVM ;
   friend class DownEnumerator_localVarMapListForLLVM ;
  
@@ -12652,7 +12638,6 @@ class GGS_openedOverrideList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_openedOverrideList ;
   friend class UpEnumerator_openedOverrideList ;
   friend class DownEnumerator_openedOverrideList ;
  

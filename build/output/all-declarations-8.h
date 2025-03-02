@@ -239,7 +239,6 @@ class GGS_semanticDeclarationListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_semanticDeclarationListForGeneration ;
   friend class UpEnumerator_semanticDeclarationListForGeneration ;
   friend class DownEnumerator_semanticDeclarationListForGeneration ;
  
@@ -507,7 +506,6 @@ class GGS_signatureForGrammarAnalysis : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_signatureForGrammarAnalysis ;
   friend class UpEnumerator_signatureForGrammarAnalysis ;
   friend class DownEnumerator_signatureForGrammarAnalysis ;
  
@@ -736,7 +734,6 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis ;
   friend class UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis ;
   friend class DownEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis ;
  
@@ -1087,7 +1084,6 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_nonTerminalSymbolMapForGrammarAnalysis ;
   friend class UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis ;
   friend class DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis ;
  
@@ -1477,7 +1473,6 @@ class GGS_nonTerminalToAddList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_nonTerminalToAddList ;
   friend class UpEnumerator_nonTerminalToAddList ;
   friend class DownEnumerator_nonTerminalToAddList ;
  
@@ -1766,7 +1761,6 @@ class GGS_terminalCheckAssignementList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_terminalCheckAssignementList ;
   friend class UpEnumerator_terminalCheckAssignementList ;
   friend class DownEnumerator_terminalCheckAssignementList ;
  
@@ -2247,7 +2241,6 @@ class GGS_filewrapperTemplateListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_filewrapperTemplateListForGeneration ;
   friend class UpEnumerator_filewrapperTemplateListForGeneration ;
   friend class DownEnumerator_filewrapperTemplateListForGeneration ;
  
@@ -2647,7 +2640,6 @@ class GGS_localConstantList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_localConstantList ;
   friend class UpEnumerator_localConstantList ;
   friend class DownEnumerator_localConstantList ;
  
@@ -2960,7 +2952,6 @@ class GGS_localInitializedVariableList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_localInitializedVariableList ;
   friend class UpEnumerator_localInitializedVariableList ;
   friend class DownEnumerator_localInitializedVariableList ;
  
@@ -3368,7 +3359,6 @@ class GGS_propertyIndexMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_propertyIndexMap ;
   friend class UpEnumerator_propertyIndexMap ;
   friend class DownEnumerator_propertyIndexMap ;
  
@@ -3733,7 +3723,6 @@ class GGS_nonterminalLabelMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_nonterminalLabelMap ;
   friend class UpEnumerator_nonterminalLabelMap ;
   friend class DownEnumerator_nonterminalLabelMap ;
  
@@ -4098,7 +4087,6 @@ class GGS_nonterminalMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_nonterminalMap ;
   friend class UpEnumerator_nonterminalMap ;
   friend class DownEnumerator_nonterminalMap ;
  
@@ -4537,7 +4525,6 @@ class GGS_ruleLabelImplementationList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_ruleLabelImplementationList ;
   friend class UpEnumerator_ruleLabelImplementationList ;
   friend class DownEnumerator_ruleLabelImplementationList ;
  
@@ -4862,7 +4849,6 @@ class GGS_ruleDeclarationList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_ruleDeclarationList ;
   friend class UpEnumerator_ruleDeclarationList ;
   friend class DownEnumerator_ruleDeclarationList ;
  
@@ -5427,7 +5413,6 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_uselessEntityLocationMap ;
   friend class UpEnumerator_uselessEntityLocationMap ;
   friend class DownEnumerator_uselessEntityLocationMap ;
  
@@ -11418,41 +11403,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subscriptReadAccess
 // Phase 1: [string] array
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator__5B_string_5D_ final {
-//--- Constructor
-  public: cEnumerator__5B_string_5D_ (const class GGS__5B_string_5D_ & inEnumeratedRange,
-                                      const EnumerationOrder inOrder) ;
-
-//--- No copy
-  private: cEnumerator__5B_string_5D_ (const cEnumerator__5B_string_5D_ &) = delete ;
-  private: cEnumerator__5B_string_5D_ & operator = (const cEnumerator__5B_string_5D_ &) = delete ;
-
-//--- 
-  public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
-  }
-  
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
-
-//--- 
-  public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
-  }
-
-//--- Current element access
-  public: class GGS_string current (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const TC_Array <GGS_string> mSharedArray ;
-  private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator__5B_string_5D_ final {
 //--- Constructor
   public: DownEnumerator__5B_string_5D_ (const class GGS__5B_string_5D_ & inEnumeratedRange) ;
@@ -11541,7 +11491,6 @@ class GGS__5B_string_5D_ : public AC_GALGAS_root {
                                     const int32_t inIndentation) const override ;
 
 //--------------------------------- Friend
-  friend class cEnumerator__5B_string_5D_ ;
   friend class UpEnumerator__5B_string_5D_ ;
   friend class DownEnumerator__5B_string_5D_ ;
 

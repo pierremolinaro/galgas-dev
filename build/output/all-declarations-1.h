@@ -549,7 +549,6 @@ class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateInstructionListForGeneration ;
   friend class UpEnumerator_templateInstructionListForGeneration ;
   friend class DownEnumerator_templateInstructionListForGeneration ;
  
@@ -1389,7 +1388,6 @@ class GGS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateInstructionIfBranchListForGeneration ;
   friend class UpEnumerator_templateInstructionIfBranchListForGeneration ;
   friend class DownEnumerator_templateInstructionIfBranchListForGeneration ;
  
@@ -1835,7 +1833,6 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateVariableMap ;
   friend class UpEnumerator_templateVariableMap ;
   friend class DownEnumerator_templateVariableMap ;
  
@@ -3047,7 +3044,6 @@ class GGS_unifiedTypeMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_unifiedTypeMap ;
   friend class UpEnumerator_unifiedTypeMap ;
   friend class DownEnumerator_unifiedTypeMap ;
  
@@ -3288,7 +3284,6 @@ class GGS_filewrapperMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_filewrapperMap ;
   friend class UpEnumerator_filewrapperMap ;
   friend class DownEnumerator_filewrapperMap ;
  
@@ -3457,7 +3452,6 @@ class GGS_functionMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_functionMap ;
   friend class UpEnumerator_functionMap ;
   friend class DownEnumerator_functionMap ;
  
@@ -3626,7 +3620,6 @@ class GGS_grammarMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_grammarMap ;
   friend class UpEnumerator_grammarMap ;
   friend class DownEnumerator_grammarMap ;
  
@@ -3851,7 +3844,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexiqueComponentMapForSemanticAnalysis ;
   friend class UpEnumerator_lexiqueComponentMapForSemanticAnalysis ;
   friend class DownEnumerator_lexiqueComponentMapForSemanticAnalysis ;
  
@@ -4048,7 +4040,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_optionComponentMapForSemanticAnalysis ;
   friend class UpEnumerator_optionComponentMapForSemanticAnalysis ;
   friend class DownEnumerator_optionComponentMapForSemanticAnalysis ;
  
@@ -4231,7 +4222,6 @@ class GGS_syntaxComponentMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_syntaxComponentMap ;
   friend class UpEnumerator_syntaxComponentMap ;
   friend class DownEnumerator_syntaxComponentMap ;
  
@@ -4376,7 +4366,6 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_internalRoutineMap ;
   friend class UpEnumerator_internalRoutineMap ;
   friend class DownEnumerator_internalRoutineMap ;
  
@@ -4927,41 +4916,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallI
 // Phase 1: [unifiedTypeMapEntry] array
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator__5B_unifiedTypeMapEntry_5D_ final {
-//--- Constructor
-  public: cEnumerator__5B_unifiedTypeMapEntry_5D_ (const class GGS__5B_unifiedTypeMapEntry_5D_ & inEnumeratedRange,
-                                                   const EnumerationOrder inOrder) ;
-
-//--- No copy
-  private: cEnumerator__5B_unifiedTypeMapEntry_5D_ (const cEnumerator__5B_unifiedTypeMapEntry_5D_ &) = delete ;
-  private: cEnumerator__5B_unifiedTypeMapEntry_5D_ & operator = (const cEnumerator__5B_unifiedTypeMapEntry_5D_ &) = delete ;
-
-//--- 
-  public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
-  }
-  
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
-
-//--- 
-  public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
-  }
-
-//--- Current element access
-  public: class GGS_unifiedTypeMapEntry current (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const TC_Array <GGS_unifiedTypeMapEntry> mSharedArray ;
-  private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator__5B_unifiedTypeMapEntry_5D_ final {
 //--- Constructor
   public: DownEnumerator__5B_unifiedTypeMapEntry_5D_ (const class GGS__5B_unifiedTypeMapEntry_5D_ & inEnumeratedRange) ;
@@ -5050,7 +5004,6 @@ class GGS__5B_unifiedTypeMapEntry_5D_ : public AC_GALGAS_root {
                                     const int32_t inIndentation) const override ;
 
 //--------------------------------- Friend
-  friend class cEnumerator__5B_unifiedTypeMapEntry_5D_ ;
   friend class UpEnumerator__5B_unifiedTypeMapEntry_5D_ ;
   friend class DownEnumerator__5B_unifiedTypeMapEntry_5D_ ;
 
@@ -6095,41 +6048,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: [lstring] array
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator__5B_lstring_5D_ final {
-//--- Constructor
-  public: cEnumerator__5B_lstring_5D_ (const class GGS__5B_lstring_5D_ & inEnumeratedRange,
-                                       const EnumerationOrder inOrder) ;
-
-//--- No copy
-  private: cEnumerator__5B_lstring_5D_ (const cEnumerator__5B_lstring_5D_ &) = delete ;
-  private: cEnumerator__5B_lstring_5D_ & operator = (const cEnumerator__5B_lstring_5D_ &) = delete ;
-
-//--- 
-  public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
-  }
-  
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
-
-//--- 
-  public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
-  }
-
-//--- Current element access
-  public: class GGS_lstring current (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const TC_Array <GGS_lstring> mSharedArray ;
-  private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator__5B_lstring_5D_ final {
 //--- Constructor
   public: DownEnumerator__5B_lstring_5D_ (const class GGS__5B_lstring_5D_ & inEnumeratedRange) ;
@@ -6218,7 +6136,6 @@ class GGS__5B_lstring_5D_ : public AC_GALGAS_root {
                                     const int32_t inIndentation) const override ;
 
 //--------------------------------- Friend
-  friend class cEnumerator__5B_lstring_5D_ ;
   friend class UpEnumerator__5B_lstring_5D_ ;
   friend class DownEnumerator__5B_lstring_5D_ ;
 
@@ -6519,7 +6436,6 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateInstructionSwitchBranchListAST ;
   friend class UpEnumerator_templateInstructionSwitchBranchListAST ;
   friend class DownEnumerator_templateInstructionSwitchBranchListAST ;
  
@@ -6720,7 +6636,6 @@ class GGS_switchExtractedValuesListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_switchExtractedValuesListAST ;
   friend class UpEnumerator_switchExtractedValuesListAST ;
   friend class DownEnumerator_switchExtractedValuesListAST ;
  
@@ -7364,7 +7279,6 @@ class GGS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_li
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateInstructionSwitchBranchListForGeneration ;
   friend class UpEnumerator_templateInstructionSwitchBranchListForGeneration ;
   friend class DownEnumerator_templateInstructionSwitchBranchListForGeneration ;
  
@@ -7565,7 +7479,6 @@ class GGS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_extractedAssociatedValuesForGeneration ;
   friend class UpEnumerator_extractedAssociatedValuesForGeneration ;
   friend class DownEnumerator_extractedAssociatedValuesForGeneration ;
  
@@ -8373,7 +8286,6 @@ class GGS_templateDelimitorListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateDelimitorListAST ;
   friend class UpEnumerator_templateDelimitorListAST ;
   friend class DownEnumerator_templateDelimitorListAST ;
  
@@ -8698,7 +8610,6 @@ class GGS_templateReplacementListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateReplacementListAST ;
   friend class UpEnumerator_templateReplacementListAST ;
   friend class DownEnumerator_templateReplacementListAST ;
  
@@ -8978,7 +8889,6 @@ class GGS_lexicalAttributeListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalAttributeListAST ;
   friend class UpEnumerator_lexicalAttributeListAST ;
   friend class DownEnumerator_lexicalAttributeListAST ;
  
@@ -9246,7 +9156,6 @@ class GGS_lexicalStyleListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalStyleListAST ;
   friend class UpEnumerator_lexicalStyleListAST ;
   friend class DownEnumerator_lexicalStyleListAST ;
  
@@ -9598,7 +9507,6 @@ class GGS_terminalDeclarationListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_terminalDeclarationListAST ;
   friend class UpEnumerator_terminalDeclarationListAST ;
   friend class DownEnumerator_terminalDeclarationListAST ;
  
@@ -9778,7 +9686,6 @@ class GGS_sentLexicalAttributeListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_sentLexicalAttributeListAST ;
   friend class UpEnumerator_sentLexicalAttributeListAST ;
   friend class DownEnumerator_sentLexicalAttributeListAST ;
  
@@ -10094,7 +10001,6 @@ class GGS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalMessageDeclarationListAST ;
   friend class UpEnumerator_lexicalMessageDeclarationListAST ;
   friend class DownEnumerator_lexicalMessageDeclarationListAST ;
  
@@ -10425,7 +10331,6 @@ class GGS_lexicalListDeclarationListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalListDeclarationListAST ;
   friend class UpEnumerator_lexicalListDeclarationListAST ;
   friend class DownEnumerator_lexicalListDeclarationListAST ;
  
@@ -10647,7 +10552,6 @@ class GGS_lexicalListEntryListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalListEntryListAST ;
   friend class UpEnumerator_lexicalListEntryListAST ;
   friend class DownEnumerator_lexicalListEntryListAST ;
  
@@ -10930,7 +10834,6 @@ class GGS_lexicalRuleListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalRuleListAST ;
   friend class UpEnumerator_lexicalRuleListAST ;
   friend class DownEnumerator_lexicalRuleListAST ;
  
@@ -11291,7 +11194,6 @@ class GGS_indexingListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_indexingListAST ;
   friend class UpEnumerator_indexingListAST ;
   friend class DownEnumerator_indexingListAST ;
  
@@ -12256,7 +12158,6 @@ class GGS_lexicalInstructionListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lexicalInstructionListAST ;
   friend class UpEnumerator_lexicalInstructionListAST ;
   friend class DownEnumerator_lexicalInstructionListAST ;
  

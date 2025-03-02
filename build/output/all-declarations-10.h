@@ -865,7 +865,6 @@ class GGS_fixitListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_fixitListAST ;
   friend class UpEnumerator_fixitListAST ;
   friend class DownEnumerator_fixitListAST ;
  
@@ -1911,7 +1910,6 @@ class GGS_fixitListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_fixitListForGeneration ;
   friend class UpEnumerator_fixitListForGeneration ;
   friend class DownEnumerator_fixitListForGeneration ;
  
@@ -2443,7 +2441,6 @@ class GGS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_forInstructionEnumeratedObjectElementListAST ;
   friend class UpEnumerator_forInstructionEnumeratedObjectElementListAST ;
   friend class DownEnumerator_forInstructionEnumeratedObjectElementListAST ;
  
@@ -3575,7 +3572,6 @@ class GGS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_forInstructionEnumeratedObjectListAST ;
   friend class UpEnumerator_forInstructionEnumeratedObjectListAST ;
   friend class DownEnumerator_forInstructionEnumeratedObjectListAST ;
  
@@ -4182,7 +4178,6 @@ class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_lis
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_forInstructionEnumeratedObjectListForGeneration ;
   friend class UpEnumerator_forInstructionEnumeratedObjectListForGeneration ;
   friend class DownEnumerator_forInstructionEnumeratedObjectListForGeneration ;
  
@@ -8674,7 +8669,6 @@ class GGS_ifExpressionList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_ifExpressionList ;
   friend class UpEnumerator_ifExpressionList ;
   friend class DownEnumerator_ifExpressionList ;
  
@@ -9786,7 +9780,6 @@ class GGS_ifTestListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_ifTestListForGeneration ;
   friend class UpEnumerator_ifTestListForGeneration ;
   friend class DownEnumerator_ifTestListForGeneration ;
  
@@ -11329,7 +11322,6 @@ class GGS_logListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_logListAST ;
   friend class UpEnumerator_logListAST ;
   friend class DownEnumerator_logListAST ;
  

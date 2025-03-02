@@ -7675,9 +7675,7 @@ GGS_weakReferenceDeclarationAST_2E_weak GGS_weakReferenceDeclarationAST_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_5B_associatedValue_5D_' array
-//
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_associatedValue_5D_::GGS__5B_associatedValue_5D_ (void) :
@@ -7884,34 +7882,6 @@ GGS_associatedValue GGS__5B_associatedValue_5D_::readSubscript__3F_ (const GGS_u
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Enumerator for @_5B_associatedValue_5D_
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator__5B_associatedValue_5D_::cEnumerator__5B_associatedValue_5D_ (const GGS__5B_associatedValue_5D_ & inEnumeratedObject,
-                                                                          const EnumerationOrder inOrder) :
-mSharedArray (inEnumeratedObject.mSharedArray),
-mCurrent (0),
-mEnumerationOrder (inOrder) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_associatedValue cEnumerator__5B_associatedValue_5D_::current (LOCATION_ARGS) const {
-  GGS_associatedValue result ;
-  if (mCurrent < mSharedArray.count ()) {
-    switch (mEnumerationOrder) {
-    case EnumerationOrder::Up :
-      result = mSharedArray (mCurrent COMMA_THERE) ;
-      break ;
-    case EnumerationOrder::Down :
-      result = mSharedArray (mSharedArray.count () - mCurrent - 1 COMMA_THERE) ;
-      break ;
     }
   }
   return result ;

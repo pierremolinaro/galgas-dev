@@ -199,7 +199,6 @@ class GGS_BuildFileList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_BuildFileList ;
   friend class UpEnumerator_BuildFileList ;
   friend class DownEnumerator_BuildFileList ;
  

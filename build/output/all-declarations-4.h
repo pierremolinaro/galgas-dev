@@ -4414,7 +4414,6 @@ class GGS_propertyInCollectionListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_propertyInCollectionListAST ;
   friend class UpEnumerator_propertyInCollectionListAST ;
   friend class DownEnumerator_propertyInCollectionListAST ;
  
@@ -5976,7 +5975,6 @@ class GGS_typedPropertyList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_typedPropertyList ;
   friend class UpEnumerator_typedPropertyList ;
   friend class DownEnumerator_typedPropertyList ;
  
@@ -6241,7 +6239,6 @@ class GGS_initializerMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_initializerMap ;
   friend class UpEnumerator_initializerMap ;
   friend class DownEnumerator_initializerMap ;
  
@@ -6697,41 +6694,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_weakReferenceDeclar
 // Phase 1: [associatedValue] array
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator__5B_associatedValue_5D_ final {
-//--- Constructor
-  public: cEnumerator__5B_associatedValue_5D_ (const class GGS__5B_associatedValue_5D_ & inEnumeratedRange,
-                                               const EnumerationOrder inOrder) ;
-
-//--- No copy
-  private: cEnumerator__5B_associatedValue_5D_ (const cEnumerator__5B_associatedValue_5D_ &) = delete ;
-  private: cEnumerator__5B_associatedValue_5D_ & operator = (const cEnumerator__5B_associatedValue_5D_ &) = delete ;
-
-//--- 
-  public: inline bool hasCurrentObject (void) const {
-    return mCurrent < mSharedArray.count () ;
-  }
-  
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
-
-//--- 
-  public: inline void gotoNextObject (void) {
-    mCurrent += 1 ;
-  }
-
-//--- Current element access
-  public: class GGS_associatedValue current (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const TC_Array <GGS_associatedValue> mSharedArray ;
-  private: int32_t mCurrent ;
-  private: const EnumerationOrder mEnumerationOrder ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator__5B_associatedValue_5D_ final {
 //--- Constructor
   public: DownEnumerator__5B_associatedValue_5D_ (const class GGS__5B_associatedValue_5D_ & inEnumeratedRange) ;
@@ -6820,7 +6782,6 @@ class GGS__5B_associatedValue_5D_ : public AC_GALGAS_root {
                                     const int32_t inIndentation) const override ;
 
 //--------------------------------- Friend
-  friend class cEnumerator__5B_associatedValue_5D_ ;
   friend class UpEnumerator__5B_associatedValue_5D_ ;
   friend class DownEnumerator__5B_associatedValue_5D_ ;
 
@@ -7179,7 +7140,6 @@ class GGS_enumConstantList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_enumConstantList ;
   friend class UpEnumerator_enumConstantList ;
   friend class DownEnumerator_enumConstantList ;
  
@@ -7771,7 +7731,6 @@ class GGS_enumConstantListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_enumConstantListForGeneration ;
   friend class UpEnumerator_enumConstantListForGeneration ;
   friend class DownEnumerator_enumConstantListForGeneration ;
  
@@ -7951,7 +7910,6 @@ class GGS_associatedValueDescriptorList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_associatedValueDescriptorList ;
   friend class UpEnumerator_associatedValueDescriptorList ;
   friend class DownEnumerator_associatedValueDescriptorList ;
  
@@ -8330,7 +8288,6 @@ class GGS_typeNameFormalParameterNameList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_typeNameFormalParameterNameList ;
   friend class UpEnumerator_typeNameFormalParameterNameList ;
   friend class DownEnumerator_typeNameFormalParameterNameList ;
  
@@ -8589,7 +8546,6 @@ class GGS_externTypeConstructorList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_externTypeConstructorList ;
   friend class UpEnumerator_externTypeConstructorList ;
   friend class DownEnumerator_externTypeConstructorList ;
  
@@ -8866,7 +8822,6 @@ class GGS_externTypeGetterList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_externTypeGetterList ;
   friend class UpEnumerator_externTypeGetterList ;
   friend class DownEnumerator_externTypeGetterList ;
  
@@ -9146,7 +9101,6 @@ class GGS_externTypeSetterList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_externTypeSetterList ;
   friend class UpEnumerator_externTypeSetterList ;
   friend class DownEnumerator_externTypeSetterList ;
  
@@ -9389,7 +9343,6 @@ class GGS_formalParameterListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_formalParameterListAST ;
   friend class UpEnumerator_formalParameterListAST ;
   friend class DownEnumerator_formalParameterListAST ;
  
@@ -9890,7 +9843,6 @@ class GGS_externTypeMethodList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_externTypeMethodList ;
   friend class UpEnumerator_externTypeMethodList ;
   friend class DownEnumerator_externTypeMethodList ;
  
@@ -10437,7 +10389,6 @@ class GGS_graphInsertModifierList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_graphInsertModifierList ;
   friend class UpEnumerator_graphInsertModifierList ;
   friend class DownEnumerator_graphInsertModifierList ;
  
@@ -11465,7 +11416,6 @@ class GGS_insertMethodListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_insertMethodListAST ;
   friend class UpEnumerator_insertMethodListAST ;
   friend class DownEnumerator_insertMethodListAST ;
  
@@ -11745,7 +11695,6 @@ class GGS_mapSearchMethodListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_mapSearchMethodListAST ;
   friend class UpEnumerator_mapSearchMethodListAST ;
   friend class DownEnumerator_mapSearchMethodListAST ;
  
@@ -12013,7 +11962,6 @@ class GGS_mapRemoveMethodListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_mapRemoveMethodListAST ;
   friend class UpEnumerator_mapRemoveMethodListAST ;
   friend class DownEnumerator_mapRemoveMethodListAST ;
  
@@ -12260,7 +12208,6 @@ class GGS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_insertOrReplaceDeclarationListAST ;
   friend class UpEnumerator_insertOrReplaceDeclarationListAST ;
   friend class DownEnumerator_insertOrReplaceDeclarationListAST ;
  

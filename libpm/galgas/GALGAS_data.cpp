@@ -441,12 +441,12 @@ void cCollectionElement_data::description (String & ioString, const int32_t inIn
 
 //--------------------------------------------------------------------------------------------------
 //
-//     cEnumerator_data class
+//     Enumerator_data class
 //
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cEnumerator_data
+  #pragma mark Enumerator_data
 #endif
 
 //--------------------------------------------------------------------------------------------------

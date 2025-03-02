@@ -2041,7 +2041,6 @@ class GGS_headerCompositionMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_headerCompositionMap ;
   friend class UpEnumerator_headerCompositionMap ;
   friend class DownEnumerator_headerCompositionMap ;
  
@@ -2392,7 +2391,6 @@ class GGS_headerRepartitionMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_headerRepartitionMap ;
   friend class UpEnumerator_headerRepartitionMap ;
   friend class DownEnumerator_headerRepartitionMap ;
  
@@ -2729,7 +2727,6 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_projectQualifiedFeatureMap ;
   friend class UpEnumerator_projectQualifiedFeatureMap ;
   friend class DownEnumerator_projectQualifiedFeatureMap ;
  
@@ -3147,7 +3144,6 @@ class GGS_XCodeGroupList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_XCodeGroupList ;
   friend class UpEnumerator_XCodeGroupList ;
   friend class DownEnumerator_XCodeGroupList ;
  
@@ -3628,7 +3624,6 @@ class GGS_XCodeToolTargetList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_XCodeToolTargetList ;
   friend class UpEnumerator_XCodeToolTargetList ;
   friend class DownEnumerator_XCodeToolTargetList ;
  
@@ -4256,7 +4251,6 @@ class GGS_XCodeAppTargetList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_XCodeAppTargetList ;
   friend class UpEnumerator_XCodeAppTargetList ;
   friend class DownEnumerator_XCodeAppTargetList ;
  

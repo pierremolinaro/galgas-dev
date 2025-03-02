@@ -1463,7 +1463,6 @@ class GGS_switchBranchesAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_switchBranchesAST ;
   friend class UpEnumerator_switchBranchesAST ;
   friend class DownEnumerator_switchBranchesAST ;
  
@@ -2023,7 +2022,6 @@ class GGS_switchBranchesForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_switchBranchesForGeneration ;
   friend class UpEnumerator_switchBranchesForGeneration ;
   friend class DownEnumerator_switchBranchesForGeneration ;
  
@@ -8860,7 +8858,6 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_syntaxInstructionListForGrammarAnalysis ;
   friend class UpEnumerator_syntaxInstructionListForGrammarAnalysis ;
   friend class DownEnumerator_syntaxInstructionListForGrammarAnalysis ;
  
@@ -9158,7 +9155,6 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_productionRuleListForGrammarAnalysis ;
   friend class UpEnumerator_productionRuleListForGrammarAnalysis ;
   friend class DownEnumerator_productionRuleListForGrammarAnalysis ;
  
@@ -9402,7 +9398,6 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis ;
   friend class UpEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis ;
   friend class DownEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis ;
  
@@ -9729,7 +9724,6 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis : public AC_GALGAS_sorte
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis ;
   friend class UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis ;
   friend class DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis ;
  
@@ -10142,7 +10136,6 @@ class GGS_branchListForGrammarAnalysis : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_branchListForGrammarAnalysis ;
   friend class UpEnumerator_branchListForGrammarAnalysis ;
   friend class DownEnumerator_branchListForGrammarAnalysis ;
  
@@ -10706,7 +10699,6 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_syntaxComponentListForGrammarAnalysis ;
   friend class UpEnumerator_syntaxComponentListForGrammarAnalysis ;
   friend class DownEnumerator_syntaxComponentListForGrammarAnalysis ;
  
@@ -10935,7 +10927,6 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_terminalSymbolsMapForGrammarAnalysis ;
   friend class UpEnumerator_terminalSymbolsMapForGrammarAnalysis ;
   friend class DownEnumerator_terminalSymbolsMapForGrammarAnalysis ;
  
@@ -11322,7 +11313,6 @@ class GGS_rowList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_rowList ;
   friend class UpEnumerator_rowList ;
   friend class DownEnumerator_rowList ;
  
@@ -11609,7 +11599,6 @@ class GGS_programListForGeneration : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_programListForGeneration ;
   friend class UpEnumerator_programListForGeneration ;
   friend class DownEnumerator_programListForGeneration ;
  
@@ -11840,7 +11829,6 @@ class GGS_genericExtensionMethodListMapDictionary : public AC_GALGAS_root {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_genericExtensionMethodListMapDictionary ;
   friend class UpEnumerator_genericExtensionMethodListMapDictionary ;
   friend class DownEnumerator_genericExtensionMethodListMapDictionary ;
  
@@ -12268,7 +12256,6 @@ class GGS_descendantClassListMapDictionary : public AC_GALGAS_root {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_descendantClassListMapDictionary ;
   friend class UpEnumerator_descendantClassListMapDictionary ;
   friend class DownEnumerator_descendantClassListMapDictionary ;
  

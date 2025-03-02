@@ -1071,7 +1071,6 @@ class GGS_stringset : public AC_GALGAS_root {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_stringset ;
   friend class UpEnumerator_stringset ;
   friend class DownEnumerator_stringset ;
  
@@ -2770,7 +2769,6 @@ class GGS_data : public AC_GALGAS_root {
   protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_data ;
   friend class UpEnumerator_data ;
   friend class DownEnumerator_data ;
  
@@ -3381,7 +3379,6 @@ class GGS_stringlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_stringlist ;
   friend class UpEnumerator_stringlist ;
   friend class DownEnumerator_stringlist ;
  
@@ -3540,7 +3537,6 @@ class GGS_lstringlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lstringlist ;
   friend class UpEnumerator_lstringlist ;
   friend class DownEnumerator_lstringlist ;
  
@@ -3810,7 +3806,6 @@ class GGS__32_stringlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator__32_stringlist ;
   friend class UpEnumerator__32_stringlist ;
   friend class DownEnumerator__32_stringlist ;
  
@@ -3969,7 +3964,6 @@ class GGS_functionlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_functionlist ;
   friend class UpEnumerator_functionlist ;
   friend class DownEnumerator_functionlist ;
  
@@ -4128,7 +4122,6 @@ class GGS_luintlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_luintlist ;
   friend class UpEnumerator_luintlist ;
   friend class DownEnumerator_luintlist ;
  
@@ -4377,7 +4370,6 @@ class GGS_objectlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_objectlist ;
   friend class UpEnumerator_objectlist ;
   friend class DownEnumerator_objectlist ;
  
@@ -4536,7 +4528,6 @@ class GGS_typelist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_typelist ;
   friend class UpEnumerator_typelist ;
   friend class DownEnumerator_typelist ;
  
@@ -4695,7 +4686,6 @@ class GGS_uintlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_uintlist ;
   friend class UpEnumerator_uintlist ;
   friend class DownEnumerator_uintlist ;
  
@@ -4854,7 +4844,6 @@ class GGS_uint_36__34_list : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_uint_36__34_list ;
   friend class UpEnumerator_uint_36__34_list ;
   friend class DownEnumerator_uint_36__34_list ;
  
@@ -5013,7 +5002,6 @@ class GGS_bigintlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_bigintlist ;
   friend class UpEnumerator_bigintlist ;
   friend class DownEnumerator_bigintlist ;
  
@@ -5172,7 +5160,6 @@ class GGS_lbigintlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_lbigintlist ;
   friend class UpEnumerator_lbigintlist ;
   friend class DownEnumerator_lbigintlist ;
  

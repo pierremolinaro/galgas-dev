@@ -177,7 +177,6 @@ class GGS__32_lstringlist : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator__32_lstringlist ;
   friend class UpEnumerator__32_lstringlist ;
   friend class DownEnumerator__32_lstringlist ;
  
@@ -974,7 +973,6 @@ class GGS_templateInstructionListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateInstructionListAST ;
   friend class UpEnumerator_templateInstructionListAST ;
   friend class DownEnumerator_templateInstructionListAST ;
  
@@ -1431,7 +1429,6 @@ class GGS_templateExpressionListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateExpressionListAST ;
   friend class UpEnumerator_templateExpressionListAST ;
   friend class DownEnumerator_templateExpressionListAST ;
  
@@ -9593,7 +9590,6 @@ class GGS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_templateInstructionIfBranchListAST ;
   friend class UpEnumerator_templateInstructionIfBranchListAST ;
   friend class DownEnumerator_templateInstructionIfBranchListAST ;
  

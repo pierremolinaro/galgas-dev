@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'cEnumerator_range' : galgas range enumerator                                                
+//  'Enumerator_range' : galgas range enumerator                                                
 //
 //  This file is part of libpm library                                                           
 //
