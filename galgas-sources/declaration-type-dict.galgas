@@ -564,6 +564,8 @@ override method @dictTypeForGeneration appendDeclaration1 ?!@stringset unused io
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.typeForEnumeratedElement
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
@@ -616,6 +618,8 @@ private filewrapper dictGenerationTemplate in "+generation-templates/type_genera
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList CURRENT_PROPERTY_LIST
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
+    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
 
   template dictTypeSpecificImplementation "GALGAS_dict.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER

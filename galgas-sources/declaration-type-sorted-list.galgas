@@ -469,6 +469,8 @@ override method @sortedListTypeForGeneration appendDeclaration1
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.typeForEnumeratedElement
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string
@@ -519,6 +521,8 @@ filewrapper sortedListGenerationTemplate in "+generation-templates/type_generati
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
+    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
 
   template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER

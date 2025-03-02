@@ -529,6 +529,8 @@ filewrapper listGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST
+    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
 
   template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
     ?@string TYPE_NAME
@@ -549,6 +551,8 @@ override method @listTypeForGeneration appendDeclaration1
     !selfTypeDefinition.typeName.string
     ![self.mSelfTypeEntry identifierRepresentation]
     !self.mTypedAttributeList
+    !selfTypeDefinition.enumerationDescriptorList
+    !selfTypeDefinition.typeForEnumeratedElement
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     !selfTypeDefinition.typeName.string

@@ -386,7 +386,9 @@ extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
 GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class Compiler * inCompiler,
                                                                           const class GGS_string & in_TYPE_5F_NAME,
                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                          const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                          const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                          const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -448,7 +450,9 @@ extern const cDirectoryWrapper gWrapperDirectory_0_dictGenerationTemplate ;
 GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class Compiler * inCompiler,
                                                                           const class GGS_string & in_TYPE_5F_NAME,
                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                          const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                          const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                          const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -511,7 +515,9 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Co
                                                                         const class GGS_string & in_TYPE_5F_NAME,
                                                                         const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                         const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                        const class GGS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
+                                                                        const class GGS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
+                                                                        const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                        const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

@@ -9,9 +9,33 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateInstructionListForGeneration list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateInstructionListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateInstructionListForGeneration (const class GGS_templateInstructionListForGeneration & inEnumeratedObject,
+                                                            const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_templateInstructionForGeneration current_mInstruction (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateInstructionListForGeneration_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionListForGeneration list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
@@ -137,6 +161,7 @@ class GGS_templateInstructionListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateInstructionListForGeneration final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -156,6 +181,7 @@ class cEnumerator_templateInstructionListForGeneration final
   public: class GGS_templateInstructionListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionListForGeneration ;
@@ -828,9 +854,34 @@ class GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak : public GG
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateInstructionIfBranchListForGeneration list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateInstructionIfBranchListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateInstructionIfBranchListForGeneration (const class GGS_templateInstructionIfBranchListForGeneration & inEnumeratedObject,
+                                                                    const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_semanticExpressionForGeneration current_mExpression (LOCATION_ARGS) const ;
+  public: class GGS_templateInstructionListForGeneration current_mInstructionList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateInstructionIfBranchListForGeneration_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionIfBranchListForGeneration list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
@@ -975,6 +1026,7 @@ class GGS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateInstructionIfBranchListForGeneration final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -995,6 +1047,7 @@ class cEnumerator_templateInstructionIfBranchListForGeneration final
   public: class GGS_templateInstructionIfBranchListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchListForGeneration ;
@@ -1294,9 +1347,35 @@ class GGS_templateInstructionIfForGeneration_2E_weak : public GGS_templateInstru
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateVariableMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateVariableMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateVariableMap (const class GGS_templateVariableMap & inEnumeratedObject,
+                                           const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
+  public: class GGS_string current_mCppName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateVariableMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateVariableMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_templateVariableMap ;
@@ -1414,6 +1493,7 @@ class GGS_templateVariableMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateVariableMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -1435,6 +1515,7 @@ class cEnumerator_templateVariableMap final
   public: class GGS_templateVariableMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap ;
@@ -2529,9 +2610,34 @@ class GGS_usefulEntitiesGraph : public AC_GALGAS_graph {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_usefulEntitiesGraph ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @unifiedTypeMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_unifiedTypeMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_unifiedTypeMap (const class GGS_unifiedTypeMap & inEnumeratedObject,
+                                      const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapElementClass current_mElement (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_unifiedTypeMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @unifiedTypeMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_unifiedTypeMap ;
@@ -2628,6 +2734,7 @@ class GGS_unifiedTypeMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_unifiedTypeMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -2648,6 +2755,7 @@ class cEnumerator_unifiedTypeMap final
   public: class GGS_unifiedTypeMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
@@ -2683,9 +2791,39 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @filewrapperMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_filewrapperMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_filewrapperMap (const class GGS_filewrapperMap & inEnumeratedObject,
+                                      const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mFilewrapperPath (LOCATION_ARGS) const ;
+  public: class GGS_lstringlist current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
+  public: class GGS_wrapperFileMap current_mFilewrapperFileMap (LOCATION_ARGS) const ;
+  public: class GGS_wrapperDirectoryMap current_mFilewrapperDirectoryMap (LOCATION_ARGS) const ;
+  public: class GGS_filewrapperTemplateMap current_mFilewrapperTemplateMap (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_filewrapperMap ;
@@ -2851,6 +2989,7 @@ class GGS_filewrapperMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_filewrapperMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -2876,14 +3015,42 @@ class cEnumerator_filewrapperMap final
   public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @functionMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_functionMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_functionMap (const class GGS_functionMap & inEnumeratedObject,
+                                   const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_functionSignature current_mFunctionSignature (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapEntry current_mResultType (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_functionMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @functionMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_functionMap ;
@@ -3013,6 +3180,7 @@ class GGS_functionMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_functionMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -3035,14 +3203,42 @@ class cEnumerator_functionMap final
   public: class GGS_functionMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @grammarMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_grammarMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_grammarMap (const class GGS_grammarMap & inEnumeratedObject,
+                                  const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_grammarLabelMap current_mLabelMap (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mHasIndexing (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_grammarMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @grammarMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_grammarMap ;
@@ -3172,6 +3368,7 @@ class GGS_grammarMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_grammarMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -3194,14 +3391,46 @@ class cEnumerator_grammarMap final
   public: class GGS_grammarMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexiqueComponentMapForSemanticAnalysis map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexiqueComponentMapForSemanticAnalysis final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexiqueComponentMapForSemanticAnalysis (const class GGS_lexiqueComponentMapForSemanticAnalysis & inEnumeratedObject,
+                                                              const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsTemplate (LOCATION_ARGS) const ;
+  public: class GGS_terminalMap current_mTerminalMap (LOCATION_ARGS) const ;
+  public: class GGS_indexingListAST current_mIndexingListAST (LOCATION_ARGS) const ;
+  public: class GGS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
+  public: class GGS_lexicalAttributeListAST current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
+  public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
+  public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexiqueComponentMapForSemanticAnalysis map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_lexiqueComponentMapForSemanticAnalysis ;
@@ -3379,6 +3608,7 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexiqueComponentMapForSemanticAnalysis final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -3405,14 +3635,44 @@ class cEnumerator_lexiqueComponentMapForSemanticAnalysis final
   public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @optionComponentMapForSemanticAnalysis map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_optionComponentMapForSemanticAnalysis final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_optionComponentMapForSemanticAnalysis (const class GGS_optionComponentMapForSemanticAnalysis & inEnumeratedObject,
+                                                             const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsPredefined (LOCATION_ARGS) const ;
+  public: class GGS_commandLineOptionMap current_mBoolOptionMap (LOCATION_ARGS) const ;
+  public: class GGS_commandLineOptionMap current_mUIntOptionMap (LOCATION_ARGS) const ;
+  public: class GGS_commandLineOptionMap current_mStringOptionMap (LOCATION_ARGS) const ;
+  public: class GGS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @optionComponentMapForSemanticAnalysis map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_optionComponentMapForSemanticAnalysis ;
@@ -3566,6 +3826,7 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_optionComponentMapForSemanticAnalysis final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -3590,14 +3851,43 @@ class cEnumerator_optionComponentMapForSemanticAnalysis final
   public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @syntaxComponentMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_syntaxComponentMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_syntaxComponentMap (const class GGS_syntaxComponentMap & inEnumeratedObject,
+                                          const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mLexiqueName (LOCATION_ARGS) const ;
+  public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
+  public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_syntaxComponentMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @syntaxComponentMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_syntaxComponentMap ;
@@ -3739,6 +4029,7 @@ class GGS_syntaxComponentMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_syntaxComponentMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -3762,14 +4053,40 @@ class cEnumerator_syntaxComponentMap final
   public: class GGS_syntaxComponentMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @internalRoutineMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_internalRoutineMap final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_internalRoutineMap (const class GGS_internalRoutineMap & inEnumeratedObject,
+                                          const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_routineArgumentMap current_mArgumentMap (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_internalRoutineMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @internalRoutineMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_internalRoutineMap ;
@@ -3879,6 +4196,7 @@ class GGS_internalRoutineMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_internalRoutineMap final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -3899,6 +4217,7 @@ class cEnumerator_internalRoutineMap final
   public: class GGS_internalRoutineMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_internalRoutineMap ;
@@ -4446,9 +4765,7 @@ class GGS_templateGetterCallInExpressionAST_2E_weak : public GGS_templateExpress
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallInExpressionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: [unifiedTypeMapEntry] array
-//
 //--------------------------------------------------------------------------------------------------
 
 class cEnumerator__5B_unifiedTypeMapEntry_5D_ final {
@@ -5556,9 +5873,7 @@ class GGS_templateInstructionForeachForGeneration_2E_weak : public GGS_templateI
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: [lstring] array
-//
 //--------------------------------------------------------------------------------------------------
 
 class cEnumerator__5B_lstring_5D_ final {
@@ -5705,9 +6020,36 @@ friend class cEnumerator__5B_lstring_5D_ ;
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__5B_lstring_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateInstructionSwitchBranchListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateInstructionSwitchBranchListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateInstructionSwitchBranchListAST (const class GGS_templateInstructionSwitchBranchListAST & inEnumeratedObject,
+                                                              const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS__5B_lstring_5D_ current_constantList (LOCATION_ARGS) const ;
+  public: class GGS_switchExtractedValuesListAST current_associatedValuesExtraction (LOCATION_ARGS) const ;
+  public: class GGS_templateInstructionListAST current_instructionList (LOCATION_ARGS) const ;
+  public: class GGS_location current_endOfBranch (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateInstructionSwitchBranchListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionSwitchBranchListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
@@ -5890,6 +6232,7 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateInstructionSwitchBranchListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -5912,14 +6255,41 @@ class cEnumerator_templateInstructionSwitchBranchListAST final
   public: class GGS_templateInstructionSwitchBranchListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @switchExtractedValuesListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_switchExtractedValuesListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_switchExtractedValuesListAST (const class GGS_switchExtractedValuesListAST & inEnumeratedObject,
+                                                    const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mExtractedValueTypeName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mExtractedValueName (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mMarkedAsUnused (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_switchExtractedValuesListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @switchExtractedValuesListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_switchExtractedValuesListAST : public AC_GALGAS_list {
@@ -6083,6 +6453,7 @@ class GGS_switchExtractedValuesListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_switchExtractedValuesListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -6104,6 +6475,7 @@ class cEnumerator_switchExtractedValuesListAST final
   public: class GGS_switchExtractedValuesListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST ;
@@ -6535,9 +6907,36 @@ class GGS_templateInstructionSwitchAST_2E_weak : public GGS_templateInstructionA
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateInstructionSwitchBranchListForGeneration list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateInstructionSwitchBranchListForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateInstructionSwitchBranchListForGeneration (const class GGS_templateInstructionSwitchBranchListForGeneration & inEnumeratedObject,
+                                                                        const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS__5B_lstring_5D_ current_mConstantList (LOCATION_ARGS) const ;
+  public: class GGS_extractedAssociatedValuesForGeneration current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mEndOfBranchLocationIndex (LOCATION_ARGS) const ;
+  public: class GGS_templateInstructionListForGeneration current_mInstructionList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateInstructionSwitchBranchListForGeneration_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateInstructionSwitchBranchListForGeneration list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list {
@@ -6720,6 +7119,7 @@ class GGS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_li
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateInstructionSwitchBranchListForGeneration final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -6742,14 +7142,41 @@ class cEnumerator_templateInstructionSwitchBranchListForGeneration final
   public: class GGS_templateInstructionSwitchBranchListForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @extractedAssociatedValuesForGeneration list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_extractedAssociatedValuesForGeneration final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_extractedAssociatedValuesForGeneration (const class GGS_extractedAssociatedValuesForGeneration & inEnumeratedObject,
+                                                              const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
+  public: class GGS_string current_mCppName (LOCATION_ARGS) const ;
+  public: class GGS_string current_name (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_extractedAssociatedValuesForGeneration_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @extractedAssociatedValuesForGeneration list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
@@ -6913,6 +7340,7 @@ class GGS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_extractedAssociatedValuesForGeneration final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -6934,6 +7362,7 @@ class cEnumerator_extractedAssociatedValuesForGeneration final
   public: class GGS_extractedAssociatedValuesForGeneration_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration ;
@@ -7509,9 +7938,37 @@ class cPtr_semanticDeclarationAST : public acStrongPtr_class {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateDelimitorListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateDelimitorListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateDelimitorListAST (const class GGS_templateDelimitorListAST & inEnumeratedObject,
+                                                const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mStartString (LOCATION_ARGS) const ;
+  public: class GGS_bool current_nonAtomicSelection (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mTemplateEndMark (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mPreserved (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mEndString (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateDelimitorListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateDelimitorListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateDelimitorListAST : public AC_GALGAS_list {
@@ -7713,6 +8170,7 @@ class GGS_templateDelimitorListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateDelimitorListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -7736,6 +8194,7 @@ class cEnumerator_templateDelimitorListAST final
   public: class GGS_templateDelimitorListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorListAST ;
@@ -7866,9 +8325,35 @@ class GGS_templateDelimitorListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @templateReplacementListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_templateReplacementListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_templateReplacementListAST (const class GGS_templateReplacementListAST & inEnumeratedObject,
+                                                  const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mMatchString (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mReplacementString (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mReplacementFunction (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_templateReplacementListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateReplacementListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateReplacementListAST : public AC_GALGAS_list {
@@ -8032,6 +8517,7 @@ class GGS_templateReplacementListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_templateReplacementListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -8053,6 +8539,7 @@ class cEnumerator_templateReplacementListAST final
   public: class GGS_templateReplacementListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacementListAST ;
@@ -8159,9 +8646,34 @@ class GGS_templateReplacementListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacementListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalAttributeListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalAttributeListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalAttributeListAST (const class GGS_lexicalAttributeListAST & inEnumeratedObject,
+                                               const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mTypeName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalAttributeListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalAttributeListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalAttributeListAST : public AC_GALGAS_list {
@@ -8306,6 +8818,7 @@ class GGS_lexicalAttributeListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalAttributeListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -8326,6 +8839,7 @@ class cEnumerator_lexicalAttributeListAST final
   public: class GGS_lexicalAttributeListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST ;
@@ -8420,9 +8934,34 @@ class GGS_lexicalAttributeListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalStyleListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalStyleListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalStyleListAST (const class GGS_lexicalStyleListAST & inEnumeratedObject,
+                                           const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalStyleListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalStyleListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalStyleListAST : public AC_GALGAS_list {
@@ -8567,6 +9106,7 @@ class GGS_lexicalStyleListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalStyleListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -8587,6 +9127,7 @@ class cEnumerator_lexicalStyleListAST final
   public: class GGS_lexicalStyleListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST ;
@@ -8681,9 +9222,38 @@ class GGS_lexicalStyleListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @terminalDeclarationListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_terminalDeclarationListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_terminalDeclarationListAST (const class GGS_terminalDeclarationListAST & inEnumeratedObject,
+                                                  const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mName (LOCATION_ARGS) const ;
+  public: class GGS_sentLexicalAttributeListAST current_mSentAttributeList (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSyntaxErrorMessage (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mStyle (LOCATION_ARGS) const ;
+  public: class GGS_bool current_nonAtomicSelection (LOCATION_ARGS) const ;
+  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_terminalDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @terminalDeclarationListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalDeclarationListAST : public AC_GALGAS_list {
@@ -8904,6 +9474,7 @@ class GGS_terminalDeclarationListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_terminalDeclarationListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -8928,14 +9499,40 @@ class cEnumerator_terminalDeclarationListAST final
   public: class GGS_terminalDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalDeclarationListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @sentLexicalAttributeListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_sentLexicalAttributeListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_sentLexicalAttributeListAST (const class GGS_sentLexicalAttributeListAST & inEnumeratedObject,
+                                                   const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mAttributeName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_sentLexicalAttributeListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @sentLexicalAttributeListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sentLexicalAttributeListAST : public AC_GALGAS_list {
@@ -9080,6 +9677,7 @@ class GGS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_sentLexicalAttributeListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -9100,6 +9698,7 @@ class cEnumerator_sentLexicalAttributeListAST final
   public: class GGS_sentLexicalAttributeListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sentLexicalAttributeListAST ;
@@ -9242,9 +9841,34 @@ class GGS_terminalDeclarationListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalDeclarationListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalMessageDeclarationListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalMessageDeclarationListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalMessageDeclarationListAST (const class GGS_lexicalMessageDeclarationListAST & inEnumeratedObject,
+                                                        const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mMessageName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mMessageValue (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalMessageDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalMessageDeclarationListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
@@ -9389,6 +10013,7 @@ class GGS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalMessageDeclarationListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -9409,6 +10034,7 @@ class cEnumerator_lexicalMessageDeclarationListAST final
   public: class GGS_lexicalMessageDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST ;
@@ -9503,9 +10129,37 @@ class GGS_lexicalMessageDeclarationListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDeclarationListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalListDeclarationListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalListDeclarationListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalListDeclarationListAST (const class GGS_lexicalListDeclarationListAST & inEnumeratedObject,
+                                                     const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mStyle (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSyntaxErrorMessage (LOCATION_ARGS) const ;
+  public: class GGS_sentLexicalAttributeListAST current_mSentAttributeList (LOCATION_ARGS) const ;
+  public: class GGS_lexicalListEntryListAST current_mEntryList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalListDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalListDeclarationListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalListDeclarationListAST : public AC_GALGAS_list {
@@ -9707,6 +10361,7 @@ class GGS_lexicalListDeclarationListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalListDeclarationListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -9730,14 +10385,42 @@ class cEnumerator_lexicalListDeclarationListAST final
   public: class GGS_lexicalListDeclarationListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalListEntryListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalListEntryListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalListEntryListAST (const class GGS_lexicalListEntryListAST & inEnumeratedObject,
+                                               const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mEntrySpelling (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mTerminalSpelling (LOCATION_ARGS) const ;
+  public: class GGS_bool current_nonAtomicSelection (LOCATION_ARGS) const ;
+  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalListEntryListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalListEntryListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalListEntryListAST : public AC_GALGAS_list {
@@ -9920,6 +10603,7 @@ class GGS_lexicalListEntryListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalListEntryListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -9942,6 +10626,7 @@ class cEnumerator_lexicalListEntryListAST final
   public: class GGS_lexicalListEntryListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListEntryListAST ;
@@ -10072,9 +10757,33 @@ class GGS_lexicalListDeclarationListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListDeclarationListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalRuleListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalRuleListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalRuleListAST (const class GGS_lexicalRuleListAST & inEnumeratedObject,
+                                          const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_abstractLexicalRuleAST current_mLexicalRule (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalRuleListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalRuleListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalRuleListAST : public AC_GALGAS_list {
@@ -10200,6 +10909,7 @@ class GGS_lexicalRuleListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalRuleListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -10219,6 +10929,7 @@ class cEnumerator_lexicalRuleListAST final
   public: class GGS_lexicalRuleListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST ;
@@ -10407,9 +11118,34 @@ class GGS_lexicalRuleListAST_2E_element : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @indexingListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_indexingListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_indexingListAST (const class GGS_indexingListAST & inEnumeratedObject,
+                                       const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mIndexName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mIndexComment (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_indexingListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @indexingListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_indexingListAST : public AC_GALGAS_list {
@@ -10554,6 +11290,7 @@ class GGS_indexingListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_indexingListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -10574,6 +11311,7 @@ class cEnumerator_indexingListAST final
   public: class GGS_indexingListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST ;
@@ -11393,9 +12131,33 @@ class GGS_lexicalInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalInstructionListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalInstructionListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalInstructionListAST (const class GGS_lexicalInstructionListAST & inEnumeratedObject,
+                                                 const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lexicalInstructionAST current_mInstruction (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalInstructionListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalInstructionListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalInstructionListAST : public AC_GALGAS_list {
@@ -11521,6 +12283,7 @@ class GGS_lexicalInstructionListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalInstructionListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -11540,6 +12303,7 @@ class cEnumerator_lexicalInstructionListAST final
   public: class GGS_lexicalInstructionListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST ;
@@ -13622,9 +14386,34 @@ class GGS_lexicalStringNotMatchAST_2E_weak : public GGS_lexicalExpressionAST_2E_
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @lexicalSendSearchListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+#ifdef AZERTY
+class cEnumerator_lexicalSendSearchListAST final
+#ifndef NEW_ITERATOR
+  : public cGenericAbstractEnumerator
+#endif
+{
+  public: cEnumerator_lexicalSendSearchListAST (const class GGS_lexicalSendSearchListAST & inEnumeratedObject,
+                                                const EnumerationOrder inOrder) ;
+
+//--- Current element access
+  #ifdef NEW_ITERATOR
+    public: bool hasCurrentObject (void) const ;
+    public: void gotoNextObject (void) ;
+    public: void rewind (void) ;
+  #endif
+  public: class GGS_lstring current_mAttributeName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSearchListName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalSendSearchListAST_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+#endif
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalSendSearchListAST list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalSendSearchListAST : public AC_GALGAS_list {
@@ -13769,6 +14558,7 @@ class GGS_lexicalSendSearchListAST : public AC_GALGAS_list {
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_lexicalSendSearchListAST final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -13789,6 +14579,7 @@ class cEnumerator_lexicalSendSearchListAST final
   public: class GGS_lexicalSendSearchListAST_2E_element current (LOCATION_ARGS) const ;
 } ;
 
+#endif
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST ;

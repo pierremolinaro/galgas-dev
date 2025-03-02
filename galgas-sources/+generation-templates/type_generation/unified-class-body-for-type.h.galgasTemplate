@@ -438,6 +438,7 @@ if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
 //   Enumerator declaration                                                                      
 //--------------------------------------------------------------------------------------------------
 
+#ifndef AZERTY
 class cEnumerator_%!TYPE_IDENTIFIER% final
 #ifndef NEW_ITERATOR
   : public cGenericAbstractEnumerator
@@ -460,7 +461,8 @@ class cEnumerator_%!TYPE_IDENTIFIER% final
 %//--- Current element access\n%
 %  public: class GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
-%} ;\n%
+%} ;\n
+#endif%
 end
 %
 //--------------------------------------------------------------------------------------------------
