@@ -69,7 +69,7 @@ buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymb
   mStringsArray.appendObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::Up) ;
+  UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   while (nonTerminal.hasCurrentObject ()) {
     mStringsArray.appendObject (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;

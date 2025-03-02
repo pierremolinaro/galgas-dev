@@ -1318,7 +1318,7 @@ generate_LR1_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents.appendCString ("\n} ;\n\n") ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::Up) ;
+  UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   while (nonTerminal.hasCurrentObject ()) {
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;

@@ -470,7 +470,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
   ioCppFileContents.appendCString ("static const int32_t gProductions_") ;
   ioCppFileContents.appendString (inTargetFileName) ;
   ioCppFileContents.appendCString (" [] = {\n") ;
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::Up) ;
+  UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   int16_t productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {

@@ -859,7 +859,7 @@ generate_SLR_grammar_cpp_file (const cPureBNFproductionsList & inProductionRules
   ioCppFileContents.appendCString ("\n} ;\n\n") ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, EnumerationOrder::Up) ;
+  UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   while (nonTerminal.hasCurrentObject ()) {
     ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;

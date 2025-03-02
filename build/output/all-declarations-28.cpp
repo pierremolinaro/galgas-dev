@@ -9,43 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterBaseFinalGetterWith2Arguments&&?getterName?????returnedTypeName?hasCompilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterBaseFinalGetterWith_32_Arguments_26__26__3F_getterName_3F__3F__3F__3F__3F_returnedTypeName_3F_hasCompilerArgument (GGS_getterMap & ioArgument_ioGetterMap,
-                                                                                                                                     GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
-                                                                                                                                     const GGS_string constinArgument_inGetterName,
-                                                                                                                                     const GGS_string constinArgument_inArgument_31_TypeName,
-                                                                                                                                     const GGS_string constinArgument_inArgument_31_Name,
-                                                                                                                                     const GGS_string constinArgument_inArgument_32_TypeName,
-                                                                                                                                     const GGS_string constinArgument_inArgument_32_Name,
-                                                                                                                                     const GGS_string constinArgument_inReturnedTypeName,
-                                                                                                                                     const GGS_bool constinArgument_inHasCompilerArgument,
-                                                                                                                                     Compiler * inCompiler
-                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_returnedTypeIndex_11355 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inReturnedTypeName, var_returnedTypeIndex_11355, inCompiler COMMA_SOURCE_FILE ("semanticsGetters.galgas", 281)) ;
-  }
-  GGS_functionSignature var_argList_11399 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-  GGS_unifiedTypeMapEntry var_t_11498 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_31_TypeName, var_t_11498, inCompiler COMMA_SOURCE_FILE ("semanticsGetters.galgas", 283)) ;
-  }
-  var_argList_11399.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsGetters.galgas", 284)), var_t_11498, constinArgument_inArgument_31_Name, GGS_bool (true)  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 284)) ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, constinArgument_inArgument_32_TypeName, var_t_11498, inCompiler COMMA_SOURCE_FILE ("semanticsGetters.galgas", 285)) ;
-  }
-  var_argList_11399.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsGetters.galgas", 286)), var_t_11498, constinArgument_inArgument_32_Name, GGS_bool (true)  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 286)) ;
-  {
-  ioArgument_ioGetterMap.setter_insertOrReplace (GGS_lstring::init_21__21_ (constinArgument_inGetterName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 288)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("semanticsGetters.galgas", 289)), var_argList_11399, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 291)), constinArgument_inHasCompilerArgument, var_returnedTypeIndex_11355, GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("semanticsGetters.galgas", 294)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("semanticsGetters.galgas", 287)) ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'enterBaseFinalGetterWith3Arguments&&????????returnedTypeName?hasCompilerArgument'
 //
 //--------------------------------------------------------------------------------------------------

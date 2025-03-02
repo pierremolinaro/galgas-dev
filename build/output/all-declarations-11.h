@@ -11861,18 +11861,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSy
 // Phase 1: @nonTerminalSymbolSortedListForGrammarAnalysis sorted list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final : public cGenericAbstractEnumerator {
-  public: cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject,
-                                                                     const EnumerationOrder inOrder) ;
-  public: class GGS_lstring current_mNonTerminalSymbol (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mNonTerminalIndex (LOCATION_ARGS) const ;
-  public: class GGS_nonterminalSymbolLabelMapForGrammarAnalysis current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis final : public cGenericAbstractEnumerator {
   public: DownEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inEnumeratedObject) ;
 
