@@ -239,8 +239,8 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
-mSet (inEnumeratedObject.mStringSet),
+UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inOperand) :
+mSet (inOperand.isValid () ? inOperand.mStringSet : std::set <String> ()),
 mIterator () {
   mIterator = mSet.begin () ;
 }
@@ -259,8 +259,8 @@ GGS_string UpEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
-mSet (inEnumeratedObject.mStringSet),
+DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inOperand) :
+mSet (inOperand.isValid () ? inOperand.mStringSet : std::set <String> ()),
 mIterator () {
   mIterator = mSet.rbegin () ;
 }
