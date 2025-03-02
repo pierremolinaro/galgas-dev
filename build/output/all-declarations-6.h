@@ -5305,17 +5305,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST_
 // Phase 1: @syntaxExtensionsDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_syntaxExtensionsDictionary final : public cGenericAbstractEnumerator {
-  public: cEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inEnumeratedObject,
-                                                  const EnumerationOrder inOrder) ;
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_galgas_33_SyntaxExtensionListAST current_extensionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_syntaxExtensionsDictionary final : public cGenericAbstractEnumerator {
   public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inEnumeratedObject) ;
 

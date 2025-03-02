@@ -1306,41 +1306,6 @@ void GGS_genericExtensionMethodListMapDictionary::populateEnumerationArray (capC
 }
 
 //--------------------------------------------------------------------------------------------------
-// Enumerator for @string
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_genericExtensionMethodListMapDictionary::cEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inEnumeratedObject,
-                                                        const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element cEnumerator_genericExtensionMethodListMapDictionary::current (LOCATION_ARGS) const {
-  const cCollectionElement_genericExtensionMethodListMapDictionary* p = dynamic_cast  <const cCollectionElement_genericExtensionMethodListMapDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_genericExtensionMethodListMapDictionary) ;
-  return GGS_genericExtensionMethodListMapDictionary_2E_element (p->mElement) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_genericExtensionMethodListMapDictionary::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_genericExtensionMethodListMapDictionary* p = dynamic_cast  <const cCollectionElement_genericExtensionMethodListMapDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_genericExtensionMethodListMapDictionary) ;
-  return p->mElement.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist cEnumerator_genericExtensionMethodListMapDictionary::current_mList (LOCATION_ARGS) const {
-  const cCollectionElement_genericExtensionMethodListMapDictionary* p = dynamic_cast  <const cCollectionElement_genericExtensionMethodListMapDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_genericExtensionMethodListMapDictionary) ;
-  return p->mElement.mProperty_mList ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 // Up Enumerator for @string
 //--------------------------------------------------------------------------------------------------
 
@@ -2369,41 +2334,6 @@ void GGS_descendantClassListMapDictionary::populateEnumerationArray (capCollecti
     mSharedDict->populateEnumerationArray (ioEnumerationArray) ;
   }
 }
-
-//--------------------------------------------------------------------------------------------------
-// Enumerator for @string
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_descendantClassListMapDictionary::cEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inEnumeratedObject,
-                                                        const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element cEnumerator_descendantClassListMapDictionary::current (LOCATION_ARGS) const {
-  const cCollectionElement_descendantClassListMapDictionary* p = dynamic_cast  <const cCollectionElement_descendantClassListMapDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_descendantClassListMapDictionary) ;
-  return GGS_descendantClassListMapDictionary_2E_element (p->mElement) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_descendantClassListMapDictionary::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_descendantClassListMapDictionary* p = dynamic_cast  <const cCollectionElement_descendantClassListMapDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_descendantClassListMapDictionary) ;
-  return p->mElement.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntryList cEnumerator_descendantClassListMapDictionary::current_typeList (LOCATION_ARGS) const {
-  const cCollectionElement_descendantClassListMapDictionary* p = dynamic_cast  <const cCollectionElement_descendantClassListMapDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_descendantClassListMapDictionary) ;
-  return p->mElement.mProperty_typeList ;
-}
-
 
 //--------------------------------------------------------------------------------------------------
 // Up Enumerator for @string

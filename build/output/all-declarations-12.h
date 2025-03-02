@@ -267,17 +267,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGener
 // Phase 1: @genericExtensionMethodListMapDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_genericExtensionMethodListMapDictionary final : public cGenericAbstractEnumerator {
-  public: cEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inEnumeratedObject,
-                                                               const EnumerationOrder inOrder) ;
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_lstringlist current_mList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_genericExtensionMethodListMapDictionary_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_genericExtensionMethodListMapDictionary final : public cGenericAbstractEnumerator {
   public: DownEnumerator_genericExtensionMethodListMapDictionary (const class GGS_genericExtensionMethodListMapDictionary & inEnumeratedObject) ;
 
@@ -704,17 +693,6 @@ void callExtensionMethod_buildExtensionListMaps (class cPtr_semanticDeclarationA
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @descendantClassListMapDictionary dictionary enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_descendantClassListMapDictionary final : public cGenericAbstractEnumerator {
-  public: cEnumerator_descendantClassListMapDictionary (const class GGS_descendantClassListMapDictionary & inEnumeratedObject,
-                                                        const EnumerationOrder inOrder) ;
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntryList current_typeList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_descendantClassListMapDictionary_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_descendantClassListMapDictionary final : public cGenericAbstractEnumerator {

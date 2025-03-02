@@ -5504,41 +5504,6 @@ void GGS_syntaxExtensionsDictionary::populateEnumerationArray (capCollectionElem
 }
 
 //--------------------------------------------------------------------------------------------------
-// Enumerator for @string
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_syntaxExtensionsDictionary::cEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inEnumeratedObject,
-                                                        const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element cEnumerator_syntaxExtensionsDictionary::current (LOCATION_ARGS) const {
-  const cCollectionElement_syntaxExtensionsDictionary* p = dynamic_cast  <const cCollectionElement_syntaxExtensionsDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_syntaxExtensionsDictionary) ;
-  return GGS_syntaxExtensionsDictionary_2E_element (p->mElement) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_syntaxExtensionsDictionary::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_syntaxExtensionsDictionary* p = dynamic_cast  <const cCollectionElement_syntaxExtensionsDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_syntaxExtensionsDictionary) ;
-  return p->mElement.mProperty_key ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_galgas_33_SyntaxExtensionListAST cEnumerator_syntaxExtensionsDictionary::current_extensionList (LOCATION_ARGS) const {
-  const cCollectionElement_syntaxExtensionsDictionary* p = dynamic_cast  <const cCollectionElement_syntaxExtensionsDictionary*> (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_syntaxExtensionsDictionary) ;
-  return p->mElement.mProperty_extensionList ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 // Up Enumerator for @string
 //--------------------------------------------------------------------------------------------------
 
