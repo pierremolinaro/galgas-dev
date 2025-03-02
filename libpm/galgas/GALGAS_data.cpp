@@ -466,30 +466,6 @@ void GGS_data::populateEnumerationArray (capCollectionElementArray & inEnumerati
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_data::cEnumerator_data (const GGS_data & inEnumeratedObject,
-                                    const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
-  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_data) ;
-  return p->attribute_data () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint cEnumerator_data::current (LOCATION_ARGS) const {
-  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_data) ;
-  return p->attribute_data () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 UpEnumerator_data::UpEnumerator_data (const GGS_data & inEnumeratedObject) :
 cGenericAbstractEnumerator (EnumerationOrder::Up) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;

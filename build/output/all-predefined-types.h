@@ -2641,21 +2641,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ;
 //   Phase 1: @data enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_data final : public cGenericAbstractEnumerator {
-  public: cEnumerator_data (const class GGS_data & inEnumeratedObject,
-                            const EnumerationOrder inOrder) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-
-  public: class GGS_uint current_data (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_uint current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_data final : public cGenericAbstractEnumerator {
   public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;
 
