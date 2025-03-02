@@ -1737,11 +1737,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_actualOutputArgumentL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_actualOutputArgumentList enumerator_1657 (temp_0) ;
-  #else
-    cEnumerator_actualOutputArgumentList enumerator_1657 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_actualOutputArgumentList enumerator_1657 (temp_0) ;
   while (enumerator_1657.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_1657.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 32)) ;
     enumerator_1657.gotoNextObject () ;
@@ -1763,11 +1759,7 @@ GGS_string extensionGetter_subscriptSignature (const GGS_actualOutputArgumentLis
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_actualOutputArgumentList enumerator_1924 (temp_0) ;
-  #else
-    cEnumerator_actualOutputArgumentList enumerator_1924 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_actualOutputArgumentList enumerator_1924 (temp_0) ;
   while (enumerator_1924.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("\?").add_operation (enumerator_1924.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 41)) ;
     enumerator_1924.gotoNextObject () ;
@@ -1790,11 +1782,7 @@ void extensionMethod_enterInSemanticContext (const GGS_actualOutputArgumentList 
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_actualOutputArgumentList temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_actualOutputArgumentList enumerator_2187 (temp_0) ;
-  #else
-    cEnumerator_actualOutputArgumentList enumerator_2187 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_actualOutputArgumentList enumerator_2187 (temp_0) ;
   while (enumerator_2187.hasCurrentObject ()) {
     callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2187.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 49)) ;
     enumerator_2187.gotoNextObject () ;
@@ -8365,11 +8353,7 @@ void extensionMethod_enterFixItListInSemanticContext (const GGS_fixitListAST inO
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_fixitListAST temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_fixitListAST enumerator_8058 (temp_0) ;
-  #else
-    cEnumerator_fixitListAST enumerator_8058 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_fixitListAST enumerator_8058 (temp_0) ;
   while (enumerator_8058.hasCurrentObject ()) {
     switch (enumerator_8058.current_mElement (HERE).enumValue ()) {
     case GGS_fixitElementAST::Enumeration::invalid:
@@ -9143,11 +9127,7 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
   ioArgument_ioTemporaryVariableIndex.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 417)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("TC_Array <FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 418)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 418)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 418)) ;
   const GGS_fixitListForGeneration temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_fixitListForGeneration enumerator_16181 (temp_0) ;
-  #else
-    cEnumerator_fixitListForGeneration enumerator_16181 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_fixitListForGeneration enumerator_16181 (temp_0) ;
   while (enumerator_16181.hasCurrentObject ()) {
     switch (enumerator_16181.current_mElement (HERE).enumValue ()) {
     case GGS_fixitElementForGeneration::Enumeration::invalid:

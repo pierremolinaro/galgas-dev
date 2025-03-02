@@ -14622,11 +14622,7 @@ GGS_bool extensionGetter_useLoopLocalVar (const GGS_lexicalRuleListAST & inObjec
   GGS_bool result_result ; // Returned variable
   result_result = GGS_bool (false) ;
   const GGS_lexicalRuleListAST temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lexicalRuleListAST enumerator_2820 (temp_0) ;
-  #else
-    cEnumerator_lexicalRuleListAST enumerator_2820 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lexicalRuleListAST enumerator_2820 (temp_0) ;
   bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas", 73)).isValidAndTrue () ;
   if (enumerator_2820.hasCurrentObject () && bool_1) {
     while (enumerator_2820.hasCurrentObject () && bool_1) {

@@ -1566,11 +1566,7 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleListForGramm
   GGS_string var_currentNode_6893 = GGS_string ("P0start") ;
   GGS_rowList var_rowArray_6932 = GGS_rowList::init (inCompiler COMMA_HERE) ;
   const GGS_productionRuleListForGrammarAnalysis_2E_element temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_range enumerator_6992 (GGS_range (GGS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173)))) ;
-  #else
-    cEnumerator_range enumerator_6992 (GGS_range (GGS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173))), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_range enumerator_6992 (GGS_range (GGS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 173)).substract_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 173)))) ;
   while (enumerator_6992.hasCurrentObject ()) {
     GGS__32_stringlist temp_1 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
     temp_1.enterElement (GGS__32_stringlist_2E_element::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 174)) ;
@@ -1586,11 +1582,7 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleListForGramm
   const GGS_productionRuleListForGrammarAnalysis_2E_element temp_3 = inObject ;
   GGS_uint var_row_7197 = temp_3.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 180)) ;
   const GGS_productionRuleListForGrammarAnalysis_2E_element temp_4 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7240 (temp_4.readProperty_mInstructionList ()) ;
-  #else
-    cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7240 (temp_4.readProperty_mInstructionList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_7240 (temp_4.readProperty_mInstructionList ()) ;
   while (enumerator_7240.hasCurrentObject ()) {
     var_row_7197.minusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 182)) ;
     GGS_uint var_column_7308 = GGS_uint (uint32_t (1U)) ;
@@ -1605,18 +1597,10 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleListForGramm
   const GGS_productionRuleListForGrammarAnalysis_2E_element temp_5 = inObject ;
   GGS_location var_loc_7795 = temp_5.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 201)).add_operation (function_escapeForTex (var_loc_7795.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 203)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 202)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 203)).add_operation (function_escapeForTex (var_loc_7795.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 204)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 205)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 206)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 200)) ;
-  #ifdef NEW_ITERATOR
-    DownEnumerator_rowList enumerator_8217 (var_rowArray_6932) ;
-  #else
-    cEnumerator_rowList enumerator_8217 (var_rowArray_6932, EnumerationOrder::Down) ;
-  #endif
+  DownEnumerator_rowList enumerator_8217 (var_rowArray_6932) ;
   while (enumerator_8217.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 209)) ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator__32_stringlist enumerator_8289 (enumerator_8217.current_columns (HERE)) ;
-    #else
-      cEnumerator__32_stringlist enumerator_8289 (enumerator_8217.current_columns (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator__32_stringlist enumerator_8289 (enumerator_8217.current_columns (HERE)) ;
     while (enumerator_8289.hasCurrentObject ()) {
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {

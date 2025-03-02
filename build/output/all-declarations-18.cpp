@@ -7564,11 +7564,7 @@ GGS_lstringlist extensionGetter_unsolvedEntryList (const GGS_unifiedTypeMap & in
   GGS_lstringlist result_result ; // Returned variable
   result_result = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
   const GGS_unifiedTypeMap temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_unifiedTypeMap enumerator_1845 (temp_0) ;
-  #else
-    cEnumerator_unifiedTypeMap enumerator_1845 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_unifiedTypeMap enumerator_1845 (temp_0) ;
   while (enumerator_1845.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
@@ -7843,16 +7839,8 @@ void extensionMethod_analyzeRoutineArguments (const GGS_actualParameterListAST i
     outArgument_outActualParameterListForGeneration = GGS_actualParameterListForGeneration::init (inCompiler COMMA_HERE) ;
     GGS_stringset var_exclusiveVariableSet_2703 = GGS_stringset::init (inCompiler COMMA_HERE) ;
     const GGS_actualParameterListAST temp_4 = inObject ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_formalParameterSignature enumerator_2758 (constinArgument_inRoutineSignature) ;
-    #else
-      cEnumerator_formalParameterSignature enumerator_2758 (constinArgument_inRoutineSignature, EnumerationOrder::Up) ;
-    #endif
-    #ifdef NEW_ITERATOR
-      UpEnumerator_actualParameterListAST enumerator_2779 (temp_4) ;
-    #else
-      cEnumerator_actualParameterListAST enumerator_2779 (temp_4, EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_formalParameterSignature enumerator_2758 (constinArgument_inRoutineSignature) ;
+    UpEnumerator_actualParameterListAST enumerator_2779 (temp_4) ;
     while (enumerator_2758.hasCurrentObject () && enumerator_2779.hasCurrentObject ()) {
       callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2779.current_mActualParameter (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2758.current (HERE).readProperty_mFormalSelector (), enumerator_2758.current (HERE).readProperty_mFormalArgumentType (), enumerator_2758.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2703, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 48)) ;
       enumerator_2758.gotoNextObject () ;
@@ -13556,34 +13544,18 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
     if (GalgasBool::boolTrue == test_0) {
       outArgument_outIsFilePrivate = GGS_bool (false) ;
       outArgument_outRoutineSignature = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_routineArgumentMap enumerator_4212 (var_routine_4065.readProperty_mArgumentMap ()) ;
-      #else
-        cEnumerator_routineArgumentMap enumerator_4212 (var_routine_4065.readProperty_mArgumentMap (), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_routineArgumentMap enumerator_4212 (var_routine_4065.readProperty_mArgumentMap ()) ;
       while (enumerator_4212.hasCurrentObject ()) {
         outArgument_outIsFilePrivate = enumerator_4212.current (HERE).readProperty_mIsFilePrivate () ;
         outArgument_outRoutineSignature = enumerator_4212.current (HERE).readProperty_mRoutineSignature () ;
         enumerator_4212.gotoNextObject () ;
       }
       GGS_acceptableParameterList var_acceptableParameterList_4375 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_routineArgumentMap enumerator_4432 (var_routine_4065.readProperty_mArgumentMap ()) ;
-      #else
-        cEnumerator_routineArgumentMap enumerator_4432 (var_routine_4065.readProperty_mArgumentMap (), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_routineArgumentMap enumerator_4432 (var_routine_4065.readProperty_mArgumentMap ()) ;
       while (enumerator_4432.hasCurrentObject ()) {
         GGS_bool var_accept_4460 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas", 106)).objectCompare (enumerator_4432.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas", 106)))) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_formalParameterSignature enumerator_4571 (enumerator_4432.current (HERE).readProperty_mRoutineSignature ()) ;
-        #else
-          cEnumerator_formalParameterSignature enumerator_4571 (enumerator_4432.current (HERE).readProperty_mRoutineSignature (), EnumerationOrder::Up) ;
-        #endif
-        #ifdef NEW_ITERATOR
-          UpEnumerator_actualParameterListAST enumerator_4591 (constinArgument_inActualParameterList) ;
-        #else
-          cEnumerator_actualParameterListAST enumerator_4591 (constinArgument_inActualParameterList, EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_formalParameterSignature enumerator_4571 (enumerator_4432.current (HERE).readProperty_mRoutineSignature ()) ;
+        UpEnumerator_actualParameterListAST enumerator_4591 (constinArgument_inActualParameterList) ;
         bool bool_2 = var_accept_4460.isValidAndTrue () ;
         if (enumerator_4571.hasCurrentObject () && enumerator_4591.hasCurrentObject () && bool_2) {
           while (enumerator_4571.hasCurrentObject () && enumerator_4591.hasCurrentObject () && bool_2) {
@@ -13626,11 +13598,7 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
         }
         if (GalgasBool::boolFalse == test_5) {
           GGS_string var_s_5426 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          #ifdef NEW_ITERATOR
-            UpEnumerator_acceptableParameterList enumerator_5523 (var_acceptableParameterList_4375) ;
-          #else
-            cEnumerator_acceptableParameterList enumerator_5523 (var_acceptableParameterList_4375, EnumerationOrder::Up) ;
-          #endif
+          UpEnumerator_acceptableParameterList enumerator_5523 (var_acceptableParameterList_4375) ;
           while (enumerator_5523.hasCurrentObject ()) {
             var_s_5426.plusAssign_operation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5523.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 127)) ;
             enumerator_5523.gotoNextObject () ;

@@ -9,126 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@inputSingleJokerActualParameterAST enterParameterInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputSingleJokerActualParameterAST::method_enterParameterInSemanticContext (GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension getter '@inputSingleJokerActualParameterAST isCompatibleWith'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool cPtr_inputSingleJokerActualParameterAST::getter_isCompatibleWith (const GGS_formalArgumentPassingModeAST constinArgument_inFormalPassingMode,
-                                                                           const GGS_string constinArgument_inSelector,
-                                                                           Compiler */* inCompiler */
-                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result_result ; // Returned variable
-  result_result = GGS_bool (ComparisonKind::equal, constinArgument_inFormalPassingMode.objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 960)))) ;
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = result_result.boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_inputSingleJokerActualParameterAST temp_1 = this ;
-      result_result = GGS_bool (ComparisonKind::equal, temp_1.readProperty_mActualSelector ().readProperty_string ().objectCompare (constinArgument_inSelector)) ;
-    }
-  }
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@inputSingleJokerActualParameterAST enterInActualOutputParameterList'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputSingleJokerActualParameterAST::method_enterInActualOutputParameterList (GGS_actualOutputArgumentList & /* ioArgument_ioActualOutputArgumentList */,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_inputSingleJokerActualParameterAST temp_0 = this ;
-  TC_Array <FixItDescription> fixItArray1 ;
-  inCompiler->emitSemanticError (temp_0.readProperty_mActualSelector ().readProperty_location (), GGS_string ("a getter does not support input parameter"), fixItArray1  COMMA_SOURCE_FILE ("actual-parameters.galgas", 969)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@inputSingleJokerActualParameterAST checkAgainstFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_inputSingleJokerActualParameterAST::method_checkAgainstFormalArgument (const GGS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
-                                                                                 GGS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
-                                                                                 const GGS_analysisContext /* constinArgument_inAnalysisContext */,
-                                                                                 GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
-                                                                                 const GGS_lstring constinArgument_inFormalSelector,
-                                                                                 const GGS_unifiedTypeMapEntry constinArgument_inFormalArgumentType,
-                                                                                 const GGS_formalArgumentPassingModeAST constinArgument_inFormalArgumentPassingMode,
-                                                                                 GGS_localVarManager & ioArgument_ioVariableMap,
-                                                                                 GGS_actualParameterListForGeneration & ioArgument_ioActualParameterListForGeneration,
-                                                                                 GGS_stringset & /* ioArgument_ioExclusiveVariableSet */,
-                                                                                 GGS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::notEqual, constinArgument_inFormalArgumentPassingMode.objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("actual-parameters.galgas", 986)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_inputSingleJokerActualParameterAST temp_1 = this ;
-      TC_Array <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (temp_1.readProperty_mActualSelector ().readProperty_location (), GGS_string ("the corresponding formal argument has the '").add_operation (extensionGetter_string (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 988)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 988)).add_operation (GGS_string ("' passing mode: this parameter should be passed with '"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 988)).add_operation (extensionGetter_correspondingEffectiveParameterString (constinArgument_inFormalArgumentPassingMode, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 990)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 989)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 990)), fixItArray2  COMMA_SOURCE_FILE ("actual-parameters.galgas", 987)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GalgasBool test_3 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_3) {
-      const GGS_inputSingleJokerActualParameterAST temp_4 = this ;
-      test_3 = GGS_bool (ComparisonKind::notEqual, constinArgument_inFormalSelector.readProperty_string ().objectCompare (temp_4.readProperty_mActualSelector ().readProperty_string ())).boolEnum () ;
-      if (GalgasBool::boolTrue == test_3) {
-        GGS_string temp_5 ;
-        const GalgasBool test_6 = GGS_bool (ComparisonKind::notEqual, constinArgument_inFormalSelector.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-        if (GalgasBool::boolTrue == test_6) {
-          temp_5 = constinArgument_inFormalSelector.readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 992)) ;
-        }else if (GalgasBool::boolFalse == test_6) {
-          temp_5 = GGS_string::makeEmptyString () ;
-        }
-        GGS_string var_s_46087 = GGS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 992)) ;
-        const GGS_inputSingleJokerActualParameterAST temp_7 = this ;
-        TC_Array <FixItDescription> fixItArray8 ;
-        appendFixItActions (fixItArray8, kFixItReplace, var_s_46087) ;
-        inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_46087, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 993)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 993)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas", 993)) ;
-      }
-    }
-    if (GalgasBool::boolFalse == test_3) {
-      const GGS_inputSingleJokerActualParameterAST temp_9 = this ;
-      GGS_string var_cppVarName_46288 = GGS_string ("joker_").add_operation (temp_9.readProperty_mActualSelector ().readProperty_location ().getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 995)).getter_string (SOURCE_FILE ("actual-parameters.galgas", 995)), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 995)) ;
-      GGS__32_stringlist var_poisonedVarCppNameList_46422 = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-      const GGS_inputSingleJokerActualParameterAST temp_10 = this ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_lstringlist enumerator_46462 (temp_10.readProperty_mPoisonedVarNameList ()) ;
-      #else
-        cEnumerator_lstringlist enumerator_46462 (temp_10.readProperty_mPoisonedVarNameList (), EnumerationOrder::Up) ;
-      #endif
-      while (enumerator_46462.hasCurrentObject ()) {
-        GGS_string var_targetVariableCppName_46596 ;
-        GGS_string var_nameForCheckingFormalParameterUsing_46633 ;
-        {
-        GGS_unifiedTypeMapEntry joker_46578 ; // Joker input parameter
-        extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, enumerator_46462.current_mValue (HERE), joker_46578, var_targetVariableCppName_46596, var_nameForCheckingFormalParameterUsing_46633, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas", 999)) ;
-        }
-        var_poisonedVarCppNameList_46422.addAssign_operation (var_targetVariableCppName_46596, var_nameForCheckingFormalParameterUsing_46633  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1005)) ;
-        enumerator_46462.gotoNextObject () ;
-      }
-      ioArgument_ioActualParameterListForGeneration.addAssign_operation (GGS_inputJokerParameterForGeneration::init_21__21__21_ (constinArgument_inFormalArgumentType, var_cppVarName_46288, var_poisonedVarCppNameList_46422, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("actual-parameters.galgas", 1007)) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@inputJokerActualParameterAST enterParameterInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
@@ -254,11 +134,7 @@ void cPtr_externProcedureDeclarationAST::method_enterDeclarationInSemanticContex
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_formalParameterSignature var_routineSignature_5730 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
   const GGS_externProcedureDeclarationAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListAST enumerator_5803 (temp_0.readProperty_mFormalArgumentListAST ()) ;
-  #else
-    cEnumerator_formalParameterListAST enumerator_5803 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListAST enumerator_5803 (temp_0.readProperty_mFormalArgumentListAST ()) ;
   while (enumerator_5803.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_parameterTypeIndex_5897 ;
     {
@@ -291,11 +167,7 @@ void cPtr_externProcedureDeclarationAST::method_semanticAnalysis (GGS_lstringlis
   GGS_formalParameterListForGeneration var_formalArgumentList_6968 = GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE) ;
   GGS_formalParameterSignature var_routineSignature_7034 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
   const GGS_externProcedureDeclarationAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListAST enumerator_7107 (temp_0.readProperty_mFormalArgumentListAST ()) ;
-  #else
-    cEnumerator_formalParameterListAST enumerator_7107 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListAST enumerator_7107 (temp_0.readProperty_mFormalArgumentListAST ()) ;
   while (enumerator_7107.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_parameterType_7143 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_7107.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 160)) ;
     var_formalArgumentList_6968.addAssign_operation (enumerator_7107.current (HERE).readProperty_mFormalSelector (), enumerator_7107.current (HERE).readProperty_mFormalArgumentPassingMode (), var_parameterType_7143, enumerator_7107.current (HERE).readProperty_mFormalArgumentName (), enumerator_7107.current (HERE).readProperty_mFormalArgumentName ().readProperty_string ()  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas", 161)) ;
@@ -364,11 +236,7 @@ void cPtr_procDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equa
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_formalParameterSignature var_routineSignature_6946 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
   const GGS_procDeclarationAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListAST enumerator_7019 (temp_0.readProperty_mFormalArgumentListAST ()) ;
-  #else
-    cEnumerator_formalParameterListAST enumerator_7019 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListAST enumerator_7019 (temp_0.readProperty_mFormalArgumentListAST ()) ;
   while (enumerator_7019.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_parameterTypeIndex_7113 ;
     {
@@ -402,11 +270,7 @@ void cPtr_procDeclarationAST::method_semanticAnalysis (GGS_lstringlist & ioArgum
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_formalParameterSignature var_routineSignature_8296 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
   const GGS_procDeclarationAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListAST enumerator_8369 (temp_0.readProperty_mFormalArgumentListAST ()) ;
-  #else
-    cEnumerator_formalParameterListAST enumerator_8369 (temp_0.readProperty_mFormalArgumentListAST (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListAST enumerator_8369 (temp_0.readProperty_mFormalArgumentListAST ()) ;
   while (enumerator_8369.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_parameterType_8405 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_8369.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("procedure-declaration.galgas", 212)) ;
     var_routineSignature_8296.addAssign_operation (enumerator_8369.current (HERE).readProperty_mFormalSelector (), var_parameterType_8405, enumerator_8369.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_8369.current (HERE).readProperty_mFormalArgumentName ().readProperty_string ()  COMMA_SOURCE_FILE ("procedure-declaration.galgas", 213)) ;
@@ -1302,11 +1166,7 @@ GGS_lstring function_routineMangledName (const GGS_lstring & constinArgument_inR
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lstring result_result ; // Returned variable
   GGS_string var_str_1466 = constinArgument_inRoutineName.readProperty_string () ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterSignature enumerator_1512 (constinArgument_inRoutineFormalParameters) ;
-  #else
-    cEnumerator_formalParameterSignature enumerator_1512 (constinArgument_inRoutineFormalParameters, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterSignature enumerator_1512 (constinArgument_inRoutineFormalParameters) ;
   while (enumerator_1512.hasCurrentObject ()) {
     switch (enumerator_1512.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -1384,11 +1244,7 @@ GGS_string function_routineArgumentFromFormalParameters (const GGS_formalParamet
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterSignature enumerator_2080 (constinArgument_inRoutineFormalParameters) ;
-  #else
-    cEnumerator_formalParameterSignature enumerator_2080 (constinArgument_inRoutineFormalParameters, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterSignature enumerator_2080 (constinArgument_inRoutineFormalParameters) ;
   while (enumerator_2080.hasCurrentObject ()) {
     switch (enumerator_2080.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -1764,18 +1620,10 @@ void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26
     if (GalgasBool::boolTrue == test_0) {
       GGS_extensionGetterMapForType var_extensionGetterMapForType_16662 ;
       constinArgument_inExtensionGetterMapForBuildingContext.method_searchKey (constinArgument_inTypeName, var_extensionGetterMapForType_16662, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 409)) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_extensionGetterMapForType enumerator_16745 (var_extensionGetterMapForType_16662) ;
-      #else
-        cEnumerator_extensionGetterMapForType enumerator_16745 (var_extensionGetterMapForType_16662, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_extensionGetterMapForType enumerator_16745 (var_extensionGetterMapForType_16662) ;
       while (enumerator_16745.hasCurrentObject ()) {
         GGS_functionSignature var_formalArgumentList_16817 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_formalInputParameterListAST enumerator_16875 (enumerator_16745.current_mInputFormalParameterList (HERE)) ;
-        #else
-          cEnumerator_formalInputParameterListAST enumerator_16875 (enumerator_16745.current_mInputFormalParameterList (HERE), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_formalInputParameterListAST enumerator_16875 (enumerator_16745.current_mInputFormalParameterList (HERE)) ;
         while (enumerator_16875.hasCurrentObject ()) {
           GGS_unifiedTypeMapEntry var_typeIndex_16985 ;
           {
@@ -1846,18 +1694,10 @@ void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26
     if (GalgasBool::boolTrue == test_6) {
       GGS_extensionMethodMapForType var_extensionMethodMapForType_18473 ;
       constinArgument_inExtensionMethodMapForBuildingContext.method_searchKey (constinArgument_inTypeName, var_extensionMethodMapForType_18473, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 456)) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_extensionMethodMapForType enumerator_18535 (var_extensionMethodMapForType_18473) ;
-      #else
-        cEnumerator_extensionMethodMapForType enumerator_18535 (var_extensionMethodMapForType_18473, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_extensionMethodMapForType enumerator_18535 (var_extensionMethodMapForType_18473) ;
       while (enumerator_18535.hasCurrentObject ()) {
         GGS_formalParameterSignature var_formalArgumentList_18588 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_formalParameterListAST enumerator_18661 (enumerator_18535.current_mFormalParameterList (HERE)) ;
-        #else
-          cEnumerator_formalParameterListAST enumerator_18661 (enumerator_18535.current_mFormalParameterList (HERE), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_formalParameterListAST enumerator_18661 (enumerator_18535.current_mFormalParameterList (HERE)) ;
         while (enumerator_18661.hasCurrentObject ()) {
           GGS_unifiedTypeMapEntry var_typeIndex_18797 ;
           {
@@ -1924,18 +1764,10 @@ void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26
     if (GalgasBool::boolTrue == test_12) {
       GGS_extensionSetterMapForType var_extensionSetterMapForType_20157 ;
       constinArgument_inExtensionSetterMapForBuildingContext.method_searchKey (constinArgument_inTypeName, var_extensionSetterMapForType_20157, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 503)) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_extensionSetterMapForType enumerator_20198 (var_extensionSetterMapForType_20157) ;
-      #else
-        cEnumerator_extensionSetterMapForType enumerator_20198 (var_extensionSetterMapForType_20157, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_extensionSetterMapForType enumerator_20198 (var_extensionSetterMapForType_20157) ;
       while (enumerator_20198.hasCurrentObject ()) {
         GGS_formalParameterSignature var_formalArgumentList_20288 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_formalParameterListAST enumerator_20336 (enumerator_20198.current_mFormalParameterList (HERE)) ;
-        #else
-          cEnumerator_formalParameterListAST enumerator_20336 (enumerator_20198.current_mFormalParameterList (HERE), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_formalParameterListAST enumerator_20336 (enumerator_20198.current_mFormalParameterList (HERE)) ;
         while (enumerator_20336.hasCurrentObject ()) {
           GGS_unifiedTypeMapEntry var_typeIndex_20432 ;
           {
@@ -1965,18 +1797,10 @@ void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26
     if (GalgasBool::boolTrue == test_15) {
       GGS_extensionInitializerMapForType var_initializerMapForType_21182 ;
       constinArgument_inExtensionInitializerMapForBuildingContext.method_searchKey (constinArgument_inTypeName, var_initializerMapForType_21182, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 529)) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_extensionInitializerMapForType enumerator_21219 (var_initializerMapForType_21182) ;
-      #else
-        cEnumerator_extensionInitializerMapForType enumerator_21219 (var_initializerMapForType_21182, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_extensionInitializerMapForType enumerator_21219 (var_initializerMapForType_21182) ;
       while (enumerator_21219.hasCurrentObject ()) {
         GGS_functionSignature var_formalArgumentList_21298 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_formalInputParameterListAST enumerator_21395 (enumerator_21219.current_mFormalParameterList (HERE)) ;
-        #else
-          cEnumerator_formalInputParameterListAST enumerator_21395 (enumerator_21219.current_mFormalParameterList (HERE), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_formalInputParameterListAST enumerator_21395 (enumerator_21219.current_mFormalParameterList (HERE)) ;
         while (enumerator_21395.hasCurrentObject ()) {
           GGS_unifiedTypeMapEntry var_typeIndex_21495 ;
           {
@@ -2017,11 +1841,7 @@ void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (co
   ioArgument_ioWrapperDirectoryIndex.plusAssign_operation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 572)) ;
   GGS_stringlist var_files_22989 = constinArgument_inAbsoluteSourcePath.getter_regularFiles (GGS_bool (false) COMMA_SOURCE_FILE ("semanticContext.galgas", 574)) ;
   outArgument_outWrapperFileMap = GGS_wrapperFileMap::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_stringlist enumerator_23073 (var_files_22989) ;
-  #else
-    cEnumerator_stringlist enumerator_23073 (var_files_22989, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_stringlist enumerator_23073 (var_files_22989) ;
   while (enumerator_23073.hasCurrentObject ()) {
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
@@ -2051,11 +1871,7 @@ void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (co
   }
   GGS_stringlist var_directories_23914 = constinArgument_inAbsoluteSourcePath.getter_directories (GGS_bool (false) COMMA_SOURCE_FILE ("semanticContext.galgas", 600)) ;
   outArgument_outWrapperDirectoryMap = GGS_wrapperDirectoryMap::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_stringlist enumerator_24008 (var_directories_23914) ;
-  #else
-    cEnumerator_stringlist enumerator_24008 (var_directories_23914, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_stringlist enumerator_24008 (var_directories_23914) ;
   while (enumerator_24008.hasCurrentObject ()) {
     GGS_uint var_theDirectoryIndex_24048 = ioArgument_ioWrapperDirectoryIndex ;
     GGS_wrapperFileMap var_internalWrapperFileMap_24284 ;
@@ -2088,18 +1904,10 @@ void cPtr_filewrapperDeclarationAST::method_enterDeclarationInSemanticContext (G
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GGS_filewrapperTemplateMap var_filewrapperTemplateMap_25351 = GGS_filewrapperTemplateMap::init (inCompiler COMMA_HERE) ;
   const GGS_filewrapperDeclarationAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_filewrapperTemplateListAST enumerator_25437 (temp_0.readProperty_mFilewrapperTemplateList ()) ;
-  #else
-    cEnumerator_filewrapperTemplateListAST enumerator_25437 (temp_0.readProperty_mFilewrapperTemplateList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_filewrapperTemplateListAST enumerator_25437 (temp_0.readProperty_mFilewrapperTemplateList ()) ;
   while (enumerator_25437.hasCurrentObject ()) {
     GGS_functionSignature var_templateSignature_25543 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_formalTemplateInputParameterListAST enumerator_25644 (enumerator_25437.current_mFilewrapperTemplateFormalInputParameters (HERE)) ;
-    #else
-      cEnumerator_formalTemplateInputParameterListAST enumerator_25644 (enumerator_25437.current_mFilewrapperTemplateFormalInputParameters (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_formalTemplateInputParameterListAST enumerator_25644 (enumerator_25437.current_mFilewrapperTemplateFormalInputParameters (HERE)) ;
     while (enumerator_25644.hasCurrentObject ()) {
       GGS_unifiedTypeMapEntry var_parameterTypeIndex_25764 ;
       {
@@ -2115,11 +1923,7 @@ void cPtr_filewrapperDeclarationAST::method_enterDeclarationInSemanticContext (G
   }
   GGS_wrapperExtensionMap var_textExtensionMap_26108 = GGS_wrapperExtensionMap::init (inCompiler COMMA_HERE) ;
   const GGS_filewrapperDeclarationAST temp_1 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_26138 (temp_1.readProperty_mFilewrapperTextFileExtensionList ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_26138 (temp_1.readProperty_mFilewrapperTextFileExtensionList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_26138 (temp_1.readProperty_mFilewrapperTextFileExtensionList ()) ;
   while (enumerator_26138.hasCurrentObject ()) {
     {
     var_textExtensionMap_26108.setter_insertKey (enumerator_26138.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 651)) ;
@@ -2128,11 +1932,7 @@ void cPtr_filewrapperDeclarationAST::method_enterDeclarationInSemanticContext (G
   }
   GGS_wrapperExtensionMap var_binaryFileExtensionMap_26305 = GGS_wrapperExtensionMap::init (inCompiler COMMA_HERE) ;
   const GGS_filewrapperDeclarationAST temp_2 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_26341 (temp_2.readProperty_mFilewrapperBinaryFileExtensionList ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_26341 (temp_2.readProperty_mFilewrapperBinaryFileExtensionList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_26341 (temp_2.readProperty_mFilewrapperBinaryFileExtensionList ()) ;
   while (enumerator_26341.hasCurrentObject ()) {
     GalgasBool test_3 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_3) {
@@ -2209,11 +2009,7 @@ void cPtr_externFunctionDeclarationAST::method_enterDeclarationInSemanticContext
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_functionSignature var_functionSignature_28611 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
   const GGS_externFunctionDeclarationAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListAST enumerator_28704 (temp_0.readProperty_mFormalArgumentList ()) ;
-  #else
-    cEnumerator_formalInputParameterListAST enumerator_28704 (temp_0.readProperty_mFormalArgumentList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListAST enumerator_28704 (temp_0.readProperty_mFormalArgumentList ()) ;
   while (enumerator_28704.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_parameterTypeIndex_28805 ;
     {
@@ -2299,18 +2095,10 @@ void cPtr_galgas_33_GrammarComponentAST::method_enterDeclarationInSemanticContex
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarLabelMap var_grammarLabelMap_31876 = GGS_grammarLabelMap::init (inCompiler COMMA_HERE) ;
   const GGS_galgas_33_GrammarComponentAST temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_nonTerminalLabelListAST enumerator_31936 (temp_0.readProperty_mStartSymbolLabelList ()) ;
-  #else
-    cEnumerator_nonTerminalLabelListAST enumerator_31936 (temp_0.readProperty_mStartSymbolLabelList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_nonTerminalLabelListAST enumerator_31936 (temp_0.readProperty_mStartSymbolLabelList ()) ;
   while (enumerator_31936.hasCurrentObject ()) {
     GGS_formalParameterSignature var_formalArgumentList_32032 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_formalParameterListAST enumerator_32153 (enumerator_31936.current_mFormalArgumentList (HERE)) ;
-    #else
-      cEnumerator_formalParameterListAST enumerator_32153 (enumerator_31936.current_mFormalArgumentList (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_formalParameterListAST enumerator_32153 (enumerator_31936.current_mFormalArgumentList (HERE)) ;
     while (enumerator_32153.hasCurrentObject ()) {
       GGS_unifiedTypeMapEntry var_argumentType_32242 ;
       {
@@ -2354,11 +2142,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_enterDeclarationInGraph (GGS_sem
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_33970, temp_2, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 827)) ;
   }
   const GGS_galgas_33_GrammarComponentAST temp_3 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_34127 (temp_3.readProperty_mSyntaxComponents ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_34127 (temp_3.readProperty_mSyntaxComponents (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_34127 (temp_3.readProperty_mSyntaxComponents ()) ;
   while (enumerator_34127.hasCurrentObject ()) {
     {
     ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_33970, GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (enumerator_34127.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 829)), enumerator_34127.current_mValue (HERE).readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas", 829)) ;
@@ -2394,23 +2178,11 @@ void cPtr_galgas_33_SyntaxComponentAST::method_enterDeclarationInGraph (GGS_sema
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_34983, GGS_lstring::init_21__21_ (GGS_string ("lexique ").add_operation (temp_3.readProperty_mLexiqueName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 845)), temp_4.readProperty_mLexiqueName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas", 845)) ;
   }
   const GGS_galgas_33_SyntaxComponentAST temp_5 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxRuleListAST enumerator_35260 (temp_5.readProperty_mRuleList ()) ;
-  #else
-    cEnumerator_syntaxRuleListAST enumerator_35260 (temp_5.readProperty_mRuleList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxRuleListAST enumerator_35260 (temp_5.readProperty_mRuleList ()) ;
   while (enumerator_35260.hasCurrentObject ()) {
-    #ifdef NEW_ITERATOR
-      UpEnumerator_syntaxRuleLabelListAST enumerator_35325 (enumerator_35260.current_mLabelList (HERE)) ;
-    #else
-      cEnumerator_syntaxRuleLabelListAST enumerator_35325 (enumerator_35260.current_mLabelList (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_syntaxRuleLabelListAST enumerator_35325 (enumerator_35260.current_mLabelList (HERE)) ;
     while (enumerator_35325.hasCurrentObject ()) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_formalParameterListAST enumerator_35411 (enumerator_35325.current_mFormalArguments (HERE)) ;
-      #else
-        cEnumerator_formalParameterListAST enumerator_35411 (enumerator_35325.current_mFormalArguments (HERE), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_formalParameterListAST enumerator_35411 (enumerator_35325.current_mFormalArguments (HERE)) ;
       while (enumerator_35411.hasCurrentObject ()) {
         switch (enumerator_35411.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -2505,11 +2277,7 @@ void routine_generateInstructionList_26__3F__26__26__3F__26_ (GGS_stringset & io
   {
   ioArgument_ioGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas", 35)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListForGeneration enumerator_1842 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListForGeneration enumerator_1842 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListForGeneration enumerator_1842 (constinArgument_inInstructionList) ;
   while (enumerator_1842.hasCurrentObject ()) {
     callExtensionMethod_generateInstruction ((cPtr_semanticInstructionForGeneration *) enumerator_1842.current (HERE).readProperty_mInstruction ().ptr (), ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas", 37)) ;
     enumerator_1842.gotoNextObject () ;
@@ -2697,11 +2465,7 @@ void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_loca
                                                                                                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstructionListForGeneration.drop () ; // Release 'out' argument
   outArgument_outInstructionListForGeneration = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_localConstantList enumerator_4744 (constinArgument_inLocalConstantList) ;
-  #else
-    cEnumerator_localConstantList enumerator_4744 (constinArgument_inLocalConstantList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_localConstantList enumerator_4744 (constinArgument_inLocalConstantList) ;
   while (enumerator_4744.hasCurrentObject ()) {
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
@@ -2719,33 +2483,21 @@ void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_loca
     }
     enumerator_4744.gotoNextObject () ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_localInitializedVariableList enumerator_5054 (constinArgument_inLocalInitializedVariableList) ;
-  #else
-    cEnumerator_localInitializedVariableList enumerator_5054 (constinArgument_inLocalInitializedVariableList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_localInitializedVariableList enumerator_5054 (constinArgument_inLocalInitializedVariableList) ;
   while (enumerator_5054.hasCurrentObject ()) {
     {
     extensionSetter_insertInitializedLocalVariable (ioArgument_ioVariableMap, enumerator_5054.current_mName (HERE), GGS_bool (true), enumerator_5054.current_mType (HERE), enumerator_5054.current_mCppName (HERE), enumerator_5054.current_mCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 113)) ;
     }
     enumerator_5054.gotoNextObject () ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_localInitializedVariableList enumerator_5238 (constinArgument_inLocalInitializedVariableListNoWarns) ;
-  #else
-    cEnumerator_localInitializedVariableList enumerator_5238 (constinArgument_inLocalInitializedVariableListNoWarns, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_localInitializedVariableList enumerator_5238 (constinArgument_inLocalInitializedVariableListNoWarns) ;
   while (enumerator_5238.hasCurrentObject ()) {
     {
     extensionSetter_insertInitializedLocalVariable (ioArgument_ioVariableMap, enumerator_5238.current_mName (HERE), GGS_bool (false), enumerator_5238.current_mType (HERE), enumerator_5238.current_mCppName (HERE), enumerator_5238.current_mCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 116)) ;
     }
     enumerator_5238.gotoNextObject () ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListAST enumerator_5441 (constinArgument_inSemanticInstructionListAST) ;
-  #else
-    cEnumerator_semanticInstructionListAST enumerator_5441 (constinArgument_inSemanticInstructionListAST, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListAST enumerator_5441 (constinArgument_inSemanticInstructionListAST) ;
   while (enumerator_5441.hasCurrentObject ()) {
     callExtensionMethod_analyzeSemanticInstruction ((cPtr_semanticInstructionAST *) enumerator_5441.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, outArgument_outInstructionListForGeneration, ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("semanticInstructionsAnalysis.galgas", 120)) ;
     enumerator_5441.gotoNextObject () ;
@@ -3054,16 +2806,8 @@ void routine_checkMethodSignatures_3F__3F__3F__3F_ (const GGS_formalParameterLis
     }
   }
   if (GalgasBool::boolFalse == test_0) {
-    #ifdef NEW_ITERATOR
-      UpEnumerator_formalParameterSignature enumerator_2120 (constinArgument_inReferenceSignature) ;
-    #else
-      cEnumerator_formalParameterSignature enumerator_2120 (constinArgument_inReferenceSignature, EnumerationOrder::Up) ;
-    #endif
-    #ifdef NEW_ITERATOR
-      UpEnumerator_formalParameterListForGeneration enumerator_2232 (constinArgument_inTestedSignature) ;
-    #else
-      cEnumerator_formalParameterListForGeneration enumerator_2232 (constinArgument_inTestedSignature, EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_formalParameterSignature enumerator_2120 (constinArgument_inReferenceSignature) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2232 (constinArgument_inTestedSignature) ;
     while (enumerator_2120.hasCurrentObject () && enumerator_2232.hasCurrentObject ()) {
       GalgasBool test_3 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_3) {
@@ -3165,16 +2909,8 @@ void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const GGS_formalInpu
     }
   }
   if (GalgasBool::boolFalse == test_3) {
-    #ifdef NEW_ITERATOR
-      UpEnumerator_functionSignature enumerator_5220 (constinArgument_inReferenceSignature) ;
-    #else
-      cEnumerator_functionSignature enumerator_5220 (constinArgument_inReferenceSignature, EnumerationOrder::Up) ;
-    #endif
-    #ifdef NEW_ITERATOR
-      UpEnumerator_formalInputParameterListForGeneration enumerator_5307 (constinArgument_inTestedSignature) ;
-    #else
-      cEnumerator_formalInputParameterListForGeneration enumerator_5307 (constinArgument_inTestedSignature, EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_functionSignature enumerator_5220 (constinArgument_inReferenceSignature) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_5307 (constinArgument_inTestedSignature) ;
     while (enumerator_5220.hasCurrentObject () && enumerator_5307.hasCurrentObject ()) {
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {
@@ -3225,11 +2961,7 @@ void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const GGS_se
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outRoutineSignature.drop () ; // Release 'out' argument
   outArgument_outRoutineSignature = GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListAST enumerator_7326 (constinArgument_inRoutineSignatureAST) ;
-  #else
-    cEnumerator_formalParameterListAST enumerator_7326 (constinArgument_inRoutineSignatureAST, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListAST enumerator_7326 (constinArgument_inRoutineSignatureAST) ;
   while (enumerator_7326.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_type_7359 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_7326.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 130)) ;
     GGS_string var_formalArgumentCppName_7454 ;
@@ -3334,11 +3066,7 @@ void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F
   if (GalgasBool::boolTrue == test_0) {
     test_0 = constinArgument_inAnalysisContext.readProperty_requiresSelfForAccessingProperty ().operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 216)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_typedPropertyList enumerator_11000 (constinArgument_inNonMutableTypedAttributeList) ;
-      #else
-        cEnumerator_typedPropertyList enumerator_11000 (constinArgument_inNonMutableTypedAttributeList, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_typedPropertyList enumerator_11000 (constinArgument_inNonMutableTypedAttributeList) ;
       while (enumerator_11000.hasCurrentObject ()) {
         {
         extensionSetter_insertNonMutableProperty (var_variableMap_10837, enumerator_11000.current (HERE).readProperty_name (), enumerator_11000.current (HERE).readProperty_typeEntry (), constinArgument_inAnalysisContext.readProperty_selfObjectCppPrefixForAccessingProperty ().add_operation (GGS_string ("mProperty_"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 221)).add_operation (enumerator_11000.current (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 222)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 222)), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 218)) ;
@@ -3351,11 +3079,7 @@ void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F
   if (GalgasBool::boolTrue == test_1) {
     test_1 = constinArgument_inAnalysisContext.readProperty_requiresSelfForAccessingProperty ().operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 228)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_typedPropertyList enumerator_11466 (constinArgument_inMutableTypedAttributeList) ;
-      #else
-        cEnumerator_typedPropertyList enumerator_11466 (constinArgument_inMutableTypedAttributeList, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_typedPropertyList enumerator_11466 (constinArgument_inMutableTypedAttributeList) ;
       while (enumerator_11466.hasCurrentObject ()) {
         {
         extensionSetter_insertMutableProperty (var_variableMap_10837, enumerator_11466.current (HERE).readProperty_name (), enumerator_11466.current (HERE).readProperty_typeEntry (), constinArgument_inAnalysisContext.readProperty_selfObjectCppPrefixForAccessingProperty ().add_operation (GGS_string ("mProperty_"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 233)).add_operation (enumerator_11466.current (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 234)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 234)), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 230)) ;
@@ -3371,11 +3095,7 @@ void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F
       test_2 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_2) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_typedPropertyList enumerator_11994 (extensionGetter_definition (var_selfAvailable_11871.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 241)).readProperty_allTypedPropertyList ()) ;
-      #else
-        cEnumerator_typedPropertyList enumerator_11994 (extensionGetter_definition (var_selfAvailable_11871.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 241)).readProperty_allTypedPropertyList (), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_typedPropertyList enumerator_11994 (extensionGetter_definition (var_selfAvailable_11871.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 241)).readProperty_allTypedPropertyList ()) ;
       while (enumerator_11994.hasCurrentObject ()) {
         GGS_bool temp_3 ;
         const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, var_selfAvailable_11871.readProperty_selfMutability ().objectCompare (GGS_selfMutability::class_func_initializer (SOURCE_FILE ("semanticAnalysis.galgas", 242)))).boolEnum () ;
@@ -3396,11 +3116,7 @@ void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F_nonMutablePropertyList_3F
   routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (constinArgument_inAnalysisContext.readProperty_semanticContext (), ioArgument_ioTypeMap, constinArgument_inRoutineSignatureAST, var_variableMap_10837, outArgument_outRoutineSignature, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 257)) ;
   }
   outArgument_outSemanticInstructionListForGeneration = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListAST enumerator_12737 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListAST enumerator_12737 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListAST enumerator_12737 (constinArgument_inInstructionList) ;
   while (enumerator_12737.hasCurrentObject ()) {
     callExtensionMethod_analyzeSemanticInstruction ((cPtr_semanticInstructionAST *) enumerator_12737.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, outArgument_outSemanticInstructionListForGeneration, var_variableMap_10837, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 267)) ;
     enumerator_12737.gotoNextObject () ;
@@ -3439,11 +3155,7 @@ void cPtr_externFunctionDeclarationAST::method_semanticAnalysis (GGS_lstringlist
   }
   GGS_formalInputParameterListForGeneration var_formalArgumentList_13894 = GGS_formalInputParameterListForGeneration::init (inCompiler COMMA_HERE) ;
   const GGS_externFunctionDeclarationAST temp_3 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListAST enumerator_14026 (temp_3.readProperty_mFormalArgumentList ()) ;
-  #else
-    cEnumerator_formalInputParameterListAST enumerator_14026 (temp_3.readProperty_mFormalArgumentList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListAST enumerator_14026 (temp_3.readProperty_mFormalArgumentList ()) ;
   while (enumerator_14026.hasCurrentObject ()) {
     var_formalArgumentList_13894.addAssign_operation (enumerator_14026.current_mFormalSelector (HERE), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_14026.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 302)), enumerator_14026.current_mFormalArgumentName (HERE).readProperty_string (), enumerator_14026.current_mFormalArgumentName (HERE), enumerator_14026.current_mIsConstant (HERE)  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 300)) ;
     enumerator_14026.gotoNextObject () ;
@@ -3486,11 +3198,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__3F__3F__21_
   if (GalgasBool::boolTrue == test_0) {
     test_0 = constinArgument_inAnalysisContext.readProperty_requiresSelfForAccessingProperty ().operator_not (SOURCE_FILE ("semanticAnalysis.galgas", 339)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_typedPropertyList enumerator_15679 (constinArgument_inTypedAttributeList) ;
-      #else
-        cEnumerator_typedPropertyList enumerator_15679 (constinArgument_inTypedAttributeList, EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_typedPropertyList enumerator_15679 (constinArgument_inTypedAttributeList) ;
       while (enumerator_15679.hasCurrentObject ()) {
         {
         extensionSetter_insertNonMutableProperty (var_variableMap_15523, enumerator_15679.current_name (HERE), enumerator_15679.current_typeEntry (HERE), constinArgument_inAttributeVariableNamePrefix.add_operation (GGS_string ("mProperty_"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 344)).add_operation (enumerator_15679.current_name (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 344)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 344)), constinArgument_inAnalysisContext.readProperty_selfObjectCppName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 341)) ;
@@ -3500,11 +3208,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__3F__3F__21_
     }
   }
   outArgument_outSignatureForGeneration = GGS_formalInputParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListAST enumerator_16070 (constinArgument_inFunctionSignature) ;
-  #else
-    cEnumerator_formalInputParameterListAST enumerator_16070 (constinArgument_inFunctionSignature, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListAST enumerator_16070 (constinArgument_inFunctionSignature) ;
   while (enumerator_16070.hasCurrentObject ()) {
     GGS_unifiedTypeMapEntry var_parameterType_16101 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_16070.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 352)) ;
     GalgasBool test_1 = GalgasBool::boolTrue ;
@@ -3561,11 +3265,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__3F__3F__21_
       test_4 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_4) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_typedPropertyList enumerator_17952 (extensionGetter_definition (var_selfAvailable_17829.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 387)).readProperty_allTypedPropertyList ()) ;
-      #else
-        cEnumerator_typedPropertyList enumerator_17952 (extensionGetter_definition (var_selfAvailable_17829.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 387)).readProperty_allTypedPropertyList (), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_typedPropertyList enumerator_17952 (extensionGetter_definition (var_selfAvailable_17829.readProperty_type (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 387)).readProperty_allTypedPropertyList ()) ;
       while (enumerator_17952.hasCurrentObject ()) {
         {
         extensionSetter_insertInitializerSelfProperty (var_variableMap_15523, enumerator_17952.current (HERE).readProperty_name ().readProperty_string (), constinArgument_inEndOfFunctionLocation, enumerator_17952.current (HERE).readProperty_typeEntry (), GGS_string ("<< unused >>"), GGS_string ("self.").add_operation (enumerator_17952.current (HERE).readProperty_name ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 393)), GGS_bool (true), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 388)) ;
@@ -3575,11 +3275,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__3F__3F__21_
     }
   }
   outArgument_outSemanticInstructionListForGeneration = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListAST enumerator_18348 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListAST enumerator_18348 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListAST enumerator_18348 (constinArgument_inInstructionList) ;
   while (enumerator_18348.hasCurrentObject ()) {
     callExtensionMethod_analyzeSemanticInstruction ((cPtr_semanticInstructionAST *) enumerator_18348.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, outArgument_outSemanticInstructionListForGeneration, var_variableMap_15523, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 401)) ;
     enumerator_18348.gotoNextObject () ;
@@ -3734,11 +3430,7 @@ void cPtr_filewrapperDeclarationAST::method_semanticAnalysis (GGS_lstringlist & 
   if (GalgasBool::boolFalse == test_7) {
     GGS_filewrapperTemplateListForGeneration var_filewrapperTemplateListForGeneration_24299 = GGS_filewrapperTemplateListForGeneration::init (inCompiler COMMA_HERE) ;
     const GGS_filewrapperDeclarationAST temp_10 = this ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_filewrapperTemplateListAST enumerator_24401 (temp_10.readProperty_mFilewrapperTemplateList ()) ;
-    #else
-      cEnumerator_filewrapperTemplateListAST enumerator_24401 (temp_10.readProperty_mFilewrapperTemplateList (), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_filewrapperTemplateListAST enumerator_24401 (temp_10.readProperty_mFilewrapperTemplateList ()) ;
     while (enumerator_24401.hasCurrentObject ()) {
       const GGS_filewrapperDeclarationAST temp_11 = this ;
       GGS_lstring var_filewrapperTemplateNameForUsefulness_24490 = function_filewrapperTemplateNameForUsefulEntitiesGraph (temp_11.readProperty_mFilewrapperName (), enumerator_24401.current_mFilewrapperTemplateName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 565)) ;
@@ -3762,11 +3454,7 @@ void cPtr_filewrapperDeclarationAST::method_semanticAnalysis (GGS_lstringlist & 
       cGrammar_templateGrammar::_performSourceFileParsing_ (inCompiler, GGS_lstring::init_21__21_ (var_absoluteTemplatePath_25123, enumerator_24401.current_mFilewrapperTemplatePath (HERE).readProperty_location (), inCompiler COMMA_HERE), var_resultingInstructionList_25287  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 577)) ;
       GGS_templateVariableMap var_templateVariableMap_25462 = GGS_templateVariableMap::init (inCompiler COMMA_HERE) ;
       GGS_formalInputParameterListForGeneration var_filewrapperTemplateFormalInputParameters_25537 = GGS_formalInputParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_formalTemplateInputParameterListAST enumerator_25663 (enumerator_24401.current_mFilewrapperTemplateFormalInputParameters (HERE)) ;
-      #else
-        cEnumerator_formalTemplateInputParameterListAST enumerator_25663 (enumerator_24401.current_mFilewrapperTemplateFormalInputParameters (HERE), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_formalTemplateInputParameterListAST enumerator_25663 (enumerator_24401.current_mFilewrapperTemplateFormalInputParameters (HERE)) ;
       while (enumerator_25663.hasCurrentObject ()) {
         GGS_unifiedTypeMapEntry var_type_25726 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_25663.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 583)) ;
         GGS_string var_cppVarName_25810 = GGS_string ("in_").add_operation (enumerator_25663.current_mFormalArgumentName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticAnalysis.galgas", 584)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 584)) ;
@@ -3821,11 +3509,7 @@ void cPtr_galgas_33_SyntaxComponentAST::method_semanticAnalysis (GGS_lstringlist
   GGS_lexicalListDeclarationListAST joker_28359_1 ; // Joker input parameter
   constinArgument_inSemanticContext.readProperty_mLexiqueComponentMapForSemanticAnalysis ().method_searchKey (temp_1.readProperty_mLexiqueName (), joker_28238, var_terminalMap_28263, var_indexingListAST_28301, joker_28359_4, joker_28359_3, joker_28359_2, joker_28359_1, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 639)) ;
   GGS_stringset var_indexNameSet_28446 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_indexingListAST enumerator_28483 (var_indexingListAST_28301) ;
-  #else
-    cEnumerator_indexingListAST enumerator_28483 (var_indexingListAST_28301, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_indexingListAST enumerator_28483 (var_indexingListAST_28301) ;
   while (enumerator_28483.hasCurrentObject ()) {
     var_indexNameSet_28446.addAssign_operation (enumerator_28483.current_mIndexName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 650)) ;
     enumerator_28483.gotoNextObject () ;
@@ -3886,11 +3570,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GGS_lstringlis
   GGS_nonTerminalToAddList var_nonTerminalToAddList_30845 = GGS_nonTerminalToAddList::init (inCompiler COMMA_HERE) ;
   GGS_uint var_addedNonTerminalCount_30884 = GGS_uint (uint32_t (0U)) ;
   const GGS_galgas_33_GrammarComponentAST temp_3 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_30917 (temp_3.readProperty_mSyntaxComponents ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_30917 (temp_3.readProperty_mSyntaxComponents (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_30917 (temp_3.readProperty_mSyntaxComponents ()) ;
   while (enumerator_30917.hasCurrentObject ()) {
     GGS_lstring var_syntaxNameForUsefulness_30975 = function_syntaxNameForUsefulEntitiesGraph (enumerator_30917.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 703)) ;
     {
@@ -3988,11 +3668,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GGS_lstringlis
   }
   GGS_unusedNonTerminalSymbolMapForGrammarAnalysis var_unusedNonTerminalSymbolsForGrammar_34773 = GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
   const GGS_galgas_33_GrammarComponentAST temp_19 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_34821 (temp_19.readProperty_mUnusedNonterminalList ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_34821 (temp_19.readProperty_mUnusedNonterminalList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_34821 (temp_19.readProperty_mUnusedNonterminalList ()) ;
   while (enumerator_34821.hasCurrentObject ()) {
     GGS_uint var_nonterminalIndex_34930 ;
     GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_34947 ; // Joker input parameter
@@ -4003,11 +3679,7 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GGS_lstringlis
     enumerator_34821.gotoNextObject () ;
   }
   GGS_nonTerminalSymbolSortedListForGrammarAnalysis var_nonTerminalSymbolSortedListForGrammarAnalysis_35187 = GGS_nonTerminalSymbolSortedListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_35269 (var_nonTerminalMapForGrammarAnalysis_30607) ;
-  #else
-    cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_35269 (var_nonTerminalMapForGrammarAnalysis_30607, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_35269 (var_nonTerminalMapForGrammarAnalysis_30607) ;
   while (enumerator_35269.hasCurrentObject ()) {
     var_nonTerminalSymbolSortedListForGrammarAnalysis_35187.addAssign_operation (enumerator_35269.current_lkey (HERE), enumerator_35269.current_mNonTerminalIndex (HERE), enumerator_35269.current_mNonterminalSymbolParametersMap (HERE)  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 792)) ;
     enumerator_35269.gotoNextObject () ;
@@ -4039,23 +3711,11 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GGS_lstringlis
     }
   }
   GGS_stringset var_implementationFileHeader_36499 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_36551 (var_nonTerminalMapForGrammarAnalysis_30607) ;
-  #else
-    cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_36551 (var_nonTerminalMapForGrammarAnalysis_30607, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_36551 (var_nonTerminalMapForGrammarAnalysis_30607) ;
   while (enumerator_36551.hasCurrentObject ()) {
-    #ifdef NEW_ITERATOR
-      UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_36598 (enumerator_36551.current (HERE).readProperty_mNonterminalSymbolParametersMap ()) ;
-    #else
-      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_36598 (enumerator_36551.current (HERE).readProperty_mNonterminalSymbolParametersMap (), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_36598 (enumerator_36551.current (HERE).readProperty_mNonterminalSymbolParametersMap ()) ;
     while (enumerator_36598.hasCurrentObject ()) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_signatureForGrammarAnalysis enumerator_36727 (enumerator_36598.current_mFormalParametersList (HERE)) ;
-      #else
-        cEnumerator_signatureForGrammarAnalysis enumerator_36727 (enumerator_36598.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_signatureForGrammarAnalysis enumerator_36727 (enumerator_36598.current_mFormalParametersList (HERE)) ;
       while (enumerator_36727.hasCurrentObject ()) {
         switch (enumerator_36727.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -4210,7 +3870,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementa
   String result ;
   GGS_uint index_29_ (0) ;
   if (in_INCLUSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_29 (in_INCLUSION_5F_SET, EnumerationOrder::Up) ;
+    UpEnumerator_stringset enumerator_29 (in_INCLUSION_5F_SET) ;
+    // cEnumerator_stringset enumerator_29 (in_INCLUSION_5F_SET, EnumerationOrder::Up) ;
     while (enumerator_29.hasCurrentObject ()) {
       result.appendString ("#include \"") ;
       result.appendString (enumerator_29.current_key (HERE).stringValue ()) ;
@@ -4249,11 +3910,13 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
   result.appendString (" (void) { }\n\n//--- Non terminal declarations\n") ;
   GGS_uint index_510_ (0) ;
   if (in_NONTERMINAL_5F_MAP.isValid ()) {
-    cEnumerator_nonterminalMap enumerator_510 (in_NONTERMINAL_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_nonterminalMap enumerator_510 (in_NONTERMINAL_5F_MAP) ;
+    // cEnumerator_nonterminalMap enumerator_510 (in_NONTERMINAL_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_510.hasCurrentObject ()) {
       GGS_uint index_566_ (0) ;
       if (enumerator_510.current_mLabelMap (HERE).isValid ()) {
-        cEnumerator_nonterminalLabelMap enumerator_566 (enumerator_510.current_mLabelMap (HERE), EnumerationOrder::Up) ;
+        UpEnumerator_nonterminalLabelMap enumerator_566 (enumerator_510.current_mLabelMap (HERE)) ;
+        // cEnumerator_nonterminalLabelMap enumerator_566 (enumerator_510.current_mLabelMap (HERE), EnumerationOrder::Up) ;
         while (enumerator_566.hasCurrentObject ()) {
           result.appendString ("  protected: virtual void nt_") ;
           result.appendString (enumerator_510.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 14)).stringValue ()) ;
@@ -4263,7 +3926,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
           columnMarker = result.currentColumn () ;
           GGS_uint index_799_IDX (0) ;
           if (enumerator_566.current_mSignature (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_799 (enumerator_566.current_mSignature (HERE), EnumerationOrder::Up) ;
+            UpEnumerator_formalParameterSignature enumerator_799 (enumerator_566.current_mSignature (HERE)) ;
+            // cEnumerator_formalParameterSignature enumerator_799 (enumerator_566.current_mSignature (HERE), EnumerationOrder::Up) ;
             while (enumerator_799.hasCurrentObject ()) {
               const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_799.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 16)))).boolEnum () ;
               switch (test_0) {
@@ -4375,11 +4039,13 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
   result.appendString ("\n//--- Rule declarations\n") ;
   GGS_uint index_2251_ (0) ;
   if (in_RULE_5F_DECLARATION_5F_LIST.isValid ()) {
-    cEnumerator_ruleDeclarationList enumerator_2251 (in_RULE_5F_DECLARATION_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_ruleDeclarationList enumerator_2251 (in_RULE_5F_DECLARATION_5F_LIST) ;
+    // cEnumerator_ruleDeclarationList enumerator_2251 (in_RULE_5F_DECLARATION_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2251.hasCurrentObject ()) {
       GGS_uint index_2389_ (0) ;
       if (enumerator_2251.current_mLabelImplementationList (HERE).isValid ()) {
-        cEnumerator_ruleLabelImplementationList enumerator_2389 (enumerator_2251.current_mLabelImplementationList (HERE), EnumerationOrder::Up) ;
+        UpEnumerator_ruleLabelImplementationList enumerator_2389 (enumerator_2251.current_mLabelImplementationList (HERE)) ;
+        // cEnumerator_ruleLabelImplementationList enumerator_2389 (enumerator_2251.current_mLabelImplementationList (HERE), EnumerationOrder::Up) ;
         while (enumerator_2389.hasCurrentObject ()) {
           result.appendString ("  protected: void rule_") ;
           result.appendString (in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue ()) ;
@@ -4393,7 +4059,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
           columnMarker = result.currentColumn () ;
           GGS_uint index_2693_IDX (0) ;
           if (enumerator_2389.current_mSignature (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_2693 (enumerator_2389.current_mSignature (HERE), EnumerationOrder::Up) ;
+            UpEnumerator_formalParameterSignature enumerator_2693 (enumerator_2389.current_mSignature (HERE)) ;
+            // cEnumerator_formalParameterSignature enumerator_2693 (enumerator_2389.current_mSignature (HERE), EnumerationOrder::Up) ;
             while (enumerator_2693.hasCurrentObject ()) {
               const GalgasBool test_6 = GGS_bool (ComparisonKind::equal, enumerator_2693.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 48)))).boolEnum () ;
               switch (test_6) {
@@ -4513,7 +4180,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
   result.appendString ("\n\n//--- Select methods\n") ;
   GGS_uint index_4173_ (0) ;
   if (in_SELECT_5F_METHOD_5F_LIST.isValid ()) {
-    cEnumerator_uintlist enumerator_4173 (in_SELECT_5F_METHOD_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_uintlist enumerator_4173 (in_SELECT_5F_METHOD_5F_LIST) ;
+    // cEnumerator_uintlist enumerator_4173 (in_SELECT_5F_METHOD_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_4173.hasCurrentObject ()) {
       result.appendString ("  protected: virtual int32_t select_") ;
       result.appendString (in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 76)).stringValue ()) ;
@@ -4552,11 +4220,7 @@ void routine_enterNonterminalNonTerminalInMapAndCheck_3F__3F__26_ (const GGS_lst
       test_0 = GGS_bool (ComparisonKind::greaterThan, var_missingLabelSet_43586.getter_count (SOURCE_FILE ("semanticAnalysis.galgas", 983)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
         GGS_string var_s_43711 = GGS_string::makeEmptyString () ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_stringset enumerator_43729 (var_missingLabelSet_43586) ;
-        #else
-          cEnumerator_stringset enumerator_43729 (var_missingLabelSet_43586, EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_stringset enumerator_43729 (var_missingLabelSet_43586) ;
         while (enumerator_43729.hasCurrentObject ()) {
           var_s_43711.plusAssign_operation(GGS_string ("\n-  ").add_operation (enumerator_43729.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 986)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 986)) ;
           enumerator_43729.gotoNextObject () ;
@@ -4571,11 +4235,7 @@ void routine_enterNonterminalNonTerminalInMapAndCheck_3F__3F__26_ (const GGS_lst
       test_2 = GGS_bool (ComparisonKind::greaterThan, var_newLabelSet_43954.getter_count (SOURCE_FILE ("semanticAnalysis.galgas", 992)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_2) {
         GGS_string var_s_44063 = GGS_string::makeEmptyString () ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_stringset enumerator_44081 (var_newLabelSet_43954) ;
-        #else
-          cEnumerator_stringset enumerator_44081 (var_newLabelSet_43954, EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_stringset enumerator_44081 (var_newLabelSet_43954) ;
         while (enumerator_44081.hasCurrentObject ()) {
           var_s_44063.plusAssign_operation(GGS_string ("\n-  ").add_operation (enumerator_44081.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 995)), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 995)) ;
           enumerator_44081.gotoNextObject () ;
@@ -4588,23 +4248,11 @@ void routine_enterNonterminalNonTerminalInMapAndCheck_3F__3F__26_ (const GGS_lst
     if (GalgasBool::boolTrue == test_4) {
       test_4 = GGS_bool (ComparisonKind::equal, var_missingLabelSet_43586.getter_count (SOURCE_FILE ("semanticAnalysis.galgas", 1000)).objectCompare (GGS_uint (uint32_t (0U)))).operator_and (GGS_bool (ComparisonKind::equal, var_newLabelSet_43954.getter_count (SOURCE_FILE ("semanticAnalysis.galgas", 1000)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1000)).boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
-        #ifdef NEW_ITERATOR
-          UpEnumerator_nonterminalLabelMap enumerator_44366 (objectArray_43363->mProperty_mLabelMap) ;
-        #else
-          cEnumerator_nonterminalLabelMap enumerator_44366 (objectArray_43363->mProperty_mLabelMap, EnumerationOrder::Up) ;
-        #endif
-        #ifdef NEW_ITERATOR
-          UpEnumerator_nonterminalLabelMap enumerator_44397 (constinArgument_inNonterminalLabelMap) ;
-        #else
-          cEnumerator_nonterminalLabelMap enumerator_44397 (constinArgument_inNonterminalLabelMap, EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_nonterminalLabelMap enumerator_44366 (objectArray_43363->mProperty_mLabelMap) ;
+        UpEnumerator_nonterminalLabelMap enumerator_44397 (constinArgument_inNonterminalLabelMap) ;
         while (enumerator_44366.hasCurrentObject () && enumerator_44397.hasCurrentObject ()) {
           GGS_formalParameterSignature var_newSignature_44491 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-          #ifdef NEW_ITERATOR
-            UpEnumerator_formalParameterSignature enumerator_44586 (enumerator_44397.current_mSignature (HERE)) ;
-          #else
-            cEnumerator_formalParameterSignature enumerator_44586 (enumerator_44397.current_mSignature (HERE), EnumerationOrder::Up) ;
-          #endif
+          UpEnumerator_formalParameterSignature enumerator_44586 (enumerator_44397.current_mSignature (HERE)) ;
           while (enumerator_44586.hasCurrentObject ()) {
             var_newSignature_44491.addAssign_operation (enumerator_44586.current_mFormalSelector (HERE), enumerator_44586.current_mFormalArgumentType (HERE), enumerator_44586.current_mFormalArgumentPassingMode (HERE), enumerator_44586.current_mFormalArgumentName (HERE)  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1004)) ;
             enumerator_44586.gotoNextObject () ;
@@ -4639,26 +4287,14 @@ void routine_buildNonterminalDeclarationsMap_3F__3F__26__21_ (const GGS_nontermi
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outNonterminalDeclarationMap.drop () ; // Release 'out' argument
   outArgument_outNonterminalDeclarationMap = GGS_nonterminalMap::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_nonterminalDeclarationListAST enumerator_45536 (constinArgument_inNonterminalDeclarationList) ;
-  #else
-    cEnumerator_nonterminalDeclarationListAST enumerator_45536 (constinArgument_inNonterminalDeclarationList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_nonterminalDeclarationListAST enumerator_45536 (constinArgument_inNonterminalDeclarationList) ;
   while (enumerator_45536.hasCurrentObject ()) {
     GGS_nonterminalLabelMap var_nonterminalLabelMap_45588 = GGS_nonterminalLabelMap::init (inCompiler COMMA_HERE) ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_nonTerminalLabelListAST enumerator_45674 (enumerator_45536.current_mLabels (HERE)) ;
-    #else
-      cEnumerator_nonTerminalLabelListAST enumerator_45674 (enumerator_45536.current_mLabels (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_nonTerminalLabelListAST enumerator_45674 (enumerator_45536.current_mLabels (HERE)) ;
     while (enumerator_45674.hasCurrentObject ()) {
       GGS_formalParameterListForGeneration var_signatureForGeneration_45722 = GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE) ;
       GGS_formalParameterSignature var_signature_45794 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_formalParameterListAST enumerator_45933 (enumerator_45674.current_mFormalArgumentList (HERE)) ;
-      #else
-        cEnumerator_formalParameterListAST enumerator_45933 (enumerator_45674.current_mFormalArgumentList (HERE), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_formalParameterListAST enumerator_45933 (enumerator_45674.current_mFormalArgumentList (HERE)) ;
       while (enumerator_45933.hasCurrentObject ()) {
         GGS_unifiedTypeMapEntry var_t_45974 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_45933.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1034)) ;
         var_signatureForGeneration_45722.addAssign_operation (enumerator_45933.current_mFormalSelector (HERE), enumerator_45933.current_mFormalArgumentPassingMode (HERE), var_t_45974, enumerator_45933.current_mFormalArgumentName (HERE), enumerator_45933.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1035)) ;
@@ -5243,11 +4879,7 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
   {
   extensionSetter_openBranch (ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1409)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxInstructionList enumerator_63955 (constinArgument_inSyntaxInstructionListAST) ;
-  #else
-    cEnumerator_syntaxInstructionList enumerator_63955 (constinArgument_inSyntaxInstructionListAST, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxInstructionList enumerator_63955 (constinArgument_inSyntaxInstructionListAST) ;
   while (enumerator_63955.hasCurrentObject ()) {
     callExtensionMethod_analyzeSyntaxInstruction ((cPtr_syntaxInstructionAST *) enumerator_63955.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, constinArgument_inIndexNameSet, outArgument_outInstructionListForGeneration, ioArgument_ioVariableMap, ioArgument_ioSelectMethodCount, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1412)) ;
     enumerator_63955.gotoNextObject () ;
@@ -5291,21 +4923,13 @@ void routine_semanticAnalysisOfRuleLabel_3F__26__3F__3F__3F__26__3F__3F__3F__3F_
   routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (constinArgument_inAnalysisContext.readProperty_semanticContext (), ioArgument_ioTypeMap, constinArgument_inFormalArguments, var_variableMap_65504, outArgument_outSignatureForGeneration, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1458)) ;
   }
   outArgument_outSignature = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_65849 (outArgument_outSignatureForGeneration) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_65849 (outArgument_outSignatureForGeneration, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_65849 (outArgument_outSignatureForGeneration) ;
   while (enumerator_65849.hasCurrentObject ()) {
     outArgument_outSignature.addAssign_operation (enumerator_65849.current_mFormalSelector (HERE), enumerator_65849.current_mFormalArgumentType (HERE), enumerator_65849.current_mFormalArgumentPassingMode (HERE), enumerator_65849.current_mFormalArgumentName (HERE).readProperty_string ()  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1468)) ;
     enumerator_65849.gotoNextObject () ;
   }
   outArgument_outInstructionListForGeneration = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxInstructionList enumerator_66182 (constinArgument_inSyntaxInstructionList) ;
-  #else
-    cEnumerator_syntaxInstructionList enumerator_66182 (constinArgument_inSyntaxInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxInstructionList enumerator_66182 (constinArgument_inSyntaxInstructionList) ;
   while (enumerator_66182.hasCurrentObject ()) {
     callExtensionMethod_analyzeSyntaxInstruction ((cPtr_syntaxInstructionAST *) enumerator_66182.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, constinArgument_inIndexNameSet, outArgument_outInstructionListForGeneration, var_variableMap_65504, ioArgument_ioSelectMethodCount, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1474)) ;
     enumerator_66182.gotoNextObject () ;
@@ -5341,26 +4965,14 @@ void routine_semanticAnalysisOfSyntaxComponent_3F__26__3F__3F__3F__3F__3F__26__3
   {
   routine_buildNonterminalDeclarationsMap_3F__3F__26__21_ (constinArgument_inNonterminalDeclarationList, constinArgument_inSemanticContext, ioArgument_ioTypeMap, var_nonterminalMap_67767, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1517)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxRuleListAST enumerator_67864 (constinArgument_inRuleList) ;
-  #else
-    cEnumerator_syntaxRuleListAST enumerator_67864 (constinArgument_inRuleList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxRuleListAST enumerator_67864 (constinArgument_inRuleList) ;
   while (enumerator_67864.hasCurrentObject ()) {
     GGS_nonterminalLabelMap var_nonterminalLabelMap_67922 = GGS_nonterminalLabelMap::init (inCompiler COMMA_HERE) ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_syntaxRuleLabelListAST enumerator_68010 (enumerator_67864.current_mLabelList (HERE)) ;
-    #else
-      cEnumerator_syntaxRuleLabelListAST enumerator_68010 (enumerator_67864.current_mLabelList (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_syntaxRuleLabelListAST enumerator_68010 (enumerator_67864.current_mLabelList (HERE)) ;
     while (enumerator_68010.hasCurrentObject ()) {
       GGS_formalParameterListForGeneration var_signatureForGeneration_68074 = GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE) ;
       GGS_formalParameterSignature var_signature_68139 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator_formalParameterListAST enumerator_68253 (enumerator_68010.current_mFormalArguments (HERE)) ;
-      #else
-        cEnumerator_formalParameterListAST enumerator_68253 (enumerator_68010.current_mFormalArguments (HERE), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_formalParameterListAST enumerator_68253 (enumerator_68010.current_mFormalArguments (HERE)) ;
       while (enumerator_68253.hasCurrentObject ()) {
         GGS_unifiedTypeMapEntry var_type_68291 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_68253.current_mFormalArgumentTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1530)) ;
         var_signatureForGeneration_68074.addAssign_operation (enumerator_68253.current_mFormalSelector (HERE), enumerator_68253.current_mFormalArgumentPassingMode (HERE), var_type_68291, enumerator_68253.current_mFormalArgumentName (HERE), GGS_string ("argument_").add_operation (enumerator_68253.current_mFormalArgumentName (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1536))  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1531)) ;
@@ -5381,21 +4993,13 @@ void routine_semanticAnalysisOfSyntaxComponent_3F__26__3F__3F__3F__3F__3F__26__3
   GGS_uint var_selectMethodCount_69181 = GGS_uint (uint32_t (0U)) ;
   GGS_ruleDeclarationList var_ruleDeclarationList_69230 = GGS_ruleDeclarationList::init (inCompiler COMMA_HERE) ;
   GGS_uint var_newRuleIndex_69268 = GGS_uint (uint32_t (0U)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxRuleListAST enumerator_69309 (constinArgument_inRuleList) ;
-  #else
-    cEnumerator_syntaxRuleListAST enumerator_69309 (constinArgument_inRuleList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxRuleListAST enumerator_69309 (constinArgument_inRuleList) ;
   while (enumerator_69309.hasCurrentObject ()) {
     GGS_ruleLabelImplementationList var_ruleLabelImplementationList_69383 = GGS_ruleLabelImplementationList::init (inCompiler COMMA_HERE) ;
     GGS_uint var_localSelectMethodCount_69431 = var_selectMethodCount_69181 ;
     GGS_nonterminalLabelMap joker_69522 ; // Joker input parameter
     var_nonterminalMap_67767.method_searchKey (enumerator_69309.current_mNonterminalName (HERE), joker_69522, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1560)) ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_syntaxRuleLabelListAST enumerator_69609 (enumerator_69309.current_mLabelList (HERE)) ;
-    #else
-      cEnumerator_syntaxRuleLabelListAST enumerator_69609 (enumerator_69309.current_mLabelList (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_syntaxRuleLabelListAST enumerator_69609 (enumerator_69309.current_mLabelList (HERE)) ;
     while (enumerator_69609.hasCurrentObject ()) {
       var_localSelectMethodCount_69431 = var_selectMethodCount_69181 ;
       GGS_formalParameterListForGeneration var_signatureForGeneration_70170 ;
@@ -5432,11 +5036,7 @@ void routine_emitClassGraphFile_3F__3F_ (const GGS_string constinArgument_inDotD
   GGS_string var_document_71248 = GGS_string ("digraph G {\n") ;
   var_document_71248.plusAssign_operation(GGS_string ("  rankdir=LR ;\n"), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1614)) ;
   var_document_71248.plusAssign_operation(GGS_string ("  node [shape=record fontname=helvetica style=rounded] ;\n"), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 1615)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_unifiedTypeMap enumerator_71392 (constinArgument_inTypeMap) ;
-  #else
-    cEnumerator_unifiedTypeMap enumerator_71392 (constinArgument_inTypeMap, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_unifiedTypeMap enumerator_71392 (constinArgument_inTypeMap) ;
   while (enumerator_71392.hasCurrentObject ()) {
     switch (enumerator_71392.current_mElement (HERE).readProperty_mDefinition ().enumValue ()) {
     case GGS_typeDefinition::Enumeration::invalid:
@@ -5533,11 +5133,7 @@ void cPtr_outputInputActualParameterForGeneration::method_generateActualParamete
                                                                                    Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_outputInputActualParameterForGeneration temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_unifiedTypeMapEntryList enumerator_2397 (temp_0.readProperty_mTypeList ()) ;
-  #else
-    cEnumerator_unifiedTypeMapEntryList enumerator_2397 (temp_0.readProperty_mTypeList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_unifiedTypeMapEntryList enumerator_2397 (temp_0.readProperty_mTypeList ()) ;
   while (enumerator_2397.hasCurrentObject ()) {
     extensionMethod_addHeaderFileName (enumerator_2397.current_mEntry (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 49)) ;
     enumerator_2397.gotoNextObject () ;
@@ -5545,11 +5141,7 @@ void cPtr_outputInputActualParameterForGeneration::method_generateActualParamete
   const GGS_outputInputActualParameterForGeneration temp_1 = this ;
   outArgument_outCppName = temp_1.readProperty_mOutputInputVariableCppName () ;
   const GGS_outputInputActualParameterForGeneration temp_2 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_2525 (temp_2.readProperty_mStructAttributeList ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_2525 (temp_2.readProperty_mStructAttributeList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_2525 (temp_2.readProperty_mStructAttributeList ()) ;
   while (enumerator_2525.hasCurrentObject ()) {
     outArgument_outCppName.plusAssign_operation(GGS_string (".mProperty_").add_operation (enumerator_2525.current_mValue (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("semanticInstructionGeneration.galgas", 53)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 53)), inCompiler  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 53)) ;
     enumerator_2525.gotoNextObject () ;
@@ -5668,11 +5260,7 @@ void cPtr_inputJokerParameterForGeneration::method_generatePoisonedVariables (GG
       const GGS_inputJokerParameterForGeneration temp_2 = this ;
       ioArgument_ioImplementation.plusAssign_operation(GGS_string ("if (!").add_operation (temp_2.readProperty_mInputActualCppName (), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 130)).add_operation (GGS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 130)), inCompiler  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 130)) ;
       const GGS_inputJokerParameterForGeneration temp_3 = this ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator__32_stringlist enumerator_5680 (temp_3.readProperty_mPoisonedVarNameList ()) ;
-      #else
-        cEnumerator__32_stringlist enumerator_5680 (temp_3.readProperty_mPoisonedVarNameList (), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator__32_stringlist enumerator_5680 (temp_3.readProperty_mPoisonedVarNameList ()) ;
       while (enumerator_5680.hasCurrentObject ()) {
         {
         ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (enumerator_5680.current_mValue_31_ (HERE) COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 132)) ;
@@ -5702,11 +5290,7 @@ void cPtr_inputActualParameterForGeneration::method_generatePoisonedVariables (G
       const GGS_inputActualParameterForGeneration temp_2 = this ;
       ioArgument_ioImplementation.plusAssign_operation(GGS_string ("if (!").add_operation (temp_2.readProperty_mInputActualCppName (), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 145)).add_operation (GGS_string (".isValid ()) {\n"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 145)), inCompiler  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 145)) ;
       const GGS_inputActualParameterForGeneration temp_3 = this ;
-      #ifdef NEW_ITERATOR
-        UpEnumerator__32_stringlist enumerator_6383 (temp_3.readProperty_mPoisonedVarNameList ()) ;
-      #else
-        cEnumerator__32_stringlist enumerator_6383 (temp_3.readProperty_mPoisonedVarNameList (), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator__32_stringlist enumerator_6383 (temp_3.readProperty_mPoisonedVarNameList ()) ;
       while (enumerator_6383.hasCurrentObject ()) {
         {
         ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (enumerator_6383.current_mValue_31_ (HERE) COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 147)) ;
@@ -5729,11 +5313,7 @@ void cPtr_grammarForGeneration::method_appendDeclaration_31_ (GGS_stringset & io
                                                               Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_grammarForGeneration temp_0 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_lstringlist enumerator_2163 (temp_0.readProperty_mSyntaxComponents ()) ;
-  #else
-    cEnumerator_lstringlist enumerator_2163 (temp_0.readProperty_mSyntaxComponents (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_lstringlist enumerator_2163 (temp_0.readProperty_mSyntaxComponents ()) ;
   while (enumerator_2163.hasCurrentObject ()) {
     ioArgument_ioInclusionSet.addAssign_operation (GGS_string ("syntax-").add_operation (enumerator_2163.current_mValue (HERE).readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 42)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 42))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 42)) ;
     enumerator_2163.gotoNextObject () ;
@@ -5761,23 +5341,11 @@ void cPtr_grammarForGeneration::method_appendSpecificImplementation (const GGS_u
   const GGS_grammarForGeneration temp_0 = this ;
   ioArgument_ioInclusionSet.addAssign_operation (GGS_string ("grammar-").add_operation (temp_0.readProperty_mGrammarName ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 60)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 60))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 60)) ;
   const GGS_grammarForGeneration temp_1 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_3054 (temp_1.readProperty_mNonTerminalMapForGrammarAnalysis ()) ;
-  #else
-    cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_3054 (temp_1.readProperty_mNonTerminalMapForGrammarAnalysis (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_3054 (temp_1.readProperty_mNonTerminalMapForGrammarAnalysis ()) ;
   while (enumerator_3054.hasCurrentObject ()) {
-    #ifdef NEW_ITERATOR
-      UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_3104 (enumerator_3054.current (HERE).readProperty_mNonterminalSymbolParametersMap ()) ;
-    #else
-      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_3104 (enumerator_3054.current (HERE).readProperty_mNonterminalSymbolParametersMap (), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_3104 (enumerator_3054.current (HERE).readProperty_mNonterminalSymbolParametersMap ()) ;
     while (enumerator_3104.hasCurrentObject ()) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_signatureForGrammarAnalysis enumerator_3235 (enumerator_3104.current_mFormalParametersList (HERE)) ;
-      #else
-        cEnumerator_signatureForGrammarAnalysis enumerator_3235 (enumerator_3104.current_mFormalParametersList (HERE), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_signatureForGrammarAnalysis enumerator_3235 (enumerator_3104.current_mFormalParametersList (HERE)) ;
       while (enumerator_3235.hasCurrentObject ()) {
         switch (enumerator_3235.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -5984,17 +5552,9 @@ void cPtr_syntaxDeclarationForGeneration::method_appendSpecificImplementation (c
   const GGS_syntaxDeclarationForGeneration temp_1 = this ;
   GGS_string var_lexiqueCppName_7170 = GGS_string ("Lexique_").add_operation (temp_1.readProperty_mLexiqueName ().getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 172)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 172)) ;
   const GGS_syntaxDeclarationForGeneration temp_2 = this ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_ruleDeclarationList enumerator_7282 (temp_2.readProperty_mRuleDeclarationList ()) ;
-  #else
-    cEnumerator_ruleDeclarationList enumerator_7282 (temp_2.readProperty_mRuleDeclarationList (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_ruleDeclarationList enumerator_7282 (temp_2.readProperty_mRuleDeclarationList ()) ;
   while (enumerator_7282.hasCurrentObject ()) {
-    #ifdef NEW_ITERATOR
-      UpEnumerator_ruleLabelImplementationList enumerator_7435 (enumerator_7282.current_mLabelImplementationList (HERE)) ;
-    #else
-      cEnumerator_ruleLabelImplementationList enumerator_7435 (enumerator_7282.current_mLabelImplementationList (HERE), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_ruleLabelImplementationList enumerator_7435 (enumerator_7282.current_mLabelImplementationList (HERE)) ;
     while (enumerator_7435.hasCurrentObject ()) {
       const GGS_syntaxDeclarationForGeneration temp_3 = this ;
       const GGS_syntaxDeclarationForGeneration temp_4 = this ;
@@ -6084,11 +5644,7 @@ void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_
       var_unusedVariableCppNameSet_11384.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 272))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 272)) ;
     }
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_11690 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_11690 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_11690 (constinArgument_inFormalArgumentList) ;
   while (enumerator_11690.hasCurrentObject ()) {
     GalgasBool test_2 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_2) {
@@ -6104,11 +5660,7 @@ void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_
   {
   var_routineBody_11963.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 282)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListForGeneration enumerator_12023 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListForGeneration enumerator_12023 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListForGeneration enumerator_12023 (constinArgument_inInstructionList) ;
   while (enumerator_12023.hasCurrentObject ()) {
     callExtensionMethod_generateInstruction ((cPtr_semanticInstructionForGeneration *) enumerator_12023.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex_11930, var_unusedVariableCppNameSet_11384, constinArgument_inGenerateSyntaxDirectedTranslationString, var_routineBody_11963, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 284)) ;
     enumerator_12023.gotoNextObject () ;
@@ -6116,11 +5668,7 @@ void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_
   {
   var_routineBody_11963.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 292)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_12362 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_12362 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_12362 (constinArgument_inFormalArgumentList) ;
   while (enumerator_12362.hasCurrentObject ()) {
     extensionMethod_addHeaderFileName (enumerator_12362.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 295)) ;
     enumerator_12362.gotoNextObject () ;
@@ -6135,11 +5683,7 @@ void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_
   }
   outArgument_outGeneratedCode.plusAssign_operation(GGS_string ("void ").add_operation (constinArgument_inProcedureMangledName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 302)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 302)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 302)) ;
   GGS_uint var_colRef_12646 = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 303)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_12752 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_12752 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_12752 (constinArgument_inFormalArgumentList) ;
   while (enumerator_12752.hasCurrentObject ()) {
     switch (enumerator_12752.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -6231,11 +5775,7 @@ void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_
     }
   }
   outArgument_outGeneratedCode.plusAssign_operation(GGS_string (" {\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 349)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_14671 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_14671 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_14671 (constinArgument_inFormalArgumentList) ;
   while (enumerator_14671.hasCurrentObject ()) {
     switch (enumerator_14671.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -6287,11 +5827,7 @@ void routine_generateFunction_3F__26__3F__3F__3F__3F__3F__3F_static_3F_const_21_
   extensionMethod_addHeaderFileName (constinArgument_inResultType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 385)) ;
   GGS_stringset var_unusedVariableCppNameSet_16183 = GGS_stringset::init (inCompiler COMMA_HERE) ;
   var_unusedVariableCppNameSet_16183.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 388))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 388)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListForGeneration enumerator_16388 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalInputParameterListForGeneration enumerator_16388 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListForGeneration enumerator_16388 (constinArgument_inFormalArgumentList) ;
   while (enumerator_16388.hasCurrentObject ()) {
     extensionMethod_addHeaderFileName (enumerator_16388.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 391)) ;
     var_unusedVariableCppNameSet_16183.addAssign_operation (enumerator_16388.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 392)) ;
@@ -6302,11 +5838,7 @@ void routine_generateFunction_3F__26__3F__3F__3F__3F__3F__3F_static_3F_const_21_
   {
   var_routineBody_16614.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 397)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListForGeneration enumerator_16674 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListForGeneration enumerator_16674 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListForGeneration enumerator_16674 (constinArgument_inInstructionList) ;
   while (enumerator_16674.hasCurrentObject ()) {
     callExtensionMethod_generateInstruction ((cPtr_semanticInstructionForGeneration *) enumerator_16674.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex_16573, var_unusedVariableCppNameSet_16183, GGS_bool (false), var_routineBody_16614, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 399)) ;
     enumerator_16674.gotoNextObject () ;
@@ -6324,11 +5856,7 @@ void routine_generateFunction_3F__26__3F__3F__3F__3F__3F__3F_static_3F_const_21_
   outArgument_outGeneratedCode.plusAssign_operation(GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (constinArgument_inResultType, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 412)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 412)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 412)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 412)) ;
   outArgument_outGeneratedCode.plusAssign_operation(constinArgument_inFunctionCppRepresentationName.add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 413)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 413)) ;
   GGS_uint var_colRef_17196 = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 414)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListForGeneration enumerator_17298 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalInputParameterListForGeneration enumerator_17298 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListForGeneration enumerator_17298 (constinArgument_inFormalArgumentList) ;
   while (enumerator_17298.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
@@ -6407,11 +5935,7 @@ void routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (const GGS_
   extensionMethod_addHeaderFileName (constinArgument_inResultType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 467)) ;
   GGS_stringset var_unusedVariableCppNameSet_19576 = GGS_stringset::init (inCompiler COMMA_HERE) ;
   var_unusedVariableCppNameSet_19576.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 470))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 470)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListForGeneration enumerator_19781 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalInputParameterListForGeneration enumerator_19781 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListForGeneration enumerator_19781 (constinArgument_inFormalArgumentList) ;
   while (enumerator_19781.hasCurrentObject ()) {
     extensionMethod_addHeaderFileName (enumerator_19781.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 473)) ;
     var_unusedVariableCppNameSet_19576.addAssign_operation (enumerator_19781.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 474)) ;
@@ -6422,11 +5946,7 @@ void routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (const GGS_
   {
   var_routineBody_20007.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 479)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListForGeneration enumerator_20067 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListForGeneration enumerator_20067 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListForGeneration enumerator_20067 (constinArgument_inInstructionList) ;
   while (enumerator_20067.hasCurrentObject ()) {
     callExtensionMethod_generateInstruction ((cPtr_semanticInstructionForGeneration *) enumerator_20067.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex_19966, var_unusedVariableCppNameSet_19576, GGS_bool (false), var_routineBody_20007, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 481)) ;
     enumerator_20067.gotoNextObject () ;
@@ -6437,11 +5957,7 @@ void routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (const GGS_
   outArgument_outGeneratedCode.plusAssign_operation(GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (constinArgument_inResultType, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)) ;
   outArgument_outGeneratedCode.plusAssign_operation(constinArgument_inFunctionCppRepresentationName.add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 492)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 492)) ;
   GGS_uint var_colRef_20528 = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 493)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListForGeneration enumerator_20630 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalInputParameterListForGeneration enumerator_20630 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListForGeneration enumerator_20630 (constinArgument_inFormalArgumentList) ;
   while (enumerator_20630.hasCurrentObject ()) {
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
@@ -6512,11 +6028,7 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const GGS_stri
   GGS_stringset var_unusedVariableCppNameSet_22631 = GGS_stringset::init (inCompiler COMMA_HERE) ;
   var_unusedVariableCppNameSet_22631.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 547))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 547)) ;
   var_unusedVariableCppNameSet_22631.addAssign_operation (GGS_string ("object")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 548)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_22767 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_22767 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_22767 (constinArgument_inFormalArgumentList) ;
   while (enumerator_22767.hasCurrentObject ()) {
     var_unusedVariableCppNameSet_22631.addAssign_operation (enumerator_22767.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 550)) ;
     enumerator_22767.gotoNextObject () ;
@@ -6526,11 +6038,7 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const GGS_stri
   {
   var_routineBody_22945.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 555)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListForGeneration enumerator_23005 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListForGeneration enumerator_23005 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListForGeneration enumerator_23005 (constinArgument_inInstructionList) ;
   while (enumerator_23005.hasCurrentObject ()) {
     callExtensionMethod_generateInstruction ((cPtr_semanticInstructionForGeneration *) enumerator_23005.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex_22912, var_unusedVariableCppNameSet_22631, GGS_bool (false), var_routineBody_22945, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 557)) ;
     enumerator_23005.gotoNextObject () ;
@@ -6561,11 +6069,7 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const GGS_stri
   if (GalgasBool::boolFalse == test_1) {
     outArgument_outGeneratedCode.plusAssign_operation(GGS_string ("inObject"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 578)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_23994 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_23994 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_23994 (constinArgument_inFormalArgumentList) ;
   while (enumerator_23994.hasCurrentObject ()) {
     outArgument_outGeneratedCode.plusAssign_operation(GGS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 582)) ;
     {
@@ -6669,11 +6173,7 @@ void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const GGS_unifi
   GGS_stringset var_unusedVariableCppNameSet_26723 = GGS_stringset::init (inCompiler COMMA_HERE) ;
   var_unusedVariableCppNameSet_26723.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 640))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 640)) ;
   var_unusedVariableCppNameSet_26723.addAssign_operation (GGS_string ("object")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_26859 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_26859 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_26859 (constinArgument_inFormalArgumentList) ;
   while (enumerator_26859.hasCurrentObject ()) {
     var_unusedVariableCppNameSet_26723.addAssign_operation (enumerator_26859.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 643)) ;
     enumerator_26859.gotoNextObject () ;
@@ -6683,11 +6183,7 @@ void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const GGS_unifi
   {
   var_routineBody_27045.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 648)) ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListForGeneration enumerator_27105 (constinArgument_inInstructionList) ;
-  #else
-    cEnumerator_semanticInstructionListForGeneration enumerator_27105 (constinArgument_inInstructionList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListForGeneration enumerator_27105 (constinArgument_inInstructionList) ;
   while (enumerator_27105.hasCurrentObject ()) {
     callExtensionMethod_generateInstruction ((cPtr_semanticInstructionForGeneration *) enumerator_27105.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex_27004, var_unusedVariableCppNameSet_26723, GGS_bool (false), var_routineBody_27045, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 650)) ;
     enumerator_27105.gotoNextObject () ;
@@ -6735,22 +6231,14 @@ void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const GGS_unifi
   }
   ioArgument_ioInclusionSet.addAssign_operation (GGS_string ("method-").add_operation (extensionGetter_definition (var_baseType_27447, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 673)).readProperty_typeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 673)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 673)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 673)).add_operation (constinArgument_inMethodName.getter_fileNameRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 673)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 673))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 673)) ;
   extensionMethod_addHeaderFileName (constinArgument_inReceiverType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 674)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_28072 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_28072 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_28072 (constinArgument_inFormalArgumentList) ;
   while (enumerator_28072.hasCurrentObject ()) {
     extensionMethod_addHeaderFileName (enumerator_28072.current_mFormalArgumentType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 676)) ;
     enumerator_28072.gotoNextObject () ;
   }
   outArgument_outGeneratedCode = GGS_string ("void cPtr_").add_operation (var_className_26618.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 679)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 679)).add_operation (GGS_string ("::method_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 679)).add_operation (constinArgument_inMethodName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 679)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 679)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 679)) ;
   GGS_uint var_colRef_28339 = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 680)) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListForGeneration enumerator_28445 (constinArgument_inFormalArgumentList) ;
-  #else
-    cEnumerator_formalParameterListForGeneration enumerator_28445 (constinArgument_inFormalArgumentList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListForGeneration enumerator_28445 (constinArgument_inFormalArgumentList) ;
   while (enumerator_28445.hasCurrentObject ()) {
     switch (enumerator_28445.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -6894,7 +6382,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   result.appendString ("//-- Start of type generic part\n\n//--------------------------------- Initializers\n") ;
   GGS_uint index_133_ (0) ;
   if (in_INITIALIZER_5F_MAP.isValid ()) {
-    cEnumerator_initializerMap enumerator_133 (in_INITIALIZER_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_initializerMap enumerator_133 (in_INITIALIZER_5F_MAP) ;
+    // cEnumerator_initializerMap enumerator_133 (in_INITIALIZER_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_133.hasCurrentObject ()) {
       result.appendString ("  public: static GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -6904,7 +6393,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       columnMarker = result.currentColumn () ;
       GGS_uint index_320_IDX (0) ;
       if (enumerator_133.current_mArgumentTypeList (HERE).isValid ()) {
-        cEnumerator_functionSignature enumerator_320 (enumerator_133.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
+        UpEnumerator_functionSignature enumerator_320 (enumerator_133.current_mArgumentTypeList (HERE)) ;
+        // cEnumerator_functionSignature enumerator_320 (enumerator_133.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
         while (enumerator_320.hasCurrentObject ()) {
           const GalgasBool test_0 = enumerator_320.current_isConstant (HERE).boolEnum () ;
           switch (test_0) {
@@ -6953,7 +6443,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
     result.appendString ("//--------------------------------- GALGAS class functions\n") ;
     GGS_uint index_1200_ (0) ;
     if (in_CLASS_5F_FUNC_5F_MAP.isValid ()) {
-      cEnumerator_classFunctionMap enumerator_1200 (in_CLASS_5F_FUNC_5F_MAP, EnumerationOrder::Up) ;
+      UpEnumerator_classFunctionMap enumerator_1200 (in_CLASS_5F_FUNC_5F_MAP) ;
+      // cEnumerator_classFunctionMap enumerator_1200 (in_CLASS_5F_FUNC_5F_MAP, EnumerationOrder::Up) ;
       while (enumerator_1200.hasCurrentObject ()) {
         result.appendString ("  public: static class GGS_") ;
         result.appendString (extensionGetter_identifierRepresentation (enumerator_1200.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 29)).stringValue ()) ;
@@ -6963,7 +6454,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
         columnMarker = result.currentColumn () ;
         GGS_uint index_1436_IDX (0) ;
         if (enumerator_1200.current_mArgumentTypeList (HERE).isValid ()) {
-          cEnumerator_functionSignature enumerator_1436 (enumerator_1200.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
+          UpEnumerator_functionSignature enumerator_1436 (enumerator_1200.current_mArgumentTypeList (HERE)) ;
+          // cEnumerator_functionSignature enumerator_1436 (enumerator_1200.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
           while (enumerator_1436.hasCurrentObject ()) {
             result.appendString ("const class GGS_") ;
             result.appendString (extensionGetter_identifierRepresentation (enumerator_1436.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 31)).stringValue ()) ;
@@ -7177,7 +6669,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
     columnMarker = result.currentColumn () ;
     GGS_uint index_6547_IDX (0) ;
     if (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST.isValid ()) {
-      cEnumerator_functionSignature enumerator_6547 (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+      UpEnumerator_functionSignature enumerator_6547 (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST) ;
+      // cEnumerator_functionSignature enumerator_6547 (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
       while (enumerator_6547.hasCurrentObject ()) {
         result.appendString ("const class GGS_") ;
         result.appendString (extensionGetter_identifierRepresentation (enumerator_6547.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 123)).stringValue ()) ;
@@ -7527,7 +7020,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   result.appendString ("\n//--------------------------------- Setters\n") ;
   GGS_uint index_12850_ (0) ;
   if (in_MODIFIER_5F_MAP.isValid ()) {
-    cEnumerator_setterMap enumerator_12850 (in_MODIFIER_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_setterMap enumerator_12850 (in_MODIFIER_5F_MAP) ;
+    // cEnumerator_setterMap enumerator_12850 (in_MODIFIER_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_12850.hasCurrentObject ()) {
       const GalgasBool test_36 = GGS_bool (ComparisonKind::equal, enumerator_12850.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 256)))).boolEnum () ;
       switch (test_36) {
@@ -7541,7 +7035,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           columnMarker = result.currentColumn () ;
           GGS_uint index_13298_IDX (0) ;
           if (enumerator_12850.current_mParameterList (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_13298 (enumerator_12850.current_mParameterList (HERE), EnumerationOrder::Up) ;
+            UpEnumerator_formalParameterSignature enumerator_13298 (enumerator_12850.current_mParameterList (HERE)) ;
+            // cEnumerator_formalParameterSignature enumerator_13298 (enumerator_12850.current_mParameterList (HERE), EnumerationOrder::Up) ;
             while (enumerator_13298.hasCurrentObject ()) {
               const GalgasBool test_38 = GGS_bool (ComparisonKind::equal, enumerator_13298.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 260)))).boolEnum () ;
               switch (test_38) {
@@ -7654,7 +7149,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   result.appendString ("\n//--------------------------------- Instance Methods\n") ;
   GGS_uint index_14682_ (0) ;
   if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
-    cEnumerator_instanceMethodMap enumerator_14682 (in_INSTANCE_5F_METHOD_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_instanceMethodMap enumerator_14682 (in_INSTANCE_5F_METHOD_5F_MAP) ;
+    // cEnumerator_instanceMethodMap enumerator_14682 (in_INSTANCE_5F_METHOD_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_14682.hasCurrentObject ()) {
       const GalgasBool test_44 = GGS_bool (ComparisonKind::equal, enumerator_14682.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 294)))).boolEnum () ;
       switch (test_44) {
@@ -7668,7 +7164,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           columnMarker = result.currentColumn () ;
           GGS_uint index_15130_IDX (0) ;
           if (enumerator_14682.current_mParameterList (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_15130 (enumerator_14682.current_mParameterList (HERE), EnumerationOrder::Up) ;
+            UpEnumerator_formalParameterSignature enumerator_15130 (enumerator_14682.current_mParameterList (HERE)) ;
+            // cEnumerator_formalParameterSignature enumerator_15130 (enumerator_14682.current_mParameterList (HERE), EnumerationOrder::Up) ;
             while (enumerator_15130.hasCurrentObject ()) {
               const GalgasBool test_46 = GGS_bool (ComparisonKind::equal, enumerator_15130.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 298)))).boolEnum () ;
               switch (test_46) {
@@ -7781,7 +7278,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   result.appendString ("//--------------------------------- Class Methods\n") ;
   GGS_uint index_16461_ (0) ;
   if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
-    cEnumerator_classMethodMap enumerator_16461 (in_CLASS_5F_METHOD_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_classMethodMap enumerator_16461 (in_CLASS_5F_METHOD_5F_MAP) ;
+    // cEnumerator_classMethodMap enumerator_16461 (in_CLASS_5F_METHOD_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_16461.hasCurrentObject ()) {
       result.appendString ("  public: static void class_method_") ;
       result.appendString (enumerator_16461.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 331)).stringValue ()) ;
@@ -7789,7 +7287,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       columnMarker = result.currentColumn () ;
       GGS_uint index_16662_IDX (0) ;
       if (enumerator_16461.current_mParameterList (HERE).isValid ()) {
-        cEnumerator_formalParameterSignature enumerator_16662 (enumerator_16461.current_mParameterList (HERE), EnumerationOrder::Up) ;
+        UpEnumerator_formalParameterSignature enumerator_16662 (enumerator_16461.current_mParameterList (HERE)) ;
+        // cEnumerator_formalParameterSignature enumerator_16662 (enumerator_16461.current_mParameterList (HERE), EnumerationOrder::Up) ;
         while (enumerator_16662.hasCurrentObject ()) {
           const GalgasBool test_52 = GGS_bool (ComparisonKind::equal, enumerator_16662.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 333)))).boolEnum () ;
           switch (test_52) {
@@ -7890,7 +7389,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   result.appendString ("\n//--------------------------------- Getters\n") ;
   GGS_uint index_17903_ (0) ;
   if (in_GETTER_5F_MAP.isValid ()) {
-    cEnumerator_getterMap enumerator_17903 (in_GETTER_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_getterMap enumerator_17903 (in_GETTER_5F_MAP) ;
+    // cEnumerator_getterMap enumerator_17903 (in_GETTER_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_17903.hasCurrentObject ()) {
       const GalgasBool test_58 = GGS_bool (ComparisonKind::equal, enumerator_17903.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       switch (test_58) {
@@ -7915,7 +7415,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
               columnMarker = result.currentColumn () ;
               GGS_uint index_18426_IDX (0) ;
               if (enumerator_17903.current_mArgumentTypeList (HERE).isValid ()) {
-                cEnumerator_functionSignature enumerator_18426 (enumerator_17903.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
+                UpEnumerator_functionSignature enumerator_18426 (enumerator_17903.current_mArgumentTypeList (HERE)) ;
+                // cEnumerator_functionSignature enumerator_18426 (enumerator_17903.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
                 while (enumerator_18426.hasCurrentObject ()) {
                   result.appendString ("const class GGS_") ;
                   result.appendString (extensionGetter_identifierRepresentation (enumerator_18426.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
@@ -7991,7 +7492,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   result.appendString ("\n//--------------------------------- Read subscripts\n") ;
   GGS_uint index_19144_ (0) ;
   if (in_READ_5F_SUBSCRIPT_5F_MAP.isValid ()) {
-    cEnumerator_subscriptMap enumerator_19144 (in_READ_5F_SUBSCRIPT_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_subscriptMap enumerator_19144 (in_READ_5F_SUBSCRIPT_5F_MAP) ;
+    // cEnumerator_subscriptMap enumerator_19144 (in_READ_5F_SUBSCRIPT_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_19144.hasCurrentObject ()) {
       result.appendString ("  public: VIRTUAL_IN_DEBUG class GGS_") ;
       result.appendString (extensionGetter_identifierRepresentation (enumerator_19144.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 398)).stringValue ()) ;
@@ -8001,7 +7503,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       columnMarker = result.currentColumn () ;
       GGS_uint index_19369_IDX (0) ;
       if (enumerator_19144.current_argumentTypeList (HERE).isValid ()) {
-        cEnumerator_functionSignature enumerator_19369 (enumerator_19144.current_argumentTypeList (HERE), EnumerationOrder::Up) ;
+        UpEnumerator_functionSignature enumerator_19369 (enumerator_19144.current_argumentTypeList (HERE)) ;
+        // cEnumerator_functionSignature enumerator_19369 (enumerator_19144.current_argumentTypeList (HERE), EnumerationOrder::Up) ;
         while (enumerator_19369.hasCurrentObject ()) {
           result.appendString ("const class GGS_") ;
           result.appendString (extensionGetter_identifierRepresentation (enumerator_19369.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).stringValue ()) ;
@@ -8104,7 +7607,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
     result.appendString ("//--------------------------------- GALGAS class getters\n") ;
     GGS_uint index_220_ (0) ;
     if (in_CLASS_5F_FUNC_5F_MAP.isValid ()) {
-      cEnumerator_classFunctionMap enumerator_220 (in_CLASS_5F_FUNC_5F_MAP, EnumerationOrder::Up) ;
+      UpEnumerator_classFunctionMap enumerator_220 (in_CLASS_5F_FUNC_5F_MAP) ;
+      // cEnumerator_classFunctionMap enumerator_220 (in_CLASS_5F_FUNC_5F_MAP, EnumerationOrder::Up) ;
       while (enumerator_220.hasCurrentObject ()) {
         result.appendString ("  public: static class GGS_") ;
         result.appendString (extensionGetter_identifierRepresentation (enumerator_220.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
@@ -8114,7 +7618,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
         columnMarker = result.currentColumn () ;
         GGS_uint index_456_IDX (0) ;
         if (enumerator_220.current_mArgumentTypeList (HERE).isValid ()) {
-          cEnumerator_functionSignature enumerator_456 (enumerator_220.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
+          UpEnumerator_functionSignature enumerator_456 (enumerator_220.current_mArgumentTypeList (HERE)) ;
+          // cEnumerator_functionSignature enumerator_456 (enumerator_220.current_mArgumentTypeList (HERE), EnumerationOrder::Up) ;
           while (enumerator_456.hasCurrentObject ()) {
             result.appendString ("const class GGS_") ;
             result.appendString (extensionGetter_identifierRepresentation (enumerator_456.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 9)).stringValue ()) ;
@@ -8180,7 +7685,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
   result.appendString ("//--------------------------------- Class Methods\n") ;
   GGS_uint index_1109_ (0) ;
   if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
-    cEnumerator_classMethodMap enumerator_1109 (in_CLASS_5F_METHOD_5F_MAP, EnumerationOrder::Up) ;
+    UpEnumerator_classMethodMap enumerator_1109 (in_CLASS_5F_METHOD_5F_MAP) ;
+    // cEnumerator_classMethodMap enumerator_1109 (in_CLASS_5F_METHOD_5F_MAP, EnumerationOrder::Up) ;
     while (enumerator_1109.hasCurrentObject ()) {
       result.appendString ("  public: static void class_method_") ;
       result.appendString (enumerator_1109.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 29)).stringValue ()) ;
@@ -8188,7 +7694,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
       columnMarker = result.currentColumn () ;
       GGS_uint index_1310_IDX (0) ;
       if (enumerator_1109.current_mParameterList (HERE).isValid ()) {
-        cEnumerator_formalParameterSignature enumerator_1310 (enumerator_1109.current_mParameterList (HERE), EnumerationOrder::Up) ;
+        UpEnumerator_formalParameterSignature enumerator_1310 (enumerator_1109.current_mParameterList (HERE)) ;
+        // cEnumerator_formalParameterSignature enumerator_1310 (enumerator_1109.current_mParameterList (HERE), EnumerationOrder::Up) ;
         while (enumerator_1310.hasCurrentObject ()) {
           const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_1310.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 31)))).boolEnum () ;
           switch (test_4) {
@@ -8440,7 +7947,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
   result.appendString (" result ;\n  result.makeNewEmptyGraph (THERE) ;\n  return result ;\n}\n\n") ;
   GGS_uint index_962_ (0) ;
   if (in_INSERT_5F_MODIFIER_5F_LIST.isValid ()) {
-    cEnumerator_graphInsertModifierList enumerator_962 (in_INSERT_5F_MODIFIER_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_graphInsertModifierList enumerator_962 (in_INSERT_5F_MODIFIER_5F_LIST) ;
+    // cEnumerator_graphInsertModifierList enumerator_962 (in_INSERT_5F_MODIFIER_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_962.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -8451,7 +7959,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
       result.appendString ("GGS_lstring inKey") ;
       GGS_uint index_1312_IDX (0) ;
       if (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 31)).readProperty_addAssignOperatorArguments ().isValid ()) {
-        cEnumerator_functionSignature enumerator_1312 (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 31)).readProperty_addAssignOperatorArguments (), EnumerationOrder::Up) ;
+        UpEnumerator_functionSignature enumerator_1312 (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 31)).readProperty_addAssignOperatorArguments ()) ;
+        // cEnumerator_functionSignature enumerator_1312 (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 31)).readProperty_addAssignOperatorArguments (), EnumerationOrder::Up) ;
         while (enumerator_1312.hasCurrentObject ()) {
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
@@ -8472,7 +7981,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
       result.appendString ("::makeAttributesFromObjects (attributes") ;
       GGS_uint index_1747_IDX (0) ;
       if (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 38)).readProperty_addAssignOperatorArguments ().isValid ()) {
-        cEnumerator_functionSignature enumerator_1747 (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 38)).readProperty_addAssignOperatorArguments (), EnumerationOrder::Up) ;
+        UpEnumerator_functionSignature enumerator_1747 (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 38)).readProperty_addAssignOperatorArguments ()) ;
+        // cEnumerator_functionSignature enumerator_1747 (extensionGetter_definition (in_ASSOCIATED_5F_LIST_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 38)).readProperty_addAssignOperatorArguments (), EnumerationOrder::Up) ;
         while (enumerator_1747.hasCurrentObject ()) {
           result.appendString (", inArgument_") ;
           result.appendString (index_1747_IDX.getter_string (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 39)).stringValue ()) ;
@@ -8686,7 +8196,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_596_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_596 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_596 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_596 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_596.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -8746,7 +8257,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_584_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_584 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_584 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_584 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_584.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -8782,7 +8294,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" (") ;
   GGS_uint index_1227_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_1227 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_1227 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_1227 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1227.hasCurrentObject ()) {
       result.appendString ("in_") ;
       result.appendString (enumerator_1227.current_mFormalArgumentName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 22)).stringValue ()) ;
@@ -8822,7 +8335,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
   result.appendString (" * inObject") ;
   GGS_uint index_581_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_581 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_581 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_581 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_581.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -8885,7 +8399,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
   result.appendString (" * inObject") ;
   GGS_uint index_703_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_703 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_703 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_703 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_703.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -8921,7 +8436,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
   result.appendString (" (") ;
   GGS_uint index_1346_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_1346 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_1346 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_1346 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1346.hasCurrentObject ()) {
       result.appendString ("in_") ;
       result.appendString (enumerator_1346.current_mFormalArgumentName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 26)).stringValue ()) ;
@@ -8981,7 +8497,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_624_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_624 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_624 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_624 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_624.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9055,7 +8572,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_2134_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2134 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2134 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_2134 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2134.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9180,7 +8698,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_2130_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2130 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2130 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_2130 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2130.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9238,7 +8757,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString ("COMMA_LOCATION_ARGS) {\n//--- Drop output arguments\n") ;
   GGS_uint index_3156_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_3156 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_3156 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_3156 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_3156.hasCurrentObject ()) {
       const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_3156.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 47)))).boolEnum () ;
       switch (test_3) {
@@ -9285,7 +8805,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (".forceObjectAtIndex (classIndex, f, nullptr) ;\n    }\n    f (inObject, ") ;
   GGS_uint index_4845_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_4845 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_4845 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_4845 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_4845.hasCurrentObject ()) {
       const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_4845.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 72)))).boolEnum () ;
       switch (test_4) {
@@ -9357,7 +8878,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
   result.appendString (" * inObject") ;
   GGS_uint index_615_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_615 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_615 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_615 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_615.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9431,7 +8953,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
   result.appendString (" * inObject") ;
   GGS_uint index_2138_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2138 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2138 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_2138 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2138.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9537,7 +9060,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
   result.appendString (" * inObject") ;
   GGS_uint index_1414_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_1414 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_1414 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_1414 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1414.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9595,7 +9119,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
   result.appendString ("COMMA_LOCATION_ARGS) {\n//--- Drop output arguments\n") ;
   GGS_uint index_2440_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2440 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2440 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_2440 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2440.hasCurrentObject ()) {
       const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_2440.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 36)))).boolEnum () ;
       switch (test_3) {
@@ -9642,7 +9167,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
   result.appendString (".forceObjectAtIndex (classIndex, f, nullptr) ;\n    }\n    f (inObject, ") ;
   GGS_uint index_4129_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_4129 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_4129 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_4129 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_4129.hasCurrentObject ()) {
       const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_4129.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 61)))).boolEnum () ;
       switch (test_4) {
@@ -9799,7 +9325,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_558_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_558 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_558 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_558 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_558.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9882,7 +9409,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" * inObject") ;
   GGS_uint index_616_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_616 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_616 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_616 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_616.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -9940,7 +9468,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString ("COMMA_LOCATION_ARGS) {\n//--- Drop output arguments\n") ;
   GGS_uint index_1642_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_1642 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_1642 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_1642 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1642.hasCurrentObject ()) {
       const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_1642.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 25)))).boolEnum () ;
       switch (test_3) {
@@ -9965,7 +9494,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
   result.appendString (" (") ;
   GGS_uint index_2194_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2194 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2194 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_2194 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2194.hasCurrentObject ()) {
       const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_2194.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 34)))).boolEnum () ;
       switch (test_4) {
@@ -10035,7 +9565,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
   result.appendString (" * inObject") ;
   GGS_uint index_549_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_549 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_549 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_549 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_549.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -10121,7 +9652,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
   result.appendString (" * inObject") ;
   GGS_uint index_671_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_671 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_671 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_671 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_671.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -10179,7 +9711,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
   result.appendString ("COMMA_LOCATION_ARGS) {\n") ;
   GGS_uint index_1669_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_1669 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_1669 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_1669 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1669.hasCurrentObject ()) {
       const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_1669.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 28)))).boolEnum () ;
       switch (test_3) {
@@ -10204,7 +9737,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
   result.appendString ("  (") ;
   GGS_uint index_2172_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2172 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_2172 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_2172 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2172.hasCurrentObject ()) {
       const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_2172.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 36)))).boolEnum () ;
       switch (test_4) {
@@ -10289,7 +9823,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_307_idx (0) ;
   if (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_307 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_stringlist enumerator_307 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    // cEnumerator_stringlist enumerator_307 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_307.hasCurrentObject ()) {
       result.appendString ("extern const char * gWrapperFileContent_") ;
       result.appendString (enumerator_307.current_mValue (HERE).stringValue ()) ;
@@ -10303,7 +9838,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_577_idx (0) ;
   if (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_577 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_stringlist enumerator_577 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    // cEnumerator_stringlist enumerator_577 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_577.hasCurrentObject ()) {
       result.appendString ("extern const uint8_t gWrapperFileContent_") ;
       result.appendString (enumerator_577.current_mValue (HERE).stringValue ()) ;
@@ -10317,7 +9853,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_841_idx (0) ;
   if (in_FILE_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_841 (in_FILE_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_stringlist enumerator_841 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
+    // cEnumerator_stringlist enumerator_841 (in_FILE_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_841.hasCurrentObject ()) {
       result.appendString ("extern const cRegularFileWrapper gWrapperFile_") ;
       result.appendString (enumerator_841.current_mValue (HERE).stringValue ()) ;
@@ -10331,7 +9868,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_1108_ (0) ;
   if (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_1108 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_stringlist enumerator_1108 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
+    // cEnumerator_stringlist enumerator_1108 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_1108.hasCurrentObject ()) {
       result.appendString ("extern const cDirectoryWrapper gWrapperDirectory_") ;
       result.appendString (enumerator_1108.current_mValue (HERE).stringValue ()) ;
@@ -10392,7 +9930,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
   result.appendString (" & inObject") ;
   GGS_uint index_582_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_582 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_582 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_582 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_582.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -10469,7 +10008,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
   result.appendString (" inObject") ;
   GGS_uint index_546_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_546 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_546 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_546 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_546.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -10572,7 +10112,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
   result.appendString (" & ioObject") ;
   GGS_uint index_546_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_546 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_546 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_546 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_546.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -10654,7 +10195,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDecla
   columnMarker = result.currentColumn () ;
   GGS_uint index_470_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_470 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_470 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_470 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_470.hasCurrentObject ()) {
       const GalgasBool test_0 = enumerator_470.current_mIsConstant (HERE).boolEnum () ;
       switch (test_0) {
@@ -10712,7 +10254,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
   result.appendString ("] = {\n") ;
   GGS_uint index_850_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_850 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_850 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_850 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_850.hasCurrentObject ()) {
       result.appendString ("  & kTypeDescriptor_GALGAS_") ;
       result.appendString (extensionGetter_identifierRepresentation (enumerator_850.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 15)).stringValue ()) ;
@@ -10753,7 +10296,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
     result.appendString ("COMMA_LOCATION_ARGS) {\n") ;
     GGS_uint index_2148_IDX (0) ;
     if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-      cEnumerator_formalInputParameterListForGeneration enumerator_2148 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+      UpEnumerator_formalInputParameterListForGeneration enumerator_2148 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+      // cEnumerator_formalInputParameterListForGeneration enumerator_2148 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
       while (enumerator_2148.hasCurrentObject ()) {
         result.appendString ("  const GGS_") ;
         result.appendString (extensionGetter_identifierRepresentation (enumerator_2148.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 36)).stringValue ()) ;
@@ -10780,7 +10324,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
     columnMarker = result.currentColumn () ;
     GGS_uint index_2638_IDX (0) ;
     if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-      cEnumerator_formalInputParameterListForGeneration enumerator_2638 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+      UpEnumerator_formalInputParameterListForGeneration enumerator_2638 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+      // cEnumerator_formalInputParameterListForGeneration enumerator_2638 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
       while (enumerator_2638.hasCurrentObject ()) {
         result.appendString ("operand") ;
         result.appendString (index_2638_IDX.getter_string (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 43)).stringValue ()) ;
@@ -10841,7 +10386,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclar
   columnMarker = result.currentColumn () ;
   GGS_uint index_450_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_450 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalParameterListForGeneration enumerator_450 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalParameterListForGeneration enumerator_450 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_450.hasCurrentObject ()) {
       const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_450.current_mFormalArgumentPassingMode (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("routine-declaration.h.galgasTemplate", 9)))).boolEnum () ;
       switch (test_0) {
@@ -10978,7 +10524,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionI
   result.appendString ("] = {\n") ;
   GGS_uint index_2581_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_2581 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_2581 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_2581 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_2581.hasCurrentObject ()) {
       result.appendString ("  & kTypeDescriptor_GALGAS_") ;
       result.appendString (extensionGetter_identifierRepresentation (enumerator_2581.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 45)).stringValue ()) ;
@@ -11019,7 +10566,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionI
     result.appendString ("COMMA_LOCATION_ARGS) {\n") ;
     GGS_uint index_3878_IDX (0) ;
     if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-      cEnumerator_formalInputParameterListForGeneration enumerator_3878 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+      UpEnumerator_formalInputParameterListForGeneration enumerator_3878 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+      // cEnumerator_formalInputParameterListForGeneration enumerator_3878 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
       while (enumerator_3878.hasCurrentObject ()) {
         result.appendString ("  const GGS_") ;
         result.appendString (extensionGetter_identifierRepresentation (enumerator_3878.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 66)).stringValue ()) ;
@@ -11039,7 +10587,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionI
     result.appendString (" (") ;
     GGS_uint index_4345_IDX (0) ;
     if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-      cEnumerator_formalInputParameterListForGeneration enumerator_4345 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+      UpEnumerator_formalInputParameterListForGeneration enumerator_4345 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+      // cEnumerator_formalInputParameterListForGeneration enumerator_4345 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
       while (enumerator_4345.hasCurrentObject ()) {
         result.appendString ("operand") ;
         result.appendString (index_4345_IDX.getter_string (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 70)).stringValue ()) ;
@@ -11101,7 +10650,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTe
   result.appendString ("class Compiler * inCompiler") ;
   GGS_uint index_565_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_565 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_565 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_565 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_565.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -11159,7 +10709,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTe
   }
   GGS_uint index_674_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_674 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
+    UpEnumerator_formalInputParameterListForGeneration enumerator_674 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    // cEnumerator_formalInputParameterListForGeneration enumerator_674 (in_FORMAL_5F_ARGUMENT_5F_LIST, EnumerationOrder::Up) ;
     while (enumerator_674.hasCurrentObject ()) {
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;

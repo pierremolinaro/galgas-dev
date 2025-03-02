@@ -109,7 +109,7 @@ void appendFixItActions (TC_Array <FixItDescription> & ioArray,
 void appendFixItActions (TC_Array <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GGS_stringset & inStringSet) {
-  cEnumerator_stringset enumerator (inStringSet, EnumerationOrder::Up) ;
+  UpEnumerator_stringset enumerator (inStringSet) ;
   while (enumerator.hasCurrentObject ()) {
     const String s = enumerator.current_key (HERE).stringValue () ;
     ioArray.appendObject (FixItDescription (inKind, s)) ;

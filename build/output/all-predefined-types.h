@@ -13,7 +13,7 @@
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
 #include "cGenericAbstractEnumerator.h"
-#include "cEnumerator_range.h"
+#include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_list.h"
@@ -937,20 +937,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @stringset enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_stringset final : public cGenericAbstractEnumerator {
-  public: cEnumerator_stringset (const class GGS_stringset & inEnumeratedObject,
-                                 const EnumerationOrder inOrder) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-//--- Current element access
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_string current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class UpEnumerator_stringset final : public cGenericAbstractEnumerator {

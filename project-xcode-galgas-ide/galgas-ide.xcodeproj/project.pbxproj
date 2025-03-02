@@ -204,7 +204,7 @@
 		CF3060012D0D8A2E000A5F79 /* String-class-getters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */; };
 		CF3060022D0D8A2E000A5F79 /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E542D0D8A2E000A5F79 /* BinaryDecisionDiagramRelationSingleType.cpp */; };
 		CF3060042D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE62D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.cpp */; };
-		CF3060052D0D8A2E000A5F79 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F002D0D8A2E000A5F79 /* cEnumerator_range.cpp */; };
+		CF3060052D0D8A2E000A5F79 /* Enumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F002D0D8A2E000A5F79 /* Enumerator_range.cpp */; };
 		CF3060062D0D8A2E000A5F79 /* FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ECF2D0D8A2E000A5F79 /* FileManager.cpp */; };
 		CF3060072D0D8A2E000A5F79 /* AbstractCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EBA2D0D8A2E000A5F79 /* AbstractCommandLineOption.cpp */; };
 		CF3060082D0D8A2E000A5F79 /* U8Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F932D0D8A2E000A5F79 /* U8Data.cpp */; };
@@ -385,7 +385,7 @@
 		CF8F81492D0D91490095170B /* String-class-getters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F692D0D8A2E000A5F79 /* String-class-getters.cpp */; };
 		CF8F814A2D0D91490095170B /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E542D0D8A2E000A5F79 /* BinaryDecisionDiagramRelationSingleType.cpp */; };
 		CF8F814B2D0D91490095170B /* AC_GALGAS_weak_reference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EE62D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.cpp */; };
-		CF8F814C2D0D91490095170B /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F002D0D8A2E000A5F79 /* cEnumerator_range.cpp */; };
+		CF8F814C2D0D91490095170B /* Enumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F002D0D8A2E000A5F79 /* Enumerator_range.cpp */; };
 		CF8F814D2D0D91490095170B /* FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305ECF2D0D8A2E000A5F79 /* FileManager.cpp */; };
 		CF8F814E2D0D91490095170B /* AbstractCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305EBA2D0D8A2E000A5F79 /* AbstractCommandLineOption.cpp */; };
 		CF8F814F2D0D91490095170B /* U8Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F932D0D8A2E000A5F79 /* U8Data.cpp */; };
@@ -750,8 +750,8 @@
 		CF305EFC2D0D8A2E000A5F79 /* capSortedListElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = capSortedListElement.cpp; sourceTree = "<group>"; };
 		CF305EFD2D0D8A2E000A5F79 /* cCollectionElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cCollectionElement.h; sourceTree = "<group>"; };
 		CF305EFE2D0D8A2E000A5F79 /* cCollectionElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cCollectionElement.cpp; sourceTree = "<group>"; };
-		CF305EFF2D0D8A2E000A5F79 /* cEnumerator_range.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cEnumerator_range.h; sourceTree = "<group>"; };
-		CF305F002D0D8A2E000A5F79 /* cEnumerator_range.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cEnumerator_range.cpp; sourceTree = "<group>"; };
+		CF305EFF2D0D8A2E000A5F79 /* Enumerator_range.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enumerator_range.h; sourceTree = "<group>"; };
+		CF305F002D0D8A2E000A5F79 /* Enumerator_range.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Enumerator_range.cpp; sourceTree = "<group>"; };
 		CF305F012D0D8A2E000A5F79 /* cGenericAbstractEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cGenericAbstractEnumerator.h; sourceTree = "<group>"; };
 		CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cGenericAbstractEnumerator.cpp; sourceTree = "<group>"; };
 		CF305F032D0D8A2E000A5F79 /* cIndexingDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cIndexingDictionary.h; sourceTree = "<group>"; };
@@ -1483,8 +1483,6 @@
 				CF305EFC2D0D8A2E000A5F79 /* capSortedListElement.cpp */,
 				CF305EFD2D0D8A2E000A5F79 /* cCollectionElement.h */,
 				CF305EFE2D0D8A2E000A5F79 /* cCollectionElement.cpp */,
-				CF305EFF2D0D8A2E000A5F79 /* cEnumerator_range.h */,
-				CF305F002D0D8A2E000A5F79 /* cEnumerator_range.cpp */,
 				CF305F012D0D8A2E000A5F79 /* cGenericAbstractEnumerator.h */,
 				CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */,
 				CF305F032D0D8A2E000A5F79 /* cIndexingDictionary.h */,
@@ -1504,6 +1502,8 @@
 				CF305F132D0D8A2E000A5F79 /* cSortedListElement.h */,
 				CF305F142D0D8A2E000A5F79 /* cSortedListElement.cpp */,
 				CF305F152D0D8A2E000A5F79 /* EnumerationOrder.h */,
+				CF305EFF2D0D8A2E000A5F79 /* Enumerator_range.h */,
+				CF305F002D0D8A2E000A5F79 /* Enumerator_range.cpp */,
 				CF305F162D0D8A2E000A5F79 /* F_verbose_output.h */,
 				CF305F172D0D8A2E000A5F79 /* GALGAS_application.cpp */,
 				CF305F182D0D8A2E000A5F79 /* GALGAS_bigint.cpp */,
@@ -2048,7 +2048,7 @@
 				CF8F81492D0D91490095170B /* String-class-getters.cpp in Sources */,
 				CF8F814A2D0D91490095170B /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */,
 				CF8F814B2D0D91490095170B /* AC_GALGAS_weak_reference.cpp in Sources */,
-				CF8F814C2D0D91490095170B /* cEnumerator_range.cpp in Sources */,
+				CF8F814C2D0D91490095170B /* Enumerator_range.cpp in Sources */,
 				CF8F814D2D0D91490095170B /* FileManager.cpp in Sources */,
 				CF8F814E2D0D91490095170B /* AbstractCommandLineOption.cpp in Sources */,
 				CF8F814F2D0D91490095170B /* U8Data.cpp in Sources */,
@@ -2365,7 +2365,7 @@
 				CF3060012D0D8A2E000A5F79 /* String-class-getters.cpp in Sources */,
 				CF3060022D0D8A2E000A5F79 /* BinaryDecisionDiagramRelationSingleType.cpp in Sources */,
 				CF3060042D0D8A2E000A5F79 /* AC_GALGAS_weak_reference.cpp in Sources */,
-				CF3060052D0D8A2E000A5F79 /* cEnumerator_range.cpp in Sources */,
+				CF3060052D0D8A2E000A5F79 /* Enumerator_range.cpp in Sources */,
 				CF3060062D0D8A2E000A5F79 /* FileManager.cpp in Sources */,
 				CF3060072D0D8A2E000A5F79 /* AbstractCommandLineOption.cpp in Sources */,
 				CF3060082D0D8A2E000A5F79 /* U8Data.cpp in Sources */,

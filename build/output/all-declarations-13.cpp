@@ -4649,11 +4649,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_swi
         GGS_lbigint var_n_3022 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken_literalInt COMMA_SOURCE_FILE ("instruction-switch.galgas", 73)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2A_ COMMA_SOURCE_FILE ("instruction-switch.galgas", 74)) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_range enumerator_3065 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3022.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 75)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 75)))) ;
-        #else
-          cEnumerator_range enumerator_3065 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3022.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 75)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 75))), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_range enumerator_3065 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3022.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 75)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 75)))) ;
         while (enumerator_3065.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 76)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 76)), GGS_bool (false)  COMMA_SOURCE_FILE ("instruction-switch.galgas", 76)) ;
           enumerator_3065.gotoNextObject () ;

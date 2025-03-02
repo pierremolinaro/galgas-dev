@@ -2646,11 +2646,7 @@ void extensionMethod_checkSelfObjectIsFullyInitialized (const GGS_currentVarMana
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_fullyInitialized_18636 = GGS_bool (true) ;
   const GGS_currentVarManager temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_scopeLocalVarMap enumerator_18680 (temp_0.readProperty_mLocalVarMap ()) ;
-  #else
-    cEnumerator_scopeLocalVarMap enumerator_18680 (temp_0.readProperty_mLocalVarMap (), EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_scopeLocalVarMap enumerator_18680 (temp_0.readProperty_mLocalVarMap ()) ;
   bool bool_1 = var_fullyInitialized_18636.isValidAndTrue () ;
   if (enumerator_18680.hasCurrentObject () && bool_1) {
     while (enumerator_18680.hasCurrentObject () && bool_1) {
@@ -2805,11 +2801,7 @@ void extensionSetter_searchForDropAccess (GGS_currentVarManager & ioObject,
   if (GalgasBool::boolFalse == test_0) {
     GGS_bool var_found_22668 = GGS_bool (false) ;
     const GGS_currentVarManager temp_2 = ioObject ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_localVarMapListForLLVM enumerator_22691 (temp_2.readProperty_mSubMaps ()) ;
-    #else
-      cEnumerator_localVarMapListForLLVM enumerator_22691 (temp_2.readProperty_mSubMaps (), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_localVarMapListForLLVM enumerator_22691 (temp_2.readProperty_mSubMaps ()) ;
     bool bool_3 = var_found_22668.operator_not (SOURCE_FILE ("variable-manager.galgas", 516)).isValidAndTrue () ;
     if (enumerator_22691.hasCurrentObject () && bool_3) {
       while (enumerator_22691.hasCurrentObject () && bool_3) {
@@ -3534,11 +3526,7 @@ void extensionMethod_checkFinalStates (const GGS_scopeLocalVarMap inObject,
                                        Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_scopeLocalVarMap temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_scopeLocalVarMap enumerator_39387 (temp_0) ;
-  #else
-    cEnumerator_scopeLocalVarMap enumerator_39387 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_scopeLocalVarMap enumerator_39387 (temp_0) ;
   while (enumerator_39387.hasCurrentObject ()) {
     extensionMethod_checkFinalState (enumerator_39387.current_mState (HERE), enumerator_39387.current_lkey (HERE), enumerator_39387.current_mAttributes (HERE), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas", 880)) ;
     enumerator_39387.gotoNextObject () ;
@@ -3716,11 +3704,7 @@ void extensionSetter_combineMapWith (GGS_scopeLocalVarMap & ioObject,
                                      Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_scopeLocalVarMap temp_0 = ioObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_scopeLocalVarMap enumerator_41903 (temp_0) ;
-  #else
-    cEnumerator_scopeLocalVarMap enumerator_41903 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_scopeLocalVarMap enumerator_41903 (temp_0) ;
   while (enumerator_41903.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
@@ -3756,11 +3740,7 @@ void extensionSetter_combineMapWith (GGS_scopeLocalVarMap & ioObject,
     }
     enumerator_41903.gotoNextObject () ;
   }
-  #ifdef NEW_ITERATOR
-    UpEnumerator_scopeLocalVarMap enumerator_42469 (constinArgument_inOtherMap) ;
-  #else
-    cEnumerator_scopeLocalVarMap enumerator_42469 (constinArgument_inOtherMap, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_scopeLocalVarMap enumerator_42469 (constinArgument_inOtherMap) ;
   while (enumerator_42469.hasCurrentObject ()) {
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
@@ -3802,16 +3782,8 @@ void extensionSetter_combineManagerWith (GGS_currentVarManager & ioObject,
   if (GalgasBool::boolFalse == test_0) {
     GGS_localVarMapListForLLVM var_newSubMapList_43239 = GGS_localVarMapListForLLVM::init (inCompiler COMMA_HERE) ;
     const GGS_currentVarManager temp_3 = ioObject ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_localVarMapListForLLVM enumerator_43268 (temp_3.readProperty_mSubMaps ()) ;
-    #else
-      cEnumerator_localVarMapListForLLVM enumerator_43268 (temp_3.readProperty_mSubMaps (), EnumerationOrder::Up) ;
-    #endif
-    #ifdef NEW_ITERATOR
-      UpEnumerator_localVarMapListForLLVM enumerator_43295 (constinArgument_inOtherManager.readProperty_mSubMaps ()) ;
-    #else
-      cEnumerator_localVarMapListForLLVM enumerator_43295 (constinArgument_inOtherManager.readProperty_mSubMaps (), EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_localVarMapListForLLVM enumerator_43268 (temp_3.readProperty_mSubMaps ()) ;
+    UpEnumerator_localVarMapListForLLVM enumerator_43295 (constinArgument_inOtherManager.readProperty_mSubMaps ()) ;
     while (enumerator_43268.hasCurrentObject () && enumerator_43295.hasCurrentObject ()) {
       GGS_scopeLocalVarMap var_mutableSubMap_43348 = enumerator_43268.current_mMap (HERE) ;
       {
@@ -9322,11 +9294,7 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
   const GGS_formalParameterListAST temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalParameterListAST enumerator_4887 (temp_0) ;
-  #else
-    cEnumerator_formalParameterListAST enumerator_4887 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalParameterListAST enumerator_4887 (temp_0) ;
   while (enumerator_4887.hasCurrentObject ()) {
     switch (enumerator_4887.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -9372,11 +9340,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_formalInputParameterListAST temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_formalInputParameterListAST enumerator_5804 (temp_0) ;
-  #else
-    cEnumerator_formalInputParameterListAST enumerator_5804 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_formalInputParameterListAST enumerator_5804 (temp_0) ;
   while (enumerator_5804.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_5804.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 157)) ;
     enumerator_5804.gotoNextObject () ;

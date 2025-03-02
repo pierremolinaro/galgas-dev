@@ -322,30 +322,6 @@ void GGS_stringset::populateEnumerationArray (capCollectionElementArray & ioEnum
 
 //--------------------------------------------------------------------------------------------------
 
-cEnumerator_stringset::cEnumerator_stringset (const GGS_stringset & inEnumeratedObject,
-                                              const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
 cGenericAbstractEnumerator (EnumerationOrder::Up) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;

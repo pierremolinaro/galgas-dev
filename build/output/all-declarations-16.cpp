@@ -15234,11 +15234,7 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i34_ (GGS__5B_ls
         GGS_lbigint var_n_3799 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_literalInt COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 93)) ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 94)) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_range enumerator_3842 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3799.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)))) ;
-        #else
-          cEnumerator_range enumerator_3842 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3799.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95))), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_range enumerator_3842 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3799.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 95)))) ;
         while (enumerator_3842.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)), GGS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas", 96)) ;
           enumerator_3842.gotoNextObject () ;

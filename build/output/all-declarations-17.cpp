@@ -6250,11 +6250,7 @@ void extensionMethod_buildPropertyInitializationCode (const GGS_propertyInCollec
   temp_0.enterElement (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas", 260)) ;
   outArgument_outUnusedVariableCppNameSet = temp_0 ;
   const GGS_propertyInCollectionListAST temp_1 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_propertyInCollectionListAST enumerator_9734 (temp_1) ;
-  #else
-    cEnumerator_propertyInCollectionListAST enumerator_9734 (temp_1, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_propertyInCollectionListAST enumerator_9734 (temp_1) ;
   while (enumerator_9734.hasCurrentObject ()) {
     switch (enumerator_9734.current_initialization (HERE).enumValue ()) {
     case GGS_propertyInCollectionInitializationAST::Enumeration::invalid:
@@ -9384,11 +9380,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_typeNameFormalParamet
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typeNameFormalParameterNameList temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_typeNameFormalParameterNameList enumerator_11817 (temp_0) ;
-  #else
-    cEnumerator_typeNameFormalParameterNameList enumerator_11817 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_typeNameFormalParameterNameList enumerator_11817 (temp_0) ;
   while (enumerator_11817.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_11817.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 313)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas", 313)) ;
     enumerator_11817.gotoNextObject () ;

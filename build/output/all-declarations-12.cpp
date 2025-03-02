@@ -4694,11 +4694,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GGS_syntaxInstructionLi
   }
   if (GalgasBool::boolFalse == test_0) {
     const GGS_syntaxInstructionListForGrammarAnalysis temp_2 = inObject ;
-    #ifdef NEW_ITERATOR
-      UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_9528 (temp_2) ;
-    #else
-      cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_9528 (temp_2, EnumerationOrder::Up) ;
-    #endif
+    UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_9528 (temp_2) ;
     while (enumerator_9528.hasCurrentObject ()) {
       callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_9528.current_mInstruction (HERE).ptr (), ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, ioArgument_ioMaxUsedRowIndex, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 252)) ;
       enumerator_9528.gotoNextObject () ;
@@ -5192,11 +5188,7 @@ void extensionSetter_appendRow (GGS_rowList & ioObject,
   if (GalgasBool::boolTrue == test_1) {
     test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10299.objectCompare (constinArgument_inRow)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_range enumerator_10371 (GGS_range (var_length_10299, constinArgument_inRow.substract_operation (var_length_10299, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)))) ;
-      #else
-        cEnumerator_range enumerator_10371 (GGS_range (var_length_10299, constinArgument_inRow.substract_operation (var_length_10299, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283))), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_range enumerator_10371 (GGS_range (var_length_10299, constinArgument_inRow.substract_operation (var_length_10299, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 283)))) ;
       while (enumerator_10371.hasCurrentObject ()) {
         ioObject.addAssign_operation (GGS__32_stringlist::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 284)) ;
         enumerator_10371.gotoNextObject () ;
@@ -5209,11 +5201,7 @@ void extensionSetter_appendRow (GGS_rowList & ioObject,
   if (GalgasBool::boolTrue == test_3) {
     test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 290)).objectCompare (constinArgument_inColumn)).boolEnum () ;
     if (GalgasBool::boolTrue == test_3) {
-      #ifdef NEW_ITERATOR
-        UpEnumerator_range enumerator_10563 (GGS_range (var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), constinArgument_inColumn.substract_operation (var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)))) ;
-      #else
-        cEnumerator_range enumerator_10563 (GGS_range (var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), constinArgument_inColumn.substract_operation (var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291))), EnumerationOrder::Up) ;
-      #endif
+      UpEnumerator_range enumerator_10563 (GGS_range (var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), constinArgument_inColumn.substract_operation (var_cols_10433.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 291)))) ;
       while (enumerator_10563.hasCurrentObject ()) {
         var_cols_10433.addAssign_operation (GGS_string::makeEmptyString (), GGS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 292)) ;
         enumerator_10563.gotoNextObject () ;
@@ -5263,11 +5251,7 @@ GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGr
   const GGS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
   result_result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas", 547)).objectCompare (GGS_uint (uint32_t (4U)))) ;
   const GGS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19010 (temp_1) ;
-  #else
-    cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19010 (temp_1, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19010 (temp_1) ;
   bool bool_2 = result_result.isValidAndTrue () ;
   if (enumerator_19010.hasCurrentObject () && bool_2) {
     while (enumerator_19010.hasCurrentObject () && bool_2) {

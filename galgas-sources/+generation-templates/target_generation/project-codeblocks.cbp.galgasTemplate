@@ -178,7 +178,7 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/cSortedListElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/capSortedListElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/cGenericAbstractEnumerator.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/cEnumerator_range.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/Enumerator_range.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/cIndexingDictionary.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueDescriptor.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/cLexiqueIntrospection.cpp" />

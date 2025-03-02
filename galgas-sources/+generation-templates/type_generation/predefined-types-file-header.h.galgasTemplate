@@ -9,7 +9,7 @@
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
 #include "cGenericAbstractEnumerator.h"
-#include "cEnumerator_range.h"
+#include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_list.h"

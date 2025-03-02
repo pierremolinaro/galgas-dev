@@ -924,14 +924,8 @@ override method @forInstructionForGeneration generateInstruction
     enumerationVarCppNameList += !enumerationVar
   end
   for enumerated in self.mEnumeratedObjectList, (mValue) in enumerationVarCppNameList do
-    ioGeneratedCode += "#ifdef NEW_ITERATOR\n"
-     ioGeneratedCode += "  " + enumerated.mEnumerationOrder + "Enumerator_" + [enumerated.mEnumeratedExpression.mResultType identifierRepresentation]
+    ioGeneratedCode += enumerated.mEnumerationOrder + "Enumerator_" + [enumerated.mEnumeratedExpression.mResultType identifierRepresentation]
     ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + mValue + ") ;\n"
-   ioGeneratedCode += "#else\n"
-    ioGeneratedCode += "  cEnumerator_" + [enumerated.mEnumeratedExpression.mResultType identifierRepresentation]
-    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + mValue
-    ioGeneratedCode += ", EnumerationOrder::" + enumerated.mEnumerationOrder + ") ;\n"
-    ioGeneratedCode += "#endif\n"
   end
 //--- Analyse 'while' expression
   let whileExpressionIsAllwaysTrue = [self.mWhileExpression isTrueExpression]

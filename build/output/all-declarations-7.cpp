@@ -3755,11 +3755,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_functionSignature & i
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_functionSignature temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_functionSignature enumerator_1829 (temp_0) ;
-  #else
-    cEnumerator_functionSignature enumerator_1829 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_functionSignature enumerator_1829 (temp_0) ;
   while (enumerator_1829.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("!").add_operation (enumerator_1829.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 40)) ;
     enumerator_1829.gotoNextObject () ;
@@ -3781,11 +3777,7 @@ GGS_string extensionGetter_subcriptSignature (const GGS_functionSignature & inOb
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS_functionSignature temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_functionSignature enumerator_1975 (temp_0) ;
-  #else
-    cEnumerator_functionSignature enumerator_1975 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_functionSignature enumerator_1975 (temp_0) ;
   while (enumerator_1975.hasCurrentObject ()) {
     result_result.plusAssign_operation(GGS_string ("\?").add_operation (enumerator_1975.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 47)) ;
     enumerator_1975.gotoNextObject () ;
@@ -5530,11 +5522,7 @@ GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & i
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typedPropertyList temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_typedPropertyList enumerator_8220 (temp_0) ;
-  #else
-    cEnumerator_typedPropertyList enumerator_8220 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_typedPropertyList enumerator_8220 (temp_0) ;
   while (enumerator_8220.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
@@ -7904,11 +7892,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const GGS_semanticIn
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_semanticInstructionListAST temp_0 = inObject ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_semanticInstructionListAST enumerator_2872 (temp_0) ;
-  #else
-    cEnumerator_semanticInstructionListAST enumerator_2872 (temp_0, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_semanticInstructionListAST enumerator_2872 (temp_0) ;
   while (enumerator_2872.hasCurrentObject ()) {
     callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2872.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 65)) ;
     enumerator_2872.gotoNextObject () ;

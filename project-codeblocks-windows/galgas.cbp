@@ -215,7 +215,7 @@
    <Unit filename="../libpm/galgas/cSortedListElement.cpp" />
    <Unit filename="../libpm/galgas/capSortedListElement.cpp" />
    <Unit filename="../libpm/galgas/cGenericAbstractEnumerator.cpp" />
-   <Unit filename="../libpm/galgas/cEnumerator_range.cpp" />
+   <Unit filename="../libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../libpm/galgas/cIndexingDictionary.cpp" />
    <Unit filename="../libpm/galgas/IssueDescriptor.cpp" />
    <Unit filename="../libpm/galgas/cLexiqueIntrospection.cpp" />

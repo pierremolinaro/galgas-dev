@@ -572,7 +572,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   }
 //--- Build node to exclude set
   UInt32Set nodesToExcludeSet ;
-  cEnumerator_stringset enumerator2 (inNodesToExclude, EnumerationOrder::Up) ;
+  UpEnumerator_stringset enumerator2 (inNodesToExclude) ;
   while (enumerator2.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator2.current_key (THERE).stringValue(), root()) ;
     if (nullptr == nodePtr) {

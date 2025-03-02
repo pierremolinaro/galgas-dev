@@ -7758,11 +7758,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
           }
           GGS_semanticExpressionAST var_receiverExpression_9988 = GGS_selfInExpressionAST::init_21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-concat.galgas", 290)), inCompiler COMMA_HERE) ;
           var_receiverExpression_9988 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_receiverName_7150.readProperty_location (), var_receiverExpression_9988, var_receiverName_7150, inCompiler COMMA_HERE) ;
-          #ifdef NEW_ITERATOR
-            UpEnumerator_lstringlist enumerator_10188 (var_propertyList_7229) ;
-          #else
-            cEnumerator_lstringlist enumerator_10188 (var_propertyList_7229, EnumerationOrder::Up) ;
-          #endif
+          UpEnumerator_lstringlist enumerator_10188 (var_propertyList_7229) ;
           while (enumerator_10188.hasCurrentObject ()) {
             var_receiverExpression_9988 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (enumerator_10188.current_mValue (HERE).readProperty_location (), var_receiverExpression_9988, enumerator_10188.current_mValue (HERE), inCompiler COMMA_HERE) ;
             enumerator_10188.gotoNextObject () ;
@@ -7785,11 +7781,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
         var_propertyList_7229.setter_popLast (var_methodName_10816, inCompiler COMMA_SOURCE_FILE ("instruction-concat.galgas", 309)) ;
         }
         GGS_semanticExpressionAST var_receiverExpression_10863 = GGS_varInExpressionAST::init_21_ (var_receiverName_7150, inCompiler COMMA_HERE) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_lstringlist enumerator_10933 (var_propertyList_7229) ;
-        #else
-          cEnumerator_lstringlist enumerator_10933 (var_propertyList_7229, EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_lstringlist enumerator_10933 (var_propertyList_7229) ;
         while (enumerator_10933.hasCurrentObject ()) {
           var_receiverExpression_10863 = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (enumerator_10933.current_mValue (HERE).readProperty_location (), var_receiverExpression_10863, enumerator_10933.current_mValue (HERE), inCompiler COMMA_HERE) ;
           enumerator_10933.gotoNextObject () ;
@@ -10078,11 +10070,7 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_swi
         GGS_lbigint var_n_5744 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("instruction-switch.galgas", 161)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("instruction-switch.galgas", 162)) ;
-        #ifdef NEW_ITERATOR
-          UpEnumerator_range enumerator_5787 (GGS_range (GGS_uint (uint32_t (0U)), var_n_5744.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 163)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 163)))) ;
-        #else
-          cEnumerator_range enumerator_5787 (GGS_range (GGS_uint (uint32_t (0U)), var_n_5744.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 163)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 163))), EnumerationOrder::Up) ;
-        #endif
+        UpEnumerator_range enumerator_5787 (GGS_range (GGS_uint (uint32_t (0U)), var_n_5744.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 163)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 163)))) ;
         while (enumerator_5787.hasCurrentObject ()) {
           outArgument_outAssociatedValuesExtraction.addAssign_operation (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 164)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas", 164)), GGS_bool (false)  COMMA_SOURCE_FILE ("instruction-switch.galgas", 164)) ;
           enumerator_5787.gotoNextObject () ;

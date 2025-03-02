@@ -31,33 +31,6 @@ class GGS_uint ;
 
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_range final {
-//--- Constructor
-  public: cEnumerator_range (const GGS_range & inEnumeratedRange,
-                             const EnumerationOrder inOrder) ;
-
-//--- No copy
-  private: cEnumerator_range (const cEnumerator_range &) = delete ;
-  private: cEnumerator_range & operator = (const cEnumerator_range &) = delete ;
-
-//--- 
-  public: bool hasCurrentObject (void) const ;
-  public: bool hasNextObject (void) const ;
-  public: void gotoNextObject (void) ;
-
-//--- Current element access
-  public: GGS_uint current (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const bool mIsValid ;
-  private: const bool mAscending ;
-  private: const int64_t mStart ;
-  private: const int64_t mLength ;
-  private: int64_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class UpEnumerator_range final {
 //--- Constructor
   public: UpEnumerator_range (const GGS_range & inEnumeratedRange) ;
@@ -76,7 +49,6 @@ class UpEnumerator_range final {
 
 //---- Properties
   private: const bool mIsValid ;
-  private: const bool mAscending ;
   private: const int64_t mStart ;
   private: const int64_t mLength ;
   private: int64_t mCurrent ;
@@ -102,7 +74,6 @@ class DownEnumerator_range final {
 
 //---- Properties
   private: const bool mIsValid ;
-  private: const bool mAscending ;
   private: const int64_t mStart ;
   private: const int64_t mLength ;
   private: int64_t mCurrent ;

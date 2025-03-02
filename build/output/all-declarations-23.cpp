@@ -575,11 +575,7 @@ void extensionSetter_addAppTarget (GGS_XcodeProjectDescriptor & ioObject,
   extensionSetter_getReferenceKey (ioObject, var_resourceBuildRef_7235, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 184)) ;
   }
   GGS__32_stringlist var_dependentTargets_7272 = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_stringlist enumerator_7302 (constinArgument_inDependentTargetRefList) ;
-  #else
-    cEnumerator_stringlist enumerator_7302 (constinArgument_inDependentTargetRefList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_stringlist enumerator_7302 (constinArgument_inDependentTargetRefList) ;
   while (enumerator_7302.hasCurrentObject ()) {
     GGS_string var_dependencyBuildRef_7375 ;
     {
@@ -589,11 +585,7 @@ void extensionSetter_addAppTarget (GGS_XcodeProjectDescriptor & ioObject,
     enumerator_7302.gotoNextObject () ;
   }
   GGS_stringlist var_resourceFileBuildRefs_7468 = constinArgument_inResourceFileBuildRefs ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator__32_stringlist enumerator_7527 (constinArgument_inProductCopyList) ;
-  #else
-    cEnumerator__32_stringlist enumerator_7527 (constinArgument_inProductCopyList, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator__32_stringlist enumerator_7527 (constinArgument_inProductCopyList) ;
   while (enumerator_7527.hasCurrentObject ()) {
     GGS_string var_buildRef_7632 ;
     {
@@ -712,11 +704,7 @@ void extensionSetter_addGroupWithFiles (GGS_XcodeProjectDescriptor & ioObject,
   extensionSetter_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 256)) ;
   }
   GGS_stringlist var_childrenRefs_9874 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  #ifdef NEW_ITERATOR
-    UpEnumerator_stringset enumerator_9900 (constinArgument_inFileNames) ;
-  #else
-    cEnumerator_stringset enumerator_9900 (constinArgument_inFileNames, EnumerationOrder::Up) ;
-  #endif
+  UpEnumerator_stringset enumerator_9900 (constinArgument_inFileNames) ;
   while (enumerator_9900.hasCurrentObject ()) {
     GalgasBool test_6 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_6) {
