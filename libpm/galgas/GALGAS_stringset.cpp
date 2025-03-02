@@ -448,7 +448,7 @@ GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist 
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    cEnumerator_stringlist enumerator (inStringList, EnumerationOrder::Up) ;
+    UpEnumerator_stringlist enumerator (inStringList) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
@@ -464,7 +464,7 @@ GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlis
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    cEnumerator_lstringlist enumerator (inStringList, EnumerationOrder::Up) ;
+    UpEnumerator_lstringlist enumerator (inStringList) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;

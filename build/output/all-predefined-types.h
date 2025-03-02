@@ -3236,17 +3236,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ;
 // Phase 1: @stringlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_stringlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_stringlist (const class GGS_stringlist & inEnumeratedObject,
-                                  const EnumerationOrder inOrder) ;
-
-  public: class GGS_string current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_stringlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_stringlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator_stringlist (const class GGS_stringlist & inEnumeratedObject) ;
 
@@ -3404,17 +3393,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lstringlist list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_lstringlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_lstringlist (const class GGS_lstringlist & inEnumeratedObject,
-                                   const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lstringlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_lstringlist final : public cGenericAbstractEnumerator {
@@ -3666,18 +3644,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ;
 // Phase 1: @_32_stringlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator__32_stringlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator__32_stringlist (const class GGS__32_stringlist & inEnumeratedObject,
-                                      const EnumerationOrder inOrder) ;
-
-  public: class GGS_string current_mValue_30_ (LOCATION_ARGS) const ;
-  public: class GGS_string current_mValue_31_ (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS__32_stringlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator__32_stringlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator__32_stringlist (const class GGS__32_stringlist & inEnumeratedObject) ;
 
@@ -3858,17 +3824,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ;
 // Phase 1: @functionlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_functionlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_functionlist (const class GGS_functionlist & inEnumeratedObject,
-                                    const EnumerationOrder inOrder) ;
-
-  public: class GGS_function current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_functionlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_functionlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator_functionlist (const class GGS_functionlist & inEnumeratedObject) ;
 
@@ -4026,17 +3981,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @luintlist list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_luintlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_luintlist (const class GGS_luintlist & inEnumeratedObject,
-                                 const EnumerationOrder inOrder) ;
-
-  public: class GGS_luint current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_luintlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_luintlist final : public cGenericAbstractEnumerator {
@@ -4288,17 +4232,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ;
 // Phase 1: @objectlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_objectlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_objectlist (const class GGS_objectlist & inEnumeratedObject,
-                                  const EnumerationOrder inOrder) ;
-
-  public: class GGS_object current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_objectlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_objectlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator_objectlist (const class GGS_objectlist & inEnumeratedObject) ;
 
@@ -4456,17 +4389,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @typelist list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_typelist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_typelist (const class GGS_typelist & inEnumeratedObject,
-                                const EnumerationOrder inOrder) ;
-
-  public: class GGS_type current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_typelist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_typelist final : public cGenericAbstractEnumerator {
@@ -4628,17 +4550,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ;
 // Phase 1: @uintlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_uintlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_uintlist (const class GGS_uintlist & inEnumeratedObject,
-                                const EnumerationOrder inOrder) ;
-
-  public: class GGS_uint current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_uintlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_uintlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator_uintlist (const class GGS_uintlist & inEnumeratedObject) ;
 
@@ -4796,17 +4707,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @uint_36__34_list list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_uint_36__34_list final : public cGenericAbstractEnumerator {
-  public: cEnumerator_uint_36__34_list (const class GGS_uint_36__34_list & inEnumeratedObject,
-                                        const EnumerationOrder inOrder) ;
-
-  public: class GGS_uint_36__34_ current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_uint_36__34_list_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_uint_36__34_list final : public cGenericAbstractEnumerator {
@@ -4968,17 +4868,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ;
 // Phase 1: @bigintlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_bigintlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_bigintlist (const class GGS_bigintlist & inEnumeratedObject,
-                                  const EnumerationOrder inOrder) ;
-
-  public: class GGS_bigint current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_bigintlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_bigintlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator_bigintlist (const class GGS_bigintlist & inEnumeratedObject) ;
 
@@ -5136,17 +5025,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lbigintlist list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_lbigintlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator_lbigintlist (const class GGS_lbigintlist & inEnumeratedObject,
-                                   const EnumerationOrder inOrder) ;
-
-  public: class GGS_lbigint current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lbigintlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_lbigintlist final : public cGenericAbstractEnumerator {

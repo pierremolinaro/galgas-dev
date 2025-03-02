@@ -11,18 +11,6 @@
 // Phase 1: @_32_lstringlist list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator__32_lstringlist final : public cGenericAbstractEnumerator {
-  public: cEnumerator__32_lstringlist (const class GGS__32_lstringlist & inEnumeratedObject,
-                                       const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_mValue_30_ (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mValue_31_ (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS__32_lstringlist_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator__32_lstringlist final : public cGenericAbstractEnumerator {
   public: DownEnumerator__32_lstringlist (const class GGS__32_lstringlist & inEnumeratedObject) ;
 
@@ -841,17 +829,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: @templateInstructionListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_templateInstructionListAST final : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateInstructionListAST (const class GGS_templateInstructionListAST & inEnumeratedObject,
-                                                  const EnumerationOrder inOrder) ;
-
-  public: class GGS_templateInstructionAST current_mInstruction (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionListAST_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_templateInstructionListAST final : public cGenericAbstractEnumerator {
   public: DownEnumerator_templateInstructionListAST (const class GGS_templateInstructionListAST & inEnumeratedObject) ;
 
@@ -1265,19 +1242,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionA
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @templateExpressionListAST list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_templateExpressionListAST final : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateExpressionListAST (const class GGS_templateExpressionListAST & inEnumeratedObject,
-                                                 const EnumerationOrder inOrder) ;
-
-  public: class GGS_lstring current_mActualSelector (LOCATION_ARGS) const ;
-  public: class GGS_templateExpressionAST current_mExpression (LOCATION_ARGS) const ;
-  public: class GGS_location current_mEndOfExpressionLocation (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateExpressionListAST_2E_element current (LOCATION_ARGS) const ;
-} ;
-
 //--------------------------------------------------------------------------------------------------
 
 class DownEnumerator_templateExpressionListAST final : public cGenericAbstractEnumerator {
@@ -9463,18 +9427,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 // Phase 1: @templateInstructionIfBranchListAST list enumerator
 //--------------------------------------------------------------------------------------------------
 
-class cEnumerator_templateInstructionIfBranchListAST final : public cGenericAbstractEnumerator {
-  public: cEnumerator_templateInstructionIfBranchListAST (const class GGS_templateInstructionIfBranchListAST & inEnumeratedObject,
-                                                          const EnumerationOrder inOrder) ;
-
-  public: class GGS_templateExpressionAST current_mExpression (LOCATION_ARGS) const ;
-  public: class GGS_templateInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_templateInstructionIfBranchListAST_2E_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_templateInstructionIfBranchListAST final : public cGenericAbstractEnumerator {
   public: DownEnumerator_templateInstructionIfBranchListAST (const class GGS_templateInstructionIfBranchListAST & inEnumeratedObject) ;
 
@@ -9941,4 +9893,184 @@ class GGS_templateInstructionIfAST_2E_weak : public GGS_templateInstructionAST_2
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @templateInstructionForGeneration reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateInstructionForGeneration (const class cPtr_templateInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionForGeneration init (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_templateInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @templateInstructionForGeneration class
+//
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateInstructionForGeneration : public acStrongPtr_class {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionForGeneration_init (Compiler * inCompiler) ;
+
+
+//--- Extension method templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GGS_string & arg_ioGeneratedCode,
+           class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GGS_bool & arg_ioUseColumnMarker,
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
+
+//--- Properties
+
+
+
+//--- Constructor
+  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override = 0 ;
+
+//--- Class descriptor
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: @templateInstructionForGeneration_2E_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_reference {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_templateInstructionForGeneration_2E_weak (const class GGS_templateInstructionForGeneration & inSource) ;
+
+  public: GGS_templateInstructionForGeneration_2E_weak & operator = (const class GGS_templateInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_templateInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_templateInstructionForGeneration bang_templateInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_templateInstructionForGeneration unwrappedValue (void) const {
+    GGS_templateInstructionForGeneration result ;
+    if (isValid ()) {
+      const cPtr_templateInstructionForGeneration * p = (cPtr_templateInstructionForGeneration *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_templateInstructionForGeneration (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_templateInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_templateInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak ;
 

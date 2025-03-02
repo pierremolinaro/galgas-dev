@@ -111,9 +111,7 @@
 		CF08BAE92D552D3A000DE9C4 /* extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA5F2D552D3A000DE9C4 /* extension-String.swift */; };
 		CF08BAEA2D552D3A000DE9C4 /* extension-Date-EBPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08BA292D552D3A000DE9C4 /* extension-Date-EBPropertyProtocol.swift */; };
 		CF08BB892D55316A000DE9C4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08BB872D55316A000DE9C4 /* MainMenu.xib */; };
-		CF16124A2D74891000CCF20D /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612492D74891000CCF20D /* all-declarations-33.cpp */; };
 		CF16124B2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
-		CF16124C2D74891000CCF20D /* all-declarations-33.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612492D74891000CCF20D /* all-declarations-33.cpp */; };
 		CF16124D2D74891000CCF20D /* all-declarations-32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1612472D74891000CCF20D /* all-declarations-32.cpp */; };
 		CF305F972D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305E692D0D8A2E000A5F79 /* BigUnsigned-conversions.cpp */; };
 		CF305F982D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF305F022D0D8A2E000A5F79 /* cGenericAbstractEnumerator.cpp */; };
@@ -636,8 +634,6 @@
 		CF08BB862D55316A000DE9C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
 		CF1612462D74891000CCF20D /* all-declarations-32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-32.h"; sourceTree = "<group>"; };
 		CF1612472D74891000CCF20D /* all-declarations-32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-32.cpp"; sourceTree = "<group>"; };
-		CF1612482D74891000CCF20D /* all-declarations-33.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "all-declarations-33.h"; sourceTree = "<group>"; };
-		CF1612492D74891000CCF20D /* all-declarations-33.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-33.cpp"; sourceTree = "<group>"; };
 		CF305E4C2D0D8A2E000A5F79 /* BinaryDecisionDiagram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryDecisionDiagram.h; sourceTree = "<group>"; };
 		CF305E4D2D0D8A2E000A5F79 /* BinaryDecisionDiagram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryDecisionDiagram.cpp; sourceTree = "<group>"; };
 		CF305E4E2D0D8A2E000A5F79 /* BinaryDecisionDiagram-node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BinaryDecisionDiagram-node.h"; sourceTree = "<group>"; };
@@ -1644,8 +1640,6 @@
 			children = (
 				CF1612462D74891000CCF20D /* all-declarations-32.h */,
 				CF1612472D74891000CCF20D /* all-declarations-32.cpp */,
-				CF1612482D74891000CCF20D /* all-declarations-33.h */,
-				CF1612492D74891000CCF20D /* all-declarations-33.cpp */,
 				CF3060322D0D8B2B000A5F79 /* all-declarations.h */,
 				CF3060332D0D8B2B000A5F79 /* all-declarations-0.h */,
 				CF3060342D0D8B2B000A5F79 /* all-declarations-0.cpp */,
@@ -2095,7 +2089,6 @@
 				CF8F81782D0D91490095170B /* AbstractFileHandle.cpp in Sources */,
 				CF8F81792D0D91490095170B /* C_galgas_class_inspector.cpp in Sources */,
 				CF8F817A2D0D91490095170B /* cPtr_weakReference_proxy.cpp in Sources */,
-				CF16124A2D74891000CCF20D /* all-declarations-33.cpp in Sources */,
 				CF16124B2D74891000CCF20D /* all-declarations-32.cpp in Sources */,
 				CF8F817B2D0D91490095170B /* cCollectionElement.cpp in Sources */,
 				CF8F817C2D0D91490095170B /* GALGAS_function.cpp in Sources */,
@@ -2412,7 +2405,6 @@
 				CF3060122D0D8A2E000A5F79 /* AbstractFileHandle.cpp in Sources */,
 				CF3060132D0D8A2E000A5F79 /* C_galgas_class_inspector.cpp in Sources */,
 				CF3060142D0D8A2E000A5F79 /* cPtr_weakReference_proxy.cpp in Sources */,
-				CF16124C2D74891000CCF20D /* all-declarations-33.cpp in Sources */,
 				CF16124D2D74891000CCF20D /* all-declarations-32.cpp in Sources */,
 				CF3060152D0D8A2E000A5F79 /* cCollectionElement.cpp in Sources */,
 				CF3060162D0D8A2E000A5F79 /* GALGAS_function.cpp in Sources */,

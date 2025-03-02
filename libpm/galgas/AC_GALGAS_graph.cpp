@@ -554,7 +554,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
                              COMMA_LOCATION_ARGS) const {
 //--- Build start node set
   UInt32Set startNodeSet ;
-  cEnumerator_lstringlist enumerator1 (inStartNodes, EnumerationOrder::Up) ;
+  UpEnumerator_lstringlist enumerator1 (inStartNodes) ;
   while (enumerator1.hasCurrentObject ()) {
     const cGraphNode * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
     if (nullptr == nodePtr) {

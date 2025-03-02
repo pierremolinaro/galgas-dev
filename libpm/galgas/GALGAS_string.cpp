@@ -311,7 +311,7 @@ GGS_string GGS_string::class_func_componentsJoinedByString (const GGS_stringlist
   if ((inComponents.isValid ()) && (inSeparator.isValid ())) {
     bool first = true ;
     String s ;
-    cEnumerator_stringlist current (inComponents, EnumerationOrder::Up) ;
+    UpEnumerator_stringlist current (inComponents) ;
     while (current.hasCurrentObject ()) {
       if (first) {
         first = false ;
