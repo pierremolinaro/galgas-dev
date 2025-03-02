@@ -396,10 +396,10 @@ GGS_data GGS_filewrapper::getter_binaryFileContentsAtPath (const GGS_string & in
         errorMessage.appendCString ("' path does not exist") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        const uint8_t * sourcePtr = (const uint8_t *) file->mContents ;
-        const uint32_t sourceLength = file->mFileLength ;
-        U8Data data ;
-        data.appendDataFromPointer (sourcePtr, (int32_t) sourceLength) ;
+        const uint8_t * sourcePtr = (uint8_t *) file->mContents ;
+        const size_t sourceLength = file->mFileLength ;
+        std::vector <uint8_t> data (sourcePtr, sourcePtr + sourceLength) ;
+//        data.appendDataFromPointer (sourcePtr, (int32_t) sourceLength) ;
         result = GGS_data (data) ;
       }
     }

@@ -2,30 +2,47 @@
 //   Phase 1: @data enumerator
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_data final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;
+class UpEnumerator_data final {
+  public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: bool hasCurrentObject (void) const { return mIterator != mArray.end () ; }
 
-  public: class GGS_uint current_data (LOCATION_ARGS) const ;
+  public: void gotoNextObject (void) { mIterator++ ; }
+
 //--- Current element access
+  public: class GGS_uint current_data (LOCATION_ARGS) const ;
   public: class GGS_uint current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: std::vector <uint8_t> mArray ;
+  private: std::vector <uint8_t>::iterator mIterator ;
+
+//--- No copy
+  private: UpEnumerator_data (const UpEnumerator_data &) = delete ;
+  private: UpEnumerator_data & operator = (const UpEnumerator_data &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_data final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;
+class DownEnumerator_data final {
 
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
+  public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;
 
-  public: class GGS_uint current_data (LOCATION_ARGS) const ;
+  public: bool hasCurrentObject (void) const { return mIterator != mArray.rend () ; }
+
+  public: void gotoNextObject (void) { mIterator++ ; }
+
 //--- Current element access
+  public: class GGS_uint current_data (LOCATION_ARGS) const ;
   public: class GGS_uint current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: std::vector <uint8_t> mArray ;
+  private: std::vector <uint8_t>::reverse_iterator mIterator ;
+
+//--- No copy
+  private: DownEnumerator_data (const DownEnumerator_data &) = delete ;
+  private: DownEnumerator_data & operator = (const DownEnumerator_data &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -35,21 +52,16 @@ class UpEnumerator_data final : public cGenericAbstractEnumerator {
 class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: U8Data mData ;
+  private: std::vector <uint8_t> mData ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline U8Data dataValue (void) const { return mData ; }
+  public: inline std::vector <uint8_t> dataValue (void) const { return mData ; }
 
 //--------------------------------- Default constructor
   public: GGS_data (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_data (const U8Data & inData) ;
-
-//--------------------------------- Enumeration helper methods
-  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
-
-%
+  public: GGS_data (const std::vector <uint8_t> & inData) ;
 

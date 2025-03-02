@@ -854,8 +854,8 @@ static String recursiveRemoveDirectory (const String & inUnixDirectoryPath) {
 //--------------------------------------------------------------------------------------------------
 
 void GGS_string::class_method_removeDirectoryRecursively (GGS_string inDirectoryPath,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
     if (! Compiler::performGeneration ()) {
       ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
@@ -907,17 +907,53 @@ static bool writeFile (const String & inMessage,
 
 //--------------------------------------------------------------------------------------------------
 
+static bool writeFile (const String & inMessage,
+                       const String & inFullPathName,
+                       const std::vector <uint8_t> & inCurrentData,
+                       Compiler * inCompiler) {
+  bool ok = true ;
+  if (inCompiler->performGeneration ()) {
+    const bool verboseOptionOn = verboseOutput () ;
+    const String directory = inFullPathName.stringByDeletingLastPathComponent () ;
+    FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    BinaryFileWrite binaryFile (inFullPathName) ;
+    ok = binaryFile.isOpened () ;
+    if (! ok) {
+      String message = "Cannot open '" ;
+      message.appendString (inFullPathName) ;
+      message.appendCString ("' file in write mode.") ;
+      inCompiler->onTheFlySemanticError (message COMMA_HERE) ;
+    }
+    binaryFile.appendData (inCurrentData) ;
+  //--- Close file
+    if (ok) {
+      ok = binaryFile.close () ;
+    }
+    if (ok && verboseOptionOn) {
+      ggs_printFileOperationSuccess (inMessage + " '" + inFullPathName + "'.\n") ;
+    }
+  }else{
+    ggs_printWarning (inCompiler, SourceTextInString(), IssueWithFixIt (), String ("Need to write '") + inFullPathName + "'." COMMA_HERE) ;
+  }
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 static bool updateFile (const String & inFullPathName,
                         const String & inContents,
                         Compiler * inCompiler) {
-  U8Data currentData ; currentData.appendString (inContents) ;
+  std::vector <uint8_t> currentData (
+    (const uint8_t *) inContents.cString (),
+    ((const uint8_t *) inContents.cString ()) + size_t (inContents.length ())
+  ) ;
 //--- Compare file length
   const uint64_t fileSize = FileManager::fileSize (inFullPathName) ;
-  bool needsToWriteFile = fileSize != (uint64_t) currentData.count () ;
+  bool needsToWriteFile = fileSize != currentData.size () ;
   bool ok = true ;
 //--- Read file
   if (! needsToWriteFile) {
-    U8Data fileData ;
+    std::vector <uint8_t> fileData ;
     ok = FileManager::binaryDataWithContentOfFile (inFullPathName, fileData) ;
     if (ok) {
       needsToWriteFile = fileData != currentData ;

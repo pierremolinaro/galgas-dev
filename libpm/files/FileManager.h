@@ -27,6 +27,10 @@
 
 //--------------------------------------------------------------------------------------------------
 
+#include <vector>
+
+//--------------------------------------------------------------------------------------------------
+
 class FileManager final {
 //--- File path conversions
   public: static String unixPathWithNativePath (const String & inFilePath) ;
@@ -45,7 +49,9 @@ class FileManager final {
 
 //--- Read binary file at once
   public: static bool binaryDataWithContentOfFile (const String & inFilePath,
-                                                    U8Data & outBinaryData) ;
+                                                   U8Data & outBinaryData) ;
+  public: static bool binaryDataWithContentOfFile (const String & inFilePath,
+                                                   std::vector <uint8_t> & outBinaryData) ;
 
 //--- Read text file at once
   public: static String stringWithContentOfFile (const String & inFilePath) ;
@@ -63,10 +69,16 @@ class FileManager final {
 
 //--- Write data to file
   public: static bool writeBinaryDataToFile (const U8Data & inBinaryData,
-                                              const String & inFilePath) ;
+                                             const String & inFilePath) ;
+
+  public: static bool writeBinaryDataToFile (const std::vector <uint8_t> & inBinaryData,
+                                             const String & inFilePath) ;
 
   public: static bool writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
-                                                        const String & inFilePath) ;
+                                                       const String & inFilePath) ;
+
+  public: static bool writeBinaryDataToExecutableFile (const std::vector <uint8_t> & inBinaryData,
+                                                       const String & inFilePath) ;
 
 //--- Delete file (returns an empty string on success, or a string describing the error)
   public: static String deleteFile (const String & inFilePath) ;

@@ -40,7 +40,7 @@ mData () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_data::GGS_data (const U8Data & inData) :
+GGS_data::GGS_data (const std::vector <uint8_t> & inData) :
 AC_GALGAS_root (),
 mIsValid (true),
 mData (inData) {
@@ -49,13 +49,13 @@ mData (inData) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_data GGS_data::class_func_emptyData (UNUSED_LOCATION_ARGS) {
-  return GGS_data (U8Data ()) ;
+  return GGS_data (std::vector <uint8_t> ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_data GGS_data::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_data (U8Data ()) ;
+  return GGS_data (std::vector <uint8_t> ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -65,10 +65,9 @@ GGS_data GGS_data::class_func_dataWithContentsOfFile (const GGS_string & inFileP
                                                       COMMA_LOCATION_ARGS) {
   GGS_data result ;
   if (inFilePath.isValid()){
-    U8Data binaryData ;
+    std::vector <uint8_t> binaryData ;
     const bool ok = FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
     if (ok) {
-
       result = GGS_data (binaryData) ;
     }else{
       String s = "cannot read binary file at path '" ;
@@ -85,13 +84,22 @@ GGS_data GGS_data::class_func_dataWithContentsOfFile (const GGS_string & inFileP
 ComparisonResult GGS_data::objectCompare (const GGS_data & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    const int32_t r = mData.compareWithData (inOperand.mData) ;
-    if (r < 0) {
+    if (mData.size () < inOperand.mData.size ()) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (r > 0) {
+    }else if (mData.size () > inOperand.mData.size ()) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       result = ComparisonResult::operandEqual ;
+      size_t idx = 0 ;
+      while ((idx < mData.size ()) && (result == ComparisonResult::operandEqual)) {
+        if (mData [idx] < inOperand.mData [idx]) {
+          result = ComparisonResult::firstOperandLowerThanSecond ;
+        }else if (mData [idx] > inOperand.mData [idx]) {
+          result = ComparisonResult::firstOperandGreaterThanSecond ;
+        }else{
+          idx += 1 ;
+        }
+      }
     }
   }
   return result ;
@@ -104,7 +112,7 @@ void GGS_data::description (String & ioString,
   ioString.appendCString ("<@data:") ;
   if (isValid ()) {
     ioString.appendCString ("length=") ;
-    ioString.appendSigned (mData.count ()) ;
+    ioString.appendUnsigned (mData.size ()) ;
   }else{
     ioString.appendCString ("not built") ;
   }
@@ -116,7 +124,7 @@ void GGS_data::description (String & ioString,
 GGS_uint GGS_data::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mData.count ())) ;
+    result = GGS_uint (uint32_t (mData.size ())) ;
   }
   return result ;
 }
@@ -127,10 +135,10 @@ GGS_string GGS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendUnsigned (mData (0 COMMA_HERE)) ;
-    for (int32_t i=1 ; i<mData.count () ; i++) {
+    s.appendUnsigned (mData [0 ]) ;
+    for (size_t i=1 ; i<mData.size () ; i++) {
       s.appendCString (", ") ;
-      s.appendUnsigned (mData (i COMMA_HERE)) ;
+      s.appendUnsigned (mData [i]) ;
       if ((i % 16) == 0) {
         s.appendCString ("\n") ;
       }
@@ -149,8 +157,8 @@ void GGS_data::setter_appendByte (GGS_uint inArgument0,
     if (inArgument0.uintValue () > 255) {
       inCompiler->onTheFlyRunTimeError ("'@data appendByte' modifier invoked with value greater than 255" COMMA_THERE) ;
     }else{
-      const uint8_t byte = (uint8_t) (inArgument0.uintValue () & UINT8_MAX) ;
-      mData.appendByte (byte) ;
+      const uint8_t byte = uint8_t (inArgument0.uintValue () & UINT8_MAX) ;
+      mData.push_back (byte) ;
     }
   }
 }
@@ -165,8 +173,8 @@ void GGS_data::setter_appendShortBE (GGS_uint inArgument0,
       inCompiler->onTheFlyRunTimeError ("'@data appendShortBE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
     }else{
       const uint32_t value = inArgument0.uintValue () & 0xFFFFU ;
-      mData.appendByte ((uint8_t) ((value >> 8) & UINT8_MAX)) ;
-      mData.appendByte ((uint8_t) (value & 255)) ;
+      mData.push_back (uint8_t ((value >> 8) & UINT8_MAX)) ;
+      mData.push_back (uint8_t (value & 255)) ;
     }
   }
 }
@@ -181,8 +189,8 @@ void GGS_data::setter_appendShortLE (GGS_uint inArgument0,
       inCompiler->onTheFlyRunTimeError ("'@data appendShortLE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
     }else{
       const uint32_t value = inArgument0.uintValue () & 0xFFFFU ;
-      mData.appendByte ((uint8_t) (value & 255)) ;
-      mData.appendByte ((uint8_t) ((value >> 8) & UINT8_MAX)) ;
+      mData.push_back (uint8_t (value & 255)) ;
+      mData.push_back (uint8_t ((value >> 8) & UINT8_MAX)) ;
     }
   }
 }
@@ -193,10 +201,10 @@ void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
-    mData.appendByte ((uint8_t) (value >> 24)) ;
-    mData.appendByte ((uint8_t) ((value >> 16) & 255)) ;
-    mData.appendByte ((uint8_t) ((value >> 8) & 255)) ;
-    mData.appendByte ((uint8_t) (value & 255)) ;
+    mData.push_back (uint8_t (value >> 24)) ;
+    mData.push_back (uint8_t ((value >> 16) & 255)) ;
+    mData.push_back (uint8_t ((value >> 8) & 255)) ;
+    mData.push_back (uint8_t (value & 255)) ;
   }
 }
 
@@ -206,10 +214,10 @@ void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
-    mData.appendByte ((uint8_t) (value & 255)) ;
-    mData.appendByte ((uint8_t) ((value >> 8) & 255)) ;
-    mData.appendByte ((uint8_t) ((value >> 16) & 255)) ;
-    mData.appendByte ((uint8_t) (value >> 24)) ;
+    mData.push_back (uint8_t (value & 255)) ;
+    mData.push_back (uint8_t ((value >> 8) & 255)) ;
+    mData.push_back (uint8_t ((value >> 16) & 255)) ;
+    mData.push_back (uint8_t (value >> 24)) ;
   }
 }
 
@@ -224,10 +232,10 @@ void GGS_data::setter_appendUTF_38_String (GGS_string inString
       char sequence [5] ;
       const int32_t n = UTF8StringFromUTF32Character (c, sequence) ;
       for (int32_t j=0 ; j<n ; j++) {
-        mData.appendByte ((uint8_t) sequence [j]) ;
+        mData.push_back (uint8_t (sequence [j])) ;
       }
     }
-    mData.appendByte (0) ;
+    mData.push_back (0) ;
   }
 }
 
@@ -235,8 +243,10 @@ void GGS_data::setter_appendUTF_38_String (GGS_string inString
 
 void GGS_data::setter_appendData (GGS_data inData
                                   COMMA_UNUSED_LOCATION_ARGS) {
-  if (inData.isValid ()) {
-    mData.appendData (inData.mData) ;
+  if (isValid () && inData.isValid ()) {
+    for (uint8_t byte : inData.mData) {
+      mData.push_back (byte) ;
+    }
   }
 }
 
@@ -252,7 +262,7 @@ void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
     const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.stringValue ()) ;
     if (fileAlreadyExists) {
       inCompiler->logFileRead (inFilePath.stringValue ()) ;
-      U8Data binaryData ;
+      std::vector <uint8_t> binaryData ;
       FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
       needToWrite = mData != binaryData ;
     }
@@ -451,63 +461,42 @@ void cCollectionElement_data::description (String & ioString, const int32_t inIn
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
-  const int32_t count = mData.count () ;
-  inEnumerationArray.setCapacity (uint32_t (count)) ;
-  for (int32_t i=0 ; i<count ; i++) {
-    cCollectionElement_data * p = nullptr ;
-    macroMyNew (p, cCollectionElement_data (GGS_uint (mData (i COMMA_HERE)) COMMA_HERE)) ;
-    capCollectionElement object ;
-    object.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    inEnumerationArray.appendObject (object) ;
-  }
+UpEnumerator_data::UpEnumerator_data (const GGS_data & inOperand) :
+mArray (inOperand.isValid () ? inOperand.mData : std::vector <uint8_t> ()),
+mIterator () {
+  mIterator = mArray.begin () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator_data::UpEnumerator_data (const GGS_data & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+GGS_uint UpEnumerator_data::current_data (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint UpEnumerator_data::current_data (LOCATION_ARGS) const {
-  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_data) ;
-  return p->attribute_data () ;
+GGS_uint UpEnumerator_data::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint UpEnumerator_data::current (LOCATION_ARGS) const {
-  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_data) ;
-  return p->attribute_data () ;
+DownEnumerator_data::DownEnumerator_data (const GGS_data & inOperand) :
+mArray (inOperand.isValid () ? inOperand.mData : std::vector <uint8_t> ()),
+mIterator () {
+  mIterator = mArray.rbegin () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_data::DownEnumerator_data (const GGS_data & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+GGS_uint DownEnumerator_data::current_data (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint DownEnumerator_data::current_data (LOCATION_ARGS) const {
-  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_data) ;
-  return p->attribute_data () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_data::current (LOCATION_ARGS) const {
-  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, cCollectionElement_data) ;
-  return p->attribute_data () ;
+GGS_uint DownEnumerator_data::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -109,7 +109,6 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
 
 //--- inEndOfStringPtr points just beyond the last available byte
 #ifdef __cplusplus
-  class U8Data ;
   utf32 utf32CharacterForPointer (const uint8_t * inDataString,
                                   int32_t & ioIndex,
                                   const int32_t inLength,

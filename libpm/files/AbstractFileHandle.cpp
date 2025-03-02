@@ -77,6 +77,14 @@ void AbstractFileHandle::appendBinaryData (const size_t inByteCount,
 }
 
 //--------------------------------------------------------------------------------------------------
+
+void AbstractFileHandle::appendBinaryData (const std::vector <uint8_t> inByteArray) {
+  if ((mFilePtr != nullptr) && (inByteArray.size () > 0)) {
+    ::fwrite (&inByteArray.at (0), sizeof (uint8_t), inByteArray.size (), mFilePtr) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //   appendUTF8String
 //--------------------------------------------------------------------------------------------------
 

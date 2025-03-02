@@ -29,6 +29,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <ctype.h>
+#include <fstream>
 
 //--------------------------------------------------------------------------------------------------
 
@@ -206,6 +207,31 @@ bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
     if (ok) {
       ok = result == 0 ;
     }
+  }
+  return ok ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool FileManager::binaryDataWithContentOfFile (const String & inFilePath,
+                                               std::vector <uint8_t> & outBinaryData) {
+  outBinaryData.clear () ;
+//--- Open file for binary reading
+  const String nativePath = nativePathWithUnixPath (inFilePath) ;
+  std::ifstream fileInputStream ;
+  fileInputStream.open (nativePath.cString(), std::ios::binary) ;
+  const bool ok = fileInputStream.is_open () ;
+  if (ok) {
+    fileInputStream.seekg (0, std::ios::end);
+    size_t filesize = size_t (fileInputStream.tellg()) ;
+    fileInputStream.seekg (0, std::ios::beg);
+    std::vector <uint8_t> rawfilebuffer ;
+    rawfilebuffer.reserve (filesize) ;
+    rawfilebuffer.assign(
+      std::istreambuf_iterator <char> (fileInputStream),
+      std::istreambuf_iterator <char> ()
+    );
+    outBinaryData = rawfilebuffer ;
   }
   return ok ;
 }
@@ -624,7 +650,7 @@ String FileManager::stringWithContentOfFile (const String & inFilePath) {
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::writeStringToFile (const String & inString,
-                                       const String & inFilePath) {
+                                     const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent ()) ;
   TextFileWrite file (inFilePath) ;
   bool success = file.isOpened () ;
@@ -638,7 +664,7 @@ bool FileManager::writeStringToFile (const String & inString,
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::writeStringToExecutableFile (const String & inString,
-                                                 const String & inFilePath) {
+                                               const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
   TextFileWrite file (inFilePath) ;
   file.appendString (inString) ;
@@ -657,7 +683,24 @@ bool FileManager::writeStringToExecutableFile (const String & inString,
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::writeBinaryDataToFile (const U8Data & inBinaryData,
-                                           const String & inFilePath) {
+                                         const String & inFilePath) {
+  makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
+//---
+  BinaryFileWrite binaryFile (inFilePath) ;
+  bool success = binaryFile.isOpened () ;
+  binaryFile.appendData (inBinaryData) ;
+//--- Close file
+  if (success) {
+    success = binaryFile.close () ;
+  }
+//---
+  return success ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool FileManager::writeBinaryDataToFile (const std::vector <uint8_t> & inBinaryData,
+                                         const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
   BinaryFileWrite binaryFile (inFilePath) ;
@@ -674,7 +717,7 @@ bool FileManager::writeBinaryDataToFile (const U8Data & inBinaryData,
 //--------------------------------------------------------------------------------------------------
 
 bool FileManager::writeBinaryDataToExecutableFile (const U8Data & inBinaryData,
-                                                     const String & inFilePath) {
+                                                   const String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
   BinaryFileWrite binaryFile (inFilePath) ;

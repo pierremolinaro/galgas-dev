@@ -35,3 +35,9 @@ void BinaryFileWrite::appendData (const U8Data & inData) {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+void BinaryFileWrite::appendData (const std::vector <uint8_t> & inData) {
+  appendBinaryData (inData) ;
+}
+
+//--------------------------------------------------------------------------------------------------
