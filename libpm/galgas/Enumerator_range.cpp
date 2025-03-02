@@ -41,12 +41,6 @@ bool DownEnumerator_range::hasCurrentObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool DownEnumerator_range::hasNextObject (void) const {
-  return mIsValid && (mCurrent > mStart) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void DownEnumerator_range::gotoNextObject (void) {
   mCurrent -= 1 ;
 }
@@ -72,12 +66,6 @@ mCurrent (inEnumeratedRange.mProperty_start.uintValue ()) {
 
 bool UpEnumerator_range::hasCurrentObject (void) const {
   return mIsValid && (mCurrent < (mStart + mLength)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool UpEnumerator_range::hasNextObject (void) const {
-  return mIsValid && ((mCurrent + 1) < (mStart + mLength)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

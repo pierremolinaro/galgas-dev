@@ -24,73 +24,6 @@
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
-//   cCollectionElement_stringset
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_stringset : public cCollectionElement {
-//--- Private member
-  protected: GGS_string mProperty_key ;
-  public: inline GGS_string attribute_key (void) const { return mProperty_key ; }
-
-//--- Default constructor
-  public: cCollectionElement_stringset (const GGS_string & inString
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- No copy
-  private: cCollectionElement_stringset (const cCollectionElement_stringset &) ;
-  private: cCollectionElement_stringset & operator = (const cCollectionElement_stringset &) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_stringset::cCollectionElement_stringset (const GGS_string & inKey
-                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mProperty_key (inKey) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_stringset::isValid (void) const {
-  return mProperty_key.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
-  const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_stringset) ;
-  return mProperty_key.objectCompare (operand->mProperty_key) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_stringset::copy (void) {
-  cCollectionElement_stringset * p = nullptr ;
-  macroMyNew (p, cCollectionElement_stringset (mProperty_key COMMA_HERE)) ;
-  return p ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_stringset::description (String & ioString, const int32_t inIndentation) const {
-  mProperty_key.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  GGS_stringset
 //--------------------------------------------------------------------------------------------------
 
@@ -306,103 +239,43 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
-  if (isValid ()) {
-    for (String s : mStringSet) {
-      GGS_string str (s) ;
-      cCollectionElement_stringset * p = nullptr ;
-      macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
-      capCollectionElement object ;
-      object.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      ioEnumerationArray.appendObject (object) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mSet (inEnumeratedObject.mStringSet),
+mIterator () {
+  mIterator = mSet.begin () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_stringset::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
+GGS_string UpEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_stringset::current (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
+GGS_string UpEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mSet (inEnumeratedObject.mStringSet),
+mIterator () {
+  mIterator = mSet.rbegin () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_stringset::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
+GGS_string DownEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (*mIterator) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_stringset::current (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
+GGS_string DownEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_string (*mIterator) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
-//mSet (inEnumeratedObject.mStringSet),
-//mIterator (inEnumeratedObject.mStringSet.begin()) {
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//GGS_string UpEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
-//  return GGS_string (*mIterator) ;
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//GGS_string UpEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
-//  return GGS_string (*mIterator) ;
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
-//mSet (inEnumeratedObject.mStringSet),
-//mIterator (inEnumeratedObject.mStringSet.rbegin()) {
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//GGS_string DownEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
-//  return GGS_string (*mIterator) ;
-//}
-//
-////--------------------------------------------------------------------------------------------------
-//
-//GGS_string DownEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
-//  return GGS_string (*mIterator) ;
-//}
 
 //--------------------------------------------------------------------------------------------------
 //    C O M P A R I S O N

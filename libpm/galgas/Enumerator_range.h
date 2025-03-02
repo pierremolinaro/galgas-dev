@@ -22,10 +22,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-#include "cGenericAbstractEnumerator.h"
-
-//--------------------------------------------------------------------------------------------------
-
 class GGS_range ;
 class GGS_uint ;
 
@@ -41,7 +37,6 @@ class UpEnumerator_range final {
 
 //--- 
   public: bool hasCurrentObject (void) const ;
-  public: bool hasNextObject (void) const ;
   public: void gotoNextObject (void) ;
 
 //--- Current element access
@@ -66,7 +61,6 @@ class DownEnumerator_range final {
 
 //--- 
   public: bool hasCurrentObject (void) const ;
-  public: bool hasNextObject (void) const ;
   public: void gotoNextObject (void) ;
 
 //--- Current element access

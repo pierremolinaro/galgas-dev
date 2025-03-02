@@ -939,30 +939,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ;
 // Phase 1: @stringset enumerator
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_stringset final : public cGenericAbstractEnumerator {
-  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
-
-//--- Current element access
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_string current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_stringset final : public cGenericAbstractEnumerator {
-  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
-
-//    public: bool hasCurrentObject (void) const ;
-//    public: void gotoNextObject (void) ;
-//    public: void rewind (void) ;
-//--- Current element access
-  public: class GGS_string current_key (LOCATION_ARGS) const ;
-  public: class GGS_string current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-/* class UpEnumerator_stringset final {
+class UpEnumerator_stringset final {
   public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
 
   public: bool hasCurrentObject (void) const { return mIterator != mSet.end () ; }
@@ -1003,7 +980,7 @@ class DownEnumerator_stringset final {
 //--- No copy
   private: DownEnumerator_stringset (const DownEnumerator_stringset &) = delete ;
   private: DownEnumerator_stringset & operator = (const DownEnumerator_stringset &) = delete ;
-} ; */
+} ;
 
 //--------------------------------------------------------------------------------------------------
 //   @stringset type
@@ -1020,9 +997,6 @@ class GGS_stringset : public AC_GALGAS_root {
 
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
-
-//--------------------------------- Enumeration helper methods
-  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
