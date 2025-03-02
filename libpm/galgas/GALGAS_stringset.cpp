@@ -301,7 +301,7 @@ GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark stringset cEnumerator
+  #pragma mark stringset Enumerator
 #endif
 
 //--------------------------------------------------------------------------------------------------
@@ -365,6 +365,44 @@ GGS_string DownEnumerator_stringset::current (LOCATION_ARGS) const {
   macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
 }
+
+//--------------------------------------------------------------------------------------------------
+
+//UpEnumerator_stringset::UpEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
+//mSet (inEnumeratedObject.mStringSet),
+//mIterator (inEnumeratedObject.mStringSet.begin()) {
+//}
+//
+////--------------------------------------------------------------------------------------------------
+//
+//GGS_string UpEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
+//  return GGS_string (*mIterator) ;
+//}
+//
+////--------------------------------------------------------------------------------------------------
+//
+//GGS_string UpEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
+//  return GGS_string (*mIterator) ;
+//}
+//
+////--------------------------------------------------------------------------------------------------
+//
+//DownEnumerator_stringset::DownEnumerator_stringset (const GGS_stringset & inEnumeratedObject) :
+//mSet (inEnumeratedObject.mStringSet),
+//mIterator (inEnumeratedObject.mStringSet.rbegin()) {
+//}
+//
+////--------------------------------------------------------------------------------------------------
+//
+//GGS_string DownEnumerator_stringset::current_key (UNUSED_LOCATION_ARGS) const {
+//  return GGS_string (*mIterator) ;
+//}
+//
+////--------------------------------------------------------------------------------------------------
+//
+//GGS_string DownEnumerator_stringset::current (UNUSED_LOCATION_ARGS) const {
+//  return GGS_string (*mIterator) ;
+//}
 
 //--------------------------------------------------------------------------------------------------
 //    C O M P A R I S O N

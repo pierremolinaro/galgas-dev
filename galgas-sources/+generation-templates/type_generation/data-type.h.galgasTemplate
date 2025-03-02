@@ -48,5 +48,8 @@ class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_data (const U8Data & inData) ;
 
+//--------------------------------- Enumeration helper methods
+  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
+
 %
 

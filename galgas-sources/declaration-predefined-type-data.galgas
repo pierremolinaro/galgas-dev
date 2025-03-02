@@ -56,7 +56,7 @@ class @dataPredefinedTypeAST : @predefinedTypeAST {
   //----------------------------------------------------------------------------------------------
 
   override getter getSupportedOperatorFlags -> @typeFeatures {
-    result = .generateDescriptionGetterUtilityMethod | .generateEnumerationHelperMethods | .equatable
+    result = .generateDescriptionGetterUtilityMethod | .equatable
   }
 
   //----------------------------------------------------------------------------------------------

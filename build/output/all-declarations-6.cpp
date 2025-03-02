@@ -5489,10 +5489,10 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
       break ;
     }
     result_result.plusAssign_operation(enumerator_4887.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 132)) ;
-    if (enumerator_4887.hasNextObject ()) {
+    enumerator_4887.gotoNextObject () ;
+    if (enumerator_4887.hasCurrentObject ()) {
       result_result.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 134)) ;
     }
-    enumerator_4887.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas", 136)) ;
 //---

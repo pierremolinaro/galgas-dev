@@ -1047,12 +1047,16 @@ override method @forInstructionForGeneration generateInstruction
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
+  //--- Advance
+    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
+      ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
+    end
   //--- Generate 'between' instruction
     if [self.mBetweenInstructionList count] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
       for (* * mEnumeratorCppName) in self.mEnumeratedObjectList
-        do ioGeneratedCode += mEnumeratorCppName + ".hasNextObject ()"
+        do ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
         between ioGeneratedCode += " && "
       end
       ioGeneratedCode += ") {\n"
@@ -1067,10 +1071,7 @@ override method @forInstructionForGeneration generateInstruction
       ioGeneratedCode += "}\n"
       [!?ioGeneratedCode decIndentation !2]
     end
-  //--- End of foreach instruction
-    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
-      ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
-    end
+  //--- Advance index ?
     if self.mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment_operation (" + compilerCppName ()

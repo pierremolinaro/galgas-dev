@@ -391,9 +391,11 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
   )
+//--- Advance
+  ioGeneratedCode += self.mEnumeratorCppName + ".gotoNextObject () ;\n"
 //--- Between
   if [self.mBetweenInstructionList count] > 0 then
-    ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasNextObject ()) {\n"
+    ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
       !self.mBetweenInstructionList
@@ -410,8 +412,6 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   if [self.mIndexCppName count] > 0 then
     ioGeneratedCode += self.mIndexCppName + ".increment () ;\n"
   end
-//---
-  ioGeneratedCode += self.mEnumeratorCppName + ".gotoNextObject () ;\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 //--- After

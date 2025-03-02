@@ -135,7 +135,6 @@ boolset @typeFeatures {
 
   case supportWithAccessor
   case plusEqualOperatorWithFieldListNeedsCompilerArg
-  case generateEnumerationHelperMethods
   case doNotGenererateObjectCompare
   case generateDescriptionGetterUtilityMethod
   case generateCopyConstructorAndAssignmentOperator

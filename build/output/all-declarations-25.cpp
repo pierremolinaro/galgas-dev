@@ -85,10 +85,10 @@ GGS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateObjcCocoaRoutine
   UpEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_9288 (temp_1.readProperty_mFunctionActualArgumentList ()) ;
   while (enumerator_9288.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateObjcCocoaRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_9288.current_mLexicalActualInputArgument (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 202)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 202)) ;
-    if (enumerator_9288.hasNextObject ()) {
+    enumerator_9288.gotoNextObject () ;
+    if (enumerator_9288.hasCurrentObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 203)) ;
     }
-    enumerator_9288.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 205)) ;
 //---
@@ -174,10 +174,10 @@ GGS_string cPtr_lexicalFunctionInputArgumentAST::getter_generateSwiftCocoaRoutin
   UpEnumerator_lexicalFunctionCallActualArgumentListAST enumerator_11185 (temp_1.readProperty_mFunctionActualArgumentList ()) ;
   while (enumerator_11185.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssign_operation(callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) enumerator_11185.current_mLexicalActualInputArgument (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 246)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 246)) ;
-    if (enumerator_11185.hasNextObject ()) {
+    enumerator_11185.gotoNextObject () ;
+    if (enumerator_11185.hasCurrentObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 247)) ;
     }
-    enumerator_11185.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas", 249)) ;
 //---
@@ -1238,10 +1238,10 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateObjcCocoaInstruction
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 139)) ;
     }
-    if (enumerator_5401.hasNextObject ()) {
+    enumerator_5401.gotoNextObject () ;
+    if (enumerator_5401.hasCurrentObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 141)) ;
     }
-    enumerator_5401.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string ("}else{\n  ").add_operation (var_loopVarName_4976, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 144)).add_operation (GGS_string (" = NO ;\n}\n"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 144)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 143)) ;
   {
@@ -1291,10 +1291,10 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateSwiftCocoaInstructio
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 173)) ;
     }
-    if (enumerator_6861.hasNextObject ()) {
+    enumerator_6861.gotoNextObject () ;
+    if (enumerator_6861.hasCurrentObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 175)) ;
     }
-    enumerator_6861.gotoNextObject () ;
   }
   result_outGeneratedCode.plusAssign_operation(GGS_string ("}else{\n  loop = false\n}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 177)) ;
   {
@@ -1359,10 +1359,10 @@ GGS_string cPtr_lexicalRepeatInstructionAST::getter_generateLexicalInstructionCo
     {
     result_result.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 215)) ;
     }
-    if (enumerator_8523.hasNextObject ()) {
+    enumerator_8523.gotoNextObject () ;
+    if (enumerator_8523.hasCurrentObject ()) {
       result_result.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 217)) ;
     }
-    enumerator_8523.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GGS_string ("}else{\n  loop = false ;\n}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-repeat.galgas", 219)) ;
   {
@@ -1848,10 +1848,10 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateObjcCocoaInstruction
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 145)) ;
     }
-    if (enumerator_5349.hasNextObject ()) {
+    enumerator_5349.gotoNextObject () ;
+    if (enumerator_5349.hasCurrentObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 147)) ;
     }
-    enumerator_5349.gotoNextObject () ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
@@ -1908,10 +1908,10 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateSwiftCocoaInstructio
     {
     result_outGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 178)) ;
     }
-    if (enumerator_6678.hasNextObject ()) {
+    enumerator_6678.gotoNextObject () ;
+    if (enumerator_6678.hasCurrentObject ()) {
       result_outGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 180)) ;
     }
-    enumerator_6678.gotoNextObject () ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
@@ -2017,10 +2017,10 @@ GGS_string cPtr_lexicalSelectInstructionAST::getter_generateLexicalInstructionCo
     {
     result_result.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 227)) ;
     }
-    if (enumerator_8698.hasNextObject ()) {
+    enumerator_8698.gotoNextObject () ;
+    if (enumerator_8698.hasCurrentObject ()) {
       result_result.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-select.galgas", 229)) ;
     }
-    enumerator_8698.gotoNextObject () ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
@@ -2712,8 +2712,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (C
       result.appendString ("_") ;
       result.appendString (enumerator_409.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 9)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_409_.increment () ;
       enumerator_409.gotoNextObject () ;
+      index_409_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               UInt options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2726,8 +2726,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (C
       result.appendString ("_") ;
       result.appendString (enumerator_972.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 18)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_972_.increment () ;
       enumerator_972.gotoNextObject () ;
+      index_972_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String options                                                   \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2740,8 +2740,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (C
       result.appendString ("_") ;
       result.appendString (enumerator_1537.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 27)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_1537_.increment () ;
       enumerator_1537.gotoNextObject () ;
+      index_1537_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String List options                                              \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2754,8 +2754,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (C
       result.appendString ("_") ;
       result.appendString (enumerator_2109.current_mOptionIdentifier (HERE).getter_identifierRepresentation (SOURCE_FILE ("option-header-zone3.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (" ;\n\n") ;
-      index_2109_.increment () ;
       enumerator_2109.gotoNextObject () ;
+      index_2109_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2796,8 +2796,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
       result.appendString (",\n                                         ") ;
       result.appendString (enumerator_408.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 12)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_408_.increment () ;
       enumerator_408.gotoNextObject () ;
+      index_408_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                               UInt options                                                    \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2822,8 +2822,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
       result.appendString (",\n                                         ") ;
       result.appendString (enumerator_1389.current_mDefaultValue (HERE).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_1389_.increment () ;
       enumerator_1389.gotoNextObject () ;
+      index_1389_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String options                                                   \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2848,8 +2848,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
       result.appendString (",\n                                         ") ;
       result.appendString (enumerator_2437.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 40)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_2437_.increment () ;
       enumerator_2437.gotoNextObject () ;
+      index_2437_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//                              String List options                                              \n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -2872,8 +2872,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
       result.appendString (",\n                                         ") ;
       result.appendString (enumerator_3533.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-galgas3.cpp.galgasTemplate", 53)).stringValue ()) ;
       result.appendString (") ;\n\n") ;
-      index_3533_.increment () ;
       enumerator_3533.gotoNextObject () ;
+      index_3533_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n\n") ;
@@ -2977,8 +2977,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCoc
       result.appendString ("\n    comment:@") ;
       result.appendString (enumerator_864.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 21)).stringValue ()) ;
       result.appendString ("\n    defaultValue:@\"\"\n  ] ;\n  [ioBoolOptionArray addObject:option] ;\n") ;
-      index_864_.increment () ;
       enumerator_864.gotoNextObject () ;
+      index_864_.increment () ;
     }
   }
   GGS_uint index_1496_ (0) ;
@@ -2998,8 +2998,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCoc
       result.appendString ("\n    defaultValue:@") ;
       result.appendString (enumerator_1496.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 33)).stringValue ()) ;
       result.appendString ("\n  ] ;\n  [ioUIntOptionArray addObject:option] ;\n") ;
-      index_1496_.increment () ;
       enumerator_1496.gotoNextObject () ;
+      index_1496_.increment () ;
     }
   }
   GGS_uint index_2185_ (0) ;
@@ -3019,8 +3019,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCoc
       result.appendString ("\n    defaultValue:@") ;
       result.appendString (enumerator_2185.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 44)).stringValue ()) ;
       result.appendString ("\n  ] ;\n  [ioStringOptionArray addObject:option] ;\n") ;
-      index_2185_.increment () ;
       enumerator_2185.gotoNextObject () ;
+      index_2185_.increment () ;
     }
   }
   GGS_uint index_2881_ (0) ;
@@ -3040,8 +3040,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCoc
       result.appendString ("\n    defaultValue:@") ;
       result.appendString (enumerator_2881.current_mDefaultValue (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-cocoa.galgasTemplate", 55)).stringValue ()) ;
       result.appendString ("\n  ] ;\n  [ioStringListOptionArray addObject:option] ;\n") ;
-      index_2881_.increment () ;
       enumerator_2881.gotoNextObject () ;
+      index_2881_.increment () ;
     }
   }
   result.appendString ("}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -3091,8 +3091,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwi
       result.appendString (",\n    comment: ") ;
       result.appendString (enumerator_354.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 13)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_354_.increment () ;
       enumerator_354.gotoNextObject () ;
+      index_354_.increment () ;
     }
   }
   GGS_uint index_980_ (0) ;
@@ -3120,8 +3120,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwi
       result.appendString (",\n    comment: ") ;
       result.appendString (enumerator_980.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 23)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_980_.increment () ;
       enumerator_980.gotoNextObject () ;
+      index_980_.increment () ;
     }
   }
   GGS_uint index_1608_ (0) ;
@@ -3149,8 +3149,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwi
       result.appendString (",\n    comment: ") ;
       result.appendString (enumerator_1608.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 33)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_1608_.increment () ;
       enumerator_1608.gotoNextObject () ;
+      index_1608_.increment () ;
     }
   }
   GGS_uint index_2243_ (0) ;
@@ -3178,8 +3178,8 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwi
       result.appendString (",\n    comment: ") ;
       result.appendString (enumerator_2243.current_mComment (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("option-implementation-swift-cocoa.galgasTemplate", 43)).stringValue ()) ;
       result.appendString ("\n  ))\n") ;
-      index_2243_.increment () ;
       enumerator_2243.gotoNextObject () ;
+      index_2243_.increment () ;
     }
   }
   result.appendString ("  array.append (SWIFT_CommandLineOption (\n    domainName: \"galgas_cli_options\",\n    type: .bool,\n    identifier: \"quiet_output\",\n    commandChar: \"q\",\n    commandString: \"quiet\",\n    comment: \"Quiet output\"\n  ))\n  return array\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -3500,8 +3500,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
       result.appendString ("#import \"lexique-") ;
       result.appendString (enumerator_220.current_mLexiqueClassName (HERE).getter_fileNameRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 6)).stringValue ()) ;
       result.appendString ("-cocoa.h\"\n") ;
-      index_220_.increment () ;
       enumerator_220.gotoNextObject () ;
+      index_220_.increment () ;
     }
   }
   GGS_uint index_350_ (0) ;
@@ -3511,8 +3511,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
       result.appendString ("#import \"") ;
       result.appendString (enumerator_350.current_mValue (HERE).stringValue ()) ;
       result.appendString (".h\"\n") ;
-      index_350_.increment () ;
       enumerator_350.gotoNextObject () ;
+      index_350_.increment () ;
     }
   }
   result.appendString ("\n#ifdef USER_DEFAULT_COLORS_DEFINED\n  #import \"user_default_colors.h\"\n#endif\n\n//--------------------------------------------------------------------------------------------------\n\n#pragma mark Nibs\n\n//--------------------------------------------------------------------------------------------------\n//          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                \n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -3532,8 +3532,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
         result.appendString ("\", [") ;
         result.appendString (enumerator_1125.current_mValue (HERE).stringValue ()) ;
         result.appendString (" class], nil],\n") ;
-        index_1125_.increment () ;
         enumerator_1125.gotoNextObject () ;
+        index_1125_.increment () ;
       }
     }
     result.appendString ("    nil\n  ] ;\n}\n") ;
@@ -3558,8 +3558,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
         result.appendString ("\", @\"") ;
         result.appendString (enumerator_1774.current_mProjectFileExtension (HERE).readProperty_string ().stringValue ()) ;
         result.appendString ("\", ") ;
-        index_1774_.increment () ;
         enumerator_1774.gotoNextObject () ;
+        index_1774_.increment () ;
       }
     }
     result.appendString ("nil] ;\n") ;
@@ -3575,8 +3575,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
       result.appendString ("#import \"option-") ;
       result.appendString (enumerator_2371.current_mValue (HERE).getter_fileNameRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 68)).stringValue ()) ;
       result.appendString ("-cocoa.h\"\n") ;
-      index_2371_.increment () ;
       enumerator_2371.gotoNextObject () ;
+      index_2371_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nvoid enterOptions (NSMutableArray * ioBoolOptionArray,\n                   NSMutableArray * ioUIntOptionArray,\n                   NSMutableArray * ioStringOptionArray,\n                   NSMutableArray * ioStringListOptionArray) {\n") ;
@@ -3587,8 +3587,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
       result.appendString ("  enterOptionsFor_") ;
       result.appendString (enumerator_2837.current_mValue (HERE).getter_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 79)).stringValue ()) ;
       result.appendString (" (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;\n") ;
-      index_2837_.increment () ;
       enumerator_2837.gotoNextObject () ;
+      index_2837_.increment () ;
     }
   }
   const GalgasBool test_2 = in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT.boolEnum () ;
@@ -3636,13 +3636,13 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
               result.appendString (", ") ;
               result.appendString (enumerator_4619.current_mDisplayFlags (HERE).getter_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 114)).stringValue ()) ;
               result.appendString (",\n") ;
-              index_4619_.increment () ;
               enumerator_4619.gotoNextObject () ;
+              index_4619_.increment () ;
             }
           }
           result.appendString ("  0\n} ;\n\n") ;
-          index_4275_.increment () ;
           enumerator_4275.gotoNextObject () ;
+          index_4275_.increment () ;
         }
       }
       result.appendString ("static const UInt16 * gPopUpData_") ;
@@ -3663,8 +3663,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
           result.appendString ("_") ;
           result.appendString (enumerator_4991.current_mLocation (HERE).getter_startLocationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.galgasTemplate", 121)).getter_string (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 121)).stringValue ()) ;
           result.appendString (",\n") ;
-          index_4991_.increment () ;
           enumerator_4991.gotoNextObject () ;
+          index_4991_.increment () ;
         }
       }
       result.appendString ("  NULL\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//                            Lexique interface\n//--------------------------------------------------------------------------------------------------\n\n@interface OC_Tokenizer_") ;
@@ -3697,8 +3697,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
           result.appendString ("    @") ;
           result.appendString (enumerator_7280.current_mKey (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 159)).stringValue ()) ;
           result.appendString (",\n") ;
-          index_7280_.increment () ;
           enumerator_7280.gotoNextObject () ;
+          index_7280_.increment () ;
         }
       }
       result.appendString ("    NULL\n  } ;\n  return kTextMacroTitle [inIndex] ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n  static NSString * kTextMacroContent [") ;
@@ -3711,13 +3711,13 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
           result.appendString ("    @") ;
           result.appendString (enumerator_7742.current_mContents (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.m.galgasTemplate", 169)).stringValue ()) ;
           result.appendString (",\n") ;
-          index_7742_.increment () ;
           enumerator_7742.gotoNextObject () ;
+          index_7742_.increment () ;
         }
       }
       result.appendString ("    NULL\n  } ;\n  return kTextMacroContent [inIndex] ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n@end\n\n") ;
-      index_3759_.increment () ;
       enumerator_3759.gotoNextObject () ;
+      index_3759_.increment () ;
     }
   }
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\nOC_Lexique * tokenizerForExtension (const NSString * inExtension) {\n  OC_Lexique * result = nil ;\n  NSString * uppercasedExtension = [inExtension uppercaseString] ;\n") ;
@@ -3736,11 +3736,11 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
       result.appendString ("_") ;
       result.appendString (enumerator_8378.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" new] ;\n") ;
-      if (enumerator_8378.hasNextObject ()) {
+      enumerator_8378.gotoNextObject () ;
+      if (enumerator_8378.hasCurrentObject ()) {
         result.appendString ("  }else if") ;
       }
       index_8378_.increment () ;
-      enumerator_8378.gotoNextObject () ;
     }
     if (nonEmpty_enumerator_8378) {
       result.appendString ("  }\n") ;
@@ -3763,8 +3763,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementat
         result.appendString ("_") ;
         result.appendString (enumerator_8960.current_mLexiqueClassName (HERE).stringValue ()) ;
         result.appendString (" new],\n") ;
-        index_8960_.increment () ;
         enumerator_8960.gotoNextObject () ;
+        index_8960_.increment () ;
       }
     }
     result.appendString ("    nil\n  ] ;\n") ;
@@ -3806,8 +3806,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
         result.appendString ("\", [") ;
         result.appendString (enumerator_560.current_mValue (HERE).stringValue ()) ;
         result.appendString (" class], nil],\n") ;
-        index_560_.increment () ;
         enumerator_560.gotoNextObject () ;
+        index_560_.increment () ;
       }
     }
     result.appendString ("    nil\n  ] ;\n}\n") ;
@@ -3832,8 +3832,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
         result.appendString ("\" : \"") ;
         result.appendString (enumerator_1153.current_indexingPathSuffix (HERE).readProperty_string ().stringValue ()) ;
         result.appendString ("\",") ;
-        index_1153_.increment () ;
         enumerator_1153.gotoNextObject () ;
+        index_1153_.increment () ;
       }
     }
     result.appendString ("]\n") ;
@@ -3849,8 +3849,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
       result.appendString ("  array += enterOptionsFor_") ;
       result.appendString (enumerator_1710.current_mValue (HERE).getter_identifierRepresentation (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 55)).stringValue ()) ;
       result.appendString (" ()\n") ;
-      index_1710_.increment () ;
       enumerator_1710.gotoNextObject () ;
+      index_1710_.increment () ;
     }
   }
   const GalgasBool test_2 = in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT.boolEnum () ;
@@ -3891,19 +3891,19 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
               result.appendString (enumerator_3657.current_mTerminal (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 107)).stringValue ()) ;
               result.appendString (", ") ;
               result.appendString (enumerator_3657.current_mDisplayFlags (HERE).getter_string (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 107)).stringValue ()) ;
-              if (enumerator_3657.hasNextObject ()) {
+              enumerator_3657.gotoNextObject () ;
+              if (enumerator_3657.hasCurrentObject ()) {
                 result.appendString (",\n") ;
               }
               index_3657_.increment () ;
-              enumerator_3657.gotoNextObject () ;
             }
           }
           result.appendString ("\n  ]") ;
-          if (enumerator_3508.hasNextObject ()) {
+          enumerator_3508.gotoNextObject () ;
+          if (enumerator_3508.hasCurrentObject ()) {
             result.appendString (",\n") ;
           }
           index_3508_.increment () ;
-          enumerator_3508.gotoNextObject () ;
         }
       }
       result.appendString ("\n]\n\n//--------------------------------------------------------------------------------------------------\n//                            Lexique interface\n//--------------------------------------------------------------------------------------------------\n  \nclass SWIFT_Tokenizer_") ;
@@ -3936,8 +3936,8 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
           result.appendString ("    @") ;
           result.appendString (enumerator_6772.current_mKey (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 180)).stringValue ()) ;
           result.appendString (",\n") ;
-          index_6772_.increment () ;
           enumerator_6772.gotoNextObject () ;
+          index_6772_.increment () ;
         }
       }
       result.appendString ("    nullptr\n  } ;\n  return kTextMacroTitle [inIndex] ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n  static NSString * kTextMacroContent [") ;
@@ -3950,13 +3950,13 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
           result.appendString ("    @") ;
           result.appendString (enumerator_7235.current_mContents (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("gui-implementation.swift.galgasTemplate", 190)).stringValue ()) ;
           result.appendString (",\n") ;
-          index_7235_.increment () ;
           enumerator_7235.gotoNextObject () ;
+          index_7235_.increment () ;
         }
       }
       result.appendString ("    nullptr\n  } ;\n  return kTextMacroContent [inIndex] ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n@end */\n\n") ;
-      index_3053_.increment () ;
       enumerator_3053.gotoNextObject () ;
+      index_3053_.increment () ;
     }
   }
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//   Global functions\n//--------------------------------------------------------------------------------------------------\n\n@MainActor func tokenizerFor (extension inExtension : String) -> (any SWIFT_Tokenizer_Protocol)\? {\n  var result : (any SWIFT_Tokenizer_Protocol)\? = nil\n") ;
@@ -3975,11 +3975,11 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
       result.appendString ("_") ;
       result.appendString (enumerator_7987.current_mLexiqueName (HERE).stringValue ()) ;
       result.appendString (" ()\n") ;
-      if (enumerator_7987.hasNextObject ()) {
+      enumerator_7987.gotoNextObject () ;
+      if (enumerator_7987.hasCurrentObject ()) {
         result.appendString ("  }else if") ;
       }
       index_7987_.increment () ;
-      enumerator_7987.gotoNextObject () ;
     }
     if (nonEmpty_enumerator_7987) {
       result.appendString ("  }\n") ;
@@ -4002,11 +4002,11 @@ GGS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementa
         result.appendString ("_") ;
         result.appendString (enumerator_8519.current_mLexiqueClassName (HERE).stringValue ()) ;
         result.appendString (" ()") ;
-        if (enumerator_8519.hasNextObject ()) {
+        enumerator_8519.gotoNextObject () ;
+        if (enumerator_8519.hasCurrentObject ()) {
           result.appendString (",\n") ;
         }
         index_8519_.increment () ;
-        enumerator_8519.gotoNextObject () ;
       }
     }
     result.appendString ("\n  ]\n") ;
@@ -4623,7 +4623,7 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_location_5F_type
 GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_data_5F_type (Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   Phase 1: @data enumerator\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_data final : public cGenericAbstractEnumerator {\n  public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;\n\n//    public: bool hasCurrentObject (void) const ;\n//    public: void gotoNextObject (void) ;\n//    public: void rewind (void) ;\n\n  public: class GGS_uint current_data (LOCATION_ARGS) const ;\n//--- Current element access\n  public: class GGS_uint current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass UpEnumerator_data final : public cGenericAbstractEnumerator {\n  public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;\n\n//    public: bool hasCurrentObject (void) const ;\n//    public: void gotoNextObject (void) ;\n//    public: void rewind (void) ;\n\n  public: class GGS_uint current_data (LOCATION_ARGS) const ;\n//--- Current element access\n  public: class GGS_uint current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//   @data type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_data : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: U8Data mData ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline U8Data dataValue (void) const { return mData ; }\n\n//--------------------------------- Default constructor\n  public: GGS_data (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_data (const U8Data & inData) ;\n\n") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   Phase 1: @data enumerator\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_data final : public cGenericAbstractEnumerator {\n  public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;\n\n//    public: bool hasCurrentObject (void) const ;\n//    public: void gotoNextObject (void) ;\n//    public: void rewind (void) ;\n\n  public: class GGS_uint current_data (LOCATION_ARGS) const ;\n//--- Current element access\n  public: class GGS_uint current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass UpEnumerator_data final : public cGenericAbstractEnumerator {\n  public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;\n\n//    public: bool hasCurrentObject (void) const ;\n//    public: void gotoNextObject (void) ;\n//    public: void rewind (void) ;\n\n  public: class GGS_uint current_data (LOCATION_ARGS) const ;\n//--- Current element access\n  public: class GGS_uint current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//   @data type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_data : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: U8Data mData ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline U8Data dataValue (void) const { return mData ; }\n\n//--------------------------------- Default constructor\n  public: GGS_data (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_data (const U8Data & inData) ;\n\n//--------------------------------- Enumeration helper methods\n  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;\n\n") ;
   return GGS_string (result) ;
 }
 
@@ -4675,7 +4675,7 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_string_5F_type (
 GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_stringset_5F_type (Compiler * /* inCompiler */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n// Phase 1: @stringset enumerator\n//--------------------------------------------------------------------------------------------------\n\nclass UpEnumerator_stringset final : public cGenericAbstractEnumerator {\n  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_stringset final : public cGenericAbstractEnumerator {\n  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n//    public: bool hasCurrentObject (void) const ;\n//    public: void gotoNextObject (void) ;\n//    public: void rewind (void) ;\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//   @stringset type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_stringset : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: std::set <String> mStringSet ;\n  private: bool mIsValid ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override ;\n\n//--------------------------------- Default constructor\n  public: GGS_stringset (void) ;\n\n") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n// Phase 1: @stringset enumerator\n//--------------------------------------------------------------------------------------------------\n\nclass UpEnumerator_stringset final : public cGenericAbstractEnumerator {\n  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_stringset final : public cGenericAbstractEnumerator {\n  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n//    public: bool hasCurrentObject (void) const ;\n//    public: void gotoNextObject (void) ;\n//    public: void rewind (void) ;\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\n/* class UpEnumerator_stringset final {\n  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n  public: bool hasCurrentObject (void) const { return mIterator != mSet.end () ; }\n\n  public: void gotoNextObject (void) { mIterator++ ; }\n\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n\n//--- Private properties\n  private: const std::set <String> mSet ;\n  private: std::set <String>::iterator mIterator ;\n\n//--- No copy\n  private: UpEnumerator_stringset (const UpEnumerator_stringset &) = delete ;\n  private: UpEnumerator_stringset & operator = (const UpEnumerator_stringset &) = delete ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_stringset final {\n\n  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n  public: bool hasCurrentObject (void) const { return mIterator != mSet.rend () ; }\n\n  public: void gotoNextObject (void) { mIterator++ ; }\n\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n\n//--- Private properties\n  private: const std::set <String> mSet ;\n  private: std::set <String>::reverse_iterator mIterator ;\n\n//--- No copy\n  private: DownEnumerator_stringset (const DownEnumerator_stringset &) = delete ;\n  private: DownEnumerator_stringset & operator = (const DownEnumerator_stringset &) = delete ;\n} ; */\n\n//--------------------------------------------------------------------------------------------------\n//   @stringset type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_stringset : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: std::set <String> mStringSet ;\n  private: bool mIsValid ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override ;\n\n//--------------------------------- Default constructor\n  public: GGS_stringset (void) ;\n\n//--------------------------------- Enumeration helper methods\n  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;\n") ;
   return GGS_string (result) ;
 }
 
@@ -5566,7 +5566,7 @@ void cPtr_dataPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTypeMap 
 GGS_typeFeatures cPtr_dataPredefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_typeFeatures result_result ; // Returned variable
-  result_result = GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)).operator_or (GGS_typeFeatures::class_func_generateEnumerationHelperMethods (SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)) COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)).operator_or (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)) COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)) ;
+  result_result = GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)).operator_or (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)) COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 59)) ;
 //---
   return result_result ;
 }
@@ -5583,12 +5583,12 @@ void cPtr_dataPredefinedTypeAST::method_getEnumerationList (GGS_unifiedTypeMap &
                                                             GGS_string & outArgument_outEnumeratedType,
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_uintTypeIndex_2951 ;
+  GGS_unifiedTypeMapEntry var_uintTypeIndex_2915 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("uint"), var_uintTypeIndex_2951, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 67)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("uint"), var_uintTypeIndex_2915, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 67)) ;
   }
   outArgument_outEnumerationList = GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE) ;
-  outArgument_outEnumerationList.addAssign_operation (var_uintTypeIndex_2951, GGS_string ("data")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 69)) ;
+  outArgument_outEnumerationList.addAssign_operation (var_uintTypeIndex_2915, GGS_string ("data")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 69)) ;
   outArgument_outEnumeratedType = GGS_string ("uint") ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -5608,18 +5608,18 @@ void cPtr_dataPredefinedTypeAST::method_getInstanceMethodMap (GGS_unifiedTypeMap
   {
   routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F_inputArgName_3F_methodName_3F_ (outArgument_outInstanceMethodMap, ioArgument_ioUnifiedTypeMap, GGS_string ("string"), GGS_string ("inFilePath"), GGS_string ("writeToExecutableFile"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 86)) ;
   }
-  GGS_formalParameterSignature var_argList_3843 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  GGS_unifiedTypeMapEntry var_t_3933 ;
+  GGS_formalParameterSignature var_argList_3807 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeMapEntry var_t_3897 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_t_3933, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 95)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_t_3897, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 95)) ;
   }
-  var_argList_3843.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-data.galgas", 96)), var_t_3933, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-data.galgas", 96)), GGS_string ("inFilePath")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 96)) ;
+  var_argList_3807.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-data.galgas", 96)), var_t_3897, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("declaration-predefined-type-data.galgas", 96)), GGS_string ("inFilePath")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 96)) ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bool"), var_t_3933, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 97)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("bool"), var_t_3897, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 97)) ;
   }
-  var_argList_3843.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-data.galgas", 98)), var_t_3933, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-data.galgas", 98)), GGS_string ("outFileModified")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 98)) ;
+  var_argList_3807.addAssign_operation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-data.galgas", 98)), var_t_3897, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("declaration-predefined-type-data.galgas", 98)), GGS_string ("outFileModified")  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 98)) ;
   {
-  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 100)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-data.galgas", 101)), var_argList_3843, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 103)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-data.galgas", 105)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 99)) ;
+  outArgument_outInstanceMethodMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("writeToFileWhenDifferentContents"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 100)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-data.galgas", 101)), var_argList_3807, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 103)), GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-data.galgas", 105)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-data.galgas", 99)) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6188,7 +6188,7 @@ GGS_string cPtr_stringsetPredefinedTypeAST::getter_cppDeclarationString (Compile
 GGS_typeFeatures cPtr_stringsetPredefinedTypeAST::getter_getSupportedOperatorFlags (Compiler */* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_typeFeatures result_result ; // Returned variable
-  result_result = GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 48)).operator_or (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 48)).operator_or (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)).operator_or (GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)).operator_or (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)).operator_or (GGS_typeFeatures::class_func_generateEnumerationHelperMethods (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)).operator_or (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)).operator_or (GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 52)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) ;
+  result_result = GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 48)).operator_or (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 48)).operator_or (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)).operator_or (GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 49)).operator_or (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)).operator_or (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 50)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)).operator_or (GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 52)) COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 51)) ;
 //---
   return result_result ;
 }
@@ -6228,13 +6228,13 @@ void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & 
                                                            GGS_setterMap & outArgument_outSetterMap,
                                                            Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringType_3953 ;
+  GGS_unifiedTypeMapEntry var_stringType_3917 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringType_3953, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 100)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringType_3917, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 100)) ;
   }
   outArgument_outSetterMap = GGS_setterMap::init (inCompiler COMMA_HERE) ;
   {
-  outArgument_outSetterMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("removeKey"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 103)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 104)), GGS_formalParameterSignature::class_func_listWithValue (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 105)), var_stringType_3953, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 105)), GGS_string ("inKey")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 105)), GGS_bool (false), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 107)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 102)) ;
+  outArgument_outSetterMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("removeKey"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 103)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 104)), GGS_formalParameterSignature::class_func_listWithValue (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 105)), var_stringType_3917, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 105)), GGS_string ("inKey")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 105)), GGS_bool (false), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 107)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 102)) ;
   }
   {
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("string"), GGS_string ("inValue"), GGS_string ("insert"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 110)) ;
@@ -6251,12 +6251,12 @@ void cPtr_stringsetPredefinedTypeAST::method_getEnumerationList (GGS_unifiedType
                                                                  GGS_string & outArgument_outEnumeratedType,
                                                                  Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringTypeIndex_4870 ;
+  GGS_unifiedTypeMapEntry var_stringTypeIndex_4834 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringTypeIndex_4870, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 125)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringTypeIndex_4834, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 125)) ;
   }
   outArgument_outEnumerationList = GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE) ;
-  outArgument_outEnumerationList.addAssign_operation (var_stringTypeIndex_4870, GGS_string ("key")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 127)) ;
+  outArgument_outEnumerationList.addAssign_operation (var_stringTypeIndex_4834, GGS_string ("key")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 127)) ;
   outArgument_outEnumeratedType = GGS_string ("string") ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -6269,12 +6269,12 @@ void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GGS_unifi
                                                                        GGS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringTypeIndex_5352 ;
+  GGS_unifiedTypeMapEntry var_stringTypeIndex_5316 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringTypeIndex_5352, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 135)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringTypeIndex_5316, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 135)) ;
   }
   GGS_functionSignature temp_0 = GGS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
-  temp_0.enterElement (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)), var_stringTypeIndex_5352, GGS_string ("inString"), GGS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
+  temp_0.enterElement (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)), var_stringTypeIndex_5316, GGS_string ("inString"), GGS_bool (true), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas", 136)) ;
   outArgument_outAddAssignArgumentList = temp_0 ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -8232,7 +8232,7 @@ GGS_string filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeHeader_31_ (
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" & operator = (const DownEnumerator_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" &) = delete ;\n\n//--- \n  public: inline bool hasCurrentObject (void) const {\n    return mCurrent < mSharedArray.count () ;\n  }\n  \n//--- \n  public: inline bool hasNextObject (void) const {\n    return (mCurrent + 1) < mSharedArray.count () ;\n  }\n\n//--- \n  public: inline void gotoNextObject (void) {\n    mCurrent += 1 ;\n  }\n\n//--- Current element access\n  public: class GGS_") ;
+  result.appendString (" &) = delete ;\n\n//--- \n  public: inline bool hasCurrentObject (void) const {\n    return mCurrent < mSharedArray.count () ;\n  }\n\n//--- \n  public: inline void gotoNextObject (void) {\n    mCurrent += 1 ;\n  }\n\n//--- Current element access\n  public: class GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" current (LOCATION_ARGS) const ;\n\n//---- Properties\n  private: const TC_Array <GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -8250,7 +8250,7 @@ GGS_string filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeHeader_31_ (
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" & operator = (const UpEnumerator_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" &) = delete ;\n\n//--- \n  public: inline bool hasCurrentObject (void) const {\n    return mCurrent < mSharedArray.count () ;\n  }\n  \n//--- \n  public: inline bool hasNextObject (void) const {\n    return (mCurrent + 1) < mSharedArray.count () ;\n  }\n\n//--- \n  public: inline void gotoNextObject (void) {\n    mCurrent += 1 ;\n  }\n\n//--- Current element access\n  public: class GGS_") ;
+  result.appendString (" &) = delete ;\n\n//--- \n  public: inline bool hasCurrentObject (void) const {\n    return mCurrent < mSharedArray.count () ;\n  }\n  \n//--- \n  public: inline void gotoNextObject (void) {\n    mCurrent += 1 ;\n  }\n\n//--- Current element access\n  public: class GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" current (LOCATION_ARGS) const ;\n\n//---- Properties\n  private: const TC_Array <GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;

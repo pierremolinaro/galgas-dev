@@ -407,11 +407,6 @@ end
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 %
-if [SUPPORTED_OPERATORS contains ![@typeFeatures generateEnumerationHelperMethods]] then
-%//--------------------------------- Enumeration helper methods
-  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
-
-%end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures supportWithAccessor]] then
   %  public: VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%Compiler * inCompiler,\n%

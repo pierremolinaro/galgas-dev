@@ -698,8 +698,8 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader
       result.appendString ("#include \"") ;
       result.appendString (enumerator_295.current_mValue (HERE).stringValue ()) ;
       result.appendString (".h\"\n") ;
-      index_295_.increment () ;
       enumerator_295.gotoNextObject () ;
+      index_295_.increment () ;
     }
   }
   result.appendString ("\n") ;
@@ -724,8 +724,8 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplem
       result.appendString ("#include \"") ;
       result.appendString (enumerator_264.current_mValue (HERE).stringValue ()) ;
       result.appendString (".h\"\n") ;
-      index_264_.increment () ;
       enumerator_264.gotoNextObject () ;
+      index_264_.increment () ;
     }
   }
   result.appendString ("\n") ;
@@ -3149,10 +3149,10 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
                 UpEnumerator_stringlist enumerator_10057 (var_fieldList_8576) ;
                 while (enumerator_10057.hasCurrentObject ()) {
                   var_s_10035.plusAssign_operation(enumerator_10057.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 196)) ;
-                  if (enumerator_10057.hasNextObject ()) {
+                  enumerator_10057.gotoNextObject () ;
+                  if (enumerator_10057.hasCurrentObject ()) {
                     var_s_10035.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 197)) ;
                   }
-                  enumerator_10057.gotoNextObject () ;
                 }
                 const GGS_getterCallExpressionAST temp_58 = this ;
                 const GGS_getterCallExpressionAST temp_59 = this ;
@@ -3376,10 +3376,10 @@ void cPtr_getterCallExpressionForGeneration::method_generateExpression (GGS_stri
   UpEnumerator_stringlist enumerator_16707 (var_getterArgumentCppNameList_14603) ;
   while (enumerator_16707.hasCurrentObject ()) {
     outArgument_outCppExpression.plusAssign_operation(enumerator_16707.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 339)) ;
-    if (enumerator_16707.hasNextObject ()) {
+    enumerator_16707.gotoNextObject () ;
+    if (enumerator_16707.hasCurrentObject ()) {
       outArgument_outCppExpression.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-getter-call.galgas", 340)) ;
     }
-    enumerator_16707.gotoNextObject () ;
   }
   GalgasBool test_18 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_18) {
@@ -3554,10 +3554,10 @@ void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21
               var_s_11385.plusAssign_operation(enumerator_11465.current (HERE).readProperty_mActualSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("expression-initializer.galgas", 290)), inCompiler  COMMA_SOURCE_FILE ("expression-initializer.galgas", 290)) ;
             }
           }
-          if (enumerator_11465.hasNextObject ()) {
+          enumerator_11465.gotoNextObject () ;
+          if (enumerator_11465.hasCurrentObject ()) {
             var_s_11385.plusAssign_operation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("expression-initializer.galgas", 293)) ;
           }
-          enumerator_11465.gotoNextObject () ;
         }
         var_s_11385.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("expression-initializer.galgas", 295)) ;
         TC_Array <FixItDescription> fixItArray7 ;
@@ -4197,10 +4197,10 @@ void cPtr_classFuncExpressionForGeneration::method_generateExpression (GGS_strin
   UpEnumerator_stringlist enumerator_14602 (var_parameterList_14077) ;
   while (enumerator_14602.hasCurrentObject ()) {
     outArgument_outCppExpression.plusAssign_operation(enumerator_14602.current_mValue (HERE), inCompiler  COMMA_SOURCE_FILE ("expression-class-func.galgas", 341)) ;
-    if (enumerator_14602.hasNextObject ()) {
+    enumerator_14602.gotoNextObject () ;
+    if (enumerator_14602.hasCurrentObject ()) {
       outArgument_outCppExpression.plusAssign_operation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("expression-class-func.galgas", 342)) ;
     }
-    enumerator_14602.gotoNextObject () ;
   }
   GGS_bool var_needsComma_14724 = GGS_bool (ComparisonKind::greaterThan, var_parameterList_14077.getter_count (SOURCE_FILE ("expression-class-func.galgas", 344)).objectCompare (GGS_uint (uint32_t (0U)))) ;
   GalgasBool test_5 = GalgasBool::boolTrue ;
@@ -7839,10 +7839,10 @@ void cPtr_structuredCastInstructionForGeneration::method_generateInstruction (GG
     {
     routine_generateInstructionList_26__3F__26__26__3F__26_ (ioArgument_ioInclusionSet, enumerator_11105.current_mInstructionList (HERE), ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 302)) ;
     }
-    if (enumerator_11105.hasNextObject ()) {
+    enumerator_11105.gotoNextObject () ;
+    if (enumerator_11105.hasCurrentObject ()) {
       ioArgument_ioGeneratedCode.plusAssign_operation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("instruction-cast.galgas", 310)) ;
     }
-    enumerator_11105.gotoNextObject () ;
   }
   GalgasBool test_3 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_3) {

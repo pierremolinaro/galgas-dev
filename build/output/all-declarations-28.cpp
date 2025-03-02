@@ -389,10 +389,10 @@ GGS_string function_routineArgumentFromFormalParameters (const GGS_formalParamet
       break ;
     }
     result_result.plusAssign_operation(enumerator_2080.current (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas", 54)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 54)) ;
-    if (enumerator_2080.hasNextObject ()) {
+    enumerator_2080.gotoNextObject () ;
+    if (enumerator_2080.hasCurrentObject ()) {
       result_result.plusAssign_operation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 56)) ;
     }
-    enumerator_2080.gotoNextObject () ;
   }
   result_result.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas", 58)) ;
 //---
@@ -2997,8 +2997,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementa
       result.appendString ("#include \"") ;
       result.appendString (enumerator_29.current_key (HERE).stringValue ()) ;
       result.appendString (".h\"\n") ;
-      index_29_.increment () ;
       enumerator_29.gotoNextObject () ;
+      index_29_.increment () ;
     }
   }
   result.appendString ("\n\n") ;
@@ -3092,8 +3092,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
               }
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
-              index_799_IDX.increment () ;
               enumerator_799.gotoNextObject () ;
+              index_799_IDX.increment () ;
             }
           }
           const GalgasBool test_3 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -3112,8 +3112,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
           result.appendString ("class Lexique_") ;
           result.appendString (in_LEXIQUE_5F_NAME.stringValue ()) ;
           result.appendString (" * inLexique) = 0 ;\n\n") ;
-          index_566_.increment () ;
           enumerator_566.gotoNextObject () ;
+          index_566_.increment () ;
         }
       }
       result.appendString ("  protected: virtual void nt_") ;
@@ -3150,8 +3150,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_510_.increment () ;
       enumerator_510.gotoNextObject () ;
+      index_510_.increment () ;
     }
   }
   result.appendString ("\n//--- Rule declarations\n") ;
@@ -3222,8 +3222,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
               }
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
-              index_2693_IDX.increment () ;
               enumerator_2693.gotoNextObject () ;
+              index_2693_IDX.increment () ;
             }
           }
           const GalgasBool test_9 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -3242,8 +3242,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
           result.appendString ("Lexique_") ;
           result.appendString (in_LEXIQUE_5F_NAME.stringValue ()) ;
           result.appendString (" * inLexique) ;\n\n") ;
-          index_2389_.increment () ;
           enumerator_2389.gotoNextObject () ;
+          index_2389_.increment () ;
         }
       }
       result.appendString ("  protected: void rule_") ;
@@ -3288,8 +3288,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_2251_.increment () ;
       enumerator_2251.gotoNextObject () ;
+      index_2251_.increment () ;
     }
   }
   result.appendString ("\n\n//--- Select methods\n") ;
@@ -3304,8 +3304,8 @@ GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassD
       result.appendString (" (Lexique_") ;
       result.appendString (in_LEXIQUE_5F_NAME.stringValue ()) ;
       result.appendString (" *) = 0 ;\n\n") ;
-      index_4173_.increment () ;
       enumerator_4173.gotoNextObject () ;
+      index_4173_.increment () ;
     }
   }
   result.appendString ("\n} ;\n\n") ;
@@ -5529,15 +5529,15 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           case GalgasBool::boolNotValid :
             break ;
           }
-          index_320_IDX.increment () ;
           enumerator_320.gotoNextObject () ;
+          index_320_IDX.increment () ;
         }
       }
       result.appendString ("Compiler * inCompiler\n    ") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) ;\n") ;
-      index_133_.increment () ;
       enumerator_133.gotoNextObject () ;
+      index_133_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Object cloning\n  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;\n\n//--------------------------------- Object extraction\n  public: static GGS_") ;
@@ -5571,12 +5571,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
             result.appendString (extensionGetter_identifierRepresentation (enumerator_1436.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 31)).stringValue ()) ;
             result.appendString (" & inOperand") ;
             result.appendString (index_1436_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 31)).stringValue ()) ;
-            if (enumerator_1436.hasNextObject ()) {
+            enumerator_1436.gotoNextObject () ;
+            if (enumerator_1436.hasCurrentObject ()) {
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
             }
             index_1436_IDX.increment () ;
-            enumerator_1436.gotoNextObject () ;
           }
         }
         const GalgasBool test_2 = enumerator_1200.current_mHasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_1200.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 34)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 34)).boolEnum () ;
@@ -5618,8 +5618,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
         case GalgasBool::boolNotValid :
           break ;
         }
-        index_1200_.increment () ;
         enumerator_1200.gotoNextObject () ;
+        index_1200_.increment () ;
       }
     }
     } break ;
@@ -5785,12 +5785,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
         result.appendString (extensionGetter_identifierRepresentation (enumerator_6547.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 123)).stringValue ()) ;
         result.appendString (" & inOperand") ;
         result.appendString (index_6547_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 123)).stringValue ()) ;
-        if (enumerator_6547.hasNextObject ()) {
+        enumerator_6547.gotoNextObject () ;
+        if (enumerator_6547.hasCurrentObject ()) {
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
         }
         index_6547_IDX.increment () ;
-        enumerator_6547.gotoNextObject () ;
       }
     }
     const GalgasBool test_15 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 126)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 126)).boolEnum () ;
@@ -6188,12 +6188,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
               case GalgasBool::boolNotValid :
                 break ;
               }
-              if (enumerator_13298.hasNextObject ()) {
+              enumerator_13298.gotoNextObject () ;
+              if (enumerator_13298.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
               index_13298_IDX.increment () ;
-              enumerator_13298.gotoNextObject () ;
             }
           }
           const GalgasBool test_41 = GGS_bool (ComparisonKind::equal, enumerator_12850.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 271)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -6249,8 +6249,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_12850_.increment () ;
       enumerator_12850.gotoNextObject () ;
+      index_12850_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Instance Methods\n") ;
@@ -6315,12 +6315,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
               case GalgasBool::boolNotValid :
                 break ;
               }
-              if (enumerator_15130.hasNextObject ()) {
+              enumerator_15130.gotoNextObject () ;
+              if (enumerator_15130.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
               index_15130_IDX.increment () ;
-              enumerator_15130.gotoNextObject () ;
             }
           }
           const GalgasBool test_49 = GGS_bool (ComparisonKind::equal, enumerator_14682.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -6376,8 +6376,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_14682_.increment () ;
       enumerator_14682.gotoNextObject () ;
+      index_14682_.increment () ;
     }
   }
   result.appendString ("//--------------------------------- Class Methods\n") ;
@@ -6436,12 +6436,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           case GalgasBool::boolNotValid :
             break ;
           }
-          if (enumerator_16662.hasNextObject ()) {
+          enumerator_16662.gotoNextObject () ;
+          if (enumerator_16662.hasCurrentObject ()) {
             result.appendString (",\n") ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
           index_16662_IDX.increment () ;
-          enumerator_16662.gotoNextObject () ;
         }
       }
       const GalgasBool test_55 = GGS_bool (ComparisonKind::equal, enumerator_16461.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 344)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -6485,8 +6485,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
         break ;
       }
       result.appendString (") ;\n\n") ;
-      index_16461_.increment () ;
       enumerator_16461.gotoNextObject () ;
+      index_16461_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Getters\n") ;
@@ -6523,12 +6523,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
                   result.appendString (extensionGetter_identifierRepresentation (enumerator_18426.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
                   result.appendString (" & constinOperand") ;
                   result.appendString (index_18426_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
-                  if (enumerator_18426.hasNextObject ()) {
+                  enumerator_18426.gotoNextObject () ;
+                  if (enumerator_18426.hasCurrentObject ()) {
                     result.appendString (",\n") ;
                     result.appendSpacesUntilColumn (columnMarker) ;
                   }
                   index_18426_IDX.increment () ;
-                  enumerator_18426.gotoNextObject () ;
                 }
               }
               const GalgasBool test_60 = GGS_bool (ComparisonKind::equal, enumerator_17903.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 375)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -6586,8 +6586,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_17903_.increment () ;
       enumerator_17903.gotoNextObject () ;
+      index_17903_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Read subscripts\n") ;
@@ -6611,30 +6611,20 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           result.appendString (index_19369_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).stringValue ()) ;
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
-          index_19369_IDX.increment () ;
           enumerator_19369.gotoNextObject () ;
+          index_19369_IDX.increment () ;
         }
       }
       result.appendString ("Compiler * inCompiler\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
-      index_19144_.increment () ;
       enumerator_19144.gotoNextObject () ;
+      index_19144_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Introspection\n  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;\n") ;
-  const GalgasBool test_63 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_generateEnumerationHelperMethods (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 410)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 410)).boolEnum () ;
+  const GalgasBool test_63 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_supportWithAccessor (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 411)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 411)).boolEnum () ;
   switch (test_63) {
-  case GalgasBool::boolTrue : {
-    result.appendString ("//--------------------------------- Enumeration helper methods\n  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;\n\n") ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  const GalgasBool test_64 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_supportWithAccessor (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 416)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 416)).boolEnum () ;
-  switch (test_64) {
   case GalgasBool::boolTrue : {
     result.appendString ("  public: VIRTUAL_IN_DEBUG cMapElement_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -6651,11 +6641,11 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_65 = in_SUPPORT_5F_COLLECTION_5F_VALUE.boolEnum () ;
-  switch (test_65) {
+  const GalgasBool test_64 = in_SUPPORT_5F_COLLECTION_5F_VALUE.boolEnum () ;
+  switch (test_64) {
   case GalgasBool::boolTrue : {
     result.appendString ("\n//--- Append element\n  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_") ;
-    result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 424)).stringValue ()) ;
+    result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 419)).stringValue ()) ;
     result.appendString (" & inValue,\n                                              Compiler * /* inCompiler */\n                                              COMMA_LOCATION_ARGS) ;\n\n") ;
     } break ;
   case GalgasBool::boolFalse : {
@@ -6663,8 +6653,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_66 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 429)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-  switch (test_66) {
+  const GalgasBool test_65 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 424)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_65) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- Friend\n  friend class UpEnumerator_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -6720,12 +6710,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
             result.appendString (extensionGetter_identifierRepresentation (enumerator_456.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 9)).stringValue ()) ;
             result.appendString (" & inOperand") ;
             result.appendString (index_456_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 9)).stringValue ()) ;
-            if (enumerator_456.hasNextObject ()) {
+            enumerator_456.gotoNextObject () ;
+            if (enumerator_456.hasCurrentObject ()) {
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
             }
             index_456_IDX.increment () ;
-            enumerator_456.gotoNextObject () ;
           }
         }
         const GalgasBool test_1 = enumerator_220.current_mHasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).boolEnum () ;
@@ -6767,8 +6757,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
         case GalgasBool::boolNotValid :
           break ;
         }
-        index_220_.increment () ;
         enumerator_220.gotoNextObject () ;
+        index_220_.increment () ;
       }
     }
     } break ;
@@ -6833,12 +6823,12 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
           case GalgasBool::boolNotValid :
             break ;
           }
-          if (enumerator_1310.hasNextObject ()) {
+          enumerator_1310.gotoNextObject () ;
+          if (enumerator_1310.hasCurrentObject ()) {
             result.appendString (",\n") ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
           index_1310_IDX.increment () ;
-          enumerator_1310.gotoNextObject () ;
         }
       }
       const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_1109.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 42)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -6882,8 +6872,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage
         break ;
       }
       result.appendString (") ;\n\n") ;
-      index_1109_.increment () ;
       enumerator_1109.gotoNextObject () ;
+      index_1109_.increment () ;
     }
   }
   result.appendString ("\n} ;\n\n") ;
@@ -7059,8 +7049,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
           result.appendString (extensionGetter_identifierRepresentation (enumerator_1312.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 32)).stringValue ()) ;
           result.appendString (" inArgument_") ;
           result.appendString (index_1312_IDX.getter_string (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 32)).stringValue ()) ;
-          index_1312_IDX.increment () ;
           enumerator_1312.gotoNextObject () ;
+          index_1312_IDX.increment () ;
         }
       }
       result.appendString (",\n") ;
@@ -7076,15 +7066,15 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
         while (enumerator_1747.hasCurrentObject ()) {
           result.appendString (", inArgument_") ;
           result.appendString (index_1747_IDX.getter_string (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 39)).stringValue ()) ;
-          index_1747_IDX.increment () ;
           enumerator_1747.gotoNextObject () ;
+          index_1747_IDX.increment () ;
         }
       }
       result.appendString (" COMMA_THERE) ;\n  const char * kErrorMessage = ") ;
       result.appendString (enumerator_962.current_mInsertErrorMessage (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 42)).stringValue ()) ;
       result.appendString (" ;\n  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;\n}\n\n") ;
-      index_962_.increment () ;
       enumerator_962.gotoNextObject () ;
+      index_962_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
@@ -7307,8 +7297,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_596_.increment () ;
       enumerator_596.gotoNextObject () ;
+      index_596_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7367,8 +7357,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_584_.increment () ;
       enumerator_584.gotoNextObject () ;
+      index_584_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7387,8 +7377,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       result.appendString ("in_") ;
       result.appendString (enumerator_1227.current_mFormalArgumentName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 22)).stringValue ()) ;
       result.appendString (", ") ;
-      index_1227_.increment () ;
       enumerator_1227.gotoNextObject () ;
+      index_1227_.increment () ;
     }
   }
   result.appendString ("inCompiler COMMA_THERE) ;\n  }\n  return result ;\n}\n\n") ;
@@ -7443,8 +7433,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_581_.increment () ;
       enumerator_581.gotoNextObject () ;
+      index_581_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7506,8 +7496,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_703_.increment () ;
       enumerator_703.gotoNextObject () ;
+      index_703_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7526,8 +7516,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
       result.appendString ("in_") ;
       result.appendString (enumerator_1346.current_mFormalArgumentName (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 26)).stringValue ()) ;
       result.appendString (", ") ;
-      index_1346_.increment () ;
       enumerator_1346.gotoNextObject () ;
+      index_1346_.increment () ;
     }
   }
   result.appendString ("inCompiler COMMA_THERE) ;\n  }\n  return result ;\n}\n\n") ;
@@ -7628,8 +7618,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_624_IDX.increment () ;
       enumerator_624.gotoNextObject () ;
+      index_624_IDX.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7702,8 +7692,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_2134_.increment () ;
       enumerator_2134.gotoNextObject () ;
+      index_2134_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7827,8 +7817,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_2130_.increment () ;
       enumerator_2130.gotoNextObject () ;
+      index_2130_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -7852,8 +7842,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_3156_.increment () ;
       enumerator_3156.gotoNextObject () ;
+      index_3156_.increment () ;
     }
   }
   result.appendString ("//--- Find setter\n  if (nullptr != inObject) {\n    macroValidSharedObject (inObject, cPtr_") ;
@@ -7923,8 +7913,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
         break ;
       }
       result.appendString (", ") ;
-      index_4845_.increment () ;
       enumerator_4845.gotoNextObject () ;
+      index_4845_.increment () ;
     }
   }
   result.appendString ("inCompiler COMMA_THERE) ;\n  }\n}\n\n") ;
@@ -8004,8 +7994,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_615_IDX.increment () ;
       enumerator_615.gotoNextObject () ;
+      index_615_IDX.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8078,8 +8068,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_2138_.increment () ;
       enumerator_2138.gotoNextObject () ;
+      index_2138_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8184,8 +8174,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_1414_.increment () ;
       enumerator_1414.gotoNextObject () ;
+      index_1414_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8209,8 +8199,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_2440_.increment () ;
       enumerator_2440.gotoNextObject () ;
+      index_2440_.increment () ;
     }
   }
   result.appendString ("//--- Find setter\n  if (nullptr != inObject) {\n    macroValidSharedObject (inObject, cPtr_") ;
@@ -8280,8 +8270,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
         break ;
       }
       result.appendString (", ") ;
-      index_4129_.increment () ;
       enumerator_4129.gotoNextObject () ;
+      index_4129_.increment () ;
     }
   }
   result.appendString ("inCompiler COMMA_THERE) ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -8446,8 +8436,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_558_.increment () ;
       enumerator_558.gotoNextObject () ;
+      index_558_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8529,8 +8519,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_616_.increment () ;
       enumerator_616.gotoNextObject () ;
+      index_616_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8554,8 +8544,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_1642_.increment () ;
       enumerator_1642.gotoNextObject () ;
+      index_1642_.increment () ;
     }
   }
   result.appendString ("//--- Find method\n  if (nullptr != inObject) {\n    macroValidSharedObject (inObject, cPtr_") ;
@@ -8603,8 +8593,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
         break ;
       }
       result.appendString (", ") ;
-      index_2194_.increment () ;
       enumerator_2194.gotoNextObject () ;
+      index_2194_.increment () ;
     }
   }
   result.appendString ("inCompiler COMMA_THERE) ;\n  }\n}\n") ;
@@ -8682,8 +8672,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_549_.increment () ;
       enumerator_549.gotoNextObject () ;
+      index_549_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8768,8 +8758,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_671_.increment () ;
       enumerator_671.gotoNextObject () ;
+      index_671_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -8793,8 +8783,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_1669_.increment () ;
       enumerator_1669.gotoNextObject () ;
+      index_1669_.increment () ;
     }
   }
   result.appendString ("  if (nullptr != inObject) {\n    macroValidSharedObject (inObject, cPtr_") ;
@@ -8842,8 +8832,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
         break ;
       }
       result.appendString (", ") ;
-      index_2172_.increment () ;
       enumerator_2172.gotoNextObject () ;
+      index_2172_.increment () ;
     }
   }
   result.appendString ("inCompiler COMMA_THERE) ;\n  }\n}\n") ;
@@ -8896,8 +8886,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 8)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      index_307_idx.increment () ;
       enumerator_307.gotoNextObject () ;
+      index_307_idx.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -8910,8 +8900,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 14)).stringValue ()) ;
       result.appendString (" [] ;\n") ;
-      index_577_idx.increment () ;
       enumerator_577.gotoNextObject () ;
+      index_577_idx.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -8924,8 +8914,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 20)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      index_841_idx.increment () ;
       enumerator_841.gotoNextObject () ;
+      index_841_idx.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -8938,8 +8928,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 26)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      index_1108_.increment () ;
       enumerator_1108.gotoNextObject () ;
+      index_1108_.increment () ;
     }
   }
   result.appendString ("\n") ;
@@ -9013,8 +9003,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_582_IDX.increment () ;
       enumerator_582.gotoNextObject () ;
+      index_582_IDX.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -9116,8 +9106,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_546_.increment () ;
       enumerator_546.gotoNextObject () ;
+      index_546_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -9219,8 +9209,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_546_.increment () ;
       enumerator_546.gotoNextObject () ;
+      index_546_.increment () ;
     }
   }
   result.appendString (",\n") ;
@@ -9277,8 +9267,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDecla
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_470_IDX.increment () ;
       enumerator_470.gotoNextObject () ;
+      index_470_IDX.increment () ;
     }
   }
   result.appendString ("class Compiler * inCompiler\n") ;
@@ -9317,8 +9307,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
       result.appendString ("  & kTypeDescriptor_GALGAS_") ;
       result.appendString (extensionGetter_identifierRepresentation (enumerator_850.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 15)).stringValue ()) ;
       result.appendString (",\n") ;
-      index_850_.increment () ;
       enumerator_850.gotoNextObject () ;
+      index_850_.increment () ;
     }
   }
   result.appendString ("  nullptr\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -9370,8 +9360,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
         result.appendString ("inCompiler\n  ") ;
         result.appendSpacesUntilColumn (columnMarker) ;
         result.appendString ("COMMA_THERE) ;\n") ;
-        index_2148_IDX.increment () ;
         enumerator_2148.gotoNextObject () ;
+        index_2148_IDX.increment () ;
       }
     }
     result.appendString ("  return function_") ;
@@ -9386,8 +9376,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
         result.appendString (index_2638_IDX.getter_string (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 43)).stringValue ()) ;
         result.appendString (",\n") ;
         result.appendSpacesUntilColumn (columnMarker) ;
-        index_2638_IDX.increment () ;
         enumerator_2638.gotoNextObject () ;
+        index_2638_IDX.increment () ;
       }
     }
     result.appendString ("inCompiler\n") ;
@@ -9488,8 +9478,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclar
       }
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_450_IDX.increment () ;
       enumerator_450.gotoNextObject () ;
+      index_450_IDX.increment () ;
     }
   }
   result.appendString ("class Compiler * inCompiler\n ") ;
@@ -9583,8 +9573,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionI
       result.appendString ("  & kTypeDescriptor_GALGAS_") ;
       result.appendString (extensionGetter_identifierRepresentation (enumerator_2581.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 45)).stringValue ()) ;
       result.appendString (",\n") ;
-      index_2581_.increment () ;
       enumerator_2581.gotoNextObject () ;
+      index_2581_.increment () ;
     }
   }
   result.appendString ("  nullptr\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
@@ -9630,8 +9620,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionI
         result.appendString ("::extractObject (inEffectiveParameterArray.objectAtIndex (") ;
         result.appendString (index_3878_IDX.getter_string (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 66)).stringValue ()) ;
         result.appendString (" COMMA_HERE), inCompiler COMMA_THERE) ;\n") ;
-        index_3878_IDX.increment () ;
         enumerator_3878.gotoNextObject () ;
+        index_3878_IDX.increment () ;
       }
     }
     result.appendString ("  return function_") ;
@@ -9644,8 +9634,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionI
         result.appendString ("operand") ;
         result.appendString (index_4345_IDX.getter_string (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 70)).stringValue ()) ;
         result.appendString (", ") ;
-        index_4345_IDX.increment () ;
         enumerator_4345.gotoNextObject () ;
+        index_4345_IDX.increment () ;
       }
     }
     result.appendString ("inCompiler COMMA_THERE).getter_object (THERE) ;\n}\n") ;
@@ -9709,8 +9699,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTe
       result.appendString (extensionGetter_identifierRepresentation (enumerator_565.current_mFormalArgumentType (HERE), inCompiler COMMA_SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 9)).stringValue ()) ;
       result.appendString (" & ") ;
       result.appendString (enumerator_565.current_mFormalArgumentCppName (HERE).stringValue ()) ;
-      index_565_.increment () ;
       enumerator_565.gotoNextObject () ;
+      index_565_.increment () ;
     }
   }
   result.appendString ("\n ") ;
@@ -9779,8 +9769,8 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTe
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_674_.increment () ;
       enumerator_674.gotoNextObject () ;
+      index_674_.increment () ;
     }
   }
   result.appendString ("\n ") ;

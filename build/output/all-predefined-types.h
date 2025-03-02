@@ -961,6 +961,51 @@ class DownEnumerator_stringset final : public cGenericAbstractEnumerator {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+/* class UpEnumerator_stringset final {
+  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
+
+  public: bool hasCurrentObject (void) const { return mIterator != mSet.end () ; }
+
+  public: void gotoNextObject (void) { mIterator++ ; }
+
+//--- Current element access
+  public: class GGS_string current_key (LOCATION_ARGS) const ;
+  public: class GGS_string current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: const std::set <String> mSet ;
+  private: std::set <String>::iterator mIterator ;
+
+//--- No copy
+  private: UpEnumerator_stringset (const UpEnumerator_stringset &) = delete ;
+  private: UpEnumerator_stringset & operator = (const UpEnumerator_stringset &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_stringset final {
+
+  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;
+
+  public: bool hasCurrentObject (void) const { return mIterator != mSet.rend () ; }
+
+  public: void gotoNextObject (void) { mIterator++ ; }
+
+//--- Current element access
+  public: class GGS_string current_key (LOCATION_ARGS) const ;
+  public: class GGS_string current (LOCATION_ARGS) const ;
+
+//--- Private properties
+  private: const std::set <String> mSet ;
+  private: std::set <String>::reverse_iterator mIterator ;
+
+//--- No copy
+  private: DownEnumerator_stringset (const DownEnumerator_stringset &) = delete ;
+  private: DownEnumerator_stringset & operator = (const DownEnumerator_stringset &) = delete ;
+} ; */
+
+//--------------------------------------------------------------------------------------------------
 //   @stringset type
 //--------------------------------------------------------------------------------------------------
 
@@ -976,6 +1021,8 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_stringset (void) ;
 
+//--------------------------------- Enumeration helper methods
+  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -1061,9 +1108,6 @@ class GGS_stringset : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Enumeration helper methods
-  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
-
 
 //--- Append element
   public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_string & inValue,
@@ -2686,6 +2730,9 @@ class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_data (const U8Data & inData) ;
 
+//--------------------------------- Enumeration helper methods
+  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -2765,9 +2812,6 @@ class GGS_data : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Enumeration helper methods
-  protected: void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
-
 //--------------------------------- Friend
   friend class UpEnumerator_data ;
   friend class DownEnumerator_data ;

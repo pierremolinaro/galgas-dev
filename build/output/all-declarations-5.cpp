@@ -11265,38 +11265,32 @@ GGS_typeFeatures GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeed
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 32) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 33) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 34) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 35) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 36) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typeFeatures GGS_typeFeatures::class_func_clonable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 37) ;
+  return GGS_typeFeatures (uint64_t (1) << 36) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11406,7 +11400,7 @@ GGS_typeFeatures GGS_typeFeatures::substract_operation (const GGS_typeFeatures &
 GGS_typeFeatures GGS_typeFeatures::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GGS_typeFeatures result ;
   if (mIsValid) {
-    result = GGS_typeFeatures (uint64_t (0x3FFFFFFFFF) ^ mFlags) ;
+    result = GGS_typeFeatures (uint64_t (0x1FFFFFFFFF) ^ mFlags) ;
   }
   return result ;
 }
@@ -11516,21 +11510,18 @@ void GGS_typeFeatures::description (String & ioString,
       ioString.appendCString (" plusEqualOperatorWithFieldListNeedsCompilerArg") ;
     }
     if ((mFlags & (uint64_t (1) << 32)) != 0) {
-      ioString.appendCString (" generateEnumerationHelperMethods") ;
-    }
-    if ((mFlags & (uint64_t (1) << 33)) != 0) {
       ioString.appendCString (" doNotGenererateObjectCompare") ;
     }
-    if ((mFlags & (uint64_t (1) << 34)) != 0) {
+    if ((mFlags & (uint64_t (1) << 33)) != 0) {
       ioString.appendCString (" generateDescriptionGetterUtilityMethod") ;
     }
-    if ((mFlags & (uint64_t (1) << 35)) != 0) {
+    if ((mFlags & (uint64_t (1) << 34)) != 0) {
       ioString.appendCString (" generateCopyConstructorAndAssignmentOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 36)) != 0) {
+    if ((mFlags & (uint64_t (1) << 35)) != 0) {
       ioString.appendCString (" generateSynthetizedInitializer") ;
     }
-    if ((mFlags & (uint64_t (1) << 37)) != 0) {
+    if ((mFlags & (uint64_t (1) << 36)) != 0) {
       ioString.appendCString (" clonable") ;
     }
   }
@@ -12477,7 +12468,7 @@ GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & i
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool result_result ; // Returned variable
   const GGS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 148)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 148)) ;
+  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas", 147)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) COMMA_SOURCE_FILE ("unified-type-definition.galgas", 147)) ;
 //---
   return result_result ;
 }

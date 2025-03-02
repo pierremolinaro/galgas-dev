@@ -6706,11 +6706,6 @@ class DownEnumerator__5B_associatedValue_5D_ final {
   public: inline bool hasCurrentObject (void) const {
     return mCurrent < mSharedArray.count () ;
   }
-  
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
 
 //--- 
   public: inline void gotoNextObject (void) {
@@ -6741,11 +6736,6 @@ class UpEnumerator__5B_associatedValue_5D_ final {
     return mCurrent < mSharedArray.count () ;
   }
   
-//--- 
-  public: inline bool hasNextObject (void) const {
-    return (mCurrent + 1) < mSharedArray.count () ;
-  }
-
 //--- 
   public: inline void gotoNextObject (void) {
     mCurrent += 1 ;

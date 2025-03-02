@@ -1135,8 +1135,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" */ = {\n    isa = PBXBuildFile;\n    fileRef = ") ;
       result.appendString (enumerator_249.current_mFileReference (HERE).stringValue ()) ;
       result.appendString (" ;\n    settings = {ATTRIBUTES = (); };\n  };\n\n") ;
-      index_249_.increment () ;
       enumerator_249.gotoNextObject () ;
+      index_249_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXFileReference */\n") ;
@@ -1153,8 +1153,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_552.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_552_.increment () ;
       enumerator_552.gotoNextObject () ;
+      index_552_.increment () ;
     }
   }
   GGS_uint index_937_ (0) ;
@@ -1170,8 +1170,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_937.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_937_.increment () ;
       enumerator_937.gotoNextObject () ;
+      index_937_.increment () ;
     }
   }
   GGS_uint index_1328_ (0) ;
@@ -1187,8 +1187,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_1328.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_1328_.increment () ;
       enumerator_1328.gotoNextObject () ;
+      index_1328_.increment () ;
     }
   }
   GGS_uint index_1713_ (0) ;
@@ -1204,8 +1204,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_1713.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_1713_.increment () ;
       enumerator_1713.gotoNextObject () ;
+      index_1713_.increment () ;
     }
   }
   GGS_uint index_2099_ (0) ;
@@ -1221,8 +1221,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_2099.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_2099_.increment () ;
       enumerator_2099.gotoNextObject () ;
+      index_2099_.increment () ;
     }
   }
   GGS_uint index_2494_ (0) ;
@@ -1238,8 +1238,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_2494.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 76)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_2494_.increment () ;
       enumerator_2494.gotoNextObject () ;
+      index_2494_.increment () ;
     }
   }
   GGS_uint index_2885_ (0) ;
@@ -1255,8 +1255,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_2885.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 85)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_2885_.increment () ;
       enumerator_2885.gotoNextObject () ;
+      index_2885_.increment () ;
     }
   }
   GGS_uint index_3458_ (0) ;
@@ -1268,8 +1268,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" = {\n    isa = PBXFileReference;\n    explicitFileType = \"compiled.mach-o.executable\";\n    includeInIndex = 0;\n    path = ") ;
       result.appendString (enumerator_3458.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 94)).stringValue ()) ;
       result.appendString (";\n    sourceTree = BUILT_PRODUCTS_DIR;\n  };\n\n") ;
-      index_3458_.increment () ;
       enumerator_3458.gotoNextObject () ;
+      index_3458_.increment () ;
     }
   }
   GGS_uint index_4054_ (0) ;
@@ -1281,8 +1281,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" = {\n    isa = PBXFileReference;\n    explicitFileType = \"compiled.mach-o.executable\";\n    includeInIndex = 0;\n    path = ") ;
       result.appendString (enumerator_4054.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue ()) ;
       result.appendString (";\n    sourceTree = BUILT_PRODUCTS_DIR;\n  };\n\n") ;
-      index_4054_.increment () ;
       enumerator_4054.gotoNextObject () ;
+      index_4054_.increment () ;
     }
   }
   GGS_uint index_4383_ (0) ;
@@ -1296,8 +1296,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_4383.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_4383_.increment () ;
       enumerator_4383.gotoNextObject () ;
+      index_4383_.increment () ;
     }
   }
   GGS_uint index_4747_ (0) ;
@@ -1311,8 +1311,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_4747.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 123)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_4747_.increment () ;
       enumerator_4747.gotoNextObject () ;
+      index_4747_.increment () ;
     }
   }
   GGS_uint index_5113_ (0) ;
@@ -1326,8 +1326,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_5113.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 132)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_5113_.increment () ;
       enumerator_5113.gotoNextObject () ;
+      index_5113_.increment () ;
     }
   }
   GGS_uint index_5452_ (0) ;
@@ -1341,8 +1341,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_5452.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 141)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      index_5452_.increment () ;
       enumerator_5452.gotoNextObject () ;
+      index_5452_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */\n\n") ;
@@ -1363,8 +1363,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
             result.appendString ("      ") ;
             result.appendString (enumerator_6342.current_mValue (HERE).stringValue ()) ;
             result.appendString (",\n") ;
-            index_6342_.increment () ;
             enumerator_6342.gotoNextObject () ;
+            index_6342_.increment () ;
           }
         }
         result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
@@ -1374,8 +1374,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       case GalgasBool::boolNotValid :
         break ;
       }
-      index_6103_.increment () ;
       enumerator_6103.gotoNextObject () ;
+      index_6103_.increment () ;
     }
   }
   GGS_uint index_6780_ (0) ;
@@ -1392,13 +1392,13 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("      ") ;
           result.appendString (enumerator_6964.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_6964_.increment () ;
           enumerator_6964.gotoNextObject () ;
+          index_6964_.increment () ;
         }
       }
       result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      index_6780_.increment () ;
       enumerator_6780.gotoNextObject () ;
+      index_6780_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXGroup section */\n") ;
@@ -1418,8 +1418,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("      ") ;
           result.appendString (enumerator_7367.current_mValue (HERE).stringValue ()) ;
           result.appendString (", \n") ;
-          index_7367_.increment () ;
           enumerator_7367.gotoNextObject () ;
+          index_7367_.increment () ;
         }
       }
       result.appendString ("    );\n    name = ") ;
@@ -1427,8 +1427,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    path = ") ;
       result.appendString (enumerator_7240.current_mGroupPath (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 185)).stringValue ()) ;
       result.appendString (";\n    sourceTree = \"<group>\";\n  };\n") ;
-      index_7240_.increment () ;
       enumerator_7240.gotoNextObject () ;
+      index_7240_.increment () ;
     }
   }
   result.appendString ("\n  ") ;
@@ -1441,8 +1441,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString ("      ") ;
       result.appendString (enumerator_7719.current_mValue (HERE).stringValue ()) ;
       result.appendString (",\n") ;
-      index_7719_.increment () ;
       enumerator_7719.gotoNextObject () ;
+      index_7719_.increment () ;
     }
   }
   result.appendString ("    );\n    sourceTree = \"<group>\";\n  };\n\n  /*------------------------------------------------------------------ PBXNativeTarget */\n") ;
@@ -1478,8 +1478,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    productReference = ") ;
       result.appendString (enumerator_8133.current_mProductFileReference (HERE).stringValue ()) ;
       result.appendString (" ;\n    productType = \"com.apple.product-type.tool\";\n  };\n \n") ;
-      index_8133_.increment () ;
       enumerator_8133.gotoNextObject () ;
+      index_8133_.increment () ;
     }
   }
   GGS_uint index_9090_ (0) ;
@@ -1506,8 +1506,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("      ") ;
           result.appendString (enumerator_9479.current_mValue_30_ (HERE).stringValue ()) ;
           result.appendString (" ,\n") ;
-          index_9479_.increment () ;
           enumerator_9479.gotoNextObject () ;
+          index_9479_.increment () ;
         }
       }
       result.appendString ("    );\n    name = ") ;
@@ -1517,8 +1517,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (";\n    productReference = ") ;
       result.appendString (enumerator_9090.current_mProductFileReference (HERE).stringValue ()) ;
       result.appendString (" ;\n    productType = \"com.apple.product-type.application\";\n  };\n\n") ;
-      index_9090_.increment () ;
       enumerator_9090.gotoNextObject () ;
+      index_9090_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXProject */\n  ") ;
@@ -1535,8 +1535,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString ("    ") ;
       result.appendString (enumerator_10503.current_mTargetRef (HERE).stringValue ()) ;
       result.appendString (", \n") ;
-      index_10503_.increment () ;
       enumerator_10503.gotoNextObject () ;
+      index_10503_.increment () ;
     }
   }
   GGS_uint index_10842_ (0) ;
@@ -1546,8 +1546,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString ("    ") ;
       result.appendString (enumerator_10842.current_mTargetRef (HERE).stringValue ()) ;
       result.appendString (", \n") ;
-      index_10842_.increment () ;
       enumerator_10842.gotoNextObject () ;
+      index_10842_.increment () ;
     }
   }
   result.appendString ("   );\n  };\n\n  /*------------------------------------------------------------------ PBXResourcesBuildPhase */\n\n") ;
@@ -1565,13 +1565,13 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("      ") ;
           result.appendString (enumerator_11477.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_11477_.increment () ;
           enumerator_11477.gotoNextObject () ;
+          index_11477_.increment () ;
         }
       }
       result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      index_11294_.increment () ;
       enumerator_11294.gotoNextObject () ;
+      index_11294_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXSourcesBuildPhase */\n") ;
@@ -1589,13 +1589,13 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("        ") ;
           result.appendString (enumerator_12094.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_12094_.increment () ;
           enumerator_12094.gotoNextObject () ;
+          index_12094_.increment () ;
         }
       }
       result.appendString ("      );\n      runOnlyForDeploymentPostprocessing = 0;\n    };\n") ;
-      index_11927_.increment () ;
       enumerator_11927.gotoNextObject () ;
+      index_11927_.increment () ;
     }
   }
   GGS_uint index_12500_ (0) ;
@@ -1612,13 +1612,13 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("        ") ;
           result.appendString (enumerator_12667.current_mValue (HERE).stringValue ()) ;
           result.appendString (",\n") ;
-          index_12667_.increment () ;
           enumerator_12667.gotoNextObject () ;
+          index_12667_.increment () ;
         }
       }
       result.appendString ("      );\n      runOnlyForDeploymentPostprocessing = 0;\n    };\n") ;
-      index_12500_.increment () ;
       enumerator_12500.gotoNextObject () ;
+      index_12500_.increment () ;
     }
   }
   result.appendString ("\n\n  /*------------------------------------------------------------------ PBXTargetDependency */\n \n") ;
@@ -1635,12 +1635,12 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString (" = {\n    isa = PBXTargetDependency;\n    target = ") ;
           result.appendString (enumerator_13222.current_mValue_31_ (HERE).stringValue ()) ;
           result.appendString (";\n  };\n\n") ;
-          index_13222_.increment () ;
           enumerator_13222.gotoNextObject () ;
+          index_13222_.increment () ;
         }
       }
-      index_13174_.increment () ;
       enumerator_13174.gotoNextObject () ;
+      index_13174_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ PBXVariantGroup */\n \n  /*------------------------------------------------------------------ XCBuildConfiguration */\n    ") ;
@@ -1653,8 +1653,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString ("      ") ;
       result.appendString (enumerator_13746.current_mValue (HERE).stringValue ()) ;
       result.appendString (" ;\n") ;
-      index_13746_.increment () ;
       enumerator_13746.gotoNextObject () ;
+      index_13746_.increment () ;
     }
   }
   result.appendString ("    };\n    name = Default;\n  };\n\n") ;
@@ -1672,15 +1672,15 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("      ") ;
           result.appendString (enumerator_14265.current_mValue (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
-          index_14265_.increment () ;
           enumerator_14265.gotoNextObject () ;
+          index_14265_.increment () ;
         }
       }
       result.appendString ("      PRODUCT_NAME = ") ;
       result.appendString (enumerator_14061.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 355)).stringValue ()) ;
       result.appendString (" ;\n    };\n    name = Default;\n  };\n\n") ;
-      index_14061_.increment () ;
       enumerator_14061.gotoNextObject () ;
+      index_14061_.increment () ;
     }
   }
   GGS_uint index_14740_ (0) ;
@@ -1697,8 +1697,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
           result.appendString ("      ") ;
           result.appendString (enumerator_14908.current_mValue (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
-          index_14908_.increment () ;
           enumerator_14908.gotoNextObject () ;
+          index_14908_.increment () ;
         }
       }
       result.appendString ("      INFOPLIST_FILE = \"Info.plist\";\n      PRODUCT_NAME = ") ;
@@ -1708,8 +1708,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (".") ;
       result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
       result.appendString ("\";\n      SWIFT_ACTIVE_COMPILATION_CONDITIONS = \"CONFIGURATION_IS_DEBUG $(inherited)\";\n    };\n    name = Default;\n  };\n\n") ;
-      index_14740_.increment () ;
       enumerator_14740.gotoNextObject () ;
+      index_14740_.increment () ;
     }
   }
   result.appendString ("  /*------------------------------------------------------------------ XCConfigurationList section */\n\n    ") ;
@@ -1726,8 +1726,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
       result.appendString (enumerator_15954.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      index_15954_.increment () ;
       enumerator_15954.gotoNextObject () ;
+      index_15954_.increment () ;
     }
   }
   GGS_uint index_16536_ (0) ;
@@ -1739,8 +1739,8 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
       result.appendString (enumerator_16536.current_mBuildConfigurationRef (HERE).stringValue ()) ;
       result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      index_16536_.increment () ;
       enumerator_16536.gotoNextObject () ;
+      index_16536_.increment () ;
     }
   }
   result.appendString ("/*------------------------------------------------------------------ End */\n  };\n\n  rootObject = ") ;
@@ -2561,8 +2561,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
       result.appendString ("  <Add directory=\"") ;
       result.appendString (enumerator_2819.current_key (HERE).stringValue ()) ;
       result.appendString ("\" />\n") ;
-      index_2819_.increment () ;
       enumerator_2819.gotoNextObject () ;
+      index_2819_.increment () ;
     }
   }
   result.appendString ("  </Compiler>\n  <Linker>\n") ;
@@ -2601,8 +2601,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
       result.appendString ("/output/") ;
       result.appendString (enumerator_3218.current_mValue (HERE).stringValue ()) ;
       result.appendString ("\" />\n") ;
-      index_3218_.increment () ;
       enumerator_3218.gotoNextObject () ;
+      index_3218_.increment () ;
     }
   }
   GGS_uint index_3338_ (0) ;
@@ -2612,8 +2612,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
       result.appendString ("  <Unit filename=\"../") ;
       result.appendString (enumerator_3338.current_mValue (HERE).stringValue ()) ;
       result.appendString ("\" />\n") ;
-      index_3338_.increment () ;
       enumerator_3338.gotoNextObject () ;
+      index_3338_.increment () ;
     }
   }
   result.appendString ("   <Unit filename=\"") ;
@@ -2907,8 +2907,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
       result.appendString ("</string>\n      </array>\n      <key>NSDocumentClass</key>\n      <string>") ;
       result.appendString (in_DOCUMENT_5F_CLASS.stringValue ()) ;
       result.appendString ("</string>\n  </dict>\n") ;
-      index_986_.increment () ;
       enumerator_986.gotoNextObject () ;
+      index_986_.increment () ;
     }
   }
   result.appendString ("\n </array>\n <key>UTExportedTypeDeclarations</key>\n <array>\n") ;
@@ -2925,8 +2925,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F
       result.appendString ("</string>\n    <key>UTTypeTagSpecification</key>\n    <dict>\n      <key>public.filename-extension</key>\n      <array>\n        <string>") ;
       result.appendString (enumerator_1649.current_key (HERE).stringValue ()) ;
       result.appendString ("</string>\n      </array>\n    </dict>\n  </dict>\n") ;
-      index_1649_.increment () ;
       enumerator_1649.gotoNextObject () ;
+      index_1649_.increment () ;
     }
   }
   result.appendString ("\n </array>\n</dict>\n</plist>\n") ;
@@ -3009,8 +3009,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
       result.appendString (",\n                       \"") ;
       result.appendString (enumerator_821.current_key (HERE).stringValue ()) ;
       result.appendString ("\"") ;
-      index_821_.increment () ;
       enumerator_821.gotoNextObject () ;
+      index_821_.increment () ;
     }
   }
   result.appendString ("],\n    \"SOURCES\"  :  [\n") ;
@@ -3021,8 +3021,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
       result.appendString ("        \"") ;
       result.appendString (enumerator_934.current_mValue (HERE).stringValue ()) ;
       result.appendString ("\",\n") ;
-      index_934_.increment () ;
       enumerator_934.gotoNextObject () ;
+      index_934_.increment () ;
     }
   }
   GGS_uint index_1018_ (0) ;
@@ -3032,8 +3032,8 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
       result.appendString ("        \"") ;
       result.appendString (enumerator_1018.current_mValue (HERE).stringValue ()) ;
       result.appendString ("\",\n") ;
-      index_1018_.increment () ;
       enumerator_1018.gotoNextObject () ;
+      index_1018_.increment () ;
     }
   }
   result.appendString ("       \"AbstractCommandLineOption.cpp\",\n       \"BoolCommandLineOption.cpp\",\n       \"UIntCommandLineOption.cpp\",\n       \"StringCommandLineOption.cpp\",\n       \"StringListCommandLineOption.cpp\",\n       \"builtin-command-line-options.cpp\",\n       \"analyzeCommandLineOptions.cpp\",\n       \"F_mainForLIBPM.cpp\",\n       \"BinaryDecisionDiagram.cpp\",\n       \"BinaryDecisionDiagramRelationSingleType.cpp\",\n       \"BinaryDecisionDiagramRelationConfiguration.cpp\",\n       \"BinaryDecisionDiagramRelation.cpp\",\n       \"FileManager.cpp\",\n       \"AbstractFileHandle.cpp\",\n       \"TextFileWrite.cpp\",\n       \"HTMLFileWrite.cpp\",\n       \"BinaryFileWrite.cpp\",\n       \"AbstractOutputStream.cpp\",\n       \"ColoredConsole.cpp\",\n       \"ConsoleOut.cpp\",\n       \"unicode_character_cpp.cpp\",\n       \"String-class-getters.cpp\",\n       \"String-class.cpp\",\n       \"HTMLString.cpp\",\n       \"print.cpp\",\n       \"Timer.cpp\",\n       \"DateTime.cpp\",\n       \"PrologueEpilogue.cpp\",\n       \"SharedObject.cpp\",\n       \"BigSigned-add.cpp\",\n       \"BigSigned-bit.cpp\",\n       \"BigSigned-chunk-operations.cpp\",\n       \"BigSigned-constructors.cpp\",\n       \"BigSigned-conversions.cpp\",\n       \"BigSigned-divide.cpp\",\n       \"BigSigned-logic-operations.cpp\",\n       \"BigSigned-multiply.cpp\",\n       \"BigSigned-print.cpp\",\n       \"BigSigned-shifts.cpp\",\n       \"BigSigned-subtract.cpp\",\n       \"BigSigned-utilities.cpp\",\n       \"BigSigned.cpp\",\n       \"BigUnsigned-add.cpp\",\n       \"BigUnsigned-bit.cpp\",\n       \"BigUnsigned-chunk-operations.cpp\",\n       \"BigUnsigned-constructors.cpp\",\n       \"BigUnsigned-conversions.cpp\",\n       \"BigUnsigned-divide-naive.cpp\",\n       \"BigUnsigned-divide.cpp\",\n       \"BigUnsigned-logic-operations.cpp\",\n       \"BigUnsigned-multiply.cpp\",\n       \"BigUnsigned-print.cpp\",\n       \"BigUnsigned-shifts.cpp\",\n       \"BigUnsigned-subtract.cpp\",\n       \"BigUnsigned-utilities.cpp\",\n       \"ChunkSharedArray.cpp\",\n       \"UInt128.cpp\",\n       \"U8Data.cpp\",\n       \"F_DisplayException.cpp\",\n       \"macroAssert.cpp\",\n       \"F_GetPrime.cpp\",\n       \"MF_MemoryControl.cpp\",\n       \"cpp-allocation.cpp\",\n       \"basic-allocation.cpp\",\n       \"UInt32Set.cpp\",\n       \"DirectedGraph.cpp\",\n       \"md5.cpp\",\n       \"SHA256.cpp\",\n       \"galgas-random.cpp\",\n       \"C_galgas_CLI_Options.cpp\",\n       \"Compiler.cpp\",\n       \"Lexique.cpp\",\n       \"Lexique-parsing.cpp\",\n       \"LocationInSource.cpp\",\n       \"SourceTextInString.cpp\",\n       \"C_galgas_type_descriptor.cpp\",\n       \"C_galgas_function_descriptor.cpp\",\n       \"galgas-input-output.cpp\",\n       \"C_galgas_class_inspector.cpp\",\n       \"IssueWithFixIt.cpp\",\n       \"cObjectArray.cpp\",\n       \"cCollectionElement.cpp\",\n       \"capCollectionElement.cpp\",\n       \"capCollectionElementArray.cpp\",\n       \"cSortedListElement.cpp\",\n       \"capSortedListElement.cpp\",\n       \"cGenericAbstractEnumerator.cpp\",\n       \"Enumerator_range.cpp\",\n       \"cIndexingDictionary.cpp\",\n       \"IssueDescriptor.cpp\",\n       \"cLexiqueIntrospection.cpp\",\n       \"AC_GALGAS_root.cpp\",\n       \"AC_GALGAS_list.cpp\",\n       \"AC_GALGAS_sortedlist.cpp\",\n       \"AC_GALGAS_map.cpp\",\n       \"AC_GALGAS_reference_class.cpp\",\n       \"AC_GALGAS_value_class.cpp\",\n       \"AC_GALGAS_graph.cpp\",\n       \"AC_GALGAS_enumAssociatedValues.cpp\",\n       \"acPtr_class.cpp\",\n       \"acStrongPtr_class.cpp\",\n       \"cPtr_weakReference_proxy.cpp\",\n       \"AC_GALGAS_weak_reference.cpp\",\n       \"cPtr_object.cpp\",\n       \"scanner_actions.cpp\",\n       \"GALGAS_application.cpp\",\n       \"GALGAS_bigint.cpp\",\n       \"GALGAS_binaryset.cpp\",\n       \"GALGAS_bool.cpp\",\n       \"GALGAS_char.cpp\",\n       \"GALGAS_data.cpp\",\n       \"GALGAS_double.cpp\",\n       \"GALGAS_filewrapper.cpp\",\n       \"GALGAS_function.cpp\",\n       \"GALGAS_location.cpp\",\n       \"GALGAS_sint.cpp\",\n       \"GALGAS_sint_36__34_.cpp\",\n       \"GALGAS_string.cpp\",\n       \"GALGAS_string-getters.cpp\",\n       \"GALGAS_stringset.cpp\",\n       \"GALGAS_type.cpp\",\n       \"GALGAS_object.cpp\",\n       \"GALGAS_uint.cpp\",\n       \"GALGAS_timer.cpp\",\n       \"GALGAS_uint_36__34_.cpp\"\n    ],\n    \"USER_LINK_OPTIONS\"  :  [") ;
@@ -3044,11 +3044,11 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_fil
       result.appendString ("\n        \"") ;
       result.appendString (enumerator_5148.current_mValue (HERE).stringValue ()) ;
       result.appendString ("\"") ;
-      if (enumerator_5148.hasNextObject ()) {
+      enumerator_5148.gotoNextObject () ;
+      if (enumerator_5148.hasCurrentObject ()) {
         result.appendString (",") ;
       }
       index_5148_.increment () ;
-      enumerator_5148.gotoNextObject () ;
     }
   }
   result.appendString ("\n    ]\n}\n\n") ;
@@ -4467,10 +4467,10 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
           UpEnumerator_stringlist enumerator_62504 (constinArgument_inHandCodedLinkToolFileList) ;
           while (enumerator_62504.hasCurrentObject ()) {
             var_s_62471.plusAssign_operation(GGS_string ("\"").add_operation (enumerator_62504.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1438)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1438)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1438)) ;
-            if (enumerator_62504.hasNextObject ()) {
+            enumerator_62504.gotoNextObject () ;
+            if (enumerator_62504.hasCurrentObject ()) {
               var_s_62471.plusAssign_operation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1439)) ;
             }
-            enumerator_62504.gotoNextObject () ;
           }
           var_s_62471.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1441)) ;
           var_settingList_62108.addAssign_operation (var_s_62471  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1442)) ;
@@ -4496,10 +4496,10 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
           UpEnumerator_stringlist enumerator_63513 (constinArgument_inHandCodedLinkToolFileList) ;
           while (enumerator_63513.hasCurrentObject ()) {
             var_s_63480.plusAssign_operation(GGS_string ("\"").add_operation (enumerator_63513.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1464)).add_operation (GGS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1464)), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1464)) ;
-            if (enumerator_63513.hasNextObject ()) {
+            enumerator_63513.gotoNextObject () ;
+            if (enumerator_63513.hasCurrentObject ()) {
               var_s_63480.plusAssign_operation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1465)) ;
             }
-            enumerator_63513.gotoNextObject () ;
           }
           var_s_63480.plusAssign_operation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1467)) ;
           var_settingList_62108.addAssign_operation (var_s_63480  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas", 1468)) ;

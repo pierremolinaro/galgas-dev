@@ -9173,8 +9173,6 @@ class GGS_typeFeatures : public AC_GALGAS_root {
 
   public: static class GGS_typeFeatures class_func_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) ;
 
-  public: static class GGS_typeFeatures class_func_generateEnumerationHelperMethods (LOCATION_ARGS) ;
-
   public: static class GGS_typeFeatures class_func_generateSynthetizedInitializer (LOCATION_ARGS) ;
 
   public: static class GGS_typeFeatures class_func_incDecOperator (LOCATION_ARGS) ;
